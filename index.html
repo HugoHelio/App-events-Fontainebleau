@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Sport Famille - Pays de Fontainebleau</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #map { height: 80vh; width: 100%; border-radius: 12px; }
+        .activity-card { cursor: pointer; transition: all 0.2s ease-in-out; }
+        .activity-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important; }
+        .badge-cat { font-size: 0.75rem; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-primary mb-3 shadow-sm">
+        <div class="container-fluid px-4">
+            <span class="navbar-brand fw-bold">🌲 Fontainebleau Kids & Sport</span>
+            <span class="text-white-50 small">Activités, Agenda & Carte Interactive</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4">
+        <div class="row">
+            <!-- Barre latérale : Filtres + Agenda + Liste -->
+            <div class="col-lg-4 col-md-5 mb-3">
+                <div class="card p-3 shadow-sm mb-3 border-0">
+                    <h5 class="fw-bold mb-3">Filtres & Agenda</h5>
+                    
+                    <!-- Filtre Date / Calendrier -->
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Date de sortie</label>
+                        <input type="date" id="dateFilter" class="form-control" onchange="applyFilters()">
+                    </div>
+
+                    <!-- Filtre Catégorie -->
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Catégorie</label>
+                        <select id="categoryFilter" class="form-select" onchange="applyFilters()">
+                            <option value="all">Toutes les catégories</option>
+                            <option value="Sport & Outdoor">Sport & Outdoor</option>
+                            <option value="Nature & Environnement">Nature & Environnement</option>
+                            <option value="Culture & Ateliers">Culture & Ateliers</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtre Âge -->
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Âge de l'enfant (ans)</label>
+                        <input type="number" id="ageFilter" class="form-control" placeholder="Ex: 8" oninput="applyFilters()">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="fw-bold m-0">Résultats (<span id="resultCount">0</span>)</h6>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="resetFilters()">Réinitialiser</button>
+                </div>
+
+                <!-- Liste des activités -->
+                <div id="activityList" class="overflow-auto pr-1" style="max-height: 48vh;"></div>
+            </div>
+
+            <!-- CARTE UNIQUE (Tous les marqueurs y sont affichés) -->
+            <div class="col-lg-8 col-md-7">
+                <div id="map" class="shadow-sm border"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        let allActivities = [];
+        let markers = [];
+
+        // Initialisation de la CARTE UNIQUE centrée sur Fontainebleau
+        const map = L.map('map').setView([48.402, 2.701], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Chargement du fichier JSON
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                allActivities = data;
+                applyFilters();
+            })
+            .catch(err => console.error("Erreur de chargement des données:", err));
+
+        function render(items) {
+            // Nettoyage de TOUS les marqueurs précédents sur la carte unique
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+
+            const listEl = document.getElementById('activityList');
+            listEl.innerHTML = '';
+            document.getElementById('resultCount').textContent = items.length;
+
+            const bounds = [];
+
+            items.forEach(act => {
+                // 1. Ajout d'UN marqueur sur la CARTE UNIQUE pour chaque événement
+                const marker = L.marker([act.lat, act.lng])
+                    .addTo(map)
+                    .bindPopup(`
+                        <strong>${act.title}</strong><br>
+                        <small>📍 ${act.locationName} (${act.city})</small><br>
+                        <span class="badge bg-primary mt-1">${act.category}</span><br>
+                        <small class="text-success fw-bold">${act.price}</small><br>
+                        <small>🗓️ ${act.schedule}</small>
+                    `);
+                
+                markers.push(marker);
+                bounds.push([act.lat, act.lng]);
+
+                // 2. Création de la carte dans la liste latérale
+                const card = document.createElement('div');
+                card.className = 'card mb-2 activity-card p-3 shadow-sm border-0';
+                card.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span class="badge bg-primary-subtle text-primary border badge-cat mb-1">${act.category}</span>
+                        <small class="text-muted fw-bold">${act.ageMin}-${act.ageMax} ans</small>
+                    </div>
+                    <h6 class="fw-bold text-dark mb-1">${act.title}</h6>
+                    <p class="small text-muted mb-1">📍 ${act.locationName} (${act.city})</p>
+                    <p class="small text-secondary mb-2">${act.description}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="fw-bold text-success">${act.price}</small>
+                        <small class="text-muted">${act.schedule}</small>
+                    </div>
+                `;
+
+                // Quand on clique sur une carte dans la liste, la carte se recentre sur CE marqueur spécifique
+                card.onclick = () => {
+                    map.setView([act.lat, act.lng], 14);
+                    marker.openPopup();
+                };
+
+                listEl.appendChild(card);
+            });
+
+            // Ajuste automatiquement le zoom de la carte unique pour englober tous les résultats filtrés
+            if (bounds.length > 0) {
+                map.fitBounds(bounds, { padding: [30, 30] });
+            }
+        }
+
+        function applyFilters() {
+            const cat = document.getElementById('categoryFilter').value;
+            const age = parseInt(document.getElementById('ageFilter').value);
+            const dateVal = document.getElementById('dateFilter').value;
+
+            const filtered = allActivities.filter(a => {
+                const matchCat = (cat === 'all' || a.category === cat);
+                const matchAge = (isNaN(age) || (age >= a.ageMin && age <= a.ageMax));
+                // Filtrage basique par date (extensible selon le type d'événement)
+                const matchDate = !dateVal || a.dateType === 'recurring' || (a.schedule && a.schedule.includes(dateVal));
+                
+                return matchCat && matchAge && matchDate;
+            });
+
+            render(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('ageFilter').value = '';
+            document.getElementById('dateFilter').value = '';
+            applyFilters();
+        }
+    </script>
+</body>
+</html>
