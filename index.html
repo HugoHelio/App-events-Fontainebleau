@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events & Sport Famille - Pays de Fontainebleau</title>
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+
     <style>
-        #map { height: 80vh; width: 100%; border-radius: 12px; }
+        #map { height: 82vh; width: 100%; border-radius: 12px; }
         .activity-card { cursor: pointer; transition: all 0.2s ease-in-out; }
         .activity-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important; }
-        .badge-cat { font-size: 0.75rem; }
+        
+        /* Personnalisation compacte du calendrier */
+        #calendar { background: #fff; border-radius: 8px; padding: 10px; font-size: 0.8rem; }
+        .fc-header-toolbar { margin-bottom: 0.5rem !important; }
+        .fc-toolbar-title { font-size: 0.95rem !important; font-weight: bold; color: #0d6efd; }
+        .fc-button { padding: 0.2rem 0.4rem !important; font-size: 0.75rem !important; }
+        .fc-daygrid-day-number { font-size: 0.75rem; text-decoration: none; color: #333; }
+        .fc-highlight { background-color: rgba(13, 110, 253, 0.15) !important; }
+        .fc-day-today { background-color: rgba(255, 193, 7, 0.15) !important; }
     </style>
 </head>
 <body class="bg-light">
@@ -20,80 +32,119 @@
     <nav class="navbar navbar-dark bg-primary mb-3 shadow-sm">
         <div class="container-fluid px-4">
             <span class="navbar-brand fw-bold">🌲 Fontainebleau Kids & Sport</span>
-            <span class="text-white-50 small">Activités, Agenda & Carte Interactive</span>
+            <span class="text-white-50 small">Agenda 5 Semaines & Carte Interactive</span>
         </div>
     </nav>
 
     <div class="container-fluid px-4">
         <div class="row">
-            <!-- Barre latérale : Filtres + Agenda + Liste -->
+            <!-- Colonne de gauche : Calendrier 5 semaines + Filtres + Liste -->
             <div class="col-lg-4 col-md-5 mb-3">
+                
+                <!-- 1. COMPOSANT CALENDRIER (Semaine en cours + 4 semaines) -->
+                <div class="card p-2 shadow-sm mb-3 border-0">
+                    <div class="d-flex justify-content-between align-items-center mb-1 px-1">
+                        <span class="fw-bold text-dark small">📅 Agenda (5 semaines)</span>
+                        <button class="btn btn-sm btn-link p-0 text-decoration-none small" id="clearDateBtn" style="display:none;" onclick="resetDateSelection()">Voir tout</button>
+                    </div>
+                    <div id="calendar"></div>
+                    <div id="selectedDateLabel" class="text-center text-primary fw-bold mt-1 small" style="display:none;"></div>
+                </div>
+
+                <!-- 2. FILTRES SECONDAIRES -->
                 <div class="card p-3 shadow-sm mb-3 border-0">
-                    <h5 class="fw-bold mb-3">Filtres & Agenda</h5>
-                    
-                    <!-- Filtre Date / Calendrier -->
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">Date de sortie</label>
-                        <input type="date" id="dateFilter" class="form-control" onchange="applyFilters()">
-                    </div>
-
-                    <!-- Filtre Catégorie -->
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">Catégorie</label>
-                        <select id="categoryFilter" class="form-select" onchange="applyFilters()">
-                            <option value="all">Toutes les catégories</option>
-                            <option value="Sport & Outdoor">Sport & Outdoor</option>
-                            <option value="Nature & Environnement">Nature & Environnement</option>
-                            <option value="Culture & Ateliers">Culture & Ateliers</option>
-                        </select>
-                    </div>
-
-                    <!-- Filtre Âge -->
-                    <div class="mb-2">
-                        <label class="form-label small fw-bold">Âge de l'enfant (ans)</label>
-                        <input type="number" id="ageFilter" class="form-control" placeholder="Ex: 8" oninput="applyFilters()">
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold mb-1">Catégorie</label>
+                            <select id="categoryFilter" class="form-select form-select-sm" onchange="applyFilters()">
+                                <option value="all">Toutes</option>
+                                <option value="Sport & Outdoor">Sport & Outdoor</option>
+                                <option value="Nature & Environnement">Nature & Environnement</option>
+                                <option value="Culture & Ateliers">Culture & Ateliers</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold mb-1">Âge (ans)</label>
+                            <input type="number" id="ageFilter" class="form-control form-control-sm" placeholder="Ex: 8" oninput="applyFilters()">
+                        </div>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="fw-bold m-0">Résultats (<span id="resultCount">0</span>)</h6>
-                    <button class="btn btn-sm btn-outline-secondary" onclick="resetFilters()">Réinitialiser</button>
+                    <button class="btn btn-sm btn-outline-secondary py-0" onclick="resetAllFilters()">Tout réinitialiser</button>
                 </div>
 
-                <!-- Liste des activités -->
-                <div id="activityList" class="overflow-auto pr-1" style="max-height: 48vh;"></div>
+                <!-- 3. LISTE DES ACTIVITÉS -->
+                <div id="activityList" class="overflow-auto pr-1" style="max-height: 35vh;"></div>
             </div>
 
-            <!-- CARTE UNIQUE (Tous les marqueurs y sont affichés) -->
+            <!-- CARTE UNIQUE -->
             <div class="col-lg-8 col-md-7">
                 <div id="map" class="shadow-sm border"></div>
             </div>
         </div>
     </div>
 
-    <!-- Leaflet JS -->
+    <!-- Scripts CDN -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
     <script>
         let allActivities = [];
         let markers = [];
+        let selectedDateStr = null;
+        let calendar = null;
 
-        // Initialisation de la CARTE UNIQUE centrée sur Fontainebleau
+        // Initialisation de la carte Leaflet
         const map = L.map('map').setView([48.402, 2.701], 11);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // Chargement du fichier JSON
+        // Initialisation de FullCalendar configuré sur 5 semaines
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                firstDay: 1, // Lundi comme 1er jour de la semaine
+                headerToolbar: {
+                    left: 'title',
+                    right: 'prev,next'
+                },
+                height: 'auto',
+                selectable: true,
+                fixedWeekCount: false, // S'adapte proprement au nombre de semaines
+                dateClick: function(info) {
+                    selectedDateStr = info.dateStr;
+                    
+                    // Mise à jour de l'affichage UI de la date sélectionnée
+                    const formattedDate = new Date(info.dateStr).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+                    document.getElementById('selectedDateLabel').style.display = 'block';
+                    document.getElementById('selectedDateLabel').textContent = `Filtré le : ${formattedDate}`;
+                    document.getElementById('clearDateBtn').style.display = 'inline';
+
+                    // Surlignage visuel du jour sélectionné
+                    document.querySelectorAll('.fc-day').forEach(el => el.classList.remove('fc-highlight'));
+                    info.dayEl.classList.add('fc-highlight');
+
+                    applyFilters();
+                }
+            });
+            calendar.render();
+        });
+
+        // Chargement des données JSON
         fetch('data.json')
             .then(res => res.json())
             .then(data => {
                 allActivities = data;
                 applyFilters();
             })
-            .catch(err => console.error("Erreur de chargement des données:", err));
+            .catch(err => console.error("Erreur JSON:", err));
 
         function render(items) {
-            // Nettoyage de TOUS les marqueurs précédents sur la carte unique
             markers.forEach(m => map.removeLayer(m));
             markers = [];
 
@@ -104,7 +155,6 @@
             const bounds = [];
 
             items.forEach(act => {
-                // 1. Ajout d'UN marqueur sur la CARTE UNIQUE pour chaque événement
                 const marker = L.marker([act.lat, act.lng])
                     .addTo(map)
                     .bindPopup(`
@@ -118,24 +168,21 @@
                 markers.push(marker);
                 bounds.push([act.lat, act.lng]);
 
-                // 2. Création de la carte dans la liste latérale
                 const card = document.createElement('div');
-                card.className = 'card mb-2 activity-card p-3 shadow-sm border-0';
+                card.className = 'card mb-2 activity-card p-2 shadow-sm border-0';
                 card.innerHTML = `
                     <div class="d-flex justify-content-between align-items-start">
-                        <span class="badge bg-primary-subtle text-primary border badge-cat mb-1">${act.category}</span>
+                        <span class="badge bg-primary-subtle text-primary border mb-1" style="font-size:0.7rem;">${act.category}</span>
                         <small class="text-muted fw-bold">${act.ageMin}-${act.ageMax} ans</small>
                     </div>
-                    <h6 class="fw-bold text-dark mb-1">${act.title}</h6>
+                    <h6 class="fw-bold text-dark mb-1" style="font-size:0.9rem;">${act.title}</h6>
                     <p class="small text-muted mb-1">📍 ${act.locationName} (${act.city})</p>
-                    <p class="small text-secondary mb-2">${act.description}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <small class="fw-bold text-success">${act.price}</small>
-                        <small class="text-muted">${act.schedule}</small>
+                        <small class="text-muted" style="font-size:0.75rem;">${act.schedule}</small>
                     </div>
                 `;
 
-                // Quand on clique sur une carte dans la liste, la carte se recentre sur CE marqueur spécifique
                 card.onclick = () => {
                     map.setView([act.lat, act.lng], 14);
                     marker.openPopup();
@@ -144,7 +191,6 @@
                 listEl.appendChild(card);
             });
 
-            // Ajuste automatiquement le zoom de la carte unique pour englober tous les résultats filtrés
             if (bounds.length > 0) {
                 map.fitBounds(bounds, { padding: [30, 30] });
             }
@@ -153,25 +199,35 @@
         function applyFilters() {
             const cat = document.getElementById('categoryFilter').value;
             const age = parseInt(document.getElementById('ageFilter').value);
-            const dateVal = document.getElementById('dateFilter').value;
 
             const filtered = allActivities.filter(a => {
                 const matchCat = (cat === 'all' || a.category === cat);
                 const matchAge = (isNaN(age) || (age >= a.ageMin && age <= a.ageMax));
-                // Filtrage basique par date (extensible selon le type d'événement)
-                const matchDate = !dateVal || a.dateType === 'recurring' || (a.schedule && a.schedule.includes(dateVal));
                 
+                // Si une date est cliquée sur le calendrier
+                let matchDate = true;
+                if (selectedDateStr) {
+                    matchDate = (a.dateType === 'recurring') || (a.schedule && a.schedule.includes(selectedDateStr));
+                }
+
                 return matchCat && matchAge && matchDate;
             });
 
             render(filtered);
         }
 
-        function resetFilters() {
+        function resetDateSelection() {
+            selectedDateStr = null;
+            document.getElementById('selectedDateLabel').style.display = 'none';
+            document.getElementById('clearDateBtn').style.display = 'none';
+            document.querySelectorAll('.fc-day').forEach(el => el.classList.remove('fc-highlight'));
+            applyFilters();
+        }
+
+        function resetAllFilters() {
             document.getElementById('categoryFilter').value = 'all';
             document.getElementById('ageFilter').value = '';
-            document.getElementById('dateFilter').value = '';
-            applyFilters();
+            resetDateSelection();
         }
     </script>
 </body>
