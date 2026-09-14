@@ -49,9 +49,9 @@ Texte brut :
 ${rawText}
 `;
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+ const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
 
-  const requestData = JSON.stringify({
+ const requestData = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }]
   });
 
