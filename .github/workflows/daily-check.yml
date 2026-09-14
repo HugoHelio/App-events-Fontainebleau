@@ -5,9 +5,10 @@ on:
     - cron: '0 6 * * *'
   workflow_dispatch:
 
-# Autorise le bot à lire et écrire dans le dépôt
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-data:
