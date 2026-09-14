@@ -1,16 +1,13 @@
 const fs = require('fs');
 const https = require('https');
 
-// Clé API Gemini depuis les variables d'environnement
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 if (!GEMINI_API_KEY) {
-  console.error("Erreur: Clé API GEMINI_API_KEY introuvable.");
+  console.error("❌ Erreur: Clé API GEMINI_API_KEY introuvable dans les variables d'environnement.");
   process.exit(1);
 }
 
-// 1. Définition des sources (Exemple avec un flux RSS / JSON local ou externe)
-// Vous pourrez ajouter ici les URLs des flux RSS de la Mairie de Fontainebleau, d'associations, etc.
 const sampleRawData = `
 Annonce - Mairie de Fontainebleau :
 Grand Critérium Cycliste Enfants ce samedi 24 octobre de 10h à 12h au Parc du Château.
@@ -21,27 +18,33 @@ Organisé par les Ateliers d'Avon. Tarif : 8€ / enfant (8-15 ans).
 `;
 
 async function parseWithGemini(rawText) {
+  // Obtenir l'année courante pour le calcul précis de Gemini
+  const currentYear = new Date().getFullYear();
+
   const prompt = `
 Tu es un extracteur de données strict. Analyse le texte suivant et extrait TOUS les événements sportifs, récréatifs et culturels pour enfants/familles autour de Fontainebleau.
-Renvoie UNIQUEMENT un tableau JSON valide au format exact suivant, sans balises markdown ni texte autour :
+Nous sommes en ${currentYear}.
+
+Renvoie UNIQUEMENT un tableau JSON valide au format exact suivant, sans aucun texte ni balises markdown autour :
 
 [
   {
     "id": "ACT_AUTO_001",
     "title": "Titre explicite",
     "category": "Sport & Outdoor" | "Nature & Environnement" | "Culture & Ateliers",
-    "ageMin": nombre,
-    "ageMax": nombre,
-    "city": "Nom de la ville",
-    "locationName": "Lieu précis",
-    "lat": latitude_approximative,
-    "lng": longitude_approximative,
-    "dateType": "event" | "recurring",
-    "schedule": "Date ou jour récurrent",
-    "price": "Tarif exact ou Gratuit",
+    "ageMin": 6,
+    "ageMax": 12,
+    "city": "Fontainebleau",
+    "locationName": "Parc du Château",
+    "lat": 48.4020,
+    "lng": 2.7010,
+    "dateType": "event" ou "recurring",
+    "startDate": "YYYY-MM-DD" (Convertis obligatoirement la date citée au format ISO ISO YYYY-MM-DD, ex: "${currentYear}-10-24"),
+    "schedule": "Texte brut complet (ex: Samedi 24 octobre de 10h à 12h)",
+    "price": "Gratuit" ou "8€",
     "organizer": "Nom organisateur",
     "description": "Courte description synthétique",
-    "url": "URL ou lien supposé"
+    "url": "https://www.fontainebleau.fr"
   }
 ]
 
@@ -49,9 +52,8 @@ Texte brut :
 ${rawText}
 `;
 
- const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
-
- const requestData = JSON.stringify({
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
+  const requestData = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }]
   });
 
@@ -66,14 +68,17 @@ ${rawText}
       let body = '';
       res.on('data', chunk => body += chunk);
       res.on('end', () => {
+        if (res.statusCode !== 200) {
+          return reject(`Erreur HTTP ${res.statusCode} de l'API Gemini : ${body}`);
+        }
         try {
           const response = JSON.parse(body);
-          const candidateText = response.candidates[0].content.parts[0].text;
-          // Nettoyage des balises markdown si présentes
-          const cleanJson = candidateText.replace(/```json/g, '').replace(/```/g, '').trim();
-          resolve(JSON.parse(cleanJson));
+          let rawJsonText = response.candidates[0].content.parts[0].text;
+          
+          rawJsonText = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
+          resolve(JSON.parse(rawJsonText));
         } catch (e) {
-          reject("Erreur parsing Gemini : " + e.message + "\nRéponse brute : " + body);
+          reject("Erreur parsing JSON : " + e.message + "\nRéponse brute : " + body);
         }
       });
     });
@@ -90,17 +95,19 @@ async function main() {
     const newEvents = await parseWithGemini(sampleRawData);
     console.log(`✅ ${newEvents.length} événements extraits par Gemini.`);
 
-    // Fusion avec le fichier data.json existant
     const existingDataPath = './data.json';
     let existingData = [];
     if (fs.existsSync(existingDataPath)) {
       existingData = JSON.parse(fs.readFileSync(existingDataPath, 'utf8'));
     }
 
-    // Éviter les doublons par ID ou titre
+    // Mise à jour ou ajout (avec remplacement si le titre existe déjà pour appliquer la nouvelle structure)
     const updatedData = [...existingData];
     newEvents.forEach(newEvent => {
-      if (!updatedData.some(e => e.title === newEvent.title)) {
+      const index = updatedData.findIndex(e => e.title === newEvent.title);
+      if (index !== -1) {
+        updatedData[index] = newEvent; // Remplace pour corriger les champs
+      } else {
         updatedData.push(newEvent);
       }
     });
@@ -115,4 +122,3 @@ async function main() {
 }
 
 main();
-
