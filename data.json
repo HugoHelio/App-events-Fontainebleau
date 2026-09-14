@@ -1,6 +1,6 @@
 [
   {
-    "id": "ACT_FONTAINEBLEAU_001",
+    "id": "ACT_001",
     "title": "Initiation Escalade Bloc en Forêt",
     "category": "Sport & Outdoor",
     "ageMin": 6,
@@ -17,7 +17,7 @@
     "url": "https://example.com/escalade"
   },
   {
-    "id": "ACT_FONTAINEBLEAU_002",
+    "id": "ACT_002",
     "title": "Atelier Botanique Jeunes Pousses",
     "category": "Nature & Environnement",
     "ageMin": 6,
@@ -34,7 +34,7 @@
     "url": "https://example.com/botanique"
   },
   {
-    "id": "ACT_FONTAINEBLEAU_003",
+    "id": "ACT_003",
     "title": "Stage VTT & Gravel Kids",
     "category": "Sport & Outdoor",
     "ageMin": 8,
@@ -53,7 +53,7 @@
     "url": "https://example.com/stage-vtt"
   },
   {
-    "id": "ACT_FONTAINEBLEAU_004",
+    "id": "ACT_004",
     "title": "Atelier Musique & Rythme Petite Enfance",
     "category": "Culture & Ateliers",
     "ageMin": 2,
@@ -70,7 +70,7 @@
     "url": "https://example.com/musique-kids"
   },
   {
-    "id": "ACT_FONTAINEBLEAU_005",
+    "id": "ACT_005",
     "title": "Aprem Kayak & Stand-Up Paddle",
     "category": "Sport & Outdoor",
     "ageMin": 10,
@@ -81,6 +81,7 @@
     "lng": 2.731,
     "dateType": "event",
     "startDate": "2026-09-20",
+    "endDate": "2026-09-20",
     "schedule": "Dimanche 20 Septembre 14h-17h",
     "price": "20€ / personne",
     "organizer": "Club Nautique Souppes",
@@ -88,7 +89,7 @@
     "url": "https://example.com/kayak-souppes"
   },
   {
-    "id": "ACT_AUTO_001",
+    "id": "ACT_006",
     "title": "Grand Critérium Cycliste Enfants",
     "category": "Sport & Outdoor",
     "ageMin": 6,
@@ -99,6 +100,7 @@
     "lng": 2.701,
     "dateType": "event",
     "startDate": "2026-10-24",
+    "endDate": "2026-10-24",
     "schedule": "Samedi 24 octobre de 10h à 12h",
     "price": "Gratuit",
     "organizer": "Vélo Club de Fontainebleau",
@@ -106,7 +108,7 @@
     "url": "https://www.fontainebleau.fr"
   },
   {
-    "id": "ACT_AUTO_002",
+    "id": "ACT_007",
     "title": "Atelier Peinture en Forêt",
     "category": "Culture & Ateliers",
     "ageMin": 8,
@@ -117,6 +119,7 @@
     "lng": 2.6841,
     "dateType": "event",
     "startDate": "2026-10-24",
+    "endDate": "2026-10-24",
     "schedule": "Samedi 24 octobre de 14h à 16h",
     "price": "8€",
     "organizer": "Les Ateliers d'Avon",

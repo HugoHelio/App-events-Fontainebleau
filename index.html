@@ -196,30 +196,63 @@
             }
         }
 
-        function applyFilters() {
-            const cat = document.getElementById('categoryFilter').value;
-            const age = parseInt(document.getElementById('ageFilter').value);
+  // 1. Filtrage dans la liste et sur la carte
+function applyFilters() {
+  const ageVal = parseInt(document.getElementById('filterAge').value) || null;
+  const catVal = document.getElementById('filterCategory').value;
+  const dateVal = document.getElementById('filterDate').value; // YYYY-MM-DD
 
-            const matchDate = !dateVal || 
-                a.dateType === 'recurring' || 
-                (a.startDate && a.startDate === dateVal) ||
-                (a.startDate && a.endDate && dateVal >= a.startDate && dateVal <= a.endDate);
+  const filtered = allActivities.filter(a => {
+    // Filtre Age
+    const matchAge = !ageVal || (a.ageMin <= ageVal && a.ageMax >= ageVal);
+    
+    // Filtre Catégorie
+    const matchCat = !catVal || a.category === catVal;
+    
+    // Filtre Date : si le champ est vide, on affiche tout !
+    let matchDate = true;
+    if (dateVal) {
+      if (a.dateType === 'recurring') {
+        matchDate = true; // Les récurrents restent toujours visibles
+      } else {
+        const start = a.startDate;
+        const end = a.endDate || a.startDate;
+        matchDate = start && (dateVal >= start && dateVal <= end);
+      }
+    }
 
-            const filtered = allActivities.filter(a => {
-                const matchCat = (cat === 'all' || a.category === cat);
-                const matchAge = (isNaN(age) || (age >= a.ageMin && age <= a.ageMax));
-                
-                // Si une date est cliquée sur le calendrier
-                let matchDate = true;
-                if (selectedDateStr) {
-                    matchDate = (a.dateType === 'recurring') || (a.schedule && a.schedule.includes(selectedDateStr));
-                }
+    return matchAge && matchCat && matchDate;
+  });
 
-                return matchCat && matchAge && matchDate;
-            });
+  renderCards(filtered);
+  updateMapMarkers(filtered);
+}
 
-            render(filtered);
-        }
+// 2. Formatage des événements pour FullCalendar
+function getCalendarEvents(activities) {
+  return activities.map(a => {
+    if (a.dateType === 'event' && a.startDate) {
+      return {
+        id: a.id,
+        title: a.title,
+        start: a.startDate,
+        end: a.endDate ? a.endDate : a.startDate,
+        url: a.url,
+        extendedProps: { category: a.category, location: a.locationName }
+      };
+    } else {
+      // Événements récurrents : FullCalendar supporte 'daysOfWeek' (ex: [3] pour mercredi, [6] pour samedi)
+      return {
+        id: a.id,
+        title: a.title + " (Récurrent)",
+        daysOfWeek: a.schedule.includes("samedis") ? [6] : (a.schedule.includes("Mercredis") ? [3] : []),
+        extendedProps: { category: a.category, location: a.locationName }
+      };
+    }
+  }).filter(e => e !== null);
+}
+
+
 
         function resetDateSelection() {
             selectedDateStr = null;
