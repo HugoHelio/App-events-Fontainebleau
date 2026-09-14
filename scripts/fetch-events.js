@@ -28,7 +28,6 @@ Renvoie un tableau JSON valide au format exact suivant :
 
 [
   {
-    "id": "ACT_AUTO_001",
     "title": "Titre explicite",
     "category": "Sport & Outdoor" | "Nature & Environnement" | "Culture & Ateliers",
     "ageMin": 6,
@@ -37,14 +36,14 @@ Renvoie un tableau JSON valide au format exact suivant :
     "locationName": "Parc du Château",
     "lat": 48.4020,
     "lng": 2.7010,
-    "dateType": "event" ou "recurring",
-    "startDate": "YYYY-MM-DD" (Obligatoire si dateType=event. Si récurrent, laisser vide ""),
-    "endDate": "YYYY-MM-DD" (Optionnel si stage sur plusieurs jours),
-    "schedule": "Texte brut explicatif (ex: Samedi 24 octobre de 10h à 12h ou Tous les mercredis)",
-    "price": "Gratuit" ou "8€",
+    "dateType": "event",
+    "startDate": "YYYY-MM-DD",
+    "endDate": "YYYY-MM-DD",
+    "schedule": "Texte brut explicatif",
+    "price": "Gratuit ou 8€",
     "organizer": "Nom organisateur",
     "description": "Courte description synthétique",
-    "url": "[https://www.fontainebleau.fr](https://www.fontainebleau.fr)"
+    "url": "https://www.fontainebleau.fr"
   }
 ]
 
@@ -52,8 +51,6 @@ Texte brut :
 ${rawText}
 `;
 
-  const url = `[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$){GEMINI_API_KEY}`;
-  
   const requestData = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }],
     generationConfig: {
@@ -61,8 +58,12 @@ ${rawText}
     }
   });
 
+  // Utilisation directe de l'URL Google API v1beta
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+  const parsedUrl = new URL(endpoint);
+
   return new Promise((resolve, reject) => {
-    const req = https.request(url, {
+    const req = https.request(parsedUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,10 +78,7 @@ ${rawText}
         }
         try {
           const response = JSON.parse(body);
-          let rawJsonText = response.candidates[0].content.parts[0].text;
-          
-          // Nettoyage de sécurité au cas où des backticks markdown subsistent
-          rawJsonText = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
+          const rawJsonText = response.candidates[0].content.parts[0].text;
           resolve(JSON.parse(rawJsonText));
         } catch (e) {
           reject("Erreur parsing JSON : " + e.message + "\nRéponse brute : " + body);
@@ -118,11 +116,9 @@ async function main() {
       };
 
       if (index !== -1) {
-        // Conserve l'ID existant dans la base (ex: ACT_006) au lieu de l'écraser avec ACT_AUTO_XXX
         const originalId = updatedData[index].id;
         updatedData[index] = { ...updatedData[index], ...cleanEvent, id: originalId };
       } else {
-        // Génère un ID unique pour le nouvel élément
         cleanEvent.id = `ACT_${String(updatedData.length + 1).padStart(3, '0')}`;
         updatedData.push(cleanEvent);
       }
