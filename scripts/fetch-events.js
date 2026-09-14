@@ -8,55 +8,63 @@ if (!GEMINI_API_KEY) {
   process.exit(1);
 }
 
-const sampleRawData = `
-Annonce - Mairie de Fontainebleau :
-Grand Critérium Cycliste Enfants ce samedi 24 octobre de 10h à 12h au Parc du Château.
-Gratuit pour les 6-12 ans. Inscriptions sur place avec le Vélo Club de Fontainebleau.
-
-Atelier Peinture en Forêt - Samedi 24 octobre de 14h à 16h à la Faisanderie.
-Organisé par les Ateliers d'Avon. Tarif : 8€ / enfant (8-15 ans).
-`;
-
-async function parseWithGemini(rawText) {
+async function searchEventsWithGemini() {
   const currentYear = new Date().getFullYear();
 
   const prompt = `
-Tu es un extracteur de données strict. Analyse le texte suivant et extrait TOUS les événements sportifs, récréatifs et culturels pour enfants/familles autour de Fontainebleau.
+Effectue une recherche web récente et complète sur les évènements à venir à Fontainebleau et ses environs proches.
 Nous sommes en ${currentYear}.
 
-Renvoie un tableau JSON valide au format exact suivant :
+1. PÉRIMÈTRE GÉOGRAPHIQUE :
+- Ville principale : Fontainebleau
+- Rayon de 15 km autour de Fontainebleau
+- Communes voisines : Avon, Bourron-Marlotte, Samois-sur-Seine, Thomery, Bois-le-Roi, Barbizon, Nemour, Moret-Loing-et-Orvanne.
+- Evenements spécifiques au chateaux de Vaux-le-Vicomte, Blandy les tours et Fontainebleau.
+
+2. TYPES D'ACTIVITÉS À CIBLER :
+- Événements sportifs locaux (courses, trails, VTT, triathlons, compétitions d'escalade/bouldering, critériums).
+- Activités Nature & Outdoor (sorties forêt, visites guidées, randonnées).
+- Sorties culturelles & récréatives en famille (ateliers, stages, spectacles enfants, brocantes, fêtes de village).
+
+3. SOURCES PRIORITAIRES :
+- Agendas municipaux et offices de tourisme du Pays de Fontainebleau et des communes citées.
+- Publications associatives, clubs sportifs locaux et plateformes de billetterie/inscription (HelloAsso, KMS, Klikego, etc.).
+- Les magazines locaux (Le Bellifontain, etc.) et les réseaux sociaux des associations locales.
+- Les grands événements sportifs et associatifs locaux (ex: La Malmontagne, L'Impérial Triathlon, La BelliBelleau / BelliBelloise, critériums cyclistes, trails, La Bellifontaine, etc.).
+
+Analyse les résultats et extrait les événements sous forme de tableau JSON strict au format exact suivant :
 
 [
   {
-    "title": "Titre explicite",
+    "title": "Titre explicite de l'événement",
     "category": "Sport & Outdoor" | "Nature & Environnement" | "Culture & Ateliers",
     "ageMin": 6,
-    "ageMax": 12,
+    "ageMax": 99,
     "city": "Fontainebleau",
-    "locationName": "Parc du Château",
+    "locationName": "Lieu précis (ex: Parc du Château, Grand Parquet, Forêt Domaniale)",
     "lat": 48.4020,
     "lng": 2.7010,
     "dateType": "event",
     "startDate": "YYYY-MM-DD",
     "endDate": "YYYY-MM-DD",
     "schedule": "Texte brut explicatif",
-    "price": "Gratuit ou 8€",
-    "organizer": "Nom organisateur",
+    "price": "Gratuit ou tarif",
+    "organizer": "Nom de l'association ou organisateur",
     "description": "Courte description synthétique",
-    "url": "https://www.fontainebleau.fr"
+    "url": "URL source de l'événement"
   }
 ]
-
-Texte brut :
-${rawText}
 `;
 
-  // Construction de l'URL avec gemini-3.6-flash
   const apiUrl = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent");
   apiUrl.searchParams.append("key", GEMINI_API_KEY);
 
+  // Activation de la recherche Google intégrée (Search Grounding)
   const requestData = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }],
+    tools: [
+      { google_search: {} }
+    ],
     generationConfig: {
       response_mime_type: "application/json"
     }
@@ -74,12 +82,15 @@ ${rawText}
       res.on('data', chunk => body += chunk);
       res.on('end', () => {
         if (res.statusCode !== 200) {
-          return reject(`Erreur HTTP ${res.statusCode} de l'API Gemini : ${body}`);
+          return reject(`Erreur HTTP ${res.statusCode} API Gemini : ${body}`);
         }
         try {
           const response = JSON.parse(body);
           const rawJsonText = response.candidates[0].content.parts[0].text;
-          resolve(JSON.parse(rawJsonText));
+          
+          // Nettoyage de sécurité
+          const cleanJson = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
+          resolve(JSON.parse(cleanJson));
         } catch (e) {
           reject("Erreur parsing JSON : " + e.message + "\nRéponse brute : " + body);
         }
@@ -93,10 +104,10 @@ ${rawText}
 }
 
 async function main() {
-  console.log("🚀 Démarrage du check automatique Gemini...");
+  console.log("🚀 Démarrage de la recherche automatique Gemini + Web Search...");
   try {
-    const newEvents = await parseWithGemini(sampleRawData);
-    console.log(`✅ ${newEvents.length} événements extraits par Gemini.`);
+    const newEvents = await searchEventsWithGemini();
+    console.log(`✅ ${newEvents.length} événements identifiés sur le web.`);
 
     const existingDataPath = './data.json';
     let existingData = [];
@@ -107,7 +118,8 @@ async function main() {
     const updatedData = [...existingData];
 
     newEvents.forEach(newEvent => {
-      const index = updatedData.findIndex(e => e.title === newEvent.title);
+      // Détection de doublons basée sur le titre (insensible à la casse)
+      const index = updatedData.findIndex(e => e.title.trim().toLowerCase() === newEvent.title.trim().toLowerCase());
       
       const cleanEvent = {
         ...newEvent,
@@ -116,19 +128,21 @@ async function main() {
       };
 
       if (index !== -1) {
+        // Mise à jour en préservant l'ID d'origine
         const originalId = updatedData[index].id;
         updatedData[index] = { ...updatedData[index], ...cleanEvent, id: originalId };
       } else {
+        // Création d'un nouvel identifiant
         cleanEvent.id = `ACT_${String(updatedData.length + 1).padStart(3, '0')}`;
         updatedData.push(cleanEvent);
       }
     });
 
     fs.writeFileSync(existingDataPath, JSON.stringify(updatedData, null, 2));
-    console.log("💾 Fichier data.json mis à jour avec succès !");
+    console.log(`💾 Base data.json mise à jour avec succès ! Total : ${updatedData.length} activités.`);
 
   } catch (err) {
-    console.error("❌ Erreur lors de l'exécution :", err);
+    console.error("❌ Erreur lors du scan :", err);
     process.exit(1);
   }
 }
