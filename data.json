@@ -10,6 +10,8 @@
     "lat": 48.3712,
     "lng": 2.5345,
     "dateType": "recurring",
+    "startDate": "",
+    "endDate": "",
     "schedule": "Tous les samedis 14h-16h",
     "price": "15€ / enfant",
     "organizer": "Club Escalade Fontainebleau",
@@ -27,6 +29,8 @@
     "lat": 48.408,
     "lng": 2.698,
     "dateType": "recurring",
+    "startDate": "",
+    "endDate": "",
     "schedule": "Mercredis 14h30-16h",
     "price": "Gratuit",
     "organizer": "Association Amis de la Forêt",
@@ -63,6 +67,8 @@
     "lat": 48.405,
     "lng": 2.72,
     "dateType": "recurring",
+    "startDate": "",
+    "endDate": "",
     "schedule": "Samedis 10h-11h",
     "price": "10€ / séance",
     "organizer": "Eveil Musical Pays de Fontainebleau",
@@ -104,9 +110,8 @@
     "schedule": "Samedi 24 octobre de 10h à 12h",
     "price": "Gratuit",
     "organizer": "Vélo Club de Fontainebleau",
-    "description": "Grand critérium cycliste réservé aux enfants. Inscriptions sur place.",
-    "url": "https://www.fontainebleau.fr",
-    "endDate": ""
+    "description": "Critérium cycliste pour enfants avec inscriptions directement sur place.",
+    "url": "https://www.fontainebleau.fr"
   },
   {
     "id": "ACT_007",
@@ -116,16 +121,15 @@
     "ageMax": 15,
     "city": "Fontainebleau",
     "locationName": "La Faisanderie",
-    "lat": 48.411,
-    "lng": 2.682,
+    "lat": 48.4182,
+    "lng": 2.6841,
     "dateType": "event",
     "startDate": "2026-10-24",
     "endDate": "2026-10-24",
     "schedule": "Samedi 24 octobre de 14h à 16h",
     "price": "8€",
     "organizer": "Les Ateliers d'Avon",
-    "description": "Atelier créatif de peinture en forêt pour enfants de 8 à 15 ans.",
-    "url": "https://www.fontainebleau.fr",
-    "endDate": ""
+    "description": "Atelier créatif de peinture en pleine forêt dédié aux enfants et adolescents.",
+    "url": "https://www.fontainebleau.fr"
   }
 ]

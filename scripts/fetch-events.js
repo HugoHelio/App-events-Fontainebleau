@@ -8,7 +8,6 @@ if (!GEMINI_API_KEY) {
   process.exit(1);
 }
 
-// Exemple de texte brut à parser (remplaçable par un scraping Web/RSS ultérieurement)
 const sampleRawData = `
 Annonce - Mairie de Fontainebleau :
 Grand Critérium Cycliste Enfants ce samedi 24 octobre de 10h à 12h au Parc du Château.
@@ -25,7 +24,7 @@ async function parseWithGemini(rawText) {
 Tu es un extracteur de données strict. Analyse le texte suivant et extrait TOUS les événements sportifs, récréatifs et culturels pour enfants/familles autour de Fontainebleau.
 Nous sommes en ${currentYear}.
 
-Renvoie UNIQUEMENT un tableau JSON valide au format exact suivant, sans aucun texte ni balises markdown autour :
+Renvoie un tableau JSON valide au format exact suivant :
 
 [
   {
@@ -45,7 +44,7 @@ Renvoie UNIQUEMENT un tableau JSON valide au format exact suivant, sans aucun te
     "price": "Gratuit" ou "8€",
     "organizer": "Nom organisateur",
     "description": "Courte description synthétique",
-    "url": "https://www.fontainebleau.fr"
+    "url": "[https://www.fontainebleau.fr](https://www.fontainebleau.fr)"
   }
 ]
 
@@ -53,9 +52,13 @@ Texte brut :
 ${rawText}
 `;
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
+  const url = `[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$){GEMINI_API_KEY}`;
+  
   const requestData = JSON.stringify({
-    contents: [{ parts: [{ text: prompt }] }]
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: {
+      response_mime_type: "application/json"
+    }
   });
 
   return new Promise((resolve, reject) => {
@@ -76,6 +79,7 @@ ${rawText}
           const response = JSON.parse(body);
           let rawJsonText = response.candidates[0].content.parts[0].text;
           
+          // Nettoyage de sécurité au cas où des backticks markdown subsistent
           rawJsonText = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
           resolve(JSON.parse(rawJsonText));
         } catch (e) {
@@ -102,14 +106,25 @@ async function main() {
       existingData = JSON.parse(fs.readFileSync(existingDataPath, 'utf8'));
     }
 
-    // Fusion intelligente : mise à jour des éléments existants ou ajout
     const updatedData = [...existingData];
+
     newEvents.forEach(newEvent => {
       const index = updatedData.findIndex(e => e.title === newEvent.title);
+      
+      const cleanEvent = {
+        ...newEvent,
+        startDate: newEvent.startDate || "",
+        endDate: newEvent.endDate || newEvent.startDate || ""
+      };
+
       if (index !== -1) {
-        updatedData[index] = { ...updatedData[index], ...newEvent };
+        // Conserve l'ID existant dans la base (ex: ACT_006) au lieu de l'écraser avec ACT_AUTO_XXX
+        const originalId = updatedData[index].id;
+        updatedData[index] = { ...updatedData[index], ...cleanEvent, id: originalId };
       } else {
-        updatedData.push(newEvent);
+        // Génère un ID unique pour le nouvel élément
+        cleanEvent.id = `ACT_${String(updatedData.length + 1).padStart(3, '0')}`;
+        updatedData.push(cleanEvent);
       }
     });
 

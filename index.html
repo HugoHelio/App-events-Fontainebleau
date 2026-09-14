@@ -1,272 +1,456 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events & Sport Famille - Pays de Fontainebleau</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activités & Événements - Pays de Fontainebleau</title>
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FullCalendar CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-    <style>
-        #map { height: 82vh; width: 100%; border-radius: 12px; }
-        .activity-card { cursor: pointer; transition: all 0.2s ease-in-out; }
-        .activity-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important; }
-        
-        /* Personnalisation compacte du calendrier */
-        #calendar { background: #fff; border-radius: 8px; padding: 10px; font-size: 0.8rem; }
-        .fc-header-toolbar { margin-bottom: 0.5rem !important; }
-        .fc-toolbar-title { font-size: 0.95rem !important; font-weight: bold; color: #0d6efd; }
-        .fc-button { padding: 0.2rem 0.4rem !important; font-size: 0.75rem !important; }
-        .fc-daygrid-day-number { font-size: 0.75rem; text-decoration: none; color: #333; }
-        .fc-highlight { background-color: rgba(13, 110, 253, 0.15) !important; }
-        .fc-day-today { background-color: rgba(255, 193, 7, 0.15) !important; }
-    </style>
-</head>
-<body class="bg-light">
+  <!-- FullCalendar CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css">
 
-    <nav class="navbar navbar-dark bg-primary mb-3 shadow-sm">
-        <div class="container-fluid px-4">
-            <span class="navbar-brand fw-bold">🌲 Fontainebleau Kids & Sport</span>
-            <span class="text-white-50 small">Agenda 5 Semaines & Carte Interactive</span>
-        </div>
-    </nav>
+  <style>
+    :root {
+      --primary-color: #2c5282;
+      --secondary-color: #319795;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+    }
 
-    <div class="container-fluid px-4">
-        <div class="row">
-            <!-- Colonne de gauche : Calendrier 5 semaines + Filtres + Liste -->
-            <div class="col-lg-4 col-md-5 mb-3">
-                
-                <!-- 1. COMPOSANT CALENDRIER (Semaine en cours + 4 semaines) -->
-                <div class="card p-2 shadow-sm mb-3 border-0">
-                    <div class="d-flex justify-content-between align-items-center mb-1 px-1">
-                        <span class="fw-bold text-dark small">📅 Agenda (5 semaines)</span>
-                        <button class="btn btn-sm btn-link p-0 text-decoration-none small" id="clearDateBtn" style="display:none;" onclick="resetDateSelection()">Voir tout</button>
-                    </div>
-                    <div id="calendar"></div>
-                    <div id="selectedDateLabel" class="text-center text-primary fw-bold mt-1 small" style="display:none;"></div>
-                </div>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-                <!-- 2. FILTRES SECONDAIRES -->
-                <div class="card p-3 shadow-sm mb-3 border-0">
-                    <div class="row g-2">
-                        <div class="col-6">
-                            <label class="form-label small fw-bold mb-1">Catégorie</label>
-                            <select id="categoryFilter" class="form-select form-select-sm" onchange="applyFilters()">
-                                <option value="all">Toutes</option>
-                                <option value="Sport & Outdoor">Sport & Outdoor</option>
-                                <option value="Nature & Environnement">Nature & Environnement</option>
-                                <option value="Culture & Ateliers">Culture & Ateliers</option>
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label small fw-bold mb-1">Âge (ans)</label>
-                            <input type="number" id="ageFilter" class="form-control form-control-sm" placeholder="Ex: 8" oninput="applyFilters()">
-                        </div>
-                    </div>
-                </div>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.5;
+    }
 
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="fw-bold m-0">Résultats (<span id="resultCount">0</span>)</h6>
-                    <button class="btn btn-sm btn-outline-secondary py-0" onclick="resetAllFilters()">Tout réinitialiser</button>
-                </div>
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
 
-                <!-- 3. LISTE DES ACTIVITÉS -->
-                <div id="activityList" class="overflow-auto pr-1" style="max-height: 35vh;"></div>
-            </div>
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
 
-            <!-- CARTE UNIQUE -->
-            <div class="col-lg-8 col-md-7">
-                <div id="map" class="shadow-sm border"></div>
-            </div>
-        </div>
-    </div>
+    /* Controls & Filters */
+    .filters-container {
+      max-width: 1200px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    <!-- Scripts CDN -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      flex: 1 1 200px;
+    }
 
-    <script>
-        let allActivities = [];
-        let markers = [];
-        let selectedDateStr = null;
-        let calendar = null;
+    .filter-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4a5568;
+    }
 
-        // Initialisation de la carte Leaflet
-        const map = L.map('map').setView([48.402, 2.701], 11);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+    .filter-group input,
+    .filter-group select {
+      padding: 0.5rem;
+      border: 1px solid #cbd5e0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
 
-        // Initialisation de FullCalendar configuré sur 5 semaines
-        document.addEventListener('DOMContentLoaded', function() {
-            const calendarEl = document.getElementById('calendar');
-            calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'fr',
-                firstDay: 1, // Lundi comme 1er jour de la semaine
-                headerToolbar: {
-                    left: 'title',
-                    right: 'prev,next'
-                },
-                height: 'auto',
-                selectable: true,
-                fixedWeekCount: false, // S'adapte proprement au nombre de semaines
-                dateClick: function(info) {
-                    selectedDateStr = info.dateStr;
-                    
-                    // Mise à jour de l'affichage UI de la date sélectionnée
-                    const formattedDate = new Date(info.dateStr).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-                    document.getElementById('selectedDateLabel').style.display = 'block';
-                    document.getElementById('selectedDateLabel').textContent = `Filtré le : ${formattedDate}`;
-                    document.getElementById('clearDateBtn').style.display = 'inline';
+    /* View Switcher Tabs */
+    .view-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
 
-                    // Surlignage visuel du jour sélectionné
-                    document.querySelectorAll('.fc-day').forEach(el => el.classList.remove('fc-highlight'));
-                    info.dayEl.classList.add('fc-highlight');
+    .tab-btn {
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--primary-color);
+      background-color: transparent;
+      color: var(--primary-color);
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-                    applyFilters();
-                }
-            });
-            calendar.render();
-        });
+    .tab-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
 
-        // Chargement des données JSON
-        fetch('data.json')
-            .then(res => res.json())
-            .then(data => {
-                allActivities = data;
-                applyFilters();
-            })
-            .catch(err => console.error("Erreur JSON:", err));
+    /* Main Content Layout */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem 1rem;
+    }
 
-        function render(items) {
-            markers.forEach(m => map.removeLayer(m));
-            markers = [];
+    .view-panel {
+      display: none;
+    }
 
-            const listEl = document.getElementById('activityList');
-            listEl.innerHTML = '';
-            document.getElementById('resultCount').textContent = items.length;
+    .view-panel.active {
+      display: block;
+    }
 
-            const bounds = [];
+    /* Map View Layout */
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      height: 600px;
+    }
 
-            items.forEach(act => {
-                const marker = L.marker([act.lat, act.lng])
-                    .addTo(map)
-                    .bindPopup(`
-                        <strong>${act.title}</strong><br>
-                        <small>📍 ${act.locationName} (${act.city})</small><br>
-                        <span class="badge bg-primary mt-1">${act.category}</span><br>
-                        <small class="text-success fw-bold">${act.price}</small><br>
-                        <small>🗓️ ${act.schedule}</small>
-                    `);
-                
-                markers.push(marker);
-                bounds.push([act.lat, act.lng]);
-
-                const card = document.createElement('div');
-                card.className = 'card mb-2 activity-card p-2 shadow-sm border-0';
-                card.innerHTML = `
-                    <div class="d-flex justify-content-between align-items-start">
-                        <span class="badge bg-primary-subtle text-primary border mb-1" style="font-size:0.7rem;">${act.category}</span>
-                        <small class="text-muted fw-bold">${act.ageMin}-${act.ageMax} ans</small>
-                    </div>
-                    <h6 class="fw-bold text-dark mb-1" style="font-size:0.9rem;">${act.title}</h6>
-                    <p class="small text-muted mb-1">📍 ${act.locationName} (${act.city})</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="fw-bold text-success">${act.price}</small>
-                        <small class="text-muted" style="font-size:0.75rem;">${act.schedule}</small>
-                    </div>
-                `;
-
-                card.onclick = () => {
-                    map.setView([act.lat, act.lng], 14);
-                    marker.openPopup();
-                };
-
-                listEl.appendChild(card);
-            });
-
-            if (bounds.length > 0) {
-                map.fitBounds(bounds, { padding: [30, 30] });
-            }
-        }
-
-  // 1. Filtrage dans la liste et sur la carte
-function applyFilters() {
-  const ageVal = parseInt(document.getElementById('filterAge').value) || null;
-  const catVal = document.getElementById('filterCategory').value;
-  const dateVal = document.getElementById('filterDate').value; // YYYY-MM-DD
-
-  const filtered = allActivities.filter(a => {
-    // Filtre Age
-    const matchAge = !ageVal || (a.ageMin <= ageVal && a.ageMax >= ageVal);
-    
-    // Filtre Catégorie
-    const matchCat = !catVal || a.category === catVal;
-    
-    // Filtre Date : si le champ est vide, on affiche tout !
-    let matchDate = true;
-    if (dateVal) {
-      if (a.dateType === 'recurring') {
-        matchDate = true; // Les récurrents restent toujours visibles
-      } else {
-        const start = a.startDate;
-        const end = a.endDate || a.startDate;
-        matchDate = start && (dateVal >= start && dateVal <= end);
+    @media (max-width: 768px) {
+      .map-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      #map {
+        height: 350px;
       }
     }
 
-    return matchAge && matchCat && matchDate;
-  });
-
-  renderCards(filtered);
-  updateMapMarkers(filtered);
-}
-
-// 2. Formatage des événements pour FullCalendar
-function getCalendarEvents(activities) {
-  return activities.map(a => {
-    if (a.dateType === 'event' && a.startDate) {
-      return {
-        id: a.id,
-        title: a.title,
-        start: a.startDate,
-        end: a.endDate ? a.endDate : a.startDate,
-        url: a.url,
-        extendedProps: { category: a.category, location: a.locationName }
-      };
-    } else {
-      // Événements récurrents : FullCalendar supporte 'daysOfWeek' (ex: [3] pour mercredi, [6] pour samedi)
-      return {
-        id: a.id,
-        title: a.title + " (Récurrent)",
-        daysOfWeek: a.schedule.includes("samedis") ? [6] : (a.schedule.includes("Mercredis") ? [3] : []),
-        extendedProps: { category: a.category, location: a.locationName }
-      };
+    #map {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-  }).filter(e => e !== null);
-}
 
+    .cards-list {
+      overflow-y: auto;
+      max-height: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-right: 0.5rem;
+    }
 
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--secondary-color);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-        function resetDateSelection() {
-            selectedDateStr = null;
-            document.getElementById('selectedDateLabel').style.display = 'none';
-            document.getElementById('clearDateBtn').style.display = 'none';
-            document.querySelectorAll('.fc-day').forEach(el => el.classList.remove('fc-highlight'));
-            applyFilters();
+    .card h3 {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    .card .badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: #e6fffa;
+      color: #234e52;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      color: #718096;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+    }
+
+    .card .link-btn {
+      align-self: flex-end;
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    .card .link-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Calendar Container */
+    #calendar {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Activités & Événements - Pays de Fontainebleau</h1>
+    <p>Trouvez des activités sportives, culturelles et nature adaptées à vos enfants</p>
+  </header>
+
+  <!-- Filtres -->
+  <div class="filters-container">
+    <div class="filter-group">
+      <label for="filterAge">Âge de l'enfant :</label>
+      <input type="number" id="filterAge" min="0" max="18" placeholder="Ex: 8">
+    </div>
+
+    <div class="filter-group">
+      <label for="filterCategory">Catégorie :</label>
+      <select id="filterCategory">
+        <option value="">Toutes les catégories</option>
+        <option value="Sport & Outdoor">Sport & Outdoor</option>
+        <option value="Nature & Environnement">Nature & Environnement</option>
+        <option value="Culture & Ateliers">Culture & Ateliers</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filterDate">Date spécifique :</label>
+      <input type="date" id="filterDate">
+    </div>
+  </div>
+
+  <!-- Commutateur de vues -->
+  <div class="view-tabs">
+    <button class="tab-btn active" onclick="switchView('map')">Carte & Liste</button>
+    <button class="tab-btn" onclick="switchView('calendar')">Calendrier</button>
+  </div>
+
+  <main class="main-container">
+    <!-- Vue Carte & Liste -->
+    <div id="mapView" class="view-panel active">
+      <div class="map-layout">
+        <div id="map"></div>
+        <div id="cardsList" class="cards-list"></div>
+      </div>
+    </div>
+
+    <!-- Vue Calendrier -->
+    <div id="calendarView" class="view-panel">
+      <div id="calendar"></div>
+    </div>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
+  <script>
+    let allActivities = [];
+    let map = null;
+    let markersGroup = null;
+    let calendar = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMap();
+      fetchData();
+
+      // Écouteurs sur les filtres
+      document.getElementById('filterAge').addEventListener('input', applyFilters);
+      document.getElementById('filterCategory').addEventListener('change', applyFilters);
+      document.getElementById('filterDate').addEventListener('change', applyFilters);
+    });
+
+    // Initialisation de la carte Leaflet
+    function initMap() {
+      map = L.map('map').setView([48.408, 2.698], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      markersGroup = L.layerGroup().addTo(map);
+    }
+
+    // Chargement des données JSON
+    async function fetchData() {
+      try {
+        const response = await fetch('./data.json');
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        allActivities = await response.json();
+        
+        applyFilters();
+      } catch (error) {
+        console.error("❌ Erreur lors du chargement de data.json :", error);
+      }
+    }
+
+    // Filtrage des activités
+    function applyFilters() {
+      const ageVal = parseInt(document.getElementById('filterAge').value) || null;
+      const catVal = document.getElementById('filterCategory').value;
+      const dateVal = document.getElementById('filterDate').value;
+
+      const filtered = allActivities.filter(a => {
+        // Filtre Âge
+        const matchAge = !ageVal || (a.ageMin <= ageVal && a.ageMax >= ageVal);
+        
+        // Filtre Catégorie
+        const matchCat = !catVal || a.category === catVal;
+        
+        // Filtre Date
+        let matchDate = true;
+        if (dateVal) {
+          if (a.dateType === 'recurring') {
+            matchDate = true;
+          } else if (a.startDate) {
+            const start = a.startDate;
+            const end = a.endDate || a.startDate;
+            matchDate = (dateVal >= start && dateVal <= end);
+          } else {
+            matchDate = false;
+          }
         }
 
-        function resetAllFilters() {
-            document.getElementById('categoryFilter').value = 'all';
-            document.getElementById('ageFilter').value = '';
-            resetDateSelection();
+        return matchAge && matchCat && matchDate;
+      });
+
+      renderCards(filtered);
+      updateMapMarkers(filtered);
+      updateCalendarEvents(filtered);
+    }
+
+    // Rendu des cartes HTML
+    function renderCards(activities) {
+      const container = document.getElementById('cardsList');
+      container.innerHTML = '';
+
+      if (activities.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#718096; margin-top:2rem;">Aucune activité trouvée.</p>';
+        return;
+      }
+
+      activities.forEach(a => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <span class="badge">${a.category}</span>
+          <h3>${a.title}</h3>
+          <div class="meta">
+            📍 <strong>${a.locationName}</strong> (${a.city})<br>
+            👶 ${a.ageMin}-${a.ageMax} ans | 💶 ${a.price}<br>
+            🗓️ ${a.schedule}
+          </div>
+          <p>${a.description}</p>
+          <a href="${a.url}" target="_blank" class="link-btn">Voir détails & inscriptions →</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Mise à jour des marqueurs Leaflet
+    function updateMapMarkers(activities) {
+      markersGroup.clearLayers();
+
+      activities.forEach(a => {
+        if (a.lat && a.lng) {
+          const marker = L.marker([a.lat, a.lng]);
+          marker.bindPopup(`
+            <strong>${a.title}</strong><br>
+            ${a.locationName}<br>
+            <a href="${a.url}" target="_blank">Lien</a>
+          `);
+          markersGroup.addLayer(marker);
         }
-    </script>
+      });
+    }
+
+    // Mise à jour de FullCalendar
+    function updateCalendarEvents(activities) {
+      const calendarEl = document.getElementById('calendar');
+      if (!calendarEl) return;
+
+      const events = activities.map(a => {
+        if (a.dateType === 'event' && a.startDate) {
+          // Date de fin exclusive (+1 jour) pour FullCalendar
+          let endDateObj = new Date(a.endDate || a.startDate);
+          endDateObj.setDate(endDateObj.getDate() + 1);
+          const formattedEndDate = endDateObj.toISOString().split('T')[0];
+
+          return {
+            id: a.id,
+            title: a.title,
+            start: a.startDate,
+            end: formattedEndDate,
+            url: a.url
+          };
+        }
+        return null;
+      }).filter(e => e !== null);
+
+      if (!calendar) {
+        calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          initialDate: '2026-10-01',
+          locale: 'fr',
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,listWeek'
+          },
+          events: events
+        });
+        calendar.render();
+      } else {
+        calendar.removeAllEvents();
+        calendar.addEventSource(events);
+      }
+    }
+
+    // Gestion du changement d'onglet
+    function switchView(viewName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
+
+      if (viewName === 'map') {
+        document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+        document.getElementById('mapView').classList.add('active');
+        // Redimensionnement de la carte après affichage
+        setTimeout(() => map.invalidateSize(), 100);
+      } else if (viewName === 'calendar') {
+        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+        document.getElementById('calendarView').classList.add('active');
+        if (calendar) {
+          calendar.render();
+        }
+      }
+    }
+  </script>
 </body>
 </html>
