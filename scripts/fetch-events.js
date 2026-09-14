@@ -51,6 +51,10 @@ Texte brut :
 ${rawText}
 `;
 
+  // Construction de l'URL avec gemini-3.6-flash
+  const apiUrl = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent");
+  apiUrl.searchParams.append("key", GEMINI_API_KEY);
+
   const requestData = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }],
     generationConfig: {
@@ -58,12 +62,8 @@ ${rawText}
     }
   });
 
-  // Utilisation directe de l'URL Google API v1beta
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-  const parsedUrl = new URL(endpoint);
-
   return new Promise((resolve, reject) => {
-    const req = https.request(parsedUrl, {
+    const req = https.request(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
