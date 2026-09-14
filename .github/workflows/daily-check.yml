@@ -2,9 +2,12 @@ name: Check Quotidien & Mise à jour Data Gemini
 
 on:
   schedule:
-    # S'exécute tous les jours à 6h00 UTC
     - cron: '0 6 * * *'
-  workflow_dispatch: # Déclenchement manuel en 1 clic
+  workflow_dispatch:
+
+# Autorise le bot à lire et écrire dans le dépôt
+permissions:
+  contents: write
 
 jobs:
   update-data:
