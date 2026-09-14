@@ -1,0 +1,33 @@
+
+name: Check Quotidien & Mise à jour Data Gemini
+
+on:
+  schedule:
+    # S'exécute tous les jours à 6h00 du matin (UTC)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permet aussi un déclenchement manuel en 1 clic sur GitHub
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v3
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Exécution du script de check Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/fetch-events.js
+
+      - name: Commit et Push automatique des nouvelles données
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update data.json via Gemini Daily Check" && git push)
