@@ -92,13 +92,14 @@
     "ageMax": 12,
     "city": "Fontainebleau",
     "locationName": "Parc du Château",
-    "lat": 48.4021,
-    "lng": 2.7005,
+    "lat": 48.402,
+    "lng": 2.701,
     "dateType": "event",
+    "startDate": "2026-10-24",
     "schedule": "Samedi 24 octobre de 10h à 12h",
     "price": "Gratuit",
     "organizer": "Vélo Club de Fontainebleau",
-    "description": "Grand critérium cycliste pour les enfants de 6 à 12 ans au Parc du Château. Inscriptions sur place.",
+    "description": "Critérium cycliste pour enfants avec inscriptions directement sur place.",
     "url": "https://www.fontainebleau.fr"
   },
   {
@@ -109,13 +110,14 @@
     "ageMax": 15,
     "city": "Fontainebleau",
     "locationName": "La Faisanderie",
-    "lat": 48.4125,
-    "lng": 2.6865,
+    "lat": 48.4182,
+    "lng": 2.6841,
     "dateType": "event",
+    "startDate": "2026-10-24",
     "schedule": "Samedi 24 octobre de 14h à 16h",
-    "price": "8€ / enfant",
+    "price": "8€",
     "organizer": "Les Ateliers d'Avon",
-    "description": "Atelier créatif de peinture en forêt à la Faisanderie pour les enfants de 8 à 15 ans.",
-    "url": "https://www.avon77.fr"
+    "description": "Atelier créatif de peinture en pleine forêt dédié aux enfants et adolescents.",
+    "url": "https://www.fontainebleau.fr"
   }
 ]
