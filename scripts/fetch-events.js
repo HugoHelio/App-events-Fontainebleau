@@ -66,7 +66,8 @@ Analyse les résultats et extrait les événements sous forme de tableau JSON st
       { google_search: {} }
     ],
     generationConfig: {
-      response_mime_type: "application/json"
+      response_mime_type: "application/json",
+      temperature: 0.2
     }
   });
 
