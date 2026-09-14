@@ -200,6 +200,11 @@
             const cat = document.getElementById('categoryFilter').value;
             const age = parseInt(document.getElementById('ageFilter').value);
 
+            const matchDate = !dateVal || 
+                a.dateType === 'recurring' || 
+                (a.startDate && a.startDate === dateVal) ||
+                (a.startDate && a.endDate && dateVal >= a.startDate && dateVal <= a.endDate);
+
             const filtered = allActivities.filter(a => {
                 const matchCat = (cat === 'all' || a.category === cat);
                 const matchAge = (isNaN(age) || (age >= a.ageMin && age <= a.ageMax));

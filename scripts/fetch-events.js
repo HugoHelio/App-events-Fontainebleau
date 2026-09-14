@@ -8,6 +8,7 @@ if (!GEMINI_API_KEY) {
   process.exit(1);
 }
 
+// Exemple de texte brut à parser (remplaçable par un scraping Web/RSS ultérieurement)
 const sampleRawData = `
 Annonce - Mairie de Fontainebleau :
 Grand Critérium Cycliste Enfants ce samedi 24 octobre de 10h à 12h au Parc du Château.
@@ -18,7 +19,6 @@ Organisé par les Ateliers d'Avon. Tarif : 8€ / enfant (8-15 ans).
 `;
 
 async function parseWithGemini(rawText) {
-  // Obtenir l'année courante pour le calcul précis de Gemini
   const currentYear = new Date().getFullYear();
 
   const prompt = `
@@ -39,8 +39,9 @@ Renvoie UNIQUEMENT un tableau JSON valide au format exact suivant, sans aucun te
     "lat": 48.4020,
     "lng": 2.7010,
     "dateType": "event" ou "recurring",
-    "startDate": "YYYY-MM-DD" (Convertis obligatoirement la date citée au format ISO ISO YYYY-MM-DD, ex: "${currentYear}-10-24"),
-    "schedule": "Texte brut complet (ex: Samedi 24 octobre de 10h à 12h)",
+    "startDate": "YYYY-MM-DD" (Obligatoire si dateType=event. Si récurrent, laisser vide ""),
+    "endDate": "YYYY-MM-DD" (Optionnel si stage sur plusieurs jours),
+    "schedule": "Texte brut explicatif (ex: Samedi 24 octobre de 10h à 12h ou Tous les mercredis)",
     "price": "Gratuit" ou "8€",
     "organizer": "Nom organisateur",
     "description": "Courte description synthétique",
@@ -101,12 +102,12 @@ async function main() {
       existingData = JSON.parse(fs.readFileSync(existingDataPath, 'utf8'));
     }
 
-    // Mise à jour ou ajout (avec remplacement si le titre existe déjà pour appliquer la nouvelle structure)
+    // Fusion intelligente : mise à jour des éléments existants ou ajout
     const updatedData = [...existingData];
     newEvents.forEach(newEvent => {
       const index = updatedData.findIndex(e => e.title === newEvent.title);
       if (index !== -1) {
-        updatedData[index] = newEvent; // Remplace pour corriger les champs
+        updatedData[index] = { ...updatedData[index], ...newEvent };
       } else {
         updatedData.push(newEvent);
       }
