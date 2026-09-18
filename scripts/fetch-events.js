@@ -38,8 +38,7 @@ Extrais les événements sous forme de tableau JSON strict :
 ]
 `;
 
-  // Utilisation du modèle gemini-2.0-flash (ou gemini-1.5-flash)
-  const apiUrl = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent");
+  const apiUrl = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent");
   apiUrl.searchParams.append("key", GEMINI_API_KEY);
 
   const requestData = JSON.stringify({
@@ -50,7 +49,10 @@ Extrais les événements sous forme de tableau JSON strict :
     generationConfig: {
       response_mime_type: "application/json",
       temperature: 0.1,
-      maxOutputTokens: 8192
+      maxOutputTokens: 8192,
+      thinkingConfig: {
+        thinkingBudget: 0
+      }
     }
   });
 
@@ -73,7 +75,7 @@ Extrais les événements sous forme de tableau JSON strict :
 
           const candidate = response.candidates && response.candidates[0];
           if (!candidate) {
-            return reject("Aucun candidat retourné par l'API.");
+            return reject("Aucun candidat retourné dans la réponse API.");
           }
 
           let rawJsonText = "";
@@ -84,7 +86,7 @@ Extrais les événements sous forme de tableau JSON strict :
           }
 
           if (!rawJsonText) {
-            return reject(`Aucun texte généré dans la réponse. FinishReason: ${candidate.finishReason}`);
+            return reject(`Aucun texte généré. FinishReason: ${candidate.finishReason}`);
           }
 
           const cleanJson = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
@@ -103,7 +105,7 @@ Extrais les événements sous forme de tableau JSON strict :
 }
 
 async function main() {
-  console.log("🚀 Démarrage de la recherche automatique Gemini + Web Search...");
+  console.log("🚀 Démarrage de la recherche automatique Gemini 3.6 + Web Search...");
   try {
     const newEvents = await searchEventsWithGemini();
     console.log(`✅ ${newEvents.length} événements identifiés sur le web.`);
