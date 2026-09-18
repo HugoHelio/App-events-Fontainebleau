@@ -15,11 +15,11 @@ async function searchEventsWithGemini() {
 Recherche les événements à venir à Fontainebleau et aux alentours (Avon, Samois, Nemours, Barbizon, Moret, etc.) pour l'année ${currentYear}.
 Cible : sports, nature, activités en famille, culture, fêtes locales.
 
-Extrais les événements sous forme de tableau JSON strict :
+Renvoie UNIQUEMENT un tableau JSON strict (sans texte explicatif avant ou après) respectant exactement ce format :
 [
   {
     "title": "Titre de l'événement",
-    "category": "Sport & Outdoor" | "Nature & Environnement" | "Culture & Ateliers",
+    "category": "Sport & Outdoor",
     "ageMin": 0,
     "ageMax": 99,
     "city": "Fontainebleau",
@@ -47,12 +47,8 @@ Extrais les événements sous forme de tableau JSON strict :
       { google_search: {} }
     ],
     generationConfig: {
-      response_mime_type: "application/json",
-      temperature: 0.1,
-      maxOutputTokens: 8192,
-      thinkingConfig: {
-        thinkingBudget: 0
-      }
+      temperature: 0.2,
+      maxOutputTokens: 8192
     }
   });
 
@@ -75,21 +71,28 @@ Extrais les événements sous forme de tableau JSON strict :
 
           const candidate = response.candidates && response.candidates[0];
           if (!candidate) {
+            console.error("Réponse brute API sans candidat :", JSON.stringify(response, null, 2));
             return reject("Aucun candidat retourné dans la réponse API.");
           }
 
-          let rawJsonText = "";
+          let rawText = "";
           if (candidate.content && candidate.content.parts) {
             for (const part of candidate.content.parts) {
-              if (part.text) rawJsonText += part.text;
+              if (part.text) rawText += part.text;
             }
           }
 
-          if (!rawJsonText) {
+          if (!rawText) {
             return reject(`Aucun texte généré. FinishReason: ${candidate.finishReason}`);
           }
 
-          const cleanJson = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
+          // Extraction stricte du bloc JSON [...] dans le texte retourné
+          const jsonMatch = rawText.match(/\[[\s\S]*\]/);
+          if (!jsonMatch) {
+            return reject("Impossible de localiser un tableau JSON dans la réponse : " + rawText);
+          }
+
+          const cleanJson = jsonMatch[0].trim();
           resolve(JSON.parse(cleanJson));
 
         } catch (e) {
