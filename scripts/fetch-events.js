@@ -59,7 +59,6 @@ Analyse les résultats et extrait les événements sous forme de tableau JSON st
   const apiUrl = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent");
   apiUrl.searchParams.append("key", GEMINI_API_KEY);
 
-  // Activation de la recherche Google intégrée (Search Grounding)
   const requestData = JSON.stringify({
     contents: [{ parts: [{ text: prompt }] }],
     tools: [
@@ -88,27 +87,28 @@ Analyse les résultats et extrait les événements sous forme de tableau JSON st
         try {
           const response = JSON.parse(body);
 
-          // Vérification de la présence de candidats
-          const candidate = response.candidates && response.candidates[0];
-          if (!candidate || !candidate.content || !candidate.content.parts) {
-            return reject("Format de réponse invalide ou aucun candidat trouvé dans la réponse API.");
-          }
+          // 1. Détection direct du texte si l'objet racine contient "text"
+          let rawJsonText = response.text || "";
 
-          // Parcours de toutes les parts pour trouver celle contenant le texte JSON
-          let rawJsonText = "";
-          for (const part of candidate.content.parts) {
-            if (part.text) {
-              rawJsonText += part.text;
+          // 2. Recherche dans candidates si non trouvé au premier niveau
+          if (!rawJsonText && response.candidates && response.candidates[0]) {
+            const cand = response.candidates[0];
+            if (cand.content && cand.content.parts) {
+              for (const part of cand.content.parts) {
+                if (part.text) rawJsonText += part.text;
+              }
             }
           }
 
           if (!rawJsonText) {
-            return reject("Aucun texte trouvé dans les parts de la réponse Gemini.");
+            console.error("⚠️ Structure API brute reçue :", JSON.stringify(response, null, 2));
+            return reject("Aucun champ texte exploitable trouvé dans la réponse API.");
           }
 
-          // Nettoyage de sécurité des balises Markdown éventuelles
+          // Nettoyage des balises Markdown
           const cleanJson = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
           resolve(JSON.parse(cleanJson));
+
         } catch (e) {
           reject("Erreur parsing JSON : " + e.message + "\nRéponse brute : " + body);
         }
@@ -136,7 +136,6 @@ async function main() {
     const updatedData = [...existingData];
 
     newEvents.forEach(newEvent => {
-      // Détection de doublons basée sur le titre (insensible à la casse)
       const index = updatedData.findIndex(e => e.title.trim().toLowerCase() === newEvent.title.trim().toLowerCase());
 
       const cleanEvent = {
@@ -146,11 +145,9 @@ async function main() {
       };
 
       if (index !== -1) {
-        // Mise à jour en préservant l'ID d'origine
         const originalId = updatedData[index].id;
         updatedData[index] = { ...updatedData[index], ...cleanEvent, id: originalId };
       } else {
-        // Création d'un nouvel identifiant
         cleanEvent.id = `ACT_${String(updatedData.length + 1).padStart(3, '0')}`;
         updatedData.push(cleanEvent);
       }
