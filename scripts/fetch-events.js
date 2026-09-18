@@ -9,31 +9,61 @@ if (!GEMINI_API_KEY) {
 }
 
 async function searchEventsWithGemini() {
-  const currentYear = new Date().getFullYear();
+  const today = new Date();
+  const startDateStr = today.toISOString().split('T')[0]; // Ex: "2026-09-18"
+  
+  // Fenêtre glissante de 4 mois
+  const maxDate = new Date(today);
+  maxDate.setMonth(maxDate.getMonth() + 4);
+  const endDateStr = maxDate.toISOString().split('T')[0];
 
   const prompt = `
-Recherche les événements à venir à Fontainebleau et aux alentours (Avon, Samois, Nemours, Barbizon, Moret, etc.) pour l'année ${currentYear}.
-Cible : sports, nature, activités en famille, culture, fêtes locales.
+Effectue une recherche web approfondie sur les événements à venir dans la région de Fontainebleau.
+Nous sommes aujourd'hui le ${startDateStr}.
 
-Renvoie UNIQUEMENT un tableau JSON strict (sans texte explicatif avant ou après) respectant exactement ce format :
+PÉRIODE DE RECHERCHE STRICTE :
+- Conserve UNIQUEMENT les événements se déroulant entre le ${startDateStr} et le ${endDateStr}.
+- Exclus tous les événements passés (finis avant le ${startDateStr}).
+
+PÉRIMÈTRE GÉOGRAPHIQUE :
+- Ville principale : Fontainebleau.
+- Communes voisines (< 15 km) : Avon, Barbizon, Samois-sur-Seine, Thomery, Bois-le-Roi, Bourron-Marlotte, Moret-Loing-et-Orvanne, Nemours, Vaux-le-Vicomte, Blandy-les-Tours.
+
+SOURCES ET SITES À EXPLORER EN PRIORITÉ :
+1. Office de Tourisme du Pays de Fontainebleau (fontainebleau-tourisme.com / agenda).
+2. Agendas municipaux des mairies : Fontainebleau, Avon, Barbizon, Moret-sur-Loing, Nemours.
+3. Programmations des Châteaux : Château de Fontainebleau, Château de Vaux-le-Vicomte, Château de Blandy-les-Tours.
+4. Plateformes d'inscriptions sportives & associatives : HelloAsso, KMS, Klikego, ProTiming.
+5. Presse et magazines locaux : Le Bellifontain, La République de Seine-et-Marne.
+
+TYPES D'ÉVÉNEMENTS À EXTRAIRE :
+- Sport & Outdoor : trails en forêt, courses à pied, randos VTT, compétitions d'escalade/bouldering, critériums cyclistes, triathlons.
+- Nature & Patrimoine : sorties guidées en forêt, visites botaniques, brame du cerf, animations nature.
+- Culture, Famille & Loisirs : ateliers enfants, expositions, spectacles au château, brocantes, marchés du terroir, fêtes d'automne et animations de fin d'année.
+
+INSTRUCTIONS DE FORMATAGE ET COORDONNÉES GPS :
+- Indique les coordonnées latitude (lat) et longitude (lng) précises du lieu.
+- Choisis "category" UNIQUEMENT parmi ces trois choix : "Sport & Outdoor", "Nature & Environnement", "Culture & Ateliers".
+
+Renvoie UNIQUEMENT un tableau JSON strict au format exact suivant :
 [
   {
-    "title": "Titre de l'événement",
-    "category": "Sport & Outdoor",
+    "title": "Titre explicite de l'événement",
+    "category": "Sport & Outdoor" | "Nature & Environnement" | "Culture & Ateliers",
     "ageMin": 0,
     "ageMax": 99,
-    "city": "Fontainebleau",
-    "locationName": "Lieu précis",
+    "city": "Nom de la ville",
+    "locationName": "Lieu précis (ex: Grand Parquet, Parc du Château, Forêt domaniale)",
     "lat": 48.4020,
     "lng": 2.7010,
     "dateType": "event",
     "startDate": "YYYY-MM-DD",
     "endDate": "YYYY-MM-DD",
-    "schedule": "Horaire ou détails",
-    "price": "Tarif ou Gratuit",
-    "organizer": "Organisateur",
-    "description": "Courte description",
-    "url": "URL source"
+    "schedule": "Horaires précis (ex: Samedi de 10h à 18h)",
+    "price": "Gratuit ou tarif exact",
+    "organizer": "Nom de l'association, mairie ou lieu",
+    "description": "Courte description synthétique et attrayante",
+    "url": "URL source directe de l'événement"
   }
 ]
 `;
@@ -71,7 +101,6 @@ Renvoie UNIQUEMENT un tableau JSON strict (sans texte explicatif avant ou après
 
           const candidate = response.candidates && response.candidates[0];
           if (!candidate) {
-            console.error("Réponse brute API sans candidat :", JSON.stringify(response, null, 2));
             return reject("Aucun candidat retourné dans la réponse API.");
           }
 
@@ -86,10 +115,9 @@ Renvoie UNIQUEMENT un tableau JSON strict (sans texte explicatif avant ou après
             return reject(`Aucun texte généré. FinishReason: ${candidate.finishReason}`);
           }
 
-          // Extraction stricte du bloc JSON [...] dans le texte retourné
           const jsonMatch = rawText.match(/\[[\s\S]*\]/);
           if (!jsonMatch) {
-            return reject("Impossible de localiser un tableau JSON dans la réponse : " + rawText);
+            return reject("Impossible de localiser un tableau JSON dans la réponse.");
           }
 
           const cleanJson = jsonMatch[0].trim();
@@ -108,10 +136,18 @@ Renvoie UNIQUEMENT un tableau JSON strict (sans texte explicatif avant ou après
 }
 
 async function main() {
-  console.log("🚀 Démarrage de la recherche automatique Gemini 3.6 + Web Search...");
+  console.log("🚀 Démarrage du scan approfondi (+4 mois à venir)...");
   try {
-    const newEvents = await searchEventsWithGemini();
-    console.log(`✅ ${newEvents.length} événements identifiés sur le web.`);
+    const rawEvents = await searchEventsWithGemini();
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    // Filtre de sécurité Node.js : Ne garder que les événements futurs
+    const validEvents = rawEvents.filter(e => {
+      const eventEnd = e.endDate || e.startDate;
+      return eventEnd && eventEnd >= todayStr;
+    });
+
+    console.log(`✅ ${validEvents.length} événements futurs identifiés sur le web.`);
 
     const existingDataPath = './data.json';
     let existingData = [];
@@ -121,19 +157,28 @@ async function main() {
 
     const updatedData = [...existingData];
 
-    newEvents.forEach(newEvent => {
+    validEvents.forEach(newEvent => {
+      // Détection des doublons sur le titre
       const index = updatedData.findIndex(e => e.title && e.title.trim().toLowerCase() === newEvent.title.trim().toLowerCase());
+
+      // Validation / Fallback des coordonnées GPS
+      const lat = parseFloat(newEvent.lat) || 48.4020;
+      const lng = parseFloat(newEvent.lng) || 2.7010;
 
       const cleanEvent = {
         ...newEvent,
-        startDate: newEvent.startDate || "",
-        endDate: newEvent.endDate || newEvent.startDate || ""
+        lat,
+        lng,
+        startDate: newEvent.startDate || todayStr,
+        endDate: newEvent.endDate || newEvent.startDate || todayStr
       };
 
       if (index !== -1) {
+        // Mise à jour en conservant l'ID existant
         const originalId = updatedData[index].id;
         updatedData[index] = { ...updatedData[index], ...cleanEvent, id: originalId };
       } else {
+        // Génération d'un nouvel identifiant
         cleanEvent.id = `ACT_${String(updatedData.length + 1).padStart(3, '0')}`;
         updatedData.push(cleanEvent);
       }
