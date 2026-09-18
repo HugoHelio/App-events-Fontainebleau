@@ -297,19 +297,21 @@
     }
 
     // Chargement des données JSON
-    async function fetchData() {
-      try {
-        const response = await fetch('./data.json');
-        if (!response.ok) {
-          throw new Error(`Erreur HTTP : ${response.status}`);
-        }
-        allActivities = await response.json();
-        
-        applyFilters();
-      } catch (error) {
-        console.error("❌ Erreur lors du chargement de data.json :", error);
-      }
+  async function fetchData() {
+  try {
+    // Force la vérification de mise à jour auprès du serveur
+    const response = await fetch('./data.json', { cache: 'no-cache' });
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP : ${response.status}`);
     }
+    allActivities = await response.json();
+    
+    applyFilters();
+  } catch (error) {
+    console.error("❌ Erreur lors du chargement de data.json :", error);
+  }
+}
+
 
     // Filtrage des activités
     function applyFilters() {
