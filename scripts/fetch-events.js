@@ -87,9 +87,26 @@ Analyse les résultats et extrait les événements sous forme de tableau JSON st
         }
         try {
           const response = JSON.parse(body);
-          const rawJsonText = response.candidates[0].content.parts[0].text;
-          
-          // Nettoyage de sécurité
+
+          // Vérification de la présence de candidats
+          const candidate = response.candidates && response.candidates[0];
+          if (!candidate || !candidate.content || !candidate.content.parts) {
+            return reject("Format de réponse invalide ou aucun candidat trouvé dans la réponse API.");
+          }
+
+          // Parcours de toutes les parts pour trouver celle contenant le texte JSON
+          let rawJsonText = "";
+          for (const part of candidate.content.parts) {
+            if (part.text) {
+              rawJsonText += part.text;
+            }
+          }
+
+          if (!rawJsonText) {
+            return reject("Aucun texte trouvé dans les parts de la réponse Gemini.");
+          }
+
+          // Nettoyage de sécurité des balises Markdown éventuelles
           const cleanJson = rawJsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
           resolve(JSON.parse(cleanJson));
         } catch (e) {
@@ -121,7 +138,7 @@ async function main() {
     newEvents.forEach(newEvent => {
       // Détection de doublons basée sur le titre (insensible à la casse)
       const index = updatedData.findIndex(e => e.title.trim().toLowerCase() === newEvent.title.trim().toLowerCase());
-      
+
       const cleanEvent = {
         ...newEvent,
         startDate: newEvent.startDate || "",
