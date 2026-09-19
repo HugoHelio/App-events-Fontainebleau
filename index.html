@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activités & Événements - Pays de Fontainebleau</title>
+  <title>Activités & Événements - Autour de Fontainebleau</title>
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-  <!-- FullCalendar CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css">
-
   <style>
     :root {
-      --primary-color: #2c5282;
+      --primary-color: #0e4057;
       --secondary-color: #319795;
       --bg-color: #f7fafc;
       --card-bg: #ffffff;
@@ -205,6 +202,8 @@
     }
 
     /* Calendar Container */
+    .fc-event { cursor: pointer; }
+
     #calendar {
       background: var(--card-bg);
       padding: 1.5rem;
@@ -216,8 +215,8 @@
 <body>
 
   <header>
-    <h1>Activités & Événements - Pays de Fontainebleau</h1>
-    <p>Trouvez des activités sportives, culturelles et nature adaptées à vos enfants</p>
+    <h1>Activités & Événements - Autour de Fontainebleau</h1>
+    <p>Trouvez des activités sportives, culturelles et nature pour adultes et enfants</p>
   </header>
 
   <!-- Filtres -->
@@ -269,12 +268,51 @@
 
   <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.11/locales/fr.global.min.js"></script>
 
   <script>
     let allActivities = [];
     let map = null;
     let markersGroup = null;
     let calendar = null;
+
+    // ── Security helpers: event data comes from the web via an LLM, so treat it as untrusted ──
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Returns a normalised http(s) URL, or null (blocks javascript:, data:, etc.)
+    function safeUrl(value) {
+      try {
+        const u = new URL(String(value ?? '').trim());
+        return (u.protocol === 'http:' || u.protocol === 'https:') ? u.href : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function linkHtml(url, label, className) {
+      const href = safeUrl(url);
+      if (!href) return '';
+      const cls = className ? ` class="${className}"` : '';
+      return `<a href="${escapeHtml(href)}"${cls} target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+    }
+
+    // Local (browser) date as YYYY-MM-DD, to hide events that are already over
+    function todayStr() {
+      return new Date().toLocaleDateString('en-CA');
+    }
+
+    function isUpcoming(a) {
+      if (a.dateType === 'recurring') return true;
+      const end = a.endDate || a.startDate;
+      return !end || end >= todayStr();
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
       initMap();
@@ -315,13 +353,19 @@
 
     // Filtrage des activités
     function applyFilters() {
-      const ageVal = parseInt(document.getElementById('filterAge').value) || null;
+      // Empty field = no filter; 0 is a valid age (babies), so do not use "|| null"
+      const ageRaw = document.getElementById('filterAge').value;
+      const ageParsed = ageRaw === '' ? NaN : parseInt(ageRaw, 10);
+      const hasAge = Number.isFinite(ageParsed);
       const catVal = document.getElementById('filterCategory').value;
       const dateVal = document.getElementById('filterDate').value;
 
       const filtered = allActivities.filter(a => {
+        // Événements terminés : masqués même si data.json en contient encore
+        if (!isUpcoming(a)) return false;
+
         // Filtre Âge
-        const matchAge = !ageVal || (a.ageMin <= ageVal && a.ageMax >= ageVal);
+        const matchAge = !hasAge || (Number(a.ageMin ?? 0) <= ageParsed && Number(a.ageMax ?? 99) >= ageParsed);
         
         // Filtre Catégorie
         const matchCat = !catVal || a.category === catVal;
@@ -361,16 +405,17 @@
       activities.forEach(a => {
         const card = document.createElement('div');
         card.className = 'card';
+        const approx = a.geoApprox ? ' <em title="Position estimée">(position approximative)</em>' : '';
         card.innerHTML = `
-          <span class="badge">${a.category}</span>
-          <h3>${a.title}</h3>
+          <span class="badge">${escapeHtml(a.category)}</span>
+          <h3>${escapeHtml(a.title)}</h3>
           <div class="meta">
-            📍 <strong>${a.locationName}</strong> (${a.city})<br>
-            👶 ${a.ageMin}-${a.ageMax} ans | 💶 ${a.price}<br>
-            🗓️ ${a.schedule}
+            📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
+            👶 ${escapeHtml(a.ageMin ?? 0)}-${escapeHtml(a.ageMax ?? 99)} ans | 💶 ${escapeHtml(a.price || 'Non précisé')}<br>
+            🗓️ ${escapeHtml(a.schedule || (a.startDate === a.endDate ? a.startDate : `${a.startDate} → ${a.endDate}`))}
           </div>
-          <p>${a.description}</p>
-          <a href="${a.url}" target="_blank" class="link-btn">Voir détails & inscriptions →</a>
+          <p>${escapeHtml(a.description)}</p>
+          ${linkHtml(a.url, 'Voir détails & inscriptions →', 'link-btn')}
         `;
         container.appendChild(card);
       });
@@ -381,12 +426,15 @@
       markersGroup.clearLayers();
 
       activities.forEach(a => {
-        if (a.lat && a.lng) {
-          const marker = L.marker([a.lat, a.lng]);
+        const lat = Number(a.lat);
+        const lng = Number(a.lng);
+        if (Number.isFinite(lat) && Number.isFinite(lng)) {
+          const marker = L.marker([lat, lng]);
+          const approxNote = a.geoApprox ? '<br><em>Position approximative</em>' : '';
           marker.bindPopup(`
-            <strong>${a.title}</strong><br>
-            ${a.locationName}<br>
-            <a href="${a.url}" target="_blank">Lien</a>
+            <strong>${escapeHtml(a.title)}</strong><br>
+            ${escapeHtml(a.locationName)}${approxNote}<br>
+            ${linkHtml(a.url, 'Lien')}
           `);
           markersGroup.addLayer(marker);
         }
@@ -410,7 +458,7 @@
             title: a.title,
             start: a.startDate,
             end: formattedEndDate,
-            url: a.url
+            extendedProps: { link: safeUrl(a.url) }
           };
         }
         return null;
@@ -419,8 +467,13 @@
       if (!calendar) {
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          initialDate: '2026-10-01',
           locale: 'fr',
+          firstDay: 1,
+          eventClick: (info) => {
+            info.jsEvent.preventDefault();
+            const link = info.event.extendedProps.link;
+            if (link) window.open(link, '_blank', 'noopener,noreferrer');
+          },
           headerToolbar: {
             left: 'prev,next today',
             center: 'title',

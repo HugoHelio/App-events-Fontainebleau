@@ -2,17 +2,22 @@ name: Check Quotidien & Mise à jour Data Gemini
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 6 * * *'   # 06:00 UTC = 07:00/08:00 in Paris
   workflow_dispatch:
 
+# Least privilege: the job only needs to push data.json / geocode-cache.json to main.
 permissions:
   contents: write
-  pages: write
-  id-token: write
+
+# Never run two updates at once (e.g. a manual run while the cron fires).
+concurrency:
+  group: daily-events-update
+  cancel-in-progress: false
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Récupérer le code du dépôt
@@ -23,6 +28,8 @@ jobs:
         with:
           node-version: '22'
 
+      # The script fails (exit 1) if every scan fails or nothing valid comes back,
+      # so a broken run never overwrites data.json. A run report is written to the job summary.
       - name: Exécution du script de check Gemini
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -30,7 +37,27 @@ jobs:
 
       - name: Commit et Push automatique des nouvelles données
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
+          git config user.name "GitHub Action Bot"
+          git config user.email "action@github.com"
+
           git add data.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update data.json via Gemini Daily Check" && git push)
+          if [ -f geocode-cache.json ]; then git add geocode-cache.json; fi
+          if git diff --staged --quiet; then
+            echo "Aucun changement dans les données — rien à publier."
+            exit 0
+          fi
+
+          git commit -m "🤖 Auto-update data.json via Gemini Daily Check"
+
+          # Retry with rebase in case main moved during the run (e.g. a manual push).
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "Publié sur main (tentative $attempt)."
+              exit 0
+            fi
+            echo "Push échoué (tentative $attempt), nouvel essai…"
+            sleep $((attempt * 5))
+          done
+
+          echo "Impossible de publier sur main après 3 tentatives."
+          exit 1
