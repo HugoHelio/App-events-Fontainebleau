@@ -258,6 +258,55 @@ commune spellings (a "Salon du Champignon" listed for both Fontainebleau and Avo
 Vaux-le-Vicomte" listed for both Maincy and Vaux-le-Vicomte). The exact key includes the city, so
 two spellings of the same place create two records. Tracked as item 47.
 
+### J. Fuzzy same-day duplicate cleanup (item 47, September 20, 2026)
+
+**Trigger:** while reviewing the live site, the project lead spotted duplicate cards — the same
+event listed twice under two different commune spellings ("25ème Salon du Champignon" under both
+Fontainebleau and Avon; "Le Grand Noël de Vaux-le-Vicomte" under both Maincy and Vaux-le-Vicomte —
+the château is administratively in Maincy). `eventKey()` (title + startDate + city) cannot catch
+these: the city genuinely differs between the two records.
+
+**A wider audit surfaced more of the same pattern**, not caught by an exact key either because
+the title itself was reworded rather than the city: "Le Grand Noël de Vaux-le-Vicomte" also existed
+as "…au Château de…" and "…du Château de…" (three spellings of one event, all in Maincy);
+"Animations Toussaint : Blandy des Légendes" and "Blandy des Légendes : Animations de la Toussaint"
+(same words, reordered); "Championnat de France CCE" and "…de CCE" (one added word). All are a
+direct consequence of the four parallel Gemini scans (sport/nature/culture/famille, item 9) each
+independently re-discovering the same real event and phrasing it slightly differently.
+
+**The fix — `dedupeFuzzy(records, stats)`, called on every run, over the full merged set (stored
++ new, from every source):**
+
+- Titles are reduced to a **canonical signature**: lower-cased, accents stripped, split into
+  words, grammatical connectors removed (*le, la, de, du, au, château, …*), remaining words
+  sorted. Two records **merge automatically** only when their signature is identical AND their
+  date is identical — i.e. they carry the exact same set of meaningful words, regardless of word
+  order, connectors, or the city label. Two unrelated real events sharing every content word in
+  their name, on the same day, within the 15 km collection radius, would be an extraordinary
+  coincidence, so this is treated as certain.
+- **Deliberately not fuzzy beyond that.** A pair that merely *overlaps* — "Meeting d'Automne TDA"
+  vs "Meeting d'Automne TDA Poneys" / "…Équitation" — is left alone: these read like two
+  disciplines of the same meeting, not certainly the same record, and a wrong merge silently
+  deletes a real event, which the project treats as worse than an extra card. Such pairs (same
+  date, high but non-identical word overlap, Jaccard ≥ 0.6) are only **reported**
+  (`stats.similarSameDay`, printed in the run summary) for a human to judge — never merged.
+- **Which record survives a merge:** an already-stored record over a brand-new one (keeps a
+  stable id and any already-verified URL); among ties, whichever already has `urlStatus: "ok"`;
+  among further ties, a legacy `ACT_` id over a hash `EVT_` id; the loser's useful fields
+  (organizer, description, city, locationName if the winner lacks them) are merged into the
+  winner via the existing `mergeInto()` before it is dropped.
+- **Tested against the real, live `data.json`** before this was applied: every one of the 9 pairs
+  it merged was manually reviewed and confirmed to be a genuine rewording, not a distinct event
+  (the sports "TDA Poneys/Équitation" and "Championnat de France CCE / …au Grand Parquet" pairs
+  were confirmed to correctly stay **separate**, appearing only in the review list).
+
+**Immediate cleanup, September 20:** applied once by hand (no network calls — the existing
+`fromExisting()`/`dedupeFuzzy()`/`serializeEvent()` functions, exported for this purpose, reused
+directly against the stored file) to the then-live `data.json`: **161 → 152 events**, 9 duplicates
+merged. Going forward this runs automatically as step 3b of every real scan, so it is
+self-healing, not a one-off — the next re-occurrence of this pattern (from Gemini, from
+DATAtourisme, or between the two) is fixed the same way without intervention.
+
 ## 4. Data Schema (`data.json`, v2.1)
 
 Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the script and the frontend). Fields added in v2 are marked ★.
@@ -321,6 +370,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | DATAtourisme unreachable or its schema changed | Gemini results are still published; the failure is shown in the report (`stats.dt.error`); `data.json` is not blocked on it |
 | All scans fail, or no valid event returned | Run **fails** (exit 1); `data.json` untouched; GitHub notifies |
 | Every source fails (all 4 Gemini scans **and** DATAtourisme) | Run **fails** (exit 1); `data.json` untouched |
+| Two records share the same date and, once reworded, the same meaningful words | Merged automatically (§3.J); reported in the summary as `crossCityDeduped` |
+| Two records share a date and are merely *similar* (not word-identical) | Left as two records; listed in the summary (`similarSameDay`) for manual review, never auto-merged |
 | `data.json` corrupted / not an array | Run fails; file never overwritten |
 | Output truncated at token limit | Complete objects are salvaged; flagged in the report |
 | Record invalid (date, category, URL, location, weekday…) | Dropped, counted by reason (`invalid_start_date`, `invalid_url`, `dead_url`, `weekday_mismatch`, …) |
@@ -377,6 +428,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-20 | A multi-date DATAtourisme event becomes one `data.json` record per date, not one record spanning first-to-last | An exact date is the useful information; a span would misstate which days the event actually runs |
 | 2026-09-20 | Fuzzy dedup against Gemini uses a stricter per-occurrence rule (`isSameOccurrence`) than the coverage report's per-event rule (`isSameEvent`) | The report's rule (same city OR overlapping dates) would treat two dates of the same play as duplicates of each other once each date is its own record, and silently delete one |
 | 2026-09-20 | DATAtourisme events ship with `organizer` left empty | The CSV names the data publisher, not the real organizer; a wrong attribution is worse than none |
+| 2026-09-20 | **Fuzzy same-day duplicates merged automatically on every run** (§3.J), scoped to word-set-identical titles only | Live duplicates spotted by the project lead; the exact-word-set rule is safe enough to automate, a looser fuzzy match is not (risk of hiding a real event) |
+| 2026-09-20 | The live `data.json` was cleaned once by hand, offline, with the same function the pipeline now runs automatically | 161 → 152 events; no reason to wait for the next scheduled (paid) scan to fix duplicates already known |
 
 ---
 
@@ -446,7 +499,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 44. **DATAtourisme coverage probe:** `scripts/datatourisme-coverage.js` + weekly workflow, observation mode, written against the **verified** schema and tested on the real file (§3.H)
 - [x] 45. **DATAtourisme merged into the pipeline** (§3.I) — decided and shipped September 20, ahead of the original "two or three weekly reports" prerequisite (explicit call by the project lead on the measured numbers). Verified: Gemini forced to fail entirely, DATAtourisme alone still produced a valid publish; multi-date events keep every date; one real cross-source duplicate caught
 - [ ] 46. Frontend: visually distinguish `source: "datatourisme"` cards, or a filter toggle — currently invisible to visitors
-- [ ] 47. Two pre-existing Gemini-only duplicates found while testing item 45 (same event under two commune spellings — Fontainebleau/Avon, Maincy/Vaux-le-Vicomte). Not new, but now documented; consider a commune-alias table or a looser same-day duplicate check
+- [x] 47. **Fuzzy same-day duplicate cleanup** (§3.J) — `dedupeFuzzy()` in `scripts/fetch-events.js`, run every scan over the full merged set. Fixes the two duplicates found while testing item 45, and any future re-occurrence of the same pattern, automatically
 - [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
 - [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)

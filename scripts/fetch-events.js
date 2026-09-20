@@ -749,6 +749,14 @@ function renderSummary(stats, ctx) {
       if (dtRej.length) L.push(`  - rejected at validation: ${dtRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
     }
   }
+  if (stats.crossCityDeduped) {
+    L.push(`- 🧹 Doublons fusionnés (même titre, même date, ville différente) : **${stats.crossCityDeduped}**`);
+  }
+  if (stats.similarSameDay.length) {
+    L.push(`- 🔎 Titres proches le même jour, à vérifier manuellement (non fusionnés) : ${stats.similarSameDay.length}`);
+    for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s}`);
+    if (stats.similarSameDay.length > 8) L.push(`  - … et ${stats.similarSameDay.length - 8} autre(s)`);
+  }
   L.push(`- New events added: **${stats.added}** · refreshed: **${stats.refreshed}** · past events pruned: **${stats.pruned}**`);
   L.push(`- Total published: **${stats.total}**`);
   L.push(`- Dead URLs dropped: **${stats.deadUrls}** · URLs checked this run: ${stats.urlsChecked} · unverified (kept): ${stats.unverified}`);
@@ -759,6 +767,114 @@ function renderSummary(stats, ctx) {
   if (rejOld.length) L.push(`- Rejected stored records: ${rejOld.map(([k, v]) => `${k}=${v}`).join(', ')}`);
   L.push(`- data.json ${stats.written ? 'updated' : 'unchanged'}`);
   return L.join('\n') + '\n';
+}
+
+/**
+ * Finds and merges duplicate occurrences that eventKey() (title + startDate + city) misses,
+ * and reports the rest for human review. Runs over the full merged set (existing + new, from
+ * every source) every time — self-healing, not a one-off cleanup: the two live duplicates that
+ * prompted this (§7, September 20) are fixed by the very first run after deployment, and any
+ * future re-occurrence is fixed the same way, automatically.
+ */
+function dedupeFuzzy(records, stats) {
+  // Fuzzy, same-day duplicate cleanup — mutates records in place.
+  // eventKey() (title + startDate + city) only merges duplicates that agree on BOTH the exact
+  // title string and the city. Two scans routinely report the same real event with the city
+  // spelled differently (a venue that straddles a border, or one scan naming the administrative
+  // commune and another the landmark's common name — Vaux-le-Vicomte château sits in the commune
+  // of Maincy) and/or the title reworded around the same content words ("Le Grand Noël de
+  // Vaux-le-Vicomte" vs "Le Grand Noël DU CHÂTEAU DE Vaux-le-Vicomte" vs "...AU CHÂTEAU DE...").
+  //
+  // The auto-merge rule here is: same date, and the titles reduce to the exact same SET of
+  // significant words once grammatical connectors (le/la/de/du/au…) are stripped. Word order and
+  // connectors are ignored; the words that actually carry meaning must match exactly — nothing
+  // is dropped for merely *overlapping*. Two unrelated real events sharing every content word in
+  // their name, on the same day, within a 15 km radius, would be an extraordinary coincidence, so
+  // this is treated as certain — the "same event, same date" rule the project lead asked for
+  // after spotting live duplicates (September 20).
+  //
+  // Titles that are merely *similar* (not an exact word-set match) are deliberately left alone
+  // here and only reported below (stats.similarSameDay): auto-merging on a looser match risks
+  // conflating two genuinely distinct sub-events (e.g. two disciplines of the same meeting,
+  // "Poneys" vs "Équitation") with a real duplicate, and a wrong merge silently deletes a real
+  // event — worse than leaving an extra card visible.
+  const CONNECTOR_WORDS = new Set([
+    'le', 'la', 'les', 'l', 'de', 'du', 'des', 'd', 'au', 'aux', 'a', 'en', 'et',
+    'un', 'une', 'ou', 'par', 'pour', 'sur', 'avec', 'chateau',
+  ]);
+  function significantWords(title) {
+    return norm(title).split(' ').filter((w) => w.length > 1 && !CONNECTOR_WORDS.has(w));
+  }
+  // Canonical signature: sorted, deduplicated significant words. Two titles collide here iff
+  // they carry the exact same set of meaningful words — order and connectors do not matter.
+  // Titles left with fewer than 2 significant words (e.g. a single generic noun) are excluded
+  // from auto-merge entirely (unique per-record suffix) rather than risk matching on one word.
+  function wordSetSignature(title, uniqueFallback) {
+    const words = [...new Set(significantWords(title))].sort();
+    return words.length >= 2 ? words.join(' ') : `__unique__${uniqueFallback}`;
+  }
+
+  const byWordSetDate = new Map();
+  for (const [key, rec] of records) {
+    const k = rec.event.startDate + '|' + wordSetSignature(rec.event.title, key);
+    if (!byWordSetDate.has(k)) byWordSetDate.set(k, []);
+    byWordSetDate.get(k).push(key);
+  }
+  for (const keys of byWordSetDate.values()) {
+    if (keys.length < 2) continue;
+    const group = keys.map((k) => records.get(k));
+    // Keep an already-stored record over a brand-new one (stable id, any URL already verified);
+    // among ties, keep whichever already has a verified URL; among further ties, prefer a
+    // legacy ACT_ id over a hash EVT_ id (the older, more likely to be linked-to record); the
+    // remaining tie-break is insertion order, which is deterministic (existing records are
+    // loaded in the order stored in data.json; new ones in scan order).
+    group.sort((a, b) => {
+      if (a.isNew !== b.isNew) return a.isNew ? 1 : -1;
+      const aOk = a.event.urlStatus === 'ok', bOk = b.event.urlStatus === 'ok';
+      if (aOk !== bOk) return aOk ? -1 : 1;
+      const aLegacy = /^ACT_/.test(a.event.id || ''), bLegacy = /^ACT_/.test(b.event.id || '');
+      if (aLegacy !== bLegacy) return aLegacy ? -1 : 1;
+      return 0;
+    });
+    const [winner, ...losers] = group;
+    for (const loser of losers) {
+      mergeInto(winner.event, loser.event);
+      if (!winner.modelCoords && loser.modelCoords) winner.modelCoords = loser.modelCoords;
+      winner.refreshed = true;
+      records.delete(eventKey(loser.event));
+      stats.crossCityDeduped++;
+    }
+  }
+
+  // Same-day, similar-but-not-identical titles: visibility only, never auto-merged (see above).
+  // Jaccard similarity over the same significant-word sets used for the merge above; the merge
+  // already removed every pair at 1.0 (exact set match), so nothing here duplicates that report.
+  function jaccard(a, b) {
+    const wa = new Set(significantWords(a)), wb = new Set(significantWords(b));
+    if (!wa.size || !wb.size) return 0;
+    let inter = 0;
+    for (const w of wa) if (wb.has(w)) inter++;
+    return inter / new Set([...wa, ...wb]).size;
+  }
+  const SIMILARITY_REVIEW_THRESHOLD = 0.6;
+  const byDate = new Map();
+  for (const rec of records.values()) {
+    const list = byDate.get(rec.event.startDate) || [];
+    list.push(rec);
+    byDate.set(rec.event.startDate, list);
+  }
+  for (const list of byDate.values()) {
+    if (list.length < 2) continue;
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        if (jaccard(list[i].event.title, list[j].event.title) >= SIMILARITY_REVIEW_THRESHOLD) {
+          stats.similarSameDay.push(
+            `${list[i].event.title} ↔ ${list[j].event.title} (${list[i].event.startDate})`
+          );
+        }
+      }
+    }
+  }
 }
 
 // ───────────────────────────── Main ─────────────────────────────
@@ -774,7 +890,7 @@ async function main() {
   const stats = {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
-    dt: null, dtRejected: {}, dtDeduped: 0,
+    dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
   };
 
   const existingText = fs.existsSync(CONFIG.dataPath) ? fs.readFileSync(CONFIG.dataPath, 'utf8') : '';
@@ -907,6 +1023,9 @@ async function main() {
 
   for (const v of validNew) addRecord(v);
   for (const v of validDt) addRecord(v, { fuzzy: true });
+
+  dedupeFuzzy(records, stats);
+
   const all = [...records.values()];
 
   // 4. Geocode (anything not yet resolved by BAN) ───────────────────────
@@ -962,7 +1081,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto,
+  main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,
   CONFIG,
