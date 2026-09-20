@@ -53,6 +53,11 @@ const CONFIG = {
   cachePath: path.resolve(process.env.GEOCODE_CACHE_PATH || 'geocode-cache.json'),
   dryRun: process.env.DRY_RUN === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
+  // Cadence. The workflow triggers every day, but a real (billed) scan only runs when the stored
+  // data is older than this. 60 h + a daily trigger gives one scan every ~3 days, and a failed or
+  // skipped day is retried the next morning instead of waiting three more.
+  minRunIntervalHours: envInt('MIN_RUN_INTERVAL_HOURS', 60),
+  forceRun: process.env.FORCE_RUN === '1',
 };
 
 const CATEGORIES = ['Sport & Outdoor', 'Nature & Environnement', 'Culture & Ateliers'];
@@ -710,6 +715,12 @@ function serializeEvent(e) {
   return ordered;
 }
 
+/** Append a Markdown block to the GitHub Actions job summary; a no-op outside CI. */
+function writeStepSummary(text) {
+  if (!process.env.GITHUB_STEP_SUMMARY) return;
+  try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, text); } catch { /* non-fatal */ }
+}
+
 function renderSummary(stats, ctx) {
   const L = [];
   L.push('## 🗓️ Daily events update', '');
@@ -757,6 +768,22 @@ async function main() {
   const existingRaw = legacyShape ? existingPayload : existingPayload?.events;
   if (!Array.isArray(existingRaw)) throw new Error('data.json must be a JSON array or an object with an "events" array');
   const existingGeneratedAt = legacyShape ? null : existingPayload.generatedAt;
+
+  // Cadence guard — no Gemini call, no cost, data.json untouched. A manual workflow_dispatch sets
+  // FORCE_RUN=1 and a local DRY_RUN always executes, so the pipeline stays testable on demand.
+  const hoursSinceUpdate = existingGeneratedAt && !Number.isNaN(Date.parse(existingGeneratedAt))
+    ? (Date.now() - Date.parse(existingGeneratedAt)) / 3_600_000
+    : Infinity;
+  if (!CONFIG.forceRun && !CONFIG.dryRun && hoursSinceUpdate < CONFIG.minRunIntervalHours) {
+    const remaining = (CONFIG.minRunIntervalHours - hoursSinceUpdate).toFixed(1);
+    const note = 'Données mises à jour il y a ' + hoursSinceUpdate.toFixed(1) + ' h '
+      + '(cadence : ' + CONFIG.minRunIntervalHours + ' h). Prochain scan dans ~' + remaining + ' h. '
+      + 'Aucun appel Gemini, aucun coût, data.json inchangé.';
+    console.log('⏭️  ' + note);
+    writeStepSummary('## Run ignoré — cadence\n\n' + note + '\n');
+    return;
+  }
+
   const cache = loadCache();
 
   // 1. Scans ────────────────────────────────────────────────────────────
@@ -855,9 +882,7 @@ async function main() {
 
   const summary = renderSummary(stats, ctx);
   console.log('\n' + summary);
-  if (process.env.GITHUB_STEP_SUMMARY) {
-    try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary); } catch { /* non-fatal */ }
-  }
+  writeStepSummary(summary);
   console.log(`💾 ${CONFIG.dryRun ? 'Dry run — nothing written.' : (changed ? `data.json updated (${kept.length} events).` : 'No change.')}`);
 }
 

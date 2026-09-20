@@ -351,13 +351,16 @@
     // ── Configuration ──
     const LOCALE = 'fr-FR';            // date formatting language (English version: see backlog)
     const DISPLAY_TZ = 'Europe/Paris'; // "last updated" is always shown in local time
+    // One real scan every ~3 days (see CONFIG.minRunIntervalHours in scripts/fetch-events.js),
+    // so the warning must leave room for one missed run before it fires.
+    const STALE_AFTER_DAYS = 5;
 
     // "Signaler une erreur" links. Fill ONE of the two options; if both are empty the links are hidden.
     //  - formUrl: a pre-filled Google Form link. Use the placeholders {id}, {title}, {url} as the pre-filled values;
     //             Google turns the braces into %7B / %7D in the link, both spellings are recognised.
     //  - email:   opens the visitor's mail app with a pre-filled message (note: the address is visible in the page source).
     const FEEDBACK = {
-      formUrl: '',
+      formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform?usp=pp_url&entry.966033931=%7Bid%7D&entry.306978886=%7Btitle%7D&entry.1206232242=%7Burl%7D',
       email: ''
     };
 
@@ -446,7 +449,7 @@
       }
       const label = new Intl.DateTimeFormat(LOCALE, { timeZone: DISPLAY_TZ, dateStyle: 'long', timeStyle: 'short' }).format(d);
       const ageDays = (Date.now() - d.getTime()) / 86400000;
-      const stale = ageDays >= 3;
+      const stale = ageDays >= STALE_AFTER_DAYS;
       el.textContent = `Données mises à jour le ${label}` +
         (stale ? ` — ⚠️ non actualisées depuis ${Math.floor(ageDays)} jours` : '');
       el.classList.toggle('stale', stale);

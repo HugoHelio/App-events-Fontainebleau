@@ -2,8 +2,8 @@
 
 **Project:** Autonomous Local Event Aggregator (Fontainebleau Region)
 **Date:** September 20, 2026
-**Version:** 2.2 (3-month window, age labels, terms & cost review)
-**Status:** v2.1 deployed and working in production (confirmed September 20) · **v2.2 code prepared and tested offline, pending deployment** · ⚠️ **the terms review (§3.G) found that the current Google-Search-grounded approach does not fit Google's terms — see decision needed in §9**
+**Version:** 2.3 (governance decision, ~3-day cadence, DATAtourisme measured)
+**Status:** v2.2 deployed and confirmed in production (September 20: `data.json` is `{ schemaVersion, generatedAt, events }`, 125 events) · **v2.3 code written and tested locally, pending deployment** · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
 
 ---
 
@@ -27,6 +27,7 @@ The system automatically scans official agendas, local association publications 
 ```
 ┌─────────────────────────┐
 │   GitHub Actions Cron   │  Daily trigger (06:00 UTC) + manual dispatch
+│                         │  → real scan only if data > 60 h old (~every 3 days)
 └───────────┬─────────────┘
             │
             ▼
@@ -69,10 +70,13 @@ The system automatically scans official agendas, local association publications 
 | File | Location in repo |
 |---|---|
 | Extraction pipeline | `scripts/fetch-events.js` |
+| DATAtourisme coverage probe (observation only) | `scripts/datatourisme-coverage.js` |
 | Workflow | `.github/workflows/daily-check.yml` |
 | Frontend | `index.html` |
 | Event data (generated) | `data.json` |
 | Geocoding cache (generated) | `geocode-cache.json` |
+| Coverage workflow | `.github/workflows/datatourisme-coverage.yml` |
+| Coverage reports (generated, git-ignored) | `reports/` |
 
 ---
 
@@ -166,7 +170,43 @@ A code review of `fetch-events.js`, `daily-check.yml` and `index.html` produced 
 | C. Open data first | ✅ | **DATAtourisme**: national open-data platform fed by tourism offices, free, open licence, updated daily, includes cultural and sports events; a daily CSV export (dates, city, coordinates, website, description) is published on data.gouv.fr. Also OpenAgenda and city/tourism-office iCal or RSS feeds (coverage of the Fontainebleau area to be verified) |
 | D. Interim | ⚠️ Risk accepted knowingly | Keep the current pipeline only for a small private beta, with no institutional outreach on grounded data |
 
-**Recommendation:** B + C (open data as the backbone, direct extraction for what open data misses — clubs, associations, châteaux), and treat "widen sports and associations coverage" as work on the **source registry**, not on the grounded prompt.
+**Decision taken on September 20 (project lead):** option **D + C** — keep Google Search grounding as the main collector, with the risk accepted knowingly, and add DATAtourisme as a second, fully automatic source. Option B (a hand-built source registry) is **dropped for now**: it is more work than the current pipeline, it breaks whenever a site changes, and its starting coverage would be lower than Google's long tail. An app that misses the good local events has no users, and that risk was judged larger than the contractual one for a local project with no revenue.
+
+The reading of the terms in this section still stands — it is the *response* that changed, not the analysis. The conditions attached to accepting the risk are listed in §8.
+
+---
+
+### H. DATAtourisme — measured, not estimated (item 44, September 20, 2026)
+
+The real dataset was downloaded and analysed rather than read about. Three findings contradicted the documentation-based assumptions:
+
+1. **A much lighter file exists.** `datatourisme-reg-idf.csv` (**9 MB**, Île-de-France, so Seine-et-Marne included) replaces the national events file `datatourisme-fma.csv` (64 MB) with the same local coverage.
+2. **The data is fresh.** Every CSV was updated the same day (September 20), not 7 days old as first reported. The fallback to the authenticated official flux is unnecessary.
+3. **The real schema has none of the expected columns.** A script written from the documentation would have failed on the first run.
+
+| Expected | Actual |
+|---|---|
+| `startDate` / `endDate` | `Periodes_regroupees` → `2026-10-22<->2026-10-25`, several periods separated by `\|` |
+| city | `Code_postal_et_commune` → `77300#Fontainebleau` |
+| event URL | buried in `Contacts_du_POI` → `Label#http://…` |
+| category | pipe-separated list of ontology URIs (`…core#TheaterEvent`) |
+| price | **does not exist** |
+
+**Measured coverage** (bounding box of the project, 3-month window, against the 125 events then in `data.json`):
+
+| Measure | Value |
+|---|---|
+| Events in the box and the window | 56 |
+| … short (≤ 14 days) | 29 |
+| … recurring / year-round | 27 |
+| Already present in `data.json` | 2–3 |
+| **Absent, short** | **27** |
+
+**Reading:** the two sources are almost disjoint. DATAtourisme does not validate Gemini, it **complements** it. The overlap is measured on normalised titles, so it is a lower bound.
+
+What is missing is worth having: Championnat de France de CCE, Jump Bost, the Fontainebleau theatre season, the Nemours prehistory museum programme, concerts, Journées du Patrimoine. Among them **6 `SportsEvent` + 3 `SportsCompetition`** — which attacks item 38 (sports coverage) without touching the grounded prompt.
+
+**The trap:** 23 `Market` + 23 `SaleEvent`, essentially weekly markets published as `2026-01-01<->2026-12-31`. Imported as-is they would saturate the map. The probe classifies them separately (by ontology class or by duration > 14 days) and any future merge must keep them apart or exclude them.
 
 ---
 
@@ -233,6 +273,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | `data.json` corrupted / not an array | Run fails; file never overwritten |
 | Output truncated at token limit | Complete objects are salvaged; flagged in the report |
 | Record invalid (date, category, URL, location, weekday…) | Dropped, counted by reason (`invalid_start_date`, `invalid_url`, `dead_url`, `weekday_mismatch`, …) |
+| Data updated less than `MIN_RUN_INTERVAL_HOURS` (60 h) ago | Run **skipped**: exit 0, no Gemini call, no cost, `data.json` untouched; the job summary says when the next scan is due. A manual dispatch (`FORCE_RUN=1`) and a local `DRY_RUN` always execute |
 | Nothing changed | No write, no commit (except the once-a-day `generatedAt` refresh) |
 | `main` moved during the run | `git pull --rebase` + up to 3 push attempts |
 
@@ -246,7 +287,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - **Manual run:** Actions → *Check Quotidien & Mise à jour Data Gemini* → *Run workflow*.
 - **Run report:** open the run → *Summary* (scans, tokens, search queries, added/refreshed/pruned, dead URLs, geocoding sources, rejection reasons).
 - **Local dry run** (writes nothing): `GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js`
-- **Environment variables:** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`.
+- **Force a scan despite the cadence:** `GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js` (a manual *Run workflow* does this automatically)
+- **DATAtourisme coverage probe:** Actions → *Couverture DATAtourisme (observation)* → *Run workflow*, or locally `node scripts/datatourisme-coverage.js`. It downloads ~9 MB, writes only `reports/`, and never touches `data.json`. Use `DT_CSV_PATH=…` to run against a local copy.
+- **Environment variables (pipeline):** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `MIN_RUN_INTERVAL_HOURS` (60), `FORCE_RUN`, `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`.
+- **Environment variables (coverage probe):** `WINDOW_MONTHS` (3), `DT_SHORT_EVENT_MAX_DAYS` (14), `DT_MAX_EXAMPLES` (20), `DT_REPORT_DIR` (`reports`), `DT_CSV_PATH`, `DATA_PATH`.
+- **Cadence:** the workflow triggers daily but the script only scans when `data.json` is older than `MIN_RUN_INTERVAL_HOURS`. A skipped day exits 0, calls nothing and writes nothing; the job summary says so. A failed or skipped day is retried the next morning rather than three days later.
 - **Feedback links (frontend):** in `index.html`, fill the `FEEDBACK` block. `formUrl` = a pre-filled form link where `{id}`, `{title}`, `{url}` mark the values to inject (for Google Forms: *⋮ → Get pre-filled link*, type `{id}`, `{title}`, `{url}` in the three pre-filled fields, *Get link*, paste it as `formUrl`; Google writes the braces as `%7B…%7D` and both forms are handled). Suggested form fields: event ID, title and link (short-answer fields, pre-filled by the link), type of problem (date / place / price / dead link / cancelled / other), details, optional contact. `email` = simplest option, but the address is visible in the page source. Leave both empty to hide the links.
 - **Rollback:** `git revert` the bot commit (every data change is a commit).
 - **Pages:** assumed to deploy from the `main` branch ("Deploy from a branch" in Settings → Pages); after the first v2 run, confirm the site shows the new data.
@@ -270,6 +315,13 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-20 | Collection window reduced from 4 to 3 months; `windowEnd` added, events beyond it hidden not deleted | Avoids saturating map and list; keeps already-found events for when they enter the window |
 | 2026-09-20 | Age shown as "Tout public" / "Dès X ans" / "Jusqu'à Y ans" / "X–Y ans"; `ageMax ≥ 90` = no upper limit | "0-99 ans" was noise |
 | 2026-09-20 | Terms review: Google Search grounding does not fit a stored, published dataset (§3.G) → **plan to move to direct-source extraction**. Decision pending on the interim period | Compliance, cost and traceability |
+| 2026-09-20 | **Governance: the grounding risk is accepted knowingly.** Google/Gemini stays the main collector; the full pivot to a source registry (item 37) is dropped | A local project with no revenue and no users is the bigger risk. The exposure is contractual (key or project suspension), not a lawsuit; `data.json` is versioned in git, so the site survives a cut-off. Conditions in §8 |
+| 2026-09-20 | Dedicated Google Cloud project, billing account and API key — verified, no separate Google account created | Isolates a possible suspension from SpacePlan, Helioso and GardenBrawls without the cost of a second identity |
+| 2026-09-20 | **Cadence: one real scan every ~3 days**, implemented as a 60 h guard inside the script rather than a `*/3` cron | A `*/3` cron is irregular at month boundaries and cannot catch up. The daily trigger + threshold retries a failed or skipped day the next morning. Cost divided by ~3 |
+| 2026-09-20 | Stale-data warning moved from 3 to 5 days | Must leave room for one missed run at the new cadence |
+| 2026-09-20 | **DATAtourisme added as a second source**, starting in observation mode | Measured: ~27 short events absent from `data.json`, including sports competitions. Sources are almost disjoint, so it complements rather than replaces (§3.H) |
+| 2026-09-20 | The coverage probe uses the **regional** file `datatourisme-reg-idf.csv` (9 MB), not the national events file (64 MB) | Same local coverage, seven times lighter |
+| 2026-09-20 | Weekly markets (`Market` / `SaleEvent`, or duration > 14 days) are classified apart | Imported as-is they would saturate the map and the list |
 
 ---
 
@@ -278,8 +330,9 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Risk / question | Mitigation / next step |
 |---|---|
 | LLM hallucination (dates, prices, venues, URLs) | Validation + URL checks + geocoding flags now; "report an error" link and source attribution planned; manual review of the first weeks of data before outreach |
-| 🔴 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection | Move to direct-source extraction (items 37, 27); until then keep the audience limited and do no institutional outreach on grounded data |
-| 🟠 Cost: estimated ≈ $7/month now, ≈ $14/month from January 2027 for 4 scans (§3.G) — more scans, more cost | Verify with real run-summary numbers; budget alert on the Google Cloud project; direct extraction removes the per-search fee (items 37, 39) |
+| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known |
+| 🟢 Cost: estimated ≈ $7/month now, ≈ $14/month from January 2027 at a daily cadence (§3.G). **Divided by ~3 by the new cadence** → roughly $2–5/month | Still to be replaced by real run-summary numbers (item 39); budget alert on the dedicated project |
+| DATAtourisme CSV schema may change | The probe validates the columns and **fails loudly**, listing the columns actually found, instead of producing an empty report |
 | Legal / attribution: reuse of organizers' listings | Always link to the source; consider contacting large sources; prefer structured/open data where available |
 | Scheduled workflows can be auto-disabled after 60 days of repository inactivity | Verify how bot commits count; add a keep-alive if needed |
 | Model name / API changes (`gemini-3.6-flash`) | Model is configurable via `GEMINI_MODEL`; failure is loud (exit 1) |
@@ -304,8 +357,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 ### Step 0 — Deploy and verify
 
 - [x] Deploy v2 and v2.1 (`scripts/fetch-events.js`, `.github/workflows/daily-check.yml`, `index.html`) — confirmed working September 20
-- [ ] Deploy v2.2 (`scripts/fetch-events.js`, `index.html`; the workflow is unchanged): 3-month window (`windowEnd`), age labels, Google Form placeholder fix
-- [ ] Create the Google Form and paste its pre-filled link in the `FEEDBACK.formUrl` field of `index.html`
+- [x] Deploy v2.2: 3-month window (`windowEnd`), age labels, Google Form placeholder fix — confirmed September 20 (`data.json` now `{ schemaVersion, generatedAt, events }`, 125 events)
+- [ ] Deploy v2.3 (`scripts/fetch-events.js`, `index.html`, `daily-check.yml`, + `scripts/datatourisme-coverage.js` and `datatourisme-coverage.yml`): ~3-day cadence, 5-day stale warning, DATAtourisme probe
+- [ ] Check that a `windowEnd` field appears in `data.json` after the first v2.3 run (it is absent from the v2.1-era file, so the frontend's 3-month filter is currently inert)
+- [ ] Run the DATAtourisme workflow once on GitHub and confirm the real CSV parses there as it does locally
+- [x] Create the Google Form and paste its pre-filled link in `FEEDBACK.formUrl` — done September 20. Link verified locally against a real event (accents, apostrophes and French quotes round-trip correctly; the footer link leaves the three fields empty). **Remaining: publish the form with "anyone with the link" as the responder setting**, otherwise visitors hit a permission error
 - [ ] Read the token and search-query numbers of a real run summary and compare with the §3.G estimate
 - [ ] Monitor the first 3–5 automated runs: recurring execution, no duplicates, rejection reasons, dead-link count, geocoding sources, tokens/search queries per scan (cost check)
 - [ ] Confirm GitHub Pages redeploys after the bot's push
@@ -328,8 +384,12 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [~] 11. API key moved from URL to header
 - [~] 12. Workflow hygiene: least privilege, concurrency, timeout, rebase-and-retry push, run report
 - [x] 13. Cost & terms check — done September 20 (§3.G). **Result: the grounded approach does not fit the terms and costs more than assumed → items 37–40**
-- [ ] 40. **Decision (owner: project lead):** what to do during the transition — keep the daily grounded runs for a small private beta only, or pause them; no institutional outreach on grounded data
-- [ ] 37. **Compliance pivot:** replace Google Search grounding with direct-source extraction — source registry (`sources.json`: URL/feed, type, commune, category hint), own fetcher (robots.txt, rate limit, conditional requests), LLM extraction from fetched text without the search tool, source URL kept per event; then remove `google_search` from the pipeline
+- [x] 40. **Decision (owner: project lead):** grounded runs continue, risk accepted knowingly, with the conditions of §8 — decided September 20
+- [ ] ~~37. **Compliance pivot:** replace Google Search grounding with direct-source extraction~~ — **dropped September 20.** More work than the current pipeline, fragile to site changes, lower starting coverage. Revisit only if Google suspends the key or if DATAtourisme turns out to cover enough on its own (item 45)
+- [x] 42. **Cadence of ~3 days:** 60 h guard inside the script, daily trigger, `FORCE_RUN=1` on manual dispatch; stale warning moved to 5 days
+- [x] 43. **Google Cloud isolation:** dedicated project, billing account and API key — verified September 20. Remaining: restrict the key to the Gemini API, and set a budget alert
+- [x] 44. **DATAtourisme coverage probe:** `scripts/datatourisme-coverage.js` + weekly workflow, observation mode, written against the **verified** schema and tested on the real file (§3.H)
+- [ ] 45. **Decision threshold on integrating DATAtourisme:** merge the source into the pipeline (deduplicating against Gemini with the shared `isSameEvent` rule, markets excluded or kept apart), then decide whether grounding can be narrowed. Prerequisite: two or three weekly coverage reports
 - [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
 - [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)
@@ -340,7 +400,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 
 **Beta gates (needed to collect useful feedback):**
 - [~] 14. "Last updated" timestamp in the UI (`data.json` → `{ generatedAt, events }`, stale warning after 3 days)
-- [~] 15. "Report an error" link on each card and in the footer (channel = Google Form; **needs the form link in `FEEDBACK.formUrl`**)
+- [~] 15. "Report an error" link on each card and in the footer (channel = Google Form; link installed and tested September 20). Form fields, in order: event ID, title, link (the three pre-filled ones), problem type, details, optional contact
 - [~] 16. Source attribution + "verify with the organizer" note (card + footer)
 - [~] 34. Always show the explicit date for single-day and short (2–3 day) events; `schedule` = hours only
 - [~] 35. Weekday-vs-date consistency check (`weekday_mismatch`)
@@ -371,4 +431,12 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 ### Milestones
 
 **Beta gate (friends & family):** Step 0 + P0 (1–6) + P1 (7–12) + items 14–17 and 34–35 (item 15 needs the Google Form link), with at least one week of clean automated runs. **Only as a small private test** while items 37/27 are under way (decision 40).
-**Outreach gate (city, clubs, INSEAD…):** **items 37 and 27 done (no grounded data in the published dataset)** · item 39 · beta feedback processed · items 16, 24 · manual review of a few weeks of published data.
+**Outreach gate (city, clubs, INSEAD…):** **re-assess the grounding risk (§8) with the DATAtourisme coverage figures in hand (items 44, 45)** · item 39 · beta feedback processed · items 16, 24 · manual review of a few weeks of published data. The decision of September 20 accepts the risk for a private beta; institutional outreach is a deliberate increase in visibility and must be decided separately.
+
+
+
+
+
+link data form to get feedback:
+https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform?usp=publish-editor
+

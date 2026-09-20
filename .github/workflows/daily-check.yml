@@ -1,5 +1,9 @@
 name: Check Quotidien & Mise à jour Data Gemini
 
+# Le declencheur reste quotidien, mais le script ne lance un vrai scan (facture) que si les
+# donnees ont plus de MIN_RUN_INTERVAL_HOURS (60 h) : soit environ un scan tous les 3 jours.
+# Un jour saute ou echoue est ainsi retente des le lendemain, sans attendre 3 jours de plus.
+# Un declenchement manuel force toujours le scan.
 on:
   schedule:
     - cron: '0 6 * * *'   # 06:00 UTC = 07:00/08:00 in Paris
@@ -30,9 +34,12 @@ jobs:
 
       # The script fails (exit 1) if every scan fails or nothing valid comes back,
       # so a broken run never overwrites data.json. A run report is written to the job summary.
+      # When the cadence guard skips the run it exits 0 without calling Gemini and without
+      # touching data.json, so the commit step below simply finds nothing to publish.
       - name: Exécution du script de check Gemini
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
         run: node scripts/fetch-events.js
 
       - name: Commit et Push automatique des nouvelles données

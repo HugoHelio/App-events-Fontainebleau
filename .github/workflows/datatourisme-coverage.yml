@@ -1,0 +1,46 @@
+name: Couverture DATAtourisme (observation)
+
+# Mesure ce que la source ouverte DATAtourisme ajouterait aux evenements collectes par Gemini.
+# Mode observation : ce workflow ne modifie JAMAIS data.json et ne pousse rien sur main.
+# Le rapport est publie dans l'onglet Summary du run, et les deux fichiers JSON sont
+# telechargeables pendant 30 jours.
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # tous les lundis, 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: datatourisme-coverage
+  cancel-in-progress: false
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Recuperer le code du depot
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Echoue bruyamment si le schema du CSV change (les colonnes trouvees sont listees
+      # dans le message d'erreur) plutot que de produire un rapport vide et rassurant.
+      - name: Sonde de couverture DATAtourisme
+        run: node scripts/datatourisme-coverage.js
+
+      - name: Publier les fichiers du rapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: datatourisme-coverage
+          path: reports/
+          retention-days: 30
+          if-no-files-found: warn
