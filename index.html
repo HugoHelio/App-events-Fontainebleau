@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Activités & Événements - Autour de Fontainebleau</title>
+  <link rel="icon" type="image/png" href="public/assets/img/brand/fav.png">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -283,14 +284,19 @@
   <!-- Filtres -->
   <div class="filters-container">
     <div class="filter-group">
-      <label for="filterAge">Âge de l'enfant :</label>
-      <input type="number" id="filterAge" min="0" max="18" placeholder="Ex: 8">
+      <label for="filterAge">Public cible :</label>
+      <select id="filterAge">
+        <option value="">Tous</option>
+        <option value="6">Enfants</option>
+        <option value="14">Ados</option>
+        <option value="30">Adultes</option>
+      </select>
     </div>
 
     <div class="filter-group">
-      <label for="filterCategory">Catégorie :</label>
+      <label for="filterCategory">Type d'événements :</label>
       <select id="filterCategory">
-        <option value="">Toutes les catégories</option>
+        <option value="">Tous les types</option>
         <option value="Sport & Outdoor">Sport & Outdoor</option>
         <option value="Nature & Environnement">Nature & Environnement</option>
         <option value="Culture & Ateliers">Culture & Ateliers</option>
@@ -519,7 +525,7 @@
       fetchData();
 
       // Écouteurs sur les filtres
-      document.getElementById('filterAge').addEventListener('input', applyFilters);
+      document.getElementById('filterAge').addEventListener('change', applyFilters);
       document.getElementById('filterCategory').addEventListener('change', applyFilters);
       document.getElementById('filterDate').addEventListener('change', applyFilters);
     });
@@ -557,7 +563,8 @@
 
     // Filtrage des activités
     function applyFilters() {
-      // Empty field = no filter; 0 is a valid age (babies), so do not use "|| null"
+      // "" (Tous) = no filter. Each audience option carries a representative age
+      // (e.g. "Enfants" -> 6) tested against the event's [ageMin, ageMax] range.
       const ageRaw = document.getElementById('filterAge').value;
       const ageParsed = ageRaw === '' ? NaN : parseInt(ageRaw, 10);
       const hasAge = Number.isFinite(ageParsed);
