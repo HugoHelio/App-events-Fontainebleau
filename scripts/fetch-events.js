@@ -26,6 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const datatourisme = require('./datatourisme');
 
 // ───────────────────────────── Configuration ─────────────────────────────
 
@@ -58,6 +59,8 @@ const CONFIG = {
   // skipped day is retried the next morning instead of waiting three more.
   minRunIntervalHours: envInt('MIN_RUN_INTERVAL_HOURS', 60),
   forceRun: process.env.FORCE_RUN === '1',
+  // DATAtourisme, second source (open data). Set DATATOURISME=0 to collect from Gemini only.
+  datatourisme: process.env.DATATOURISME !== '0',
 };
 
 const CATEGORIES = ['Sport & Outdoor', 'Nature & Environnement', 'Culture & Ateliers'];
@@ -327,6 +330,9 @@ function validateEvent(raw, { today, maxDate }) {
       organizer: cleanText(raw.organizer, 120),
       description: cleanText(raw.description, 400),
       url,
+      // Provenance. Absent (undefined) on Gemini records, so serializeEvent omits the field and
+      // the existing data.json entries stay byte-identical.
+      source: raw.source === 'datatourisme' ? 'datatourisme' : undefined,
     },
   };
 }
@@ -705,7 +711,7 @@ async function verifyUrls(records, today) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'url', 'urlStatus', 'urlCheckedAt',
+  'organizer', 'description', 'url', 'urlStatus', 'urlCheckedAt', 'source',
 ];
 
 function serializeEvent(e) {
@@ -734,6 +740,15 @@ function renderSummary(stats, ctx) {
     L.push(`| ${s.name} | ${status} | ${s.raw ?? 0} | ${s.attempts ?? '–'} | ${s.searchQueries ?? '–'} | ${tokens} |`);
   }
   L.push('');
+  if (stats.dt) {
+    if (stats.dt.error) {
+      L.push(`- 📖 DATAtourisme: ❌ ${String(stats.dt.error).slice(0, 160)} (Gemini results kept)`);
+    } else {
+      L.push(`- 📖 DATAtourisme (CSV du ${stats.dt.updated}): ${stats.dt.inWindow} in window → ${stats.dt.short} short kept, ${stats.dt.recurring} recurring/markets skipped → **${stats.dt.records}** record(s), ${stats.dtDeduped} duplicate(s) of a Gemini event`);
+      const dtRej = Object.entries(stats.dtRejected);
+      if (dtRej.length) L.push(`  - rejected at validation: ${dtRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+    }
+  }
   L.push(`- New events added: **${stats.added}** · refreshed: **${stats.refreshed}** · past events pruned: **${stats.pruned}**`);
   L.push(`- Total published: **${stats.total}**`);
   L.push(`- Dead URLs dropped: **${stats.deadUrls}** · URLs checked this run: ${stats.urlsChecked} · unverified (kept): ${stats.unverified}`);
@@ -759,6 +774,7 @@ async function main() {
   const stats = {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
+    dt: null, dtRejected: {}, dtDeduped: 0,
   };
 
   const existingText = fs.existsSync(CONFIG.dataPath) ? fs.readFileSync(CONFIG.dataPath, 'utf8') : '';
@@ -803,7 +819,35 @@ async function main() {
       console.error(`   ❌ scan "${scan.name}" failed: ${String(err.message).slice(0, 300)}`);
     }
   }
-  if (okScans === 0) throw new Error('All Gemini scans failed — data.json left untouched');
+  // 1b. DATAtourisme — open data, second source ────────────────────────
+  // Recurring events and weekly markets are excluded (decision of September 20): they would
+  // saturate the map. Short events become one record per date, because an exact date is the
+  // useful information and a 13→20 December span would be a lie.
+  let dtRaw = [];
+  if (CONFIG.datatourisme) {
+    console.log('📖 DATAtourisme…');
+    try {
+      const loaded = await datatourisme.load({ today, windowEnd: maxDate });
+      dtRaw = datatourisme.toPipelineEvents(loaded.short, ctx);
+      stats.dt = {
+        updated: loaded.meta.lastModified,
+        inWindow: loaded.inWindow.length,
+        short: loaded.short.length,
+        recurring: loaded.recurring.length,
+        records: dtRaw.length,
+      };
+      console.log(`   → ${loaded.short.length} short event(s), ${loaded.recurring.length} recurring skipped, ${dtRaw.length} record(s)`);
+    } catch (err) {
+      stats.dt = { error: err.message };
+      console.error(`   ❌ DATAtourisme failed: ${String(err.message).slice(0, 300)}`);
+    }
+  }
+
+  // A source failing is survivable as long as one of them produced something: events are pruned
+  // by date only, never by absence, so a partial failure deletes nothing.
+  if (okScans === 0 && dtRaw.length === 0) {
+    throw new Error('Every source failed (Gemini scans and DATAtourisme) — data.json left untouched');
+  }
 
   // 2. Validate new records ─────────────────────────────────────────────
   const validNew = [];
@@ -813,7 +857,20 @@ async function main() {
     else bump(stats.rejected, v.reason);
   }
   console.log(`🧹 ${validNew.length}/${rawNew.length} new records valid`);
-  if (validNew.length === 0) throw new Error('Scans succeeded but returned no valid events — data.json left untouched');
+
+  // DATAtourisme records go through exactly the same validation — including the URL requirement,
+  // which drops the handful of entries the tourism offices publish without a link.
+  const validDt = [];
+  for (const raw of dtRaw) {
+    const v = validateEvent(raw, ctx);
+    if (v.ok) validDt.push(v);
+    else bump(stats.dtRejected, v.reason);
+  }
+  if (dtRaw.length) console.log(`🧹 ${validDt.length}/${dtRaw.length} DATAtourisme records valid`);
+
+  if (validNew.length === 0 && validDt.length === 0) {
+    throw new Error('Sources returned no valid event — data.json left untouched');
+  }
 
   // 3. Merge with existing data ─────────────────────────────────────────
   const records = new Map(); // key -> { event, modelCoords, isNew, refreshed, drop }
@@ -827,18 +884,29 @@ async function main() {
     const key = eventKey(v.event);
     if (!records.has(key)) records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: false });
   }
-  for (const v of validNew) {
+  const addRecord = (v, { fuzzy = false } = {}) => {
     const key = eventKey(v.event);
     const known = records.get(key);
     if (known) {
       mergeInto(known.event, v.event);
       if (!known.modelCoords && v.modelCoords) known.modelCoords = v.modelCoords;
       known.refreshed = true;
-    } else {
-      v.event.id = eventId(key);
-      records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: true });
+      return;
     }
-  }
+    // Two sources phrase the same event differently ("Concert de musique classique" vs "Concert
+    // classique à Nemours"), and the exact key would miss it. Only the second source pays the
+    // cost of this scan, and the incumbent record wins: it has already passed URL verification.
+    if (fuzzy) {
+      for (const rec of records.values()) {
+        if (datatourisme.isSameOccurrence(v.event, rec.event)) { stats.dtDeduped++; return; }
+      }
+    }
+    v.event.id = eventId(key);
+    records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: true });
+  };
+
+  for (const v of validNew) addRecord(v);
+  for (const v of validDt) addRecord(v, { fuzzy: true });
   const all = [...records.values()];
 
   // 4. Geocode (anything not yet resolved by BAN) ───────────────────────

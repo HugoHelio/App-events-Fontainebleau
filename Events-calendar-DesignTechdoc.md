@@ -3,7 +3,7 @@
 **Project:** Autonomous Local Event Aggregator (Fontainebleau Region)
 **Date:** September 20, 2026
 **Version:** 2.3 (governance decision, ~3-day cadence, DATAtourisme measured)
-**Status:** v2.2 deployed and confirmed in production (September 20: `data.json` is `{ schemaVersion, generatedAt, events }`, 125 events) · **v2.3 code written and tested locally, pending deployment** · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
+**Status:** v2.3 deployed and confirmed in production (September 20: live site serves the new frontend, `data.json` carries `windowEnd`, 161 events) · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
 
 ---
 
@@ -70,6 +70,7 @@ The system automatically scans official agendas, local association publications 
 | File | Location in repo |
 |---|---|
 | Extraction pipeline | `scripts/fetch-events.js` |
+| DATAtourisme — shared library (download, parse, match) | `scripts/datatourisme.js` |
 | DATAtourisme coverage probe (observation only) | `scripts/datatourisme-coverage.js` |
 | Workflow | `.github/workflows/daily-check.yml` |
 | Frontend | `index.html` |
@@ -204,11 +205,58 @@ The real dataset was downloaded and analysed rather than read about. Three findi
 
 **Reading:** the two sources are almost disjoint. DATAtourisme does not validate Gemini, it **complements** it. The overlap is measured on normalised titles, so it is a lower bound.
 
+**Merged into the pipeline the same day (§3.I)**, ahead of the "two or three weekly reports" gate originally planned for item 45 — the project lead reviewed these measured numbers directly and decided they were enough to act on, rather than wait on repeated runs of the same probe.
+
 What is missing is worth having: Championnat de France de CCE, Jump Bost, the Fontainebleau theatre season, the Nemours prehistory museum programme, concerts, Journées du Patrimoine. Among them **6 `SportsEvent` + 3 `SportsCompetition`** — which attacks item 38 (sports coverage) without touching the grounded prompt.
 
 **The trap:** 23 `Market` + 23 `SaleEvent`, essentially weekly markets published as `2026-01-01<->2026-12-31`. Imported as-is they would saturate the map. The probe classifies them separately (by ontology class or by duration > 14 days) and any future merge must keep them apart or exclude them.
 
 ---
+
+### I. DATAtourisme merged into the pipeline (item 45, September 20, 2026)
+
+`scripts/fetch-events.js` now imports `scripts/datatourisme.js` (the module the coverage probe
+also uses, so both describe the exact same data) as a **second, independent source**, run
+alongside the four Gemini scans on every real scan.
+
+**What is imported:** only the short, dated events (§3.H) — weekly markets and other
+`Market`/`SaleEvent` records, or anything spanning more than `DT_SHORT_EVENT_MAX_DAYS` (14) days,
+are excluded before the data ever reaches validation. **One record per date**: an event with
+several separate dates (e.g. a play performed on five evenings) becomes one `data.json` entry per
+date, because the exact date is the useful information and a first-to-last span would misstate
+which days it actually runs (decision of September 20).
+
+**Deduplication:** Gemini records are merged first, on the existing exact key
+(`title|startDate|city`). DATAtourisme records then go through the same key, and additionally
+through `isSameOccurrence()` — a fuzzy check (normalised title match + overlapping date + city not
+contradicting) against every already-known record, so a DATAtourisme entry phrased differently
+from its Gemini counterpart ("Concert de musique classique" vs. a fuller Gemini title) is still
+caught. This fuzzy check is intentionally **per-occurrence**: it must not treat the second showing
+of a multi-date event as a duplicate of the first (an earlier version of this logic did exactly
+that and silently dropped every extra date — caught before deploy by comparing the merged output
+against the source events one by one).
+
+**Validation is identical for both sources:** a DATAtourisme record with no URL (the CSV's
+`Contacts_du_POI` field does not always carry one — about 3 of 29 in the September 20 sample) is
+rejected by `validateEvent()` exactly like an incomplete Gemini record. `organizer` is left empty
+for DATAtourisme events — the CSV only names the data publisher (a tourism agency), not the actual
+event organizer — so the card shows the source domain alone rather than a misleading attribution.
+
+**Provenance:** DATAtourisme events carry `source: "datatourisme"`; Gemini events have no `source`
+field (kept `undefined` so every pre-existing `data.json` entry stays byte-identical). The
+frontend does not currently read this field — it exists for debugging and for a future UI
+distinction (item 46).
+
+**Failure tolerance:** either source can fail without stopping the run — the guard now reads *"all
+Gemini scans failed **and** DATAtourisme failed"* rather than *"all Gemini scans failed"*. Verified
+by forcing every Gemini scan to fail (invalid key) and confirming DATAtourisme alone still produced
+a valid, published update.
+
+**Known pre-existing issue surfaced by this test, not caused by it:** two Gemini-only duplicates
+already existed in `data.json` before today — the same event stored twice under two different
+commune spellings (a "Salon du Champignon" listed for both Fontainebleau and Avon, a "Grand Noël de
+Vaux-le-Vicomte" listed for both Maincy and Vaux-le-Vicomte). The exact key includes the city, so
+two spellings of the same place create two records. Tracked as item 47.
 
 ## 4. Data Schema (`data.json`, v2.1)
 
@@ -241,13 +289,14 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
       "description": "String",
       "url": "String (http/https URL)",
       "urlStatus": "ok | unverified",
-      "urlCheckedAt": "YYYY-MM-DD"
+      "urlCheckedAt": "YYYY-MM-DD",
+      "source": "datatourisme (absent for Gemini events)"
     }
   ]
 }
 ```
 
-★ `geoSource`, `geoApprox`, `urlStatus`, `urlCheckedAt`.
+★ `geoSource`, `geoApprox`, `urlStatus`, `urlCheckedAt`. ★★ `source` (v2.3, DATAtourisme events only).
 
 **Rules**
 
@@ -269,7 +318,9 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Situation | Behaviour |
 |---|---|
 | One scan fails (after 3 attempts) | Other scans continue; run succeeds; failure shown in the report. Events are pruned **only by date**, never by absence, so a partial failure deletes nothing |
+| DATAtourisme unreachable or its schema changed | Gemini results are still published; the failure is shown in the report (`stats.dt.error`); `data.json` is not blocked on it |
 | All scans fail, or no valid event returned | Run **fails** (exit 1); `data.json` untouched; GitHub notifies |
+| Every source fails (all 4 Gemini scans **and** DATAtourisme) | Run **fails** (exit 1); `data.json` untouched |
 | `data.json` corrupted / not an array | Run fails; file never overwritten |
 | Output truncated at token limit | Complete objects are salvaged; flagged in the report |
 | Record invalid (date, category, URL, location, weekday…) | Dropped, counted by reason (`invalid_start_date`, `invalid_url`, `dead_url`, `weekday_mismatch`, …) |
@@ -289,7 +340,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - **Local dry run** (writes nothing): `GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js`
 - **Force a scan despite the cadence:** `GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js` (a manual *Run workflow* does this automatically)
 - **DATAtourisme coverage probe:** Actions → *Couverture DATAtourisme (observation)* → *Run workflow*, or locally `node scripts/datatourisme-coverage.js`. It downloads ~9 MB, writes only `reports/`, and never touches `data.json`. Use `DT_CSV_PATH=…` to run against a local copy.
-- **Environment variables (pipeline):** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `MIN_RUN_INTERVAL_HOURS` (60), `FORCE_RUN`, `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`.
+- **Environment variables (pipeline):** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `MIN_RUN_INTERVAL_HOURS` (60), `FORCE_RUN`, `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`, `DATATOURISME` (set `0` to collect from Gemini only), `DT_SHORT_EVENT_MAX_DAYS` (14), `DT_MAX_PERIODS` (12, caps dates per event), `DT_CSV_PATH` (local CSV, skips the download).
 - **Environment variables (coverage probe):** `WINDOW_MONTHS` (3), `DT_SHORT_EVENT_MAX_DAYS` (14), `DT_MAX_EXAMPLES` (20), `DT_REPORT_DIR` (`reports`), `DT_CSV_PATH`, `DATA_PATH`.
 - **Cadence:** the workflow triggers daily but the script only scans when `data.json` is older than `MIN_RUN_INTERVAL_HOURS`. A skipped day exits 0, calls nothing and writes nothing; the job summary says so. A failed or skipped day is retried the next morning rather than three days later.
 - **Feedback links (frontend):** in `index.html`, fill the `FEEDBACK` block. `formUrl` = a pre-filled form link where `{id}`, `{title}`, `{url}` mark the values to inject (for Google Forms: *⋮ → Get pre-filled link*, type `{id}`, `{title}`, `{url}` in the three pre-filled fields, *Get link*, paste it as `formUrl`; Google writes the braces as `%7B…%7D` and both forms are handled). Suggested form fields: event ID, title and link (short-answer fields, pre-filled by the link), type of problem (date / place / price / dead link / cancelled / other), details, optional contact. `email` = simplest option, but the address is visible in the page source. Leave both empty to hide the links.
@@ -322,6 +373,10 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-20 | **DATAtourisme added as a second source**, starting in observation mode | Measured: ~27 short events absent from `data.json`, including sports competitions. Sources are almost disjoint, so it complements rather than replaces (§3.H) |
 | 2026-09-20 | The coverage probe uses the **regional** file `datatourisme-reg-idf.csv` (9 MB), not the national events file (64 MB) | Same local coverage, seven times lighter |
 | 2026-09-20 | Weekly markets (`Market` / `SaleEvent`, or duration > 14 days) are classified apart | Imported as-is they would saturate the map and the list |
+| 2026-09-20 | **DATAtourisme merged into the pipeline as a second source**, ahead of the "two or three weekly reports" gate | The project lead reviewed the measured coverage (§3.H) directly and judged it sufficient, rather than wait on repeated identical probe runs |
+| 2026-09-20 | A multi-date DATAtourisme event becomes one `data.json` record per date, not one record spanning first-to-last | An exact date is the useful information; a span would misstate which days the event actually runs |
+| 2026-09-20 | Fuzzy dedup against Gemini uses a stricter per-occurrence rule (`isSameOccurrence`) than the coverage report's per-event rule (`isSameEvent`) | The report's rule (same city OR overlapping dates) would treat two dates of the same play as duplicates of each other once each date is its own record, and silently delete one |
+| 2026-09-20 | DATAtourisme events ship with `organizer` left empty | The CSV names the data publisher, not the real organizer; a wrong attribution is worse than none |
 
 ---
 
@@ -358,8 +413,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 
 - [x] Deploy v2 and v2.1 (`scripts/fetch-events.js`, `.github/workflows/daily-check.yml`, `index.html`) — confirmed working September 20
 - [x] Deploy v2.2: 3-month window (`windowEnd`), age labels, Google Form placeholder fix — confirmed September 20 (`data.json` now `{ schemaVersion, generatedAt, events }`, 125 events)
-- [ ] Deploy v2.3 (`scripts/fetch-events.js`, `index.html`, `daily-check.yml`, + `scripts/datatourisme-coverage.js` and `datatourisme-coverage.yml`): ~3-day cadence, 5-day stale warning, DATAtourisme probe
-- [ ] Check that a `windowEnd` field appears in `data.json` after the first v2.3 run (it is absent from the v2.1-era file, so the frontend's 3-month filter is currently inert)
+- [x] Deploy v2.3 (`scripts/fetch-events.js`, `index.html`, `daily-check.yml`, + `scripts/datatourisme-coverage.js` and `datatourisme-coverage.yml`): ~3-day cadence, 5-day stale warning, DATAtourisme probe — pushed September 20, live site verified (`formatAge` and `STALE_AFTER_DAYS` served, old `0-99 ans` label gone)
+- [x] Check that a `windowEnd` field appears in `data.json` — present since the run of September 20, 14:00 UTC (`"windowEnd": "2026-12-20"`, 161 events). The frontend's 3-month filter is now active
 - [ ] Run the DATAtourisme workflow once on GitHub and confirm the real CSV parses there as it does locally
 - [x] Create the Google Form and paste its pre-filled link in `FEEDBACK.formUrl` — done September 20. Link verified locally against a real event (accents, apostrophes and French quotes round-trip correctly; the footer link leaves the three fields empty). **Remaining: publish the form with "anyone with the link" as the responder setting**, otherwise visitors hit a permission error
 - [ ] Read the token and search-query numbers of a real run summary and compare with the §3.G estimate
@@ -389,7 +444,9 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 42. **Cadence of ~3 days:** 60 h guard inside the script, daily trigger, `FORCE_RUN=1` on manual dispatch; stale warning moved to 5 days
 - [x] 43. **Google Cloud isolation:** dedicated project, billing account and API key — verified September 20. Remaining: restrict the key to the Gemini API, and set a budget alert
 - [x] 44. **DATAtourisme coverage probe:** `scripts/datatourisme-coverage.js` + weekly workflow, observation mode, written against the **verified** schema and tested on the real file (§3.H)
-- [ ] 45. **Decision threshold on integrating DATAtourisme:** merge the source into the pipeline (deduplicating against Gemini with the shared `isSameEvent` rule, markets excluded or kept apart), then decide whether grounding can be narrowed. Prerequisite: two or three weekly coverage reports
+- [x] 45. **DATAtourisme merged into the pipeline** (§3.I) — decided and shipped September 20, ahead of the original "two or three weekly reports" prerequisite (explicit call by the project lead on the measured numbers). Verified: Gemini forced to fail entirely, DATAtourisme alone still produced a valid publish; multi-date events keep every date; one real cross-source duplicate caught
+- [ ] 46. Frontend: visually distinguish `source: "datatourisme"` cards, or a filter toggle — currently invisible to visitors
+- [ ] 47. Two pre-existing Gemini-only duplicates found while testing item 45 (same event under two commune spellings — Fontainebleau/Avon, Maincy/Vaux-le-Vicomte). Not new, but now documented; consider a commune-alias table or a looser same-day duplicate check
 - [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
 - [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)

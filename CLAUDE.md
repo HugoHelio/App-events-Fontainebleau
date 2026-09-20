@@ -14,7 +14,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 
 | Fichier | Rôle |
 |---|---|
-| `scripts/fetch-events.js` | Pipeline de collecte : scans Gemini → validation → fusion → géocodage → vérification des URL |
+| `scripts/fetch-events.js` | Pipeline de collecte : scans Gemini + DATAtourisme → validation → fusion → géocodage → vérification des URL |
+| `scripts/datatourisme.js` | Bibliothèque partagée DATAtourisme (téléchargement, parsing, correspondance) — utilisée par le pipeline **et** par la sonde |
 | `scripts/datatourisme-coverage.js` | Sonde de couverture DATAtourisme, **mode observation** : ne modifie jamais `data.json` |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
@@ -48,8 +49,11 @@ GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js
 # Forcer un scan malgré la cadence de 60 h
 GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js
 
-# Sonde DATAtourisme (télécharge ~9 Mo ; DT_CSV_PATH évite le téléchargement)
+# Sonde DATAtourisme, mode observation (télécharge ~9 Mo ; DT_CSV_PATH évite le téléchargement)
 node scripts/datatourisme-coverage.js
+
+# Le pipeline principal importe aussi DATAtourisme automatiquement ; DATATOURISME=0 pour le désactiver
+GEMINI_API_KEY=… DATATOURISME=0 DRY_RUN=1 node scripts/fetch-events.js
 ```
 
 ## Cadence et coûts
