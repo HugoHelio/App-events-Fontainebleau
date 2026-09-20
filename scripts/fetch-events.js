@@ -8,7 +8,8 @@
  *   3. Merge with data.json on a stable key (title + startDate + city), prune past events
  *   4. Geocode with the French BAN API (cached), bounding-box guard, flagged fallbacks
  *   5. Verify event URLs (dead links dropped, bot-blocked sites kept as "unverified")
- *   6. Write data.json (+ geocode-cache.json) only if something changed, and print a run report
+ *   6. Write data.json ({ schemaVersion, generatedAt, events }) + geocode-cache.json only if something changed,
+ *      and print a run report
  *
  * Zero dependencies. Requires Node >= 18 (global fetch); the workflow uses Node 22.
  *
@@ -16,6 +17,7 @@
  *   GEMINI_API_KEY (required)        GEMINI_MODEL (default gemini-3.6-flash)
  *   GEMINI_MAX_OUTPUT_TOKENS (16384) MAX_EVENTS_PER_SCAN (20)
  *   DATA_PATH (data.json)            GEOCODE_CACHE_PATH (geocode-cache.json)
+ *   WEEKDAY_CHECK=0 -> disable the weekday-vs-date consistency check
  *   DRY_RUN=1  -> run everything but write nothing
  */
 'use strict';
@@ -49,6 +51,7 @@ const CONFIG = {
   dataPath: path.resolve(process.env.DATA_PATH || 'data.json'),
   cachePath: path.resolve(process.env.GEOCODE_CACHE_PATH || 'geocode-cache.json'),
   dryRun: process.env.DRY_RUN === '1',
+  weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
 };
 
 const CATEGORIES = ['Sport & Outdoor', 'Nature & Environnement', 'Culture & Ateliers'];
@@ -226,6 +229,34 @@ function normalizeCategory(v) {
   return CATEGORY_ALIASES.get(norm(v)) || null;
 }
 
+const WEEKDAYS = new Map([
+  ['dimanche', 0], ['lundi', 1], ['mardi', 2], ['mercredi', 3], ['jeudi', 4], ['vendredi', 5], ['samedi', 6],
+  ['sunday', 0], ['monday', 1], ['tuesday', 2], ['wednesday', 3], ['thursday', 4], ['friday', 5], ['saturday', 6],
+]);
+
+/** Set of weekday numbers (0 = Sunday) named in a free-text schedule, French or English. */
+function weekdaysMentioned(text) {
+  const found = new Set();
+  for (const word of norm(text).split(' ')) if (WEEKDAYS.has(word)) found.add(WEEKDAYS.get(word));
+  return found;
+}
+
+/**
+ * True when the schedule names weekday(s) but none of them falls inside a short event (< 7 days).
+ * Example: startDate is a Saturday but the schedule says "Dimanche 9h" → one of the two is wrong.
+ */
+function weekdayContradictsDates(schedule, startDate, endDate) {
+  const mentioned = weekdaysMentioned(schedule);
+  if (mentioned.size === 0) return false;
+  const start = Date.parse(`${startDate}T00:00:00Z`);
+  const spanDays = Math.round((Date.parse(`${endDate}T00:00:00Z`) - start) / 86_400_000) + 1;
+  if (spanDays >= 7) return false; // every weekday occurs: nothing to contradict
+  for (let i = 0; i < spanDays; i++) {
+    if (mentioned.has(new Date(start + i * 86_400_000).getUTCDay())) return false;
+  }
+  return true;
+}
+
 /**
  * Validate and normalise one raw record (from Gemini or from the existing data.json).
  * Returns { ok: true, event, modelCoords } or { ok: false, reason }.
@@ -257,6 +288,9 @@ function validateEvent(raw, { today, maxDate }) {
   const locationName = cleanText(raw.locationName, 160);
   if (!city && !locationName) return fail('missing_location');
 
+  const schedule = cleanText(raw.schedule, 120);
+  if (CONFIG.weekdayCheck && weekdayContradictsDates(schedule, startDate, endDate)) return fail('weekday_mismatch');
+
   let ageMin = clampInt(toNum(raw.ageMin), 0, 99, 0);
   let ageMax = clampInt(toNum(raw.ageMax), 0, 99, 99);
   if (ageMin > ageMax) { ageMin = 0; ageMax = 99; }
@@ -282,7 +316,7 @@ function validateEvent(raw, { today, maxDate }) {
       dateType: 'event',
       startDate,
       endDate,
-      schedule: cleanText(raw.schedule, 120),
+      schedule,
       price: cleanText(raw.price, 80),
       organizer: cleanText(raw.organizer, 120),
       description: cleanText(raw.description, 400),
@@ -372,6 +406,7 @@ RÈGLES DE QUALITÉ (très importantes) :
 - "url" : adresse directe de la page de l'événement (ou de l'organisateur), jamais une page de résultats de recherche ni un lien de redirection.
 - Dates au format YYYY-MM-DD ; pour un événement d'un seul jour, endDate = startDate.
 - Aucun marqueur de citation ([1], [2]…) ni HTML dans les valeurs.
+- "schedule" : uniquement les horaires (ex: "10h–18h"), sans répéter la date ; s'ils diffèrent selon les jours, précise-les jour par jour avec la date (ex: "sam. 12 : 10h–18h ; dim. 13 : 10h–17h"). Ne mets JAMAIS un jour de la semaine sans la date correspondante.
 - "description" : une phrase, 200 caractères maximum.
 - "lat" / "lng" : coordonnées GPS du lieu si tu les connais avec certitude, sinon null.
 - "ageMin" / "ageMax" : âges conseillés (0 et 99 si tout public).
@@ -392,7 +427,7 @@ Renvoie UNIQUEMENT un tableau JSON strict, sans texte avant ou après, au format
     "dateType": "event",
     "startDate": "YYYY-MM-DD",
     "endDate": "YYYY-MM-DD",
-    "schedule": "Horaires précis (ex: Samedi de 10h à 18h)",
+    "schedule": "Horaires uniquement (ex: 10h–18h)",
     "price": "Gratuit ou tarif exact",
     "organizer": "Nom de l'association, mairie ou lieu",
     "description": "Courte description synthétique",
@@ -715,8 +750,12 @@ async function main() {
   };
 
   const existingText = fs.existsSync(CONFIG.dataPath) ? fs.readFileSync(CONFIG.dataPath, 'utf8') : '';
-  const existingRaw = existingText.trim() ? JSON.parse(existingText) : [];
-  if (!Array.isArray(existingRaw)) throw new Error('data.json must contain a JSON array');
+  const existingPayload = existingText.trim() ? JSON.parse(existingText) : [];
+  // v1 files are a bare array; v2.1 files are { schemaVersion, generatedAt, events }
+  const legacyShape = Array.isArray(existingPayload);
+  const existingRaw = legacyShape ? existingPayload : existingPayload?.events;
+  if (!Array.isArray(existingRaw)) throw new Error('data.json must be a JSON array or an object with an "events" array');
+  const existingGeneratedAt = legacyShape ? null : existingPayload.generatedAt;
   const cache = loadCache();
 
   // 1. Scans ────────────────────────────────────────────────────────────
@@ -795,7 +834,16 @@ async function main() {
   kept.sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
   stats.total = kept.length;
 
-  const output = JSON.stringify(kept.map(serializeEvent), null, 2) + '\n';
+  const newEvents = kept.map(serializeEvent);
+  const eventsChanged = JSON.stringify(newEvents) !== JSON.stringify(existingRaw);
+  // generatedAt = time of the last run that changed something, refreshed once per Paris day even if nothing
+  // changed (so the site can say "checked today" while committing at most once a day).
+  const previousDate = existingGeneratedAt && !Number.isNaN(Date.parse(existingGeneratedAt))
+    ? parisToday(new Date(existingGeneratedAt))
+    : null;
+  const keepStamp = !legacyShape && !eventsChanged && previousDate === today;
+  const generatedAt = keepStamp ? existingGeneratedAt : new Date().toISOString();
+  const output = JSON.stringify({ schemaVersion: 2, generatedAt, events: newEvents }, null, 2) + '\n';
   const changed = output !== existingText;
   stats.written = changed && !CONFIG.dryRun;
 
@@ -822,5 +870,6 @@ if (require.main === module) {
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
+  weekdayContradictsDates,
   CONFIG,
 };

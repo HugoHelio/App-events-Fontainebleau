@@ -42,6 +42,21 @@
       margin-bottom: 0.5rem;
     }
 
+    .last-updated {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    .last-updated.stale {
+      background: #fefcbf;
+      color: #744210;
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 4px;
+      opacity: 1;
+    }
+
     /* Controls & Filters */
     .filters-container {
       max-width: 1200px;
@@ -201,6 +216,51 @@
       text-decoration: underline;
     }
 
+    .card .date-line {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .card .fine-print {
+      font-size: 0.75rem;
+      color: #718096;
+    }
+
+    .card .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .card .report-link {
+      color: #718096;
+      font-size: 0.75rem;
+      text-decoration: none;
+    }
+
+    .card .report-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .site-footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem 1rem;
+      font-size: 0.8rem;
+      color: #718096;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .site-footer a {
+      color: var(--secondary-color);
+    }
+
     /* Calendar Container */
     .fc-event { cursor: pointer; }
 
@@ -217,6 +277,7 @@
   <header>
     <h1>Activités & Événements - Autour de Fontainebleau</h1>
     <p>Trouvez des activités sportives, culturelles et nature pour adultes et enfants</p>
+    <p id="lastUpdated" class="last-updated"></p>
   </header>
 
   <!-- Filtres -->
@@ -263,6 +324,16 @@
     </div>
   </main>
 
+  <footer class="site-footer">
+    <p>
+      Les informations sont collectées automatiquement à partir de sources publiques (offices de tourisme, mairies,
+      associations, plateformes d'inscription…) et peuvent contenir des erreurs ou avoir changé.
+      <strong>Vérifiez toujours auprès de l'organisateur</strong> (horaires, tarifs, annulation) avant de vous déplacer.
+    </p>
+    <p id="feedbackFooter"></p>
+    <p>Fond de carte © contributeurs OpenStreetMap.</p>
+  </footer>
+
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
@@ -275,6 +346,18 @@
     let map = null;
     let markersGroup = null;
     let calendar = null;
+
+    // ── Configuration ──
+    const LOCALE = 'fr-FR';            // date formatting language (English version: see backlog)
+    const DISPLAY_TZ = 'Europe/Paris'; // "last updated" is always shown in local time
+
+    // "Signaler une erreur" links. Fill ONE of the two options; if both are empty the links are hidden.
+    //  - formUrl: a pre-filled form URL (e.g. Google Forms). {id}, {title} and {url} are replaced (URL-encoded).
+    //  - email:   opens the visitor's mail app with a pre-filled message (note: the address is visible in the page source).
+    const FEEDBACK = {
+      formUrl: '',
+      email: ''
+    };
 
     // ── Security helpers: event data comes from the web via an LLM, so treat it as untrusted ──
     function escapeHtml(value) {
@@ -308,6 +391,95 @@
       return new Date().toLocaleDateString('en-CA');
     }
 
+    // ── Dates: always shown explicitly (never just "Sunday") ──
+    function isoToDate(iso) {
+      const [y, m, d] = String(iso).split('-').map(Number);
+      return new Date(y, m - 1, d, 12); // local noon: immune to timezone / DST shifts
+    }
+
+    function fmtDate(date, options) {
+      return new Intl.DateTimeFormat(LOCALE, options).format(date);
+    }
+
+    function capitalize(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    // 1 day    → "Dimanche 11 octobre 2026"
+    // 2-3 days → "Du samedi 12 au dimanche 13 décembre 2026"
+    // longer   → "Du 1 octobre au 15 novembre 2026"
+    function formatDateRange(startIso, endIso) {
+      if (!startIso) return '';
+      const start = isoToDate(startIso);
+      const end = isoToDate(endIso || startIso);
+      const days = Math.round((end - start) / 86400000) + 1;
+      const sameYear = start.getFullYear() === end.getFullYear();
+      const sameMonth = sameYear && start.getMonth() === end.getMonth();
+
+      if (days <= 1) {
+        return capitalize(fmtDate(start, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
+      }
+      const endText = fmtDate(end, days <= 3
+        ? { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }
+        : { day: 'numeric', month: 'long', year: 'numeric' });
+      const startOpts = days <= 3 ? { weekday: 'long', day: 'numeric' } : { day: 'numeric' };
+      if (!sameMonth) startOpts.month = 'long';
+      if (!sameYear) startOpts.year = 'numeric';
+      return `Du ${fmtDate(start, startOpts)} au ${endText}`;
+    }
+
+    function formatDateLine(a) {
+      return formatDateRange(a.startDate, a.endDate) || (a.schedule || '');
+    }
+
+    // ── Last update banner ──
+    function renderLastUpdated(generatedAt) {
+      const el = document.getElementById('lastUpdated');
+      if (!el) return;
+      const d = generatedAt ? new Date(generatedAt) : null;
+      if (!d || Number.isNaN(d.getTime())) {
+        el.textContent = '';
+        el.classList.remove('stale');
+        return;
+      }
+      const label = new Intl.DateTimeFormat(LOCALE, { timeZone: DISPLAY_TZ, dateStyle: 'long', timeStyle: 'short' }).format(d);
+      const ageDays = (Date.now() - d.getTime()) / 86400000;
+      const stale = ageDays >= 3;
+      el.textContent = `Données mises à jour le ${label}` +
+        (stale ? ` — ⚠️ non actualisées depuis ${Math.floor(ageDays)} jours` : '');
+      el.classList.toggle('stale', stale);
+    }
+
+    // ── Feedback ("Signaler une erreur") ──
+    function feedbackHref(a) {
+      const ctx = a
+        ? { id: a.id || '', title: a.title || '', url: a.url || '' }
+        : { id: '', title: '', url: '' };
+      if (FEEDBACK.formUrl) {
+        return safeUrl(FEEDBACK.formUrl.replace(/\{(id|title|url)\}/g, (_, key) => encodeURIComponent(ctx[key])));
+      }
+      if (FEEDBACK.email) {
+        const subject = a ? `Erreur sur l'événement ${ctx.id}` : 'Retour sur l\'application événements';
+        const body = a
+          ? `Événement : ${ctx.title}\nIdentifiant : ${ctx.id}\nLien : ${ctx.url}\n\nCe qui est incorrect :\n`
+          : 'Votre message :\n';
+        return `mailto:${FEEDBACK.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+      return null;
+    }
+
+    function renderFeedbackFooter() {
+      const el = document.getElementById('feedbackFooter');
+      const href = feedbackHref(null);
+      if (!el || !href) return;
+      el.innerHTML = `Une erreur ou un événement manquant ? <a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">Écrivez-nous</a>.`;
+    }
+
+    function sourceHost(url) {
+      const href = safeUrl(url);
+      return href ? new URL(href).hostname.replace(/^www\./, '') : '';
+    }
+
     function isUpcoming(a) {
       if (a.dateType === 'recurring') return true;
       const end = a.endDate || a.startDate;
@@ -316,6 +488,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       initMap();
+      renderFeedbackFooter();
       fetchData();
 
       // Écouteurs sur les filtres
@@ -342,7 +515,10 @@
     if (!response.ok) {
       throw new Error(`Erreur HTTP : ${response.status}`);
     }
-    allActivities = await response.json();
+    const payload = await response.json();
+    // v2.1: { schemaVersion, generatedAt, events } — the legacy bare array is still accepted
+    allActivities = Array.isArray(payload) ? payload : (Array.isArray(payload.events) ? payload.events : []);
+    renderLastUpdated(Array.isArray(payload) ? null : payload.generatedAt);
     
     applyFilters();
   } catch (error) {
@@ -406,16 +582,27 @@
         const card = document.createElement('div');
         card.className = 'card';
         const approx = a.geoApprox ? ' <em title="Position estimée">(position approximative)</em>' : '';
+        const host = sourceHost(a.url);
+        const reportHref = feedbackHref(a);
+        const fine = [
+          a.organizer ? `Organisé par ${escapeHtml(a.organizer)}` : '',
+          host ? `Source : ${escapeHtml(host)}` : ''
+        ].filter(Boolean).join(' · ');
         card.innerHTML = `
           <span class="badge">${escapeHtml(a.category)}</span>
           <h3>${escapeHtml(a.title)}</h3>
+          <div class="date-line">🗓️ ${escapeHtml(formatDateLine(a))}</div>
           <div class="meta">
             📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
-            👶 ${escapeHtml(a.ageMin ?? 0)}-${escapeHtml(a.ageMax ?? 99)} ans | 💶 ${escapeHtml(a.price || 'Non précisé')}<br>
-            🗓️ ${escapeHtml(a.schedule || (a.startDate === a.endDate ? a.startDate : `${a.startDate} → ${a.endDate}`))}
+            ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}
+            👶 ${escapeHtml(a.ageMin ?? 0)}-${escapeHtml(a.ageMax ?? 99)} ans | 💶 ${escapeHtml(a.price || 'Non précisé')}
           </div>
           <p>${escapeHtml(a.description)}</p>
-          ${linkHtml(a.url, 'Voir détails & inscriptions →', 'link-btn')}
+          ${fine ? `<div class="fine-print">${fine} — vérifiez auprès de l'organisateur</div>` : ''}
+          <div class="card-actions">
+            ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">Signaler une erreur</a>` : '<span></span>'}
+            ${linkHtml(a.url, 'Voir détails & inscriptions →', 'link-btn')}
+          </div>
         `;
         container.appendChild(card);
       });
@@ -433,6 +620,7 @@
           const approxNote = a.geoApprox ? '<br><em>Position approximative</em>' : '';
           marker.bindPopup(`
             <strong>${escapeHtml(a.title)}</strong><br>
+            🗓️ ${escapeHtml(formatDateLine(a))}<br>
             ${escapeHtml(a.locationName)}${approxNote}<br>
             ${linkHtml(a.url, 'Lien')}
           `);
