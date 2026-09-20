@@ -2,8 +2,8 @@
 
 **Project:** Autonomous Local Event Aggregator (Fontainebleau Region)
 **Date:** September 20, 2026
-**Version:** 2.1 (beta-readiness release)
-**Status:** v2 deployed and working in production (confirmed September 20) · **v2.1 code prepared and tested offline, pending deployment**
+**Version:** 2.2 (3-month window, age labels, terms & cost review)
+**Status:** v2.1 deployed and working in production (confirmed September 20) · **v2.2 code prepared and tested offline, pending deployment** · ⚠️ **the terms review (§3.G) found that the current Google-Search-grounded approach does not fit Google's terms — see decision needed in §9**
 
 ---
 
@@ -11,7 +11,7 @@
 
 The goal of this project is to maintain an autonomous, low-cost event tracking application for the Fontainebleau area (≈15 km radius including Avon, Samois-sur-Seine, Barbizon, Moret-Loing-et-Orvanne, Nemours, Thomery, Bois-le-Roi, Bourron-Marlotte, Vaux-le-Vicomte and Blandy-les-Tours).
 
-The system automatically scans official agendas, local association publications and ticketing platforms, formats the extracted data into a standardized JSON structure, and updates the live web application **without manual intervention**. Events are shown on a **map** and on a **calendar** for the **next 4 months**, with a focus on **sports, cultural and family activities**.
+The system automatically scans official agendas, local association publications and ticketing platforms, formats the extracted data into a standardized JSON structure, and updates the live web application **without manual intervention**. Events are shown on a **map** and on a **calendar** for the **next 3 months** (reduced from 4 on September 20 to avoid saturating the map and the list), with a focus on **sports, cultural and family activities**.
 
 ### Success criteria & launch plan
 
@@ -88,13 +88,14 @@ The system automatically scans official agendas, local association publications 
 ### B. Cloud infrastructure & cost control (v1)
 
 **Problem:** the cloud provider originally required heavy monthly minimums for search-grounded LLM endpoints.
-**Solution:** a small prepaid balance on Google Cloud bypassed the barrier; operating cost is expected to stay very low.
-*v2 update:* search grounding may be billed per search query (check current Google pricing), so **every run now reports tokens and number of search queries per scan** (job summary) to confirm the cost assumption with real numbers.
+**Solution:** a small prepaid balance on Google Cloud bypassed the barrier.
+*v2 update:* every run reports tokens and number of search queries per scan (job summary).
+*v2.2 correction:* the original assumption that costs would stay at "fractions of a cent per month" is **not supported by Google's current price list** — see the estimate in §3.G. Real numbers from the run summaries must replace the estimate.
 
 ### C. Temporal filtering & GPS integrity (v1)
 
 **Problem:** past events and missing coordinates broke the list and map.
-**Solution (v1):** rolling 4-month window in the prompt, a guard clause on new events, fallback coordinates at Fontainebleau centre.
+**Solution (v1):** rolling window in the prompt (4 months in v1/v2; **3 months since v2.2**, `WINDOW_MONTHS`), a guard clause on new events, fallback coordinates at Fontainebleau centre.
 *v2 update:* see E (past events were never pruned from the stored file; fallback coordinates hid problems).
 
 ### D. Client-side caching (v1)
@@ -135,6 +136,38 @@ A code review of `fetch-events.js`, `daily-check.yml` and `index.html` produced 
 | 34 | Listings showed "Sunday" without a date | The date is now **always displayed from the structured `startDate`/`endDate`**, never from free text: *"Dimanche 11 octobre 2026"* (1 day), *"Du samedi 12 au dimanche 13 décembre 2026"* (2–3 days), *"Du 1 octobre au 15 novembre 2026"* (longer). Also shown in the map popup. `schedule` now only carries opening hours (prompt updated) |
 | 35 | Weekday in free text can contradict the date | New validation `weekday_mismatch`: a record is dropped when its schedule names a weekday that does not occur within the event's dates (short events only, French or English). Disable with `WEEKDAY_CHECK=0` |
 
+### G. Terms & cost review of Gemini Search grounding (item 13, September 20, 2026)
+
+**Sources read:** Gemini API Additional Terms of Service (effective March 23, 2026), *Grounding with Google Search* documentation and *Gemini API pricing* page (both consulted September 20, 2026), DATAtourisme documentation. This is a technical reading of the published terms, **not legal advice**; Google's interpretation may differ.
+
+#### 1. Terms — "Grounding with Google Search" use restrictions
+
+- The tool may only be used in an application **owned and operated by you** that displays the grounded results, **together with Google's Search Suggestions**, **to the end user who submitted the prompt**.
+- It is not allowed to **cache, frame, syndicate, resell, analyse or learn from** grounded results or suggestions. Using the tool to **extract or collect Links programmatically** (for example to find pages to crawl or scrape) is explicitly called a violation.
+- Copying or storing grounded results is only allowed in narrow cases (evaluating display, an end user's own chat history, legal compliance).
+- Grounded results may not be modified or mixed with other content.
+- Other points: only *Paid Services* may be used for users in the EEA, Switzerland or the UK (**satisfied**: billing is enabled); the API must not be used in services directed at people under 18 (the app targets parents and adults — keep in mind for any child-oriented feature).
+
+**Assessment:** our pipeline runs a scheduled job (no end-user prompt), extracts events **and their URLs** from grounded results, **stores them in `data.json`** and **publishes them to every visitor** without Search Suggestions. On a plain reading, this is outside the permitted use. Since the plan is to approach the City, clubs and INSEAD, this is a **launch blocker**, not a detail.
+
+#### 2. Cost — Gemini 3.6 Flash, paid tier
+
+- Tokens (output includes thinking): **$0.75 / $3.75 per million tokens (input / output) until December 31, 2026, then $1.50 / $7.50.**
+- Search grounding (Gemini 3.x): **5,000 free search requests per month, then $14 per 1,000**; billed **per individual search query the model executes**, not per prompt. Not available on the free tier.
+- `gemini-3.6-flash` is now labelled the *previous generation* Flash model (3.7 and 3.8 exist).
+- **Estimate (assumptions to be replaced by real numbers):** 4 scans × ≈15 000 output tokens ≈ 60 000 tokens/day ≈ 1.8 M/month ≈ **$7/month** today and ≈ **$14/month from January**; searches ≈ 4 scans × ≈8 queries × 30 ≈ 1 000/month (inside the free 5 000). A 5 € prepaid balance would therefore last on the order of a month, not years. Widening the search (more scans) multiplies this.
+
+#### 3. Options
+
+| Option | Fits the terms? | Notes |
+|---|---|---|
+| A. Keep grounding, comply | ❌ Not with a shared, stored, published dataset | Would require displaying results and suggestions only to the prompting user |
+| **B. Direct-source extraction (recommended)** | ✅ (per-source terms still to check) | A registry of source pages/feeds; our own fetcher (robots.txt, rate limits); the LLM only **extracts structured fields from the fetched text** — no search tool, so JSON mode works, far less thinking, no per-search fee, and every event is traceable to a source URL |
+| C. Open data first | ✅ | **DATAtourisme**: national open-data platform fed by tourism offices, free, open licence, updated daily, includes cultural and sports events; a daily CSV export (dates, city, coordinates, website, description) is published on data.gouv.fr. Also OpenAgenda and city/tourism-office iCal or RSS feeds (coverage of the Fontainebleau area to be verified) |
+| D. Interim | ⚠️ Risk accepted knowingly | Keep the current pipeline only for a small private beta, with no institutional outreach on grounded data |
+
+**Recommendation:** B + C (open data as the backbone, direct extraction for what open data misses — clubs, associations, châteaux), and treat "widen sports and associations coverage" as work on the **source registry**, not on the grounded prompt.
+
 ---
 
 ## 4. Data Schema (`data.json`, v2.1)
@@ -145,6 +178,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 {
   "schemaVersion": 2,
   "generatedAt": "2026-09-20T06:03:12.000Z",
+  "windowEnd": "2026-12-20",
   "events": [
     {
       "id": "EVT_3fa9c01b7e",
@@ -184,6 +218,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - **Categories:** exactly three values; common variants (e.g. "Nature & Patrimoine") are mapped, anything else is rejected.
 - **Re-sighting of a known event:** `endDate`, `schedule`, `price` are refreshed; text fields are kept (avoids daily LLM rewrites); a verified URL is kept stable.
 - **Dates and hours:** `startDate`/`endDate` are the source of truth for display; `schedule` holds hours only. A schedule naming a weekday that contradicts the dates causes the record to be rejected (`weekday_mismatch`).
+- **`windowEnd`:** last day of the collection window (today + `WINDOW_MONTHS`, Paris date). Events **starting after** it are kept in the file but **hidden by the frontend**, so nothing already discovered is lost when the window is reduced and events appear as the window slides forward.
 - **`generatedAt`:** ISO timestamp (UTC) of the last run that changed the data, refreshed once per Paris day even when nothing changed. Result: at most one bot commit per day when the data is stable.
 - **Output:** events sorted by `startDate`, then title; file rewritten only if content or the daily stamp changed.
 
@@ -211,8 +246,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - **Manual run:** Actions → *Check Quotidien & Mise à jour Data Gemini* → *Run workflow*.
 - **Run report:** open the run → *Summary* (scans, tokens, search queries, added/refreshed/pruned, dead URLs, geocoding sources, rejection reasons).
 - **Local dry run** (writes nothing): `GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js`
-- **Environment variables:** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`.
-- **Feedback links (frontend):** in `index.html`, fill the `FEEDBACK` block. `formUrl` = a pre-filled form link where `{id}`, `{title}`, `{url}` mark the values to inject (for Google Forms: *⋮ → Get pre-filled link*, fill the fields with those three placeholders, copy the link). `email` = simplest option, but the address is visible in the page source. Leave both empty to hide the links.
+- **Environment variables:** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`.
+- **Feedback links (frontend):** in `index.html`, fill the `FEEDBACK` block. `formUrl` = a pre-filled form link where `{id}`, `{title}`, `{url}` mark the values to inject (for Google Forms: *⋮ → Get pre-filled link*, type `{id}`, `{title}`, `{url}` in the three pre-filled fields, *Get link*, paste it as `formUrl`; Google writes the braces as `%7B…%7D` and both forms are handled). Suggested form fields: event ID, title and link (short-answer fields, pre-filled by the link), type of problem (date / place / price / dead link / cancelled / other), details, optional contact. `email` = simplest option, but the address is visible in the page source. Leave both empty to hide the links.
 - **Rollback:** `git revert` the bot commit (every data change is a commit).
 - **Pages:** assumed to deploy from the `main` branch ("Deploy from a branch" in Settings → Pages); after the first v2 run, confirm the site shows the new data.
 
@@ -230,7 +265,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-20 | `generatedAt` refreshed once per Paris day, not on every run | Honest freshness signal without a commit on each run |
 | 2026-09-20 | Display dates from structured fields only; `schedule` = hours only | Free-text weekdays ("Sunday") were ambiguous and can contradict the real date |
 | 2026-09-20 | Reject records whose schedule weekday contradicts the dates | Trust over recall: an inconsistent record is likely to have a wrong date |
-| 2026-09-20 | Feedback channel configured in one `FEEDBACK` block, links hidden until set | Channel (form vs e-mail) still to be chosen; no contact address hard-coded |
+| 2026-09-20 | Feedback channel configured in one `FEEDBACK` block, links hidden until set | No contact address hard-coded |
+| 2026-09-20 | **Feedback channel = Google Form** | Structured reports collected in a sheet; no e-mail address exposed in the page |
+| 2026-09-20 | Collection window reduced from 4 to 3 months; `windowEnd` added, events beyond it hidden not deleted | Avoids saturating map and list; keeps already-found events for when they enter the window |
+| 2026-09-20 | Age shown as "Tout public" / "Dès X ans" / "Jusqu'à Y ans" / "X–Y ans"; `ageMax ≥ 90` = no upper limit | "0-99 ans" was noise |
+| 2026-09-20 | Terms review: Google Search grounding does not fit a stored, published dataset (§3.G) → **plan to move to direct-source extraction**. Decision pending on the interim period | Compliance, cost and traceability |
 
 ---
 
@@ -239,12 +278,12 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Risk / question | Mitigation / next step |
 |---|---|
 | LLM hallucination (dates, prices, venues, URLs) | Validation + URL checks + geocoding flags now; "report an error" link and source attribution planned; manual review of the first weeks of data before outreach |
-| **Google grounding terms** for displaying grounded results to end users (search suggestions / attribution requirements) | Read the current Gemini API terms before public launch; adjust UI if required |
-| Cost with search grounding (may be billed per search query — check current pricing) | Run report logs tokens and queries per scan; check after the first week |
+| 🔴 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection | Move to direct-source extraction (items 37, 27); until then keep the audience limited and do no institutional outreach on grounded data |
+| 🟠 Cost: estimated ≈ $7/month now, ≈ $14/month from January 2027 for 4 scans (§3.G) — more scans, more cost | Verify with real run-summary numbers; budget alert on the Google Cloud project; direct extraction removes the per-search fee (items 37, 39) |
 | Legal / attribution: reuse of organizers' listings | Always link to the source; consider contacting large sources; prefer structured/open data where available |
 | Scheduled workflows can be auto-disabled after 60 days of repository inactivity | Verify how bot commits count; add a keep-alive if needed |
 | Model name / API changes (`gemini-3.6-flash`) | Model is configurable via `GEMINI_MODEL`; failure is loud (exit 1) |
-| Recall of a single source family (web search only) | Add structured sources (OpenAgenda, DATAtourisme, tourism-office feeds) |
+| Recall of a single source family (web search only) | Source registry + open data (items 37, 27, 38) |
 | Cancelled events stay listed until their end date | Future: stale/`lastSeen` detection, "report an error" feedback |
 
 ---
@@ -258,15 +297,16 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] Set up Google Cloud billing and Gemini API key configuration
 - [x] Configure GitHub Actions workflow for scheduled runs
 - [x] Robust regex JSON extraction for `gemini-3.6-flash`
-- [x] Rolling 4-month date window and GPS fallbacks
+- [x] Rolling date window (4 months, now 3) and GPS fallbacks
 - [x] Clean historical database placeholders
 - [x] `{ cache: 'no-cache' }` in the frontend `fetchData()`
 
 ### Step 0 — Deploy and verify
 
-- [x] Deploy v2 (`scripts/fetch-events.js`, `.github/workflows/daily-check.yml`, `index.html`) and run it — confirmed working September 20
-- [ ] Deploy v2.1 (`scripts/fetch-events.js`, `index.html`; the workflow is unchanged) — first run converts `data.json` to the new shape and re-validates stored events (`weekday_mismatch` may remove a few)
-- [ ] Choose the feedback channel and fill the `FEEDBACK` block in `index.html`
+- [x] Deploy v2 and v2.1 (`scripts/fetch-events.js`, `.github/workflows/daily-check.yml`, `index.html`) — confirmed working September 20
+- [ ] Deploy v2.2 (`scripts/fetch-events.js`, `index.html`; the workflow is unchanged): 3-month window (`windowEnd`), age labels, Google Form placeholder fix
+- [ ] Create the Google Form and paste its pre-filled link in the `FEEDBACK.formUrl` field of `index.html`
+- [ ] Read the token and search-query numbers of a real run summary and compare with the §3.G estimate
 - [ ] Monitor the first 3–5 automated runs: recurring execution, no duplicates, rejection reasons, dead-link count, geocoding sources, tokens/search queries per scan (cost check)
 - [ ] Confirm GitHub Pages redeploys after the bot's push
 
@@ -287,7 +327,12 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [~] 10. Timeout, retry and exponential backoff on API calls
 - [~] 11. API key moved from URL to header
 - [~] 12. Workflow hygiene: least privilege, concurrency, timeout, rebase-and-retry push, run report
-- [ ] 13. Cost & terms check: review Gemini grounding display terms; compare real per-run cost with the assumption (data available in the run report)
+- [x] 13. Cost & terms check — done September 20 (§3.G). **Result: the grounded approach does not fit the terms and costs more than assumed → items 37–40**
+- [ ] 40. **Decision (owner: project lead):** what to do during the transition — keep the daily grounded runs for a small private beta only, or pause them; no institutional outreach on grounded data
+- [ ] 37. **Compliance pivot:** replace Google Search grounding with direct-source extraction — source registry (`sources.json`: URL/feed, type, commune, category hint), own fetcher (robots.txt, rate limit, conditional requests), LLM extraction from fetched text without the search tool, source URL kept per event; then remove `google_search` from the pipeline
+- [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
+- [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
+- [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)
 
 ### P2 — Beta readiness & product/UX
 
@@ -295,7 +340,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 
 **Beta gates (needed to collect useful feedback):**
 - [~] 14. "Last updated" timestamp in the UI (`data.json` → `{ generatedAt, events }`, stale warning after 3 days)
-- [~] 15. "Report an error" link on each card and in the footer (**needs the feedback channel to be configured**)
+- [~] 15. "Report an error" link on each card and in the footer (channel = Google Form; **needs the form link in `FEEDBACK.formUrl`**)
 - [~] 16. Source attribution + "verify with the organizer" note (card + footer)
 - [~] 34. Always show the explicit date for single-day and short (2–3 day) events; `schedule` = hours only
 - [~] 35. Weekday-vs-date consistency check (`weekday_mismatch`)
@@ -311,12 +356,12 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [ ] 24. Manual overrides (`overrides.json` or `locked: true`) so hand corrections survive re-scans
 - [ ] 25. SRI hashes for CDN scripts (Leaflet, FullCalendar)
 - [ ] 26. Open Graph / sharing metadata; accessibility pass on tabs and filters
-- [ ] 33. **English version** of the app: UI strings dictionary + language toggle (keep `LOCALE` and date formatting parameterised, already in place), translated category labels (data enum stays French), English event descriptions (translate at extraction or on demand), `lang` attribute, English footer/disclaimer, shareable language URL parameter
-- [ ] 36. Friendlier age label ("Tout public", "dès 6 ans" instead of "0-99 ans")
+- [ ] 33. **English version** of the app: UI strings dictionary + language toggle (keep `LOCALE` and date formatting parameterised, already in place), translated category labels (data enum stays French), English event descriptions (translate at extraction or on demand; DATAtourisme advertises machine translation of its data, to be checked), `lang` attribute, English footer/disclaimer, shareable language URL parameter
+- [~] 36. Friendlier age label ("Tout public", "Dès 6 ans", "Jusqu'à 12 ans", "6–12 ans")
+- [~] 41. Collection window reduced to 3 months (`windowEnd`; events beyond it hidden, not deleted)
 
 ### P3 — Data sources & long-term robustness
 
-- [ ] 27. Structured sources as backbone (OpenAgenda, DATAtourisme, tourism-office feeds/iCal); Gemini as gap-filler
 - [ ] 28. Stale / cancelled event detection (`lastSeen`, feedback loop) — never by absence alone
 - [ ] 29. Failure alerting beyond default GitHub emails (e.g. auto-opened issue)
 - [ ] 30. Keep-alive for the scheduled workflow if the 60-day inactivity rule applies
@@ -325,5 +370,5 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 
 ### Milestones
 
-**Beta gate (friends & family):** Step 0 + P0 (1–6) + P1 (7–12) + items 14–17 and 34–35 (item 15 requires the feedback channel to be configured), with at least one week of clean automated runs.
-**Outreach gate (city, clubs, INSEAD…):** beta feedback processed · item 13 (terms & cost) · items 16, 24 · manual review of a few weeks of published data · at least one structured source (27).
+**Beta gate (friends & family):** Step 0 + P0 (1–6) + P1 (7–12) + items 14–17 and 34–35 (item 15 needs the Google Form link), with at least one week of clean automated runs. **Only as a small private test** while items 37/27 are under way (decision 40).
+**Outreach gate (city, clubs, INSEAD…):** **items 37 and 27 done (no grounded data in the published dataset)** · item 39 · beta feedback processed · items 16, 24 · manual review of a few weeks of published data.

@@ -346,13 +346,15 @@
     let map = null;
     let markersGroup = null;
     let calendar = null;
+    let windowEnd = null; // YYYY-MM-DD, provided by data.json: events starting later are hidden
 
     // ── Configuration ──
     const LOCALE = 'fr-FR';            // date formatting language (English version: see backlog)
     const DISPLAY_TZ = 'Europe/Paris'; // "last updated" is always shown in local time
 
     // "Signaler une erreur" links. Fill ONE of the two options; if both are empty the links are hidden.
-    //  - formUrl: a pre-filled form URL (e.g. Google Forms). {id}, {title} and {url} are replaced (URL-encoded).
+    //  - formUrl: a pre-filled Google Form link. Use the placeholders {id}, {title}, {url} as the pre-filled values;
+    //             Google turns the braces into %7B / %7D in the link, both spellings are recognised.
     //  - email:   opens the visitor's mail app with a pre-filled message (note: the address is visible in the page source).
     const FEEDBACK = {
       formUrl: '',
@@ -456,7 +458,7 @@
         ? { id: a.id || '', title: a.title || '', url: a.url || '' }
         : { id: '', title: '', url: '' };
       if (FEEDBACK.formUrl) {
-        return safeUrl(FEEDBACK.formUrl.replace(/\{(id|title|url)\}/g, (_, key) => encodeURIComponent(ctx[key])));
+        return safeUrl(FEEDBACK.formUrl.replace(/(?:\{|%7B)(id|title|url)(?:\}|%7D)/gi, (_, key) => encodeURIComponent(ctx[key.toLowerCase()])));
       }
       if (FEEDBACK.email) {
         const subject = a ? `Erreur sur l'événement ${ctx.id}` : 'Retour sur l\'application événements';
@@ -480,10 +482,32 @@
       return href ? new URL(href).hostname.replace(/^www\./, '') : '';
     }
 
+    // ── Age label: "Tout public", "Dès 6 ans", "Jusqu'à 12 ans", "6–12 ans" ──
+    const AGE_OPEN_END = 90; // ageMax >= 90 (data uses 99) means "no upper limit"
+
+    function formatAge(a) {
+      const min = Number(a.ageMin ?? 0);
+      const max = Number(a.ageMax ?? 99);
+      const hasMin = Number.isFinite(min) && min > 0;
+      const hasMax = Number.isFinite(max) && max < AGE_OPEN_END;
+      const years = (n) => `${n} ${n === 1 ? 'an' : 'ans'}`;
+      if (!hasMin && !hasMax) return '👥 Tout public';
+      if (hasMin && !hasMax) return `👶 Dès ${years(min)}`;
+      if (!hasMin && hasMax) return `👶 Jusqu'à ${years(max)}`;
+      if (min === max) return `👶 ${years(min)}`;
+      return `👶 ${min}–${years(max)}`;
+    }
+
     function isUpcoming(a) {
       if (a.dateType === 'recurring') return true;
       const end = a.endDate || a.startDate;
       return !end || end >= todayStr();
+    }
+
+    // Events starting after the display window (e.g. the 3 months announced by the pipeline) stay in the data
+    // but are hidden, so the map and the list are not saturated; they appear as the window slides forward.
+    function isInWindow(a) {
+      return !windowEnd || !a.startDate || a.startDate <= windowEnd;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -519,6 +543,7 @@
     // v2.1: { schemaVersion, generatedAt, events } — the legacy bare array is still accepted
     allActivities = Array.isArray(payload) ? payload : (Array.isArray(payload.events) ? payload.events : []);
     renderLastUpdated(Array.isArray(payload) ? null : payload.generatedAt);
+    windowEnd = (!Array.isArray(payload) && /^\d{4}-\d{2}-\d{2}$/.test(payload.windowEnd || '')) ? payload.windowEnd : null;
     
     applyFilters();
   } catch (error) {
@@ -538,7 +563,7 @@
 
       const filtered = allActivities.filter(a => {
         // Événements terminés : masqués même si data.json en contient encore
-        if (!isUpcoming(a)) return false;
+        if (!isUpcoming(a) || !isInWindow(a)) return false;
 
         // Filtre Âge
         const matchAge = !hasAge || (Number(a.ageMin ?? 0) <= ageParsed && Number(a.ageMax ?? 99) >= ageParsed);
@@ -595,7 +620,7 @@
           <div class="meta">
             📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
             ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}
-            👶 ${escapeHtml(a.ageMin ?? 0)}-${escapeHtml(a.ageMax ?? 99)} ans | 💶 ${escapeHtml(a.price || 'Non précisé')}
+            ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || 'Non précisé')}
           </div>
           <p>${escapeHtml(a.description)}</p>
           ${fine ? `<div class="fine-print">${fine} — vérifiez auprès de l'organisateur</div>` : ''}

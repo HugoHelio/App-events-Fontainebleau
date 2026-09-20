@@ -8,7 +8,7 @@
  *   3. Merge with data.json on a stable key (title + startDate + city), prune past events
  *   4. Geocode with the French BAN API (cached), bounding-box guard, flagged fallbacks
  *   5. Verify event URLs (dead links dropped, bot-blocked sites kept as "unverified")
- *   6. Write data.json ({ schemaVersion, generatedAt, events }) + geocode-cache.json only if something changed,
+ *   6. Write data.json ({ schemaVersion, generatedAt, windowEnd, events }) + geocode-cache.json only if something changed,
  *      and print a run report
  *
  * Zero dependencies. Requires Node >= 18 (global fetch); the workflow uses Node 22.
@@ -17,6 +17,7 @@
  *   GEMINI_API_KEY (required)        GEMINI_MODEL (default gemini-3.6-flash)
  *   GEMINI_MAX_OUTPUT_TOKENS (16384) MAX_EVENTS_PER_SCAN (20)
  *   DATA_PATH (data.json)            GEOCODE_CACHE_PATH (geocode-cache.json)
+ *   WINDOW_MONTHS (3)                How far ahead events are collected and displayed
  *   WEEKDAY_CHECK=0 -> disable the weekday-vs-date consistency check
  *   DRY_RUN=1  -> run everything but write nothing
  */
@@ -38,7 +39,7 @@ const CONFIG = {
   maxOutputTokens: envInt('GEMINI_MAX_OUTPUT_TOKENS', 16384),
   maxEventsPerScan: envInt('MAX_EVENTS_PER_SCAN', 20),
   temperature: 0.2,
-  windowMonths: 4,
+  windowMonths: envInt('WINDOW_MONTHS', 3),
   apiTimeoutMs: envInt('API_TIMEOUT_MS', 180_000),
   maxAttempts: 3,
   retryBaseDelayMs: envInt('RETRY_BASE_MS', 5_000),
@@ -843,7 +844,7 @@ async function main() {
     : null;
   const keepStamp = !legacyShape && !eventsChanged && previousDate === today;
   const generatedAt = keepStamp ? existingGeneratedAt : new Date().toISOString();
-  const output = JSON.stringify({ schemaVersion: 2, generatedAt, events: newEvents }, null, 2) + '\n';
+  const output = JSON.stringify({ schemaVersion: 2, generatedAt, windowEnd: maxDate, events: newEvents }, null, 2) + '\n';
   const changed = output !== existingText;
   stats.written = changed && !CONFIG.dryRun;
 
