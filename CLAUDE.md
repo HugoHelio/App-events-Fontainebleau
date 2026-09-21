@@ -25,6 +25,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
 | `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité |
+| `CNAME` | Domaine perso `fontainebleaulive.fr` servi par GitHub Pages |
+| `og-image.png` | **Placeholder généré** (1200×630) pour les aperçus de lien. À remplacer par le vrai visuel Fontainebleau Live |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
 | `.github/workflows/` | `daily-check.yml` (collecte) et `datatourisme-coverage.yml` (observation) |
 

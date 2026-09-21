@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activités & Événements - Autour de Fontainebleau</title>
+  <title>Fontainebleau Live — Activités & Événements autour de Fontainebleau</title>
   <link rel="icon" type="image/png" href="public/assets/img/brand/fav.png">
   <link rel="apple-touch-icon" href="public/assets/img/brand/LogoNew_Helioso_v1.png">
   <link rel="manifest" href="manifest.json">
@@ -13,18 +13,21 @@
   <!-- Link preview (item 26). The main way this site travels is a link pasted into a WhatsApp or
        school group: without these tags the message shows a bare URL and reads like spam.
        og:url and og:image MUST be absolute — a scraper has no page context to resolve a relative
-       path. UPDATE THESE TWO LINES when the custom domain goes live (item 57). -->
+       path, and it does not run JavaScript either. -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Activités &amp; Événements autour de Fontainebleau">
-  <meta property="og:title" content="Activités &amp; Événements - Autour de Fontainebleau">
+  <meta property="og:site_name" content="Fontainebleau Live">
+  <meta property="og:title" content="Fontainebleau Live">
   <meta property="og:description" content="Sport, culture et nature à 15 km autour de Fontainebleau. Carte, calendrier, mis à jour automatiquement.">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:locale:alternate" content="en_GB">
-  <meta property="og:url" content="https://hugohelio.github.io/App-events-Fontainebleau/">
-  <meta property="og:image" content="https://hugohelio.github.io/App-events-Fontainebleau/public/assets/img/brand/LogoNew_Helioso_v1.png">
-  <!-- "summary", not "summary_large_image": the only picture available is a square logo, and a
-       wide card would crop it badly. Switch when a real 1200x630 image exists. -->
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://fontainebleaulive.fr/">
+  <!-- PLACEHOLDER (item 61): generated from the site palette, no logo yet. Replace og-image.png
+       with the real 1200x630 artwork once the Fontainebleau Live branding exists. -->
+  <meta property="og:image" content="https://fontainebleaulive.fr/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://fontainebleaulive.fr/">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -43,9 +46,11 @@
 
       /* Category colours: the full tone for the card's left border and the map marker,
          a light tint + dark ink for the badge. All badge pairs are above 7:1. */
-      --cat-sport: #b4532a;    --cat-sport-bg: #f7e8e0;   --cat-sport-fg: #7c3a1d;
-      --cat-nature: #3d6b4a;   --cat-nature-bg: #e3efe6;  --cat-nature-fg: #2c5238;
-      --cat-culture: #6b4a75;  --cat-culture-bg: #efe7f2; --cat-culture-fg: #553a5e;
+      /* Hues ~100° apart (186° / 90° / 291°) so the three stay separable at 18 px on a map,
+         including for the common forms of colour blindness. Every badge pair is above 6.6:1. */
+      --cat-sport: #0f8f9e;    --cat-sport-bg: #e0f2f4;   --cat-sport-fg: #0a5661;
+      --cat-nature: #5f8f2f;   --cat-nature-bg: #ecf3e0;  --cat-nature-fg: #3d5d1d;
+      --cat-culture: #9247a0;  --cat-culture-bg: #f4e9f6; --cat-culture-fg: #5e2a68;
       --cat-other: #6b6257;    --cat-other-bg: #eeeae3;   --cat-other-fg: #4a443c;
     }
 
@@ -62,12 +67,57 @@
       line-height: 1.5;
     }
 
+    /* Previous header, if the new one is not to your taste:
+         header { position: relative; background-color: var(--primary-color); color: white;
+                  padding: 1.5rem 1rem; text-align: center; }
+       and in the markup, an <h1> with the plain title instead of the .wordmark block. */
     header {
       position: relative;
-      background-color: var(--primary-color);
+      overflow: hidden;
+      /* Depth rather than a flat block: light falls from the top left, as it would in a clearing. */
+      background: linear-gradient(152deg, #3a5c4c 0%, var(--primary-color) 48%, #1e3329 100%);
       color: white;
-      padding: 1.5rem 1rem;
-      text-align: center;
+      padding: 1.6rem 1rem 3.2rem 1rem;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-right: 6rem; /* room for the language switch */
+    }
+
+    /* The treeline sits in the page colour, so the content below looks cut into the banner. */
+    .treeline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 34px;
+      display: block;
+      fill: var(--bg-color);
+    }
+
+    .wordmark {
+      font-size: clamp(1.9rem, 6vw, 2.9rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 0.35rem;
+    }
+
+    .wordmark .wm-place { color: #ffffff; }
+
+    .wordmark .wm-live {
+      color: #e2a86b; /* lighter than the link ochre: this sits on a dark ground */
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    header .tagline {
+      font-size: 0.95rem;
+      max-width: 46ch;
+      opacity: 0.92;
     }
 
     /* One small segmented control, not two separate buttons. */
@@ -118,10 +168,7 @@
       header { padding-top: 3rem; }
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
+
 
     .last-updated {
       margin-top: 0.5rem;
@@ -231,6 +278,12 @@
       }
     }
 
+    .map-wrap {
+      position: relative;
+      height: 100%;
+      min-height: 400px;
+    }
+
     #map {
       width: 100%;
       height: 100%;
@@ -238,6 +291,26 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    /* Above Leaflet's own panes (z-index 400) and its controls (1000). */
+    .reset-view {
+      position: absolute;
+      z-index: 1001;
+      top: 10px;
+      right: 10px;
+      font: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 0.7rem;
+      cursor: pointer;
+      color: var(--primary-color);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .reset-view:hover { background: #ffffff; }
 
     .cards-list {
       overflow-y: auto;
@@ -289,8 +362,8 @@
     /* Map markers: a coloured dot instead of Leaflet's default pin image. Same colour key as
        the cards, and one less asset to download. */
     .marker-dot {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       border: 2px solid #fff;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
@@ -301,8 +374,12 @@
     .marker-dot.cat-nature  { background: var(--cat-nature); }
     .marker-dot.cat-culture { background: var(--cat-culture); }
 
-    /* An approximate position is drawn hollow: the dot says "somewhere around here". */
-    .marker-dot.approx { opacity: 0.55; border-style: dashed; }
+    /* Deliberately NO separate treatment for an approximate position.
+       Measured on the live data: 136 of 171 events (80%) only have a city-centre or
+       model-supplied coordinate. Fading four markers out of five does not inform anyone, it
+       just washes the map out — which is exactly what it did. The caveat belongs on the card
+       and in the popup, where there is room to say what it means. The real fix is better
+       geocoding coverage (roadmap item 62), not a weaker dot. */
 
     .card .meta {
       font-size: 0.85rem;
@@ -431,9 +508,15 @@
       <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false" title="English">
         <svg class="flag" viewBox="0 0 60 40" aria-hidden="true"><path d="M0,0h60v40H0z" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#c8102e" stroke-width="4"/><path d="M30,0v40M0,20h60" stroke="#fff" stroke-width="13"/><path d="M30,0v40M0,20h60" stroke="#c8102e" stroke-width="8"/></svg>EN</button>
     </div>
-    <h1 data-i18n="title">Activités & Événements - Autour de Fontainebleau</h1>
-    <p data-i18n="tagline">Trouvez des activités sportives, culturelles et nature pour adultes et enfants</p>
-    <p id="lastUpdated" class="last-updated"></p>
+    <div class="header-inner">
+      <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
+      <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
+      <p class="tagline" data-i18n="tagline">Sport, culture et nature à 15 km autour de Fontainebleau, pour adultes et enfants</p>
+      <p id="lastUpdated" class="last-updated"></p>
+    </div>
+    <svg class="treeline" viewBox="0 0 1200 44" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,44 L22,27 L44,7 L66,31 L91,31 L115,16 L140,34 L155,27 L170,6 L185,31 L211,29 L237,10 L263,32 L278,30 L293,13 L308,33 L329,28 L349,8 L370,31 L395,31 L419,16 L444,34 L470,32 L496,17 L522,35 L538,35 L553,25 L569,37 L593,33 L616,20 L640,36 L665,31 L689,15 L714,34 L740,33 L765,20 L791,36 L813,35 L834,24 L856,37 L871,33 L885,20 L900,36 L927,32 L954,18 L981,35 L1000,29 L1018,10 L1037,32 L1051,32 L1064,18 L1078,35 L1104,28 L1130,9 L1156,32 L1183,35 L1200,25 L1200,37 L1200,44 Z"/>
+    </svg>
   </header>
 
   <!-- Filtres -->
@@ -483,7 +566,10 @@
     <!-- Vue Carte & Liste -->
     <div id="mapView" class="view-panel active">
       <div class="map-layout">
-        <div id="map"></div>
+        <div class="map-wrap">
+          <div id="map"></div>
+          <button type="button" id="resetView" class="reset-view" data-i18n="resetView" title="Échap">Tout afficher</button>
+        </div>
         <div id="cardsList" class="cards-list"></div>
       </div>
     </div>
@@ -525,6 +611,9 @@
     let calendar = null;
     let windowEnd = null; // YYYY-MM-DD, provided by data.json: events starting later are hidden
 
+    // Where the map starts, and where "show everything" falls back to when nothing is displayed.
+    const DEFAULT_VIEW = { center: [48.408, 2.698], zoom: 11 };
+
     // ── Configuration ──
     const DISPLAY_TZ = 'Europe/Paris'; // "last updated" is always shown in local time
 
@@ -537,8 +626,9 @@
 
     const STRINGS = {
       fr: {
-        title: 'Activités & Événements - Autour de Fontainebleau',
-        tagline: 'Trouvez des activités sportives, culturelles et nature pour adultes et enfants',
+        docTitle: 'Fontainebleau Live — Activités & Événements autour de Fontainebleau',
+        tagline: 'Sport, culture et nature à 15 km autour de Fontainebleau, pour adultes et enfants',
+
         audienceLabel: 'Public cible :',
         audienceAll: 'Tous',
         audienceKids: 'Enfants',
@@ -586,10 +676,12 @@
         mailBodyEvent: (c) => `Événement : ${c.title}\nIdentifiant : ${c.id}\nLien : ${c.url}\n\nCe qui est incorrect :\n`,
         mailBodyGeneral: 'Votre message :\n',
         installHint: 'Sur mobile : « Ajouter à l\u2019écran d\u2019accueil » pour retrouver le site comme une application, même hors connexion.',
+        resetView: 'Tout afficher',
       },
       en: {
-        title: 'Activities & Events - Around Fontainebleau',
-        tagline: 'Find sport, culture and nature activities for adults and children',
+        docTitle: 'Fontainebleau Live — Activities & Events around Fontainebleau',
+        tagline: 'Sport, culture and nature within 15 km of Fontainebleau, for adults and children',
+
         audienceLabel: 'Audience:',
         audienceAll: 'Everyone',
         audienceKids: 'Children',
@@ -637,6 +729,7 @@
         mailBodyEvent: (c) => `Event: ${c.title}\nId: ${c.id}\nLink: ${c.url}\n\nWhat is wrong:\n`,
         mailBodyGeneral: 'Your message:\n',
         installHint: 'On mobile: "Add to Home Screen" to keep the site like an app, and to open it offline.',
+        resetView: 'Show all',
       },
     };
 
@@ -683,7 +776,7 @@
     // Fill ANALYTICS.code with the subdomain you chose at goatcounter.com ("bleau" for
     // bleau.goatcounter.com). Empty = nothing is loaded at all, not even the script.
     const ANALYTICS = {
-      code: '',
+      code: 'fontainebleaulive',
     };
 
     function loadAnalytics() {
@@ -877,7 +970,7 @@
 
     function applyLanguage() {
       document.documentElement.lang = lang;
-      document.title = t('title');
+      document.title = t('docTitle');
 
       // Static chrome. The strings come from STRINGS above, never from data.json, so they are
       // written as text, not HTML.
@@ -946,6 +1039,22 @@
       marker.openPopup();
     }
 
+    /**
+     * The way back out of a selection (item 19 follow-up). Without this, picking one event left
+     * the map zoomed on it with no obvious exit — the project lead ended up resetting a filter,
+     * which is not what a filter is for.
+     */
+    function clearSelection() {
+      highlightCard(null);
+      if (!map || !markersGroup) return;
+      map.closePopup();
+      try {
+        const bounds = markersGroup.getBounds();
+        if (bounds && bounds.isValid()) { map.fitBounds(bounds, { padding: [28, 28] }); return; }
+      } catch (e) { /* nothing on the map yet */ }
+      map.setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
+    }
+
     /** Marker clicked: bring the matching card into view in the list beside it. */
     function focusCard(id) {
       highlightCard(id);
@@ -997,16 +1106,25 @@
       document.querySelectorAll('.lang-btn').forEach((btn) => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
+      document.getElementById('resetView').addEventListener('click', clearSelection);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') clearSelection();
+      });
     });
 
     // Initialisation de la carte Leaflet
     function initMap() {
-      map = L.map('map').setView([48.408, 2.698], 11);
+      map = L.map('map').setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
 
-      markersGroup = L.layerGroup().addTo(map);
+      // featureGroup, not layerGroup: it can report the bounds of everything it holds, which is
+      // what "show everything" needs.
+      markersGroup = L.featureGroup().addTo(map);
+
+      // Clicking empty map is the other natural way to drop a selection.
+      map.on('click', clearSelection);
     }
 
     // Chargement des données JSON
@@ -1145,10 +1263,10 @@
           // markup rather than an image, so nothing extra is downloaded.
           const icon = L.divIcon({
             className: '',
-            html: `<div class="marker-dot ${categoryClass(a.category)}${a.geoApprox ? ' approx' : ''}"></div>`,
-            iconSize: [18, 18],
-            iconAnchor: [9, 9],
-            popupAnchor: [0, -9],
+            html: `<div class="marker-dot ${categoryClass(a.category)}"></div>`,
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+            popupAnchor: [0, -10],
           });
           const marker = L.marker([lat, lng], { icon });
           const approxNote = a.geoApprox ? `<br><em>${escapeHtml(t('approxPopup'))}</em>` : '';
