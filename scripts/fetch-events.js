@@ -28,6 +28,7 @@ const path = require('path');
 const crypto = require('crypto');
 const datatourisme = require('./datatourisme');
 const feedback = require('./feedback');
+const translate = require('./translate');
 
 // ───────────────────────────── Configuration ─────────────────────────────
 
@@ -350,6 +351,9 @@ function fromExisting(old, ctx) {
   if (['ban', 'city', 'model', 'default', 'manual'].includes(old.geoSource)) e.geoSource = old.geoSource;
   if (['ok', 'unverified'].includes(old.urlStatus)) e.urlStatus = old.urlStatus;
   if (isValidIsoDate(old.urlCheckedAt)) e.urlCheckedAt = old.urlCheckedAt;
+  // Carry the English description over; translateDescriptions() re-checks it against the French
+  // text and replaces it if that text has changed.
+  if (typeof old.descriptionEn === 'string' && old.descriptionEn.trim()) e.descriptionEn = cleanText(old.descriptionEn, 600);
 
   const oLat = toNum(old.lat);
   const oLng = toNum(old.lng);
@@ -845,7 +849,7 @@ function applyOverrides(records, overrides, stats) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'url', 'urlStatus', 'urlCheckedAt', 'source',
+  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'source',
 ];
 
 function serializeEvent(e) {
@@ -886,6 +890,11 @@ function renderSummary(stats, ctx) {
   if (stats.crossCityDeduped) {
     L.push(`- 🧹 Doublons fusionnés (même titre, même date, ville différente) : **${stats.crossCityDeduped}**`);
   }
+  if (stats.umbrellas && stats.umbrellas.length) {
+    L.push(`- ☂️ Titres emboîtés dans PLUSIEURS sur-titres (parapluie : jamais fusionné, à trancher à la main) : ${stats.umbrellas.length}`);
+    for (const u of stats.umbrellas.slice(0, 8)) L.push(`  - ${u}`);
+    if (stats.umbrellas.length > 8) L.push(`  - … et ${stats.umbrellas.length - 8} autre(s)`);
+  }
   if (stats.similarSameDay.length) {
     L.push(`- 🔎 Titres proches le même jour, à vérifier manuellement (non fusionnés) : ${stats.similarSameDay.length}`);
     for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s}`);
@@ -921,6 +930,16 @@ function renderSummary(stats, ctx) {
   }
   L.push(`- New events added: **${stats.added}** · refreshed: **${stats.refreshed}** · past events pruned: **${stats.pruned}**`);
   L.push(`- Total published: **${stats.total}**`);
+  const tr = stats.translation;
+  if (tr) {
+    if (tr.error) L.push(`- 🌍 Descriptions anglaises : ⚠️ ${String(tr.error).slice(0, 160)} (cartes en français)`);
+    else if (tr.skipped) L.push(`- 🌍 Descriptions anglaises : désactivées (${tr.skipped})`);
+    else {
+      L.push(`- 🌍 Descriptions anglaises : **${tr.fromCache}** en cache · **${tr.translated}** traduite(s) en ${tr.batches} lot(s) · ${tr.failed} échec(s)${tr.pruned ? ` · ${tr.pruned} entrée(s) de cache purgée(s)` : ''}`);
+      if (tr.translated) L.push(`  - tokens : ${tr.tokensIn} in / ${tr.tokensOut} out (appel non grounded, hors problème §3.G)`);
+      for (const e of tr.errors) L.push(`  - ⚠️ ${e}`);
+    }
+  }
   L.push(`- Dead URLs dropped: **${stats.deadUrls}** · URLs checked this run: ${stats.urlsChecked} · unverified (kept): ${stats.unverified}`);
   L.push(`- Geocoding sources: ${Object.entries(stats.geo).map(([k, v]) => `${k}=${v}`).join(', ') || 'n/a'}`);
   const rej = Object.entries(stats.rejected);
@@ -934,85 +953,167 @@ function renderSummary(stats, ctx) {
 /**
  * Finds and merges duplicate occurrences that eventKey() (title + startDate + city) misses,
  * and reports the rest for human review. Runs over the full merged set (existing + new, from
- * every source) every time — self-healing, not a one-off cleanup: the two live duplicates that
- * prompted this (§7, September 20) are fixed by the very first run after deployment, and any
- * future re-occurrence is fixed the same way, automatically.
+ * every source) every time — self-healing, not a one-off cleanup: a duplicate introduced by a
+ * future scan is removed by the run after it, automatically.
+ *
+ * Two rules, in order:
+ *
+ *   1. IDENTICAL word sets, same date. Ignores city, because the same venue is routinely filed
+ *      under two communes (Vaux-le-Vicomte sits in Maincy).
+ *   2. NESTED titles, same date AND same city. "La Thomeryonne" inside "Course à pied La
+ *      Thomeryonne" is one race named at two lengths.
+ *
+ * The discriminator between rule 2 and a genuinely distinct sub-event is how MANY longer titles
+ * a short title sits inside:
+ *
+ *   - exactly one  -> the same event, named short and long          -> merge
+ *   - two or more  -> an umbrella over distinct sub-events          -> never merge, report
+ *
+ * That is what keeps "Meeting d'Automne TDA" from swallowing its "Poneys" and "Équitation"
+ * variants: it sits inside both, so it is left alone. It is the same trap §3.J was written
+ * around, now caught by structure rather than by refusing to look at nesting at all.
  */
 function dedupeFuzzy(records, stats) {
-  // Fuzzy, same-day duplicate cleanup — mutates records in place.
-  // eventKey() (title + startDate + city) only merges duplicates that agree on BOTH the exact
-  // title string and the city. Two scans routinely report the same real event with the city
-  // spelled differently (a venue that straddles a border, or one scan naming the administrative
-  // commune and another the landmark's common name — Vaux-le-Vicomte château sits in the commune
-  // of Maincy) and/or the title reworded around the same content words ("Le Grand Noël de
-  // Vaux-le-Vicomte" vs "Le Grand Noël DU CHÂTEAU DE Vaux-le-Vicomte" vs "...AU CHÂTEAU DE...").
-  //
-  // The auto-merge rule here is: same date, and the titles reduce to the exact same SET of
-  // significant words once grammatical connectors (le/la/de/du/au…) are stripped. Word order and
-  // connectors are ignored; the words that actually carry meaning must match exactly — nothing
-  // is dropped for merely *overlapping*. Two unrelated real events sharing every content word in
-  // their name, on the same day, within a 15 km radius, would be an extraordinary coincidence, so
-  // this is treated as certain — the "same event, same date" rule the project lead asked for
-  // after spotting live duplicates (September 20).
-  //
-  // Titles that are merely *similar* (not an exact word-set match) are deliberately left alone
-  // here and only reported below (stats.similarSameDay): auto-merging on a looser match risks
-  // conflating two genuinely distinct sub-events (e.g. two disciplines of the same meeting,
-  // "Poneys" vs "Équitation") with a real duplicate, and a wrong merge silently deletes a real
-  // event — worse than leaving an extra card visible.
   const CONNECTOR_WORDS = new Set([
     'le', 'la', 'les', 'l', 'de', 'du', 'des', 'd', 'au', 'aux', 'a', 'en', 'et',
     'un', 'une', 'ou', 'par', 'pour', 'sur', 'avec', 'chateau',
   ]);
+
+  // Words that name an *instance* of a recurring event rather than the event itself. Two scans
+  // reporting "Trail du Mont Sarrazin", "… 2026" and "… (14e édition)" are reporting one race.
+  const isInstanceNoise = (w) => /^(?:19|20)\d{2}$/.test(w)      // a year
+    || /^\d+(?:er|ere|eme|emes|e|es)$/.test(w)                    // 1er, 5e, 14e, 2eme
+    || /^editions?$/.test(w);
+
   function significantWords(title) {
-    return norm(title).split(' ').filter((w) => w.length > 1 && !CONNECTOR_WORDS.has(w));
+    return norm(title).split(' ')
+      .filter((w) => w.length > 1 && !CONNECTOR_WORDS.has(w) && !isInstanceNoise(w));
   }
-  // Canonical signature: sorted, deduplicated significant words. Two titles collide here iff
-  // they carry the exact same set of meaningful words — order and connectors do not matter.
-  // Titles left with fewer than 2 significant words (e.g. a single generic noun) are excluded
-  // from auto-merge entirely (unique per-record suffix) rather than risk matching on one word.
-  function wordSetSignature(title, uniqueFallback) {
-    const words = [...new Set(significantWords(title))].sort();
-    return words.length >= 2 ? words.join(' ') : `__unique__${uniqueFallback}`;
+  const wordSet = (title) => new Set(significantWords(title));
+  const nestedIn = (a, b) => a.size < b.size && [...a].every((w) => b.has(w));
+
+  /** The tie-break that decides which record of a duplicate pair survives (its id is kept). */
+  function preferred(a, b) {
+    // An already-stored record beats a brand-new one: stable id, URL already verified.
+    if (a.isNew !== b.isNew) return a.isNew ? b : a;
+    const aOk = a.event.urlStatus === 'ok', bOk = b.event.urlStatus === 'ok';
+    if (aOk !== bOk) return aOk ? a : b;
+    // Among ties, the legacy ACT_ id is the older record, more likely to be linked to.
+    const aLegacy = /^ACT_/.test(a.event.id || ''), bLegacy = /^ACT_/.test(b.event.id || '');
+    if (aLegacy !== bLegacy) return aLegacy ? a : b;
+    return a; // insertion order, which is deterministic
+  }
+
+  /**
+   * Fold `loser` into `winner`. The winner keeps its id — overrides.json is keyed by id, and a
+   * correction must not be orphaned by a merge — but the two titles are judged on their own:
+   *
+   *   - one title carries MORE content words -> keep it. "Course à pied La Thomeryonne" tells a
+   *     visitor (especially one reading the English interface) what the event is; "La
+   *     Thomeryonne" alone only works if you already know.
+   *   - both say the same thing -> keep the SHORTER one, which is the one without the "(14e
+   *     édition)" or "2026" clutter that made them look like different events in the first place.
+   */
+  function absorb(winner, loser) {
+    const wWin = wordSet(winner.event.title), wLose = wordSet(loser.event.title);
+    const sameContent = wWin.size === wLose.size && [...wWin].every((w) => wLose.has(w));
+    const takeLoser = nestedIn(wWin, wLose)
+      || (sameContent && loser.event.title.length < winner.event.title.length);
+    const title = takeLoser ? loser.event.title : winner.event.title;
+    mergeInto(winner.event, loser.event);
+    winner.event.title = title;
+    if (!winner.modelCoords && loser.modelCoords) winner.modelCoords = loser.modelCoords;
+    winner.refreshed = true;
+    stats.crossCityDeduped++;
+  }
+
+  // ── Rule 1: identical word sets on the same date ────────────────────────────
+  // A signature of a single word is too weak to merge across cities ("Exposition" in Nemours is
+  // not "Exposition" in Barbizon), so a one-word title only groups with its own commune.
+  // A title left with no significant word at all never merges.
+  function signature(event, uniqueFallback) {
+    const words = [...wordSet(event.title)].sort();
+    if (!words.length) return `__unique__${uniqueFallback}`;
+    return words.length >= 2 ? words.join(' ') : `${words[0]}|${norm(event.city)}`;
   }
 
   const byWordSetDate = new Map();
   for (const [key, rec] of records) {
-    const k = rec.event.startDate + '|' + wordSetSignature(rec.event.title, key);
+    const k = rec.event.startDate + '|' + signature(rec.event, key);
     if (!byWordSetDate.has(k)) byWordSetDate.set(k, []);
-    byWordSetDate.get(k).push(key);
+    byWordSetDate.get(k).push(rec);
   }
-  for (const keys of byWordSetDate.values()) {
-    if (keys.length < 2) continue;
-    const group = keys.map((k) => records.get(k));
-    // Keep an already-stored record over a brand-new one (stable id, any URL already verified);
-    // among ties, keep whichever already has a verified URL; among further ties, prefer a
-    // legacy ACT_ id over a hash EVT_ id (the older, more likely to be linked-to record); the
-    // remaining tie-break is insertion order, which is deterministic (existing records are
-    // loaded in the order stored in data.json; new ones in scan order).
-    group.sort((a, b) => {
-      if (a.isNew !== b.isNew) return a.isNew ? 1 : -1;
-      const aOk = a.event.urlStatus === 'ok', bOk = b.event.urlStatus === 'ok';
-      if (aOk !== bOk) return aOk ? -1 : 1;
-      const aLegacy = /^ACT_/.test(a.event.id || ''), bLegacy = /^ACT_/.test(b.event.id || '');
-      if (aLegacy !== bLegacy) return aLegacy ? -1 : 1;
-      return 0;
-    });
-    const [winner, ...losers] = group;
-    for (const loser of losers) {
-      mergeInto(winner.event, loser.event);
-      if (!winner.modelCoords && loser.modelCoords) winner.modelCoords = loser.modelCoords;
-      winner.refreshed = true;
-      records.delete(eventKey(loser.event));
-      stats.crossCityDeduped++;
+  for (const group of byWordSetDate.values()) {
+    if (group.length < 2) continue;
+    const winner = group.reduce(preferred);
+    for (const rec of group) {
+      if (rec === winner) continue;
+      absorb(winner, rec);
+      records.delete(eventKey(rec.event));
     }
   }
 
-  // Same-day, similar-but-not-identical titles: visibility only, never auto-merged (see above).
-  // Jaccard similarity over the same significant-word sets used for the merge above; the merge
-  // already removed every pair at 1.0 (exact set match), so nothing here duplicates that report.
+  // ── Rule 2: nested titles, same date and same city ──────────────────────────
+  // Iterative, because absorbing a middle-length title can leave the shortest one with a single
+  // superset where it previously had two ("Concours de saut d'obstacles" sits inside both the
+  // "Militaire" and the "Équestre Militaire" variants, and those two are themselves nested).
+  stats.umbrellas = [];
+  const reported = new Set();
+  let live = [...records.values()].map((rec) => ({ rec, w: wordSet(rec.event.title), city: norm(rec.event.city) }))
+    .filter((n) => n.w.size);
+
+  for (let pass = 0; pass < live.length + 1; pass++) {
+    live.sort((a, b) => a.w.size - b.w.size);
+    let merged = false;
+    for (const node of live) {
+      const supersets = live.filter((o) => o !== node
+        && o.city === node.city
+        && o.rec.event.startDate === node.rec.event.startDate
+        && nestedIn(node.w, o.w));
+      if (!supersets.length) continue;
+      // Only the MINIMAL supersets count: a chain A ⊂ B ⊂ C is one nesting, not two.
+      const minimal = supersets.filter((b) => !supersets.some((c) => c !== b && nestedIn(c.w, b.w)));
+      if (minimal.length !== 1) {
+        const id = node.rec.event.id;
+        if (!reported.has(id)) {
+          reported.add(id);
+          stats.umbrellas.push(
+            `${node.rec.event.title} ⊂ ${minimal.map((m) => m.rec.event.title).join(' + ')} (${node.rec.event.startDate})`
+          );
+        }
+        continue;
+      }
+      const winner = preferred(node.rec, minimal[0].rec);
+      const loser = winner === node.rec ? minimal[0].rec : node.rec;
+      absorb(winner, loser);
+      records.delete(eventKey(loser.event));
+      live = live.filter((n) => n.rec !== loser);
+      // The winner may have adopted a longer title, so its word set has to be recomputed.
+      const w = live.find((n) => n.rec === winner);
+      if (w) w.w = wordSet(winner.event.title);
+      merged = true;
+      break;
+    }
+    if (!merged) break;
+  }
+
+  // absorb() rewrites titles, and the title is one third of eventKey(). Re-key so the map never
+  // holds a record under a key that no longer describes it.
+  const rekeyed = new Map();
+  for (const rec of records.values()) {
+    const key = eventKey(rec.event);
+    const known = rekeyed.get(key);
+    if (!known) { rekeyed.set(key, rec); continue; }
+    absorb(known, rec);
+  }
+  records.clear();
+  for (const [key, rec] of rekeyed) records.set(key, rec);
+
+  // ── Report only: same day, similar but neither identical nor nested ─────────
+  // Jaccard over the same word sets. Rules 1 and 2 have already removed everything they are
+  // willing to touch, so what is left here is genuinely ambiguous and belongs to a human.
   function jaccard(a, b) {
-    const wa = new Set(significantWords(a)), wb = new Set(significantWords(b));
+    const wa = wordSet(a), wb = wordSet(b);
     if (!wa.size || !wb.size) return 0;
     let inter = 0;
     for (const w of wa) if (wb.has(w)) inter++;
@@ -1053,8 +1154,9 @@ async function main() {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
+    umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
-    feedback: null,
+    feedback: null, translation: null,
   };
 
   const existingText = fs.existsSync(CONFIG.dataPath) ? fs.readFileSync(CONFIG.dataPath, 'utf8') : '';
@@ -1245,6 +1347,18 @@ async function main() {
   }
   kept.sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
   stats.total = kept.length;
+
+  // 6b. English descriptions ─────────────────────────────────────────────
+  // Last, on the set that is actually going to be published: nothing is paid for on a record
+  // that was about to be dropped as a duplicate, a dead link or a past event.
+  try {
+    stats.translation = await translate.translateDescriptions(kept, { dryRun: CONFIG.dryRun });
+    const t = stats.translation;
+    if (!t.skipped) console.log(`🌍 Traductions : ${t.fromCache} en cache, ${t.translated} nouvelle(s), ${t.failed} échec(s)`);
+  } catch (err) {
+    stats.translation = { error: err.message };
+    console.error(`   ⚠️ traduction: ${String(err.message).slice(0, 200)} (run poursuivi, cartes en français)`);
+  }
 
   const newEvents = kept.map(serializeEvent);
   const eventsChanged = JSON.stringify(newEvents) !== JSON.stringify(existingRaw);

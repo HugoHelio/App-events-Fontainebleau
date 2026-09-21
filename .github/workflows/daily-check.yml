@@ -53,6 +53,8 @@ jobs:
 
           git add data.json
           if [ -f geocode-cache.json ]; then git add geocode-cache.json; fi
+          # Sans ce cache, chaque run repartirait de zéro et retraduirait tout le catalogue.
+          if [ -f translate-cache.json ]; then git add translate-cache.json; fi
           if git diff --staged --quiet; then
             echo "Aucun changement dans les données — rien à publier."
             exit 0

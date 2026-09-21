@@ -531,7 +531,7 @@
         footerOsm: 'Base map © OpenStreetMap contributors.',
         brand: 'A Helioso project',
         disclaimer: ['This information is collected automatically from public sources (tourist offices, town halls, associations, booking platforms…) and may be wrong or out of date. ', 'Always check with the organiser', ' (times, prices, cancellation) before travelling.'],
-        dataLangNote: 'Event titles, descriptions and opening times are shown in French, as published by the organisers — so that you can search for them and recognise them on site.',
+        dataLangNote: 'Descriptions are machine-translated. Event titles, times and prices are kept in French, exactly as the organisers publish them, so you can recognise them on a poster or at the ticket desk.',
         updatedOn: (when) => `Data updated on ${when}`,
         staleFor: (days) => ` — ⚠️ not refreshed for ${days} days`,
         feedbackIntro: 'Spotted an error, or a missing event?',
@@ -783,6 +783,13 @@
       applyFilters(); // cards, popups and the calendar hold translated chrome too
     }
 
+    // The description is the only event field that is translated: a visitor must be able to match
+    // a title against a poster, but nobody searches by description. Falls back to French whenever
+    // the translation is missing — a failed run must never blank a card.
+    function describe(a) {
+      return (lang === 'en' && a.descriptionEn) ? a.descriptionEn : (a.description || '');
+    }
+
     function isUpcoming(a) {
       if (a.dateType === 'recurring') return true;
       const end = a.endDate || a.startDate;
@@ -932,7 +939,7 @@
             ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}
             ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || t('priceUnknown'))}
           </div>
-          <p>${escapeHtml(a.description)}</p>
+          <p>${escapeHtml(describe(a))}</p>
           ${fine ? `<div class="fine-print">${fine} — ${escapeHtml(t('checkWithOrganizer'))}</div>` : ''}
           <div class="card-actions">
             ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}

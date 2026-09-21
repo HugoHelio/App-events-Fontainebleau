@@ -258,7 +258,7 @@ commune spellings (a "Salon du Champignon" listed for both Fontainebleau and Avo
 Vaux-le-Vicomte" listed for both Maincy and Vaux-le-Vicomte). The exact key includes the city, so
 two spellings of the same place create two records. Tracked as item 47.
 
-### J. Fuzzy same-day duplicate cleanup (item 47, September 20, 2026)
+### J. Fuzzy same-day duplicate cleanup (item 47, September 20 — rule replaced September 21, see §3.P)
 
 **Trigger:** while reviewing the live site, the project lead spotted duplicate cards — the same
 event listed twice under two different commune spellings ("25ème Salon du Champignon" under both
@@ -357,6 +357,36 @@ writes the entry. Automating the ingestion is a separate step (see §9, item 48)
 not the same decision — the form is open to anyone with the link, so it is an unauthenticated
 write path into published data.
 
+### L. English interface (item 33, phase 1, September 21, 2026)
+
+A FR/EN switch in the header, `?lang=` in the URL, the choice remembered per visitor, and the
+browser's own language as the initial guess. 48 interface strings in a `STRINGS` dictionary.
+
+**Event data stays French, deliberately.** Titles, descriptions, schedules and prices are shown
+exactly as the organisers publish them. A translated title cannot be matched back to the real
+event: a visitor who reads "Mushroom Fair" finds nothing under that name on the organiser's
+site, on a poster or at the ticket desk. In English the footer says so in one line. This also
+keeps the recurring translation cost at zero — measured at ~8,700 tokens for a full pass over
+the 152 events, which is cheap but not free, and would have to be re-paid for every new event.
+
+**Category values are not translated either** — they are the data enum (`Sport & Outdoor`,
+`Nature & Environnement`, `Culture & Ateliers`) and the `<option value>` the filter matches on.
+Only the displayed label moves, through `categoryLabel()`. A test asserts that filtering still
+returns results after switching to English, because translating the values would silently break
+every filter.
+
+### M. Period filter (item 49, September 21, 2026)
+
+A fourth filter beside "date spécifique": today / next 2 weeks / next 3 months, defaulting to
+**2 weeks** — 53 of the 194 events currently in the window. The default answers "what is on
+soon" instead of dumping the full three months; "Dans les 3 mois" reproduces the old view for
+anyone who wants it. An event matches as soon as it *starts* on or
+before the last day of the period — one that started last week and runs until December is still
+shown under "Today", which is what a visitor means by "what can I do today".
+
+A specific date **overrides** the period rather than intersecting with it, so picking a date two
+months out while the period says "today" cannot return an empty list.
+
 ### N. Feedback ingestion — the loop closes (item 48, September 21, 2026)
 
 `scripts/feedback.js` reads the Google Form response sheet, published as CSV, on every run.
@@ -400,35 +430,79 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
-### L. English interface (item 33, phase 1, September 21, 2026)
+### O. English descriptions (item 52, September 21, 2026)
 
-A FR/EN switch in the header, `?lang=` in the URL, the choice remembered per visitor, and the
-browser's own language as the initial guess. 48 interface strings in a `STRINGS` dictionary.
+`scripts/translate.js` fills a `descriptionEn` field on every published event.
 
-**Event data stays French, deliberately.** Titles, descriptions, schedules and prices are shown
-exactly as the organisers publish them. A translated title cannot be matched back to the real
-event: a visitor who reads "Mushroom Fair" finds nothing under that name on the organiser's
-site, on a poster or at the ticket desk. In English the footer says so in one line. This also
-keeps the recurring translation cost at zero — measured at ~8,700 tokens for a full pass over
-the 152 events, which is cheap but not free, and would have to be re-paid for every new event.
+**Why the description and nothing else.** §3.L kept event data French so a visitor can match
+what the site says against a poster or a ticket desk. That argument is about *identifiers* —
+titles, venues, times, prices. It does not apply to the description, which nobody searches by
+and which only answers "is this for me?" — a question that is useless in a language you cannot
+read. So the description is translated and everything else stays put. The English footer says
+exactly that.
 
-**Category values are not translated either** — they are the data enum (`Sport & Outdoor`,
-`Nature & Environnement`, `Culture & Ateliers`) and the `<option value>` the filter matches on.
-Only the displayed label moves, through `categoryLabel()`. A test asserts that filtering still
-returns results after switching to English, because translating the values would silently break
-every filter.
+**Cost control is the design.** The cache is keyed by a hash of the French text, like
+`geocode-cache.json`. An unchanged description is never re-translated, so only genuinely new
+events cost anything — a few dozen per scan against 198 in the catalogue. A description
+corrected through `overrides.json` changes its hash and is re-translated automatically, so the
+two can never drift apart. The cache is pruned to what is published, and **committed by the
+workflow**: without that it would start empty on every CI run and re-translate everything.
 
-### M. Period filter (item 49, September 21, 2026)
+**No grounding.** The call carries no `google_search` tool. It is cheaper, it makes structured
+JSON output available (which collides with the search tool, §3.A — so no regex salvaging
+here), and it puts this call outside the terms problem of §3.G entirely. It is the only Gemini
+call in the project that is unambiguously fine.
 
-A fourth filter beside "date spécifique": today / next 2 weeks / next 3 months, defaulting to
-**2 weeks** — 53 of the 194 events currently in the window. The default answers "what is on
-soon" instead of dumping the full three months; "Dans les 3 mois" reproduces the old view for
-anyone who wants it. An event matches as soon as it *starts* on or
-before the last day of the period — one that started last week and runs until December is still
-shown under "Today", which is what a visitor means by "what can I do today".
+**Never fatal.** A failed batch, a malformed answer, a missing key or `TRANSLATE=0` all leave
+`descriptionEn` unset and the card falls back to French — what the site did before. It runs
+last, on the set actually being published, so nothing is paid for on a record about to be
+dropped as a duplicate, a dead link or a past event.
 
-A specific date **overrides** the period rather than intersecting with it, so picking a date two
-months out while the period says "today" cannot return an empty list.
+### P. Nested-title duplicates (item 51, September 21, 2026)
+
+Three cards for one race, reported live: *"Course à pied La Thomeryonne"*, *"La Thomeryonne"*,
+*"La Thomeryonne 2026"* — same day, same commune. Same story for the Trail du Mont Sarrazin
+(*""*, *"(14e édition)"*, *"2026"*). The §3.J rule missed all of it, for two reasons:
+
+1. It required **identical** word sets. `{thomeryonne}` and `{course, pied, thomeryonne}` are
+   not identical, so nothing happened.
+2. `2026` and `14e édition` counted as content words, so even the otherwise-identical titles
+   fell into different buckets.
+
+**Fix 1 — instance noise.** A year (`2026`), an ordinal (`1er`, `5e`, `14e`) and the word
+`édition` name an *instance* of a recurring event, not the event. They are stripped like
+connectors. That alone collapses the whole Sarrazin trio and two of the three Thomeryonne
+cards, because their word sets then match exactly.
+
+**Fix 2 — nesting.** A title whose words are a strict subset of another's, on the same date
+**and in the same city**, is the same event named short and long. The danger is obvious and is
+the one §3.J refused to go near: *"Meeting d'Automne TDA"* is also a subset of *"… Poneys"*
+and *"… Équitation"*, which are two real, distinct competitions.
+
+The discriminator is **how many** longer titles a short title sits inside, counting only the
+minimal ones (a chain A ⊂ B ⊂ C is one nesting, not two):
+
+| Supersets | Meaning | Action |
+|---|---|---|
+| exactly one | one event, named short and long | **merge** |
+| two or more | an umbrella over distinct sub-events | **never merge**, report |
+
+So *"La Thomeryonne"* (one superset) merges, and *"Meeting d'Automne TDA"* (four supersets)
+does not — it is listed in the run report for a human, who can now hide the extras through
+`overrides.json` (§3.K). The trap §3.J avoided by refusing to look at nesting at all is now
+caught by structure instead.
+
+**Which title survives.** The winning *record* is still chosen by the old tie-break (stored
+over new, verified URL, legacy id) so the id — and therefore any override keyed to it —
+survives. The *title* is judged separately: the one with more content words wins ("Course à
+pied La Thomeryonne" over "La Thomeryonne", which matters most to a visitor reading the
+English interface); between two titles saying the same thing, the shorter wins, which drops
+the "(14e édition)" clutter. Rewriting titles means rewriting `eventKey()`, so the record map
+is re-keyed at the end, exactly as in §3.K.
+
+**Measured on the live data: 198 → 171 events, 27 merges.** Every merge was reviewed one by
+one in simulation before the rule was written into the pipeline, and four umbrellas were
+confirmed to survive. A second pass over the result removes nothing further (idempotent).
 
 ---
 
@@ -461,6 +535,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
       "price": "String",
       "organizer": "String",
       "description": "String",
+      "descriptionEn": "String ★ — machine translation of description; absent when translation failed or is off",
       "url": "String (http/https URL)",
       "urlStatus": "ok | unverified",
       "urlCheckedAt": "YYYY-MM-DD",
@@ -565,6 +640,13 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | The sheet URL lives in a GitHub secret, not in the repository | Responses can carry the optional contact field and the repo is public |
 | 2026-09-21 | Period filter defaults to **"dans les 2 semaines"**, not 3 months | 194 → 53 events on the live data: the default should answer "what is on soon", not dump the whole window |
 | 2026-09-21 | Language switch uses inline SVG flags, not flag emoji | Windows has no flag glyphs: `🇫🇷 FR` renders as "FR FR" there, which is what made the first version look cluttered |
+| 2026-09-21 | **Nested titles merge when a short title sits inside exactly ONE longer one** (§3.P) | Three cards for one race, reported live. Counting supersets is what separates "same event, named short and long" from an umbrella over real sub-events — the trap §3.J avoided by not looking at nesting at all |
+| 2026-09-21 | Years and edition numbers are stripped as *instance noise*, like connectors | "Trail du Mont Sarrazin", "… 2026" and "… (14e édition)" are one race; treating those as content words is what split them |
+| 2026-09-21 | Nested merges require the same city; identical word sets do not | Nesting is the looser rule, so it gets the stricter guard. Identical sets must keep crossing communes (Vaux-le-Vicomte / Maincy) |
+| 2026-09-21 | A merge keeps the winner's **id** but may adopt the loser's **title** | The id anchors `overrides.json`; the title should be the most informative one, which matters most to a visitor reading the English interface |
+| 2026-09-21 | **The description is translated into English; nothing else is** (§3.O) | §3.L's argument is about identifiers a visitor must match against the real world. A description is not an identifier — it only answers "is this for me?" |
+| 2026-09-21 | Translation cache keyed by a hash of the French text, and committed by the workflow | Only new events cost tokens; a corrected description re-translates itself; an uncommitted cache would re-translate everything on every CI run |
+| 2026-09-21 | The translation call is **not grounded** | Cheaper, gives structured JSON output, and sits outside the §3.G terms problem — the only Gemini call in the project that clearly does |
 | 2026-09-21 | **English version = interface only. Event data stays French** (§3.L) | A translated title cannot be matched back to the real event on a poster, a ticket desk or the organiser's own site. Also keeps the recurring translation cost at zero |
 | 2026-09-21 | Category **values** stay French; only the displayed label is translated | The values are the data enum and the `<option value>` the filter matches on — translating them breaks every filter silently |
 | 2026-09-21 | Language resolution: `?lang=` → stored choice → browser language → French | Makes a link shareable in a chosen language, and an INSEAD visitor lands in English without hunting for a switch |
@@ -642,7 +724,10 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 48a. **`overrides.json` — the feedback loop gets an output** (§3.K). Hand-edited, applied on every run, keyed by event id so a correction survives a re-scan. Tested offline against the real `data.json`, including a full correct→publish→reload→re-sight round trip
 - [x] 48b. **Ingestion of form responses automated** (§3.N) — `scripts/feedback.js`, read every run from the published CSV. Auto-hide only, capped at 5, dead links re-verified instead of hidden, everything else queued in the run report. Tested against the live sheet and against flood / malformed / hostile rows. **Remaining: create the `FEEDBACK_CSV_URL` GitHub secret**, without it the feature stays off
 - [ ] 48c. Consider publishing only the columns the pipeline needs (drop "contact") so the sheet carries no personal data at all
-- [x] 47. **Fuzzy same-day duplicate cleanup** (§3.J) — `dedupeFuzzy()` in `scripts/fetch-events.js`, run every scan over the full merged set. Fixes the two duplicates found while testing item 45, and any future re-occurrence of the same pattern, automatically
+- [x] 47. **Fuzzy same-day duplicate cleanup** (§3.J) — `dedupeFuzzy()` in `scripts/fetch-events.js`, run every scan over the full merged set. **Rule replaced September 21 by item 51**, which subsumes it
+- [x] 51. **Nested-title duplicates** (§3.P) — instance noise stripped, nesting merged when there is exactly one minimal superset, umbrellas reported instead. Live data 198 → 171; every merge reviewed in simulation first; idempotent on a second pass
+- [x] 52. **English descriptions** (§3.O) — `scripts/translate.js`, non-grounded call, cache keyed by the French text, committed by the workflow. Titles, schedules and prices stay French by decision
+- [ ] 53. Four umbrellas remain visible as duplicates on the live data (Histoire en Scène, Concerts de la Reine, Championnat CCE, Meeting TDA). They are reported every run; hide the extras through `overrides.json` once their real structure is known
 - [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
 - [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)
