@@ -52,6 +52,7 @@ const CONFIG = {
   banMinScore: 0.6,
   dataPath: path.resolve(process.env.DATA_PATH || 'data.json'),
   cachePath: path.resolve(process.env.GEOCODE_CACHE_PATH || 'geocode-cache.json'),
+  overridesPath: path.resolve(process.env.OVERRIDES_PATH || 'overrides.json'),
   dryRun: process.env.DRY_RUN === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
   // Cadence. The workflow triggers every day, but a real (billed) scan only runs when the stored
@@ -345,7 +346,7 @@ function fromExisting(old, ctx) {
 
   if (typeof old.id === 'string' && old.id.trim()) e.id = old.id.trim();
 
-  if (['ban', 'city', 'model', 'default'].includes(old.geoSource)) e.geoSource = old.geoSource;
+  if (['ban', 'city', 'model', 'default', 'manual'].includes(old.geoSource)) e.geoSource = old.geoSource;
   if (['ok', 'unverified'].includes(old.urlStatus)) e.urlStatus = old.urlStatus;
   if (isValidIsoDate(old.urlCheckedAt)) e.urlCheckedAt = old.urlCheckedAt;
 
@@ -706,6 +707,138 @@ async function verifyUrls(records, today) {
   return todo.length;
 }
 
+// ───────────────────────────── Manual overrides ─────────────────────────────
+
+/**
+ * overrides.json is the ONLY hand-edited data file in the repo, and the one place a human
+ * correction survives a re-scan. Everything else under data.json is regenerated from scratch
+ * every run, so a fix applied there would be silently undone on the next scan — which is what
+ * made the "report an error" link (item 15) a loop with no output until now.
+ *
+ * Shape: { "<event id>": { hidden?, note?, fields?: { <field>: <value> } } }
+ *
+ * Keyed by event id, which is a hash of the ORIGINAL title|startDate|city (eventId/eventKey).
+ * That matters: a fresh scan re-reports the same event with the same wrong date, derives the
+ * same id, and therefore picks the same override up again. The correction is durable by
+ * construction, with no "locked" flag to maintain.
+ */
+const OVERRIDABLE_FIELDS = new Set([
+  'title', 'category', 'city', 'locationName', 'lat', 'lng', 'startDate', 'endDate',
+  'schedule', 'price', 'organizer', 'description', 'url', 'ageMin', 'ageMax',
+]);
+
+/** Coerce and sanity-check one override value; returns undefined when the value is unusable. */
+function coerceOverride(field, value) {
+  if (value === null || value === undefined) return undefined;
+  // title and city are two thirds of eventKey(): blanking either would produce a garbage key,
+  // so an empty result is a rejection there, while elsewhere it is a deliberate "remove this".
+  const required = field === 'title' || field === 'city';
+  const text = (max) => {
+    const out = cleanText(value, max);
+    return required && !out ? undefined : out;
+  };
+  switch (field) {
+    case 'startDate':
+    case 'endDate':
+      return isValidIsoDate(value) ? value : undefined;
+    case 'lat':
+    case 'lng':
+      return Number.isFinite(toNum(value)) ? round5(toNum(value)) : undefined;
+    case 'ageMin':
+    case 'ageMax': {
+      // clampInt() only falls back to its default on null, so filter NaN out here.
+      const n = toNum(value);
+      return Number.isFinite(n) ? clampInt(n, 0, 99, undefined) : undefined;
+    }
+    // normalizeCategory() and cleanUrl() both answer null on a value they refuse. Returning that
+    // null would BLANK the field instead of leaving it alone, so map it to undefined.
+    case 'category':
+      return normalizeCategory(value) ?? undefined;
+    case 'url':
+      return cleanUrl(value) ?? undefined;
+    case 'description':
+      return text(500);
+    default:
+      return text(200);
+  }
+}
+
+/**
+ * Applies overrides.json over the merged record set, then re-keys the map: an override may
+ * change the title, startDate or city, which are exactly the three parts of eventKey(). Without
+ * the re-key, the corrected record and the next scan's uncorrected sighting of the same event
+ * would sit under two different keys and both get published — the correction would create the
+ * duplicate it was meant to fix.
+ */
+function applyOverrides(records, overrides, stats) {
+  const seen = new Set();
+
+  for (const rec of records.values()) {
+    const rule = overrides[rec.event.id];
+    if (!rule || typeof rule !== 'object') continue;
+    seen.add(rec.event.id);
+
+    if (rule.hidden === true) {
+      rec.drop = 'override_hidden';
+      stats.overrides.hidden++;
+      continue;
+    }
+
+    const fields = rule.fields && typeof rule.fields === 'object' ? rule.fields : {};
+    const applied = [];
+    for (const [field, raw] of Object.entries(fields)) {
+      if (!OVERRIDABLE_FIELDS.has(field)) { stats.overrides.badFields.push(`${rec.event.id}.${field} (unknown field)`); continue; }
+      const value = coerceOverride(field, raw);
+      if (value === undefined) { stats.overrides.badFields.push(`${rec.event.id}.${field} (invalid value)`); continue; }
+      if (rec.event[field] === value) continue;
+      rec.event[field] = value;
+      applied.push(field);
+    }
+    if (!applied.length) continue;
+
+    // Hand-set coordinates are authoritative: skip geocoding entirely for this record.
+    if (applied.includes('lat') || applied.includes('lng')) {
+      rec.event.geoSource = 'manual';
+      rec.modelCoords = null;
+    } else if (applied.includes('city') || applied.includes('locationName')) {
+      // The address changed, so the cached position no longer describes it — re-geocode.
+      rec.event.geoSource = undefined;
+      rec.event.lat = null;
+      rec.event.lng = null;
+    }
+    // A hand-corrected URL has never been checked: let step 5 verify it like any other.
+    if (applied.includes('url')) {
+      delete rec.event.urlStatus;
+      delete rec.event.urlCheckedAt;
+    }
+
+    stats.overrides.applied++;
+    stats.overrides.details.push(`${rec.event.id}: ${applied.join(', ')}`);
+  }
+
+  // An override that matches nothing is reported, never silently ignored: it usually means the
+  // event has aged out of the window and the entry can be deleted from overrides.json.
+  for (const id of Object.keys(overrides)) {
+    if (id.startsWith('_')) continue; // "_comment" and friends
+    if (!seen.has(id)) stats.overrides.unmatched.push(id);
+  }
+
+  // Re-key: title / startDate / city may have moved (see the doc comment above).
+  const rekeyed = new Map();
+  for (const rec of records.values()) {
+    const key = eventKey(rec.event);
+    const known = rekeyed.get(key);
+    if (!known) { rekeyed.set(key, rec); continue; }
+    // A correction made two records identical: keep the one the override touched, fold in the other.
+    mergeInto(known.event, rec.event);
+    if (!known.modelCoords && rec.modelCoords) known.modelCoords = rec.modelCoords;
+    known.refreshed = true;
+    stats.overrides.merged++;
+  }
+  records.clear();
+  for (const [key, rec] of rekeyed) records.set(key, rec);
+}
+
 // ───────────────────────────── Output ─────────────────────────────
 
 const FIELD_ORDER = [
@@ -715,7 +848,7 @@ const FIELD_ORDER = [
 ];
 
 function serializeEvent(e) {
-  const out = { ...e, geoApprox: e.geoSource !== 'ban' };
+  const out = { ...e, geoApprox: !(e.geoSource === 'ban' || e.geoSource === 'manual') };
   const ordered = {};
   for (const f of FIELD_ORDER) if (out[f] !== undefined) ordered[f] = out[f];
   return ordered;
@@ -756,6 +889,14 @@ function renderSummary(stats, ctx) {
     L.push(`- 🔎 Titres proches le même jour, à vérifier manuellement (non fusionnés) : ${stats.similarSameDay.length}`);
     for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s}`);
     if (stats.similarSameDay.length > 8) L.push(`  - … et ${stats.similarSameDay.length - 8} autre(s)`);
+  }
+  const ov = stats.overrides;
+  if (ov && (ov.applied || ov.hidden || ov.unmatched.length || ov.badFields.length)) {
+    L.push(`- ✍️ Corrections manuelles (overrides.json) : **${ov.applied}** appliquée(s) · **${ov.hidden}** masquée(s)${ov.merged ? ` · ${ov.merged} fusionnée(s) après correction` : ''}`);
+    for (const d of ov.details.slice(0, 10)) L.push(`  - ${d}`);
+    if (ov.details.length > 10) L.push(`  - … et ${ov.details.length - 10} autre(s)`);
+    if (ov.unmatched.length) L.push(`  - ⚠️ sans événement correspondant (à supprimer du fichier) : ${ov.unmatched.slice(0, 10).join(', ')}${ov.unmatched.length > 10 ? '…' : ''}`);
+    if (ov.badFields.length) L.push(`  - ⚠️ ignorées, valeur ou champ invalide : ${ov.badFields.slice(0, 10).join(', ')}${ov.badFields.length > 10 ? '…' : ''}`);
   }
   L.push(`- New events added: **${stats.added}** · refreshed: **${stats.refreshed}** · past events pruned: **${stats.pruned}**`);
   L.push(`- Total published: **${stats.total}**`);
@@ -891,6 +1032,7 @@ async function main() {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
+    overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
   };
 
   const existingText = fs.existsSync(CONFIG.dataPath) ? fs.readFileSync(CONFIG.dataPath, 'utf8') : '';
@@ -1026,6 +1168,15 @@ async function main() {
 
   dedupeFuzzy(records, stats);
 
+  // Manual corrections last: they must win over anything the sources reported, and they run
+  // before geocoding and URL verification so a corrected address or link is actually checked.
+  const overrides = loadJson(CONFIG.overridesPath, {});
+  if (overrides && typeof overrides === 'object' && !Array.isArray(overrides)) {
+    applyOverrides(records, overrides, stats);
+  } else if (overrides) {
+    throw new Error('overrides.json must be a JSON object keyed by event id');
+  }
+
   const all = [...records.values()];
 
   // 4. Geocode (anything not yet resolved by BAN) ───────────────────────
@@ -1041,6 +1192,7 @@ async function main() {
   const kept = [];
   for (const rec of all) {
     if (rec.drop === 'dead_url') { stats.deadUrls++; continue; }
+    if (rec.drop === 'override_hidden') continue;
     if (rec.isNew) stats.added++; else if (rec.refreshed) stats.refreshed++;
     if (rec.event.urlStatus === 'unverified') stats.unverified++;
     bump(stats.geo, rec.event.geoSource);
@@ -1082,6 +1234,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
+  applyOverrides, coerceOverride,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,
   CONFIG,

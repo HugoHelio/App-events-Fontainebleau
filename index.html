@@ -32,10 +32,42 @@
     }
 
     header {
+      position: relative;
       background-color: var(--primary-color);
       color: white;
       padding: 1.5rem 1rem;
       text-align: center;
+    }
+
+    .lang-switch {
+      position: absolute;
+      top: 0.75rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .lang-btn {
+      font: inherit;
+      font-size: 0.8rem;
+      line-height: 1;
+      padding: 0.35rem 0.5rem;
+      cursor: pointer;
+      color: white;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 4px;
+    }
+
+    .lang-btn[aria-pressed="true"] {
+      background: white;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Narrow screens: keep the switch clear of a wrapping title. */
+    @media (max-width: 560px) {
+      header { padding-top: 3rem; }
     }
 
     header h1 {
@@ -262,6 +294,29 @@
       color: var(--secondary-color);
     }
 
+    .brand-credit {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.8;
+    }
+
+    .brand-credit a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand-credit a:hover { text-decoration: underline; }
+
+    .brand-credit img {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
     /* Calendar Container */
     .fc-event { cursor: pointer; }
 
@@ -276,43 +331,56 @@
 <body>
 
   <header>
-    <h1>Activités & Événements - Autour de Fontainebleau</h1>
-    <p>Trouvez des activités sportives, culturelles et nature pour adultes et enfants</p>
+    <div class="lang-switch" role="group" aria-label="Langue / Language">
+      <button type="button" class="lang-btn" data-lang="fr" lang="fr" aria-pressed="true">🇫🇷 FR</button>
+      <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false">🇬🇧 EN</button>
+    </div>
+    <h1 data-i18n="title">Activités & Événements - Autour de Fontainebleau</h1>
+    <p data-i18n="tagline">Trouvez des activités sportives, culturelles et nature pour adultes et enfants</p>
     <p id="lastUpdated" class="last-updated"></p>
   </header>
 
   <!-- Filtres -->
   <div class="filters-container">
     <div class="filter-group">
-      <label for="filterAge">Public cible :</label>
+      <label for="filterAge" data-i18n="audienceLabel">Public cible :</label>
       <select id="filterAge">
-        <option value="">Tous</option>
-        <option value="6">Enfants</option>
-        <option value="14">Ados</option>
-        <option value="30">Adultes</option>
+        <option value="" data-i18n="audienceAll">Tous</option>
+        <option value="6" data-i18n="audienceKids">Enfants</option>
+        <option value="14" data-i18n="audienceTeens">Ados</option>
+        <option value="30" data-i18n="audienceAdults">Adultes</option>
       </select>
     </div>
 
     <div class="filter-group">
-      <label for="filterCategory">Type d'événements :</label>
+      <label for="filterCategory" data-i18n="categoryLabel">Type d'événements :</label>
       <select id="filterCategory">
-        <option value="">Tous les types</option>
-        <option value="Sport & Outdoor">Sport & Outdoor</option>
-        <option value="Nature & Environnement">Nature & Environnement</option>
-        <option value="Culture & Ateliers">Culture & Ateliers</option>
+        <option value="" data-i18n="categoryAll">Tous les types</option>
+        <option value="Sport & Outdoor" data-i18n="catSport">Sport & Outdoor</option>
+        <option value="Nature & Environnement" data-i18n="catNature">Nature & Environnement</option>
+        <option value="Culture & Ateliers" data-i18n="catCulture">Culture & Ateliers</option>
       </select>
     </div>
 
     <div class="filter-group">
-      <label for="filterDate">Date spécifique :</label>
+      <label for="filterDate" data-i18n="dateLabel">Date spécifique :</label>
       <input type="date" id="filterDate">
+    </div>
+
+    <div class="filter-group">
+      <label for="filterHorizon" data-i18n="horizonLabel">Période :</label>
+      <select id="filterHorizon">
+        <option value="today" data-i18n="horizonToday">Aujourd'hui</option>
+        <option value="2weeks" data-i18n="horizon2w">Dans les 2 semaines</option>
+        <option value="3months" data-i18n="horizon3m" selected>Dans les 3 mois</option>
+      </select>
     </div>
   </div>
 
   <!-- Commutateur de vues -->
   <div class="view-tabs">
-    <button class="tab-btn active" onclick="switchView('map')">Carte & Liste</button>
-    <button class="tab-btn" onclick="switchView('calendar')">Calendrier</button>
+    <button class="tab-btn active" onclick="switchView('map')" data-i18n="tabMap">Carte & Liste</button>
+    <button class="tab-btn" onclick="switchView('calendar')" data-i18n="tabCalendar">Calendrier</button>
   </div>
 
   <main class="main-container">
@@ -331,13 +399,19 @@
   </main>
 
   <footer class="site-footer">
-    <p>
-      Les informations sont collectées automatiquement à partir de sources publiques (offices de tourisme, mairies,
-      associations, plateformes d'inscription…) et peuvent contenir des erreurs ou avoir changé.
-      <strong>Vérifiez toujours auprès de l'organisateur</strong> (horaires, tarifs, annulation) avant de vous déplacer.
-    </p>
+    <p id="footerDisclaimer"></p>
+    <p id="footerDataLang"></p>
     <p id="feedbackFooter"></p>
-    <p>Fond de carte © contributeurs OpenStreetMap.</p>
+    <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
+    <p class="brand-credit">
+      <a href="https://helioso.com" target="_blank" rel="noopener noreferrer">
+        <picture>
+          <source srcset="public/assets/img/brand/LogoNew_Helioso_v1.avif" type="image/avif">
+          <img src="public/assets/img/brand/LogoNew_Helioso_v1.png" alt="" width="20" height="20">
+        </picture>
+        <span data-i18n="brand">Un projet Helioso</span>
+      </a>
+    </p>
   </footer>
 
   <!-- Leaflet JS -->
@@ -355,8 +429,134 @@
     let windowEnd = null; // YYYY-MM-DD, provided by data.json: events starting later are hidden
 
     // ── Configuration ──
-    const LOCALE = 'fr-FR';            // date formatting language (English version: see backlog)
     const DISPLAY_TZ = 'Europe/Paris'; // "last updated" is always shown in local time
+
+    // ── Langue / Language ────────────────────────────────────────────────────
+    // Interface only. Event titles, descriptions and schedules stay in French, exactly as the
+    // organisers publish them: a visitor who searches for a translated title would not find the
+    // real event anywhere else (decision of September 21).
+    const LOCALES = { fr: 'fr-FR', en: 'en-GB' };
+    let lang = 'fr';
+
+    const STRINGS = {
+      fr: {
+        title: 'Activités & Événements - Autour de Fontainebleau',
+        tagline: 'Trouvez des activités sportives, culturelles et nature pour adultes et enfants',
+        audienceLabel: 'Public cible :',
+        audienceAll: 'Tous',
+        audienceKids: 'Enfants',
+        audienceTeens: 'Ados',
+        audienceAdults: 'Adultes',
+        categoryLabel: "Type d'événements :",
+        categoryAll: 'Tous les types',
+        catSport: 'Sport & Outdoor',
+        catNature: 'Nature & Environnement',
+        catCulture: 'Culture & Ateliers',
+        dateLabel: 'Date spécifique :',
+        horizonLabel: 'Période :',
+        horizonToday: "Aujourd'hui",
+        horizon2w: 'Dans les 2 semaines',
+        horizon3m: 'Dans les 3 mois',
+        tabMap: 'Carte & Liste',
+        tabCalendar: 'Calendrier',
+        footerOsm: 'Fond de carte © contributeurs OpenStreetMap.',
+        brand: 'Un projet Helioso',
+        disclaimer: ['Les informations sont collectées automatiquement à partir de sources publiques (offices de tourisme, mairies, associations, plateformes d\u2019inscription…) et peuvent contenir des erreurs ou avoir changé. ', 'Vérifiez toujours auprès de l\u2019organisateur', ' (horaires, tarifs, annulation) avant de vous déplacer.'],
+        dataLangNote: '',
+        updatedOn: (when) => `Données mises à jour le ${when}`,
+        staleFor: (days) => ` — ⚠️ non actualisées depuis ${days} jours`,
+        feedbackIntro: 'Une erreur ou un événement manquant ?',
+        feedbackLink: 'Écrivez-nous',
+        noResults: 'Aucune activité trouvée.',
+        approxTitle: 'Position estimée',
+        approxInline: '(position approximative)',
+        approxPopup: 'Position approximative',
+        organizedBy: (who) => `Organisé par ${who}`,
+        sourceLabel: (host) => `Source : ${host}`,
+        checkWithOrganizer: "vérifiez auprès de l'organisateur",
+        priceUnknown: 'Non précisé',
+        report: 'Signaler une erreur',
+        details: 'Voir détails & inscriptions →',
+        popupLink: 'Lien',
+        ageAll: '👥 Tout public',
+        ageFrom: (n) => `👶 Dès ${n} ${n === 1 ? 'an' : 'ans'}`,
+        ageTo: (n) => `👶 Jusqu'à ${n} ${n === 1 ? 'an' : 'ans'}`,
+        ageExact: (n) => `👶 ${n} ${n === 1 ? 'an' : 'ans'}`,
+        ageRange: (a, b) => `👶 ${a}–${b} ans`,
+        dateFromTo: (from, to) => `Du ${from} au ${to}`,
+        mailSubjectEvent: (id) => `Erreur sur l'événement ${id}`,
+        mailSubjectGeneral: "Retour sur l'application événements",
+        mailBodyEvent: (c) => `Événement : ${c.title}\nIdentifiant : ${c.id}\nLien : ${c.url}\n\nCe qui est incorrect :\n`,
+        mailBodyGeneral: 'Votre message :\n',
+      },
+      en: {
+        title: 'Activities & Events - Around Fontainebleau',
+        tagline: 'Find sport, culture and nature activities for adults and children',
+        audienceLabel: 'Audience:',
+        audienceAll: 'Everyone',
+        audienceKids: 'Children',
+        audienceTeens: 'Teenagers',
+        audienceAdults: 'Adults',
+        categoryLabel: 'Event type:',
+        categoryAll: 'All types',
+        catSport: 'Sport & Outdoor',
+        catNature: 'Nature & Environment',
+        catCulture: 'Culture & Workshops',
+        dateLabel: 'Specific date:',
+        horizonLabel: 'Period:',
+        horizonToday: 'Today',
+        horizon2w: 'In the next 2 weeks',
+        horizon3m: 'In the next 3 months',
+        tabMap: 'Map & List',
+        tabCalendar: 'Calendar',
+        footerOsm: 'Base map © OpenStreetMap contributors.',
+        brand: 'A Helioso project',
+        disclaimer: ['This information is collected automatically from public sources (tourist offices, town halls, associations, booking platforms…) and may be wrong or out of date. ', 'Always check with the organiser', ' (times, prices, cancellation) before travelling.'],
+        dataLangNote: 'Event titles, descriptions and opening times are shown in French, as published by the organisers — so that you can search for them and recognise them on site.',
+        updatedOn: (when) => `Data updated on ${when}`,
+        staleFor: (days) => ` — ⚠️ not refreshed for ${days} days`,
+        feedbackIntro: 'Spotted an error, or a missing event?',
+        feedbackLink: 'Tell us',
+        noResults: 'No activity found.',
+        approxTitle: 'Estimated position',
+        approxInline: '(approximate location)',
+        approxPopup: 'Approximate location',
+        organizedBy: (who) => `Organised by ${who}`,
+        sourceLabel: (host) => `Source: ${host}`,
+        checkWithOrganizer: 'check with the organiser',
+        priceUnknown: 'Not specified',
+        report: 'Report an error',
+        details: 'Details & booking →',
+        popupLink: 'Link',
+        ageAll: '👥 All ages',
+        ageFrom: (n) => `👶 Ages ${n}+`,
+        ageTo: (n) => `👶 Up to ${n}`,
+        ageExact: (n) => `👶 Age ${n}`,
+        ageRange: (a, b) => `👶 Ages ${a}–${b}`,
+        dateFromTo: (from, to) => `From ${from} to ${to}`,
+        mailSubjectEvent: (id) => `Error on event ${id}`,
+        mailSubjectGeneral: 'Feedback on the events app',
+        mailBodyEvent: (c) => `Event: ${c.title}\nId: ${c.id}\nLink: ${c.url}\n\nWhat is wrong:\n`,
+        mailBodyGeneral: 'Your message:\n',
+      },
+    };
+
+    // Category VALUES in data.json stay French (they are the data enum); only the labels move.
+    const CATEGORY_KEYS = {
+      'Sport & Outdoor': 'catSport',
+      'Nature & Environnement': 'catNature',
+      'Culture & Ateliers': 'catCulture',
+    };
+
+    function t(key) {
+      const v = STRINGS[lang][key];
+      return v === undefined ? STRINGS.fr[key] : v;
+    }
+
+    function categoryLabel(value) {
+      const key = CATEGORY_KEYS[value];
+      return key ? t(key) : (value || '');
+    }
     // One real scan every ~3 days (see CONFIG.minRunIntervalHours in scripts/fetch-events.js),
     // so the warning must leave room for one missed run before it fires.
     const STALE_AFTER_DAYS = 5;
@@ -409,7 +609,7 @@
     }
 
     function fmtDate(date, options) {
-      return new Intl.DateTimeFormat(LOCALE, options).format(date);
+      return new Intl.DateTimeFormat(LOCALES[lang], options).format(date);
     }
 
     function capitalize(text) {
@@ -430,13 +630,16 @@
       if (days <= 1) {
         return capitalize(fmtDate(start, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
       }
+      // en-GB puts a comma after the weekday ("Sunday, 13 December") while the start of the range
+      // has none ("Saturday 12"), which reads badly mid-sentence. Drop it: in French the weekday is
+      // never followed by a comma, so this is a no-op there.
       const endText = fmtDate(end, days <= 3
         ? { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }
-        : { day: 'numeric', month: 'long', year: 'numeric' });
+        : { day: 'numeric', month: 'long', year: 'numeric' }).replace(/^(\S+),/, '$1');
       const startOpts = days <= 3 ? { weekday: 'long', day: 'numeric' } : { day: 'numeric' };
       if (!sameMonth) startOpts.month = 'long';
       if (!sameYear) startOpts.year = 'numeric';
-      return `Du ${fmtDate(start, startOpts)} au ${endText}`;
+      return t('dateFromTo')(fmtDate(start, startOpts), endText);
     }
 
     function formatDateLine(a) {
@@ -444,20 +647,23 @@
     }
 
     // ── Last update banner ──
+    // Kept so the banner can be re-rendered on a language switch without refetching.
+    let lastGeneratedAt = null;
+
     function renderLastUpdated(generatedAt) {
+      lastGeneratedAt = generatedAt ?? lastGeneratedAt;
       const el = document.getElementById('lastUpdated');
       if (!el) return;
-      const d = generatedAt ? new Date(generatedAt) : null;
+      const d = lastGeneratedAt ? new Date(lastGeneratedAt) : null;
       if (!d || Number.isNaN(d.getTime())) {
         el.textContent = '';
         el.classList.remove('stale');
         return;
       }
-      const label = new Intl.DateTimeFormat(LOCALE, { timeZone: DISPLAY_TZ, dateStyle: 'long', timeStyle: 'short' }).format(d);
+      const label = new Intl.DateTimeFormat(LOCALES[lang], { timeZone: DISPLAY_TZ, dateStyle: 'long', timeStyle: 'short' }).format(d);
       const ageDays = (Date.now() - d.getTime()) / 86400000;
       const stale = ageDays >= STALE_AFTER_DAYS;
-      el.textContent = `Données mises à jour le ${label}` +
-        (stale ? ` — ⚠️ non actualisées depuis ${Math.floor(ageDays)} jours` : '');
+      el.textContent = t('updatedOn')(label) + (stale ? t('staleFor')(Math.floor(ageDays)) : '');
       el.classList.toggle('stale', stale);
     }
 
@@ -470,10 +676,8 @@
         return safeUrl(FEEDBACK.formUrl.replace(/(?:\{|%7B)(id|title|url)(?:\}|%7D)/gi, (_, key) => encodeURIComponent(ctx[key.toLowerCase()])));
       }
       if (FEEDBACK.email) {
-        const subject = a ? `Erreur sur l'événement ${ctx.id}` : 'Retour sur l\'application événements';
-        const body = a
-          ? `Événement : ${ctx.title}\nIdentifiant : ${ctx.id}\nLien : ${ctx.url}\n\nCe qui est incorrect :\n`
-          : 'Votre message :\n';
+        const subject = a ? t('mailSubjectEvent')(ctx.id) : t('mailSubjectGeneral');
+        const body = a ? t('mailBodyEvent')(ctx) : t('mailBodyGeneral');
         return `mailto:${FEEDBACK.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       }
       return null;
@@ -483,7 +687,7 @@
       const el = document.getElementById('feedbackFooter');
       const href = feedbackHref(null);
       if (!el || !href) return;
-      el.innerHTML = `Une erreur ou un événement manquant ? <a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">Écrivez-nous</a>.`;
+      el.innerHTML = `${escapeHtml(t('feedbackIntro'))} <a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('feedbackLink'))}</a>.`;
     }
 
     function sourceHost(url) {
@@ -499,12 +703,65 @@
       const max = Number(a.ageMax ?? 99);
       const hasMin = Number.isFinite(min) && min > 0;
       const hasMax = Number.isFinite(max) && max < AGE_OPEN_END;
-      const years = (n) => `${n} ${n === 1 ? 'an' : 'ans'}`;
-      if (!hasMin && !hasMax) return '👥 Tout public';
-      if (hasMin && !hasMax) return `👶 Dès ${years(min)}`;
-      if (!hasMin && hasMax) return `👶 Jusqu'à ${years(max)}`;
-      if (min === max) return `👶 ${years(min)}`;
-      return `👶 ${min}–${years(max)}`;
+      if (!hasMin && !hasMax) return t('ageAll');
+      if (hasMin && !hasMax) return t('ageFrom')(min);
+      if (!hasMin && hasMax) return t('ageTo')(max);
+      if (min === max) return t('ageExact')(min);
+      return t('ageRange')(min, max);
+    }
+
+    // ── Language switch ─────────────────────────────────────────────────────
+    // Order of preference: ?lang= in the URL (shareable), then the visitor's last choice,
+    // then the browser's own language, then French.
+    function initialLang() {
+      const fromUrl = new URLSearchParams(location.search).get('lang');
+      if (fromUrl === 'fr' || fromUrl === 'en') return fromUrl;
+      try {
+        const saved = localStorage.getItem('lang');
+        if (saved === 'fr' || saved === 'en') return saved;
+      } catch (e) { /* private mode / blocked storage: fall through */ }
+      return String(navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+    }
+
+    function applyLanguage() {
+      document.documentElement.lang = lang;
+      document.title = t('title');
+
+      // Static chrome. The strings come from STRINGS above, never from data.json, so they are
+      // written as text, not HTML.
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        el.textContent = t(el.dataset.i18n);
+      });
+
+      // The disclaimer is the one string with markup: three literal parts, ours, no data in it.
+      const disclaimer = document.getElementById('footerDisclaimer');
+      if (disclaimer) {
+        const [lead, strong, tail] = t('disclaimer');
+        disclaimer.textContent = '';
+        disclaimer.append(lead, Object.assign(document.createElement('strong'), { textContent: strong }), tail);
+      }
+      const dataNote = document.getElementById('footerDataLang');
+      if (dataNote) dataNote.textContent = t('dataLangNote');
+
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+      });
+
+      renderLastUpdated();
+      renderFeedbackFooter();
+      if (calendar) calendar.setOption('locale', lang);
+    }
+
+    function setLanguage(next) {
+      if (next !== 'fr' && next !== 'en') return;
+      lang = next;
+      try { localStorage.setItem('lang', lang); } catch (e) { /* not fatal */ }
+      // Keep the address bar shareable: a link copied in English opens in English.
+      const url = new URL(location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+      applyLanguage();
+      applyFilters(); // cards, popups and the calendar hold translated chrome too
     }
 
     function isUpcoming(a) {
@@ -519,15 +776,32 @@
       return !windowEnd || !a.startDate || a.startDate <= windowEnd;
     }
 
+    // ── Period filter: last day (inclusive) the visitor asked to see ──
+    // Events already over are removed by isUpcoming(), so an event is inside the period as soon
+    // as it STARTS on or before this date — one that started last week and runs until December
+    // is correctly still shown under "Today".
+    function horizonLastDay(value) {
+      const d = new Date();
+      if (value === 'today') return todayStr();
+      if (value === '2weeks') d.setDate(d.getDate() + 14);
+      else d.setMonth(d.getMonth() + 3);
+      return d.toLocaleDateString('en-CA');
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      lang = initialLang();
+      applyLanguage();
       initMap();
-      renderFeedbackFooter();
       fetchData();
 
       // Écouteurs sur les filtres
       document.getElementById('filterAge').addEventListener('change', applyFilters);
       document.getElementById('filterCategory').addEventListener('change', applyFilters);
       document.getElementById('filterDate').addEventListener('change', applyFilters);
+      document.getElementById('filterHorizon').addEventListener('change', applyFilters);
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      });
     });
 
     // Initialisation de la carte Leaflet
@@ -570,6 +844,9 @@
       const hasAge = Number.isFinite(ageParsed);
       const catVal = document.getElementById('filterCategory').value;
       const dateVal = document.getElementById('filterDate').value;
+      // A specific date is a deliberate, narrower request: it overrides the period rather than
+      // intersecting with it, so picking a date outside the period cannot return an empty list.
+      const horizonEnd = dateVal ? null : horizonLastDay(document.getElementById('filterHorizon').value);
 
       const filtered = allActivities.filter(a => {
         // Événements terminés : masqués même si data.json en contient encore
@@ -580,6 +857,10 @@
         
         // Filtre Catégorie
         const matchCat = !catVal || a.category === catVal;
+
+        // Filtre Période
+        const matchHorizon = !horizonEnd || a.dateType === 'recurring'
+          || (a.startDate ? a.startDate <= horizonEnd : false);
         
         // Filtre Date
         let matchDate = true;
@@ -595,7 +876,7 @@
           }
         }
 
-        return matchAge && matchCat && matchDate;
+        return matchAge && matchCat && matchDate && matchHorizon;
       });
 
       renderCards(filtered);
@@ -609,34 +890,34 @@
       container.innerHTML = '';
 
       if (activities.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:#718096; margin-top:2rem;">Aucune activité trouvée.</p>';
+        container.innerHTML = `<p style="text-align:center; color:#718096; margin-top:2rem;">${escapeHtml(t('noResults'))}</p>`;
         return;
       }
 
       activities.forEach(a => {
         const card = document.createElement('div');
         card.className = 'card';
-        const approx = a.geoApprox ? ' <em title="Position estimée">(position approximative)</em>' : '';
+        const approx = a.geoApprox ? ` <em title="${escapeHtml(t('approxTitle'))}">${escapeHtml(t('approxInline'))}</em>` : '';
         const host = sourceHost(a.url);
         const reportHref = feedbackHref(a);
         const fine = [
-          a.organizer ? `Organisé par ${escapeHtml(a.organizer)}` : '',
-          host ? `Source : ${escapeHtml(host)}` : ''
+          a.organizer ? escapeHtml(t('organizedBy')(a.organizer)) : '',
+          host ? escapeHtml(t('sourceLabel')(host)) : ''
         ].filter(Boolean).join(' · ');
         card.innerHTML = `
-          <span class="badge">${escapeHtml(a.category)}</span>
+          <span class="badge">${escapeHtml(categoryLabel(a.category))}</span>
           <h3>${escapeHtml(a.title)}</h3>
           <div class="date-line">🗓️ ${escapeHtml(formatDateLine(a))}</div>
           <div class="meta">
             📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
             ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}
-            ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || 'Non précisé')}
+            ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || t('priceUnknown'))}
           </div>
           <p>${escapeHtml(a.description)}</p>
-          ${fine ? `<div class="fine-print">${fine} — vérifiez auprès de l'organisateur</div>` : ''}
+          ${fine ? `<div class="fine-print">${fine} — ${escapeHtml(t('checkWithOrganizer'))}</div>` : ''}
           <div class="card-actions">
-            ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">Signaler une erreur</a>` : '<span></span>'}
-            ${linkHtml(a.url, 'Voir détails & inscriptions →', 'link-btn')}
+            ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
+            ${linkHtml(a.url, t('details'), 'link-btn')}
           </div>
         `;
         container.appendChild(card);
@@ -652,12 +933,12 @@
         const lng = Number(a.lng);
         if (Number.isFinite(lat) && Number.isFinite(lng)) {
           const marker = L.marker([lat, lng]);
-          const approxNote = a.geoApprox ? '<br><em>Position approximative</em>' : '';
+          const approxNote = a.geoApprox ? `<br><em>${escapeHtml(t('approxPopup'))}</em>` : '';
           marker.bindPopup(`
             <strong>${escapeHtml(a.title)}</strong><br>
             🗓️ ${escapeHtml(formatDateLine(a))}<br>
             ${escapeHtml(a.locationName)}${approxNote}<br>
-            ${linkHtml(a.url, 'Lien')}
+            ${linkHtml(a.url, t('popupLink'))}
           `);
           markersGroup.addLayer(marker);
         }
@@ -690,7 +971,7 @@
       if (!calendar) {
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          locale: 'fr',
+          locale: lang, // 'fr' uses the locale bundle loaded above; 'en' is FullCalendar's built-in default
           firstDay: 1,
           eventClick: (info) => {
             info.jsEvent.preventDefault();

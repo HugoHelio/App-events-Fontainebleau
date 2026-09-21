@@ -307,6 +307,86 @@ merged. Going forward this runs automatically as step 3b of every real scan, so 
 self-healing, not a one-off — the next re-occurrence of this pattern (from Gemini, from
 DATAtourisme, or between the two) is fixed the same way without intervention.
 
+### K. Manual overrides — the feedback loop gets an output (item 24, September 21, 2026)
+
+Item 15 shipped the *input* of the feedback loop (a "report an error" link on every card,
+feeding a Google Form). It had no *output*: `data.json` is regenerated from scratch on every
+scan, so a correction made there is erased by the next run. A visitor could report a wrong date
+and nothing could be done about it that lasted.
+
+`overrides.json` is now the only hand-edited data file in the repository, and it is applied on
+every run:
+
+```json
+{
+  "EVT_cd4a6118fa": {
+    "note": "Date corrigée après signalement du 21/09",
+    "fields": { "startDate": "2026-10-03", "price": "12 €" }
+  },
+  "EVT_0badc0ffee": { "hidden": true }
+}
+```
+
+**Why it is keyed by event id.** The id is `sha1(title|startDate|city)` of the *original*
+record. A fresh scan that re-reports the same event with the same wrong date derives the same
+id, so it picks the same override up again. The correction is durable by construction — there
+is no `locked: true` flag to set and no state to maintain.
+
+**Why the record map is re-keyed afterwards.** `title`, `startDate` and `city` are exactly the
+three parts of `eventKey()`. Correcting any of them moves the record to a different key, while
+the next scan still reports the uncorrected one under the old key — both would be published, so
+the fix would *create* the duplicate it was meant to remove. `applyOverrides()` therefore
+re-keys the whole map and merges the collision. This is covered by a test that simulates a full
+round trip: correct, serialise, reload, re-inject the uncorrected sighting — one record out,
+carrying the corrected date.
+
+**Order in the pipeline.** After the fuzzy dedup, before geocoding and URL verification, so a
+hand-corrected address is actually geocoded and a hand-corrected link is actually checked.
+Corrections to `lat`/`lng` set `geoSource: "manual"` and are never overwritten; corrections to
+`city` or `locationName` drop the cached position and force a re-geocode.
+
+**Nothing is accepted blindly.** Every value goes through the same coercion as pipeline data
+(`isValidIsoDate`, `cleanUrl`, `cleanText`, `normalizeCategory`). A value that fails is skipped
+and named in the run report, never written. Two traps found while testing: `cleanUrl()` and
+`normalizeCategory()` answer `null` on a value they refuse, which would have *blanked* the field
+instead of leaving it alone; and blanking `title` or `city` would produce a garbage `eventKey`.
+Both are now rejections. An override matching no event is reported so the entry can be pruned.
+
+**Still manual.** The form responses are not yet read by anything: a human reads the sheet and
+writes the entry. Automating the ingestion is a separate step (see §9, item 48) and deliberately
+not the same decision — the form is open to anyone with the link, so it is an unauthenticated
+write path into published data.
+
+### L. English interface (item 33, phase 1, September 21, 2026)
+
+A FR/EN switch in the header, `?lang=` in the URL, the choice remembered per visitor, and the
+browser's own language as the initial guess. 48 interface strings in a `STRINGS` dictionary.
+
+**Event data stays French, deliberately.** Titles, descriptions, schedules and prices are shown
+exactly as the organisers publish them. A translated title cannot be matched back to the real
+event: a visitor who reads "Mushroom Fair" finds nothing under that name on the organiser's
+site, on a poster or at the ticket desk. In English the footer says so in one line. This also
+keeps the recurring translation cost at zero — measured at ~8,700 tokens for a full pass over
+the 152 events, which is cheap but not free, and would have to be re-paid for every new event.
+
+**Category values are not translated either** — they are the data enum (`Sport & Outdoor`,
+`Nature & Environnement`, `Culture & Ateliers`) and the `<option value>` the filter matches on.
+Only the displayed label moves, through `categoryLabel()`. A test asserts that filtering still
+returns results after switching to English, because translating the values would silently break
+every filter.
+
+### M. Period filter (item 49, September 21, 2026)
+
+A fourth filter beside "date spécifique": today / next 2 weeks / next 3 months, defaulting to
+3 months, which is exactly the previous behaviour. An event matches as soon as it *starts* on or
+before the last day of the period — one that started last week and runs until December is still
+shown under "Today", which is what a visitor means by "what can I do today".
+
+A specific date **overrides** the period rather than intersecting with it, so picking a date two
+months out while the period says "today" cannot return an empty list.
+
+---
+
 ## 4. Data Schema (`data.json`, v2.1)
 
 Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the script and the frontend). Fields added in v2 are marked ★.
@@ -430,6 +510,15 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-20 | DATAtourisme events ship with `organizer` left empty | The CSV names the data publisher, not the real organizer; a wrong attribution is worse than none |
 | 2026-09-20 | **Fuzzy same-day duplicates merged automatically on every run** (§3.J), scoped to word-set-identical titles only | Live duplicates spotted by the project lead; the exact-word-set rule is safe enough to automate, a looser fuzzy match is not (risk of hiding a real event) |
 | 2026-09-20 | The live `data.json` was cleaned once by hand, offline, with the same function the pipeline now runs automatically | 161 → 152 events; no reason to wait for the next scheduled (paid) scan to fix duplicates already known |
+| 2026-09-21 | **`overrides.json`, keyed by event id, is the only hand-edited data file** and is re-applied on every run (§3.K) | The "report an error" link had no output: `data.json` is regenerated each scan, so any correction made there was erased. Keying by id makes the fix survive a re-scan with no flag to maintain |
+| 2026-09-21 | `applyOverrides()` re-keys the record map and merges collisions | `title`/`startDate`/`city` are `eventKey()`; correcting one of them would otherwise publish both the corrected record and the next scan's uncorrected sighting |
+| 2026-09-21 | An override with an invalid value is **skipped and reported**, never written; `title` and `city` cannot be blanked | `cleanUrl()`/`normalizeCategory()` return `null` on refusal, which would have wiped the field; an empty title produces a garbage key |
+| 2026-09-21 | Form responses are **not** auto-applied yet; a human still transcribes them into `overrides.json` | The form is open to anyone with the link — an unauthenticated write path into published data. Automating ingestion is item 48 and a separate risk decision |
+| 2026-09-21 | **English version = interface only. Event data stays French** (§3.L) | A translated title cannot be matched back to the real event on a poster, a ticket desk or the organiser's own site. Also keeps the recurring translation cost at zero |
+| 2026-09-21 | Category **values** stay French; only the displayed label is translated | The values are the data enum and the `<option value>` the filter matches on — translating them breaks every filter silently |
+| 2026-09-21 | Language resolution: `?lang=` → stored choice → browser language → French | Makes a link shareable in a chosen language, and an INSEAD visitor lands in English without hunting for a switch |
+| 2026-09-21 | Period filter defaults to "3 mois", and a specific date overrides it instead of intersecting | The default reproduces the previous behaviour exactly; intersecting would let an empty result look like a bug |
+| 2026-09-21 | Helioso logo + link in the footer, AVIF with a PNG fallback | The PNG is 483 KB and is only fetched by a browser without AVIF support |
 
 ---
 
@@ -498,7 +587,9 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 43. **Google Cloud isolation:** dedicated project, billing account and API key — verified September 20. Remaining: restrict the key to the Gemini API, and set a budget alert
 - [x] 44. **DATAtourisme coverage probe:** `scripts/datatourisme-coverage.js` + weekly workflow, observation mode, written against the **verified** schema and tested on the real file (§3.H)
 - [x] 45. **DATAtourisme merged into the pipeline** (§3.I) — decided and shipped September 20, ahead of the original "two or three weekly reports" prerequisite (explicit call by the project lead on the measured numbers). Verified: Gemini forced to fail entirely, DATAtourisme alone still produced a valid publish; multi-date events keep every date; one real cross-source duplicate caught
-- [ ] 46. Frontend: visually distinguish `source: "datatourisme"` cards, or a filter toggle — currently invisible to visitors
+- [ ] 46. Frontend: visually distinguish `source: "datatourisme"` cards, or a filter toggle — currently invisible to visitors. **Note (September 21): no published event carries `source` yet** — the live `data.json` predates the merge of item 45, so this cannot be verified until the first real scan after it
+- [x] 48a. **`overrides.json` — the feedback loop gets an output** (§3.K). Hand-edited, applied on every run, keyed by event id so a correction survives a re-scan. Tested offline against the real `data.json`, including a full correct→publish→reload→re-sight round trip
+- [ ] 48b. **Automate the ingestion of form responses**: publish the response sheet as CSV, read it in the pipeline, auto-apply only the safe reversible signal (hide a cancelled / non-existent event), queue everything else in the run report for review. Blocked on the published CSV URL
 - [x] 47. **Fuzzy same-day duplicate cleanup** (§3.J) — `dedupeFuzzy()` in `scripts/fetch-events.js`, run every scan over the full merged set. Fixes the two duplicates found while testing item 45, and any future re-occurrence of the same pattern, automatically
 - [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
@@ -526,7 +617,9 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [ ] 24. Manual overrides (`overrides.json` or `locked: true`) so hand corrections survive re-scans
 - [ ] 25. SRI hashes for CDN scripts (Leaflet, FullCalendar)
 - [ ] 26. Open Graph / sharing metadata; accessibility pass on tabs and filters
-- [ ] 33. **English version** of the app: UI strings dictionary + language toggle (keep `LOCALE` and date formatting parameterised, already in place), translated category labels (data enum stays French), English event descriptions (translate at extraction or on demand; DATAtourisme advertises machine translation of its data, to be checked), `lang` attribute, English footer/disclaimer, shareable language URL parameter
+- [x] 33. **English version, phase 1 — interface only** (§3.L): FR/EN switch with flags in the header, 48-string dictionary, translated category *labels* (values stay French), `lang` attribute, English footer and disclaimer, `?lang=` shareable parameter, browser-language detection, FullCalendar locale follows. **Event data stays French by decision, not by omission** — phases 2 and 3 of the original item are dropped, see §7
+- [x] 49. Period filter (today / 2 weeks / 3 months) — **done September 21** (§3.M), default "3 mois" = previous behaviour, a specific date overrides it
+- [x] 50. Helioso brand credit in the footer — **done September 21**
 - [~] 36. Friendlier age label ("Tout public", "Dès 6 ans", "Jusqu'à 12 ans", "6–12 ans")
 - [~] 41. Collection window reduced to 3 months (`windowEnd`; events beyond it hidden, not deleted)
 

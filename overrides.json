@@ -1,0 +1,30 @@
+{
+  "_README": [
+    "Corrections manuelles — LE SEUL fichier de données édité à la main.",
+    "data.json est régénéré à chaque scan : une correction faite là-bas serait effacée au run suivant.",
+    "Ici, elle est réappliquée à chaque run, indéfiniment.",
+    "",
+    "Clé = identifiant de l'événement (champ \"id\" dans data.json, ex. EVT_cd4a6118fa).",
+    "C'est aussi le premier champ, pré-rempli, du formulaire de signalement.",
+    "",
+    "Deux actions possibles :",
+    "  \"hidden\": true     → l'événement n'est plus publié (annulé, doublon, hors sujet)",
+    "  \"fields\": { … }    → corrige un ou plusieurs champs, définitivement",
+    "",
+    "Champs corrigibles : title, category, city, locationName, lat, lng, startDate, endDate,",
+    "schedule, price, organizer, description, url, ageMin, ageMax.",
+    "",
+    "Effets de bord automatiques : corriger lat/lng fige la position (geoSource = manual) ;",
+    "corriger city ou locationName relance le géocodage ; corriger url relance la vérification",
+    "du lien. Une valeur invalide est ignorée et signalée dans le rapport de run, jamais publiée.",
+    "",
+    "Une entrée qui ne correspond à plus aucun événement est signalée dans le rapport (l'événement",
+    "est sorti de la fenêtre de 3 mois) : elle peut être supprimée d'ici.",
+    "",
+    "Exemple :",
+    "  \"EVT_cd4a6118fa\": {",
+    "    \"note\": \"Date corrigée après signalement du 21/09, confirmée par téléphone\",",
+    "    \"fields\": { \"startDate\": \"2026-10-03\", \"price\": \"12 €\" }",
+    "  }"
+  ]
+}
