@@ -19,6 +19,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/datatourisme-coverage.js` | Sonde de couverture DATAtourisme, **mode observation** : ne modifie jamais `data.json` |
 | `scripts/feedback.js` | Lecture du formulaire de signalement (CSV publié). Seul le masquage est automatique ; tout le reste part en relecture humaine |
 | `scripts/translate.js` | Descriptions anglaises. Appel Gemini **non grounded**, cache par hash du texte français |
+| `scripts/translate-data.js` | Utilitaire hors bande : traduit les descriptions de `data.json` sans lancer de scan (`--sample` pour relire avant publication) |
 | `translate-cache.json` | **Généré et commité.** Cache de traduction — sans lui, chaque run CI retraduirait tout |
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
@@ -69,12 +70,14 @@ GEMINI_API_KEY=… DATATOURISME=0 DRY_RUN=1 node scripts/fetch-events.js
 # contenir le contact facultatif du visiteur.
 FEEDBACK_CSV_URL=… GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js
 
-# Vérifier la QUALITÉ des traductions sans lancer de scan complet (~5 descriptions, coût marginal).
-# TRANSLATE_CACHE_PATH pointe ailleurs pour ne pas polluer le vrai cache.
-GEMINI_API_KEY=… TRANSLATE_CACHE_PATH=/tmp/t.json node -e '\
-  const T=require("./scripts/translate.js"), d=JSON.parse(require("fs").readFileSync("data.json","utf8"));\
-  const ev=(d.events||d).slice(0,5).map(e=>({description:e.description}));\
-  T.translateDescriptions(ev).then(s=>{console.log(s);ev.forEach(e=>console.log("\nFR:",e.description,"\nEN:",e.descriptionEn));});'
+# Relire quelques traductions AVANT quoi que ce soit (rien n’est écrit, coût marginal).
+# Le pipeline publie sans relecture humaine : vérifier la formulation une fois, ici, coûte
+# moins cher que de la découvrir sur 171 cartes en ligne.
+GEMINI_API_KEY=… node scripts/translate-data.js --sample 8
+
+# Remplir data.json maintenant, sans attendre le prochain scan (~7 000 tokens, pas de grounding).
+# Remplit aussi translate-cache.json : le scan suivant ne repaiera rien. Commiter les DEUX.
+GEMINI_API_KEY=… node scripts/translate-data.js --write
 
 # Désactiver la traduction sur un run
 TRANSLATE=0 GEMINI_API_KEY=… node scripts/fetch-events.js
