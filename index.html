@@ -30,7 +30,12 @@
   <link rel="canonical" href="https://fontainebleaulive.fr/">
 
   <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Subresource Integrity (item 25): the browser refuses the file if its content does not
+       match the digest, so a compromised CDN cannot run its own code on this page.
+       crossorigin="anonymous" is required for the check to be allowed to happen at all.
+       Every digest must be recomputed if a version number here ever changes. -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
 
   <style>
     /* Design tokens, in the shape a modern system uses: an ink scale, one brand family, one
@@ -543,6 +548,40 @@
 
     .install-hint { opacity: 0.85; }
 
+    /* One presentation for both dead ends: nothing loaded, and nothing matched. */
+    .state-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem 1rem;
+      color: var(--ink-2);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+    }
+
+    .state-title {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .state-btn {
+      margin-top: 0.4rem;
+      font: inherit;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      color: var(--paper);
+      background: var(--ink);
+      border: 0;
+      border-radius: var(--r-pill);
+    }
+
+    .state-btn:hover { background: var(--brand); }
+
     .event-count {
       font-size: 0.95rem;
       font-weight: 700;
@@ -668,11 +707,14 @@
   </footer>
 
   <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
 
   <!-- FullCalendar JS -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.11/locales/fr.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"
+          integrity="sha384-5JIwZN3kuxX2zKsavvNmbZ3zhZZMUtu/eQiK3BbXukpSXp0Cd2ZP4OAYKx7mrPgI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.11/locales/fr.global.min.js"
+          integrity="sha384-JM6ezikqMkxj5S+IWkyLlbXKPqYhJo3fQmA8llseGrtAVwK0V4gOzps4PMgscJJm" crossorigin="anonymous"></script>
 
   <script>
     let allActivities = [];
@@ -749,6 +791,12 @@
         installHint: 'Sur mobile : « Ajouter à l\u2019écran d\u2019accueil » pour retrouver le site comme une application, même hors connexion.',
         resetView: 'Tout afficher',
         eventCount: (n) => `${n} événement${n > 1 ? 's' : ''} répertorié${n > 1 ? 's' : ''} pour les trois prochains mois`,
+        loadError: 'Impossible de charger les événements.',
+        loadErrorHint: 'Vérifiez votre connexion, puis réessayez.',
+        retry: 'Réessayer',
+        resetFilters: 'Réinitialiser les filtres',
+        noResultsHint: 'Essayez une période plus large ou une autre catégorie.',
+        viaOpenData: 'via l’open data DATAtourisme',
       },
       en: {
         docTitle: 'Fontainebleau Live — Activities & Events around Fontainebleau',
@@ -804,6 +852,12 @@
         installHint: 'On mobile: "Add to Home Screen" to keep the site like an app, and to open it offline.',
         resetView: 'Show all',
         eventCount: (n) => `${n} event${n > 1 ? 's' : ''} listed for the next three months`,
+        loadError: 'Could not load the events.',
+        loadErrorHint: 'Check your connection, then try again.',
+        retry: 'Try again',
+        resetFilters: 'Reset filters',
+        noResultsHint: 'Try a wider period, or another category.',
+        viaOpenData: 'via DATAtourisme open data',
       },
     };
 
@@ -976,6 +1030,32 @@
       el.classList.toggle('stale', stale);
     }
 
+    // ── Failure state (item 20) ─────────────────────────────────────────────
+    // A fetch that fails used to log to the console and leave an empty page — a failure nobody
+    // can see is the worst kind. This replaces the list with something that says what happened
+    // and offers the one useful action.
+    let loadFailed = false;
+
+    function renderLoadError() {
+      const container = document.getElementById('cardsList');
+      if (!container) return;
+      container.innerHTML = '';
+      const box = document.createElement('div');
+      box.className = 'state-box';
+      const title = document.createElement('p');
+      title.className = 'state-title';
+      title.textContent = t('loadError');
+      const hint = document.createElement('p');
+      hint.textContent = t('loadErrorHint');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'state-btn';
+      btn.textContent = t('retry');
+      btn.addEventListener('click', () => { track('retry'); fetchData(); });
+      box.append(title, hint, btn);
+      container.appendChild(box);
+    }
+
     // ── Coverage figure ─────────────────────────────────────────────────────
     // Deliberately NOT the number of cards currently filtered: this is how much the site knows
     // about, which is the number that says whether a whole category is missing. It is the
@@ -986,7 +1066,9 @@
       const last = horizonLastDay('3months');
       const n = allActivities.filter((a) => isUpcoming(a) && isInWindow(a)
         && (a.dateType === 'recurring' || (a.startDate && a.startDate <= last))).length;
-      el.textContent = n ? t('eventCount')(n) : '';
+      // With no data, an empty line is honest; "0 événements répertoriés" would read as a
+      // coverage claim about the region rather than a failure to load.
+      el.textContent = (loadFailed || !n) ? '' : t('eventCount')(n);
     }
 
     // ── Feedback ("Signaler une erreur") ──
@@ -1132,6 +1214,16 @@
      * the map zoomed on it with no obvious exit — the project lead ended up resetting a filter,
      * which is not what a filter is for.
      */
+    /** Back to the default view of the data, without touching the map selection. */
+    function resetFilters() {
+      track('reset-filters');
+      document.getElementById('filterAge').value = '';
+      document.getElementById('filterCategory').value = '';
+      document.getElementById('filterDate').value = '';
+      document.getElementById('filterHorizon').value = '2weeks';
+      applyFilters();
+    }
+
     function clearSelection() {
       highlightCard(null);
       if (!map || !markersGroup) return;
@@ -1229,10 +1321,14 @@
     renderLastUpdated(Array.isArray(payload) ? null : payload.generatedAt);
     windowEnd = (!Array.isArray(payload) && /^\d{4}-\d{2}-\d{2}$/.test(payload.windowEnd || '')) ? payload.windowEnd : null;
     
+    loadFailed = false;
     renderEventCount();
     applyFilters();
   } catch (error) {
     console.error("❌ Erreur lors du chargement de data.json :", error);
+    loadFailed = true;
+    renderEventCount();
+    renderLoadError();
   }
 }
 
@@ -1291,8 +1387,23 @@
       const container = document.getElementById('cardsList');
       container.innerHTML = '';
 
+      if (loadFailed) { renderLoadError(); return; }
+
       if (activities.length === 0) {
-        container.innerHTML = `<p style="text-align:center; color:#718096; margin-top:2rem;">${escapeHtml(t('noResults'))}</p>`;
+        const box = document.createElement('div');
+        box.className = 'state-box';
+        const title = document.createElement('p');
+        title.className = 'state-title';
+        title.textContent = t('noResults');
+        const hint = document.createElement('p');
+        hint.textContent = t('noResultsHint');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'state-btn';
+        btn.textContent = t('resetFilters');
+        btn.addEventListener('click', resetFilters);
+        box.append(title, hint, btn);
+        container.appendChild(box);
         return;
       }
 
@@ -1306,7 +1417,10 @@
         const reportHref = feedbackHref(a);
         const fine = [
           a.organizer ? escapeHtml(t('organizedBy')(a.organizer)) : '',
-          host ? escapeHtml(t('sourceLabel')(host)) : ''
+          host ? escapeHtml(t('sourceLabel')(host)) : '',
+          // Item 46: a quarter of what is published comes from public open data rather than
+          // from the model. Saying so is a credibility signal, not a technical detail.
+          a.source === 'datatourisme' ? escapeHtml(t('viaOpenData')) : ''
         ].filter(Boolean).join(' · ');
         card.innerHTML = `
           <span class="badge">${escapeHtml(categoryLabel(a.category))}</span>

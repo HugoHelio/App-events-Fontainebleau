@@ -12,6 +12,7 @@ on:
 # Least privilege: the job only needs to push data.json / geocode-cache.json to main.
 permissions:
   contents: write
+  issues: write   # ouvrir un ticket quand un run échoue (item 29)
 
 # Never run two updates at once (e.g. a manual run while the cron fires).
 concurrency:
@@ -74,3 +75,51 @@ jobs:
 
           echo "Impossible de publier sur main après 3 tentatives."
           exit 1
+
+      # Le pipeline tourne sans surveillance et publie directement sur main. Le mail par défaut
+      # de GitHub se perd ; un ticket se voit, se suit et se referme. Un seul ticket ouvert à la
+      # fois : on ajoute un commentaire aux runs suivants plutôt que d'en empiler dix.
+      - name: Ouvrir un ticket si le run a échoué
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "🚨 Échec de la collecte quotidienne";
+            const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `Le workflow **${context.workflow}** a échoué.`,
+              "",
+              `- Run : ${url}`,
+              `- Déclenché par : \`${context.eventName}\``,
+              `- Commit : \`${context.sha.slice(0, 7)}\``,
+              "",
+              "`data.json` n'a pas été modifié : le site continue de servir les dernières données valides.",
+              "Le détail des erreurs est dans le résumé du run.",
+            ].join("\n");
+
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "collecte-en-echec",
+            });
+
+            if (open.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: open[0].number,
+                body: `Nouvel échec : ${url}`,
+              });
+              core.notice(`Échec ajouté au ticket #${open[0].number}.`);
+              return;
+            }
+
+            const { data: issue } = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ["collecte-en-echec"],
+            });
+            core.notice(`Ticket #${issue.number} ouvert.`);
