@@ -24,6 +24,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
+| `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
 | `.github/workflows/` | `daily-check.yml` (collecte) et `datatourisme-coverage.yml` (observation) |
 
@@ -37,7 +38,8 @@ régénéré à chaque scan : toute correction faite directement dedans est perd
 - **Zéro dépendance** dans `scripts/` : bibliothèque standard Node uniquement (`fs`, `path`,
   `crypto`, `fetch` global). Node ≥ 18 requis, les workflows utilisent Node 22.
 - **Pas de build** : `index.html` est servi tel quel par GitHub Pages. Les CDN autorisés sont
-  ceux déjà présents (Leaflet, FullCalendar).
+  ceux déjà présents (Leaflet, FullCalendar) + GoatCounter si `ANALYTICS.code` est renseigné.
+  Décision du 21/09 : **pas de CDN de polices ni de fournisseur de tuiles tiers.**
 - **Sécurité du frontend** : tout contenu venant du LLM ou du web est hostile. Passe les textes
   par `escapeHtml()` et les liens par `safeUrl()` (schémas `http(s)` uniquement). Ne jamais
   injecter de champ de `data.json` via `innerHTML` sans échappement.

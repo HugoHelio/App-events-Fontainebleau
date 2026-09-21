@@ -5,17 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Activités & Événements - Autour de Fontainebleau</title>
   <link rel="icon" type="image/png" href="public/assets/img/brand/fav.png">
+  <link rel="apple-touch-icon" href="public/assets/img/brand/LogoNew_Helioso_v1.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d4a3e">
+  <meta name="description" content="Toutes les activités sportives, culturelles et nature autour de Fontainebleau, mises à jour automatiquement.">
+
+  <!-- Link preview (item 26). The main way this site travels is a link pasted into a WhatsApp or
+       school group: without these tags the message shows a bare URL and reads like spam.
+       og:url and og:image MUST be absolute — a scraper has no page context to resolve a relative
+       path. UPDATE THESE TWO LINES when the custom domain goes live (item 57). -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Activités &amp; Événements autour de Fontainebleau">
+  <meta property="og:title" content="Activités &amp; Événements - Autour de Fontainebleau">
+  <meta property="og:description" content="Sport, culture et nature à 15 km autour de Fontainebleau. Carte, calendrier, mis à jour automatiquement.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:url" content="https://hugohelio.github.io/App-events-Fontainebleau/">
+  <meta property="og:image" content="https://hugohelio.github.io/App-events-Fontainebleau/public/assets/img/brand/LogoNew_Helioso_v1.png">
+  <!-- "summary", not "summary_large_image": the only picture available is a square logo, and a
+       wide card would crop it badly. Switch when a real 1200x630 image exists. -->
+  <meta name="twitter:card" content="summary">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
+    /* "Forêt & Grès" — the forest and the sandstone of Fontainebleau, rather than a framework
+       default. To go back to the previous look, restore these six values; nothing else in the
+       stylesheet hard-codes a colour.
+         previous: primary #0e4057 · secondary #319795 · bg #f7fafc · text #2d3748 */
     :root {
-      --primary-color: #0e4057;
-      --secondary-color: #319795;
-      --bg-color: #f7fafc;
+      --primary-color: #2d4a3e;   /* vert forêt — bandeau, titres */
+      --secondary-color: #8a5a2b; /* ocre de grès — liens (5.87:1 sur blanc) */
+      --bg-color: #faf7f2;        /* blanc cassé chaud, pas le gris-bleu froid d'avant */
       --card-bg: #ffffff;
-      --text-color: #2d3748;
+      --text-color: #33302b;
+
+      /* Category colours: the full tone for the card's left border and the map marker,
+         a light tint + dark ink for the badge. All badge pairs are above 7:1. */
+      --cat-sport: #b4532a;    --cat-sport-bg: #f7e8e0;   --cat-sport-fg: #7c3a1d;
+      --cat-nature: #3d6b4a;   --cat-nature-bg: #e3efe6;  --cat-nature-fg: #2c5238;
+      --cat-culture: #6b4a75;  --cat-culture-bg: #efe7f2; --cat-culture-fg: #553a5e;
+      --cat-other: #6b6257;    --cat-other-bg: #eeeae3;   --cat-other-fg: #4a443c;
     }
 
     * {
@@ -237,13 +268,41 @@
     .card .badge {
       display: inline-block;
       align-self: flex-start;
-      background: #e6fffa;
-      color: #234e52;
+      background: var(--cat-other-bg);
+      color: var(--cat-other-fg);
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       font-size: 0.75rem;
       font-weight: bold;
     }
+
+    /* 58a — the category is readable without reading: left border on the card, tinted badge,
+       and the same colour on the map marker. */
+    .card.cat-sport   { border-left-color: var(--cat-sport); }
+    .card.cat-nature  { border-left-color: var(--cat-nature); }
+    .card.cat-culture { border-left-color: var(--cat-culture); }
+
+    .card.cat-sport .badge   { background: var(--cat-sport-bg);   color: var(--cat-sport-fg); }
+    .card.cat-nature .badge  { background: var(--cat-nature-bg);  color: var(--cat-nature-fg); }
+    .card.cat-culture .badge { background: var(--cat-culture-bg); color: var(--cat-culture-fg); }
+
+    /* Map markers: a coloured dot instead of Leaflet's default pin image. Same colour key as
+       the cards, and one less asset to download. */
+    .marker-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+      background: var(--cat-other);
+    }
+
+    .marker-dot.cat-sport   { background: var(--cat-sport); }
+    .marker-dot.cat-nature  { background: var(--cat-nature); }
+    .marker-dot.cat-culture { background: var(--cat-culture); }
+
+    /* An approximate position is drawn hollow: the dot says "somewhere around here". */
+    .marker-dot.approx { opacity: 0.55; border-style: dashed; }
 
     .card .meta {
       font-size: 0.85rem;
@@ -294,6 +353,22 @@
       text-decoration: underline;
     }
 
+    /* Item 19 — the card is a control, and it says so. */
+    .card { cursor: pointer; transition: box-shadow 0.15s, transform 0.15s; }
+
+    .card:hover { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+
+    .card.is-active {
+      box-shadow: 0 0 0 2px var(--primary-color), 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Links inside the card keep a normal pointer and stop the card handler themselves. */
+    .card a { cursor: pointer; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+    }
+
     /* Footer */
     .site-footer {
       max-width: 1200px;
@@ -327,6 +402,8 @@
     }
 
     .brand-credit a:hover { text-decoration: underline; }
+
+    .install-hint { opacity: 0.85; }
 
     .brand-credit img {
       width: 20px;
@@ -421,6 +498,7 @@
     <p id="footerDisclaimer"></p>
     <p id="footerDataLang"></p>
     <p id="feedbackFooter"></p>
+    <p data-i18n="installHint" class="install-hint"></p>
     <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
     <p class="brand-credit">
       <a href="https://helioso.com" target="_blank" rel="noopener noreferrer">
@@ -507,6 +585,7 @@
         mailSubjectGeneral: "Retour sur l'application événements",
         mailBodyEvent: (c) => `Événement : ${c.title}\nIdentifiant : ${c.id}\nLien : ${c.url}\n\nCe qui est incorrect :\n`,
         mailBodyGeneral: 'Votre message :\n',
+        installHint: 'Sur mobile : « Ajouter à l\u2019écran d\u2019accueil » pour retrouver le site comme une application, même hors connexion.',
       },
       en: {
         title: 'Activities & Events - Around Fontainebleau',
@@ -557,14 +636,16 @@
         mailSubjectGeneral: 'Feedback on the events app',
         mailBodyEvent: (c) => `Event: ${c.title}\nId: ${c.id}\nLink: ${c.url}\n\nWhat is wrong:\n`,
         mailBodyGeneral: 'Your message:\n',
+        installHint: 'On mobile: "Add to Home Screen" to keep the site like an app, and to open it offline.',
       },
     };
 
     // Category VALUES in data.json stay French (they are the data enum); only the labels move.
-    const CATEGORY_KEYS = {
-      'Sport & Outdoor': 'catSport',
-      'Nature & Environnement': 'catNature',
-      'Culture & Ateliers': 'catCulture',
+    // `cls` drives the colour coding (card border, badge tint, map marker) — see 58a in the CSS.
+    const CATEGORIES = {
+      'Sport & Outdoor':        { key: 'catSport',   cls: 'cat-sport' },
+      'Nature & Environnement': { key: 'catNature',  cls: 'cat-nature' },
+      'Culture & Ateliers':     { key: 'catCulture', cls: 'cat-culture' },
     };
 
     function t(key) {
@@ -573,8 +654,13 @@
     }
 
     function categoryLabel(value) {
-      const key = CATEGORY_KEYS[value];
-      return key ? t(key) : (value || '');
+      const cat = CATEGORIES[value];
+      return cat ? t(cat.key) : (value || '');
+    }
+
+    /** CSS class for the colour coding; unknown categories fall back to a neutral grey. */
+    function categoryClass(value) {
+      return (CATEGORIES[value] || {}).cls || 'cat-other';
     }
     // One real scan every ~3 days (see CONFIG.minRunIntervalHours in scripts/fetch-events.js),
     // so the warning must leave room for one missed run before it fires.
@@ -588,6 +674,43 @@
       formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform?usp=pp_url&entry.966033931=%7Bid%7D&entry.306978886=%7Btitle%7D&entry.1206232242=%7Burl%7D',
       email: ''
     };
+
+    // ── Analytics (item 17) ─────────────────────────────────────────────────
+    // GoatCounter: no cookie, no personal data, ~3 kB — therefore no consent banner, which is
+    // the whole reason Google Analytics was turned down (GA4 needs one, and a banner suppresses
+    // a large share of the very measurement it is there to collect).
+    //
+    // Fill ANALYTICS.code with the subdomain you chose at goatcounter.com ("bleau" for
+    // bleau.goatcounter.com). Empty = nothing is loaded at all, not even the script.
+    const ANALYTICS = {
+      code: '',
+    };
+
+    function loadAnalytics() {
+      if (!ANALYTICS.code) return;
+      const el = document.createElement('script');
+      el.async = true;
+      el.dataset.goatcounter = `https://${ANALYTICS.code}.goatcounter.com/count`;
+      el.src = 'https://gc.zgo.at/count.js';
+      document.head.appendChild(el);
+    }
+
+    /**
+     * One custom event. Page views answer almost nothing here; what matters is whether the site
+     * actually sends people somewhere, and which language and filters they use.
+     * Never throws and never blocks: analytics must not be able to break the page.
+     */
+    function track(name, detail) {
+      // The off switch is enforced here too, not only at load time: with no site code, nothing
+      // is sent whatever else may have defined window.goatcounter.
+      if (!ANALYTICS.code) return;
+      try {
+        const path = detail ? `${name}/${String(detail).slice(0, 80)}` : name;
+        if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+          window.goatcounter.count({ path, title: name, event: true });
+        }
+      } catch (e) { /* measurement is never worth an error */ }
+    }
 
     // ── Security helpers: event data comes from the web via an LLM, so treat it as untrusted ──
     function escapeHtml(value) {
@@ -729,6 +852,16 @@
       return t('ageRange')(min, max);
     }
 
+    // ── Installable app (item 59) ───────────────────────────────────────────
+    // Registration is best-effort: the site must work identically without it, and a failure
+    // (private mode, unsupported browser, blocked worker) is silent by design.
+    function registerServiceWorker() {
+      if (!('serviceWorker' in navigator)) return;
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => { /* not fatal */ });
+      });
+    }
+
     // ── Language switch ─────────────────────────────────────────────────────
     // Order of preference: ?lang= in the URL (shareable), then the visitor's last choice,
     // then the browser's own language, then French.
@@ -774,6 +907,7 @@
     function setLanguage(next) {
       if (next !== 'fr' && next !== 'en') return;
       lang = next;
+      track('language', lang);
       try { localStorage.setItem('lang', lang); } catch (e) { /* not fatal */ }
       // Keep the address bar shareable: a link copied in English opens in English.
       const url = new URL(location.href);
@@ -788,6 +922,35 @@
     // the translation is missing — a failed run must never blank a card.
     function describe(a) {
       return (lang === 'en' && a.descriptionEn) ? a.descriptionEn : (a.description || '');
+    }
+
+    // ── Card ↔ marker linking (item 19) ────────────────────────────────────
+    // A map beside a list is only useful if the two halves answer each other: clicking a card
+    // should say "here", and clicking a pin should say "this one".
+    const markersById = new Map();
+    let activeId = null;
+
+    function highlightCard(id) {
+      activeId = id;
+      document.querySelectorAll('.card').forEach((el) => {
+        el.classList.toggle('is-active', el.dataset.id === id);
+      });
+    }
+
+    /** Card clicked: centre the map on its marker and open the popup. */
+    function focusMarker(id) {
+      highlightCard(id);
+      const marker = markersById.get(id);
+      if (!marker || !map) return;
+      map.setView(marker.getLatLng(), Math.max(map.getZoom(), 13), { animate: true });
+      marker.openPopup();
+    }
+
+    /** Marker clicked: bring the matching card into view in the list beside it. */
+    function focusCard(id) {
+      highlightCard(id);
+      const card = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
+      if (card) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 
     function isUpcoming(a) {
@@ -815,16 +978,22 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      loadAnalytics();
+      registerServiceWorker();
       lang = initialLang();
       applyLanguage();
       initMap();
       fetchData();
 
       // Écouteurs sur les filtres
-      document.getElementById('filterAge').addEventListener('change', applyFilters);
-      document.getElementById('filterCategory').addEventListener('change', applyFilters);
-      document.getElementById('filterDate').addEventListener('change', applyFilters);
-      document.getElementById('filterHorizon').addEventListener('change', applyFilters);
+      for (const [id, name] of [['filterAge', 'filter-audience'], ['filterCategory', 'filter-category'],
+        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period']]) {
+        document.getElementById(id).addEventListener('change', (e) => {
+          // The value of a <select> is a fixed enum, never free text — nothing personal here.
+          track(name, id === 'filterDate' ? (e.target.value ? 'set' : 'cleared') : (e.target.value || 'all'));
+          applyFilters();
+        });
+      }
       document.querySelectorAll('.lang-btn').forEach((btn) => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
@@ -922,7 +1091,9 @@
 
       activities.forEach(a => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className = `card ${categoryClass(a.category)}`;
+        card.dataset.id = a.id || '';
+        if (a.id && a.id === activeId) card.classList.add('is-active');
         const approx = a.geoApprox ? ` <em title="${escapeHtml(t('approxTitle'))}">${escapeHtml(t('approxInline'))}</em>` : '';
         const host = sourceHost(a.url);
         const reportHref = feedbackHref(a);
@@ -946,6 +1117,17 @@
             ${linkHtml(a.url, t('details'), 'link-btn')}
           </div>
         `;
+        // The whole card is clickable, except the links inside it, which keep their own job.
+        card.addEventListener('click', (e) => {
+          const link = e.target.closest('a');
+          if (link) {
+            // Does the site actually send anyone anywhere? This is the question worth measuring.
+            if (link.classList.contains('link-btn')) track('event-click', a.id);
+            else if (link.classList.contains('report-link')) track('report', a.id);
+            return;
+          }
+          if (a.id) focusMarker(a.id);
+        });
         container.appendChild(card);
       });
     }
@@ -953,12 +1135,22 @@
     // Mise à jour des marqueurs Leaflet
     function updateMapMarkers(activities) {
       markersGroup.clearLayers();
+      markersById.clear();
 
       activities.forEach(a => {
         const lat = Number(a.lat);
         const lng = Number(a.lng);
         if (Number.isFinite(lat) && Number.isFinite(lng)) {
-          const marker = L.marker([lat, lng]);
+          // A coloured dot rather than Leaflet's default pin: it carries the category, and it is
+          // markup rather than an image, so nothing extra is downloaded.
+          const icon = L.divIcon({
+            className: '',
+            html: `<div class="marker-dot ${categoryClass(a.category)}${a.geoApprox ? ' approx' : ''}"></div>`,
+            iconSize: [18, 18],
+            iconAnchor: [9, 9],
+            popupAnchor: [0, -9],
+          });
+          const marker = L.marker([lat, lng], { icon });
           const approxNote = a.geoApprox ? `<br><em>${escapeHtml(t('approxPopup'))}</em>` : '';
           marker.bindPopup(`
             <strong>${escapeHtml(a.title)}</strong><br>
@@ -966,6 +1158,10 @@
             ${escapeHtml(a.locationName)}${approxNote}<br>
             ${linkHtml(a.url, t('popupLink'))}
           `);
+          if (a.id) {
+            markersById.set(a.id, marker);
+            marker.on('click', () => focusCard(a.id));
+          }
           markersGroup.addLayer(marker);
         }
       });
@@ -1020,6 +1216,7 @@
 
     // Gestion du changement d'onglet
     function switchView(viewName) {
+      track('view', viewName);
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
 

@@ -1,0 +1,25 @@
+{
+  "name": "Activités & Événements - Autour de Fontainebleau",
+  "short_name": "Bleau Événements",
+  "description": "Sport, culture et nature à 15 km autour de Fontainebleau. Carte, calendrier, mis à jour automatiquement.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#2d4a3e",
+  "background_color": "#faf7f2",
+  "icons": [
+    {
+      "src": "public/assets/img/brand/fav.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+    {
+      "src": "public/assets/img/brand/LogoNew_Helioso_v1.png",
+      "sizes": "1538x1534",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
