@@ -39,30 +39,47 @@
       text-align: center;
     }
 
+    /* One small segmented control, not two separate buttons. */
     .lang-switch {
       position: absolute;
-      top: 0.75rem;
+      top: 0.9rem;
       right: 1rem;
       display: flex;
-      gap: 0.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 5px;
     }
 
     .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
       font: inherit;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
       line-height: 1;
-      padding: 0.35rem 0.5rem;
+      padding: 0.3rem 0.45rem;
       cursor: pointer;
       color: white;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 4px;
+      background: transparent;
+      border: 0;
     }
+
+    .lang-btn + .lang-btn { border-left: 1px solid rgba(255, 255, 255, 0.4); }
 
     .lang-btn[aria-pressed="true"] {
       background: white;
       color: var(--primary-color);
       font-weight: 600;
+    }
+
+    /* Inline SVG, because Windows renders flag emoji as their bare country code. */
+    .lang-btn .flag {
+      width: 15px;
+      height: 10px;
+      display: block;
+      border-radius: 1px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
     }
 
     /* Narrow screens: keep the switch clear of a wrapping title. */
@@ -332,8 +349,10 @@
 
   <header>
     <div class="lang-switch" role="group" aria-label="Langue / Language">
-      <button type="button" class="lang-btn" data-lang="fr" lang="fr" aria-pressed="true">🇫🇷 FR</button>
-      <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false">🇬🇧 EN</button>
+      <button type="button" class="lang-btn" data-lang="fr" lang="fr" aria-pressed="true" title="Français">
+        <svg class="flag" viewBox="0 0 9 6" aria-hidden="true"><rect width="3" height="6" fill="#002395"/><rect x="3" width="3" height="6" fill="#fff"/><rect x="6" width="3" height="6" fill="#ed2939"/></svg>FR</button>
+      <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false" title="English">
+        <svg class="flag" viewBox="0 0 60 40" aria-hidden="true"><path d="M0,0h60v40H0z" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#c8102e" stroke-width="4"/><path d="M30,0v40M0,20h60" stroke="#fff" stroke-width="13"/><path d="M30,0v40M0,20h60" stroke="#c8102e" stroke-width="8"/></svg>EN</button>
     </div>
     <h1 data-i18n="title">Activités & Événements - Autour de Fontainebleau</h1>
     <p data-i18n="tagline">Trouvez des activités sportives, culturelles et nature pour adultes et enfants</p>
@@ -371,8 +390,8 @@
       <label for="filterHorizon" data-i18n="horizonLabel">Période :</label>
       <select id="filterHorizon">
         <option value="today" data-i18n="horizonToday">Aujourd'hui</option>
-        <option value="2weeks" data-i18n="horizon2w">Dans les 2 semaines</option>
-        <option value="3months" data-i18n="horizon3m" selected>Dans les 3 mois</option>
+        <option value="2weeks" data-i18n="horizon2w" selected>Dans les 2 semaines</option>
+        <option value="3months" data-i18n="horizon3m">Dans les 3 mois</option>
       </select>
     </div>
   </div>

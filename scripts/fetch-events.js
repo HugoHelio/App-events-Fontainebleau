@@ -27,6 +27,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const datatourisme = require('./datatourisme');
+const feedback = require('./feedback');
 
 // ───────────────────────────── Configuration ─────────────────────────────
 
@@ -890,6 +891,26 @@ function renderSummary(stats, ctx) {
     for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s}`);
     if (stats.similarSameDay.length > 8) L.push(`  - … et ${stats.similarSameDay.length - 8} autre(s)`);
   }
+  const fb = stats.feedback;
+  if (fb) {
+    if (fb.error) {
+      L.push(`- 📨 Formulaire de signalement : ⚠️ ${String(fb.error).slice(0, 160)} (run poursuivi)`);
+    } else {
+      L.push(`- 📨 Formulaire de signalement : **${fb.total}** réponse(s) → **${fb.autoHidden}** masquage(s) automatique(s), ${fb.recheck} lien(s) à revérifier, **${fb.review}** à relire${fb.alreadyHandled ? `, ${fb.alreadyHandled} déjà traité(s)` : ''}`);
+      if (fb.capped) L.push('  - 🚨 **Trop de demandes de masquage d\'un coup : aucune appliquée.** Vérifie le formulaire avant d\'agir.');
+      const labels = Object.entries(fb.labels).map(([k, v]) => `${k} → ${v.action} (${v.count})`);
+      if (labels.length) L.push(`  - types de problème vus : ${labels.join(' · ')}`);
+      if (fb.badId.length) L.push(`  - ⚠️ identifiant absent ou invalide : ${fb.badId.slice(0, 5).join(', ')}${fb.badId.length > 5 ? '…' : ''}`);
+      const queue = stats.feedbackReview || [];
+      if (queue.length) {
+        L.push('  - **À relire et, si c\'est juste, à reporter dans `overrides.json` :**');
+        for (const r of queue.slice(0, 10)) {
+          L.push(`    - \`${r.id}\` — *${r.type}* — ${r.title}${r.details ? ` → « ${r.details} »` : ''}`);
+        }
+        if (queue.length > 10) L.push(`    - … et ${queue.length - 10} autre(s)`);
+      }
+    }
+  }
   const ov = stats.overrides;
   if (ov && (ov.applied || ov.hidden || ov.unmatched.length || ov.badFields.length)) {
     L.push(`- ✍️ Corrections manuelles (overrides.json) : **${ov.applied}** appliquée(s) · **${ov.hidden}** masquée(s)${ov.merged ? ` · ${ov.merged} fusionnée(s) après correction` : ''}`);
@@ -1033,6 +1054,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
+    feedback: null,
   };
 
   const existingText = fs.existsSync(CONFIG.dataPath) ? fs.readFileSync(CONFIG.dataPath, 'utf8') : '';
@@ -1171,11 +1193,34 @@ async function main() {
   // Manual corrections last: they must win over anything the sources reported, and they run
   // before geocoding and URL verification so a corrected address or link is actually checked.
   const overrides = loadJson(CONFIG.overridesPath, {});
-  if (overrides && typeof overrides === 'object' && !Array.isArray(overrides)) {
-    applyOverrides(records, overrides, stats);
-  } else if (overrides) {
+  if (!overrides || typeof overrides !== 'object' || Array.isArray(overrides)) {
     throw new Error('overrides.json must be a JSON object keyed by event id');
   }
+
+  // Visitor feedback (§3.N). Read-only for everything except hiding an event, and never fatal:
+  // the form is a nice-to-have, a sheet that is down must not cost us a whole scan.
+  let effective = overrides;
+  if (feedback.CONFIG.url) {
+    try {
+      const fb = await feedback.collect({ knownOverrides: overrides });
+      stats.feedback = fb.stats;
+      stats.feedbackReview = fb.review;
+      effective = feedback.mergeAutoHides(overrides, fb.autoHide);
+      // A reported dead link is not grounds for hiding anything: just drop the verification
+      // stamp so step 5 re-checks the URL and drops it on its own evidence if it is truly dead.
+      for (const rec of records.values()) {
+        if (!fb.recheck.has(rec.event.id)) continue;
+        delete rec.event.urlStatus;
+        delete rec.event.urlCheckedAt;
+      }
+      console.log(`📨 Feedback : ${fb.stats.total} réponse(s) → ${fb.stats.autoHidden} masquage(s), ${fb.stats.recheck} lien(s) à revérifier, ${fb.stats.review} à relire`);
+    } catch (err) {
+      stats.feedback = { error: err.message };
+      console.error(`   ⚠️ feedback CSV: ${String(err.message).slice(0, 200)} (run continues)`);
+    }
+  }
+
+  applyOverrides(records, effective, stats);
 
   const all = [...records.values()];
 
@@ -1235,6 +1280,7 @@ if (require.main === module) {
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
   applyOverrides, coerceOverride,
+  renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,
   CONFIG,

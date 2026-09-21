@@ -40,6 +40,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+          # URL CSV de la feuille de réponses du formulaire. En secret, pas en clair :
+          # une réponse peut contenir le contact facultatif du visiteur, et le dépôt est public.
+          # Secret absent = lecture du formulaire simplement désactivée, le scan continue.
+          FEEDBACK_CSV_URL: ${{ secrets.FEEDBACK_CSV_URL }}
         run: node scripts/fetch-events.js
 
       - name: Commit et Push automatique des nouvelles données

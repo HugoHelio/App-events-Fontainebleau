@@ -17,12 +17,17 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/fetch-events.js` | Pipeline de collecte : scans Gemini + DATAtourisme → validation → fusion → géocodage → vérification des URL |
 | `scripts/datatourisme.js` | Bibliothèque partagée DATAtourisme (téléchargement, parsing, correspondance) — utilisée par le pipeline **et** par la sonde |
 | `scripts/datatourisme-coverage.js` | Sonde de couverture DATAtourisme, **mode observation** : ne modifie jamais `data.json` |
+| `scripts/feedback.js` | Lecture du formulaire de signalement (CSV publié). Seul le masquage est automatique ; tout le reste part en relecture humaine |
+| `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
 | `.github/workflows/` | `daily-check.yml` (collecte) et `datatourisme-coverage.yml` (observation) |
 
 `app.js` et `style.css` sont des reliquats vides : tout le frontend vit dans `index.html`.
+
+`overrides.json` est le **seul** fichier de données modifiable à la main. `data.json` est
+régénéré à chaque scan : toute correction faite directement dedans est perdue au run suivant.
 
 ## Contraintes à respecter
 
@@ -54,6 +59,11 @@ node scripts/datatourisme-coverage.js
 
 # Le pipeline principal importe aussi DATAtourisme automatiquement ; DATATOURISME=0 pour le désactiver
 GEMINI_API_KEY=… DATATOURISME=0 DRY_RUN=1 node scripts/fetch-events.js
+
+# Lecture du formulaire de signalement. Sans FEEDBACK_CSV_URL, la fonctionnalité est simplement
+# inactive. L'URL vit dans le secret GitHub du même nom, jamais dans le dépôt : une réponse peut
+# contenir le contact facultatif du visiteur.
+FEEDBACK_CSV_URL=… GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js
 ```
 
 ## Cadence et coûts

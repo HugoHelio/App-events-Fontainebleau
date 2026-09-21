@@ -357,6 +357,49 @@ writes the entry. Automating the ingestion is a separate step (see §9, item 48)
 not the same decision — the form is open to anyone with the link, so it is an unauthenticated
 write path into published data.
 
+### N. Feedback ingestion — the loop closes (item 48, September 21, 2026)
+
+`scripts/feedback.js` reads the Google Form response sheet, published as CSV, on every run.
+It is the input half of the loop; §3.K is the output half.
+
+**The threat model drives the whole design.** The form is open to anyone with the link, so
+every row is an unauthenticated write attempt against published data. Therefore:
+
+| Signal | What happens |
+|---|---|
+| "n'existe pas", "annulé", "doublon" | **Auto-applied** as `hidden: true`, capped, always listed in the run report |
+| "lien mort" | **Not** a hide: the URL's verification stamp is cleared so step 5 re-checks it and drops it on its own evidence |
+| wrong date, price, title, place, "autre" | **Never auto-applied.** Queued in the run report for a human to transcribe into `overrides.json` |
+
+Hiding is the only automatic action because it is reversible, idempotent, and the project's
+own rule (§5) is that a missing event costs less than a wrong one. Writing a visitor-supplied
+date or title into `data.json` is the exact opposite of that rule.
+
+**Burst cap.** More than `FEEDBACK_MAX_AUTO_HIDE` (5) hide requests in one run applies
+*nothing* and shouts in the report. Mass-hiding is the attack — emptying the site — so
+refusing to act on a burst is the safe failure mode, not applying the first five.
+
+**No state between runs.** Hiding is idempotent, so re-reading the whole sheet every time is
+correct and needs no cursor file. The review queue is self-clearing instead: an event that
+already has an entry in `overrides.json` drops out of it, so the list shrinks as it is worked
+through rather than nagging forever.
+
+**`overrides.json` always wins.** Auto-hides are the base layer, the hand-written file is laid
+on top. If a visitor reports "cancelled" and the project lead has written a correction for that
+event, the human decision survives.
+
+**The sheet URL is never committed.** Responses can carry the optional contact field, and the
+repository is public, which would make it harvestable. It comes from the `FEEDBACK_CSV_URL`
+GitHub secret; unset, the feature is simply off. A feedback failure is logged and the scan
+continues — the form must never cost a whole run.
+
+**Robust to the form being reworded.** Columns are found by pattern, not by exact header (the
+live sheet already has a stray trailing space in one of them), and problem types are matched on
+keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" both land on
+`recheck`. Every distinct label seen is echoed in the run report with the action it mapped to,
+so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
+with no id or problem-type column fails loudly instead of guessing.
+
 ### L. English interface (item 33, phase 1, September 21, 2026)
 
 A FR/EN switch in the header, `?lang=` in the URL, the choice remembered per visitor, and the
@@ -378,7 +421,9 @@ every filter.
 ### M. Period filter (item 49, September 21, 2026)
 
 A fourth filter beside "date spécifique": today / next 2 weeks / next 3 months, defaulting to
-3 months, which is exactly the previous behaviour. An event matches as soon as it *starts* on or
+**2 weeks** — 53 of the 194 events currently in the window. The default answers "what is on
+soon" instead of dumping the full three months; "Dans les 3 mois" reproduces the old view for
+anyone who wants it. An event matches as soon as it *starts* on or
 before the last day of the period — one that started last week and runs until December is still
 shown under "Today", which is what a visitor means by "what can I do today".
 
@@ -513,7 +558,13 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | **`overrides.json`, keyed by event id, is the only hand-edited data file** and is re-applied on every run (§3.K) | The "report an error" link had no output: `data.json` is regenerated each scan, so any correction made there was erased. Keying by id makes the fix survive a re-scan with no flag to maintain |
 | 2026-09-21 | `applyOverrides()` re-keys the record map and merges collisions | `title`/`startDate`/`city` are `eventKey()`; correcting one of them would otherwise publish both the corrected record and the next scan's uncorrected sighting |
 | 2026-09-21 | An override with an invalid value is **skipped and reported**, never written; `title` and `city` cannot be blanked | `cleanUrl()`/`normalizeCategory()` return `null` on refusal, which would have wiped the field; an empty title produces a garbage key |
-| 2026-09-21 | Form responses are **not** auto-applied yet; a human still transcribes them into `overrides.json` | The form is open to anyone with the link — an unauthenticated write path into published data. Automating ingestion is item 48 and a separate risk decision |
+| 2026-09-21 | **Form responses are ingested automatically, but only "hide" is auto-applied** (§3.N) | Hiding is reversible and idempotent, and §5 says a missing event costs less than a wrong one. Writing a visitor-supplied date or title into `data.json` is the opposite of that rule |
+| 2026-09-21 | A reported dead link clears the URL verification stamp instead of hiding the event | Lets the pipeline decide on its own evidence; a visitor mistaking a slow site for a dead one cannot delete an event |
+| 2026-09-21 | A burst above 5 hide requests in one run applies **nothing** | Mass-hiding is the attack; applying the first five would still empty the site one run at a time |
+| 2026-09-21 | No cursor file: the whole sheet is re-read every run | Hiding is idempotent. The review queue self-clears via `overrides.json` instead of needing state |
+| 2026-09-21 | The sheet URL lives in a GitHub secret, not in the repository | Responses can carry the optional contact field and the repo is public |
+| 2026-09-21 | Period filter defaults to **"dans les 2 semaines"**, not 3 months | 194 → 53 events on the live data: the default should answer "what is on soon", not dump the whole window |
+| 2026-09-21 | Language switch uses inline SVG flags, not flag emoji | Windows has no flag glyphs: `🇫🇷 FR` renders as "FR FR" there, which is what made the first version look cluttered |
 | 2026-09-21 | **English version = interface only. Event data stays French** (§3.L) | A translated title cannot be matched back to the real event on a poster, a ticket desk or the organiser's own site. Also keeps the recurring translation cost at zero |
 | 2026-09-21 | Category **values** stay French; only the displayed label is translated | The values are the data enum and the `<option value>` the filter matches on — translating them breaks every filter silently |
 | 2026-09-21 | Language resolution: `?lang=` → stored choice → browser language → French | Makes a link shareable in a chosen language, and an INSEAD visitor lands in English without hunting for a switch |
@@ -589,7 +640,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 45. **DATAtourisme merged into the pipeline** (§3.I) — decided and shipped September 20, ahead of the original "two or three weekly reports" prerequisite (explicit call by the project lead on the measured numbers). Verified: Gemini forced to fail entirely, DATAtourisme alone still produced a valid publish; multi-date events keep every date; one real cross-source duplicate caught
 - [ ] 46. Frontend: visually distinguish `source: "datatourisme"` cards, or a filter toggle — currently invisible to visitors. **Note (September 21): no published event carries `source` yet** — the live `data.json` predates the merge of item 45, so this cannot be verified until the first real scan after it
 - [x] 48a. **`overrides.json` — the feedback loop gets an output** (§3.K). Hand-edited, applied on every run, keyed by event id so a correction survives a re-scan. Tested offline against the real `data.json`, including a full correct→publish→reload→re-sight round trip
-- [ ] 48b. **Automate the ingestion of form responses**: publish the response sheet as CSV, read it in the pipeline, auto-apply only the safe reversible signal (hide a cancelled / non-existent event), queue everything else in the run report for review. Blocked on the published CSV URL
+- [x] 48b. **Ingestion of form responses automated** (§3.N) — `scripts/feedback.js`, read every run from the published CSV. Auto-hide only, capped at 5, dead links re-verified instead of hidden, everything else queued in the run report. Tested against the live sheet and against flood / malformed / hostile rows. **Remaining: create the `FEEDBACK_CSV_URL` GitHub secret**, without it the feature stays off
+- [ ] 48c. Consider publishing only the columns the pipeline needs (drop "contact") so the sheet carries no personal data at all
 - [x] 47. **Fuzzy same-day duplicate cleanup** (§3.J) — `dedupeFuzzy()` in `scripts/fetch-events.js`, run every scan over the full merged set. Fixes the two duplicates found while testing item 45, and any future re-occurrence of the same pattern, automatically
 - [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
@@ -618,7 +670,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [ ] 25. SRI hashes for CDN scripts (Leaflet, FullCalendar)
 - [ ] 26. Open Graph / sharing metadata; accessibility pass on tabs and filters
 - [x] 33. **English version, phase 1 — interface only** (§3.L): FR/EN switch with flags in the header, 48-string dictionary, translated category *labels* (values stay French), `lang` attribute, English footer and disclaimer, `?lang=` shareable parameter, browser-language detection, FullCalendar locale follows. **Event data stays French by decision, not by omission** — phases 2 and 3 of the original item are dropped, see §7
-- [x] 49. Period filter (today / 2 weeks / 3 months) — **done September 21** (§3.M), default "3 mois" = previous behaviour, a specific date overrides it
+- [x] 49. Period filter (today / 2 weeks / 3 months) — **done September 21** (§3.M), default **"dans les 2 semaines"**, a specific date overrides it
 - [x] 50. Helioso brand credit in the footer — **done September 21**
 - [~] 36. Friendlier age label ("Tout public", "Dès 6 ans", "Jusqu'à 12 ans", "6–12 ans")
 - [~] 41. Collection window reduced to 3 months (`windowEnd`; events beyond it hidden, not deleted)
