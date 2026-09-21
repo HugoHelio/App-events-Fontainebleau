@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="public/assets/img/brand/fav.png">
   <link rel="apple-touch-icon" href="public/assets/img/brand/LogoNew_Helioso_v1.png">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2d4a3e">
+  <meta name="theme-color" content="#16211c">
   <meta name="description" content="Toutes les activités sportives, culturelles et nature autour de Fontainebleau, mises à jour automatiquement.">
 
   <!-- Link preview (item 26). The main way this site travels is a link pasted into a WhatsApp or
@@ -17,7 +17,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fontainebleau Live">
   <meta property="og:title" content="Fontainebleau Live">
-  <meta property="og:description" content="Sport, culture et nature à 15 km autour de Fontainebleau. Carte, calendrier, mis à jour automatiquement.">
+  <meta property="og:description" content="Sport, culture et nature autour de Fontainebleau. Carte, calendrier, mis à jour automatiquement.">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:locale:alternate" content="en_GB">
   <meta property="og:url" content="https://fontainebleaulive.fr/">
@@ -33,16 +33,54 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
-    /* "Forêt & Grès" — the forest and the sandstone of Fontainebleau, rather than a framework
-       default. To go back to the previous look, restore these six values; nothing else in the
-       stylesheet hard-codes a colour.
-         previous: primary #0e4057 · secondary #319795 · bg #f7fafc · text #2d3748 */
+    /* Design tokens, in the shape a modern system uses: an ink scale, one brand family, one
+       accent, a line colour, radii and shadows. Named so a value is never picked twice.
+
+       Deliberately NOT the neighbouring site's palette. Fontyblog is mid-teal #226D68 with a
+       saffron #F9A826 accent; sitting in the same family but duller would be the worst place to
+       be. Near-black forest ink with a vivid terracotta reads as the same KIND of modern system
+       while being unmistakably a different one.
+
+       History, if a step back is ever wanted:
+         v1 primary #0e4057 · secondary #319795 · bg #f7fafc · text #2d3748
+         v2 primary #2d4a3e · secondary #8a5a2b · bg #faf7f2 · text #33302b */
     :root {
-      --primary-color: #2d4a3e;   /* vert forêt — bandeau, titres */
-      --secondary-color: #8a5a2b; /* ocre de grès — liens (5.87:1 sur blanc) */
-      --bg-color: #faf7f2;        /* blanc cassé chaud, pas le gris-bleu froid d'avant */
-      --card-bg: #ffffff;
-      --text-color: #33302b;
+      /* Ink — chrome and type */
+      --ink: #16211c;        /* near-black, forest cast (16.6:1 with white) */
+      --ink-2: #4a544e;
+      --ink-3: #8b948e;
+
+      /* Brand — deep forest, for surfaces that are not chrome */
+      --brand: #1f4d3d;
+      --brand-dark: #14352b;
+      --brand-light: #e6efe9;
+
+      /* Accent — terracotta. The vivid tone is for dark grounds only (3.41:1 on white is not
+         enough for text); --accent-ink is its readable counterpart on paper (5.37:1). */
+      --accent: #e2653c;
+      --accent-ink: #b8451f;
+      --accent-soft: #fdeee7;
+
+      /* Surfaces */
+      --line: #e6e2da;
+      --bg: #faf7f2;
+      --paper: #ffffff;
+
+      /* Shape */
+      --r-sm: 6px;
+      --r-md: 10px;
+      --r-lg: 16px;
+      --r-pill: 999px;
+      --shadow-sm: 0 1px 2px rgba(22, 33, 28, 0.04), 0 1px 3px rgba(22, 33, 28, 0.06);
+      --shadow-md: 0 4px 14px rgba(22, 33, 28, 0.07), 0 2px 4px rgba(22, 33, 28, 0.04);
+      --shadow-lg: 0 14px 34px rgba(22, 33, 28, 0.12);
+
+      /* Aliases kept so the rest of the stylesheet needs no rewrite. */
+      --primary-color: var(--ink);
+      --secondary-color: var(--accent-ink);
+      --bg-color: var(--bg);
+      --card-bg: var(--paper);
+      --text-color: #2b322d;
 
       /* Category colours: the full tone for the card's left border and the map marker,
          a light tint + dark ink for the badge. All badge pairs are above 7:1. */
@@ -67,17 +105,16 @@
       line-height: 1.5;
     }
 
-    /* Previous header, if the new one is not to your taste:
+    /* Original header, if a step back is ever wanted:
          header { position: relative; background-color: var(--primary-color); color: white;
                   padding: 1.5rem 1rem; text-align: center; }
        and in the markup, an <h1> with the plain title instead of the .wordmark block. */
     header {
       position: relative;
       overflow: hidden;
-      /* Depth rather than a flat block: light falls from the top left, as it would in a clearing. */
-      background: linear-gradient(152deg, #3a5c4c 0%, var(--primary-color) 48%, #1e3329 100%);
+      background: linear-gradient(155deg, #26382e 0%, var(--ink) 55%, #0e1712 100%);
       color: white;
-      padding: 1.6rem 1rem 3.2rem 1rem;
+      padding: 1.5rem 1rem 3rem 1rem;
     }
 
     .header-inner {
@@ -86,16 +123,18 @@
       padding-right: 6rem; /* room for the language switch */
     }
 
-    /* The treeline sits in the page colour, so the content below looks cut into the banner. */
-    .treeline {
+    /* One shallow curve instead of the tree silhouette, which read as spikes rather than a
+       forest. A single soft arc is a shape, not an attempt at realism — it cannot fail to look
+       like the thing it is not. Remove this element entirely for a flat banner. */
+    .header-curve {
       position: absolute;
       left: 0;
       right: 0;
       bottom: -1px;
       width: 100%;
-      height: 34px;
+      height: 30px;
       display: block;
-      fill: var(--bg-color);
+      fill: var(--bg);
     }
 
     .wordmark {
@@ -109,9 +148,20 @@
     .wordmark .wm-place { color: #ffffff; }
 
     .wordmark .wm-live {
-      color: #e2a86b; /* lighter than the link ochre: this sits on a dark ground */
+      color: var(--accent); /* vivid tone, on a dark ground only — 4.86:1 on the ink */
       font-weight: 400;
       font-style: italic;
+    }
+
+    /* The small uppercase line above a title: cheap, and it does more for "modern" than any
+       amount of colour. */
+    .kicker {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
     }
 
     header .tagline {
@@ -191,8 +241,9 @@
       margin: 1rem auto;
       padding: 1rem;
       background: var(--card-bg);
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -215,10 +266,18 @@
 
     .filter-group input,
     .filter-group select {
-      padding: 0.5rem;
-      border: 1px solid #cbd5e0;
-      border-radius: 4px;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: var(--r-sm);
+      background: var(--paper);
+      color: inherit;
       font-size: 0.95rem;
+    }
+
+    .filter-group input:focus,
+    .filter-group select:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
     }
 
     /* View Switcher Tabs */
@@ -231,14 +290,16 @@
 
     .tab-btn {
       padding: 0.5rem 1.5rem;
-      border: 1px solid var(--primary-color);
-      background-color: transparent;
-      color: var(--primary-color);
+      border: 1px solid var(--line);
+      background-color: var(--paper);
+      color: var(--ink);
       font-weight: 600;
-      border-radius: 20px;
+      border-radius: var(--r-pill);
       cursor: pointer;
       transition: all 0.2s;
     }
+
+    .tab-btn:hover { border-color: var(--ink-3); }
 
     .tab-btn.active {
       background-color: var(--primary-color);
@@ -288,8 +349,8 @@
       width: 100%;
       height: 100%;
       min-height: 400px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-sm);
     }
 
     /* Above Leaflet's own panes (z-index 400) and its controls (1000). */
@@ -301,13 +362,13 @@
       font: inherit;
       font-size: 0.8rem;
       font-weight: 600;
-      padding: 0.4rem 0.7rem;
+      padding: 0.42rem 0.9rem;
       cursor: pointer;
-      color: var(--primary-color);
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(0, 0, 0, 0.18);
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--line);
+      border-radius: var(--r-pill);
+      box-shadow: var(--shadow-md);
     }
 
     .reset-view:hover { background: #ffffff; }
@@ -324,10 +385,10 @@
     /* Cards */
     .card {
       background: var(--card-bg);
-      border-radius: 8px;
+      border-radius: var(--r-md);
       padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      border-left: 4px solid var(--secondary-color);
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--ink-3);
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
@@ -343,8 +404,8 @@
       align-self: flex-start;
       background: var(--cat-other-bg);
       color: var(--cat-other-fg);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      padding: 0.22rem 0.62rem;
+      border-radius: var(--r-pill);
       font-size: 0.75rem;
       font-weight: bold;
     }
@@ -433,10 +494,10 @@
     /* Item 19 — the card is a control, and it says so. */
     .card { cursor: pointer; transition: box-shadow 0.15s, transform 0.15s; }
 
-    .card:hover { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+    .card:hover { box-shadow: var(--shadow-md); }
 
     .card.is-active {
-      box-shadow: 0 0 0 2px var(--primary-color), 0 4px 12px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 0 0 2px var(--accent), var(--shadow-md);
     }
 
     /* Links inside the card keep a normal pointer and stop the card handler themselves. */
@@ -456,7 +517,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid var(--line);
     }
 
     .site-footer a {
@@ -481,6 +542,13 @@
     .brand-credit a:hover { text-decoration: underline; }
 
     .install-hint { opacity: 0.85; }
+
+    .event-count {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      padding-bottom: 0.2rem;
+    }
 
     .brand-credit img {
       width: 20px;
@@ -509,13 +577,14 @@
         <svg class="flag" viewBox="0 0 60 40" aria-hidden="true"><path d="M0,0h60v40H0z" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#c8102e" stroke-width="4"/><path d="M30,0v40M0,20h60" stroke="#fff" stroke-width="13"/><path d="M30,0v40M0,20h60" stroke="#c8102e" stroke-width="8"/></svg>EN</button>
     </div>
     <div class="header-inner">
+      <p class="kicker" data-i18n="kicker">Agenda de Fontainebleau et ses environs</p>
       <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
       <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
-      <p class="tagline" data-i18n="tagline">Sport, culture et nature à 15 km autour de Fontainebleau, pour adultes et enfants</p>
+      <p class="tagline" data-i18n="tagline">Sport, culture et nature autour de Fontainebleau, pour adultes et enfants</p>
       <p id="lastUpdated" class="last-updated"></p>
     </div>
-    <svg class="treeline" viewBox="0 0 1200 44" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,44 L22,27 L44,7 L66,31 L91,31 L115,16 L140,34 L155,27 L170,6 L185,31 L211,29 L237,10 L263,32 L278,30 L293,13 L308,33 L329,28 L349,8 L370,31 L395,31 L419,16 L444,34 L470,32 L496,17 L522,35 L538,35 L553,25 L569,37 L593,33 L616,20 L640,36 L665,31 L689,15 L714,34 L740,33 L765,20 L791,36 L813,35 L834,24 L856,37 L871,33 L885,20 L900,36 L927,32 L954,18 L981,35 L1000,29 L1018,10 L1037,32 L1051,32 L1064,18 L1078,35 L1104,28 L1130,9 L1156,32 L1183,35 L1200,25 L1200,37 L1200,44 Z"/>
+    <svg class="header-curve" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,0 C260,34 460,40 660,36 C880,31 1040,18 1200,0 L1200,40 L0,40 Z"/>
     </svg>
   </header>
 
@@ -581,6 +650,7 @@
   </main>
 
   <footer class="site-footer">
+    <p id="eventCount" class="event-count"></p>
     <p id="footerDisclaimer"></p>
     <p id="footerDataLang"></p>
     <p id="feedbackFooter"></p>
@@ -627,7 +697,8 @@
     const STRINGS = {
       fr: {
         docTitle: 'Fontainebleau Live — Activités & Événements autour de Fontainebleau',
-        tagline: 'Sport, culture et nature à 15 km autour de Fontainebleau, pour adultes et enfants',
+        tagline: 'Sport, culture et nature autour de Fontainebleau, pour adultes et enfants',
+        kicker: 'Agenda de Fontainebleau et ses environs',
 
         audienceLabel: 'Public cible :',
         audienceAll: 'Tous',
@@ -677,10 +748,12 @@
         mailBodyGeneral: 'Votre message :\n',
         installHint: 'Sur mobile : « Ajouter à l\u2019écran d\u2019accueil » pour retrouver le site comme une application, même hors connexion.',
         resetView: 'Tout afficher',
+        eventCount: (n) => `${n} événement${n > 1 ? 's' : ''} répertorié${n > 1 ? 's' : ''} pour les trois prochains mois`,
       },
       en: {
         docTitle: 'Fontainebleau Live — Activities & Events around Fontainebleau',
-        tagline: 'Sport, culture and nature within 15 km of Fontainebleau, for adults and children',
+        tagline: 'Sport, culture and nature around Fontainebleau, for adults and children',
+        kicker: 'What\u2019s on in and around Fontainebleau',
 
         audienceLabel: 'Audience:',
         audienceAll: 'Everyone',
@@ -730,6 +803,7 @@
         mailBodyGeneral: 'Your message:\n',
         installHint: 'On mobile: "Add to Home Screen" to keep the site like an app, and to open it offline.',
         resetView: 'Show all',
+        eventCount: (n) => `${n} event${n > 1 ? 's' : ''} listed for the next three months`,
       },
     };
 
@@ -902,6 +976,19 @@
       el.classList.toggle('stale', stale);
     }
 
+    // ── Coverage figure ─────────────────────────────────────────────────────
+    // Deliberately NOT the number of cards currently filtered: this is how much the site knows
+    // about, which is the number that says whether a whole category is missing. It is the
+    // measure a visitor can use to judge us, so it counts the same window the site publishes.
+    function renderEventCount() {
+      const el = document.getElementById('eventCount');
+      if (!el) return;
+      const last = horizonLastDay('3months');
+      const n = allActivities.filter((a) => isUpcoming(a) && isInWindow(a)
+        && (a.dateType === 'recurring' || (a.startDate && a.startDate <= last))).length;
+      el.textContent = n ? t('eventCount')(n) : '';
+    }
+
     // ── Feedback ("Signaler une erreur") ──
     function feedbackHref(a) {
       const ctx = a
@@ -994,6 +1081,7 @@
 
       renderLastUpdated();
       renderFeedbackFooter();
+      renderEventCount();
       if (calendar) calendar.setOption('locale', lang);
     }
 
@@ -1141,6 +1229,7 @@
     renderLastUpdated(Array.isArray(payload) ? null : payload.generatedAt);
     windowEnd = (!Array.isArray(payload) && /^\d{4}-\d{2}-\d{2}$/.test(payload.windowEnd || '')) ? payload.windowEnd : null;
     
+    renderEventCount();
     applyFilters();
   } catch (error) {
     console.error("❌ Erreur lors du chargement de data.json :", error);
