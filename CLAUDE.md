@@ -1,7 +1,8 @@
 # Agrégateur d'événements — Fontainebleau
 
-Application web statique qui collecte automatiquement les événements de la région de
-Fontainebleau (rayon ≈ 15 km) et les affiche sur une carte et un calendrier.
+Application web statique qui collecte automatiquement les événements autour de Fontainebleau
+(**rayon de 20 km**, `MAX_RADIUS_KM` dans `scripts/fetch-events.js`) et les affiche sur une carte
+et un calendrier. Trois sources : Gemini, DATAtourisme, OpenAgenda.
 
 ## À lire en premier
 

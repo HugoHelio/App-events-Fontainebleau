@@ -1127,7 +1127,7 @@
       if (!el) return;
       const last = horizonLastDay('3months');
       const n = allActivities.filter((a) => isUpcoming(a) && isInWindow(a)
-        && (a.dateType === 'recurring' || (a.startDate && a.startDate <= last))).length;
+        && a.startDate && a.startDate <= last).length;
       // With no data, an empty line is honest; "0 événements répertoriés" would read as a
       // coverage claim about the region rather than a failure to load.
       el.textContent = (loadFailed || !n) ? '' : t('eventCount')(n);
@@ -1306,10 +1306,15 @@
     }
 
     function isUpcoming(a) {
-      if (a.dateType === 'recurring') return true;
       const end = a.endDate || a.startDate;
       return !end || end >= todayStr();
     }
+
+    // Note on dateType: every record published by the pipeline is dateType 'event' with an
+    // explicit start date. "Recurring" was handled here until September 22 and never once
+    // occurred: the extractor never emits it, DATAtourisme excludes recurring entries (§3.H) and
+    // OpenAgenda collapses a long run into a single span (§3.S). Weekly markets are deliberately
+    // out of scope. If that ever changes, the decision belongs in the pipeline first.
 
     // Events starting after the display window (e.g. the 3 months announced by the pipeline) stay in the data
     // but are hidden, so the map and the list are not saturated; they appear as the window slides forward.
@@ -1427,21 +1432,15 @@
         const matchCat = !catVal || a.category === catVal;
 
         // Filtre Période
-        const matchHorizon = !horizonEnd || a.dateType === 'recurring'
-          || (a.startDate ? a.startDate <= horizonEnd : false);
+        const matchHorizon = !horizonEnd || (a.startDate ? a.startDate <= horizonEnd : false);
         
         // Filtre Date
         let matchDate = true;
         if (dateVal) {
-          if (a.dateType === 'recurring') {
-            matchDate = true;
-          } else if (a.startDate) {
-            const start = a.startDate;
-            const end = a.endDate || a.startDate;
-            matchDate = (dateVal >= start && dateVal <= end);
-          } else {
-            matchDate = false;
-          }
+          // Every published record has an explicit start date (see the note on dateType above),
+          // so a record without one is malformed and is simply not a match.
+          const end = a.endDate || a.startDate;
+          matchDate = Boolean(a.startDate) && dateVal >= a.startDate && dateVal <= end;
         }
 
         return matchAge && matchCat && matchDate && matchHorizon;

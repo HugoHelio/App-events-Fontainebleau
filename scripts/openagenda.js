@@ -36,9 +36,13 @@ const CONFIG = {
   // published as one span instead of flooding the map with a card per day.
   maxOccurrences: envInt('OPENAGENDA_MAX_OCCURRENCES', 4),
   longRunDays: envInt('OPENAGENDA_LONG_RUN_DAYS', 14),
+  // Doit rester aligné sur CONFIG.maxRadiusKm du pipeline : demander plus large ne ferait que
+  // télécharger des fiches que le pipeline écarterait juste après.
+  radiusKm: envInt('MAX_RADIUS_KM', 20),
 };
 
 const BBOX = { latMin: 48.20, latMax: 48.65, lngMin: 2.45, lngMax: 3.00 };
+const CENTER = { lat: 48.4020, lng: 2.7010 };
 const USER_AGENT = 'Mozilla/5.0 (compatible; FontainebleauLiveBot/2.6; +openagenda)';
 
 /**
@@ -115,8 +119,10 @@ function occurrencesInWindow(record, today, windowEnd) {
 
 // ───────────────────────────── Fetching ─────────────────────────────
 
+// Le portail sait filtrer par distance : on lui demande le même rayon que le pipeline applique
+// ensuite, plutôt qu un rectangle qui mordait sur Sénart et Corbeil au nord-ouest.
 function buildWhere(today, windowEnd) {
-  return `in_bbox(location_coordinates, ${BBOX.latMin}, ${BBOX.lngMin}, ${BBOX.latMax}, ${BBOX.lngMax})`
+  return `within_distance(location_coordinates, geom'POINT(${CENTER.lng} ${CENTER.lat})', ${CONFIG.radiusKm}km)`
     + ` and lastdate_begin >= date'${today}'`
     + ` and firstdate_begin <= date'${windowEnd}'`;
 }
@@ -202,6 +208,8 @@ function toPipelineEvents(records, { today, maxDate }) {
       url: String(r.canonicalurl || '').trim(),
       image: String(r.image || '').trim() || undefined,
       source: 'openagenda',
+      // Coordonnées issues d'une fiche de lieu déclarée, pas devinées : voir geoPrecise.
+      geoPrecise: true,
     };
 
     const span = daysBetween(days[0], days[days.length - 1]);
@@ -216,6 +224,6 @@ function toPipelineEvents(records, { today, maxDate }) {
 }
 
 module.exports = {
-  CONFIG, BBOX, load, toPipelineEvents, mapCategory, occurrencesInWindow,
+  CONFIG, BBOX, CENTER, load, toPipelineEvents, mapCategory, occurrencesInWindow,
   isScheduled, buildWhere, parisDay, parseMaybeJson, EXCLUDED_AGENDAS,
 };

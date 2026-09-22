@@ -295,6 +295,8 @@ function toPipelineEvents(events, { today, maxDate }) {
         description: e.description,
         url: e.url,
         source: 'datatourisme',
+        // Coordonnées déclarées par l'office de tourisme, pas devinées : voir geoPrecise dans validateEvent().
+        geoPrecise: true,
       });
     }
   }

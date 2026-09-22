@@ -57,6 +57,10 @@ const CONFIG = {
   cachePath: path.resolve(process.env.GEOCODE_CACHE_PATH || 'geocode-cache.json'),
   overridesPath: path.resolve(process.env.OVERRIDES_PATH || 'overrides.json'),
   venuesPath: path.resolve(process.env.VENUES_PATH || 'venues.json'),
+  // Acceptance radius around Fontainebleau. The bounding box below stays as a cheap coarse
+  // filter, but it is a rectangle: it reached 30 km into Sénart and Corbeil to the north-west
+  // while cutting closer in other directions. A radius says what the project actually means.
+  maxRadiusKm: envInt('MAX_RADIUS_KM', 20),
   dryRun: process.env.DRY_RUN === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
   // Cadence. The workflow triggers every day, but a real (billed) scan only runs when the stored
@@ -198,6 +202,15 @@ function isGroundingRedirect(url) {
   }
 }
 
+/** Great-circle distance in km. Used for the acceptance radius, not for display. */
+function distanceKm(lat, lng, from = CENTER) {
+  const R = 6371, rad = (d) => d * Math.PI / 180;
+  const dLat = rad(lat - from.lat), dLng = rad(lng - from.lng);
+  const h = Math.sin(dLat / 2) ** 2
+    + Math.cos(rad(from.lat)) * Math.cos(rad(lat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
 function inBbox(lat, lng) {
   return lat !== null && lng !== null &&
     lat >= BBOX.latMin && lat <= BBOX.latMax && lng >= BBOX.lngMin && lng <= BBOX.lngMax;
@@ -313,8 +326,11 @@ function validateEvent(raw, { today, maxDate }) {
 
   const mLat = toNum(raw.lat);
   const mLng = toNum(raw.lng);
+  // `precise` marks a coordinate that came from a structured feed (DATAtourisme, OpenAgenda),
+  // where a place is a declared record. That is not the same thing as a coordinate the model
+  // produced from a prompt, and filing both as "model" understated what we actually know.
   const modelCoords = inBbox(mLat, mLng) && !isDefaultCoord(mLat, mLng)
-    ? { lat: mLat, lng: mLng }
+    ? { lat: mLat, lng: mLng, precise: raw.geoPrecise === true }
     : null;
 
   return {
@@ -355,7 +371,7 @@ function fromExisting(old, ctx) {
 
   if (typeof old.id === 'string' && old.id.trim()) e.id = old.id.trim();
 
-  if (['ban', 'city', 'model', 'default', 'manual', 'venue'].includes(old.geoSource)) e.geoSource = old.geoSource;
+  if (['ban', 'city', 'model', 'default', 'manual', 'venue', 'feed'].includes(old.geoSource)) e.geoSource = old.geoSource;
   if (['ok', 'unverified'].includes(old.urlStatus)) e.urlStatus = old.urlStatus;
   if (isValidIsoDate(old.urlCheckedAt)) e.urlCheckedAt = old.urlCheckedAt;
   // Carry the English description over; translateDescriptions() re-checks it against the French
@@ -683,6 +699,10 @@ async function geocodeRecord(rec, cache) {
   const venue = matchVenue(e);
   if (venue) return setGeo(e, venue.lat, venue.lng, 'venue');
 
+  // Then a coordinate the source itself declared: more reliable than a fuzzy name lookup, and
+  // it costs no request.
+  if (rec.modelCoords?.precise) return setGeo(e, rec.modelCoords.lat, rec.modelCoords.lng, 'feed');
+
   const venueQuery = [e.locationName, e.city].filter(Boolean).join(' ').trim();
 
   if (venueQuery.length >= 3) {
@@ -913,7 +933,7 @@ const FIELD_ORDER = [
 ];
 
 function serializeEvent(e) {
-  const out = { ...e, geoApprox: !['ban', 'manual', 'venue'].includes(e.geoSource) };
+  const out = { ...e, geoApprox: !['ban', 'manual', 'venue', 'feed'].includes(e.geoSource) };
   const ordered = {};
   for (const f of FIELD_ORDER) if (out[f] !== undefined) ordered[f] = out[f];
   return ordered;
@@ -994,10 +1014,19 @@ function renderSummary(stats, ctx) {
     L.push(`- ✍️ Corrections manuelles (overrides.json) : **${ov.applied}** appliquée(s) · **${ov.hidden}** masquée(s)${ov.merged ? ` · ${ov.merged} fusionnée(s) après correction` : ''}`);
     for (const d of ov.details.slice(0, 10)) L.push(`  - ${d}`);
     if (ov.details.length > 10) L.push(`  - … et ${ov.details.length - 10} autre(s)`);
-    if (ov.unmatched.length) L.push(`  - ⚠️ sans événement correspondant (à supprimer du fichier) : ${ov.unmatched.slice(0, 10).join(', ')}${ov.unmatched.length > 10 ? '…' : ''}`);
+    if (ov.unmatched.length) {
+      L.push(`  - ℹ️ sans correspondance ce run : ${ov.unmatched.slice(0, 10).join(', ')}${ov.unmatched.length > 10 ? '…' : ''}`);
+      L.push("    Normal pour un masquage déjà appliqué : la fiche a disparu, mais l'entrée doit");
+      L.push('    rester, sinon une source la re-signalerait au prochain scan. À supprimer seulement');
+      L.push("    si l'événement est définitivement sorti de la fenêtre de 3 mois.");
+    }
     if (ov.badFields.length) L.push(`  - ⚠️ ignorées, valeur ou champ invalide : ${ov.badFields.slice(0, 10).join(', ')}${ov.badFields.length > 10 ? '…' : ''}`);
   }
   L.push(`- New events added: **${stats.added}** · refreshed: **${stats.refreshed}** · past events pruned: **${stats.pruned}**`);
+  if (stats.tooFar) {
+    const villes = Object.entries(stats.tooFarCities).sort((a, b) => b[1] - a[1]).slice(0, 8);
+    L.push(`- 📍 Hors rayon (> ${CONFIG.maxRadiusKm} km) : **${stats.tooFar}** écarté(s) — ${villes.map(([c, n]) => `${c} (${n})`).join(", ")}`);
+  }
   L.push(`- Total published: **${stats.total}**`);
   const tr = stats.translation;
   if (tr) {
@@ -1223,7 +1252,7 @@ async function main() {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
-    oa: null, oaRejected: {}, oaDeduped: 0,
+    oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -1432,7 +1461,7 @@ async function main() {
   // 4. Geocode (anything not yet resolved by BAN) ───────────────────────
   // Anything not already exact is re-resolved: that is how a venue added to venues.json today
   // fixes every stored event at that address on the next run, with no manual pass.
-  const toGeocode = all.filter((r) => !['ban', 'venue', 'manual'].includes(r.event.geoSource)
+  const toGeocode = all.filter((r) => !['ban', 'venue', 'manual', 'feed'].includes(r.event.geoSource)
     || r.event.lat === null);
   console.log(`📍 Geocoding ${toGeocode.length} event(s)…`);
   for (const rec of toGeocode) await geocodeRecord(rec, cache);
@@ -1446,6 +1475,14 @@ async function main() {
   for (const rec of all) {
     if (rec.drop === 'dead_url') { stats.deadUrls++; continue; }
     if (rec.drop === 'override_hidden') continue;
+    // Applied here, after geocoding: an event is judged on where it actually is, not on the
+    // coordinates a source claimed before we resolved them.
+    const km = distanceKm(rec.event.lat, rec.event.lng);
+    if (Number.isFinite(km) && km > CONFIG.maxRadiusKm) {
+      stats.tooFar++;
+      bump(stats.tooFarCities, rec.event.city || "?");
+      continue;
+    }
     if (rec.isNew) stats.added++; else if (rec.refreshed) stats.refreshed++;
     if (rec.event.urlStatus === 'unverified') stats.unverified++;
     bump(stats.geo, rec.event.geoSource);
@@ -1499,7 +1536,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride, matchVenue, loadVenues,
+  applyOverrides, coerceOverride, matchVenue, loadVenues, distanceKm,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,

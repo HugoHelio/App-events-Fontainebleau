@@ -780,6 +780,13 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-22 | **A 20 km radius replaces the bounding box as the acceptance rule** | The box is a rectangle: it reached 30 km into Sénart and Corbeil to the north-west while cutting closer elsewhere. 20 km keeps Blandy-les-Tours (19.3 km) and Vaux-le-Vicomte (18.4 km), and drops the 25 events the project lead flagged as too far. `MAX_RADIUS_KM` makes it one value to change |
+| 2026-09-22 | The radius is applied **after** geocoding | An event is judged on where it turns out to be, not on the coordinates a source claimed before we resolved them |
+| 2026-09-22 | Coordinates declared by a structured feed get their own `geoSource: "feed"` and count as exact | 45 DATAtourisme and OpenAgenda events were filed as `model` — the label for a coordinate the LLM invented. A declared place record is not a guess |
+| 2026-09-22 | **Recurring events: dropped, not implemented** | The frontend carried a `dateType: 'recurring'` branch since v1 and nothing ever produced it (197 records, 197 `event`). Dead code removed rather than a feature built for it |
+| 2026-09-22 | **Event images: not displayed** | Only 21 of 197 records carry one (11%), all from OpenAgenda. A picture on one card in nine reads as broken. The field stays stored so the question can be re-decided on real data |
+| 2026-09-22 | An override that matches nothing is no longer reported as « à supprimer » | Once a `hidden` override has taken effect the event is gone from the published set, so it matches nothing — and deleting the entry would let the event return on the next scan. The report was advising the exact move that undoes the fix |
+| 2026-09-22 | §9 rewritten to list **only what is open** | It had reached 86 entries, 66 ticked, each with its own history. The history belongs in §7 and §3; a roadmap that has to be searched is not a roadmap |
 | 2026-09-22 | **OpenAgenda added as a third source**, via the Île-de-France open data portal (§3.S) | The missing events are local associations, which publish there. No API key, server-side filtering, 51 records all absent from `data.json`, eight new communes |
 | 2026-09-22 | Employment agendas are excluded **by publisher, not by keyword** | 111 of the 158 records in this area are France Travail workshops. An agenda is declared and stable; a title is free text that changes weekly |
 | 2026-09-22 | OpenAgenda records are merged **last**, with the fuzzy guard | An event already reported by Gemini or DATAtourisme keeps its verified URL; only the newcomer pays the comparison |
@@ -819,129 +826,84 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 
 ---
 
-## 9. Roadmap & To-Do List (by priority)
+## 9. Roadmap & To-Do List
 
-**Legend:** `[x]` done and in production · `[~]` implemented in v2 code, **to be verified in production** · `[ ]` open
+**Cette section ne liste que ce qui reste à faire.** Tout ce qui est livré est documenté là où
+il se comprend : le journal des décisions (§7) dit *pourquoi*, les sections §3.A à §3.S disent
+*comment*. Réécrite le 22 septembre : elle comptait 86 lignes dont 66 cochées, et les vingt
+choses qui restaient étaient noyées dedans.
 
-### Done (v1)
+État au 22 septembre : **197 événements**, 3 sources (Gemini, DATAtourisme, OpenAgenda),
+61 % de positions exactes, FR/EN, PWA, boucle de signalement fermée, 11 suites de tests.
 
-- [x] Set up Google Cloud billing and Gemini API key configuration
-- [x] Configure GitHub Actions workflow for scheduled runs
-- [x] Robust regex JSON extraction for `gemini-3.6-flash`
-- [x] Rolling date window (4 months, now 3) and GPS fallbacks
-- [x] Clean historical database placeholders
-- [x] `{ cache: 'no-cache' }` in the frontend `fetchData()`
+---
 
-### Step 0 — Deploy and verify
+### A. Pour le chef de projet — rien à coder
 
-- [x] Deploy v2 and v2.1 (`scripts/fetch-events.js`, `.github/workflows/daily-check.yml`, `index.html`) — confirmed working September 20
-- [x] Deploy v2.2: 3-month window (`windowEnd`), age labels, Google Form placeholder fix — confirmed September 20 (`data.json` now `{ schemaVersion, generatedAt, events }`, 125 events)
-- [x] Deploy v2.3 (`scripts/fetch-events.js`, `index.html`, `daily-check.yml`, + `scripts/datatourisme-coverage.js` and `datatourisme-coverage.yml`): ~3-day cadence, 5-day stale warning, DATAtourisme probe — pushed September 20, live site verified (`formatAge` and `STALE_AFTER_DAYS` served, old `0-99 ans` label gone)
-- [x] Check that a `windowEnd` field appears in `data.json` — present since the run of September 20, 14:00 UTC (`"windowEnd": "2026-12-20"`, 161 events). The frontend's 3-month filter is now active
-- [ ] Run the DATAtourisme workflow once on GitHub and confirm the real CSV parses there as it does locally
-- [x] Create the Google Form and paste its pre-filled link in `FEEDBACK.formUrl` — done September 20. Link verified locally against a real event (accents, apostrophes and French quotes round-trip correctly; the footer link leaves the three fields empty). **Remaining: publish the form with "anyone with the link" as the responder setting**, otherwise visitors hit a permission error
-- [ ] Read the token and search-query numbers of a real run summary and compare with the §3.G estimate
-- [ ] Monitor the first 3–5 automated runs: recurring execution, no duplicates, rejection reasons, dead-link count, geocoding sources, tokens/search queries per scan (cost check)
-- [ ] Confirm GitHub Pages redeploys after the bot's push
+- [ ] **61. Le visuel de marque.** Deux fichiers sont des placeholders : `og-image.png`
+  (1200×630, aperçus de lien) et l'icône PWA (aujourd'hui le logo Helioso, 1538×1538, 472 Ko).
+  Il faut **un PNG 512×512** et **un PNG 1200×630**. C'est le seul chantier bloqué sur autre
+  chose que du code.
+- [ ] **Surveiller 3 à 5 runs automatiques.** Ce qu'il faut regarder dans le rapport : tokens et
+  requêtes de recherche par scan (le coût réel, à comparer à l'estimation §3.G), motifs de rejet,
+  liens morts, sources de géocodage, doublons signalés mais non fusionnés.
+- [ ] **48c.** Ne publier du tableau de réponses que les colonnes utiles au pipeline, pour que la
+  feuille ne contienne plus aucune donnée personnelle (le champ contact facultatif).
 
-### P0 — Critical correctness & security (before beta)
+### B. Ce qui a le plus de valeur maintenant
 
-- [~] 1. Prune past events on every run (pipeline) and hide them in the frontend
-- [~] 2. Per-record validation; a bad record must never crash the run
-- [~] 3. Escape all untrusted content in the frontend; accept only `http(s)` URLs
-- [~] 4. Dedup key = title + startDate + city (replaces title-only)
-- [~] 5. Stable hash IDs (replaces `ACT_${length+1}`)
-- [~] 6. Frontend bugs: hard-coded calendar `initialDate`; age filter `0`
+- [ ] **38. Élargir la couverture sport et associations.** Mesuré le 22/09 : **21 événements
+  « Sport & Outdoor » sur 197 (11 %)**, contre 120 en Culture. C'est l'écart que le chef de
+  projet signale depuis le début, et les trois sources actuelles ne le comblent pas. Pistes :
+  calendriers de clubs et de fédérations, HelloAsso, agendas des offices municipaux des sports.
+- [ ] **22. L'axe famille.** 129 événements sur 197 sont « tout public » (0–99 ans), ce qui ne
+  dit rien à un parent. La tranche d'âge seule est un mauvais signal : il faut un marqueur
+  `family` déduit du contenu, et un filtre qui s'appuie dessus.
+- [ ] **28. Détection des événements annulés ou périmés** (`lastSeen`). Jamais par absence seule
+  — la recall du modèle varie d'un jour à l'autre. La boucle de signalement (§3.N) couvre déjà
+  le cas signalé par un visiteur ; il manque le cas silencieux.
+- [ ] **39. Garde-fous de coût et revue du modèle.** Journaliser le coût estimé par run, poser
+  une alerte de budget sur le projet Google Cloud, et réévaluer le modèle : `gemini-3.6-flash`
+  est désormais une génération précédente et les prix montent au 1er janvier 2027.
 
-### P1 — Quality & reliability (before beta)
+### C. Finitions
 
-- [~] 7. GPS: bounding-box guard, BAN geocoding + cache, `geoApprox` flag
-- [~] 8. URL verification (dead links dropped, bot-blocked kept as `unverified`)
-- [~] 9. Robust JSON extraction + several narrow scans
-- [~] 10. Timeout, retry and exponential backoff on API calls
-- [~] 11. API key moved from URL to header
-- [~] 12. Workflow hygiene: least privilege, concurrency, timeout, rebase-and-retry push, run report
-- [x] 13. Cost & terms check — done September 20 (§3.G). **Result: the grounded approach does not fit the terms and costs more than assumed → items 37–40**
-- [x] 40. **Decision (owner: project lead):** grounded runs continue, risk accepted knowingly, with the conditions of §8 — decided September 20
-- [ ] ~~37. **Compliance pivot:** replace Google Search grounding with direct-source extraction~~ — **dropped September 20.** More work than the current pipeline, fragile to site changes, lower starting coverage. Revisit only if Google suspends the key or if DATAtourisme turns out to cover enough on its own (item 45)
-- [x] 42. **Cadence of ~3 days:** 60 h guard inside the script, daily trigger, `FORCE_RUN=1` on manual dispatch; stale warning moved to 5 days
-- [x] 43. **Google Cloud isolation:** dedicated project, billing account and API key — verified September 20. Remaining: restrict the key to the Gemini API, and set a budget alert
-- [x] 44. **DATAtourisme coverage probe:** `scripts/datatourisme-coverage.js` + weekly workflow, observation mode, written against the **verified** schema and tested on the real file (§3.H)
-- [x] 45. **DATAtourisme merged into the pipeline** (§3.I) — decided and shipped September 20, ahead of the original "two or three weekly reports" prerequisite (explicit call by the project lead on the measured numbers). Verified: Gemini forced to fail entirely, DATAtourisme alone still produced a valid publish; multi-date events keep every date; one real cross-source duplicate caught
-- [x] 46. **Open-data origin shown — done September 21.** 26 of the 171 published events come from DATAtourisme; their card now says so in the fine print, in both languages. A badge or a filter toggle was rejected: the origin is a credibility signal, not something to filter on
-- [x] 48a. **`overrides.json` — the feedback loop gets an output** (§3.K). Hand-edited, applied on every run, keyed by event id so a correction survives a re-scan. Tested offline against the real `data.json`, including a full correct→publish→reload→re-sight round trip
-- [x] 48b. **Ingestion of form responses automated** (§3.N) — `scripts/feedback.js`, read every run from the published CSV. Auto-hide only, capped at 5, dead links re-verified instead of hidden, everything else queued in the run report. Tested against the live sheet and against flood / malformed / hostile rows. **Remaining: create the `FEEDBACK_CSV_URL` GitHub secret**, without it the feature stays off
-- [ ] 48c. Consider publishing only the columns the pipeline needs (drop "contact") so the sheet carries no personal data at all
-- [x] 47. **Fuzzy same-day duplicate cleanup** (§3.J) — `dedupeFuzzy()` in `scripts/fetch-events.js`, run every scan over the full merged set. **Rule replaced September 21 by item 51**, which subsumes it
-- [x] 51. **Nested-title duplicates** (§3.P) — instance noise stripped, nesting merged when there is exactly one minimal superset, umbrellas reported instead. Live data 198 → 171; every merge reviewed in simulation first; idempotent on a second pass
-- [x] 52. **English descriptions** (§3.O) — `scripts/translate.js`, non-grounded call, cache keyed by the French text, committed by the workflow. Titles, schedules and prices stay French by decision
-- [x] 53. **Four umbrella groups settled by hand, September 22** — 11 cards hidden through `overrides.json`, each with a written reason. 171 → 160. The two TDA sub-events (« Équitation », « Poneys ») are flagged `À VÉRIFIER` in the file and can be brought back by deleting their block. Original note: (Histoire en Scène, Concerts de la Reine, Championnat CCE, Meeting TDA). They are reported every run; hide the extras through `overrides.json` once their real structure is known
-- [x] 54. **Live `data.json` cleaned offline with the new rule** — 198 → 171, September 21. Pushing the code does not regenerate `data.json`: the rule only runs during a scan, and the 60 h cadence guard held the next one back. Same offline procedure as the September 20 cleanup, `generatedAt` deliberately left untouched so the banner stays honest and the cadence is not pushed back
-- [x] 55. `scripts/translate-data.js` — translate `data.json` out of band, with a `--sample` preview. Exists because the pipeline publishes without human review: the wording is worth checking once, cheaply, before 171 cards carry it
-- [x] 56. Form problem-type labels confirmed against the live form (Date, Lieu, Tarif, Lien mort, Annulé, Autre). Only « Annulé » triggers an automatic hide; « Lien mort » only forces a re-check
-- [x] 27. **OpenAgenda added, September 22** (§3.S) — `scripts/openagenda.js`, via the Île-de-France portal. 51 records, all new, eight new communes. City and tourism-office iCal/RSS feeds remain open, but the tourism offices already feed DATAtourisme, so the return there is likely small
-- [ ] 67. **Decide whether to display event images.** 50 of the 51 OpenAgenda records carry one and the field is stored; nothing else does. Options: show them only where present (risks looking broken), require one for a "featured" row, or ignore them. Wait until a scan shows the real proportion
-- [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
-- [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)
+- [ ] **21. Normaliser les catégories.** Trois sources les déduisent désormais chacune à sa façon
+  (§3.I, §3.S). Vérifier que l'ensemble reste cohérent, et décider si les visites de patrimoine
+  méritent leur propre catégorie plutôt que de gonfler « Culture & Ateliers » (120 sur 197).
+- [ ] **26b. Passe d'accessibilité** sur les onglets et les filtres (le volet Open Graph est fait).
+- [ ] **58c. Fond de carte plus sobre** (CARTO Positron/Voyager). Le plus gros changement visuel
+  par ligne modifiée, mais il ajoute un fournisseur de tuiles : refusé pour l'instant, gardé ici
+  parce que la question se reposera.
+- [ ] **31. Cache des URL mortes**, pour ne pas revérifier à chaque scan un lien que le modèle
+  re-propose. Gain : quelques dizaines de secondes par run. Aucune conséquence visible.
+- [ ] **32. Branche `data` dédiée**, pour sortir les commits du bot de l'historique de `main`.
+  16 commits du bot sur 68 au 22/09 : pas encore gênant, à reconsidérer vers 100.
 
-### P2 — Beta readiness & product/UX
+### D. Tranché — ne pas rouvrir sans raison nouvelle
 
-*Item numbers are stable identifiers, not ranks; the order within each list is the priority.*
+- **23. Événements récurrents : abandonné (22/09).** Le frontend portait un traitement
+  `dateType: "recurring"` depuis la v1 ; rien ne l'a jamais produit (197 fiches, 197 `event`).
+  Les branches mortes ont été retirées. Les marchés hebdomadaires restent hors périmètre.
+- **67. Affichage des images : non (22/09).** Seuls 21 événements sur 197 en portent (11 %),
+  tous venus d'OpenAgenda. Afficher une photo sur une carte sur neuf donnerait un site qui a
+  l'air cassé. Le champ `image` reste stocké : la question se retranchera si la proportion monte.
+- **60. Application native : non.** Usage à faible fréquence, 99 €/an + 25 €, deux revues de
+  store par sortie, pour lire le même `data.json`. La PWA (§3) couvre le besoin, et c'est aussi
+  le prérequis des notifications push sur iOS. À rouvrir seulement si les analytics montrent des
+  visites répétées.
+- **37. Bascule vers l'extraction directe : abandonné (20/09).** Plus de travail que le pipeline
+  actuel, fragile aux changements de sites, couverture de départ plus faible. À rouvrir si Google
+  suspend la clé.
+- **30. Keep-alive du workflow : sans objet.** La règle d'inactivité de 60 jours ne peut pas se
+  déclencher avec un cron quotidien.
 
-**Beta gates (needed to collect useful feedback):**
-- [~] 14. "Last updated" timestamp in the UI (`data.json` → `{ generatedAt, events }`, stale warning after 3 days)
-- [~] 15. "Report an error" link on each card and in the footer (channel = Google Form; link installed and tested September 20). Form fields, in order: event ID, title, link (the three pre-filled ones), problem type, details, optional contact
-- [~] 16. Source attribution + "verify with the organizer" note (card + footer)
-- [~] 34. Always show the explicit date for single-day and short (2–3 day) events; `schedule` = hours only
-- [~] 35. Weekday-vs-date consistency check (`weekday_mismatch`)
-- [x] 17. **Analytics — GoatCounter, live September 21** (`ANALYTICS.code = 'fontainebleaulive'`). Original reasoning: Asked for September 21: traffic and user actions. **Google Analytics is the wrong tool here** — GA4 sets cookies, so French law requires a consent banner, which both spoils the first impression and suppresses a large share of the measurement it was installed for; it is also ~50 kB of third-party JS on a page already loading Leaflet and FullCalendar. Cookieless alternatives (GoatCounter ~3 kB and free for non-commercial use, Plausible ~1 kB at ~9 €/month and EU-hosted) need no banner. Note that the CNIL keeps a list of audience-measurement tools exempt from consent; Matomo configured to their guidance is the one squarely on it, but it wants a server, which this project does not have.
-- [x] 17b. **Measure the right thing.** Page views answer almost nothing here. The questions that matter are: which events get their "Voir détails" link clicked (does the product actually send people somewhere?), FR vs EN split (is the English version used at all?), which filters get touched, map vs calendar. That is a handful of custom events on existing handlers, ~15 lines — and it is the part that tells us whether the thing works
+### E. À faire le ménage
 
-**Other UX & product:**
-- [x] 18. **Overlapping markers — grouped by coordinate, September 22** (§3.R). Original note: Measured September 22: 171 geolocated events sit on only 71 distinct points — 100 markers are hidden under another, so 58% of events cannot be clicked on the map.** 26 share one point in the Forêt domaniale, 20 at the Âne Vert, 19 at the château.
-  A clustering plugin is **not** needed: the problem measured here is exact-coordinate collision, not proximity. Grouping by identical coordinate, showing a count on the marker and listing the events in its popup solves all of it with no new CDN and no new dependency
-- [x] 19. Card ↔ marker linking — **done September 21**. Click a card: the map centres on its marker and opens the popup. Click a marker: the matching card is highlighted and scrolled into view. Links inside a card keep their own behaviour
-- [x] 20. **Failure state — done September 21.** A failed `data.json` load used to print to the console and leave a blank page. Now: a message, a retry button that really refetches, and the coverage figure goes silent rather than claiming zero. The empty-result case gets the same treatment plus a reset-filters button. Mobile list view was already handled by the existing stacking layout
-- [x] 25. **SRI hashes on the four CDN assets — done September 21.** Digests computed from two independent downloads before being written, and a test re-downloads each file and compares: a wrong digest does not degrade the page, it blocks the asset and takes the map or the calendar down with it
-- [x] 29. **Failure alerting — done September 21.** A failed run opens a GitHub issue labelled `collecte-en-echec`, or comments on the open one rather than stacking duplicates. Needs `issues: write` on the workflow
-- [ ] 21. Category badge normalization on the frontend (existing item); align category set with heritage/château visits
-- [ ] 22. Family axis: `family: true` tag / audience filter (age range alone is weak)
-- [ ] 23. Decide on recurring events (`dateType: "recurring"` is handled by the frontend but never produced by the extractor)
-- [x] 24. Manual overrides — **shipped September 21 as item 48a** (§3.K). `overrides.json`, keyed by event id, re-applied every run. The `locked: true` flag turned out to be unnecessary: keying by id makes a correction durable by construction
-
-- [x] 26. Open Graph / sharing metadata — **done September 21**, with a generated placeholder image. Accessibility pass on tabs and filters still open. **Priority rises with item 57**: the likely distribution channel is a link pasted into a WhatsApp or school group, and a link with no preview card looks like spam
-- [x] 57. **Real domain — `fontainebleaulive.fr`, bought September 21.** `CNAME` committed, `og:url`/`og:image`/canonical updated. **Remaining: the DNS records at GoDaddy and "Enforce HTTPS" in the GitHub Pages settings.** Original note: Currently served from `github.io`. GitHub Pages supports a custom domain for free, HTTPS included: a `CNAME` file plus DNS records. Cost is the registration alone (~10–15 €/year for a `.fr`). `index.html` uses only relative paths, so nothing in the code needs to change. **Naming constraint: the site must not look official.** It publishes automatically collected data with no human review (§1), so a name borrowing from the mairie, the office de tourisme or the château would claim an authority it does not have — and would be a real problem the first time a date is wrong. The Helioso credit in the footer already signals who runs it; an "À propos" line would make it explicit
-- [ ] 58. **Visual identity.** Asked for September 21: more colour, more modern, a theme. Ranked by value, not by effort — and note that **DATAtourisme's CSV carries no image column** (verified September 21), so there is no photography to carry a design and the work falls on colour, type and layout:
-  - [x] 58a. Colour-code the three categories (badge + the card's left border, which is currently always the same teal). Free information, ~15 lines
-  - [x] 58b. Palette drawn from the subject rather than from a framework default: forest green, the ochre of the grès de Fontainebleau, warm off-white instead of the current cold blue-grey `#f7fafc`
-  - [ ] 58c. **Kept on the list, declined for now (September 21).** A softer base map (CARTO Positron/Voyager instead of default OSM tiles) — the single biggest visual change per line altered, because the default tiles are busy and fight the markers. **Needs a decision: it adds a tile provider, which the CDN constraint in `CLAUDE.md` does not currently allow**
-  - [~] 58d. **Declined (September 21): no font CDN.** A display face for headings. Same caveat: a font CDN is not in the allowed list today
-- [x] 59. **PWA** (`manifest.json` + a small service worker): installable on iOS and Android, home-screen icon, works offline on a cached `data.json`. No build step, no store, no yearly fee. It is also the prerequisite for web push on iOS (16.4+), which is the only thing a native app would genuinely do better here
-- [ ] 60. **Native iOS/Android app — parked deliberately.** The use is "what is on this weekend": low frequency, nothing a browser cannot do. A native app would cost 99 €/year (Apple) plus 25 € (Google), two store reviews per release, and a second codebase — while still reading the same `data.json`. Revisit only if analytics (item 17b) show repeat visits and installs, i.e. once there is evidence of an audience that would keep an app
-- [x] 33. **English version, phase 1 — interface only** (§3.L): FR/EN switch with flags in the header, 48-string dictionary, translated category *labels* (values stay French), `lang` attribute, English footer and disclaimer, `?lang=` shareable parameter, browser-language detection, FullCalendar locale follows. **Event data stays French by decision, not by omission** — phases 2 and 3 of the original item are dropped, see §7
-- [x] 49. Period filter (today / 2 weeks / 3 months) — **done September 21** (§3.M), default **"dans les 2 semaines"**, a specific date overrides it
-- [x] 50. Helioso brand credit in the footer — **done September 21**
-- [~] 36. Friendlier age label ("Tout public", "Dès 6 ans", "Jusqu'à 12 ans", "6–12 ans")
-- [~] 41. Collection window reduced to 3 months (`windowEnd`; events beyond it hidden, not deleted)
-
-### P3 — Data sources & long-term robustness
-
-- [ ] 28. Stale / cancelled event detection (`lastSeen`, feedback loop) — never by absence alone
-
-- [ ] 30. Keep-alive for the scheduled workflow if the 60-day inactivity rule applies
-- [ ] 31. Cache dead-URL results to avoid re-checking events re-suggested by the LLM each day
-- [ ] 32. Consider a dedicated `data` branch to keep `main` history free of daily bot commits
-
-- [x] 61a. Brand name in the header: two-tone wordmark, treeline edge, gradient (September 21)
-- [x] 63. Footer coverage figure (“N événements répertoriés pour les trois prochains mois”), September 21. Ignores the filters on purpose
-- [x] 64. Design-token system + second theme pass, September 21 (§3.Q)
-- [ ] 61. **Real Fontainebleau Live artwork.** Two files are placeholders until the branding exists:
-  - `og-image.png` (1200×630) — generated from the palette, no logo and no lettering
-  - the PWA icon — currently the square Helioso logo (1538×1534, 472 kB). A 512×512 PNG and a 192×192 would render far better on a home screen
-- [x] 65. **One-click translation workflow** (`.github/workflows/translate.yml`), September 22 — `workflow_dispatch`, with a preview mode that writes nothing
-- [x] 66. **Search-engine basics**, September 22 — `robots.txt`, `sitemap.xml` with `hreflang` alternates, and `<link rel="alternate" hreflang>` in the head. **Remaining, and it is the actual blocker: submit the site in Google Search Console.** A one-day-old domain that nothing links to is not in the index yet, and no amount of markup changes that
-- [x] 62. **Geocoding coverage — `venues.json`, September 22** (§3.R). 20% → 60% exact. Original note: Only 35 of 171 events (20%) have a BAN-verified position; 110 carry model-supplied coordinates and 26 a city centre. This is why the map cannot usefully flag approximate positions — they are the norm. Raising BAN coverage would improve the map far more than any marker styling.
-  **Measured September 22: 14 venues account for 112 of 171 events (65%)**, and most of them fail BAN lookup because "Théâtre municipal de Fontainebleau" or "Stade Équestre du Grand Parquet" is a name, not a postal address. A small hand-written gazetteer of those venues, with exact coordinates, would fix two thirds of the map once and for all — a `venues.json` read before geocoding, in the spirit of `overrides.json`
+- [ ] **`.github/workflows/datatourisme-coverage.yml` n'a plus d'objet.** C'était la sonde en
+  mode observation, avant que DATAtourisme n'entre dans le pipeline (§3.I). La source est
+  vérifiée en production depuis le 21/09 — 26 événements publiés. Le workflow télécharge 9 Mo par
+  semaine pour un rapport que plus personne ne lit. À supprimer, sauf objection.
 
 ### Milestones
 
