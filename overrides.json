@@ -26,5 +26,63 @@
     "    \"note\": \"Date corrigée après signalement du 21/09, confirmée par téléphone\",",
     "    \"fields\": { \"startDate\": \"2026-10-03\", \"price\": \"12 €\" }",
     "  }"
-  ]
+  ],
+
+  "_item53": [
+    "PROPOSITION du 22/09 — les 4 « parapluies » que la déduplication automatique refuse de trancher.",
+    "Elle les laisse volontairement en place : un titre court contenu dans PLUSIEURS titres longs",
+    "peut être un doublon ou une famille de sous-événements réels, et fusionner à tort efface",
+    "définitivement un vrai événement.",
+    "",
+    "Vérifié à la main le 22/09 : dans chaque groupe, même date et même lieu.",
+    "Pour annuler une proposition, supprimez simplement son bloc ci-dessous."
+  ],
+
+  "EVT_0bf673b259": {
+    "hidden": true,
+    "note": "Doublon de ACT_015 « Festival Histoire en Scène » — même date, même château, même lien"
+  },
+  "EVT_880be6af95": {
+    "hidden": true,
+    "note": "Doublon de ACT_015 « Festival Histoire en Scène » — même date, même château, même lien"
+  },
+
+  "EVT_9575e23ea9": {
+    "hidden": true,
+    "note": "Doublon de ACT_008 — concerts Marie-Antoinette, Salle de Bal du château, 9 octobre"
+  },
+  "EVT_5ad57463fb": {
+    "hidden": true,
+    "note": "Doublon de ACT_008 — concerts Marie-Antoinette, Salle de Bal du château, 9 octobre"
+  },
+  "EVT_7e1e507428": {
+    "hidden": true,
+    "note": "Doublon de ACT_008 — résidence Thomas Hengelbrock, même série de concerts"
+  },
+
+  "EVT_1bf5c86015": {
+    "hidden": true,
+    "note": "Doublon de EVT_d97017572a — Championnat de France CCE au Grand Parquet, 22 octobre"
+  },
+  "EVT_8ba11fcaf6": {
+    "hidden": true,
+    "note": "Doublon de EVT_d97017572a — même championnat, lien moins précis"
+  },
+
+  "EVT_184a52fe1f": {
+    "hidden": true,
+    "note": "Doublon de EVT_e57caa47c3 — TDA = Tournée des As, même meeting"
+  },
+  "EVT_e5cb52cda0": {
+    "hidden": true,
+    "note": "Doublon de EVT_e57caa47c3 — même meeting, lien vers la page d'accueil"
+  },
+  "EVT_04ed2910e3": {
+    "hidden": true,
+    "note": "À VÉRIFIER : « Équitation » est peut-être une épreuve distincte du meeting. Masqué car même lieu, mêmes dates, lien générique — un visiteur trouvera les deux sur place"
+  },
+  "EVT_e81e8099a1": {
+    "hidden": true,
+    "note": "À VÉRIFIER : « Poneys » est peut-être une épreuve distincte du meeting. Masqué pour la même raison"
+  }
 }

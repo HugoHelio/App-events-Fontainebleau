@@ -1,0 +1,79 @@
+name: Traduire les descriptions en anglais
+
+# Pourquoi ce workflow existe : traduire demande un vrai appel Gemini. Pousser du code ne traduit
+# rien — data.json n'est ecrit que par un run. Sans ce bouton, la seule facon d'obtenir les
+# traductions est d'attendre le scan automatique (jusqu'a 3 jours) ou de lancer une commande dans
+# un terminal avec la cle API.
+#
+# Ici : un clic sur "Run workflow" dans l'onglet Actions. Aucun scan Gemini facture en plus, aucune
+# requete Google Search : uniquement la traduction des descriptions (~7 000 tokens la premiere
+# fois, puis seulement les nouveautes grace a translate-cache.json).
+on:
+  workflow_dispatch:
+    inputs:
+      apercu:
+        description: "Apercu seulement (n'ecrit rien, affiche 8 traductions dans le log)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Jamais en meme temps que la collecte, qui ecrit les memes fichiers.
+concurrency:
+  group: daily-events-update
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Traduire
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ "${{ inputs.apercu }}" = "true" ]; then
+            node scripts/translate-data.js --sample 8
+          else
+            node scripts/translate-data.js --write
+          fi
+
+      - name: Publier les traductions
+        if: ${{ inputs.apercu != true }}
+        run: |
+          git config user.name "GitHub Action Bot"
+          git config user.email "action@github.com"
+
+          git add data.json
+          # Sans ce cache, le scan suivant repaierait les memes traductions.
+          if [ -f translate-cache.json ]; then git add translate-cache.json; fi
+
+          if git diff --staged --quiet; then
+            echo "Rien de nouveau à traduire."
+            exit 0
+          fi
+
+          git commit -m "🌍 Traductions EN des descriptions"
+
+          # Retry with rebase in case main moved during the run.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "Publié sur main (tentative $attempt)."
+              exit 0
+            fi
+            echo "Push échoué (tentative $attempt), nouvel essai…"
+            sleep $((attempt * 5))
+          done
+
+          echo "Impossible de publier sur main après 3 tentatives."
+          exit 1

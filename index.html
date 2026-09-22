@@ -28,6 +28,11 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://fontainebleaulive.fr/">
+  <!-- Dit à Google que les deux langues sont la même page, pas du contenu dupliqué.
+       x-default = la version servie à qui n'est ni francophone ni anglophone. -->
+  <link rel="alternate" hreflang="fr" href="https://fontainebleaulive.fr/">
+  <link rel="alternate" hreflang="en" href="https://fontainebleaulive.fr/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://fontainebleaulive.fr/">
 
   <!-- Leaflet CSS -->
   <!-- Subresource Integrity (item 25): the browser refuses the file if its content does not
@@ -1023,7 +1028,9 @@
         el.classList.remove('stale');
         return;
       }
-      const label = new Intl.DateTimeFormat(LOCALES[lang], { timeZone: DISPLAY_TZ, dateStyle: 'long', timeStyle: 'short' }).format(d);
+      // Date only: the collection runs every ~3 days, so the hour said nothing a visitor could
+      // use and made the line longer than the fact it carried.
+      const label = new Intl.DateTimeFormat(LOCALES[lang], { timeZone: DISPLAY_TZ, dateStyle: 'long' }).format(d);
       const ageDays = (Date.now() - d.getTime()) / 86400000;
       const stale = ageDays >= STALE_AFTER_DAYS;
       el.textContent = t('updatedOn')(label) + (stale ? t('staleFor')(Math.floor(ageDays)) : '');

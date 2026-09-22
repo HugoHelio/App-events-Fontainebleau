@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Fichiers de travail : aucun intérêt dans un index de recherche.
+Disallow: /geocode-cache.json
+Disallow: /translate-cache.json
+Disallow: /overrides.json
+
+Sitemap: https://fontainebleaulive.fr/sitemap.xml
