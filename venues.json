@@ -1,0 +1,67 @@
+{
+  "_README": [
+    "Répertoire de lieux — édité à la main, comme overrides.json. Jamais généré.",
+    "",
+    "POURQUOI CE FICHIER. Le pipeline cherche les positions dans la base d'adresses officielle",
+    "française (BAN). Or il lui donne « Théâtre municipal de Fontainebleau », qui est un NOM et non",
+    "une adresse : la BAN ne trouve rien et on retombe sur le centre de la commune. Résultat mesuré",
+    "le 22/09 : 80 % des positions étaient approximatives.",
+    "",
+    "Or les mêmes lieux reviennent sans cesse. Une poignée d'entrées écrites une fois corrige la",
+    "position de dizaines d'événements, aujourd'hui et pour tous les scans à venir.",
+    "",
+    "COMMENT ÇA MARCHE. Consulté AVANT la BAN. Une entrée s'applique si :",
+    "  - la ville de l'événement est exactement celle de l'entrée, ET",
+    "  - tous les mots de \"match\" apparaissent dans son champ locationName.",
+    "Les mots de \"match\" sont en minuscules, sans accent. Cela absorbe les variantes d'écriture :",
+    "« Château de Blandy » et « Château de Blandy-les-Tours » tombent sur la même entrée.",
+    "",
+    "Une position venant d'ici est marquée geoSource = \"venue\" et n'est jamais réécrite : elle",
+    "compte comme exacte, au même titre qu'une adresse vérifiée par la BAN.",
+    "",
+    "POUR AJOUTER UN LIEU : relevez les coordonnées (clic droit sur Google Maps ou OpenStreetMap",
+    "→ « Plus d'infos sur cet endroit »), puis ajoutez un bloc. Choisissez pour \"match\" les mots",
+    "les plus distinctifs du nom, pas les mots courants (« chateau » seul attraperait tout).",
+    "",
+    "CE QUI N'EST DÉLIBÉRÉMENT PAS ICI. La « forêt de Fontainebleau » (17 événements) et",
+    "l'« Espace Naturel Sensible du Carreau Franc » (4 événements). Le massif fait 25 000 ha :",
+    "n'importe quel point unique serait faux, et le présenter comme vérifié serait pire",
+    "qu'approximatif. Le Carreau Franc n'a été trouvé ni par la BAN ni par OpenStreetMap, et",
+    "inventer une position est hors de question."
+  ],
+
+  "venues": [
+    {
+      "label": "Théâtre municipal de Fontainebleau",
+      "city": "Fontainebleau",
+      "match": ["theatre", "municipal"],
+      "lat": 48.40335,
+      "lng": 2.69762,
+      "source": "OpenStreetMap — Théâtre Municipal, 9 rue Denecourt (23 événements au 22/09)"
+    },
+    {
+      "label": "Âne Vert Théâtre",
+      "city": "Fontainebleau",
+      "match": ["ane", "vert"],
+      "lat": 48.4049,
+      "lng": 2.69855,
+      "source": "BAN — 6 rue des Sablons, 77300 Fontainebleau, score 0.97 (18 événements au 22/09)"
+    },
+    {
+      "label": "Stade Équestre du Grand Parquet",
+      "city": "Fontainebleau",
+      "match": ["grand", "parquet"],
+      "lat": 48.39283,
+      "lng": 2.67347,
+      "source": "OpenStreetMap — Route du Champ Minette ; la BAN donnait 238 m plus loin (10 événements au 22/09)"
+    },
+    {
+      "label": "Château de Blandy-les-Tours",
+      "city": "Blandy-les-Tours",
+      "match": ["chateau", "blandy"],
+      "lat": 48.56716,
+      "lng": 2.78188,
+      "source": "OpenStreetMap, confirmé par la BAN à 75 m (11 événements au 22/09)"
+    }
+  ]
+}

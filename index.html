@@ -441,6 +441,57 @@
       background: var(--cat-other);
     }
 
+    /* A point holding several events wears the number. */
+    .marker-dot.has-count {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .popup-list {
+      list-style: none;
+      margin: 0.4rem 0 0 0;
+      padding: 0;
+    }
+
+    .popup-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      padding: 0.3rem 0.2rem;
+      cursor: pointer;
+      background: none;
+      border: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .popup-item:hover { background: var(--accent-soft); }
+
+    .popup-date {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--ink-3);
+    }
+
+    .popup-title {
+      display: block;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .popup-more {
+      padding: 0.3rem 0.2rem;
+      font-size: 0.75rem;
+      color: var(--ink-3);
+    }
+
     .marker-dot.cat-sport   { background: var(--cat-sport); }
     .marker-dot.cat-nature  { background: var(--cat-nature); }
     .marker-dot.cat-culture { background: var(--cat-culture); }
@@ -795,6 +846,8 @@
         mailBodyGeneral: 'Votre message :\n',
         installHint: 'Sur mobile : « Ajouter à l\u2019écran d\u2019accueil » pour retrouver le site comme une application, même hors connexion.',
         resetView: 'Tout afficher',
+        eventsHere: (n) => `${n} événements à cet endroit`,
+        andMore: (n) => `… et ${n} autre${n > 1 ? 's' : ''}`,
         eventCount: (n) => `${n} événement${n > 1 ? 's' : ''} répertorié${n > 1 ? 's' : ''} pour les trois prochains mois`,
         loadError: 'Impossible de charger les événements.',
         loadErrorHint: 'Vérifiez votre connexion, puis réessayez.',
@@ -856,6 +909,8 @@
         mailBodyGeneral: 'Your message:\n',
         installHint: 'On mobile: "Add to Home Screen" to keep the site like an app, and to open it offline.',
         resetView: 'Show all',
+        eventsHere: (n) => `${n} events at this spot`,
+        andMore: (n) => `… and ${n} more`,
         eventCount: (n) => `${n} event${n > 1 ? 's' : ''} listed for the next three months`,
         loadError: 'Could not load the events.',
         loadErrorHint: 'Check your connection, then try again.',
@@ -1197,19 +1252,20 @@
     // ── Card ↔ marker linking (item 19) ────────────────────────────────────
     // A map beside a list is only useful if the two halves answer each other: clicking a card
     // should say "here", and clicking a pin should say "this one".
-    const markersById = new Map();
-    let activeId = null;
+    const markersById = new Map();  // event id -> its marker (several ids may share one)
+    let activeIds = new Set();
 
-    function highlightCard(id) {
-      activeId = id;
+    /** Highlight a set of events at once: one marker can stand for a dozen of them. */
+    function highlightCards(ids) {
+      activeIds = new Set(ids || []);
       document.querySelectorAll('.card').forEach((el) => {
-        el.classList.toggle('is-active', el.dataset.id === id);
+        el.classList.toggle('is-active', activeIds.has(el.dataset.id));
       });
     }
 
     /** Card clicked: centre the map on its marker and open the popup. */
     function focusMarker(id) {
-      highlightCard(id);
+      highlightCards([id]);
       const marker = markersById.get(id);
       if (!marker || !map) return;
       map.setView(marker.getLatLng(), Math.max(map.getZoom(), 13), { animate: true });
@@ -1232,7 +1288,7 @@
     }
 
     function clearSelection() {
-      highlightCard(null);
+      highlightCards([]);
       if (!map || !markersGroup) return;
       map.closePopup();
       try {
@@ -1244,7 +1300,7 @@
 
     /** Marker clicked: bring the matching card into view in the list beside it. */
     function focusCard(id) {
-      highlightCard(id);
+      highlightCards([id]);
       const card = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
       if (card) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
@@ -1312,6 +1368,13 @@
 
       // Clicking empty map is the other natural way to drop a selection.
       map.on('click', clearSelection);
+
+      // Popups live inside the map container, so one delegated listener covers every one of
+      // them, present and future — no re-binding on each render.
+      document.getElementById('map').addEventListener('click', (e) => {
+        const item = e.target.closest('.popup-item');
+        if (item) focusCard(item.dataset.eventId);
+      });
     }
 
     // Chargement des données JSON
@@ -1418,7 +1481,7 @@
         const card = document.createElement('div');
         card.className = `card ${categoryClass(a.category)}`;
         card.dataset.id = a.id || '';
-        if (a.id && a.id === activeId) card.classList.add('is-active');
+        if (a.id && activeIds.has(a.id)) card.classList.add('is-active');
         const approx = a.geoApprox ? ` <em title="${escapeHtml(t('approxTitle'))}">${escapeHtml(t('approxInline'))}</em>` : '';
         const host = sourceHost(a.url);
         const reportHref = feedbackHref(a);
@@ -1461,35 +1524,77 @@
     }
 
     // Mise à jour des marqueurs Leaflet
+    // Four decimals ≈ 11 m: two events at the same venue land on the same key, two genuinely
+    // different addresses do not.
+    const pointKey = (lat, lng) => `${lat.toFixed(4)},${lng.toFixed(4)}`;
+
     function updateMapMarkers(activities) {
       markersGroup.clearLayers();
       markersById.clear();
 
-      activities.forEach(a => {
-        const lat = Number(a.lat);
-        const lng = Number(a.lng);
-        if (Number.isFinite(lat) && Number.isFinite(lng)) {
+      // Group first. Before this, 26 events in the forest showed as one pin and the other 25
+      // were simply unreachable.
+      const points = new Map();
+      for (const a of activities) {
+        const lat = Number(a.lat), lng = Number(a.lng);
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+        const key = pointKey(lat, lng);
+        if (!points.has(key)) points.set(key, { lat, lng, list: [] });
+        points.get(key).list.push(a);
+      }
+
+      points.forEach(({ lat, lng, list }) => {
+        {
+          const a = list[0];
           // A coloured dot rather than Leaflet's default pin: it carries the category, and it is
           // markup rather than an image, so nothing extra is downloaded.
+          // A point holding one category keeps its colour; a mixed point goes neutral rather
+          // than picking a winner and lying about the rest.
+          const categories = new Set(list.map((x) => categoryClass(x.category)));
+          const cls = categories.size === 1 ? [...categories][0] : 'cat-other';
+          const count = list.length;
+          const size = count > 1 ? 28 : 20;
           const icon = L.divIcon({
             className: '',
-            html: `<div class="marker-dot ${categoryClass(a.category)}"></div>`,
-            iconSize: [20, 20],
-            iconAnchor: [10, 10],
-            popupAnchor: [0, -10],
+            html: `<div class="marker-dot ${cls}${count > 1 ? ' has-count' : ''}">${count > 1 ? count : ''}</div>`,
+            iconSize: [size, size],
+            iconAnchor: [size / 2, size / 2],
+            popupAnchor: [0, -size / 2],
           });
           const marker = L.marker([lat, lng], { icon });
           const approxNote = a.geoApprox ? `<br><em>${escapeHtml(t('approxPopup'))}</em>` : '';
-          marker.bindPopup(`
-            <strong>${escapeHtml(a.title)}</strong><br>
-            🗓️ ${escapeHtml(formatDateLine(a))}<br>
-            ${escapeHtml(a.locationName)}${approxNote}<br>
-            ${linkHtml(a.url, t('popupLink'))}
-          `);
-          if (a.id) {
-            markersById.set(a.id, marker);
-            marker.on('click', () => focusCard(a.id));
+          if (count === 1) {
+            marker.bindPopup(`
+              <strong>${escapeHtml(a.title)}</strong><br>
+              🗓️ ${escapeHtml(formatDateLine(a))}<br>
+              ${escapeHtml(a.locationName)}${approxNote}<br>
+              ${linkHtml(a.url, t('popupLink'))}
+            `);
+          } else {
+            // Every title here comes from the web through a model: escaped, always.
+            const MAX = 12;
+            const rows = list.slice(0, MAX).map((x) => `
+              <li><button type="button" class="popup-item" data-event-id="${escapeHtml(x.id)}">
+                <span class="popup-date">${escapeHtml(formatDateLine(x))}</span>
+                <span class="popup-title">${escapeHtml(x.title)}</span>
+              </button></li>`).join('');
+            const more = count > MAX ? `<li class="popup-more">${escapeHtml(t('andMore')(count - MAX))}</li>` : '';
+            marker.bindPopup(`
+              <strong>${escapeHtml(a.locationName)}</strong><br>
+              <em>${escapeHtml(t('eventsHere')(count))}</em>${approxNote}
+              <ul class="popup-list">${rows}${more}</ul>
+            `, { maxHeight: 260, minWidth: 220 });
           }
+          for (const x of list) if (x.id) markersById.set(x.id, marker);
+          // Clicking the marker lights up everything it stands for, and brings the first one
+          // into view — the popup then says exactly what the stack contains.
+          marker.on('click', () => {
+            highlightCards(list.map((x) => x.id));
+            const first = list.find((x) => x.id);
+            if (!first) return;
+            const card = document.querySelector(`.card[data-id="${CSS.escape(first.id)}"]`);
+            if (card) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          });
           markersGroup.addLayer(marker);
         }
       });

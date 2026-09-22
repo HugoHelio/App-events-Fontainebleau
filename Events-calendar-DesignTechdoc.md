@@ -430,6 +430,45 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
+### R. The venue gazetteer and marker grouping (items 62 & 18, September 22, 2026)
+
+Two problems that looked unrelated and were the same one: **the map was mostly fiction.**
+
+**62 — why the positions were wrong.** The pipeline asks the BAN, which is an *address* base,
+for "Théâtre municipal de Fontainebleau". That is a name, not an address, so nothing is found
+and the record falls back to the commune centre or to whatever coordinates the model invented.
+Measured: 136 of 171 events (80%) approximate.
+
+But the same places come back scan after scan. **11 venues held 106 of the 171 events.**
+`venues.json` resolves them once, by hand, and is consulted before the BAN. Matching is on
+normalised words plus an exact city, which absorbs the spellings a model invents: "Théâtre
+municipal de Fontainebleau", "Théâtre Municipal de Fontainebleau" and "Theatre municipal &
+Ateliers" all land on one entry. Four entries currently match **70 events across 12 spellings**.
+
+**Result: exact positions go from 20% to 60%.** Anything not already exact is re-resolved on
+every run, so a venue added today fixes every stored event at that address tomorrow.
+
+**Two venues are deliberately absent.** The forêt de Fontainebleau (17 events) is 25,000 ha —
+any single point would be wrong, and publishing it as *verified* would be worse than admitting
+it is approximate. The Espace Naturel Sensible du Carreau Franc (4 events) was found by neither
+the BAN nor OpenStreetMap, and inventing a coordinate is not an option. A test asserts that
+both still return no match, so nobody "helpfully" fills them in later.
+
+**18 — and why fixing 62 alone would have made things worse.** Sharpening positions pushes more
+events onto the *same* point. Measured before any change: 171 geolocated events sat on 71
+distinct points, so **100 markers were hidden under another and 58% of events could not be
+clicked at all.**
+
+No clustering plugin was needed, because the problem is identical coordinates, not proximity.
+Markers are grouped by coordinate (4 decimals, ~11 m); a point holding several events wears the
+count, and its popup lists them, each row selecting its own card. A point of one category keeps
+its colour, a mixed point goes neutral rather than picking a winner and misrepresenting the rest.
+
+Selection became a *set*: one marker stands for up to 26 events, so clicking it highlights all
+of them and brings the first into view. Popup rows are matched by one delegated listener on the
+map container — popups are created and destroyed constantly, and rebinding on each render would
+leak handlers.
+
 ### Q. Design tokens and the second theme pass (item 64, September 21, 2026)
 
 The project lead pointed at fontyblog.fr, a neighbouring Fontainebleau site, and specifically at
@@ -708,6 +747,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-22 | **`venues.json`, a hand-written gazetteer consulted before the BAN** (§3.R) | The BAN is an address base; the pipeline was feeding it venue *names*. 11 venues held 106 of 171 events, so resolving them once fixes the map for good. Exact positions: 20% → 60% |
+| 2026-09-22 | The forêt de Fontainebleau and the Carreau Franc are **deliberately left out** of the gazetteer | A single point for a 25,000 ha massif would be wrong, and publishing it as verified is worse than approximate. The Carreau Franc was in neither source, and inventing a coordinate is out of the question. A test keeps both absent |
+| 2026-09-22 | A gazetteer entry outside the project bounding box is **dropped at load** | A typo here would be published as an exact position — the one thing this file must never do |
+| 2026-09-22 | **Markers grouped by identical coordinate, with the count on the dot** (§3.R) | 100 of 171 markers were hidden under another: 58% of events were unreachable. Sharpening the positions (item 62) would have made that worse. Grouping by coordinate solves all of it — no clustering plugin, no new CDN |
+| 2026-09-22 | A mixed-category stack is drawn neutral | Picking the dominant category would state something false about the rest |
 | 2026-09-22 | **A one-click “Traduire les descriptions” workflow** | Translating needs a real Gemini call, so shipping code changes nothing. Three sessions were lost to that confusion. A button in the Actions tab removes the need for a terminal and an API key on the desk |
 | 2026-09-22 | The freshness banner shows the **date only**, no time | The collection runs every ~3 days: the hour carried no information a visitor could use |
 | 2026-09-22 | `robots.txt`, `sitemap.xml` and `hreflang` added | Nothing appears in Google because the domain is a day old and was never submitted, not because of the page. These are the three files a crawler looks for |
@@ -816,7 +860,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 17b. **Measure the right thing.** Page views answer almost nothing here. The questions that matter are: which events get their "Voir détails" link clicked (does the product actually send people somewhere?), FR vs EN split (is the English version used at all?), which filters get touched, map vs calendar. That is a handful of custom events on existing handlers, ~15 lines — and it is the part that tells us whether the thing works
 
 **Other UX & product:**
-- [ ] 18. **Overlapping markers. Measured September 22: 171 geolocated events sit on only 71 distinct points — 100 markers are hidden under another, so 58% of events cannot be clicked on the map.** 26 share one point in the Forêt domaniale, 20 at the Âne Vert, 19 at the château.
+- [x] 18. **Overlapping markers — grouped by coordinate, September 22** (§3.R). Original note: Measured September 22: 171 geolocated events sit on only 71 distinct points — 100 markers are hidden under another, so 58% of events cannot be clicked on the map.** 26 share one point in the Forêt domaniale, 20 at the Âne Vert, 19 at the château.
   A clustering plugin is **not** needed: the problem measured here is exact-coordinate collision, not proximity. Grouping by identical coordinate, showing a count on the marker and listing the events in its popup solves all of it with no new CDN and no new dependency
 - [x] 19. Card ↔ marker linking — **done September 21**. Click a card: the map centres on its marker and opens the popup. Click a marker: the matching card is highlighted and scrolled into view. Links inside a card keep their own behaviour
 - [x] 20. **Failure state — done September 21.** A failed `data.json` load used to print to the console and leave a blank page. Now: a message, a retry button that really refetches, and the coverage figure goes silent rather than claiming zero. The empty-result case gets the same treatment plus a reset-filters button. Mobile list view was already handled by the existing stacking layout
@@ -858,7 +902,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
   - the PWA icon — currently the square Helioso logo (1538×1534, 472 kB). A 512×512 PNG and a 192×192 would render far better on a home screen
 - [x] 65. **One-click translation workflow** (`.github/workflows/translate.yml`), September 22 — `workflow_dispatch`, with a preview mode that writes nothing
 - [x] 66. **Search-engine basics**, September 22 — `robots.txt`, `sitemap.xml` with `hreflang` alternates, and `<link rel="alternate" hreflang>` in the head. **Remaining, and it is the actual blocker: submit the site in Google Search Console.** A one-day-old domain that nothing links to is not in the index yet, and no amount of markup changes that
-- [ ] 62. **Geocoding coverage.** Only 35 of 171 events (20%) have a BAN-verified position; 110 carry model-supplied coordinates and 26 a city centre. This is why the map cannot usefully flag approximate positions — they are the norm. Raising BAN coverage would improve the map far more than any marker styling.
+- [x] 62. **Geocoding coverage — `venues.json`, September 22** (§3.R). 20% → 60% exact. Original note: Only 35 of 171 events (20%) have a BAN-verified position; 110 carry model-supplied coordinates and 26 a city centre. This is why the map cannot usefully flag approximate positions — they are the norm. Raising BAN coverage would improve the map far more than any marker styling.
   **Measured September 22: 14 venues account for 112 of 171 events (65%)**, and most of them fail BAN lookup because "Théâtre municipal de Fontainebleau" or "Stade Équestre du Grand Parquet" is a name, not a postal address. A small hand-written gazetteer of those venues, with exact coordinates, would fix two thirds of the map once and for all — a `venues.json` read before geocoding, in the spirit of `overrides.json`
 
 ### Milestones

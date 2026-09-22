@@ -22,17 +22,18 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/translate-data.js` | Utilitaire hors bande : traduit les descriptions de `data.json` sans lancer de scan (`--sample` pour relire avant publication) |
 | `translate-cache.json` | **Généré et commité.** Cache de traduction — sans lui, chaque run CI retraduirait tout |
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
+| `venues.json` | **Édité à la main.** Coordonnées exactes des lieux récurrents, consultées avant la BAN — qui ne connaît que des adresses, pas des noms de salles |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
 | `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité |
 | `CNAME` | Domaine perso `fontainebleaulive.fr` servi par GitHub Pages |
 | `og-image.png` | **Placeholder généré** (1200×630) pour les aperçus de lien. À remplacer par le vrai visuel Fontainebleau Live |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
-| `.github/workflows/` | `daily-check.yml` (collecte) et `datatourisme-coverage.yml` (observation) |
+| `.github/workflows/` | `daily-check.yml` (collecte), `translate.yml` (traduction à la demande) et `datatourisme-coverage.yml` (observation) |
 
 `app.js` et `style.css` sont des reliquats vides : tout le frontend vit dans `index.html`.
 
-`overrides.json` est le **seul** fichier de données modifiable à la main. `data.json` est
+`overrides.json` et `venues.json` sont les **seuls** fichiers de données modifiables à la main. `data.json` est
 régénéré à chaque scan : toute correction faite directement dedans est perdue au run suivant.
 
 ## Contraintes à respecter

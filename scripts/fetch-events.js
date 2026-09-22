@@ -55,6 +55,7 @@ const CONFIG = {
   dataPath: path.resolve(process.env.DATA_PATH || 'data.json'),
   cachePath: path.resolve(process.env.GEOCODE_CACHE_PATH || 'geocode-cache.json'),
   overridesPath: path.resolve(process.env.OVERRIDES_PATH || 'overrides.json'),
+  venuesPath: path.resolve(process.env.VENUES_PATH || 'venues.json'),
   dryRun: process.env.DRY_RUN === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
   // Cadence. The workflow triggers every day, but a real (billed) scan only runs when the stored
@@ -348,7 +349,7 @@ function fromExisting(old, ctx) {
 
   if (typeof old.id === 'string' && old.id.trim()) e.id = old.id.trim();
 
-  if (['ban', 'city', 'model', 'default', 'manual'].includes(old.geoSource)) e.geoSource = old.geoSource;
+  if (['ban', 'city', 'model', 'default', 'manual', 'venue'].includes(old.geoSource)) e.geoSource = old.geoSource;
   if (['ok', 'unverified'].includes(old.urlStatus)) e.urlStatus = old.urlStatus;
   if (isValidIsoDate(old.urlCheckedAt)) e.urlCheckedAt = old.urlCheckedAt;
   // Carry the English description over; translateDescriptions() re-checks it against the French
@@ -575,6 +576,51 @@ async function runScan(scan, ctx) {
   throw lastError;
 }
 
+// ───────────────────────────── Venue gazetteer ─────────────────────────────
+
+/**
+ * A hand-written list of the places that come back scan after scan (§3.R).
+ *
+ * The BAN is an ADDRESS base. Asked for "Théâtre municipal de Fontainebleau" it finds nothing,
+ * because that is a name, not an address — which is why 80% of positions were approximate while
+ * a handful of venues carried most of the events. Resolved once, by hand, they stay resolved.
+ */
+let venueIndex = null;
+
+function loadVenues() {
+  if (venueIndex) return venueIndex;
+  const raw = loadJson(CONFIG.venuesPath, null);
+  const list = Array.isArray(raw?.venues) ? raw.venues : [];
+  venueIndex = [];
+  for (const v of list) {
+    const lat = toNum(v.lat), lng = toNum(v.lng);
+    // A gazetteer entry outside the region is a typo, and a typo here would be published as an
+    // exact position — the one thing this file must never do.
+    if (!Number.isFinite(lat) || !Number.isFinite(lng) || !inBbox(lat, lng)) continue;
+    const words = Array.isArray(v.match) ? v.match.map((w) => norm(w)).filter(Boolean) : [];
+    if (!words.length || !v.city) continue;
+    venueIndex.push({ label: v.label || words.join(" "), city: norm(v.city), words, lat: round5(lat), lng: round5(lng) });
+  }
+  return venueIndex;
+}
+
+/**
+ * The most specific entry whose city matches and whose every word appears in the venue name.
+ * Most words wins, so a precise entry beats a looser one that also matches.
+ */
+function matchVenue(event) {
+  const name = norm(event.locationName);
+  const city = norm(event.city);
+  if (!name || !city) return null;
+  let best = null;
+  for (const v of loadVenues()) {
+    if (v.city !== city) continue;
+    if (!v.words.every((w) => name.includes(w))) continue;
+    if (!best || v.words.length > best.words.length) best = v;
+  }
+  return best;
+}
+
 // ───────────────────────────── Geocoding (BAN) ─────────────────────────────
 
 async function banSearch(query, { municipality = false } = {}) {
@@ -623,6 +669,12 @@ function setGeo(e, lat, lng, source) {
  */
 async function geocodeRecord(rec, cache) {
   const e = rec.event;
+
+  // The gazetteer comes first: it is hand-checked, so it outranks anything a lookup can guess,
+  // and it costs no request at all.
+  const venue = matchVenue(e);
+  if (venue) return setGeo(e, venue.lat, venue.lng, 'venue');
+
   const venueQuery = [e.locationName, e.city].filter(Boolean).join(' ').trim();
 
   if (venueQuery.length >= 3) {
@@ -853,7 +905,7 @@ const FIELD_ORDER = [
 ];
 
 function serializeEvent(e) {
-  const out = { ...e, geoApprox: !(e.geoSource === 'ban' || e.geoSource === 'manual') };
+  const out = { ...e, geoApprox: !['ban', 'manual', 'venue'].includes(e.geoSource) };
   const ordered = {};
   for (const f of FIELD_ORDER) if (out[f] !== undefined) ordered[f] = out[f];
   return ordered;
@@ -1327,7 +1379,10 @@ async function main() {
   const all = [...records.values()];
 
   // 4. Geocode (anything not yet resolved by BAN) ───────────────────────
-  const toGeocode = all.filter((r) => r.event.geoSource !== 'ban' || r.event.lat === null);
+  // Anything not already exact is re-resolved: that is how a venue added to venues.json today
+  // fixes every stored event at that address on the next run, with no manual pass.
+  const toGeocode = all.filter((r) => !['ban', 'venue', 'manual'].includes(r.event.geoSource)
+    || r.event.lat === null);
   console.log(`📍 Geocoding ${toGeocode.length} event(s)…`);
   for (const rec of toGeocode) await geocodeRecord(rec, cache);
 
@@ -1393,7 +1448,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride,
+  applyOverrides, coerceOverride, matchVenue, loadVenues,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,
