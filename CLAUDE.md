@@ -17,6 +17,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/fetch-events.js` | Pipeline de collecte : scans Gemini + DATAtourisme → validation → fusion → géocodage → vérification des URL |
 | `scripts/datatourisme.js` | Bibliothèque partagée DATAtourisme (téléchargement, parsing, correspondance) — utilisée par le pipeline **et** par la sonde |
 | `scripts/datatourisme-coverage.js` | Sonde de couverture DATAtourisme, **mode observation** : ne modifie jamais `data.json` |
+| `scripts/openagenda.js` | Troisième source : OpenAgenda via le portail Île-de-France. Sans clé, filtrage côté serveur. Les agendas emploi sont exclus par éditeur |
 | `scripts/feedback.js` | Lecture du formulaire de signalement (CSV publié). Seul le masquage est automatique ; tout le reste part en relecture humaine |
 | `scripts/translate.js` | Descriptions anglaises. Appel Gemini **non grounded**, cache par hash du texte français |
 | `scripts/translate-data.js` | Utilitaire hors bande : traduit les descriptions de `data.json` sans lancer de scan (`--sample` pour relire avant publication) |
@@ -68,7 +69,7 @@ GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js
 node scripts/datatourisme-coverage.js
 
 # Le pipeline principal importe aussi DATAtourisme automatiquement ; DATATOURISME=0 pour le désactiver
-GEMINI_API_KEY=… DATATOURISME=0 DRY_RUN=1 node scripts/fetch-events.js
+GEMINI_API_KEY=… DATATOURISME=0 OPENAGENDA=0 DRY_RUN=1 node scripts/fetch-events.js
 
 # Lecture du formulaire de signalement. Sans FEEDBACK_CSV_URL, la fonctionnalité est simplement
 # inactive. L'URL vit dans le secret GitHub du même nom, jamais dans le dépôt : une réponse peut

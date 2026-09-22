@@ -430,6 +430,39 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
+### S. OpenAgenda, a third source (item 27, September 22, 2026)
+
+The coverage gap the project lead identified is **local associations**: the manga festival at
+Bois-le-Roi, the jazz nights at Lorrez-le-Bocage, the guided walk and drawing workshop at
+Larchant. Gemini rarely surfaces them and DATAtourisme does not carry them — the associations
+publish them on OpenAgenda, which Région Île-de-France republishes as open data.
+
+**No key, no bulk download.** The portal exposes an Opendatasoft query API, so the bounding box
+and the date window are applied server-side: one small request per run, against the 9 MB
+DATAtourisme downloads every time.
+
+**The filter that decides whether this source is usable at all.** The raw feed is 158 records in
+this area and **111 of them are France Travail job-search workshops** — "Découvrez les métiers de
+la logistique", "Capsule 15': faire matcher CV / offre". Public events, but not outings, and
+shipping them would bury the actual content under employment services. They are excluded by
+**origin agenda**, not by keyword: an agenda is a stable, declared publisher, where a title is
+whatever someone typed that week.
+
+**Measured 22 September: 158 raw → 47 kept → 51 records, and every one of them absent from
+`data.json`.** They bring in eight communes the site had nothing from: Melun, Bois-le-Roi,
+Nandy, Lieusaint, Sivry-Courtry, Le Châtelet-en-Brie, Villiers-en-Bière, Savigny-le-Temple.
+
+**Occurrences.** `timings` lists every date, and the feed keeps historical ones — one record
+carries dates from 2023 alongside this autumn's. Anything outside the window is dropped *before*
+counting, so a dead series cannot be mistaken for a long run. A short series then becomes one
+record per date (the §3.I rule); a long programme becomes a single span, because a card per day
+for a two-month exhibition would bury everything else.
+
+**Images.** 50 of the 51 records carry one, and the field is now kept in `data.json` through
+`cleanUrl()` like any other third-party link. It is **not displayed yet**: 51 cards with a
+picture among 220 without would look broken rather than richer. The field exists so the decision
+can be made on real data instead of on a guess (item 67).
+
 ### R. The venue gazetteer and marker grouping (items 62 & 18, September 22, 2026)
 
 Two problems that looked unrelated and were the same one: **the map was mostly fiction.**
@@ -747,6 +780,10 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-22 | **OpenAgenda added as a third source**, via the Île-de-France open data portal (§3.S) | The missing events are local associations, which publish there. No API key, server-side filtering, 51 records all absent from `data.json`, eight new communes |
+| 2026-09-22 | Employment agendas are excluded **by publisher, not by keyword** | 111 of the 158 records in this area are France Travail workshops. An agenda is declared and stable; a title is free text that changes weekly |
+| 2026-09-22 | OpenAgenda records are merged **last**, with the fuzzy guard | An event already reported by Gemini or DATAtourisme keeps its verified URL; only the newcomer pays the comparison |
+| 2026-09-22 | An `image` field is now stored but **not displayed** | 51 cards with a picture among 220 without would read as broken. Storing it costs nothing and lets the display decision be made on real data (item 67) |
 | 2026-09-22 | **`venues.json`, a hand-written gazetteer consulted before the BAN** (§3.R) | The BAN is an address base; the pipeline was feeding it venue *names*. 11 venues held 106 of 171 events, so resolving them once fixes the map for good. Exact positions: 20% → 60% |
 | 2026-09-22 | The forêt de Fontainebleau and the Carreau Franc are **deliberately left out** of the gazetteer | A single point for a 25,000 ha massif would be wrong, and publishing it as verified is worse than approximate. The Carreau Franc was in neither source, and inventing a coordinate is out of the question. A test keeps both absent |
 | 2026-09-22 | A gazetteer entry outside the project bounding box is **dropped at load** | A typo here would be published as an exact position — the one thing this file must never do |
@@ -842,7 +879,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - [x] 54. **Live `data.json` cleaned offline with the new rule** — 198 → 171, September 21. Pushing the code does not regenerate `data.json`: the rule only runs during a scan, and the 60 h cadence guard held the next one back. Same offline procedure as the September 20 cleanup, `generatedAt` deliberately left untouched so the banner stays honest and the cadence is not pushed back
 - [x] 55. `scripts/translate-data.js` — translate `data.json` out of band, with a `--sample` preview. Exists because the pipeline publishes without human review: the wording is worth checking once, cheaply, before 171 cards carry it
 - [x] 56. Form problem-type labels confirmed against the live form (Date, Lieu, Tarif, Lien mort, Annulé, Autre). Only « Annulé » triggers an automatic hide; « Lien mort » only forces a re-check
-- [ ] 27. Open/structured sources first (moved up from P3): DATAtourisme (verify coverage of the Fontainebleau area; daily CSV export on data.gouv.fr), OpenAgenda, city and tourism-office iCal/RSS feeds
+- [x] 27. **OpenAgenda added, September 22** (§3.S) — `scripts/openagenda.js`, via the Île-de-France portal. 51 records, all new, eight new communes. City and tourism-office iCal/RSS feeds remain open, but the tourism offices already feed DATAtourisme, so the return there is likely small
+- [ ] 67. **Decide whether to display event images.** 50 of the 51 OpenAgenda records carry one and the field is stored; nothing else does. Options: show them only where present (risks looking broken), require one for a "featured" row, or ignore them. Wait until a scan shows the real proportion
 - [ ] 38. Widen sports & associations coverage **through the source registry** (club and federation calendars, association agendas, HelloAsso pages, châteaux programmes) — not by tuning the grounded prompt
 - [ ] 39. Cost guardrails & model review: log estimated cost per run, budget alert on the Google Cloud project, re-evaluate the model (3.6 Flash is now "previous generation"; prices rise on January 1, 2027; a lighter model may be enough for pure extraction)
 

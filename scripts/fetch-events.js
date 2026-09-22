@@ -27,6 +27,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const datatourisme = require('./datatourisme');
+const openagenda = require('./openagenda');
 const feedback = require('./feedback');
 const translate = require('./translate');
 
@@ -63,6 +64,8 @@ const CONFIG = {
   // skipped day is retried the next morning instead of waiting three more.
   minRunIntervalHours: envInt('MIN_RUN_INTERVAL_HOURS', 60),
   forceRun: process.env.FORCE_RUN === '1',
+  // OpenAgenda, third source (open data, via the Île-de-France portal). OPENAGENDA=0 disables it.
+  openagenda: process.env.OPENAGENDA !== '0',
   // DATAtourisme, second source (open data). Set DATATOURISME=0 to collect from Gemini only.
   datatourisme: process.env.DATATOURISME !== '0',
 };
@@ -336,7 +339,10 @@ function validateEvent(raw, { today, maxDate }) {
       url,
       // Provenance. Absent (undefined) on Gemini records, so serializeEvent omits the field and
       // the existing data.json entries stay byte-identical.
-      source: raw.source === 'datatourisme' ? 'datatourisme' : undefined,
+      source: ['datatourisme', 'openagenda'].includes(raw.source) ? raw.source : undefined,
+      // Only OpenAgenda carries one today. Through cleanUrl() like any other link: it ends up in
+      // an <img src> eventually, and the value comes from a third party.
+      image: cleanUrl(raw.image) || undefined,
     },
   };
 }
@@ -355,6 +361,8 @@ function fromExisting(old, ctx) {
   // Carry the English description over; translateDescriptions() re-checks it against the French
   // text and replaces it if that text has changed.
   if (typeof old.descriptionEn === 'string' && old.descriptionEn.trim()) e.descriptionEn = cleanText(old.descriptionEn, 600);
+  if (old.image) e.image = cleanUrl(old.image) || undefined;
+  if (['datatourisme', 'openagenda'].includes(old.source)) e.source = old.source;
 
   const oLat = toNum(old.lat);
   const oLng = toNum(old.lng);
@@ -901,7 +909,7 @@ function applyOverrides(records, overrides, stats) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'source',
+  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'image', 'source',
 ];
 
 function serializeEvent(e) {
@@ -937,6 +945,15 @@ function renderSummary(stats, ctx) {
       L.push(`- 📖 DATAtourisme (CSV du ${stats.dt.updated}): ${stats.dt.inWindow} in window → ${stats.dt.short} short kept, ${stats.dt.recurring} recurring/markets skipped → **${stats.dt.records}** record(s), ${stats.dtDeduped} duplicate(s) of a Gemini event`);
       const dtRej = Object.entries(stats.dtRejected);
       if (dtRej.length) L.push(`  - rejected at validation: ${dtRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+    }
+  }
+  if (stats.oa) {
+    if (stats.oa.error) {
+      L.push(`- 📅 OpenAgenda: ❌ ${String(stats.oa.error).slice(0, 160)} (les autres sources sont conservées)`);
+    } else {
+      L.push(`- 📅 OpenAgenda (${stats.oa.agendas} agenda(s)) : ${stats.oa.total} bruts → ${stats.oa.excludedAgendas} agenda(s) emploi écarté(s)${stats.oa.cancelled ? `, ${stats.oa.cancelled} annulé(s)` : ''} → **${stats.oa.records}** fiche(s), ${stats.oaDeduped} doublon(s) d'une autre source`);
+      const oaRej = Object.entries(stats.oaRejected);
+      if (oaRej.length) L.push(`  - rejected at validation: ${oaRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
     }
   }
   if (stats.crossCityDeduped) {
@@ -1206,6 +1223,7 @@ async function main() {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
+    oa: null, oaRejected: {}, oaDeduped: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -1277,10 +1295,32 @@ async function main() {
     }
   }
 
+  // 1c. OpenAgenda — local associations, the gap Gemini and DATAtourisme both miss ─────
+  let oaRaw = [];
+  if (CONFIG.openagenda) {
+    console.log('📅 OpenAgenda…');
+    try {
+      const loaded = await openagenda.load({ today, windowEnd: maxDate });
+      oaRaw = openagenda.toPipelineEvents(loaded.kept, ctx);
+      stats.oa = {
+        total: loaded.meta.total,
+        excludedAgendas: loaded.meta.excludedAgendas,
+        cancelled: loaded.meta.cancelled,
+        kept: loaded.kept.length,
+        records: oaRaw.length,
+        agendas: loaded.meta.agendas.length,
+      };
+      console.log(`   → ${loaded.meta.total} bruts, ${loaded.meta.excludedAgendas} agenda(s) emploi écarté(s) → ${oaRaw.length} fiche(s)`);
+    } catch (err) {
+      stats.oa = { error: err.message };
+      console.error(`   ❌ OpenAgenda failed: ${String(err.message).slice(0, 300)}`);
+    }
+  }
+
   // A source failing is survivable as long as one of them produced something: events are pruned
   // by date only, never by absence, so a partial failure deletes nothing.
-  if (okScans === 0 && dtRaw.length === 0) {
-    throw new Error('Every source failed (Gemini scans and DATAtourisme) — data.json left untouched');
+  if (okScans === 0 && dtRaw.length === 0 && oaRaw.length === 0) {
+    throw new Error('Every source failed (Gemini, DATAtourisme, OpenAgenda) — data.json left untouched');
   }
 
   // 2. Validate new records ─────────────────────────────────────────────
@@ -1302,7 +1342,15 @@ async function main() {
   }
   if (dtRaw.length) console.log(`🧹 ${validDt.length}/${dtRaw.length} DATAtourisme records valid`);
 
-  if (validNew.length === 0 && validDt.length === 0) {
+  const validOa = [];
+  for (const raw of oaRaw) {
+    const v = validateEvent(raw, ctx);
+    if (v.ok) validOa.push(v);
+    else bump(stats.oaRejected, v.reason);
+  }
+  if (oaRaw.length) console.log(`🧹 ${validOa.length}/${oaRaw.length} OpenAgenda records valid`);
+
+  if (validNew.length === 0 && validDt.length === 0 && validOa.length === 0) {
     throw new Error('Sources returned no valid event — data.json left untouched');
   }
 
@@ -1318,7 +1366,7 @@ async function main() {
     const key = eventKey(v.event);
     if (!records.has(key)) records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: false });
   }
-  const addRecord = (v, { fuzzy = false } = {}) => {
+  const addRecord = (v, { fuzzy = false, counter = 'dtDeduped' } = {}) => {
     const key = eventKey(v.event);
     const known = records.get(key);
     if (known) {
@@ -1332,7 +1380,7 @@ async function main() {
     // cost of this scan, and the incumbent record wins: it has already passed URL verification.
     if (fuzzy) {
       for (const rec of records.values()) {
-        if (datatourisme.isSameOccurrence(v.event, rec.event)) { stats.dtDeduped++; return; }
+        if (datatourisme.isSameOccurrence(v.event, rec.event)) { stats[counter]++; return; }
       }
     }
     v.event.id = eventId(key);
@@ -1341,6 +1389,9 @@ async function main() {
 
   for (const v of validNew) addRecord(v);
   for (const v of validDt) addRecord(v, { fuzzy: true });
+  // Last in, so an event already reported by Gemini or DATAtourisme keeps its verified URL;
+  // only the newcomer pays the cost of the fuzzy comparison.
+  for (const v of validOa) addRecord(v, { fuzzy: true, counter: 'oaDeduped' });
 
   dedupeFuzzy(records, stats);
 
