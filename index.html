@@ -99,6 +99,7 @@
       --cat-sport: #0f8f9e;    --cat-sport-bg: #e0f2f4;   --cat-sport-fg: #0a5661;
       --cat-nature: #5f8f2f;   --cat-nature-bg: #ecf3e0;  --cat-nature-fg: #3d5d1d;
       --cat-culture: #9247a0;  --cat-culture-bg: #f4e9f6; --cat-culture-fg: #5e2a68;
+      --cat-scene: #4a5bb8;    --cat-scene-bg: #e8eaf7;   --cat-scene-fg: #2b3573;
       --cat-other: #6b6257;    --cat-other-bg: #eeeae3;   --cat-other-fg: #4a443c;
     }
 
@@ -207,6 +208,15 @@
     }
 
     .lang-btn + .lang-btn { border-left: 1px solid rgba(255, 255, 255, 0.4); }
+
+    /* Item 26b: a visible focus ring everywhere, for keyboard users. */
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
 
     .lang-btn[aria-pressed="true"] {
       background: white;
@@ -425,10 +435,12 @@
     .card.cat-sport   { border-left-color: var(--cat-sport); }
     .card.cat-nature  { border-left-color: var(--cat-nature); }
     .card.cat-culture { border-left-color: var(--cat-culture); }
+    .card.cat-scene   { border-left-color: var(--cat-scene); }
 
     .card.cat-sport .badge   { background: var(--cat-sport-bg);   color: var(--cat-sport-fg); }
     .card.cat-nature .badge  { background: var(--cat-nature-bg);  color: var(--cat-nature-fg); }
     .card.cat-culture .badge { background: var(--cat-culture-bg); color: var(--cat-culture-fg); }
+    .card.cat-scene .badge   { background: var(--cat-scene-bg);   color: var(--cat-scene-fg); }
 
     /* Map markers: a coloured dot instead of Leaflet's default pin image. Same colour key as
        the cards, and one less asset to download. */
@@ -495,6 +507,7 @@
     .marker-dot.cat-sport   { background: var(--cat-sport); }
     .marker-dot.cat-nature  { background: var(--cat-nature); }
     .marker-dot.cat-culture { background: var(--cat-culture); }
+    .marker-dot.cat-scene   { background: var(--cat-scene); }
 
     /* Deliberately NO separate treatment for an approximate position.
        Measured on the live data: 136 of 171 events (80%) only have a city-centre or
@@ -684,7 +697,7 @@
   </header>
 
   <!-- Filtres -->
-  <div class="filters-container">
+  <div class="filters-container" role="group" aria-label="Filtres / Filters">
     <!-- Le filtre « Public cible » a été retiré le 23/09 : 147 événements sur 197 sont tout
          public, donc chaque option en renvoyait 73 à 90 %. L'âge reste affiché sur la fiche,
          là où c'est une information et non une promesse de tri. -->
@@ -694,6 +707,7 @@
         <option value="" data-i18n="categoryAll">Tous les types</option>
         <option value="Sport & Outdoor" data-i18n="catSport">Sport & Outdoor</option>
         <option value="Nature & Environnement" data-i18n="catNature">Nature & Environnement</option>
+        <option value="Scène &amp; Spectacles" data-i18n="catScene">Scène &amp; Spectacles</option>
         <option value="Culture & Ateliers" data-i18n="catCulture">Culture & Ateliers</option>
       </select>
     </div>
@@ -714,25 +728,29 @@
   </div>
 
   <!-- Commutateur de vues -->
-  <div class="view-tabs">
-    <button class="tab-btn active" onclick="switchView('map')" data-i18n="tabMap">Carte & Liste</button>
-    <button class="tab-btn" onclick="switchView('calendar')" data-i18n="tabCalendar">Calendrier</button>
+  <div class="view-tabs" role="tablist" aria-label="Vue / View">
+    <button type="button" class="tab-btn active" role="tab" id="tabMap"
+            aria-selected="true" aria-controls="mapView"
+            onclick="switchView('map')" data-i18n="tabMap">Carte & Liste</button>
+    <button type="button" class="tab-btn" role="tab" id="tabCalendar"
+            aria-selected="false" aria-controls="calendarView"
+            onclick="switchView('calendar')" data-i18n="tabCalendar">Calendrier</button>
   </div>
 
   <main class="main-container">
     <!-- Vue Carte & Liste -->
-    <div id="mapView" class="view-panel active">
+    <div id="mapView" class="view-panel active" role="tabpanel" aria-labelledby="tabMap">
       <div class="map-layout">
         <div class="map-wrap">
           <div id="map"></div>
           <button type="button" id="resetView" class="reset-view" data-i18n="resetView" title="Échap">Tout afficher</button>
         </div>
-        <div id="cardsList" class="cards-list"></div>
+        <div id="cardsList" class="cards-list" role="region" aria-live="polite" aria-label="Résultats / Results"></div>
       </div>
     </div>
 
     <!-- Vue Calendrier -->
-    <div id="calendarView" class="view-panel">
+    <div id="calendarView" class="view-panel" role="tabpanel" aria-labelledby="tabCalendar">
       <div id="calendar"></div>
     </div>
   </main>
@@ -795,6 +813,7 @@
         categoryAll: 'Tous les types',
         catSport: 'Sport & Outdoor',
         catNature: 'Nature & Environnement',
+        catScene: 'Scène & Spectacles',
         catCulture: 'Culture & Ateliers',
         dateLabel: 'Date spécifique :',
         horizonLabel: 'Période :',
@@ -853,6 +872,7 @@
         categoryAll: 'All types',
         catSport: 'Sport & Outdoor',
         catNature: 'Nature & Environment',
+        catScene: 'Stage & Shows',
         catCulture: 'Culture & Workshops',
         dateLabel: 'Specific date:',
         horizonLabel: 'Period:',
@@ -909,6 +929,7 @@
     const CATEGORIES = {
       'Sport & Outdoor':        { key: 'catSport',   cls: 'cat-sport' },
       'Nature & Environnement': { key: 'catNature',  cls: 'cat-nature' },
+      'Scène & Spectacles':     { key: 'catScene',   cls: 'cat-scene' },
       'Culture & Ateliers':     { key: 'catCulture', cls: 'cat-culture' },
     };
 
@@ -1623,6 +1644,10 @@
     // Gestion du changement d'onglet
     function switchView(viewName) {
       track('view', viewName);
+      // aria-selected is what a screen reader reads out; the .active class only paints.
+      document.querySelectorAll('.tab-btn').forEach((btn) => {
+        btn.setAttribute('aria-selected', String(btn.id === (viewName === 'map' ? 'tabMap' : 'tabCalendar')));
+      });
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
 

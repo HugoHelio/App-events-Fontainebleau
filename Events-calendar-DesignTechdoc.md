@@ -430,6 +430,52 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
+### U. Four categories, one classifier (items 21 & 26b, September 23, 2026)
+
+Item 21 asked two things: check that the three sources stay coherent, and decide whether
+heritage visits deserve their own category.
+
+**The coherence turned out to be a non-problem.** Scanning the 197 published events for titles
+that clearly contradict their category found four borderline cases, all defensible: a night walk
+in the forest filed under Nature rather than Sport, an exhibition about the forest filed under
+Culture rather than Nature. Nothing to repair.
+
+**The real defect was size.** "Culture & Ateliers" held 120 of 197 events — 61%. That is the
+same failure the age filter had: an option that returns three events out of five is not a filter.
+And inside it sat two things a visitor never chooses between — a concert or a play on one side,
+an exhibition or a brocante on the other.
+
+**A fourth category, not a rename.** `Scène & Spectacles` is added; the three existing values are
+untouched. Renaming would have invalidated every stored record until the next scan re-reported
+it. Result: 37% / 28% / 24% / 11% instead of 61% / 28% / 11%.
+
+**One classifier, applied to every source.** `refineCategory()` runs over the whole merged set
+after validation. Each source still proposes a category — DATAtourisme maps almost everything to
+Culture because its ontology has no stage class, OpenAgenda guesses from keywords, Gemini is told
+the enum — but one place decides. That is what "normaliser" means here: three mappers that each
+guess independently will drift apart.
+
+It only ever **promotes Culture to Scène**, never touches Sport or Nature: a source that says
+"Sport" knows something a regular expression does not.
+
+Two rules, both earned from the data:
+
+- The vocabulary names a **performance**, not an atmosphere. "Soirée" is deliberately absent —
+  "Soirée aux Chandelles" is a candlelit visit to Vaux-le-Vicomte, not a show.
+- A title that **announces itself** as an exhibition, a visit or a workshop is never promoted,
+  whatever its description mentions. Without that guard, "Exposition d'art contemporain Wawapod"
+  moved to the stage category because its description named a festival.
+
+The live `data.json` was migrated offline with the same function: 48 events reclassified, and a
+test asserts the result is stable — a second pass moves nothing.
+
+**Item 26b, in the same pass.** The view switcher was two plain buttons: a screen reader
+announced "Carte & Liste, button" with no way to tell which view was showing, and the panels were
+not tied to the buttons. It is now a proper `tablist` whose `aria-selected` follows the view —
+the `.active` class only paints, it does not announce. The filter row is a named group, the
+result list is an `aria-live="polite"` region so a change is spoken, and `:focus-visible` gives
+every control a visible keyboard ring instead of only the two that had one.
+
 ### T. The sport gap: no missing feed, a drifted prompt (item 38, September 22, 2026)
 
 Sport was 21 of 197 events (11%) against 120 for culture. The roadmap said to close it "through
@@ -814,6 +860,12 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-23 | **A fourth category, `Scène & Spectacles`** (§3.U) | "Culture & Ateliers" held 61% of events — the same failure the age filter had. Splitting brings the biggest block to 37%, and a concert and an exhibition are not things a visitor chooses between |
+| 2026-09-23 | Added, **not renamed** | Renaming a value would have invalidated every stored record until a source re-reported it |
+| 2026-09-23 | **One classifier decides for all three sources** | DATAtourisme has no stage class in its ontology, OpenAgenda guesses from keywords, Gemini is told the enum. Three mappers guessing independently drift apart; `refineCategory()` runs last over the whole set |
+| 2026-09-23 | It only promotes Culture → Scène, never touches Sport or Nature | A source that says "Sport" knows something a regular expression does not. The audit found only four borderline cases in 197, all defensible |
+| 2026-09-23 | A title that announces itself as an exhibition or a visit is never promoted | Without the guard, "Exposition d'art contemporain Wawapod" moved to the stage category because its description named a festival |
+| 2026-09-23 | **`aria-selected` drives the tab state, not the CSS class** (item 26b) | `.active` paints; it says nothing to a screen reader. The result list also became an `aria-live` region, so a filter change is spoken |
 | 2026-09-23 | **The « Public cible » filter is removed** | Measured on the published data: « Ados » kept 89% of events, « Adultes » 90%, « Enfants » 73%, and 147 of 197 records are 0–99. A control that returns almost everything whatever you pick is not a filter. The age label stays on the card, where it is information rather than a promise |
 | 2026-09-23 | An age the feed does not give falls back to the default, not to zero | `Number(null)` is 0 and passes `isFinite`, so the guard in `openagenda.js` never fired: 18 published cards read « Jusqu’à 0 ans ». Fixed in the mapper and repaired offline in `data.json` |
 | 2026-09-23 | **`lastSeen` reports, never deletes** (item 28) | The rule of 19 September stands: prune by date only, never by absence. What is new is that the report separates two cases — a deterministic feed that loaded fine and dropped an event is a real signal; the model not mentioning something is not |
@@ -944,10 +996,16 @@ choses qui restaient étaient noyées dedans.
 
 ### C. Finitions
 
-- [ ] **21. Normaliser les catégories.** Trois sources les déduisent désormais chacune à sa façon
+- [x] **21. Catégories — fait le 23/09** (§3.U). L'audit ne trouve que quatre cas limites sur 197,
+  tous défendables : la cohérence n'était pas le problème. Le problème était la taille —
+  « Culture & Ateliers » pesait 61 %. Une quatrième catégorie « Scène & Spectacles » et un
+  classificateur unique pour les trois sources ramènent le plus gros bloc à 37 %. Ancien libellé :
+  Trois sources les déduisent désormais chacune à sa façon
   (§3.I, §3.S). Vérifier que l'ensemble reste cohérent, et décider si les visites de patrimoine
   méritent leur propre catégorie plutôt que de gonfler « Culture & Ateliers » (120 sur 197).
-- [ ] **26b. Passe d'accessibilité** sur les onglets et les filtres (le volet Open Graph est fait).
+- [x] **26b. Accessibilité — fait le 23/09** (§3.U) : onglets en `tablist` avec `aria-selected`
+  qui suit la vue, panneaux reliés à leur onglet, filtres en groupe nommé, liste de résultats en
+  région `aria-live`, anneau de focus visible sur tous les contrôles.
 - [ ] **58c. Fond de carte plus sobre** (CARTO Positron/Voyager). Le plus gros changement visuel
   par ligne modifiée, mais il ajoute un fournisseur de tuiles : refusé pour l'instant, gardé ici
   parce que la question se reposera.

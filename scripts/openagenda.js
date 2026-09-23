@@ -91,11 +91,17 @@ function isScheduled(record) {
 const NATURE = /\b(nature|foret|forêt|biodiversit|champignon|arbre|plante|oiseau|ornitho|jardin|botani|faune|flore|environnement|ecolo|déchet|dechet|miel|abeille|rando)\w*/;
 const SPORT = /\b(sport|course|trail|running|cyclis|velo|vélo|marche|tournoi|match|competition|compétition|escalade|natation|yoga|gymnas)\w*/;
 
-/** data.json's category enum is fixed; anything unrecognised falls to Culture, the widest of the three. */
+const SCENE = /\b(spectacle|concert|theatre|opera|recital|chorale|orchestre|ballet|danse|cirque|humour|projection|cinema|film|conte|marionnette|festival)\w*/;
+
+/**
+ * data.json's enum is fixed. Anything unrecognised falls to Culture, the widest of the four;
+ * refineCategory() in the pipeline has the final word either way (§3.U).
+ */
 function mapCategory(record) {
   const hay = norm([...(record.keywords_fr || []), record.title_fr, record.originagenda_title].filter(Boolean).join(' '));
   if (NATURE.test(hay)) return 'Nature & Environnement';
   if (SPORT.test(hay)) return 'Sport & Outdoor';
+  if (SCENE.test(hay)) return 'Scène & Spectacles';
   return 'Culture & Ateliers';
 }
 

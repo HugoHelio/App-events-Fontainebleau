@@ -77,7 +77,12 @@ const CONFIG = {
   datatourisme: process.env.DATATOURISME !== '0',
 };
 
-const CATEGORIES = ['Sport & Outdoor', 'Nature & Environnement', 'Culture & Ateliers'];
+const CATEGORIES = [
+  'Sport & Outdoor',
+  'Nature & Environnement',
+  'Scène & Spectacles',   // ajoutée le 23/09 : Culture pesait 61 % des événements
+  'Culture & Ateliers',
+];
 
 // Fontainebleau centre — used only as a last-resort fallback (flagged geoSource: "default").
 const CENTER = { lat: 48.4020, lng: 2.7010 };
@@ -122,10 +127,13 @@ const SCANS = [
   },
   {
     name: 'culture',
-    label: 'Culture & patrimoine',
+    label: 'Culture, patrimoine & spectacles',
     focus:
-      'Expositions, concerts, spectacles, festivals, visites et événements aux châteaux ' +
-      '(Fontainebleau, Vaux-le-Vicomte, Blandy-les-Tours), conférences, cinéma, musées.',
+      'Deux familles à distinguer. D\'un côté « Culture & Ateliers » : expositions, visites ' +
+      'guidées, patrimoine, musées, médiathèques, conférences, ateliers, brocantes et ' +
+      'vide-greniers. De l\'autre « Scène & Spectacles » : concerts, théâtre, opéra, danse, ' +
+      'cirque, humour, cinéma et festivals. Inclure les événements aux châteaux de ' +
+      'Fontainebleau, Vaux-le-Vicomte et Blandy-les-Tours dans l\'une ou l\'autre selon leur nature.',
   },
   {
     name: 'famille',
@@ -272,7 +280,36 @@ const CATEGORY_ALIASES = new Map([
   ['culture ateliers', 'Culture & Ateliers'],
   ['culture', 'Culture & Ateliers'],
   ['culture famille loisirs', 'Culture & Ateliers'],
+  ['scene spectacles', 'Scène & Spectacles'],
+  ['scene', 'Scène & Spectacles'],
+  ['spectacles', 'Scène & Spectacles'],
+  ['spectacle', 'Scène & Spectacles'],
+  ['scene spectacle', 'Scène & Spectacles'],
 ]);
+
+// A word here has to name a PERFORMANCE, not an atmosphere. "Soirée aux Chandelles" is a
+// candlelit visit to Vaux-le-Vicomte, not a show, so "soirée" is deliberately absent.
+const SCENE_WORDS = /\b(spectacle|concert|theatre|theatral|opera|recital|chorale|orchestre|ballet|danse|cirque|humour|stand.?up|projection|cinema|cine|film|conte|marionnette|murder party|festival)\w*/;
+
+// A title that announces itself as an exhibition or a visit is not a performance, whatever its
+// description happens to mention. Without this, "Exposition d'art contemporain Wawapod" moved
+// to the stage category because its description named a festival.
+const NOT_SCENE_TITLE = /^(exposition|expo|visite|balade|parcours|atelier)\b/;
+
+/**
+ * One place decides the category, whatever the source proposed (item 21).
+ *
+ * Only ever promotes "Culture & Ateliers" to "Scène & Spectacles". Sport and Nature are left
+ * alone: a source that says "Sport" knows something a regular expression does not, and the four
+ * borderline cases found in 197 published events were all defensible.
+ */
+function refineCategory(event) {
+  if (event.category !== 'Culture & Ateliers') return event.category;
+  const title = norm(event.title);
+  if (NOT_SCENE_TITLE.test(title)) return event.category;
+  if (SCENE_WORDS.test(title) || SCENE_WORDS.test(norm(event.description))) return 'Scène & Spectacles';
+  return event.category;
+}
 
 function normalizeCategory(v) {
   return CATEGORY_ALIASES.get(norm(v)) || null;
@@ -479,7 +516,7 @@ RÈGLES DE QUALITÉ (très importantes) :
 - "description" : une phrase, 200 caractères maximum.
 - "lat" / "lng" : coordonnées GPS du lieu si tu les connais avec certitude, sinon null.
 - "ageMin" / "ageMax" : âges conseillés (0 et 99 si tout public).
-- "category" : UNIQUEMENT l'une de ces trois valeurs : "Sport & Outdoor", "Nature & Environnement", "Culture & Ateliers".
+- "category" : UNIQUEMENT l'une de ces quatre valeurs : "Sport & Outdoor", "Nature & Environnement", "Scène & Spectacles" (concerts, théâtre, opéra, cinéma, festivals), "Culture & Ateliers" (expositions, visites, patrimoine, ateliers, brocantes).
 - Retourne au maximum ${CONFIG.maxEventsPerScan} événements, en priorisant les plus proches dans le temps.
 
 Renvoie UNIQUEMENT un tableau JSON strict, sans texte avant ou après, au format exact suivant :
@@ -1064,6 +1101,9 @@ function renderSummary(stats, ctx) {
     const villes = Object.entries(stats.tooFarCities).sort((a, b) => b[1] - a[1]).slice(0, 8);
     L.push(`- 📍 Hors rayon (> ${CONFIG.maxRadiusKm} km) : **${stats.tooFar}** écarté(s) — ${villes.map(([c, n]) => `${c} (${n})`).join(", ")}`);
   }
+  if (stats.recategorised) {
+    L.push(`- 🏷️ Reclassé(s) en « Scène & Spectacles » : **${stats.recategorised}**`);
+  }
   L.push(`- Total published: **${stats.total}**`);
   const tr = stats.translation;
   if (tr) {
@@ -1290,7 +1330,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
-    unconfirmed: [], vanishedFromFeed: [],
+    unconfirmed: [], vanishedFromFeed: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -1463,6 +1503,17 @@ async function main() {
   // only the newcomer pays the cost of the fuzzy comparison.
   for (const v of validOa) addRecord(v, { fuzzy: true, counter: 'oaDeduped' });
 
+  // One classifier over the whole merged set: DATAtourisme maps almost everything to Culture
+  // (its ontology has no stage class), OpenAgenda guesses from keywords, Gemini is told the enum.
+  // Left as is, the three would drift apart.
+  for (const rec of records.values()) {
+    const refined = refineCategory(rec.event);
+    if (refined !== rec.event.category) {
+      rec.event.category = refined;
+      stats.recategorised++;
+    }
+  }
+
   dedupeFuzzy(records, stats);
 
   // Manual corrections last: they must win over anything the sources reported, and they run
@@ -1594,6 +1645,7 @@ if (require.main === module) {
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
   applyOverrides, coerceOverride, matchVenue, loadVenues, distanceKm, buildPrompt, SCANS, COMMUNES,
+  refineCategory, CATEGORIES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,
