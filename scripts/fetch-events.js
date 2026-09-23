@@ -61,6 +61,9 @@ const CONFIG = {
   // filter, but it is a rectangle: it reached 30 km into Sénart and Corbeil to the north-west
   // while cutting closer in other directions. A radius says what the project actually means.
   maxRadiusKm: envInt('MAX_RADIUS_KM', 20),
+  // Days without any source confirming an event before it is reported for review. Three scans
+  // at the ~3-day cadence, so one missed mention is never enough to raise it.
+  staleAfterDays: envInt('STALE_EVENT_DAYS', 10),
   dryRun: process.env.DRY_RUN === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
   // Cadence. The workflow triggers every day, but a real (billed) scan only runs when the stored
@@ -391,6 +394,9 @@ function fromExisting(old, ctx) {
   if (['ban', 'city', 'model', 'default', 'manual', 'venue', 'feed'].includes(old.geoSource)) e.geoSource = old.geoSource;
   if (['ok', 'unverified'].includes(old.urlStatus)) e.urlStatus = old.urlStatus;
   if (isValidIsoDate(old.urlCheckedAt)) e.urlCheckedAt = old.urlCheckedAt;
+  // When a source last confirmed this event. Absent on records stored before 23 September; those
+  // are dated on first sight rather than reported as stale on day one.
+  e.lastSeen = isValidIsoDate(old.lastSeen) ? old.lastSeen : ctx.today;
   // Carry the English description over; translateDescriptions() re-checks it against the French
   // text and replaces it if that text has changed.
   if (typeof old.descriptionEn === 'string' && old.descriptionEn.trim()) e.descriptionEn = cleanText(old.descriptionEn, 600);
@@ -949,7 +955,7 @@ function applyOverrides(records, overrides, stats) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'image', 'source',
+  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'image', 'source', 'lastSeen',
 ];
 
 function serializeEvent(e) {
@@ -1043,6 +1049,17 @@ function renderSummary(stats, ctx) {
     if (ov.badFields.length) L.push(`  - ⚠️ ignorées, valeur ou champ invalide : ${ov.badFields.slice(0, 10).join(', ')}${ov.badFields.length > 10 ? '…' : ''}`);
   }
   L.push(`- New events added: **${stats.added}** · refreshed: **${stats.refreshed}** · past events pruned: **${stats.pruned}**`);
+  if (stats.vanishedFromFeed.length) {
+    L.push(`- 🔎 **Disparu(s) d’un flux qui a pourtant bien répondu : ${stats.vanishedFromFeed.length}** — candidat(s) sérieux à une annulation`);
+    for (const v of stats.vanishedFromFeed.slice(0, 8)) L.push(`  - ${v}`);
+    if (stats.vanishedFromFeed.length > 8) L.push(`  - … et ${stats.vanishedFromFeed.length - 8} autre(s)`);
+    L.push(`  Vérifier auprès de l’organisateur, puis masquer via overrides.json si confirmé.`);
+  }
+  if (stats.unconfirmed.length) {
+    L.push(`- 🕰️ Sans confirmation depuis plus de ${CONFIG.staleAfterDays} jours : ${stats.unconfirmed.length} (information, pas alerte : la recall du modèle varie)`);
+    for (const v of stats.unconfirmed.slice(0, 5)) L.push(`  - ${v}`);
+    if (stats.unconfirmed.length > 5) L.push(`  - … et ${stats.unconfirmed.length - 5} autre(s)`);
+  }
   if (stats.tooFar) {
     const villes = Object.entries(stats.tooFarCities).sort((a, b) => b[1] - a[1]).slice(0, 8);
     L.push(`- 📍 Hors rayon (> ${CONFIG.maxRadiusKm} km) : **${stats.tooFar}** écarté(s) — ${villes.map(([c, n]) => `${c} (${n})`).join(", ")}`);
@@ -1273,6 +1290,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
+    unconfirmed: [], vanishedFromFeed: [],
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -1422,6 +1440,8 @@ async function main() {
       mergeInto(known.event, v.event);
       if (!known.modelCoords && v.modelCoords) known.modelCoords = v.modelCoords;
       known.refreshed = true;
+      known.event.lastSeen = today;   // a source confirmed it again
+      known.seenBy = v.event.source || known.seenBy;
       return;
     }
     // Two sources phrase the same event differently ("Concert de musique classique" vs "Concert
@@ -1433,6 +1453,7 @@ async function main() {
       }
     }
     v.event.id = eventId(key);
+    v.event.lastSeen = today;
     records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: true });
   };
 
@@ -1510,6 +1531,22 @@ async function main() {
   }
   kept.sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
   stats.total = kept.length;
+
+  // 6a. Events no source has confirmed for a while ────────────────────────
+  // Reported, never deleted: absence is not evidence (decision of 19 September). A feed that
+  // loaded fine and dropped an event is a stronger signal than the model not mentioning it, so
+  // the two are listed apart.
+  const feedsHealthy = {
+    datatourisme: Boolean(stats.dt && !stats.dt.error),
+    openagenda: Boolean(stats.oa && !stats.oa.error),
+  };
+  for (const e of kept) {
+    const age = daysBetween(e.lastSeen || today, today);
+    if (age < CONFIG.staleAfterDays) continue;
+    const entry = `${e.id} — ${e.title} (${e.startDate}, vu le ${e.lastSeen || "?"})`;
+    if (e.source && feedsHealthy[e.source]) stats.vanishedFromFeed.push(entry);
+    else stats.unconfirmed.push(entry);
+  }
 
   // 6b. English descriptions ─────────────────────────────────────────────
   // Last, on the set that is actually going to be published: nothing is paid for on a record

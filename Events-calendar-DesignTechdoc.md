@@ -814,6 +814,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-23 | **The « Public cible » filter is removed** | Measured on the published data: « Ados » kept 89% of events, « Adultes » 90%, « Enfants » 73%, and 147 of 197 records are 0–99. A control that returns almost everything whatever you pick is not a filter. The age label stays on the card, where it is information rather than a promise |
+| 2026-09-23 | An age the feed does not give falls back to the default, not to zero | `Number(null)` is 0 and passes `isFinite`, so the guard in `openagenda.js` never fired: 18 published cards read « Jusqu’à 0 ans ». Fixed in the mapper and repaired offline in `data.json` |
+| 2026-09-23 | **`lastSeen` reports, never deletes** (item 28) | The rule of 19 September stands: prune by date only, never by absence. What is new is that the report separates two cases — a deterministic feed that loaded fine and dropped an event is a real signal; the model not mentioning something is not |
+| 2026-09-23 | Records stored before `lastSeen` existed are dated on first sight | Otherwise all 197 would be flagged stale on the first run after deployment |
+| 2026-09-23 | **The DATAtourisme coverage probe is deleted** | It was the observation-mode probe from before the source joined the pipeline (§3.I). Verified in production since 21 September; it was downloading 9 MB a week for a report nobody reads. The shared library stays — `feedback.js` reuses its CSV parser |
 | 2026-09-22 | **The sport gap is a prompt defect, not a missing source** (§3.T) | Four candidate feeds were checked; the two that work return only events already published, or administrative sessions. Meanwhile the prompt asked for "< 15 km" and ten communes while the pipeline kept 20 km and twenty-one |
 | 2026-09-22 | The prompt's geographic scope is now **built from `CONFIG.maxRadiusKm`** | It had silently drifted from the acceptance rule. A test fails if the two disagree again |
 | 2026-09-22 | **A 20 km radius replaces the bounding box as the acceptance rule** | The box is a rectangle: it reached 30 km into Sénart and Corbeil to the north-west while cutting closer elsewhere. 20 km keeps Blandy-les-Tours (19.3 km) and Vaux-le-Vicomte (18.4 km), and drops the 25 events the project lead flagged as too far. `MAX_RADIUS_KM` makes it one value to change |
@@ -900,13 +905,21 @@ choses qui restaient étaient noyées dedans.
   « Sport & Outdoor » sur 197 (11 %)**, contre 120 en Culture. C'est l'écart que le chef de
   projet signale depuis le début, et les trois sources actuelles ne le comblent pas. Pistes :
   calendriers de clubs et de fédérations, HelloAsso, agendas des offices municipaux des sports.
-- [ ] **22. L'axe famille.** 129 événements sur 197 sont « tout public » (0–99 ans), ce qui ne
+- [x] **22. Axe famille — tranché le 23/09 par la simplification.** Le filtre « Public cible »
+  est retiré : 147 événements sur 197 sont tout public, donc chaque option en renvoyait 73 à
+  90 %. Un marqueur `family` déduit du contenu reste possible si le besoin revient, mais il
+  faudrait des données qui le portent. Ancien libellé : 129 événements sur 197 sont « tout public » (0–99 ans), ce qui ne
   dit rien à un parent. La tranche d'âge seule est un mauvais signal : il faut un marqueur
   `family` déduit du contenu, et un filtre qui s'appuie dessus.
-- [ ] **28. Détection des événements annulés ou périmés** (`lastSeen`). Jamais par absence seule
+- [x] **28. Détection des événements silencieux — fait le 23/09.** Champ `lastSeen`, seuil de
+  10 jours (trois scans), rapport en deux niveaux : disparition d’un flux qui a bien répondu
+  (sérieux) vs absence de mention par le modèle (information). Rien n’est supprimé. Ancien
+  libellé : jamais par absence seule
   — la recall du modèle varie d'un jour à l'autre. La boucle de signalement (§3.N) couvre déjà
   le cas signalé par un visiteur ; il manque le cas silencieux.
-- [ ] **39. Garde-fous de coût et revue du modèle.** Journaliser le coût estimé par run, poser
+- [x] **39. Alertes de budget posées par le chef de projet (23/09).** Reste ouvert, plus tard :
+  journaliser le coût estimé par run et réévaluer le modèle (`gemini-3.6-flash` est une
+  génération précédente, les prix montent au 1er janvier 2027). Ancien libellé : journaliser le coût estimé par run, poser
   une alerte de budget sur le projet Google Cloud, et réévaluer le modèle : `gemini-3.6-flash`
   est désormais une génération précédente et les prix montent au 1er janvier 2027.
 
@@ -942,12 +955,13 @@ choses qui restaient étaient noyées dedans.
 - **30. Keep-alive du workflow : sans objet.** La règle d'inactivité de 60 jours ne peut pas se
   déclencher avec un cron quotidien.
 
-### E. À faire le ménage
+### E. Ménage — fait le 23/09
 
-- [ ] **`.github/workflows/datatourisme-coverage.yml` n'a plus d'objet.** C'était la sonde en
+- [x] **`.github/workflows/datatourisme-coverage.yml` et `scripts/datatourisme-coverage.js` supprimés.** C'était la sonde en
   mode observation, avant que DATAtourisme n'entre dans le pipeline (§3.I). La source est
   vérifiée en production depuis le 21/09 — 26 événements publiés. Le workflow télécharge 9 Mo par
-  semaine pour un rapport que plus personne ne lit. À supprimer, sauf objection.
+  semaine pour un rapport que plus personne ne lit. La bibliothèque partagée `datatourisme.js`
+  reste : `feedback.js` réutilise son parseur CSV. L’historique git conserve les fichiers.
 
 ### Milestones
 

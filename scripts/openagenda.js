@@ -64,6 +64,13 @@ function parisDay(iso) {
 
 const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 86400000) + 1;
 
+/** An age the feed did not give is absent, not zero. */
+function ageOr(value, dflt) {
+  if (value === null || value === undefined || value === '') return dflt;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : dflt;
+}
+
 /** Tolerates both a JSON string and an already-parsed value: the portal returns either. */
 function parseMaybeJson(v) {
   if (v === null || v === undefined) return null;
@@ -194,8 +201,11 @@ function toPipelineEvents(records, { today, maxDate }) {
     const base = {
       title,
       category: mapCategory(r),
-      ageMin: Number.isFinite(Number(r.age_min)) ? Number(r.age_min) : 0,
-      ageMax: Number.isFinite(Number(r.age_max)) ? Number(r.age_max) : 99,
+      // Number(null) is 0 and passes isFinite, so the guard above never fired and a missing age
+      // became 0 — 18 published cards read "Jusqu'à 0 ans". An absent value must fall back to
+      // the default, not to zero.
+      ageMin: ageOr(r.age_min, 0),
+      ageMax: ageOr(r.age_max, 99),
       city: String(r.location_city || '').trim(),
       locationName: String(r.location_name || r.location_address || r.location_city || '').trim(),
       lat,
@@ -225,5 +235,5 @@ function toPipelineEvents(records, { today, maxDate }) {
 
 module.exports = {
   CONFIG, BBOX, CENTER, load, toPipelineEvents, mapCategory, occurrencesInWindow,
-  isScheduled, buildWhere, parisDay, parseMaybeJson, EXCLUDED_AGENDAS,
+  isScheduled, buildWhere, parisDay, parseMaybeJson, ageOr, EXCLUDED_AGENDAS,
 };

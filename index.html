@@ -685,16 +685,9 @@
 
   <!-- Filtres -->
   <div class="filters-container">
-    <div class="filter-group">
-      <label for="filterAge" data-i18n="audienceLabel">Public cible :</label>
-      <select id="filterAge">
-        <option value="" data-i18n="audienceAll">Tous</option>
-        <option value="6" data-i18n="audienceKids">Enfants</option>
-        <option value="14" data-i18n="audienceTeens">Ados</option>
-        <option value="30" data-i18n="audienceAdults">Adultes</option>
-      </select>
-    </div>
-
+    <!-- Le filtre « Public cible » a été retiré le 23/09 : 147 événements sur 197 sont tout
+         public, donc chaque option en renvoyait 73 à 90 %. L'âge reste affiché sur la fiche,
+         là où c'est une information et non une promesse de tri. -->
     <div class="filter-group">
       <label for="filterCategory" data-i18n="categoryLabel">Type d'événements :</label>
       <select id="filterCategory">
@@ -798,11 +791,6 @@
         tagline: 'Sport, culture et nature autour de Fontainebleau, pour adultes et enfants',
         kicker: 'Agenda de Fontainebleau et ses environs',
 
-        audienceLabel: 'Public cible :',
-        audienceAll: 'Tous',
-        audienceKids: 'Enfants',
-        audienceTeens: 'Ados',
-        audienceAdults: 'Adultes',
         categoryLabel: "Type d'événements :",
         categoryAll: 'Tous les types',
         catSport: 'Sport & Outdoor',
@@ -861,11 +849,6 @@
         tagline: 'Sport, culture and nature around Fontainebleau, for adults and children',
         kicker: 'What\u2019s on in and around Fontainebleau',
 
-        audienceLabel: 'Audience:',
-        audienceAll: 'Everyone',
-        audienceKids: 'Children',
-        audienceTeens: 'Teenagers',
-        audienceAdults: 'Adults',
         categoryLabel: 'Event type:',
         categoryAll: 'All types',
         catSport: 'Sport & Outdoor',
@@ -1280,7 +1263,6 @@
     /** Back to the default view of the data, without touching the map selection. */
     function resetFilters() {
       track('reset-filters');
-      document.getElementById('filterAge').value = '';
       document.getElementById('filterCategory').value = '';
       document.getElementById('filterDate').value = '';
       document.getElementById('filterHorizon').value = '2weeks';
@@ -1343,7 +1325,7 @@
       fetchData();
 
       // Écouteurs sur les filtres
-      for (const [id, name] of [['filterAge', 'filter-audience'], ['filterCategory', 'filter-category'],
+      for (const [id, name] of [['filterCategory', 'filter-category'],
         ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period']]) {
         document.getElementById(id).addEventListener('change', (e) => {
           // The value of a <select> is a fixed enum, never free text — nothing personal here.
@@ -1410,11 +1392,6 @@
 
     // Filtrage des activités
     function applyFilters() {
-      // "" (Tous) = no filter. Each audience option carries a representative age
-      // (e.g. "Enfants" -> 6) tested against the event's [ageMin, ageMax] range.
-      const ageRaw = document.getElementById('filterAge').value;
-      const ageParsed = ageRaw === '' ? NaN : parseInt(ageRaw, 10);
-      const hasAge = Number.isFinite(ageParsed);
       const catVal = document.getElementById('filterCategory').value;
       const dateVal = document.getElementById('filterDate').value;
       // A specific date is a deliberate, narrower request: it overrides the period rather than
@@ -1425,9 +1402,6 @@
         // Événements terminés : masqués même si data.json en contient encore
         if (!isUpcoming(a) || !isInWindow(a)) return false;
 
-        // Filtre Âge
-        const matchAge = !hasAge || (Number(a.ageMin ?? 0) <= ageParsed && Number(a.ageMax ?? 99) >= ageParsed);
-        
         // Filtre Catégorie
         const matchCat = !catVal || a.category === catVal;
 
@@ -1443,7 +1417,7 @@
           matchDate = Boolean(a.startDate) && dateVal >= a.startDate && dateVal <= end;
         }
 
-        return matchAge && matchCat && matchDate && matchHorizon;
+        return matchCat && matchDate && matchHorizon;
       });
 
       renderCards(filtered);

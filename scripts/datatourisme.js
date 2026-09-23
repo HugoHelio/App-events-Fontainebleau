@@ -3,9 +3,10 @@
  * DATAtourisme — shared library.
  *
  * Downloads and interprets the DATAtourisme open dataset (national tourism platform fed by the
- * tourism offices, open licence, refreshed daily). Used by two callers:
- *   - scripts/datatourisme-coverage.js  → weekly observation report, writes nothing
- *   - scripts/fetch-events.js           → second source merged into data.json
+ * tourism offices, open licence, refreshed daily).
+ *
+ * Callers: scripts/fetch-events.js (second source merged into data.json) and scripts/feedback.js,
+ * which reuses parseCsv() rather than carrying a second RFC 4180 parser.
  *
  * This module is deliberately pure: it requires nothing else in the project and takes the date
  * window as a parameter, so fetch-events.js can require it without a circular dependency.
@@ -165,7 +166,9 @@ const findMatch = (dtEvent, list) => list.find((m) => isSameEvent(dtEvent, m)) |
 /**
  * Stricter variant used by the pipeline merge, where every record carries a single date.
  *
- * isSameEvent() accepts "same city OR overlapping dates", which suits the coverage report: there
+ * isSameEvent() accepts "same city OR overlapping dates". It was written for the coverage probe,
+ * removed on 23 September; the pipeline uses the stricter isSameOccurrence(). Kept because it
+ * states the looser rule clearly, and because
  * a DATAtourisme entry still bundles all its dates. In the pipeline each date has become its own
  * record, so that disjunction would treat the second performance of a play as a duplicate of the
  * first and silently delete it. Here an occurrence is the same only when the dates actually
@@ -306,7 +309,7 @@ function toPipelineEvents(events, { today, maxDate }) {
 // ───────────────────────────── Entry point ─────────────────────────────
 
 /**
- * Download (or read locally) and classify. Returns every stage so the coverage report can show
+ * Download (or read locally) and classify. Returns every stage so a caller can show
  * the funnel and the pipeline can take just `short`.
  */
 async function load({ today, windowEnd }) {
