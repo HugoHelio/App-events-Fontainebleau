@@ -27,7 +27,6 @@
     "    \"fields\": { \"startDate\": \"2026-10-03\", \"price\": \"12 €\" }",
     "  }"
   ],
-
   "_item53": [
     "PROPOSITION du 22/09 — les 4 « parapluies » que la déduplication automatique refuse de trancher.",
     "Elle les laisse volontairement en place : un titre court contenu dans PLUSIEURS titres longs",
@@ -37,7 +36,6 @@
     "Vérifié à la main le 22/09 : dans chaque groupe, même date et même lieu.",
     "Pour annuler une proposition, supprimez simplement son bloc ci-dessous."
   ],
-
   "EVT_0bf673b259": {
     "hidden": true,
     "note": "Doublon de ACT_015 « Festival Histoire en Scène » — même date, même château, même lien"
@@ -46,7 +44,6 @@
     "hidden": true,
     "note": "Doublon de ACT_015 « Festival Histoire en Scène » — même date, même château, même lien"
   },
-
   "EVT_9575e23ea9": {
     "hidden": true,
     "note": "Doublon de ACT_008 — concerts Marie-Antoinette, Salle de Bal du château, 9 octobre"
@@ -59,7 +56,6 @@
     "hidden": true,
     "note": "Doublon de ACT_008 — résidence Thomas Hengelbrock, même série de concerts"
   },
-
   "EVT_1bf5c86015": {
     "hidden": true,
     "note": "Doublon de EVT_d97017572a — Championnat de France CCE au Grand Parquet, 22 octobre"
@@ -68,7 +64,6 @@
     "hidden": true,
     "note": "Doublon de EVT_d97017572a — même championnat, lien moins précis"
   },
-
   "EVT_184a52fe1f": {
     "hidden": true,
     "note": "Doublon de EVT_e57caa47c3 — TDA = Tournée des As, même meeting"
@@ -84,5 +79,27 @@
   "EVT_e81e8099a1": {
     "hidden": true,
     "note": "À VÉRIFIER : « Poneys » est peut-être une épreuve distincte du meeting. Masqué pour la même raison"
+  },
+  "EVT_b74ce59ee0": {
+    "hidden": true,
+    "note": "Doublon de EVT_80690824ce — même soirée aux chandelles du 26 septembre à Vaux-le-Vicomte, lien vers la page d'accueil"
+  },
+  "EVT_5b2fc8328d": {
+    "hidden": true,
+    "note": "Doublon de EVT_80690824ce — même soirée du 26 septembre, lien vers la page d'accueil"
+  },
+  "EVT_80690824ce": {
+    "note": "Description enrichie le 23/09 à partir des deux doublons masqués et vérifiée sur vaux-le-vicomte.com : le 26 septembre est la dernière soirée de la saison, sur un thème guinguette",
+    "fields": {
+      "description": "Dernière soirée aux chandelles de la saison, sur un thème guinguette : le château et les jardins illuminés par 2 000 bougies, DJ sets, bar à champagne et feu d'artifice à 23h."
+    }
+  },
+  "EVT_b132c95c18": {
+    "hidden": true,
+    "note": "Doublon de EVT_c321e608b3 — même opération #ForêtBelle, lien vers une association participante plutôt que vers l'organisateur (SMICTOM)"
+  },
+  "EVT_857fb49e6f": {
+    "hidden": true,
+    "note": "Doublon de EVT_c321e608b3 — même opération #ForêtBelle sur la D607, lien vers une commune participante"
   }
 }

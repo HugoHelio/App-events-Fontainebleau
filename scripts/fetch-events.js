@@ -91,13 +91,16 @@ const BBOX = { latMin: 48.20, latMax: 48.65, lngMin: 2.45, lngMax: 3.00 };
 
 // The communes actually inside CONFIG.maxRadiusKm, given to the model so it searches the area we
 // keep rather than a smaller one. Derived from the published data on 22 September and ordered by
-// distance; extend it if the radius changes.
+// distance; extend it if the radius changes. La Rochette (12.6 km) and Saint-Fargeau-Ponthierry
+// (18.4 km) were added on 23 September: the feeds were already publishing them, but the model was
+// never asked to look there, so coverage of those two depended on which source happened to find
+// the event.
 const COMMUNES = [
   'Avon', 'Thomery', 'Samois-sur-Seine', 'Bourron-Marlotte', 'Moret-Loing-et-Orvanne',
   'Bois-le-Roi', 'Barbizon', 'Ury', 'Le Châtelet-en-Brie', 'Villiers-en-Bière',
   'La Chapelle-la-Reine', 'Sivry-Courtry', 'Nemours', 'Larchant', 'Melun',
   'Saint-Pierre-lès-Nemours', 'Milly-la-Forêt', 'Maincy (Vaux-le-Vicomte)', 'Vert-Saint-Denis',
-  'Blandy-les-Tours', 'Cesson',
+  'Blandy-les-Tours', 'Cesson', 'La Rochette', 'Saint-Fargeau-Ponthierry',
 ];
 
 const RETRYABLE_STATUS = new Set([408, 425, 429, 500, 502, 503, 504]);
@@ -463,6 +466,18 @@ function eventId(key) {
  * Re-sighting of a known event: refresh volatile facts, keep our existing text and geocoding.
  * (Text fields are kept to avoid a daily rewrite of descriptions by the LLM.)
  */
+/** True when `next` points at the same site as `current` but at a more specific page. */
+function deeperOnSameHost(current, next) {
+  try {
+    const a = new URL(current), b = new URL(next);
+    if (a.hostname.replace(/^www\./, '') !== b.hostname.replace(/^www\./, '')) return false;
+    const depth = (u) => u.pathname.replace(/\/+$/, '').split('/').filter(Boolean).length;
+    return depth(b) > depth(a);
+  } catch {
+    return false;
+  }
+}
+
 function mergeInto(target, incoming) {
   for (const f of ['endDate', 'schedule', 'price']) {
     if (incoming[f]) target[f] = incoming[f];
@@ -472,7 +487,13 @@ function mergeInto(target, incoming) {
   }
   // Keep a URL that already verified fine (stable across runs); otherwise adopt the newly reported one,
   // unless it is a temporary Google grounding redirect.
-  if (incoming.url && incoming.url !== target.url && target.urlStatus !== 'ok' && !isGroundingRedirect(incoming.url)) {
+  //
+  // The one exception is a deeper path on the same host: merging "Le panache des Lumieres" kept
+  // the chateau home page and threw away the page of the exhibition itself, because the home
+  // page happened to be the one already verified. Same host means no new trust decision, and a
+  // longer path is strictly more precise, so it is adopted and re-verified on the next run.
+  if (incoming.url && incoming.url !== target.url && !isGroundingRedirect(incoming.url)
+      && (target.urlStatus !== 'ok' || deeperOnSameHost(target.url, incoming.url))) {
     target.url = incoming.url;
     delete target.urlStatus;
     delete target.urlCheckedAt;
@@ -1048,7 +1069,10 @@ function renderSummary(stats, ctx) {
     if (stats.umbrellas.length > 8) L.push(`  - … et ${stats.umbrellas.length - 8} autre(s)`);
   }
   if (stats.similarSameDay.length) {
-    L.push(`- 🔎 Titres proches le même jour, à vérifier manuellement (non fusionnés) : ${stats.similarSameDay.length}`);
+    L.push(`- 🔎 Titres proches le même jour, non fusionnés : ${stats.similarSameDay.length}`);
+    L.push('  Chaque paire porte un mot que l\'autre n\'a pas — impossible de distinguer une');
+    L.push('  reformulation d\'un vrai sous-événement. Pour en masquer un : copier son id dans');
+    L.push('  overrides.json avec `"hidden": true`.');
     for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s}`);
     if (stats.similarSameDay.length > 8) L.push(`  - … et ${stats.similarSameDay.length - 8} autre(s)`);
   }
@@ -1160,9 +1184,14 @@ function dedupeFuzzy(records, stats) {
     || /^\d+(?:er|ere|eme|emes|e|es)$/.test(w)                    // 1er, 5e, 14e, 2eme
     || /^editions?$/.test(w);
 
+  // French plural, trimmed only on words long enough that dropping the letter cannot collapse
+  // two genuinely different ones. "Soirées" and "Soirée" were failing to match on this alone.
+  const singular = (w) => (w.length >= 5 && /[sx]$/.test(w) ? w.slice(0, -1) : w);
+
   function significantWords(title) {
     return norm(title).split(' ')
-      .filter((w) => w.length > 1 && !CONNECTOR_WORDS.has(w) && !isInstanceNoise(w));
+      .filter((w) => w.length > 1 && !CONNECTOR_WORDS.has(w) && !isInstanceNoise(w))
+      .map(singular);
   }
   const wordSet = (title) => new Set(significantWords(title));
   const nestedIn = (a, b) => a.size < b.size && [...a].every((w) => b.has(w));
@@ -1212,19 +1241,49 @@ function dedupeFuzzy(records, stats) {
     return words.length >= 2 ? words.join(' ') : `${words[0]}|${norm(event.city)}`;
   }
 
-  const byWordSetDate = new Map();
+  // Grouped by word set alone; the date rule is applied inside the group, because two records
+  // of the same exhibition can disagree on its first day while agreeing on its last.
+  const byWordSet = new Map();
   for (const [key, rec] of records) {
-    const k = rec.event.startDate + '|' + signature(rec.event, key);
-    if (!byWordSetDate.has(k)) byWordSetDate.set(k, []);
-    byWordSetDate.get(k).push(rec);
+    const k = signature(rec.event, key);
+    if (!byWordSet.has(k)) byWordSet.set(k, []);
+    byWordSet.get(k).push(rec);
   }
-  for (const group of byWordSetDate.values()) {
+
+  const isSpan = (e) => Boolean(e.endDate) && e.endDate > e.startDate;
+  const overlaps = (a, b) => a.startDate <= (b.endDate || b.startDate)
+    && b.startDate <= (a.endDate || a.startDate);
+
+  /**
+   * Same day, or two multi-day runs that overlap.
+   *
+   * The span condition is what allows "Exposition Le panache des Lumières" (19 September →
+   * 25 January) and "Exposition « Le panache des Lumières »" (20 September → 25 January) to
+   * meet. It is deliberately refused for single-day records: two performances of the same show
+   * on two different evenings are two events, and merging them would delete one (§3.I).
+   */
+  const sameOccasion = (a, b) => a.startDate === b.startDate
+    || (isSpan(a) && isSpan(b) && overlaps(a, b));
+
+  for (const group of byWordSet.values()) {
     if (group.length < 2) continue;
-    const winner = group.reduce(preferred);
-    for (const rec of group) {
-      if (rec === winner) continue;
-      absorb(winner, rec);
-      records.delete(eventKey(rec.event));
+    // Within a word-set group, gather the records that share an occasion.
+    const pending = [...group];
+    while (pending.length > 1) {
+      const head = pending.shift();
+      const together = pending.filter((rec) => sameOccasion(head.event, rec.event));
+      if (!together.length) continue;
+      const cluster = [head, ...together];
+      const winner = cluster.reduce(preferred);
+      for (const rec of cluster) {
+        if (rec === winner) continue;
+        absorb(winner, rec);
+        records.delete(eventKey(rec.event));
+        const at = pending.indexOf(rec);
+        if (at !== -1) pending.splice(at, 1);
+      }
+      // The winner is either the head, whose partners are now all absorbed, or a record still
+      // in the queue that will get its own turn. Either way it is not re-queued here.
     }
   }
 
@@ -1306,8 +1365,11 @@ function dedupeFuzzy(records, stats) {
     for (let i = 0; i < list.length; i++) {
       for (let j = i + 1; j < list.length; j++) {
         if (jaccard(list[i].event.title, list[j].event.title) >= SIMILARITY_REVIEW_THRESHOLD) {
+          // With the ids, deciding on a pair is one paste into overrides.json rather than a
+          // hunt through data.json.
           stats.similarSameDay.push(
-            `${list[i].event.title} ↔ ${list[j].event.title} (${list[i].event.startDate})`
+            `${list[i].event.startDate} — \`${list[i].event.id}\` « ${list[i].event.title} »`
+            + ` ↔ \`${list[j].event.id}\` « ${list[j].event.title} »`
           );
         }
       }

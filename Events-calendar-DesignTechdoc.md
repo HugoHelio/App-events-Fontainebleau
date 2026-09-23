@@ -463,17 +463,100 @@ previous generated placeholder into the real thing.
 
 | Rôle | Fichier |
 |---|---|
-| Favicon | `Icon-FL-fav-v1.png` (32×32) |
+| Favicon | `Icon-FL-fav-v2.png` (32×32) — **essai en cours**, voir ci-dessous |
 | Icône PWA | `Icon-FL-pwa-vS.png` (192), `Icon-FL-pwa-vH.png` (512) |
 | Icône iOS | `Icon-FL-pwa-vH.png` |
 | Marque du bandeau | `Icon-FL-pwa-vS.png` |
 | Signature du pied de page | `Icon-FL-v1ST-512-512.png` |
 | Aperçu de lien | `og-image.png`, composé depuis `BackgroundDeco-FL-v1.png` |
 
+**Favicon v2 — essai posé le 23/09, à trancher en regardant un onglet.** La v2 est une feuille
+vert foncé, la v1 une feuille lime. Les deux sont 32×32, la v2 n'est plus entrelacée (le point « à
+faire plus tard » de l'item 61b, réglé au passage sur ce fichier). Leur contraste est exactement
+inverse, et aucune des deux ne gagne partout :
+
+| | Onglet clair (#f1f3f4) | Onglet sombre (#202124) |
+|---|---|---|
+| v1, lime (#9dcd4a) | 1,67:1 — invisible | 8,64:1 |
+| v2, vert foncé (#2f502e) | 8,18:1 | 1,77:1 — invisible |
+
+La v2 est le meilleur choix unique parce que le thème clair reste le défaut des navigateurs. Le
+vrai correctif serait de déclarer les deux avec `media="(prefers-color-scheme: …)"` sur les `<link
+rel="icon">` — deux lignes, les deux fichiers existent déjà. Non fait : les navigateurs qui
+ignorent `media` retiennent la dernière icône déclarée, donc l'ordre décide qui est mal servi, et
+il faut vérifier sur de vrais onglets avant de choisir cet ordre.
+
+**Espacement du bandeau, corrigé le 23/09.** La marque était trop collée au texte. L'écart passe
+à `clamp(1.1rem, 2.4vw, 2rem)` — 16 → 29 px sur un écran large, 11 → 18 px sur téléphone. Le
+budget est venu d'un défaut trouvé en mesurant : `.header-inner` réservait toujours `6rem` à
+droite pour le sélecteur de langue, alors qu'en dessous de 560 px celui-ci passe **au-dessus** du
+contenu (le bandeau prend 3 rem de marge haute). Sur un écran de 320 px, ces 96 px inutiles
+laissaient 133 px au bloc de texte, pour un mot — « Fontainebleau » — qui en mesure environ 217 et
+ne peut pas se couper. Le retrait de cette réserve sur mobile rend 89 px : l'écart augmente et le
+texte cesse d'être rogné.
+
 **Left for later:** the source PNGs are interlaced, which costs size for no benefit on an icon
 (73 kB for the 512). Re-exporting them non-interlaced, and the footer lockup at the size it is
 actually displayed, would trim the page. Not urgent: roughly 95 kB of brand imagery loads on a
 page view, the rest is fetched only by a scraper or when installing the app.
+
+### W. Where title matching runs out (item 51 follow-up, September 23, 2026)
+
+Three more duplicate groups reported live. They failed for three different reasons, and only two
+of them are fixable by rule.
+
+| Groupe | Ce qui bloquait | Réponse |
+|---|---|---|
+| « Exposition Le panache des Lumières » ×2 | 19 sept. → 25 janv. contre 20 sept. → 25 janv. : la règle exigeait un jour de début identique | Règle assouplie |
+| « Soirées » / « Soirée aux Chandelles » | pluriel : deux chaînes différentes, donc deux ensembles de mots différents | Règle assouplie |
+| Chandelles ×3, #ForêtBelle ×3 | chaque titre porte un mot que l'autre n'a pas | **Aucune règle** — `overrides.json` |
+
+**Assouplissement 1 — le pluriel.** Le `-s` ou `-x` final est retiré des mots d'au moins cinq
+lettres. Le seuil n'est pas cosmétique : sans lui, « bus » deviendrait « bu » et « mas »
+deviendrait « ma ».
+
+**Assouplissement 2 — les périodes qui se chevauchent.** Deux fiches pluri-journalières dont les
+périodes se recouvrent décrivent la même chose ; deux fiches d'un seul jour, non. Un concert le
+14 et un concert le 15 sont deux concerts, et les fusionner en supprimerait un. Une période et un
+jour isolé ne fusionnent pas non plus : une date unique à l'intérieur d'une saison est un
+événement, pas une redite de la saison.
+
+**Mesuré avant d'être écrit :** sur les 222 fiches publiées, les deux assouplissements réunis ne
+produisent que **2 fusions supplémentaires**, toutes deux vérifiées à la main. Le rendement est
+faible parce que la règle de §3.P avait déjà fait le gros du travail — c'est le résultat attendu,
+pas une déception.
+
+**Ce que la règle ne fera pas.** « Soirée aux Chandelles - Clôture de saison » et « Soirée aux
+Chandelles : Clôture festive » ont exactement la forme de « Meeting d'Automne TDA Poneys » et
+« … Équitation » : chacun porte un mot propre. Le premier couple est une même soirée décrite deux
+fois, le second deux épreuves distinctes. **Rien dans les titres ne les sépare.** Un seuil de
+similarité les fusionnerait tous les deux, et la garde des parapluies de §3.P — qui existe
+précisément pour protéger le cas TDA — serait perdue. La règle s'arrête donc ici, volontairement :
+la consigne du chef de projet était de réduire les doublons *sans évincer trop d'événements*.
+
+**Ce qui prend le relais.** Le rapport de run listait déjà ces paires ; il donne désormais leur
+identifiant, de sorte que trancher revient à coller une ligne dans `overrides.json` (§3.K) au lieu
+de fouiller `data.json`. Les deux groupes signalés ont été traités ainsi — quatre fiches masquées,
+chacune avec sa raison écrite —, après vérification sur les sites des organisateurs :
+
+- **#ForêtBelle** : le SMICTOM annonce bien un week-end du 26 **et** 27 septembre, le ramassage
+  sur la D607 ayant lieu le dimanche 27 de 9 h à 12 h. La fiche conservée portait déjà ces dates
+  et ces horaires : **aucune date n'a été corrigée**, les deux autres fiches pointaient seulement
+  vers des associations participantes plutôt que vers l'organisateur.
+- **Soirées aux Chandelles** : vaux-le-vicomte.com confirme que le 26 septembre est la dernière
+  de la saison, sur un thème guinguette. Cette précision n'existait que dans les deux fiches
+  masquées, donc elle a été reportée dans la description de la fiche conservée plutôt que perdue.
+
+**Un effet de bord corrigé au passage.** La fusion du « panache des Lumières » gardait la page
+d'accueil du château et jetait la page de l'exposition, parce que c'était la page d'accueil qui se
+trouvait déjà vérifiée. `mergeInto()` adopte maintenant un chemin plus profond sur le **même
+hôte** : même domaine, donc aucune décision de confiance nouvelle, et un chemin plus long est
+strictement plus précis. Le lien repart en vérification au run suivant.
+
+**Couverture, trouvée par un test.** Le test qui compare les communes publiées à celles du prompt
+signalait La Rochette (12,6 km) et Saint-Fargeau-Ponthierry (18,4 km) : à l'intérieur du rayon,
+remontées par les flux, mais jamais demandées au modèle. La couverture de ces deux communes
+dépendait donc de la source qui trouvait l'événement. Elles sont ajoutées à `COMMUNES` (21 → 23).
 
 ### U. Four categories, one classifier (items 21 & 26b, September 23, 2026)
 
@@ -952,6 +1035,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | Language resolution: `?lang=` → stored choice → browser language → French | Makes a link shareable in a chosen language, and an INSEAD visitor lands in English without hunting for a switch |
 | 2026-09-21 | Period filter defaults to "3 mois", and a specific date overrides it instead of intersecting | The default reproduces the previous behaviour exactly; intersecting would let an empty result look like a bug |
 | 2026-09-21 | Helioso logo + link in the footer, AVIF with a PNG fallback | The PNG is 483 KB and is only fetched by a browser without AVIF support |
+| 2026-09-23 | Le pluriel est neutralisé au-delà de cinq lettres ; en deçà, jamais | « Soirées » = « Soirée », mais « bus » ne doit pas devenir « bu » |
+| 2026-09-23 | Deux périodes qui se chevauchent fusionnent ; deux jours isolés, jamais | Une exposition redécrite à un jour près est la même ; un concert le 14 et le 15 sont deux concerts, et fusionner en supprimerait un |
+| 2026-09-23 | **La fusion automatique s'arrête aux titres « frères »** (chacun un mot propre) : ils sont signalés avec leur identifiant, pas fusionnés | « Clôture de saison » / « Clôture festive » et « TDA Poneys » / « TDA Équitation » ont la même forme et des sens opposés. Aucun seuil de similarité ne les sépare ; trancher à la main via `overrides.json` coûte moins cher qu'un événement supprimé à tort (§3.W) |
+| 2026-09-23 | Une fusion adopte un chemin plus profond sur le même hôte, même si l'URL en place est déjà vérifiée | Le lien vers la page de l'exposition vaut mieux que le lien vers l'accueil du château ; même domaine = aucune décision de confiance nouvelle |
+| 2026-09-23 | `COMMUNES` passe de 21 à 23 (La Rochette, Saint-Fargeau-Ponthierry) | Dans le rayon et déjà publiées par les flux, mais jamais demandées au modèle : leur couverture dépendait de la source |
 
 ---
 
@@ -1060,6 +1148,15 @@ choses qui restaient étaient noyées dedans.
 - [x] **26b. Accessibilité — fait le 23/09** (§3.U) : onglets en `tablist` avec `aria-selected`
   qui suit la vue, panneaux reliés à leur onglet, filtres en groupe nommé, liste de résultats en
   région `aria-live`, anneau de focus visible sur tous les contrôles.
+- [x] **51b. Doublons, deuxième passe — faite le 23/09** (§3.W). Trois groupes signalés en
+  direct. Deux assouplissements mesurés puis posés : pluriel neutralisé au-delà de cinq lettres,
+  et périodes pluri-journalières qui se chevauchent. Rendement honnête : **2 fusions** sur les
+  222 fiches, parce que §3.P avait déjà fait le gros. Les deux groupes restants (Chandelles,
+  #ForêtBelle) ont exactement la forme du piège TDA — chaque titre porte un mot que l'autre n'a
+  pas — donc ils ne seront **jamais** fusionnés automatiquement : quatre fiches masquées à la
+  main dans `overrides.json`, après vérification sur les sites des organisateurs. Le rapport de
+  run donne désormais l'identifiant de chaque paire douteuse, pour que trancher tienne en une
+  ligne collée.
 - [ ] **58c. Fond de carte plus sobre** (CARTO Positron/Voyager). Le plus gros changement visuel
   par ligne modifiée, mais il ajoute un fournisseur de tuiles : refusé pour l'instant, gardé ici
   parce que la question se reposera.

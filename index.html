@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fontainebleau Live — Activités & Événements autour de Fontainebleau</title>
-  <link rel="icon" type="image/png" href="public/assets/img/brand/Icon-FL-fav-v1.png">
+  <link rel="icon" type="image/png" href="public/assets/img/brand/Icon-FL-fav-v2.png">
   <link rel="apple-touch-icon" href="public/assets/img/brand/Icon-FL-pwa-vH.png">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1d3b29">
@@ -139,7 +139,9 @@
       padding-right: 6rem; /* room for the language switch */
       display: flex;
       align-items: center;
-      gap: 1rem;
+      /* Fluid, so the mark is not crowded against the wordmark on a wide banner and not pushing
+         it off the screen on a phone. */
+      gap: clamp(1.1rem, 2.4vw, 2rem);
     }
 
     /* The brand mark carries its own dark ground, so it reads on the banner where the
@@ -154,7 +156,10 @@
 
     @media (max-width: 560px) {
       .brand-mark { width: 48px; height: 48px; border-radius: 11px; }
-      .header-inner { gap: 0.7rem; }
+      /* The language switch sits above the content at this width (header gains 3rem of top
+         padding below), so the 6rem reserved beside it is dead space — a quarter of a 360px
+         screen, taken from the one line that cannot wrap: "Fontainebleau". */
+      .header-inner { padding-right: 0; }
     }
 
     /* One shallow curve instead of the tree silhouette, which read as spikes rather than a
