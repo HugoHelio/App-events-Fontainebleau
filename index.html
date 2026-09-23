@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fontainebleau Live — Activités & Événements autour de Fontainebleau</title>
-  <link rel="icon" type="image/png" href="public/assets/img/brand/fav.png">
-  <link rel="apple-touch-icon" href="public/assets/img/brand/LogoNew_Helioso_v1.png">
+  <link rel="icon" type="image/png" href="public/assets/img/brand/Icon-FL-fav-v1.png">
+  <link rel="apple-touch-icon" href="public/assets/img/brand/Icon-FL-pwa-vH.png">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#16211c">
+  <meta name="theme-color" content="#1d3b29">
   <meta name="description" content="Toutes les activités sportives, culturelles et nature autour de Fontainebleau, mises à jour automatiquement.">
 
   <!-- Link preview (item 26). The main way this site travels is a link pasted into a WhatsApp or
@@ -53,27 +53,32 @@
 
        History, if a step back is ever wanted:
          v1 primary #0e4057 · secondary #319795 · bg #f7fafc · text #2d3748
-         v2 primary #2d4a3e · secondary #8a5a2b · bg #faf7f2 · text #33302b */
+         v2 primary #2d4a3e · secondary #8a5a2b · bg #faf7f2 · text #33302b
+         v3 ink #16211c · accent #e2653c (terracotta) · accent-ink #b8451f · bg #faf7f2
+            — remplacé le 23/09 quand la vraie marque est arrivée : le terracotta était une
+              couleur inventée, la marque porte son propre chaud (le grès du château) */
     :root {
-      /* Ink — chrome and type */
-      --ink: #16211c;        /* near-black, forest cast (16.6:1 with white) */
+      /* Ink — chrome and type. Taken from the logo files (#1d3b29), not chosen. */
+      --ink: #1d3b29;        /* vert forêt de la marque — 12.28:1 avec le blanc */
       --ink-2: #4a544e;
       --ink-3: #8b948e;
 
-      /* Brand — deep forest, for surfaces that are not chrome */
-      --brand: #1f4d3d;
-      --brand-dark: #14352b;
+      /* Brand — the same green, lighter and darker, for surfaces that are not chrome */
+      --brand: #27503a;
+      --brand-dark: #142a1d;
       --brand-light: #e6efe9;
 
-      /* Accent — terracotta. The vivid tone is for dark grounds only (3.41:1 on white is not
-         enough for text); --accent-ink is its readable counterpart on paper (5.37:1). */
-      --accent: #e2653c;
-      --accent-ink: #b8451f;
-      --accent-soft: #fdeee7;
+      /* Accent — the logo lime. It reads 8.02:1 on the forest green and 1.53:1 on white, so it
+         is for DARK grounds only. --accent-ink is the readable one on paper: the sandstone of
+         the château in the artwork (#c9a059), darkened to 4.93:1. */
+      --accent: #afe14f;
+      --accent-ink: #8f6a25;
+      --accent-soft: #f6efdf;
+      --brand-sand: #c9a059;
 
       /* Surfaces */
       --line: #e6e2da;
-      --bg: #faf7f2;
+      --bg: #f4f3ef;         /* crème de la marque */
       --paper: #ffffff;
 
       /* Shape */
@@ -123,7 +128,7 @@
     header {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(155deg, #26382e 0%, var(--ink) 55%, #0e1712 100%);
+      background: linear-gradient(155deg, #2d543c 0%, var(--ink) 55%, #142a1d 100%);
       color: white;
       padding: 1.5rem 1rem 3rem 1rem;
     }
@@ -132,6 +137,24 @@
       max-width: 1200px;
       margin: 0 auto;
       padding-right: 6rem; /* room for the language switch */
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* The brand mark carries its own dark ground, so it reads on the banner where the
+       transparent lockup (dark type) would not. */
+    .brand-mark {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      display: block;
+    }
+
+    @media (max-width: 560px) {
+      .brand-mark { width: 48px; height: 48px; border-radius: 11px; }
+      .header-inner { gap: 0.7rem; }
     }
 
     /* One shallow curve instead of the tree silhouette, which read as spikes rather than a
@@ -598,6 +621,14 @@
       color: var(--secondary-color);
     }
 
+    /* The transparent lockup has dark type, which is exactly right on the cream footer. */
+    .footer-lockup {
+      width: 112px;
+      height: 112px;
+      margin-top: 0.6rem;
+      opacity: 0.92;
+    }
+
     .brand-credit {
       display: flex;
       align-items: center;
@@ -685,11 +716,14 @@
         <svg class="flag" viewBox="0 0 60 40" aria-hidden="true"><path d="M0,0h60v40H0z" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#c8102e" stroke-width="4"/><path d="M30,0v40M0,20h60" stroke="#fff" stroke-width="13"/><path d="M30,0v40M0,20h60" stroke="#c8102e" stroke-width="8"/></svg>EN</button>
     </div>
     <div class="header-inner">
-      <p class="kicker" data-i18n="kicker">Agenda de Fontainebleau et ses environs</p>
-      <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
-      <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
-      <p class="tagline" data-i18n="tagline">Sport, culture et nature autour de Fontainebleau, pour adultes et enfants</p>
-      <p id="lastUpdated" class="last-updated"></p>
+      <img class="brand-mark" src="public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="64" height="64">
+      <div>
+        <p class="kicker" data-i18n="kicker">Agenda de Fontainebleau et ses environs</p>
+        <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
+        <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
+        <p class="tagline" data-i18n="tagline">Sport, culture et nature autour de Fontainebleau, pour adultes et enfants</p>
+        <p id="lastUpdated" class="last-updated"></p>
+      </div>
     </div>
     <svg class="header-curve" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,0 C260,34 460,40 660,36 C880,31 1040,18 1200,0 L1200,40 L0,40 Z"/>
@@ -762,6 +796,8 @@
     <p id="feedbackFooter"></p>
     <p data-i18n="installHint" class="install-hint"></p>
     <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
+    <img class="footer-lockup" src="public/assets/img/brand/Icon-FL-v1ST-512-512.png"
+         alt="Fontainebleau Live" width="112" height="112" loading="lazy">
     <p class="brand-credit">
       <a href="https://helioso.com" target="_blank" rel="noopener noreferrer">
         <picture>

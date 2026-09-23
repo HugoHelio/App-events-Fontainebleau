@@ -430,6 +430,51 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
+### V. The real brand arrives (item 61, September 23, 2026)
+
+The project lead delivered the Fontainebleau Live artwork: an oak leaf — the forest — with a
+live-signal trace through it, plus a scene of trees, château and people out walking.
+
+**Colours were measured, not guessed.** Every file is an interlaced PNG, so reading the palette
+needed a small Adam7 decoder rather than an eyedropper on a screenshot:
+
+| | | |
+|---|---|---|
+| forêt | `#1d3b29` | 12.28:1 on white |
+| lime | `#afe14f` | 8.02:1 on the forest green, **1.53:1 on white** |
+| crème | `#f4f3ef` | the page background |
+| grès | `#c9a059` | the château in the artwork |
+
+**The invented accent goes.** The terracotta `#e2653c` was chosen on 21 September to differentiate
+from a neighbouring site, at a time when no brand existed. One does now, and it carries its own
+warm colour — the sandstone of the château. Keeping both would have been two accents arguing.
+
+The split the token system already had makes this work: lime is 1.53:1 on white and can never
+carry text on paper, so it stays `--accent` (dark grounds only) while `--accent-ink` becomes the
+sandstone darkened to `#8f6a25`, which reads at 4.93:1. Two names, one impossible mistake fewer.
+
+**Which file goes where, and why it matters.** The lockup with type is transparent with *dark*
+lettering: correct on the cream footer, invisible on the dark banner. The banner therefore uses
+the app icon, which carries its own dark ground and reads anywhere. The wide scene is 1200×630
+but transparent with the drawing in the left third — a transparent link preview is composited by
+each platform on whatever background it likes, so dark artwork vanishes on a dark card. It is
+flattened onto the brand cream, scaled to 72% of the card height and centred, which turned the
+previous generated placeholder into the real thing.
+
+| Rôle | Fichier |
+|---|---|
+| Favicon | `Icon-FL-fav-v1.png` (32×32) |
+| Icône PWA | `Icon-FL-pwa-vS.png` (192), `Icon-FL-pwa-vH.png` (512) |
+| Icône iOS | `Icon-FL-pwa-vH.png` |
+| Marque du bandeau | `Icon-FL-pwa-vS.png` |
+| Signature du pied de page | `Icon-FL-v1ST-512-512.png` |
+| Aperçu de lien | `og-image.png`, composé depuis `BackgroundDeco-FL-v1.png` |
+
+**Left for later:** the source PNGs are interlaced, which costs size for no benefit on an icon
+(73 kB for the 512). Re-exporting them non-interlaced, and the footer lockup at the size it is
+actually displayed, would trim the page. Not urgent: roughly 95 kB of brand imagery loads on a
+page view, the rest is fetched only by a scraper or when installing the app.
+
 ### U. Four categories, one classifier (items 21 & 26b, September 23, 2026)
 
 Item 21 asked two things: check that the three sources stay coherent, and decide whether
@@ -860,6 +905,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-23 | **The response sheet keeps its contact column** (item 48c closed) | Project lead's call, risk accepted knowingly: the URL lives in a GitHub secret, is not in the public repo and is not guessable, the column was verified empty, and an e-mail address alone is not much of an exposure today. Reopen if the form starts collecting more than an e-mail, or if the URL circulates |
+| 2026-09-23 | **The brand palette replaces the invented one** (§3.V) | The terracotta was picked when no brand existed. The logo carries its own warm colour — the château sandstone — and two accents would have argued with each other. Values measured from the PNG files, not eyeballed |
+| 2026-09-23 | Lime stays `--accent` (dark grounds), sandstone becomes `--accent-ink` (paper) | Lime is 1.53:1 on white: it can never carry text there. The token split makes the rule impossible to break by accident |
+| 2026-09-23 | The banner uses the **app icon**, the footer the **lockup with type** | The lockup is transparent with dark lettering — right on the cream footer, invisible on the dark banner |
+| 2026-09-23 | The link preview is **flattened onto cream**, never left transparent | Each platform composites a transparent PNG on a background of its choosing; dark artwork disappears on a dark card |
 | 2026-09-23 | **A fourth category, `Scène & Spectacles`** (§3.U) | "Culture & Ateliers" held 61% of events — the same failure the age filter had. Splitting brings the biggest block to 37%, and a concert and an exhibition are not things a visitor chooses between |
 | 2026-09-23 | Added, **not renamed** | Renaming a value would have invalidated every stored record until a source re-reported it |
 | 2026-09-23 | **One classifier decides for all three sources** | DATAtourisme has no stage class in its ontology, OpenAgenda guesses from keywords, Gemini is told the enum. Three mappers guessing independently drift apart; `refineCategory()` runs last over the whole set |
@@ -935,15 +985,19 @@ choses qui restaient étaient noyées dedans.
 
 ### A. Pour le chef de projet — rien à coder
 
-- [ ] **61. Le visuel de marque.** Deux fichiers sont des placeholders : `og-image.png`
+- [x] **61. Visuels de marque — posés le 23/09** (§3.V). Favicon, icônes PWA 192 et 512, icône
+  iOS, marque du bandeau, signature du pied de page et image de partage. La palette du site est
+  désormais celle du logo, relevée sur les fichiers.
+- [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
+  d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence. Ancien libellé de l'item 61 :
+  Deux fichiers sont des placeholders : `og-image.png`
   (1200×630, aperçus de lien) et l'icône PWA (aujourd'hui le logo Helioso, 1538×1538, 472 Ko).
   Il faut **un PNG 512×512** et **un PNG 1200×630**. C'est le seul chantier bloqué sur autre
   chose que du code.
 - [ ] **Surveiller 3 à 5 runs automatiques.** Ce qu'il faut regarder dans le rapport : tokens et
   requêtes de recherche par scan (le coût réel, à comparer à l'estimation §3.G), motifs de rejet,
   liens morts, sources de géocodage, doublons signalés mais non fusionnés.
-- [ ] **48c.** Ne publier du tableau de réponses que les colonnes utiles au pipeline, pour que la
-  feuille ne contienne plus aucune donnée personnelle (le champ contact facultatif).
+
 
 ### B. Ce qui a le plus de valeur maintenant
 
@@ -1029,6 +1083,14 @@ choses qui restaient étaient noyées dedans.
 - **37. Bascule vers l'extraction directe : abandonné (20/09).** Plus de travail que le pipeline
   actuel, fragile aux changements de sites, couverture de départ plus faible. À rouvrir si Google
   suspend la clé.
+- **48c. Filtrage des colonnes du tableau de réponses : non (23/09).** Décision du chef de
+  projet, risque accepté en connaissance de cause. Constaté ce jour-là : la colonne « Votre
+  contact (facultatif) » est bien publiée, mais vide — personne ne l'avait renseignée. L'URL vit
+  dans un secret GitHub, elle n'est pas dans le dépôt public et n'est pas devinable. Le motif
+  invoqué : une adresse e-mail seule n'expose plus à grand-chose aujourd'hui. **Exposition
+  résiduelle, pour mémoire** : si un visiteur laisse son adresse un jour, elle sera lisible par
+  qui détient l'URL. Rouvrir si le formulaire se met à collecter davantage qu'un e-mail, ou si
+  l'URL circule.
 - **30. Keep-alive du workflow : sans objet.** La règle d'inactivité de 60 jours ne peut pas se
   déclencher avec un cron quotidien.
 
