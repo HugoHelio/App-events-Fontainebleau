@@ -81,6 +81,17 @@ const CENTER = { lat: 48.4020, lng: 2.7010 };
 // Generous box around the ~15 km radius (Nemours … Vaux-le-Vicomte … Moret). Anything outside is rejected.
 const BBOX = { latMin: 48.20, latMax: 48.65, lngMin: 2.45, lngMax: 3.00 };
 
+// The communes actually inside CONFIG.maxRadiusKm, given to the model so it searches the area we
+// keep rather than a smaller one. Derived from the published data on 22 September and ordered by
+// distance; extend it if the radius changes.
+const COMMUNES = [
+  'Avon', 'Thomery', 'Samois-sur-Seine', 'Bourron-Marlotte', 'Moret-Loing-et-Orvanne',
+  'Bois-le-Roi', 'Barbizon', 'Ury', 'Le Châtelet-en-Brie', 'Villiers-en-Bière',
+  'La Chapelle-la-Reine', 'Sivry-Courtry', 'Nemours', 'Larchant', 'Melun',
+  'Saint-Pierre-lès-Nemours', 'Milly-la-Forêt', 'Maincy (Vaux-le-Vicomte)', 'Vert-Saint-Denis',
+  'Blandy-les-Tours', 'Cesson',
+];
+
 const RETRYABLE_STATUS = new Set([408, 425, 429, 500, 502, 503, 504]);
 const USER_AGENT = 'Mozilla/5.0 (compatible; FontainebleauEventsBot/2.0)';
 const FAR_FUTURE = '9999-12-31';
@@ -90,8 +101,14 @@ const SCANS = [
     name: 'sport',
     label: 'Sport & Outdoor',
     focus:
-      'Trails en forêt, courses à pied, randonnées et randos VTT, compétitions d\'escalade/bouldering, ' +
-      'critériums cyclistes, triathlons, tournois et événements sportifs de clubs.',
+      'Trails et courses nature en forêt, courses sur route, cross, marche nordique, ' +
+      'courses d\'orientation, randonnées pédestres et VTT organisées par des clubs, ' +
+      'concours hippiques et de saut d\'obstacles (Grand Parquet), compétitions d\'escalade et ' +
+      'de bloc, triathlons et duathlons, critériums cyclistes, tournois de clubs, ' +
+      'courses caritatives et courses de Noël. ' +
+      'Cherche nommément les clubs et organisateurs locaux : clubs d\'athlétisme de Nemours et ' +
+      'de Fontainebleau, Stade Équestre du Grand Parquet, clubs de VTT et de cyclotourisme, ' +
+      'comités départementaux de Seine-et-Marne, offices municipaux des sports.',
   },
   {
     name: 'nature',
@@ -435,14 +452,17 @@ PÉRIODE DE RECHERCHE STRICTE :
 
 PÉRIMÈTRE GÉOGRAPHIQUE :
 - Ville principale : Fontainebleau.
-- Communes voisines (< 15 km) : Avon, Barbizon, Samois-sur-Seine, Thomery, Bois-le-Roi, Bourron-Marlotte, Moret-Loing-et-Orvanne, Nemours, Vaux-le-Vicomte, Blandy-les-Tours.
+- Rayon accepté : ${CONFIG.maxRadiusKm} km autour de Fontainebleau. Un événement au-delà sera écarté.
+- Communes concernées : ${COMMUNES.join(', ')}.
+- Cette liste n'est pas limitative : toute commune dans le rayon convient.
 
 SOURCES À EXPLORER EN PRIORITÉ :
 1. Office de Tourisme du Pays de Fontainebleau (agenda).
 2. Agendas municipaux des mairies : Fontainebleau, Avon, Barbizon, Moret-sur-Loing, Nemours.
 3. Programmations des châteaux : Fontainebleau, Vaux-le-Vicomte, Blandy-les-Tours.
-4. Plateformes d'inscriptions sportives & associatives : HelloAsso, KMS, Klikego, ProTiming.
-5. Presse et magazines locaux : Le Bellifontain, La République de Seine-et-Marne.
+4. Plateformes d'inscriptions sportives & associatives : HelloAsso, KMS, Klikego, ProTiming, Sporkrono, Adeorun.
+5. Calendriers fédéraux et de clubs : Fédération Française d'Athlétisme (calendrier Seine-et-Marne), FFRandonnée 77, FFCT/FFVélo 77, sites des clubs locaux.
+6. Presse et magazines locaux : Le Bellifontain, La République de Seine-et-Marne.
 
 RÈGLES DE QUALITÉ (très importantes) :
 - N'invente rien. Si la date, le lieu ou l'URL d'un événement n'est pas confirmé par une source, ignore cet événement.
@@ -1536,7 +1556,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride, matchVenue, loadVenues, distanceKm,
+  applyOverrides, coerceOverride, matchVenue, loadVenues, distanceKm, buildPrompt, SCANS, COMMUNES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,
   weekdayContradictsDates,

@@ -430,6 +430,40 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
+### T. The sport gap: no missing feed, a drifted prompt (item 38, September 22, 2026)
+
+Sport was 21 of 197 events (11%) against 120 for culture. The roadmap said to close it "through
+the source registry, not by tuning the grounded prompt". Four sources were checked first, and
+the note matters more than the conclusion — it is what stops the search being repeated:
+
+| Candidate | Result |
+|---|---|
+| data.gouv.fr sport datasets | Nothing for Île-de-France or Seine-et-Marne |
+| Grand Parquet (WordPress events API) | Works — 5 events, **all 5 already published** |
+| Pays de Fontainebleau (same API) | Works — 16 events, all France Rénov advice sessions |
+| ProTiming, athletics club sites | No feed, no API; Gemini already cites them |
+
+So there is no feed to add. The gap is that **the prompt was asking for the wrong region**:
+
+> `- Communes voisines (< 15 km) : Avon, Barbizon, Samois-sur-Seine, Thomery, Bois-le-Roi,
+> Bourron-Marlotte, Moret-Loing-et-Orvanne, Nemours, Vaux-le-Vicomte, Blandy-les-Tours.`
+
+The pipeline accepts 20 km and already publishes events in **eleven communes the prompt never
+mentioned** — Melun, Larchant, Milly-la-Forêt, Maincy, Le Châtelet-en-Brie, Ury, Cesson… The
+model was being told to search a smaller area than the one we keep, and paid scans were coming
+back with less than they could. The scope is now built from `CONFIG.maxRadiusKm` and a `COMMUNES`
+list, so it cannot drift from the radius again without a test failing.
+
+The sport focus was also generic ("tournois et événements sportifs de clubs"). It now names the
+disciplines this region actually produces — trails, cross, marche nordique, course d'orientation,
+VTT, show jumping at the Grand Parquet, duathlon, Christmas races — and the local organisers.
+The federation calendars (FFA 77, FFRandonnée, FFCT) joined the priority sources.
+
+This is prompt work, which §9/38 warned against. The warning was about relying on prompt tuning
+*instead of* adding sources; two sources have since been added (§3.I, §3.S). What is fixed here
+is not a tuning preference but a factual error: the prompt described a perimeter the pipeline
+stopped using.
+
 ### S. OpenAgenda, a third source (item 27, September 22, 2026)
 
 The coverage gap the project lead identified is **local associations**: the manga festival at
@@ -780,6 +814,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-21 | `15 km` dropped from the tagline | Vaux-le-Vicomte is further out, so the figure was simply wrong |
 | 2026-09-21 | A failed `data.json` load shows a message and a retry, and the coverage figure goes **blank** rather than reading zero | A blank page is the worst failure because nobody can tell it happened; "0 événements répertoriés" would read as a claim about the region rather than about the network |
 | 2026-09-21 | SRI digests are verified by re-downloading each file in a test | A wrong digest does not degrade the page, it blocks the asset entirely — the map or the calendar simply disappears |
+| 2026-09-22 | **The sport gap is a prompt defect, not a missing source** (§3.T) | Four candidate feeds were checked; the two that work return only events already published, or administrative sessions. Meanwhile the prompt asked for "< 15 km" and ten communes while the pipeline kept 20 km and twenty-one |
+| 2026-09-22 | The prompt's geographic scope is now **built from `CONFIG.maxRadiusKm`** | It had silently drifted from the acceptance rule. A test fails if the two disagree again |
 | 2026-09-22 | **A 20 km radius replaces the bounding box as the acceptance rule** | The box is a rectangle: it reached 30 km into Sénart and Corbeil to the north-west while cutting closer elsewhere. 20 km keeps Blandy-les-Tours (19.3 km) and Vaux-le-Vicomte (18.4 km), and drops the 25 events the project lead flagged as too far. `MAX_RADIUS_KM` makes it one value to change |
 | 2026-09-22 | The radius is applied **after** geocoding | An event is judged on where it turns out to be, not on the coordinates a source claimed before we resolved them |
 | 2026-09-22 | Coordinates declared by a structured feed get their own `geoSource: "feed"` and count as exact | 45 DATAtourisme and OpenAgenda events were filed as `model` — the label for a coordinate the LLM invented. A declared place record is not a guess |
@@ -852,7 +888,15 @@ choses qui restaient étaient noyées dedans.
 
 ### B. Ce qui a le plus de valeur maintenant
 
-- [ ] **38. Élargir la couverture sport et associations.** Mesuré le 22/09 : **21 événements
+- [x] **38. Couverture sport — première passe faite le 22/09** (§3.T). Aucune source à ajouter :
+  les quatre pistes vérifiées ne donnent rien de neuf. En revanche le prompt décrivait un
+  périmètre de 15 km et dix communes alors que le pipeline en accepte 20 et en publie vingt et
+  une, et le focus sport était générique. Corrigé. **À mesurer sur le prochain scan : si le
+  compte sport ne bouge pas, c'est que la région produit vraiment peu d'événements sportifs,
+  et la question se ferme.**
+- [ ] **38b. Anciennement 38.** Si la mesure montre qu'il manque encore du sport, la piste
+  restante est HelloAsso (API OAuth, identifiants gratuits à créer) et les calendriers
+  fédéraux, qui demandent du scraping plutôt qu'un flux. Mesuré le 22/09 : **21 événements
   « Sport & Outdoor » sur 197 (11 %)**, contre 120 en Culture. C'est l'écart que le chef de
   projet signale depuis le début, et les trois sources actuelles ne le comblent pas. Pistes :
   calendriers de clubs et de fédérations, HelloAsso, agendas des offices municipaux des sports.
