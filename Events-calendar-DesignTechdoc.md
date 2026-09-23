@@ -818,6 +818,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-23 | An age the feed does not give falls back to the default, not to zero | `Number(null)` is 0 and passes `isFinite`, so the guard in `openagenda.js` never fired: 18 published cards read « Jusqu’à 0 ans ». Fixed in the mapper and repaired offline in `data.json` |
 | 2026-09-23 | **`lastSeen` reports, never deletes** (item 28) | The rule of 19 September stands: prune by date only, never by absence. What is new is that the report separates two cases — a deterministic feed that loaded fine and dropped an event is a real signal; the model not mentioning something is not |
 | 2026-09-23 | Records stored before `lastSeen` existed are dated on first sight | Otherwise all 197 would be flagged stale on the first run after deployment |
+| 2026-09-23 | **No usable sport-event source exists for this area** (item 38b, closed) | Five candidates checked and written down: the RNA and the Recherche d'entreprises API are directories of *associations*, with no event dates (verified by query); HelloAsso's API needs an account; its public pages and the federation calendars would need scraping, which the project lead excluded |
+| 2026-09-23 | Naming real local clubs in the prompt was **also rejected** | The directory returns 336 active sports structures in the 21 communes, mostly school associations that organise nothing public. Quoting an arbitrary handful would bias the search more than help it |
 | 2026-09-23 | **The DATAtourisme coverage probe is deleted** | It was the observation-mode probe from before the source joined the pipeline (§3.I). Verified in production since 21 September; it was downloading 9 MB a week for a report nobody reads. The shared library stays — `feedback.js` reuses its CSV parser |
 | 2026-09-22 | **The sport gap is a prompt defect, not a missing source** (§3.T) | Four candidate feeds were checked; the two that work return only events already published, or administrative sessions. Meanwhile the prompt asked for "< 15 km" and ten communes while the pipeline kept 20 km and twenty-one |
 | 2026-09-22 | The prompt's geographic scope is now **built from `CONFIG.maxRadiusKm`** | It had silently drifted from the acceptance rule. A test fails if the two disagree again |
@@ -899,9 +901,26 @@ choses qui restaient étaient noyées dedans.
   une, et le focus sport était générique. Corrigé. **À mesurer sur le prochain scan : si le
   compte sport ne bouge pas, c'est que la région produit vraiment peu d'événements sportifs,
   et la question se ferme.**
-- [ ] **38b. Anciennement 38.** Si la mesure montre qu'il manque encore du sport, la piste
-  restante est HelloAsso (API OAuth, identifiants gratuits à créer) et les calendriers
-  fédéraux, qui demandent du scraping plutôt qu'un flux. Mesuré le 22/09 : **21 événements
+- [x] **38b. Fermé le 23/09 : il n'existe pas de source d'événements sportifs exploitable ici.**
+  Vérifié une par une, pour que la recherche ne soit pas refaite :
+  | Piste | Ce qu'elle contient |
+  |---|---|
+  | RNA (Répertoire national des associations) | Un annuaire d'**associations**. Aucune date d'événement |
+  | API Recherche d'entreprises | Testée : renvoie bien les associations sportives (NAF 93.12Z), mais les seules dates sont création, fermeture et mise à jour |
+  | Pages publiques des campagnes HelloAsso | Du scraping — exclu par le chef de projet |
+  | API HelloAsso v5 | Authentification OAuth obligatoire (`/v5/organizations` → 401), donc un compte à créer. Écarté |
+  | FFA `bases.athle.fr`, FFRandonnée | HTML uniquement, donc du scraping. Écarté |
+
+  **Sous-produit également écarté.** L'API Recherche d'entreprises donne la liste réelle des clubs
+  sportifs des 21 communes — 336 structures actives. L'idée d'en nommer quelques-uns dans le
+  prompt a été abandonnée : la majorité sont des associations sportives scolaires qui
+  n'organisent rien de public, et en citer une poignée d'arbitraires biaiserait la recherche plus
+  qu'elle ne l'aiderait.
+
+  **Ce qui reste à mesurer, et c'est gratuit :** la correction du périmètre du 22/09 (§3.T) n'a
+  pas encore été éprouvée par un scan. Le prompt cherchait dans 15 km et dix communes alors que
+  le pipeline en accepte 20 et vingt et une. Si le compte sport ne bouge pas après ce scan, la
+  conclusion honnête est que la région produit peu d'événements sportifs sur trois mois. Mesuré le 22/09 : **21 événements
   « Sport & Outdoor » sur 197 (11 %)**, contre 120 en Culture. C'est l'écart que le chef de
   projet signale depuis le début, et les trois sources actuelles ne le comblent pas. Pistes :
   calendriers de clubs et de fédérations, HelloAsso, agendas des offices municipaux des sports.
