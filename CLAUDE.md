@@ -28,7 +28,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
 | `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité |
 | `CNAME` | Domaine perso `fontainebleaulive.fr` servi par GitHub Pages |
-| `og-image.png` | **Placeholder généré** (1200×630) pour les aperçus de lien. À remplacer par le vrai visuel Fontainebleau Live |
+| `og-image.png` | Visuel de marque (1200×630) pour les aperçus de lien, composé depuis `BackgroundDeco-FL-v1.png` |
+| `favicon.ico` | Favicon 16/32/48 à la racine — celui que Google Search et les robots demandent directement |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
 | `.github/workflows/` | `daily-check.yml` (collecte) et `translate.yml` (traduction à la demande) |
 

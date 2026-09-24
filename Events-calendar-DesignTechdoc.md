@@ -1077,15 +1077,11 @@ choses qui restaient étaient noyées dedans.
 - [x] **61. Visuels de marque — posés le 23/09** (§3.V). Favicon, icônes PWA 192 et 512, icône
   iOS, marque du bandeau, signature du pied de page et image de partage. La palette du site est
   désormais celle du logo, relevée sur les fichiers.
-- [ ] **61c. Favicon dans Google** : après le déploiement du `/favicon.ico` (24/09), demander une
+- [ ] **61c. Favicon dans Google** : `/favicon.ico` en ligne depuis le 24/09. Demander une
   indexation de la page d'accueil dans la Search Console, puis vérifier sous quelques jours à
   quelques semaines que la feuille de chêne a remplacé le soleil Helioso dans les résultats.
 - [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
-  d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence. Ancien libellé de l'item 61 :
-  Deux fichiers sont des placeholders : `og-image.png`
-  (1200×630, aperçus de lien) et l'icône PWA (aujourd'hui le logo Helioso, 1538×1538, 472 Ko).
-  Il faut **un PNG 512×512** et **un PNG 1200×630**. C'est le seul chantier bloqué sur autre
-  chose que du code.
+  d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence.
 - [ ] **Surveiller 3 à 5 runs automatiques.** Ce qu'il faut regarder dans le rapport : tokens et
   requêtes de recherche par scan (le coût réel, à comparer à l'estimation §3.G), motifs de rejet,
   liens morts, sources de géocodage, doublons signalés mais non fusionnés.
