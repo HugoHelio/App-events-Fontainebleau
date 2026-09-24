@@ -1,10 +1,35 @@
 {
   "version": 1,
   "entries": {
+    "city:acheres la foret": {
+      "lat": 48.35102,
+      "lng": 2.56703,
+      "source": "city"
+    },
+    "city:barbizon": {
+      "lat": 48.44575,
+      "lng": 2.60775,
+      "source": "city"
+    },
     "city:fontainebleau": {
       "lat": 48.40781,
       "lng": 2.70278,
       "source": "city"
+    },
+    "city:hericy": {
+      "lat": 48.44696,
+      "lng": 2.7794,
+      "source": "city"
+    },
+    "city:moret loing et orvanne": {
+      "lat": 48.35661,
+      "lng": 2.82107,
+      "source": "city"
+    },
+    "venue:4 quai des platreries samois sur seine": {
+      "lat": 48.43665,
+      "lng": 2.74479,
+      "source": "ban"
     },
     "venue:ane vert theatre 6 rue des sablons fontainebleau": {
       "lat": 48.4049,
@@ -19,6 +44,21 @@
     "venue:avenue de fontainebleau veneux les sablons moret loing et orvanne": {
       "lat": 48.37695,
       "lng": 2.79438,
+      "source": "ban"
+    },
+    "venue:avon": {
+      "lat": 48.413,
+      "lng": 2.72893,
+      "source": "ban"
+    },
+    "venue:avon avon": {
+      "lat": 48.40088,
+      "lng": 2.72258,
+      "source": "ban"
+    },
+    "venue:barbizon": {
+      "lat": 48.44575,
+      "lng": 2.60775,
       "source": "ban"
     },
     "venue:chateau de fontainebleau fontainebleau": {
@@ -44,6 +84,16 @@
     "venue:chemin du bois charme le chatelet en brie": {
       "lat": 48.49274,
       "lng": 2.77573,
+      "source": "ban"
+    },
+    "venue:fontainebleau": {
+      "lat": 48.40781,
+      "lng": 2.70278,
+      "source": "ban"
+    },
+    "venue:fontainebleau fontainebleau": {
+      "lat": 48.40168,
+      "lng": 2.70086,
       "source": "ban"
     },
     "venue:le grand parquet fontainebleau": {

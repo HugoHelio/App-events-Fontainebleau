@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Héricy · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_301f795e18@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261011
+SUMMARY:23e Festival des Briardises
+LOCATION:Héricy\, Héricy
+DESCRIPTION:Tarif : Tarif unique : à partir de 17 €. Au 06 64 65 01 49 
+ à partir du 1er septembre du…\n\nLe village d'Héricy accueille la 23e 
+ édition du Festival des Briardises proposant divers événements culturel
+ s et festifs.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/
+ fiche/7944189/23e-festival-des-briardises/\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/23e-festival-des-briardises-hericy-301f795e18/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/23e-festival-des-briardises-her
+ icy-301f795e18/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

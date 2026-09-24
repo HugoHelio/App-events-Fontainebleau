@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_a9fe9cda4d@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260925
 DTEND;VALUE=DATE:20260926
 SUMMARY:De la morue - cartographie 6
@@ -65,6 +65,24 @@ URL:https://fontainebleaulive.fr/evenements/foretbelle-2026-grand-ramassage
  -citoyen-des-dechets-en-foret-fontainebleau-c321e608b3/
 CATEGORIES:Nature & Environnement
 GEO:48.40699;2.7747
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3971bf8a2f@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:#ForêtBelle 2026 à Moret-Loing-et-Orvanne
+LOCATION:Stade Thierry Roquette\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h00 - 20h00\n\nTarif : Gratuit\n\nParticipez à un
+ e opération citoyenne consacrée au ramassage des déchets en forêt.\n\n
+ Organisateur : https://moretloingetorvanne.fr/events/foretbelle-2026-moret
+ -loing-et-orvanne/\n\nFiche : https://fontainebleaulive.fr/evenements/fore
+ tbelle-2026-a-moret-loing-et-orvanne-3971bf8a2f/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/foretbelle-2026-a-moret-loing-e
+ t-orvanne-3971bf8a2f/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -145,7 +163,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e5cffeee4a@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261003
 SUMMARY:Api'week au Carrefour Carrefour Villiers-en-Bière
@@ -172,29 +190,12 @@ LOCATION:Espace Naturel Sensible du Carreau Franc\, Fontainebleau
 DESCRIPTION:Horaires : 09h30–12h30\n\nTarif : Gratuit\n\nBalade ornitholo
  gique guidée pour observer les différentes espèces d'oiseaux hébergée
  s dans l'Espace Naturel Sensible du Carreau Franc.\n\nOrganisateur : https
- ://anvl.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/decouverte-
- des-oiseaux-du-carreau-franc-fontainebleau-c82b316def/\n\nInformations col
- lectées automatiquement : vérifiez-les auprès de l’organisateur.
+ ://anvl.fr/grand-public/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/decouverte-des-oiseaux-du-carreau-franc-fontainebleau-c82b316def/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-du-carre
  au-franc-fontainebleau-c82b316def/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_a3a6504cba@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261002
-DTEND;VALUE=DATE:20261003
-SUMMARY:Observation des oiseaux du Carreau Franc
-LOCATION:Espace Naturel Sensible du Carreau Franc\, Fontainebleau
-DESCRIPTION:Horaires : 09h30–12h30\n\nTarif : Gratuit\n\nMatinée d'obser
- vation ornithologique pour découvrir la biodiversité aviaire de l'ENS du
-  Carreau Franc.\n\nOrganisateur : https://anvl.fr/grand-public/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/observation-des-oiseaux-du-carrea
- u-franc-fontainebleau-a3a6504cba/\n\nInformations collectées automatiquem
- ent : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/observation-des-oiseaux-du-carr
- eau-franc-fontainebleau-a3a6504cba/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -224,34 +225,15 @@ DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Chantier d'entretien des îlots de l'ENS Carreau Franc
 LOCATION:ENS Carreau Franc\, Fontainebleau
-DESCRIPTION:Horaires : 09h–17h\n\nTarif : Gratuit\n\nPublic : Dès 12 ans
- \n\nChantier participatif de bénévolat pour entretenir et préserver les
-  milieux naturels de l'Espace Naturel Sensible.\n\nOrganisateur : https://
- anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/cha
- ntier-d-entretien-des-ilots-de-l-ens-carreau-franc-fontainebleau-97f20c823
- 8/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
- l’organisateur.
+DESCRIPTION:Horaires : Samedi de 09h00 à 17h00\n\nTarif : Gratuit\n\nPubli
+ c : Dès 12 ans\n\nChantier participatif de bénévolat pour entretenir et
+  préserver les milieux naturels de l'Espace Naturel Sensible.\n\nOrganisa
+ teur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/chantier-d-entretien-des-ilots-de-l-ens-carreau-franc-fontaine
+ bleau-97f20c8238/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/chantier-d-entretien-des-ilots-
  de-l-ens-carreau-franc-fontainebleau-97f20c8238/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_ca277192a3@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261003
-DTEND;VALUE=DATE:20261004
-SUMMARY:Chantier d'entretien participatif de l'ENS Carreau Franc
-LOCATION:Espace Naturel Sensible du Carreau Franc\, Fontainebleau
-DESCRIPTION:Horaires : Samedi de 09h00 à 17h00\n\nTarif : Gratuit\n\nPubli
- c : Dès 12 ans\n\nChantier écocitoyen participatif d'entretien et de res
- tauration environnementale des îlots de la réserve naturelle du Carreau 
- Franc.\n\nOrganisateur : https://anvl.fr/\n\nFiche : https://fontainebleau
- live.fr/evenements/chantier-d-entretien-participatif-de-l-ens-carreau-fran
- c-fontainebleau-ca277192a3/\n\nInformations collectées automatiquement : 
- vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/chantier-d-entretien-participat
- if-de-l-ens-carreau-franc-fontainebleau-ca277192a3/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -281,12 +263,12 @@ DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 SUMMARY:Découverte du village et du marais de Larchant
 LOCATION:Marais de Larchant\, Larchant
-DESCRIPTION:Horaires : 10h15–17h\n\nTarif : Gratuit\n\nPromenade guidée 
- naturaliste et patrimoniale à la découverte de la réserve naturelle du 
- marais de Larchant.\n\nOrganisateur : https://www.aaff.fr/\n\nFiche : http
- s://fontainebleaulive.fr/evenements/decouverte-du-village-et-du-marais-de-
- larchant-01502bfb93/\n\nInformations collectées automatiquement : vérifi
- ez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Vendredi de 10h15 à 17h00\n\nTarif : Gratuit\n\nPro
+ menade guidée naturaliste et patrimoniale à la découverte de la réserv
+ e naturelle du marais de Larchant.\n\nOrganisateur : https://www.aaff.fr/\
+ n\nFiche : https://fontainebleaulive.fr/evenements/decouverte-du-village-e
+ t-du-marais-de-larchant-01502bfb93/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-du-village-et-du-mar
  ais-de-larchant-01502bfb93/
 CATEGORIES:Nature & Environnement
@@ -299,91 +281,15 @@ DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261012
 SUMMARY:Événement SAUVAGES! Spécial prédateurs
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nAteliers nature\, co
- nférences et animations éducatives axés sur la biodiversité et les pr
- édateurs locaux.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/evenement-sauvages-special-predat
- eurs-fontainebleau-faeff665c0/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Du vendredi 9 au dimanche 11 octobre\, horaires selo
+ n programmation\n\nTarif : Gratuit\n\nAteliers nature\, conférences et an
+ imations éducatives axés sur la biodiversité et les prédateurs locaux.
+ \n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/evenement-sauvages-special-predateurs-fontaineblea
+ u-faeff665c0/\n\nInformations collectées automatiquement : vérifiez-les 
+ auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/evenement-sauvages-special-pred
  ateurs-fontainebleau-faeff665c0/
-CATEGORIES:Nature & Environnement
-GEO:48.40335;2.69762
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_1578b698ff@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261012
-SUMMARY:Festival SAUVAGES ! - Événement biodiversité et faune sauvage
-LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : Du vendredi 9 au dimanche 11 octobre\, horaires selo
- n programmation\n\nTarif : Gratuit\n\nFestival dédié à la biodiversité
-  sauvage proposant expositions\, conférences\, ateliers et rencontres.\n\
- nOrganisateur : https://anvl.fr/grand-public/\n\nFiche : https://fontaineb
- leaulive.fr/evenements/festival-sauvages-evenement-biodiversite-et-faune-s
- auvage-fontainebleau-1578b698ff/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/festival-sauvages-evenement-bio
- diversite-et-faune-sauvage-fontainebleau-1578b698ff/
-CATEGORIES:Nature & Environnement
-GEO:48.40335;2.69762
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_f15cab21f4@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261012
-SUMMARY:Festival SAUVAGES ! - Les prédateurs
-LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nÉvénement immersif
-  consacré aux mammifères prédateurs : conférences\, ateliers\, exposit
- ions et rencontres avec des spécialistes.\n\nOrganisateur : https://anvl.
- fr/\n\nFiche : https://fontainebleaulive.fr/evenements/festival-sauvages-l
- es-predateurs-fontainebleau-f15cab21f4/\n\nInformations collectées automa
- tiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/festival-sauvages-les-predateur
- s-fontainebleau-f15cab21f4/
-CATEGORIES:Nature & Environnement
-GEO:48.40335;2.69762
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_82d9a441d0@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261010
-SUMMARY:Promenade guidée nature : Village et Marais de Larchant
-LOCATION:Réserve naturelle du Marais de Larchant\, Larchant
-DESCRIPTION:Horaires : Vendredi de 10h15 à 17h00\n\nTarif : Gratuit\n\nPro
- menade environnementale guidée pour découvrir le patrimoine naturel de l
- a réserve du Marais de Larchant et son village historique.\n\nOrganisateu
- r : https://www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr/evenement
- s/promenade-guidee-nature-village-et-marais-de-larchant-82d9a441d0/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
-URL:https://fontainebleaulive.fr/evenements/promenade-guidee-nature-village
- -et-marais-de-larchant-82d9a441d0/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d3064b59bf@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261012
-SUMMARY:SAUVAGES ! Les mammifères prédateurs
-LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nÉvénement grand pu
- blic dédié aux prédateurs sauvages de France avec expositions\, confér
- ences\, ateliers et projections.\n\nOrganisateur : https://anvl.fr/\n\nFic
- he : https://fontainebleaulive.fr/evenements/sauvages-les-mammiferes-preda
- teurs-fontainebleau-d3064b59bf/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sauvages-les-mammiferes-predate
- urs-fontainebleau-d3064b59bf/
 CATEGORIES:Nature & Environnement
 GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
@@ -416,10 +322,11 @@ SUMMARY:Balade guidée au Mont Merle et au Rocher Fourceau
 LOCATION:Mont Merle\, Forêt de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 13h30–17h\n\nTarif : Gratuit\n\nSortie pédestre a
  ccompagnant les promeneurs sur le relief du Mont Merle et les chaos de gr
- ès du Rocher Fourceau.\n\nOrganisateur : https://www.aaff.fr/\n\nFiche : 
- https://fontainebleaulive.fr/evenements/balade-guidee-au-mont-merle-et-au-
- rocher-fourceau-fontainebleau-0ab982a6c4/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
+ ès du Rocher Fourceau.\n\nOrganisateur : https://www.aaff.fr/promenades-g
+ uidees/\n\nFiche : https://fontainebleaulive.fr/evenements/balade-guidee-a
+ u-mont-merle-et-au-rocher-fourceau-fontainebleau-0ab982a6c4/\n\nInformatio
+ ns collectées automatiquement : vérifiez-les auprès de l’organisateur
+ .
 URL:https://fontainebleaulive.fr/evenements/balade-guidee-au-mont-merle-et-
  au-rocher-fourceau-fontainebleau-0ab982a6c4/
 CATEGORIES:Nature & Environnement
@@ -432,34 +339,16 @@ DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Promenade contée en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 15h–17h\n\nTarif : 8 € adulte / 4 € enfant\n\n
- Public : Dès 5 ans\n\nBalade enchantée en forêt rythmée par des histoi
- res et contes naturalistes racontés par un conteur-musicien.\n\nOrganisat
- eur : https://www.fontainebleau-tourisme.com/fr/fiche/5053272/promenades-c
- ontees-en-foret-de-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/
- evenements/promenade-contee-en-foret-de-fontainebleau-ed4d334b07/\n\nInfor
- mations collectées automatiquement : vérifiez-les auprès de l’organis
- ateur.
+DESCRIPTION:Horaires : 15h–17h\n\nTarif : Adulte : 8 €\, Enfant (5-12 a
+ ns) : 4 €. Activité soumise à un nombre minimum de…\n\nPublic : Dès
+  5 ans\n\nBalade enchantée en forêt rythmée par des histoires et contes
+  naturalistes racontés par un conteur-musicien.\n\nOrganisateur : https:/
+ /www.fontainebleau-tourisme.com/fr/fiche/5529329/promenades-contees-en-for
+ et-de-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/pr
+ omenade-contee-en-foret-de-fontainebleau-ed4d334b07/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-contee-en-foret-de-fo
  ntainebleau-ed4d334b07/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d547843611@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-SUMMARY:Promenade guidée : Mont Merle et Rocher Fourceau
-LOCATION:Forêt de Fontainebleau (Mont Merle)\, Fontainebleau
-DESCRIPTION:Horaires : 13h30–17h\n\nTarif : Gratuit\n\nBalade pédestre g
- uidée à la découverte des paysages\, rochers et sentiers remarquables d
- u massif.\n\nOrganisateur : https://www.aaff.fr/promenades-guidees/\n\nFic
- he : https://fontainebleaulive.fr/evenements/promenade-guidee-mont-merle-e
- t-rocher-fourceau-fontainebleau-d547843611/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/promenade-guidee-mont-merle-et-
- rocher-fourceau-fontainebleau-d547843611/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -528,9 +417,10 @@ DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
  nPublic : Dès 6 ans\n\nSortie nature de 2h guidée par un photographe ani
  malier pour apprendre à reconnaître les empreintes et indices laissés p
  ar la faune locale.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
- om/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-sur-l
- a-trace-des-animaux-de-la-foret-fontainebleau-d2b1b1c557/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
+ om/fr/fiche/5643672/visite-sur-la-trace-des-animaux-en-foret-de-fontainebl
+ eau/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-sur-
+ la-trace-des-animaux-de-la-foret-fontainebleau-d2b1b1c557/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-
  animaux-de-la-foret-fontainebleau-d2b1b1c557/
 CATEGORIES:Nature & Environnement
@@ -556,75 +446,40 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_08a6496d84@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Visites guidées thématiques en forêt
+LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Adulte : 16 €\, Enfant (6-12 ans) : 9 €. Gratuit po
+ ur les moins de 6 ans. Réserv…\n\nPartez à la découverte de la faune 
+ et de la flore locales au cours d'une visite guidée thématique en forêt
+  de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/4971254/visites-guidees-thematiques-en-foret/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-foret-fon
+ tainebleau-08a6496d84/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-
+ foret-fontainebleau-08a6496d84/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5266991852@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Découverte du sentier 17
 LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h–12h\n\nTarif : Gratuit\n\nPromenade découvert
- e guidée le long du sentier de randonnée 17 pour explorer le patrimoine 
- naturel du massif.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/decouverte-du-sentier-17-fontain
- ebleau-5266991852/\n\nInformations collectées automatiquement : vérifiez
- -les auprès de l’organisateur.
+DESCRIPTION:Horaires : 9h–12h\n\nTarif : Gratuit\n\nPromenade découverte
+  guidée le long du sentier de randonnée 17 pour explorer le patrimoine n
+ aturel du massif.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/decouverte-du-sentier-17-fontaine
+ bleau-5266991852/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-du-sentier-17-fontai
  nebleau-5266991852/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_a5d6e5d6bf@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261022
-DTEND;VALUE=DATE:20261023
-SUMMARY:Découverte du sentier 17 Denecourt
-LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h–12h\n\nTarif : Gratuit\n\nPromenade guidée ma
- tinale le long du sentier bleu n°17 à la découverte du patrimoine fores
- tier.\n\nOrganisateur : https://www.aaff.fr/promenades-guidees/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/decouverte-du-sentier-17-denecour
- t-fontainebleau-a5d6e5d6bf/\n\nInformations collectées automatiquement : 
- vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/decouverte-du-sentier-17-deneco
- urt-fontainebleau-a5d6e5d6bf/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_1d9da40530@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261022
-DTEND;VALUE=DATE:20261023
-SUMMARY:Découverte du sentier Bleu n°17 en forêt de Fontainebleau
-LOCATION:Forêt de Fontainebleau (Sentier n°17)\, Fontainebleau
-DESCRIPTION:Horaires : Jeudi de 09h00 à 12h00\n\nTarif : Gratuit\n\nRandon
- née nature guidée sur le sentier bleu n°17 pour explorer les pépites e
- nvironnementales et paysagères méconnues de la forêt.\n\nOrganisateur :
-  https://www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/d
- ecouverte-du-sentier-bleu-n-17-en-foret-de-fontainebleau-1d9da40530/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
-URL:https://fontainebleaulive.fr/evenements/decouverte-du-sentier-bleu-n-17
- -en-foret-de-fontainebleau-1d9da40530/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_4da520497e@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261022
-DTEND;VALUE=DATE:20261023
-SUMMARY:Exploration guidée du sentier de promenade n°17
-LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 9h–12h\n\nTarif : Gratuit\n\nPromenade encadrée p
- our découvrir la flore\, les rochers et l'histoire du sentier bleu n°17.
- \n\nOrganisateur : https://www.aaff.fr/\n\nFiche : https://fontainebleauli
- ve.fr/evenements/exploration-guidee-du-sentier-de-promenade-n-17-fontaineb
- leau-4da520497e/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/exploration-guidee-du-sentier-d
- e-promenade-n-17-fontainebleau-4da520497e/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -666,7 +521,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -692,13 +547,15 @@ DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Sortie guidée à vélo : Bords de Seine au départ de Bois-le-Roi
 LOCATION:Parvis de la gare de Bois-le-Roi\, Bois-le-Roi
-DESCRIPTION:Horaires : Dimanche à 14h30\n\nTarif : 25 €\n\nPublic : Dès
-  12 ans\n\nBalade guidée à vélo au bord de l'eau pour observer la faune
-  fluviale et découvrir les demeures de villégiature « Affolantes ».\n\
- nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-seine-au-de
- part-de-bois-le-roi-3786d85282/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Dimanche à 14h30\n\nTarif : Adulte : 25 € (A part
+ ir de 12 ans.).\n\nPublic : Dès 12 ans\n\nBalade guidée à vélo au bord
+  de l'eau pour observer la faune fluviale et découvrir les demeures de vi
+ llégiature « Affolantes ».\n\nOrganisateur : https://www.fontainebleau-
+ tourisme.com/fr/fiche/5825577/sortie-les-bords-de-seine-a-velo-au-depart-d
+ e-bois-le-roi/\n\nFiche : https://fontainebleaulive.fr/evenements/sortie-g
+ uidee-a-velo-bords-de-seine-au-depart-de-bois-le-roi-3786d85282/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-s
  eine-au-depart-de-bois-le-roi-3786d85282/
 CATEGORIES:Nature & Environnement
@@ -822,7 +679,7 @@ LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
  nPublic : Dès 8 ans\n\nBalade immersive en forêt pour suivre les emprein
  tes et comprendre la vie hivernale de la faune sauvage.\n\nOrganisateur : 
- https://www.fontainebleau-tourisme.com/fr/fiche/5053270/visite-sur-la-trac
+ https://www.fontainebleau-tourisme.com/fr/fiche/5643672/visite-sur-la-trac
  e-des-animaux-en-foret-de-fontainebleau/\n\nFiche : https://fontainebleaul
  ive.fr/evenements/visite-guidee-sur-la-trace-des-animaux-edition-novembre-
  fontainebleau-fb62998180/\n\nInformations collectées automatiquement : v
@@ -833,42 +690,42 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_eae4c86968@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261122
-DTEND;VALUE=DATE:20261123
-SUMMARY:Visite guidée biodiversité : chemin des fontaines et Tour Denecou
- rt
-LOCATION:Tour Denecourt et chemin des fontaines\, Fontainebleau
-DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
- nRandonnée naturaliste guidée à la découverte de la faune\, de la flor
- e et du patrimoine historique Denecourt.\n\nOrganisateur : https://www.fon
- tainebleau-tourisme.com/fr/fiche/5738870/visites-guidees-thematiques-en-fo
- ret/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-biod
- iversite-chemin-des-fontaines-et-tour-dene-fontainebleau-eae4c86968/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-guidee-biodiversite-chem
- in-des-fontaines-et-tour-dene-fontainebleau-eae4c86968/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_82e77aacb9@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite guidée en forêt : Chemin des Fontaines et Tour Denecourt
 LOCATION:Forêt de Fontainebleau (Tour Denecourt)\, Fontainebleau
-DESCRIPTION:Horaires : Dimanche à 14h00\n\nTarif : 16 €\n\nSortie guidé
- e thématique au cœur de la forêt d'exception pour découvrir le chemin 
- des Fontaines\, la tour Denecourt et leur biodiversité.\n\nOrganisateur :
-  https://www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaul
- ive.fr/evenements/visite-guidee-en-foret-chemin-des-fontaines-et-tour-dene
- cour-fontainebleau-82e77aacb9/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
+ nSortie guidée thématique au cœur de la forêt d'exception pour découv
+ rir le chemin des Fontaines\, la tour Denecourt et leur biodiversité.\n\n
+ Organisateur : https://www.fontainebleau-tourisme.com/fr/fiche/5738870/vis
+ ites-guidees-thematiques-en-foret/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/visite-guidee-en-foret-chemin-des-fontaines-et-tour-denecour-f
+ ontainebleau-82e77aacb9/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-en-foret-chemin-d
  es-fontaines-et-tour-denecour-fontainebleau-82e77aacb9/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ea515f4cb5@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Visites guidées thématiques en forêt
+LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Adulte : 16 €\, Enfant (6-12 ans) : 9 €. Gratuit po
+ ur les moins de 6 ans. Réserv…\n\nPartez à la découverte de la faune 
+ et de la flore locales au cours d'une visite guidée thématique en forêt
+  de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/4971254/visites-guidees-thematiques-en-foret/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-foret-fon
+ tainebleau-ea515f4cb5/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-
+ foret-fontainebleau-ea515f4cb5/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -954,7 +811,7 @@ LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
  nPublic : Dès 8 ans\n\nSortie nature accompagnée à la recherche des tra
  ces et indices laissés par la faune forestière en hiver.\n\nOrganisateur
-  : https://www.fontainebleau-tourisme.com/fr/fiche/5053270/visite-sur-la-t
+  : https://www.fontainebleau-tourisme.com/fr/fiche/5643672/visite-sur-la-t
  race-des-animaux-en-foret-de-fontainebleau/\n\nFiche : https://fontaineble
  aulive.fr/evenements/visite-guidee-sur-la-trace-des-animaux-edition-decemb
  re-fontainebleau-1de0024e70/\n\nInformations collectées automatiquement :

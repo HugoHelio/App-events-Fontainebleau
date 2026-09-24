@@ -11,6 +11,23 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_5af7ff0b65@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:Atelier de bouturage
+LOCATION:4 quai des Plâtreries\, Samois-sur-Seine
+DESCRIPTION:Horaires : 10h\n\nOrganisateur : https://samois-sur-seine.fr/ev
+ enement/atelier-de-bouturage/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/atelier-de-bouturage-samois-sur-seine-5af7ff0b65/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-de-bouturage-samois-sur
+ -seine-5af7ff0b65/
+CATEGORIES:Culture & Ateliers
+GEO:48.43665;2.74479
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_6974d9557c@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20260927

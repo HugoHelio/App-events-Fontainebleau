@@ -11,8 +11,25 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_5af7ff0b65@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:Atelier de bouturage
+LOCATION:4 quai des Plâtreries\, Samois-sur-Seine
+DESCRIPTION:Horaires : 10h\n\nOrganisateur : https://samois-sur-seine.fr/ev
+ enement/atelier-de-bouturage/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/atelier-de-bouturage-samois-sur-seine-5af7ff0b65/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-de-bouturage-samois-sur
+ -seine-5af7ff0b65/
+CATEGORIES:Culture & Ateliers
+GEO:48.43665;2.74479
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_852de18d68@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 SUMMARY:Jacques Brel jusqu'au bout du monde
@@ -52,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_978d32402f@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Dimanche animé : Retour vers l’âge du Bronze
@@ -91,7 +108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5a5de2871b@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Jacques Brel jusqu'au bout du monde
@@ -129,7 +146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2016bae2a8@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Tri-Fouille 2026
@@ -137,10 +154,11 @@ LOCATION:Avenue de Fontainebleau\, Veneux-Les Sablons\, Moret-Loing-et-Orva
  nne
 DESCRIPTION:Horaires : 8h–18h\n\nTarif : Gratuit\n\nGrand vide-grenier an
  nuel et animations conviviales organisés avenue de Fontainebleau à Veneu
- x-Les Sablons.\n\nOrganisateur : https://www.moretloingetorvanne.fr/\n\nFi
- che : https://fontainebleaulive.fr/evenements/tri-fouille-2026-moret-loing
- -et-orvanne-2016bae2a8/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+ x-Les Sablons.\n\nOrganisateur : https://moretloingetorvanne.fr/events/tri
+ -fouille-2026-moret-loing-et-orvanne/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/tri-fouille-2026-moret-loing-et-orvanne-2016bae2a8/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/tri-fouille-2026-moret-loing-et
  -orvanne-2016bae2a8/
 CATEGORIES:Culture & Ateliers
@@ -167,7 +185,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5edd0ac6ea@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Visite flash : Chasseurs et paysans
@@ -207,7 +225,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_de8325e9de@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Atelier créatif
@@ -224,7 +242,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_225054d9c0@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Café à Ecrire
@@ -241,7 +259,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb7ea0c10e@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Dédicace et rencontre avec David Demouzon
@@ -277,7 +295,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1234bdf231@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Saint-Fargeau-Ponthierry au fil des histoires
@@ -328,25 +346,6 @@ DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Gratuit\n\nGrand rassemblem
 URL:https://fontainebleaulive.fr/evenements/le-bouchon-de-nemours-2026-act0
  01/
 CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d4a479e6cd@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261012
-SUMMARY:Week-end « Sauvages ! » Les prédateurs de France
-LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nÉvénement gratuit 
- dédié aux mammifères prédateurs sauvages avec animations\, expositions
-  et conférences.\n\nOrganisateur : https://www.jagispourlanature.org/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/week-end-sauvages-les-pred
- ateurs-de-france-fontainebleau-d4a479e6cd/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/week-end-sauvages-les-predateur
- s-de-france-fontainebleau-d4a479e6cd/
-CATEGORIES:Culture & Ateliers
-GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -429,19 +428,38 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_d391e6e25c@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:Sauvages !
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : Non spécifié\n\nTarif : Gratuit.\n\nÉvénement cu
+ lturel proposé à Fontainebleau autour de l'œuvre Sauvages.\n\nOrganisat
+ eur : https://anvl.fr/sauvages/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/sauvages-fontainebleau-d391e6e25c/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sauvages-fontainebleau-d391e6e2
+ 5c/
+CATEGORIES:Culture & Ateliers
+GEO:48.40168;2.70086
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_6b065df1db@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Son odeur après la pluie
 LOCATION:Âne Vert Théâtre 6 Rue des Sablons\, Fontainebleau
-DESCRIPTION:« Son odeur après la pluie »\, de Véronique Boutonnet\, d
- ’après le roman de Cédric Sapin-Defour\, vous invite à vivre une pare
- nthèse sensible et bouleversante\, au cœur de la relation unique qui uni
- t une femme à son chien.\n\nOrganisateur : https://www.anevert.fr/\n\nFic
- he : https://fontainebleaulive.fr/evenements/son-odeur-apres-la-pluie-font
- ainebleau-6b065df1db/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n« Son ode
+ ur après la pluie »\, de Véronique Boutonnet\, d’après le roman de C
+ édric Sapin-Defour\, vous invite à vivre une parenthèse sensible et bou
+ leversante\, au cœur de la relation unique qui unit une femme à son chie
+ n.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79472
+ 38/son-odeur-apres-la-pluie/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/son-odeur-apres-la-pluie-fontainebleau-6b065df1db/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/son-odeur-apres-la-pluie-fontai
  nebleau-6b065df1db/
 CATEGORIES:Culture & Ateliers
@@ -450,18 +468,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c02aa27a45@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Son odeur après la pluie
 LOCATION:Âne Vert Théâtre 6 Rue des Sablons\, Fontainebleau
-DESCRIPTION:« Son odeur après la pluie »\, de Véronique Boutonnet\, d
- ’après le roman de Cédric Sapin-Defour\, vous invite à vivre une pare
- nthèse sensible et bouleversante\, au cœur de la relation unique qui uni
- t une femme à son chien.\n\nOrganisateur : https://www.anevert.fr/\n\nFic
- he : https://fontainebleaulive.fr/evenements/son-odeur-apres-la-pluie-font
- ainebleau-c02aa27a45/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n« Son ode
+ ur après la pluie »\, de Véronique Boutonnet\, d’après le roman de C
+ édric Sapin-Defour\, vous invite à vivre une parenthèse sensible et bou
+ leversante\, au cœur de la relation unique qui unit une femme à son chie
+ n.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79472
+ 38/son-odeur-apres-la-pluie/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/son-odeur-apres-la-pluie-fontainebleau-c02aa27a45/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/son-odeur-apres-la-pluie-fontai
  nebleau-c02aa27a45/
 CATEGORIES:Culture & Ateliers
@@ -470,7 +489,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2e255f251c@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Découverte des lieux historiques du village et création d'un carn
@@ -491,7 +510,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e76e8e9f90@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Imaginer la restauration de l'église Saint Mathurin de Larchant
@@ -509,17 +528,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9ff7d4e4e2@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:La Philosophe
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Et si nous découvrions Descartes sous un nouveau jour lorsqu
- ’il philosophe sur la vie quotidienne avec une princesse ? proposée par
-  Yaelle Malpertu et la Compagnie Naphralytep.\n\nOrganisateur : https://ww
- w.anevert.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/la-philos
- ophe-fontainebleau-9ff7d4e4e2/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nEt si nous
+  découvrions Descartes sous un nouveau jour lorsqu’il philosophe sur la
+  vie quotidienne avec une princesse ? proposée par Yaelle Malpertu et la 
+ Compagnie Naphralytep.\n\nOrganisateur : https://www.fontainebleau-tourism
+ e.com/fr/fiche/7947242/la-philosophe/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/la-philosophe-fontainebleau-9ff7d4e4e2/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/la-philosophe-fontainebleau-9ff
  7d4e4e2/
 CATEGORIES:Culture & Ateliers
@@ -527,21 +547,23 @@ GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_372df50cf5@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+UID:EVT_4e6974ffa4@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
-SUMMARY:Visite guidée de l'église et atelier dessin
-LOCATION:Église Saint-Mathurin\, Larchant
-DESCRIPTION:Visite guidée de l'église et atelier dessin\n\nOrganisateur :
-  https://openagenda.com/planlibre/events/visite-guidee-de-leglise-et-ateli
- er-dessin\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee
- -de-l-eglise-et-atelier-dessin-larchant-372df50cf5/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-guidee-de-l-eglise-et-at
- elier-dessin-larchant-372df50cf5/
+SUMMARY:Visite guidée du village des peintres de Barbizon
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Tarif : Plein tarif : 7 €. Gratuit pour les moins de 8 ans.\n
+ \nExplorez l'histoire artistique et le charme pittoresque de Barbizon lors
+  d'une visite guidée dans le village des peintres.\n\nOrganisateur : http
+ s://www.fontainebleau-tourisme.com/fr/fiche/5435798/visite-guidee-du-villa
+ ge-des-peintres-de-barbizon/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/visite-guidee-du-village-des-peintres-de-barbizon-4e6974ffa4/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-du-village-des-pe
+ intres-de-barbizon-4e6974ffa4/
 CATEGORIES:Culture & Ateliers
-GEO:48.28406;2.59622
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -551,52 +573,57 @@ DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Brocante Antiquités de Fontainebleau - Octobre
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 9h–17h\n\nTarif : Gratuit\n\nRendez-vous mensuel d
- 'antiquaires et brocanteurs professionnels en plein cœur de Fontainebleau
- .\n\nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : htt
- ps://fontainebleaulive.fr/evenements/brocante-antiquites-de-fontainebleau-
- octobre-f7fe50ded0/\n\nInformations collectées automatiquement : vérifie
- z-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Gratuit\n\nRendez-vous mens
+ uel d'antiquaires et brocanteurs professionnels en plein cœur de Fontaine
+ bleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/brocante-antiquites-de-fontaineb
+ leau-octobre-f7fe50ded0/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/brocante-antiquites-de-fontaine
  bleau-octobre-f7fe50ded0/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_ffa37eea11@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261018
-DTEND;VALUE=DATE:20261019
-SUMMARY:Brocante mensuelle d'Antiquités
-LOCATION:Place de l'Aigle\, Fontainebleau
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Gratuit\n\nRendez-vous mens
- uel pour chiner de la vaisselle vintage\, des antiquités et du petit mobi
- lier ancien.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/brocante-mensuelle-d-antiq
- uites-fontainebleau-ffa37eea11/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/brocante-mensuelle-d-antiquites
- -fontainebleau-ffa37eea11/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_068663487e@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261021
 SUMMARY:Gudule et Trampo
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:L’amour de deux clowns qui se décline sur fond de mandoline 
- et de gondole\, comme à Venise ! De Jacques Ronayette\, avec la Compagnie
-  Le Regard du Clown\n\nOrganisateur : https://www.anevert.fr/\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-0686
- 63487e/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nL’amour 
+ de deux clowns qui se décline sur fond de mandoline et de gondole\, comme
+  à Venise ! De Jacques Ronayette\, avec la Compagnie Le Regard du Clown\n
+ \nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947349/g
+ udule-et-trampo/\n\nFiche : https://fontainebleaulive.fr/evenements/gudule
+ -et-trampo-fontainebleau-068663487e/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-
  068663487e/
 CATEGORIES:Culture & Ateliers
 GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_592af92e9b@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Visite guidée exclusive du théâtre municipal de Fontainebleau
+LOCATION:Théâtre municipal\, Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Tarif unique : 24 €. A partir de 12 ans et non adapt
+ ée aux personnes à mobilité…\n\nExplorez les coulisses et l'architect
+ ure historique du théâtre municipal de Fontainebleau lors d'une visite g
+ uidée exclusive.\n\nOrganisateur : https://www.fontainebleau-tourisme.com
+ /fr/fiche/5889403/visite-guidee-exclusive-du-theatre-municipal-de-fontaine
+ bleau/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-ex
+ clusive-du-theatre-municipal-de-fontaineblea-fontainebleau-592af92e9b/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-exclusive-du-thea
+ tre-municipal-de-fontaineblea-fontainebleau-592af92e9b/
+CATEGORIES:Culture & Ateliers
+GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -621,17 +648,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a722387529@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Gudule et Trampo
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:L’amour de deux clowns qui se décline sur fond de mandoline 
- et de gondole\, comme à Venise ! De Jacques Ronayette\, avec la Compagnie
-  Le Regard du Clown\n\nOrganisateur : https://www.anevert.fr/\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-a722
- 387529/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nL’amour 
+ de deux clowns qui se décline sur fond de mandoline et de gondole\, comme
+  à Venise ! De Jacques Ronayette\, avec la Compagnie Le Regard du Clown\n
+ \nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947349/g
+ udule-et-trampo/\n\nFiche : https://fontainebleaulive.fr/evenements/gudule
+ -et-trampo-fontainebleau-a722387529/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-
  a722387529/
 CATEGORIES:Culture & Ateliers
@@ -640,17 +668,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f0f64a41df@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Gudule et Trampo
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:L’amour de deux clowns qui se décline sur fond de mandoline 
- et de gondole\, comme à Venise ! De Jacques Ronayette\, avec la Compagnie
-  Le Regard du Clown\n\nOrganisateur : https://www.anevert.fr/\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-f0f6
- 4a41df/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nL’amour 
+ de deux clowns qui se décline sur fond de mandoline et de gondole\, comme
+  à Venise ! De Jacques Ronayette\, avec la Compagnie Le Regard du Clown\n
+ \nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947349/g
+ udule-et-trampo/\n\nFiche : https://fontainebleaulive.fr/evenements/gudule
+ -et-trampo-fontainebleau-f0f64a41df/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-
  f0f64a41df/
 CATEGORIES:Culture & Ateliers
@@ -659,17 +688,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fb8615d83f@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:Gudule et Trampo
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:L’amour de deux clowns qui se décline sur fond de mandoline 
- et de gondole\, comme à Venise ! De Jacques Ronayette\, avec la Compagnie
-  Le Regard du Clown\n\nOrganisateur : https://www.anevert.fr/\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-fb86
- 15d83f/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nL’amour 
+ de deux clowns qui se décline sur fond de mandoline et de gondole\, comme
+  à Venise ! De Jacques Ronayette\, avec la Compagnie Le Regard du Clown\n
+ \nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947349/g
+ udule-et-trampo/\n\nFiche : https://fontainebleaulive.fr/evenements/gudule
+ -et-trampo-fontainebleau-fb8615d83f/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-
  fb8615d83f/
 CATEGORIES:Culture & Ateliers
@@ -696,21 +726,64 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dc9a7eebb8@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Gudule et Trampo
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:L’amour de deux clowns qui se décline sur fond de mandoline 
- et de gondole\, comme à Venise ! De Jacques Ronayette\, avec la Compagnie
-  Le Regard du Clown\n\nOrganisateur : https://www.anevert.fr/\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-dc9a
- 7eebb8/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nL’amour 
+ de deux clowns qui se décline sur fond de mandoline et de gondole\, comme
+  à Venise ! De Jacques Ronayette\, avec la Compagnie Le Regard du Clown\n
+ \nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947349/g
+ udule-et-trampo/\n\nFiche : https://fontainebleaulive.fr/evenements/gudule
+ -et-trampo-fontainebleau-dc9a7eebb8/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/gudule-et-trampo-fontainebleau-
  dc9a7eebb8/
 CATEGORIES:Culture & Ateliers
 GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fa36914a89@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Jeu de piste "Le carnet d'amelot"
+LOCATION:Fontainebleau
+DESCRIPTION:Tarif : Entrée libre. Les billets seront en vente sur place le
+  jour même\, pas de réserv…\n\nUn jeu de piste captivant à travers la
+  ville de Fontainebleau à la recherche du carnet d'Amelot.\n\nOrganisateu
+ r : https://www.fontainebleau-tourisme.com/fr/fiche/7957362/jeu-de-piste-l
+ e-carnet-damelot/\n\nFiche : https://fontainebleaulive.fr/evenements/jeu-d
+ e-piste-le-carnet-d-amelot-fontainebleau-fa36914a89/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/jeu-de-piste-le-carnet-d-amelot
+ -fontainebleau-fa36914a89/
+CATEGORIES:Culture & Ateliers
+GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_372a75bdb4@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261029
+DTEND;VALUE=DATE:20261030
+SUMMARY:Visite guidée Second Empire dans la ville impériale de Fontainebl
+ eau
+LOCATION:Fontainebleau
+DESCRIPTION:Tarif : Tarif unique : 7 € (A partir de 6 ans). Gratuit pour 
+ les moins de 6 ans.\n\nDécouvrez l'histoire de Fontainebleau sous le Seco
+ nd Empire lors d'une visite guidée de la ville impériale.\n\nOrganisateu
+ r : https://www.fontainebleau-tourisme.com/fr/fiche/6593686/visite-guidee-
+ second-empire-dans-la-ville-imperiale-de-fontainebleau/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/visite-guidee-second-empire-dans-la-ville
+ -imperiale-de-fonta-fontainebleau-372a75bdb4/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-second-empire-dan
+ s-la-ville-imperiale-de-fonta-fontainebleau-372a75bdb4/
+CATEGORIES:Culture & Ateliers
+GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -733,22 +806,64 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_eace8caaff@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
-SUMMARY:Grande Brocante d'Automne du Grand Parquet
-LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
-DESCRIPTION:Horaires : 6h–18h\n\nTarif : Gratuit\n\nIncontournable brocan
- te d'automne réunissant exposants et chineurs sur le site du Grand Parque
- t.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/grande-brocante-d-automne-du-grand-p
- arquet-fontainebleau-eace8caaff/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/grande-brocante-d-automne-du-gr
- and-parquet-fontainebleau-eace8caaff/
+UID:EVT_8dee5271f4@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Réunions d'information Transmission
+LOCATION:Chambre d'agriculture de Région Ile-de-France\, antenne Le Mée-s
+ ur-Seine (77)\, Le Mée-sur-Seine
+DESCRIPTION:Pour la 8ème année consécutive\, la Chambre d'agriculture de
+  Région Ile-de-France vous convie à ses réunions d'information Transmis
+ sion.\n\nOrganisateur : https://openagenda.com/toutes-les-chambres-agricul
+ ture-agregees/events/reunions-dinformation-transmission\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/reunions-d-information-transmission-le-me
+ e-sur-seine-8dee5271f4/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/reunions-d-information-transmis
+ sion-le-mee-sur-seine-8dee5271f4/
 CATEGORIES:Culture & Ateliers
-GEO:48.39283;2.67347
+GEO:48.53915;2.64299
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3a5fba756f@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Sur la trace de La Couseuse
+LOCATION:Barbizon
+DESCRIPTION:Tarif : Plein tarif : 18 € (réduction et gratuité sur justi
+ ficatif).\n\nUn parcours culturel à Barbizon sur les traces du célèbre 
+ tableau La Couseuse.\n\nOrganisateur : https://www.fontainebleau-tourisme.
+ com/fr/fiche/7957896/sur-la-trace-de-la-couseuse/\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/sur-la-trace-de-la-couseuse-barbizon-3a5fba756f
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sur-la-trace-de-la-couseuse-bar
+ bizon-3a5fba756f/
+CATEGORIES:Culture & Ateliers
+GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4b85a91fce@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Conférence "Magellan\, le pari de repousser l'horizon"
+LOCATION:Fontainebleau
+DESCRIPTION:Tarif : Gratuit.\n\nUne conférence passionnante consacrée au 
+ grand voyage de Magellan autour du monde.\n\nOrganisateur : https://www.fo
+ ntainebleau-tourisme.com/fr/fiche/7968447/conference-magellan-le-pari-de-r
+ epousser-lhorizon/\n\nFiche : https://fontainebleaulive.fr/evenements/conf
+ erence-magellan-le-pari-de-repousser-l-horizon-fontainebleau-4b85a91fce/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-magellan-le-pari-de-
+ repousser-l-horizon-fontainebleau-4b85a91fce/
+CATEGORIES:Culture & Ateliers
+GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -760,10 +875,10 @@ SUMMARY:Grande Brocante du 11 Novembre
 LOCATION:Grand Parquet de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 9h–18h\n\nTarif : Gratuit\n\nGrande brocante d'aut
  omne organisée dans le cadre d'exception du Grand Parquet pour chiner en 
- famille.\n\nOrganisateur : https://www.grandparquet.com/\n\nFiche : https:
- //fontainebleaulive.fr/evenements/grande-brocante-du-11-novembre-fontaineb
- leau-f55e6302f3/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
+ famille.\n\nOrganisateur : https://www.grandparquet.com/event/brocante-5/\
+ n\nFiche : https://fontainebleaulive.fr/evenements/grande-brocante-du-11-n
+ ovembre-fontainebleau-f55e6302f3/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/grande-brocante-du-11-novembre-
  fontainebleau-f55e6302f3/
 CATEGORIES:Culture & Ateliers
@@ -771,17 +886,36 @@ GEO:48.39283;2.67347
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_9be6481b48@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Caféministe
+LOCATION:Avon
+DESCRIPTION:Tarif : Gratuit.\n\nUn moment d'échange convivial consacré au
+ x thématiques féministes à Avon.\n\nOrganisateur : https://www.fontaine
+ bleau-tourisme.com/fr/fiche/7942637/cafeministe/\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/cafeministe-avon-9be6481b48/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cafeministe-avon-9be6481b48/
+CATEGORIES:Culture & Ateliers
+GEO:48.413;2.72893
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_614c38ea82@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Le colonel Barbaque
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:“Un homme assoiffé d’aventures et de colère\, crève de c
- haleur au fond d’une barque africaine… »\n\nOrganisateur : https://ww
- w.anevert.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/le-colone
- l-barbaque-fontainebleau-614c38ea82/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n“Un homm
+ e assoiffé d’aventures et de colère\, crève de chaleur au fond d’un
+ e barque africaine… »\n\nOrganisateur : https://www.fontainebleau-touri
+ sme.com/fr/fiche/7947249/le-colonel-barbaque/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/le-colonel-barbaque-fontainebleau-614c38ea82/\n\nIn
+ formations collectées automatiquement : vérifiez-les auprès de l’orga
+ nisateur.
 URL:https://fontainebleaulive.fr/evenements/le-colonel-barbaque-fontaineble
  au-614c38ea82/
 CATEGORIES:Culture & Ateliers
@@ -790,16 +924,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_728f88dda5@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Le colonel Barbaque
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:“Un homme assoiffé d’aventures et de colère\, crève de c
- haleur au fond d’une barque africaine… »\n\nOrganisateur : https://ww
- w.anevert.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/le-colone
- l-barbaque-fontainebleau-728f88dda5/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n“Un homm
+ e assoiffé d’aventures et de colère\, crève de chaleur au fond d’un
+ e barque africaine… »\n\nOrganisateur : https://www.fontainebleau-touri
+ sme.com/fr/fiche/7947249/le-colonel-barbaque/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/le-colonel-barbaque-fontainebleau-728f88dda5/\n\nIn
+ formations collectées automatiquement : vérifiez-les auprès de l’orga
+ nisateur.
 URL:https://fontainebleaulive.fr/evenements/le-colonel-barbaque-fontaineble
  au-728f88dda5/
 CATEGORIES:Culture & Ateliers
@@ -808,7 +944,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_45420fd9ba@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -827,7 +963,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d70743fefd@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -846,7 +982,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6129d65ad6@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Cycle de conférences « Marie-Antoinette et Louis XVI : entre myth
@@ -855,10 +991,11 @@ LOCATION:Château de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : sam. 28 : 10h–17h \; dim. 29 : 10h–17h\n\nTarif 
  : Payant\n\nCycle de conférences historiques réunissant des experts pour
   explorer le règne et la postérité des deux souverains.\n\nOrganisateur
-  : https://www.chateaudefontainebleau.fr/\n\nFiche : https://fontainebleau
- live.fr/evenements/cycle-de-conferences-marie-antoinette-et-louis-xvi-entr
- e-myt-fontainebleau-6129d65ad6/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
+  : https://www.chateaudefontainebleau.fr/conferences-marie-antoinette-et-l
+ ouis-xvi-entre-mythe-et-realite/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/cycle-de-conferences-marie-antoinette-et-louis-xvi-entre-myt-fon
+ tainebleau-6129d65ad6/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cycle-de-conferences-marie-anto
  inette-et-louis-xvi-entre-myt-fontainebleau-6129d65ad6/
 CATEGORIES:Culture & Ateliers
@@ -867,7 +1004,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aa84102806@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:L'Avare
@@ -905,7 +1042,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1cf34759cb@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:L'Avare
@@ -923,7 +1060,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
@@ -962,7 +1099,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b6186d716@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Deux sur la balançoire
@@ -1018,7 +1155,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e894b7314b@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Deux sur la balançoire
@@ -1036,7 +1173,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets

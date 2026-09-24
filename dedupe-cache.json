@@ -1,0 +1,605 @@
+{
+  "version": 1,
+  "pairs": {
+    "ACT_002|ACT_008": {
+      "same": false,
+      "reason": "Il s'agit d'une série de concerts et non de l'exposition patrimoniale.",
+      "at": "2026-09-24"
+    },
+    "ACT_002|EVT_4abad3ec74": {
+      "same": false,
+      "reason": "Des concerts et promenades musicales constituent une animation distincte de l'exposition patrimoniale.",
+      "at": "2026-09-24"
+    },
+    "ACT_002|EVT_5cb728f120": {
+      "same": false,
+      "reason": "L'une est une exposition patrimoniale et l'autre une visite guidée.",
+      "at": "2026-09-24"
+    },
+    "ACT_002|EVT_6129d65ad6": {
+      "same": false,
+      "reason": "L'une est une exposition patrimoniale et l'autre est un cycle de conférences.",
+      "at": "2026-09-24"
+    },
+    "ACT_002|EVT_8193908330": {
+      "same": false,
+      "reason": "Une fiche concerne une exposition temporaire et l'autre des promenades musicales.",
+      "at": "2026-09-24"
+    },
+    "ACT_002|EVT_8cd503182f": {
+      "same": false,
+      "reason": "Un cycle cinématographique au cinéma Ermitage est distinct d'une exposition au château.",
+      "at": "2026-09-24"
+    },
+    "ACT_003|ACT_020": {
+      "same": false,
+      "reason": "Les dates de fin de l'événement diffèrent nettement (23 décembre vs 3 janvier).",
+      "at": "2026-09-24"
+    },
+    "ACT_004|ACT_017": {
+      "same": false,
+      "reason": "L'une est une balade pédestre et l'autre une randonnée à cheval.",
+      "at": "2026-09-24"
+    },
+    "ACT_004|EVT_4e2d0b77f8": {
+      "same": false,
+      "reason": "Les deux fiches présentent des dates de début différentes pour l'activité.",
+      "at": "2026-09-24"
+    },
+    "ACT_004|EVT_56635afd7b": {
+      "same": false,
+      "reason": "Les activités sont proposées par deux organisateurs différents avec des modalités et tarifs distincts.",
+      "at": "2026-09-24"
+    },
+    "ACT_004|EVT_5a0dc339fd": {
+      "same": true,
+      "reason": "Même balade équestre proposée par le même organisateur aux mêmes dates et tarifs.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|ACT_010": {
+      "same": false,
+      "reason": "Ce sont deux événements distincts : des concerts au château d'un côté, et un festival de cinéma au cinéma l'Ermitage de l'autre.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_4abad3ec74": {
+      "same": true,
+      "reason": "Même cycle musical dédié à Marie-Antoinette au Château de Fontainebleau sur la même période du 9 au 25 octobre 2026.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_5cb728f120": {
+      "same": false,
+      "reason": "Il s'agit d'un programme de concerts et non d'une visite guidée.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_8193908330": {
+      "same": false,
+      "reason": "L'une des fiches présente le programme général tandis que l'autre est un rendez-vous spécifique (les promenades musicales).",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_8cd503182f": {
+      "same": false,
+      "reason": "Il s'agit d'un concert de musique classique au château d'un côté et d'un cycle de films au cinéma de l'autre.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_be946c379f": {
+      "same": false,
+      "reason": "L'une couvre tout le programme du 9 au 25 octobre alors que l'autre est restreinte à une seule date.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_bf4d4eb7c8": {
+      "same": false,
+      "reason": "L'une des fiches présente l'ensemble de la programmation sur trois semaines, tandis que l'autre ne concerne que le premier week-end de concerts.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "Il s'agit d'une exposition de costumes de scène d'un côté et de concerts de l'autre.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_d2a0dae1a0": {
+      "same": false,
+      "reason": "L'une est le programme général sur trois semaines, l'autre correspond au rendez-vous d'un week-end spécifique.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Ce sont deux événements différents : un cycle de concerts d'un côté, et une visite théâtralisée de l'autre.",
+      "at": "2026-09-24"
+    },
+    "ACT_008|EVT_e444bb4675": {
+      "same": false,
+      "reason": "L'une couvre l'ensemble de la période et l'autre uniquement le dernier week-end de la programmation.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_4abad3ec74": {
+      "same": false,
+      "reason": "Deux évènements différents : un festival musical au Château contre un festival de cinéma au cinéma l'Ermitage.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_5cb728f120": {
+      "same": false,
+      "reason": "Un festival de cinéma au cinéma Ermitage est distinct d'une visite guidée au château.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_8193908330": {
+      "same": false,
+      "reason": "Il s'agit de deux événements différents : un festival de cinéma et une animation musicale au château.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_8cd503182f": {
+      "same": true,
+      "reason": "Il s'agit du même cycle cinématographique consacré à Marie-Antoinette organisé au cinéma Ermitage.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_a55660180c": {
+      "same": false,
+      "reason": "L'un concerne des séances de cinéma et l'autre un concert.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_bf4d4eb7c8": {
+      "same": false,
+      "reason": "L'un est un concert classique au château, l'autre est un festival de cinéma à l'Ermitage.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_d2a0dae1a0": {
+      "same": false,
+      "reason": "L'un est un festival cinématographique et l'autre est une série de concerts.",
+      "at": "2026-09-24"
+    },
+    "ACT_010|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "L'un est un festival de cinéma et l'autre est une visite théâtralisée.",
+      "at": "2026-09-24"
+    },
+    "ACT_017|EVT_4e2d0b77f8": {
+      "same": false,
+      "reason": "Deux activités différentes pour écouter le brame, l'une à pied et l'autre à cheval.",
+      "at": "2026-09-24"
+    },
+    "ACT_017|EVT_56635afd7b": {
+      "same": false,
+      "reason": "Les fiches présentent des plages de dates, des horaires et des organisateurs différents.",
+      "at": "2026-09-24"
+    },
+    "ACT_017|EVT_5a0dc339fd": {
+      "same": false,
+      "reason": "Il s'agit de deux sorties distinctes d'organisateurs différents, l'une pédestre et l'autre équestre.",
+      "at": "2026-09-24"
+    },
+    "ACT_022|EVT_18cdc799ac": {
+      "same": true,
+      "reason": "Les deux fiches font référence au même spectacle immersif de Noël au Château de Blandy-les-Tours.",
+      "at": "2026-09-24"
+    },
+    "EVT_01502bfb93|EVT_82d9a441d0": {
+      "same": true,
+      "reason": "Même sortie guidée nature organisée par Les Amis de la Forêt de Fontainebleau le 9 octobre 2026.",
+      "at": "2026-09-24"
+    },
+    "EVT_08a39f58ca|EVT_d97017572a": {
+      "same": true,
+      "reason": "Il s'agit du même championnat de concours complet d'équitation au Grand Parquet.",
+      "at": "2026-09-24"
+    },
+    "EVT_090407a470|EVT_964a968e35": {
+      "same": true,
+      "reason": "Même événement traditionnel célébrant la Saint-Hubert le 24 octobre 2026 à Fontainebleau.",
+      "at": "2026-09-24"
+    },
+    "EVT_0ab982a6c4|EVT_d547843611": {
+      "same": true,
+      "reason": "Même balade guidée organisée par la même association aux mêmes date et horaires.",
+      "at": "2026-09-24"
+    },
+    "EVT_0e1a2a3676|EVT_3775b506c1": {
+      "same": true,
+      "reason": "Même concours de saut d'obstacles organisé par l'École Militaire d'Équitation au Grand Parquet du 8 au 11 octobre 2026.",
+      "at": "2026-09-24"
+    },
+    "EVT_0e1a2a3676|EVT_93af25d735": {
+      "same": true,
+      "reason": "Même compétition équestre militaire se déroulant sur les mêmes dates et le même lieu.",
+      "at": "2026-09-24"
+    },
+    "EVT_1512e83552|EVT_eace8caaff": {
+      "same": true,
+      "reason": "Même brocante d'automne organisée au Grand Parquet le 11 novembre 2026.",
+      "at": "2026-09-24"
+    },
+    "EVT_1512e83552|EVT_f55e6302f3": {
+      "same": true,
+      "reason": "Même brocante du 11 novembre se déroulant au Grand Parquet.",
+      "at": "2026-09-24"
+    },
+    "EVT_1578b698ff|EVT_d391e6e25c": {
+      "same": false,
+      "reason": "Les dates d'événement ne concordent pas (9 au 11 octobre vs 10 au 11 octobre).",
+      "at": "2026-09-24"
+    },
+    "EVT_1578b698ff|EVT_f15cab21f4": {
+      "same": true,
+      "reason": "Il s'agit du même événement du festival SAUVAGES ! au Théâtre municipal.",
+      "at": "2026-09-24"
+    },
+    "EVT_1578b698ff|EVT_faeff665c0": {
+      "same": true,
+      "reason": "Il s'agit du même festival sur la biodiversité organisé par l'ANVL aux mêmes dates et lieu.",
+      "at": "2026-09-24"
+    },
+    "EVT_1d9da40530|EVT_4da520497e": {
+      "same": true,
+      "reason": "Même promenade guidée sur le sentier bleu n°17 aux mêmes date, horaire et organisateur.",
+      "at": "2026-09-24"
+    },
+    "EVT_1d9da40530|EVT_5266991852": {
+      "same": true,
+      "reason": "Même randonnée guidée sur le sentier 17 organisée à la même date et heure.",
+      "at": "2026-09-24"
+    },
+    "EVT_1de0024e70|EVT_7defa18153": {
+      "same": true,
+      "reason": "Même visite guidée sur les traces des animaux le 12 décembre 2026.",
+      "at": "2026-09-24"
+    },
+    "EVT_2e255f251c|EVT_372df50cf5": {
+      "same": true,
+      "reason": "Même activité de découverte de l'église et carnet de dessin le 17 octobre 2026 à Larchant.",
+      "at": "2026-09-24"
+    },
+    "EVT_374c79c2fe|EVT_4dc2b6d4a3": {
+      "same": false,
+      "reason": "Ce sont deux événements de Murder Party distincts avec des horaires et des tarifs différents.",
+      "at": "2026-09-24"
+    },
+    "EVT_374c79c2fe|EVT_590bd76c68": {
+      "same": true,
+      "reason": "Il s'agit du même événement de Murder Party au Château de Blandy.",
+      "at": "2026-09-24"
+    },
+    "EVT_374c79c2fe|EVT_fcf3ac200d": {
+      "same": false,
+      "reason": "Il s'agit de deux formules de Murder Party distinctes.",
+      "at": "2026-09-24"
+    },
+    "EVT_3775b506c1|EVT_93af25d735": {
+      "same": true,
+      "reason": "Même concours hippique militaire organisé aux mêmes dates au Grand Parquet.",
+      "at": "2026-09-24"
+    },
+    "EVT_3775b506c1|EVT_d08275dd1e": {
+      "same": true,
+      "reason": "Il s'agit du même concours hippique d'obstacles organisé par l'École Militaire d'Équitation aux mêmes dates.",
+      "at": "2026-09-24"
+    },
+    "EVT_3b68f12c1b|EVT_8149bc63ce": {
+      "same": false,
+      "reason": "Une fiche concerne une sortie ponctuelle le 17 octobre alors que l'autre s'étend jusqu'en décembre.",
+      "at": "2026-09-24"
+    },
+    "EVT_3e2913f3ff|EVT_fcf3ac200d": {
+      "same": false,
+      "reason": "L'un est une Murder Party en soirée et l'autre un programme d'animations de journée.",
+      "at": "2026-09-24"
+    },
+    "EVT_422270134f|EVT_e57caa47c3": {
+      "same": true,
+      "reason": "Les deux fiches décrivent le même événement équestre au Grand Parquet aux mêmes dates.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_5cb728f120": {
+      "same": false,
+      "reason": "Il s'agit de promenades et concerts musicaux d'un côté et d'une visite guidée des appartements de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_8193908330": {
+      "same": false,
+      "reason": "La fiche A présente le programme global incluant concerts et promenades, tandis que la fiche B cible uniquement les promenades.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_8cd503182f": {
+      "same": false,
+      "reason": "Il s'agit de promenades et concerts au château d'un côté, et d'un cycle de films au cinéma de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_be946c379f": {
+      "same": false,
+      "reason": "Il s'agit du programme général d'un côté et de détails d'exécutions de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_bf4d4eb7c8": {
+      "same": false,
+      "reason": "L'une des fiches concerne une série de concerts spécifique et l'autre le programme général.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "L'un est une exposition de costumes et l'autre est un programme de concerts et promenades musicales.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_d2a0dae1a0": {
+      "same": false,
+      "reason": "La seconde fiche est un concert sur un week-end spécifique au sein du programme général.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Il s'agit de deux activités distinctes : des concerts et promenades musicales d'un côté, et une visite théâtralisée sur la mode de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_4abad3ec74|EVT_e444bb4675": {
+      "same": false,
+      "reason": "La seconde fiche est un rendez-vous spécifique d'un week-end au sein du programme global.",
+      "at": "2026-09-24"
+    },
+    "EVT_4da520497e|EVT_5266991852": {
+      "same": true,
+      "reason": "Même exploration guidée du sentier 17 par les Amis de la Forêt de Fontainebleau.",
+      "at": "2026-09-24"
+    },
+    "EVT_4da520497e|EVT_a5d6e5d6bf": {
+      "same": true,
+      "reason": "Il s'agit de la même promenade guidée le long du sentier bleu n°17 organisée par les AAFF le même jour aux mêmes heures.",
+      "at": "2026-09-24"
+    },
+    "EVT_4dc2b6d4a3|EVT_590bd76c68": {
+      "same": false,
+      "reason": "Ce sont deux séances ou animations de Murder Party distinctes aux tarifs et horaires différents.",
+      "at": "2026-09-24"
+    },
+    "EVT_4dc2b6d4a3|EVT_fcf3ac200d": {
+      "same": false,
+      "reason": "Ce sont deux événements distincts avec des tarifs et horaires différents.",
+      "at": "2026-09-24"
+    },
+    "EVT_4e2d0b77f8|EVT_56635afd7b": {
+      "same": false,
+      "reason": "Il s'agit de deux prestations distinctes organisées par deux structures différentes.",
+      "at": "2026-09-24"
+    },
+    "EVT_4e2d0b77f8|EVT_5a0dc339fd": {
+      "same": false,
+      "reason": "Les dates de début de la période d'activité ne correspondent pas (20 septembre vs 25 septembre).",
+      "at": "2026-09-24"
+    },
+    "EVT_4e6974ffa4|EVT_ac4f2ac287": {
+      "same": false,
+      "reason": "Il s'agit de deux visites guidées différentes, l'une en forêt et l'autre dans le village.",
+      "at": "2026-09-24"
+    },
+    "EVT_5266991852|EVT_a5d6e5d6bf": {
+      "same": true,
+      "reason": "Même promenade guidée sur le sentier 17 le 22 octobre 2026 de 9h à 12h.",
+      "at": "2026-09-24"
+    },
+    "EVT_56635afd7b|EVT_5a0dc339fd": {
+      "same": false,
+      "reason": "Deux organisateurs distincts proposent des activités différentes (promenade à cheval Henson d'un côté, randonnée pédestre David-nature de l'autre).",
+      "at": "2026-09-24"
+    },
+    "EVT_590bd76c68|EVT_fcf3ac200d": {
+      "same": false,
+      "reason": "Il s'agit de deux offres de Murder Party distinctes avec des tarifs et horaires différents.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_6129d65ad6": {
+      "same": false,
+      "reason": "Ce sont deux rendez-vous distincts du même thème : une visite guidée et un cycle de conférences.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_8193908330": {
+      "same": false,
+      "reason": "Les deux fiches décrivent des animations distinctes (une visite guidée des appartements vs une déambulation musicale).",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_8cd503182f": {
+      "same": false,
+      "reason": "Un cycle de films au cinéma et une visite guidée du château sont des activités distinctes.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_a55660180c": {
+      "same": false,
+      "reason": "L'un est une visite guidée et l'autre est un concert.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_bf4d4eb7c8": {
+      "same": false,
+      "reason": "Deux activités distinctes : des concerts de musique classique et une visite guidée du château.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "L'un est une exposition temporaire et l'autre une visite guidée des appartements.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_d2a0dae1a0": {
+      "same": false,
+      "reason": "L'un est une visite guidée et l'autre est un concert.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Il s'agit de deux visites différentes avec des dates, thèmes et formats distincts.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_e444bb4675": {
+      "same": false,
+      "reason": "L'un est une visite guidée et l'autre est un concert.",
+      "at": "2026-09-24"
+    },
+    "EVT_5cf92cce1f|EVT_8cd503182f": {
+      "same": false,
+      "reason": "Il s'agit d'un cycle cinématographique au cinéma Ermitage et d'un concert musical.",
+      "at": "2026-09-24"
+    },
+    "EVT_60bca9d451|EVT_af1a49c6c7": {
+      "same": true,
+      "reason": "Même représentation de l'opéra La Flûte enchantée le 6 décembre 2026 au Théâtre municipal.",
+      "at": "2026-09-24"
+    },
+    "EVT_8193908330|EVT_8cd503182f": {
+      "same": false,
+      "reason": "Deux événements totalement distincts : un cycle de films au cinéma Ermitage et des promenades musicales au château.",
+      "at": "2026-09-24"
+    },
+    "EVT_8193908330|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "Il s'agit de deux événements différents : une exposition de costumes de scène et des promenades musicales.",
+      "at": "2026-09-24"
+    },
+    "EVT_8193908330|EVT_d2a0dae1a0": {
+      "same": false,
+      "reason": "L'une des fiches concerne les promenades musicales et l'autre est un concert spécifique.",
+      "at": "2026-09-24"
+    },
+    "EVT_8193908330|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Il s'agit de deux activités différentes (une déambulation musicale vs une visite théâtralisée sur la mode).",
+      "at": "2026-09-24"
+    },
+    "EVT_8193908330|EVT_e444bb4675": {
+      "same": false,
+      "reason": "Il s'agit de deux rendez-vous distincts de la programmation : les promenades et les concerts.",
+      "at": "2026-09-24"
+    },
+    "EVT_82e77aacb9|EVT_eae4c86968": {
+      "same": true,
+      "reason": "Même visite guidée en forêt sur la biodiversité le même jour à la même heure.",
+      "at": "2026-09-24"
+    },
+    "EVT_8cd503182f|EVT_bf4d4eb7c8": {
+      "same": false,
+      "reason": "Il s'agit d'un concert au château d'un côté et d'un cycle cinématographique au cinéma de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_8cd503182f|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "L'un est une exposition au château et l'autre un cycle cinématographique au cinéma Ermitage.",
+      "at": "2026-09-24"
+    },
+    "EVT_8cd503182f|EVT_d2a0dae1a0": {
+      "same": false,
+      "reason": "Il s'agit d'un cycle de films au cinéma d'un côté et d'un concert au château de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_8cd503182f|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Un cycle cinématographique et une visite théâtralisée sont deux activités différentes.",
+      "at": "2026-09-24"
+    },
+    "EVT_93af25d735|EVT_d08275dd1e": {
+      "same": true,
+      "reason": "Les deux fiches désignent la même compétition hippique organisée par l'École Militaire d'Équitation.",
+      "at": "2026-09-24"
+    },
+    "EVT_97f20c8238|EVT_ca277192a3": {
+      "same": true,
+      "reason": "Même chantier d'entretien participatif de l'ENS Carreau Franc organisé par l'ANVL le 3 octobre 2026.",
+      "at": "2026-09-24"
+    },
+    "EVT_a3a6504cba|EVT_c82b316def": {
+      "same": true,
+      "reason": "Même sortie d'observation ornithologique au Carreau Franc le même matin.",
+      "at": "2026-09-24"
+    },
+    "EVT_a9464a50b7|EVT_abff11b7e9": {
+      "same": true,
+      "reason": "Même pièce de théâtre jouée le 10 octobre 2026 au Théâtre municipal de Fontainebleau.",
+      "at": "2026-09-24"
+    },
+    "EVT_abac6f2f82|EVT_fb62998180": {
+      "same": true,
+      "reason": "Même visite guidée sur les traces des animaux le 21 novembre 2026 au même endroit.",
+      "at": "2026-09-24"
+    },
+    "EVT_b1d13ab685|EVT_d72ddbdf1d": {
+      "same": true,
+      "reason": "Même spectacle seul-en-scène programmé au Théâtre municipal la même soirée.",
+      "at": "2026-09-24"
+    },
+    "EVT_be946c379f|EVT_bf4d4eb7c8": {
+      "same": false,
+      "reason": "L'une des fiches englobe l'ensemble de la programmation sur plusieurs week-ends tandis que l'autre se concentre uniquement sur la session de concerts du premier",
+      "at": "2026-09-24"
+    },
+    "EVT_c974b05978|EVT_d2b1b1c557": {
+      "same": true,
+      "reason": "Même visite guidée sur les traces des animaux le 17 octobre 2026 avec les mêmes tarifs.",
+      "at": "2026-09-24"
+    },
+    "EVT_d2a0dae1a0|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Il s'agit d'une visite théâtralisée d'un côté et de concerts de l'autre.",
+      "at": "2026-09-24"
+    },
+    "EVT_d3064b59bf|EVT_d391e6e25c": {
+      "same": false,
+      "reason": "Les dates de début et la durée de la manifestation diffèrent.",
+      "at": "2026-09-24"
+    },
+    "EVT_d3064b59bf|EVT_d4a479e6cd": {
+      "same": true,
+      "reason": "Les deux fiches décrivent le même événement naturaliste au Théâtre Municipal de Fontainebleau.",
+      "at": "2026-09-24"
+    },
+    "EVT_d3064b59bf|EVT_f15cab21f4": {
+      "same": true,
+      "reason": "Même événement de l'ANVL décliné sous deux intitulés très proches.",
+      "at": "2026-09-24"
+    },
+    "EVT_d3064b59bf|EVT_faeff665c0": {
+      "same": true,
+      "reason": "Même événement de l'ANVL au Théâtre municipal de Fontainebleau aux mêmes dates.",
+      "at": "2026-09-24"
+    },
+    "EVT_d391e6e25c|EVT_d4a479e6cd": {
+      "same": false,
+      "reason": "Les dates de début ne correspondent pas.",
+      "at": "2026-09-24"
+    },
+    "EVT_d391e6e25c|EVT_f15cab21f4": {
+      "same": false,
+      "reason": "Les dates d'événement ne sont pas identiques.",
+      "at": "2026-09-24"
+    },
+    "EVT_d391e6e25c|EVT_faeff665c0": {
+      "same": false,
+      "reason": "Les dates et le contenu de la fiche diffèrent (3 jours vs 2 jours).",
+      "at": "2026-09-24"
+    },
+    "EVT_d4a479e6cd|EVT_f15cab21f4": {
+      "same": true,
+      "reason": "Même festival thématique du 9 au 11 octobre 2026 au Théâtre municipal.",
+      "at": "2026-09-24"
+    },
+    "EVT_d4a479e6cd|EVT_faeff665c0": {
+      "same": true,
+      "reason": "Même manifestation sur les prédateurs proposée aux mêmes dates et au même endroit.",
+      "at": "2026-09-24"
+    },
+    "EVT_d4afe803bc|EVT_e444bb4675": {
+      "same": false,
+      "reason": "Il s'agit de deux événements distincts (visite théâtralisée vs concert).",
+      "at": "2026-09-24"
+    },
+    "EVT_e030dba4a1|EVT_efb85434ee": {
+      "same": true,
+      "reason": "Il s'agit du même concert de la Garde républicaine célébrant les 20 ans de l'association aux mêmes date et heure.",
+      "at": "2026-09-24"
+    },
+    "EVT_efe4049c33|EVT_fa1ca711af": {
+      "same": true,
+      "reason": "Même concert de Noël interprétant Monteverdi à la Chapelle de la Trinité du Château de Fontainebleau.",
+      "at": "2026-09-24"
+    },
+    "EVT_f15cab21f4|EVT_faeff665c0": {
+      "same": true,
+      "reason": "Même festival consacré aux prédateurs, organisé au Théâtre municipal par l'ANVL du 9 au 11 octobre.",
+      "at": "2026-09-24"
+    },
+    "EVT_f7fe50ded0|EVT_ffa37eea11": {
+      "same": true,
+      "reason": "Il s'agit du même marché d'antiquités mensuel organisé le même jour sur la même place.",
+      "at": "2026-09-24"
+    }
+  }
+}

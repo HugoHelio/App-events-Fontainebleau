@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4ff795c5bc@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261003
 SUMMARY:Projection Manga
@@ -29,7 +29,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a0fda3676d@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Festival Manga
@@ -69,13 +69,15 @@ DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Sortie guidée à vélo : Bords de Seine au départ de Bois-le-Roi
 LOCATION:Parvis de la gare de Bois-le-Roi\, Bois-le-Roi
-DESCRIPTION:Horaires : Dimanche à 14h30\n\nTarif : 25 €\n\nPublic : Dès
-  12 ans\n\nBalade guidée à vélo au bord de l'eau pour observer la faune
-  fluviale et découvrir les demeures de villégiature « Affolantes ».\n\
- nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-seine-au-de
- part-de-bois-le-roi-3786d85282/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Dimanche à 14h30\n\nTarif : Adulte : 25 € (A part
+ ir de 12 ans.).\n\nPublic : Dès 12 ans\n\nBalade guidée à vélo au bord
+  de l'eau pour observer la faune fluviale et découvrir les demeures de vi
+ llégiature « Affolantes ».\n\nOrganisateur : https://www.fontainebleau-
+ tourisme.com/fr/fiche/5825577/sortie-les-bords-de-seine-a-velo-au-depart-d
+ e-bois-le-roi/\n\nFiche : https://fontainebleaulive.fr/evenements/sortie-g
+ uidee-a-velo-bords-de-seine-au-depart-de-bois-le-roi-3786d85282/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-s
  eine-au-depart-de-bois-le-roi-3786d85282/
 CATEGORIES:Nature & Environnement

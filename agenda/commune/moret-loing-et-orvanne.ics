@@ -11,8 +11,26 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_3971bf8a2f@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:#ForêtBelle 2026 à Moret-Loing-et-Orvanne
+LOCATION:Stade Thierry Roquette\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h00 - 20h00\n\nTarif : Gratuit\n\nParticipez à un
+ e opération citoyenne consacrée au ramassage des déchets en forêt.\n\n
+ Organisateur : https://moretloingetorvanne.fr/events/foretbelle-2026-moret
+ -loing-et-orvanne/\n\nFiche : https://fontainebleaulive.fr/evenements/fore
+ tbelle-2026-a-moret-loing-et-orvanne-3971bf8a2f/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/foretbelle-2026-a-moret-loing-e
+ t-orvanne-3971bf8a2f/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_2016bae2a8@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260924T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Tri-Fouille 2026
@@ -20,10 +38,11 @@ LOCATION:Avenue de Fontainebleau\, Veneux-Les Sablons\, Moret-Loing-et-Orva
  nne
 DESCRIPTION:Horaires : 8h–18h\n\nTarif : Gratuit\n\nGrand vide-grenier an
  nuel et animations conviviales organisés avenue de Fontainebleau à Veneu
- x-Les Sablons.\n\nOrganisateur : https://www.moretloingetorvanne.fr/\n\nFi
- che : https://fontainebleaulive.fr/evenements/tri-fouille-2026-moret-loing
- -et-orvanne-2016bae2a8/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+ x-Les Sablons.\n\nOrganisateur : https://moretloingetorvanne.fr/events/tri
+ -fouille-2026-moret-loing-et-orvanne/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/tri-fouille-2026-moret-loing-et-orvanne-2016bae2a8/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/tri-fouille-2026-moret-loing-et
  -orvanne-2016bae2a8/
 CATEGORIES:Culture & Ateliers

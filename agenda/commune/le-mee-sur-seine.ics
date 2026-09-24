@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Le Mée-sur-Seine · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_8dee5271f4@fontainebleaulive.fr
+DTSTAMP:20260924T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Réunions d'information Transmission
+LOCATION:Chambre d'agriculture de Région Ile-de-France\, antenne Le Mée-s
+ ur-Seine (77)\, Le Mée-sur-Seine
+DESCRIPTION:Pour la 8ème année consécutive\, la Chambre d'agriculture de
+  Région Ile-de-France vous convie à ses réunions d'information Transmis
+ sion.\n\nOrganisateur : https://openagenda.com/toutes-les-chambres-agricul
+ ture-agregees/events/reunions-dinformation-transmission\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/reunions-d-information-transmission-le-me
+ e-sur-seine-8dee5271f4/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/reunions-d-information-transmis
+ sion-le-mee-sur-seine-8dee5271f4/
+CATEGORIES:Culture & Ateliers
+GEO:48.53915;2.64299
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
