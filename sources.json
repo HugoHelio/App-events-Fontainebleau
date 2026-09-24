@@ -1,12 +1,13 @@
 {
-  "_comment": "Hand-edited. Organisers' own pages, read directly (item 72, §3.Z). type: ics = an iCalendar feed; apidae-ot = the tourist office list + event pages, parsed without AI; page = HTML or RSS read and extracted by Gemini WITHOUT grounding. enabled:false keeps a site on file with the reason it is not read.",
+  "_comment": "Hand-edited. Organisers' own pages, read directly (item 72, §3.Z). type: ics = an iCalendar feed; apidae-ot = the tourist office list + event pages, parsed without AI; page = HTML or RSS read and extracted by Gemini WITHOUT grounding. follow = a path pattern: the list page is read, then each linked event page matching it (up to maxFollow, default 25). enabled:false keeps a site on file with the reason it is not read.",
   "sources": [
     {
       "id": "grandparquet",
       "name": "Grand Parquet",
       "type": "ics",
       "url": "https://www.grandparquet.com/evenements/?ical=1",
-      "city": "Fontainebleau"
+      "city": "Fontainebleau",
+      "category": "Sport & Outdoor"
     },
     {
       "id": "ot-pays-fontainebleau",
@@ -19,56 +20,79 @@
       "id": "ville-fontainebleau",
       "name": "Ville de Fontainebleau",
       "type": "page",
-      "urls": ["https://www.fontainebleau.fr/bouger-et-sortir/agenda-133.html?no_cache=1"],
-      "city": "Fontainebleau"
+      "urls": [
+        "https://www.fontainebleau.fr/bouger-et-sortir/agenda-133.html?no_cache=1"
+      ],
+      "city": "Fontainebleau",
+      "note": "Answers HTTP 418 to GitHub Actions (cloud addresses blocked) while answering normally elsewhere. Not worked around: the site decides who reads it."
     },
     {
       "id": "chateau-fontainebleau",
       "name": "Château de Fontainebleau",
       "type": "page",
-      "urls": ["https://www.chateaudefontainebleau.fr/agenda-et-actualites/", "https://www.chateaudefontainebleau.fr/feed/"],
+      "urls": [
+        "https://www.chateaudefontainebleau.fr/agenda-et-actualites/",
+        "https://www.chateaudefontainebleau.fr/feed/"
+      ],
       "city": "Fontainebleau"
     },
     {
       "id": "anvl",
       "name": "ANVL (naturalistes)",
       "type": "page",
-      "urls": ["https://anvl.fr/feed/"],
+      "urls": [
+        "https://anvl.fr/feed/"
+      ],
       "note": "The calendar itself is served by a booking plugin through AJAX; only the RSS feed is read for now."
     },
     {
       "id": "chateau-blandy",
       "name": "Château de Blandy",
       "type": "page",
-      "urls": ["https://www.chateau-blandy.fr/fr/programmation-venir"],
-      "city": "Blandy-les-Tours"
+      "urls": [
+        "https://www.chateau-blandy.fr/fr/programmation-venir"
+      ],
+      "city": "Blandy-les-Tours",
+      "follow": "^/fr/fiche-evenement/"
     },
     {
       "id": "henson",
       "name": "Espaces équestres Henson",
       "type": "page",
-      "urls": ["https://www.henson.fr/tag/evenement/"]
+      "urls": [
+        "https://www.henson.fr/tag/evenement/"
+      ],
+      "enabled": false,
+      "note": "No agenda: the outings at Henson – Pays de Fontainebleau (Saint-Martin-en-Bière) are sold as shop offers. The 'Évènement' tag page was a news archive for every Henson centre."
     },
     {
       "id": "moret",
       "name": "Moret-Loing-et-Orvanne",
       "type": "page",
-      "urls": ["https://moretloingetorvanne.fr/agenda"],
-      "city": "Moret-Loing-et-Orvanne"
+      "urls": [
+        "https://moretloingetorvanne.fr/agenda"
+      ],
+      "city": "Moret-Loing-et-Orvanne",
+      "follow": "^/events/"
     },
     {
       "id": "samois",
       "name": "Samois-sur-Seine",
       "type": "page",
-      "urls": ["https://samois-sur-seine.fr/agenda/"],
-      "city": "Samois-sur-Seine"
+      "urls": [
+        "https://samois-sur-seine.fr/agenda/"
+      ],
+      "city": "Samois-sur-Seine",
+      "follow": "^/evenement/"
     },
     {
       "id": "aaff",
       "name": "Amis de la Forêt de Fontainebleau",
       "enabled": false,
       "type": "page",
-      "urls": ["https://www.aaff.fr/agenda/"],
+      "urls": [
+        "https://www.aaff.fr/agenda/"
+      ],
       "note": "Agenda rendered by JavaScript: the raw page holds no event."
     },
     {
@@ -76,7 +100,9 @@
       "name": "Vaux-le-Vicomte",
       "enabled": false,
       "type": "page",
-      "urls": ["https://vaux-le-vicomte.com/activites-evenements/"],
+      "urls": [
+        "https://vaux-le-vicomte.com/activites-evenements/"
+      ],
       "note": "Agenda rendered by JavaScript."
     },
     {
@@ -84,7 +110,9 @@
       "name": "Ville de Melun",
       "enabled": false,
       "type": "page",
-      "urls": ["https://www.ville-melun.fr/agenda"],
+      "urls": [
+        "https://www.ville-melun.fr/agenda"
+      ],
       "note": "Single-page JavaScript application."
     },
     {
@@ -92,7 +120,9 @@
       "name": "David Nature",
       "enabled": false,
       "type": "page",
-      "urls": ["https://www.david-nature.com/le-calendrier"],
+      "urls": [
+        "https://www.david-nature.com/le-calendrier"
+      ],
       "note": "robots.txt: Disallow / for every robot. Respected, never read."
     }
   ]

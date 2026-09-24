@@ -27,7 +27,9 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/generate-pages.js` | Pages statiques indexables (§3.X) : une fiche par événement, une page par commune, `sitemap.xml`. N'écrit **jamais** `data.json` |
 | `evenements/`, `que-faire/`, `agenda/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer. `agenda/` : flux `.ics` (§3.Y), en CRLF protégé par `.gitattributes` |
 | `sources.json` | **Édité à la main.** Registre des sites d'organisateurs lus directement (§3.Z) : type de lecteur, URL, raison d'une désactivation |
-| `scripts/sources.js` / `scripts/compare-sources.js` | Lecture directe des sites (sans grounding, `robots.txt` respecté) et comparatif en mode observation. **Ne publient rien** tant que le seuil de 90 % n'est pas atteint |
+| `scripts/sources.js` | Lecture directe des sites des organisateurs (sans grounding, `robots.txt` respecté) : **quatrième source publiée** depuis le 24/09 (§3.Z2). Une confirmation par un site ne change jamais les dates |
+| `scripts/compare-sources.js` | Comparatif hebdomadaire en mode observation : part des événements retrouvés par des sources légitimes (critère de sortie du grounding, ≥ 90 %) |
+| `sources-cache.json` | **Généré et commité.** Fiches de l'office de tourisme complétées par Gemini (sans grounding), par URL + empreinte du texte |
 | `scripts/dedupe-judge.js` | Doublons « frères » (§3.W2) : paires repérées sur les mots distinctifs, jugées par Gemini **sans grounding** |
 | `dedupe-cache.json` | **Généré et commité.** Verdicts des doublons jugés, par paire d'ids — sans lui, chaque scan reposerait les mêmes questions |
 | `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
@@ -74,7 +76,8 @@ GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js
 # Forcer un scan malgré la cadence de 60 h
 GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js
 
-# Le pipeline principal importe aussi DATAtourisme automatiquement ; DATATOURISME=0 pour le désactiver
+# Le pipeline principal importe aussi DATAtourisme, OpenAgenda et les sites des organisateurs ;
+# DATATOURISME=0, OPENAGENDA=0, SITES=0 pour les désactiver
 GEMINI_API_KEY=… DATATOURISME=0 OPENAGENDA=0 DRY_RUN=1 node scripts/fetch-events.js
 
 # Lecture du formulaire de signalement. Sans FEEDBACK_CSV_URL, la fonctionnalité est simplement

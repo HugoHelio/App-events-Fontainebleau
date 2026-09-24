@@ -592,6 +592,50 @@ Live (61 from the tourist office alone: a coverage gain to sort, not a list to p
 Collectionnistes » ×2, « Y'a de la joie » ×2, « Blandy enchanté » ×2…). They inflate the
 comparison's denominator and show twice on the site. Item 51c.
 
+### Z2. The organisers' sites become a source (item 72, step 2, September 24, 2026)
+
+The first CI comparison run (24/09) read the sites fine from GitHub — except fontainebleau.fr,
+which answers **HTTP 418** to cloud addresses while answering normally elsewhere: not worked
+around, the site decides who reads it. It found 68 events Fontainebleau Live did not have. The
+project lead asked to publish them, to take the more precise information (links, positions), and
+not to review anything by hand. Gemini grounding stays on, unchanged.
+
+**A fourth source in `fetch-events.js`**, after OpenAgenda, same validation as every other source.
+Each site record goes, in order:
+
+1. **Confirm and enrich** an event already held — exact key, or `isSameOccurrence()`. This uses
+   a new `enrichFrom()`, not `mergeInto()`: it **never touches the dates** (one dated performance
+   on a site must not shorten a multi-day record it matched), takes the event's own page when ours
+   is a home page (or a deeper page on the same site), takes a postal address when our position is
+   approximate — the geocoding step then re-resolves it — fills blanks, and marks the record
+   `source: "site"`.
+2. Otherwise **add it**, unless it is a standing offer: a period longer than 14 days (the
+   DATAtourisme "recurring" threshold, §3.H) confirms but is never announced — the château's little
+   train, a museum's six-month opening.
+3. Wording too different for `isSameOccurrence()` is caught by the judged dedupe (§3.W2), which
+   keeps the stored record and, for a site record, merges through `enrichFrom()` too.
+
+**`source: "site"`** is now a provenance value (validation, `fromExisting()`, the comparison).
+It says "a legitimate source confirms this": the grounding exit criterion (§3.Z) is readable in
+`data.json` itself.
+
+**The tourist office's pages are completed by Gemini without grounding**: category, one-sentence
+description (reformulated, not copied), hours, venue with postal address, organiser, age. Dates
+are never asked — they come from the tested parser. Cached by page URL + text hash in
+`sources-cache.json` (generated, committed) like the translations: an unchanged page costs nothing.
+
+**Reader fixes from the first CI run**: pages are cut to their `<main>` / longest `<article>`
+(Blandy's menus were three quarters of the text); a `follow` pattern reads the event pages a list
+links to, where the dates are (Blandy, Samois, Moret); Henson is disabled — its "Évènement" tag
+was a news archive for every Henson centre, its Fontainebleau outings are shop offers.
+
+Daily workflow: timeout 20 → 30 minutes (polite reading, one request per second per host, ~5 min
+when a real scan runs), `sources-cache.json` committed. Tested: unit tests for `enrichFrom()`,
+period split, standing offers, the enrichment cache, `mainContent()`; and **an end-to-end run of
+`main()` on the real data.json with a simulated internet** — Trail de Barbizon kept its id, gained
+the event page and an address, dates untouched; a duplicate brocante enriched, not duplicated; two
+new events added; a standing offer refused; a `robots.txt` Disallow never fetched.
+
 ### Y. Calendar feeds and the free partner widget (items 69 & 71, September 24, 2026)
 
 Two ways for the programme to travel without anyone coming back to the site. Both are built from
@@ -1277,6 +1321,10 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | `robots.txt` respecté, sites JavaScript laissés de côté | david-nature.com interdit les robots : jamais lu. Aucun contournement d'un site qui se protège ; les sites purement JavaScript attendent un meilleur moyen |
 | 2026-09-24 | **Doublons « frères » : jugés par Gemini sans grounding, verdicts mémorisés** (§3.W2) — la règle de §3.W « jamais fusionner des frères » est levée pour les paires qu'un juge dit identiques | Aucune règle sur les mots ne sépare « TDA Poneys / TDA Équitation » de « TDA CREIF / TDA Tournée des As » : c'est une question de sens. ~15 vrais doublons en ligne et le chef de projet ne veut pas trier à la main. Garde-fous : dans le doute « non », masqués jamais fusionnés, `keepSeparate` pour défaire |
 | 2026-09-24 | Une fusion garde la fiche déjà publiée et vérifiée, et lui ajoute la page plus précise et la position exacte de l'autre | L'id stable garde `overrides.json` attaché ; l'information la plus précise ne doit pas être perdue avec le doublon |
+| 2026-09-24 | **Les sites des organisateurs deviennent une source publiée** (§3.Z2), le grounding reste en place | Demande du chef de projet : publier les nouveaux événements, prendre les infos plus précises, sans relecture manuelle. Ce sont des sources légitimes : aucune raison d'attendre le seuil de 90 %, qui ne concerne que l'arrêt du grounding |
+| 2026-09-24 | Une confirmation par un site ne change **jamais les dates** (`enrichFrom()`) | Une séance datée lue sur le site ne doit pas raccourcir une fiche de plusieurs jours. Seuls le lien, l'adresse et les champs vides sont pris |
+| 2026-09-24 | Une offre de plus de 14 jours lue sur un site confirme mais n'est jamais ajoutée | Même seuil que les « récurrents » DATAtourisme : le petit train du château n'est pas une sortie à annoncer |
+| 2026-09-24 | fontainebleau.fr (HTTP 418 depuis GitHub) n'est pas contourné | Le site bloque les adresses cloud. Ses 27 événements restent sur Gemini en attendant mieux (partenariat, phase commerciale) |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
@@ -1431,6 +1479,9 @@ choses qui restaient étaient noyées dedans.
 
 ### B3. Sortir du grounding sans rien perdre — décidé le 24/09
 
+- [x] **72, étape 2 — les sites sont une source publiée, le 24/09** (§3.Z2). **À regarder au
+  prochain scan** : la ligne « 🏛️ Sites des organisateurs » du rapport (fiches lues, confirmées,
+  offres permanentes écartées, rejets) et les nouveaux événements sur le site.
 - [ ] **72. Comparatif en parallèle — construit le 24/09** (§3.Z). Premier run local sans les
   sources lues par Gemini : **43 %**. **À faire : lancer le workflow « Comparatif des sources »**
   (onglet Actions, bouton *Run workflow*) pour le premier chiffre complet, puis relire les

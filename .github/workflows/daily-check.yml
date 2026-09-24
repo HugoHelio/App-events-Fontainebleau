@@ -22,7 +22,8 @@ concurrency:
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # 30 et non 20 depuis le 24/09 : la lecture polie des sites (une requête par seconde) prend ~5 min.
+    timeout-minutes: 30
 
     steps:
       - name: Récupérer le code du dépôt
@@ -66,6 +67,8 @@ jobs:
           if [ -f translate-cache.json ]; then git add translate-cache.json; fi
           # Verdicts des doublons jugés (§3.W2) : sans eux, chaque run reposerait les mêmes questions.
           if [ -f dedupe-cache.json ]; then git add dedupe-cache.json; fi
+          # Fiches de l'office de tourisme déjà complétées par Gemini (§3.Z2) : sans ce cache, chaque run repaierait tout.
+          if [ -f sources-cache.json ]; then git add sources-cache.json; fi
           # Pages générées : chemins nommés un par un, jamais `git add -A` à la racine — le bot
           # publie sur main sans relecture, un fichier parasite partirait en ligne. `-A` sur ces
           # dossiers seulement, pour publier aussi les suppressions (événements terminés).

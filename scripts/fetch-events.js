@@ -31,6 +31,7 @@ const openagenda = require('./openagenda');
 const feedback = require('./feedback');
 const translate = require('./translate');
 const dedupeJudge = require('./dedupe-judge');
+const sites = require('./sources');
 const pages = require('./generate-pages');
 
 // ───────────────────────────── Configuration ─────────────────────────────
@@ -77,6 +78,8 @@ const CONFIG = {
   openagenda: process.env.OPENAGENDA !== '0',
   // DATAtourisme, second source (open data). Set DATATOURISME=0 to collect from Gemini only.
   datatourisme: process.env.DATATOURISME !== '0',
+  // Organisers' own sites, read without grounding (sources.json, §3.Z2). SITES=0 disables them.
+  sites: process.env.SITES !== '0',
 };
 
 const CATEGORIES = [
@@ -417,7 +420,7 @@ function validateEvent(raw, { today, maxDate }) {
       url,
       // Provenance. Absent (undefined) on Gemini records, so serializeEvent omits the field and
       // the existing data.json entries stay byte-identical.
-      source: ['datatourisme', 'openagenda'].includes(raw.source) ? raw.source : undefined,
+      source: ['datatourisme', 'openagenda', 'site'].includes(raw.source) ? raw.source : undefined,
       // Only OpenAgenda carries one today. Through cleanUrl() like any other link: it ends up in
       // an <img src> eventually, and the value comes from a third party.
       image: cleanUrl(raw.image) || undefined,
@@ -443,7 +446,7 @@ function fromExisting(old, ctx) {
   // text and replaces it if that text has changed.
   if (typeof old.descriptionEn === 'string' && old.descriptionEn.trim()) e.descriptionEn = cleanText(old.descriptionEn, 600);
   if (old.image) e.image = cleanUrl(old.image) || undefined;
-  if (['datatourisme', 'openagenda'].includes(old.source)) e.source = old.source;
+  if (['datatourisme', 'openagenda', 'site'].includes(old.source)) e.source = old.source;
 
   const oLat = toNum(old.lat);
   const oLng = toNum(old.lng);
@@ -500,6 +503,36 @@ function mergeInto(target, incoming) {
     delete target.urlStatus;
     delete target.urlCheckedAt;
   }
+}
+
+/**
+ * An organiser's own site confirms an event we already hold (§3.Z2). Unlike mergeInto(), used
+ * when a source re-reports its own record, this NEVER touches the dates: one dated performance
+ * read on the site must not shorten a multi-day record it matched. It takes what the site knows
+ * better:
+ *   - a link to the event's own page when ours is a home page, or a deeper page on the same site;
+ *   - a postal address when our position is only approximate (the next step re-geocodes it);
+ *   - whatever we left blank.
+ * And it marks the record as confirmed by a legitimate source (`source: 'site'`), which is what
+ * the grounding exit criterion counts (decision of 24 September).
+ */
+function enrichFrom(target, incoming) {
+  const isHome = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
+  if (incoming.url && incoming.url !== target.url && !isGroundingRedirect(incoming.url)
+      && (target.urlStatus !== 'ok' || isHome(target.url) || deeperOnSameHost(target.url, incoming.url))) {
+    target.url = incoming.url;
+    delete target.urlStatus;
+    delete target.urlCheckedAt;
+  }
+  const precise = ['ban', 'manual', 'venue', 'feed'].includes(target.geoSource);
+  if (!precise && incoming.locationName && /\d/.test(incoming.locationName) && incoming.locationName !== target.locationName) {
+    target.locationName = incoming.locationName;
+    target.geoSource = undefined;   // re-resolved by step 4 from the new address
+  }
+  for (const f of ['schedule', 'price', 'organizer', 'description', 'locationName']) {
+    if (!target[f] && incoming[f]) target[f] = incoming[f];
+  }
+  if (!target.source) target.source = 'site';
 }
 
 // ───────────────────────────── Gemini ─────────────────────────────
@@ -1055,6 +1088,21 @@ function renderSummary(stats, ctx) {
       if (dtRej.length) L.push(`  - rejected at validation: ${dtRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
     }
   }
+  if (stats.sites) {
+    const st = stats.sites;
+    if (st.error) {
+      L.push(`- 🏛️ Sites des organisateurs : ❌ ${String(st.error).slice(0, 160)} (les autres sources sont conservées)`);
+    } else {
+      const ok = st.perSource.filter((r) => r.status === 'ok');
+      L.push(`- 🏛️ Sites des organisateurs (sans grounding) : ${ok.length} lu(s) → **${st.records}** fiche(s) · **${stats.siteConfirmed}** événement(s) confirmé(s) et enrichi(s) · ${st.long} offre(s) permanente(s) jamais ajoutée(s)`);
+      L.push(`  - ${st.perSource.map((r) => `${r.id} ${r.status === 'ok' ? r.events : r.status === 'disabled' ? '⏸' : '❌'}`).join(' · ')}`);
+      for (const r of st.perSource.filter((x) => x.status === 'error' || x.status === 'robots')) L.push(`  - ⚠️ ${r.id} : ${String(r.error).slice(0, 140)}`);
+      const siteRej = Object.entries(stats.siteRejected);
+      if (siteRej.length) L.push(`  - rejetées : ${siteRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+      const en = st.enrich || {};
+      if (en.asked || en.error) L.push(`  - fiches de l'office complétées : ${en.asked} nouvelle(s), ${en.cached} en cache${en.error ? ` — ⚠️ ${String(en.error).slice(0, 120)}` : ''} · tokens ${en.tokensIn} in / ${en.tokensOut} out (non grounded)`);
+    }
+  }
   if (stats.oa) {
     if (stats.oa.error) {
       L.push(`- 📅 OpenAgenda: ❌ ${String(stats.oa.error).slice(0, 160)} (les autres sources sont conservées)`);
@@ -1407,6 +1455,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
+    sites: null, siteRejected: {}, siteConfirmed: 0, siteLongSkipped: 0,
     unconfirmed: [], vanishedFromFeed: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
@@ -1501,9 +1550,32 @@ async function main() {
     }
   }
 
+  // 1d. Organisers' own sites — read without grounding (§3.Z2) ──────────
+  // A site that fails is reported and skipped, like a feed: never fatal.
+  let siteRaw = [];
+  if (CONFIG.sites) {
+    console.log('🏛️ Sites des organisateurs…');
+    try {
+      const results = await sites.load(ctx);
+      const read = results.flatMap((r) => r.events);
+      const enriched = await sites.enrich(read, { dryRun: CONFIG.dryRun, today });
+      siteRaw = sites.toPipelineEvents(read, ctx);
+      stats.sites = {
+        perSource: results.map((r) => ({ id: r.id, status: r.status, events: r.events.length, error: r.error || r.skipped || r.note || '' })),
+        records: siteRaw.length,
+        long: siteRaw.filter((e) => e.long).length,
+        enrich: enriched,
+      };
+      console.log(`   → ${read.length} événement(s) lus sur ${results.filter((r) => r.status === 'ok').length} site(s) → ${siteRaw.length} fiche(s)`);
+    } catch (err) {
+      stats.sites = { error: err.message };
+      console.error(`   ❌ Sites: ${String(err.message).slice(0, 300)}`);
+    }
+  }
+
   // A source failing is survivable as long as one of them produced something: events are pruned
   // by date only, never by absence, so a partial failure deletes nothing.
-  if (okScans === 0 && dtRaw.length === 0 && oaRaw.length === 0) {
+  if (okScans === 0 && dtRaw.length === 0 && oaRaw.length === 0 && siteRaw.length === 0) {
     throw new Error('Every source failed (Gemini, DATAtourisme, OpenAgenda) — data.json left untouched');
   }
 
@@ -1534,7 +1606,14 @@ async function main() {
   }
   if (oaRaw.length) console.log(`🧹 ${validOa.length}/${oaRaw.length} OpenAgenda records valid`);
 
-  if (validNew.length === 0 && validDt.length === 0 && validOa.length === 0) {
+  const validSite = [];
+  for (const raw of siteRaw) {
+    const v = validateEvent(raw, ctx);
+    if (v.ok) { v.long = raw.long === true; validSite.push(v); } else bump(stats.siteRejected, v.reason);
+  }
+  if (siteRaw.length) console.log(`🧹 ${validSite.length}/${siteRaw.length} site records valid`);
+
+  if (validNew.length === 0 && validDt.length === 0 && validOa.length === 0 && validSite.length === 0) {
     throw new Error('Sources returned no valid event — data.json left untouched');
   }
 
@@ -1550,9 +1629,16 @@ async function main() {
     const key = eventKey(v.event);
     if (!records.has(key)) records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: false });
   }
-  const addRecord = (v, { fuzzy = false, counter = 'dtDeduped' } = {}) => {
+  const addRecord = (v, { fuzzy = false, counter = 'dtDeduped', confirm = false, addNew = true } = {}) => {
     const key = eventKey(v.event);
     const known = records.get(key);
+    if (known && confirm) {
+      enrichFrom(known.event, v.event);
+      known.refreshed = true;
+      known.event.lastSeen = today;
+      stats[counter]++;
+      return;
+    }
     if (known) {
       mergeInto(known.event, v.event);
       if (!known.modelCoords && v.modelCoords) known.modelCoords = v.modelCoords;
@@ -1566,9 +1652,19 @@ async function main() {
     // cost of this scan, and the incumbent record wins: it has already passed URL verification.
     if (fuzzy) {
       for (const rec of records.values()) {
-        if (datatourisme.isSameOccurrence(v.event, rec.event)) { stats[counter]++; return; }
+        if (!datatourisme.isSameOccurrence(v.event, rec.event)) continue;
+        stats[counter]++;
+        if (confirm) {
+          enrichFrom(rec.event, v.event);
+          rec.refreshed = true;
+          rec.event.lastSeen = today;
+        }
+        return;
       }
     }
+    // A standing offer read on a site (a museum's six-month opening, the château's little train)
+    // may confirm an event we hold, but is never announced as a new one.
+    if (!addNew) { stats.siteLongSkipped++; return; }
     v.event.id = eventId(key);
     v.event.lastSeen = today;
     records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: true });
@@ -1579,6 +1675,10 @@ async function main() {
   // Last in, so an event already reported by Gemini or DATAtourisme keeps its verified URL;
   // only the newcomer pays the cost of the fuzzy comparison.
   for (const v of validOa) addRecord(v, { fuzzy: true, counter: 'oaDeduped' });
+  // Last of all: a site record first tries to confirm and enrich what is already there; only
+  // what nothing matches becomes a new event. Wording that differs more than isSameOccurrence()
+  // tolerates is caught by the judged dedupe below, which keeps the stored record as winner.
+  for (const v of validSite) addRecord(v, { fuzzy: true, counter: 'siteConfirmed', confirm: true, addNew: !v.long });
 
   // One classifier over the whole merged set: DATAtourisme maps almost everything to Culture
   // (its ontology has no stage class), OpenAgenda guesses from keywords, Gemini is told the enum.
@@ -1626,7 +1726,7 @@ async function main() {
   // Sibling titles that no word rule can settle (§3.W2): judged by Gemini without grounding,
   // verdicts cached. After the feedback merge so a record hidden today is never merged into.
   try {
-    stats.judged = await dedupeJudge.run(records, { overrides: effective, eventKey, mergeInto, today, dryRun: CONFIG.dryRun });
+    stats.judged = await dedupeJudge.run(records, { overrides: effective, eventKey, mergeInto, enrichFrom, today, dryRun: CONFIG.dryRun });
     const j = stats.judged;
     if (!j.skipped) console.log(`🧩 Doublons jugés : ${j.candidates} paire(s) candidate(s), ${j.merged.length} fusion(s), ${j.asked} nouveau(x) verdict(s)${j.error ? ` — ⚠️ ${j.error}` : ''}`);
   } catch (err) {
@@ -1731,7 +1831,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, dedupeFuzzy, serializeEvent,
+  main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
   applyOverrides, coerceOverride, matchVenue, loadVenues, distanceKm, buildPrompt, SCANS, COMMUNES,
   refineCategory, CATEGORIES,
   renderSummary,

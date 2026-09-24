@@ -106,7 +106,7 @@ const cell = (s) => String(s ?? '').replace(/\|/g, '/').replace(/\s+/g, ' ').tri
 
 function compare(published, pools) {
   const rows = published.map((e) => {
-    const openSource = e.source === 'datatourisme' || e.source === 'openagenda';
+    const openSource = ['datatourisme', 'openagenda', 'site'].includes(e.source);
     let best = openSource ? { level: 'strict', pool: e.source, title: e.title } : null;
     for (const pool of pools) {
       for (const c of pool.events) {
@@ -207,6 +207,8 @@ async function main() {
     pools = JSON.parse(fs.readFileSync(SNAPSHOT, 'utf8')).pools;
   } else {
     pools = await gather(ctx);
+    // Page text is for enrichment only; it would triple the snapshot for nothing.
+    for (const p of pools) for (const e of p.events) delete e.detail;
     fs.writeFileSync(SNAPSHOT, JSON.stringify({ ctx, pools }, null, 1));
   }
 

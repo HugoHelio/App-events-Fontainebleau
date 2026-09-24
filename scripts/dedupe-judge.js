@@ -217,9 +217,12 @@ function preferred(a, b) {
  * the loser knew better: a more precise page on the same site (mergeInto), an exact position
  * where the winner only had an approximate one.
  */
-function absorb(winner, loser, mergeInto) {
+function absorb(winner, loser, mergeInto, enrichFrom) {
   const title = winner.event.title;
-  mergeInto(winner.event, loser.event);
+  // A record read on the organiser's own site brings its page and address, never its dates
+  // (one dated performance must not shorten the record it matched): enrichFrom(), §3.Z2.
+  if (enrichFrom && loser.event.source === 'site') enrichFrom(winner.event, loser.event);
+  else mergeInto(winner.event, loser.event);
   winner.event.title = title;
   const w = winner.event, l = loser.event;
   if (!PRECISE_GEO.includes(w.geoSource) && PRECISE_GEO.includes(l.geoSource) && Number.isFinite(l.lat)) {
@@ -227,6 +230,7 @@ function absorb(winner, loser, mergeInto) {
   }
   if (!winner.modelCoords && loser.modelCoords) winner.modelCoords = loser.modelCoords;
   if (!w.image && l.image) w.image = l.image;
+  if (!w.source && l.source) w.source = l.source;   // confirmed by a legitimate source
   winner.refreshed = true;
 }
 
@@ -234,7 +238,7 @@ function absorb(winner, loser, mergeInto) {
  * Runs over the merged record map (Map key -> { event, isNew, … }). Mutates it. Never throws:
  * a failure leaves the set exactly as dedupeFuzzy() left it.
  */
-async function run(records, { overrides = {}, eventKey, mergeInto, today, dryRun = false }) {
+async function run(records, { overrides = {}, eventKey, mergeInto, enrichFrom, today, dryRun = false }) {
   const stats = { candidates: 0, cached: 0, asked: 0, merged: [], distinct: 0, pending: 0, tokensIn: 0, tokensOut: 0, error: null };
   if (!CONFIG.enabled) return { ...stats, skipped: 'DEDUPE_JUDGE=0' };
 
@@ -284,7 +288,7 @@ async function run(records, { overrides = {}, eventKey, mergeInto, today, dryRun
     const loser = winner === a ? b : a;
     const line = `« ${loser.event.title} » → « ${winner.event.title} » (${winner.event.startDate}, \`${loser.event.id}\` → \`${winner.event.id}\`)`;
     records.delete(eventKey(loser.event));
-    absorb(winner, loser, mergeInto);
+    absorb(winner, loser, mergeInto, enrichFrom);
     absorbedInto.set(loser, winner);
     stats.merged.push(line);
   }

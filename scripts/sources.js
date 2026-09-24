@@ -1,10 +1,11 @@
 /**
- * Direct sources — organisers' own pages, read without Google Search grounding (item 72, §3.Z).
+ * Direct sources — organisers' own pages, read without Google Search grounding (item 72, §3.Z, §3.Z2).
  *
  * Why: 7 organiser sites carry two thirds of what Gemini finds, 15 carry 83 %. Reading them
- * directly takes those events out of the grounding terms problem (§3.G, §8). For now this module
- * only feeds the SHADOW comparison (compare-sources.js): nothing it returns is published until
- * legitimate sources cover ≥ 90 % of the published events (decision of 24 September).
+ * directly takes those events out of the grounding terms problem (§3.G, §8). It feeds both the
+ * weekly shadow comparison (compare-sources.js) and, since 24 September, the pipeline itself as a
+ * fourth published source (§3.Z2). Grounding stays on until legitimate sources cover ≥ 90 % of
+ * the published events.
  *
  * Three readers, chosen per site in sources.json:
  *   ics        an iCalendar feed. Deterministic.
@@ -34,7 +35,7 @@ const CONFIG = {
   hostDelayMs: envInt('SOURCES_HOST_DELAY_MS', 1000),
   timeoutMs: envInt('SOURCES_TIMEOUT_MS', 25_000),
   maxFichePages: envInt('SOURCES_MAX_FICHES', 250),
-  maxTextChars: envInt('SOURCES_MAX_TEXT_CHARS', 60_000),
+  maxTextChars: envInt('SOURCES_MAX_TEXT_CHARS', 90_000),
   model: process.env.SOURCES_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   llmTimeoutMs: envInt('SOURCES_LLM_TIMEOUT_MS', 180_000),
 };
@@ -285,14 +286,20 @@ async function readApidaeOt(src, ctx) {
     if (!periods.length) continue;
     const price = ((flat.match(/Tarifs\s*(.*?)(Périodes d'ouverture|Prestations|$)/) || [])[1] || '').slice(0, 120).trim();
     const name = decodeEntities((url.match(/\/fiche\/\d+\/([^/]+)/) || [])[1] || '').replace(/-/g, ' ');
+    const title = pickTitle(text, name) || name;
+    // The event's own block — title to the site footer — for enrich(): description, venue,
+    // address and hours are in there, the menus are not.
+    const from = Math.max(0, flat.indexOf(title));
+    const to = flat.indexOf('Découvrir la région', from);
     events.push({
-      title: pickTitle(text, name) || name,
+      title,
       city: town,
       startDate: periods.reduce((a, q) => (q.start < a ? q.start : a), periods[0].start),
       endDate: periods.reduce((a, q) => (q.end > a ? q.end : a), periods[0].end),
       periods,
       price,
       url,
+      detail: flat.slice(from, to > from ? to : from + 3000).slice(0, 3000),
     });
   }
   return { fetched, events };
@@ -347,7 +354,7 @@ const EVENT_SCHEMA = {
   },
 };
 
-async function extractWithGemini(prompt) {
+async function extractWithGemini(prompt, schema = EVENT_SCHEMA) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent`;
   let lastErr;
   for (let attempt = 1; attempt <= 3; attempt++) {
@@ -359,7 +366,7 @@ async function extractWithGemini(prompt) {
         // available precisely because the search tool is absent (§3.A).
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.1, responseMimeType: 'application/json', responseSchema: EVENT_SCHEMA },
+          generationConfig: { temperature: 0.1, responseMimeType: 'application/json', responseSchema: schema },
         }),
         signal: AbortSignal.timeout(CONFIG.llmTimeoutMs),
       });
@@ -383,12 +390,42 @@ async function extractWithGemini(prompt) {
   throw lastErr;
 }
 
+/**
+ * The part of a page that is about the page: <main>, else the longest <article>, else the body
+ * without its menus. On the château de Blandy's pages the menus were three quarters of the text
+ * and pushed the events past the budget.
+ */
+function mainContent(html) {
+  const main = /<main\b[\s\S]*?<\/main>/i.exec(html);
+  if (main && main[0].length > 500) return main[0];
+  const articles = String(html).match(/<article\b[\s\S]*?<\/article>/gi) || [];
+  const longest = articles.sort((a, b) => b.length - a.length)[0];
+  if (longest && longest.length > 500) return longest;
+  return String(html).replace(/<(nav|header|footer|aside)\b[\s\S]*?<\/\1>/gi, ' ');
+}
+
 async function readPage(src, ctx) {
   if (!process.env.GEMINI_API_KEY) return { fetched: 0, events: [], skipped: 'no GEMINI_API_KEY' };
   const pages = [];
+  const follow = src.follow ? new RegExp(src.follow) : null;
+  const detailUrls = new Set();
   for (const u of src.urls) {
     const r = await politeGet(u);
-    pages.push({ url: r.url, text: htmlToText(r.text, r.url) });
+    pages.push({ url: r.url, text: htmlToText(mainContent(r.text), r.url) });
+    // A list that only names its events: follow the links to their own pages, where the dates are.
+    if (follow) {
+      for (const m of r.text.matchAll(/href\s*=\s*["']([^"'#]+)["']/gi)) {
+        let abs;
+        try { abs = new URL(decodeEntities(m[1]), r.url).href; } catch { continue; }
+        if (new URL(abs).host === new URL(r.url).host && follow.test(new URL(abs).pathname)) detailUrls.add(abs);
+      }
+    }
+  }
+  for (const u of [...detailUrls].slice(0, src.maxFollow || 25)) {
+    try {
+      const r = await politeGet(u);
+      pages.push({ url: r.url, text: htmlToText(mainContent(r.text), r.url) });
+    } catch { /* one missing event page is not a reason to lose the others */ }
   }
   // Share the budget between the pages so a long feed cannot crowd out the agenda page.
   const per = Math.floor(CONFIG.maxTextChars / pages.length);
@@ -424,7 +461,8 @@ async function load(ctx, { only } = {}) {
     const t0 = Date.now();
     try {
       const r = await reader(src, ctx);
-      const events = r.events.map((e) => ({ ...e, sourceId: src.id }));
+      // A site-wide default fills what the reader cannot know (an .ics has no category).
+      const events = r.events.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
       results.push({ ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events });
     } catch (err) {
       results.push({ ...base, status: err.robots ? 'robots' : 'error', error: String(err.message || err).slice(0, 200), ms: Date.now() - t0, events: [] });
@@ -433,4 +471,138 @@ async function load(ctx, { only } = {}) {
   return results;
 }
 
-module.exports = { CONFIG, load, loadRegistry, parseRobots, robotsAllows, htmlToText, parseFrenchPeriods, parseIcs, decodeEntities, pickTitle };
+// ───────────────────────────── For the pipeline ─────────────────────────────
+//
+// Until 24 September this module only fed the shadow comparison. It now also feeds the
+// pipeline (fetch-events.js) as a fourth source. What follows is only used there.
+
+const crypto = require('crypto');
+const CATEGORIES = ['Sport & Outdoor', 'Nature & Environnement', 'Scène & Spectacles', 'Culture & Ateliers'];
+const ENRICH_CACHE = path.resolve(process.env.SOURCES_CACHE_PATH || 'sources-cache.json');
+const ENRICH_CACHE_DAYS = envInt('SOURCES_CACHE_DAYS', 150);
+
+const ENRICH_PROMPT = (items) => `
+Voici des fiches d'événements de l'office de tourisme du Pays de Fontainebleau (texte brut).
+Les dates sont déjà connues. Pour chaque fiche, donne UNIQUEMENT ce que le texte affirme :
+- "category" : "Sport & Outdoor", "Nature & Environnement", "Scène & Spectacles" (concerts, théâtre, cinéma, festivals) ou "Culture & Ateliers" (expositions, visites, patrimoine, ateliers, brocantes).
+- "description" : une phrase en français, 200 caractères maximum, reformulée (pas un copier-coller).
+- "schedule" : les horaires seulement, sans les dates ; vide si absents.
+- "locationName" : le nom du lieu, suivi de l'adresse postale si elle est écrite (ex. « Muse Galerie, 82 bis Grande Rue »). Jamais l'adresse de l'office de tourisme.
+- "organizer" : l'organisateur s'il est nommé, sinon vide.
+- "ageMin" / "ageMax" : 0 et 99 si rien n'est précisé.
+N'invente rien.
+
+${items.map((it, i) => `=== FICHE ${i} : ${it.title} (${it.city}) ===\n${it.detail}`).join('\n\n')}
+`.trim();
+
+const ENRICH_SCHEMA = {
+  type: 'ARRAY',
+  items: {
+    type: 'OBJECT',
+    properties: {
+      i: { type: 'INTEGER' }, category: { type: 'STRING' }, description: { type: 'STRING' }, schedule: { type: 'STRING' },
+      locationName: { type: 'STRING' }, organizer: { type: 'STRING' }, ageMin: { type: 'INTEGER' }, ageMax: { type: 'INTEGER' },
+    },
+    required: ['i', 'category'],
+  },
+};
+
+/**
+ * Fills category, description, hours, venue and age for readers that only hold dates and raw
+ * text (the tourist office). Gemini WITHOUT grounding, cached by page URL + text hash like the
+ * translations: an unchanged page is never asked twice. Dates are never touched here — they
+ * were read by the tested parser, and a model does not get to change them.
+ */
+async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
+  const stats = { cached: 0, asked: 0, failed: 0, tokensIn: 0, tokensOut: 0, error: null };
+  let cache = {};
+  try { cache = JSON.parse(fs.readFileSync(ENRICH_CACHE, 'utf8')).entries || {}; } catch { cache = {}; }
+  const todo = [];
+  for (const e of events) {
+    if (!e.detail) continue;
+    const h = crypto.createHash('sha1').update(e.title + '\n' + e.detail).digest('hex').slice(0, 12);
+    const hit = cache[e.url];
+    if (hit && hit.h === h) { Object.assign(e, hit.f); hit.at = today; stats.cached++; continue; }
+    todo.push({ e, h });
+  }
+  if (todo.length && process.env.GEMINI_API_KEY) {
+    for (let s = 0; s < todo.length; s += batchSize) {
+      const batch = todo.slice(s, s + batchSize);
+      try {
+        const { items, usage } = await extractWithGemini(ENRICH_PROMPT(batch.map((b) => b.e)), ENRICH_SCHEMA);
+        if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += usage.candidatesTokenCount || 0; }
+        for (const it of items) {
+          const b = batch[Number(it && it.i)];
+          if (!b || !CATEGORIES.includes(it.category)) continue;
+          const f = {
+            category: it.category,
+            description: String(it.description || '').slice(0, 220),
+            schedule: String(it.schedule || '').slice(0, 120),
+            locationName: String(it.locationName || '').slice(0, 160),
+            organizer: String(it.organizer || '').slice(0, 120),
+            ageMin: Number.isInteger(it.ageMin) ? it.ageMin : 0,
+            ageMax: Number.isInteger(it.ageMax) ? it.ageMax : 99,
+          };
+          Object.assign(b.e, f);
+          cache[b.e.url] = { h: b.h, f, at: today };
+          stats.asked++;
+        }
+      } catch (err) {
+        stats.failed += batch.length;
+        stats.error = String(err.message || err).slice(0, 200);
+      }
+    }
+  }
+  if (!dryRun) {
+    const cutoff = new Date(Date.parse(today) - ENRICH_CACHE_DAYS * 86400000).toISOString().slice(0, 10);
+    const kept = {};
+    for (const k of Object.keys(cache).sort()) if ((cache[k].at || today) >= cutoff) kept[k] = cache[k];
+    try { fs.writeFileSync(ENRICH_CACHE, JSON.stringify({ version: 1, entries: kept }, null, 2) + '\n'); } catch (err) { stats.error = stats.error || err.message; }
+  }
+  return stats;
+}
+
+/** Same threshold as DATAtourisme's "recurring" (§3.H): beyond it, a standing offer, not an outing. */
+const LONG_EVENT_DAYS = envInt('SOURCES_LONG_EVENT_DAYS', 14);
+const spanDays = (s, e) => Math.round((Date.parse(e) - Date.parse(s)) / 86400000);
+
+/**
+ * Reader output → the shape fetch-events.js validates. One record per dated period (the
+ * DATAtourisme rule: an exact date is the useful information). A period longer than
+ * LONG_EVENT_DAYS is flagged `long`: the pipeline uses it to confirm and enrich an event it
+ * already has, never to add a new one — a museum's standing offer is not an outing to announce.
+ */
+function toPipelineEvents(events, { today, maxDate }) {
+  const out = [];
+  for (const e of events) {
+    const periods = (e.periods && e.periods.length ? e.periods : [{ start: e.startDate, end: e.endDate || e.startDate }])
+      .filter((p) => p.end >= today && p.start <= maxDate).slice(0, 12);
+    for (const p of periods) {
+      out.push({
+        title: e.title,
+        category: e.category,
+        ageMin: e.ageMin ?? 0,
+        ageMax: e.ageMax ?? 99,
+        city: e.city,
+        locationName: e.locationName || '',
+        dateType: 'event',
+        startDate: p.start,
+        endDate: p.end,
+        schedule: e.schedule || '',
+        price: e.price || '',
+        organizer: e.organizer || '',
+        description: e.description || '',
+        url: e.url,
+        source: 'site',
+        sourceId: e.sourceId,
+        long: spanDays(p.start, p.end) > LONG_EVENT_DAYS,
+      });
+    }
+  }
+  return out;
+}
+
+module.exports = {
+  CONFIG, load, loadRegistry, parseRobots, robotsAllows, htmlToText, parseFrenchPeriods, parseIcs, decodeEntities, pickTitle,
+  mainContent, enrich, toPipelineEvents, LONG_EVENT_DAYS,
+};
