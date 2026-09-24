@@ -430,6 +430,69 @@ keyword pairs rather than exact labels — "le lien est mort" and "lien cassé" 
 so a miscategorised option is visible on the first run rather than silently mishandled. A CSV
 with no id or problem-type column fails loudly instead of guessing.
 
+### X. Static pages for search engines (item 68, September 24, 2026)
+
+**Why.** The site is one page that loads `data.json` with JavaScript. A crawler sees a title, a
+map and nothing else: none of the ~200 events is indexable, and nobody searching "que faire à
+Samois" can land here. Search traffic is the precondition to any form of monetisation, so this
+comes first.
+
+**What.** `scripts/generate-pages.js` runs in the daily workflow right after the collector,
+including on the days the cadence guard skips the scan, and writes plain HTML that needs no script:
+
+| Path | Content |
+|---|---|
+| `/evenements/<titre>-<commune>-<jeton>/` | One page per upcoming event: dates, hours, place, price, age, description, organiser link, "Voir sur la carte", five other events in the same commune. schema.org `Event` markup |
+| `/que-faire/<commune>/` | "Que faire à … ?" — every upcoming event in the commune |
+| `/que-faire/` | Index of communes, linked from the footer of `index.html` (a plain link, so a crawler finds it without JavaScript) |
+| `/sitemap.xml` | All of the above + the home page and `?lang=en` with their `hreflang` pair (the hand-written sitemap of 22/09 is now generated) |
+| `/404.html` | **Hand-written, not generated.** What GitHub Pages serves for a missing path — mostly a visitor arriving from a search result for an event that is over |
+
+Pages are French only, like the data they are made of (only `description` is translated, and the
+English text is machine output — not something to put in front of a search engine).
+
+**Rules, each one a lesson from earlier in this document:**
+
+- **The script never writes `data.json`.** The first draft did, and rewrote it as a bare v1
+  array — dropping `schemaVersion` and `windowEnd` — after crashing on the v2 object it could
+  not read. The pipeline stays the only writer: `serializeEvent()` stores `pageUrl` using the
+  generator's own `pagePath()`, so the two can never disagree. The field is derived on every
+  write, never carried over.
+- **Addresses are stable.** A title-date slug changes whenever an override or a merge edits the
+  title, and a URL Google already holds breaks. The address ends with a token of the `id` — the
+  hash for `EVT_…`, `act014` for the v1 `ACT_014` records still live — and the id is kept for
+  the life of a record. When the readable part changes, the old folder becomes a `noindex`
+  redirect to the new one.
+- **Past events are deleted**, not tombstoned: `404.html` does that job for every one of them,
+  with no state to keep. A multi-day event keeps its page until its last day.
+- **schema.org `Event` only for events whose link was verified** (`urlStatus: ok`, 173 of 214).
+  A rich result with a wrong date is worse than none — the principle of §5 applied to Google.
+  An approximate position is not sent as `geo`. An `Offer` is only emitted for an unambiguous
+  price (`Gratuit`, `12 €`): "Gratuit pour les adhérents" or "10 € plein, 8 € réduit" would have
+  become a false price in a search result. The page itself always shows the full text.
+- **Everything is escaped**, JSON-LD included (`<` → `\u003c`, so a title cannot close the
+  script block); links go through the same `http(s)`-only check as `safeUrl()` in the frontend.
+- **Deterministic, written only on change.** A run with nothing new writes nothing and commits
+  nothing. Everything is computed in memory before the first write, so a crash leaves the
+  previous pages intact; the workflow step is `continue-on-error` — a page failure never blocks
+  the data.
+- **The commit names its paths.** `git add -A` at the root was proposed and refused: the bot
+  publishes to `main` without review, and any stray file would go live. `-A` is used on
+  `evenements/` and `que-faire/` only, so deletions are published too.
+
+**Frontend.** Each card links to its page ("Fiche" / "Page"). `?event=<id>` — the target of the
+pages' "Voir sur la carte" — widens the period filter if needed, opens the marker and highlights
+the card; it runs once per load.
+
+**Size.** 214 events → 214 + 25 HTML files, ~2 MB. The first commit is large; after that a
+scan touches only the pages whose event changed, plus the commune pages listing them.
+
+**Tested offline** (13 cases, scratch suite): both `data.json` shapes, HTML and `</script>`
+injection, `javascript:`/`data:` links, JSON-LD gating, prices, age wording identical to the
+cards, past and running events, redirect on title change, legacy ids, slugs, serializer/generator
+agreement, sitemap, and an end-to-end run on disk (idempotent, deletions, `data.json`
+untouched). Rendered in a headless browser: event page, commune page, 404, and the deep link.
+
 ### V. The real brand arrives (item 61, September 23, 2026)
 
 The project lead delivered the Fontainebleau Live artwork: an oak leaf — the forest — with a
@@ -857,7 +920,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
       "url": "String (http/https URL)",
       "urlStatus": "ok | unverified",
       "urlCheckedAt": "YYYY-MM-DD",
-      "source": "datatourisme (absent for Gemini events)"
+      "source": "datatourisme (absent for Gemini events)",
+      "pageUrl": "/evenements/<slug>-<token>/ — derived from id + title on every write (§3.X)"
     }
   ]
 }
@@ -1041,6 +1105,13 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-23 | Une fusion adopte un chemin plus profond sur le même hôte, même si l'URL en place est déjà vérifiée | Le lien vers la page de l'exposition vaut mieux que le lien vers l'accueil du château ; même domaine = aucune décision de confiance nouvelle |
 | 2026-09-23 | `COMMUNES` passe de 21 à 23 (La Rochette, Saint-Fargeau-Ponthierry) | Dans le rayon et déjà publiées par les flux, mais jamais demandées au modèle : leur couverture dépendait de la source |
 | 2026-09-24 | **`/favicon.ico` (16/32/48) à la racine + icône 192 déclarée**, le service worker ne précharge plus `fav.png` (Helioso) | Google affichait encore le soleil Helioso dans ses résultats : il avait indexé l'ancien `fav.png`, et le nouveau favicon 32×32 n'est pas un multiple de 48 px comme il le demande. Le `.ico` est aussi ce que les robots demandent sans lire la page. Remplacement côté Google : au prochain passage du robot, accéléré par « Demander une indexation » dans la Search Console |
+| 2026-09-24 | **Pages statiques indexables par événement et par commune** (item 68, §3.X) | Le site n'est qu'une page qui charge ses données en JavaScript : aucun événement n'est visible pour un moteur de recherche. Le trafic de recherche est le préalable à toute monétisation |
+| 2026-09-24 | **Le risque grounding est élargi, en connaissance de cause** : les fiches sont publiées pour toutes les sources, Gemini compris (78 % des événements) | Décision du chef de projet (option 2 sur 3). La décision du 20/09 acceptait le risque pour un projet **sans revenu** et demandait de le réévaluer avant toute hausse de visibilité : les deux conditions changent ici. Écartées : fiches limitées à DATAtourisme/OpenAgenda (47 événements), ou attendre de réduire la dépendance à Gemini |
+| 2026-09-24 | Le script de pages **n'écrit jamais `data.json`** ; `pageUrl` est calculé par le pipeline avec la même fonction | Le premier jet réécrivait `data.json` en tableau v1 (perte de `schemaVersion`, `windowEnd`) — et plantait avant, sur l'objet v2. Un seul écrivain |
+| 2026-09-24 | Adresse = texte lisible + **jeton de l'id** ; ancien dossier → redirection `noindex` | Un slug titre-date change à chaque correction de titre et casse une URL déjà indexée. L'id, lui, est conservé toute la vie de la fiche |
+| 2026-09-24 | Balisage schema.org `Event` seulement si le lien est vérifié ; `Offer` seulement pour un prix non ambigu | Un encart Google avec une date ou un prix faux coûte plus cher que pas d'encart (§5) |
+| 2026-09-24 | Fiches d'événements passés **supprimées**, `404.html` écrit à la main | Aucun état à tenir ; le visiteur qui arrive d'un vieux résultat trouve un chemin vers ce qui est à venir |
+| 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
 ---
 
@@ -1049,7 +1120,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Risk / question | Mitigation / next step |
 |---|---|
 | LLM hallucination (dates, prices, venues, URLs) | Validation + URL checks + geocoding flags now; "report an error" link and source attribution planned; manual review of the first weeks of data before outreach |
-| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known |
+| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known. **Widened on September 24** (§7): Gemini-sourced events are now published as indexable pages and submitted to Google, with monetisation in view — both conditions of the September 20 acceptance no longer hold. Fallback if the key is suspended: DATAtourisme + OpenAgenda keep ~47 events and their pages |
 | 🟢 Cost: estimated ≈ $7/month now, ≈ $14/month from January 2027 at a daily cadence (§3.G). **Divided by ~3 by the new cadence** → roughly $2–5/month | Still to be replaced by real run-summary numbers (item 39); budget alert on the dedicated project |
 | DATAtourisme CSV schema may change | The probe validates the columns and **fails loudly**, listing the columns actually found, instead of producing an empty report |
 | Legal / attribution: reuse of organizers' listings | Always link to the source; consider contacting large sources; prefer structured/open data where available |
@@ -1080,6 +1151,11 @@ choses qui restaient étaient noyées dedans.
 - [ ] **61c. Favicon dans Google** : `/favicon.ico` en ligne depuis le 24/09. Demander une
   indexation de la page d'accueil dans la Search Console, puis vérifier sous quelques jours à
   quelques semaines que la feuille de chêne a remplacé le soleil Helioso dans les résultats.
+- [ ] **68b. Après le premier déploiement des pages** (§3.X) : dans la Search Console, menu
+  « Sitemaps », soumettre `https://fontainebleaulive.fr/sitemap.xml` ; tester une fiche dans
+  l'outil « Test des résultats enrichis » de Google ; ouvrir une adresse inexistante pour voir
+  la page 404. Puis suivre, sur quelques semaines, le nombre de pages indexées (rapport
+  « Pages ») et les requêtes qui amènent des visites (rapport « Performances »).
 - [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
   d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence.
 - [ ] **Surveiller 3 à 5 runs automatiques.** Ce qu'il faut regarder dans le rapport : tokens et
@@ -1163,7 +1239,9 @@ choses qui restaient étaient noyées dedans.
 - [ ] **31. Cache des URL mortes**, pour ne pas revérifier à chaque scan un lien que le modèle
   re-propose. Gain : quelques dizaines de secondes par run. Aucune conséquence visible.
 - [ ] **32. Branche `data` dédiée**, pour sortir les commits du bot de l'historique de `main`.
-  16 commits du bot sur 68 au 22/09 : pas encore gênant, à reconsidérer vers 100.
+  16 commits du bot sur 68 au 22/09 : pas encore gênant, à reconsidérer vers 100. **Plus pressant
+  depuis le 24/09** : les pages statiques (§3.X) ajoutent ~240 fichiers générés au dépôt, et le
+  bot committe désormais aussi les jours sans scan quand une fiche expire.
 
 ### D. Tranché — ne pas rouvrir sans raison nouvelle
 

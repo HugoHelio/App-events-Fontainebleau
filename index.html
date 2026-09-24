@@ -588,6 +588,17 @@
       gap: 0.75rem;
     }
 
+    .card .card-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .card .page-link {
+      color: var(--ink-2);
+      font-size: 0.85rem;
+    }
+
     .card .report-link {
       color: #718096;
       font-size: 0.75rem;
@@ -806,6 +817,8 @@
     <p id="feedbackFooter"></p>
     <p data-i18n="installHint" class="install-hint"></p>
     <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
+    <!-- Plain link, present without JavaScript: the way a crawler finds the static pages (§3.X). -->
+    <p><a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a></p>
     <img class="footer-lockup" src="public/assets/img/brand/Icon-FL-v1ST-512-512.png"
          alt="Fontainebleau Live" width="112" height="112" loading="lazy">
     <p class="brand-credit">
@@ -886,6 +899,8 @@
         priceUnknown: 'Non précisé',
         report: 'Signaler une erreur',
         details: 'Voir détails & inscriptions →',
+        eventPage: 'Fiche',
+        byCommune: 'Que faire, commune par commune',
         popupLink: 'Lien',
         ageAll: '👥 Tout public',
         ageFrom: (n) => `👶 Dès ${n} ${n === 1 ? 'an' : 'ans'}`,
@@ -945,6 +960,8 @@
         priceUnknown: 'Not specified',
         report: 'Report an error',
         details: 'Details & booking →',
+        eventPage: 'Page',
+        byCommune: 'What’s on, town by town (in French)',
         popupLink: 'Link',
         ageAll: '👥 All ages',
         ageFrom: (n) => `👶 Ages ${n}+`,
@@ -1354,6 +1371,34 @@
       if (card) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 
+    /**
+     * ?event=<id> — the "Voir sur la carte" button of the static event pages (§3.X). Runs once:
+     * a retry or a later filter change must not jump back to it. The default two-week horizon
+     * would hide most linked events, so it is widened before looking.
+     */
+    let linkedEventHandled = false;
+    function openLinkedEvent() {
+      if (linkedEventHandled) return;
+      linkedEventHandled = true;
+      const id = new URLSearchParams(location.search).get('event');
+      if (!id || !/^[A-Z]{3}_[0-9A-Za-z]{1,20}$/.test(id)) return;
+      if (!allActivities.some((a) => a.id === id)) return;
+      if (!document.querySelector(`.card[data-id="${id}"]`)) {
+        document.getElementById('filterCategory').value = '';
+        document.getElementById('filterDate').value = '';
+        document.getElementById('filterHorizon').value = '3months';
+        applyFilters();
+      }
+      track('event-link', id);
+      focusMarker(id);
+      focusCard(id);
+    }
+
+    /** Same-origin path of the event's static page, or null. Anything else in the field is ignored. */
+    function pageHref(a) {
+      return /^\/evenements\/[a-z0-9-]+\/$/.test(String(a.pageUrl || '')) ? a.pageUrl : null;
+    }
+
     function isUpcoming(a) {
       const end = a.endDate || a.startDate;
       return !end || end >= todayStr();
@@ -1448,6 +1493,7 @@
     loadFailed = false;
     renderEventCount();
     applyFilters();
+    openLinkedEvent();
   } catch (error) {
     console.error("❌ Erreur lors du chargement de data.json :", error);
     loadFailed = true;
@@ -1545,7 +1591,10 @@
           ${fine ? `<div class="fine-print">${fine} — ${escapeHtml(t('checkWithOrganizer'))}</div>` : ''}
           <div class="card-actions">
             ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
-            ${linkHtml(a.url, t('details'), 'link-btn')}
+            <span class="card-links">
+              ${pageHref(a) ? `<a href="${escapeHtml(pageHref(a))}" class="page-link">${escapeHtml(t('eventPage'))}</a>` : ''}
+              ${linkHtml(a.url, t('details'), 'link-btn')}
+            </span>
           </div>
         `;
         // The whole card is clickable, except the links inside it, which keep their own job.
@@ -1555,6 +1604,7 @@
             // Does the site actually send anyone anywhere? This is the question worth measuring.
             if (link.classList.contains('link-btn')) track('event-click', a.id);
             else if (link.classList.contains('report-link')) track('report', a.id);
+            else if (link.classList.contains('page-link')) track('page-click', a.id);
             return;
           }
           if (a.id) focusMarker(a.id);

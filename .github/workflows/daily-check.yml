@@ -47,6 +47,14 @@ jobs:
           FEEDBACK_CSV_URL: ${{ secrets.FEEDBACK_CSV_URL }}
         run: node scripts/fetch-events.js
 
+      # Pages statiques indexables (§3.X). Tourne aussi les jours sans scan : c'est ici que les
+      # fiches des événements terminés disparaissent. Un échec ici ne doit jamais bloquer la
+      # publication des données : le script calcule tout en mémoire avant d'écrire, donc un
+      # plantage laisse les pages de la veille intactes.
+      - name: Génération des pages statiques
+        continue-on-error: true
+        run: node scripts/generate-pages.js
+
       - name: Commit et Push automatique des nouvelles données
         run: |
           git config user.name "GitHub Action Bot"
@@ -56,6 +64,13 @@ jobs:
           if [ -f geocode-cache.json ]; then git add geocode-cache.json; fi
           # Sans ce cache, chaque run repartirait de zéro et retraduirait tout le catalogue.
           if [ -f translate-cache.json ]; then git add translate-cache.json; fi
+          # Pages générées : chemins nommés un par un, jamais `git add -A` à la racine — le bot
+          # publie sur main sans relecture, un fichier parasite partirait en ligne. `-A` sur ces
+          # dossiers seulement, pour publier aussi les suppressions (événements terminés).
+          git add sitemap.xml
+          for d in evenements que-faire; do
+            if [ -e "$d" ] || git ls-files --error-unmatch "$d" >/dev/null 2>&1; then git add -A -- "$d"; fi
+          done
           if git diff --staged --quiet; then
             echo "Aucun changement dans les données — rien à publier."
             exit 0

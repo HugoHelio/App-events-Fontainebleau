@@ -30,6 +30,7 @@ const datatourisme = require('./datatourisme');
 const openagenda = require('./openagenda');
 const feedback = require('./feedback');
 const translate = require('./translate');
+const pages = require('./generate-pages');
 
 // ───────────────────────────── Configuration ─────────────────────────────
 
@@ -1013,11 +1014,13 @@ function applyOverrides(records, overrides, stats) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'image', 'source', 'lastSeen',
+  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'image', 'source', 'lastSeen', 'pageUrl',
 ];
 
 function serializeEvent(e) {
   const out = { ...e, geoApprox: !['ban', 'manual', 'venue', 'feed'].includes(e.geoSource) };
+  // Derived, never carried over: the static page's address follows the current title (§3.X).
+  out.pageUrl = pages.pagePath(out) || undefined;
   const ordered = {};
   for (const f of FIELD_ORDER) if (out[f] !== undefined) ordered[f] = out[f];
   return ordered;

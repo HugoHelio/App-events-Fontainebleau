@@ -24,6 +24,9 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `translate-cache.json` | **Généré et commité.** Cache de traduction — sans lui, chaque run CI retraduirait tout |
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `venues.json` | **Édité à la main.** Coordonnées exactes des lieux récurrents, consultées avant la BAN — qui ne connaît que des adresses, pas des noms de salles |
+| `scripts/generate-pages.js` | Pages statiques indexables (§3.X) : une fiche par événement, une page par commune, `sitemap.xml`. N'écrit **jamais** `data.json` |
+| `evenements/`, `que-faire/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer |
+| `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
 | `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité |
@@ -82,6 +85,9 @@ GEMINI_API_KEY=… node scripts/translate-data.js --sample 8
 # Remplir data.json maintenant, sans attendre le prochain scan (~7 000 tokens, pas de grounding).
 # Remplit aussi translate-cache.json : le scan suivant ne repaiera rien. Commiter les DEUX.
 GEMINI_API_KEY=… node scripts/translate-data.js --write
+
+# Régénérer les pages statiques à partir de data.json (gratuit, aucun appel réseau)
+node scripts/generate-pages.js
 
 # Désactiver la traduction sur un run
 TRANSLATE=0 GEMINI_API_KEY=… node scripts/fetch-events.js
