@@ -1,0 +1,125 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Larchant · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_01502bfb93@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+SUMMARY:Découverte du village et du marais de Larchant
+LOCATION:Marais de Larchant\, Larchant
+DESCRIPTION:Horaires : 10h15–17h\n\nTarif : Gratuit\n\nPromenade guidée 
+ naturaliste et patrimoniale à la découverte de la réserve naturelle du 
+ marais de Larchant.\n\nOrganisateur : https://www.aaff.fr/\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/decouverte-du-village-et-du-marais-de-
+ larchant-01502bfb93/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-du-village-et-du-mar
+ ais-de-larchant-01502bfb93/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_82d9a441d0@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+SUMMARY:Promenade guidée nature : Village et Marais de Larchant
+LOCATION:Réserve naturelle du Marais de Larchant\, Larchant
+DESCRIPTION:Horaires : Vendredi de 10h15 à 17h00\n\nTarif : Gratuit\n\nPro
+ menade environnementale guidée pour découvrir le patrimoine naturel de l
+ a réserve du Marais de Larchant et son village historique.\n\nOrganisateu
+ r : https://www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/promenade-guidee-nature-village-et-marais-de-larchant-82d9a441d0/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/promenade-guidee-nature-village
+ -et-marais-de-larchant-82d9a441d0/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_288f073b0a@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Lyrican'trail
+LOCATION:Massif de Larchant / Forêt de Fontainebleau\, Larchant
+DESCRIPTION:Horaires : 09h00–13h00\n\nTarif : Payant\n\nPublic : Dès 6 a
+ ns\n\nÉpreuve de trail et cani-trail emblématique à Larchant traversant
+  sentiers\, sables et rochers de grès bellifontains.\n\nOrganisateur : ht
+ tps://www.larchant.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ lyrican-trail-larchant-288f073b0a/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/lyrican-trail-larchant-288f073b
+ 0a/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_2e255f251c@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Découverte des lieux historiques du village et création d'un carn
+ et de dessins
+LOCATION:Église Saint-Mathurin\, Larchant
+DESCRIPTION:Parcours-découverte du patrimoine de Larchant à travers QR co
+ des\, dessins et observations.\n\nOrganisateur : https://openagenda.com/pl
+ anlibre/events/decouverte-des-lieux-historiques-du-village-et-creation-dun
+ -carnet-de-dessins\n\nFiche : https://fontainebleaulive.fr/evenements/deco
+ uverte-des-lieux-historiques-du-village-et-creation-d-un-larchant-2e255f25
+ 1c/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-des-lieux-historique
+ s-du-village-et-creation-d-un-larchant-2e255f251c/
+CATEGORIES:Culture & Ateliers
+GEO:48.28406;2.59622
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e76e8e9f90@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Imaginer la restauration de l'église Saint Mathurin de Larchant
+LOCATION:Église Saint-Mathurin\, Larchant
+DESCRIPTION:Visite libre\n\nOrganisateur : https://openagenda.com/planlibre
+ /events/imaginer-la-restauration-de-leglise-saint-mathurin-de-larchant\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/imaginer-la-restauration-d
+ e-l-eglise-saint-mathurin-de-larch-larchant-e76e8e9f90/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/imaginer-la-restauration-de-l-e
+ glise-saint-mathurin-de-larch-larchant-e76e8e9f90/
+CATEGORIES:Culture & Ateliers
+GEO:48.28406;2.59622
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_372df50cf5@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Visite guidée de l'église et atelier dessin
+LOCATION:Église Saint-Mathurin\, Larchant
+DESCRIPTION:Visite guidée de l'église et atelier dessin\n\nOrganisateur :
+  https://openagenda.com/planlibre/events/visite-guidee-de-leglise-et-ateli
+ er-dessin\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee
+ -de-l-eglise-et-atelier-dessin-larchant-372df50cf5/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-de-l-eglise-et-at
+ elier-dessin-larchant-372df50cf5/
+CATEGORIES:Culture & Ateliers
+GEO:48.28406;2.59622
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

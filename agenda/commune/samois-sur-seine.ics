@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Samois-sur-Seine · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_6974d9557c@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Vide-grenier des enfants de Samois-sur-Seine
+LOCATION:La Samoisienne\, Samois-sur-Seine
+DESCRIPTION:Horaires : 9h–18h\n\nTarif : Gratuit\n\nGrande bourse de rent
+ rée dédiée aux jouets\, livres\, vêtements pour enfants et matériel d
+ e puériculture.\n\nOrganisateur : https://samois-sur-seine.fr/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/vide-grenier-des-enfants-de-samoi
+ s-sur-seine-6974d9557c/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vide-grenier-des-enfants-de-sam
+ ois-sur-seine-6974d9557c/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6d9b7e1830@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Course de Noël de Samois-sur-Seine
+LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
+DESCRIPTION:Horaires : 14h00–17h00\n\nTarif : Payant selon la distance\n\
+ nCourse pédestre festive de fin d'année proposant des parcours de 800 m\
+ , 1\,6 km et 5 km au bord de la Seine.\n\nOrganisateur : https://www.samoi
+ s-sur-seine.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/course-
+ de-noel-de-samois-sur-seine-6d9b7e1830/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
+ ine-6d9b7e1830/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

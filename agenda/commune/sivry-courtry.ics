@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Sivry-Courtry · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_a9fe9cda4d@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+SUMMARY:De la morue - cartographie 6
+LOCATION:Festival Sème ta Graine\, Sivry-Courtry
+DESCRIPTION:Public : Dès 12 ans\n\nVertical Détour - Frédéric Ferrer\n\
+ nOrganisateur : https://openagenda.com/culture/events/de-la-morue-cartogra
+ phie-6-4772922\n\nFiche : https://fontainebleaulive.fr/evenements/de-la-mo
+ rue-cartographie-6-sivry-courtry-a9fe9cda4d/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/de-la-morue-cartographie-6-sivr
+ y-courtry-a9fe9cda4d/
+CATEGORIES:Nature & Environnement
+GEO:48.52763;2.7523
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Villiers-en-Bière · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_e5cffeee4a@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+SUMMARY:Api'week au Carrefour Carrefour Villiers-en-Bière
+LOCATION:Carrefour Villiers-en-Bière\, RN 7\, Villiers-en-Bière
+DESCRIPTION:Venez dans votre magasin découvrir les secrets du miel et des 
+ abeilles.\n\nOrganisateur : https://openagenda.com/apiweek/events/apiweek-
+ au-carrefour-villiers-en-biere\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/api-week-au-carrefour-carrefour-villiers-en-biere-e5cffeee4a/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
+URL:https://fontainebleaulive.fr/evenements/api-week-au-carrefour-carrefour
+ -villiers-en-biere-e5cffeee4a/
+CATEGORIES:Nature & Environnement
+GEO:48.49428;2.59916
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

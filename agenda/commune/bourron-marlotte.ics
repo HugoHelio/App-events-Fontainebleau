@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Bourron-Marlotte · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_87c60f7fa6@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:Marché aux vélos du Pays de Fontainebleau
+LOCATION:Gymnase André Poirier\, Bourron-Marlotte
+DESCRIPTION:Horaires : sam. 10 : 10h–18h \; dim. 11 : 13h–18h\n\nTarif 
+ : Accès libre\n\nBourse aux vélos d'occasion\, stands de pièces détach
+ ées et ateliers collectifs d'auto-réparation et d'entretien.\n\nOrganisa
+ teur : https://www.pays-fontainebleau.fr/\n\nFiche : https://fontainebleau
+ live.fr/evenements/marche-aux-velos-du-pays-de-fontainebleau-bourron-marlo
+ tte-87c60f7fa6/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-aux-velos-du-pays-de-fon
+ tainebleau-bourron-marlotte-87c60f7fa6/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,84 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Bois-le-Roi · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_4ff795c5bc@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+SUMMARY:Projection Manga
+LOCATION:Médiathèque Musidora\, Bois-le-Roi
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/projection-manga\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/projection-manga-bois-le-roi-4ff795c5bc/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/projection-manga-bois-le-roi-4f
+ f795c5bc/
+CATEGORIES:Scène & Spectacles
+GEO:48.47447;2.69105
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a0fda3676d@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Festival Manga
+LOCATION:Médiathèque Musidora\, Bois-le-Roi
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/festival-manga\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/festival-manga-bois-le-roi-a0fda3676d/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/festival-manga-bois-le-roi-a0fd
+ a3676d/
+CATEGORIES:Scène & Spectacles
+GEO:48.47447;2.69105
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8149bc63ce@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Sortie ornithologique d'automne en forêt
+LOCATION:Forêt domaniale de Fontainebleau\, Bois-le-Roi
+DESCRIPTION:Horaires : 12h–16h30\n\nTarif : 15 €\n\nSortie guidée d'ob
+ servation des oiseaux forestiers d'automne tels que les mésanges\, sittel
+ les et pics.\n\nOrganisateur : https://www.eco-nature.org/\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/sortie-ornithologique-d-automne-en-for
+ et-bois-le-roi-8149bc63ce/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-ornithologique-d-automne
+ -en-foret-bois-le-roi-8149bc63ce/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3786d85282@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Sortie guidée à vélo : Bords de Seine au départ de Bois-le-Roi
+LOCATION:Parvis de la gare de Bois-le-Roi\, Bois-le-Roi
+DESCRIPTION:Horaires : Dimanche à 14h30\n\nTarif : 25 €\n\nPublic : Dès
+  12 ans\n\nBalade guidée à vélo au bord de l'eau pour observer la faune
+  fluviale et découvrir les demeures de villégiature « Affolantes ».\n\
+ nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-seine-au-de
+ part-de-bois-le-roi-3786d85282/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-s
+ eine-au-depart-de-bois-le-roi-3786d85282/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

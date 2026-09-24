@@ -500,6 +500,59 @@ cards, past and running events, redirect on title change, legacy ids, slugs, ser
 agreement, sitemap, and an end-to-end run on disk (idempotent, deletions, `data.json`
 untouched). Rendered in a headless browser: event page, commune page, 404, and the deep link.
 
+### Y. Calendar feeds and the free partner widget (items 69 & 71, September 24, 2026)
+
+Two ways for the programme to travel without anyone coming back to the site. Both are built from
+what §3.X already produces, and neither adds a server, an account or a dependency.
+
+**Calendar feeds.** `generate-pages.js` also writes iCalendar files that a calendar app
+subscribes to and re-downloads on its own:
+
+| File | Content |
+|---|---|
+| `/agenda/fontainebleau-live.ics` | Everything |
+| `/agenda/categorie/<type>.ics` | One per category (« Sport & Outdoor »…) |
+| `/agenda/commune/<commune>.ics` | One per town — same slug as `/que-faire/<commune>/` |
+| `/agenda/feeds.json` | Index name → path, read by the site and the widget page: nothing outside the generator ever rebuilds a slug |
+
+On the site, « 📅 Ajouter à mon agenda » under the view tabs opens a panel whose feed follows
+the filters (town first, then category, else everything): Google Agenda (`calendar.google.com/…?cid=webcal://…`),
+Apple / Outlook (`webcal://`), copy the link. Each commune page offers its own feed.
+
+Rules, all silent failures if broken — a calendar app that cannot read a feed just shows nothing:
+- RFC 5545: CRLF, lines folded at **75 octets** (not characters), `\ ; ,` escaped, all-day
+  `DTEND` **exclusive**. `.gitattributes` marks `*.ics -text`: with `core.autocrlf` on the
+  project lead's Windows checkout, git would otherwise store them with LF.
+- `UID` = event id: an app updates an entry instead of duplicating it, and drops it when it
+  leaves the feed. `DTSTAMP` comes from `lastSeen`, not the clock: an unchanged event is an
+  unchanged file, so no daily commit.
+- **Events longer than 7 days are left out** (39 of 214 on 24/09). A four-month exhibition as
+  an all-day entry would sit at the top of the visitor's calendar every day until January.
+  They keep their page and stay on the map.
+- All-day entries only: `schedule` is free text (« 9h30–12h30 et 14h–17h »), and a time guessed
+  from it would be a wrong time in someone's phone. Hours go in the description.
+- `TRANSP:TRANSPARENT`: a listing, never shown as "busy".
+- **A published feed is never deleted.** A town with nothing left gets an empty calendar:
+  some apps show an error, or drop the subscription, when a feed starts returning 404.
+- Google refreshes subscribed calendars on its own schedule, sometimes more than a day: the UI
+  says so. Google cannot add a subscription from its mobile app — the hint says to use a computer.
+
+Validated with an independent parser (Python `icalendar`, scratch only): all 30 files parse,
+175 events in the main feed, every line ≤ 75 octets.
+
+**Free widget.** `/widget/?ville=…&cat=…&n=…` is a small hand-written page meant for an
+`<iframe>` on a partner's site (town hall, tourist office, lodging, club). It reads `/data.json`
+itself, so it is always as fresh as the site. Same hostile-input rules as `index.html`
+(`textContent` only, links are same-site paths of the generated shape). `noindex`, and **no
+analytics**: it runs on other people's pages, whose visitors agreed to nothing from us. A town
+unknown to the data is not echoed in the heading.
+
+`/widget/integrer/` is the partner page: pick town, type and count, see a live preview, copy
+the code. The code is the iframe **plus a plain link under it** to the commune page — a link
+inside an iframe counts for nothing in search, the one in the partner's own page does. The free
+tier asks to keep that mention; a paid tier (own colours, no mention, own events first) is not
+built — see §9.
+
 ### V. The real brand arrives (item 61, September 23, 2026)
 
 The project lead delivered the Fontainebleau Live artwork: an oak leaf — the forest — with a
@@ -1119,6 +1172,11 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | Balisage schema.org `Event` seulement si le lien est vérifié ; `Offer` seulement pour un prix non ambigu | Un encart Google avec une date ou un prix faux coûte plus cher que pas d'encart (§5) |
 | 2026-09-24 | Fiches d'événements passés **supprimées**, `404.html` écrit à la main | Aucun état à tenir ; le visiteur qui arrive d'un vieux résultat trouve un chemin vers ce qui est à venir |
 | 2026-09-24 | **Filtre « Ville »** à côté de la période, options tirées des données | Contrairement au filtre d'âge retiré le 23/09, il discrimine vraiment : Fontainebleau 142 événements sur 214, chaque autre ville 1 à 11. Seules les villes ayant un événement à venir sont proposées |
+| 2026-09-24 | **Abonnement agenda (`.ics`)** : un flux général, un par catégorie, un par commune (§3.Y) | Le programme va dans le téléphone sans compte, sans envoi, sans serveur |
+| 2026-09-24 | Événements de plus de 7 jours **exclus des flux** | Une exposition de quatre mois en « journée entière » occuperait le haut de l'agenda chaque jour jusqu'en janvier. Ils restent sur le site |
+| 2026-09-24 | Entrées « journée entière » uniquement | `schedule` est du texte libre : une heure devinée serait une heure fausse dans le téléphone de quelqu'un |
+| 2026-09-24 | Un flux publié n'est jamais supprimé (calendrier vide à la place) | Un abonnement qui répond 404 provoque une erreur ou une désinscription selon l'application |
+| 2026-09-24 | **Widget partenaire gratuit** : `<iframe>` + lien en clair dans le code fourni, page `noindex`, aucune mesure d'audience | Le lien dans l'iframe ne compte pas pour Google, celui de la page du partenaire oui. On ne mesure pas les visiteurs d'un site tiers qui n'ont rien accepté |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
 ---
@@ -1128,7 +1186,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Risk / question | Mitigation / next step |
 |---|---|
 | LLM hallucination (dates, prices, venues, URLs) | Validation + URL checks + geocoding flags now; "report an error" link and source attribution planned; manual review of the first weeks of data before outreach |
-| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known. **Widened on September 24** (§7): Gemini-sourced events are now published as indexable pages and submitted to Google, with monetisation in view — both conditions of the September 20 acceptance no longer hold. Fallback if the key is suspended: DATAtourisme + OpenAgenda keep ~47 events and their pages |
+| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known. **Widened on September 24** (§7): Gemini-sourced events are now published as indexable pages and submitted to Google, with monetisation in view — both conditions of the September 20 acceptance no longer hold. Fallback if the key is suspended: DATAtourisme + OpenAgenda keep ~47 events and their pages. Same day: **calendar feeds and a free partner widget** (§3.Y) are two more syndication channels, free of charge. A paid widget would be syndication **for money**: a separate decision (item 71) |
 | 🟢 Cost: estimated ≈ $7/month now, ≈ $14/month from January 2027 at a daily cadence (§3.G). **Divided by ~3 by the new cadence** → roughly $2–5/month | Still to be replaced by real run-summary numbers (item 39); budget alert on the dedicated project |
 | DATAtourisme CSV schema may change | The probe validates the columns and **fails loudly**, listing the columns actually found, instead of producing an empty report |
 | Legal / attribution: reuse of organizers' listings | Always link to the source; consider contacting large sources; prefer structured/open data where available |
@@ -1222,7 +1280,7 @@ choses qui restaient étaient noyées dedans.
 
 ### B2. Audience et monétisation — idées du 24/09, rien de commencé
 
-- [ ] **69. Abonnement agenda (`.ics`).** `generate-pages.js` écrit `agenda.ics`, plus un fichier
+- [x] **69. Abonnement agenda (`.ics`) — fait le 24/09** (§3.Y). Tranché : événements de plus de 7 jours exclus, entrées « journée entière », flux jamais supprimés. **Reste : tester l'abonnement en vrai** dans Google Agenda, Apple Calendrier et Outlook, et vérifier une mise à jour le lendemain. Idée d'origine : `generate-pages.js` écrit `agenda.ics`, plus un fichier
   par catégorie et par commune (« Sport autour de Fontainebleau »). Un bouton « Ajouter à mon
   agenda » propose un lien `webcal://` (Apple Calendrier) et un lien d'abonnement Google Agenda.
   Les événements arrivent dans l'agenda du téléphone et se mettent à jour seuls : aucun coût,
@@ -1251,7 +1309,7 @@ choses qui restaient étaient noyées dedans.
   le canal lui-même. **Ce qui s'automatise :** le brouillon. Le générateur peut écrire chaque
   mois un texte prêt à coller par commune (« Ce mois-ci à Avon : … », 5 événements, lien vers la
   page commune), à relire puis poster à la main. Coût : environ 5 minutes par groupe et par mois.
-- [ ] **71. Widget partenaire, gratuit et premium.** Un encart à intégrer sur le site d'une
+- [ ] **71. Widget partenaire — le gratuit est fait le 24/09** (§3.Y, `/widget/integrer/`). **Reste le premium**, et la décision grounding qui le précède. Idée d'origine : Un encart à intégrer sur le site d'une
   mairie, d'un office de tourisme, d'un hôtel ou d'un club, qui affiche les prochains
   événements, par exemple ceux de sa commune ou d'une catégorie.
   - **Gratuit** : `<iframe>` servi depuis le site (une page `/widget/?ville=…` générée ou

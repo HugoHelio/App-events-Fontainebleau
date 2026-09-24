@@ -1,0 +1,50 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Barbizon · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:ACT_007@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Trail de Barbizon
+LOCATION:Grande Rue et forêt domaniale de Fontainebleau\, Barbizon
+DESCRIPTION:Horaires : 09h00–13h00\n\nTarif : Payant\n\nPublic : Dès 7 a
+ ns\n\nÉpreuve de course à pied de 12\,5 km au départ du village des pei
+ ntres de Barbizon\, serpentant sur les sentiers sablonneux et rocheux du m
+ assif bellifontain.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
+ om/\n\nFiche : https://fontainebleaulive.fr/evenements/trail-de-barbizon-a
+ ct007/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/trail-de-barbizon-act007/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ac4f2ac287@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Visite guidée forêt : Biodiversité et Sentiers des peintres
+LOCATION:Sentier des Peintres de Barbizon\, Barbizon
+DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
+ nVisite guidée thématique en forêt sur les traces des peintres paysagis
+ tes à la découverte de la biodiversité locale.\n\nOrganisateur : https:
+ //www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/
+ evenements/visite-guidee-foret-biodiversite-et-sentiers-des-peintres-barbi
+ zon-ac4f2ac287/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-foret-biodiversit
+ e-et-sentiers-des-peintres-barbizon-ac4f2ac287/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

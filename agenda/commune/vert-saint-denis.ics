@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Vert-Saint-Denis · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_a686d516dc@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Spectacle « Embarquement immédIA »
+LOCATION:Médialudothèque Gérard Philipe\, Vert-Saint-Denis
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/spectacle-embarquement-immedia-7158603\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/spectacle-embarquement-immedia-vert-saint-de
+ nis-a686d516dc/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-embarquement-immedia-
+ vert-saint-denis-a686d516dc/
+CATEGORIES:Scène & Spectacles
+GEO:48.56358;2.61575
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

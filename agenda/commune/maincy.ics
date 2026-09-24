@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Maincy · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_80690824ce@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:Les Soirées aux Chandelles
+LOCATION:Château de Vaux-le-Vicomte\, Maincy
+DESCRIPTION:Horaires : 17h30–23h30\n\nTarif : 22€ (Plein tarif)\, 17\,5
+ 0€ (Tarif réduit)\, Gratuit (-4 ans)\n\nDernière soirée aux chandelle
+ s de la saison\, sur un thème guinguette : le château et les jardins ill
+ uminés par 2 000 bougies\, DJ sets\, bar à champagne et feu d'artifice 
+ à 23h.\n\nOrganisateur : https://vaux-le-vicomte.com/les-soirees-aux-chan
+ delles/\n\nFiche : https://fontainebleaulive.fr/evenements/les-soirees-aux
+ -chandelles-maincy-80690824ce/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-soirees-aux-chandelles-main
+ cy-80690824ce/
+CATEGORIES:Culture & Ateliers
+GEO:48.5673;2.71395
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

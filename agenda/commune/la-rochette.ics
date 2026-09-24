@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:La Rochette · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_7e00f40bb6@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:La Rochet'verte
+LOCATION:Espace naturel du Bois de La Rochette\, La Rochette
+DESCRIPTION:Horaires : 09h00–13h00\n\nTarif : Payant\n\nCourses et randon
+ nées nature empruntant les sentiers boisés et les berges de Seine à La 
+ Rochette.\n\nOrganisateur : https://cdr77.fr/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/la-rochet-verte-la-rochette-7e00f40bb6/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/la-rochet-verte-la-rochette-7e0
+ 0f40bb6/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

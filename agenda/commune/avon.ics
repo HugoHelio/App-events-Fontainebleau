@@ -1,0 +1,67 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Avon · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_3d77072128@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Stage d'Aïkido avec Cécile Rayroles
+LOCATION:Gymnase de la Vallée - Dojo\, Avon
+DESCRIPTION:Horaires : 09h30–12h30\n\nTarif : Payant\n\nPublic : Dès 12 
+ ans\n\nStage d'aïkido animé par Cécile Rayroles (5e dan) au gymnase de 
+ la Vallée\, suivi d'un pot convivial.\n\nOrganisateur : https://www.aikid
+ opatrice.com/\n\nFiche : https://fontainebleaulive.fr/evenements/stage-d-a
+ ikido-avec-cecile-rayroles-avon-3d77072128/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-d-aikido-avec-cecile-rayr
+ oles-avon-3d77072128/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ACT_011@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Marché de Noël d'Avon
+LOCATION:Parvis de l'Église Saint-Pierre\, Avon
+DESCRIPTION:Horaires : 9h–20h\n\nTarif : Gratuit\n\nMarché artisanal de 
+ fin d'année avec chalets de producteurs régionaux\, animations de rue\, 
+ contes pour enfants et rando-marche festive de Noël.\n\nOrganisateur : ht
+ tps://www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/marche-de-noel-d-avon-act011/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-avon-act011/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f9833d2e90@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:À la recherche des canards perdus - cartographie 1
+LOCATION:Ville d'Avon\, Avon
+DESCRIPTION:Public : Dès 12 ans\n\nCompagnie Vertical Détour - Frédéric
+  Ferrer\n\nOrganisateur : https://openagenda.com/culture/events/a-la-reche
+ rche-des-canards-perdus-cartographie-1-6233787\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/a-la-recherche-des-canards-perdus-cartographie-1-a
+ von-f9833d2e90/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/a-la-recherche-des-canards-perd
+ us-cartographie-1-avon-f9833d2e90/
+CATEGORIES:Culture & Ateliers
+GEO:48.40493;2.72051
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

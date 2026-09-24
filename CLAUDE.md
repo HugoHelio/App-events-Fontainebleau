@@ -25,7 +25,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `venues.json` | **Édité à la main.** Coordonnées exactes des lieux récurrents, consultées avant la BAN — qui ne connaît que des adresses, pas des noms de salles |
 | `scripts/generate-pages.js` | Pages statiques indexables (§3.X) : une fiche par événement, une page par commune, `sitemap.xml`. N'écrit **jamais** `data.json` |
-| `evenements/`, `que-faire/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer |
+| `evenements/`, `que-faire/`, `agenda/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer. `agenda/` : flux `.ics` (§3.Y), en CRLF protégé par `.gitattributes` |
+| `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
 | `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |

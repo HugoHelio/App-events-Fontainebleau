@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenda · Fontainebleau Live</title>
+<!-- Embedded in partners' pages through an <iframe> (item 71, free tier). Not for search:
+     the same events are indexed on /evenements/ and /que-faire/. -->
+<meta name="robots" content="noindex">
+<!--
+  Parameters (all optional):
+    ville=<exact town name as in data.json>   cat=<exact category>   n=<1..20, default 6>
+  Hostile-input rules are the same as index.html: every field of data.json is written with
+  textContent, links are same-site paths of a known shape. No analytics here: this page runs
+  on other people's sites, whose visitors have not accepted anything from us.
+  Hand-written, not generated: it reads /data.json itself, so it is always as fresh as the site.
+-->
+<style>
+  :root { --ink:#1d3b29; --text:#2b322d; --muted:#4a544e; --line:#e6e2da; --bg:#fff; --accent-ink:#8f6a25; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--text); background: var(--bg); display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+           background: linear-gradient(155deg, #2d543c 0%, var(--ink) 55%, #142a1d 100%); color: #fff; }
+  header img { border-radius: 6px; flex: none; }
+  header strong { font-size: 15px; line-height: 1.2; }
+  header span { display: block; font-size: 12px; opacity: .85; }
+  ul { list-style: none; overflow-y: auto; flex: 1; padding: 0 12px; }
+  li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  .when { font-size: 12px; font-weight: 600; color: var(--accent-ink); }
+  a.title { display: block; color: var(--ink); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  a.title:hover, a.title:focus-visible { text-decoration: underline; }
+  .where { font-size: 12px; color: var(--muted); }
+  .state { padding: 16px 12px; color: var(--muted); }
+  footer { padding: 8px 12px; border-top: 1px solid var(--line); font-size: 12px; text-align: right; }
+  footer a { color: var(--ink); font-weight: 600; }
+  a:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="28" height="28">
+  <div><strong id="heading">Que faire autour de Fontainebleau ?</strong><span>Fontainebleau Live</span></div>
+</header>
+<ul id="list" aria-live="polite"><li class="state">Chargement…</li></ul>
+<footer><a id="more" href="https://fontainebleaulive.fr/" target="_blank" rel="noopener">Toutes les activités sur Fontainebleau Live →</a></footer>
+<script>
+(function () {
+  var SITE = 'https://fontainebleaulive.fr';
+  var params = new URLSearchParams(location.search);
+  var city = params.get('ville') || '';
+  var cat = params.get('cat') || '';
+  var n = Math.min(20, Math.max(1, parseInt(params.get('n'), 10) || 6));
+  var list = document.getElementById('list');
+
+  function today() { return new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Paris' }); }
+
+  function frDate(iso, withWeekday) {
+    var p = iso.split('-').map(Number);
+    return new Date(Date.UTC(p[0], p[1] - 1, p[2])).toLocaleDateString('fr-FR',
+      withWeekday ? { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }
+                  : { day: 'numeric', month: 'short', timeZone: 'UTC' });
+  }
+
+  function when(e, now) {
+    var end = e.endDate || e.startDate;
+    if (end === e.startDate) { var d = frDate(e.startDate, true); return d.charAt(0).toUpperCase() + d.slice(1); }
+    if (e.startDate <= now) return 'Jusqu’au ' + frDate(end);
+    return 'Du ' + frDate(e.startDate) + ' au ' + frDate(end);
+  }
+
+  // Same rule as pageHref() in index.html: only a same-site path of the generated shape.
+  function page(e) {
+    return /^\/evenements\/[a-z0-9-]+\/$/.test(String(e.pageUrl || '')) ? SITE + e.pageUrl : null;
+  }
+
+  function state(text) {
+    list.textContent = '';
+    var li = document.createElement('li');
+    li.className = 'state';
+    li.textContent = text;
+    list.appendChild(li);
+  }
+
+  fetch('/data.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (payload) {
+      var all = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.events) ? payload.events : []);
+      var now = today();
+      var events = all.filter(function (e) {
+        return e && e.title && e.startDate && (e.endDate || e.startDate) >= now &&
+          (!city || e.city === city) && (!cat || e.category === cat);
+      });
+      // What is on soonest first; something already running counts as "today", and among
+      // those, what ends soonest comes first.
+      events.sort(function (a, b) {
+        var ka = a.startDate < now ? now : a.startDate, kb = b.startDate < now ? now : b.startDate;
+        return ka.localeCompare(kb) || (a.endDate || a.startDate).localeCompare(b.endDate || b.startDate) ||
+          a.title.localeCompare(b.title, 'fr');
+      });
+
+      // The town is named in the heading only once the data knows it: a typo in the partner's
+      // code shows the generic heading, not their typo.
+      if (city && all.some(function (e) { return e && e.city === city; })) {
+        document.getElementById('heading').textContent = 'Que faire à ' + city + ' ?';
+      }
+
+      if (city && events.length) {
+        // The map filtered on the town; index.html applies ?ville= only if the name is known.
+        var more = document.getElementById('more');
+        more.href = SITE + '/?ville=' + encodeURIComponent(city);
+        more.textContent = 'Tout le programme à ' + city + ' →';
+      }
+
+      if (!events.length) { state('Aucune activité à venir pour le moment.'); return; }
+      list.textContent = '';
+      events.slice(0, n).forEach(function (e) {
+        var li = document.createElement('li');
+        var w = document.createElement('div');
+        w.className = 'when';
+        w.textContent = when(e, now);
+        var a = document.createElement('a');
+        a.className = 'title';
+        a.href = page(e) || SITE + '/';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = e.title;
+        var where = document.createElement('div');
+        where.className = 'where';
+        where.textContent = [e.locationName, e.city].filter(Boolean).join(' · ');
+        li.append(w, a, where);
+        list.appendChild(li);
+      });
+    })
+    .catch(function () { state('Agenda momentanément indisponible.'); });
+})();
+</script>
+</body>
+</html>

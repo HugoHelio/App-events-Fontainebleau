@@ -1,0 +1,94 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Blandy-les-Tours · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:ACT_015@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260928
+SUMMARY:Festival Histoire en Scène
+LOCATION:Château de Blandy-les-Tours\, Blandy-les-Tours
+DESCRIPTION:Horaires : 10h30–18h30\n\nTarif : 10 € (plein)\, 8 € (ré
+ duit)\, gratuit pour les -12 ans\n\nPublic : Dès 3 ans\n\nFestival de spe
+ ctacles historiques vivants au cœur du château fort : démonstrations d'
+ escrime\, fables médiévales\, théâtre participatif et déambulations.\
+ n\nOrganisateur : https://www.chateau-blandy.fr/\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/festival-histoire-en-scene-blandy-les-tours-act0
+ 15/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/festival-histoire-en-scene-blan
+ dy-les-tours-act015/
+CATEGORIES:Scène & Spectacles
+GEO:48.56716;2.78188
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_daee512ccb@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:Exposition Lego de Puissance brick
+LOCATION:Château de Blandy\, Blandy-les-Tours
+DESCRIPTION:Horaires : 10h–18h\n\nTarif : Inclus dans le billet du châte
+ au\n\nExposition de créations Lego sur le thème médiéval et fantastiqu
+ e avec ateliers participatifs et mosaïque géante.\n\nOrganisateur : http
+ s://www.puissancebrick.fr/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/exposition-lego-de-puissance-brick-blandy-les-tours-daee512ccb/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-lego-de-puissance-br
+ ick-blandy-les-tours-daee512ccb/
+CATEGORIES:Culture & Ateliers
+GEO:48.56716;2.78188
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_11400b4bde@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:Exposition LEGO® au Château de Blandy
+LOCATION:Château de Blandy\, Blandy-les-Tours
+DESCRIPTION:Horaires : 10h–18h\n\nTarif : 7 € (tarif réduit 5 €)\n\n
+ Exposition exceptionnelle de maquettes et scènes fantastiques construites
+  en briques LEGO au sein du château médiéval.\n\nOrganisateur : https:/
+ /www.chateau-blandy.fr/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /exposition-lego-au-chateau-de-blandy-blandy-les-tours-11400b4bde/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-lego-au-chateau-de-b
+ landy-blandy-les-tours-11400b4bde/
+CATEGORIES:Culture & Ateliers
+GEO:48.56716;2.78188
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a4e038d2b5@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:Exposition LEGO® Médiéval & Fantaisie
+LOCATION:Château de Blandy-les-Tours\, Blandy-les-Tours
+DESCRIPTION:Horaires : 10h–18h\n\nTarif : 6 € (3 € pour les moins de 
+ 12 ans)\n\nExposition féerique présentant d'impressionnantes créations 
+ en briques LEGO sur le thème médiéval au château.\n\nOrganisateur : ht
+ tps://www.chateau-blandy.fr/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/exposition-lego-medieval-et-fantaisie-blandy-les-tours-a4e038d2b5/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-lego-medieval-et-fan
+ taisie-blandy-les-tours-a4e038d2b5/
+CATEGORIES:Culture & Ateliers
+GEO:48.56716;2.78188
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

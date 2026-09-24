@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intégrer l’agenda sur votre site | Fontainebleau Live</title>
+<meta name="description" content="Affichez gratuitement les prochaines activités de votre commune sur votre site : un encart à copier-coller, mis à jour automatiquement.">
+<link rel="canonical" href="https://fontainebleaulive.fr/widget/integrer/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<meta name="theme-color" content="#1d3b29">
+<!-- Partner page for the free widget (item 71). Hand-written. Town list and page paths come
+     from agenda/feeds.json (written by the generator), so nothing here rebuilds a slug. -->
+<style>
+:root{--ink:#1d3b29;--text:#2b322d;--muted:#4a544e;--line:#e6e2da;--bg:#f4f3ef;--paper:#fff;--accent-ink:#8f6a25}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg)}
+header{background:linear-gradient(155deg,#2d543c 0%,var(--ink) 55%,#142a1d 100%);padding:12px 16px}
+header a{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700}
+header img{border-radius:8px}
+main{max-width:960px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.8rem;line-height:1.2;margin:0 0 8px;color:var(--ink)}
+h2{font-size:1.15rem;margin:28px 0 8px;color:var(--ink)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:24px;align-items:start}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+label{display:block;font-size:.85rem;font-weight:600;color:var(--muted);margin:12px 0 4px}
+label:first-child{margin-top:0}
+select,textarea{width:100%;font:inherit;font-size:.95rem;padding:.5rem .65rem;border:1px solid var(--line);border-radius:6px;background:#fff;color:inherit}
+textarea{font:13px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;min-height:150px;resize:vertical}
+.btn{display:inline-block;margin-top:10px;padding:10px 16px;border-radius:999px;border:0;background:var(--ink);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.note{font-size:14px;color:var(--muted)}
+iframe{display:block;width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+footer{max-width:960px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a></header>
+<main>
+<h1>Intégrer l’agenda sur votre site</h1>
+<p>Mairie, office de tourisme, hébergement, club, association : affichez gratuitement les prochaines
+activités de votre commune. Un encart à copier-coller, qui se met à jour tout seul.</p>
+
+<div class="grid">
+  <div>
+    <div class="sheet">
+      <label for="city">Commune</label>
+      <select id="city"><option value="">Toutes les communes</option></select>
+      <label for="cat">Type d’activités</label>
+      <select id="cat">
+        <option value="">Tous les types</option>
+        <option value="Sport & Outdoor">Sport &amp; Outdoor</option>
+        <option value="Nature & Environnement">Nature &amp; Environnement</option>
+        <option value="Scène & Spectacles">Scène &amp; Spectacles</option>
+        <option value="Culture & Ateliers">Culture &amp; Ateliers</option>
+      </select>
+      <label for="n">Nombre d’activités affichées</label>
+      <select id="n"><option>3</option><option>4</option><option>5</option><option selected>6</option><option>8</option><option>10</option></select>
+    </div>
+
+    <h2>Le code à coller</h2>
+    <p class="note">Collez-le dans un bloc « HTML personnalisé » ou « code » de votre site (WordPress, Wix, Jimdo…).</p>
+    <textarea id="code" readonly aria-label="Code à intégrer"></textarea>
+    <button type="button" class="btn" id="copy">Copier le code</button>
+
+    <h2>Conditions</h2>
+    <ul class="note">
+      <li>Gratuit, sans inscription. Merci de laisser la mention et le lien « Fontainebleau Live » sous l’encart.</li>
+      <li>Les informations sont collectées automatiquement : elles peuvent comporter des erreurs. Chaque activité renvoie vers sa fiche et vers le site de l’organisateur.</li>
+      <li>L’encart ne dépose aucun cookie et ne mesure rien chez vos visiteurs.</li>
+      <li>Une version à vos couleurs, sans mention, ou avec vos propres événements mis en avant ? <a href="https://helioso.com" rel="noopener">Contactez-nous</a>.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h2 style="margin-top:0">Aperçu</h2>
+    <iframe id="preview" title="Aperçu de l’encart" height="460" loading="lazy"></iframe>
+  </div>
+</div>
+</main>
+<footer><a href="/">Fontainebleau Live</a> · <a href="/que-faire/">Toutes les communes</a></footer>
+<script>
+(function () {
+  var SITE = 'https://fontainebleaulive.fr';
+  var cityEl = document.getElementById('city');
+  var catEl = document.getElementById('cat');
+  var nEl = document.getElementById('n');
+  var code = document.getElementById('code');
+  var preview = document.getElementById('preview');
+  var pages = {};   // town -> /que-faire/<slug>/, derived from the generator's feeds.json
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function update() {
+    var q = new URLSearchParams();
+    if (cityEl.value) q.set('ville', cityEl.value);
+    if (catEl.value) q.set('cat', catEl.value);
+    if (nEl.value !== '6') q.set('n', nEl.value);
+    var qs = q.toString();
+    var src = SITE + '/widget/' + (qs ? '?' + qs : '');
+    preview.src = '/widget/' + (qs ? '?' + qs : '');
+
+    // The plain link under the frame is part of the deal: a link inside an iframe does not
+    // count for search engines, this one does.
+    var city = cityEl.value;
+    var href = SITE + (city && pages[city] ? pages[city] : '/');
+    var text = city ? 'Que faire à ' + city + ' ? — Fontainebleau Live' : 'Que faire autour de Fontainebleau ? — Fontainebleau Live';
+    code.value =
+      '<iframe src="' + esc(src) + '" title="' + esc(city ? 'Agenda de ' + city : 'Agenda autour de Fontainebleau') + '"\n' +
+      '        width="100%" height="460" style="border:0;max-width:420px" loading="lazy"></iframe>\n' +
+      '<p style="font-size:13px;margin:4px 0 0"><a href="' + esc(href) + '">' + esc(text) + '</a></p>';
+  }
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this;
+    var done = function () { btn.textContent = 'Code copié ✓'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code.value).then(done, function () { code.select(); });
+    } else { code.select(); }
+  });
+  [cityEl, catEl, nEl].forEach(function (el) { el.addEventListener('change', update); });
+
+  fetch('/agenda/feeds.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (feeds) {
+      Object.keys(feeds.cities || {}).sort(function (a, b) { return a.localeCompare(b, 'fr'); }).forEach(function (name) {
+        var m = /^\/agenda\/commune\/([a-z0-9-]+)\.ics$/.exec(feeds.cities[name]);
+        if (!m) return;
+        pages[name] = '/que-faire/' + m[1] + '/';
+        var opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        cityEl.appendChild(opt);
+      });
+      var pre = new URLSearchParams(location.search).get('ville');
+      if (pre && pages[pre]) cityEl.value = pre;
+    })
+    .catch(function () { /* the town list stays empty: "all towns" still works */ })
+    .finally(update);
+})();
+</script>
+</body>
+</html>

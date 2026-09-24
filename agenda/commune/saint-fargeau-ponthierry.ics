@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Saint-Fargeau-Ponthierry · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_1234bdf231@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Saint-Fargeau-Ponthierry au fil des histoires
+LOCATION:Bibliothèque municipale André Malraux\, Saint-Fargeau-Ponthierry
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/biblis-en-folie-a-saint-fargeau-ponthierry\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/saint-fargeau-ponthierry-au-fil-des-hist
+ oires-1234bdf231/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/saint-fargeau-ponthierry-au-fil
+ -des-histoires-1234bdf231/
+CATEGORIES:Culture & Ateliers
+GEO:48.53005;2.5438
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

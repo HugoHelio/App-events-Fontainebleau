@@ -153,6 +153,7 @@ h2{font-size:1.2rem;margin:32px 0 8px;color:var(--ink)}
 dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}
 dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
 .note{font-size:14px;color:var(--muted)}
+.note a{color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
 .btn{display:inline-block;padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600}
 .btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
@@ -286,7 +287,11 @@ function cityPage(c) {
 <h1>Que faire à ${esc(c.name)} ?</h1>
 <p>${n} activité${n > 1 ? 's' : ''} à venir à ${esc(c.name)} : sport, nature, culture et sorties en famille.</p>
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
-<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}">Voir sur la carte</a></div>`;
+<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}">Voir sur la carte</a></div>
+<h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
+<p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
+<div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
+<p class="note">Vous gérez un site (mairie, association, hébergement) ? <a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}">Affichez gratuitement ce programme chez vous</a>.</p>`;
   return layout({
     title: `Que faire à ${c.name} ? Agenda des activités | Fontainebleau Live`,
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),
@@ -319,7 +324,7 @@ function sitemap(cities, events, homeLastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${home(`${SITE_URL}/`)}
 ${home(`${SITE_URL}/?lang=en`)}
-${[`/${CITIES_DIR}/`, ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -330,7 +335,154 @@ ${[`/${CITIES_DIR}/`, ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...even
  * Pure: data.json payload + the folders already on disk → { files, remove }.
  * Nothing touches the disk here, so a failure half-way leaves the site as it was.
  */
-function build(payload, { today, existingEventDirs = [] }) {
+// ───────────────────────────── Calendar feeds (item 69) ─────────────────────────────
+//
+// Subscribable iCalendar files (RFC 5545): one for everything, one per category, one per
+// commune. A calendar app re-downloads them on its own, so the visitor's phone follows the
+// site with no account, no e-mail and no server.
+//
+// Rules that are easy to get wrong, and silently: a calendar app that cannot parse a feed
+// simply shows nothing.
+//   - CRLF line endings, lines folded at 75 octets (not characters: é is two), and
+//     `\` `;` `,` escaped in text values.
+//   - All-day events: DTEND is EXCLUSIVE, so it is the day after the last day.
+//   - UID = the event id, stable for the life of the record: an app updates the entry instead
+//     of duplicating it, and drops it when it leaves the feed.
+//   - Events longer than FEED_MAX_DAYS are left out: a four-month exhibition as an all-day
+//     entry would sit at the top of the visitor's calendar every day until January.
+//   - A feed is never deleted once published. A commune with nothing left gets an empty
+//     calendar: a subscription that starts returning 404 makes some apps show an error.
+
+const AGENDA_DIR = 'agenda';
+const FEED_MAX_DAYS = 7;
+
+const icsText = (s) => String(s ?? '')
+  .replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,')
+  .replace(/\r?\n/g, '\\n');
+
+/** Folds one content line at 75 octets, never inside a UTF-8 character. */
+function icsFold(line) {
+  const out = [];
+  let cur = '';
+  let bytes = 0;
+  for (const ch of line) {
+    const n = Buffer.byteLength(ch);
+    const limit = out.length ? 74 : 75;   // continuation lines start with a space
+    if (bytes + n > limit) { out.push(cur); cur = ''; bytes = 0; }
+    cur += ch;
+    bytes += n;
+  }
+  out.push(cur);
+  return out.join('\r\n ');
+}
+
+const icsDate = (iso) => iso.replace(/-/g, '');
+
+function nextDay(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
+}
+
+function spanDays(e) {
+  const end = isIsoDate(e.endDate) ? e.endDate : e.startDate;
+  return Math.round((Date.parse(end) - Date.parse(e.startDate)) / 86400000) + 1;
+}
+
+const inFeed = (e) => spanDays(e) <= FEED_MAX_DAYS;
+
+function icsEvent(e) {
+  const end = isIsoDate(e.endDate) ? e.endDate : e.startDate;
+  const link = safeUrl(e.url);
+  const details = [
+    e.schedule && `Horaires : ${e.schedule}`,
+    e.price && `Tarif : ${e.price}`,
+    ageLabel(e) !== 'Tout public' && `Public : ${ageLabel(e)}`,
+    e.description,
+    link && `Organisateur : ${link}`,
+    `Fiche : ${SITE_URL}${e.pagePath}`,
+    'Informations collectées automatiquement : vérifiez-les auprès de l’organisateur.',
+  ].filter(Boolean).join('\n\n');
+  const lines = [
+    'BEGIN:VEVENT',
+    `UID:${e.id}@fontainebleaulive.fr`,
+    // Required. Tied to the data, not to the clock, so an unchanged event is an unchanged file.
+    `DTSTAMP:${icsDate(isIsoDate(e.lastSeen) ? e.lastSeen : e.startDate)}T000000Z`,
+    `DTSTART;VALUE=DATE:${icsDate(e.startDate)}`,
+    `DTEND;VALUE=DATE:${icsDate(nextDay(end))}`,
+    `SUMMARY:${icsText(e.title)}`,
+    `LOCATION:${icsText([e.locationName, e.city].filter(Boolean).join(', '))}`,
+    `DESCRIPTION:${icsText(details)}`,
+    `URL:${SITE_URL}${e.pagePath}`,
+    e.category && `CATEGORIES:${icsText(e.category)}`,
+    (!e.geoApprox && Number.isFinite(Number(e.lat)) && Number.isFinite(Number(e.lng)))
+      && `GEO:${Number(e.lat)};${Number(e.lng)}`,
+    'TRANSP:TRANSPARENT',   // an event listing, not a commitment: never shown as "busy"
+    'END:VEVENT',
+  ].filter(Boolean);
+  return lines;
+}
+
+function icsCalendar(name, description, events) {
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Fontainebleau Live//Agenda//FR',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    `X-WR-CALNAME:${icsText(name)}`,
+    `X-WR-CALDESC:${icsText(description)}`,
+    'X-WR-TIMEZONE:Europe/Paris',
+    // A hint only: Google ignores it and refreshes on its own schedule (up to a day or more).
+    'REFRESH-INTERVAL;VALUE=DURATION:PT12H',
+    'X-PUBLISHED-TTL:PT12H',
+    ...events.flatMap(icsEvent),
+    'END:VCALENDAR',
+  ];
+  return lines.map(icsFold).join('\r\n') + '\r\n';
+}
+
+/** Feed files + the index the frontend reads to find them. */
+function buildFeeds(events, existingFeeds) {
+  const files = new Map();
+  const feedEvents = events.filter(inFeed);
+  const index = { all: `/${AGENDA_DIR}/fontainebleau-live.ics`, categories: {}, cities: {} };
+  const desc = 'Sport, culture et nature autour de Fontainebleau. Mis à jour automatiquement : vérifiez auprès de l’organisateur avant de vous déplacer.';
+
+  files.set(`${AGENDA_DIR}/fontainebleau-live.ics`, icsCalendar('Fontainebleau Live', desc, feedEvents));
+
+  const groups = [
+    ['categorie', 'categories', (e) => e.category, (v) => `${v} · Fontainebleau Live`],
+    ['commune', 'cities', (e) => e.city, (v) => `${v} · Fontainebleau Live`],
+  ];
+  for (const [dir, key, pick, title] of groups) {
+    const names = [...new Set(events.map(pick).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'fr'));
+    for (const name of names) {
+      const slug = slugify(name, 50);
+      if (!slug) continue;
+      const rel = `${AGENDA_DIR}/${dir}/${slug}.ics`;
+      files.set(rel, icsCalendar(title(name), desc, feedEvents.filter((e) => pick(e) === name)));
+      index[key][name] = `/${rel}`;
+    }
+  }
+  // Already published, nothing left: keep the subscription alive with an empty calendar.
+  for (const rel of existingFeeds) {
+    if (files.has(rel)) continue;
+    const slug = path.basename(rel, '.ics');
+    files.set(rel, icsCalendar(`${slug} · Fontainebleau Live`, desc, []));
+  }
+  files.set(`${AGENDA_DIR}/feeds.json`, JSON.stringify(index, null, 2) + '\n');
+  return { files, stats: { feedEvents: feedEvents.length, longLeftOut: events.length - feedEvents.length } };
+}
+
+/** "S'abonner" links for one feed: Google (web), then webcal for Apple / Outlook. */
+function subscribeLinks(feedPath) {
+  const webcal = `webcal://fontainebleaulive.fr${feedPath}`;
+  const google = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`;
+  return `<a class="btn alt" href="${esc(google)}" rel="noopener" target="_blank">Google Agenda</a>
+<a class="btn alt" href="${esc(webcal)}">Apple / Outlook</a>`;
+}
+
+function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   const list = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.events) ? payload.events : null);
   if (!list) throw new Error('data.json: no event list');
   const generatedAt = !Array.isArray(payload) && payload.generatedAt;
@@ -361,6 +513,8 @@ function build(payload, { today, existingEventDirs = [] }) {
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
+  const feeds = buildFeeds(events, existingFeeds);
+  for (const [rel, content] of feeds.files) files.set(rel, content);
 
   // An old folder whose id token still belongs to a live event: its title changed. Redirect rather
   // than break a link Google already holds. Anything else is over or withdrawn: removed.
@@ -372,7 +526,7 @@ function build(payload, { today, existingEventDirs = [] }) {
     else remove.push(`${EVENTS_DIR}/${dir}`);
   }
 
-  return { files, remove, stats: { events: events.length, cities: cities.length } };
+  return { files, remove, stats: { events: events.length, cities: cities.length, ...feeds.stats } };
 }
 
 function listDirs(rel) {
@@ -383,7 +537,11 @@ function listDirs(rel) {
 
 function main() {
   const payload = JSON.parse(fs.readFileSync(path.join(ROOT, 'data.json'), 'utf8'));
-  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR) });
+  const existingFeeds = ['categorie', 'commune'].flatMap((d) => {
+    const dir = path.join(ROOT, AGENDA_DIR, d);
+    return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.ics')).map((f) => `${AGENDA_DIR}/${d}/${f}`) : [];
+  });
+  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds });
 
   // Communes with nothing left are dropped too.
   const liveCityDirs = new Set([...files.keys()].filter((f) => f.startsWith(`${CITIES_DIR}/`)).map((f) => f.split('/')[1]));
@@ -399,7 +557,7 @@ function main() {
   }
   for (const rel of remove) fs.rmSync(path.join(ROOT, rel), { recursive: true, force: true });
 
-  const line = `generate-pages: ${stats.events} événement(s), ${stats.cities} commune(s) · ${written} fichier(s) écrit(s), ${remove.length} dossier(s) supprimé(s)`;
+  const line = `generate-pages: ${stats.events} événement(s), ${stats.cities} commune(s) · agendas : ${stats.feedEvents} événement(s), ${stats.longLeftOut} de plus de ${FEED_MAX_DAYS} jours écarté(s) · ${written} fichier(s) écrit(s), ${remove.length} dossier(s) supprimé(s)`;
   console.log(line);
   if (process.env.GITHUB_STEP_SUMMARY) {
     try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n### 📄 Pages statiques\n\n${line}\n`); } catch { /* non-fatal */ }
@@ -413,4 +571,7 @@ if (require.main === module) {
   }
 }
 
-module.exports = { build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl, EVENTS_DIR, CITIES_DIR };
+module.exports = {
+  build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
+  icsText, icsFold, icsCalendar, inFeed, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, FEED_MAX_DAYS,
+};

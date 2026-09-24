@@ -1,0 +1,122 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Melun · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_35ba1ae703@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:La Rando du Val de Seine
+LOCATION:Place Saint-Jean / Espace Saint-Jean\, Melun
+DESCRIPTION:Horaires : 08h00–17h00\n\nTarif : Gratuit\n\nRandonnée péde
+ stre proposant 4 boucles (7\, 10\, 19 et 27 km) à la découverte de la na
+ ture et du patrimoine du Val de Seine.\n\nOrganisateur : https://melunvald
+ eseine.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/la-rando-du-
+ val-de-seine-melun-35ba1ae703/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-rando-du-val-de-seine-melun-
+ 35ba1ae703/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8f80d60f35@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Melun Fête son Brie
+LOCATION:Place Saint-Jean\, Melun
+DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nGrande fête gourman
+ de mettant à l'honneur le Brie de Melun avec dégustations\, marchés loc
+ aux et ateliers ludiques.\n\nOrganisateur : https://www.melun.fr/\n\nFiche
+  : https://fontainebleaulive.fr/evenements/melun-fete-son-brie-8f80d60f35/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/melun-fete-son-brie-8f80d60f35/
+CATEGORIES:Culture & Ateliers
+GEO:48.53924;2.66264
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4d9dab55b0@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Pièce de théâtre « Coup de Bluff au Cabaret »
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Horaires : 20h30\n\nTarif : De 29 € à 36 €\n\nComédie hil
+ arante avec Franck Leboeuf\, Jérôme Anthony et Nicolas Vitiello pour sau
+ ver un cabaret en faillite.\n\nOrganisateur : https://www.ville-melun.fr/\
+ n\nFiche : https://fontainebleaulive.fr/evenements/piece-de-theatre-coup-d
+ e-bluff-au-cabaret-melun-4d9dab55b0/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/piece-de-theatre-coup-de-bluff-
+ au-cabaret-melun-4d9dab55b0/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7bb4e72e3e@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Spectacle musical « Moïse et les Dix Commandements »
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Horaires : 20h00\n\nTarif : À partir de 14\,50 €\n\nGrand sp
+ ectacle musical réinterprétant avec une mise en scène moderne la fresqu
+ e historique de Moïse.\n\nOrganisateur : https://www.ville-melun.fr/\n\nF
+ iche : https://fontainebleaulive.fr/evenements/spectacle-musical-moise-et-
+ les-dix-commandements-melun-7bb4e72e3e/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-musical-moise-et-les-
+ dix-commandements-melun-7bb4e72e3e/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f0502eebfd@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Spectacle de magie « Clément Blouin - Magicien c'est pas un méti
+ er »
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Horaires : 16h00\n\nTarif : À partir de 25 €\n\nSpectacle al
+ liant humour et illusions modernes par le magicien Clément Blouin.\n\nOrg
+ anisateur : https://www.ville-melun.fr/\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/spectacle-de-magie-clement-blouin-magicien-c-est-pas-un-m
+ eti-melun-f0502eebfd/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-de-magie-clement-blou
+ in-magicien-c-est-pas-un-meti-melun-f0502eebfd/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c2544a035d@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Histoires de nains\, géants et farfadets
+LOCATION:Médiathèque La Boussole\, Melun
+DESCRIPTION:Public : 6–14 ans\n\nSylvie Vieville\n\nOrganisateur : https:
+ //openagenda.com/rncap/events/histoires-de-nains-geants-et-farfadets\n\nFi
+ che : https://fontainebleaulive.fr/evenements/histoires-de-nains-geants-et
+ -farfadets-melun-c2544a035d/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/histoires-de-nains-geants-et-fa
+ rfadets-melun-c2544a035d/
+CATEGORIES:Culture & Ateliers
+GEO:48.54238;2.67597
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

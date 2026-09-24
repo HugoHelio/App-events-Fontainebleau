@@ -1,0 +1,127 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nemours · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_978d32402f@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Dimanche animé : Retour vers l’âge du Bronze
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le-de-France\, Nemours
+DESCRIPTION:Après une courte visite du musée \, les participants seront i
+ nvités à imaginer les motifs destinés à orner leur propre bracelet de 
+ l'âge du Bronze.\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/f
+ r\n\nFiche : https://fontainebleaulive.fr/evenements/dimanche-anime-retour
+ -vers-l-age-du-bronze-nemours-978d32402f/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/dimanche-anime-retour-vers-l-ag
+ e-du-bronze-nemours-978d32402f/
+CATEGORIES:Culture & Ateliers
+GEO:48.26079;2.71471
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5edd0ac6ea@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Visite flash : Chasseurs et paysans
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le-de-France\, Nemours
+DESCRIPTION:Cette visite guidée vous permettra de mieux cerner les modes d
+ e vie préhistoriques. Accompagnés par un médiateur du musée\, vous dé
+ couvrirez les objets du quotidien utilisés par les chasseurs du Paléolit
+ hique puis par les paysans du Néolithique.\n\nOrganisateur : https://www.
+ musee-prehistoire-idf.fr/fr\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/visite-flash-chasseurs-et-paysans-nemours-5edd0ac6ea/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-flash-chasseurs-et-paysa
+ ns-nemours-5edd0ac6ea/
+CATEGORIES:Culture & Ateliers
+GEO:48.26079;2.71471
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ACT_001@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Le Bouchon de Nemours 2026
+LOCATION:Centre-ville de Nemours\, Nemours
+DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Gratuit\n\nGrand rassemblem
+ ent et défilé rétro de voitures anciennes et véhicules de collection r
+ ecréant l'ambiance des départs en vacances d'antan.\n\nOrganisateur : ht
+ tps://www.nemours.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/l
+ e-bouchon-de-nemours-2026-act001/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-bouchon-de-nemours-2026-act0
+ 01/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_11dd69dd5b@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:Cross Duathlon de Nemours
+LOCATION:Rochers et sentiers nemouriens\, Nemours
+DESCRIPTION:Horaires : 09h00–13h00\n\nTarif : Inscriptions payantes\n\nÉ
+ preuve combinant 5 km de course à pied\, 20 km de VTT sur chemins et 3 km
+  de course à pied pour les amateurs de sports outdoor.\n\nOrganisateur : 
+ https://protiming.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/c
+ ross-duathlon-de-nemours-11dd69dd5b/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cross-duathlon-de-nemours-11dd6
+ 9dd5b/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_97e8e14fe0@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Cross Duathlon de Nemours 2026
+LOCATION:Base de loisirs de Nemours\, Nemours
+DESCRIPTION:Horaires : 09h00–15h00\n\nTarif : Payant selon la catégorie\
+ n\nPublic : Dès 16 ans\n\nÉpreuve outdoor combinant course à pied et VT
+ T en sous-bois autour de Nemours.\n\nOrganisateur : https://www.nemours.fr
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/cross-duathlon-de-nem
+ ours-2026-97e8e14fe0/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cross-duathlon-de-nemours-2026-
+ 97e8e14fe0/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_39a65cd1ec@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261214
+SUMMARY:Village & Marché de Noël
+LOCATION:Maison des Arts\, Saint-Pierre-lès-Nemours\, Nemours
+DESCRIPTION:Horaires : sam. 12-12-2026 : 10h–20h \; dim. 13-12-2026 : 10h
+ –18h\n\nTarif : Gratuit\n\nVillage de Noël réunissant soixante exposan
+ ts\, expositions artistiques et animations féériques pour toute la famil
+ le.\n\nOrganisateur : https://www.saintpierrelesnemours.fr/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/village-et-marche-de-noel-nemours-39a
+ 65cd1ec/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-nemou
+ rs-39a65cd1ec/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

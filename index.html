@@ -359,6 +359,63 @@
       color: white;
     }
 
+    /* Calendar subscription (item 69) */
+    .subscribe {
+      max-width: 1200px;
+      margin: -0.25rem auto 1rem;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .subscribe-btn {
+      background: none;
+      border: none;
+      color: var(--accent-ink);
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .subscribe-panel {
+      max-width: 560px;
+      margin: 0.75rem auto 0;
+      padding: 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .subscribe-panel .sub-title { font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
+    .subscribe-panel .sub-hint { color: var(--ink-2); font-size: 0.8rem; margin-top: 0.6rem; }
+
+    .subscribe-panel .sub-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .subscribe-panel .sub-actions a,
+    .subscribe-panel .sub-actions button {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--ink);
+      border-radius: var(--r-pill);
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .subscribe-panel .sub-actions a:first-child { background: var(--ink); color: #fff; }
+
     /* Main Content Layout */
     .main-container {
       max-width: 1200px;
@@ -800,6 +857,14 @@
             onclick="switchView('calendar')" data-i18n="tabCalendar">Calendrier</button>
   </div>
 
+  <!-- Calendar subscription (item 69). Outside the tablist on purpose: it is not a view. The
+       panel is filled by renderSubscribe() from agenda/feeds.json, written by the generator. -->
+  <div class="subscribe">
+    <button type="button" id="subscribeBtn" class="subscribe-btn" aria-expanded="false"
+            aria-controls="subscribePanel" data-i18n="subscribeBtn">📅 Ajouter à mon agenda</button>
+    <div id="subscribePanel" class="subscribe-panel" hidden></div>
+  </div>
+
   <main class="main-container">
     <!-- Vue Carte & Liste -->
     <div id="mapView" class="view-panel active" role="tabpanel" aria-labelledby="tabMap">
@@ -826,7 +891,8 @@
     <p data-i18n="installHint" class="install-hint"></p>
     <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
     <!-- Plain link, present without JavaScript: the way a crawler finds the static pages (§3.X). -->
-    <p><a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a></p>
+    <p><a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
+       · <a href="/widget/integrer/" data-i18n="widgetLink">Intégrer l’agenda sur votre site</a></p>
     <img class="footer-lockup" src="public/assets/img/brand/Icon-FL-v1ST-512-512.png"
          alt="Fontainebleau Live" width="112" height="112" loading="lazy">
     <p class="brand-credit">
@@ -886,6 +952,18 @@
         horizonLabel: 'Période :',
         cityLabel: 'Ville :',
         cityAll: 'Toutes les villes',
+        subscribeBtn: '📅 Ajouter à mon agenda',
+        subTitleAll: 'Toutes les activités autour de Fontainebleau',
+        subTitleCity: (c) => `Les activités à ${c}`,
+        subTitleCat: (c) => `${c} autour de Fontainebleau`,
+        subGoogle: 'Google Agenda',
+        subApple: 'Apple / Outlook',
+        subCopy: 'Copier le lien',
+        subCopied: 'Lien copié ✓',
+        subHint: 'Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules (Google peut mettre jusqu’à un jour). Pour Google, passez par un ordinateur. Les expositions de plus d’une semaine n’y figurent pas, elles restent sur le site.',
+        subFollowsFilter: 'L’agenda suit le filtre Ville, sinon le type d’événements.',
+        subUnavailable: 'Agenda momentanément indisponible.',
+        widgetLink: 'Intégrer l’agenda sur votre site',
         horizonToday: "Aujourd'hui",
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
@@ -949,6 +1027,18 @@
         horizonLabel: 'Period:',
         cityLabel: 'Town:',
         cityAll: 'All towns',
+        subscribeBtn: '📅 Add to my calendar',
+        subTitleAll: 'Everything on around Fontainebleau',
+        subTitleCity: (c) => `What’s on in ${c}`,
+        subTitleCat: (c) => `${c} around Fontainebleau`,
+        subGoogle: 'Google Calendar',
+        subApple: 'Apple / Outlook',
+        subCopy: 'Copy link',
+        subCopied: 'Link copied ✓',
+        subHint: 'A subscription: events are added to your calendar and update by themselves (Google can take up to a day). For Google, use a computer. Exhibitions longer than a week are left out; they stay on the site. Event details are in French.',
+        subFollowsFilter: 'The calendar follows the Town filter, otherwise the event type.',
+        subUnavailable: 'Calendar temporarily unavailable.',
+        widgetLink: 'Add this calendar to your website',
         horizonToday: 'Today',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
@@ -1503,6 +1593,7 @@
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
       document.getElementById('resetView').addEventListener('click', clearSelection);
+      document.getElementById('subscribeBtn').addEventListener('click', toggleSubscribe);
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') clearSelection();
       });
@@ -1594,6 +1685,99 @@
       renderCards(filtered);
       updateMapMarkers(filtered);
       updateCalendarEvents(filtered);
+      renderSubscribe();
+    }
+
+    // ── Calendar subscription (item 69) ─────────────────────────────────────
+    // The feed paths come from agenda/feeds.json, written by the generator: the page never
+    // rebuilds a slug itself, so the two cannot drift. Loaded on first open only.
+    let feeds = null;          // null = not loaded, false = failed
+    let feedsLoading = false;
+
+    function toggleSubscribe() {
+      const btn = document.getElementById('subscribeBtn');
+      const panel = document.getElementById('subscribePanel');
+      const open = panel.hidden;
+      panel.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      if (!open) return;
+      track('subscribe-open');
+      if (feeds === null && !feedsLoading) {
+        feedsLoading = true;
+        fetch('./agenda/feeds.json', { cache: 'no-cache' })
+          .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+          .then((j) => { feeds = j; })
+          .catch(() => { feeds = false; })
+          .finally(() => { feedsLoading = false; renderSubscribe(); });
+      }
+      renderSubscribe();
+    }
+
+    /** Picks the feed matching the filters: the town first, then the category, else everything. */
+    function currentFeed() {
+      const city = document.getElementById('filterCity').value;
+      const cat = document.getElementById('filterCategory').value;
+      if (city && feeds.cities && feeds.cities[city]) return { path: feeds.cities[city], title: t('subTitleCity')(city) };
+      if (cat && feeds.categories && feeds.categories[cat]) return { path: feeds.categories[cat], title: t('subTitleCat')(categoryLabel(cat)) };
+      return { path: feeds.all, title: t('subTitleAll') };
+    }
+
+    function renderSubscribe() {
+      const panel = document.getElementById('subscribePanel');
+      if (!panel || panel.hidden) return;
+      panel.replaceChildren();
+      if (!feeds) {
+        if (feeds === false) {
+          const p = document.createElement('p');
+          p.textContent = t('subUnavailable');
+          panel.appendChild(p);
+        }
+        return;
+      }
+      const feed = currentFeed();
+      // Only a same-site path of the expected shape is ever turned into a link.
+      if (!/^\/agenda\/[a-z0-9/-]+\.ics$/.test(String(feed.path || ''))) return;
+      const https = `${location.origin}${feed.path}`;
+      const webcal = https.replace(/^https?:/, 'webcal:');
+
+      const title = document.createElement('p');
+      title.className = 'sub-title';
+      title.textContent = feed.title;
+      const follows = document.createElement('p');
+      follows.className = 'sub-hint';
+      follows.style.marginTop = '0';
+      follows.textContent = t('subFollowsFilter');
+
+      const actions = document.createElement('div');
+      actions.className = 'sub-actions';
+      const google = document.createElement('a');
+      google.href = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`;
+      google.target = '_blank';
+      google.rel = 'noopener noreferrer';
+      google.textContent = t('subGoogle');
+      google.addEventListener('click', () => track('subscribe', 'google'));
+      const apple = document.createElement('a');
+      apple.href = webcal;
+      apple.textContent = t('subApple');
+      apple.addEventListener('click', () => track('subscribe', 'webcal'));
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = t('subCopy');
+      copy.addEventListener('click', () => {
+        track('subscribe', 'copy');
+        const done = () => { copy.textContent = t('subCopied'); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(https).then(done, () => window.prompt('', https));
+        } else {
+          window.prompt('', https);
+        }
+      });
+      actions.append(google, apple, copy);
+
+      const hint = document.createElement('p');
+      hint.className = 'sub-hint';
+      hint.textContent = t('subHint');
+      panel.append(title, follows, actions, hint);
     }
 
     // Rendu des cartes HTML

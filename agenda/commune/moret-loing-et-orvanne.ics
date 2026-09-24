@@ -1,0 +1,70 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Moret-Loing-et-Orvanne · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_2016bae2a8@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Tri-Fouille 2026
+LOCATION:Avenue de Fontainebleau\, Veneux-Les Sablons\, Moret-Loing-et-Orva
+ nne
+DESCRIPTION:Horaires : 8h–18h\n\nTarif : Gratuit\n\nGrand vide-grenier an
+ nuel et animations conviviales organisés avenue de Fontainebleau à Veneu
+ x-Les Sablons.\n\nOrganisateur : https://www.moretloingetorvanne.fr/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/tri-fouille-2026-moret-loing
+ -et-orvanne-2016bae2a8/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/tri-fouille-2026-moret-loing-et
+ -orvanne-2016bae2a8/
+CATEGORIES:Culture & Ateliers
+GEO:48.37695;2.79438
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b4c2e59fdd@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Randonnée VTT La Malmontagne
+LOCATION:Salle polyvalente de Veneux-les-Sablons\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 08h30–13h00\n\nTarif : Payant\n\nPublic : Dès 12 
+ ans\n\n26e édition de la randonnée VTT proposant 4 parcours balisés dan
+ s le massif forestier de Fontainebleau.\n\nOrganisateur : https://www.more
+ tloingetorvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/ran
+ donnee-vtt-la-malmontagne-moret-loing-et-orvanne-b4c2e59fdd/\n\nInformatio
+ ns collectées automatiquement : vérifiez-les auprès de l’organisateur
+ .
+URL:https://fontainebleaulive.fr/evenements/randonnee-vtt-la-malmontagne-mo
+ ret-loing-et-orvanne-b4c2e59fdd/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_26b82e4407@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Bourse aux collectionneurs d'Octobre Rose
+LOCATION:Salle Roland Dagnaud (Moret-sur-Loing)\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 9h–18h\n\nTarif : Entrée libre\n\nBourse thémati
+ que aux objets de collection dont les bénéfices sont versés pour la rec
+ herche contre le cancer.\n\nOrganisateur : https://moretloingetorvanne.fr/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/bourse-aux-collectionn
+ eurs-d-octobre-rose-moret-loing-et-orvanne-26b82e4407/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/bourse-aux-collectionneurs-d-oc
+ tobre-rose-moret-loing-et-orvanne-26b82e4407/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,47 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Milly-la-Forêt · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_de8325e9de@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Atelier créatif
+LOCATION:Médiathèque de Milly la Forêt\, Milly-la-Forêt
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/atelier-creatif-1528905\n\nFiche : https://fontainebleaulive
+ .fr/evenements/atelier-creatif-milly-la-foret-de8325e9de/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-creatif-milly-la-foret-
+ de8325e9de/
+CATEGORIES:Culture & Ateliers
+GEO:48.40348;2.46929
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_225054d9c0@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Café à Ecrire
+LOCATION:Médiathèque de Milly la Forêt\, Milly-la-Forêt
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/cafe-a-ecrire\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/cafe-a-ecrire-milly-la-foret-225054d9c0/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cafe-a-ecrire-milly-la-foret-22
+ 5054d9c0/
+CATEGORIES:Culture & Ateliers
+GEO:48.40348;2.46929
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

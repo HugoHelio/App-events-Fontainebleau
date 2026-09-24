@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Ury · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_c65bd4ec2e@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261130
+SUMMARY:Marché de Noël d'Ury
+LOCATION:Centre-ville d'Ury\, Ury
+DESCRIPTION:Horaires : Samedi et dimanche de 10h00 à 18h00\n\nTarif : Grat
+ uit\n\nMarché traditionnel festif avec artisans locaux\, gourmandises\, c
+ ontes de Noël et visites du Père Noël.\n\nOrganisateur : https://www.fo
+ ntainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/marche-de-noel-d-ury-c65bd4ec2e/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-ury-c65bd4ec2e
+ /
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

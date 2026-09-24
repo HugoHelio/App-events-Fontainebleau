@@ -1,0 +1,75 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Saint-Pierre-lès-Nemours · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:ACT_005@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Trail du Mont Sarrazin
+LOCATION:Massif du Mont Sarrazin\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Horaires : 09h00–14h00\n\nTarif : À partir de 3 €\n\nPubli
+ c : Dès 16 ans\n\nÉpreuve nature incontournable du Pays de Nemours propo
+ sant deux parcours de trail de 11 km et 24 km ainsi qu'une marche nordique
+  à travers rochers et sentiers.\n\nOrganisateur : https://protiming.fr/ev
+ ents/8469-trail-du-mont-sarrazin\n\nFiche : https://fontainebleaulive.fr/e
+ venements/trail-du-mont-sarrazin-saint-pierre-les-nemours-act005/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/trail-du-mont-sarrazin-saint-pi
+ erre-les-nemours-act005/
+CATEGORIES:Sport & Outdoor
+GEO:48.2665;2.65146
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_53207faae8@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Spectacle HUMANITÉ - Soir au village
+LOCATION:46 Av. D'Ormesson Lab'Oratoire du Label ART ACTION\, Saint-Pierre-
+ lès-Nemours
+DESCRIPTION:Conte théâtralisé et musical - Exposition d'instruments trad
+ itionnels\n\nOrganisateur : https://lesjourneesnationalesdesartistes.fr/si
+ te/jna2026/?_recherche_dartiste_ou_dvnement=ART+ACTION&utm_source=chatgpt.
+ com%3C%3Ehttps://www.helloasso.com/associations/art-action-77/evenements/s
+ pectacle-humanite\n\nFiche : https://fontainebleaulive.fr/evenements/spect
+ acle-humanite-soir-au-village-saint-pierre-les-nemours-53207faae8/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-humanite-soir-au-vill
+ age-saint-pierre-les-nemours-53207faae8/
+CATEGORIES:Scène & Spectacles
+GEO:48.25993;2.68508
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_08cc124fed@fontainebleaulive.fr
+DTSTAMP:20260923T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Cross de Nemours
+LOCATION:Stade Jacques Moulin\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Horaires : 09h30–13h00\n\nTarif : Payant\n\nPublic : Dès 6 a
+ ns\n\nÉpreuve officielle de cross-country organisée sous l'égide du Com
+ ité Départemental d'Athlétisme de Seine-et-Marne.\n\nOrganisateur : htt
+ ps://athle-nemours-saint-pierre.com/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/cross-de-nemours-saint-pierre-les-nemours-08cc124fed/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/cross-de-nemours-saint-pierre-l
+ es-nemours-08cc124fed/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
