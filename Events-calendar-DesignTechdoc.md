@@ -1178,6 +1178,10 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | Bouton « Ajouter à mon agenda » **sous** la carte et la liste, icône dessinée aux couleurs de la marque | Le visiteur regarde, choisit, puis s'abonne : l'action vient après le contenu, et le haut de page reste dégagé. La liste défile dans son propre cadre, donc « dessous » reste à portée. Un emoji prend la palette du système, pas celle de la marque |
 | 2026-09-24 | Un flux publié n'est jamais supprimé (calendrier vide à la place) | Un abonnement qui répond 404 provoque une erreur ou une désinscription selon l'application |
 | 2026-09-24 | **Widget partenaire gratuit** : `<iframe>` + lien en clair dans le code fourni, page `noindex`, aucune mesure d'audience | Le lien dans l'iframe ne compte pas pour Google, celui de la page du partenaire oui. On ne mesure pas les visiteurs d'un site tiers qui n'ont rien accepté |
+| 2026-09-24 | **Réduire la dépendance au grounding par des sources légitimes, jamais en masquant l'origine** (item 72) | Proposé puis écarté : diluer la provenance ou faire transiter les données par un site « perso » non monétisé. Un site non monétisé n'est pas conforme pour autant (les conditions interdisent le stockage et la republication, revenu ou pas), et masquer l'origine transformerait un risque accepté en tromperie délibérée — indéfendable devant Google comme devant une mairie cliente |
+| 2026-09-24 | **Critère de bascule : ≥ 90 % des événements publiés retrouvés par des sources légitimes**, mesuré en parallèle sans rien changer en production | La valeur du site est l'exhaustivité sur les événements clés : aucune bascule qui en perde. Le résidu (≤ 10 %) reste issu de Gemini, risque accepté et connu ; si la clé est coupée, il est perdu et recherché à la main ou par partenariat |
+| 2026-09-24 | Mesuré : **7 sites d'organisateurs portent 110 des 167 événements Gemini (66 %), 15 en portent 139 (83 %)** | Gemini relit surtout une quinzaine de sites connus. La piste « lecture directe » (ancien item 37, écarté le 20/09 pour son coût) devient rentable. Sondés : tous ont une page agenda trouvable ; le Grand Parquet publie un `.ics` ; david-nature.com interdit les robots (`Disallow: /`) et sera respecté |
+| 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
 ---
@@ -1187,7 +1191,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Risk / question | Mitigation / next step |
 |---|---|
 | LLM hallucination (dates, prices, venues, URLs) | Validation + URL checks + geocoding flags now; "report an error" link and source attribution planned; manual review of the first weeks of data before outreach |
-| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known. **Widened on September 24** (§7): Gemini-sourced events are now published as indexable pages and submitted to Google, with monetisation in view — both conditions of the September 20 acceptance no longer hold. Fallback if the key is suspended: DATAtourisme + OpenAgenda keep ~47 events and their pages. Same day: **calendar feeds and a free partner widget** (§3.Y) are two more syndication channels, free of charge. A paid widget would be syndication **for money**: a separate decision (item 71) |
+| 🟠 **Google Search grounding terms** (§3.G): results may only be shown, with Search Suggestions, to the prompting end user; no caching, storing, syndicating or link collection. **Risk accepted knowingly on September 20** | Conditions: dedicated Google Cloud project, billing account and API key (done, item 43); key restricted to the Gemini API; budget alert; `data.json` versioned in git so the site survives a suspension. Exposure grows with visibility — **re-assess before contacting the City or INSEAD**, when DATAtourisme coverage will also be known. **Widened on September 24** (§7): Gemini-sourced events are now published as indexable pages and submitted to Google, with monetisation in view — both conditions of the September 20 acceptance no longer hold. Fallback if the key is suspended: DATAtourisme + OpenAgenda keep ~47 events and their pages. **Plan (Sept 24, item 72):** move to legitimate sources (organisers' own pages read directly, feeds) once they cover ≥ 90 % of published events, measured in shadow mode; the residue stays on Gemini as a known, accepted risk. Obscuring provenance was considered and rejected (§7). Same day: **calendar feeds and a free partner widget** (§3.Y) are two more syndication channels, free of charge. A paid widget would be syndication **for money**: a separate decision (item 71) |
 | 🟢 Cost: estimated ≈ $7/month now, ≈ $14/month from January 2027 at a daily cadence (§3.G). **Divided by ~3 by the new cadence** → roughly $2–5/month | Still to be replaced by real run-summary numbers (item 39); budget alert on the dedicated project |
 | DATAtourisme CSV schema may change | The probe validates the columns and **fails loudly**, listing the columns actually found, instead of producing an empty report |
 | Legal / attribution: reuse of organizers' listings | Always link to the source; consider contacting large sources; prefer structured/open data where available |
@@ -1328,6 +1332,29 @@ choses qui restaient étaient noyées dedans.
     Google (§3.G, §8), au-delà de ce qu'a tranché la décision du 24/09 sur les pages. À
     trancher explicitement avant le premier widget premium. Le passage « Outreach gate » des
     Milestones s'applique aussi : on contacte une mairie ou un office de tourisme.
+
+### B3. Sortir du grounding sans rien perdre — décidé le 24/09
+
+- [ ] **72. Comparatif en parallèle (mode observation) : sources légitimes vs Gemini.** Rien ne
+  change en production tant que le critère n'est pas atteint.
+  - **Registre `sources.json`** (édité à la main) des ~15 sites qui portent 83 % des événements
+    Gemini : un `.ics` quand le site en publie un (Grand Parquet), sinon la page agenda lue
+    directement et extraite par Gemini **sans grounding** (même appel que la traduction). Tout
+    automatique, aucun contact avec les sites. `robots.txt` respecté (david-nature.com exclu).
+  - **Rapport à chaque run** : part des événements publiés retrouvés par (sources directes +
+    DATAtourisme + OpenAgenda), liste des événements manqués pour juger s'ils sont « clés »,
+    rendement par source — une source à 0 signale un site refait.
+  - **Critère : ≥ 90 %** des événements publiés, sur plusieurs runs consécutifs. Alors seulement
+    le grounding passe en observation (il signale des sites à ajouter au registre, rien de ce
+    qu'il renvoie n'est publié) sauf pour le résidu accepté.
+- [ ] **72b. API de recherche avec droit de stockage** pour le résidu, à évaluer dans le même
+  comparatif si les sources directes plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000
+  requêtes (5 $ offerts par mois ; **le stockage exige un plan qui l'accorde explicitement**,
+  vraisemblablement sur devis), Exa 7 $/1 000, Tavily 0,008 $/crédit. Aucun n'a l'index de
+  Google sur la longue traîne locale française : à mesurer, pas à supposer. Conditions de
+  stockage à lire avant tout usage.
+- [ ] **72c. Plus tard, phase commerciale** : formulaire « Ajouter mon événement » et partenariats
+  de données (office de tourisme, mairies), idéalement sans effort pour eux (lecture de leur flux).
 
 ### C. Finitions
 
