@@ -1343,6 +1343,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | fontainebleau.fr (HTTP 418 depuis GitHub) n'est pas contourné | Le site bloque les adresses cloud. Ses 27 événements restent sur Gemini en attendant mieux (partenariat, phase commerciale) |
 | 2026-09-24 | **Logo animé dans le bandeau** (`Icon-FL-pulse.svg`, dérivé de `fontainebleau-live-logo-pulse-clean.svg` du chef de projet) : trois battements à l'arrivée, puis le pouls reste tracé | Une boucle infinie au coin de l'œil fatigue sur une visite. Feuille ramenée à 256 px (77 Ko → 18 Ko pour un affichage à 64 px). Mouvement réduit demandé : pouls affiché fixe — l'original le masquait entièrement |
 | 2026-09-24 | **Sites lus en parallèle (4), lots Gemini par 3** ; chaque site reste servi une requête à la fois, espacées d'une seconde | Le run #44 a pris 21 min pour une limite de 30. Le travail séquentiel inutile (sites différents, appels indépendants) était l'essentiel du temps. Le robots.txt d'un site est partagé entre ses sources (le test a trouvé 3 lectures au lieu d'une) |
+| 2026-09-24 | **robots.txt : tous les groupes qui s'appliquent sont fusionnés** (RFC 9309) | Le fichier d'ANVL a deux groupes « * » ; le second interdit `/wp-json/` et l'ancien lecteur ne gardait que le premier. Rien d'interdit n'avait été lu, mais la règle devait être juste |
+| 2026-09-24 | **ANVL : pas de lecture du calendrier de réservation** | La requête publique du calendrier répond 404 à un robot identifié ; se faire passer pour un navigateur serait un contournement. Les sorties n'ont pas de page propre. Piste phase commerciale : l'export `.ics` du plugin, deux clics pour eux |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
@@ -1527,7 +1529,10 @@ choses qui restaient étaient noyées dedans.
   vraisemblablement sur devis), Exa 7 $/1 000, Tavily 0,008 $/crédit. Aucun n'a l'index de
   Google sur la longue traîne locale française : à mesurer, pas à supposer. Conditions de
   stockage à lire avant tout usage.
-- [ ] **72c. Plus tard, phase commerciale** : formulaire « Ajouter mon événement » et partenariats
+- [ ] **72c. Plus tard, phase commerciale** — demandes « presque rien à faire » déjà identifiées :
+  ANVL (22 événements) peut générer le lien `.ics` de son plugin de réservation en deux clics ;
+  fontainebleau.fr (27) bloque les adresses cloud : une autorisation ou un flux suffirait. Puis :
+  formulaire « Ajouter mon événement » et partenariats
   de données (office de tourisme, mairies), idéalement sans effort pour eux (lecture de leur flux).
 
 ### C. Finitions

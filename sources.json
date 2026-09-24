@@ -43,7 +43,7 @@
       "urls": [
         "https://anvl.fr/feed/"
       ],
-      "note": "The calendar itself is served by a booking plugin through AJAX; only the RSS feed is read for now."
+      "note": "Only the RSS feed is read. The outings live solely in a 'Booking Activities' calendar whose public data request (admin-ajax, allowed by robots.txt) answers 404 to an identified robot — not worked around. No sitemap entry per outing. Ask ANVL (phase 72c) for the plugin's .ics export link: two clicks in its admin."
     },
     {
       "id": "chateau-blandy",

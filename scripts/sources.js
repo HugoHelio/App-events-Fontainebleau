@@ -82,10 +82,11 @@ function parseRobots(text) {
     if (key === 'disallow' && val) cur.disallow.push(val);
     if (key === 'allow' && val) cur.allow.push(val);
   }
-  const mine = groups.find((g) => g.agents.some((a) => a !== '*' && CONFIG.robotsToken.includes(a)));
-  const star = groups.find((g) => g.agents.includes('*'));
-  const g = mine || star || { allow: [], disallow: [] };
-  return { allow: g.allow, disallow: g.disallow };
+  // Every group that names us applies, else every "*" group — merged (RFC 9309 §2.2.1). ANVL's
+  // file has two "*" groups, and the second one is the one that forbids /wp-json/.
+  const mine = groups.filter((g) => g.agents.some((a) => a !== '*' && CONFIG.robotsToken.includes(a)));
+  const apply = mine.length ? mine : groups.filter((g) => g.agents.includes('*'));
+  return { allow: apply.flatMap((g) => g.allow), disallow: apply.flatMap((g) => g.disallow) };
 }
 
 /** Longest matching rule wins; Allow wins a tie. Supports the `*` and `$` wildcards. */
