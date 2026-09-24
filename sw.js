@@ -10,7 +10,7 @@
  * waiting for every tab to close. Bump CACHE_VERSION to force old caches out.
  */
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE = `bleau-events-${CACHE_VERSION}`;
 
 // The minimum needed to render something useful with no network.
@@ -19,7 +19,6 @@ const SHELL = [
   './index.html',
   './data.json',
   './favicon.ico',
-  './public/assets/img/brand/Icon-FL-fav-v2.png',
 ];
 
 self.addEventListener('install', (event) => {
