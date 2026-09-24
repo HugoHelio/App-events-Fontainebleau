@@ -30,6 +30,7 @@ const datatourisme = require('./datatourisme');
 const openagenda = require('./openagenda');
 const feedback = require('./feedback');
 const translate = require('./translate');
+const dedupeJudge = require('./dedupe-judge');
 const pages = require('./generate-pages');
 
 // ───────────────────────────── Configuration ─────────────────────────────
@@ -1066,6 +1067,17 @@ function renderSummary(stats, ctx) {
   if (stats.crossCityDeduped) {
     L.push(`- 🧹 Doublons fusionnés (même titre, même date, ville différente) : **${stats.crossCityDeduped}**`);
   }
+  const jd = stats.judged;
+  if (jd && !jd.skipped) {
+    if (jd.error && !jd.candidates) L.push(`- 🧩 Doublons jugés : ⚠️ ${String(jd.error).slice(0, 160)}`);
+    else {
+      L.push(`- 🧩 Doublons jugés (titres « frères », §3.W2) : **${jd.merged.length}** fusionné(s) · ${jd.distinct} jugé(s) distinct(s) · ${jd.candidates} paire(s) examinée(s) · ${jd.asked} nouveau(x) verdict(s)${jd.pending ? ` · ${jd.pending} en attente` : ''}${jd.error ? ` · ⚠️ ${String(jd.error).slice(0, 120)}` : ''}`);
+      for (const m of jd.merged.slice(0, 12)) L.push(`  - ${m}`);
+      if (jd.merged.length > 12) L.push(`  - … et ${jd.merged.length - 12} autre(s)`);
+      if (jd.merged.length) L.push('  Une fusion à défaire : `"keepSeparate": ["EVT_…"]` sur l’un des deux ids dans overrides.json.');
+      if (jd.asked) L.push(`  - tokens : ${jd.tokensIn} in / ${jd.tokensOut} out (appel non grounded)`);
+    }
+  }
   if (stats.umbrellas && stats.umbrellas.length) {
     L.push(`- ☂️ Titres emboîtés dans PLUSIEURS sur-titres (parapluie : jamais fusionné, à trancher à la main) : ${stats.umbrellas.length}`);
     for (const u of stats.umbrellas.slice(0, 8)) L.push(`  - ${u}`);
@@ -1609,6 +1621,17 @@ async function main() {
       stats.feedback = { error: err.message };
       console.error(`   ⚠️ feedback CSV: ${String(err.message).slice(0, 200)} (run continues)`);
     }
+  }
+
+  // Sibling titles that no word rule can settle (§3.W2): judged by Gemini without grounding,
+  // verdicts cached. After the feedback merge so a record hidden today is never merged into.
+  try {
+    stats.judged = await dedupeJudge.run(records, { overrides: effective, eventKey, mergeInto, today, dryRun: CONFIG.dryRun });
+    const j = stats.judged;
+    if (!j.skipped) console.log(`🧩 Doublons jugés : ${j.candidates} paire(s) candidate(s), ${j.merged.length} fusion(s), ${j.asked} nouveau(x) verdict(s)${j.error ? ` — ⚠️ ${j.error}` : ''}`);
+  } catch (err) {
+    stats.judged = { error: err.message, merged: [] };
+    console.error(`   ⚠️ dedupe-judge: ${String(err.message).slice(0, 200)} (run continues)`);
   }
 
   applyOverrides(records, effective, stats);

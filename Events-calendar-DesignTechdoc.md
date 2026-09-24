@@ -500,6 +500,43 @@ cards, past and running events, redirect on title change, legacy ids, slugs, ser
 agreement, sitemap, and an end-to-end run on disk (idempotent, deletions, `data.json`
 untouched). Rendered in a headless browser: event page, commune page, 404, and the deep link.
 
+### W2. Sibling duplicates, judged (item 51c, September 24, 2026)
+
+§3.W stopped automatic merging at "sibling" titles — each carries a word the other lacks —
+because « Meeting TDA Poneys » / « TDA Équitation » (two competitions) and « Meeting TDA CREIF »
+/ « TDA (Tournée des As) » (one) have the same shape. Structure cannot separate them; meaning can.
+The shadow comparison (§3.Z) then showed ~15 true duplicates on the live site (« La Flûte
+enchantée » ×2, « sentier 17 » ×4, four « Murder Party » at Blandy…), and the project lead asked
+for them to go without manual review.
+
+`scripts/dedupe-judge.js`, run after `dedupeFuzzy()` and before the overrides:
+
+1. **Candidates, mechanically**: same occasion (same rule as §3.W — two single days must be the
+   same day), compatible towns, shared **distinctive** words: kind-of-event words (concert,
+   visite, découverte, initiation…), place words (Fontainebleau, forêt, château…) and the towns
+   themselves do not count. ≥ 50 % shared, and a single shared word only if it is long
+   (« collectionnistes », not « noël »). 93 pairs on the data of 24/09.
+2. **Judged by Gemini without grounding**, both full records side by side (dates, venue,
+   organiser, schedule, description, link), temperature 0, structured answer. The prompt names
+   the TDA trap and says "in doubt, false". This call compares two records we already hold: no
+   search, outside the grounding terms (§3.G), like the translation.
+3. **Verdicts cached** in `dedupe-cache.json` (generated, committed), keyed by the two ids. A pair
+   is asked once. A duplicate re-reported by a later scan gets back its old id (the id is a hash of
+   its key) and is merged again for free. Entries expire after 150 days.
+
+Merging keeps the stored, verified record (id, hence overrides, and title stay) and takes from the
+other what it knew better: a deeper page on the same site, an exact position over an approximate
+one, an image. Three variants collapse into one whatever order the pairs come in.
+
+Safety: a record hidden in `overrides.json` is never merged (a hidden winner would take its
+duplicate down with it); `"keepSeparate": ["EVT_…"]` forbids a pair whatever the verdict — that
+is how a merge listed in the run report is undone. Without a key, only cached verdicts apply; a
+failing call changes nothing. Tested with a simulated Gemini: merges, siblings kept, cache reuse,
+escape hatches, failure, and candidates that must never be asked (two evenings, two towns).
+
+**Note on timing**: the step runs inside a real scan. The cadence guard (60 h) skips everything on
+the days in between, so the first merges appear on the next scan.
+
 ### Z. Direct sources and the shadow comparison (item 72, September 24, 2026)
 
 **Goal.** Take the published data out of the grounding terms (§3.G, §8) without losing key
@@ -1238,6 +1275,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | Mesuré : **7 sites d'organisateurs portent 110 des 167 événements Gemini (66 %), 15 en portent 139 (83 %)** | Gemini relit surtout une quinzaine de sites connus. La piste « lecture directe » (ancien item 37, écarté le 20/09 pour son coût) devient rentable. Sondés : tous ont une page agenda trouvable ; le Grand Parquet publie un `.ics` ; david-nature.com interdit les robots (`Disallow: /`) et sera respecté |
 | 2026-09-24 | **Lecture directe : un lecteur par site, déterministe dès que le site le permet** (§3.Z) | Les sites clés n'ont pas tous le même format : `.ics` (Grand Parquet), liste Apidae (office de tourisme), HTML simple. Une date lue par une expression régulière testée est plus sûre qu'une date lue par un modèle. Gemini sans grounding seulement pour les pages sans structure |
 | 2026-09-24 | `robots.txt` respecté, sites JavaScript laissés de côté | david-nature.com interdit les robots : jamais lu. Aucun contournement d'un site qui se protège ; les sites purement JavaScript attendent un meilleur moyen |
+| 2026-09-24 | **Doublons « frères » : jugés par Gemini sans grounding, verdicts mémorisés** (§3.W2) — la règle de §3.W « jamais fusionner des frères » est levée pour les paires qu'un juge dit identiques | Aucune règle sur les mots ne sépare « TDA Poneys / TDA Équitation » de « TDA CREIF / TDA Tournée des As » : c'est une question de sens. ~15 vrais doublons en ligne et le chef de projet ne veut pas trier à la main. Garde-fous : dans le doute « non », masqués jamais fusionnés, `keepSeparate` pour défaire |
+| 2026-09-24 | Une fusion garde la fiche déjà publiée et vérifiée, et lui ajoute la page plus précise et la position exacte de l'autre | L'id stable garde `overrides.json` attaché ; l'information la plus précise ne doit pas être perdue avec le doublon |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
@@ -1409,10 +1448,10 @@ choses qui restaient étaient noyées dedans.
   - **Critère : ≥ 90 %** des événements publiés, sur plusieurs runs consécutifs. Alors seulement
     le grounding passe en observation (il signale des sites à ajouter au registre, rien de ce
     qu'il renvoie n'est publié) sauf pour le résidu accepté.
-- [ ] **51c. Doublons publiés sous deux titres** (§3.Z) : ~15 vrais doublons trouvés le 24/09 par
-  le rapprochement du comparatif (« La Flûte enchantée » ×2, « Les Collectionnistes » ×2…). Le
-  même rapprochement (mots distinctifs, lieux et types exclus) pourrait signaler — pas fusionner —
-  dans le rapport de run, comme les titres « frères » de §3.W.
+- [x] **51c. Doublons « frères » — fait le 24/09** (§3.W2) : paires candidates repérées
+  mécaniquement, jugées par Gemini sans grounding, verdicts mémorisés. **À regarder au premier
+  scan** : la liste des fusions dans le rapport de run ; une fusion à défaire tient en une ligne
+  `keepSeparate` dans `overrides.json`.
 - [ ] **72b. API de recherche avec droit de stockage** pour le résidu, à évaluer dans le même
   comparatif si les sources directes plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000
   requêtes (5 $ offerts par mois ; **le stockage exige un plan qui l'accorde explicitement**,

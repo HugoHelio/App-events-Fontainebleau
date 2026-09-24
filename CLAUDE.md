@@ -28,6 +28,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `evenements/`, `que-faire/`, `agenda/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer. `agenda/` : flux `.ics` (§3.Y), en CRLF protégé par `.gitattributes` |
 | `sources.json` | **Édité à la main.** Registre des sites d'organisateurs lus directement (§3.Z) : type de lecteur, URL, raison d'une désactivation |
 | `scripts/sources.js` / `scripts/compare-sources.js` | Lecture directe des sites (sans grounding, `robots.txt` respecté) et comparatif en mode observation. **Ne publient rien** tant que le seuil de 90 % n'est pas atteint |
+| `scripts/dedupe-judge.js` | Doublons « frères » (§3.W2) : paires repérées sur les mots distinctifs, jugées par Gemini **sans grounding** |
+| `dedupe-cache.json` | **Généré et commité.** Verdicts des doublons jugés, par paire d'ids — sans lui, chaque scan reposerait les mêmes questions |
 | `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
 | `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |

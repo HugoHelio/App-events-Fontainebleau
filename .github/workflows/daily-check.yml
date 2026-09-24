@@ -64,6 +64,8 @@ jobs:
           if [ -f geocode-cache.json ]; then git add geocode-cache.json; fi
           # Sans ce cache, chaque run repartirait de zéro et retraduirait tout le catalogue.
           if [ -f translate-cache.json ]; then git add translate-cache.json; fi
+          # Verdicts des doublons jugés (§3.W2) : sans eux, chaque run reposerait les mêmes questions.
+          if [ -f dedupe-cache.json ]; then git add dedupe-cache.json; fi
           # Pages générées : chemins nommés un par un, jamais `git add -A` à la racine — le bot
           # publie sur main sans relecture, un fichier parasite partirait en ligne. `-A` sur ces
           # dossiers seulement, pour publier aussi les suppressions (événements terminés).
