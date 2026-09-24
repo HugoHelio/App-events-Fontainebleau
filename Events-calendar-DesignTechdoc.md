@@ -1040,6 +1040,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-23 | **La fusion automatique s'arrête aux titres « frères »** (chacun un mot propre) : ils sont signalés avec leur identifiant, pas fusionnés | « Clôture de saison » / « Clôture festive » et « TDA Poneys » / « TDA Équitation » ont la même forme et des sens opposés. Aucun seuil de similarité ne les sépare ; trancher à la main via `overrides.json` coûte moins cher qu'un événement supprimé à tort (§3.W) |
 | 2026-09-23 | Une fusion adopte un chemin plus profond sur le même hôte, même si l'URL en place est déjà vérifiée | Le lien vers la page de l'exposition vaut mieux que le lien vers l'accueil du château ; même domaine = aucune décision de confiance nouvelle |
 | 2026-09-23 | `COMMUNES` passe de 21 à 23 (La Rochette, Saint-Fargeau-Ponthierry) | Dans le rayon et déjà publiées par les flux, mais jamais demandées au modèle : leur couverture dépendait de la source |
+| 2026-09-24 | **`/favicon.ico` (16/32/48) à la racine + icône 192 déclarée**, le service worker ne précharge plus `fav.png` (Helioso) | Google affichait encore le soleil Helioso dans ses résultats : il avait indexé l'ancien `fav.png`, et le nouveau favicon 32×32 n'est pas un multiple de 48 px comme il le demande. Le `.ico` est aussi ce que les robots demandent sans lire la page. Remplacement côté Google : au prochain passage du robot, accéléré par « Demander une indexation » dans la Search Console |
 
 ---
 
@@ -1076,6 +1077,9 @@ choses qui restaient étaient noyées dedans.
 - [x] **61. Visuels de marque — posés le 23/09** (§3.V). Favicon, icônes PWA 192 et 512, icône
   iOS, marque du bandeau, signature du pied de page et image de partage. La palette du site est
   désormais celle du logo, relevée sur les fichiers.
+- [ ] **61c. Favicon dans Google** : après le déploiement du `/favicon.ico` (24/09), demander une
+  indexation de la page d'accueil dans la Search Console, puis vérifier sous quelques jours à
+  quelques semaines que la feuille de chêne a remplacé le soleil Helioso dans les résultats.
 - [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
   d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence. Ancien libellé de l'item 61 :
   Deux fichiers sont des placeholders : `og-image.png`
