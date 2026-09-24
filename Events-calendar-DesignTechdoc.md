@@ -1470,6 +1470,10 @@ choses qui restaient étaient noyées dedans.
   - **Risque grounding (§8)** : un flux d'agenda est de la syndication au sens strict. C'est
     couvert par la décision du 24/09, mais c'est un canal de plus à citer dans §8.
 - [x] **70. Brouillons de posts — faits le 24/09** : page privée `/publier/` (non indexée, hors plan du site, jamais liée), régénérée chaque jour par `generate-pages.js` : un post « autour de Fontainebleau » et un par commune ayant au moins 3 activités dans les 30 jours, 6 dates maximum, expositions longues exclues, lien vers la page commune, bouton Copier. La publication reste manuelle. **À faire, chef de projet** : lire les règles de 2 ou 3 groupes, publier une fois par mois. Idée d'origine :
+- [ ] **70b. Page Facebook « Fontainebleau Live » — plus tard (KIV, 24/09)** : créer la page de
+  marque (gratuit, 5 min) une fois que les premiers posts depuis le profil personnel ont pris.
+  Les posts construisent alors la marque et les gens peuvent s'abonner. Ne pas publier depuis une
+  page professionnelle de conseil : dans un groupe de commune, ça se lit comme de la publicité.
 - [ ] **70-bis. Groupes Facebook des communes** (« Tu sais que tu viens de Fontainebleau », groupes
   de parents, de clubs). Un post soigné par mois dans deux ou trois groupes, avec le lien vers une
   page commune ou une fiche. **Lire les règles de chaque groupe d'abord** : beaucoup interdisent
@@ -1563,7 +1567,9 @@ choses qui restaient étaient noyées dedans.
   parce que la question se reposera.
 - [ ] **31. Cache des URL mortes**, pour ne pas revérifier à chaque scan un lien que le modèle
   re-propose. Gain : quelques dizaines de secondes par run. Aucune conséquence visible.
-- [ ] **32. Branche `data` dédiée**, pour sortir les commits du bot de l'historique de `main`.
+- [ ] **32. Branche `data` dédiée — KIV, à planifier avec le chef de projet (24/09)**. Demande de
+  basculer GitHub Pages sur un déploiement par workflow (Settings → Pages → Source : GitHub
+  Actions), à faire ensemble, en surveillant la première publication. Ancien libellé : Branche `data` dédiée, pour sortir les commits du bot de l'historique de `main`.
   16 commits du bot sur 68 au 22/09 : pas encore gênant, à reconsidérer vers 100. **Plus pressant
   depuis le 24/09** : les pages statiques (§3.X) ajoutent ~240 fichiers générés au dépôt, et le
   bot committe désormais aussi les jours sans scan quand une fiche expire.
