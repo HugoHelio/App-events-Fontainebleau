@@ -1220,6 +1220,56 @@ choses qui restaient étaient noyées dedans.
   une alerte de budget sur le projet Google Cloud, et réévaluer le modèle : `gemini-3.6-flash`
   est désormais une génération précédente et les prix montent au 1er janvier 2027.
 
+### B2. Audience et monétisation — idées du 24/09, rien de commencé
+
+- [ ] **69. Abonnement agenda (`.ics`).** `generate-pages.js` écrit `agenda.ics`, plus un fichier
+  par catégorie et par commune (« Sport autour de Fontainebleau »). Un bouton « Ajouter à mon
+  agenda » propose un lien `webcal://` (Apple Calendrier) et un lien d'abonnement Google Agenda.
+  Les événements arrivent dans l'agenda du téléphone et se mettent à jour seuls : aucun coût,
+  aucun envoi, entièrement automatique. **Points à trancher avant de coder :**
+  - **Les expositions longues.** « Le panache des Lumières » dure quatre mois : en événement
+    « journée entière », elle occuperait le haut de l'agenda tous les jours jusqu'en janvier.
+    Pistes : exclure les événements de plus de 7 jours du flux général, ou ne publier que le
+    premier jour.
+  - **Le format est pointilleux** (RFC 5545) : fins de ligne CRLF, lignes coupées à 75 octets,
+    virgules et points-virgules échappés, `DTEND` exclusif (lendemain du dernier jour), `UID`
+    stable, qui sera l'id de l'événement. Un flux invalide est ignoré sans message par
+    l'agenda. À tester dans Google, Apple et Outlook avant d'annoncer quoi que ce soit.
+  - **Google Agenda rafraîchit lentement** un agenda abonné, parfois plus de 24 h. Le promettre
+    « à jour chaque jour », pas « en temps réel ».
+  - Un événement annulé doit disparaître du flux : c'est déjà le cas, puisque le fichier est
+    régénéré en entier à chaque run.
+  - **Risque grounding (§8)** : un flux d'agenda est de la syndication au sens strict. C'est
+    couvert par la décision du 24/09, mais c'est un canal de plus à citer dans §8.
+- [ ] **70. Groupes Facebook des communes** (« Tu sais que tu viens de Fontainebleau », groupes
+  de parents, de clubs). Un post soigné par mois dans deux ou trois groupes, avec le lien vers une
+  page commune ou une fiche. **Lire les règles de chaque groupe d'abord** : beaucoup interdisent
+  l'auto-promotion, et demander à l'administrateur avant le premier post vaut mieux qu'un
+  bannissement. **Automatisable : non, pas la publication.** Meta a retiré en 2024 l'API qui
+  permettait de publier dans les groupes, et publier par un robot dans un groupe dont on n'est
+  pas administrateur enfreint les conditions de Facebook : risque de bannir le compte, qui est
+  le canal lui-même. **Ce qui s'automatise :** le brouillon. Le générateur peut écrire chaque
+  mois un texte prêt à coller par commune (« Ce mois-ci à Avon : … », 5 événements, lien vers la
+  page commune), à relire puis poster à la main. Coût : environ 5 minutes par groupe et par mois.
+- [ ] **71. Widget partenaire, gratuit et premium.** Un encart à intégrer sur le site d'une
+  mairie, d'un office de tourisme, d'un hôtel ou d'un club, qui affiche les prochains
+  événements, par exemple ceux de sa commune ou d'une catégorie.
+  - **Gratuit** : `<iframe>` servi depuis le site (une page `/widget/?ville=…` générée ou
+    filtrée en JavaScript), avec la mention et le lien « Fontainebleau Live ». Ce lien est en
+    soi un gain : un lien entrant depuis le site d'une mairie pèse lourd pour Google.
+  - **Premium** : à définir avec les premiers partenaires, avant de coder. Pistes : sans la
+    mention, aux couleurs du partenaire, événements du partenaire mis en avant, statistiques
+    d'affichage.
+  - **Contrainte d'architecture** : le site est statique, sans serveur ni comptes. Un premium
+    demande au minimum un paiement (lien de paiement Stripe, facturation à la main au début) et
+    une clé par partenaire. Sans serveur, cette clé ne se vérifie pas vraiment : une première
+    version peut reposer sur la confiance et le contrat. Pas de dépendance à ajouter pour ça.
+  - **Préalable** : c'est de la **syndication vers des tiers, contre paiement**, avec des
+    données issues à 78 % de Gemini. C'est le cas le plus exposé au regard des conditions de
+    Google (§3.G, §8), au-delà de ce qu'a tranché la décision du 24/09 sur les pages. À
+    trancher explicitement avant le premier widget premium. Le passage « Outreach gate » des
+    Milestones s'applique aussi : on contacte une mairie ou un office de tourisme.
+
 ### C. Finitions
 
 - [x] **21. Catégories — fait le 23/09** (§3.U). L'audit ne trouve que quatre cas limites sur 197,
