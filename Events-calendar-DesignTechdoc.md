@@ -515,7 +515,7 @@ subscribes to and re-downloads on its own:
 | `/agenda/commune/<commune>.ics` | One per town — same slug as `/que-faire/<commune>/` |
 | `/agenda/feeds.json` | Index name → path, read by the site and the widget page: nothing outside the generator ever rebuilds a slug |
 
-On the site, « 📅 Ajouter à mon agenda » under the view tabs opens a panel whose feed follows
+On the site, « Ajouter à mon agenda », **below** the map + list (or the calendar), opens a panel whose feed follows
 the filters (town first, then category, else everything): Google Agenda (`calendar.google.com/…?cid=webcal://…`),
 Apple / Outlook (`webcal://`), copy the link. Each commune page offers its own feed.
 
@@ -1175,6 +1175,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | **Abonnement agenda (`.ics`)** : un flux général, un par catégorie, un par commune (§3.Y) | Le programme va dans le téléphone sans compte, sans envoi, sans serveur |
 | 2026-09-24 | Événements de plus de 7 jours **exclus des flux** | Une exposition de quatre mois en « journée entière » occuperait le haut de l'agenda chaque jour jusqu'en janvier. Ils restent sur le site |
 | 2026-09-24 | Entrées « journée entière » uniquement | `schedule` est du texte libre : une heure devinée serait une heure fausse dans le téléphone de quelqu'un |
+| 2026-09-24 | Bouton « Ajouter à mon agenda » **sous** la carte et la liste, icône dessinée aux couleurs de la marque | Le visiteur regarde, choisit, puis s'abonne : l'action vient après le contenu, et le haut de page reste dégagé. La liste défile dans son propre cadre, donc « dessous » reste à portée. Un emoji prend la palette du système, pas celle de la marque |
 | 2026-09-24 | Un flux publié n'est jamais supprimé (calendrier vide à la place) | Un abonnement qui répond 404 provoque une erreur ou une désinscription selon l'application |
 | 2026-09-24 | **Widget partenaire gratuit** : `<iframe>` + lien en clair dans le code fourni, page `noindex`, aucune mesure d'audience | Le lien dans l'iframe ne compte pas pour Google, celui de la page du partenaire oui. On ne mesure pas les visiteurs d'un site tiers qui n'ont rien accepté |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |

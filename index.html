@@ -361,23 +361,34 @@
 
     /* Calendar subscription (item 69) */
     .subscribe {
-      max-width: 1200px;
-      margin: -0.25rem auto 1rem;
-      padding: 0 1rem;
+      margin: 1.5rem auto 0;
       text-align: center;
     }
 
     .subscribe-btn {
-      background: none;
-      border: none;
-      color: var(--accent-ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-pill);
+      background: var(--paper);
+      color: var(--ink);
       font: inherit;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      box-shadow: var(--shadow-sm);
+      transition: background-color 0.2s;
     }
+
+    .subscribe-btn:hover,
+    .subscribe-btn[aria-expanded="true"] { background: var(--brand-light); }
+
+    .subscribe-btn:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+
+    .subscribe-icon { flex: none; }
+    .subscribe-plus { stroke: var(--accent-ink); }
 
     .subscribe-panel {
       max-width: 560px;
@@ -857,14 +868,6 @@
             onclick="switchView('calendar')" data-i18n="tabCalendar">Calendrier</button>
   </div>
 
-  <!-- Calendar subscription (item 69). Outside the tablist on purpose: it is not a view. The
-       panel is filled by renderSubscribe() from agenda/feeds.json, written by the generator. -->
-  <div class="subscribe">
-    <button type="button" id="subscribeBtn" class="subscribe-btn" aria-expanded="false"
-            aria-controls="subscribePanel" data-i18n="subscribeBtn">📅 Ajouter à mon agenda</button>
-    <div id="subscribePanel" class="subscribe-panel" hidden></div>
-  </div>
-
   <main class="main-container">
     <!-- Vue Carte & Liste -->
     <div id="mapView" class="view-panel active" role="tabpanel" aria-labelledby="tabMap">
@@ -880,6 +883,23 @@
     <!-- Vue Calendrier -->
     <div id="calendarView" class="view-panel" role="tabpanel" aria-labelledby="tabCalendar">
       <div id="calendar"></div>
+    </div>
+
+    <!-- Calendar subscription (item 69). After the views, not above them: the visitor looks at
+         the map or the calendar, decides, then subscribes — and the top stays uncluttered.
+         Shared by both views. The panel is filled by renderSubscribe() from agenda/feeds.json.
+         The icon is drawn, not an emoji: an emoji takes the OS palette, not the brand's. -->
+    <div class="subscribe">
+      <button type="button" id="subscribeBtn" class="subscribe-btn" aria-expanded="false" aria-controls="subscribePanel">
+        <svg class="subscribe-icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"
+             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4.5" width="18" height="16.5" rx="3" stroke="currentColor"/>
+          <path d="M3 9.5h18M8 2.5v4M16 2.5v4" stroke="currentColor"/>
+          <path d="M12 12.5v6M9 15.5h6" class="subscribe-plus"/>
+        </svg>
+        <span data-i18n="subscribeBtn">Ajouter à mon agenda</span>
+      </button>
+      <div id="subscribePanel" class="subscribe-panel" hidden></div>
     </div>
   </main>
 
@@ -952,7 +972,7 @@
         horizonLabel: 'Période :',
         cityLabel: 'Ville :',
         cityAll: 'Toutes les villes',
-        subscribeBtn: '📅 Ajouter à mon agenda',
+        subscribeBtn: 'Ajouter à mon agenda',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
         subTitleCity: (c) => `Les activités à ${c}`,
         subTitleCat: (c) => `${c} autour de Fontainebleau`,
@@ -1027,7 +1047,7 @@
         horizonLabel: 'Period:',
         cityLabel: 'Town:',
         cityAll: 'All towns',
-        subscribeBtn: '📅 Add to my calendar',
+        subscribeBtn: 'Add to my calendar',
         subTitleAll: 'Everything on around Fontainebleau',
         subTitleCity: (c) => `What’s on in ${c}`,
         subTitleCat: (c) => `${c} around Fontainebleau`,
