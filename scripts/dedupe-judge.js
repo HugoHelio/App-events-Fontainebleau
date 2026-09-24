@@ -255,21 +255,29 @@ async function run(records, { overrides = {}, eventKey, mergeInto, enrichFrom, t
   stats.pending = unknown.length - toAsk.length;
 
   if (toAsk.length && process.env.GEMINI_API_KEY) {
-    try {
-      for (let s = 0; s < toAsk.length; s += CONFIG.batchSize) {
-        const batch = toAsk.slice(s, s + CONFIG.batchSize);
-        const { items, usage } = await callGemini(PROMPT(batch));
-        if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += usage.candidatesTokenCount || 0; }
-        for (const it of items) {
-          const p = batch[Number(it && it.i)];
-          if (!p || typeof it.same !== 'boolean') continue;
-          cache[pairKey(p.a.event.id, p.b.event.id)] = { same: it.same, reason: String(it.reason || '').slice(0, 160), at: today };
-          stats.asked++;
+    const batches = [];
+    for (let s = 0; s < toAsk.length; s += CONFIG.batchSize) batches.push(toAsk.slice(s, s + CONFIG.batchSize));
+    // Three calls in flight. A failed batch loses only its own pairs: they stay unjudged and
+    // are asked again next run.
+    let next = 0;
+    const worker = async () => {
+      while (next < batches.length) {
+        const batch = batches[next++];
+        try {
+          const { items, usage } = await callGemini(PROMPT(batch));
+          if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += usage.candidatesTokenCount || 0; }
+          for (const it of items) {
+            const p = batch[Number(it && it.i)];
+            if (!p || typeof it.same !== 'boolean') continue;
+            cache[pairKey(p.a.event.id, p.b.event.id)] = { same: it.same, reason: String(it.reason || '').slice(0, 160), at: today };
+            stats.asked++;
+          }
+        } catch (err) {
+          stats.error = String(err.message || err).slice(0, 200);
         }
       }
-    } catch (err) {
-      stats.error = String(err.message || err).slice(0, 200);
-    }
+    };
+    await Promise.all(Array.from({ length: Math.min(3, batches.length) }, worker));
   } else if (toAsk.length) {
     stats.pending += toAsk.length;
   }

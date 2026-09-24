@@ -33,6 +33,9 @@ const CONFIG = {
   userAgent: 'Mozilla/5.0 (compatible; FontainebleauLive/1.0; +https://fontainebleaulive.fr)',
   robotsToken: 'fontainebleaulive',
   hostDelayMs: envInt('SOURCES_HOST_DELAY_MS', 1000),
+  // Sites are read in parallel (they are different hosts); each host still gets one request at
+  // a time, one per second — the manners do not change, only the total time does.
+  concurrency: envInt('SOURCES_CONCURRENCY', 4),
   timeoutMs: envInt('SOURCES_TIMEOUT_MS', 25_000),
   maxFichePages: envInt('SOURCES_MAX_FICHES', 250),
   maxTextChars: envInt('SOURCES_MAX_TEXT_CHARS', 90_000),
@@ -42,10 +45,20 @@ const CONFIG = {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/** Runs fn over items with at most `limit` in flight; results keep the input order. */
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length);
+  let next = 0;
+  const worker = async () => { while (next < items.length) { const i = next++; out[i] = await fn(items[i], i); } };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return out;
+}
+
 // ───────────────────────────── Polite fetching ─────────────────────────────
 
 const lastHit = new Map();      // host -> timestamp of the last request
-const robotsCache = new Map();  // origin -> { allow: [], disallow: [] }
+const hostChain = new Map();    // host -> promise of its last queued request (one at a time per host)
+const robotsCache = new Map();  // origin -> Promise<{ allow: [], disallow: [] }>
 
 /** Rules that apply to us: our own group if the site has one, else the "*" group. */
 function parseRobots(text) {
@@ -87,8 +100,16 @@ function robotsAllows(rules, pathAndQuery) {
   return best.allow;
 }
 
-async function rawGet(url) {
+function rawGet(url) {
+  // Requests to one host are chained: with sites read in parallel, two readers must never hit
+  // the same host at once, and the one-second spacing has to hold across them.
   const host = new URL(url).host;
+  const run = (hostChain.get(host) || Promise.resolve()).then(() => rawGetNow(url, host));
+  hostChain.set(host, run.catch(() => {}));
+  return run;
+}
+
+async function rawGetNow(url, host) {
   const wait = (lastHit.get(host) || 0) + CONFIG.hostDelayMs - Date.now();
   if (wait > 0) await sleep(wait);
   lastHit.set(host, Date.now());
@@ -104,15 +125,14 @@ async function rawGet(url) {
 /** GET that refuses anything robots.txt forbids. Throws on refusal or HTTP error. */
 async function politeGet(url) {
   const u = new URL(url);
+  // The pending promise is cached, not the result: sources read in parallel on one site must
+  // share a single robots.txt request.
   if (!robotsCache.has(u.origin)) {
-    let rules = { allow: [], disallow: [] };
-    try {
-      const r = await rawGet(`${u.origin}/robots.txt`);
-      if (r.ok) rules = parseRobots(r.text);
-    } catch { /* no robots.txt reachable: nothing is forbidden */ }
-    robotsCache.set(u.origin, rules);
+    robotsCache.set(u.origin, rawGet(`${u.origin}/robots.txt`)
+      .then((r) => (r.ok ? parseRobots(r.text) : { allow: [], disallow: [] }))
+      .catch(() => ({ allow: [], disallow: [] })));   // unreachable robots.txt: nothing is forbidden
   }
-  if (!robotsAllows(robotsCache.get(u.origin), u.pathname + u.search)) {
+  if (!robotsAllows(await robotsCache.get(u.origin), u.pathname + u.search)) {
     const err = new Error(`robots.txt disallows ${u.pathname}`);
     err.robots = true;
     throw err;
@@ -451,24 +471,22 @@ function loadRegistry() {
  * others carry on — the same rule as the pipeline's sources.
  */
 async function load(ctx, { only } = {}) {
-  const results = [];
-  for (const src of loadRegistry()) {
-    if (only && !only.includes(src.id)) continue;
+  const srcs = loadRegistry().filter((src) => !only || only.includes(src.id));
+  return mapLimit(srcs, CONFIG.concurrency, async (src) => {
     const base = { id: src.id, name: src.name, type: src.type };
-    if (src.enabled === false) { results.push({ ...base, status: 'disabled', note: src.note || '', events: [] }); continue; }
+    if (src.enabled === false) return { ...base, status: 'disabled', note: src.note || '', events: [] };
     const reader = READERS[src.type];
-    if (!reader) { results.push({ ...base, status: 'error', error: `unknown type ${src.type}`, events: [] }); continue; }
+    if (!reader) return { ...base, status: 'error', error: `unknown type ${src.type}`, events: [] };
     const t0 = Date.now();
     try {
       const r = await reader(src, ctx);
       // A site-wide default fills what the reader cannot know (an .ics has no category).
       const events = r.events.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
-      results.push({ ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events });
+      return { ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events };
     } catch (err) {
-      results.push({ ...base, status: err.robots ? 'robots' : 'error', error: String(err.message || err).slice(0, 200), ms: Date.now() - t0, events: [] });
+      return { ...base, status: err.robots ? 'robots' : 'error', error: String(err.message || err).slice(0, 200), ms: Date.now() - t0, events: [] };
     }
-  }
-  return results;
+  });
 }
 
 // ───────────────────────────── For the pipeline ─────────────────────────────
@@ -526,8 +544,10 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
     todo.push({ e, h });
   }
   if (todo.length && process.env.GEMINI_API_KEY) {
-    for (let s = 0; s < todo.length; s += batchSize) {
-      const batch = todo.slice(s, s + batchSize);
+    const batches = [];
+    for (let s = 0; s < todo.length; s += batchSize) batches.push(todo.slice(s, s + batchSize));
+    // Three batches in flight: a batch is one model call of ~20 s, done one by one it was minutes.
+    await mapLimit(batches, 3, async (batch) => {
       try {
         const { items, usage } = await extractWithGemini(ENRICH_PROMPT(batch.map((b) => b.e)), ENRICH_SCHEMA);
         if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += usage.candidatesTokenCount || 0; }
@@ -551,7 +571,7 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
         stats.failed += batch.length;
         stats.error = String(err.message || err).slice(0, 200);
       }
-    }
+    });
   }
   if (!dryRun) {
     const cutoff = new Date(Date.parse(today) - ENRICH_CACHE_DAYS * 86400000).toISOString().slice(0, 10);
