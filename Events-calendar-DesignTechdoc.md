@@ -500,6 +500,61 @@ cards, past and running events, redirect on title change, legacy ids, slugs, ser
 agreement, sitemap, and an end-to-end run on disk (idempotent, deletions, `data.json`
 untouched). Rendered in a headless browser: event page, commune page, 404, and the deep link.
 
+### Z. Direct sources and the shadow comparison (item 72, September 24, 2026)
+
+**Goal.** Take the published data out of the grounding terms (§3.G, §8) without losing key
+events. Decision of 24/09: nothing changes in production until legitimate sources find
+**≥ 90 % of the published events over several consecutive runs**; the residue stays on Gemini
+as a known, accepted risk. Obscuring provenance was proposed and rejected (§7).
+
+**Survey of the sites behind the Gemini events** (host of the `url` field, 167 events):
+
+| Site | Events | What it exposes | Reader |
+|---|---|---|---|
+| fontainebleau.fr | 27 | TYPO3 agenda page, plain HTML | `page` (Gemini, no grounding) |
+| fontainebleau-tourisme.com | 23 | Apidae list (133 events, paginated) + one page per event in a stable format | `apidae-ot`, **deterministic** |
+| anvl.fr | 22 | Calendar from a booking plugin (AJAX); RSS feed | `page` on the feed — partial |
+| chateaudefontainebleau.fr | 19 | Agenda page + rich RSS feed | `page` |
+| chateau-blandy.fr | 10 | "Programmation à venir" | `page` |
+| grandparquet.com | 9 | **`.ics` feed** (The Events Calendar) | `ics`, deterministic |
+| aaff.fr, vaux-le-vicomte.com, ville-melun.fr | 8 + 3 + 3 | Agenda built by JavaScript: the raw page holds no event; a headless browser did not recover them either | not read (`enabled: false`) |
+| david-nature.com | 3 | `robots.txt`: `Disallow: /` for every robot | **never read** |
+
+Most Gemini events point to a site's **home page**: the model found the event somewhere but did
+not keep the page. Direct reading gives each event its own page — a quality gain on its own.
+
+**Code.** `sources.json` (hand-edited registry) → `scripts/sources.js` (readers) →
+`scripts/compare-sources.js` (comparison, report). Workflow `sources-compare.yml`: Mondays and on
+demand, **read-only** (`contents: read`), report in the job summary and as an artifact. Nothing
+it reads is published.
+
+- Manners: identified user agent, `robots.txt` honoured (own group first, then `*`, longest rule
+  wins), one request per second per host, page caps. The tourist office costs ~110 requests per
+  run, about two minutes.
+- `apidae-ot` is deliberately **not** model-based: dates come from "Périodes d'ouverture" through
+  a tested French date parser (`Du 05/06 au 02/11/2026`, `Du vendredi 2 au dimanche 4 octobre
+  2026`, several periods in a row…). The town comes from the list's `data-apidae-commune`, not
+  from the page: the first postcode on an event page is the tourist office's own address.
+- `page` sends the page text to Gemini **without the search tool**, structured JSON output, with
+  links kept as `text (url)` so each event can get its own page. (A first version wrote
+  `<url>`, which the tag stripper then removed: caught by a test.)
+- Matching: *certain* = same or contained title (≥ 12 characters), or all distinctive words
+  shared; *probable* = ≥ 70 % of distinctive words shared. Always with overlapping dates and a
+  compatible town. Kind-of-event words (exposition, concert, visite…) and place words (Fontainebleau,
+  forêt, château…) do not count: on the first run DATAtourisme's all-year "Le marché de
+  Fontainebleau" matched every "… en forêt de Fontainebleau".
+
+**First run, 24/09, local, without the Gemini-read sites** (no key on the project lead's machine):
+**43 %** of 210 published events found (79 certain, 12 probable). The tourist office alone finds
+63. The `page` sources run in CI. The report lists every missed event by site of origin, the
+probable matches to check by eye, and events read on the sites but **absent** from Fontainebleau
+Live (61 from the tourist office alone: a coverage gain to sort, not a list to publish).
+
+**Found on the way: published duplicates.** Matching the published set against itself finds
+~20 groups, about 15 of them true duplicates under two titles (« La Flûte enchantée » ×2, « Les
+Collectionnistes » ×2, « Y'a de la joie » ×2, « Blandy enchanté » ×2…). They inflate the
+comparison's denominator and show twice on the site. Item 51c.
+
 ### Y. Calendar feeds and the free partner widget (items 69 & 71, September 24, 2026)
 
 Two ways for the programme to travel without anyone coming back to the site. Both are built from
@@ -1181,6 +1236,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | **Réduire la dépendance au grounding par des sources légitimes, jamais en masquant l'origine** (item 72) | Proposé puis écarté : diluer la provenance ou faire transiter les données par un site « perso » non monétisé. Un site non monétisé n'est pas conforme pour autant (les conditions interdisent le stockage et la republication, revenu ou pas), et masquer l'origine transformerait un risque accepté en tromperie délibérée — indéfendable devant Google comme devant une mairie cliente |
 | 2026-09-24 | **Critère de bascule : ≥ 90 % des événements publiés retrouvés par des sources légitimes**, mesuré en parallèle sans rien changer en production | La valeur du site est l'exhaustivité sur les événements clés : aucune bascule qui en perde. Le résidu (≤ 10 %) reste issu de Gemini, risque accepté et connu ; si la clé est coupée, il est perdu et recherché à la main ou par partenariat |
 | 2026-09-24 | Mesuré : **7 sites d'organisateurs portent 110 des 167 événements Gemini (66 %), 15 en portent 139 (83 %)** | Gemini relit surtout une quinzaine de sites connus. La piste « lecture directe » (ancien item 37, écarté le 20/09 pour son coût) devient rentable. Sondés : tous ont une page agenda trouvable ; le Grand Parquet publie un `.ics` ; david-nature.com interdit les robots (`Disallow: /`) et sera respecté |
+| 2026-09-24 | **Lecture directe : un lecteur par site, déterministe dès que le site le permet** (§3.Z) | Les sites clés n'ont pas tous le même format : `.ics` (Grand Parquet), liste Apidae (office de tourisme), HTML simple. Une date lue par une expression régulière testée est plus sûre qu'une date lue par un modèle. Gemini sans grounding seulement pour les pages sans structure |
+| 2026-09-24 | `robots.txt` respecté, sites JavaScript laissés de côté | david-nature.com interdit les robots : jamais lu. Aucun contournement d'un site qui se protège ; les sites purement JavaScript attendent un meilleur moyen |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
@@ -1335,7 +1392,12 @@ choses qui restaient étaient noyées dedans.
 
 ### B3. Sortir du grounding sans rien perdre — décidé le 24/09
 
-- [ ] **72. Comparatif en parallèle (mode observation) : sources légitimes vs Gemini.** Rien ne
+- [ ] **72. Comparatif en parallèle — construit le 24/09** (§3.Z). Premier run local sans les
+  sources lues par Gemini : **43 %**. **À faire : lancer le workflow « Comparatif des sources »**
+  (onglet Actions, bouton *Run workflow*) pour le premier chiffre complet, puis relire les
+  « manqués » et les « probables » du rapport. Ensuite, par ordre de rendement : ANVL (22
+  événements, calendrier AJAX du plugin de réservation), Amis de la Forêt (8), Vaux (3), Melun (3).
+  Idée d'origine : Rien ne
   change en production tant que le critère n'est pas atteint.
   - **Registre `sources.json`** (édité à la main) des ~15 sites qui portent 83 % des événements
     Gemini : un `.ics` quand le site en publie un (Grand Parquet), sinon la page agenda lue
@@ -1347,6 +1409,10 @@ choses qui restaient étaient noyées dedans.
   - **Critère : ≥ 90 %** des événements publiés, sur plusieurs runs consécutifs. Alors seulement
     le grounding passe en observation (il signale des sites à ajouter au registre, rien de ce
     qu'il renvoie n'est publié) sauf pour le résidu accepté.
+- [ ] **51c. Doublons publiés sous deux titres** (§3.Z) : ~15 vrais doublons trouvés le 24/09 par
+  le rapprochement du comparatif (« La Flûte enchantée » ×2, « Les Collectionnistes » ×2…). Le
+  même rapprochement (mots distinctifs, lieux et types exclus) pourrait signaler — pas fusionner —
+  dans le rapport de run, comme les titres « frères » de §3.W.
 - [ ] **72b. API de recherche avec droit de stockage** pour le résidu, à évaluer dans le même
   comparatif si les sources directes plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000
   requêtes (5 $ offerts par mois ; **le stockage exige un plan qui l'accorde explicitement**,

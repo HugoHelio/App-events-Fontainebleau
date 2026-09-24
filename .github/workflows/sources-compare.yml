@@ -1,0 +1,46 @@
+name: Comparatif des sources (observation)
+
+# Item 72 (§3.Z du doc) : mesure la part des événements publiés que des sources légitimes
+# retrouvent seules — flux ouverts + sites des organisateurs lus directement, Gemini SANS
+# grounding. Ne publie rien, ne commite rien : lecture seule, rapport dans le résumé du run et en
+# artefact. La bascule n'a lieu qu'à ≥ 90 % sur plusieurs runs (décision du 24/09).
+on:
+  schedule:
+    - cron: '0 4 * * 1'   # lundi 04:00 UTC, avant la collecte quotidienne de 06:00
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sources-compare
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Environ 110 pages lues à une requête par seconde et par site, plus ~7 appels Gemini sans
+      # recherche (quelques centimes). Un site en panne est signalé dans le rapport, pas fatal.
+      - name: Comparatif
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/compare-sources.js
+
+      - name: Rapport en artefact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sources-comparison
+          path: reports/
+          retention-days: 60

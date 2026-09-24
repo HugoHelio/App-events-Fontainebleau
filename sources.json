@@ -1,0 +1,99 @@
+{
+  "_comment": "Hand-edited. Organisers' own pages, read directly (item 72, §3.Z). type: ics = an iCalendar feed; apidae-ot = the tourist office list + event pages, parsed without AI; page = HTML or RSS read and extracted by Gemini WITHOUT grounding. enabled:false keeps a site on file with the reason it is not read.",
+  "sources": [
+    {
+      "id": "grandparquet",
+      "name": "Grand Parquet",
+      "type": "ics",
+      "url": "https://www.grandparquet.com/evenements/?ical=1",
+      "city": "Fontainebleau"
+    },
+    {
+      "id": "ot-pays-fontainebleau",
+      "name": "Office de tourisme du Pays de Fontainebleau",
+      "type": "apidae-ot",
+      "url": "https://www.fontainebleau-tourisme.com/fr/sortir-bouger/agenda-manifestations-grands-evenements/",
+      "maxPages": 12
+    },
+    {
+      "id": "ville-fontainebleau",
+      "name": "Ville de Fontainebleau",
+      "type": "page",
+      "urls": ["https://www.fontainebleau.fr/bouger-et-sortir/agenda-133.html?no_cache=1"],
+      "city": "Fontainebleau"
+    },
+    {
+      "id": "chateau-fontainebleau",
+      "name": "Château de Fontainebleau",
+      "type": "page",
+      "urls": ["https://www.chateaudefontainebleau.fr/agenda-et-actualites/", "https://www.chateaudefontainebleau.fr/feed/"],
+      "city": "Fontainebleau"
+    },
+    {
+      "id": "anvl",
+      "name": "ANVL (naturalistes)",
+      "type": "page",
+      "urls": ["https://anvl.fr/feed/"],
+      "note": "The calendar itself is served by a booking plugin through AJAX; only the RSS feed is read for now."
+    },
+    {
+      "id": "chateau-blandy",
+      "name": "Château de Blandy",
+      "type": "page",
+      "urls": ["https://www.chateau-blandy.fr/fr/programmation-venir"],
+      "city": "Blandy-les-Tours"
+    },
+    {
+      "id": "henson",
+      "name": "Espaces équestres Henson",
+      "type": "page",
+      "urls": ["https://www.henson.fr/tag/evenement/"]
+    },
+    {
+      "id": "moret",
+      "name": "Moret-Loing-et-Orvanne",
+      "type": "page",
+      "urls": ["https://moretloingetorvanne.fr/agenda"],
+      "city": "Moret-Loing-et-Orvanne"
+    },
+    {
+      "id": "samois",
+      "name": "Samois-sur-Seine",
+      "type": "page",
+      "urls": ["https://samois-sur-seine.fr/agenda/"],
+      "city": "Samois-sur-Seine"
+    },
+    {
+      "id": "aaff",
+      "name": "Amis de la Forêt de Fontainebleau",
+      "enabled": false,
+      "type": "page",
+      "urls": ["https://www.aaff.fr/agenda/"],
+      "note": "Agenda rendered by JavaScript: the raw page holds no event."
+    },
+    {
+      "id": "vaux-le-vicomte",
+      "name": "Vaux-le-Vicomte",
+      "enabled": false,
+      "type": "page",
+      "urls": ["https://vaux-le-vicomte.com/activites-evenements/"],
+      "note": "Agenda rendered by JavaScript."
+    },
+    {
+      "id": "ville-melun",
+      "name": "Ville de Melun",
+      "enabled": false,
+      "type": "page",
+      "urls": ["https://www.ville-melun.fr/agenda"],
+      "note": "Single-page JavaScript application."
+    },
+    {
+      "id": "david-nature",
+      "name": "David Nature",
+      "enabled": false,
+      "type": "page",
+      "urls": ["https://www.david-nature.com/le-calendrier"],
+      "note": "robots.txt: Disallow / for every robot. Respected, never read."
+    }
+  ]
+}

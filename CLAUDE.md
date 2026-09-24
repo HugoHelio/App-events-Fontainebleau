@@ -26,6 +26,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `venues.json` | **Édité à la main.** Coordonnées exactes des lieux récurrents, consultées avant la BAN — qui ne connaît que des adresses, pas des noms de salles |
 | `scripts/generate-pages.js` | Pages statiques indexables (§3.X) : une fiche par événement, une page par commune, `sitemap.xml`. N'écrit **jamais** `data.json` |
 | `evenements/`, `que-faire/`, `agenda/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer. `agenda/` : flux `.ics` (§3.Y), en CRLF protégé par `.gitattributes` |
+| `sources.json` | **Édité à la main.** Registre des sites d'organisateurs lus directement (§3.Z) : type de lecteur, URL, raison d'une désactivation |
+| `scripts/sources.js` / `scripts/compare-sources.js` | Lecture directe des sites (sans grounding, `robots.txt` respecté) et comparatif en mode observation. **Ne publient rien** tant que le seuil de 90 % n'est pas atteint |
 | `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
 | `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
@@ -86,6 +88,10 @@ GEMINI_API_KEY=… node scripts/translate-data.js --sample 8
 # Remplir data.json maintenant, sans attendre le prochain scan (~7 000 tokens, pas de grounding).
 # Remplit aussi translate-cache.json : le scan suivant ne repaiera rien. Commiter les DEUX.
 GEMINI_API_KEY=… node scripts/translate-data.js --write
+
+# Comparatif des sources légitimes, sans rien publier. Sans GEMINI_API_KEY, les sites lus par
+# Gemini sont sautés (le reste tourne). REUSE_SNAPSHOT=1 recompare sans rien retélécharger.
+GEMINI_API_KEY=… node scripts/compare-sources.js
 
 # Régénérer les pages statiques à partir de data.json (gratuit, aucun appel réseau)
 node scripts/generate-pages.js
