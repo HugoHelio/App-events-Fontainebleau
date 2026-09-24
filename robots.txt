@@ -5,5 +5,7 @@ Allow: /
 Disallow: /geocode-cache.json
 Disallow: /translate-cache.json
 Disallow: /overrides.json
+# Brouillons de posts pour les groupes locaux : outil interne.
+Disallow: /publier/
 
 Sitemap: https://fontainebleaulive.fr/sitemap.xml

@@ -1345,6 +1345,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | **Sites lus en parallèle (4), lots Gemini par 3** ; chaque site reste servi une requête à la fois, espacées d'une seconde | Le run #44 a pris 21 min pour une limite de 30. Le travail séquentiel inutile (sites différents, appels indépendants) était l'essentiel du temps. Le robots.txt d'un site est partagé entre ses sources (le test a trouvé 3 lectures au lieu d'une) |
 | 2026-09-24 | **robots.txt : tous les groupes qui s'appliquent sont fusionnés** (RFC 9309) | Le fichier d'ANVL a deux groupes « * » ; le second interdit `/wp-json/` et l'ancien lecteur ne gardait que le premier. Rien d'interdit n'avait été lu, mais la règle devait être juste |
 | 2026-09-24 | **ANVL : pas de lecture du calendrier de réservation** | La requête publique du calendrier répond 404 à un robot identifié ; se faire passer pour un navigateur serait un contournement. Les sorties n'ont pas de page propre. Piste phase commerciale : l'export `.ics` du plugin, deux clics pour eux |
+| 2026-09-24 | **Posts Facebook : brouillons automatiques, publication manuelle** (`/publier/`) | Meta a retiré l'API des groupes en 2024 et un robot qui publie dans un groupe qu'il n'administre pas enfreint les conditions : le compte est le canal. Le brouillon quotidien ramène le post mensuel à une minute |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
@@ -1468,7 +1469,8 @@ choses qui restaient étaient noyées dedans.
     régénéré en entier à chaque run.
   - **Risque grounding (§8)** : un flux d'agenda est de la syndication au sens strict. C'est
     couvert par la décision du 24/09, mais c'est un canal de plus à citer dans §8.
-- [ ] **70. Groupes Facebook des communes** (« Tu sais que tu viens de Fontainebleau », groupes
+- [x] **70. Brouillons de posts — faits le 24/09** : page privée `/publier/` (non indexée, hors plan du site, jamais liée), régénérée chaque jour par `generate-pages.js` : un post « autour de Fontainebleau » et un par commune ayant au moins 3 activités dans les 30 jours, 6 dates maximum, expositions longues exclues, lien vers la page commune, bouton Copier. La publication reste manuelle. **À faire, chef de projet** : lire les règles de 2 ou 3 groupes, publier une fois par mois. Idée d'origine :
+- [ ] **70-bis. Groupes Facebook des communes** (« Tu sais que tu viens de Fontainebleau », groupes
   de parents, de clubs). Un post soigné par mois dans deux ou trois groupes, avec le lien vers une
   page commune ou une fiche. **Lire les règles de chaque groupe d'abord** : beaucoup interdisent
   l'auto-promotion, et demander à l'administrateur avant le premier post vaut mieux qu'un

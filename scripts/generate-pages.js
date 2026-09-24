@@ -300,6 +300,83 @@ function cityPage(c) {
   });
 }
 
+// ───────────────────────────── Posts to share (item 70) ─────────────────────────────
+//
+// Ready-to-paste texts for the towns' Facebook groups. Publishing stays by hand: Meta removed
+// the Groups API in 2024, and a bot posting in a group it does not administer breaks Facebook's
+// terms — the account is the channel. What is automated is the draft, rebuilt every day, so the
+// month's post takes a minute. The page is noindex, absent from the sitemap and never linked.
+
+const SHARE_DIR = 'publier';
+const SHARE_DAYS = 30;
+const SHARE_MAX = 6;
+const SHARE_MIN = 3;   // below this, a post is not worth a group's attention
+
+function shortDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+}
+const shareWhen = (e) => (!e.endDate || e.endDate === e.startDate)
+  ? shortDate(e.startDate)
+  : `du ${shortDate(e.startDate).replace(/^\S+ /, '')} au ${shortDate(e.endDate).replace(/^\S+ /, '')}`;
+
+/**
+ * The events worth a line: starting within SHARE_DAYS, soonest first, standing offers and long
+ * exhibitions left out (they are on the site all season; a post is for what is coming up).
+ */
+function shareable(events, today) {
+  const until = new Date(Date.parse(today) + SHARE_DAYS * 86400000).toISOString().slice(0, 10);
+  return events
+    .filter((e) => e.startDate >= today && e.startDate <= until)
+    .filter((e) => Math.round((Date.parse(e.endDate || e.startDate) - Date.parse(e.startDate)) / 86400000) <= 7)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
+}
+
+function postText(headline, picks, link) {
+  const lines = picks.map((e) => `• ${shareWhen(e)} — ${e.title}${e.locationName && e.locationName !== e.city ? ` (${e.locationName})` : ''}`);
+  return `${headline}\n\n${lines.join('\n')}\n\nTout le programme, horaires et liens, mis à jour chaque jour :\n${link}`;
+}
+
+function sharePage(cities, events, today) {
+  const posts = [];
+  const all = shareable(events, today);
+  // One per town at most, so the general post shows the area, not just Fontainebleau.
+  const spread = [];
+  for (const e of all) if (!spread.some((s) => s.citySlug === e.citySlug)) spread.push(e);
+  for (const e of all) if (spread.length < SHARE_MAX + 2 && !spread.includes(e)) spread.push(e);
+  if (spread.length >= SHARE_MIN) {
+    posts.push({ name: 'Autour de Fontainebleau', count: all.length, text: postText('🌳 Que faire autour de Fontainebleau ces prochaines semaines ?', spread.slice(0, SHARE_MAX + 2).sort((a, b) => a.startDate.localeCompare(b.startDate)), `${SITE_URL}/`) });
+  }
+  for (const c of cities) {
+    const mine = shareable(c.events, today);
+    if (mine.length < SHARE_MIN) continue;
+    posts.push({ name: c.name, count: mine.length, text: postText(`📅 Que faire à ${c.name} ces prochaines semaines ?`, mine.slice(0, SHARE_MAX), `${SITE_URL}/${CITIES_DIR}/${c.slug}/`) });
+  }
+
+  const body = `<h1>Textes à partager</h1>
+<p class="note">Page privée : non indexée, absente du plan du site, jamais liée. Régénérée chaque jour à partir du programme. Un post par groupe et par mois suffit ; lisez d'abord les règles du groupe — beaucoup interdisent l'auto-promotion, et demander à l'administrateur avant le premier post évite un bannissement.</p>
+${posts.length ? posts.map((p, i) => `<h2>${esc(p.name)} <small class="note">· ${p.count} activité${p.count > 1 ? 's' : ''} dans les ${SHARE_DAYS} jours</small></h2>
+<textarea id="t${i}" rows="${p.text.split('\n').length + 1}" readonly>${esc(p.text)}</textarea>
+<button type="button" class="btn" data-copy="t${i}">Copier</button>`).join('\n') : '<p>Rien d\'assez fourni à partager pour l\'instant.</p>'}
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.getAttribute('data-copy'));
+    var done = function () { b.textContent = 'Copié ✓'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t.value).then(done, function () { t.select(); });
+    else t.select();
+  });
+});
+</script>`;
+  return layout({
+    title: 'Textes à partager | Fontainebleau Live',
+    description: 'Textes prêts à publier dans les groupes locaux.',
+    canonical: `${SITE_URL}/${SHARE_DIR}/`,
+    noindex: true,
+    body,
+  }).replace('</style>', 'textarea{width:100%;font:15px/1.5 inherit;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;resize:vertical}\nh2 small{font-weight:400}\nbutton.btn{border:0;cursor:pointer;margin:8px 0 8px;font:inherit;font-weight:600}\n</style>');
+}
+
 function citiesIndex(cities) {
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Que faire autour de Fontainebleau ?</h1>
@@ -512,6 +589,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   }
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
+  files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
@@ -573,5 +651,5 @@ if (require.main === module) {
 
 module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
-  icsText, icsFold, icsCalendar, inFeed, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, FEED_MAX_DAYS,
+  icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
 };
