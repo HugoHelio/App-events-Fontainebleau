@@ -636,6 +636,22 @@ period split, standing offers, the enrichment cache, `mainContent()`; and **an e
 the event page and an address, dates untouched; a duplicate brocante enriched, not duplicated; two
 new events added; a standing offer refused; a `robots.txt` Disallow never fetched.
 
+**First real run (#44, 24/09, manual)**: 21 minutes (was ~5 before sites and judged dedupe). 210 →
+225 events: **41 added** (36 from the tourist office), **34 existing events got a more precise link**,
+18 confirmed by a site, **43 duplicate pairs merged** out of 120 judged — all checked by hand
+afterwards, no wrong merge (TDA Poneys / Équitation kept apart; of the brame du cerf outings only
+the two Henson ones merged). Provenance after the run: 120 Gemini-only, 58 site, 25 DATAtourisme,
+22 OpenAgenda.
+
+**One flaw, fixed the same day**: 5 of the 41 additions were dates of events already published as
+one span — the tourist office lists « Sauvages ! » and the Marie-Antoinette concerts date by date.
+`isSameOccurrence()` missed them (short title), and the judge — rightly cautious, "a programme and
+one of its dates are two things" — kept them apart. Rule added: a **new** site record whose dates
+sit inside an existing span, with a matching title (`matchLevel()` of the comparison) and town,
+confirms that span instead of being added. Limited to new site records, so an event a site merely
+confirmed is never folded into a larger one. The 5 already published are hidden in
+`overrides.json` with the reason; later scans never add them again.
+
 ### Y. Calendar feeds and the free partner widget (items 69 & 71, September 24, 2026)
 
 Two ways for the programme to travel without anyone coming back to the site. Both are built from

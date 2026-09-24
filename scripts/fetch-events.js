@@ -32,6 +32,7 @@ const feedback = require('./feedback');
 const translate = require('./translate');
 const dedupeJudge = require('./dedupe-judge');
 const sites = require('./sources');
+const { matchLevel } = require('./compare-sources');
 const pages = require('./generate-pages');
 
 // ───────────────────────────── Configuration ─────────────────────────────
@@ -1094,7 +1095,7 @@ function renderSummary(stats, ctx) {
       L.push(`- 🏛️ Sites des organisateurs : ❌ ${String(st.error).slice(0, 160)} (les autres sources sont conservées)`);
     } else {
       const ok = st.perSource.filter((r) => r.status === 'ok');
-      L.push(`- 🏛️ Sites des organisateurs (sans grounding) : ${ok.length} lu(s) → **${st.records}** fiche(s) · **${stats.siteConfirmed}** événement(s) confirmé(s) et enrichi(s) · ${st.long} offre(s) permanente(s) jamais ajoutée(s)`);
+      L.push(`- 🏛️ Sites des organisateurs (sans grounding) : ${ok.length} lu(s) → **${st.records}** fiche(s) · **${stats.siteConfirmed}** événement(s) confirmé(s) et enrichi(s) · ${st.long} offre(s) permanente(s) jamais ajoutée(s)${stats.siteInsideSpan ? ` · ${stats.siteInsideSpan} date(s) d'un événement déjà publié sur plusieurs jours` : ''}`);
       L.push(`  - ${st.perSource.map((r) => `${r.id} ${r.status === 'ok' ? r.events : r.status === 'disabled' ? '⏸' : '❌'}`).join(' · ')}`);
       for (const r of st.perSource.filter((x) => x.status === 'error' || x.status === 'robots')) L.push(`  - ⚠️ ${r.id} : ${String(r.error).slice(0, 140)}`);
       const siteRej = Object.entries(stats.siteRejected);
@@ -1455,7 +1456,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
-    sites: null, siteRejected: {}, siteConfirmed: 0, siteLongSkipped: 0,
+    sites: null, siteRejected: {}, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
     unconfirmed: [], vanishedFromFeed: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
@@ -1679,6 +1680,26 @@ async function main() {
   // what nothing matches becomes a new event. Wording that differs more than isSameOccurrence()
   // tolerates is caught by the judged dedupe below, which keeps the stored record as winner.
   for (const v of validSite) addRecord(v, { fuzzy: true, counter: 'siteConfirmed', confirm: true, addNew: !v.long });
+
+  // A site that lists, date by date, an event we already hold as one span: the tourist office
+  // gave "Sauvages !" on 10-11 October while we had the festival 9-11 October, and the judged
+  // dedupe (rightly cautious: "a programme and one of its dates are two things") kept both.
+  // A NEW site record whose dates sit inside an existing span, with a matching title and town,
+  // confirms that span instead. Only new site records: an event a site merely confirmed is
+  // never folded into a larger one here.
+  const contains = (outer, inner) => outer.endDate > outer.startDate
+    && outer.startDate <= inner.startDate && (inner.endDate || inner.startDate) <= outer.endDate;
+  for (const [key, rec] of [...records]) {
+    if (!rec.isNew || rec.event.source !== 'site') continue;
+    const host = [...records.values()].find((o) => o !== rec && !o.isNew
+      && contains(o.event, rec.event) && matchLevel(o.event, rec.event));
+    if (!host) continue;
+    enrichFrom(host.event, rec.event);
+    host.refreshed = true;
+    host.event.lastSeen = today;
+    records.delete(key);
+    stats.siteInsideSpan++;
+  }
 
   // One classifier over the whole merged set: DATAtourisme maps almost everything to Culture
   // (its ontology has no stage class), OpenAgenda guesses from keywords, Gemini is told the enum.
