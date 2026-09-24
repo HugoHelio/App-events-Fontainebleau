@@ -780,6 +780,14 @@
         <option value="3months" data-i18n="horizon3m">Dans les 3 mois</option>
       </select>
     </div>
+
+    <!-- Options filled from the data (populateCityFilter): only towns that have something on. -->
+    <div class="filter-group">
+      <label for="filterCity" data-i18n="cityLabel">Ville :</label>
+      <select id="filterCity">
+        <option value="" data-i18n="cityAll">Toutes les villes</option>
+      </select>
+    </div>
   </div>
 
   <!-- Commutateur de vues -->
@@ -876,6 +884,8 @@
         catCulture: 'Culture & Ateliers',
         dateLabel: 'Date spécifique :',
         horizonLabel: 'Période :',
+        cityLabel: 'Ville :',
+        cityAll: 'Toutes les villes',
         horizonToday: "Aujourd'hui",
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
@@ -937,6 +947,8 @@
         catCulture: 'Culture & Workshops',
         dateLabel: 'Specific date:',
         horizonLabel: 'Period:',
+        cityLabel: 'Town:',
+        cityAll: 'All towns',
         horizonToday: 'Today',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
@@ -1348,6 +1360,7 @@
     function resetFilters() {
       track('reset-filters');
       document.getElementById('filterCategory').value = '';
+      document.getElementById('filterCity').value = '';
       document.getElementById('filterDate').value = '';
       document.getElementById('filterHorizon').value = '2weeks';
       applyFilters();
@@ -1359,7 +1372,8 @@
       map.closePopup();
       try {
         const bounds = markersGroup.getBounds();
-        if (bounds && bounds.isValid()) { map.fitBounds(bounds, { padding: [28, 28] }); return; }
+        // maxZoom: a town with a single venue would otherwise zoom to street level.
+        if (bounds && bounds.isValid()) { map.fitBounds(bounds, { padding: [28, 28], maxZoom: 14 }); return; }
       } catch (e) { /* nothing on the map yet */ }
       map.setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
     }
@@ -1380,11 +1394,26 @@
     function openLinkedEvent() {
       if (linkedEventHandled) return;
       linkedEventHandled = true;
-      const id = new URLSearchParams(location.search).get('event');
+      const params = new URLSearchParams(location.search);
+
+      // ?ville=<name> — "Voir sur la carte" on a commune page. Only a name that is in the list
+      // is applied, so the parameter can never inject anything.
+      const city = params.get('ville');
+      const citySelect = document.getElementById('filterCity');
+      if (city && [...citySelect.options].some((o) => o.value && o.value === city)) {
+        citySelect.value = city;
+        document.getElementById('filterHorizon').value = '3months';
+        applyFilters();
+        clearSelection();
+        track('city-link', city);
+      }
+
+      const id = params.get('event');
       if (!id || !/^[A-Z]{3}_[0-9A-Za-z]{1,20}$/.test(id)) return;
       if (!allActivities.some((a) => a.id === id)) return;
       if (!document.querySelector(`.card[data-id="${id}"]`)) {
         document.getElementById('filterCategory').value = '';
+        document.getElementById('filterCity').value = '';
         document.getElementById('filterDate').value = '';
         document.getElementById('filterHorizon').value = '3months';
         applyFilters();
@@ -1392,6 +1421,28 @@
       track('event-link', id);
       focusMarker(id);
       focusCard(id);
+    }
+
+    /**
+     * Towns that have at least one upcoming event, alphabetical. Rebuilt on every load, so a
+     * town with nothing left disappears instead of offering an empty result. Names are set as
+     * text and value, never as HTML. The visitor's choice survives a reload if still present.
+     */
+    function populateCityFilter() {
+      const select = document.getElementById('filterCity');
+      const current = select.value;
+      const names = [...new Set(allActivities
+        .filter((a) => isUpcoming(a) && isInWindow(a) && typeof a.city === 'string' && a.city.trim())
+        .map((a) => a.city))]
+        .sort((x, y) => x.localeCompare(y, 'fr'));
+      while (select.options.length > 1) select.remove(1);
+      for (const name of names) {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        select.appendChild(opt);
+      }
+      select.value = names.includes(current) ? current : '';
     }
 
     /** Same-origin path of the event's static page, or null. Anything else in the field is ignored. */
@@ -1438,11 +1489,14 @@
 
       // Écouteurs sur les filtres
       for (const [id, name] of [['filterCategory', 'filter-category'],
-        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period']]) {
+        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period'], ['filterCity', 'filter-city']]) {
         document.getElementById(id).addEventListener('change', (e) => {
-          // The value of a <select> is a fixed enum, never free text — nothing personal here.
+          // The value of a <select> is a fixed enum, never free text — nothing personal here
+          // (the town list is built from data.json, not typed by the visitor).
           track(name, id === 'filterDate' ? (e.target.value ? 'set' : 'cleared') : (e.target.value || 'all'));
           applyFilters();
+          // Picking a town is picking a place: frame it. Other filters leave the map where it is.
+          if (id === 'filterCity') clearSelection();
         });
       }
       document.querySelectorAll('.lang-btn').forEach((btn) => {
@@ -1492,6 +1546,7 @@
     
     loadFailed = false;
     renderEventCount();
+    populateCityFilter();
     applyFilters();
     openLinkedEvent();
   } catch (error) {
@@ -1506,6 +1561,7 @@
     // Filtrage des activités
     function applyFilters() {
       const catVal = document.getElementById('filterCategory').value;
+      const cityVal = document.getElementById('filterCity').value;
       const dateVal = document.getElementById('filterDate').value;
       // A specific date is a deliberate, narrower request: it overrides the period rather than
       // intersecting with it, so picking a date outside the period cannot return an empty list.
@@ -1530,7 +1586,9 @@
           matchDate = Boolean(a.startDate) && dateVal >= a.startDate && dateVal <= end;
         }
 
-        return matchCat && matchDate && matchHorizon;
+        const matchCity = !cityVal || a.city === cityVal;
+
+        return matchCat && matchCity && matchDate && matchHorizon;
       });
 
       renderCards(filtered);

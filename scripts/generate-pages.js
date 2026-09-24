@@ -286,7 +286,7 @@ function cityPage(c) {
 <h1>Que faire à ${esc(c.name)} ?</h1>
 <p>${n} activité${n > 1 ? 's' : ''} à venir à ${esc(c.name)} : sport, nature, culture et sorties en famille.</p>
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
-<div class="actions"><a class="btn alt" href="/">Voir toutes les activités sur la carte</a></div>`;
+<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}">Voir sur la carte</a></div>`;
   return layout({
     title: `Que faire à ${c.name} ? Agenda des activités | Fontainebleau Live`,
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),

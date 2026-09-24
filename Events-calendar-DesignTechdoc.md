@@ -484,6 +484,13 @@ English text is machine output — not something to put in front of a search eng
 pages' "Voir sur la carte" — widens the period filter if needed, opens the marker and highlights
 the card; it runs once per load.
 
+**Town filter (same day).** A fourth filter, « Ville », next to the period. It passes the test
+the age filter failed (§7, 23/09): Fontainebleau holds 142 of 214 events and every other town
+1 to 11, so each option returns a genuinely different set. Options are built from the data —
+only towns with something upcoming, so no option leads to an empty list by construction.
+Choosing a town frames the map on its markers (capped at zoom 14). `?ville=<nom>` is the target
+of "Voir sur la carte" on the commune pages; it is applied only if the name is in the list.
+
 **Size.** 214 events → 214 + 25 HTML files, ~2 MB. The first commit is large; after that a
 scan touches only the pages whose event changed, plus the commune pages listing them.
 
@@ -1111,6 +1118,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | Adresse = texte lisible + **jeton de l'id** ; ancien dossier → redirection `noindex` | Un slug titre-date change à chaque correction de titre et casse une URL déjà indexée. L'id, lui, est conservé toute la vie de la fiche |
 | 2026-09-24 | Balisage schema.org `Event` seulement si le lien est vérifié ; `Offer` seulement pour un prix non ambigu | Un encart Google avec une date ou un prix faux coûte plus cher que pas d'encart (§5) |
 | 2026-09-24 | Fiches d'événements passés **supprimées**, `404.html` écrit à la main | Aucun état à tenir ; le visiteur qui arrive d'un vieux résultat trouve un chemin vers ce qui est à venir |
+| 2026-09-24 | **Filtre « Ville »** à côté de la période, options tirées des données | Contrairement au filtre d'âge retiré le 23/09, il discrimine vraiment : Fontainebleau 142 événements sur 214, chaque autre ville 1 à 11. Seules les villes ayant un événement à venir sont proposées |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
 
 ---
