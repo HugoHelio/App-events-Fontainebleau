@@ -6,9 +6,19 @@
       "lng": 2.56703,
       "source": "city"
     },
+    "city:arbonne la foret": {
+      "lat": 48.41102,
+      "lng": 2.56469,
+      "source": "city"
+    },
     "city:barbizon": {
       "lat": 48.44575,
       "lng": 2.60775,
+      "source": "city"
+    },
+    "city:bourron marlotte": {
+      "lat": 48.34297,
+      "lng": 2.70575,
       "source": "city"
     },
     "city:fontainebleau": {
@@ -26,6 +36,11 @@
       "lng": 2.82107,
       "source": "city"
     },
+    "city:samois sur seine": {
+      "lat": 48.45611,
+      "lng": 2.75346,
+      "source": "city"
+    },
     "venue:4 quai des platreries samois sur seine": {
       "lat": 48.43665,
       "lng": 2.74479,
@@ -39,6 +54,11 @@
     "venue:avenue de fontainebleau d607 fontainebleau": {
       "lat": 48.40699,
       "lng": 2.7747,
+      "source": "ban"
+    },
+    "venue:avenue de fontainebleau veneux les sablons": {
+      "lat": 48.37675,
+      "lng": 2.79533,
       "source": "ban"
     },
     "venue:avenue de fontainebleau veneux les sablons moret loing et orvanne": {
@@ -96,6 +116,11 @@
       "lng": 2.70086,
       "source": "ban"
     },
+    "venue:jardin des noues veneux les sablons": {
+      "lat": 48.37483,
+      "lng": 2.8074,
+      "source": "ban"
+    },
     "venue:le grand parquet fontainebleau": {
       "lat": 48.3915,
       "lng": 2.67095,
@@ -131,9 +156,19 @@
       "lng": 2.70104,
       "source": "ban"
     },
+    "venue:place de la republique et hotel de ville fontainebleau": {
+      "lat": 48.40634,
+      "lng": 2.70104,
+      "source": "ban"
+    },
     "venue:place de la republique fontainebleau": {
       "lat": 48.40634,
       "lng": 2.70104,
+      "source": "ban"
+    },
+    "venue:place de la republique samois sur seine": {
+      "lat": 48.45134,
+      "lng": 2.74946,
       "source": "ban"
     },
     "venue:place napoleon bonaparte fontainebleau": {
@@ -159,6 +194,11 @@
     "venue:salle de bal du chateau de fontainebleau fontainebleau": {
       "lat": 48.40168,
       "lng": 2.70086,
+      "source": "ban"
+    },
+    "venue:ury": {
+      "lat": 48.34418,
+      "lng": 2.6029,
       "source": "ban"
     }
   }

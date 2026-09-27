@@ -31,61 +31,6 @@ GEO:48.40699;2.7747
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_3971bf8a2f@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
-DTSTART;VALUE=DATE:20260926
-DTEND;VALUE=DATE:20260927
-SUMMARY:#ForêtBelle 2026 à Moret-Loing-et-Orvanne
-LOCATION:Stade Thierry Roquette\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h00 - 20h00\n\nTarif : Gratuit\n\nParticipez à un
- e opération citoyenne consacrée au ramassage des déchets en forêt.\n\n
- Organisateur : https://moretloingetorvanne.fr/events/foretbelle-2026-moret
- -loing-et-orvanne/\n\nFiche : https://fontainebleaulive.fr/evenements/fore
- tbelle-2026-a-moret-loing-et-orvanne-3971bf8a2f/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/foretbelle-2026-a-moret-loing-e
- t-orvanne-3971bf8a2f/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_9bef08d4b5@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260926
-DTEND;VALUE=DATE:20260927
-SUMMARY:Sortie à l'écoute du Brame du cerf
-LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 18h30–22h00\n\nTarif : Gratuit pour les adhérents
- \n\nPublic : Dès 8 ans\n\nSortie guidée au crépuscule pour écouter le 
- brame du cerf et observer la faune nocturne en forêt.\n\nOrganisateur : h
- ttps://www.environnement77.fr/\n\nFiche : https://fontainebleaulive.fr/eve
- nements/sortie-a-l-ecoute-du-brame-du-cerf-fontainebleau-9bef08d4b5/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-a-l-ecoute-du-brame-du-c
- erf-fontainebleau-9bef08d4b5/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_72214deca7@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260926
-DTEND;VALUE=DATE:20260927
-SUMMARY:Sortie mycologique en forêt de Fontainebleau
-LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nSortie guidée de te
- rrain consacrée à la découverte et l'identification des espèces de cha
- mpignons du massif de Fontainebleau.\n\nOrganisateur : https://anvl.fr/\n\
- nFiche : https://fontainebleaulive.fr/evenements/sortie-mycologique-en-for
- et-de-fontainebleau-72214deca7/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-mycologique-en-foret-de-
- fontainebleau-72214deca7/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_531f146076@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20260926
@@ -102,6 +47,22 @@ DESCRIPTION:Horaires : Mercredi et samedi à partir de 14h00\n\nTarif : Gra
  ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/tous-en-foret-rencontre-avec-le
  s-forestiers-de-l-onf-fontainebleau-531f146076/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9de35d8361@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Forêt belle
+LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
+DESCRIPTION:Horaires : 10h00\n\nOrganisateur : https://samois-sur-seine.fr/
+ evenement/foret-belle-3/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/foret-belle-samois-sur-seine-9de35d8361/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/foret-belle-samois-sur-seine-9d
+ e35d8361/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -126,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e5cffeee4a@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261003
 SUMMARY:Api'week au Carrefour Carrefour Villiers-en-Bière
@@ -145,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c82b316def@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261003
 SUMMARY:Découverte des oiseaux du Carreau Franc
@@ -188,13 +149,13 @@ DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Chantier d'entretien des îlots de l'ENS Carreau Franc
 LOCATION:ENS Carreau Franc\, Fontainebleau
-DESCRIPTION:Horaires : Samedi de 09h00 à 17h00\n\nTarif : Gratuit\n\nPubli
- c : Dès 12 ans\n\nChantier participatif de bénévolat pour entretenir et
-  préserver les milieux naturels de l'Espace Naturel Sensible.\n\nOrganisa
- teur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr
- /evenements/chantier-d-entretien-des-ilots-de-l-ens-carreau-franc-fontaine
- bleau-97f20c8238/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
+DESCRIPTION:Horaires : 09h–16h\n\nTarif : Gratuit\n\nPublic : Dès 12 ans
+ \n\nChantier participatif de bénévolat pour entretenir et préserver les
+  milieux naturels de l'Espace Naturel Sensible.\n\nOrganisateur : https://
+ anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/cha
+ ntier-d-entretien-des-ilots-de-l-ens-carreau-franc-fontainebleau-97f20c823
+ 8/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/chantier-d-entretien-des-ilots-
  de-l-ens-carreau-franc-fontainebleau-97f20c8238/
 CATEGORIES:Nature & Environnement
@@ -207,16 +168,57 @@ DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261005
 SUMMARY:Stage Champignons en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Payant sur réservation\n\n
- Public : Dès 12 ans\n\nFormation terrain de deux jours pour apprendre à 
- reconnaître les champignons comestibles et toxiques.\n\nOrganisateur : ht
- tps://www.lechemindelanature.com/\n\nFiche : https://fontainebleaulive.fr/
- evenements/stage-champignons-en-foret-de-fontainebleau-98f38db7db/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
+DESCRIPTION:Horaires : 10h–17h\n\nTarif : 225 €\n\nPublic : Dès 12 ans
+ \n\nFormation terrain de deux jours pour apprendre à reconnaître les cha
+ mpignons comestibles et toxiques.\n\nOrganisateur : https://www.lecheminde
+ lanature.com/balades-et-stages/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/stage-champignons-en-foret-de-fontainebleau-98f38db7db/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/stage-champignons-en-foret-de-f
  ontainebleau-98f38db7db/
 CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_06501e1535@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:L’automne des petits
+LOCATION:Jardin des Noues\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 10h15 à 11h30\n\nPublic : Jusqu’à 6 ans\n\nUn at
+ elier sensoriel et créatif en plein air avec histoires\, chansons et bala
+ de autour de l'automne.\n\nOrganisateur : https://moretloingetorvanne.fr/e
+ vents/jardin-des-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/l-automne-des-petits-veneux-les-sablons-06501e1535/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/l-automne-des-petits-veneux-les
+ -sablons-06501e1535/
+CATEGORIES:Nature & Environnement
+GEO:48.37483;2.8074
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b5100c4ea4@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261008
+SUMMARY:Vous avez des fruits sauvages dans vos haies mais comestibles ou pa
+ s ?
+LOCATION:Jardin des Noues\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nUn atelier gratuit 
+ pour apprendre à mieux reconnaître les fruits sauvages présents dans le
+ s haies.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-de
+ s-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements/v
+ ous-avez-des-fruits-sauvages-dans-vos-haies-mais-comestible-veneux-les-sab
+ lons-b5100c4ea4/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vous-avez-des-fruits-sauvages-d
+ ans-vos-haies-mais-comestible-veneux-les-sablons-b5100c4ea4/
+CATEGORIES:Nature & Environnement
+GEO:48.37483;2.8074
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -244,17 +246,36 @@ DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261012
 SUMMARY:Événement SAUVAGES! Spécial prédateurs
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : Du vendredi 9 au dimanche 11 octobre\, horaires selo
- n programmation\n\nTarif : Gratuit\n\nAteliers nature\, conférences et an
- imations éducatives axés sur la biodiversité et les prédateurs locaux.
- \n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontaine
- bleaulive.fr/evenements/evenement-sauvages-special-predateurs-fontaineblea
- u-faeff665c0/\n\nInformations collectées automatiquement : vérifiez-les 
- auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nAteliers nature\, co
+ nférences et animations éducatives axés sur la biodiversité et les pr
+ édateurs locaux.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/evenement-sauvages-special-predat
+ eurs-fontainebleau-faeff665c0/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/evenement-sauvages-special-pred
  ateurs-fontainebleau-faeff665c0/
 CATEGORIES:Nature & Environnement
 GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7baa3fa215@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Visite guidée du Jardin des Noues
+LOCATION:Jardin des Noues\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 10h à 11h30\n\nTarif : Gratuit\n\nUne visite guidé
+ e pour échanger sur les actions à engager pour rendre un jardin plus ré
+ silient.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-de
+ s-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements/v
+ isite-guidee-du-jardin-des-noues-veneux-les-sablons-7baa3fa215/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-du-jardin-des-nou
+ es-veneux-les-sablons-7baa3fa215/
+CATEGORIES:Nature & Environnement
+GEO:48.37483;2.8074
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -264,16 +285,38 @@ DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Balade découverte du yoga en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : Dimanche à 14h00\n\nTarif : 18 €\n\nPublic : Dès
-  10 ans\n\nUne marche de détente associant postures de yoga simples\, exe
- rcices de respiration et découverte des trésors naturels de la forêt.\n
- \nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https:
- //fontainebleaulive.fr/evenements/balade-decouverte-du-yoga-en-foret-de-fo
- ntainebleau-d598bc8799/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Dimanche à 14h00\n\nTarif : Tarif unique : 18 €. 
+ Activité accessible à partir de 12 ans\, et soumise à un no…\n\nPubli
+ c : Dès 10 ans\n\nUne marche de détente associant postures de yoga simpl
+ es\, exercices de respiration et découverte des trésors naturels de la f
+ orêt.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/5
+ 787004/balade-a-la-decouverte-du-yoga-et-de-la-foret-de-fontainebleau/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/balade-decouverte-du-yoga-
+ en-foret-de-fontainebleau-d598bc8799/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/balade-decouverte-du-yoga-en-fo
  ret-de-fontainebleau-d598bc8799/
 CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_cdccefb481@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:Après-midi d'ouverture au public du Jardin des Noues
+LOCATION:Jardin des Noues\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nLe Jardin des Noues
+  ouvre ses portes en visite libre avec un accès gratuit aux activités pe
+ rmanentes.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-
+ des-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /apres-midi-d-ouverture-au-public-du-jardin-des-noues-veneux-les-sablons-c
+ dccefb481/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apres-midi-d-ouverture-au-publi
+ c-du-jardin-des-noues-veneux-les-sablons-cdccefb481/
+CATEGORIES:Nature & Environnement
+GEO:48.37483;2.8074
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -410,7 +453,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08a6496d84@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Visites guidées thématiques en forêt
@@ -465,6 +508,26 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_f475c58da4@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Chantier participatif : Taille des haies arbustives
+LOCATION:Jardin des Noues\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nUn chantier partici
+ patif pour découvrir comment tailler les différentes espèces de haies a
+ rbustives.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-
+ des-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /chantier-participatif-taille-des-haies-arbustives-veneux-les-sablons-f475
+ c58da4/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/chantier-participatif-taille-de
+ s-haies-arbustives-veneux-les-sablons-f475c58da4/
+CATEGORIES:Nature & Environnement
+GEO:48.37483;2.8074
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f798516c8f@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261024
@@ -484,7 +547,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -525,6 +588,26 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_fa3ca2aaf0@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Après-midi d'ouverture au public du Jardin des Noues
+LOCATION:Jardin des Noues\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nLe Jardin des Noues
+  ouvre ses portes en visite libre avec un accès gratuit aux activités pe
+ rmanentes.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-
+ des-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /apres-midi-d-ouverture-au-public-du-jardin-des-noues-veneux-les-sablons-f
+ a3ca2aaf0/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apres-midi-d-ouverture-au-publi
+ c-du-jardin-des-noues-veneux-les-sablons-fa3ca2aaf0/
+CATEGORIES:Nature & Environnement
+GEO:48.37483;2.8074
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4e17d55bf9@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261101
@@ -547,16 +630,16 @@ UID:EVT_249e4be334@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
-SUMMARY:Chouette\, une pelote !
+SUMMARY:Atelier Chouette\, une pelote !
 LOCATION:Hôtel de Ville de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 18h–20h\n\nTarif : Gratuit\n\nPublic : Dès 6 ans\
  n\nAtelier ludique d'analyse des pelotes de réjection de rapaces nocturne
  s pour comprendre le régime alimentaire des chouettes.\n\nOrganisateur : 
  https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenem
- ents/chouette-une-pelote-fontainebleau-249e4be334/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/chouette-une-pelote-fontaineble
- au-249e4be334/
+ ents/atelier-chouette-une-pelote-fontainebleau-249e4be334/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-chouette-une-pelote-fon
+ tainebleau-249e4be334/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -579,24 +662,6 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_3b06405641@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261104
-DTEND;VALUE=DATE:20261105
-SUMMARY:Sortie mycologique d'automne en forêt de Fontainebleau
-LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–17h\n\nTarif : Gratuit\n\nJournée de prospect
- ion et d'étude de la diversité mycologique au cœur de la forêt domania
- le.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fonta
- inebleaulive.fr/evenements/sortie-mycologique-d-automne-en-foret-de-fontai
- nebleau-3b06405641/\n\nInformations collectées automatiquement : vérifie
- z-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-mycologique-d-automne-en
- -foret-de-fontainebleau-3b06405641/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_bc7bc2a26d@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261107
@@ -611,6 +676,25 @@ DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nExposition mycologiq
  -les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/25eme-salon-du-champignon-fonta
  inebleau-bc7bc2a26d/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_96b469d92f@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261116
+SUMMARY:Stage Champignons en forêt de Fontainebleau
+LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 10h–17h\n\nTarif : 225 €\n\nPublic : Dès 12 ans
+ \n\nStage de deux jours en immersion pour apprendre à reconnaître\, cuei
+ llir et étudier les champignons comestibles et toxiques.\n\nOrganisateur 
+ : https://www.lechemindelanature.com/balades-et-stages/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/stage-champignons-en-foret-de-fontaineble
+ au-96b469d92f/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-champignons-en-foret-de-f
+ ontainebleau-96b469d92f/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -674,7 +758,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ea515f4cb5@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visites guidées thématiques en forêt

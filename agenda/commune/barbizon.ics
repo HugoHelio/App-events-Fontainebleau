@@ -11,8 +11,45 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_f3efe20af5@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Parenthesis
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Tarif : Tarif unique : 55 €.\n\nÉvénement culturel intitul
+ é Parenthesis se déroulant dans le village de Barbizon.\n\nOrganisateur 
+ : https://www.fontainebleau-tourisme.com/fr/fiche/7956025/parenthesis/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/parenthesis-barbizon-f3efe
+ 20af5/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/parenthesis-barbizon-f3efe20af5
+ /
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a5af7eeba0@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Visite contée "Les Contes du chat perché"
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
+ ficatif)\, Enfant : 5 € (moin…\n\nVisite guidée et contée inspirée 
+ des histoires du Chat perché à Barbizon.\n\nOrganisateur : https://www.f
+ ontainebleau-tourisme.com/fr/fiche/7957826/visite-contee-les-contes-du-cha
+ t-perche/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-contee
+ -les-contes-du-chat-perche-barbizon-a5af7eeba0/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-contee-les-contes-du-cha
+ t-perche-barbizon-a5af7eeba0/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_1792c2d0f4@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261003
 SUMMARY:Les soirées de l'Esquisse
@@ -34,22 +71,22 @@ UID:ACT_007@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
-SUMMARY:Trail de Barbizon
+SUMMARY:Barbizon Trail
 LOCATION:Grande Rue et forêt domaniale de Fontainebleau\, Barbizon
-DESCRIPTION:Horaires : 09h00–13h00\n\nTarif : Payant\n\nPublic : Dès 7 a
- ns\n\nÉpreuve de course à pied de 12\,5 km au départ du village des pei
- ntres de Barbizon\, serpentant sur les sentiers sablonneux et rocheux du m
- assif bellifontain.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
- om/\n\nFiche : https://fontainebleaulive.fr/evenements/trail-de-barbizon-a
- ct007/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/trail-de-barbizon-act007/
+DESCRIPTION:Horaires : 9h\n\nTarif : Gratuit pour les spectateurs\n\nPublic
+  : Dès 7 ans\n\nÉpreuve de course à pied de 12\,5 km au départ du vill
+ age des peintres de Barbizon\, serpentant sur les sentiers sablonneux et r
+ ocheux du massif bellifontain.\n\nOrganisateur : https://www.fontainebleau
+ -tourisme.com/\n\nFiche : https://fontainebleaulive.fr/evenements/barbizon
+ -trail-act007/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/barbizon-trail-act007/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3f27774e5a@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 SUMMARY:Apéro piano au coin du feu
@@ -67,8 +104,26 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_012f37cdc4@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Parenthesis
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Tarif : Tarif unique : 55 €.\n\nÉvénement culturel intitul
+ é Parenthesis se déroulant dans le village de Barbizon.\n\nOrganisateur 
+ : https://www.fontainebleau-tourisme.com/fr/fiche/7956025/parenthesis/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/parenthesis-barbizon-012f3
+ 7cdc4/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/parenthesis-barbizon-012f37cdc4
+ /
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_da3eee5d71@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Les soirées de l'Esquisse
@@ -87,7 +142,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4e6974ffa4@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Visite guidée du village des peintres de Barbizon
@@ -125,8 +180,27 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_fbf407795d@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Visite contée "Les Contes du chat perché"
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
+ ficatif)\, Enfant : 5 € (moin…\n\nVisite guidée et contée inspirée 
+ des histoires du Chat perché à Barbizon.\n\nOrganisateur : https://www.f
+ ontainebleau-tourisme.com/fr/fiche/7957826/visite-contee-les-contes-du-cha
+ t-perche/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-contee
+ -les-contes-du-chat-perche-barbizon-fbf407795d/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-contee-les-contes-du-cha
+ t-perche-barbizon-fbf407795d/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_421fede1ea@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:Les soirées de l'Esquisse
@@ -145,7 +219,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7539d30755@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Apéro piano au coin du feu
@@ -163,8 +237,26 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2cb286e7bd@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Parenthesis
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Tarif : Tarif unique : 55 €.\n\nÉvénement culturel intitul
+ é Parenthesis se déroulant dans le village de Barbizon.\n\nOrganisateur 
+ : https://www.fontainebleau-tourisme.com/fr/fiche/7956025/parenthesis/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/parenthesis-barbizon-2cb28
+ 6e7bd/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/parenthesis-barbizon-2cb286e7bd
+ /
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c6448b6cba@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Les soirées de l'Esquisse
@@ -183,7 +275,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3a5fba756f@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Sur la trace de La Couseuse
@@ -203,7 +295,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -221,8 +313,46 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0c5d619702@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Visite musicale dans l'auberge Ganne
+LOCATION:Auberge Ganne\, Barbizon\, Barbizon
+DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
+ ficatif). Sur réservation au…\n\nVisite guidée rythmée par des interm
+ èdes musicaux au sein de l'Auberge Ganne.\n\nOrganisateur : https://www.f
+ ontainebleau-tourisme.com/fr/fiche/7957876/visite-musicale-dans-lauberge-g
+ anne/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-musicale-d
+ ans-l-auberge-ganne-barbizon-0c5d619702/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-musicale-dans-l-auberge-
+ ganne-barbizon-0c5d619702/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c45baf6087@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Visite musicale dans l'auberge Ganne
+LOCATION:Auberge Ganne\, Barbizon\, Barbizon
+DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
+ ficatif). Sur réservation au…\n\nVisite guidée rythmée par des interm
+ èdes musicaux au sein de l'Auberge Ganne.\n\nOrganisateur : https://www.f
+ ontainebleau-tourisme.com/fr/fiche/7957876/visite-musicale-dans-lauberge-g
+ anne/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-musicale-d
+ ans-l-auberge-ganne-barbizon-c45baf6087/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-musicale-dans-l-auberge-
+ ganne-barbizon-c45baf6087/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Les soirées de l'Esquisse
@@ -241,7 +371,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les soirées de l'Esquisse
@@ -260,7 +390,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Les soirées de l'Esquisse
@@ -279,7 +409,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -298,7 +428,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse

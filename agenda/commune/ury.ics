@@ -11,6 +11,26 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_45461b3470@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Concert symphonique
+LOCATION:Ury
+DESCRIPTION:Tarif : Plein tarif : de 15 à 20 €\, Tarif réduit : de 12 
+ à 15 € (Sur réservation\, membr…\n\nConcert symphonique musical orga
+ nisé dans la commune d'Ury.\n\nOrganisateur : https://www.fontainebleau-t
+ ourisme.com/fr/fiche/7925976/concert-symphonique/\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/concert-symphonique-ury-45461b3470/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/concert-symphonique-ury-45461b3
+ 470/
+CATEGORIES:Scène & Spectacles
+GEO:48.34418;2.6029
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c65bd4ec2e@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261128

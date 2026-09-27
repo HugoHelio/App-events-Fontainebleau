@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_978d32402f@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Dimanche animé : Retour vers l’âge du Bronze
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5edd0ac6ea@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Visite flash : Chasseurs et paysans
@@ -92,16 +92,16 @@ UID:EVT_97e8e14fe0@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
-SUMMARY:Cross Duathlon de Nemours 2026
+SUMMARY:Cross Duathlon de Nemours
 LOCATION:Base de loisirs de Nemours\, Nemours
-DESCRIPTION:Horaires : 09h00–15h00\n\nTarif : Payant selon la catégorie\
- n\nPublic : Dès 16 ans\n\nÉpreuve outdoor combinant course à pied et VT
- T en sous-bois autour de Nemours.\n\nOrganisateur : https://www.nemours.fr
- /\n\nFiche : https://fontainebleaulive.fr/evenements/cross-duathlon-de-nem
- ours-2026-97e8e14fe0/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/cross-duathlon-de-nemours-2026-
- 97e8e14fe0/
+DESCRIPTION:Horaires : 09h–13h\n\nTarif : Payant\n\nPublic : Dès 16 ans\
+ n\nÉpreuve outdoor combinant course à pied et VTT en sous-bois autour de
+  Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/cross-duathlon-de-nemours-97e8e14fe0/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/cross-duathlon-de-nemours-97e8e
+ 14fe0/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT

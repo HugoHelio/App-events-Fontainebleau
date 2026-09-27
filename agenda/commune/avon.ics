@@ -11,8 +11,28 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_34add5fcc3@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Conférence : Crises climatiques\, crises de civilisations
+LOCATION:Avon
+DESCRIPTION:Tarif : Gratuit. Sur inscription.\n\nConférence débat consacr
+ ée aux enjeux des crises climatiques et de civilisations.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/7942567/conference-cris
+ es-climatiques-crises-de-civilisations/\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/conference-crises-climatiques-crises-de-civilisations-avo
+ n-34add5fcc3/\n\nInformations collectées automatiquement : vérifiez-les 
+ auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-crises-climatiques-c
+ rises-de-civilisations-avon-34add5fcc3/
+CATEGORIES:Culture & Ateliers
+GEO:48.413;2.72893
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d93384a80c@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Le journal de Maïa
@@ -31,8 +51,28 @@ GEO:48.40088;2.72258
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_c5047390bf@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:concert trioxymore
+LOCATION:Avon
+DESCRIPTION:Tarif : Plein tarif : 10 €\, Tarif réduit : de 4 à 6 € (T
+ arif réduit A (6 €) : Personnes…\n\nReprésentation musicale donnée 
+ par la formation Tri'Oxymore.\n\nOrganisateur : https://www.fontainebleau-
+ tourisme.com/fr/fiche/7942615/concert-trioxymore/\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/concert-trioxymore-avon-c5047390bf/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/concert-trioxymore-avon-c504739
+ 0bf/
+CATEGORIES:Scène & Spectacles
+GEO:48.413;2.72893
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c45e16df11@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261026
 SUMMARY:Kino Avoblo 2026 : 72 heures pour créer un court-métrage à Avon-
@@ -53,7 +93,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9be6481b48@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Caféministe
@@ -87,8 +127,29 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_988de8cc23@fontainebleaulive.fr
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:Projection débat : Réinventer l'enfance
+LOCATION:Avon
+DESCRIPTION:Horaires : 19:00 - 21:00 (si indiqué dans l'événement\, sino
+ n vide quand non mentionné dans le texte brut fourni). Note: Aucun horai\
+ n\nTarif : Gratuit.\n\nProjection-débat autour de la thématique de l'enf
+ ance organisée à Avon.\n\nOrganisateur : https://www.fontainebleau-touri
+ sme.com/fr/fiche/7942657/projection-debat-reinventer-lenfance/\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/projection-debat-reinventer-l-enfa
+ nce-avon-988de8cc23/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/projection-debat-reinventer-l-e
+ nfance-avon-988de8cc23/
+CATEGORIES:Scène & Spectacles
+GEO:48.413;2.72893
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:ACT_011@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël d'Avon
@@ -105,7 +166,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20260924T000000Z
+DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
