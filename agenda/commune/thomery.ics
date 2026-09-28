@@ -10,23 +10,4 @@ X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:ACT_006@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Course à pied La Thomeryonne
-LOCATION:Stade Bezou / Bords de forêt\, Thomery
-DESCRIPTION:Horaires : 09h–12h\n\nTarif : 12 €\n\nPublic : Dès 15 ans\
- n\nCourse sur route et sentiers mixtes de 10\,7 km à travers les ruelles 
- historiques du village de Thomery et les lisières de la forêt domaniale 
- de Fontainebleau.\n\nOrganisateur : https://www.thomery.fr/\n\nFiche : htt
- ps://fontainebleaulive.fr/evenements/course-a-pied-la-thomeryonne-thomery-
- act006/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/course-a-pied-la-thomeryonne-th
- omery-act006/
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

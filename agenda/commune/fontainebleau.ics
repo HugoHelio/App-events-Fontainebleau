@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_c321e608b3@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260926
-DTEND;VALUE=DATE:20260928
-SUMMARY:#ForêtBelle 2026 : Grand ramassage citoyen des déchets en forêt
-LOCATION:Avenue de Fontainebleau (D607)\, Fontainebleau
-DESCRIPTION:Horaires : sam. 26 : 10h–17h \; dim. 27 : 09h–12h\n\nTarif 
- : Gratuit\n\nOpération citoyenne de nettoyage et de sensibilisation pour 
- ramasser les déchets aux abords de la forêt domaniale de Fontainebleau.\
- n\nOrganisateur : https://www.smictom-fontainebleau.fr/foret-belle/\n\nFic
- he : https://fontainebleaulive.fr/evenements/foretbelle-2026-grand-ramassa
- ge-citoyen-des-dechets-en-foret-fontainebleau-c321e608b3/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/foretbelle-2026-grand-ramassage
- -citoyen-des-dechets-en-foret-fontainebleau-c321e608b3/
-CATEGORIES:Nature & Environnement
-GEO:48.40699;2.7747
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_531f146076@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20260926
@@ -48,63 +28,6 @@ DESCRIPTION:Horaires : Mercredi et samedi à partir de 14h00\n\nTarif : Gra
 URL:https://fontainebleaulive.fr/evenements/tous-en-foret-rencontre-avec-le
  s-forestiers-de-l-onf-fontainebleau-531f146076/
 CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_c62a7b89c3@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Fête du Livre de Fontainebleau
-LOCATION:Théâtre municipal et Hôtel de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nSalon littéraire r
- éunissant près de quarante auteurs en dédicace et des conférences grat
- uites pour les moins de 18 ans.\n\nOrganisateur : https://www.fontaineblea
- u.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/fete-du-livre-de-
- fontainebleau-c62a7b89c3/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/fete-du-livre-de-fontainebleau-
- c62a7b89c3/
-CATEGORIES:Culture & Ateliers
-GEO:48.40335;2.69762
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_5a5de2871b@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Jacques Brel jusqu'au bout du monde
-LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Les chansons de Brel\, célèbres ou oubliées\, sont évoquée
- s comme des fleurs précieuses dont certaines demeurent immortelles.\n\nOr
- ganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive.
- fr/evenements/jacques-brel-jusqu-au-bout-du-monde-fontainebleau-5a5de2871b
- /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
- ’organisateur.
-URL:https://fontainebleaulive.fr/evenements/jacques-brel-jusqu-au-bout-du-m
- onde-fontainebleau-5a5de2871b/
-CATEGORIES:Culture & Ateliers
-GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_1591b22392@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Salon du Livre de Fontainebleau
-LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : 4€\n\nRencontre littéraire r
- éunissant près de quarante auteurs en dédicace\, des conférences et de
- s animations en famille.\n\nOrganisateur : https://www.fontainebleau.fr/\n
- \nFiche : https://fontainebleaulive.fr/evenements/salon-du-livre-de-fontai
- nebleau-1591b22392/\n\nInformations collectées automatiquement : vérifie
- z-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/salon-du-livre-de-fontainebleau
- -1591b22392/
-CATEGORIES:Culture & Ateliers
-GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

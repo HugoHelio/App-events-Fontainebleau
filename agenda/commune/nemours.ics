@@ -11,47 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_978d32402f@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Dimanche animé : Retour vers l’âge du Bronze
-LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
- le-de-France\, Nemours
-DESCRIPTION:Après une courte visite du musée \, les participants seront i
- nvités à imaginer les motifs destinés à orner leur propre bracelet de 
- l'âge du Bronze.\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/f
- r\n\nFiche : https://fontainebleaulive.fr/evenements/dimanche-anime-retour
- -vers-l-age-du-bronze-nemours-978d32402f/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/dimanche-anime-retour-vers-l-ag
- e-du-bronze-nemours-978d32402f/
-CATEGORIES:Culture & Ateliers
-GEO:48.26079;2.71471
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_5edd0ac6ea@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Visite flash : Chasseurs et paysans
-LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
- le-de-France\, Nemours
-DESCRIPTION:Cette visite guidée vous permettra de mieux cerner les modes d
- e vie préhistoriques. Accompagnés par un médiateur du musée\, vous dé
- couvrirez les objets du quotidien utilisés par les chasseurs du Paléolit
- hique puis par les paysans du Néolithique.\n\nOrganisateur : https://www.
- musee-prehistoire-idf.fr/fr\n\nFiche : https://fontainebleaulive.fr/evenem
- ents/visite-flash-chasseurs-et-paysans-nemours-5edd0ac6ea/\n\nInformations
-  collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-flash-chasseurs-et-paysa
- ns-nemours-5edd0ac6ea/
-CATEGORIES:Culture & Ateliers
-GEO:48.26079;2.71471
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:ACT_001@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261004

@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_c321e608b3@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20260926
-DTEND;VALUE=DATE:20260928
-SUMMARY:#ForêtBelle 2026 : Grand ramassage citoyen des déchets en forêt
-LOCATION:Avenue de Fontainebleau (D607)\, Fontainebleau
-DESCRIPTION:Horaires : sam. 26 : 10h–17h \; dim. 27 : 09h–12h\n\nTarif 
- : Gratuit\n\nOpération citoyenne de nettoyage et de sensibilisation pour 
- ramasser les déchets aux abords de la forêt domaniale de Fontainebleau.\
- n\nOrganisateur : https://www.smictom-fontainebleau.fr/foret-belle/\n\nFic
- he : https://fontainebleaulive.fr/evenements/foretbelle-2026-grand-ramassa
- ge-citoyen-des-dechets-en-foret-fontainebleau-c321e608b3/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/foretbelle-2026-grand-ramassage
- -citoyen-des-dechets-en-foret-fontainebleau-c321e608b3/
-CATEGORIES:Nature & Environnement
-GEO:48.40699;2.7747
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_531f146076@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20260926
@@ -47,22 +27,6 @@ DESCRIPTION:Horaires : Mercredi et samedi à partir de 14h00\n\nTarif : Gra
  ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/tous-en-foret-rencontre-avec-le
  s-forestiers-de-l-onf-fontainebleau-531f146076/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_9de35d8361@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
-SUMMARY:Forêt belle
-LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 10h00\n\nOrganisateur : https://samois-sur-seine.fr/
- evenement/foret-belle-3/\n\nFiche : https://fontainebleaulive.fr/evenement
- s/foret-belle-samois-sur-seine-9de35d8361/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/foret-belle-samois-sur-seine-9d
- e35d8361/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
