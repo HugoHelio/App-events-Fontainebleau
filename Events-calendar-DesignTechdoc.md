@@ -62,7 +62,7 @@ The system automatically scans official agendas, local association publications 
 | Geocoding | BAN — Base Adresse Nationale (`api-adresse.data.gouv.fr`), free, no key |
 | CI/CD & automation | GitHub Actions (`.github/workflows/daily-check.yml`) |
 | Data storage | Flat JSON files (`data.json`, `geocode-cache.json`) |
-| Frontend | Static `index.html`, Leaflet 1.9.4 (map), FullCalendar 6.1.11 (+ French locale) |
+| Frontend | Static `index.html`, Leaflet 1.9.4 (map), FullCalendar 6.1.11 (+ French locale) — both served from `vendor/` since 29/09, no CDN |
 | Hosting | GitHub Pages |
 
 ### Repository layout
@@ -1349,6 +1349,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | **Un seul favicon partout : `favicon.ico`** (feuille sur le carré vert foncé), déclaré 16/32/48 ; le 32 px transparent (`Icon-FL-fav-v2.png`) retiré | Le navigateur choisissait le 32 px transparent pour l'onglet de la page d'accueil : contraste faible. Les pages générées utilisaient déjà le `.ico`, jugé meilleur par le chef de projet |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
+| 2026-09-29 | **Leaflet et FullCalendar servis depuis le site (`vendor/`), plus depuis unpkg et jsDelivr.** Fichiers identiques octet pour octet aux copies CDN : mêmes empreintes SRI, toujours vérifiées ; `vendor/** -text` dans `.gitattributes`. `initMap()` et le calendrier se retirent si leur bibliothèque manque, au lieu de bloquer la liste | Page blanche intermittente sur Chrome Android, signalée par le chef de projet. La feuille Leaflet dans le `<head>` bloquait le premier affichage tant qu'unpkg ne répondait pas ; un script CDN en échec faisait lever `initMap()` avant `fetchData()`, laissant la page vide (reproduit : 0 événement et pas de calendrier avant, 198 et le calendrier après). Le site ne dépend plus d'aucun tiers pour s'afficher, et le mode hors ligne a enfin sa carte et son calendrier (le service worker ne met en cache que la même origine ; `CACHE_VERSION` v4). Coût : ~440 Ko dans le dépôt, mise à jour des bibliothèques à la main (recalculer les empreintes) |
 
 ---
 
@@ -1393,6 +1394,9 @@ choses qui restaient étaient noyées dedans.
   l'outil « Test des résultats enrichis » de Google ; ouvrir une adresse inexistante pour voir
   la page 404. Puis suivre, sur quelques semaines, le nombre de pages indexées (rapport
   « Pages ») et les requêtes qui amènent des visites (rapport « Performances »).
+- [ ] **73. Page blanche sur Android — corrigé le 29/09** (§7). **À vérifier, chef de projet** : pendant une semaine,
+  ouvrir le site sur le téléphone dans des conditions variées (4G faible, forêt, réveil du téléphone) ; si la page
+  blanche revient, noter l'heure et le réseau, et brancher le câble **avant** de recharger (`chrome://inspect`).
 - [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
   d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence.
 - [ ] **Surveiller 3 à 5 runs automatiques.** Ce qu'il faut regarder dans le rapport : tokens et
@@ -1503,6 +1507,12 @@ choses qui restaient étaient noyées dedans.
     Google (§3.G, §8), au-delà de ce qu'a tranché la décision du 24/09 sur les pages. À
     trancher explicitement avant le premier widget premium. Le passage « Outreach gate » des
     Milestones s'applique aussi : on contacte une mairie ou un office de tourisme.
+
+- [ ] **74. Pistes pour augmenter le trafic — à préparer par Claude (29/09).** Le site a déjà du trafic
+  sans aucune promotion. Avant de proposer quoi que ce soit : regarder d'où il vient (GoatCounter,
+  Search Console : requêtes, pages d'entrée), puis classer les pistes par effort et par rendement,
+  en tenant compte de ce qui est déjà tranché (pas de démarchage avant la phase commerciale,
+  risque grounding §8).
 
 ### B3. Sortir du grounding sans rien perdre — décidé le 24/09
 

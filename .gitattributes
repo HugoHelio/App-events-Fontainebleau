@@ -1,3 +1,7 @@
 # iCalendar feeds (agenda/): RFC 5545 requires CRLF. Stored and served byte for byte,
 # never converted by core.autocrlf on a Windows checkout.
 *.ics -text
+
+# Third-party libraries (vendor/): checked by Subresource Integrity in index.html, so a single
+# converted line ending would make the browser refuse the file. Byte for byte, like the feeds.
+vendor/** -text

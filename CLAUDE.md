@@ -34,6 +34,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `dedupe-cache.json` | **Généré et commité.** Verdicts des doublons jugés, par paire d'ids — sans lui, chaque scan reposerait les mêmes questions |
 | `publier/` | **Généré.** Brouillons de posts pour les groupes Facebook locaux, par commune. Page privée : `noindex`, hors plan du site, jamais liée |
 | `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
+| `vendor/` | Leaflet et FullCalendar, copies exactes des fichiers CDN (empreintes SRI dans `index.html`, `-text` dans `.gitattributes`). Ne pas éditer |
 | `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
@@ -53,8 +54,9 @@ régénéré à chaque scan : toute correction faite directement dedans est perd
 
 - **Zéro dépendance** dans `scripts/` : bibliothèque standard Node uniquement (`fs`, `path`,
   `crypto`, `fetch` global). Node ≥ 18 requis, les workflows utilisent Node 22.
-- **Pas de build** : `index.html` est servi tel quel par GitHub Pages. Les CDN autorisés sont
-  ceux déjà présents (Leaflet, FullCalendar) + GoatCounter si `ANALYTICS.code` est renseigné.
+- **Pas de build** : `index.html` est servi tel quel par GitHub Pages. Leaflet et FullCalendar
+  sont servis depuis `vendor/` (29/09 : un CDN lent laissait une page blanche sur Android) ; le
+  seul tiers chargé est GoatCounter si `ANALYTICS.code` est renseigné.
   Décision du 21/09 : **pas de CDN de polices ni de fournisseur de tuiles tiers.**
 - **Sécurité du frontend** : tout contenu venant du LLM ou du web est hostile. Passe les textes
   par `escapeHtml()` et les liens par `safeUrl()` (schémas `http(s)` uniquement). Ne jamais
