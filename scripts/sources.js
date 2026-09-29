@@ -30,7 +30,9 @@ const envInt = (name, dflt) => {
 
 const CONFIG = {
   registryPath: path.resolve(process.env.SOURCES_PATH || 'sources.json'),
-  userAgent: 'Mozilla/5.0 (compatible; FontainebleauLive/1.0; +https://fontainebleaulive.fr)',
+  // Contains, verbatim, the string given to the city of Fontainebleau for its firewall exception
+  // (29/09): "FontainebleauLive/1.0 (+https://fontainebleaulive.fr)". Change it and that exception breaks.
+  userAgent: 'Mozilla/5.0 (compatible; FontainebleauLive/1.0 (+https://fontainebleaulive.fr))',
   robotsToken: 'fontainebleaulive',
   hostDelayMs: envInt('SOURCES_HOST_DELAY_MS', 1000),
   // Sites are read in parallel (they are different hosts); each host still gets one request at
