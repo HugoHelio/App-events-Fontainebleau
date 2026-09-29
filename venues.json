@@ -19,6 +19,10 @@
     "Une position venant d'ici est marquée geoSource = \"venue\" et n'est jamais réécrite : elle",
     "compte comme exacte, au même titre qu'une adresse vérifiée par la BAN.",
     "",
+    "HORS ZONE. Une entrée marquée \"outside\": true peut pointer hors de la région : elle sert à",
+    "corriger un lieu qu'une source range à tort dans une commune locale. L'événement prend la vraie",
+    "position et le filtre de rayon (20 km) l'écarte. Sans ce drapeau, une telle entrée est ignorée.",
+    "",
     "POUR AJOUTER UN LIEU : relevez les coordonnées (clic droit sur Google Maps ou OpenStreetMap",
     "→ « Plus d'infos sur cet endroit »), puis ajoutez un bloc. Choisissez pour \"match\" les mots",
     "les plus distinctifs du nom, pas les mots courants (« chateau » seul attraperait tout).",
@@ -62,6 +66,15 @@
       "lat": 48.56716,
       "lng": 2.78188,
       "source": "OpenStreetMap, confirmé par la BAN à 75 m (11 événements au 22/09)"
+    },
+    {
+      "label": "ENS du Carreau Franc (Marolles-sur-Seine)",
+      "city": "Fontainebleau",
+      "match": ["carreau", "franc"],
+      "outside": true,
+      "lat": 48.38359,
+      "lng": 3.03328,
+      "source": "Centre de Marolles-sur-Seine (BAN), à 24,6 km : hors rayon, voulu. La réserve ornithologique de l'ANVL est à Marolles (Département 77, annuaire des ENS), mais Gemini la publie « à Fontainebleau » avec des coordonnées inventées au centre-ville (3 fiches au 29/09). La ville est donc celle, fausse, que porte la fiche : c'est ce qui fait tomber l'entrée, et le filtre de rayon écarte l'événement."
     }
   ]
 }

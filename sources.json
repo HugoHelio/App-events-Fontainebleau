@@ -46,6 +46,17 @@
       "note": "Only the RSS feed is read. The outings live solely in a 'Booking Activities' calendar whose public data request (admin-ajax, allowed by robots.txt) answers 404 to an identified robot — not worked around. No sitemap entry per outing. Ask ANVL (phase 72c) for the plugin's .ics export link: two clicks in its admin."
     },
     {
+      "id": "jagis-anvl",
+      "name": "ANVL sur J'agis pour la nature",
+      "type": "page",
+      "urls": [
+        "https://www.jagispourlanature.org/structure/association-des-naturalistes-de-la-vallee-du-loing-et-du-massif-de-fontainebleau-anvl"
+      ],
+      "follow": "^/activite/",
+      "maxFollow": 15,
+      "note": "Added 29/09. The national volunteering platform publishes ANVL's outings, one page each, with date and place; robots.txt allows /structure/ and /activite/. The legitimate route to the outings that anvl.fr only serves through its booking calendar. Activity pages name the real town (the Carreau Franc reserve is in Marolles-sur-Seine, outside the radius)."
+    },
+    {
       "id": "chateau-blandy",
       "name": "Château de Blandy",
       "type": "page",

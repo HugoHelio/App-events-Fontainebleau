@@ -745,8 +745,11 @@ function loadVenues() {
   for (const v of list) {
     const lat = toNum(v.lat), lng = toNum(v.lng);
     // A gazetteer entry outside the region is a typo, and a typo here would be published as an
-    // exact position — the one thing this file must never do.
-    if (!Number.isFinite(lat) || !Number.isFinite(lng) || !inBbox(lat, lng)) continue;
+    // exact position — the one thing this file must never do. Unless it says so: `outside: true`
+    // marks a place a source wrongly files under a local town, and the radius filter then drops
+    // its events (the Carreau Franc reserve, 24.6 km away, published "à Fontainebleau").
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+    if (!inBbox(lat, lng) && v.outside !== true) continue;
     const words = Array.isArray(v.match) ? v.match.map((w) => norm(w)).filter(Boolean) : [];
     if (!words.length || !v.city) continue;
     venueIndex.push({ label: v.label || words.join(" "), city: norm(v.city), words, lat: round5(lat), lng: round5(lng) });
