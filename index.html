@@ -711,6 +711,9 @@
     }
 
     /* The transparent lockup has dark type, which is exactly right on the cream footer. */
+    .footer-home { display: inline-block; border-radius: 12px; }
+    .footer-home:hover .footer-lockup { opacity: 1; }
+
     .footer-lockup {
       width: 112px;
       height: 112px;
@@ -915,8 +918,11 @@
     <!-- Plain link, present without JavaScript: the way a crawler finds the static pages (§3.X). -->
     <p><a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
        · <a href="/widget/integrer/" data-i18n="widgetLink">Intégrer l’agenda sur votre site</a></p>
-    <img class="footer-lockup" src="public/assets/img/brand/Icon-FL-v1ST-512-512.png"
-         alt="Fontainebleau Live" width="112" height="112" loading="lazy">
+    <!-- Back to the top. href="/" is the no-JavaScript fallback: it reloads the page instead. -->
+    <a href="/" id="footerHome" class="footer-home">
+      <img class="footer-lockup" src="public/assets/img/brand/Icon-FL-v1ST-512-512.png"
+           alt="Fontainebleau Live" width="112" height="112" loading="lazy">
+    </a>
     <p class="brand-credit">
       <a href="https://helioso.com" target="_blank" rel="noopener noreferrer">
         <picture>
@@ -1615,6 +1621,12 @@
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
       document.getElementById('resetView').addEventListener('click', clearSelection);
+      // The footer logo returns to the top without reloading: filters and selection are kept.
+      document.getElementById('footerHome').addEventListener('click', (e) => {
+        e.preventDefault();
+        const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+      });
       document.getElementById('subscribeBtn').addEventListener('click', toggleSubscribe);
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') clearSelection();
