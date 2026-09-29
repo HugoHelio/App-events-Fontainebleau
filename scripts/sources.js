@@ -326,6 +326,65 @@ async function readApidaeOt(src, ctx) {
   return { fetched, events };
 }
 
+/**
+ * The machine-written date line that opens each item of the city's agenda feed. Formats seen:
+ * "Le 01-10-2026 time.from 18:30 à 20:00", "Le 01-10-2026 à 18:30", "Du 02 au 17-10-2026",
+ * "Du 05-06 au 17-10-2026", "Du 19-09-2026 au 25-01-2027". Returns { start, end, schedule }
+ * or null. A start without month or year borrows the end's, or the year before when it would
+ * otherwise come after the end.
+ */
+function parseCityDateLine(line) {
+  const s = decodeEntities(line).replace(/\s+/g, ' ').trim();
+  const hm = (h, m) => (m === '00' ? `${Number(h)}h` : `${Number(h)}h${m}`);
+  const range = /time\.from (\d{1,2}):(\d{2})\s+\S+\s+(\d{1,2}):(\d{2})/.exec(s);
+  const at = /(\d{1,2}):(\d{2})/.exec(s);
+  const schedule = range ? `${hm(range[1], range[2])} – ${hm(range[3], range[4])}` : (at ? hm(at[1], at[2]) : '');
+  let m = /^le (\d{1,2})-(\d{1,2})-(\d{4})\b/i.exec(s);
+  if (m) {
+    const [d, mo, y] = [m[1], m[2], m[3]].map(Number);
+    return validDate(y, mo, d) ? { start: iso(y, mo, d), end: iso(y, mo, d), schedule } : null;
+  }
+  m = /^du (\d{1,2})(?:-(\d{1,2}))?(?:-(\d{4}))? au (\d{1,2})-(\d{1,2})-(\d{4})\b/i.exec(s);
+  if (!m) return null;
+  const [d2, m2, y2] = [m[4], m[5], m[6]].map(Number);
+  const d1 = Number(m[1]);
+  // "Du 28 au 03-01-2027": a bare day after the end's day belongs to the month before.
+  const m1 = m[2] ? Number(m[2]) : (d1 > d2 ? (m2 === 1 ? 12 : m2 - 1) : m2);
+  const y1 = m[3] ? Number(m[3]) : ((m1 > m2 || (m1 === m2 && d1 > d2)) ? y2 - 1 : y2);
+  if (!validDate(y1, m1, d1) || !validDate(y2, m2, d2)) return null;
+  const start = iso(y1, m1, d1), end = iso(y2, m2, d2);
+  return start <= end ? { start, end, schedule } : null;
+}
+
+/**
+ * The city of Fontainebleau's agenda, as the RSS feed its TYPO3 site publishes (since 29/09;
+ * the agenda page was read by Gemini before). Dates come from parseCityDateLine, exactly; the
+ * body goes to enrich() as `detail` for category, venue, description and a readable title
+ * (the feed writes titles in capitals).
+ */
+async function readCityRss(src, ctx) {
+  const r = await politeGet(src.url);
+  const events = [];
+  for (const chunk of r.text.split(/<item\b[^>]*>/).slice(1)) {
+    const field = (name) => {
+      const f = new RegExp(`<${name}>([\\s\\S]*?)</${name}>`).exec(chunk);
+      return f ? f[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, (x, inner) => inner) : '';
+    };
+    const title = decodeEntities(field('title')).replace(/\s+/g, ' ').trim();
+    const body = field('description') || field('content:encoded');
+    const when = parseCityDateLine((/Date\s*:\s*([^<]*)/.exec(body) || [])[1] || '');
+    // The link is entity-encoded twice in the feed (&amp;amp;).
+    const url = decodeEntities(decodeEntities(field('link'))).trim();
+    if (!title || !when || !/^https?:\/\//.test(url)) continue;
+    const e = { title, startDate: when.start, endDate: when.end, schedule: when.schedule, url, city: src.city || '' };
+    if (!inWindow(e, ctx)) continue;
+    // The first two lines repeat the date and the site's own categories: the text starts after.
+    const text = htmlToText(body, src.url).split('\n').filter((l) => !/^(Date|Catégories?)\s*:/.test(l)).join('\n');
+    events.push({ ...e, detail: `${title}\n${text}`.slice(0, 3000) });
+  }
+  return { fetched: 1, events };
+}
+
 /** The page title is the line that best matches the URL slug. */
 function pickTitle(text, slugWords) {
   const want = new Set(slugWords.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/\s+/).filter((w) => w.length > 2));
@@ -459,7 +518,7 @@ async function readPage(src, ctx) {
   return { fetched: pages.length, events, usage };
 }
 
-const READERS = { ics: readIcs, 'apidae-ot': readApidaeOt, page: readPage };
+const READERS = { ics: readIcs, 'apidae-ot': readApidaeOt, 'city-rss': readCityRss, page: readPage };
 
 function loadRegistry() {
   const json = JSON.parse(fs.readFileSync(CONFIG.registryPath, 'utf8'));
@@ -501,7 +560,7 @@ const ENRICH_CACHE = path.resolve(process.env.SOURCES_CACHE_PATH || 'sources-cac
 const ENRICH_CACHE_DAYS = envInt('SOURCES_CACHE_DAYS', 150);
 
 const ENRICH_PROMPT = (items) => `
-Voici des fiches d'événements de l'office de tourisme du Pays de Fontainebleau (texte brut).
+Voici des fiches d'événements de l'office de tourisme du Pays de Fontainebleau ou de la Ville de Fontainebleau (texte brut).
 Les dates sont déjà connues. Pour chaque fiche, donne UNIQUEMENT ce que le texte affirme :
 - "category" : "Sport & Outdoor", "Nature & Environnement", "Scène & Spectacles" (concerts, théâtre, cinéma, festivals) ou "Culture & Ateliers" (expositions, visites, patrimoine, ateliers, brocantes).
 - "description" : une phrase en français, 200 caractères maximum, reformulée (pas un copier-coller).
@@ -509,6 +568,7 @@ Les dates sont déjà connues. Pour chaque fiche, donne UNIQUEMENT ce que le tex
 - "locationName" : le nom du lieu, suivi de l'adresse postale si elle est écrite (ex. « Muse Galerie, 82 bis Grande Rue »). Jamais l'adresse de l'office de tourisme.
 - "organizer" : l'organisateur s'il est nommé, sinon vide.
 - "ageMin" / "ageMax" : 0 et 99 si rien n'est précisé.
+- "title" : SEULEMENT si le titre de la fiche est écrit tout en majuscules, le même titre en casse normale (majuscule initiale, noms propres, titres d'œuvres), mot pour mot ; sinon vide.
 N'invente rien.
 
 ${items.map((it, i) => `=== FICHE ${i} : ${it.title} (${it.city}) ===\n${it.detail}`).join('\n\n')}
@@ -521,6 +581,7 @@ const ENRICH_SCHEMA = {
     properties: {
       i: { type: 'INTEGER' }, category: { type: 'STRING' }, description: { type: 'STRING' }, schedule: { type: 'STRING' },
       locationName: { type: 'STRING' }, organizer: { type: 'STRING' }, ageMin: { type: 'INTEGER' }, ageMax: { type: 'INTEGER' },
+      title: { type: 'STRING' },
     },
     required: ['i', 'category'],
   },
@@ -564,6 +625,10 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
             ageMin: Number.isInteger(it.ageMin) ? it.ageMin : 0,
             ageMax: Number.isInteger(it.ageMax) ? it.ageMax : 99,
           };
+          // Only a title in capitals is rewritten, and only if the words are the same: the event's
+          // identity comes from its title, so the model gets to change its case, nothing else.
+          const t = String(it.title || '').trim();
+          if (t && isAllCaps(b.e.title) && sameLetters(t, b.e.title)) f.title = t.slice(0, 200);
           Object.assign(b.e, f);
           cache[b.e.url] = { h: b.h, f, at: today };
           stats.asked++;
@@ -582,6 +647,10 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
   }
   return stats;
 }
+
+const letters = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const sameLetters = (a, b) => letters(a) === letters(b);
+const isAllCaps = (s) => /[A-ZÀ-Þ]/.test(s) && s === s.toUpperCase();
 
 /** Same threshold as DATAtourisme's "recurring" (§3.H): beyond it, a standing offer, not an outing. */
 const LONG_EVENT_DAYS = envInt('SOURCES_LONG_EVENT_DAYS', 14);
@@ -625,5 +694,5 @@ function toPipelineEvents(events, { today, maxDate }) {
 
 module.exports = {
   CONFIG, load, loadRegistry, parseRobots, robotsAllows, htmlToText, parseFrenchPeriods, parseIcs, decodeEntities, pickTitle,
-  mainContent, enrich, toPipelineEvents, LONG_EVENT_DAYS,
+  mainContent, enrich, toPipelineEvents, LONG_EVENT_DAYS, parseCityDateLine, readCityRss, isAllCaps, sameLetters,
 };

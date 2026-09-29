@@ -19,12 +19,10 @@
     {
       "id": "ville-fontainebleau",
       "name": "Ville de Fontainebleau",
-      "type": "page",
-      "urls": [
-        "https://www.fontainebleau.fr/bouger-et-sortir/agenda-133.html?no_cache=1"
-      ],
+      "type": "city-rss",
+      "url": "https://www.fontainebleau.fr/bouger-et-sortir/agenda-133/flux-rss.xml",
       "city": "Fontainebleau",
-      "note": "Answers HTTP 418 to GitHub Actions (cloud addresses blocked) while answering normally elsewhere. Not worked around: the site decides who reads it."
+      "note": "RSS feed of the city's agenda since 29/09 (dates parsed exactly, no model; the agenda page was read by Gemini before). Answers HTTP 418 to GitHub Actions (cloud addresses blocked) while answering normally elsewhere. Not worked around: an exception for this URL and our User-Agent was requested from the city on 29/09. Until then the source reports ❌ 418 and the run goes on."
     },
     {
       "id": "chateau-fontainebleau",
