@@ -123,5 +123,25 @@
   "EVT_e444bb4675": {
     "note": "Doublon ajouté par le scan du 24/09 : l'office de tourisme liste date par date « Concerts - Marie-Antoinette Reine musicale de Thomas Hengelbrock » (2026-10-24), déjà publié sur toute sa durée sous ACT_008 « Concerts « Marie-Antoinette : Reine de la Musique » ». Les scans suivants replient ces dates automatiquement (§3.Z2) ; cette ligne ne sert qu'à celles déjà publiées.",
     "hidden": true
+  },
+  "ACT_008": {
+    "note": "Vérifié le 29/09 sur chateaudefontainebleau.fr : « Les concerts de la Reine », vendredi 9 octobre 19h30 et dimanche 11 octobre 15h, Salle de Bal. La lecture du site avait étendu la fin au 25/10.",
+    "fields": { "endDate": "2026-10-11", "schedule": "Vendredi 9 octobre à 19h30, dimanche 11 octobre à 15h", "price": "27 € (réduit 20 €)" }
+  },
+  "EVT_be946c379f": {
+    "note": "29/09 — doublon de ACT_008 (même concert, même château), avec la même fin erronée au 25/10.",
+    "hidden": true
+  },
+  "EVT_bf4d4eb7c8": {
+    "note": "29/09 — doublon de ACT_008 (concerts Balthasar Neumann / Hengelbrock, 9 et 11 octobre). ACT_008 garde le lien précis vers la page du château.",
+    "hidden": true
+  },
+  "EVT_4210174723": {
+    "note": "29/09 — doublon de « Brass & Bleau » publié par l'office de tourisme date par date (EVT_453c9d0696 le 17/10, EVT_dcb1f8b0f8 le 18/10), même fiche source.",
+    "hidden": true
+  },
+  "EVT_8149bc63ce": {
+    "note": "29/09 — sortie ornithologique d'Eco-Nature à Bois-le-Roi, déjà publiée par OpenAgenda (EVT_3b68f12c1b, première date le 17/10).",
+    "hidden": true
   }
 }

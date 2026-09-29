@@ -89,7 +89,12 @@ function isScheduled(record) {
 // ───────────────────────────── Category ─────────────────────────────
 
 const NATURE = /\b(nature|foret|forêt|biodiversit|champignon|arbre|plante|oiseau|ornitho|jardin|botani|faune|flore|environnement|ecolo|déchet|dechet|miel|abeille|rando)\w*/;
-const SPORT = /\b(sport|course|trail|running|cyclis|velo|vélo|marche|tournoi|match|competition|compétition|escalade|natation|yoga|gymnas)\w*/;
+// "marche" only with a qualifier: the text is accent-stripped first, so a bare "marche" also
+// caught every "Marché de Noël".
+const SPORT = /\b(sport|course|trail|running|cyclis|velo|vélo|marche (nordique|sportive|afghane)|tournoi|match|competition|compétition|escalade|natation|yoga|gymnas)\w*/;
+// A competition is sport even in the forest: checked before NATURE, whose "foret" and "rando"
+// otherwise take "Randonnée VTT" or a cross run under the trees.
+const COMPETITION = /\b(championnat|cross|duathlon|triathlon|vtt|trail|cce|jumping|concours hippique|course d orientation)\b/;
 
 const SCENE = /\b(spectacle|concert|theatre|opera|recital|chorale|orchestre|ballet|danse|cirque|humour|projection|cinema|film|conte|marionnette|festival)\w*/;
 
@@ -99,6 +104,7 @@ const SCENE = /\b(spectacle|concert|theatre|opera|recital|chorale|orchestre|ball
  */
 function mapCategory(record) {
   const hay = norm([...(record.keywords_fr || []), record.title_fr, record.originagenda_title].filter(Boolean).join(' '));
+  if (COMPETITION.test(hay)) return 'Sport & Outdoor';
   if (NATURE.test(hay)) return 'Nature & Environnement';
   if (SPORT.test(hay)) return 'Sport & Outdoor';
   if (SCENE.test(hay)) return 'Scène & Spectacles';

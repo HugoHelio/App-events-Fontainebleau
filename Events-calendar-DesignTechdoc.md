@@ -1349,6 +1349,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-09-24 | **Un seul favicon partout : `favicon.ico`** (feuille sur le carré vert foncé), déclaré 16/32/48 ; le 32 px transparent (`Icon-FL-fav-v2.png`) retiré | Le navigateur choisissait le 32 px transparent pour l'onglet de la page d'accueil : contraste faible. Les pages générées utilisaient déjà le `.ico`, jugé meilleur par le chef de projet |
 | 2026-09-24 | Pas de démarchage (formulaire organisateurs, partenariats de données) avant la phase commerciale | Choix du chef de projet : rien ne doit demander d'effort aux mairies ou organisateurs à ce stade |
 | 2026-09-24 | Pas de `git add -A` à la racine dans le workflow | Le bot publie sur `main` sans relecture : tout fichier parasite partirait en ligne |
+| 2026-09-29 | **Une fiche de site sans catégorie est classée d'après son titre au lieu d'être rejetée** (classificateur d'OpenAgenda). Ce classificateur ne range plus « Marché de Noël » en Sport (« marche » exige désormais un qualificatif) et fait passer les compétitions (championnat, cross, VTT, trail, CCE…) avant la nature | Le scan du 27/09 a rejeté 22 fiches de l'office de tourisme (`invalid_category`) que l'appel de complétion avait sautées, alors que leurs dates venaient du parseur testé : ce sont une bonne partie des « lus mais absents » du comparatif. Sur les 290 titres publiés, les 12 classements qui changent se rapprochent tous de la catégorie publiée. Le scan suivant redemande la complétion |
+| 2026-09-29 | Concerts Marie-Antoinette (ACT_008) ramenés aux 9 et 11 octobre, deux doublons masqués ; Brass & Bleau et une sortie ornithologique dédoublonnés à la main | Vérifié sur chateaudefontainebleau.fr : la lecture du site avait étendu la fin au 25/10. Une date fausse coûte plus cher qu'un doublon : c'est la lecture des sites par Gemini, pas le grounding, qui l'a produite — à garder en tête pour §3.Z2 |
 | 2026-09-29 | **Leaflet et FullCalendar servis depuis le site (`vendor/`), plus depuis unpkg et jsDelivr.** Fichiers identiques octet pour octet aux copies CDN : mêmes empreintes SRI, toujours vérifiées ; `vendor/** -text` dans `.gitattributes`. `initMap()` et le calendrier se retirent si leur bibliothèque manque, au lieu de bloquer la liste | Page blanche intermittente sur Chrome Android, signalée par le chef de projet. La feuille Leaflet dans le `<head>` bloquait le premier affichage tant qu'unpkg ne répondait pas ; un script CDN en échec faisait lever `initMap()` avant `fetchData()`, laissant la page vide (reproduit : 0 événement et pas de calendrier avant, 198 et le calendrier après). Le site ne dépend plus d'aucun tiers pour s'afficher, et le mode hors ligne a enfin sa carte et son calendrier (le service worker ne met en cache que la même origine ; `CACHE_VERSION` v4). Coût : ~440 Ko dans le dépôt, mise à jour des bibliothèques à la main (recalculer les empreintes) |
 
 ---
@@ -1386,10 +1388,10 @@ choses qui restaient étaient noyées dedans.
 - [x] **61. Visuels de marque — posés le 23/09** (§3.V). Favicon, icônes PWA 192 et 512, icône
   iOS, marque du bandeau, signature du pied de page et image de partage. La palette du site est
   désormais celle du logo, relevée sur les fichiers.
-- [ ] **61c. Favicon dans Google** : `/favicon.ico` en ligne depuis le 24/09. Demander une
+- [ ] **61c. Favicon dans Google** — indexation de la page d'accueil demandée le 29/09, le site sert bien la feuille (vérifié) ; reste à la voir dans les résultats : `/favicon.ico` en ligne depuis le 24/09. Demander une
   indexation de la page d'accueil dans la Search Console, puis vérifier sous quelques jours à
   quelques semaines que la feuille de chêne a remplacé le soleil Helioso dans les résultats.
-- [ ] **68b. Après le premier déploiement des pages** (§3.X) : dans la Search Console, menu
+- [ ] **68b. Après le premier déploiement des pages** (§3.X) — **sitemap soumis** (confirmé le 29/09), les fiches apparaissent déjà dans Google ; restent le test des résultats enrichis et la page 404 : dans la Search Console, menu
   « Sitemaps », soumettre `https://fontainebleaulive.fr/sitemap.xml` ; tester une fiche dans
   l'outil « Test des résultats enrichis » de Google ; ouvrir une adresse inexistante pour voir
   la page 404. Puis suivre, sur quelques semaines, le nombre de pages indexées (rapport
@@ -1399,7 +1401,7 @@ choses qui restaient étaient noyées dedans.
   blanche revient, noter l'heure et le réseau, et brancher le câble **avant** de recharger (`chrome://inspect`).
 - [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
   d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence.
-- [ ] **Surveiller 3 à 5 runs automatiques.** Ce qu'il faut regarder dans le rapport : tokens et
+- [ ] **Surveiller 3 à 5 runs automatiques — 1er rapport lu le 29/09 (scan du 27/09)** : 5 runs verts du 24 au 29/09, 290 événements, 0 lien mort, 0 rejet côté Gemini. Tokens grounded ≈ 10 k entrée / 13 k sortie / 22 k de réflexion pour les 4 scans. **Anomalie : « Search queries » à 0 sur les quatre scans** — soit le modèle ne cherche plus (il répondrait de mémoire : risque de dates inventées), soit la réponse ne porte plus les métadonnées. Le rapport distingue désormais les deux (métadonnées présentes ? requêtes / pages web citées) : **lire cette colonne au prochain scan**, c'est la priorité. Reste à surveiller : Ce qu'il faut regarder dans le rapport : tokens et
   requêtes de recherche par scan (le coût réel, à comparer à l'estimation §3.G), motifs de rejet,
   liens morts, sources de géocodage, doublons signalés mais non fusionnés.
 
@@ -1412,6 +1414,7 @@ choses qui restaient étaient noyées dedans.
   une, et le focus sport était générique. Corrigé. **À mesurer sur le prochain scan : si le
   compte sport ne bouge pas, c'est que la région produit vraiment peu d'événements sportifs,
   et la question se ferme.**
+- [x] **38c. Mesuré le 29/09 : 37 événements « Sport & Outdoor » sur 290 (13 %)**, contre 21 sur 197 (11 %) le 22/09. La correction du périmètre et les sites des organisateurs ont joué ; la question est close.
 - [x] **38b. Fermé le 23/09 : il n'existe pas de source d'événements sportifs exploitable ici.**
   Vérifié une par une, pour que la recherche ne soit pas refaite :
   | Piste | Ce qu'elle contient |
@@ -1455,7 +1458,7 @@ choses qui restaient étaient noyées dedans.
 
 ### B2. Audience et monétisation — idées du 24/09, rien de commencé
 
-- [x] **69. Abonnement agenda (`.ics`) — fait le 24/09** (§3.Y). Tranché : événements de plus de 7 jours exclus, entrées « journée entière », flux jamais supprimés. **Reste : tester l'abonnement en vrai** dans Google Agenda, Apple Calendrier et Outlook, et vérifier une mise à jour le lendemain. Idée d'origine : `generate-pages.js` écrit `agenda.ics`, plus un fichier
+- [x] **69. Abonnement agenda (`.ics`) — fait le 24/09** (§3.Y). Tranché : événements de plus de 7 jours exclus, entrées « journée entière », flux jamais supprimés. **Reste : tester l'abonnement en vrai** — sans encombrer son agenda : Google Agenda → « Autres agendas » → « + » → « À partir de l'URL » crée un agenda **séparé**, qu'on masque ou supprime d'un clic — dans Google Agenda, Apple Calendrier et Outlook, et vérifier une mise à jour le lendemain. Idée d'origine : `generate-pages.js` écrit `agenda.ics`, plus un fichier
   par catégorie et par commune (« Sport autour de Fontainebleau »). Un bouton « Ajouter à mon
   agenda » propose un lien `webcal://` (Apple Calendrier) et un lien d'abonnement Google Agenda.
   Les événements arrivent dans l'agenda du téléphone et se mettent à jour seuls : aucun coût,
@@ -1520,7 +1523,7 @@ choses qui restaient étaient noyées dedans.
   prochain scan** : la ligne « 🏛️ Sites des organisateurs » du rapport (fiches lues, confirmées,
   offres permanentes écartées, rejets) et les nouveaux événements sur le site.
 - [ ] **72. Comparatif en parallèle — construit le 24/09** (§3.Z). Premier run local sans les
-  sources lues par Gemini : **43 %**. **À faire : lancer le workflow « Comparatif des sources »**
+  sources lues par Gemini : **43 %**. **Run hebdomadaire du 28/09 : 69,1 %** (181 + 5 probables sur 269), il en manque 57 pour 90 %. Les manqués par site : fontainebleau.fr 15 (HTTP 418 : bloque les adresses cloud, voir 72c), anvl.fr 14 (le lecteur n'en voit qu'un), fontainebleau-tourisme.com 14 (en partie les fiches rejetées faute de catégorie, corrigé le 29/09, en partie des titres que l'appariement ne rapproche pas), sites en JavaScript (AAFF, Vaux, Melun) 8, longue traîne ~20. **À faire : lancer le workflow « Comparatif des sources »**
   (onglet Actions, bouton *Run workflow*) pour le premier chiffre complet, puis relire les
   « manqués » et les « probables » du rapport. Ensuite, par ordre de rendement : ANVL (22
   événements, calendrier AJAX du plugin de réservation), Amis de la Forêt (8), Vaux (3), Melun (3).

@@ -639,7 +639,11 @@ function extractText(response) {
     text,
     finishReason: candidate.finishReason ?? null,
     usage: response.usageMetadata ?? null,
+    // Three separate signals, because the 27/09 report showed 0 queries on every scan: did the
+    // answer carry grounding metadata at all, how many queries, how many web pages it cites.
+    grounded: Boolean(candidate.groundingMetadata),
     searchQueries: candidate.groundingMetadata?.webSearchQueries?.length ?? 0,
+    webSources: candidate.groundingMetadata?.groundingChunks?.length ?? 0,
   };
 }
 
@@ -705,7 +709,9 @@ async function runScan(scan, ctx) {
           finishReason: info.finishReason,
           salvaged,
           usage: info.usage,
+          grounded: info.grounded,
           searchQueries: info.searchQueries,
+          webSources: info.webSources,
         },
       };
     } catch (err) {
@@ -1071,13 +1077,13 @@ function renderSummary(stats, ctx) {
   const L = [];
   L.push('## 🗓️ Daily events update', '');
   L.push(`Window **${ctx.today} → ${ctx.maxDate}** · model \`${CONFIG.model}\`${CONFIG.dryRun ? ' · **DRY RUN**' : ''}`, '');
-  L.push('| Scan | Status | Raw events | Attempts | Search queries | Tokens in / out / thoughts |');
+  L.push('| Scan | Status | Raw events | Attempts | Search queries / web sources | Tokens in / out / thoughts |');
   L.push('|---|---|---|---|---|---|');
   for (const s of stats.scans) {
     const u = s.usage || {};
     const tokens = s.usage ? `${u.promptTokenCount ?? '?'} / ${u.candidatesTokenCount ?? '?'} / ${u.thoughtsTokenCount ?? 0}` : '–';
     const status = s.error ? `❌ ${String(s.error).slice(0, 80)}` : (s.salvaged ? '⚠️ truncated, salvaged' : '✅');
-    L.push(`| ${s.name} | ${status} | ${s.raw ?? 0} | ${s.attempts ?? '–'} | ${s.searchQueries ?? '–'} | ${tokens} |`);
+    L.push(`| ${s.name} | ${status} | ${s.raw ?? 0} | ${s.attempts ?? '–'} | ${s.grounded === false ? '⚠️ no grounding metadata' : `${s.searchQueries ?? '–'} / ${s.webSources ?? '–'}`} | ${tokens} |`);
   }
   L.push('');
   if (stats.dt) {
@@ -1100,6 +1106,7 @@ function renderSummary(stats, ctx) {
       for (const r of st.perSource.filter((x) => x.status === 'error' || x.status === 'robots')) L.push(`  - ⚠️ ${r.id} : ${String(r.error).slice(0, 140)}`);
       const siteRej = Object.entries(stats.siteRejected);
       if (siteRej.length) L.push(`  - rejetées : ${siteRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+      if (stats.siteCategoryGuessed) L.push(`  - catégorie déduite du titre (fiche non complétée par Gemini) : ${stats.siteCategoryGuessed}`);
       const en = st.enrich || {};
       if (en.asked || en.error) L.push(`  - fiches de l'office complétées : ${en.asked} nouvelle(s), ${en.cached} en cache${en.error ? ` — ⚠️ ${String(en.error).slice(0, 120)}` : ''} · tokens ${en.tokensIn} in / ${en.tokensOut} out (non grounded)`);
     }
@@ -1456,7 +1463,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
-    sites: null, siteRejected: {}, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
+    sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
     unconfirmed: [], vanishedFromFeed: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
@@ -1609,6 +1616,13 @@ async function main() {
 
   const validSite = [];
   for (const raw of siteRaw) {
+    // A tourist-office page the enrichment call skipped has no category, yet its dates come from
+    // the tested parser. Rejecting it lost 22 good records on the 27/09 scan: the title goes
+    // through the same keyword classifier as OpenAgenda instead, and the next run re-asks Gemini.
+    if (!normalizeCategory(raw.category)) {
+      raw.category = openagenda.mapCategory({ title_fr: raw.title });
+      stats.siteCategoryGuessed++;
+    }
     const v = validateEvent(raw, ctx);
     if (v.ok) { v.long = raw.long === true; validSite.push(v); } else bump(stats.siteRejected, v.reason);
   }
