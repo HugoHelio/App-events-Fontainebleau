@@ -1,9 +1,9 @@
 # Technical & Architecture Design Document
 
 **Project:** Autonomous Local Event Aggregator (Fontainebleau Region)
-**Date:** September 20, 2026
-**Version:** 2.3 (governance decision, ~3-day cadence, DATAtourisme measured)
-**Status:** v2.3 deployed and confirmed in production (September 20: live site serves the new frontend, `data.json` carries `windowEnd`, 161 events) · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
+**Date:** September 29, 2026 (first written September 20)
+**Version:** 2.4 (organisers' sites as a published source, static pages indexed by Google, libraries self-hosted)
+**Status:** in production at fontainebleaulive.fr, **290 events** from five sources (Gemini, organisers' sites, DATAtourisme, OpenAgenda, and the city's RSS feed once its firewall lets GitHub through), fiches indexed by Google, first organic traffic without any promotion · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
 
 ---
 
@@ -738,11 +738,11 @@ previous generated placeholder into the real thing.
 
 | Rôle | Fichier |
 |---|---|
-| Favicon | `Icon-FL-fav-v2.png` (32×32) — **essai en cours**, voir ci-dessous |
+| Favicon | `favicon.ico` à la racine (16/32/48, feuille sur le carré vert foncé) — seul favicon depuis le 24/09 (§7) ; Google affichait encore l'ancien au 29/09, indexation redemandée (61c) |
 | Icône PWA | `Icon-FL-pwa-vS.png` (192), `Icon-FL-pwa-vH.png` (512) |
 | Icône iOS | `Icon-FL-pwa-vH.png` |
 | Marque du bandeau | `Icon-FL-pwa-vS.png` |
-| Signature du pied de page | `Icon-FL-v1ST-512-512.png` |
+| Signature du pied de page | `Icon-FL-v1ST-512-512.png` — un clic ramène en haut de la page (29/09), en gardant filtres et sélection |
 | Aperçu de lien | `og-image.png`, composé depuis `BackgroundDeco-FL-v1.png` |
 
 **Favicon v2 — essai posé le 23/09, à trancher en regardant un onglet.** La v2 est une feuille
@@ -1381,8 +1381,22 @@ il se comprend : le journal des décisions (§7) dit *pourquoi*, les sections §
 *comment*. Réécrite le 22 septembre : elle comptait 86 lignes dont 66 cochées, et les vingt
 choses qui restaient étaient noyées dedans.
 
-État au 22 septembre : **197 événements**, 3 sources (Gemini, DATAtourisme, OpenAgenda),
-61 % de positions exactes, FR/EN, PWA, boucle de signalement fermée, 11 suites de tests.
+État au 29 septembre (scan du 27/09) : **290 événements** — sites des organisateurs 132,
+Gemini 113, DATAtourisme 24, OpenAgenda 21 —, 60 % de positions exactes (BAN, lieux, flux),
+FR/EN, PWA, boucle de signalement fermée, fiches indexées par Google et premier trafic
+organique. Comparatif des sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
+
+**Prochaine session (30/09) :** item 74 (pistes de trafic) — apporter les rapports
+« Performances » et « Pages » de la Search Console, et GoatCounter s'il est actif.
+
+**Au prochain scan, lire dans le rapport, dans cet ordre :**
+1. La colonne « Search queries / web sources » des scans Gemini : 0 partout le 27/09 (voir
+   « Surveiller 3 à 5 runs » ci-dessous). Si « ⚠️ no grounding metadata » ou encore 0 / 0,
+   c'est la priorité absolue : le modèle répondrait de mémoire.
+2. « Sites des organisateurs » : `jagis-anvl` (nouveau), `ville-fontainebleau` (❌ 418 attendu
+   tant que la mairie n'a pas posé l'exception), et la ligne « catégorie déduite du titre »
+   qui remplace les 22 rejets `invalid_category`.
+3. La disparition des 3 sorties du Carreau Franc (hors rayon) dans le compte « trop loin ».
 
 ---
 
