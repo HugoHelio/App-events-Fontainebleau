@@ -61,6 +61,11 @@
       "reason": "Même balade équestre proposée par le même organisateur aux mêmes dates et tarifs.",
       "at": "2026-09-24"
     },
+    "ACT_004|EVT_bdff7248d2": {
+      "same": true,
+      "reason": "Il s'agit de la même promenade équestre au crépuscule organisée par les Espaces Équestres Henson.",
+      "at": "2026-09-30"
+    },
     "ACT_008|ACT_010": {
       "same": false,
       "reason": "Ce sont deux événements distincts : des concerts au château d'un côté, et un festival de cinéma au cinéma l'Ermitage de l'autre.",
@@ -171,15 +176,35 @@
       "reason": "Il s'agit de deux sorties distinctes d'organisateurs différents, l'une pédestre et l'autre équestre.",
       "at": "2026-09-24"
     },
+    "ACT_017|EVT_bdff7248d2": {
+      "same": false,
+      "reason": "L'une est une balade pédestre avec guide naturaliste et l'autre est une promenade à cheval.",
+      "at": "2026-09-30"
+    },
     "ACT_022|EVT_18cdc799ac": {
       "same": true,
       "reason": "Les deux fiches font référence au même spectacle immersif de Noël au Château de Blandy-les-Tours.",
       "at": "2026-09-24"
     },
+    "ACT_022|EVT_3db42f7d18": {
+      "same": true,
+      "reason": "Il s'agit du même spectacle immersif au Château de Blandy-les-Tours aux mêmes dates.",
+      "at": "2026-09-30"
+    },
+    "EVT_01502bfb93|EVT_3764bc5d64": {
+      "same": true,
+      "reason": "Il s'agit de la même promenade guidée à Larchant le 9 octobre 2026 organisée par l'AAFF.",
+      "at": "2026-09-30"
+    },
     "EVT_01502bfb93|EVT_82d9a441d0": {
       "same": true,
       "reason": "Même sortie guidée nature organisée par Les Amis de la Forêt de Fontainebleau le 9 octobre 2026.",
       "at": "2026-09-24"
+    },
+    "EVT_0471fbf1b2|EVT_cb91836cce": {
+      "same": false,
+      "reason": "Il s'agit de deux stages de vannerie distincts (découverte et artistique) proposés aux mêmes dates.",
+      "at": "2026-09-30"
     },
     "EVT_08a39f58ca|EVT_65411b6b41": {
       "same": true,
@@ -195,6 +220,16 @@
       "same": true,
       "reason": "Même événement traditionnel célébrant la Saint-Hubert le 24 octobre 2026 à Fontainebleau.",
       "at": "2026-09-24"
+    },
+    "EVT_090407a470|EVT_bbc38ed63e": {
+      "same": true,
+      "reason": "Il s'agit du même concert/spectacle de la Saint-Hubert au Château de Fontainebleau le 24 octobre 2026.",
+      "at": "2026-09-30"
+    },
+    "EVT_0ab982a6c4|EVT_48bed7795d": {
+      "same": true,
+      "reason": "Il s'agit de la même balade guidée organisée par les Amis de la Forêt de Fontainebleau le 17 octobre 2026.",
+      "at": "2026-09-30"
     },
     "EVT_0ab982a6c4|EVT_d547843611": {
       "same": true,
@@ -230,6 +265,11 @@
       "same": true,
       "reason": "Les deux fiches font référence à la même brocante organisée au Grand Parquet le 11 novembre.",
       "at": "2026-09-27"
+    },
+    "EVT_1512e83552|EVT_cdf331c51b": {
+      "same": true,
+      "reason": "Il s'agit de la même brocante organisée à Fontainebleau le 11 novembre 2026.",
+      "at": "2026-09-30"
     },
     "EVT_1512e83552|EVT_eace8caaff": {
       "same": true,
@@ -431,10 +471,20 @@
       "reason": "Les dates de début de la période d'activité ne correspondent pas (20 septembre vs 25 septembre).",
       "at": "2026-09-24"
     },
+    "EVT_4e2d0b77f8|EVT_bdff7248d2": {
+      "same": true,
+      "reason": "Il s'agit de la même offre de balade équestre proposée par les Espaces Équestres Henson aux mêmes dates.",
+      "at": "2026-09-30"
+    },
     "EVT_4e6974ffa4|EVT_ac4f2ac287": {
       "same": false,
       "reason": "Il s'agit de deux visites guidées différentes, l'une en forêt et l'autre dans le village.",
       "at": "2026-09-24"
+    },
+    "EVT_50dee8210d|EVT_bc6f0f0888": {
+      "same": true,
+      "reason": "Il s'agit du même concert de la Sainte-Cécile au Théâtre municipal le 20 novembre 2026.",
+      "at": "2026-09-30"
     },
     "EVT_518caee648|EVT_af1a49c6c7": {
       "same": true,
@@ -451,10 +501,20 @@
       "reason": "Deux organisateurs distincts proposent des activités différentes (promenade à cheval Henson d'un côté, randonnée pédestre David-nature de l'autre).",
       "at": "2026-09-24"
     },
+    "EVT_56635afd7b|EVT_bdff7248d2": {
+      "same": false,
+      "reason": "L'une est une sortie pédestre organisée par David-nature et l'autre est une balade à cheval par Henson.",
+      "at": "2026-09-30"
+    },
     "EVT_590bd76c68|EVT_fcf3ac200d": {
       "same": false,
       "reason": "Il s'agit de deux offres de Murder Party distinctes avec des tarifs et horaires différents.",
       "at": "2026-09-24"
+    },
+    "EVT_5adb00e98d|EVT_d08275dd1e": {
+      "same": true,
+      "reason": "Il s'agit du même concours équestre militaire au Grand Parquet du 8 au 11 octobre 2026.",
+      "at": "2026-09-30"
     },
     "EVT_5cb728f120|EVT_6129d65ad6": {
       "same": false,
@@ -526,6 +586,11 @@
       "reason": "Les deux fiches présentent le même stage de découverte des champignons organisé par Le Chemin de la Nature sur les mêmes dates.",
       "at": "2026-09-27"
     },
+    "EVT_6f6d502cd3|EVT_faeff665c0": {
+      "same": true,
+      "reason": "Il s'agit du même événement/festival consacré aux prédateurs au Théâtre de Fontainebleau aux mêmes dates.",
+      "at": "2026-09-30"
+    },
     "EVT_8193908330|EVT_8cd503182f": {
       "same": false,
       "reason": "Deux événements totalement distincts : un cycle de films au cinéma Ermitage et des promenades musicales au château.",
@@ -586,6 +651,11 @@
       "reason": "Un cycle cinématographique et une visite théâtralisée sont deux activités différentes.",
       "at": "2026-09-24"
     },
+    "EVT_91b696b9a1|EVT_b6381a262c": {
+      "same": true,
+      "reason": "Il s'agit de la même représentation de la pièce de théâtre La Dictée le 21 novembre 2026.",
+      "at": "2026-09-30"
+    },
     "EVT_93af25d735|EVT_d08275dd1e": {
       "same": true,
       "reason": "Les deux fiches désignent la même compétition hippique organisée par l'École Militaire d'Équitation.",
@@ -616,6 +686,11 @@
       "reason": "Même spectacle seul-en-scène programmé au Théâtre municipal la même soirée.",
       "at": "2026-09-24"
     },
+    "EVT_b25958020f|EVT_f7fe50ded0": {
+      "same": true,
+      "reason": "Il s'agit de la même brocante mensuelle d'antiquités de la Place de l'Aigle Noir le 18 octobre 2026.",
+      "at": "2026-09-30"
+    },
     "EVT_be946c379f|EVT_bf4d4eb7c8": {
       "same": false,
       "reason": "L'une des fiches englobe l'ensemble de la programmation sur plusieurs week-ends tandis que l'autre se concentre uniquement sur la session de concerts du premier",
@@ -640,6 +715,11 @@
       "same": true,
       "reason": "Il s'agit du même concours équestre Jump Bost organisé au Grand Parquet aux mêmes dates.",
       "at": "2026-09-27"
+    },
+    "EVT_cdf331c51b|EVT_f55e6302f3": {
+      "same": true,
+      "reason": "Il s'agit de la même brocante d'automne organisée le 11 novembre 2026 à Fontainebleau.",
+      "at": "2026-09-30"
     },
     "EVT_d2a0dae1a0|EVT_d4afe803bc": {
       "same": false,

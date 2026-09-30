@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Noisy-sur-École · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_cacbb59c55@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Promenade guidée : Découverte du nord-est des Trois-Pignons
+LOCATION:Massif des Trois-Pignons\, Noisy-sur-École
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nIncursion guidé
+ e au cœur des platières\, sables et pins du nord-est du massif des Trois
+ -Pignons.\n\nOrganisateur : https://www.aaff.fr/\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/promenade-guidee-decouverte-du-nord-est-des-troi
+ s-pignons-noisy-sur-ecole-cacbb59c55/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/promenade-guidee-decouverte-du-
+ nord-est-des-trois-pignons-noisy-sur-ecole-cacbb59c55/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chailly-en-Bière · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_b73078ac9b@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Marché de Noël
+LOCATION:Chailly-en-Bière
+DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Chailly-en-Bi
+ ère.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79
+ 11971/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/m
+ arche-de-noel-chailly-en-biere-b73078ac9b/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-chailly-en-biere
+ -b73078ac9b/
+CATEGORIES:Culture & Ateliers
+GEO:48.46717;2.60924
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ce6a19556a@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Marché de Noël
+LOCATION:Chailly-en-Bière
+DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Chailly-en-Bi
+ ère.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79
+ 11971/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/m
+ arche-de-noel-chailly-en-biere-ce6a19556a/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-chailly-en-biere
+ -ce6a19556a/
+CATEGORIES:Culture & Ateliers
+GEO:48.46717;2.60924
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4ff795c5bc@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261003
 SUMMARY:Projection Manga
@@ -29,7 +29,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a0fda3676d@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Festival Manga
@@ -45,21 +45,22 @@ GEO:48.47447;2.69105
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_8149bc63ce@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-SUMMARY:Sortie ornithologique d'automne en forêt
-LOCATION:Forêt domaniale de Fontainebleau\, Bois-le-Roi
-DESCRIPTION:Horaires : 12h–16h30\n\nTarif : 15 €\n\nSortie guidée d'ob
- servation des oiseaux forestiers d'automne tels que les mésanges\, sittel
- les et pics.\n\nOrganisateur : https://www.eco-nature.org/\n\nFiche : http
- s://fontainebleaulive.fr/evenements/sortie-ornithologique-d-automne-en-for
- et-bois-le-roi-8149bc63ce/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-ornithologique-d-automne
- -en-foret-bois-le-roi-8149bc63ce/
-CATEGORIES:Nature & Environnement
+UID:EVT_65bb236269@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Randonnée Solidaire pour la Forêt de Fontainebleau
+LOCATION:Île de loisirs de Bois-le-Roi\, Bois-le-Roi
+DESCRIPTION:Horaires : 09h–17h\n\nTarif : 5€\n\nRandonnée pédestre so
+ lidaire (8 km ou 14 km) au profit de la restauration du massif forestier d
+ e Fontainebleau.\n\nOrganisateur : https://www.helloasso.com/associations/
+ coderando-77/evenements/rando-solidaire-sud-fontainebleau\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/randonnee-solidaire-pour-la-foret-de-fo
+ ntainebleau-bois-le-roi-65bb236269/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-solidaire-pour-la-for
+ et-de-fontainebleau-bois-le-roi-65bb236269/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

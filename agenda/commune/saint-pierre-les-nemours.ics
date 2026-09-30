@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_53207faae8@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Spectacle HUMANITÉ - Soir au village
@@ -30,6 +30,26 @@ URL:https://fontainebleaulive.fr/evenements/spectacle-humanite-soir-au-vill
  age-saint-pierre-les-nemours-53207faae8/
 CATEGORIES:Scène & Spectacles
 GEO:48.25993;2.68508
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_490223cb69@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Régionale Longue Distance de Course d'Orientation
+LOCATION:Forêt de Nemours\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Horaires : 09h30–14h\n\nTarif : 10€\n\nPublic : Dès 7 ans\
+ n\nCompétition régionale de course d'orientation en forêt de Nemours av
+ ec des circuits adaptés à tous les niveaux.\n\nOrganisateur : https://ba
+ lise77.com/\n\nFiche : https://fontainebleaulive.fr/evenements/regionale-l
+ ongue-distance-de-course-d-orientation-saint-pierre-les-nemours-490223cb69
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/regionale-longue-distance-de-co
+ urse-d-orientation-saint-pierre-les-nemours-490223cb69/
+CATEGORIES:Sport & Outdoor
+GEO:48.27046;2.67503
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
