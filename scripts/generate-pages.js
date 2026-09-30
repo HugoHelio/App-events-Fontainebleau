@@ -7,6 +7,7 @@
  *   /evenements/<slug>-<hash>/   one page per event, with schema.org Event markup
  *   /que-faire/<commune>/        "Que faire à … ?", one page per commune
  *   /que-faire/                  the index of communes
+ *   /sorties/<theme>/            seasonal pages (marchés de Noël, brame du cerf…), never removed
  *   /sitemap.xml                 every URL above, plus the home page and its English variant
  *
  * Rules that are not obvious from the code:
@@ -236,6 +237,22 @@ function eventLd(e, canonical) {
   };
 }
 
+/**
+ * The <title> Google shows. Year and date up front (29/09): the searches that click are
+ * "brame du cerf fontainebleau 2026", "marché de noël fontainebleau 2026"; "Melun Fête son Brie ·
+ * Melun" drew 240 impressions for one click while people typed "fête du brie melun 2026".
+ */
+function eventTitle(e) {
+  const name = /\b20\d{2}\b/.test(e.title) ? e.title : `${e.title} ${e.startDate.slice(0, 4)}`;
+  const end = isIsoDate(e.endDate) ? e.endDate : e.startDate;
+  const when = end === e.startDate ? shortDate(e.startDate)
+    : spanDays(e) > FEED_MAX_DAYS ? `jusqu’au ${shortDate(end).replace(/^\S+ /, '')}`
+      : shareWhen(e);
+  // "Marché de Noël d'Avon · Avon" says the town twice.
+  const city = `-${slugify(e.title)}-`.includes(`-${slugify(e.city, 30)}-`) ? '' : ` · ${e.city}`;
+  return `${name} — ${when.replace(/(^|\D)1 (?=\p{L})/gu, '$11er ')}${city} | Fontainebleau Live`;
+}
+
 function eventPage(e, sameCity) {
   const canonical = SITE_URL + e.pagePath;
   const link = safeUrl(e.url);
@@ -254,6 +271,7 @@ function eventPage(e, sameCity) {
 <p class="when">${esc(dateLabel(e))}</p>
 <div class="sheet"><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl></div>
 ${e.description ? `<p>${esc(e.description)}</p>` : ''}
+${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(t.h1(e.startDate.slice(0, 4)))} : toutes les dates</a></p>`).join('')}
 <div class="actions">
 ${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
 </div>
@@ -261,7 +279,7 @@ ${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_bl
 ${others.length ? `<h2>Aussi à ${esc(e.city)}</h2>\n<ul class="list">${others.map(eventItem).join('')}</ul>\n<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout le programme à ${esc(e.city)}</a></p>` : ''}`;
 
   return layout({
-    title: `${e.title} · ${e.city} | Fontainebleau Live`,
+    title: eventTitle(e),
     description: truncate(`${dateLabel(e)} à ${e.city}. ${e.description || ''}`, 155),
     canonical,
     body,
@@ -377,11 +395,96 @@ document.querySelectorAll('[data-copy]').forEach(function (b) {
   }).replace('</style>', 'textarea{width:100%;font:15px/1.5 inherit;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;resize:vertical}\nh2 small{font-weight:400}\nbutton.btn{border:0;cursor:pointer;margin:8px 0 8px;font:inherit;font-weight:600}\n</style>');
 }
 
+// ───────────────────────────── Seasonal pages (item 74) ─────────────────────────────
+//
+// One page per recurring kind of outing people search for by name ("marché de noël fontainebleau
+// 2026", "brame du cerf fontainebleau"). Two things an event page cannot do:
+//   - gather the five "brame du cerf" pages into one strong answer instead of five weak ones;
+//   - KEEP ITS ADDRESS from one year to the next. An event page is deleted when the event is over,
+//     and what Google learnt about it goes with it; /sorties/marches-de-noel/ is still there in
+//     December 2027. So a theme page is never removed: out of season it says when to come back.
+// Matching is on the title only, accent-stripped: a description that mentions Christmas does not
+// make a concert a Christmas market. The intro texts are ours and hold no event data.
+
+const THEMES_DIR = 'sorties';
+const THEMES = [
+  {
+    slug: 'marches-de-noel',
+    match: /\b(marches? de noel|village (et |& )?marche de noel|village de noel|noel (au |du )?marche)\b/,
+    name: 'Marchés de Noël',
+    title: (y) => `Marchés de Noël ${y} autour de Fontainebleau : dates et lieux`,
+    h1: (y) => `Marchés de Noël ${y} autour de Fontainebleau`,
+    intro: 'Les marchés de Noël de Fontainebleau, d’Avon et des villages alentour : dates, horaires et lieux, mis à jour chaque jour à partir des annonces des communes, de l’office de tourisme et des organisateurs.',
+    off: 'Les marchés de Noël sont annoncés en général à partir d’octobre : les dates apparaîtront ici dès leur publication.',
+  },
+  {
+    slug: 'noel',
+    match: /\bnoel\b/,
+    name: 'Noël',
+    title: (y) => `Noël ${y} autour de Fontainebleau : marchés, spectacles et animations`,
+    h1: (y) => `Noël ${y} autour de Fontainebleau`,
+    intro: 'Marchés, spectacles, concerts, animations des châteaux et sorties en famille pour les fêtes, à Fontainebleau et dans les communes voisines.',
+    off: 'Le programme des fêtes est annoncé à l’automne : il apparaîtra ici dès sa publication.',
+  },
+  {
+    slug: 'brame-du-cerf',
+    match: /\bbrame\b/,
+    name: 'Brame du cerf',
+    title: (y) => `Brame du cerf ${y} en forêt de Fontainebleau : sorties guidées`,
+    h1: (y) => `Brame du cerf ${y} en forêt de Fontainebleau`,
+    intro: 'Le brame du cerf s’écoute en forêt de Fontainebleau de la mi-septembre à la mi-octobre, surtout au crépuscule. Les sorties guidées ci-dessous permettent de l’écouter sans déranger les animaux : restez sur les chemins, en silence, sans lampe puissante.',
+    off: 'La saison du brame va de la mi-septembre à la mi-octobre : les sorties guidées de l’année prochaine apparaîtront ici dès leur annonce.',
+  },
+  {
+    slug: 'champignons',
+    match: /\b(champignons?|mycolog\w*)\b/,
+    name: 'Champignons',
+    title: (y) => `Sorties champignons ${y} en forêt de Fontainebleau`,
+    h1: (y) => `Sorties champignons et mycologie ${y} autour de Fontainebleau`,
+    intro: 'Sorties d’initiation, stages et expositions mycologiques en forêt de Fontainebleau et alentour. Ne consommez jamais un champignon sans l’avoir fait identifier par un pharmacien ou une société mycologique.',
+    off: 'La saison des champignons est surtout l’automne : les sorties apparaîtront ici dès leur annonce.',
+  },
+  {
+    slug: 'halloween',
+    match: /\bhalloween\b/,
+    name: 'Halloween',
+    title: (y) => `Halloween ${y} autour de Fontainebleau : sorties et animations`,
+    h1: (y) => `Halloween ${y} autour de Fontainebleau`,
+    intro: 'Soirées, murder parties, animations pour enfants et visites frissonnantes autour de Fontainebleau pour Halloween.',
+    off: 'Les animations d’Halloween sont annoncées en début d’automne : elles apparaîtront ici dès leur publication.',
+  },
+];
+
+const themeKey = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const themesOf = (e) => THEMES.filter((t) => t.match.test(themeKey(e.title)));
+
+function themePage(t, events, today) {
+  // The year of the season on show: the first event's, or this year when there is none yet.
+  const year = (events[0] ? events[0].startDate : today).slice(0, 4);
+  const n = events.length;
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
+<h1>${esc(t.h1(year))}</h1>
+<p>${esc(t.intro)}</p>
+${n ? `<p class="note">${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
+<ul class="list">${events.map(eventItem).join('')}</ul>` : `<p>${esc(t.off)}</p>`}
+<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
+<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer.</p>`;
+  return layout({
+    title: `${t.title(year)} | Fontainebleau Live`,
+    description: truncate(n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro, 155),
+    canonical: `${SITE_URL}/${THEMES_DIR}/${t.slug}/`,
+    body,
+  });
+}
+
 function citiesIndex(cities) {
+  const seasonal = THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Que faire autour de Fontainebleau ?</h1>
 <p>Les activités à venir, commune par commune.</p>
-<ul class="list">${cities.map((c) => `<li><a href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a><small>${c.events.length} activité${c.events.length > 1 ? 's' : ''} à venir</small></li>`).join('')}</ul>`;
+<ul class="list">${cities.map((c) => `<li><a href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a><small>${c.events.length} activité${c.events.length > 1 ? 's' : ''} à venir</small></li>`).join('')}</ul>
+<h2>Sorties de saison</h2>
+<p>${seasonal}</p>`;
   return layout({
     title: 'Que faire autour de Fontainebleau ? Agenda par commune | Fontainebleau Live',
     description: 'Les activités sportives, culturelles et nature à venir autour de Fontainebleau, classées par commune.',
@@ -401,7 +504,7 @@ function sitemap(cities, events, homeLastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${home(`${SITE_URL}/`)}
 ${home(`${SITE_URL}/?lang=en`)}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -589,6 +692,8 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   }
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
+  // Always written, even empty: the address is the point (see THEMES).
+  for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
@@ -652,4 +757,5 @@ if (require.main === module) {
 module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
+  THEMES, THEMES_DIR, themesOf, eventTitle,
 };
