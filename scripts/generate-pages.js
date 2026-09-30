@@ -7,6 +7,7 @@
  *   /evenements/<slug>-<hash>/   one page per event, with schema.org Event markup
  *   /que-faire/<commune>/        "Que faire à … ?", one page per commune
  *   /que-faire/                  the index of communes
+ *   /ce-week-end/                the coming weekend, rebuilt every day
  *   /sorties/<theme>/            seasonal pages (marchés de Noël, brame du cerf…), never removed
  *   /sitemap.xml                 every URL above, plus the home page and its English variant
  *
@@ -477,12 +478,78 @@ ${n ? `<p class="note">${n} date${n > 1 ? 's' : ''} à venir, de la plus proche 
   });
 }
 
+// ───────────────────────────── This weekend (item 74.3) ─────────────────────────────
+//
+// "Que faire à Fontainebleau ce week-end" comes back every week, and it is the link a Facebook
+// post wants. Rebuilt with the other pages every day: Monday to Saturday it shows the coming
+// Saturday and Sunday, on Sunday what is left of the day. Long exhibitions (over FEED_MAX_DAYS)
+// are open that weekend too, but listed apart: fifteen of them would bury the outings.
+
+const WEEKEND_DIR = 'ce-week-end';
+
+function addDays(iso, n) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d + n)).toISOString().slice(0, 10);
+}
+
+/** { sat, sun } of the weekend on show for `today` (Paris date, YYYY-MM-DD). */
+function weekendOf(today) {
+  const dow = new Date(`${today}T00:00:00Z`).getUTCDay();
+  if (dow === 0) return { sat: addDays(today, -1), sun: today };
+  const sat = addDays(today, 6 - dow);
+  return { sat, sun: addDays(sat, 1) };
+}
+
+const first = (s) => s.replace(/(^|\D)1 (?=\p{L})/gu, '$11er ');
+const dayName = (iso) => first(frDate(iso).replace(/ \d{4}$/, ''));
+// "La Solle, Fontainebleau" needs no second "Fontainebleau".
+const place = (e) => (e.locationName && slugify(e.locationName, 200).includes(slugify(e.city, 50)) ? e.locationName : [e.locationName, e.city].filter(Boolean).join(', '));
+
+function weekendPage(events, today) {
+  const { sat, sun } = weekendOf(today);
+  const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
+  // Still to come (a Sunday page drops Saturday-only outings) and overlapping the weekend.
+  const open = events.filter((e) => e.startDate <= sun && end(e) >= sat && end(e) >= today);
+  const long = open.filter((e) => spanDays(e) > FEED_MAX_DAYS);
+  const short = open.filter((e) => spanDays(e) <= FEED_MAX_DAYS);
+  const on = (day) => (e) => e.startDate <= day && end(e) >= day;
+  const both = today < sun ? short.filter((e) => on(sat)(e) && on(sun)(e)) : [];
+  const satOnly = today < sun ? short.filter((e) => on(sat)(e) && !on(sun)(e)) : [];
+  const sunOnly = short.filter((e) => on(sun)(e) && !both.includes(e));
+
+  const item = (e) => `<li><a href="${esc(e.pagePath)}">${esc(e.title)}</a><small>${esc([e.schedule, place(e)].filter(Boolean).join(' · '))}</small></li>`;
+  const section = (h, list) => (list.length ? `<h2>${esc(h)}</h2>\n<ul class="list">${list.map(item).join('')}</ul>` : '');
+  const satLabel = dayName(sat), sunLabel = dayName(sun);
+  const range = first(`${sat.slice(8, 10).replace(/^0/, '')}${sat.slice(5, 7) === sun.slice(5, 7) ? '' : ` ${frDate(sat).split(' ')[2]}`}-${frDate(sun).split(' ').slice(1).join(' ')}`);
+  const n = short.length;
+
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
+<h1>Que faire ce week-end autour de Fontainebleau ?</h1>
+<p class="when">${today === sun ? `Aujourd’hui, ${esc(sunLabel)}` : `${esc(satLabel[0].toUpperCase() + satLabel.slice(1))} et ${esc(sunLabel)}`}</p>
+<p>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
+${section(`Tout le week-end`, both)}
+${section(today === sun ? `Aujourd’hui` : satLabel[0].toUpperCase() + satLabel.slice(1), today === sun ? [] : satOnly)}
+${section(today === sun ? `Aujourd’hui, ${sunLabel}` : sunLabel[0].toUpperCase() + sunLabel.slice(1), sunOnly)}
+${long.length ? `<h2>Expositions et visites en cours</h2>\n<ul class="list">${long.map(eventItem).join('')}</ul>` : ''}
+<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
+<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer. Sorties de saison : ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ')}.</p>`;
+
+  return layout({
+    title: `Que faire ce week-end autour de Fontainebleau ? (${range}) | Fontainebleau Live`,
+    description: truncate(`${n} sortie${n > 1 ? 's' : ''} le week-end du ${range} à Fontainebleau et alentour : sport, nature, spectacles, culture, en famille.`, 155),
+    canonical: `${SITE_URL}/${WEEKEND_DIR}/`,
+    body,
+  });
+}
+
 function citiesIndex(cities) {
   const seasonal = THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Que faire autour de Fontainebleau ?</h1>
 <p>Les activités à venir, commune par commune.</p>
 <ul class="list">${cities.map((c) => `<li><a href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a><small>${c.events.length} activité${c.events.length > 1 ? 's' : ''} à venir</small></li>`).join('')}</ul>
+<h2>Ce week-end</h2>
+<p><a href="/${WEEKEND_DIR}/">Que faire ce week-end autour de Fontainebleau ?</a></p>
 <h2>Sorties de saison</h2>
 <p>${seasonal}</p>`;
   return layout({
@@ -504,7 +571,7 @@ function sitemap(cities, events, homeLastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${home(`${SITE_URL}/`)}
 ${home(`${SITE_URL}/?lang=en`)}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${WEEKEND_DIR}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -692,6 +759,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   }
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
+  files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
   for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
@@ -757,5 +825,5 @@ if (require.main === module) {
 module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
-  THEMES, THEMES_DIR, themesOf, eventTitle,
+  THEMES, THEMES_DIR, themesOf, eventTitle, WEEKEND_DIR, weekendOf,
 };
