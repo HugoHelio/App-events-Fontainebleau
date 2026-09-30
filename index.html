@@ -279,6 +279,29 @@
       opacity: 0.85;
     }
 
+    /* "This weekend" pill (item 74.3): the one clickable thing in the banner, in the leaf's
+       green so it reads as the brand's own call, not an ad. Hidden until the data says how
+       many outings there are: a pill without its number is not worth the space. */
+    .weekend-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+      padding: 0.4rem 1rem;
+      border-radius: var(--r-pill);
+      background: var(--accent);
+      color: var(--brand-dark);
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: filter 0.2s, transform 0.2s;
+    }
+    .weekend-pill[hidden] { display: none; }
+    .weekend-pill:hover { filter: brightness(1.07); transform: translateY(-1px); }
+    .weekend-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { .weekend-pill { transition: none; } .weekend-pill:hover { transform: none; } }
+
     .last-updated.stale {
       background: #fefcbf;
       color: #744210;
@@ -817,6 +840,7 @@
         <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
         <p class="tagline" data-i18n="tagline">Sport, culture et nature autour de Fontainebleau, pour adultes et enfants</p>
         <p id="lastUpdated" class="last-updated"></p>
+        <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
       </div>
     </div>
     <svg class="header-curve" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
@@ -849,6 +873,7 @@
       <label for="filterHorizon" data-i18n="horizonLabel">Période :</label>
       <select id="filterHorizon">
         <option value="today" data-i18n="horizonToday">Aujourd'hui</option>
+        <option value="weekend" data-i18n="horizonWeekend">Ce week-end</option>
         <option value="2weeks" data-i18n="horizon2w" selected>Dans les 2 semaines</option>
         <option value="3months" data-i18n="horizon3m">Dans les 3 mois</option>
       </select>
@@ -994,6 +1019,8 @@
         subUnavailable: 'Agenda momentanément indisponible.',
         widgetLink: 'Intégrer l’agenda sur votre site',
         horizonToday: "Aujourd'hui",
+        horizonWeekend: 'Ce week-end',
+        weekendPill: (n, sunday) => `${sunday ? 'Aujourd’hui' : 'Ce week-end'} : ${n} sortie${n > 1 ? 's' : ''} →`,
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
         tabMap: 'Carte & Liste',
@@ -1070,6 +1097,8 @@
         subUnavailable: 'Calendar temporarily unavailable.',
         widgetLink: 'Add this calendar to your website',
         horizonToday: 'Today',
+        horizonWeekend: 'This weekend',
+        weekendPill: (n, sunday) => `${sunday ? 'Today' : 'This weekend'}: ${n} outing${n > 1 ? 's' : ''} →`,
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
         tabMap: 'Map & List',
@@ -1322,6 +1351,30 @@
     // Deliberately NOT the number of cards currently filtered: this is how much the site knows
     // about, which is the number that says whether a whole category is missing. It is the
     // measure a visitor can use to judge us, so it counts the same window the site publishes.
+    // ── This weekend (item 74.3) ──
+    // Same rule as the /ce-week-end/ page (weekendOf in generate-pages.js): Monday to Saturday
+    // the coming weekend, on Sunday the day itself.
+    function weekendRange(today = todayStr()) {
+      const shift = (n) => { const d = isoToDate(today); d.setDate(d.getDate() + n); return d.toLocaleDateString('en-CA'); };
+      const dow = isoToDate(today).getDay();
+      if (dow === 0) return { sat: shift(-1), sun: today };
+      return { sat: shift(6 - dow), sun: shift(7 - dow) };
+    }
+
+    // The pill counts what the page lists as outings: 7 days or less. Long exhibitions are open
+    // too, but "29 sorties" should mean 29 things happening this weekend.
+    function renderWeekendPill() {
+      const el = document.getElementById('weekendPill');
+      if (!el) return;
+      const today = todayStr();
+      const { sat, sun } = weekendRange(today);
+      const days = (a) => Math.round((isoToDate(a.endDate || a.startDate) - isoToDate(a.startDate)) / 86400000) + 1;
+      const n = allActivities.filter((a) => a.startDate && isUpcoming(a)
+        && a.startDate <= sun && (a.endDate || a.startDate) >= sat && days(a) <= 7).length;
+      el.hidden = loadFailed || !n;
+      el.textContent = el.hidden ? '' : t('weekendPill')(n, today === sun);
+    }
+
     function renderEventCount() {
       const el = document.getElementById('eventCount');
       if (!el) return;
@@ -1331,6 +1384,7 @@
       // With no data, an empty line is honest; "0 événements répertoriés" would read as a
       // coverage claim about the region rather than a failure to load.
       el.textContent = (loadFailed || !n) ? '' : t('eventCount')(n);
+      renderWeekendPill();
     }
 
     // ── Feedback ("Signaler une erreur") ──
@@ -1595,6 +1649,7 @@
     function horizonLastDay(value) {
       const d = new Date();
       if (value === 'today') return todayStr();
+      if (value === 'weekend') return weekendRange().sun;
       if (value === '2weeks') d.setDate(d.getDate() + 14);
       else d.setMonth(d.getMonth() + 3);
       return d.toLocaleDateString('en-CA');
@@ -1624,6 +1679,7 @@
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
       document.getElementById('resetView').addEventListener('click', clearSelection);
+      document.getElementById('weekendPill').addEventListener('click', () => track('weekend-pill', 'click'));
       // The footer logo returns to the top without reloading: filters and selection are kept.
       document.getElementById('footerHome').addEventListener('click', (e) => {
         e.preventDefault();
@@ -1696,7 +1752,11 @@
       const dateVal = document.getElementById('filterDate').value;
       // A specific date is a deliberate, narrower request: it overrides the period rather than
       // intersecting with it, so picking a date outside the period cannot return an empty list.
-      const horizonEnd = dateVal ? null : horizonLastDay(document.getElementById('filterHorizon').value);
+      const horizonVal = document.getElementById('filterHorizon').value;
+      const horizonEnd = dateVal ? null : horizonLastDay(horizonVal);
+      // "This weekend" is the one period with a start too: an outing that ends on Thursday is
+      // not on this weekend.
+      const horizonStart = (!dateVal && horizonVal === 'weekend') ? weekendRange().sat : null;
 
       const filtered = allActivities.filter(a => {
         // Événements terminés : masqués même si data.json en contient encore
@@ -1706,7 +1766,8 @@
         const matchCat = !catVal || a.category === catVal;
 
         // Filtre Période
-        const matchHorizon = !horizonEnd || (a.startDate ? a.startDate <= horizonEnd : false);
+        const matchHorizon = (!horizonEnd || (a.startDate ? a.startDate <= horizonEnd : false))
+          && (!horizonStart || (a.endDate || a.startDate) >= horizonStart);
         
         // Filtre Date
         let matchDate = true;

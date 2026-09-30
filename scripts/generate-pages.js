@@ -456,7 +456,7 @@ const THEMES = [
   },
 ];
 
-const themeKey = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const themeKey = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const themesOf = (e) => THEMES.filter((t) => t.match.test(themeKey(e.title)));
 
 function themePage(t, events, today) {
@@ -505,6 +505,45 @@ const dayName = (iso) => first(frDate(iso).replace(/ \d{4}$/, ''));
 // "La Solle, Fontainebleau" needs no second "Fontainebleau".
 const place = (e) => (e.locationName && slugify(e.locationName, 200).includes(slugify(e.city, 50)) ? e.locationName : [e.locationName, e.city].filter(Boolean).join(', '));
 
+// Category colours: the same four as the map markers and cards of the main page.
+const CAT_CLASS = { 'Sport & Outdoor': 'c-sport', 'Nature & Environnement': 'c-nature', 'Scène & Spectacles': 'c-scene', 'Culture & Ateliers': 'c-culture' };
+
+// "08h00–18h00", "Dimanche à 16h00", "10h15 à 11h30" → "8h–18h", "16h", "10h15–11h30".
+function times(schedule) {
+  return [...String(schedule || '').matchAll(/(?<!\d)([01]?\d|2[0-3])\s*[h:]\s*([0-5]\d)?(?!\d)/gi)].slice(0, 2);
+}
+function timeOf(schedule) {
+  return times(schedule).map((m) => `${Number(m[1])}h${m[2] && m[2] !== '00' ? m[2] : ''}`).join('–');
+}
+/** Minutes after midnight of the first time, for sorting; untimed outings last. */
+function timeKey(e) {
+  const m = times(e.schedule)[0];
+  return m ? Number(m[1]) * 60 + Number(m[2] || 0) : 24 * 60;
+}
+// Only a price that says free and nothing else: "Gratuit pour les adhérents, 10 €" is not.
+const isFree = (e) => /^(gratuit|entr[ée]e libre|acc[èe]s libre)/i.test(String(e.price || '').trim()) && !/\d\s*€/.test(String(e.price || ''));
+
+const WEEKEND_STYLE = `
+.now{font-size:15px;margin:0 0 12px}
+.chip{display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600}
+.chip b{color:var(--muted);font-weight:600}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.toc a{padding:6px 14px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+.legend{font-size:13px;color:var(--muted);margin:8px 0 0}
+.legend .dot{margin:0 4px 0 10px}.legend .dot:first-child{margin-left:0}
+h2.day{position:sticky;top:0;z-index:1;background:var(--bg);padding:10px 0 6px;margin-top:24px}
+ul.agenda li{display:grid;grid-template-columns:6.2rem 1fr;gap:4px 12px;align-items:baseline}
+ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:#6b6257;vertical-align:1px}
+.c-sport{background:#0f8f9e}.c-nature{background:#5f8f2f}.c-scene{background:#4a5bb8}.c-culture{background:#9247a0}
+.free{display:inline-block;margin-left:6px;padding:0 8px;border-radius:999px;background:#ecf3e0;color:#3d5d1d;font-size:12px;font-weight:700;vertical-align:2px}
+.share{text-align:center;margin:8px 0 24px}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.share-btn:hover{background:#e6efe9}
+.share-btn[hidden]{display:none}
+@media (max-width:480px){ul.agenda li{grid-template-columns:1fr;gap:2px}ul.agenda .t:empty{display:none}}
+`.trim();
+
 function weekendPage(events, today) {
   const { sat, sun } = weekendOf(today);
   const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
@@ -513,33 +552,70 @@ function weekendPage(events, today) {
   const long = open.filter((e) => spanDays(e) > FEED_MAX_DAYS);
   const short = open.filter((e) => spanDays(e) <= FEED_MAX_DAYS);
   const on = (day) => (e) => e.startDate <= day && end(e) >= day;
-  const both = today < sun ? short.filter((e) => on(sat)(e) && on(sun)(e)) : [];
-  const satOnly = today < sun ? short.filter((e) => on(sat)(e) && !on(sun)(e)) : [];
-  const sunOnly = short.filter((e) => on(sun)(e) && !both.includes(e));
+  const byTime = (a, b) => timeKey(a) - timeKey(b) || a.title.localeCompare(b.title, 'fr');
+  const both = (today < sun ? short.filter((e) => on(sat)(e) && on(sun)(e)) : []).sort(byTime);
+  const satOnly = (today < sun ? short.filter((e) => on(sat)(e) && !on(sun)(e)) : []).sort(byTime);
+  const sunOnly = short.filter((e) => on(sun)(e) && !both.includes(e)).sort(byTime);
 
-  const item = (e) => `<li><a href="${esc(e.pagePath)}">${esc(e.title)}</a><small>${esc([e.schedule, place(e)].filter(Boolean).join(' · '))}</small></li>`;
-  const section = (h, list) => (list.length ? `<h2>${esc(h)}</h2>\n<ul class="list">${list.map(item).join('')}</ul>` : '');
+  const cap = (s) => s[0].toUpperCase() + s.slice(1);
   const satLabel = dayName(sat), sunLabel = dayName(sun);
+  const sections = [
+    { id: 'tout-le-week-end', nav: 'Tout le week-end', h: 'Tout le week-end', list: both },
+    { id: 'samedi', nav: 'Samedi', h: cap(satLabel), list: satOnly },
+    { id: 'dimanche', nav: today === sun ? 'Aujourd’hui' : 'Dimanche', h: today === sun ? `Aujourd’hui, ${sunLabel}` : cap(sunLabel), list: sunOnly },
+  ].filter((s) => s.list.length);
+  if (long.length) sections.push({ id: 'expositions', nav: 'Expositions', h: 'Expositions et visites en cours', list: long, long: true });
+
+  // One line per outing: time on the left (bold), then a category dot, the title, a "Gratuit"
+  // badge when the price says so, and the place. Plain list underneath, so it reads without CSS.
+  const item = (e) => `<li class="ev"><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}</small></div></li>`;
+  const section = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? eventItem : item).join('')}</ul>`;
   const range = first(`${sat.slice(8, 10).replace(/^0/, '')}${sat.slice(5, 7) === sun.slice(5, 7) ? '' : ` ${frDate(sat).split(' ')[2]}`}-${frDate(sun).split(' ').slice(1).join(' ')}`);
   const n = short.length;
 
+  // Seasonal pages with something in the next 30 days: a short line of links, nothing more.
+  // "Noël" is left out: until December it only repeats the Christmas markets.
+  const soon = addDays(today, 30);
+  const now = THEMES.filter((t) => t.slug !== 'noel')
+    .map((t) => ({ t, k: events.filter((e) => t.match.test(themeKey(e.title)) && e.startDate <= soon && end(e) >= today).length }))
+    .filter((x) => x.k);
+  const shareText = `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} autour de Fontainebleau`;
+
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
 <h1>Que faire ce week-end autour de Fontainebleau ?</h1>
-<p class="when">${today === sun ? `Aujourd’hui, ${esc(sunLabel)}` : `${esc(satLabel[0].toUpperCase() + satLabel.slice(1))} et ${esc(sunLabel)}`}</p>
+<p class="when">${today === sun ? `Aujourd’hui, ${esc(sunLabel)}` : `${esc(cap(satLabel))} et ${esc(sunLabel)}`}</p>
 <p>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
-${section(`Tout le week-end`, both)}
-${section(today === sun ? `Aujourd’hui` : satLabel[0].toUpperCase() + satLabel.slice(1), today === sun ? [] : satOnly)}
-${section(today === sun ? `Aujourd’hui, ${sunLabel}` : sunLabel[0].toUpperCase() + sunLabel.slice(1), sunOnly)}
-${long.length ? `<h2>Expositions et visites en cours</h2>\n<ul class="list">${long.map(eventItem).join('')}</ul>` : ''}
+${now.length ? `<p class="now">En ce moment : ${now.map(({ t, k }) => `<a class="chip" href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)} <b>${k}</b></a>`).join(' ')}</p>` : ''}
+${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
+${n ? '<p class="legend"><span class="dot c-sport"></span>Sport <span class="dot c-nature"></span>Nature <span class="dot c-scene"></span>Spectacles <span class="dot c-culture"></span>Culture</p>' : ''}
+${sections.map(section).join('\n')}
 <div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
-<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer. Sorties de saison : ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ')}.</p>`;
+<div class="share"><button type="button" id="share" class="share-btn" hidden data-text="${esc(shareText)}"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>Partager ce programme</span></button></div>
+<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer. Sorties de saison : ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ')}.</p>
+<script>
+(function () {
+  // Shown only where it works: the phone's share sheet, or failing that a copied link.
+  var b = document.getElementById('share');
+  var url = '${SITE_URL}/${WEEKEND_DIR}/';
+  if (!navigator.share && !(navigator.clipboard && navigator.clipboard.writeText)) return;
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var label = b.querySelector('span');
+    if (navigator.share) {
+      navigator.share({ title: 'Que faire ce week-end autour de Fontainebleau ? — Fontainebleau Live', text: b.getAttribute('data-text') + ', sur Fontainebleau Live :', url: url }).catch(function () {});
+    } else {
+      navigator.clipboard.writeText(url).then(function () { label.textContent = 'Lien copié ✓'; });
+    }
+  });
+})();
+</script>`;
 
   return layout({
     title: `Que faire ce week-end autour de Fontainebleau ? (${range}) | Fontainebleau Live`,
     description: truncate(`${n} sortie${n > 1 ? 's' : ''} le week-end du ${range} à Fontainebleau et alentour : sport, nature, spectacles, culture, en famille.`, 155),
     canonical: `${SITE_URL}/${WEEKEND_DIR}/`,
     body,
-  });
+  }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
 }
 
 function citiesIndex(cities) {
