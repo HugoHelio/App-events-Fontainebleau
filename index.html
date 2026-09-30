@@ -208,10 +208,15 @@
       margin-bottom: 0.5rem;
     }
 
+    /* One line (30/09): the town is already in the kicker and the wordmark just above. */
     header .tagline {
       font-size: 0.95rem;
-      max-width: 46ch;
       opacity: 0.92;
+      white-space: nowrap;
+    }
+    @media (max-width: 560px) {
+      /* Still one line on a 360px phone beside the 48px mark. */
+      header .tagline { font-size: clamp(0.72rem, 3.6vw, 0.95rem); }
     }
 
     /* One small segmented control, not two separate buttons. */
@@ -274,9 +279,9 @@
 
 
     .last-updated {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-      opacity: 0.85;
+      margin-top: 0.35rem;
+      font-size: 0.7rem;
+      opacity: 0.75;
     }
 
     /* "This weekend" pill (item 74.3): the one clickable thing in the banner, in the leaf's
@@ -838,7 +843,7 @@
         <p class="kicker" data-i18n="kicker">Agenda de Fontainebleau et ses environs</p>
         <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
         <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
-        <p class="tagline" data-i18n="tagline">Sport, culture et nature autour de Fontainebleau, pour adultes et enfants</p>
+        <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
         <p id="lastUpdated" class="last-updated"></p>
         <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
       </div>
@@ -993,7 +998,7 @@
     const STRINGS = {
       fr: {
         docTitle: 'Fontainebleau Live — Activités & Événements autour de Fontainebleau',
-        tagline: 'Sport, culture et nature autour de Fontainebleau, pour adultes et enfants',
+        tagline: 'Sport, culture et nature, pour adultes et enfants',
         kicker: 'Agenda de Fontainebleau et ses environs',
 
         categoryLabel: "Type d'événements :",
@@ -1029,8 +1034,8 @@
         brand: 'Un projet Helioso',
         disclaimer: ['Les informations sont collectées automatiquement à partir de sources publiques (offices de tourisme, mairies, associations, plateformes d\u2019inscription…) et peuvent contenir des erreurs ou avoir changé. ', 'Vérifiez toujours auprès de l\u2019organisateur', ' (horaires, tarifs, annulation) avant de vous déplacer.'],
         dataLangNote: '',
-        updatedOn: (when) => `Données mises à jour le ${when}`,
-        staleFor: (days) => ` — ⚠️ non actualisées depuis ${days} jours`,
+        updatedOn: (when) => `Mis à jour le ${when}`,
+        staleFor: (days) => ` — ⚠️ non actualisé depuis ${days} jours`,
         feedbackIntro: 'Une erreur ou un événement manquant ?',
         feedbackLink: 'Écrivez-nous',
         noResults: 'Aucune activité trouvée.',
@@ -1071,7 +1076,7 @@
       },
       en: {
         docTitle: 'Fontainebleau Live — Activities & Events around Fontainebleau',
-        tagline: 'Sport, culture and nature around Fontainebleau, for adults and children',
+        tagline: 'Sport, culture and nature, for adults and children',
         kicker: 'What\u2019s on in and around Fontainebleau',
 
         categoryLabel: 'Event type:',
@@ -1107,7 +1112,7 @@
         brand: 'A Helioso project',
         disclaimer: ['This information is collected automatically from public sources (tourist offices, town halls, associations, booking platforms…) and may be wrong or out of date. ', 'Always check with the organiser', ' (times, prices, cancellation) before travelling.'],
         dataLangNote: 'Descriptions are machine-translated. Event titles, times and prices are kept in French, exactly as the organisers publish them, so you can recognise them on a poster or at the ticket desk.',
-        updatedOn: (when) => `Data updated on ${when}`,
+        updatedOn: (when) => `Updated on ${when}`,
         staleFor: (days) => ` — ⚠️ not refreshed for ${days} days`,
         feedbackIntro: 'Spotted an error, or a missing event?',
         feedbackLink: 'Tell us',

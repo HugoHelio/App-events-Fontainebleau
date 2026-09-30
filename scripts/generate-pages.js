@@ -525,12 +525,16 @@ const isFree = (e) => /^(gratuit|entr[ée]e libre|acc[èe]s libre)/i.test(String
 
 const WEEKEND_STYLE = `
 .now{font-size:15px;margin:0 0 12px}
-.chip{display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600}
+.chip{display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;line-height:1.5}
 .chip b{color:var(--muted);font-weight:600}
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
-.toc a{padding:6px 14px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:15px}
-.legend{font-size:13px;color:var(--muted);margin:8px 0 0}
-.legend .dot{margin:0 4px 0 10px}.legend .dot:first-child{margin-left:0}
+.toc a{padding:3px 10px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:15px;line-height:1.5}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.legend .f{font:inherit;font-size:14px;line-height:1.5;padding:2px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--text);cursor:pointer}
+.legend .f[aria-pressed="true"]{border-color:var(--ink);background:#e6efe9;color:var(--ink);font-weight:600}
+.legend .f:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+.legend .dot{margin-right:6px}
+.filtered-out{display:none!important}
 h2.day{position:sticky;top:0;z-index:1;background:var(--bg);padding:10px 0 6px;margin-top:24px}
 ul.agenda li{display:grid;grid-template-columns:6.2rem 1fr;gap:4px 12px;align-items:baseline}
 ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -568,8 +572,8 @@ function weekendPage(events, today) {
 
   // One line per outing: time on the left (bold), then a category dot, the title, a "Gratuit"
   // badge when the price says so, and the place. Plain list underneath, so it reads without CSS.
-  const item = (e) => `<li class="ev"><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}</small></div></li>`;
-  const section = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? eventItem : item).join('')}</ul>`;
+  const item = (e) => `<li class="ev" data-cat="${CAT_CLASS[e.category] || ''}"><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}</small></div></li>`;
+  const section = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? (e) => eventItem(e).replace('<li>', `<li data-cat="${CAT_CLASS[e.category] || ''}">`) : item).join('')}</ul>`;
   const range = first(`${sat.slice(8, 10).replace(/^0/, '')}${sat.slice(5, 7) === sun.slice(5, 7) ? '' : ` ${frDate(sat).split(' ')[2]}`}-${frDate(sun).split(' ').slice(1).join(' ')}`);
   const n = short.length;
 
@@ -587,12 +591,34 @@ function weekendPage(events, today) {
 <p>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
 ${now.length ? `<p class="now">En ce moment : ${now.map(({ t, k }) => `<a class="chip" href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)} <b>${k}</b></a>`).join(' ')}</p>` : ''}
 ${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
-${n ? '<p class="legend"><span class="dot c-sport"></span>Sport <span class="dot c-nature"></span>Nature <span class="dot c-scene"></span>Spectacles <span class="dot c-culture"></span>Culture</p>' : ''}
+${n ? `<div class="legend" role="group" aria-label="Filtrer par type"><button type="button" class="f" data-cat="" aria-pressed="true">Tous</button>${[['c-sport', 'Sport'], ['c-nature', 'Nature'], ['c-scene', 'Spectacles'], ['c-culture', 'Culture']].map(([c, l]) => `<button type="button" class="f" data-cat="${c}" aria-pressed="false"><span class="dot ${c}"></span>${l}</button>`).join('')}</div>` : ''}
 ${sections.map(section).join('\n')}
 <div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
 <div class="share"><button type="button" id="share" class="share-btn" hidden data-text="${esc(shareText)}"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>Partager ce programme</span></button></div>
 <p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer. Sorties de saison : ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ')}.</p>
 <script>
+(function () {
+  // Category filter: the legend's buttons. A section left empty disappears, and so does its
+  // link in the contents. Without JavaScript the buttons stay a legend and everything is shown.
+  var buttons = document.querySelectorAll('.legend .f');
+  Array.prototype.forEach.call(buttons, function (btn) {
+    btn.addEventListener('click', function () {
+      var cat = btn.getAttribute('data-cat');
+      Array.prototype.forEach.call(buttons, function (x) { x.setAttribute('aria-pressed', String(x === btn)); });
+      Array.prototype.forEach.call(document.querySelectorAll('li[data-cat]'), function (li) {
+        li.classList.toggle('filtered-out', !!cat && li.getAttribute('data-cat') !== cat);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('h2.day'), function (h) {
+        var list = h.nextElementSibling;
+        var empty = !list.querySelector('li[data-cat]:not(.filtered-out)');
+        h.classList.toggle('filtered-out', empty);
+        list.classList.toggle('filtered-out', empty);
+        var link = document.querySelector('.toc a[href="#' + h.id + '"]');
+        if (link) link.classList.toggle('filtered-out', empty);
+      });
+    });
+  });
+})();
 (function () {
   // Shown only where it works: the phone's share sheet, or failing that a copied link.
   var b = document.getElementById('share');
