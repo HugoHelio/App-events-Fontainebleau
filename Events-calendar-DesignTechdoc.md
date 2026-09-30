@@ -69,15 +69,16 @@ The system automatically scans official agendas, local association publications 
 
 | File | Location in repo |
 |---|---|
-| Extraction pipeline | `scripts/fetch-events.js` |
-| DATAtourisme — shared library (download, parse, match) | `scripts/datatourisme.js` |
-| DATAtourisme coverage probe (observation only) | `scripts/datatourisme-coverage.js` |
-| Workflow | `.github/workflows/daily-check.yml` |
-| Frontend | `index.html` |
+| Extraction pipeline (scans, validation, merge, geocoding, URL checks) | `scripts/fetch-events.js` |
+| Sources: DATAtourisme · OpenAgenda · organisers' sites | `scripts/datatourisme.js` · `scripts/openagenda.js` · `scripts/sources.js` (registry: `sources.json`, hand-edited) |
+| Duplicate judge · translation · feedback form | `scripts/dedupe-judge.js` · `scripts/translate.js` · `scripts/feedback.js` |
+| Static pages, calendar feeds, sitemap | `scripts/generate-pages.js` → `evenements/`, `que-faire/`, `sorties/`, `ce-week-end/`, `agenda/`, `publier/`, `sitemap.xml` (all generated) |
+| Shadow comparison of legitimate sources | `scripts/compare-sources.js` (report in `reports/`, git-ignored) |
+| Workflows | `.github/workflows/daily-check.yml` (daily), `sources-compare.yml` (weekly), `translate.yml` (on demand) |
+| Frontend | `index.html` (+ `vendor/`: Leaflet and FullCalendar, self-hosted since 29/09), `widget/`, `404.html`, `sw.js` |
 | Event data (generated) | `data.json` |
-| Geocoding cache (generated) | `geocode-cache.json` |
-| Coverage workflow | `.github/workflows/datatourisme-coverage.yml` |
-| Coverage reports (generated, git-ignored) | `reports/` |
+| Hand-edited data | `overrides.json` (corrections), `venues.json` (venue gazetteer) |
+| Caches (generated, committed) | `geocode-cache.json`, `translate-cache.json`, `sources-cache.json`, `dedupe-cache.json` |
 
 ---
 
@@ -445,6 +446,8 @@ including on the days the cadence guard skips the scan, and writes plain HTML th
 | `/evenements/<titre>-<commune>-<jeton>/` | One page per upcoming event: dates, hours, place, price, age, description, organiser link, "Voir sur la carte", five other events in the same commune. schema.org `Event` markup |
 | `/que-faire/<commune>/` | "Que faire à … ?" — every upcoming event in the commune |
 | `/que-faire/` | Index of communes, linked from the footer of `index.html` (a plain link, so a crawler finds it without JavaScript) |
+| `/sorties/<thème>/` | **Since 30/09.** Seasonal pages — marchés de Noël, Noël, brame du cerf, champignons, Halloween — matched on the title. **Never deleted**: the address outlives each year's events, and out of season a short text says when to come back. Every matching event page links to its theme |
+| `/ce-week-end/` | **Since 30/09.** The coming weekend (on Sunday, the day itself), rebuilt every day: time column sorted by hour, category dots that double as a filter, "Gratuit" badge, clickable contents with sticky day headings, "En ce moment" links to the seasonal pages with dates in the next 30 days, share button. Promoted by a pill in the banner of `index.html` (« Ce week-end : N sorties → », counted live) and by a « Ce week-end » option in the Period filter |
 | `/sitemap.xml` | All of the above + the home page and `?lang=en` with their `hreflang` pair (the hand-written sitemap of 22/09 is now generated) |
 | `/404.html` | **Hand-written, not generated.** What GitHub Pages serves for a missing path — mostly a visitor arriving from a search result for an event that is over |
 
@@ -463,6 +466,8 @@ English text is machine output — not something to put in front of a search eng
   hash for `EVT_…`, `act014` for the v1 `ACT_014` records still live — and the id is kept for
   the life of a record. When the readable part changes, the old folder becomes a `noindex`
   redirect to the new one.
+- **The `<title>` leads with year and date** (since 30/09): « Melun Fête son Brie 2026 — sam. 3 oct. »
+  — the searches that click carry the year. The `<h1>` and the address do not change.
 - **Past events are deleted**, not tombstoned: `404.html` does that job for every one of them,
   with no state to keep. A multi-day event keeps its page until its last day.
 - **schema.org `Event` only for events whose link was verified** (`urlStatus: ok`, 173 of 214).
@@ -477,8 +482,11 @@ English text is machine output — not something to put in front of a search eng
   previous pages intact; the workflow step is `continue-on-error` — a page failure never blocks
   the data.
 - **The commit names its paths.** `git add -A` at the root was proposed and refused: the bot
-  publishes to `main` without review, and any stray file would go live. `-A` is used on
-  `evenements/` and `que-faire/` only, so deletions are published too.
+  publishes to `main` without review, and any stray file would go live. `-A` is used on the
+  generated folders only — `evenements/ que-faire/ sorties/ ce-week-end/ agenda/ publier/` —
+  so deletions are published too. **A new generated folder must be added to that list** in
+  `daily-check.yml`, or it is rebuilt every day and never published (caught on 30/09 for
+  `sorties/` and `ce-week-end/`).
 
 **Frontend.** Each card links to its page ("Fiche" / "Page"). `?event=<id>` — the target of the
 pages' "Voir sur la carte" — widens the period filter if needed, opens the marker and highlights
@@ -1392,8 +1400,14 @@ Gemini 113, DATAtourisme 24, OpenAgenda 21 —, 60 % de positions exactes (BAN, 
 FR/EN, PWA, boucle de signalement fermée, fiches indexées par Google et premier trafic
 organique. Comparatif des sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
 
-**Prochaine session (30/09) :** item 74 (pistes de trafic) — apporter les rapports
-« Performances » et « Pages » de la Search Console, et GoatCounter s'il est actif.
+**Fait le 30/09 :** item 74 — titres de fiches avec année et date, pages de saison `/sorties/`,
+page `/ce-week-end/` mise en avant sur l'accueil (§3.X, §7). Premier post Facebook rédigé.
+
+**Prochaine session :** (1) lire le rapport du scan du 30/09 (liste ci-dessous) ; (2) repérer
+les dates « recopiées de l'an dernier » : signaler dans le rapport les fiches Gemini dont le lien
+n'est qu'une page d'accueil et qu'aucune source légitime ne confirme — le marché de Noël de
+Fontainebleau portait les dates 2025 et rien ne l'avait vu ; (3) coût réel par scan et choix du
+modèle avant la hausse du 1er janvier 2027 (item 39).
 
 **Au prochain scan, lire dans le rapport, dans cet ordre :**
 1. La colonne « Search queries / web sources » des scans Gemini : 0 partout le 27/09 (voir
@@ -1534,7 +1548,7 @@ organique. Comparatif des sources légitimes : **69 %** (seuil de sortie du grou
     trancher explicitement avant le premier widget premium. Le passage « Outreach gate » des
     Milestones s'applique aussi : on contacte une mairie ou un office de tourisme.
 
-- [ ] **74. Trafic — pistes remises le 30/09, 1 et 2 faites.** Lu dans la Search Console (22-27/09) : 0 → 35 clics/jour en 4 jours, position moyenne 7, 87 % mobile, tout le trafic sur les fiches, recherches génériques (« que faire à Fontainebleau ») en position 46-87. **Faits** : titres avec année et date ; pages de saison `/sorties/` (§7). **Fait aussi** : (3) page `/ce-week-end/` (30/09). **Restent** : (4) posts Facebook, chef de projet — premier post rédigé le 30/09 ; (5) liens entrants (widget mairie en cours, office de tourisme, associations) ; (6) adresses stables pour les événements annuels. **À relire dans 2 à 3 semaines** : CTR de « Melun fête son Brie » et consorts, positions de `/sorties/marches-de-noel/`, rapport « Pages » (indexation). Libellé d'origine : Le site a déjà du trafic
+- [ ] **74. Trafic — pistes remises le 30/09 ; 1, 2 et 3 faites, plus la mise en avant du week-end.** Lu dans la Search Console (22-27/09) : 0 → 35 clics/jour en 4 jours, position moyenne 7, 87 % mobile, tout le trafic sur les fiches, recherches génériques (« que faire à Fontainebleau ») en position 46-87. **Faits** : titres avec année et date ; pages de saison `/sorties/` (§7). **Fait aussi** : (3) page `/ce-week-end/`, pastille dans le bandeau, option « Ce week-end » du filtre Période, filtres par catégorie sur la page (30/09). **Restent** : (4) posts Facebook, chef de projet — premier post rédigé le 30/09 ; (5) liens entrants (widget mairie en cours, office de tourisme, associations) ; (6) adresses stables pour les événements annuels. **À relire dans 2 à 3 semaines** : CTR de « Melun fête son Brie » et consorts, positions de `/sorties/marches-de-noel/`, rapport « Pages » (indexation). Libellé d'origine : Le site a déjà du trafic
   sans aucune promotion. Avant de proposer quoi que ce soit : regarder d'où il vient (GoatCounter,
   Search Console : requêtes, pages d'entrée), puis classer les pistes par effort et par rendement,
   en tenant compte de ce qui est déjà tranché (pas de démarchage avant la phase commerciale,
