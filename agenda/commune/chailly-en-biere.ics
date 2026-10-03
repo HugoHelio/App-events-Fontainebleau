@@ -11,8 +11,45 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_a0ca8b5547@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Découvrez le monde de la nuit : chauves-souris et étoiles
+LOCATION:Salle des fêtes de Chailly-en-Bière\, Chailly-en-Bière
+DESCRIPTION:Horaires : 18h30–21h\n\nTarif : Gratuit\n\nAnimation nocturne
+  consacrée à l'écoute des chiroptères et à l'observation de la voûte
+  céleste.\n\nOrganisateur : https://parc-gatinais-francais.fr/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/decouvrez-le-monde-de-la-nuit-cha
+ uves-souris-et-etoiles-chailly-en-biere-a0ca8b5547/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouvrez-le-monde-de-la-nuit-c
+ hauves-souris-et-etoiles-chailly-en-biere-a0ca8b5547/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_1289d3e348@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:La Fête du Parc naturel régional du Gâtinais français
+LOCATION:Salle Cottereau et centre-bourg\, Chailly-en-Bière
+DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nGrand rendez-vous c
+ élébrant le territoire avec marché de producteurs\, ateliers environnem
+ ent\, presseur de pommes et animations.\n\nOrganisateur : https://parc-gat
+ inais-francais.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/la-f
+ ete-du-parc-naturel-regional-du-gatinais-francais-chailly-en-biere-1289d3e
+ 348/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-fete-du-parc-naturel-regiona
+ l-du-gatinais-francais-chailly-en-biere-1289d3e348/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b73078ac9b@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Marché de Noël
@@ -30,7 +67,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce6a19556a@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Marché de Noël

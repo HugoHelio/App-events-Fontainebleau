@@ -12,17 +12,18 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_b4c2e59fdd@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Randonnée VTT La Malmontagne
 LOCATION:Salle polyvalente de Veneux-les-Sablons\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 08h–13h\n\nTarif : 7€\n\nPublic : Dès 12 ans\n\
- n26e édition de la randonnée VTT proposant 4 parcours balisés dans le m
- assif forestier de Fontainebleau.\n\nOrganisateur : https://www.moretloing
- etorvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/randonnee
- -vtt-la-malmontagne-moret-loing-et-orvanne-b4c2e59fdd/\n\nInformations col
- lectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 07h30–13h\n\nTarif : Inscription payante\n\nPublic
+  : Dès 12 ans\n\n26e édition de la randonnée VTT proposant 4 parcours b
+ alisés dans le massif forestier de Fontainebleau.\n\nOrganisateur : https
+ ://www.moretloingetorvanne.fr/\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/randonnee-vtt-la-malmontagne-moret-loing-et-orvanne-b4c2e59fdd/\n\
+ nInformations collectées automatiquement : vérifiez-les auprès de l’o
+ rganisateur.
 URL:https://fontainebleaulive.fr/evenements/randonnee-vtt-la-malmontagne-mo
  ret-loing-et-orvanne-b4c2e59fdd/
 CATEGORIES:Sport & Outdoor
@@ -44,6 +45,27 @@ DESCRIPTION:Horaires : 9h–18h\n\nTarif : Entrée libre\n\nBourse thémati
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-collectionneurs-d-oc
  tobre-rose-moret-loing-et-orvanne-26b82e4407/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_15503c4c05@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261210
+SUMMARY:Sortie nature : Découverte de la faune hivernante du Marais d'Épi
+ sy
+LOCATION:Espace Naturel Sensible du Marais d'Épisy\, Moret-Loing-et-Orvann
+ e
+DESCRIPTION:Horaires : 13h–15h\n\nTarif : Gratuit\n\nBalade guidée d'obs
+ ervation de la faune hivernale au cœur de l'Espace Naturel Sensible du Ma
+ rais d'Épisy.\n\nOrganisateur : https://moretloingetorvanne.fr/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-la-f
+ aune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-la-
+ faune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

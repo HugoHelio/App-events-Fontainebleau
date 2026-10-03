@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_5f94fae583@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261005
 SUMMARY:Une lumière toujours neuve
@@ -26,6 +26,24 @@ DESCRIPTION:Tarif : Gratuit.\n\nRendez-vous culturel intitulé Une lumière
 URL:https://fontainebleaulive.fr/evenements/une-lumiere-toujours-neuve-arbo
  nne-la-foret-5f94fae583/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3c69f2f7e7@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Explorations naturalistes du nord-est des Trois-Pignons
+LOCATION:Massif des Trois-Pignons\, Arbonne-la-Forêt
+DESCRIPTION:Horaires : 13h30–17h\n\nTarif : Gratuit\n\nExcursion guidée 
+ à travers les landes de callunes et platières gréseuses du nord-est du 
+ massif des Trois-Pignons.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\
+ nFiche : https://fontainebleaulive.fr/evenements/explorations-naturalistes
+ -du-nord-est-des-trois-pignons-arbonne-la-foret-3c69f2f7e7/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/explorations-naturalistes-du-no
+ rd-est-des-trois-pignons-arbonne-la-foret-3c69f2f7e7/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

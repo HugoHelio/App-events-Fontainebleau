@@ -11,62 +11,8 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_1792c2d0f4@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20261002
-DTEND;VALUE=DATE:20261003
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-1792c2d0f4/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-1792c2d0f4/
-CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_4ff795c5bc@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20261002
-DTEND;VALUE=DATE:20261003
-SUMMARY:Projection Manga
-LOCATION:Médiathèque Musidora\, Bois-le-Roi
-DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
- ulture/events/projection-manga\n\nFiche : https://fontainebleaulive.fr/eve
- nements/projection-manga-bois-le-roi-4ff795c5bc/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/projection-manga-bois-le-roi-4f
- f795c5bc/
-CATEGORIES:Scène & Spectacles
-GEO:48.47447;2.69105
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d82e26f9e4@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20261002
-DTEND;VALUE=DATE:20261003
-SUMMARY:Séances débats à l'Ermitage
-LOCATION:L'Ermitage\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Projections suivies de débats organisées au cinéma L'Ermitag
- e à Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
- om/fr/fiche/7557871/seances-debats-a-lermitage/\n\nFiche : https://fontain
- ebleaulive.fr/evenements/seances-debats-a-l-ermitage-fontainebleau-d82e26f
- 9e4/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/seances-debats-a-l-ermitage-fon
- tainebleau-d82e26f9e4/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_2b737517ad@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:En attendant Gurdjieff\, le dernier voyage de Katherine Mansfield
@@ -88,7 +34,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a0fda3676d@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Festival Manga
@@ -105,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ceef1b1f4@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Projection Écran autrement
@@ -123,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d72ddbdf1d@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Seul-en-scène : Y'a de la joie - Michaël Hirsch
@@ -142,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a686d516dc@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Spectacle « Embarquement immédIA »
@@ -160,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_53207faae8@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Spectacle HUMANITÉ - Soir au village
@@ -223,7 +169,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_45461b3470@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:Concert symphonique
@@ -243,7 +189,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b6e49d317@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:En attendant Gurdjieff\, le dernier voyage de Katherine Mansfield
@@ -283,7 +229,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_301f795e18@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261007
 DTEND;VALUE=DATE:20261011
 SUMMARY:23e Festival des Briardises
@@ -302,8 +248,26 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_58e5920f67@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+SUMMARY:Séances débats à l'Ermitage
+LOCATION:L'Ermitage\, Fontainebleau\, Fontainebleau
+DESCRIPTION:Projections suivies de débats organisées au cinéma L'Ermitag
+ e à Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
+ om/fr/fiche/7557871/seances-debats-a-lermitage/\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/seances-debats-a-l-ermitage-fontainebleau-58e5920
+ f67/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/seances-debats-a-l-ermitage-fon
+ tainebleau-58e5920f67/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3f27774e5a@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 SUMMARY:Apéro piano au coin du feu
@@ -322,7 +286,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_008@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261012
 SUMMARY:Concerts « Marie-Antoinette : Reine de la Musique »
@@ -340,25 +304,6 @@ URL:https://fontainebleaulive.fr/evenements/concerts-marie-antoinette-reine
  -de-la-musique-fontainebleau-act008/
 CATEGORIES:Scène & Spectacles
 GEO:48.40168;2.70086
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_e4cf468121@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261012
-SUMMARY:Les concerts de la Reine
-LOCATION:Salle de Bal\, Fontainebleau
-DESCRIPTION:Horaires : Vendredi 9 octobre à 19h30\, Dimanche 11 octobre à
-  15h\n\nTarif : 27 €\n\nOrganisateur : https://www.chateaudefontaineblea
- u.fr/marie-antoinette-et-louis-xvi-au-chateau-de-fontainebleau/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/les-concerts-de-la-reine-fontaine
- bleau-e4cf468121/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-concerts-de-la-reine-fontai
- nebleau-e4cf468121/
-CATEGORIES:Scène & Spectacles
-GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -401,7 +346,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d93384a80c@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Théâtre Le Journal de Maïa
@@ -438,7 +383,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c5047390bf@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:concert trioxymore
@@ -495,7 +440,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_da3eee5d71@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Les soirées de l'Esquisse
@@ -514,7 +459,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1a4521c35c@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Spectacle de sortie de résidence de la compagnie "Camina-e"
@@ -529,6 +474,43 @@ URL:https://fontainebleaulive.fr/evenements/spectacle-de-sortie-de-residenc
  e-de-la-compagnie-camina-e-fontainebleau-1a4521c35c/
 CATEGORIES:Scène & Spectacles
 GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_453c9d0696@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:"Brass & Bleau"
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Entrée libre. Places limitées.\n\nProfitez d'un rende
+ z-vous musical dynamique et cuivré avec l'événement Brass & Bleau à Fo
+ ntainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/f
+ iche/7957162/brass-bleau/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/brass-et-bleau-fontainebleau-453c9d0696/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/brass-et-bleau-fontainebleau-45
+ 3c9d0696/
+CATEGORIES:Scène & Spectacles
+GEO:48.40168;2.70086
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b07e4488a7@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Concert : "Les Solistes du Gâtinais"
+LOCATION:Ury\, Ury
+DESCRIPTION:Tarif : Participation libre.\n\nReprésentation musicale donné
+ e par le groupe Les Solistes du Gâtinais dans la commune d'Ury.\n\nOrgani
+ sateur : https://www.fontainebleau-tourisme.com/fr/fiche/8016419/concert-l
+ es-solistes-du-gatinais/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/concert-les-solistes-du-gatinais-ury-b07e4488a7/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-les-solistes-du-gatinai
+ s-ury-b07e4488a7/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -551,7 +533,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dcb1f8b0f8@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:"Brass & Bleau"
@@ -590,7 +572,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c45e16df11@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261026
 SUMMARY:Kino Avoblo 2026 : 72 heures pour créer un court-métrage à Avon-
@@ -611,7 +593,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_421fede1ea@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:Les soirées de l'Esquisse
@@ -650,7 +632,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7539d30755@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Apéro piano au coin du feu
@@ -689,7 +671,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c6448b6cba@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Les soirées de l'Esquisse
@@ -708,7 +690,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fd338ff387@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Les insomnies de Molière
@@ -727,7 +709,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18fff94f55@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Les insomnies de Molière
@@ -766,7 +748,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5ab487de71@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les Figurants
@@ -803,7 +785,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1aa6d80813@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Les Figurants
@@ -822,7 +804,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -841,7 +823,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac7ff8f1b7@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Festival "Ca tourne au Pays de Fontainebleau"
@@ -952,7 +934,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_988de8cc23@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Projection débat : Réinventer l'enfance
@@ -993,7 +975,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Les soirées de l'Esquisse
@@ -1012,7 +994,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_021@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Napoléon\, l'épopée immersive – Les Impériales de Fontaineble
@@ -1022,10 +1004,11 @@ LOCATION:Théâtre municipal & Ateliers de la Charité Royale\, Fontaineble
 DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nUn week-end d'animat
  ions immersives au cœur de l'histoire napoléonienne : expérience en ré
  alité virtuelle 'Napoléon'\, jeux de stratégie\, conférences et théâ
- tre.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche : https://fo
- ntainebleaulive.fr/evenements/napoleon-l-epopee-immersive-les-imperiales-d
- e-fontainebleau-act021/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+ tre.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/746
+ 4257/les-imperiales-de-fontainebleau/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/napoleon-l-epopee-immersive-les-imperiales-de-fontainebleau
+ -act021/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/napoleon-l-epopee-immersive-les
  -imperiales-de-fontainebleau-act021/
 CATEGORIES:Scène & Spectacles
@@ -1092,7 +1075,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les soirées de l'Esquisse
@@ -1129,6 +1112,26 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_412d65949f@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261127
+SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
+ ontainebleau
+LOCATION:Théâtre de Fontainebleau\, Fontainebleau
+DESCRIPTION:Festival de jazz du jeudi 26 au samedi 28 novembre\n\nOrganisat
+ eur : https://openagenda.com/lacavedujazz/events/26-au-28-novembre-festiva
+ l-django-reinhardt-jazz-au-theatre-de-fontainebleau\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/26-au-28-novembre-festival-django-reinhardt-j
+ azz-au-theatre-fontainebleau-412d65949f/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/26-au-28-novembre-festival-djan
+ go-reinhardt-jazz-au-theatre-fontainebleau-412d65949f/
+CATEGORIES:Scène & Spectacles
+GEO:48.40365;2.69883
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_e9b08ae25f@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261126
@@ -1149,23 +1152,64 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_80e3611629@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261127
+SUMMARY:Festival Jazz au Théâtre : Fanou Torracinta & Mathias Lévy Trio
+LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 20h30\n\nTarif : Dès 29 €\n\nConcert d'ouverture 
+ de l'édition automnale avec jazz manouche virtuose et hommage moderne à 
+ Stéphane Grappelli.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/festival-jazz-au-theatre-fan
+ ou-torracinta-et-mathias-levy-tr-fontainebleau-80e3611629/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/festival-jazz-au-theatre-fanou-
+ torracinta-et-mathias-levy-tr-fontainebleau-80e3611629/
+CATEGORIES:Scène & Spectacles
+GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f8dd208372@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261127
-DTEND;VALUE=DATE:20261129
-SUMMARY:Festival Jazz au Théâtre
+DTEND;VALUE=DATE:20261128
+SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
+ ontainebleau
 LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : ven. 27 nov. : 20h30 \; sam. 28 nov. : 20h30\n\nTari
  f : Payant\n\nTrois soirées d'exception célébrant le jazz actuel dans l
  e décor feutré du Théâtre à l'italienne de Fontainebleau.\n\nOrganisa
- teur : https://www.fontainebleau.fr/\n\nFiche : https://fontainebleaulive.
- fr/evenements/festival-jazz-au-theatre-fontainebleau-f8dd208372/\n\nInform
- ations collectées automatiquement : vérifiez-les auprès de l’organisa
- teur.
-URL:https://fontainebleaulive.fr/evenements/festival-jazz-au-theatre-fontai
- nebleau-f8dd208372/
+ teur : https://openagenda.com/lacavedujazz/events/26-au-28-novembre-festiv
+ al-django-reinhardt-jazz-au-theatre-de-fontainebleau\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/26-au-28-novembre-festival-django-reinhardt-
+ jazz-au-theatre-fontainebleau-f8dd208372/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/26-au-28-novembre-festival-djan
+ go-reinhardt-jazz-au-theatre-fontainebleau-f8dd208372/
 CATEGORIES:Scène & Spectacles
 GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5d4e75908f@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
+ ontainebleau
+LOCATION:Théâtre de Fontainebleau\, Fontainebleau
+DESCRIPTION:Festival de jazz du jeudi 26 au samedi 28 novembre\n\nOrganisat
+ eur : https://openagenda.com/lacavedujazz/events/26-au-28-novembre-festiva
+ l-django-reinhardt-jazz-au-theatre-de-fontainebleau\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/26-au-28-novembre-festival-django-reinhardt-j
+ azz-au-theatre-fontainebleau-5d4e75908f/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/26-au-28-novembre-festival-djan
+ go-reinhardt-jazz-au-theatre-fontainebleau-5d4e75908f/
+CATEGORIES:Scène & Spectacles
+GEO:48.40365;2.69883
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -1189,17 +1233,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_011@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël d'Avon
 LOCATION:Parvis de l'Église Saint-Pierre\, Avon
-DESCRIPTION:Horaires : 9h–20h\n\nTarif : Gratuit\n\nMarché artisanal de 
- fin d'année avec chalets de producteurs régionaux\, animations de rue\, 
- contes pour enfants et rando-marche festive de Noël.\n\nOrganisateur : ht
- tps://www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive
- .fr/evenements/marche-de-noel-d-avon-act011/\n\nInformations collectées a
- utomatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h–19h\n\nTarif : Gratuit\n\nMarché artisanal de
+  fin d'année avec chalets de producteurs régionaux\, animations de rue\,
+  contes pour enfants et rando-marche festive de Noël.\n\nOrganisateur : h
+ ttps://www.avon77.com/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ marche-de-noel-d-avon-act011/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-avon-act011/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
@@ -1224,7 +1268,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Les soirées de l'Esquisse
@@ -1267,12 +1311,12 @@ DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Opéra « La Flûte enchantée » par la compagnie Opéra 2001
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 16h\n\nTarif : Tarifs selon catégorie\n\nGrand opé
- ra féerique de Mozart présenté dans la magnifique salle à l'italienne 
- du Théâtre municipal.\n\nOrganisateur : https://www.fontainebleau.fr/\n\
- nFiche : https://fontainebleaulive.fr/evenements/opera-la-flute-enchantee-
- par-la-compagnie-opera-2001-fontainebleau-af1a49c6c7/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 17h00\n\nTarif : Payant\n\nGrand opéra féerique de
+  Mozart présenté dans la magnifique salle à l'italienne du Théâtre mu
+ nicipal.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/opera-la-flute-enchantee-par-la-compagni
+ e-opera-2001-fontainebleau-af1a49c6c7/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/opera-la-flute-enchantee-par-la
  -compagnie-opera-2001-fontainebleau-af1a49c6c7/
 CATEGORIES:Scène & Spectacles
@@ -1301,7 +1345,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -1362,7 +1406,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse
@@ -1417,6 +1461,26 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_7444455eaa@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:J'ai mangé ma fourchette
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:Un véritable spectacle saint sylvestre de music-hall conçu au
+ tour de chansons humoristiques composées par les plus grands spécialiste
+ s du genre : Bourvil\, Fernandel\, les Frères Jacques\, Boby Lapointe ou 
+ Jean Yanne… Avec la Compagnie Quand On Est Trois.\n\nOrganisateur : http
+ s://www.anevert.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/j-a
+ i-mange-ma-fourchette-fontainebleau-7444455eaa/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/j-ai-mange-ma-fourchette-fontai
+ nebleau-7444455eaa/
+CATEGORIES:Scène & Spectacles
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_63ec6f5317@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261231
@@ -1443,12 +1507,12 @@ DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Spectacle du Réveillon « Fantasmagloria »
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : Jeudi soir\n\nTarif : Tarif soirée spéciale révei
- llon\n\nSpectacle féerique de la Saint-Sylvestre au Théâtre municipal p
- our célébrer le passage au Nouvel An.\n\nOrganisateur : https://www.font
- ainebleau.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/spectacle
- -du-reveillon-fantasmagloria-fontainebleau-2005ad3717/\n\nInformations col
- lectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h30\n\nTarif : Payant\n\nSpectacle féerique de la
+  Saint-Sylvestre au Théâtre municipal pour célébrer le passage au Nouv
+ el An.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche : https://
+ fontainebleaulive.fr/evenements/spectacle-du-reveillon-fantasmagloria-font
+ ainebleau-2005ad3717/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-du-reveillon-fantasma
  gloria-fontainebleau-2005ad3717/
 CATEGORIES:Scène & Spectacles
