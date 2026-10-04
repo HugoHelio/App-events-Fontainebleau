@@ -835,6 +835,20 @@
       opacity: 0.92;
     }
 
+    /* "Vous avez un site web ?" — the free widget, for partners rather than visitors. */
+    .partner-box {
+      margin: 0.6rem 0 0.2rem;
+      padding: 0.8rem 1rem;
+      max-width: 34rem;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      color: var(--ink);
+    }
+    .partner-box p { margin: 0 0 0.35rem; }
+    .partner-box .partner-title { font-weight: 700; font-size: 0.9rem; }
+    .site-footer .partner-box a { font-weight: 700; color: var(--brand-dark); }
+
     .brand-credit {
       display: flex;
       align-items: center;
@@ -1053,8 +1067,13 @@
     <!-- Plain link, present without JavaScript: the way a crawler finds the static pages (§3.X). -->
     <p><a href="/ce-week-end/" data-i18n="weekendLink">Que faire ce week-end ?</a>
        · <a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
-       · <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a>
-       · <a href="/widget/integrer/" data-i18n="widgetLink">Intégrer l’agenda sur votre site</a></p>
+       · <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a></p>
+    <!-- For other websites, not for visitors: set apart from the outings links (04/10). -->
+    <div class="partner-box">
+      <p class="partner-title" data-i18n="partnerTitle">Vous avez un site web ?</p>
+      <p data-i18n="partnerText">Mairie, office de tourisme, club, hôtel : affichez gratuitement les prochaines sorties de votre commune ou de toute la région sur votre site.</p>
+      <a href="/widget/integrer/" data-i18n="widgetLink">Intégrer l’agenda →</a>
+    </div>
     <!-- Back to the top. href="/" is the no-JavaScript fallback: it reloads the page instead. -->
     <a href="/" id="footerHome" class="footer-home">
       <img class="footer-lockup" src="public/assets/img/brand/Icon-FL-v1ST-512-512.png"
@@ -1128,7 +1147,9 @@
         subHint: 'Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules (Google peut mettre jusqu’à un jour). Pour Google, passez par un ordinateur. Les expositions de plus d’une semaine n’y figurent pas, elles restent sur le site.',
         subFollowsFilter: 'L’agenda suit le filtre Ville, sinon le type d’événements.',
         subUnavailable: 'Agenda momentanément indisponible.',
-        widgetLink: 'Intégrer l’agenda sur votre site',
+        widgetLink: 'Intégrer l’agenda →',
+        partnerTitle: 'Vous avez un site web ?',
+        partnerText: 'Mairie, office de tourisme, club, hôtel : affichez gratuitement les prochaines sorties de votre commune ou de toute la région sur votre site.',
         horizonToday: "Aujourd'hui",
         horizonWeekend: 'Ce week-end',
         weekendPill: (n, sunday) => `${sunday ? 'Aujourd’hui' : 'Ce week-end'} : ${n} sortie${n > 1 ? 's' : ''} →`,
@@ -1210,7 +1231,9 @@
         subHint: 'A subscription: events are added to your calendar and update by themselves (Google can take up to a day). For Google, use a computer. Exhibitions longer than a week are left out; they stay on the site. Event details are in French.',
         subFollowsFilter: 'The calendar follows the Town filter, otherwise the event type.',
         subUnavailable: 'Calendar temporarily unavailable.',
-        widgetLink: 'Add this calendar to your website',
+        widgetLink: 'Embed the calendar →',
+        partnerTitle: 'Have a website?',
+        partnerText: 'Town hall, tourist office, club, hotel: show the upcoming outings of your town, or of the whole area, on your site, free of charge.',
         horizonToday: 'Today',
         horizonWeekend: 'This weekend',
         weekendPill: (n, sunday) => `${sunday ? 'Today' : 'This weekend'}: ${n} outing${n > 1 ? 's' : ''} →`,
