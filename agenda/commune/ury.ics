@@ -11,8 +11,27 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_3a81e47387@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261007
+SUMMARY:Chevauchée nocturne pour le brame du cerf
+LOCATION:Écuries Des Sabots dans la Forêt\, Ury
+DESCRIPTION:Horaires : 19h30–22h00\n\nTarif : 80 €\n\nPublic : Dès 12 
+ ans\n\nSortie équestre nocturne guidée en lisière de forêt pour vivre 
+ l'expérience sonore saisissante du brame des cerfs.\n\nOrganisateur : htt
+ ps://www.dessabotsdanslaforet.com/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/chevauchee-nocturne-pour-le-brame-du-cerf-ury-3a81e47387/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
+URL:https://fontainebleaulive.fr/evenements/chevauchee-nocturne-pour-le-bra
+ me-du-cerf-ury-3a81e47387/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_45461b3470@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:Concert symphonique
@@ -26,6 +45,43 @@ DESCRIPTION:Tarif : Plein tarif : de 15 à 20 €\, Tarif réduit : de 12
  ur.
 URL:https://fontainebleaulive.fr/evenements/concert-symphonique-ury-45461b3
  470/
+CATEGORIES:Scène & Spectacles
+GEO:48.34418;2.6029
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b07e4488a7@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Concert : "Les Solistes du Gâtinais"
+LOCATION:Ury\, Ury
+DESCRIPTION:Tarif : Participation libre.\n\nReprésentation musicale donné
+ e par le groupe Les Solistes du Gâtinais dans la commune d'Ury.\n\nOrgani
+ sateur : https://www.fontainebleau-tourisme.com/fr/fiche/8016419/concert-l
+ es-solistes-du-gatinais/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/concert-les-solistes-du-gatinais-ury-b07e4488a7/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-les-solistes-du-gatinai
+ s-ury-b07e4488a7/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_aac3f2bc97@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Concert de musique baroque
+LOCATION:Ury
+DESCRIPTION:Tarif : Tarif unique : Le nombre de places est limité\, la ré
+ srveation nécessaire sur le…\n\nConcert de musique baroque donné à Ur
+ y.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79260
+ 09/concert-de-musique-baroque/\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/concert-de-musique-baroque-ury-aac3f2bc97/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-de-musique-baroque-ury-
+ aac3f2bc97/
 CATEGORIES:Scène & Spectacles
 GEO:48.34418;2.6029
 TRANSP:TRANSPARENT

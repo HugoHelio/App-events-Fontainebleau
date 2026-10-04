@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Livry-sur-Seine · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_ac726e0c39@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Les 10 Bornes de Livry
+LOCATION:Place Mouton\, Livry-sur-Seine
+DESCRIPTION:Horaires : 09h30–12h\n\nTarif : 10€\n\nPublic : Dès 10 ans
+ \n\nÉpreuves de course nature (10 km\, 3 km\, 1 km) et marche nordique au
+  bord de la Seine.\n\nOrganisateur : https://protiming.fr/\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/les-10-bornes-de-livry-livry-sur-seine
+ -ac726e0c39/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-10-bornes-de-livry-livry-su
+ r-seine-ac726e0c39/
+CATEGORIES:Sport & Outdoor
+GEO:48.51241;2.69174
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

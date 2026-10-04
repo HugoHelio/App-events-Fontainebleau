@@ -11,21 +11,20 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_8f80d60f35@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261003
-DTEND;VALUE=DATE:20261004
-SUMMARY:Melun Fête son Brie
-LOCATION:Place Saint-Jean\, Melun
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nGrande fête gourman
- de mettant à l'honneur le Brie de Melun avec dégustations\, marchés loc
- aux et ateliers ludiques.\n\nOrganisateur : https://www.melun.fr/\n\nFiche
-  : https://fontainebleaulive.fr/evenements/melun-fete-son-brie-8f80d60f35/
- \n\nInformations collectées automatiquement : vérifiez-les auprès de l
- ’organisateur.
-URL:https://fontainebleaulive.fr/evenements/melun-fete-son-brie-8f80d60f35/
+UID:EVT_c61999a3bd@fontainebleaulive.fr
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Exposition Filante
+LOCATION:Médiathèque Astrolabe\, Melun
+DESCRIPTION:Biblis en folie 2026\n\nOrganisateur : https://openagenda.com/c
+ ulture/events/exposition-filante\n\nFiche : https://fontainebleaulive.fr/e
+ venements/exposition-filante-melun-c61999a3bd/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-filante-melun-c61999
+ a3bd/
 CATEGORIES:Culture & Ateliers
-GEO:48.53924;2.66264
+GEO:48.53708;2.65497
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -85,7 +84,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets

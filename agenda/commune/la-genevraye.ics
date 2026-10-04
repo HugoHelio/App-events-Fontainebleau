@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:La Genevraye · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_d59328605e@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Prix de la Sainte-Charlotte - Course Cycliste
+LOCATION:Centre-bourg et routes de la commune\, La Genevraye
+DESCRIPTION:Horaires : 13h30–18h\n\nTarif : Gratuit\n\nPublic : Dès 17 a
+ ns\n\nCourse cycliste FFC catégorie Access sur circuit fermé autour de L
+ a Genevraye.\n\nOrganisateur : https://cif-ffc.fr/\n\nFiche : https://font
+ ainebleaulive.fr/evenements/prix-de-la-sainte-charlotte-course-cycliste-la
+ -genevraye-d59328605e/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/prix-de-la-sainte-charlotte-cou
+ rse-cycliste-la-genevraye-d59328605e/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

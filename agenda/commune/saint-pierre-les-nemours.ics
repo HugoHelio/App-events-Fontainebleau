@@ -11,41 +11,39 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_53207faae8@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261003
-DTEND;VALUE=DATE:20261004
-SUMMARY:Spectacle HUMANITÉ - Soir au village
-LOCATION:46 Av. D'Ormesson Lab'Oratoire du Label ART ACTION\, Saint-Pierre-
- lès-Nemours
-DESCRIPTION:Conte théâtralisé et musical - Exposition d'instruments trad
- itionnels\n\nOrganisateur : https://lesjourneesnationalesdesartistes.fr/si
- te/jna2026/?_recherche_dartiste_ou_dvnement=ART+ACTION&utm_source=chatgpt.
- com%3C%3Ehttps://www.helloasso.com/associations/art-action-77/evenements/s
- pectacle-humanite\n\nFiche : https://fontainebleaulive.fr/evenements/spect
- acle-humanite-soir-au-village-saint-pierre-les-nemours-53207faae8/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/spectacle-humanite-soir-au-vill
- age-saint-pierre-les-nemours-53207faae8/
-CATEGORIES:Scène & Spectacles
-GEO:48.25993;2.68508
+UID:EVT_490223cb69@fontainebleaulive.fr
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Régionale Longue Distance de Course d'Orientation
+LOCATION:Forêt de Nemours\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Horaires : 09h30–14h\n\nTarif : 10€\n\nPublic : Dès 7 ans\
+ n\nCompétition régionale de course d'orientation en forêt de Nemours av
+ ec des circuits adaptés à tous les niveaux.\n\nOrganisateur : https://ba
+ lise77.com/\n\nFiche : https://fontainebleaulive.fr/evenements/regionale-l
+ ongue-distance-de-course-d-orientation-saint-pierre-les-nemours-490223cb69
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/regionale-longue-distance-de-co
+ urse-d-orientation-saint-pierre-les-nemours-490223cb69/
+CATEGORIES:Sport & Outdoor
+GEO:48.27046;2.67503
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08cc124fed@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Cross de Nemours
 LOCATION:Stade Jacques Moulin\, Saint-Pierre-lès-Nemours
-DESCRIPTION:Horaires : 09h–16h\n\nTarif : Gratuit (scolaires) / Payant\n\
- nPublic : Dès 6 ans\n\nÉpreuve officielle de cross-country organisée so
- us l'égide du Comité Départemental d'Athlétisme de Seine-et-Marne.\n\n
- Organisateur : https://athle-nemours-saint-pierre.com/\n\nFiche : https://
- fontainebleaulive.fr/evenements/cross-de-nemours-saint-pierre-les-nemours-
- 08cc124fed/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
+DESCRIPTION:Horaires : 09h–13h\n\nTarif : Gratuit spectateurs\n\nPublic :
+  Dès 6 ans\n\nÉpreuve officielle de cross-country organisée sous l'égi
+ de du Comité Départemental d'Athlétisme de Seine-et-Marne.\n\nOrganisat
+ eur : https://athle-nemours-saint-pierre.com/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/cross-de-nemours-saint-pierre-les-nemours-08cc124fe
+ d/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cross-de-nemours-saint-pierre-l
  es-nemours-08cc124fed/
 CATEGORIES:Sport & Outdoor
