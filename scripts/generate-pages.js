@@ -651,6 +651,8 @@ const WEEKEND_STYLE = `
 .legend .f[aria-pressed="true"]{border-color:var(--ink);background:#e6efe9;color:var(--ink);font-weight:600}
 .legend .f:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
 .legend .dot{margin-right:6px}
+.legend .f-free{margin-left:6px}
+.legend .f-free[aria-pressed="true"]{border-color:#3d5d1d;background:#ecf3e0;color:#3d5d1d}
 .filtered-out{display:none!important}
 h2.day{position:sticky;top:0;z-index:1;background:var(--bg);padding:10px 0 6px;margin-top:24px}
 ul.agenda li{display:grid;grid-template-columns:6.2rem 1fr;gap:4px 12px;align-items:baseline}
@@ -673,30 +675,45 @@ const endOf = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
 
 // One line per outing: time on the left (bold), then a category dot, the title, a "Gratuit"
 // badge when the price says so, and the place. Plain list underneath, so it reads without CSS.
-const agendaItem = (e, note = '') => `<li class="ev" data-cat="${CAT_CLASS[e.category] || ''}"><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}${note ? ` · ${esc(note)}` : ''}</small></div></li>`;
-const daySection = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? (e) => eventItem(e).replace('<li>', `<li data-cat="${CAT_CLASS[e.category] || ''}">`) : (e) => agendaItem(e, s.note ? s.note(e) : '')).join('')}</ul>`;
+const freeAttr = (e) => (isFree(e) ? ' data-free="1"' : '');
+const agendaItem = (e, note = '') => `<li class="ev" data-cat="${CAT_CLASS[e.category] || ''}"${freeAttr(e)}><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}${note ? ` · ${esc(note)}` : ''}</small></div></li>`;
+const daySection = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? (e) => eventItem(e).replace('<li>', `<li data-cat="${CAT_CLASS[e.category] || ''}"${freeAttr(e)}>`) : (e) => agendaItem(e, s.note ? s.note(e) : '')).join('')}</ul>`;
 
-const LEGEND = `<div class="legend" role="group" aria-label="Filtrer par type"><button type="button" class="f" data-cat="" aria-pressed="true">Tous</button>${[['c-sport', 'Sport'], ['c-nature', 'Nature'], ['c-scene', 'Spectacles'], ['c-culture', 'Culture']].map(([c, l]) => `<button type="button" class="f" data-cat="${c}" aria-pressed="false"><span class="dot ${c}"></span>${l}</button>`).join('')}</div>`;
+// "Gratuit" (item 77) is a switch of its own: it combines with a category instead of replacing it.
+const LEGEND = `<div class="legend" role="group" aria-label="Filtrer par type"><button type="button" class="f" data-cat="" aria-pressed="true">Tous</button>${[['c-sport', 'Sport'], ['c-nature', 'Nature'], ['c-scene', 'Spectacles'], ['c-culture', 'Culture']].map(([c, l]) => `<button type="button" class="f" data-cat="${c}" aria-pressed="false"><span class="dot ${c}"></span>${l}</button>`).join('')}<button type="button" class="f f-free" aria-pressed="false">Gratuit</button></div>`;
 
 const FILTER_SCRIPT = `(function () {
-  // Category filter: the legend's buttons. A section left empty disappears, and so does its
-  // link in the contents. Without JavaScript the buttons stay a legend and everything is shown.
-  var buttons = document.querySelectorAll('.legend .f');
-  Array.prototype.forEach.call(buttons, function (btn) {
+  // Category filter: the legend's buttons, plus the "Gratuit" switch that combines with them.
+  // A section left empty disappears, and so does its link in the contents. Without JavaScript
+  // the buttons stay a legend and everything is shown.
+  var cat = '', free = false;
+  var cats = document.querySelectorAll('.legend .f[data-cat]');
+  var frees = document.querySelectorAll('.legend .f-free');
+  function apply() {
+    Array.prototype.forEach.call(document.querySelectorAll('li[data-cat]'), function (li) {
+      li.classList.toggle('filtered-out', (!!cat && li.getAttribute('data-cat') !== cat) || (free && li.getAttribute('data-free') !== '1'));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('h2.day'), function (h) {
+      var list = h.nextElementSibling;
+      var empty = !list.querySelector('li[data-cat]:not(.filtered-out)');
+      h.classList.toggle('filtered-out', empty);
+      list.classList.toggle('filtered-out', empty);
+      var link = document.querySelector('.toc a[href="#' + h.id + '"]');
+      if (link) link.classList.toggle('filtered-out', empty);
+    });
+  }
+  Array.prototype.forEach.call(cats, function (btn) {
     btn.addEventListener('click', function () {
-      var cat = btn.getAttribute('data-cat');
-      Array.prototype.forEach.call(buttons, function (x) { x.setAttribute('aria-pressed', String(x === btn)); });
-      Array.prototype.forEach.call(document.querySelectorAll('li[data-cat]'), function (li) {
-        li.classList.toggle('filtered-out', !!cat && li.getAttribute('data-cat') !== cat);
-      });
-      Array.prototype.forEach.call(document.querySelectorAll('h2.day'), function (h) {
-        var list = h.nextElementSibling;
-        var empty = !list.querySelector('li[data-cat]:not(.filtered-out)');
-        h.classList.toggle('filtered-out', empty);
-        list.classList.toggle('filtered-out', empty);
-        var link = document.querySelector('.toc a[href="#' + h.id + '"]');
-        if (link) link.classList.toggle('filtered-out', empty);
-      });
+      cat = btn.getAttribute('data-cat');
+      Array.prototype.forEach.call(cats, function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-cat') === cat)); });
+      apply();
+    });
+  });
+  Array.prototype.forEach.call(frees, function (btn) {
+    btn.addEventListener('click', function () {
+      free = !free;
+      Array.prototype.forEach.call(frees, function (x) { x.setAttribute('aria-pressed', String(free)); });
+      apply();
     });
   });
 })();`;
@@ -856,6 +873,25 @@ const shareScript = (url, title) => `(function () {
   });
 })();`;
 
+/**
+ * "À ne pas manquer" (item 77): a written rule, not a taste. Eligible: a legitimate source
+ * (organiser's site, DATAtourisme, OpenAgenda — never Gemini alone, whose dates were once copied
+ * from the year before), a verified link, four days at most. Ranked: seasonal outing (/sorties/),
+ * then a big date by its title, then the longest. Promoting a wrong date is worse than none.
+ */
+const PICKS_MAX = 4;
+const BIG_DATE = /\b(fetes?|festivals?|salons?|foires?|marches?|concours|brocantes?|vide-greniers?)\b/;
+
+function picksOf(list) {
+  const score = (e) => [themesOf(e).length ? 0 : 1, BIG_DATE.test(themeKey(e.title)) ? 0 : 1, -spanDays(e)];
+  return list
+    .filter((e) => e.source && e.urlStatus === 'ok' && spanDays(e) <= 4)
+    .map((e) => ({ e, k: score(e) }))
+    .sort((a, b) => a.k[0] - b.k[0] || a.k[1] - b.k[1] || a.k[2] - b.k[2] || a.e.title.localeCompare(b.e.title, 'fr'))
+    .slice(0, PICKS_MAX)
+    .map(({ e }) => e);
+}
+
 function weekendPage(events, today) {
   const { sat, sun } = weekendOf(today);
   const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
@@ -871,12 +907,25 @@ function weekendPage(events, today) {
 
   const cap = (s) => s[0].toUpperCase() + s.slice(1);
   const satLabel = dayName(sat), sunLabel = dayName(sun);
+  const dayWord = (e) => (today === sun ? '' : on(sat)(e) && on(sun)(e) ? 'samedi et dimanche' : on(sat)(e) ? 'samedi' : 'dimanche');
+  const picks = picksOf(today === sun ? sunOnly : short);
+
+  // On Sunday the page shows the day itself: the next weekend follows, so the page still has
+  // something to offer on Sunday evening.
+  const next = today === sun ? weekendOf(addDays(today, 1)) : null;
+  const firstDay = (e) => (e.startDate > next.sat ? e.startDate : next.sat);
+  const nextList = next ? events.filter((e) => e.startDate <= next.sun && end(e) >= next.sat && spanDays(e) <= FEED_MAX_DAYS)
+    .sort((a, b) => firstDay(a).localeCompare(firstDay(b)) || byTime(a, b)) : [];
+  const nextWord = (e) => (on(next.sat)(e) && on(next.sun)(e) ? 'samedi et dimanche' : on(next.sat)(e) ? 'samedi' : 'dimanche');
+
   const sections = [
+    { id: 'a-ne-pas-manquer', nav: 'À ne pas manquer', h: 'À ne pas manquer', list: picks, note: dayWord },
     { id: 'tout-le-week-end', nav: 'Tout le week-end', h: 'Tout le week-end', list: both },
     { id: 'samedi', nav: 'Samedi', h: cap(satLabel), list: satOnly },
     { id: 'dimanche', nav: today === sun ? 'Aujourd’hui' : 'Dimanche', h: today === sun ? `Aujourd’hui, ${sunLabel}` : cap(sunLabel), list: sunOnly },
   ].filter((s) => s.list.length);
   if (long.length) sections.push({ id: 'expositions', nav: 'Expositions', h: 'Expositions et visites en cours', list: long, long: true });
+  if (nextList.length) sections.push({ id: 'week-end-prochain', nav: 'Week-end prochain', h: `Le week-end prochain : ${next.sat.slice(5, 7) === next.sun.slice(5, 7) ? dayName(next.sat).replace(/ \S+$/, '') : dayName(next.sat)} et ${dayName(next.sun)}`, list: nextList, note: nextWord });
 
   const range = first(`${sat.slice(8, 10).replace(/^0/, '')}${sat.slice(5, 7) === sun.slice(5, 7) ? '' : ` ${frDate(sat).split(' ')[2]}`}-${frDate(sun).split(' ').slice(1).join(' ')}`);
   const n = short.length;
@@ -890,7 +939,7 @@ function weekendPage(events, today) {
 <p>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
 ${nowHtml(now)}
 ${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
-${n ? LEGEND : ''}
+${n || nextList.length ? LEGEND : ''}
 ${sections.map(daySection).join('\n')}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/">Aujourd’hui</a> `}<a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText)}
