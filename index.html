@@ -160,7 +160,16 @@
     }
 
     @media (max-width: 560px) {
-      .brand-mark { width: 48px; height: 48px; border-radius: 11px; }
+      /* 04/10: the mark leaves the text column and sits small in the top-left corner, level
+         with the language switch, so the text below gets the whole width of the screen. */
+      .brand-mark {
+        position: absolute;
+        top: 0.7rem;
+        left: 1rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+      }
       /* The language switch sits above the content at this width (header gains 3rem of top
          padding below), so the 6rem reserved beside it is dead space — a quarter of a 360px
          screen, taken from the one line that cannot wrap: "Fontainebleau". */
@@ -215,8 +224,8 @@
       white-space: nowrap;
     }
     @media (max-width: 560px) {
-      /* Still one line on a 360px phone beside the 48px mark. */
-      header .tagline { font-size: clamp(0.72rem, 3.6vw, 0.95rem); }
+      /* Still one line on a 360px phone. */
+      header .tagline { font-size: clamp(0.78rem, 3.9vw, 0.95rem); }
     }
 
     /* One small segmented control, not two separate buttons. */
@@ -330,6 +339,10 @@
     .season-chip b { font-weight: 600; opacity: 0.7; margin-left: 0.25rem; }
     .season-chip:hover { background: rgba(255, 255, 255, 0.12); }
     .season-chip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    @media (max-width: 560px) {
+      .season-row { gap: 0.3rem; margin-top: 0.5rem; font-size: 0.74rem; }
+      .season-chip { padding: 0.1rem 0.55rem; }
+    }
 
     .last-updated.stale {
       background: #fefcbf;
@@ -383,6 +396,77 @@
     .filter-group select:focus {
       outline: 2px solid var(--accent);
       outline-offset: 1px;
+    }
+
+    /* "Gratuit" (04/10): an on/off switch rather than a two-option list. A real checkbox, so
+       it works with the keyboard and reads as a switch to screen readers (role="switch"). */
+    .free-toggle {
+      flex: 0 0 auto;
+      align-self: flex-end;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      user-select: none;
+    }
+    .free-toggle input {
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      flex-shrink: 0;
+      width: 2.4rem;
+      height: 1.35rem;
+      margin: 0;
+      border-radius: var(--r-pill);
+      background: var(--line);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .free-toggle input::before {
+      content: "";
+      position: absolute;
+      top: 0.15rem;
+      left: 0.15rem;
+      width: 1.05rem;
+      height: 1.05rem;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s;
+    }
+    .free-toggle input:checked { background: var(--ink); }
+    .free-toggle input:checked::before { transform: translateX(1.05rem); }
+    @media (prefers-reduced-motion: reduce) {
+      .free-toggle input, .free-toggle input::before { transition: none; }
+    }
+
+    /* Phones (04/10): two columns of two, the switch on its own short row. The five filters
+       stacked filled the whole first screen; now the map starts on it. */
+    @media (max-width: 560px) {
+      .filters-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem 0.7rem;
+        padding: 0.75rem;
+      }
+      .filter-group { min-width: 0; gap: 0.15rem; }
+      .filter-group label { font-size: 0.75rem; }
+      .filter-group input,
+      .filter-group select {
+        width: 100%;
+        min-width: 0;
+        padding: 0.4rem 0.45rem;
+        font-size: 0.85rem;
+      }
+      .free-toggle { grid-column: 1 / -1; justify-self: start; padding: 0.1rem 0; font-size: 0.85rem; }
+    }
+    /* iOS zooms the page on any field under 16px when it is tapped, and stays zoomed. */
+    @supports (-webkit-touch-callout: none) {
+      .filter-group input, .filter-group select { font-size: 16px; }
     }
 
     /* View Switcher Tabs */
@@ -1007,13 +1091,10 @@
       </select>
     </div>
 
-    <div class="filter-group">
-      <label for="filterPrice" data-i18n="priceLabel">Prix :</label>
-      <select id="filterPrice">
-        <option value="" data-i18n="priceAll">Tous les prix</option>
-        <option value="free" data-i18n="priceFree">Gratuit</option>
-      </select>
-    </div>
+    <label class="free-toggle">
+      <input type="checkbox" id="filterFree" role="switch">
+      <span data-i18n="priceFree">Gratuit uniquement</span>
+    </label>
   </div>
 
   <!-- Commutateur de vues -->
@@ -1143,9 +1224,7 @@
         horizonLabel: 'Période :',
         cityLabel: 'Ville :',
         cityAll: 'Toutes les villes',
-        priceLabel: 'Prix :',
-        priceAll: 'Tous les prix',
-        priceFree: 'Gratuit',
+        priceFree: 'Gratuit uniquement',
         subscribeBtn: 'Ajouter à mon agenda',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
         subTitleCity: (c) => `Les activités à ${c}`,
@@ -1230,9 +1309,7 @@
         horizonLabel: 'Period:',
         cityLabel: 'Town:',
         cityAll: 'All towns',
-        priceLabel: 'Price:',
-        priceAll: 'Any price',
-        priceFree: 'Free',
+        priceFree: 'Free only',
         subscribeBtn: 'Add to my calendar',
         subTitleAll: 'Everything on around Fontainebleau',
         subTitleCity: (c) => `What’s on in ${c}`,
@@ -1730,7 +1807,7 @@
       document.getElementById('filterCategory').value = '';
       document.getElementById('filterCity').value = '';
       document.getElementById('filterDate').value = '';
-      document.getElementById('filterPrice').value = '';
+      document.getElementById('filterFree').checked = false;
       document.getElementById('filterHorizon').value = '2weeks';
       applyFilters();
     }
@@ -1785,7 +1862,7 @@
         document.getElementById('filterCategory').value = '';
         document.getElementById('filterCity').value = '';
         document.getElementById('filterDate').value = '';
-        document.getElementById('filterPrice').value = '';
+        document.getElementById('filterFree').checked = false;
         document.getElementById('filterHorizon').value = '3months';
         applyFilters();
       }
@@ -1862,7 +1939,7 @@
 
       // Écouteurs sur les filtres
       for (const [id, name] of [['filterCategory', 'filter-category'],
-        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period'], ['filterCity', 'filter-city'], ['filterPrice', 'filter-price']]) {
+        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period'], ['filterCity', 'filter-city']]) {
         document.getElementById(id).addEventListener('change', (e) => {
           // The value of a <select> is a fixed enum, never free text — nothing personal here
           // (the town list is built from data.json, not typed by the visitor).
@@ -1872,6 +1949,10 @@
           if (id === 'filterCity') clearSelection();
         });
       }
+      document.getElementById('filterFree').addEventListener('change', (e) => {
+        track('filter-price', e.target.checked ? 'free' : 'all');
+        applyFilters();
+      });
       document.querySelectorAll('.lang-btn').forEach((btn) => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
@@ -1996,7 +2077,7 @@
     function applyFilters() {
       const catVal = document.getElementById('filterCategory').value;
       const cityVal = document.getElementById('filterCity').value;
-      const freeOnly = document.getElementById('filterPrice').value === 'free';
+      const freeOnly = document.getElementById('filterFree').checked;
       const dateVal = document.getElementById('filterDate').value;
       // A specific date is a deliberate, narrower request: it overrides the period rather than
       // intersecting with it, so picking a date outside the period cannot return an empty list.
