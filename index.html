@@ -483,9 +483,6 @@
         grid-template-columns: 1fr;
         height: auto;
       }
-      #map {
-        height: 350px;
-      }
     }
 
     .map-wrap {
@@ -529,6 +526,70 @@
       flex-direction: column;
       gap: 1rem;
       padding-right: 0.5rem;
+    }
+
+    /* Mobile (item 75): one scroll for the whole page. The list was a 600px scroller of its own
+       under a 400px map that took every one-finger swipe, so only the thin margin between them
+       scrolled the page. Now the list grows in the page and the map is short enough to scroll
+       past. After the base rules on purpose: it must win over their min-heights. */
+    @media (max-width: 768px) {
+      .map-wrap { min-height: 0; }
+      #map { height: 45vh; min-height: 260px; max-height: 380px; }
+      .cards-list { max-height: none; overflow: visible; padding-right: 0; }
+    }
+
+    /* Shown when one finger swipes the map on a touch screen: that swipe scrolls the page. */
+    .map-hint {
+      position: absolute;
+      inset: 0;
+      z-index: 1002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: var(--r-lg);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .map-hint.is-visible { opacity: 1; }
+
+    .to-top {
+      display: none;
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1100;
+      width: 44px;
+      height: 44px;
+      font: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--ink);
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      box-shadow: var(--shadow-md);
+    }
+
+    @media (max-width: 768px) {
+      .to-top.is-visible { display: block; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { .map-hint { transition: none; } }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
     }
 
     /* Cards */
@@ -802,6 +863,21 @@
 
     .state-btn:hover { background: var(--brand); }
 
+    .show-more {
+      align-self: center;
+      font: inherit;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      color: var(--ink);
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--r-pill);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .show-more:hover { border-color: var(--ink); }
+
     .event-count {
       font-size: 0.95rem;
       font-weight: 700;
@@ -910,6 +986,7 @@
         <div class="map-wrap">
           <div id="map"></div>
           <button type="button" id="resetView" class="reset-view" data-i18n="resetView" title="Échap">Tout afficher</button>
+          <div id="mapHint" class="map-hint" aria-hidden="true" data-i18n="mapHint">Utilisez deux doigts pour déplacer la carte</div>
         </div>
         <div id="cardsList" class="cards-list" role="region" aria-live="polite" aria-label="Résultats / Results"></div>
       </div>
@@ -937,6 +1014,8 @@
       <div id="subscribePanel" class="subscribe-panel" hidden></div>
     </div>
   </main>
+
+  <button type="button" id="toTop" class="to-top"><span aria-hidden="true">↑</span><span class="sr-only" data-i18n="toTop">Haut de page</span></button>
 
   <footer class="site-footer">
     <p id="eventCount" class="event-count"></p>
@@ -1064,6 +1143,8 @@
         mailBodyGeneral: 'Votre message :\n',
         installHint: 'Sur mobile : « Ajouter à l\u2019écran d\u2019accueil » pour retrouver le site comme une application, même hors connexion.',
         resetView: 'Tout afficher',
+        mapHint: 'Utilisez deux doigts pour déplacer la carte',
+        toTop: 'Haut de page',
         eventsHere: (n) => `${n} événements à cet endroit`,
         andMore: (n) => `… et ${n} autre${n > 1 ? 's' : ''}`,
         eventCount: (n) => `${n} événement${n > 1 ? 's' : ''} répertorié${n > 1 ? 's' : ''} pour les trois prochains mois`,
@@ -1072,6 +1153,7 @@
         retry: 'Réessayer',
         resetFilters: 'Réinitialiser les filtres',
         noResultsHint: 'Essayez une période plus large ou une autre catégorie.',
+        showMore: (n, left) => `Afficher ${n} de plus (${left} restante${left > 1 ? 's' : ''})`,
         viaOpenData: 'via l’open data DATAtourisme',
       },
       en: {
@@ -1142,6 +1224,8 @@
         mailBodyGeneral: 'Your message:\n',
         installHint: 'On mobile: "Add to Home Screen" to keep the site like an app, and to open it offline.',
         resetView: 'Show all',
+        mapHint: 'Use two fingers to move the map',
+        toTop: 'Back to top',
         eventsHere: (n) => `${n} events at this spot`,
         andMore: (n) => `… and ${n} more`,
         eventCount: (n) => `${n} event${n > 1 ? 's' : ''} listed for the next three months`,
@@ -1150,6 +1234,7 @@
         retry: 'Try again',
         resetFilters: 'Reset filters',
         noResultsHint: 'Try a wider period, or another category.',
+        showMore: (n, left) => `Show ${n} more (${left} left)`,
         viaOpenData: 'via DATAtourisme open data',
       },
     };
@@ -1560,6 +1645,7 @@
 
     /** Marker clicked: bring the matching card into view in the list beside it. */
     function focusCard(id) {
+      ensureCard(id);
       highlightCards([id]);
       const card = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
       if (card) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -1688,9 +1774,14 @@
       // The footer logo returns to the top without reloading: filters and selection are kept.
       document.getElementById('footerHome').addEventListener('click', (e) => {
         e.preventDefault();
-        const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+        scrollToTop();
       });
+      // Phones only (CSS): with the list now part of the page, the way back up is long.
+      const toTop = document.getElementById('toTop');
+      toTop.addEventListener('click', scrollToTop);
+      window.addEventListener('scroll', () => {
+        toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 1.5);
+      }, { passive: true });
       document.getElementById('subscribeBtn').addEventListener('click', toggleSubscribe);
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') clearSelection();
@@ -1702,7 +1793,13 @@
       // A library that failed to load costs its own view, never the event list: without this
       // guard the throw here stopped fetchData() from ever running.
       if (typeof L === 'undefined') return;
-      map = L.map('map').setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
+      // Item 75: on a phone, one finger scrolls the page and two fingers move the map (the pinch
+      // pans as it zooms). Without dragging, Leaflet's CSS leaves the container on touch-action:
+      // pan-x pan-y, so the browser scrolls the page itself. A touchscreen laptop reports a fine
+      // pointer and keeps ordinary dragging.
+      const touchFirst = window.matchMedia('(pointer: coarse)').matches;
+      map = L.map('map', { dragging: !touchFirst }).setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
+      if (touchFirst) initMapHint();
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
@@ -1720,6 +1817,39 @@
         const item = e.target.closest('.popup-item');
         if (item) focusCard(item.dataset.eventId);
       });
+    }
+
+    /**
+     * "Use two fingers": shown on a one-finger swipe that is mostly sideways — someone trying to
+     * move the map. A vertical swipe is someone scrolling the page past it, and an overlay
+     * flashing on every scroll would be the new annoyance.
+     */
+    function initMapHint() {
+      const el = document.getElementById('map');
+      const hint = document.getElementById('mapHint');
+      let timer = 0;
+      let x0 = null, y0 = 0;
+      const hide = () => { clearTimeout(timer); hint.classList.remove('is-visible'); };
+      el.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }
+        else { x0 = null; hide(); }
+      }, { passive: true });
+      el.addEventListener('touchmove', (e) => {
+        if (x0 === null || e.touches.length !== 1) return;
+        const dx = Math.abs(e.touches[0].clientX - x0), dy = Math.abs(e.touches[0].clientY - y0);
+        if (dx < 24 || dx < dy) return;
+        hint.classList.add('is-visible');
+        clearTimeout(timer);
+        timer = setTimeout(hide, 1500);
+      }, { passive: true });
+    }
+
+    /** True when the list sits beside the map with its own scrollbar (wide screens). */
+    const listBesideMap = () => window.matchMedia('(min-width: 769px)').matches;
+
+    function scrollToTop() {
+      const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
     }
 
     // Chargement des données JSON
@@ -1887,9 +2017,23 @@
     }
 
     // Rendu des cartes HTML
+    // Item 75: cards come 20 at a time. Two weeks hold ~130 events, and on a phone, where the
+    // list is part of the page, that was ~46,000 px to scroll before the footer.
+    const PAGE_SIZE = 20;
+    let listItems = [];   // the filtered events, in display order
+    let listShown = 0;    // how many of them have a card
+    let showMoreBtn = null;
+
     function renderCards(activities) {
       const container = document.getElementById('cardsList');
       container.innerHTML = '';
+      // Same events as before (a language switch, a filter set back to its value): keep what the
+      // visitor had already opened instead of folding the list back to 20.
+      const sameList = activities.length === listItems.length && activities.every((a, i) => a === listItems[i]);
+      const keep = sameList ? listShown : 0;
+      listItems = [];
+      listShown = 0;
+      showMoreBtn = null;
 
       if (loadFailed) { renderLoadError(); return; }
 
@@ -1911,54 +2055,84 @@
         return;
       }
 
-      activities.forEach(a => {
-        const card = document.createElement('div');
-        card.className = `card ${categoryClass(a.category)}`;
-        card.dataset.id = a.id || '';
-        if (a.id && activeIds.has(a.id)) card.classList.add('is-active');
-        const approx = a.geoApprox ? ` <em title="${escapeHtml(t('approxTitle'))}">${escapeHtml(t('approxInline'))}</em>` : '';
-        const host = sourceHost(a.url);
-        const reportHref = feedbackHref(a);
-        const fine = [
-          a.organizer ? escapeHtml(t('organizedBy')(a.organizer)) : '',
-          host ? escapeHtml(t('sourceLabel')(host)) : '',
-          // Item 46: a quarter of what is published comes from public open data rather than
-          // from the model. Saying so is a credibility signal, not a technical detail.
-          a.source === 'datatourisme' ? escapeHtml(t('viaOpenData')) : ''
-        ].filter(Boolean).join(' · ');
-        card.innerHTML = `
-          <span class="badge">${escapeHtml(categoryLabel(a.category))}</span>
-          <h3>${escapeHtml(a.title)}</h3>
-          <div class="date-line">🗓️ ${escapeHtml(formatDateLine(a))}</div>
-          <div class="meta">
-            📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
-            ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}
-            ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || t('priceUnknown'))}
-          </div>
-          <p>${escapeHtml(describe(a))}</p>
-          ${fine ? `<div class="fine-print">${fine} — ${escapeHtml(t('checkWithOrganizer'))}</div>` : ''}
-          <div class="card-actions">
-            ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
-            <span class="card-links">
-              ${pageHref(a) ? `<a href="${escapeHtml(pageHref(a))}" class="page-link">${escapeHtml(t('eventPage'))}</a>` : ''}
-              ${linkHtml(a.url, t('details'), 'link-btn')}
-            </span>
-          </div>
-        `;
-        // The whole card is clickable, except the links inside it, which keep their own job.
-        card.addEventListener('click', (e) => {
-          const link = e.target.closest('a');
-          if (link) {
-            // Does the site actually send anyone anywhere? This is the question worth measuring.
-            if (link.classList.contains('link-btn')) track('event-click', a.id);
-            else if (link.classList.contains('report-link')) track('report', a.id);
-            else if (link.classList.contains('page-link')) track('page-click', a.id);
-            return;
-          }
-          if (a.id) focusMarker(a.id);
-        });
-        container.appendChild(card);
+      listItems = activities;
+      // Kept in the list for good and hidden at the end, so keyboard focus stays on it while the
+      // cards appear above it.
+      showMoreBtn = document.createElement('button');
+      showMoreBtn.type = 'button';
+      showMoreBtn.className = 'show-more';
+      showMoreBtn.addEventListener('click', () => {
+        track('show-more', String(listShown));
+        renderUpTo(listShown + PAGE_SIZE);
       });
+      container.appendChild(showMoreBtn);
+      renderUpTo(Math.max(keep, PAGE_SIZE));
+    }
+
+    /** Adds cards until n of them are shown (or the list runs out), then updates the button. */
+    function renderUpTo(n) {
+      if (!showMoreBtn) return;
+      const end = Math.min(n, listItems.length);
+      for (let i = listShown; i < end; i++) showMoreBtn.before(buildCard(listItems[i]));
+      listShown = Math.max(listShown, end);
+      const left = listItems.length - listShown;
+      showMoreBtn.hidden = left <= 0;
+      if (left > 0) showMoreBtn.textContent = t('showMore')(Math.min(PAGE_SIZE, left), left);
+    }
+
+    /** A marker or a popup row points at an event further down: load the pages up to it. */
+    function ensureCard(id) {
+      const i = listItems.findIndex((a) => a.id === id);
+      if (i >= listShown) renderUpTo(Math.ceil((i + 1) / PAGE_SIZE) * PAGE_SIZE);
+    }
+
+    function buildCard(a) {
+      const card = document.createElement('div');
+      card.className = `card ${categoryClass(a.category)}`;
+      card.dataset.id = a.id || '';
+      if (a.id && activeIds.has(a.id)) card.classList.add('is-active');
+      const approx = a.geoApprox ? ` <em title="${escapeHtml(t('approxTitle'))}">${escapeHtml(t('approxInline'))}</em>` : '';
+      const host = sourceHost(a.url);
+      const reportHref = feedbackHref(a);
+      const fine = [
+        a.organizer ? escapeHtml(t('organizedBy')(a.organizer)) : '',
+        host ? escapeHtml(t('sourceLabel')(host)) : '',
+        // Item 46: a quarter of what is published comes from public open data rather than
+        // from the model. Saying so is a credibility signal, not a technical detail.
+        a.source === 'datatourisme' ? escapeHtml(t('viaOpenData')) : ''
+      ].filter(Boolean).join(' · ');
+      card.innerHTML = `
+        <span class="badge">${escapeHtml(categoryLabel(a.category))}</span>
+        <h3>${escapeHtml(a.title)}</h3>
+        <div class="date-line">🗓️ ${escapeHtml(formatDateLine(a))}</div>
+        <div class="meta">
+          📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
+          ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}
+          ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || t('priceUnknown'))}
+        </div>
+        <p>${escapeHtml(describe(a))}</p>
+        ${fine ? `<div class="fine-print">${fine} — ${escapeHtml(t('checkWithOrganizer'))}</div>` : ''}
+        <div class="card-actions">
+          ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
+          <span class="card-links">
+            ${pageHref(a) ? `<a href="${escapeHtml(pageHref(a))}" class="page-link">${escapeHtml(t('eventPage'))}</a>` : ''}
+            ${linkHtml(a.url, t('details'), 'link-btn')}
+          </span>
+        </div>
+      `;
+      // The whole card is clickable, except the links inside it, which keep their own job.
+      card.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link) {
+          // Does the site actually send anyone anywhere? This is the question worth measuring.
+          if (link.classList.contains('link-btn')) track('event-click', a.id);
+          else if (link.classList.contains('report-link')) track('report', a.id);
+          else if (link.classList.contains('page-link')) track('page-click', a.id);
+          return;
+        }
+        if (a.id) focusMarker(a.id);
+      });
+      return card;
     }
 
     // Mise à jour des marqueurs Leaflet
@@ -2026,11 +2200,15 @@
           }
           for (const x of list) if (x.id) markersById.set(x.id, marker);
           // Clicking the marker lights up everything it stands for, and brings the first one
-          // into view — the popup then says exactly what the stack contains.
+          // into view — the popup then says exactly what the stack contains. On a phone the
+          // list is below the map: jumping there would carry the visitor away from the popup
+          // they just opened, so the cards are only highlighted (a row of the popup scrolls).
           marker.on('click', () => {
             highlightCards(list.map((x) => x.id));
+            if (!listBesideMap()) return;
             const first = list.find((x) => x.id);
             if (!first) return;
+            ensureCard(first.id);
             const card = document.querySelector(`.card[data-id="${CSS.escape(first.id)}"]`);
             if (card) card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
           });
