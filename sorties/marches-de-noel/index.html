@@ -1,6 +1,8 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-title-en="Christmas markets 2026 around Fontainebleau: dates and places | Fontainebleau Live">
 <head>
+<script>try{if((new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang'))==='en')document.documentElement.className='en'}catch(e){}</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marchés de Noël 2026 autour de Fontainebleau : dates et lieux | Fontainebleau Live</title>
@@ -46,20 +48,46 @@ ul.list a{color:var(--ink);font-weight:600}
 ul.list small{display:block;color:var(--muted)}
 footer{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
-@media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}</style>
+@media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}.lang{display:inline-flex;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}.lang-btn{font:inherit;font-size:13px;font-weight:700;padding:3px 10px;border:0;background:transparent;color:#fff;cursor:pointer}.lang-btn[aria-pressed="true"]{background:#fff;color:var(--ink)}</style>
 </head>
 <body>
-<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a></header>
+<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a><span class="lang" role="group" aria-label="Langue / Language"><button type="button" class="lang-btn" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button></span></header>
 <main>
-<nav class="crumbs"><a href="/">Accueil</a> › <a href="/sorties/">Sorties de saison</a></nav>
-<h1>Marchés de Noël 2026 autour de Fontainebleau</h1>
-<p>Les marchés de Noël de Fontainebleau, d’Avon et des villages alentour : dates, horaires et lieux, mis à jour chaque jour à partir des annonces des communes, de l’office de tourisme et des organisateurs.</p>
-<p class="note">6 dates à venir, de la plus proche à la plus lointaine.</p>
+<nav class="crumbs"><a href="/" data-en="Home">Accueil</a> › <a href="/sorties/" data-en="Seasonal outings">Sorties de saison</a></nav>
+<h1 data-en="Christmas markets 2026 around Fontainebleau">Marchés de Noël 2026 autour de Fontainebleau</h1>
+<p data-en="The Christmas markets of Fontainebleau, Avon and the surrounding villages: dates, times and places, updated every day from the announcements of the towns, the tourist office and the organisers.">Les marchés de Noël de Fontainebleau, d’Avon et des villages alentour : dates, horaires et lieux, mis à jour chaque jour à partir des annonces des communes, de l’office de tourisme et des organisateurs.</p>
+<p class="note" data-en="6 upcoming dates, soonest first.">6 dates à venir, de la plus proche à la plus lointaine.</p>
 <ul class="list"><li><a href="/evenements/marche-de-noel-chailly-en-biere-b73078ac9b/">Marché de Noël</a><small>Le samedi 21 novembre 2026 · Chailly-en-Bière</small></li><li><a href="/evenements/marche-de-noel-chailly-en-biere-ce6a19556a/">Marché de Noël</a><small>Le dimanche 22 novembre 2026 · Chailly-en-Bière</small></li><li><a href="/evenements/marche-de-noel-d-avon-act011/">Marché de Noël d&#39;Avon</a><small>Le samedi 28 novembre 2026 · Parvis de l&#39;Église Saint-Pierre</small></li><li><a href="/evenements/marche-de-noel-d-ury-c65bd4ec2e/">Marché de Noël d&#39;Ury</a><small>Du samedi 28 novembre 2026 au dimanche 29 novembre 2026 · Centre-ville d&#39;Ury</small></li><li><a href="/evenements/marche-de-noel-samois-sur-seine-cbb7493942/">Marché de Noël</a><small>Le samedi 5 décembre 2026 · Foyer Django REINHARDT</small></li><li><a href="/evenements/village-et-marche-de-noel-nemours-39a65cd1ec/">Village &amp; Marché de Noël</a><small>Du samedi 12 décembre 2026 au dimanche 13 décembre 2026 · Maison des Arts, Saint-Pierre-lès-Nemours</small></li></ul>
 
-<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
-<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer.</p>
+<div class="actions"><a class="btn alt" href="/" data-en="Full agenda on the map">Tout l’agenda sur la carte</a> <a class="btn alt" href="/ce-week-end/" data-en="This weekend">Ce week-end</a></div>
 </main>
-<footer>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer. · <a href="/que-faire/">Toutes les communes</a> · <a href="/nos-sources/">Nos sources</a> · <a href="https://helioso.com" rel="noopener">Un projet Helioso</a></footer>
+<footer><span data-en="Agenda collected automatically. Check the details with the organiser before you go.">Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/que-faire/" data-en="All towns (in French)">Toutes les communes</a> · <a href="/nos-sources/" data-en="Our sources (in French)">Nos sources</a> · <a href="https://helioso.com" rel="noopener" data-en="A Helioso project">Un projet Helioso</a></footer>
+<script>
+(function () {
+  // Swaps our own strings between French and English (see "English" in generate-pages.js).
+  var root = document.documentElement;
+  var titles = { fr: document.title, en: root.getAttribute('data-title-en') || document.title };
+  var each = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+  function apply(l) {
+    each('[data-en]', function (el) {
+      if (el.getAttribute('data-fr') === null) el.setAttribute('data-fr', el.innerHTML);
+      el.innerHTML = el.getAttribute(l === 'en' ? 'data-en' : 'data-fr');
+    });
+    root.lang = l;
+    root.className = l === 'en' ? 'en' : '';
+    document.title = titles[l];
+    each('.lang-btn', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
+  }
+  each('.lang-btn', function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-lang');
+      try { localStorage.setItem('lang', l); } catch (e) { /* not fatal */ }
+      apply(l);
+    });
+  });
+  if (root.className === 'en') apply('en');
+})();
+</script>
 </body>
 </html>

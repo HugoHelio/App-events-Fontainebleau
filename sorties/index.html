@@ -1,6 +1,8 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-title-en="Seasonal outings around Fontainebleau: holidays, Halloween, Christmas, deer rut | Fontainebleau Live">
 <head>
+<script>try{if((new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang'))==='en')document.documentElement.className='en'}catch(e){}</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sorties de saison autour de Fontainebleau : vacances, Halloween, Noël, brame du cerf | Fontainebleau Live</title>
@@ -46,20 +48,47 @@ ul.list a{color:var(--ink);font-weight:600}
 ul.list small{display:block;color:var(--muted)}
 footer{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
-@media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}</style>
+@media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}.lang{display:inline-flex;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}.lang-btn{font:inherit;font-size:13px;font-weight:700;padding:3px 10px;border:0;background:transparent;color:#fff;cursor:pointer}.lang-btn[aria-pressed="true"]{background:#fff;color:var(--ink)}</style>
 </head>
 <body>
-<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a></header>
+<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a><span class="lang" role="group" aria-label="Langue / Language"><button type="button" class="lang-btn" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button></span></header>
 <main>
-<nav class="crumbs"><a href="/">Accueil</a> › <a href="/que-faire/">Que faire autour de Fontainebleau</a></nav>
-<h1>Sorties de saison autour de Fontainebleau</h1>
-<p>Vacances scolaires, fêtes et rendez-vous de la nature : les pages qui reviennent chaque année, mises à jour chaque jour.</p>
-<h2>Vacances scolaires</h2>
-<ul class="list"><li><a href="/sorties/vacances-toussaint/">Vacances de la Toussaint 2026</a><small>du 17 oct. au 2 nov. 2026 · 63 sorties</small></li></ul>
-<h2>Fêtes et saisons</h2>
-<ul class="list"><li><a href="/sorties/marches-de-noel/">Marchés de Noël 2026 autour de Fontainebleau</a><small>6 dates à venir</small></li><li><a href="/sorties/noel/">Noël 2026 autour de Fontainebleau</a><small>12 dates à venir</small></li><li><a href="/sorties/brame-du-cerf/">Brame du cerf 2026 en forêt de Fontainebleau</a><small>4 dates à venir</small></li><li><a href="/sorties/champignons/">Sorties champignons et mycologie 2026 autour de Fontainebleau</a><small>8 dates à venir</small></li><li><a href="/sorties/halloween/">Que faire pour Halloween 2026 autour de Fontainebleau ?</a><small>3 dates à venir</small></li></ul>
-<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a> <a class="btn alt" href="/ce-week-end/">Ce week-end</a></div>
+<nav class="crumbs"><a href="/" data-en="Home">Accueil</a> › <a href="/que-faire/" data-en="Things to do around Fontainebleau">Que faire autour de Fontainebleau</a></nav>
+<h1 data-en="Seasonal outings around Fontainebleau">Sorties de saison autour de Fontainebleau</h1>
+<p data-en="School holidays, festivals and the great moments of nature: the pages that come back every year, updated every day.">Vacances scolaires, fêtes et rendez-vous de la nature : les pages qui reviennent chaque année, mises à jour chaque jour.</p>
+<h2 data-en="School holidays">Vacances scolaires</h2>
+<ul class="list"><li><a href="/sorties/vacances-toussaint/" data-en="Toussaint school holidays 2026">Vacances de la Toussaint 2026</a><small data-en="17 October to 2 November 2026 · 63 outings">du 17 oct. au 2 nov. 2026 · 63 sorties</small></li></ul>
+<h2 data-en="Festivals and seasons">Fêtes et saisons</h2>
+<ul class="list"><li><a href="/sorties/marches-de-noel/" data-en="Christmas markets 2026 around Fontainebleau">Marchés de Noël 2026 autour de Fontainebleau</a><small data-en="6 upcoming dates">6 dates à venir</small></li><li><a href="/sorties/noel/" data-en="Christmas 2026 around Fontainebleau">Noël 2026 autour de Fontainebleau</a><small data-en="12 upcoming dates">12 dates à venir</small></li><li><a href="/sorties/brame-du-cerf/" data-en="The deer rut 2026 in the Forest of Fontainebleau">Brame du cerf 2026 en forêt de Fontainebleau</a><small data-en="4 upcoming dates">4 dates à venir</small></li><li><a href="/sorties/champignons/" data-en="Mushroom and mycology outings 2026 around Fontainebleau">Sorties champignons et mycologie 2026 autour de Fontainebleau</a><small data-en="8 upcoming dates">8 dates à venir</small></li><li><a href="/sorties/halloween/" data-en="What to do for Halloween 2026 around Fontainebleau?">Que faire pour Halloween 2026 autour de Fontainebleau ?</a><small data-en="3 upcoming dates">3 dates à venir</small></li></ul>
+<div class="actions"><a class="btn alt" href="/" data-en="Full agenda on the map">Tout l’agenda sur la carte</a> <a class="btn alt" href="/ce-week-end/" data-en="This weekend">Ce week-end</a></div>
 </main>
-<footer>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer. · <a href="/que-faire/">Toutes les communes</a> · <a href="/nos-sources/">Nos sources</a> · <a href="https://helioso.com" rel="noopener">Un projet Helioso</a></footer>
+<footer><span data-en="Agenda collected automatically. Check the details with the organiser before you go.">Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/que-faire/" data-en="All towns (in French)">Toutes les communes</a> · <a href="/nos-sources/" data-en="Our sources (in French)">Nos sources</a> · <a href="https://helioso.com" rel="noopener" data-en="A Helioso project">Un projet Helioso</a></footer>
+<script>
+(function () {
+  // Swaps our own strings between French and English (see "English" in generate-pages.js).
+  var root = document.documentElement;
+  var titles = { fr: document.title, en: root.getAttribute('data-title-en') || document.title };
+  var each = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+  function apply(l) {
+    each('[data-en]', function (el) {
+      if (el.getAttribute('data-fr') === null) el.setAttribute('data-fr', el.innerHTML);
+      el.innerHTML = el.getAttribute(l === 'en' ? 'data-en' : 'data-fr');
+    });
+    root.lang = l;
+    root.className = l === 'en' ? 'en' : '';
+    document.title = titles[l];
+    each('.lang-btn', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
+  }
+  each('.lang-btn', function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-lang');
+      try { localStorage.setItem('lang', l); } catch (e) { /* not fatal */ }
+      apply(l);
+    });
+  });
+  if (root.className === 'en') apply('en');
+})();
+</script>
 </body>
 </html>

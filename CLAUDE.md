@@ -63,7 +63,8 @@ régénéré à chaque scan : toute correction faite directement dedans est perd
   par `escapeHtml()` et les liens par `safeUrl()` (schémas `http(s)` uniquement). Ne jamais
   injecter de champ de `data.json` via `innerHTML` sans échappement.
 - **Fins de ligne CRLF** sur les fichiers existants — les préserver lors des éditions.
-- **Langue** : interface bilingue FR/EN (dictionnaire `STRINGS` dans `index.html`), dates en
+- **Langue** : interface bilingue FR/EN (dictionnaire `STRINGS` dans `index.html` ; pour `/ce-week-end/` et
+  `/sorties/`, attributs `data-en` écrits par `generate-pages.js`, jamais sur la liste des événements), dates en
   `Europe/Paris`. Côté données, **seule la `description` est traduite** (`descriptionEn`) : les
   titres, horaires, tarifs et noms de lieux restent en français pour rester reconnaissables sur
   une affiche ou un guichet. Les commentaires de code sont en anglais, sauf dans les workflows.

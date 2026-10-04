@@ -1775,6 +1775,9 @@
 
     function applyLanguage() {
       document.documentElement.lang = lang;
+      // Saved even when it came from the browser: the weekend and theme pages read it, and they
+      // do not look at the browser's language themselves (see "English" in generate-pages.js).
+      try { localStorage.setItem('lang', lang); } catch (e) { /* not fatal */ }
       document.title = t('docTitle');
 
       // Static chrome. The strings come from STRINGS above, never from data.json, so they are
