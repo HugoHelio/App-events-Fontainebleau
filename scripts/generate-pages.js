@@ -254,7 +254,10 @@ function eventTitle(e) {
   return `${name} — ${when.replace(/(^|\D)1 (?=\p{L})/gu, '$11er ')}${city} | Fontainebleau Live`;
 }
 
-function eventPage(e, sameCity) {
+// "Halloween 2026 … ? : toutes les dates" reads badly once a heading is a question.
+const allDates = (h1) => (h1.endsWith('?') ? `${h1} Toutes les dates` : `${h1} : toutes les dates`);
+
+function eventPage(e, sameCity, today) {
   const canonical = SITE_URL + e.pagePath;
   const link = safeUrl(e.url);
   const rows = [
@@ -272,7 +275,7 @@ function eventPage(e, sameCity) {
 <p class="when">${esc(dateLabel(e))}</p>
 <div class="sheet"><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl></div>
 ${e.description ? `<p>${esc(e.description)}</p>` : ''}
-${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(t.h1(e.startDate.slice(0, 4)))} : toutes les dates</a></p>`).join('')}
+${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></p>`).join('')}${holidaysOf(e, today).map(({ h, p }) => `<p><a href="/${THEMES_DIR}/${h.slug}/">${esc(h.name)} ${esc(p.from.slice(0, 4))} : toutes les sorties</a></p>`).join('')}
 <div class="actions">
 ${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
 </div>
@@ -449,25 +452,72 @@ const THEMES = [
     slug: 'halloween',
     match: /\bhalloween\b/,
     name: 'Halloween',
-    title: (y) => `Halloween ${y} autour de Fontainebleau : sorties et animations`,
-    h1: (y) => `Halloween ${y} autour de Fontainebleau`,
-    intro: 'Soirées, murder parties, animations pour enfants et visites frissonnantes autour de Fontainebleau pour Halloween.',
+    // Worded as the search is typed (item 81): "que faire à fontainebleau pour halloween".
+    title: (y) => `Que faire à Fontainebleau pour Halloween ${y} ? Sorties et animations`,
+    h1: (y) => `Que faire pour Halloween ${y} autour de Fontainebleau ?`,
+    intro: 'Jeux de piste, soirées en médiathèque, murder parties dans les châteaux et animations pour enfants : toutes les sorties d’Halloween à Fontainebleau et dans les communes voisines, mises à jour chaque jour.',
     off: 'Les animations d’Halloween sont annoncées en début d’automne : elles apparaîtront ici dès leur publication.',
+    related: 'vacances-toussaint',
+    faq: [
+      ['Où fêter Halloween avec des enfants autour de Fontainebleau ?', 'Les jeux de piste, ateliers et animations des médiathèques et des châteaux sont les sorties les plus adaptées aux enfants. Vérifiez l’âge conseillé sur la page de chaque sortie : certaines soirées, comme les murder parties, s’adressent aux adultes.'],
+      ['Quand ont lieu les animations d’Halloween ?', 'Surtout la dernière semaine d’octobre et le soir du 31. Certaines soirées commencent dès la mi-octobre. Halloween tombe pendant les vacances de la Toussaint : d’autres idées de sorties sont sur la page des vacances.'],
+    ],
   },
 ];
 
+// ─── School holidays (item 81) ───
+// Hubs chosen by DATE, not by title: "que faire pendant les vacances de la Toussaint" asks for
+// everything on during the holidays. Same rule as the themes: the address is kept from one year
+// to the next and the page is never deleted. Add the next year's dates to `periods` when the
+// Education ministry publishes them; once the last period is over, the page says so.
+// Family ideas are picked on the TITLE only, like the themes: ageMin/ageMax cannot do it (every
+// event in the window is "0-99" on 04/10), and a description mentioning children proves nothing.
+const FAMILY = /\b(enfants?|familles?|familial\w*|jeune public|contee?s?|jeu de piste|chasse au tresor|marionnettes?|magie|magicien\w*|illusionniste|halloween)\b/;
+const FAMILY_MAX = 8;
+
+const HOLIDAYS = [
+  {
+    slug: 'vacances-toussaint',
+    name: 'Vacances de la Toussaint',
+    // Same dates for every zone at Toussaint.
+    periods: [{ from: '2026-10-17', to: '2026-11-02' }],
+    title: (y) => `Que faire pendant les vacances de la Toussaint ${y} autour de Fontainebleau ?`,
+    intro: 'Balades guidées en forêt, sorties champignons, spectacles, ateliers, visites des châteaux et animations d’Halloween : toutes les sorties des vacances à Fontainebleau et dans les communes voisines, jour par jour.',
+    off: (y) => `Les vacances de la Toussaint ${y} sont terminées. Le programme des prochaines vacances de la Toussaint apparaîtra ici dès la fin de l’été.`,
+    faq: [
+      ['Que faire avec des enfants pendant les vacances de la Toussaint ?', 'Les promenades contées, jeux de piste, spectacles et animations d’Halloween de la fin octobre. En forêt de Fontainebleau, l’automne est la saison des sorties champignons guidées, et les circuits d’escalade de bloc blancs et jaunes sont faits pour les enfants.'],
+      ['Que faire s’il pleut ?', 'Le château de Fontainebleau (fermé le mardi), les musées et les expositions listés plus bas, les spectacles et les concerts.'],
+      ['Le programme est-il à jour ?', 'La page est reconstruite chaque jour à partir des annonces des communes, de l’office de tourisme, d’OpenAgenda et des sites des organisateurs. Pour les horaires et les réservations, le lien de l’organisateur est sur la page de chaque sortie.'],
+    ],
+  },
+];
+
+/** The period on show: the first one not over yet, else the last one (and `over` is true). */
+function holidayPeriod(h, today) {
+  const next = h.periods.find((p) => p.to >= today);
+  return next ? { ...next, over: false } : { ...h.periods[h.periods.length - 1], over: true };
+}
+
 const themeKey = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const themesOf = (e) => THEMES.filter((t) => t.match.test(themeKey(e.title)));
+
+// Our own questions and answers, no event data in them: durable text, so a hub with two events
+// in it is not a thin page.
+const faqHtml = (faq) => (faq && faq.length
+  ? `<h2>Questions fréquentes</h2>\n${faq.map(([q, a]) => `<h3>${esc(q)}</h3>\n<p>${esc(a)}</p>`).join('\n')}\n`
+  : '');
 
 function themePage(t, events, today) {
   // The year of the season on show: the first event's, or this year when there is none yet.
   const year = (events[0] ? events[0].startDate : today).slice(0, 4);
   const n = events.length;
-  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
+  const related = t.related && HOLIDAYS.find((h) => h.slug === t.related);
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${THEMES_DIR}/">Sorties de saison</a></nav>
 <h1>${esc(t.h1(year))}</h1>
 <p>${esc(t.intro)}</p>
 ${n ? `<p class="note">${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
 <ul class="list">${events.map(eventItem).join('')}</ul>` : `<p>${esc(t.off)}</p>`}
+${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/">${esc(related.name)} ${esc(holidayPeriod(related, today).from.slice(0, 4))} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq)}
 <div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
 <p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer.</p>`;
   return layout({
@@ -475,7 +525,8 @@ ${n ? `<p class="note">${n} date${n > 1 ? 's' : ''} à venir, de la plus proche 
     description: truncate(n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro, 155),
     canonical: `${SITE_URL}/${THEMES_DIR}/${t.slug}/`,
     body,
-  });
+  }).replace('</style>', t.faq ? `${FAQ_STYLE}
+</style>` : '</style>');
 }
 
 // ───────────────────────────── This weekend (item 74.3) ─────────────────────────────
@@ -548,6 +599,179 @@ ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 @media (max-width:480px){ul.agenda li{grid-template-columns:1fr;gap:2px}ul.agenda .t:empty{display:none}}
 `.trim();
 
+const FAQ_STYLE = 'h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}';
+
+// ─── Shared by the weekend and holiday pages ───
+
+const endOf = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
+
+// One line per outing: time on the left (bold), then a category dot, the title, a "Gratuit"
+// badge when the price says so, and the place. Plain list underneath, so it reads without CSS.
+const agendaItem = (e, note = '') => `<li class="ev" data-cat="${CAT_CLASS[e.category] || ''}"><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}${note ? ` · ${esc(note)}` : ''}</small></div></li>`;
+const daySection = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? (e) => eventItem(e).replace('<li>', `<li data-cat="${CAT_CLASS[e.category] || ''}">`) : (e) => agendaItem(e, s.note ? s.note(e) : '')).join('')}</ul>`;
+
+const LEGEND = `<div class="legend" role="group" aria-label="Filtrer par type"><button type="button" class="f" data-cat="" aria-pressed="true">Tous</button>${[['c-sport', 'Sport'], ['c-nature', 'Nature'], ['c-scene', 'Spectacles'], ['c-culture', 'Culture']].map(([c, l]) => `<button type="button" class="f" data-cat="${c}" aria-pressed="false"><span class="dot ${c}"></span>${l}</button>`).join('')}</div>`;
+
+const FILTER_SCRIPT = `(function () {
+  // Category filter: the legend's buttons. A section left empty disappears, and so does its
+  // link in the contents. Without JavaScript the buttons stay a legend and everything is shown.
+  var buttons = document.querySelectorAll('.legend .f');
+  Array.prototype.forEach.call(buttons, function (btn) {
+    btn.addEventListener('click', function () {
+      var cat = btn.getAttribute('data-cat');
+      Array.prototype.forEach.call(buttons, function (x) { x.setAttribute('aria-pressed', String(x === btn)); });
+      Array.prototype.forEach.call(document.querySelectorAll('li[data-cat]'), function (li) {
+        li.classList.toggle('filtered-out', !!cat && li.getAttribute('data-cat') !== cat);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('h2.day'), function (h) {
+        var list = h.nextElementSibling;
+        var empty = !list.querySelector('li[data-cat]:not(.filtered-out)');
+        h.classList.toggle('filtered-out', empty);
+        list.classList.toggle('filtered-out', empty);
+        var link = document.querySelector('.toc a[href="#' + h.id + '"]');
+        if (link) link.classList.toggle('filtered-out', empty);
+      });
+    });
+  });
+})();`;
+
+/**
+ * Seasonal pages with something in the next 30 days: holidays about to start or under way, then
+ * themes. "Noël" is left out: until December it only repeats the Christmas markets.
+ */
+function seasonNow(events, today) {
+  const soon = addDays(today, 30);
+  const holidays = HOLIDAYS.map((h) => {
+    const p = holidayPeriod(h, today);
+    if (p.over || p.from > soon) return null;
+    const k = holidayEvents(p, events, today).short.length;
+    return k ? { href: `/${THEMES_DIR}/${h.slug}/`, name: h.name, k } : null;
+  }).filter(Boolean);
+  const themes = THEMES.filter((t) => t.slug !== 'noel')
+    .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, k: events.filter((e) => t.match.test(themeKey(e.title)) && e.startDate <= soon && endOf(e) >= today).length }))
+    .filter((x) => x.k);
+  return [...holidays, ...themes];
+}
+
+const nowHtml = (now, label = 'En ce moment') => (now.length
+  ? `<p class="now">${esc(label)} : ${now.map(({ href, name, k }) => `<a class="chip" href="${href}">${esc(name)} <b>${k}</b></a>`).join(' ')}</p>`
+  : '');
+
+/** What is still to come during a holiday period: outings, and long exhibitions apart. */
+function holidayEvents(p, events, today) {
+  if (p.over) return { start: p.from, short: [], long: [] };
+  const start = p.from > today ? p.from : today;
+  const open = events.filter((e) => e.startDate <= p.to && endOf(e) >= start);
+  return {
+    start,
+    short: open.filter((e) => spanDays(e) <= FEED_MAX_DAYS),
+    long: open.filter((e) => spanDays(e) > FEED_MAX_DAYS),
+  };
+}
+
+/** Holiday hubs an event page links to: the ones under way or coming whose dates it shares. */
+const holidaysOf = (e, today) => HOLIDAYS.map((h) => ({ h, p: holidayPeriod(h, today) }))
+  .filter(({ p }) => !p.over && e.startDate <= p.to && endOf(e) >= p.from);
+
+function holidayPage(h, events, today) {
+  const p = holidayPeriod(h, today);
+  const year = p.from.slice(0, 4);
+  const { start, short, long } = holidayEvents(p, events, today);
+  const cap = (s) => s[0].toUpperCase() + s.slice(1);
+  const byTime = (a, b) => timeKey(a) - timeKey(b) || a.title.localeCompare(b.title, 'fr');
+
+  // Each outing once, on its first day still to come within the holidays.
+  const dayOf = (e) => (e.startDate > start ? e.startDate : start);
+  const days = new Map();
+  for (const e of short) {
+    const d = dayOf(e);
+    if (!days.has(d)) days.set(d, []);
+    days.get(d).push(e);
+  }
+  const until = (e) => (endOf(e) > dayOf(e) ? `jusqu’au ${first(shortDate(endOf(e)))}` : '');
+  const sections = [...days.keys()].sort().map((d) => ({ id: `j-${d}`, h: cap(dayName(d)), list: days.get(d).sort(byTime), note: until }));
+  if (long.length) sections.push({ id: 'expositions', h: 'Expositions et visites ouvertes pendant les vacances', list: long, long: true });
+
+  // Contents: the first day of each holiday week, labelled by its dates ("31 oct.-2 nov.": the
+  // last week is often a long weekend, so "3e semaine" would mislead), then the exhibitions.
+  const week = (d) => Math.floor((Date.parse(d) - Date.parse(p.from)) / (7 * 864e5));
+  const dm = (d) => first(shortDate(d).replace(/^\S+ /, ''));
+  const weekLabel = (w) => {
+    const a = addDays(p.from, 7 * w);
+    const b = addDays(a, 6) < p.to ? addDays(a, 6) : p.to;
+    return a.slice(5, 7) === b.slice(5, 7) ? `${first(`${Number(a.slice(8))} `).trim()}-${dm(b)}` : `${dm(a)}-${dm(b)}`;
+  };
+  const toc = [];
+  for (const s of sections) {
+    if (s.long) { toc.push({ id: s.id, nav: 'Expositions' }); continue; }
+    const w = week(s.id.slice(2));
+    if (!toc.some((x) => x.w === w)) toc.push({ id: s.id, w, nav: weekLabel(w) });
+  }
+  // A title that says "enfants" or "Halloween" is not enough when the organiser set an age floor.
+  const family = short.filter((e) => FAMILY.test(themeKey(e.title)) && !(Number(e.ageMin) >= 12)).slice(0, FAMILY_MAX);
+  if (family.length) toc.unshift({ id: 'en-famille', nav: 'En famille' });
+
+  const n = short.length;
+  const themesHere = THEMES.filter((t) => t.slug !== 'noel')
+    .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, k: [...short, ...long].filter((e) => t.match.test(themeKey(e.title))).length }))
+    .filter((x) => x.k);
+  const lead = p.over ? h.off(year)
+    : n ? `${n} sortie${n > 1 ? 's' : ''}${long.length ? ` et ${long.length} exposition${long.length > 1 ? 's' : ''} ou visite${long.length > 1 ? 's' : ''}` : ''} ${p.from > today ? 'pendant les vacances' : 'd’ici la fin des vacances'}, à Fontainebleau et dans les communes voisines. Mis à jour chaque jour.`
+      : 'Rien d’annoncé pour l’instant : le programme se remplit au fil des annonces et se met à jour chaque jour.';
+
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${THEMES_DIR}/">Sorties de saison</a></nav>
+<h1>${esc(h.title(year))}</h1>
+<p class="when">${esc(first(`Du ${frDate(p.from).replace(/ \d{4}$/, '')} au ${frDate(p.to)}`))}</p>
+<p>${esc(h.intro)}</p>
+<p>${esc(lead)}</p>
+${nowHtml(themesHere, 'Pendant les vacances')}
+${toc.length > 1 ? `<nav class="toc" aria-label="Sommaire">${toc.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
+${family.length ? `<h2 id="en-famille">Idées de sorties en famille</h2>\n<ul class="list">${family.map(eventItem).join('')}</ul>` : ''}
+${n ? LEGEND : ''}
+${sections.map(daySection).join('\n')}
+${faqHtml(h.faq)}<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a></div>
+<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer.</p>
+<script>
+${FILTER_SCRIPT}
+</script>`;
+
+  return layout({
+    title: `${h.title(year)} | Fontainebleau Live`,
+    description: truncate(p.over ? h.off(year) : `${first(`Du ${shortDate(p.from).replace(/^\S+ /, '')} au ${shortDate(p.to).replace(/^\S+ /, '')}`)} ${year} : ${n ? `${n} sorties` : 'les sorties'} à Fontainebleau et alentour — balades en forêt, spectacles, ateliers, Halloween. Mis à jour chaque jour.`, 155),
+    canonical: `${SITE_URL}/${THEMES_DIR}/${h.slug}/`,
+    body,
+  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n</style>`);
+}
+
+/** /sorties/ — every seasonal hub, holidays first. A plain page of links a crawler can follow. */
+function seasonIndex(events, today) {
+  const holidays = HOLIDAYS.map((h) => {
+    const p = holidayPeriod(h, today);
+    const k = holidayEvents(p, events, today).short.length;
+    const when = first(`du ${shortDate(p.from).replace(/^\S+ /, '')} au ${shortDate(p.to).replace(/^\S+ /, '')} ${p.to.slice(0, 4)}`);
+    return `<li><a href="/${THEMES_DIR}/${h.slug}/">${esc(h.name)} ${esc(p.from.slice(0, 4))}</a><small>${p.over ? 'Terminées' : `${esc(when)}${k ? ` · ${k} sortie${k > 1 ? 's' : ''}` : ''}`}</small></li>`;
+  });
+  const themes = THEMES.map((t) => {
+    const list = events.filter((e) => t.match.test(themeKey(e.title)));
+    const year = (list[0] ? list[0].startDate : today).slice(0, 4);
+    return `<li><a href="/${THEMES_DIR}/${t.slug}/">${esc(t.h1(year))}</a><small>${list.length ? `${list.length} date${list.length > 1 ? 's' : ''} à venir` : 'Pas encore de date annoncée'}</small></li>`;
+  });
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
+<h1>Sorties de saison autour de Fontainebleau</h1>
+<p>Vacances scolaires, fêtes et rendez-vous de la nature : les pages qui reviennent chaque année, mises à jour chaque jour.</p>
+<h2>Vacances scolaires</h2>
+<ul class="list">${holidays.join('')}</ul>
+<h2>Fêtes et saisons</h2>
+<ul class="list">${themes.join('')}</ul>
+<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a></div>`;
+  return layout({
+    title: 'Sorties de saison autour de Fontainebleau : vacances, Halloween, Noël, brame du cerf | Fontainebleau Live',
+    description: 'Vacances de la Toussaint, Halloween, marchés de Noël, brame du cerf, champignons : les sorties de saison autour de Fontainebleau, mises à jour chaque jour.',
+    canonical: `${SITE_URL}/${THEMES_DIR}/`,
+    body,
+  });
+}
+
 function weekendPage(events, today) {
   const { sat, sun } = weekendOf(today);
   const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
@@ -570,55 +794,25 @@ function weekendPage(events, today) {
   ].filter((s) => s.list.length);
   if (long.length) sections.push({ id: 'expositions', nav: 'Expositions', h: 'Expositions et visites en cours', list: long, long: true });
 
-  // One line per outing: time on the left (bold), then a category dot, the title, a "Gratuit"
-  // badge when the price says so, and the place. Plain list underneath, so it reads without CSS.
-  const item = (e) => `<li class="ev" data-cat="${CAT_CLASS[e.category] || ''}"><span class="t">${esc(timeOf(e.schedule))}</span><div><span class="dot ${CAT_CLASS[e.category] || ''}" title="${esc(e.category || '')}"></span><a href="${esc(e.pagePath)}">${esc(e.title)}</a>${isFree(e) ? ' <span class="free">Gratuit</span>' : ''}<small>${esc(place(e))}</small></div></li>`;
-  const section = (s) => `<h2 class="day" id="${s.id}">${esc(s.h)}</h2>\n<ul class="list${s.long ? '' : ' agenda'}">${s.list.map(s.long ? (e) => eventItem(e).replace('<li>', `<li data-cat="${CAT_CLASS[e.category] || ''}">`) : item).join('')}</ul>`;
   const range = first(`${sat.slice(8, 10).replace(/^0/, '')}${sat.slice(5, 7) === sun.slice(5, 7) ? '' : ` ${frDate(sat).split(' ')[2]}`}-${frDate(sun).split(' ').slice(1).join(' ')}`);
   const n = short.length;
 
-  // Seasonal pages with something in the next 30 days: a short line of links, nothing more.
-  // "Noël" is left out: until December it only repeats the Christmas markets.
-  const soon = addDays(today, 30);
-  const now = THEMES.filter((t) => t.slug !== 'noel')
-    .map((t) => ({ t, k: events.filter((e) => t.match.test(themeKey(e.title)) && e.startDate <= soon && end(e) >= today).length }))
-    .filter((x) => x.k);
+  const now = seasonNow(events, today);
   const shareText = `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} autour de Fontainebleau`;
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
 <h1>Que faire ce week-end autour de Fontainebleau ?</h1>
 <p class="when">${today === sun ? `Aujourd’hui, ${esc(sunLabel)}` : `${esc(cap(satLabel))} et ${esc(sunLabel)}`}</p>
 <p>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
-${now.length ? `<p class="now">En ce moment : ${now.map(({ t, k }) => `<a class="chip" href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)} <b>${k}</b></a>`).join(' ')}</p>` : ''}
+${nowHtml(now)}
 ${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
-${n ? `<div class="legend" role="group" aria-label="Filtrer par type"><button type="button" class="f" data-cat="" aria-pressed="true">Tous</button>${[['c-sport', 'Sport'], ['c-nature', 'Nature'], ['c-scene', 'Spectacles'], ['c-culture', 'Culture']].map(([c, l]) => `<button type="button" class="f" data-cat="${c}" aria-pressed="false"><span class="dot ${c}"></span>${l}</button>`).join('')}</div>` : ''}
-${sections.map(section).join('\n')}
+${n ? LEGEND : ''}
+${sections.map(daySection).join('\n')}
 <div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
 <div class="share"><button type="button" id="share" class="share-btn" hidden data-text="${esc(shareText)}"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>Partager ce programme</span></button></div>
 <p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer. Sorties de saison : ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ')}.</p>
 <script>
-(function () {
-  // Category filter: the legend's buttons. A section left empty disappears, and so does its
-  // link in the contents. Without JavaScript the buttons stay a legend and everything is shown.
-  var buttons = document.querySelectorAll('.legend .f');
-  Array.prototype.forEach.call(buttons, function (btn) {
-    btn.addEventListener('click', function () {
-      var cat = btn.getAttribute('data-cat');
-      Array.prototype.forEach.call(buttons, function (x) { x.setAttribute('aria-pressed', String(x === btn)); });
-      Array.prototype.forEach.call(document.querySelectorAll('li[data-cat]'), function (li) {
-        li.classList.toggle('filtered-out', !!cat && li.getAttribute('data-cat') !== cat);
-      });
-      Array.prototype.forEach.call(document.querySelectorAll('h2.day'), function (h) {
-        var list = h.nextElementSibling;
-        var empty = !list.querySelector('li[data-cat]:not(.filtered-out)');
-        h.classList.toggle('filtered-out', empty);
-        list.classList.toggle('filtered-out', empty);
-        var link = document.querySelector('.toc a[href="#' + h.id + '"]');
-        if (link) link.classList.toggle('filtered-out', empty);
-      });
-    });
-  });
-})();
+${FILTER_SCRIPT}
 (function () {
   // Shown only where it works: the phone's share sheet, or failing that a copied link.
   var b = document.getElementById('share');
@@ -645,14 +839,14 @@ ${sections.map(section).join('\n')}
 }
 
 function citiesIndex(cities) {
-  const seasonal = THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
+  const seasonal = [...HOLIDAYS, ...THEMES].map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Que faire autour de Fontainebleau ?</h1>
 <p>Les activités à venir, commune par commune.</p>
 <ul class="list">${cities.map((c) => `<li><a href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a><small>${c.events.length} activité${c.events.length > 1 ? 's' : ''} à venir</small></li>`).join('')}</ul>
 <h2>Ce week-end</h2>
 <p><a href="/${WEEKEND_DIR}/">Que faire ce week-end autour de Fontainebleau ?</a></p>
-<h2>Sorties de saison</h2>
+<h2><a href="/${THEMES_DIR}/">Sorties de saison</a></h2>
 <p>${seasonal}</p>`;
   return layout({
     title: 'Que faire autour de Fontainebleau ? Agenda par commune | Fontainebleau Live',
@@ -673,7 +867,7 @@ function sitemap(cities, events, homeLastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${home(`${SITE_URL}/`)}
 ${home(`${SITE_URL}/?lang=en`)}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${WEEKEND_DIR}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -857,13 +1051,15 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
     const dir = e.pagePath.split('/')[2];
     liveDirs.add(dir);
     byToken.set(idToken(e), e);
-    files.set(`${EVENTS_DIR}/${dir}/index.html`, eventPage(e, byCity.get(e.citySlug).events));
+    files.set(`${EVENTS_DIR}/${dir}/index.html`, eventPage(e, byCity.get(e.citySlug).events, today));
   }
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
   files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
   for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
+  for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today));
+  files.set(`${THEMES_DIR}/index.html`, seasonIndex(events, today));
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
@@ -927,5 +1123,5 @@ if (require.main === module) {
 module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
-  THEMES, THEMES_DIR, themesOf, eventTitle, WEEKEND_DIR, weekendOf,
+  THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, WEEKEND_DIR, weekendOf,
 };
