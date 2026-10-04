@@ -1953,7 +1953,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, geminiRequestBody, callGemini, SCANS, COMMUNES,
+  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, geminiRequestBody, callGemini, frenchMonths, SCANS, COMMUNES,
   refineCategory, CATEGORIES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,

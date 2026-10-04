@@ -10,23 +10,26 @@
  *   2. A short question that cannot be answered without the web, with the tool spelled
  *      `google_search` (what the pipeline sends) and `googleSearch`. If neither searches, the
  *      tool itself is unavailable to this key or model: billing tier, model, or API change.
- *   3. The four real scans, with the exact request body the pipeline sends (geminiRequestBody).
- *      If (2) searches and (3) does not, the model chooses not to search on our prompt: a prompt
- *      problem, not an account problem. That was the 04/10 finding.
+ *   3. The real sport scan, with the exact request body the pipeline sends (geminiRequestBody),
+ *      and the same with a low thinking level. If (2) searches and (3) does not, the model
+ *      chooses not to search on our prompt. That was the 04/10 finding: even the short question
+ *      stops searching once it must answer in JSON.
+ *   4. A short, natural question on the sport scan's subject, in prose: the first step of a
+ *      two-step scan (grounded prose, then an ungrounded call turning it into JSON).
  *
- * Cost: two short calls plus four real scans per model, about 0.25 $ per model; searches within
- * the free quota.
+ * Cost: about 0.10 $ per model (0.25 $ with --all-scans); searches within the free quota.
  *
  * Usage:
  *   GEMINI_API_KEY=… node scripts/check-grounding.js
  *   GEMINI_API_KEY=… node scripts/check-grounding.js --models gemini-3.6-flash,gemini-3.8-flash
  *   GEMINI_API_KEY=… node scripts/check-grounding.js --no-scan      # skip the real-prompt call
+ *   GEMINI_API_KEY=… node scripts/check-grounding.js --all-scans    # the four real scans, not only sport
  */
 
 'use strict';
 
 const fs = require('fs');
-const { buildPrompt, geminiRequestBody, SCANS, CONFIG, addMonths, parisToday } = require('./fetch-events');
+const { buildPrompt, geminiRequestBody, SCANS, CONFIG, addMonths, parisToday, frenchMonths } = require('./fetch-events');
 
 const API = 'https://generativelanguage.googleapis.com/v1beta';
 const SHORT_PROMPT = 'Cherche sur le web : quels événements sont annoncés à Fontainebleau (Seine-et-Marne) '
@@ -36,6 +39,7 @@ const args = process.argv.slice(2);
 const argValue = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : undefined; };
 const models = (argValue('--models') || CONFIG.model).split(',').map((m) => m.trim()).filter(Boolean);
 const withScan = !args.includes('--no-scan');
+const allScans = args.includes('--all-scans');
 
 const out = [];
 const log = (line = '') => { console.log(line); out.push(line); };
@@ -68,19 +72,21 @@ const shortBody = (toolKey) => ({
   generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
 });
 
-// Same short question, but the answer must be bare JSON like a scan's: does the format alone
-// make the grounding metadata disappear?
-const shortJsonBody = () => ({
+// A short, natural question on one scan's subject, answered in prose: what a two-step scan
+// would ask first.
+const scanQuestionBody = (ctx, months) => ({
   ...shortBody('google_search'),
-  contents: [{ parts: [{ text: `${SHORT_PROMPT}\nRéponds UNIQUEMENT par un tableau JSON strict, sans texte avant ou après : `
-    + '[{"title": "…", "startDate": "YYYY-MM-DD", "url": "…"}]' }] }],
+  contents: [{ parts: [{ text: `Cherche sur le web : quels trails, courses, randonnées organisées et concours `
+    + `sportifs sont annoncés autour de Fontainebleau (20 km) en ${months.slice(0, 2).join(' et ')} ? `
+    + 'Pour chacun : titre, date, commune et lien de la page.' }] }],
 });
 
-// The real sport scan, with the JSON format block replaced by a plain text list: the reverse test.
-const scanAsTextBody = (prompt) => geminiRequestBody(
-  prompt.split('Renvoie UNIQUEMENT un tableau JSON')[0]
-  + 'Réponds par une liste en texte : une ligne par événement, avec titre, date, lieu et URL.\n',
-);
+// The real request with a low thinking level: the 04/10 calls thought 3 000 to 10 000 tokens and
+// concluded they knew enough. An unknown field comes back as an HTTP 400, shown in the table.
+const lowThinking = (request) => ({
+  ...request,
+  generationConfig: { ...request.generationConfig, thinkingConfig: { thinkingLevel: 'low' } },
+});
 
 // countTokens is free: what the request alone weighs. A promptTokenCount well above it means
 // content was added to the context during the call — search results the answer does not declare.
@@ -136,19 +142,22 @@ async function main() {
   const ctx = { today, maxDate: addMonths(today, CONFIG.windowMonths) };
   for (const model of models) {
     await probe(model, 'question courte', shortBody('google_search'), 'google_search');
-    await probe(model, 'question courte → JSON', shortJsonBody(), 'google_search');
+    await probe(model, 'question « sport » en texte', scanQuestionBody(ctx, frenchMonths(ctx.today, ctx.maxDate)), 'google_search');
     if (!withScan) continue;
     const sport = SCANS.find((s) => s.name === 'sport') || SCANS[0];
-    await probe(model, 'scan « sport » → texte', scanAsTextBody(buildPrompt(sport, ctx)), 'google_search');
-    for (const scan of SCANS) {
+    const sportBody = geminiRequestBody(buildPrompt(sport, ctx));
+    await probe(model, 'vrai scan « sport »', sportBody, 'google_search');
+    await probe(model, 'vrai scan « sport », réflexion basse', lowThinking(sportBody), 'google_search');
+    if (!allScans) continue;
+    for (const scan of SCANS.filter((s) => s !== sport)) {
       await probe(model, `vrai scan « ${scan.name} »`, geminiRequestBody(buildPrompt(scan, ctx)), 'google_search');
     }
   }
   log('');
   log('Lecture : aucune recherche nulle part → compte, modèle ou API (voir le palier de facturation dans AI Studio). '
     + 'Recherche sur la question courte mais pas sur le vrai scan → le modèle choisit de ne pas chercher : prompt à revoir. '
-    + '« → JSON » sans recherche mais « → texte » avec → c\'est la réponse en JSON pur qui fait perdre la recherche. '
-    + 'Tokens in nettement au-dessus de « requête seule » sans métadonnées → du contenu a été ajouté pendant l\'appel. '
+    + '« question en texte » avec recherche mais vrai scan sans → un scan en deux temps (texte cherché, puis mise en JSON) répare. '
+    + '« réflexion basse » avec recherche → un réglage suffit. '
     + 'HTTP 429 / 403 → quota ou facturation.');
 
   if (process.env.GITHUB_STEP_SUMMARY) {
