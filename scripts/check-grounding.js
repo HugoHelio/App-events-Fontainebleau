@@ -68,7 +68,32 @@ const shortBody = (toolKey) => ({
   generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
 });
 
+// Same short question, but the answer must be bare JSON like a scan's: does the format alone
+// make the grounding metadata disappear?
+const shortJsonBody = () => ({
+  ...shortBody('google_search'),
+  contents: [{ parts: [{ text: `${SHORT_PROMPT}\nRéponds UNIQUEMENT par un tableau JSON strict, sans texte avant ou après : `
+    + '[{"title": "…", "startDate": "YYYY-MM-DD", "url": "…"}]' }] }],
+});
+
+// The real sport scan, with the JSON format block replaced by a plain text list: the reverse test.
+const scanAsTextBody = (prompt) => geminiRequestBody(
+  prompt.split('Renvoie UNIQUEMENT un tableau JSON')[0]
+  + 'Réponds par une liste en texte : une ligne par événement, avec titre, date, lieu et URL.\n',
+);
+
+// countTokens is free: what the request alone weighs. A promptTokenCount well above it means
+// content was added to the context during the call — search results the answer does not declare.
+async function countTokens(model, request) {
+  const { status, body } = await call(`models/${model}:countTokens`, {
+    method: 'POST',
+    body: JSON.stringify({ generateContentRequest: { model: `models/${model}`, ...request } }),
+  });
+  return status === 200 ? body?.totalTokens : null;
+}
+
 async function probe(model, label, request, toolKey) {
+  const counted = await countTokens(model, request);
   const { status, body, text } = await call(`models/${model}:generateContent`, {
     method: 'POST',
     body: JSON.stringify(request),
@@ -84,8 +109,14 @@ async function probe(model, label, request, toolKey) {
   const queries = gm?.webSearchQueries || [];
   const verdict = gm ? (queries.length ? '✅ recherche faite' : '⚠️ métadonnées sans requête') : '❌ aucune recherche';
   log(`| \`${model}\` | ${label} | \`${toolKey}\` | ${verdict} | ${queries.length} / ${gm?.groundingChunks?.length ?? 0} | `
-    + `${u.promptTokenCount ?? '?'} / ${u.candidatesTokenCount ?? '?'} / ${u.thoughtsTokenCount ?? 0} / ${u.toolUsePromptTokenCount ?? 0} |`);
+    + `${u.promptTokenCount ?? '?'} (requête seule : ${counted ?? '?'}) / ${u.candidatesTokenCount ?? '?'} / ${u.thoughtsTokenCount ?? 0} / ${u.toolUsePromptTokenCount ?? 0} |`);
   if (queries.length) log(`|  |  |  | requêtes : ${queries.slice(0, 4).map((q) => `« ${q} »`).join(', ')} | | |`);
+  // What came back: deep links to event pages suggest pages were read; home pages, memory.
+  const answer = (c.content?.parts || []).filter((p) => typeof p.text === 'string' && !p.thought).map((p) => p.text).join('');
+  const urls = answer.match(/https?:\/\/[^\s"'<>)\]]+/g) || [];
+  const homes = urls.filter((x) => { try { return new URL(x).pathname.replace(/\/$/, '') === ''; } catch { return false; } });
+  log(`|  |  |  | réponse : ${urls.length} lien(s), dont ${homes.length} page(s) d'accueil · `
+    + `${answer.replace(/\s+/g, ' ').slice(0, 160).replace(/\|/g, '/')} | | |`);
   // Keys of the candidate: if Google renamed or moved the metadata, it shows here.
   log(`|  |  |  | champs : ${Object.keys(c).join(', ')} · fin : ${c.finishReason ?? '?'} · version : ${body.modelVersion ?? '?'} | | |`);
 }
@@ -105,8 +136,10 @@ async function main() {
   const ctx = { today, maxDate: addMonths(today, CONFIG.windowMonths) };
   for (const model of models) {
     await probe(model, 'question courte', shortBody('google_search'), 'google_search');
-    await probe(model, 'question courte', shortBody('googleSearch'), 'googleSearch');
+    await probe(model, 'question courte → JSON', shortJsonBody(), 'google_search');
     if (!withScan) continue;
+    const sport = SCANS.find((s) => s.name === 'sport') || SCANS[0];
+    await probe(model, 'scan « sport » → texte', scanAsTextBody(buildPrompt(sport, ctx)), 'google_search');
     for (const scan of SCANS) {
       await probe(model, `vrai scan « ${scan.name} »`, geminiRequestBody(buildPrompt(scan, ctx)), 'google_search');
     }
@@ -114,6 +147,8 @@ async function main() {
   log('');
   log('Lecture : aucune recherche nulle part → compte, modèle ou API (voir le palier de facturation dans AI Studio). '
     + 'Recherche sur la question courte mais pas sur le vrai scan → le modèle choisit de ne pas chercher : prompt à revoir. '
+    + '« → JSON » sans recherche mais « → texte » avec → c\'est la réponse en JSON pur qui fait perdre la recherche. '
+    + 'Tokens in nettement au-dessus de « requête seule » sans métadonnées → du contenu a été ajouté pendant l\'appel. '
     + 'HTTP 429 / 403 → quota ou facturation.');
 
   if (process.env.GITHUB_STEP_SUMMARY) {
