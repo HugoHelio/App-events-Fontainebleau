@@ -1,7 +1,7 @@
 # Technical & Architecture Design Document
 
 **Project:** Autonomous Local Event Aggregator (Fontainebleau Region)
-**Date:** September 29, 2026 (first written September 20)
+**Date:** October 4, 2026 (first written September 20)
 **Version:** 2.4 (organisers' sites as a published source, static pages indexed by Google, libraries self-hosted)
 **Status:** in production at fontainebleaulive.fr, **290 events** from five sources (Gemini, organisers' sites, DATAtourisme, OpenAgenda, and the city's RSS feed once its firewall lets GitHub through), fiches indexed by Google, first organic traffic without any promotion · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
 
@@ -1391,282 +1391,259 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 ## 9. Roadmap & To-Do List
 
 **Cette section ne liste que ce qui reste à faire.** Tout ce qui est livré est documenté là où
-il se comprend : le journal des décisions (§7) dit *pourquoi*, les sections §3.A à §3.S disent
-*comment*. Réécrite le 22 septembre : elle comptait 86 lignes dont 66 cochées, et les vingt
-choses qui restaient étaient noyées dedans.
+il se comprend : le journal des décisions (§7) dit *pourquoi*, les sections §3 disent *comment*.
+Réécrite le 22/09, **nettoyée et re-priorisée le 04/10** : les items livrés (21, 22, 26b, 28,
+38, 51b, 51c, 61, 72 étape 2, ménage du 23/09) en sont sortis ; les recherches closes passent en
+E pour ne pas être refaites ; l'item 74 (trafic) est éclaté dans les nouveaux items 80, 81 et 70-bis.
 
-État au 29 septembre (scan du 27/09) : **290 événements** — sites des organisateurs 132,
-Gemini 113, DATAtourisme 24, OpenAgenda 21 —, 60 % de positions exactes (BAN, lieux, flux),
-FR/EN, PWA, boucle de signalement fermée, fiches indexées par Google et premier trafic
-organique. Comparatif des sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
+État au 29/09 (scan du 27/09) : **290 événements** — sites des organisateurs 132, Gemini 113,
+DATAtourisme 24, OpenAgenda 21 —, 60 % de positions exactes, FR/EN, PWA, boucle de signalement
+fermée, fiches indexées par Google. Search Console (22-27/09) : 0 → 35 clics/jour, position
+moyenne 7, **87 % mobile**, tout le trafic sur les fiches, recherches génériques (« que faire à
+Fontainebleau ») en position 46-87. `/ce-week-end/` est la page la plus vue. Comparatif des
+sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
 
-**Fait le 30/09 :** item 74 — titres de fiches avec année et date, pages de saison `/sorties/`,
-page `/ce-week-end/` mise en avant sur l'accueil (§3.X, §7). Premier post Facebook rédigé.
+**Ordre de travail décidé le 04/10 — un item par session, dans cet ordre :**
 
-**Prochaine session :** (1) lire le rapport du scan du 30/09 (liste ci-dessous) ; (2) repérer
-les dates « recopiées de l'an dernier » : signaler dans le rapport les fiches Gemini dont le lien
-n'est qu'une page d'accueil et qu'aucune source légitime ne confirme — le marché de Noël de
-Fontainebleau portait les dates 2025 et rien ne l'avait vu ; (3) coût réel par scan et choix du
-modèle avant la hausse du 1er janvier 2027 (item 39).
+| Ordre | Item | Pourquoi à ce rang | Effort |
+|---|---|---|---|
+| 1 | **75. Défilement mobile** | 87 % du trafic est mobile, et la page se fait mal défiler : un défaut, pas une amélioration | S |
+| 2 | **81. Hubs Toussaint et Halloween** | Vacances le 17/10, Halloween le 31/10. Google met 1 à 3 semaines à classer une page : c'est cette semaine ou l'an prochain | M |
+| 3 | **80. Titres et descriptions des fiches (CTR)** | Le trafic vient des fiches ; le levier « année + date » du 30/09 a marché, on le prolonge | S |
+| 4 | **76. Positionnement du bandeau** | Quelques lignes, mais une formule à trancher | XS |
+| 5 | **78. Pages « Aujourd'hui » et « Gratuit »** | Gabarit de `/ce-week-end/` réutilisé ; deux requêtes à fort volume | M |
+| 6 | **77. « Ce week-end », page star** | Déjà la plus vue : on l'améliore après lui avoir donné des sœurs (78), pour concevoir la rangée de boutons une seule fois | M |
+| 7 | **82. Événements similaires** | Pages vues par visite ; existe déjà en version simple (même commune) | S |
+| 8 | **79. Confiance visible** | Le plus de valeur à terme, mais demande d'abord la détection des dates recopiées (79b) pour ne rien afficher de faux | M |
 
-**Au prochain scan, lire dans le rapport, dans cet ordre :**
-1. La colonne « Search queries / web sources » des scans Gemini : 0 partout le 27/09 (voir
-   « Surveiller 3 à 5 runs » ci-dessous). Si « ⚠️ no grounding metadata » ou encore 0 / 0,
-   c'est la priorité absolue : le modèle répondrait de mémoire.
-2. « Sites des organisateurs » : `jagis-anvl` (nouveau), `ville-fontainebleau` (❌ 418 attendu
-   tant que la mairie n'a pas posé l'exception), et la ligne « catégorie déduite du titre »
-   qui remplace les 22 rejets `invalid_category`.
-3. La disparition des 3 sorties du Carreau Franc (hors rayon) dans le compte « trop loin ».
+En parallèle, à chaque scan : lire le rapport (B, premier item).
 
 ---
 
-### A. Pour le chef de projet — rien à coder
+### A. Croissance — demandes du 04/10, dans l'ordre de travail
 
-- [x] **61. Visuels de marque — posés le 23/09** (§3.V). Favicon, icônes PWA 192 et 512, icône
-  iOS, marque du bandeau, signature du pied de page et image de partage. La palette du site est
-  désormais celle du logo, relevée sur les fichiers.
-- [ ] **61c. Favicon dans Google** — indexation de la page d'accueil demandée le 29/09, le site sert bien la feuille (vérifié) ; reste à la voir dans les résultats : `/favicon.ico` en ligne depuis le 24/09. Demander une
-  indexation de la page d'accueil dans la Search Console, puis vérifier sous quelques jours à
+- [ ] **75. Défilement de la page sur mobile.** Constat du chef de projet sur Android (Motorola) :
+  pour faire défiler la *page*, il faut viser la fine marge à côté de la carte et des fiches.
+  **Cause, lue dans le code** : sur mobile, la carte fait 400 px de haut (le `min-height: 400px`
+  l'emporte sur les 350 px du `@media`) et Leaflet capte tout glissement d'un doigt ; la liste des
+  fiches est elle-même un ascenseur (`.cards-list` : `max-height: 600px; overflow-y: auto`).
+  La page est donc deux pièges à défilement empilés, et seule la marge entre eux fait défiler la
+  page. **Plus de marge ne soignerait pas la cause.** Recommandation :
+  - **Carte à deux doigts sur écran tactile**, comme Google Maps : un doigt fait défiler la page,
+    deux doigts déplacent la carte, et un message « Utilisez deux doigts pour déplacer la carte »
+    s'affiche brièvement. Leaflet ne le fait pas nativement : une trentaine de lignes, sans
+    dépendance (`dragging` désactivé au toucher, réactivé à deux doigts). Le zoom par pincement
+    reste.
+  - **Liste sans ascenseur propre sur mobile** (`max-height: none`) : elle s'allonge dans la page,
+    un seul défilement.
+  - **Carte plus basse** sur mobile (~45 % de la hauteur d'écran) et bouton « ↑ Haut de page ».
+  - Vérifier aussi la vue Calendrier. **Fait quand** : sur le Motorola, on traverse la page de
+    haut en bas d'un pouce sans jamais déplacer la carte par erreur.
+
+- [ ] **81. Hubs thématiques : Toussaint, Halloween, puis Noël.** **Existe déjà** (§3.X) : cinq pages
+  `/sorties/` (marchés de Noël, Noël, brame, champignons, Halloween), choisies sur le titre, jamais
+  supprimées, liées depuis les fiches et `/ce-week-end/`. **Ce qui manque pour capter les requêtes
+  génériques :**
+  - **Un hub par dates, pas par titre** : « Que faire pendant les vacances de la Toussaint 2026
+    autour de Fontainebleau ? » = tout ce qui a lieu pendant les vacances (sam. 17/10 → lun. 02/11,
+    toutes zones — **à vérifier sur le calendrier officiel**), sorties enfants et famille en tête
+    (tranche d'âge). Une table des vacances dans le code sert ensuite Noël, février, printemps, à
+    la même adresse stable (`/sorties/vacances-toussaint/`).
+  - **Titres alignés sur la requête** : « Que faire à Fontainebleau pour Halloween 2026 ? Sorties
+    et animations », au lieu de « Halloween 2026 autour de Fontainebleau : … ».
+  - **Du texte durable** : une page à deux événements est « mince » pour Google. Intro plus riche,
+    courte FAQ (« Où fêter Halloween avec des enfants ? »), les classiques de la saison — rédigés
+    par nous, aucune donnée inventée.
+  - **Liens** : rangée « En ce moment » sur l'accueil (comme sur `/ce-week-end/`), `/que-faire/`.
+  - **Halloween ne reconnaît que le mot « halloween »** : mesurer ce qui manque (frisson,
+    sorcières, citrouilles…) avant d'élargir — gare aux faux positifs.
+  - Repris de 74 (6) : **adresses stables pour les événements annuels** — ce sont ces hubs.
+  - **Fait quand** : hubs Toussaint et Halloween en ligne avant le 10/10 et soumis à
+    l'indexation dans la Search Console.
+
+- [ ] **80. Titres et descriptions des fiches : gagner le clic.** Format actuel : « Melun Fête son
+  Brie 2026 — sam. 3 oct. · Melun | Fontainebleau Live ». Proposition du chef de projet :
+  « … : Programme, Horaires & Accès - Fontainebleau Live ». **Recommandation, avec trois garde-fous :**
+  - **N'annoncer que ce que la page contient** : « horaires » si `schedule` existe, « tarif »
+    si `price`, « programme » seulement si la description en porte un. Un titre qui promet un
+    programme absent fait revenir le visiteur sur Google — signal négatif, et contraire à §5.
+    Mots déclencheurs donc **conditionnels**.
+  - **La date reste en tête** : Google coupe vers 60 caractères sur mobile, et la date est le
+    levier qui a marché le 30/09. Ex. : « Melun Fête son Brie 2026 (sam. 3 oct.) : horaires,
+    accès ». Le suffixe de marque saute quand le titre est long (Google le retire souvent seul).
+  - **La meta description compte autant que le titre** : la faire répondre directement —
+    « Samedi 3 octobre 2026, 10 h-18 h, place Saint-Jean à Melun. Gratuit. Horaires, accès et
+    lien de l'organisateur. »
+  - **Mesurer** : pages ≥ 100 impressions et CTR < 2 % (Search Console), avant/après sur 3
+    semaines, une seule variable changée à la fois. Repris de 74 : CTR de « Melun fête son Brie »,
+    positions de `/sorties/marches-de-noel/`, rapport « Pages ».
+
+- [ ] **76. Positionnement : affirmer dans le bandeau.** Aujourd'hui : « Agenda de Fontainebleau
+  et ses environs » (kicker, FR/EN). Proposé : « Tout ce qu'il y a à faire autour de
+  Fontainebleau ». **Recommandation** : affirmer, oui, mais avec une promesse qu'on tient chaque
+  jour — « tout » est facile à prendre en défaut par un visiteur qui connaît un événement absent.
+  Pistes : « **Toutes les sorties autour de Fontainebleau, mises à jour chaque jour** » (la
+  fraîcheur est un argument que l'office de tourisme n'a pas) ; ou « Que faire autour de
+  Fontainebleau ? » + compteur vivant « 290 sorties dans les 3 prochains mois ». Reprendre la même
+  formule dans le `<title>` et la meta description de l'accueil, qui visent la requête « que
+  faire à Fontainebleau ». **À trancher** : la formule.
+
+- [ ] **78. Pages « Aujourd'hui » et « Gratuit »**, sur le modèle de `/ce-week-end/` (bouton sur
+  l'accueil + page dédiée générée).
+  - `/aujourdhui/` : « Que faire aujourd'hui autour de Fontainebleau ? ». **Piège** : la page est
+    reconstruite par le workflow de 06:00 UTC ; entre minuit et ~8 h elle montrerait la veille.
+    Un petit script compare la date de la page à celle du téléphone et l'annonce (ou bascule sur
+    la liste du lendemain, déjà générée).
+  - `/gratuit/` : « Sorties gratuites autour de Fontainebleau », 30 prochains jours, par date. Même
+    règle que l'`Offer` schema.org : « Gratuit pour les adhérents » n'est **pas** gratuit.
+  - **Accueil** : une rangée de trois boutons [Aujourd'hui N] [Ce week-end N] [Gratuit N] remplace
+    la pastille seule — conçue avec 77.
+  - Ajouter les nouveaux dossiers à la liste `git add` de `daily-check.yml` (leçon du 30/09, §3.X)
+    et au `sitemap.xml`.
+
+- [ ] **77. « Ce week-end », page star.** Déjà : liste horodatée, filtres par catégorie, badge
+  Gratuit, sommaire, partage, « En ce moment ». **Pistes, par rendement :**
+  - **Titre daté** : « Que faire ce week-end à Fontainebleau ? (10-11 oct.) » — même levier que
+    les fiches (80).
+  - **« À ne pas manquer »** : 3 à 5 sorties en tête, choisies par une règle écrite, pas par goût :
+    sortie de saison (`/sorties/`), confirmée par deux sources ou plus, ponctuelle (pas une
+    exposition de quatre mois).
+  - **Météo du samedi et du dimanche** (Open-Meteo : gratuit, sans clé, lu au moment de générer
+    la page — aucun tiers dans le navigateur, la décision du 21/09 tient). Plus tard « S'il
+    pleut » : demande de savoir ce qui est en intérieur, donnée qu'on n'a pas.
+  - **Filtre « Gratuit »** à côté des catégories.
+  - **Accueil, mobile** : le bouton passe au premier écran, au-dessus de la carte (rangée de 78).
+  - **Le dimanche soir**, un lien « Le week-end prochain ».
+  - **Mesurer** : clics sur le bouton de l'accueil et partages (GoatCounter).
+
+- [ ] **82. « À faire aussi » en bas de chaque fiche.** **Existe** : cinq autres événements de la
+  même commune + lien vers le thème. **Proposé** : trois suggestions plus pertinentes — (1) même
+  jour (ou chevauchement) à moins de ~10 km, (2) même catégorie dans les 14 jours, à proximité,
+  (3) même commune pour compléter. Expositions longues seulement à défaut. Le lien « Tout ce qui se
+  passe à {commune} » reste. **Contrainte** : le choix doit être **stable d'un jour à l'autre** —
+  les pages ne sont écrites que si elles changent (§3.X) ; un tirage qui bouge chaque jour
+  réécrirait 290 pages et ferait un commit quotidien. **Mesurer** : pages vues par visite.
+
+- [ ] **79. Confiance : montrer ce qu'on vérifie déjà.** Le site est prudent jusqu'à la timidité
+  (« Agenda collecté automatiquement : vérifiez les informations… »), alors que le pipeline vérifie
+  beaucoup et n'en montre rien. Ce qu'on a et qu'on peut afficher : liens vérifiés (`urlStatus`),
+  date de dernière vue (`lastSeen`), sources qui confirment un événement, date du scan
+  (`generatedAt`). **Options :**
+  - **Bandeau / pied de page** : « Données vérifiées le 2 oct. · 290 sorties · 5 sources ».
+    Honnête : c'est la date du scan (tous les ~3 jours), pas « aujourd'hui ».
+  - **Sur chaque fiche** : un bloc « Sources » — « Annoncé par : office de tourisme, OpenAgenda »,
+    « Lien de l'organisateur vérifié le 2 oct. » ; un badge **« ✓ Confirmé par l'organisateur »**
+    seulement quand un site ou un flux d'organisateur le porte.
+  - **Note reformulée** en positif : « Informations relevées le 2 oct. sur le site de
+    l'organisateur. Un changement ? Signalez-le. »
+  - **Page « Nos sources »** : comment c'est collecté et vérifié. Aide aussi Google (fiabilité).
+  - **Règle** : jamais « vérifié » sur une fiche que seul Gemini porte ; elle dit « Source :
+    recherche web — à confirmer auprès de l'organisateur ». Masquer la provenance a été écarté (§7).
+  - **79b. Préalable — dates « recopiées de l'an dernier »** : signaler dans le rapport les fiches
+    Gemini dont le lien n'est qu'une page d'accueil et qu'aucune source légitime ne confirme. Le
+    marché de Noël de Fontainebleau portait les dates 2025 et rien ne l'avait vu. Afficher de la
+    confiance sur une donnée fausse serait pire que la prudence actuelle.
+
+### B. Pipeline et données — en continu
+
+- [ ] **Lire le rapport de chaque scan**, dans cet ordre :
+  1. Colonne « Search queries / web sources » des scans Gemini : **0 partout le 27/09**. Si
+     « ⚠️ no grounding metadata » ou encore 0 / 0, priorité absolue : le modèle répondrait de
+     mémoire (risque de dates inventées).
+  2. « 🏛️ Sites des organisateurs » : `jagis-anvl` (nouveau), `ville-fontainebleau` (❌ 418
+     attendu tant que la mairie n'a pas posé l'exception), la ligne « catégorie déduite du titre »
+     qui remplace les 22 rejets `invalid_category`.
+  3. La disparition des 3 sorties du Carreau Franc (hors rayon) dans le compte « trop loin ».
+  4. Fusions de doublons « frères » (51c) : une fusion à défaire tient en une ligne `keepSeparate`
+     dans `overrides.json`.
+  5. Tokens, requêtes, motifs de rejet, liens morts, géocodage, doublons signalés non fusionnés.
+- [ ] **39. Coût réel par scan et choix du modèle avant la hausse du 1er janvier 2027.** Alertes
+  de budget posées (23/09). Reste : journaliser le coût estimé par run, réévaluer
+  `gemini-3.6-flash` (génération précédente).
+- [ ] **72. Comparatif des sources légitimes** (§3.Z) — **69,1 %** le 28/09 (181 + 5 probables sur
+  269), il en manque 57 pour 90 %. Manqués : fontainebleau.fr 15 (HTTP 418, voir 72c),
+  fontainebleau-tourisme.com 14, sites en JavaScript (AAFF, Vaux, Melun) 8, longue traîne ~20.
+  **À faire** : lancer le workflow « Comparatif des sources » (Actions → *Run workflow*), relire
+  « manqués » et « probables ». Puis, par rendement : ANVL (22, calendrier AJAX du plugin de
+  réservation), Amis de la Forêt (8), Vaux (3), Melun (3). **Critère : ≥ 90 %** sur plusieurs
+  runs ; alors seulement le grounding passe en observation, sauf pour le résidu accepté.
+- [ ] **72b. API de recherche avec droit de stockage** pour le résidu, si les sources directes
+  plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000 requêtes (stockage seulement sur un plan
+  qui l'accorde explicitement), Exa 7 $/1 000, Tavily 0,008 $/crédit. À mesurer, pas à supposer.
+
+### C. Pour le chef de projet — rien à coder
+
+- [ ] **73. Page blanche sur Android — corrigé le 29/09** (§7). Pendant une semaine, ouvrir le site
+  dans des conditions variées (4G faible, forêt, réveil du téléphone) ; si elle revient, noter
+  l'heure et le réseau, brancher le câble **avant** de recharger (`chrome://inspect`). À faire en
+  même temps que le test de 75.
+- [ ] **68b. Search Console** : sitemap soumis (29/09). Restent : tester une fiche dans « Test des
+  résultats enrichis », ouvrir une adresse inexistante pour voir la 404, suivre les rapports
+  « Pages » et « Performances » — ce sont les chiffres de 80 et 81.
+- [ ] **61c. Favicon dans Google** : indexation de l'accueil demandée le 29/09 ; vérifier sous
   quelques semaines que la feuille de chêne a remplacé le soleil Helioso dans les résultats.
-- [ ] **68b. Après le premier déploiement des pages** (§3.X) — **sitemap soumis** (confirmé le 29/09), les fiches apparaissent déjà dans Google ; restent le test des résultats enrichis et la page 404 : dans la Search Console, menu
-  « Sitemaps », soumettre `https://fontainebleaulive.fr/sitemap.xml` ; tester une fiche dans
-  l'outil « Test des résultats enrichis » de Google ; ouvrir une adresse inexistante pour voir
-  la page 404. Puis suivre, sur quelques semaines, le nombre de pages indexées (rapport
-  « Pages ») et les requêtes qui amènent des visites (rapport « Performances »).
-- [ ] **73. Page blanche sur Android — corrigé le 29/09** (§7). **À vérifier, chef de projet** : pendant une semaine,
-  ouvrir le site sur le téléphone dans des conditions variées (4G faible, forêt, réveil du téléphone) ; si la page
-  blanche revient, noter l'heure et le réseau, et brancher le câble **avant** de recharger (`chrome://inspect`).
+- [ ] **69. Tester l'abonnement `.ics` en vrai** (§3.Y) : Google Agenda → « Autres agendas » →
+  « + » → « À partir de l'URL » crée un agenda **séparé**, qu'on supprime d'un clic. Idem Apple
+  Calendrier et Outlook ; vérifier la mise à jour le lendemain.
+- [ ] **70-bis. Groupes Facebook des communes** (repris de 74 (4)) : brouillons prêts dans
+  `/publier/`, premier post rédigé le 30/09. Lire les règles de 2 ou 3 groupes, demander à
+  l'administrateur, un post par mois et par groupe. Publication **manuelle** : publier par robot
+  dans un groupe enfreint les conditions de Facebook et met le compte en jeu.
+- [ ] **70b. Page Facebook « Fontainebleau Live » — plus tard** : une fois que les posts depuis le
+  profil personnel ont pris. Pas depuis une page professionnelle de conseil.
+- [ ] **72c / 74 (5). Liens entrants et partenariats** — mairie de Fontainebleau contactée le 29/09
+  (exception pare-feu pour son flux RSS + widget) : surveiller la ligne `ville-fontainebleau`
+  (❌ 418 → ✅). Ensuite : ANVL peut générer le `.ics` de son plugin en deux clics ; office de
+  tourisme, associations ; plus tard un formulaire « Ajouter mon événement ». Le passage
+  « Outreach gate » des Milestones s'applique.
+- [ ] **71. Widget premium** — le gratuit est en ligne (§3.Y). Le premium est de la syndication
+  **contre paiement** de données issues en partie de Gemini : décision grounding explicite (§3.G,
+  §8) **avant** le premier contrat. Contenu à définir avec les premiers partenaires (sans mention,
+  couleurs, mise en avant, statistiques) ; un lien de paiement Stripe et une clé par partenaire,
+  sans serveur ni dépendance.
 - [ ] **61b. Ré-exporter les PNG sans entrelacement** et le lockup du pied de page à sa taille
-  d'affichage. Gain estimé : quelques dizaines de Ko. Sans urgence.
-- [ ] **Surveiller 3 à 5 runs automatiques — 1er rapport lu le 29/09 (scan du 27/09)** : 5 runs verts du 24 au 29/09, 290 événements, 0 lien mort, 0 rejet côté Gemini. Tokens grounded ≈ 10 k entrée / 13 k sortie / 22 k de réflexion pour les 4 scans. **Anomalie : « Search queries » à 0 sur les quatre scans** — soit le modèle ne cherche plus (il répondrait de mémoire : risque de dates inventées), soit la réponse ne porte plus les métadonnées. Le rapport distingue désormais les deux (métadonnées présentes ? requêtes / pages web citées) : **lire cette colonne au prochain scan**, c'est la priorité. Reste à surveiller : Ce qu'il faut regarder dans le rapport : tokens et
-  requêtes de recherche par scan (le coût réel, à comparer à l'estimation §3.G), motifs de rejet,
-  liens morts, sources de géocodage, doublons signalés mais non fusionnés.
+  d'affichage. Quelques dizaines de Ko. Sans urgence.
 
+### D. Finitions
 
-### B. Ce qui a le plus de valeur maintenant
-
-- [x] **38. Couverture sport — première passe faite le 22/09** (§3.T). Aucune source à ajouter :
-  les quatre pistes vérifiées ne donnent rien de neuf. En revanche le prompt décrivait un
-  périmètre de 15 km et dix communes alors que le pipeline en accepte 20 et en publie vingt et
-  une, et le focus sport était générique. Corrigé. **À mesurer sur le prochain scan : si le
-  compte sport ne bouge pas, c'est que la région produit vraiment peu d'événements sportifs,
-  et la question se ferme.**
-- [x] **38c. Mesuré le 29/09 : 37 événements « Sport & Outdoor » sur 290 (13 %)**, contre 21 sur 197 (11 %) le 22/09. La correction du périmètre et les sites des organisateurs ont joué ; la question est close.
-- [x] **38b. Fermé le 23/09 : il n'existe pas de source d'événements sportifs exploitable ici.**
-  Vérifié une par une, pour que la recherche ne soit pas refaite :
-  | Piste | Ce qu'elle contient |
-  |---|---|
-  | RNA (Répertoire national des associations) | Un annuaire d'**associations**. Aucune date d'événement |
-  | API Recherche d'entreprises | Testée : renvoie bien les associations sportives (NAF 93.12Z), mais les seules dates sont création, fermeture et mise à jour |
-  | Pages publiques des campagnes HelloAsso | Du scraping — exclu par le chef de projet |
-  | API HelloAsso v5 | Authentification OAuth obligatoire (`/v5/organizations` → 401), donc un compte à créer. Écarté |
-  | FFA `bases.athle.fr`, FFRandonnée | HTML uniquement, donc du scraping. Écarté |
-
-  **Sous-produit également écarté.** L'API Recherche d'entreprises donne la liste réelle des clubs
-  sportifs des 21 communes — 336 structures actives. L'idée d'en nommer quelques-uns dans le
-  prompt a été abandonnée : la majorité sont des associations sportives scolaires qui
-  n'organisent rien de public, et en citer une poignée d'arbitraires biaiserait la recherche plus
-  qu'elle ne l'aiderait.
-
-  **Ce qui reste à mesurer, et c'est gratuit :** la correction du périmètre du 22/09 (§3.T) n'a
-  pas encore été éprouvée par un scan. Le prompt cherchait dans 15 km et dix communes alors que
-  le pipeline en accepte 20 et vingt et une. Si le compte sport ne bouge pas après ce scan, la
-  conclusion honnête est que la région produit peu d'événements sportifs sur trois mois. Mesuré le 22/09 : **21 événements
-  « Sport & Outdoor » sur 197 (11 %)**, contre 120 en Culture. C'est l'écart que le chef de
-  projet signale depuis le début, et les trois sources actuelles ne le comblent pas. Pistes :
-  calendriers de clubs et de fédérations, HelloAsso, agendas des offices municipaux des sports.
-- [x] **22. Axe famille — tranché le 23/09 par la simplification.** Le filtre « Public cible »
-  est retiré : 147 événements sur 197 sont tout public, donc chaque option en renvoyait 73 à
-  90 %. Un marqueur `family` déduit du contenu reste possible si le besoin revient, mais il
-  faudrait des données qui le portent. Ancien libellé : 129 événements sur 197 sont « tout public » (0–99 ans), ce qui ne
-  dit rien à un parent. La tranche d'âge seule est un mauvais signal : il faut un marqueur
-  `family` déduit du contenu, et un filtre qui s'appuie dessus.
-- [x] **28. Détection des événements silencieux — fait le 23/09.** Champ `lastSeen`, seuil de
-  10 jours (trois scans), rapport en deux niveaux : disparition d’un flux qui a bien répondu
-  (sérieux) vs absence de mention par le modèle (information). Rien n’est supprimé. Ancien
-  libellé : jamais par absence seule
-  — la recall du modèle varie d'un jour à l'autre. La boucle de signalement (§3.N) couvre déjà
-  le cas signalé par un visiteur ; il manque le cas silencieux.
-- [x] **39. Alertes de budget posées par le chef de projet (23/09).** Reste ouvert, plus tard :
-  journaliser le coût estimé par run et réévaluer le modèle (`gemini-3.6-flash` est une
-  génération précédente, les prix montent au 1er janvier 2027). Ancien libellé : journaliser le coût estimé par run, poser
-  une alerte de budget sur le projet Google Cloud, et réévaluer le modèle : `gemini-3.6-flash`
-  est désormais une génération précédente et les prix montent au 1er janvier 2027.
-
-### B2. Audience et monétisation — idées du 24/09, rien de commencé
-
-- [x] **69. Abonnement agenda (`.ics`) — fait le 24/09** (§3.Y). Tranché : événements de plus de 7 jours exclus, entrées « journée entière », flux jamais supprimés. **Reste : tester l'abonnement en vrai** — sans encombrer son agenda : Google Agenda → « Autres agendas » → « + » → « À partir de l'URL » crée un agenda **séparé**, qu'on masque ou supprime d'un clic — dans Google Agenda, Apple Calendrier et Outlook, et vérifier une mise à jour le lendemain. Idée d'origine : `generate-pages.js` écrit `agenda.ics`, plus un fichier
-  par catégorie et par commune (« Sport autour de Fontainebleau »). Un bouton « Ajouter à mon
-  agenda » propose un lien `webcal://` (Apple Calendrier) et un lien d'abonnement Google Agenda.
-  Les événements arrivent dans l'agenda du téléphone et se mettent à jour seuls : aucun coût,
-  aucun envoi, entièrement automatique. **Points à trancher avant de coder :**
-  - **Les expositions longues.** « Le panache des Lumières » dure quatre mois : en événement
-    « journée entière », elle occuperait le haut de l'agenda tous les jours jusqu'en janvier.
-    Pistes : exclure les événements de plus de 7 jours du flux général, ou ne publier que le
-    premier jour.
-  - **Le format est pointilleux** (RFC 5545) : fins de ligne CRLF, lignes coupées à 75 octets,
-    virgules et points-virgules échappés, `DTEND` exclusif (lendemain du dernier jour), `UID`
-    stable, qui sera l'id de l'événement. Un flux invalide est ignoré sans message par
-    l'agenda. À tester dans Google, Apple et Outlook avant d'annoncer quoi que ce soit.
-  - **Google Agenda rafraîchit lentement** un agenda abonné, parfois plus de 24 h. Le promettre
-    « à jour chaque jour », pas « en temps réel ».
-  - Un événement annulé doit disparaître du flux : c'est déjà le cas, puisque le fichier est
-    régénéré en entier à chaque run.
-  - **Risque grounding (§8)** : un flux d'agenda est de la syndication au sens strict. C'est
-    couvert par la décision du 24/09, mais c'est un canal de plus à citer dans §8.
-- [x] **70. Brouillons de posts — faits le 24/09** : page privée `/publier/` (non indexée, hors plan du site, jamais liée), régénérée chaque jour par `generate-pages.js` : un post « autour de Fontainebleau » et un par commune ayant au moins 3 activités dans les 30 jours, 6 dates maximum, expositions longues exclues, lien vers la page commune, bouton Copier. La publication reste manuelle. **À faire, chef de projet** : lire les règles de 2 ou 3 groupes, publier une fois par mois. Idée d'origine :
-- [ ] **70b. Page Facebook « Fontainebleau Live » — plus tard (KIV, 24/09)** : créer la page de
-  marque (gratuit, 5 min) une fois que les premiers posts depuis le profil personnel ont pris.
-  Les posts construisent alors la marque et les gens peuvent s'abonner. Ne pas publier depuis une
-  page professionnelle de conseil : dans un groupe de commune, ça se lit comme de la publicité.
-- [ ] **70-bis. Groupes Facebook des communes** (« Tu sais que tu viens de Fontainebleau », groupes
-  de parents, de clubs). Un post soigné par mois dans deux ou trois groupes, avec le lien vers une
-  page commune ou une fiche. **Lire les règles de chaque groupe d'abord** : beaucoup interdisent
-  l'auto-promotion, et demander à l'administrateur avant le premier post vaut mieux qu'un
-  bannissement. **Automatisable : non, pas la publication.** Meta a retiré en 2024 l'API qui
-  permettait de publier dans les groupes, et publier par un robot dans un groupe dont on n'est
-  pas administrateur enfreint les conditions de Facebook : risque de bannir le compte, qui est
-  le canal lui-même. **Ce qui s'automatise :** le brouillon. Le générateur peut écrire chaque
-  mois un texte prêt à coller par commune (« Ce mois-ci à Avon : … », 5 événements, lien vers la
-  page commune), à relire puis poster à la main. Coût : environ 5 minutes par groupe et par mois.
-- [ ] **71. Widget partenaire — le gratuit est fait le 24/09** (§3.Y, `/widget/integrer/`). **Reste le premium**, et la décision grounding qui le précède. Idée d'origine : Un encart à intégrer sur le site d'une
-  mairie, d'un office de tourisme, d'un hôtel ou d'un club, qui affiche les prochains
-  événements, par exemple ceux de sa commune ou d'une catégorie.
-  - **Gratuit** : `<iframe>` servi depuis le site (une page `/widget/?ville=…` générée ou
-    filtrée en JavaScript), avec la mention et le lien « Fontainebleau Live ». Ce lien est en
-    soi un gain : un lien entrant depuis le site d'une mairie pèse lourd pour Google.
-  - **Premium** : à définir avec les premiers partenaires, avant de coder. Pistes : sans la
-    mention, aux couleurs du partenaire, événements du partenaire mis en avant, statistiques
-    d'affichage.
-  - **Contrainte d'architecture** : le site est statique, sans serveur ni comptes. Un premium
-    demande au minimum un paiement (lien de paiement Stripe, facturation à la main au début) et
-    une clé par partenaire. Sans serveur, cette clé ne se vérifie pas vraiment : une première
-    version peut reposer sur la confiance et le contrat. Pas de dépendance à ajouter pour ça.
-  - **Préalable** : c'est de la **syndication vers des tiers, contre paiement**, avec des
-    données issues à 78 % de Gemini. C'est le cas le plus exposé au regard des conditions de
-    Google (§3.G, §8), au-delà de ce qu'a tranché la décision du 24/09 sur les pages. À
-    trancher explicitement avant le premier widget premium. Le passage « Outreach gate » des
-    Milestones s'applique aussi : on contacte une mairie ou un office de tourisme.
-
-- [ ] **74. Trafic — pistes remises le 30/09 ; 1, 2 et 3 faites, plus la mise en avant du week-end.** Lu dans la Search Console (22-27/09) : 0 → 35 clics/jour en 4 jours, position moyenne 7, 87 % mobile, tout le trafic sur les fiches, recherches génériques (« que faire à Fontainebleau ») en position 46-87. **Faits** : titres avec année et date ; pages de saison `/sorties/` (§7). **Fait aussi** : (3) page `/ce-week-end/`, pastille dans le bandeau, option « Ce week-end » du filtre Période, filtres par catégorie sur la page (30/09). **Restent** : (4) posts Facebook, chef de projet — premier post rédigé le 30/09 ; (5) liens entrants (widget mairie en cours, office de tourisme, associations) ; (6) adresses stables pour les événements annuels. **À relire dans 2 à 3 semaines** : CTR de « Melun fête son Brie » et consorts, positions de `/sorties/marches-de-noel/`, rapport « Pages » (indexation). Libellé d'origine : Le site a déjà du trafic
-  sans aucune promotion. Avant de proposer quoi que ce soit : regarder d'où il vient (GoatCounter,
-  Search Console : requêtes, pages d'entrée), puis classer les pistes par effort et par rendement,
-  en tenant compte de ce qui est déjà tranché (pas de démarchage avant la phase commerciale,
-  risque grounding §8).
-
-### B3. Sortir du grounding sans rien perdre — décidé le 24/09
-
-- [x] **72, étape 2 — les sites sont une source publiée, le 24/09** (§3.Z2). **À regarder au
-  prochain scan** : la ligne « 🏛️ Sites des organisateurs » du rapport (fiches lues, confirmées,
-  offres permanentes écartées, rejets) et les nouveaux événements sur le site.
-- [ ] **72. Comparatif en parallèle — construit le 24/09** (§3.Z). Premier run local sans les
-  sources lues par Gemini : **43 %**. **Run hebdomadaire du 28/09 : 69,1 %** (181 + 5 probables sur 269), il en manque 57 pour 90 %. Les manqués par site : fontainebleau.fr 15 (HTTP 418 : bloque les adresses cloud, voir 72c), anvl.fr 14 (le lecteur n'en voit qu'un ; **traité le 29/09** : 3 étaient au Carreau Franc, hors rayon, et sortent ; les autres sont lus sur J'agis pour la nature), fontainebleau-tourisme.com 14 (en partie les fiches rejetées faute de catégorie, corrigé le 29/09, en partie des titres que l'appariement ne rapproche pas), sites en JavaScript (AAFF, Vaux, Melun) 8, longue traîne ~20. **À faire : lancer le workflow « Comparatif des sources »**
-  (onglet Actions, bouton *Run workflow*) pour le premier chiffre complet, puis relire les
-  « manqués » et les « probables » du rapport. Ensuite, par ordre de rendement : ANVL (22
-  événements, calendrier AJAX du plugin de réservation), Amis de la Forêt (8), Vaux (3), Melun (3).
-  Idée d'origine : Rien ne
-  change en production tant que le critère n'est pas atteint.
-  - **Registre `sources.json`** (édité à la main) des ~15 sites qui portent 83 % des événements
-    Gemini : un `.ics` quand le site en publie un (Grand Parquet), sinon la page agenda lue
-    directement et extraite par Gemini **sans grounding** (même appel que la traduction). Tout
-    automatique, aucun contact avec les sites. `robots.txt` respecté (david-nature.com exclu).
-  - **Rapport à chaque run** : part des événements publiés retrouvés par (sources directes +
-    DATAtourisme + OpenAgenda), liste des événements manqués pour juger s'ils sont « clés »,
-    rendement par source — une source à 0 signale un site refait.
-  - **Critère : ≥ 90 %** des événements publiés, sur plusieurs runs consécutifs. Alors seulement
-    le grounding passe en observation (il signale des sites à ajouter au registre, rien de ce
-    qu'il renvoie n'est publié) sauf pour le résidu accepté.
-- [x] **51c. Doublons « frères » — fait le 24/09** (§3.W2) : paires candidates repérées
-  mécaniquement, jugées par Gemini sans grounding, verdicts mémorisés. **À regarder au premier
-  scan** : la liste des fusions dans le rapport de run ; une fusion à défaire tient en une ligne
-  `keepSeparate` dans `overrides.json`.
-- [ ] **72b. API de recherche avec droit de stockage** pour le résidu, à évaluer dans le même
-  comparatif si les sources directes plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000
-  requêtes (5 $ offerts par mois ; **le stockage exige un plan qui l'accorde explicitement**,
-  vraisemblablement sur devis), Exa 7 $/1 000, Tavily 0,008 $/crédit. Aucun n'a l'index de
-  Google sur la longue traîne locale française : à mesurer, pas à supposer. Conditions de
-  stockage à lire avant tout usage.
-- [ ] **72c. Plus tard, phase commerciale** — **mairie de Fontainebleau contactée le 29/09** par le chef de projet (exception pare-feu pour le flux RSS de l'agenda + proposition du widget) ; le lecteur est prêt, surveiller la ligne `ville-fontainebleau` du rapport (❌ 418 → ✅). Demandes « presque rien à faire » déjà identifiées :
-  ANVL (22 événements) peut générer le lien `.ics` de son plugin de réservation en deux clics ;
-  fontainebleau.fr (27) bloque les adresses cloud : une autorisation ou un flux suffirait. Puis :
-  formulaire « Ajouter mon événement » et partenariats
-  de données (office de tourisme, mairies), idéalement sans effort pour eux (lecture de leur flux).
-
-### C. Finitions
-
-- [x] **21. Catégories — fait le 23/09** (§3.U). L'audit ne trouve que quatre cas limites sur 197,
-  tous défendables : la cohérence n'était pas le problème. Le problème était la taille —
-  « Culture & Ateliers » pesait 61 %. Une quatrième catégorie « Scène & Spectacles » et un
-  classificateur unique pour les trois sources ramènent le plus gros bloc à 37 %. Ancien libellé :
-  Trois sources les déduisent désormais chacune à sa façon
-  (§3.I, §3.S). Vérifier que l'ensemble reste cohérent, et décider si les visites de patrimoine
-  méritent leur propre catégorie plutôt que de gonfler « Culture & Ateliers » (120 sur 197).
-- [x] **26b. Accessibilité — fait le 23/09** (§3.U) : onglets en `tablist` avec `aria-selected`
-  qui suit la vue, panneaux reliés à leur onglet, filtres en groupe nommé, liste de résultats en
-  région `aria-live`, anneau de focus visible sur tous les contrôles.
-- [x] **51b. Doublons, deuxième passe — faite le 23/09** (§3.W). Trois groupes signalés en
-  direct. Deux assouplissements mesurés puis posés : pluriel neutralisé au-delà de cinq lettres,
-  et périodes pluri-journalières qui se chevauchent. Rendement honnête : **2 fusions** sur les
-  222 fiches, parce que §3.P avait déjà fait le gros. Les deux groupes restants (Chandelles,
-  #ForêtBelle) ont exactement la forme du piège TDA — chaque titre porte un mot que l'autre n'a
-  pas — donc ils ne seront **jamais** fusionnés automatiquement : quatre fiches masquées à la
-  main dans `overrides.json`, après vérification sur les sites des organisateurs. Le rapport de
-  run donne désormais l'identifiant de chaque paire douteuse, pour que trancher tienne en une
-  ligne collée.
-- [ ] **58c. Fond de carte plus sobre** (CARTO Positron/Voyager). Le plus gros changement visuel
-  par ligne modifiée, mais il ajoute un fournisseur de tuiles : refusé pour l'instant, gardé ici
-  parce que la question se reposera.
 - [ ] **31. Cache des URL mortes**, pour ne pas revérifier à chaque scan un lien que le modèle
-  re-propose. Gain : quelques dizaines de secondes par run. Aucune conséquence visible.
-- [ ] **32. Branche `data` dédiée — KIV, à planifier avec le chef de projet (24/09)**. Demande de
-  basculer GitHub Pages sur un déploiement par workflow (Settings → Pages → Source : GitHub
-  Actions), à faire ensemble, en surveillant la première publication. Ancien libellé : Branche `data` dédiée, pour sortir les commits du bot de l'historique de `main`.
-  16 commits du bot sur 68 au 22/09 : pas encore gênant, à reconsidérer vers 100. **Plus pressant
-  depuis le 24/09** : les pages statiques (§3.X) ajoutent ~240 fichiers générés au dépôt, et le
-  bot committe désormais aussi les jours sans scan quand une fiche expire.
+  re-propose. Quelques dizaines de secondes par run, rien de visible.
+- [ ] **32. Branche `data` dédiée — KIV, à planifier avec le chef de projet.** Basculer GitHub
+  Pages sur un déploiement par workflow (Settings → Pages → Source : GitHub Actions), ensemble, en
+  surveillant la première publication. Plus pressant à chaque page générée ajoutée (78, 81) : le
+  bot committe chaque jour.
+- [ ] **58c. Fond de carte plus sobre** (CARTO Positron/Voyager). Ajoute un fournisseur de tuiles :
+  refusé (21/09), gardé ici parce que la question se reposera.
 
-### D. Tranché — ne pas rouvrir sans raison nouvelle
+### E. Tranché — ne pas rouvrir sans raison nouvelle
 
-- **23. Événements récurrents : abandonné (22/09).** Le frontend portait un traitement
-  `dateType: "recurring"` depuis la v1 ; rien ne l'a jamais produit (197 fiches, 197 `event`).
-  Les branches mortes ont été retirées. Les marchés hebdomadaires restent hors périmètre.
-- **67. Affichage des images : non (22/09).** Seuls 21 événements sur 197 en portent (11 %),
-  tous venus d'OpenAgenda. Afficher une photo sur une carte sur neuf donnerait un site qui a
-  l'air cassé. Le champ `image` reste stocké : la question se retranchera si la proportion monte.
-- **60. Application native : non.** Usage à faible fréquence, 99 €/an + 25 €, deux revues de
-  store par sortie, pour lire le même `data.json`. La PWA (§3) couvre le besoin, et c'est aussi
-  le prérequis des notifications push sur iOS. À rouvrir seulement si les analytics montrent des
-  visites répétées.
-- **37. Bascule vers l'extraction directe : abandonné (20/09).** Plus de travail que le pipeline
-  actuel, fragile aux changements de sites, couverture de départ plus faible. À rouvrir si Google
-  suspend la clé.
-- **48c. Filtrage des colonnes du tableau de réponses : non (23/09).** Décision du chef de
-  projet, risque accepté en connaissance de cause. Constaté ce jour-là : la colonne « Votre
-  contact (facultatif) » est bien publiée, mais vide — personne ne l'avait renseignée. L'URL vit
-  dans un secret GitHub, elle n'est pas dans le dépôt public et n'est pas devinable. Le motif
-  invoqué : une adresse e-mail seule n'expose plus à grand-chose aujourd'hui. **Exposition
-  résiduelle, pour mémoire** : si un visiteur laisse son adresse un jour, elle sera lisible par
-  qui détient l'URL. Rouvrir si le formulaire se met à collecter davantage qu'un e-mail, ou si
-  l'URL circule.
+- **23. Événements récurrents : abandonné (22/09).** Rien n'a jamais produit `dateType:
+  "recurring"` ; les branches mortes sont retirées. Les marchés hebdomadaires restent hors périmètre.
+- **67. Affichage des images : non (22/09).** 11 % des événements en portent, tous d'OpenAgenda :
+  une photo sur une carte sur neuf donnerait un site qui a l'air cassé. Le champ `image` reste.
+- **60. Application native : non.** La PWA couvre le besoin. À rouvrir si les analytics montrent
+  des visites répétées.
+- **37. Bascule vers l'extraction directe seule : abandonné (20/09).** Remplacée par 72 (sources
+  légitimes mesurées en parallèle). À rouvrir si Google suspend la clé.
+- **22. Filtre « Public cible » : retiré (23/09).** 147 événements sur 197 sont tout public, chaque
+  option en renvoyait 73 à 90 %. Un marqueur `family` déduit du contenu reste possible si le
+  besoin revient (le hub Toussaint de 81 utilisera la tranche d'âge, sans filtre).
+- **38b. Sources d'événements sportifs : il n'en existe pas d'exploitable ici (23/09).** Vérifié
+  une par une, pour que la recherche ne soit pas refaite : RNA (annuaire, aucune date) ; API
+  Recherche d'entreprises (clubs NAF 93.12Z, mais aucune date d'événement ; nommer quelques clubs
+  dans le prompt biaiserait la recherche) ; HelloAsso (pages publiques = scraping, exclu ; API v5
+  = OAuth et compte) ; FFA `bases.athle.fr`, FFRandonnée (HTML seul, scraping). Le sport est passé
+  de 11 % à 13 % (37 sur 290) après la correction du périmètre : question close.
+- **48c. Filtrage des colonnes du tableau de réponses : non (23/09).** Risque accepté par le chef
+  de projet ; l'URL est dans un secret GitHub. Rouvrir si le formulaire collecte plus qu'un
+  e-mail, ou si l'URL circule.
 - **30. Keep-alive du workflow : sans objet.** La règle d'inactivité de 60 jours ne peut pas se
   déclencher avec un cron quotidien.
-
-### E. Ménage — fait le 23/09
-
-- [x] **`.github/workflows/datatourisme-coverage.yml` et `scripts/datatourisme-coverage.js` supprimés.** C'était la sonde en
-  mode observation, avant que DATAtourisme n'entre dans le pipeline (§3.I). La source est
-  vérifiée en production depuis le 21/09 — 26 événements publiés. Le workflow télécharge 9 Mo par
-  semaine pour un rapport que plus personne ne lit. La bibliothèque partagée `datatourisme.js`
-  reste : `feedback.js` réutilise son parseur CSV. L’historique git conserve les fichiers.
 
 ### Milestones
 
 **Beta gate (friends & family):** Step 0 + P0 (1–6) + P1 (7–12) + items 14–17 and 34–35 (item 15 needs the Google Form link), with at least one week of clean automated runs. **Only as a small private test** while items 37/27 are under way (decision 40).
 **Outreach gate (city, clubs, INSEAD…):** **re-assess the grounding risk (§8) with the DATAtourisme coverage figures in hand (items 44, 45)** · item 39 · beta feedback processed · items 16, 24 · manual review of a few weeks of published data. The decision of September 20 accepts the risk for a private beta; institutional outreach is a deliberate increase in visibility and must be decided separately.
-
-
-
-
 
 link data form to get feedback:
 https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform?usp=publish-editor
