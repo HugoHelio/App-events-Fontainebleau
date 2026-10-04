@@ -1357,7 +1357,7 @@
         horizonWeekend: 'This weekend',
         todayPill: (n) => `Today: ${n} outing${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `This weekend: ${n} outing${n > 1 ? 's' : ''}`,
-        seasonNow: 'Right now (pages in French)',
+        seasonNow: 'Right now',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
         tabMap: 'Map & List',
@@ -1701,7 +1701,9 @@
         const a = document.createElement('a');
         a.className = 'season-chip';
         a.href = x.href;
-        a.append(x.name, Object.assign(document.createElement('b'), { textContent: String(x.count) }));
+        // English name since 04/10 (the pages it opens are bilingual); text only, like the rest.
+        const name = lang === 'en' && typeof x.nameEn === 'string' && x.nameEn ? x.nameEn : x.name;
+        a.append(name, Object.assign(document.createElement('b'), { textContent: String(x.count) }));
         a.addEventListener('click', () => track('season-chip', x.href.split('/')[2]));
         row.appendChild(a);
       }

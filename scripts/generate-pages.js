@@ -1506,7 +1506,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${THEMES_DIR}/index.html`, seasonIndex(events, today));
   // The home page's "En ce moment" row reads this: the same picks and counts as the weekend page,
   // and index.html never re-implements the theme matching.
-  files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, k }) => ({ href, name, count: k })), null, 2) + '\n');
+  files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, nameEn, k }) => ({ href, name, nameEn, count: k })), null, 2) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
