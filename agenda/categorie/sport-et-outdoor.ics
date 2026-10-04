@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c994205cf2@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261001
 DTEND;VALUE=DATE:20261005
 SUMMARY:Jump Bost - Concours international de Saut d'Obstacles
@@ -37,14 +37,14 @@ DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:Barbizon Trail - Courses enfants et trail solidaire
 LOCATION:Grande Rue et forêt domaniale de Fontainebleau\, Barbizon
-DESCRIPTION:Horaires : 09h–13h\n\nTarif : 17 € (14 km) \; 2 € (enfant
- s)\n\nPublic : Dès 7 ans\n\nÉpreuve de course à pied de 12\,5 km au dé
- part du village des peintres de Barbizon\, serpentant sur les sentiers sab
- lonneux et rocheux du massif bellifontain.\n\nOrganisateur : https://fonty
- blog.fr/barbizon-trail-2026-courses-enfants-et-trail-de-125-km-pour-octobr
- e-rose-4-octobre/\n\nFiche : https://fontainebleaulive.fr/evenements/barbi
- zon-trail-courses-enfants-et-trail-solidaire-act007/\n\nInformations colle
- ctées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 8h00\n\nTarif : Payant\n\nPublic : Dès
+  7 ans\n\nÉpreuve de course à pied de 12\,5 km au départ du village des
+  peintres de Barbizon\, serpentant sur les sentiers sablonneux et rocheux 
+ du massif bellifontain.\n\nOrganisateur : https://fontyblog.fr/barbizon-tr
+ ail-2026-courses-enfants-et-trail-de-125-km-pour-octobre-rose-4-octobre/\n
+ \nFiche : https://fontainebleaulive.fr/evenements/barbizon-trail-courses-e
+ nfants-et-trail-solidaire-act007/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/barbizon-trail-courses-enfants-
  et-trail-solidaire-act007/
 CATEGORIES:Sport & Outdoor
@@ -52,17 +52,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac726e0c39@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:Les 10 Bornes de Livry
 LOCATION:Place Mouton\, Livry-sur-Seine
-DESCRIPTION:Horaires : 09h30–12h\n\nTarif : 10€\n\nPublic : Dès 10 ans
- \n\nÉpreuves de course nature (10 km\, 3 km\, 1 km) et marche nordique au
-  bord de la Seine.\n\nOrganisateur : https://protiming.fr/\n\nFiche : http
- s://fontainebleaulive.fr/evenements/les-10-bornes-de-livry-livry-sur-seine
- -ac726e0c39/\n\nInformations collectées automatiquement : vérifiez-les a
- uprès de l’organisateur.
+DESCRIPTION:Horaires : Matinée\n\nTarif : Payant\n\nPublic : Dès 10 ans\n
+ \nÉpreuves de course nature (10 km\, 3 km\, 1 km) et marche nordique au b
+ ord de la Seine.\n\nOrganisateur : https://protiming.fr/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/les-10-bornes-de-livry-livry-sur-seine-a
+ c726e0c39/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/les-10-bornes-de-livry-livry-su
  r-seine-ac726e0c39/
 CATEGORIES:Sport & Outdoor
@@ -91,12 +91,12 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d08275dd1e@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261008
 DTEND;VALUE=DATE:20261012
 SUMMARY:Concours Équestre Militaire de Saut d'Obstacles
 LOCATION:Le Grand Parquet Route d'Orléans\, RN 152\, Fontainebleau
-DESCRIPTION:Horaires : 08h30–18h\n\nTarif : Gratuit.\n\nL'École militair
+DESCRIPTION:Horaires : 8h00–18h00\n\nTarif : Gratuit\n\nL'École militair
  e d'équitation de Fontainebleau organise un concours de saut d'obstacles 
  ouvert à tous au Grand Parquet du 8 au 11 octobre 2026.\n\nOrganisateur :
   https://www.terre.defense.gouv.fr/amsd/\n\nFiche : https://fontainebleaul
@@ -111,7 +111,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3dbf815a6a@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Initiation à l'escalade de bloc en forêt
@@ -131,7 +131,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_75f2a86ce4@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Les 12 heures d'Octobre rose
@@ -151,7 +151,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_87c60f7fa6@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261012
 SUMMARY:Marché aux vélos du Pays de Fontainebleau
@@ -227,18 +227,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_288f073b0a@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Lyrican'trail
 LOCATION:Massif de Larchant / Forêt de Fontainebleau\, Larchant
-DESCRIPTION:Horaires : 09h–13h\n\nTarif : 13 € à 19 € (gratuit pour 
- les enfants)\n\nPublic : Dès 6 ans\n\nÉpreuve de trail et cani-trail emb
- lématique à Larchant traversant sentiers\, sables et rochers de grès be
- llifontains.\n\nOrganisateur : https://www.larchant.fr/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/lyrican-trail-larchant-288f073b0a/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
+DESCRIPTION:Horaires : À partir de 9h00\n\nTarif : Payant\n\nPublic : Dès
+  6 ans\n\nÉpreuve de trail et cani-trail emblématique à Larchant traver
+ sant sentiers\, sables et rochers de grès bellifontains.\n\nOrganisateur 
+ : https://www.larchant.fr/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/lyrican-trail-larchant-288f073b0a/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/lyrican-trail-larchant-288f073b
  0a/
 CATEGORIES:Sport & Outdoor
@@ -246,7 +245,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c25f21ed85@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261012
 DTEND;VALUE=DATE:20261013
 SUMMARY:Les rendez-vous de la Solle
@@ -265,7 +264,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_019@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261018
 SUMMARY:Futurity BO RANCH 2026
@@ -285,7 +284,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d9dcb0de4@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Les rendez-vous de la Solle
@@ -329,13 +328,13 @@ DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Nordique Bellifontaine
 LOCATION:Stade Philippe Mahut\, Fontainebleau
-DESCRIPTION:Horaires : 09h–13h\n\nTarif : 12€\n\nPublic : Dès 10 ans\n
- \nÉpreuves chronométrées et randonnées de marche nordique de 2 km à 2
- 5 km tracées sur circuit autour du complexe sportif.\n\nOrganisateur : ht
- tps://www.fontainebleau-tourisme.com/fr/fiche/7957231/la-nordique-bellifon
- taine/\n\nFiche : https://fontainebleaulive.fr/evenements/nordique-bellifo
- ntaine-fontainebleau-0cd8de414d/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 9h00\n\nTarif : 10 € à 20 €\n\nPub
+ lic : Dès 10 ans\n\nÉpreuves chronométrées et randonnées de marche no
+ rdique de 2 km à 25 km tracées sur circuit autour du complexe sportif.\n
+ \nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7957231/l
+ a-nordique-bellifontaine/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/nordique-bellifontaine-fontainebleau-0cd8de414d/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/nordique-bellifontaine-fontaine
  bleau-0cd8de414d/
 CATEGORIES:Sport & Outdoor
@@ -362,18 +361,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08a39f58ca@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261026
 SUMMARY:Championnat de France Amateur de Concours Complet
 LOCATION:Grand Parquet\, Fontainebleau
-DESCRIPTION:Horaires : 08h–18h\n\nTarif : Gratuit\n\nChampionnat national
-  d'équitation regroupant les meilleures équipes amateurs en dressage\, c
- ross et saut d'obstacles.\n\nOrganisateur : https://www.grandparquet.com/e
- venement/championnat-de-france-cce/\n\nFiche : https://fontainebleaulive.f
- r/evenements/championnat-de-france-amateur-de-concours-complet-fontaineble
- au-08a39f58ca/\n\nInformations collectées automatiquement : vérifiez-les
-  auprès de l’organisateur.
+DESCRIPTION:Horaires : 8h00–18h00\n\nTarif : Gratuit\n\nChampionnat natio
+ nal d'équitation regroupant les meilleures équipes amateurs en dressage\
+ , cross et saut d'obstacles.\n\nOrganisateur : https://www.grandparquet.co
+ m/evenement/championnat-de-france-cce/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/championnat-de-france-amateur-de-concours-complet-fontaine
+ bleau-08a39f58ca/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/championnat-de-france-amateur-d
  e-concours-complet-fontainebleau-08a39f58ca/
 CATEGORIES:Sport & Outdoor
@@ -382,7 +381,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_87138e2c4f@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Initiation à l'escalade de bloc en forêt
@@ -401,8 +400,27 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_39c18fe3a3@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261026
+SUMMARY:Les Foulées Monterelaises (10 km du Confluent)
+LOCATION:Départ rue Léo Lagrange / Parcours le long de l'Yonne et du conf
+ luent\, Montereau-Fault-Yonne
+DESCRIPTION:Horaires : Matinée\n\nTarif : Payant\n\nCourses jeunes et 10 k
+ m labellisé FFA le long de l'Yonne et du confluent.\n\nOrganisateur : htt
+ ps://www.foulees-monterelaises.com/\n\nFiche : https://fontainebleaulive.f
+ r/evenements/les-foulees-monterelaises-10-km-du-confluent-montereau-fault-
+ yonne-39c18fe3a3/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-foulees-monterelaises-10-km
+ -du-confluent-montereau-fault-yonne-39c18fe3a3/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_0326f9a41b@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Nouveau ! Initiation au jeu de paume
@@ -441,7 +459,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ea2f30b7a4@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261030
 SUMMARY:Les rendez-vous de la Solle
@@ -460,18 +478,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e57caa47c3@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Meeting d'Automne TDA (Tournée des As)
 LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Gratuit\n\nÉvénement équ
- estre majeur regroupant des compétiteurs poneys\, amateurs\, clubs et pro
- s sur les pistes du Grand Parquet.\n\nOrganisateur : https://www.grandparq
- uet.com/evenement/meeting-dautomne-tda/\n\nFiche : https://fontainebleauli
- ve.fr/evenements/meeting-d-automne-tda-tournee-des-as-fontainebleau-e57caa
- 47c3/\n\nInformations collectées automatiquement : vérifiez-les auprès 
- de l’organisateur.
+DESCRIPTION:Horaires : Toute la journée\n\nTarif : Gratuit\n\nÉvénement 
+ équestre majeur regroupant des compétiteurs poneys\, amateurs\, clubs et
+  pros sur les pistes du Grand Parquet.\n\nOrganisateur : https://www.grand
+ parquet.com/evenement/meeting-dautomne-tda/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/meeting-d-automne-tda-tournee-des-as-fontainebleau-e5
+ 7caa47c3/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/meeting-d-automne-tda-tournee-d
  es-as-fontainebleau-e57caa47c3/
 CATEGORIES:Sport & Outdoor
@@ -480,7 +498,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3f4a266dbe@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Les rendez-vous de la Solle
@@ -499,7 +517,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8d7728dd00@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Les rendez-vous de la Solle
@@ -536,7 +554,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4c0b05bd77@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Les rendez-vous de la Solle
@@ -592,7 +610,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_927bfc536e@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Initiation à l'escalade de bloc en forêt
@@ -630,7 +648,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_78ea14aa48@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Les rendez-vous de la Solle
@@ -668,7 +686,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4770c98a9c@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les rendez-vous de la Solle
@@ -687,7 +705,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b3728f89dd@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Les rendez-vous de la Solle
@@ -706,26 +724,26 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_773dc2d1ea@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
-SUMMARY:Les rendez-vous de la Solle
+SUMMARY:Les rendez-vous de la Solle – Courses d'obstacle
 LOCATION:La Solle\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : Gratuit pour les moins de 18 ans. Plein tarifs : 4\,50 
- € Tarifs réduits : 3\,50 €…\n\nJournées et événements équestres
-  organisés à l'hippodrome de la Solle à Fontainebleau.\n\nOrganisateur 
- : https://www.fontainebleau-tourisme.com/fr/fiche/6809478/les-rendez-vous-
- de-la-solle/\n\nFiche : https://fontainebleaulive.fr/evenements/les-rendez
- -vous-de-la-solle-fontainebleau-773dc2d1ea/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-solle-fon
- tainebleau-773dc2d1ea/
+DESCRIPTION:Horaires : En journée\n\nTarif : 4\,50 €\n\nJournées et év
+ énements équestres organisés à l'hippodrome de la Solle à Fontaineble
+ au.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/5505
+ 377/les-rendez-vous-de-la-solle/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/les-rendez-vous-de-la-solle-courses-d-obstacle-fontainebleau-773
+ dc2d1ea/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-solle-cou
+ rses-d-obstacle-fontainebleau-773dc2d1ea/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine

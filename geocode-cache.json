@@ -16,6 +16,11 @@
       "lng": 2.60775,
       "source": "city"
     },
+    "city:bois le roi": {
+      "lat": 48.47294,
+      "lng": 2.69243,
+      "source": "city"
+    },
     "city:bourron marlotte": {
       "lat": 48.34297,
       "lng": 2.70575,
@@ -31,9 +36,29 @@
       "lng": 2.7794,
       "source": "city"
     },
+    "city:laval en brie": {
+      "lat": 48.42631,
+      "lng": 2.99525,
+      "source": "city"
+    },
+    "city:milly la foret": {
+      "lat": 48.4017,
+      "lng": 2.45828,
+      "source": "city"
+    },
+    "city:montereau fault yonne": {
+      "lat": 48.38979,
+      "lng": 2.9574,
+      "source": "city"
+    },
     "city:moret loing et orvanne": {
       "lat": 48.35661,
       "lng": 2.82107,
+      "source": "city"
+    },
+    "city:nemours": {
+      "lat": 48.26671,
+      "lng": 2.70305,
       "source": "city"
     },
     "city:samois sur seine": {
@@ -45,6 +70,16 @@
       "lat": 48.34418,
       "lng": 2.6029,
       "source": "city"
+    },
+    "city:vernou la celle sur seine": {
+      "lat": 48.39184,
+      "lng": 2.84915,
+      "source": "city"
+    },
+    "venue:14 rue des marronniers episy moret loing et orvanne": {
+      "lat": 48.33373,
+      "lng": 2.78472,
+      "source": "ban"
     },
     "venue:4 quai des platreries samois sur seine": {
       "lat": 48.43665,
@@ -99,6 +134,11 @@
     "venue:chateau de fontainebleau salle de bal fontainebleau": {
       "lat": 48.40168,
       "lng": 2.70086,
+      "source": "ban"
+    },
+    "venue:chateau de rosa bonheur thomery": {
+      "lat": 48.394,
+      "lng": 2.78514,
       "source": "ban"
     },
     "venue:chateau de vaux le vicomte maincy": {
@@ -214,6 +254,11 @@
     "venue:salle de bal du chateau de fontainebleau fontainebleau": {
       "lat": 48.40168,
       "lng": 2.70086,
+      "source": "ban"
+    },
+    "venue:site de la faisanderie l empreinte fontainebleau": {
+      "lat": 48.40844,
+      "lng": 2.68988,
       "source": "ban"
     },
     "venue:ury": {

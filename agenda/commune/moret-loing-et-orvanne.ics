@@ -11,6 +11,25 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_0b50472941@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Vide-greniers d'Épisy (6e édition)
+LOCATION:14 rue des Marronniers\, Épisy\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 09h00–18h00\n\nTarif : Gratuit\n\n6e édition du v
+ ide-greniers d'Épisy à Moret-Loing-et-Orvanne.\n\nOrganisateur : https:/
+ /www.luckyfind.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/vide
+ -greniers-d-episy-6e-edition-moret-loing-et-orvanne-0b50472941/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
+URL:https://fontainebleaulive.fr/evenements/vide-greniers-d-episy-6e-editio
+ n-moret-loing-et-orvanne-0b50472941/
+CATEGORIES:Culture & Ateliers
+GEO:48.33373;2.78472
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b4c2e59fdd@fontainebleaulive.fr
 DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261018
@@ -56,13 +75,13 @@ SUMMARY:Sortie nature : Découverte de la faune hivernante du Marais d'Épi
  sy
 LOCATION:Espace Naturel Sensible du Marais d'Épisy\, Moret-Loing-et-Orvann
  e
-DESCRIPTION:Horaires : 13h–15h\n\nTarif : Gratuit\n\nBalade guidée d'obs
- ervation de la faune hivernale au cœur de l'Espace Naturel Sensible du Ma
- rais d'Épisy.\n\nOrganisateur : https://moretloingetorvanne.fr/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-la-f
- aune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 13h00–15h00\n\nTarif : Gratuit\n\nBalade guidée d
+ 'observation de la faune hivernale au cœur de l'Espace Naturel Sensible d
+ u Marais d'Épisy.\n\nOrganisateur : https://moretloingetorvanne.fr/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-
+ la-faune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-la-
  faune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/
 CATEGORIES:Nature & Environnement

@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Vernou-la-Celle-sur-Seine · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_5bdbb38d9b@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël de Vernou-la-Celle-sur-Seine
+LOCATION:Maison des associations\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit\n\nMarché de Noël f
+ estif rassemblant exposants et animations à la Maison des associations.\n
+ \nOrganisateur : https://brocabrac.fr/77/vernou-la-celle-sur-seine/1286129
+ -marche-de-noel\n\nFiche : https://fontainebleaulive.fr/evenements/marche-
+ de-noel-de-vernou-la-celle-sur-seine-5bdbb38d9b/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-vernou-la-cel
+ le-sur-seine-5bdbb38d9b/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

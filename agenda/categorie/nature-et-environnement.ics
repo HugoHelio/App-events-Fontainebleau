@@ -96,12 +96,13 @@ DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 SUMMARY:Balade découverte : Village et Marais de Larchant
 LOCATION:Marais de Larchant\, Larchant
-DESCRIPTION:Horaires : 10h15–17h\n\nTarif : Gratuit\n\nPromenade guidée 
- naturaliste et patrimoniale à la découverte de la réserve naturelle du 
- marais de Larchant.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche
-  : https://fontainebleaulive.fr/evenements/balade-decouverte-village-et-ma
- rais-de-larchant-01502bfb93/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h15–17h00\n\nTarif : Accès réservé/ouvert sel
+ on conditions d'adhésion AAFF\n\nPromenade guidée naturaliste et patrimo
+ niale à la découverte de la réserve naturelle du marais de Larchant.\n\
+ nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/balade-decouverte-village-et-marais-de-larchant-01502
+ bfb93/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/balade-decouverte-village-et-ma
  rais-de-larchant-01502bfb93/
 CATEGORIES:Nature & Environnement
@@ -109,7 +110,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_faeff665c0@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261012
 SUMMARY:Événement SAUVAGES! Spécial prédateurs
@@ -128,18 +129,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fac6ac17a6@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Animation Jardinage au naturel
 LOCATION:Jardins familiaux de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 14h30–16h30\n\nTarif : Gratuit\n\nAtelier pratique
   de permaculture pour préparer son potager à l'hiver et favoriser la bio
- diversité au jardin.\n\nOrganisateur : https://www.fontainebleau.fr/bouge
- r-et-sortir/agenda-133/animation-jardinage-au-naturel-fontainebleau-en-tra
- nsition-5886.html\n\nFiche : https://fontainebleaulive.fr/evenements/anima
- tion-jardinage-au-naturel-fontainebleau-fac6ac17a6/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
+ diversité au jardin.\n\nOrganisateur : https://fontyblog.fr/\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/animation-jardinage-au-naturel-font
+ ainebleau-fac6ac17a6/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/animation-jardinage-au-naturel-
  fontainebleau-fac6ac17a6/
 CATEGORIES:Nature & Environnement
@@ -244,19 +244,37 @@ GEO:48.37483;2.8074
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_28b842b027@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Rendez-vous de la biosphère
+LOCATION:Médiathèque de Bois-le-Roi\, Bois-le-Roi
+DESCRIPTION:Horaires : À partir de 16h00\n\nTarif : Gratuit\n\nRencontre e
+ t animations autour de la Réserve de Biosphère Fontainebleau & Gâtinais
+ .\n\nOrganisateur : https://biosphere-fontainebleau-gatinais.fr/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/rendez-vous-de-la-biosphere-bois
+ -le-roi-28b842b027/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rendez-vous-de-la-biosphere-boi
+ s-le-roi-28b842b027/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_0ab982a6c4@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Balade guidée au Mont Merle et au Rocher Fourceau
 LOCATION:Mont Merle\, Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 13h30–17h\n\nTarif : Gratuit\n\nSortie pédestre a
- ccompagnant les promeneurs sur le relief du Mont Merle et les chaos de gr
- ès du Rocher Fourceau.\n\nOrganisateur : https://www.aaff.fr/promenades-g
- uidees/\n\nFiche : https://fontainebleaulive.fr/evenements/balade-guidee-a
- u-mont-merle-et-au-rocher-fourceau-fontainebleau-0ab982a6c4/\n\nInformatio
- ns collectées automatiquement : vérifiez-les auprès de l’organisateur
- .
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nSortie pédestre
+  accompagnant les promeneurs sur le relief du Mont Merle et les chaos de g
+ rès du Rocher Fourceau.\n\nOrganisateur : https://www.aaff.fr/promenades-
+ guidees/\n\nFiche : https://fontainebleaulive.fr/evenements/balade-guidee-
+ au-mont-merle-et-au-rocher-fourceau-fontainebleau-0ab982a6c4/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
 URL:https://fontainebleaulive.fr/evenements/balade-guidee-au-mont-merle-et-
  au-rocher-fourceau-fontainebleau-0ab982a6c4/
 CATEGORIES:Nature & Environnement
@@ -269,14 +287,14 @@ DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Promenade contée en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 15h–17h\n\nTarif : 8 € (adulte)\, 4 € (enfant)
- \n\nPublic : Dès 5 ans\n\nBalade enchantée en forêt rythmée par des hi
- stoires et contes naturalistes racontés par un conteur-musicien.\n\nOrgan
- isateur : https://www.fontainebleau-tourisme.com/fr/fiche/5529329/promenad
- es-contees-en-foret-de-fontainebleau/\n\nFiche : https://fontainebleaulive
- .fr/evenements/promenade-contee-en-foret-de-fontainebleau-ed4d334b07/\n\nI
- nformations collectées automatiquement : vérifiez-les auprès de l’org
- anisateur.
+DESCRIPTION:Horaires : 15h–17h\n\nTarif : Adulte : 8 €\, Enfant (5-12 a
+ ns) : 4 €. Activité soumise à un nombre minimum de…\n\nPublic : Dès
+  5 ans\n\nBalade enchantée en forêt rythmée par des histoires et contes
+  naturalistes racontés par un conteur-musicien.\n\nOrganisateur : https:/
+ /www.fontainebleau-tourisme.com/fr/fiche/5529329/promenades-contees-en-for
+ et-de-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/pr
+ omenade-contee-en-foret-de-fontainebleau-ed4d334b07/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-contee-en-foret-de-fo
  ntainebleau-ed4d334b07/
 CATEGORIES:Nature & Environnement
@@ -284,19 +302,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf953e6d98@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
-SUMMARY:Sortie d'initiation à la mycologie en forêt
+SUMMARY:Sortie d'initiation à la mycologie en forêt de Fontainebleau
 LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–16h\n\nTarif : Gratuit\n\nJournée d'initiatio
- n sur le terrain pour apprendre à reconnaître les espèces de champignon
- s.\n\nOrganisateur : https://anvl.fr/grand-public/\n\nFiche : https://font
- ainebleaulive.fr/evenements/sortie-d-initiation-a-la-mycologie-en-foret-fo
- ntainebleau-cf953e6d98/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Journée entière\n\nTarif : Gratuit sur inscription
+ \n\nJournée d'initiation sur le terrain pour apprendre à reconnaître le
+ s espèces de champignons.\n\nOrganisateur : https://anvl.fr/grand-public/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-
+ la-mycologie-en-foret-de-fontainebleau-cf953e6d98/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-mycolo
- gie-en-foret-fontainebleau-cf953e6d98/
+ gie-en-foret-de-fontainebleau-cf953e6d98/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -342,7 +360,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08a6496d84@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Visites guidées thématiques en forêt
@@ -367,12 +385,12 @@ DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Promenade guidée : Découverte du sentier 17
 LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h–12h\n\nTarif : Gratuit\n\nPromenade découvert
- e guidée le long du sentier de randonnée 17 pour explorer le patrimoine 
- naturel du massif.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/promenade-guidee-decouverte-du-s
- entier-17-fontainebleau-5266991852/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 09h00–12h00\n\nTarif : Gratuit\n\nPromenade décou
+ verte guidée le long du sentier de randonnée 17 pour explorer le patrimo
+ ine naturel du massif.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/promenade-guidee-decouverte-
+ du-sentier-17-fontainebleau-5266991852/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-guidee-decouverte-du-
  sentier-17-fontainebleau-5266991852/
 CATEGORIES:Nature & Environnement
@@ -435,6 +453,44 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0923baf6c0@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Sortie découverte des oiseaux migrateurs de l’ENS du Carreau Fra
+ nc
+LOCATION:Espace Naturel Sensible du Carreau Franc\, Marolles-sur-Seine
+DESCRIPTION:Horaires : 10h00 à 12h00\n\nSortie découverte des oiseaux mig
+ rateurs de l'Espace Naturel Sensible du Carreau Franc à Marolles-sur-Sein
+ e.\n\nOrganisateur : https://www.jagispourlanature.org/activite/sortie-dec
+ ouverte-des-oiseaux-migrateurs-de-lens-du-carreau-franc-0\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/sortie-decouverte-des-oiseaux-migrateur
+ s-de-l-ens-du-carreau-marolles-sur-seine-0923baf6c0/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-decouverte-des-oiseaux-m
+ igrateurs-de-l-ens-du-carreau-marolles-sur-seine-0923baf6c0/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_bac6c34a35@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Découverte du nord-est des Trois-Pignons
+LOCATION:Massif des Trois-Pignons\, Achères-la-Forêt
+DESCRIPTION:Horaires : 13h30–17h00\n\nPromenade guidée pour explorer le 
+ secteur nord-est du massif des Trois-Pignons.\n\nOrganisateur : https://ww
+ w.aaff.fr/agenda/\n\nFiche : https://fontainebleaulive.fr/evenements/decou
+ verte-du-nord-est-des-trois-pignons-acheres-la-foret-bac6c34a35/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-du-nord-est-des-troi
+ s-pignons-acheres-la-foret-bac6c34a35/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3c69f2f7e7@fontainebleaulive.fr
 DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261025
@@ -454,7 +510,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -530,6 +586,26 @@ URL:https://fontainebleaulive.fr/evenements/apres-midi-d-ouverture-au-publi
  c-du-jardin-des-noues-veneux-les-sablons-fa3ca2aaf0/
 CATEGORIES:Nature & Environnement
 GEO:48.37483;2.8074
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_04bb66b3af@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Mes premiers pas avec...les champignons !
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 10h00 à 12h00\n\nVenez découvrir la beauté des ch
+ ampignons dans la belle forêt de Fontainebleau à travers une animation l
+ udique et riche en découverte !\n\nOrganisateur : https://www.jagispourla
+ nature.org/activite/mes-premiers-pas-avecles-champignons\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/mes-premiers-pas-avec-les-champignons-fo
+ ntainebleau-04bb66b3af/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/mes-premiers-pas-avec-les-champ
+ ignons-fontainebleau-04bb66b3af/
+CATEGORIES:Nature & Environnement
+GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -663,6 +739,24 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_d27898b9bd@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Clair Bois et Désert d'Apremont
+LOCATION:Forêt de Fontainebleau (Secteur Clair Bois & Gorges d'Apremont)\,
+  Fontainebleau
+DESCRIPTION:Horaires : 13h30–17h00\n\nPromenade guidée nature à travers
+  Clair Bois et les paysages des Gorges d'Apremont.\n\nOrganisateur : https
+ ://www.aaff.fr/agenda/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ clair-bois-et-desert-d-apremont-fontainebleau-d27898b9bd/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/clair-bois-et-desert-d-apremont
+ -fontainebleau-d27898b9bd/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_82e77aacb9@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261122
@@ -684,7 +778,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ea515f4cb5@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visites guidées thématiques en forêt
@@ -759,6 +853,26 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_9689a74c23@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Sortie découverte des oiseaux hivernants de l'ENS du Carreau Franc
+LOCATION:Espace Naturel Sensible (ENS) du Carreau Franc\, Marolles-sur-Sein
+ e
+DESCRIPTION:Horaires : 09h00–12h00\n\nTarif : Gratuit\n\nSortie de terrai
+ n pour observer les différentes espèces d'oiseaux qui hivernent sur le s
+ ite.\n\nOrganisateur : https://www.jagispourlanature.org/activite/sortie-d
+ ecouverte-des-oiseaux-hivernants-de-lens-du-carreau-franc\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/sortie-decouverte-des-oiseaux-hivernant
+ s-de-l-ens-du-carreau-marolles-sur-seine-9689a74c23/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-decouverte-des-oiseaux-h
+ ivernants-de-l-ens-du-carreau-marolles-sur-seine-9689a74c23/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_15503c4c05@fontainebleaulive.fr
 DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261209
@@ -767,15 +881,34 @@ SUMMARY:Sortie nature : Découverte de la faune hivernante du Marais d'Épi
  sy
 LOCATION:Espace Naturel Sensible du Marais d'Épisy\, Moret-Loing-et-Orvann
  e
-DESCRIPTION:Horaires : 13h–15h\n\nTarif : Gratuit\n\nBalade guidée d'obs
- ervation de la faune hivernale au cœur de l'Espace Naturel Sensible du Ma
- rais d'Épisy.\n\nOrganisateur : https://moretloingetorvanne.fr/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-la-f
- aune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 13h00–15h00\n\nTarif : Gratuit\n\nBalade guidée d
+ 'observation de la faune hivernale au cœur de l'Espace Naturel Sensible d
+ u Marais d'Épisy.\n\nOrganisateur : https://moretloingetorvanne.fr/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-
+ la-faune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-nature-decouverte-de-la-
  faune-hivernante-du-marais-d-moret-loing-et-orvanne-15503c4c05/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4f7c080964@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Les oiseaux en hiver
+LOCATION:Espace Naturel Sensible (ENS) du Carreau Franc\, Marolles-sur-Sein
+ e
+DESCRIPTION:Horaires : 09h00–12h00\n\nTarif : Gratuit\n\nSession complém
+ entaire d'observation ornithologique guidée dans le Marais du Carreau Fra
+ nc.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/les-oiseaux-en-hiver-marolles-sur-seine-4f7c080
+ 964/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-oiseaux-en-hiver-marolles-s
+ ur-seine-4f7c080964/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT

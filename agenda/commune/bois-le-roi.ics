@@ -11,6 +11,24 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_28b842b027@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Rendez-vous de la biosphère
+LOCATION:Médiathèque de Bois-le-Roi\, Bois-le-Roi
+DESCRIPTION:Horaires : À partir de 16h00\n\nTarif : Gratuit\n\nRencontre e
+ t animations autour de la Réserve de Biosphère Fontainebleau & Gâtinais
+ .\n\nOrganisateur : https://biosphere-fontainebleau-gatinais.fr/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/rendez-vous-de-la-biosphere-bois
+ -le-roi-28b842b027/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rendez-vous-de-la-biosphere-boi
+ s-le-roi-28b842b027/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_65bb236269@fontainebleaulive.fr
 DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20261025

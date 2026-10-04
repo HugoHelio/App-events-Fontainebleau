@@ -53,7 +53,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_45461b3470@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:Concert symphonique
@@ -73,7 +73,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b6e49d317@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:En attendant Gurdjieff\, le dernier voyage de Katherine Mansfield
@@ -113,7 +113,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_301f795e18@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261007
 DTEND;VALUE=DATE:20261011
 SUMMARY:23e Festival des Briardises
@@ -133,7 +133,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_58e5920f67@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261008
 DTEND;VALUE=DATE:20261009
 SUMMARY:Séances débats à l'Ermitage
@@ -151,7 +151,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3f27774e5a@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 SUMMARY:Apéro piano au coin du feu
@@ -170,7 +170,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_008@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261012
 SUMMARY:Concerts « Marie-Antoinette : Reine de la Musique »
@@ -192,7 +192,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a9464a50b7@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Pièce de théâtre « Les Collectionnistes »
@@ -212,17 +212,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e1f0643758@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Théâtre Frère(s) ou l'étoffe d'un chef
 LOCATION:La Scène du Loing\, Nemours
-DESCRIPTION:Horaires : 18h–19h\n\nTarif : Payant\n\nSpectacle théâtral 
- marquant la présentation de la nouvelle saison culturelle de La Scène du
-  Loing.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : https://fonta
- inebleaulive.fr/evenements/theatre-frere-s-ou-l-etoffe-d-un-chef-nemours-e
- 1f0643758/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+DESCRIPTION:Horaires : 18h00\n\nTarif : Consulter la billetterie\n\nSpectac
+ le théâtral marquant la présentation de la nouvelle saison culturelle d
+ e La Scène du Loing.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/theatre-frere-s-ou-l-etoffe-d-un-
+ chef-nemours-e1f0643758/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/theatre-frere-s-ou-l-etoffe-d-u
  n-chef-nemours-e1f0643758/
 CATEGORIES:Scène & Spectacles
@@ -230,7 +230,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d93384a80c@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Théâtre Le Journal de Maïa
@@ -252,22 +252,23 @@ UID:EVT_cc07918c5f@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
-SUMMARY:Concert du Chœur Variatio
+SUMMARY:Concert classique : Chœur Variatio
 LOCATION:Église Saint-Louis de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 17h\n\nTarif : À partir de 20 €\n\nRécital lyriq
- ue et choral d'exception interprété par le Chœur Variatio au cœur de l
- 'église Saint-Louis.\n\nOrganisateur : https://www.fontainebleau-tourisme
- .com/\n\nFiche : https://fontainebleaulive.fr/evenements/concert-du-choeur
- -variatio-fontainebleau-cc07918c5f/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/concert-du-choeur-variatio-font
- ainebleau-cc07918c5f/
+DESCRIPTION:Horaires : 17h00\n\nTarif : À partir de 20\,00 €\n\nRécital
+  lyrique et choral d'exception interprété par le Chœur Variatio au cœu
+ r de l'église Saint-Louis.\n\nOrganisateur : https://www.infoconcert.com/
+ concert/choeur-variatio-fontainebleau/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/concert-classique-choeur-variatio-fontainebleau-cc07918c5f
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-classique-choeur-variat
+ io-fontainebleau-cc07918c5f/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c5047390bf@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:concert trioxymore
@@ -287,17 +288,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_88a7545720@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261015
 SUMMARY:Spectacle jeune public À Table
 LOCATION:La Scène du Loing\, Nemours
-DESCRIPTION:Horaires : 14h–15h\n\nTarif : Payant\n\nPublic : Dès 3 ans\n
- \nSpectacle burlesque et familial sensibilisant les enfants à la biodiver
- sité et à l'alimentation responsable.\n\nOrganisateur : https://www.nemo
- urs.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/spectacle-jeune
- -public-a-table-nemours-88a7545720/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 14h00\n\nTarif : Consulter la billetterie\n\nPublic 
+ : Dès 3 ans\n\nSpectacle burlesque et familial sensibilisant les enfants 
+ à la biodiversité et à l'alimentation responsable.\n\nOrganisateur : ht
+ tps://www.nemours.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/s
+ pectacle-jeune-public-a-table-nemours-88a7545720/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-jeune-public-a-table-
  nemours-88a7545720/
 CATEGORIES:Scène & Spectacles
@@ -323,37 +324,19 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_da3eee5d71@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261016
-DTEND;VALUE=DATE:20261017
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-da3eee5d71/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-da3eee5d71/
-CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_1a4521c35c@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Spectacle de sortie de résidence de la compagnie "Camina-e"
 LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 20h30\n\nTarif : Payant\n\nSortie de résidence arti
  stique et représentation théâtrale de la compagnie CaminaO.\n\nOrganisa
- teur : https://www.fontainebleau.fr/\n\nFiche : https://fontainebleaulive.
- fr/evenements/spectacle-de-sortie-de-residence-de-la-compagnie-camina-e-fo
- ntainebleau-1a4521c35c/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+ teur : https://www.fontainebleau-tourisme.com/fr/fiche/7956465/spectacle-d
+ e-sortie-de-residence-de-la-compagnie-camina-e/\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/spectacle-de-sortie-de-residence-de-la-compagnie-
+ camina-e-fontainebleau-1a4521c35c/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-de-sortie-de-residenc
  e-de-la-compagnie-camina-e-fontainebleau-1a4521c35c/
 CATEGORIES:Scène & Spectacles
@@ -362,7 +345,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_453c9d0696@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:"Brass & Bleau"
@@ -381,7 +364,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b07e4488a7@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Concert : "Les Solistes du Gâtinais"
@@ -417,7 +400,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dcb1f8b0f8@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:"Brass & Bleau"
@@ -456,7 +439,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c45e16df11@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261026
 SUMMARY:Kino Avoblo 2026 : 72 heures pour créer un court-métrage à Avon-
@@ -473,25 +456,6 @@ URL:https://fontainebleaulive.fr/evenements/kino-avoblo-2026-72-heures-pour
  -creer-un-court-metrage-a-avo-avon-c45e16df11/
 CATEGORIES:Scène & Spectacles
 GEO:48.413;2.72893
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_421fede1ea@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261023
-DTEND;VALUE=DATE:20261024
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-421fede1ea/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-421fede1ea/
-CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -516,7 +480,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7539d30755@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Apéro piano au coin du feu
@@ -554,27 +518,8 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_c6448b6cba@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-c6448b6cba/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-c6448b6cba/
-CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_fd338ff387@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Les insomnies de Molière
@@ -593,7 +538,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18fff94f55@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Les insomnies de Molière
@@ -632,7 +577,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5ab487de71@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les Figurants
@@ -669,7 +614,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1aa6d80813@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Les Figurants
@@ -688,7 +633,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -707,7 +652,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac7ff8f1b7@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Festival "Ca tourne au Pays de Fontainebleau"
@@ -800,17 +745,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2a545a569c@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Spectacle Spicy Battle
 LOCATION:La Scène du Loing\, Nemours
-DESCRIPTION:Horaires : 15h–16h30\n\nTarif : Payant\n\nSpectacle vivant sc
- énique dynamique et rythmé proposé dans la saison culturelle de Nemours
- .\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : https://fontaineble
- aulive.fr/evenements/spectacle-spicy-battle-nemours-2a545a569c/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
+DESCRIPTION:Horaires : 15h00\n\nTarif : Consulter la billetterie\n\nSpectac
+ le vivant scénique dynamique et rythmé proposé dans la saison culturell
+ e de Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/spectacle-spicy-battle-nemours-2a545a569c
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-spicy-battle-nemours-
  2a545a569c/
 CATEGORIES:Scène & Spectacles
@@ -818,7 +763,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_988de8cc23@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Projection débat : Réinventer l'enfance
@@ -858,41 +803,22 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-a3be21f4cf/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-a3be21f4cf/
-CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:ACT_021@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Napoléon\, l'épopée immersive – Les Impériales de Fontaineble
  au
 LOCATION:Théâtre municipal & Ateliers de la Charité Royale\, Fontaineble
  au
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Gratuit\n\nUn week-end d'animat
- ions immersives au cœur de l'histoire napoléonienne : expérience en ré
- alité virtuelle 'Napoléon'\, jeux de stratégie\, conférences et théâ
- tre.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/746
- 4257/les-imperiales-de-fontainebleau/\n\nFiche : https://fontainebleaulive
- .fr/evenements/napoleon-l-epopee-immersive-les-imperiales-de-fontainebleau
- -act021/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit (VR : 12 € adulte
+  / 8 € enfant -12 ans)\n\nUn week-end d'animations immersives au cœur d
+ e l'histoire napoléonienne : expérience en réalité virtuelle 'Napoléo
+ n'\, jeux de stratégie\, conférences et théâtre.\n\nOrganisateur : htt
+ ps://www.fontainebleau.fr/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/napoleon-l-epopee-immersive-les-imperiales-de-fontainebleau-act021/\n\
+ nInformations collectées automatiquement : vérifiez-les auprès de l’o
+ rganisateur.
 URL:https://fontainebleaulive.fr/evenements/napoleon-l-epopee-immersive-les
  -imperiales-de-fontainebleau-act021/
 CATEGORIES:Scène & Spectacles
@@ -958,22 +884,22 @@ GEO:48.34418;2.6029
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+UID:EVT_50825603ca@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-d757249270/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-d757249270/
+SUMMARY:Spectacle musical familial : L'épopée impériale
+LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 11h30\n\nTarif : Gratuit\n\nSpectacle musical famili
+ al proposé dans le cadre des événements de la mairie de Fontainebleau.\
+ n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/spectacle-musical-familial-l-epopee-imperiale-fon
+ tainebleau-50825603ca/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-musical-familial-l-ep
+ opee-imperiale-fontainebleau-50825603ca/
 CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
+GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -997,7 +923,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_412d65949f@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -1055,8 +981,27 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_03cad66ce8@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261129
+SUMMARY:Festival musical : Jazz au Théâtre
+LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : Concerts en soirée\n\nTarif : Selon la billetterie 
+ du spectacle\n\nFestival de jazz proposant plusieurs soirées de concerts 
+ au Théâtre municipal.\n\nOrganisateur : https://www.fontainebleau-touris
+ me.com/\n\nFiche : https://fontainebleaulive.fr/evenements/festival-musica
+ l-jazz-au-theatre-fontainebleau-03cad66ce8/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/festival-musical-jazz-au-theatr
+ e-fontainebleau-03cad66ce8/
+CATEGORIES:Scène & Spectacles
+GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f8dd208372@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -1078,7 +1023,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d4e75908f@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -1101,16 +1046,16 @@ UID:EVT_a72e495862@fontainebleaulive.fr
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
-SUMMARY:Concert Jazz de Tyreek McDole
+SUMMARY:Concert Jazz : Tyreek McDole
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Payant\n\nConcert jazz exceptionnel
-  de la nouvelle étoile du vocal jazz américain Tyreek McDole.\n\nOrganis
- ateur : https://www.fontainebleau.fr/\n\nFiche : https://fontainebleaulive
- .fr/evenements/concert-jazz-de-tyreek-mcdole-fontainebleau-a72e495862/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
-URL:https://fontainebleaulive.fr/evenements/concert-jazz-de-tyreek-mcdole-f
- ontainebleau-a72e495862/
+DESCRIPTION:Horaires : En soirée\n\nTarif : Réservation en billetterie\n\
+ nConcert jazz exceptionnel de la nouvelle étoile du vocal jazz américain
+  Tyreek McDole.\n\nOrganisateur : https://www.infoconcert.com/concert/tyre
+ ek-mcdole-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/concert-jazz-tyreek-mcdole-fontainebleau-a72e495862/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-jazz-tyreek-mcdole-font
+ ainebleau-a72e495862/
 CATEGORIES:Scène & Spectacles
 GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
@@ -1151,22 +1096,21 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+UID:EVT_d8e28bc887@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-3803e727d8/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-3803e727d8/
+SUMMARY:Barbizon Classique : Quintet Syntonia
+LOCATION:Chapelle de Barbizon\, Barbizon
+DESCRIPTION:Horaires : En après-midi / soirée\n\nTarif : Dès 10 €\n\nC
+ oncert de musique classique interprété par le Quintet Syntonia.\n\nOrgan
+ isateur : https://77.agendaculturel.fr/concert/barbizon-classique.html\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/barbizon-classique-quintet
+ -syntonia-d8e28bc887/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/barbizon-classique-quintet-synt
+ onia-d8e28bc887/
 CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -1176,12 +1120,12 @@ DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Théâtre « Le Legs » de Marivaux
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Tarifs selon catégorie\n\nReprése
- ntation de la fameuse comédie sentimentale de Marivaux mise en scène par
-  Alain de Bock.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/theatre-le-legs-de-marivaux-fonta
- inebleau-f6b357bd56/\n\nInformations collectées automatiquement : vérifi
- ez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h30\n\nTarif : Selon grille tarifaire du théâtre
+ \n\nReprésentation de la fameuse comédie sentimentale de Marivaux mise e
+ n scène par Alain de Bock.\n\nOrganisateur : https://theatredefontaineble
+ au.mapado.com/\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-
+ le-legs-de-marivaux-fontainebleau-f6b357bd56/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/theatre-le-legs-de-marivaux-fon
  tainebleau-f6b357bd56/
 CATEGORIES:Scène & Spectacles
@@ -1195,12 +1139,13 @@ DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Opéra « La Flûte enchantée » par la compagnie Opéra 2001
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 17h00\n\nTarif : Payant\n\nGrand opéra féerique de
-  Mozart présenté dans la magnifique salle à l'italienne du Théâtre mu
- nicipal.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche : https:
- //fontainebleaulive.fr/evenements/opera-la-flute-enchantee-par-la-compagni
- e-opera-2001-fontainebleau-af1a49c6c7/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 17h00\n\nTarif : Selon grille tarifaire du théâtre
+ \n\nGrand opéra féerique de Mozart présenté dans la magnifique salle 
+ à l'italienne du Théâtre municipal.\n\nOrganisateur : https://theatrede
+ fontainebleau.mapado.com/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/opera-la-flute-enchantee-par-la-compagnie-opera-2001-fontainebleau-af1a
+ 49c6c7/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/opera-la-flute-enchantee-par-la
  -compagnie-opera-2001-fontainebleau-af1a49c6c7/
 CATEGORIES:Scène & Spectacles
@@ -1229,7 +1174,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -1254,18 +1199,38 @@ DTEND;VALUE=DATE:20261214
 SUMMARY:Concert de Noël : Vespro della Beata Virgine de Monteverdi
 LOCATION:Chapelle de la Trinité\, Château de Fontainebleau\, Fontaineblea
  u
-DESCRIPTION:Horaires : ven. 11-12-2026 et sam. 12-12-2026 : 19h30 \; dim. 1
- 3-12-2026 : 15h\n\nTarif : 27 € (plein tarif)\, 20 € (tarif réduit)\n
- \nPublic : Dès 6 ans\n\nChef-d'œuvre sacré de Claudio Monteverdi dirig
- é par Lionel Sow dans le décor somptueux de la Chapelle de la Trinité.\
- n\nOrganisateur : https://www.chateaudefontainebleau.fr/\n\nFiche : https:
- //fontainebleaulive.fr/evenements/concert-de-noel-vespro-della-beata-virgi
- ne-de-monteverdi-fontainebleau-efe4049c33/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : ven. 11 : 19h30 \; sam. 12 : 19h30 \; dim. 13 : 15h0
+ 0\n\nTarif : Plein tarif : 27 € | Tarif réduit : 20 €\n\nPublic : Dè
+ s 6 ans\n\nChef-d'œuvre sacré de Claudio Monteverdi dirigé par Lionel S
+ ow dans le décor somptueux de la Chapelle de la Trinité.\n\nOrganisateur
+  : https://www.chateaudefontainebleau.fr/\n\nFiche : https://fontainebleau
+ live.fr/evenements/concert-de-noel-vespro-della-beata-virgine-de-monteverd
+ i-fontainebleau-efe4049c33/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/concert-de-noel-vespro-della-be
  ata-virgine-de-monteverdi-fontainebleau-efe4049c33/
 CATEGORIES:Scène & Spectacles
 GEO:48.40168;2.70086
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_60662fe205@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Spectacle acrobatique et clownesque : Le Bibliothécaire
+LOCATION:Théâtre Municipal (9 rue Dénecourt)\, Fontainebleau
+DESCRIPTION:Horaires : 14h30 et 17h30\n\nTarif : Selon la grille tarifaire 
+ du Théâtre Municipal\n\nSpectacle acrobatique et clownesque destiné au 
+ jeune public et aux familles.\n\nOrganisateur : https://www.fontainebleau.
+ fr/culture/le-theatre-municipal-361.html\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/spectacle-acrobatique-et-clownesque-le-bibliothecaire-fo
+ ntainebleau-60662fe205/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-acrobatique-et-clowne
+ sque-le-bibliothecaire-fontainebleau-60662fe205/
+CATEGORIES:Scène & Spectacles
+GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -1275,13 +1240,13 @@ DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle Jeune Public & Cirque « Le Bibliothécaire »
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h30 et 17h30\n\nTarif : Tarifs selon catégorie\n\
- nPublic : Dès 4 ans\n\nSpectacle burlesque et acrobatique familial célé
- brant le plaisir de la lecture par la cie Le Gros Orteil.\n\nOrganisateur 
- : https://www.fontainebleau.fr/\n\nFiche : https://fontainebleaulive.fr/ev
- enements/spectacle-jeune-public-et-cirque-le-bibliothecaire-fontainebleau-
- 769f22b469/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
+DESCRIPTION:Horaires : 17h30\n\nTarif : Selon grille tarifaire du théâtre
+ \n\nPublic : Dès 4 ans\n\nSpectacle burlesque et acrobatique familial cé
+ lébrant le plaisir de la lecture par la cie Le Gros Orteil.\n\nOrganisate
+ ur : https://theatredefontainebleau.mapado.com/\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/spectacle-jeune-public-et-cirque-le-bibliothecair
+ e-fontainebleau-769f22b469/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-jeune-public-et-cirqu
  e-le-bibliothecaire-fontainebleau-769f22b469/
 CATEGORIES:Scène & Spectacles
@@ -1290,7 +1255,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse
@@ -1346,7 +1311,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7444455eaa@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:J'ai mangé ma fourchette
@@ -1391,12 +1356,13 @@ DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Spectacle du Réveillon « Fantasmagloria »
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Payant\n\nSpectacle féerique de la
-  Saint-Sylvestre au Théâtre municipal pour célébrer le passage au Nouv
- el An.\n\nOrganisateur : https://www.fontainebleau.fr/\n\nFiche : https://
- fontainebleaulive.fr/evenements/spectacle-du-reveillon-fantasmagloria-font
- ainebleau-2005ad3717/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h30\n\nTarif : Selon grille tarifaire du théâtre
+ \n\nSpectacle féerique de la Saint-Sylvestre au Théâtre municipal pour 
+ célébrer le passage au Nouvel An.\n\nOrganisateur : https://theatredefon
+ tainebleau.mapado.com/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ spectacle-du-reveillon-fantasmagloria-fontainebleau-2005ad3717/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-du-reveillon-fantasma
  gloria-fontainebleau-2005ad3717/
 CATEGORIES:Scène & Spectacles

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_ed8eb35ed8@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261005
 SUMMARY:Visite libre du village d’art préludien de Chomo
@@ -33,7 +33,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_75f2a86ce4@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Les 12 heures d'Octobre rose
@@ -53,7 +53,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a23001839b@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261019
 SUMMARY:Visite libre du village d’art préludien de Chomo
@@ -70,6 +70,24 @@ DESCRIPTION:Tarif : Plein tarif : 5 €\, Tarif réduit : 3 € (demandeur
 URL:https://fontainebleaulive.fr/evenements/visite-libre-du-village-d-art-p
  reludien-de-chomo-acheres-la-foret-a23001839b/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_bac6c34a35@fontainebleaulive.fr
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Découverte du nord-est des Trois-Pignons
+LOCATION:Massif des Trois-Pignons\, Achères-la-Forêt
+DESCRIPTION:Horaires : 13h30–17h00\n\nPromenade guidée pour explorer le 
+ secteur nord-est du massif des Trois-Pignons.\n\nOrganisateur : https://ww
+ w.aaff.fr/agenda/\n\nFiche : https://fontainebleaulive.fr/evenements/decou
+ verte-du-nord-est-des-trois-pignons-acheres-la-foret-bac6c34a35/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-du-nord-est-des-troi
+ s-pignons-acheres-la-foret-bac6c34a35/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
