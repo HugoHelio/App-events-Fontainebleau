@@ -517,8 +517,17 @@ function mergeInto(target, incoming) {
  * And it marks the record as confirmed by a legitimate source (`source: 'site'`), which is what
  * the grounding exit criterion counts (decision of 24 September).
  */
+const isHome = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
+
+/**
+ * Item 79b: dates that may have been copied from last year. Gemini alone carries the record and
+ * its link is only a home page (or missing), so nothing we read shows this year's dates. The
+ * Fontainebleau Christmas market once went online with its 2025 dates this way. Same rule as
+ * `datesUnconfirmed()` in generate-pages.js, which tells the visitor.
+ */
+const datesAtRisk = (e) => !e.source && (!e.url || isHome(e.url));
+
 function enrichFrom(target, incoming) {
-  const isHome = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
   if (incoming.url && incoming.url !== target.url && !isGroundingRedirect(incoming.url)
       && (target.urlStatus !== 'ok' || isHome(target.url) || deeperOnSameHost(target.url, incoming.url))) {
     target.url = incoming.url;
@@ -1190,6 +1199,12 @@ function renderSummary(stats, ctx) {
     if (stats.vanishedFromFeed.length > 8) L.push(`  - … et ${stats.vanishedFromFeed.length - 8} autre(s)`);
     L.push(`  Vérifier auprès de l’organisateur, puis masquer via overrides.json si confirmé.`);
   }
+  if (stats.datesAtRisk.length) {
+    L.push(`- 📅 **Dates à vérifier (79b) : ${stats.datesAtRisk.length}** — Gemini seul, et le lien ne mène qu’à une page d’accueil : rien ne montre les dates de cette année. Les plus proches :`);
+    for (const v of stats.datesAtRisk.slice(0, 10)) L.push(`  - ${v}`);
+    if (stats.datesAtRisk.length > 10) L.push(`  - … et ${stats.datesAtRisk.length - 10} autre(s)`);
+    L.push(`  La fiche le dit déjà au visiteur. Si les dates sont fausses : overrides.json (dates ou masquage).`);
+  }
   if (stats.unconfirmed.length) {
     L.push(`- 🕰️ Sans confirmation depuis plus de ${CONFIG.staleAfterDays} jours : ${stats.unconfirmed.length} (information, pas alerte : la recall du modèle varie)`);
     for (const v of stats.unconfirmed.slice(0, 5)) L.push(`  - ${v}`);
@@ -1467,7 +1482,7 @@ async function main() {
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
     sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
-    unconfirmed: [], vanishedFromFeed: [], recategorised: 0,
+    unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -1824,6 +1839,10 @@ async function main() {
     if (e.source && feedsHealthy[e.source]) stats.vanishedFromFeed.push(entry);
     else stats.unconfirmed.push(entry);
   }
+  // 6a'. Item 79b. `kept` is sorted by date: soonest first, where a wrong date costs the most.
+  for (const e of kept) {
+    if (datesAtRisk(e)) stats.datesAtRisk.push(`${e.id} — ${e.title} (${e.startDate}, ${e.url || 'sans lien'})`);
+  }
 
   // 6b. English descriptions ─────────────────────────────────────────────
   // Last, on the set that is actually going to be published: nothing is paid for on a record
@@ -1870,7 +1889,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride, matchVenue, loadVenues, distanceKm, buildPrompt, SCANS, COMMUNES,
+  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, SCANS, COMMUNES,
   refineCategory, CATEGORIES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,

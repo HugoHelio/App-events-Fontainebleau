@@ -376,6 +376,35 @@ function suggestionsFor(e, events) {
 const suggestionItem = ({ o, why }) =>
   `<li><a href="${esc(o.pagePath)}">${esc(o.title)}</a><small>${why ? `<b>${esc(why)}</b> · ` : ''}${esc(dateLabel(o))} · ${esc(place(o))}</small></li>`;
 
+// ─── Provenance (item 79) ───
+// Show what the pipeline checks instead of a blanket "vérifiez". The rule: "Confirmé" only when
+// a legitimate source carries the record, never on Gemini alone; and when Gemini alone carries
+// it with nothing more than a home page for a link (79b), the dates themselves are flagged, at
+// the top, next to them. Same rule as datesAtRisk() in fetch-events.js, which reports them.
+const SOURCE_LABEL = {
+  site: 'le site d’un organisateur, de l’office de tourisme ou d’une mairie',
+  datatourisme: 'DATAtourisme, la base des offices de tourisme',
+  openagenda: 'OpenAgenda, l’agenda des organisateurs',
+};
+const isHomeUrl = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
+const datesUnconfirmed = (e) => !SOURCE_LABEL[e.source] && (!e.url || isHomeUrl(e.url));
+const dayMonthYear = (iso) => first(frDate(iso).replace(/^\S+ /, ''));
+
+function provenanceHtml(e, link) {
+  const host = link ? new URL(link).hostname.replace(/^www\./, '') : '';
+  const lines = [];
+  if (SOURCE_LABEL[e.source]) {
+    lines.push(`<span class="ok">✓ Confirmé par ${esc(SOURCE_LABEL[e.source])}</span>`);
+    if (host && e.urlStatus === 'ok' && isIsoDate(e.urlCheckedAt)) lines.push(`Lien vers ${esc(host)} vérifié le ${esc(dayMonthYear(e.urlCheckedAt))}.`);
+  } else {
+    lines.push(`Source : recherche web${host ? ` (${esc(host)})` : ''}, à confirmer auprès de l’organisateur.`);
+  }
+  if (isIsoDate(e.lastSeen)) lines.push(`Dernier relevé le ${esc(dayMonthYear(e.lastSeen))}.`);
+  return `<p class="prov">${lines.join('<br>')}</p>`;
+}
+
+const PROV_STYLE = '.prov{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}.prov .ok{color:#3d5d1d;font-weight:700}.unsure{background:#fff4e0;border:1px solid #e8c48a;border-radius:8px;padding:8px 12px;color:#6b4a12;font-size:15px}';
+
 function eventPage(e, events, today) {
   const canonical = SITE_URL + e.pagePath;
   const link = safeUrl(e.url);
@@ -392,13 +421,13 @@ function eventPage(e, events, today) {
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/${e.citySlug}/">${esc(e.city)}</a></nav>
 <h1>${esc(e.title)}</h1>
 <p class="when">${esc(dateLabel(e))}</p>
-<div class="sheet"><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl></div>
+${datesUnconfirmed(e) ? `<p class="unsure">Dates à confirmer : seule une recherche web les annonce, et ${link ? 'le lien ne mène qu’à l’accueil du site' : 'sans lien vers l’événement'}. Vérifiez auprès de l’organisateur avant de vous déplacer.</p>\n` : ''}<div class="sheet"><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl></div>
 ${e.description ? `<p>${esc(e.description)}</p>` : ''}
 ${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></p>`).join('')}${holidaysOf(e, today).map(({ h, p }) => `<p><a href="/${THEMES_DIR}/${h.slug}/">${esc(h.name)} ${esc(p.from.slice(0, 4))} : toutes les sorties</a></p>`).join('')}
 <div class="actions">
 ${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
 </div>
-<p class="note">Informations collectées automatiquement${link ? ` depuis ${esc(new URL(link).hostname.replace(/^www\./, ''))}` : ''} : vérifiez-les auprès de l’organisateur avant de vous déplacer.</p>
+${provenanceHtml(e, link)}
 ${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>`;
 
   return layout({
@@ -406,8 +435,9 @@ ${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(sugges
     description: eventDescription(e),
     canonical,
     body,
-    ld: e.urlStatus === 'ok' ? eventLd(e, canonical) : null,
-  });
+    // No rich result for dates nothing confirms (79b): Google would show them in its own box.
+    ld: e.urlStatus === 'ok' && !datesUnconfirmed(e) ? eventLd(e, canonical) : null,
+  }).replace('</style>', `${PROV_STYLE}\n</style>`);
 }
 
 function redirectPage(e) {
