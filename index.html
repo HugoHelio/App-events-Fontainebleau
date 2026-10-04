@@ -312,8 +312,8 @@
       transition: filter 0.2s, transform 0.2s;
     }
     .weekend-pill[hidden] { display: none; }
-    /* The weekend pictogram (SAM | DIM, SAT | SUN in English), dark square on the green pill. */
-    .weekend-pill .pill-icon { width: 1.5rem; height: 1.5rem; margin: -0.2rem 0 -0.2rem -0.55rem; border-radius: 0.3rem; flex: none; }
+    /* The weekend pictogram (SAM | DIM, SAT | SUN in English): a calendar drawn in the pill's ink. */
+    .weekend-pill .pill-icon { width: auto; height: 1.2rem; flex: none; }
     .day-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.7rem 0 0; }
     .day-pills[hidden] { display: none; }
     .day-pills .weekend-pill { margin-top: 0; }
@@ -1264,7 +1264,7 @@
         horizonWeekend: 'Ce week-end',
         todayPill: (n) => `Aujourd’hui : ${n} sortie${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `Ce week-end : ${n} sortie${n > 1 ? 's' : ''}`,
-        weekendIcon: 'public/assets/img/brand/weekend-fontainebleau-live-v2.svg',
+        weekendIcon: 'public/assets/img/brand/calendrier-sam-dim.svg',
         seasonNow: 'En ce moment',
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
@@ -1353,7 +1353,7 @@
         horizonWeekend: 'This weekend',
         todayPill: (n) => `Today: ${n} outing${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `This weekend: ${n} outing${n > 1 ? 's' : ''}`,
-        weekendIcon: 'public/assets/img/brand/weekend-fontainebleau-live-v2-en.svg',
+        weekendIcon: 'public/assets/img/brand/calendrier-sat-sun.svg',
         seasonNow: 'Right now (pages in French)',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
@@ -1640,7 +1640,7 @@
         el.replaceChildren();
         if (el.hidden) return false;
         if (icon) {
-          const img = Object.assign(document.createElement('img'), { className: 'pill-icon', src: icon, alt: '', width: 22, height: 22 });
+          const img = Object.assign(document.createElement('img'), { className: 'pill-icon', src: icon, alt: '', width: 31, height: 21 });
           el.appendChild(img);
         }
         el.append(t(label)(n));

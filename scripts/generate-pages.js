@@ -643,7 +643,7 @@ const isFree = (e) => /^(gratuit|entr[ée]e libre|acc[èe]s libre)/i.test(String
 const WEEKEND_STYLE = `
 .now{font-size:15px;margin:0 0 12px}
 .we{color:var(--ink);font-weight:700}
-.we img{width:2rem;height:2rem;margin-right:8px;vertical-align:-.6rem;border-radius:5px}
+.we img{width:auto;height:1.6rem;margin-right:8px;vertical-align:-.35rem}
 .chip{display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;line-height:1.5}
 .chip b{color:var(--muted);font-weight:600}
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
@@ -939,7 +939,7 @@ function weekendPage(events, today) {
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
 <h1>Que faire ce week-end autour de Fontainebleau ?</h1>
-<p class="when"><span class="we"><img src="/public/assets/img/brand/weekend-fontainebleau-live-v2.svg" alt="" width="32" height="32">Week-end</span> du ${esc(range)}${today === sun ? ` · aujourd’hui ${esc(sunLabel.replace(/ \d.*$/, ''))}` : ''}</p>
+<p class="when"><span class="we"><img src="/public/assets/img/brand/calendrier-sam-dim.svg" alt="" width="40" height="27">Week-end</span> du ${esc(range)}${today === sun ? ` · aujourd’hui ${esc(sunLabel.replace(/ \d.*$/, ''))}` : ''}</p>
 <p>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
 ${nowHtml(now)}
 ${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
