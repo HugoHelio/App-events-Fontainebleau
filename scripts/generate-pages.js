@@ -8,6 +8,7 @@
  *   /que-faire/<commune>/        "Que faire à … ?", one page per commune
  *   /que-faire/                  the index of communes
  *   /ce-week-end/                the coming weekend, rebuilt every day
+ *   /aujourdhui/                 today (and tomorrow, for the hours before the morning run)
  *   /sorties/<theme>/            seasonal pages (marchés de Noël, brame du cerf…), never removed
  *   /sitemap.xml                 every URL above, plus the home page and its English variant
  *
@@ -837,6 +838,24 @@ function seasonIndex(events, today) {
   });
 }
 
+// Share button of the weekend and today pages. Our own strings only: no data reaches the script.
+const shareHtml = (text) => `<div class="share"><button type="button" id="share" class="share-btn" hidden data-text="${esc(text)}"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>Partager ce programme</span></button></div>`;
+const shareScript = (url, title) => `(function () {
+  // Shown only where it works: the phone's share sheet, or failing that a copied link.
+  var b = document.getElementById('share');
+  var url = '${url}';
+  if (!navigator.share && !(navigator.clipboard && navigator.clipboard.writeText)) return;
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var label = b.querySelector('span');
+    if (navigator.share) {
+      navigator.share({ title: '${title}', text: b.getAttribute('data-text') + ', sur Fontainebleau Live :', url: url }).catch(function () {});
+    } else {
+      navigator.clipboard.writeText(url).then(function () { label.textContent = 'Lien copié ✓'; });
+    }
+  });
+})();`;
+
 function weekendPage(events, today) {
   const { sat, sun } = weekendOf(today);
   const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
@@ -873,26 +892,12 @@ ${nowHtml(now)}
 ${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}">${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${n ? LEGEND : ''}
 ${sections.map(daySection).join('\n')}
-<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
-<div class="share"><button type="button" id="share" class="share-btn" hidden data-text="${esc(shareText)}"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>Partager ce programme</span></button></div>
+<div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/">Aujourd’hui</a> `}<a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
+${shareHtml(shareText)}
 <p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer. Sorties de saison : ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ')}.</p>
 <script>
 ${FILTER_SCRIPT}
-(function () {
-  // Shown only where it works: the phone's share sheet, or failing that a copied link.
-  var b = document.getElementById('share');
-  var url = '${SITE_URL}/${WEEKEND_DIR}/';
-  if (!navigator.share && !(navigator.clipboard && navigator.clipboard.writeText)) return;
-  b.hidden = false;
-  b.addEventListener('click', function () {
-    var label = b.querySelector('span');
-    if (navigator.share) {
-      navigator.share({ title: 'Que faire ce week-end autour de Fontainebleau ? — Fontainebleau Live', text: b.getAttribute('data-text') + ', sur Fontainebleau Live :', url: url }).catch(function () {});
-    } else {
-      navigator.clipboard.writeText(url).then(function () { label.textContent = 'Lien copié ✓'; });
-    }
-  });
-})();
+${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fontainebleau ? — Fontainebleau Live')}
 </script>`;
 
   return layout({
@@ -903,13 +908,80 @@ ${FILTER_SCRIPT}
   }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
 }
 
+// ─── /aujourdhui/ (item 78) ───
+// What is on today, rebuilt with the other pages every morning (06:00 UTC). Between midnight
+// and that run the page would show yesterday, so it carries tomorrow too, hidden: a small script
+// shows the block of the phone's date. Without JavaScript, the day it was built.
+
+const TODAY_DIR = 'aujourdhui';
+
+function todayPage(events, today) {
+  const tomorrow = addDays(today, 1);
+  const byTime = (a, b) => timeKey(a) - timeKey(b) || a.title.localeCompare(b.title, 'fr');
+  const on = (d) => events.filter((e) => e.startDate <= d && endOf(e) >= d);
+  const day = (d) => {
+    const open = on(d);
+    return { d, short: open.filter((e) => spanDays(e) <= FEED_MAX_DAYS).sort(byTime), long: open.filter((e) => spanDays(e) > FEED_MAX_DAYS) };
+  };
+  const days = [day(today), day(tomorrow)];
+  const n = days[0].short.length;
+
+  const block = ({ d, short, long }, i) => {
+    const k = short.length;
+    const until = (e) => (endOf(e) > d ? `jusqu’au ${first(shortDate(endOf(e)))}` : '');
+    const sections = [
+      { id: `sorties-${d}`, h: 'Au programme', list: short, note: until },
+      { id: `expositions-${d}`, h: 'Expositions et visites ouvertes', list: long, long: true },
+    ].filter((s) => s.list.length);
+    return `<section class="daybox" data-day="${d}"${i ? ' hidden' : ''}>
+<p class="when">Aujourd’hui, ${esc(dayName(d))}</p>
+<p>${k ? `${k} sortie${k > 1 ? 's' : ''} aujourd’hui à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille.` : 'Rien d’annoncé aujourd’hui pour l’instant.'}${long.length ? ` Et ${long.length} exposition${long.length > 1 ? 's' : ''} ou visite${long.length > 1 ? 's' : ''} ouverte${long.length > 1 ? 's' : ''}.` : ''}</p>
+${k ? LEGEND : ''}
+${sections.map(daySection).join('\n')}
+</section>`;
+  };
+
+  const shareText = `${n} sortie${n > 1 ? 's' : ''} aujourd’hui autour de Fontainebleau`;
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
+<h1>Que faire aujourd’hui autour de Fontainebleau ?</h1>
+<p class="note" id="stale" hidden>Ce programme date du ${esc(dayName(today))} et n’a pas encore été mis à jour : <a href="/">l’agenda complet</a> est à jour.</p>
+${nowHtml(seasonNow(events, today))}
+${days.map(block).join('\n')}
+<div class="actions"><a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a> <a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
+${shareHtml(shareText)}
+<p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer.</p>
+<script>
+${FILTER_SCRIPT}
+(function () {
+  // The block of the phone's date (Paris): tomorrow's between midnight and the morning rebuild.
+  // Past both, the page is stale (a failed run): it says so instead of showing a past day.
+  var d;
+  try { d = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Paris' }); } catch (e) { return; }
+  var boxes = document.querySelectorAll('.daybox');
+  var match = null;
+  Array.prototype.forEach.call(boxes, function (b) { if (b.getAttribute('data-day') === d) match = b; });
+  if (match) Array.prototype.forEach.call(boxes, function (b) { b.hidden = b !== match; });
+  else if (d > '${tomorrow}') document.getElementById('stale').hidden = false;
+})();
+${shareScript(`${SITE_URL}/${TODAY_DIR}/`, 'Que faire aujourd’hui autour de Fontainebleau ? — Fontainebleau Live')}
+</script>`;
+
+  return layout({
+    title: `Que faire aujourd’hui autour de Fontainebleau ? (${first(shortDate(today))}) | Fontainebleau Live`,
+    description: truncate(`${n ? `${n} sortie${n > 1 ? 's' : ''}` : 'Les sorties'} aujourd’hui, ${dayName(today)}, à Fontainebleau et alentour : sport, nature, spectacles, culture, en famille. Mis à jour chaque matin.`, 155),
+    canonical: `${SITE_URL}/${TODAY_DIR}/`,
+    body,
+  }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
+}
+
 function citiesIndex(cities) {
   const seasonal = [...HOLIDAYS, ...THEMES].map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Que faire autour de Fontainebleau ?</h1>
 <p>Les activités à venir, commune par commune.</p>
 <ul class="list">${cities.map((c) => `<li><a href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a><small>${c.events.length} activité${c.events.length > 1 ? 's' : ''} à venir</small></li>`).join('')}</ul>
-<h2>Ce week-end</h2>
+<h2>Aujourd’hui et ce week-end</h2>
+<p><a href="/${TODAY_DIR}/">Que faire aujourd’hui autour de Fontainebleau ?</a></p>
 <p><a href="/${WEEKEND_DIR}/">Que faire ce week-end autour de Fontainebleau ?</a></p>
 <h2><a href="/${THEMES_DIR}/">Sorties de saison</a></h2>
 <p>${seasonal}</p>`;
@@ -932,7 +1004,7 @@ function sitemap(cities, events, homeLastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${home(`${SITE_URL}/`)}
 ${home(`${SITE_URL}/?lang=en`)}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -1121,6 +1193,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
   files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today));
+  files.set(`${TODAY_DIR}/index.html`, todayPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
   for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
   for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today));
@@ -1191,5 +1264,5 @@ if (require.main === module) {
 module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
-  THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf,
+  THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf, TODAY_DIR,
 };

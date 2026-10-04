@@ -312,6 +312,17 @@
       transition: filter 0.2s, transform 0.2s;
     }
     .weekend-pill[hidden] { display: none; }
+    .day-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.7rem 0 0; }
+    .day-pills[hidden] { display: none; }
+    .day-pills .weekend-pill { margin-top: 0; }
+    .day-pills .weekend-pill::after { content: "\2192"; }
+    @media (max-width: 560px) {
+      /* Both pills on one line on a 360px phone. */
+      .day-pills { gap: 0.3rem; }
+      .day-pills .weekend-pill { padding: 0.32rem 0.65rem; font-size: 0.76rem; }
+      /* The arrow is the first thing to go: both pills on one line on a 360px phone. */
+      .day-pills .weekend-pill::after { content: none; }
+    }
     .weekend-pill:hover { filter: brightness(1.07); transform: translateY(-1px); }
     .weekend-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
     @media (prefers-reduced-motion: reduce) { .weekend-pill { transition: none; } .weekend-pill:hover { transform: none; } }
@@ -1043,7 +1054,11 @@
         <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
         <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
         <p id="lastUpdated" class="last-updated"></p>
-        <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
+        <!-- Item 78: "Aujourd'hui" and "Ce week-end". On Sunday the weekend is today: one pill. -->
+        <p id="dayPills" class="day-pills" hidden>
+          <a id="todayPill" class="weekend-pill" href="/aujourdhui/" hidden></a>
+          <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
+        </p>
         <p id="seasonRow" class="season-row" role="group" hidden></p>
       </div>
     </div>
@@ -1153,7 +1168,8 @@
     <p data-i18n="installHint" class="install-hint"></p>
     <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
     <!-- Plain link, present without JavaScript: the way a crawler finds the static pages (§3.X). -->
-    <p><a href="/ce-week-end/" data-i18n="weekendLink">Que faire ce week-end ?</a>
+    <p><a href="/aujourdhui/" data-i18n="todayLink">Que faire aujourd’hui ?</a>
+       · <a href="/ce-week-end/" data-i18n="weekendLink">Que faire ce week-end ?</a>
        · <a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
        · <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a></p>
     <!-- For other websites, not for visitors: set apart from the outings links (04/10). -->
@@ -1244,7 +1260,8 @@
         partnerText: 'Mairie, office de tourisme, club, hôtel : affichez gratuitement les prochaines sorties de votre commune ou de toute la région sur votre site.',
         horizonToday: "Aujourd'hui",
         horizonWeekend: 'Ce week-end',
-        weekendPill: (n, sunday) => `${sunday ? 'Aujourd’hui' : 'Ce week-end'} : ${n} sortie${n > 1 ? 's' : ''} →`,
+        todayPill: (n) => `Aujourd’hui : ${n} sortie${n > 1 ? 's' : ''}`,
+        weekendPill: (n) => `Ce week-end : ${n} sortie${n > 1 ? 's' : ''}`,
         seasonNow: 'En ce moment',
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
@@ -1268,6 +1285,7 @@
         report: 'Signaler une erreur',
         details: 'Voir détails & inscriptions →',
         eventPage: 'Fiche',
+        todayLink: 'Que faire aujourd’hui ?',
         weekendLink: 'Que faire ce week-end ?',
         byCommune: 'Que faire, commune par commune',
         seasonalLink: 'Vacances et sorties de saison',
@@ -1330,7 +1348,8 @@
         partnerText: 'Town hall, tourist office, club, hotel: show the upcoming outings of your town, or of the whole area, on your site, free of charge.',
         horizonToday: 'Today',
         horizonWeekend: 'This weekend',
-        weekendPill: (n, sunday) => `${sunday ? 'Today' : 'This weekend'}: ${n} outing${n > 1 ? 's' : ''} →`,
+        todayPill: (n) => `Today: ${n} outing${n > 1 ? 's' : ''}`,
+        weekendPill: (n) => `This weekend: ${n} outing${n > 1 ? 's' : ''}`,
         seasonNow: 'Right now (pages in French)',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
@@ -1354,6 +1373,7 @@
         report: 'Report an error',
         details: 'Details & booking →',
         eventPage: 'Page',
+        todayLink: 'Today (in French)',
         weekendLink: 'This weekend (in French)',
         byCommune: 'What’s on, town by town (in French)',
         seasonalLink: 'Holidays and seasonal outings (in French)',
@@ -1597,18 +1617,28 @@
       return { sat: shift(6 - dow), sun: shift(7 - dow) };
     }
 
-    // The pill counts what the page lists as outings: 7 days or less. Long exhibitions are open
-    // too, but "29 sorties" should mean 29 things happening this weekend.
+    // The pills count what their pages list as outings: 7 days or less. Long exhibitions are
+    // open too, but "29 sorties" should mean 29 things happening this weekend. Item 78: today
+    // and the weekend; on Sunday the weekend is today, so only "Aujourd'hui" is shown.
     function renderWeekendPill() {
-      const el = document.getElementById('weekendPill');
-      if (!el) return;
+      const box = document.getElementById('dayPills');
+      if (!box) return;
       const today = todayStr();
       const { sat, sun } = weekendRange(today);
       const days = (a) => Math.round((isoToDate(a.endDate || a.startDate) - isoToDate(a.startDate)) / 86400000) + 1;
-      const n = allActivities.filter((a) => a.startDate && isUpcoming(a)
-        && a.startDate <= sun && (a.endDate || a.startDate) >= sat && days(a) <= 7).length;
-      el.hidden = loadFailed || !n;
-      el.textContent = el.hidden ? '' : t('weekendPill')(n, today === sun);
+      const count = (from, to) => allActivities.filter((a) => a.startDate && isUpcoming(a)
+        && a.startDate <= to && (a.endDate || a.startDate) >= from && days(a) <= 7).length;
+      const set = (id, n, label) => {
+        const el = document.getElementById(id);
+        el.hidden = loadFailed || !n;
+        el.textContent = el.hidden ? '' : t(label)(n);
+        return !el.hidden;
+      };
+      const shown = [
+        set('todayPill', count(today, today), 'todayPill'),
+        set('weekendPill', today === sun ? 0 : count(sat, sun), 'weekendPill'),
+      ];
+      box.hidden = !shown.some(Boolean);
     }
 
     function renderEventCount() {
@@ -1966,6 +1996,7 @@
       });
       document.getElementById('resetView').addEventListener('click', clearSelection);
       document.getElementById('weekendPill').addEventListener('click', () => track('weekend-pill', 'click'));
+      document.getElementById('todayPill').addEventListener('click', () => track('today-pill', 'click'));
       // The footer logo returns to the top without reloading: filters and selection are kept.
       document.getElementById('footerHome').addEventListener('click', (e) => {
         e.preventDefault();
