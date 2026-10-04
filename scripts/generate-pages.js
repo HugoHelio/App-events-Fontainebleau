@@ -313,14 +313,20 @@ function cityPage(c) {
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
-<p class="note">Vous gérez un site (mairie, association, hébergement) ? <a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}">Affichez gratuitement ce programme chez vous</a>.</p>`;
+<div class="partner-box"><p class="partner-title">Vous avez un site web ?</p>
+<p>Mairie, office de tourisme, club, hôtel : affichez gratuitement les prochaines sorties de ${esc(c.name)} sur votre site.</p>
+<a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}">Intégrer l’agenda de ${esc(c.name)} →</a></div>`;
   return layout({
     title: `Que faire à ${c.name} ? Agenda des activités | Fontainebleau Live`,
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),
     canonical: `${SITE_URL}/${CITIES_DIR}/${c.slug}/`,
     body,
-  });
+  }).replace('</style>', `${PARTNER_STYLE}\n</style>`);
 }
+
+// Same box as the home page footer (04/10): the widget is an offer to other websites, so it is
+// set apart from the visitor's content instead of a grey line under it.
+const PARTNER_STYLE = '.partner-box{margin:32px 0 8px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:10px}.partner-box p{margin:0 0 6px}.partner-title{font-weight:700;color:var(--ink)}.partner-box a{color:var(--ink);font-weight:700}';
 
 // ───────────────────────────── Posts to share (item 70) ─────────────────────────────
 //
