@@ -317,7 +317,66 @@ function eventDescription(e) {
 // "Halloween 2026 … ? : toutes les dates" reads badly once a heading is a question.
 const allDates = (h1) => (h1.endsWith('?') ? `${h1} Toutes les dates` : `${h1} : toutes les dates`);
 
-function eventPage(e, sameCity, today) {
+// ─── "À faire aussi" (item 82) ───
+// Three suggestions under each event page, by a written rule: the best one (1) on the same
+// dates within ~10 km, the best one (2) of the same category within 14 days and ~15 km, then
+// the rest of (1) and (2), (3) the same town, and long exhibitions only for want of anything
+// else. No draw and no `today`: the choice only changes when the data does, since a page is
+// written only when it changes (§3.X) and a shuffle would rewrite ~290 pages a day.
+const SUGGEST_MAX = 3;
+const SUGGEST_NEAR_KM = 10;
+const SUGGEST_AREA_KM = 15;
+const SUGGEST_DAYS = 14;
+const SUGGEST_CAT = {
+  'Sport & Outdoor': 'Autre sortie sportive',
+  'Nature & Environnement': 'Autre sortie nature',
+  'Scène & Spectacles': 'Autre spectacle',
+  'Culture & Ateliers': 'Autre sortie culturelle',
+};
+
+function distKm(a, b) {
+  const [la1, lo1, la2, lo2] = [a.lat, a.lng, b.lat, b.lng].map(Number);
+  if (![la1, lo1, la2, lo2].every(Number.isFinite)) return Infinity;
+  const r = Math.PI / 180;
+  const h = Math.sin((la2 - la1) * r / 2) ** 2 + Math.cos(la1 * r) * Math.cos(la2 * r) * Math.sin((lo2 - lo1) * r / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+
+function suggestionsFor(e, events) {
+  const endOf = (x) => (isIsoDate(x.endDate) ? x.endDate : x.startDate);
+  const key = (x) => slugify(x.title, 200);
+  const cands = events.filter((o) => o.id !== e.id && key(o) !== key(e))
+    .map((o) => ({ o, km: distKm(e, o), short: spanDays(o) <= FEED_MAX_DAYS }));
+  const near = (a, b) => a.km - b.km || a.o.startDate.localeCompare(b.o.startDate) || a.o.id.localeCompare(b.o.id);
+  const soon = (a, b) => a.o.startDate.localeCompare(b.o.startDate) || near(a, b);
+  const overlaps = (o, from, to) => o.startDate <= to && endOf(o) >= from;
+  // A town-centre position (geoApprox) is good enough to choose, not to print a distance.
+  const away = ({ o, km }) => (e.geoApprox || o.geoApprox || !Number.isFinite(km) ? '' : km < 1 ? 'à moins d’1 km' : `à ${Math.round(km)} km`);
+  const oneDay = e.startDate === endOf(e);
+
+  const sameDates = cands.filter((c) => c.short && c.km <= SUGGEST_NEAR_KM && overlaps(c.o, e.startDate, endOf(e))).sort(near)
+    .map((c) => ({ ...c, why: [oneDay ? 'Le même jour' : 'Aux mêmes dates', away(c)] }));
+  const sameCat = cands.filter((c) => c.short && e.category && c.o.category === e.category && c.km <= SUGGEST_AREA_KM
+    && overlaps(c.o, e.startDate, addDays(e.startDate, SUGGEST_DAYS))).sort(near)
+    .map((c) => ({ ...c, why: [SUGGEST_CAT[e.category] || 'Dans le même genre', away(c)] }));
+  const sameCity = cands.filter((c) => c.short && c.o.citySlug === e.citySlug).sort(soon).map((c) => ({ ...c, why: [] }));
+  const long = cands.filter((c) => !c.short).sort(near).map((c) => ({ ...c, why: ['Exposition ou visite', away(c)] }));
+
+  // One of each kind first, so three suggestions are not three of the same; never the same title twice.
+  const picked = [];
+  const take = (c) => {
+    if (c && picked.length < SUGGEST_MAX && !picked.some((x) => key(x.o) === key(c.o))) picked.push(c);
+  };
+  take(sameDates[0]);
+  take(sameCat[0]);
+  for (const c of [...sameDates, ...sameCat, ...sameCity, ...long]) take(c);
+  return picked.map(({ o, why }) => ({ o, why: why.filter(Boolean).join(', ') }));
+}
+
+const suggestionItem = ({ o, why }) =>
+  `<li><a href="${esc(o.pagePath)}">${esc(o.title)}</a><small>${why ? `<b>${esc(why)}</b> · ` : ''}${esc(dateLabel(o))} · ${esc(place(o))}</small></li>`;
+
+function eventPage(e, events, today) {
   const canonical = SITE_URL + e.pagePath;
   const link = safeUrl(e.url);
   const rows = [
@@ -328,7 +387,7 @@ function eventPage(e, sameCity, today) {
     ['Organisateur', e.organizer],
     ['Catégorie', e.category],
   ].filter(([, v]) => v);
-  const others = sameCity.filter((o) => o.id !== e.id).slice(0, 5);
+  const others = suggestionsFor(e, events);
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/${e.citySlug}/">${esc(e.city)}</a></nav>
 <h1>${esc(e.title)}</h1>
@@ -340,7 +399,7 @@ ${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(
 ${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
 </div>
 <p class="note">Informations collectées automatiquement${link ? ` depuis ${esc(new URL(link).hostname.replace(/^www\./, ''))}` : ''} : vérifiez-les auprès de l’organisateur avant de vous déplacer.</p>
-${others.length ? `<h2>Aussi à ${esc(e.city)}</h2>\n<ul class="list">${others.map(eventItem).join('')}</ul>\n<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout le programme à ${esc(e.city)}</a></p>` : ''}`;
+${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>`;
 
   return layout({
     title: eventTitle(e),
@@ -1241,7 +1300,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
     const dir = e.pagePath.split('/')[2];
     liveDirs.add(dir);
     byToken.set(idToken(e), e);
-    files.set(`${EVENTS_DIR}/${dir}/index.html`, eventPage(e, byCity.get(e.citySlug).events, today));
+    files.set(`${EVENTS_DIR}/${dir}/index.html`, eventPage(e, events, today));
   }
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
