@@ -129,6 +129,7 @@ const SCANS = [
       'Cherche nommément les clubs et organisateurs locaux : clubs d\'athlétisme de Nemours et ' +
       'de Fontainebleau, Stade Équestre du Grand Parquet, clubs de VTT et de cyclotourisme, ' +
       'comités départementaux de Seine-et-Marne, offices municipaux des sports.',
+    hints: ['trail course', 'concours Grand Parquet', 'randonnée VTT club'],
   },
   {
     name: 'nature',
@@ -136,6 +137,7 @@ const SCANS = [
     focus:
       'Sorties guidées en forêt, visites botaniques, observation (brame du cerf, oiseaux), ' +
       'animations nature, ateliers environnement, journées du patrimoine naturel.',
+    hints: ['sortie nature guidée forêt', 'animation nature', 'visite botanique'],
   },
   {
     name: 'culture',
@@ -146,6 +148,7 @@ const SCANS = [
       'vide-greniers. De l\'autre « Scène & Spectacles » : concerts, théâtre, opéra, danse, ' +
       'cirque, humour, cinéma et festivals. Inclure les événements aux châteaux de ' +
       'Fontainebleau, Vaux-le-Vicomte et Blandy-les-Tours dans l\'une ou l\'autre selon leur nature.',
+    hints: ['exposition', 'concert théâtre', 'château programmation'],
   },
   {
     name: 'famille',
@@ -153,6 +156,7 @@ const SCANS = [
     focus:
       'Ateliers enfants, spectacles jeune public, brocantes, marchés du terroir, fêtes locales, ' +
       'animations d\'automne et de fin d\'année, activités à faire en famille.',
+    hints: ['atelier enfants', 'spectacle jeune public', 'fête marché'],
   },
 ];
 
@@ -550,10 +554,56 @@ function enrichFrom(target, incoming) {
 
 // ───────────────────────────── Gemini ─────────────────────────────
 
+const MONTHS_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+
+/** « octobre 2026 », « novembre 2026 »… for every month the window touches. */
+function frenchMonths(fromIso, toIso) {
+  const out = [];
+  let [y, m] = fromIso.split('-').map(Number);
+  const [ty, tm] = toIso.split('-').map(Number);
+  while (y < ty || (y === ty && m <= tm)) {
+    out.push(`${MONTHS_FR[m - 1]} ${y}`);
+    if (++m > 12) { m = 1; y++; }
+  }
+  return out;
+}
+
+// Sent with every scan. A system instruction weighs more than one line lost in a long prompt.
+const SEARCH_SYSTEM = 'Tu utilises toujours l\'outil de recherche Google avant de répondre. '
+  + 'Tu ne donnes jamais une date d\'événement tirée de ta mémoire.';
+
+/** The exact request body of a scan — shared with scripts/check-grounding.js, which must test the same thing. */
+function geminiRequestBody(prompt) {
+  return {
+    systemInstruction: { parts: [{ text: SEARCH_SYSTEM }] },
+    contents: [{ parts: [{ text: prompt }] }],
+    tools: [{ google_search: {} }],
+    // No responseMimeType: it collides with the search tool (see design doc §3.A).
+    generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
+  };
+}
+
 function buildPrompt(scan, { today, maxDate }) {
+  // Dated example queries (04/10): without them the model judged it knew enough, thought for
+  // ~10 000 tokens and answered from memory with zero searches, while a short question searched.
+  const months = frenchMonths(today, maxDate);
+  const hints = scan.hints || [scan.label];
+  const queries = [
+    ...hints.map((h, i) => `${h} Fontainebleau ${months[i % months.length]}`),
+    `agenda office de tourisme Pays de Fontainebleau ${months[0]}`,
+    `${hints[0]} Nemours Moret Melun ${months[Math.min(1, months.length - 1)]}`,
+  ];
   return `
-Effectue une recherche web approfondie sur les événements à venir dans la région de Fontainebleau.
-Nous sommes aujourd'hui le ${today}.
+Nous sommes aujourd'hui le ${today}. Tu collectes les événements à venir autour de Fontainebleau.
+
+ÉTAPE 1 — RECHERCHE GOOGLE, OBLIGATOIRE AVANT TOUTE RÉPONSE :
+Ta mémoire ne connaît pas l'agenda de cette saison : les dates changent chaque année et une date de mémoire est presque toujours fausse.
+Utilise l'outil de recherche Google, au moins 6 requêtes distinctes, par exemple :
+${queries.map((q) => `- « ${q} »`).join('\n')}
+puis d'autres requêtes sur les communes et les sources listées plus bas.
+Chaque événement renvoyé doit venir d'une page trouvée par ces recherches. Si tu n'as fait aucune recherche, renvoie [].
+
+ÉTAPE 2 — TRI ET FORMAT, selon les consignes suivantes.
 
 FOCUS DE CETTE RECHERCHE : ${scan.label}
 ${scan.focus}
@@ -612,20 +662,15 @@ Renvoie UNIQUEMENT un tableau JSON strict, sans texte avant ou après, au format
 `;
 }
 
-async function callGemini(prompt) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent`;
+async function callGemini(prompt, model = CONFIG.model) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
   const res = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'x-goog-api-key': process.env.GEMINI_API_KEY, // header, not query string: keeps the key out of URLs/logs
     },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      tools: [{ google_search: {} }],
-      // No responseMimeType: it collides with the search tool (see design doc §3.A).
-      generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
-    }),
+    body: JSON.stringify(geminiRequestBody(prompt)),
     signal: AbortSignal.timeout(CONFIG.apiTimeoutMs),
   });
   const bodyText = await res.text();
@@ -1908,7 +1953,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, SCANS, COMMUNES,
+  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, geminiRequestBody, callGemini, SCANS, COMMUNES,
   refineCategory, CATEGORIES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,

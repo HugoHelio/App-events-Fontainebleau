@@ -10,10 +10,12 @@
  *   2. A short question that cannot be answered without the web, with the tool spelled
  *      `google_search` (what the pipeline sends) and `googleSearch`. If neither searches, the
  *      tool itself is unavailable to this key or model: billing tier, model, or API change.
- *   3. The real "sport" scan prompt. If (2) searches and (3) does not, the model chooses not to
- *      search on our long prompt: a prompt problem, not an account problem.
+ *   3. The four real scans, with the exact request body the pipeline sends (geminiRequestBody).
+ *      If (2) searches and (3) does not, the model chooses not to search on our prompt: a prompt
+ *      problem, not an account problem. That was the 04/10 finding.
  *
- * Cost: a few thousand tokens per call, a few cents in total, searches within the free quota.
+ * Cost: two short calls plus four real scans per model, about 0.25 $ per model; searches within
+ * the free quota.
  *
  * Usage:
  *   GEMINI_API_KEY=… node scripts/check-grounding.js
@@ -24,7 +26,7 @@
 'use strict';
 
 const fs = require('fs');
-const { buildPrompt, SCANS, CONFIG, addMonths, parisToday } = require('./fetch-events');
+const { buildPrompt, geminiRequestBody, SCANS, CONFIG, addMonths, parisToday } = require('./fetch-events');
 
 const API = 'https://generativelanguage.googleapis.com/v1beta';
 const SHORT_PROMPT = 'Cherche sur le web : quels événements sont annoncés à Fontainebleau (Seine-et-Marne) '
@@ -60,14 +62,16 @@ async function listModels() {
   log(`- Modèles Gemini 3 visibles avec cette clé : ${names.length ? names.map((n) => `\`${n}\``).join(', ') : 'aucun'}`);
 }
 
-async function probe(model, label, prompt, toolKey) {
+const shortBody = (toolKey) => ({
+  contents: [{ parts: [{ text: SHORT_PROMPT }] }],
+  tools: [{ [toolKey]: {} }],
+  generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
+});
+
+async function probe(model, label, request, toolKey) {
   const { status, body, text } = await call(`models/${model}:generateContent`, {
     method: 'POST',
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      tools: [{ [toolKey]: {} }],
-      generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
-    }),
+    body: JSON.stringify(request),
   });
   if (status !== 200) {
     // A quota or billing problem shows here, as an HTTP error, not as a silent answer.
@@ -100,9 +104,12 @@ async function main() {
   const today = parisToday();
   const ctx = { today, maxDate: addMonths(today, CONFIG.windowMonths) };
   for (const model of models) {
-    await probe(model, 'question courte', SHORT_PROMPT, 'google_search');
-    await probe(model, 'question courte', SHORT_PROMPT, 'googleSearch');
-    if (withScan) await probe(model, 'vrai scan « sport »', buildPrompt(SCANS.find((s) => s.name === 'sport') || SCANS[0], ctx), 'google_search');
+    await probe(model, 'question courte', shortBody('google_search'), 'google_search');
+    await probe(model, 'question courte', shortBody('googleSearch'), 'googleSearch');
+    if (!withScan) continue;
+    for (const scan of SCANS) {
+      await probe(model, `vrai scan « ${scan.name} »`, geminiRequestBody(buildPrompt(scan, ctx)), 'google_search');
+    }
   }
   log('');
   log('Lecture : aucune recherche nulle part → compte, modèle ou API (voir le palier de facturation dans AI Studio). '
