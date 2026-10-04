@@ -69,7 +69,7 @@ const CONFIG = {
   // at the ~3-day cadence, so one missed mention is never enough to raise it.
   staleAfterDays: envInt('STALE_EVENT_DAYS', 10),
   dryRun: process.env.DRY_RUN === '1',
-  // A scan whose answer shows no web search is discarded (03/10). ALLOW_UNGROUNDED=1 lifts that,
+  // A scan question answered without any web search is discarded (03/10). ALLOW_UNGROUNDED=1 lifts that,
   // only for a run where the metadata is known to be missing while the search did happen.
   allowUngrounded: process.env.ALLOW_UNGROUNDED === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
@@ -129,7 +129,8 @@ const SCANS = [
       'Cherche nommément les clubs et organisateurs locaux : clubs d\'athlétisme de Nemours et ' +
       'de Fontainebleau, Stade Équestre du Grand Parquet, clubs de VTT et de cyclotourisme, ' +
       'comités départementaux de Seine-et-Marne, offices municipaux des sports.',
-    hints: ['trail course', 'concours Grand Parquet', 'randonnée VTT club'],
+    // Step 1 of the scan (§7, 04/10): the short question asked with the search tool.
+    ask: 'trails, courses, randonnées organisées et concours sportifs (dont le Grand Parquet)',
   },
   {
     name: 'nature',
@@ -137,7 +138,7 @@ const SCANS = [
     focus:
       'Sorties guidées en forêt, visites botaniques, observation (brame du cerf, oiseaux), ' +
       'animations nature, ateliers environnement, journées du patrimoine naturel.',
-    hints: ['sortie nature guidée forêt', 'animation nature', 'visite botanique'],
+    ask: 'sorties nature guidées, observations de la faune, visites botaniques et animations nature',
   },
   {
     name: 'culture',
@@ -148,7 +149,7 @@ const SCANS = [
       'vide-greniers. De l\'autre « Scène & Spectacles » : concerts, théâtre, opéra, danse, ' +
       'cirque, humour, cinéma et festivals. Inclure les événements aux châteaux de ' +
       'Fontainebleau, Vaux-le-Vicomte et Blandy-les-Tours dans l\'une ou l\'autre selon leur nature.',
-    hints: ['exposition', 'concert théâtre', 'château programmation'],
+    ask: 'expositions, concerts, spectacles, visites guidées et conférences (dont les châteaux)',
   },
   {
     name: 'famille',
@@ -156,7 +157,7 @@ const SCANS = [
     focus:
       'Ateliers enfants, spectacles jeune public, brocantes, marchés du terroir, fêtes locales, ' +
       'animations d\'automne et de fin d\'année, activités à faire en famille.',
-    hints: ['atelier enfants', 'spectacle jeune public', 'fête marché'],
+    ask: 'ateliers pour enfants, spectacles jeune public, fêtes locales, marchés et brocantes',
   },
 ];
 
@@ -568,44 +569,58 @@ function frenchMonths(fromIso, toIso) {
   return out;
 }
 
-// Sent with every scan. A system instruction weighs more than one line lost in a long prompt.
-const SEARCH_SYSTEM = 'Tu utilises toujours l\'outil de recherche Google avant de répondre. '
-  + 'Tu ne donnes jamais une date d\'événement tirée de ta mémoire.';
+// A scan runs in two steps (04/10). Asked for a structured list after a page of instructions,
+// the model never searched: not with dated example queries, nor a system instruction, a low
+// thinking level or gemini-3.8-flash. It answered from memory (home-page links, last year's
+// dates). A short question in plain words searches every time (sport: 8 queries, 18 pages). So:
+//   1. short questions WITH the search tool, answered in prose;
+//   2. one call WITHOUT the tool turning that prose into our JSON. It sees nothing but the text
+//      of step 1 and is told it is its only source: it can drop or format an event, not add one.
+// A question answered without any search never reaches step 2.
 
-/** The exact request body of a scan — shared with scripts/check-grounding.js, which must test the same thing. */
-function geminiRequestBody(prompt) {
+/** The short, grounded questions of one scan: one per pair of months in the window. */
+function buildQuestions(scan, { today, maxDate }) {
+  const months = frenchMonths(today, maxDate);
+  const out = [];
+  for (let i = 0; i < months.length; i += 2) {
+    out.push(`Cherche sur le web : quels ${scan.ask} sont annoncés autour de Fontainebleau `
+      + `(${CONFIG.maxRadiusKm} km) en ${months.slice(i, i + 2).join(' et ')} ? `
+      + 'Pour chacun : titre, dates exactes, horaires et tarif si indiqués, commune, lieu et lien de la page.');
+  }
+  return out;
+}
+
+/** Step 1 — grounded. Exactly the shape the 04/10 diagnostic saw search; keep it bare. */
+function searchRequestBody(question) {
   return {
-    systemInstruction: { parts: [{ text: SEARCH_SYSTEM }] },
-    contents: [{ parts: [{ text: prompt }] }],
+    contents: [{ parts: [{ text: question }] }],
     tools: [{ google_search: {} }],
     // No responseMimeType: it collides with the search tool (see design doc §3.A).
     generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
   };
 }
 
-function buildPrompt(scan, { today, maxDate }) {
-  // Dated example queries (04/10): without them the model judged it knew enough, thought for
-  // ~10 000 tokens and answered from memory with zero searches, while a short question searched.
-  const months = frenchMonths(today, maxDate);
-  const hints = scan.hints || [scan.label];
-  const queries = [
-    ...hints.map((h, i) => `${h} Fontainebleau ${months[i % months.length]}`),
-    `agenda office de tourisme Pays de Fontainebleau ${months[0]}`,
-    `${hints[0]} Nemours Moret Melun ${months[Math.min(1, months.length - 1)]}`,
-  ];
+/** Step 2 — no tool, so strict JSON output is allowed. */
+function formatRequestBody(prompt) {
+  return {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens, responseMimeType: 'application/json' },
+  };
+}
+
+/** Step 2's prompt: the prose found in step 1, to be turned into records. */
+function buildPrompt(scan, { today, maxDate }, findings) {
   return `
-Nous sommes aujourd'hui le ${today}. Tu collectes les événements à venir autour de Fontainebleau.
+Nous sommes aujourd'hui le ${today}. Voici le résultat de recherches web sur les événements à venir autour de Fontainebleau.
 
-ÉTAPE 1 — RECHERCHE GOOGLE, OBLIGATOIRE AVANT TOUTE RÉPONSE :
-Ta mémoire ne connaît pas l'agenda de cette saison : les dates changent chaque année et une date de mémoire est presque toujours fausse.
-Utilise l'outil de recherche Google, au moins 6 requêtes distinctes, par exemple :
-${queries.map((q) => `- « ${q} »`).join('\n')}
-puis d'autres requêtes sur les communes et les sources listées plus bas.
-Chaque événement renvoyé doit venir d'une page trouvée par ces recherches. Si tu n'as fait aucune recherche, renvoie [].
+TEXTE DES RECHERCHES :
+"""
+${findings}
+"""
 
-ÉTAPE 2 — TRI ET FORMAT, selon les consignes suivantes.
+Convertis ce texte en tableau JSON. Ce texte est ta SEULE source : n'ajoute aucun événement qui n'y figure pas, et ne complète jamais une date, un lien, un horaire ou un tarif de mémoire. Une information absente du texte reste vide ("" ou null).
 
-FOCUS DE CETTE RECHERCHE : ${scan.label}
+THÈME : ${scan.label}
 ${scan.focus}
 
 PÉRIODE DE RECHERCHE STRICTE :
@@ -618,27 +633,19 @@ PÉRIMÈTRE GÉOGRAPHIQUE :
 - Communes concernées : ${COMMUNES.join(', ')}.
 - Cette liste n'est pas limitative : toute commune dans le rayon convient.
 
-SOURCES À EXPLORER EN PRIORITÉ :
-1. Office de Tourisme du Pays de Fontainebleau (agenda).
-2. Agendas municipaux des mairies : Fontainebleau, Avon, Barbizon, Moret-sur-Loing, Nemours.
-3. Programmations des châteaux : Fontainebleau, Vaux-le-Vicomte, Blandy-les-Tours.
-4. Plateformes d'inscriptions sportives & associatives : HelloAsso, KMS, Klikego, ProTiming, Sporkrono, Adeorun.
-5. Calendriers fédéraux et de clubs : Fédération Française d'Athlétisme (calendrier Seine-et-Marne), FFRandonnée 77, FFCT/FFVélo 77, sites des clubs locaux.
-6. Presse et magazines locaux : Le Bellifontain, La République de Seine-et-Marne.
-
 RÈGLES DE QUALITÉ (très importantes) :
-- N'invente rien. Si la date, le lieu ou l'URL d'un événement n'est pas confirmé par une source, ignore cet événement.
-- "url" : adresse directe de la page de l'événement (ou de l'organisateur), jamais une page de résultats de recherche ni un lien de redirection.
+- Ignore un événement dont le texte ne donne pas une date précise ou un lien.
+- "url" : le lien donné par le texte pour cet événement, recopié tel quel ; jamais une page de résultats de recherche ni un lien de redirection.
 - Dates au format YYYY-MM-DD ; pour un événement d'un seul jour, endDate = startDate.
 - Aucun marqueur de citation ([1], [2]…) ni HTML dans les valeurs.
 - "schedule" : uniquement les horaires (ex: "10h–18h"), sans répéter la date ; s'ils diffèrent selon les jours, précise-les jour par jour avec la date (ex: "sam. 12 : 10h–18h ; dim. 13 : 10h–17h"). Ne mets JAMAIS un jour de la semaine sans la date correspondante.
 - "description" : une phrase, 200 caractères maximum.
-- "lat" / "lng" : coordonnées GPS du lieu si tu les connais avec certitude, sinon null.
+- "lat" / "lng" : null (la position est calculée ensuite à partir du lieu et de la commune).
 - "ageMin" / "ageMax" : âges conseillés (0 et 99 si tout public).
 - "category" : UNIQUEMENT l'une de ces quatre valeurs : "Sport & Outdoor", "Nature & Environnement", "Scène & Spectacles" (concerts, théâtre, opéra, cinéma, festivals), "Culture & Ateliers" (expositions, visites, patrimoine, ateliers, brocantes).
-- Retourne au maximum ${CONFIG.maxEventsPerScan} événements, en priorisant les plus proches dans le temps.
+- Retourne au maximum ${CONFIG.maxEventsPerScan * 2} événements, en priorisant les plus proches dans le temps.
 
-Renvoie UNIQUEMENT un tableau JSON strict, sans texte avant ou après, au format exact suivant :
+Renvoie UNIQUEMENT un tableau JSON strict ([] si le texte ne contient aucun événement utilisable), au format exact suivant :
 [
   {
     "title": "Titre explicite de l'événement",
@@ -647,8 +654,8 @@ Renvoie UNIQUEMENT un tableau JSON strict, sans texte avant ou après, au format
     "ageMax": 99,
     "city": "Nom de la ville",
     "locationName": "Lieu précis (ex: Grand Parquet, Parc du Château, Forêt domaniale)",
-    "lat": 48.4020,
-    "lng": 2.7010,
+    "lat": null,
+    "lng": null,
     "dateType": "event",
     "startDate": "YYYY-MM-DD",
     "endDate": "YYYY-MM-DD",
@@ -662,7 +669,7 @@ Renvoie UNIQUEMENT un tableau JSON strict, sans texte avant ou après, au format
 `;
 }
 
-async function callGemini(prompt, model = CONFIG.model) {
+async function callGemini(requestBody, model = CONFIG.model) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
   const res = await fetch(url, {
     method: 'POST',
@@ -670,7 +677,7 @@ async function callGemini(prompt, model = CONFIG.model) {
       'Content-Type': 'application/json',
       'x-goog-api-key': process.env.GEMINI_API_KEY, // header, not query string: keeps the key out of URLs/logs
     },
-    body: JSON.stringify(geminiRequestBody(prompt)),
+    body: JSON.stringify(requestBody),
     signal: AbortSignal.timeout(CONFIG.apiTimeoutMs),
   });
   const bodyText = await res.text();
@@ -751,36 +758,57 @@ function extractJsonArray(text) {
   throw new Error('JSON array could not be parsed (output likely truncated)');
 }
 
-async function runScan(scan, ctx) {
-  const prompt = buildPrompt(scan, ctx);
+/** One Gemini call with retries; `parse` runs inside the loop, so a garbled answer is retried too. */
+async function withRetry(label, requestBody, meta, parse = (info) => info) {
   let lastError;
   for (let attempt = 1; attempt <= CONFIG.maxAttempts; attempt++) {
     try {
-      const response = await callGemini(prompt);
-      const info = extractText(response);
-      const { events, salvaged } = extractJsonArray(info.text);
-      return {
-        events,
-        meta: {
-          attempts: attempt,
-          finishReason: info.finishReason,
-          salvaged,
-          usage: info.usage,
-          grounded: info.grounded,
-          searchQueries: info.searchQueries,
-          webSources: info.webSources,
-        },
-      };
+      const result = parse(extractText(await callGemini(requestBody)));
+      meta.attempts = Math.max(meta.attempts, attempt);
+      return result;
     } catch (err) {
       lastError = err;
       // 400/401/403/404 = bad key, bad model name, bad request: retrying will not help.
       const retryable = err.status === undefined || RETRYABLE_STATUS.has(err.status);
-      console.warn(`  ⚠️ [${scan.name}] attempt ${attempt}/${CONFIG.maxAttempts} failed: ${String(err.message).slice(0, 300)}`);
+      console.warn(`  ⚠️ [${label}] attempt ${attempt}/${CONFIG.maxAttempts} failed: ${String(err.message).slice(0, 300)}`);
       if (!retryable || attempt === CONFIG.maxAttempts) break;
       await sleep(CONFIG.retryBaseDelayMs * 3 ** (attempt - 1));
     }
   }
   throw lastError;
+}
+
+function addUsage(total, usage) {
+  for (const k of ['promptTokenCount', 'candidatesTokenCount', 'thoughtsTokenCount']) total[k] += usage?.[k] ?? 0;
+}
+
+async function runScan(scan, ctx) {
+  const meta = {
+    attempts: 0, grounded: false, searchQueries: 0, webSources: 0, questions: 0, unsearched: 0,
+    usage: { promptTokenCount: 0, candidatesTokenCount: 0, thoughtsTokenCount: 0 },
+  };
+  // Step 1 — short questions with the search tool, prose answers.
+  const findings = [];
+  for (const question of buildQuestions(scan, ctx)) {
+    const info = await withRetry(`${scan.name} · recherche`, searchRequestBody(question), meta);
+    meta.questions++;
+    addUsage(meta.usage, info.usage);
+    meta.grounded ||= info.grounded;
+    meta.searchQueries += info.searchQueries;
+    meta.webSources += info.webSources;
+    if (info.searchQueries > 0 || info.webSources > 0 || CONFIG.allowUngrounded) findings.push(info.text);
+    else meta.unsearched++;   // memory, not the web: never formatted, never published
+  }
+  if (!findings.length) return { events: [], meta: { ...meta, salvaged: false } };
+
+  // Step 2 — no tool: the prose becomes records.
+  const prompt = buildPrompt(scan, ctx, findings.join('\n\n---\n\n'));
+  const { events, salvaged, finishReason, usage } = await withRetry(`${scan.name} · mise en forme`, formatRequestBody(prompt), meta,
+    (info) => (/^\s*\[\s*\]\s*$/.test(info.text)
+      ? { events: [], salvaged: false, finishReason: info.finishReason, usage: info.usage }
+      : { ...extractJsonArray(info.text), finishReason: info.finishReason, usage: info.usage }));
+  addUsage(meta.usage, usage);
+  return { events, meta: { ...meta, salvaged, finishReason } };
 }
 
 // ───────────────────────────── Venue gazetteer ─────────────────────────────
@@ -1144,13 +1172,14 @@ function renderSummary(stats, ctx) {
     const tokens = s.usage ? `${u.promptTokenCount ?? '?'} / ${u.candidatesTokenCount ?? '?'} / ${u.thoughtsTokenCount ?? 0}` : '–';
     const status = s.error ? `❌ ${String(s.error).slice(0, 80)}`
       : s.discarded ? '🚫 écarté : aucune recherche'
+      : s.unsearched ? `⚠️ ${s.unsearched}/${s.questions} question(s) sans recherche, écartée(s)`
       : (s.salvaged ? '⚠️ truncated, salvaged' : '✅');
     L.push(`| ${s.name} | ${status} | ${s.raw ?? 0} | ${s.attempts ?? '–'} | ${s.grounded === false ? '⚠️ no grounding metadata' : `${s.searchQueries ?? '–'} / ${s.webSources ?? '–'}`} | ${tokens} |`);
   }
   L.push('');
   const discarded = stats.scans.filter((s) => s.discarded);
   if (discarded.length) {
-    L.push(`- 🚫 **${discarded.length} scan(s) Gemini sans aucune recherche web : ${discarded.reduce((n, s) => n + (s.raw || 0), 0)} événement(s) écarté(s)**, rien ajouté ni rafraîchi. `
+    L.push(`- 🚫 **${discarded.length} scan(s) Gemini sans aucune recherche web**, rien ajouté ni rafraîchi. `
       + 'Le modèle a répondu de mémoire. Diagnostic : workflow « Diagnostic de la recherche Google ».', '');
   }
   if (stats.dt) {
@@ -1953,7 +1982,7 @@ if (require.main === module) {
 
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
-  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, geminiRequestBody, callGemini, frenchMonths, SCANS, COMMUNES,
+  applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, buildQuestions, searchRequestBody, formatRequestBody, runScan, callGemini, frenchMonths, SCANS, COMMUNES,
   refineCategory, CATEGORIES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,

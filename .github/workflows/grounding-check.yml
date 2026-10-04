@@ -5,7 +5,8 @@ name: Diagnostic de la recherche Google
 # secrets GitHub : ce bouton permet de tester sans la copier sur une machine.
 #
 # Un clic sur "Run workflow" dans l'onglet Actions. Lecture seule : rien n'est ecrit ni publie.
-# Cout : deux appels courts + les quatre vrais scans, environ 0,25 $ par modele.
+# Lance les quatre vrais scans (en deux temps, sec. 7 du 04/10) sans rien publier.
+# Cout : environ 0,20 $ par modele.
 on:
   workflow_dispatch:
     inputs:
