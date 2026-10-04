@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fontainebleau Live — Activités & Événements autour de Fontainebleau</title>
+  <title>Que faire à Fontainebleau ? Sorties, événements et activités | Fontainebleau Live</title>
   <!-- Google Search picks the favicon from these links, and wants a size that is a multiple of
        48px. /favicon.ico (16/32/48, leaf on the dark square) is also the fallback crawlers and
        old browsers request without reading the page. The transparent 32px leaf (Icon-FL-fav-v2)
@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="public/assets/img/brand/Icon-FL-pwa-vH.png">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1d3b29">
-  <meta name="description" content="Toutes les activités sportives, culturelles et nature autour de Fontainebleau, mises à jour automatiquement.">
+  <meta name="description" content="Que faire à Fontainebleau et autour ? Concerts, expositions, sorties nature et en famille dans un rayon de 20 km : carte et calendrier, avec les liens des organisateurs.">
 
   <!-- Link preview (item 26). The main way this site travels is a link pasted into a WhatsApp or
        school group: without these tags the message shows a bare URL and reads like spam.
@@ -21,8 +21,8 @@
        path, and it does not run JavaScript either. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fontainebleau Live">
-  <meta property="og:title" content="Fontainebleau Live">
-  <meta property="og:description" content="Sport, culture et nature autour de Fontainebleau. Carte, calendrier, mis à jour automatiquement.">
+  <meta property="og:title" content="Que faire autour de Fontainebleau ? — Fontainebleau Live">
+  <meta property="og:description" content="Concerts, expositions, sorties nature et en famille dans un rayon de 20 km autour de Fontainebleau. Carte et calendrier.">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:locale:alternate" content="en_GB">
   <meta property="og:url" content="https://fontainebleaulive.fr/">
@@ -1038,7 +1038,7 @@
            Still for visitors who ask for reduced motion. 18 KB. -->
       <img class="brand-mark" src="public/assets/img/brand/Icon-FL-pulse.svg" alt="" width="64" height="64">
       <div>
-        <p class="kicker" data-i18n="kicker">Agenda de Fontainebleau et ses environs</p>
+        <p class="kicker" data-i18n="kicker">Que faire autour de Fontainebleau ?</p>
         <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
         <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
         <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
@@ -1210,9 +1210,12 @@
 
     const STRINGS = {
       fr: {
-        docTitle: 'Fontainebleau Live — Activités & Événements autour de Fontainebleau',
+        docTitle: 'Que faire à Fontainebleau ? Sorties, événements et activités | Fontainebleau Live',
         tagline: 'Sport, culture et nature, pour adultes et enfants',
-        kicker: 'Agenda de Fontainebleau et ses environs',
+        // Item 76: the count is what the footer counts, so the two never disagree. Short enough
+        // for the one-line tagline on a 360px phone.
+        taglineCount: (n) => `${n} sorties à venir : sport, culture et nature`,
+        kicker: 'Que faire autour de Fontainebleau ?',
 
         categoryLabel: "Type d'événements :",
         categoryAll: 'Tous les types',
@@ -1295,8 +1298,9 @@
         viaOpenData: 'via l’open data DATAtourisme',
       },
       en: {
-        docTitle: 'Fontainebleau Live — Activities & Events around Fontainebleau',
+        docTitle: 'What’s on in Fontainebleau? Outings, events and activities | Fontainebleau Live',
         tagline: 'Sport, culture and nature, for adults and children',
+        taglineCount: (n) => `${n} upcoming outings: sport, culture and nature`,
         kicker: 'What\u2019s on in and around Fontainebleau',
 
         categoryLabel: 'Event type:',
@@ -1616,6 +1620,10 @@
       // With no data, an empty line is honest; "0 événements répertoriés" would read as a
       // coverage claim about the region rather than a failure to load.
       el.textContent = (loadFailed || !n) ? '' : t('eventCount')(n);
+      // The banner promises a number it can show, never "everything" (item 76). Without data,
+      // the static tagline stays.
+      const tagline = document.querySelector('header .tagline');
+      if (tagline) tagline.textContent = (loadFailed || !n) ? t('tagline') : t('taglineCount')(n);
       renderWeekendPill();
       renderSeasonRow();
     }

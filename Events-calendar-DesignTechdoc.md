@@ -9,7 +9,7 @@
 
 ## 1. Project Overview & Objectives
 
-The goal of this project is to maintain an autonomous, low-cost event tracking application for the Fontainebleau area (≈15 km radius including Avon, Samois-sur-Seine, Barbizon, Moret-Loing-et-Orvanne, Nemours, Thomery, Bois-le-Roi, Bourron-Marlotte, Vaux-le-Vicomte and Blandy-les-Tours).
+The goal of this project is to maintain an autonomous, low-cost event tracking application for the Fontainebleau area (20 km radius, `MAX_RADIUS_KM`, including Avon, Samois-sur-Seine, Barbizon, Moret-Loing-et-Orvanne, Nemours, Thomery, Bois-le-Roi, Bourron-Marlotte, Vaux-le-Vicomte and Blandy-les-Tours).
 
 The system automatically scans official agendas, local association publications and ticketing platforms, formats the extracted data into a standardized JSON structure, and updates the live web application **without manual intervention**. Events are shown on a **map** and on a **calendar** for the **next 3 months** (reduced from 4 on September 20 to avoid saturating the map and the list), with a focus on **sports, cultural and family activities**.
 
@@ -1386,6 +1386,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-04 | **Le lien du widget sort de la ligne des liens grand public** : encart « Vous avez un site web ? » dans le pied de page de l'accueil (mairie, office de tourisme, club, hôtel ; « gratuitement » ; « Intégrer l’agenda → ») | Il s'adresse à une autre cible que les visiteurs et se perdait entre « Que faire ce week-end ? » et « Vacances et sorties de saison ». Les liens entrants depuis les sites des communes sont une piste de trafic (74 (5), 72c) : le lien doit se lire comme une offre |
 | 2026-10-04 | **Filtre « Prix » sur l'accueil (Tous les prix / Gratuit)**, même règle que le badge « Gratuit » des pages générées : un prix qui dit gratuit et rien d'autre (76 événements sur 299 ; « 5 € (gratuit -18 ans) », « Participation libre » et les prix inconnus n'en sont pas). Même jour : **la rangée de saison du bandeau perd son libellé « En ce moment »** (gardé pour les lecteurs d'écran) | Pas de bouton « Gratuit » dans le bandeau, trop chargé (décision du chef de projet) ; le filtre suffit au visiteur, la page `/gratuit/` (78) servira Google. Un « gratuit » faux coûte un déplacement : en cas de doute, l'événement n'est pas gratuit |
 | 2026-10-04 | **Titres et descriptions des fiches : la réponse avant le clic (item 80).** Titre « {nom} {année} {à commune} ({date}) : horaires, tarif, accès », mots ajoutés seulement s'ils sont **vrais pour la fiche** (`schedule`, `price`, lieu nommé à position exacte) et **tiennent dans 70 caractères** ; suffixe de marque seulement sous 60 (jamais en pratique). Meta description : date, horaires, lieu, tarif, puis le texte | Proposition du chef de projet : « … : Programme, Horaires & Accès ». Écarté tel quel : aucune description ne porte de programme (0 sur 299), et un titre qui promet une information absente renvoie le visiteur sur Google — §5 appliqué au titre. La date reste en tête, c'est le levier du 30/09 ; sur 299 titres, 48 portent des mots, les autres sont déjà longs. **Titre et description changent ensemble** : on mesure l'effet des deux, pas de chacun |
+| 2026-10-04 | **Accueil : « Que faire autour de Fontainebleau ? » + compteur (item 76).** Kicker en question ; la ligne sous la marque devient « 277 sorties à venir : sport, culture et nature », calculée au chargement avec le même comptage que le pied de page (3 mois) — sans données, l'ancienne phrase reste. `<title>` : « Que faire à Fontainebleau ? Sorties, événements et activités \| Fontainebleau Live » ; meta et `og:` reprennent la question, avec le rayon de 20 km (vérifié : l'événement le plus loin est à 19,4 km) | La requête visée est « que faire à Fontainebleau » (positions 46-87). « Tout ce qu'il y a à faire » est attaquable par quiconque connaît un événement absent ; « mis à jour chaque jour » est faux, le scan a lieu tous les ~3 jours. Un nombre, lui, est vrai à chaque chargement. Au passage, `manifest.json` disait encore 15 km |
 | 2026-10-04 | **Mobile, premier écran resserré (≤ 560 px)** : la marque passe en petit (32 px) dans le coin haut gauche, au niveau du choix de langue, et le texte du bandeau prend toute la largeur ; pastilles de saison plus petites ; filtres sur deux colonnes ; « Gratuit » devient un interrupteur « Gratuit uniquement » (case à cocher `role="switch"`), sur sa propre ligne au téléphone, en bout de rangée sur ordinateur. Champs à 16 px sur iOS seulement | Demande du chef de projet : la marque de 48 px poussait tout le texte à droite, et les cinq filtres empilés remplissaient le premier écran. Mesuré à 412 px : la carte commence désormais à 562 px, dans le premier écran. iOS zoome sur tout champ sous 16 px et reste zoomé : la règle `@supports (-webkit-touch-callout: none)` ne vise que lui |
 
 ---
@@ -1428,7 +1429,7 @@ sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
 | 1 | **75. Défilement mobile** | 87 % du trafic est mobile, et la page se fait mal défiler : un défaut, pas une amélioration | S |
 | 2 | **81. Hubs Toussaint et Halloween** | Vacances le 17/10, Halloween le 31/10. Google met 1 à 3 semaines à classer une page : c'est cette semaine ou l'an prochain | M |
 | 3 | ~~**80. Titres et descriptions des fiches (CTR)**~~ — fait le 04/10, reste la mesure | Le trafic vient des fiches ; le levier « année + date » du 30/09 a marché, on le prolonge | S |
-| 4 | **76. Positionnement du bandeau** | Quelques lignes, mais une formule à trancher | XS |
+| 4 | ~~**76. Positionnement du bandeau**~~ — fait le 04/10 | Quelques lignes, mais une formule à trancher | XS |
 | 5 | **78. Pages « Aujourd'hui » et « Gratuit »** | Gabarit de `/ce-week-end/` réutilisé ; deux requêtes à fort volume | M |
 | 6 | **77. « Ce week-end », page star** | Déjà la plus vue : on l'améliore après lui avoir donné des sœurs (78), pour concevoir la rangée de boutons une seule fois | M |
 | 7 | **82. Événements similaires** | Pages vues par visite ; existe déjà en version simple (même commune) | S |
@@ -1510,7 +1511,7 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
     - [ ] **« Programme »** : à ajouter aux mots du titre le jour où une source fournit un vrai
       programme (champ dédié, pas une détection dans la description).
 
-- [ ] **76. Positionnement : affirmer dans le bandeau.** Aujourd'hui : « Agenda de Fontainebleau
+- [x] **76. Positionnement : affirmer dans le bandeau — fait le 04/10 (§7) : formule « question + compteur ».** Reste, chef de projet : vérifier sur le Motorola que la ligne du compteur tient sur une ligne, et demander l'indexation de l'accueil dans la Search Console. Avant : « Agenda de Fontainebleau
   et ses environs » (kicker, FR/EN). Proposé : « Tout ce qu'il y a à faire autour de
   Fontainebleau ». **Recommandation** : affirmer, oui, mais avec une promesse qu'on tient chaque
   jour — « tout » est facile à prendre en défaut par un visiteur qui connaît un événement absent.
@@ -1518,7 +1519,12 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
   fraîcheur est un argument que l'office de tourisme n'a pas) ; ou « Que faire autour de
   Fontainebleau ? » + compteur vivant « 290 sorties dans les 3 prochains mois ». Reprendre la même
   formule dans le `<title>` et la meta description de l'accueil, qui visent la requête « que
-  faire à Fontainebleau ». **À trancher** : la formule.
+  faire à Fontainebleau ». **Tranché le 04/10** : la question + le compteur. « Mises à jour chaque
+  jour » écarté : le scan a lieu tous les ~3 jours et la ligne « Mis à jour le … » juste en
+  dessous le montrerait.
+  - **Plus tard, après le 26/10** (fin de la mesure de 80) : comparer dans la Search Console les
+    impressions et la position de l'accueil sur « que faire à Fontainebleau » (46-87 fin
+    septembre) avant/après le 04/10.
 
 - [ ] **78. Pages « Aujourd'hui » et « Gratuit »**, sur le modèle de `/ce-week-end/` (bouton sur
   l'accueil + page dédiée générée). **Fait le 04/10 : l'interrupteur « Gratuit uniquement » des filtres de l'accueil.** Restent les deux pages.
