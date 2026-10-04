@@ -243,15 +243,74 @@ function eventLd(e, canonical) {
  * "brame du cerf fontainebleau 2026", "marché de noël fontainebleau 2026"; "Melun Fête son Brie ·
  * Melun" drew 240 impressions for one click while people typed "fête du brie melun 2026".
  */
+// Item 80: past this length Google cuts the title on a phone, so what is added after the date
+// must fit or be left out. The date never is.
+const TITLE_WORDS_MAX = 70;
+const TITLE_BRAND_MAX = 60;
+
+const firstOf = (s) => s.replace(/(^|\D)1 (?=\p{L})/gu, '$11er ');
+// "au Châtelet-en-Brie", "aux Écrennes", "à La Chapelle-la-Reine".
+const atCity = (city) => String(city).replace(/^(?:Le (?=\S)|Les (?=\S)|)/, (m) => ({ 'Le ': 'au ', 'Les ': 'aux ' }[m] || 'à '));
+const titleHasCity = (e) => `-${slugify(e.title)}-`.includes(`-${slugify(e.city, 30)}-`);
+
+/**
+ * What the title may promise (item 80): only what the page shows. "Horaires" needs a schedule,
+ * "tarif" a price, "accès" a named venue at an exact position (the map otherwise shows the town
+ * centre). "Programme" is never promised: no description carries one, and a title that promises
+ * an absent programme sends the visitor back to Google.
+ */
+function titleWords(e) {
+  return [
+    e.schedule && 'horaires',
+    e.price && 'tarif',
+    e.locationName && !e.geoApprox && 'accès',
+  ].filter(Boolean);
+}
+
 function eventTitle(e) {
   const name = /\b20\d{2}\b/.test(e.title) ? e.title : `${e.title} ${e.startDate.slice(0, 4)}`;
   const end = isIsoDate(e.endDate) ? e.endDate : e.startDate;
   const when = end === e.startDate ? shortDate(e.startDate)
     : spanDays(e) > FEED_MAX_DAYS ? `jusqu’au ${shortDate(end).replace(/^\S+ /, '')}`
       : shareWhen(e);
-  // "Marché de Noël d'Avon · Avon" says the town twice.
-  const city = `-${slugify(e.title)}-`.includes(`-${slugify(e.city, 30)}-`) ? '' : ` · ${e.city}`;
-  return `${name} — ${when.replace(/(^|\D)1 (?=\p{L})/gu, '$11er ')}${city} | Fontainebleau Live`;
+  // "Marché de Noël d'Avon à Avon" says the town twice.
+  let title = `${name}${titleHasCity(e) ? '' : ` ${atCity(e.city)}`} (${firstOf(when)})`;
+  // As many words as fit, in order: "horaires, tarif" beats nothing.
+  const words = titleWords(e);
+  while (words.length && title.length + 3 + words.join(', ').length > TITLE_WORDS_MAX) words.pop();
+  if (words.length) title += ` : ${words.join(', ')}`;
+  const brand = ' | Fontainebleau Live';
+  return title.length + brand.length <= TITLE_BRAND_MAX ? title + brand : title;
+}
+
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+// "Tous les jours sauf le mardi" inside a sentence; "LUN-VEN" stays as written.
+const midSentence = (s) => (/^\p{Lu}\p{Ll}/u.test(s) ? s.charAt(0).toLowerCase() + s.slice(1) : s);
+
+/** "Du 19 septembre au 2 novembre 2026", "Du 13 au 17 octobre 2026": nothing said twice. */
+function frSpan(start, end) {
+  const strip = (iso) => frDate(iso).replace(/^\S+ /, '');
+  const from = start.slice(0, 7) === end.slice(0, 7) ? strip(start).replace(/ \S+ \d{4}$/, '')
+    : start.slice(0, 4) === end.slice(0, 4) ? strip(start).replace(/ \d{4}$/, '') : strip(start);
+  return firstOf(`Du ${from} au ${strip(end)}`);
+}
+
+/**
+ * The meta description answers before it describes (item 80): date, hours, place, price, then
+ * the text of the event. Every part comes from the record; nothing is promised that is not on
+ * the page.
+ */
+function eventDescription(e) {
+  const end = isIsoDate(e.endDate) ? e.endDate : e.startDate;
+  const date = end === e.startDate ? firstOf(capitalize(frDate(e.startDate))) : frSpan(e.startDate, end);
+  const venue = slugify(e.locationName);
+  const place = !venue || venue === slugify(e.city) ? atCity(e.city)
+    : `-${venue}-`.includes(`-${slugify(e.city, 30)}-`) ? e.locationName : `${e.locationName} ${atCity(e.city)}`;
+  const facts = [date, e.schedule && midSentence(String(e.schedule).trim()), place].filter(Boolean).join(', ');
+  const price = String(e.price || '').trim().replace(/[.\s]+$/, '');
+  const priceText = price && capitalize(price) + (price.endsWith('…') ? '' : '.');
+  return truncate([`${facts}.`, priceText, e.description].filter(Boolean).join(' '), 155);
 }
 
 // "Halloween 2026 … ? : toutes les dates" reads badly once a heading is a question.
@@ -284,7 +343,7 @@ ${others.length ? `<h2>Aussi à ${esc(e.city)}</h2>\n<ul class="list">${others.m
 
   return layout({
     title: eventTitle(e),
-    description: truncate(`${dateLabel(e)} à ${e.city}. ${e.description || ''}`, 155),
+    description: eventDescription(e),
     canonical,
     body,
     ld: e.urlStatus === 'ok' ? eventLd(e, canonical) : null,
@@ -1132,5 +1191,5 @@ if (require.main === module) {
 module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
-  THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, WEEKEND_DIR, weekendOf,
+  THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf,
 };

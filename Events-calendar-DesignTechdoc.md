@@ -471,6 +471,15 @@ English text is machine output — not something to put in front of a search eng
   redirect to the new one.
 - **The `<title>` leads with year and date** (since 30/09): « Melun Fête son Brie 2026 — sam. 3 oct. »
   — the searches that click carry the year. The `<h1>` and the address do not change.
+  **Since 04/10 (item 80)**: « Melun Fête son Brie 2026 (sam. 3 oct.) : horaires, tarif, accès ».
+  The town follows the name with its preposition (« au Châtelet-en-Brie »), unless the title
+  already holds it. The words after the colon only promise what the page shows — `horaires` if
+  `schedule`, `tarif` if `price`, `accès` if a named venue at an exact position — and are added
+  only while the title stays ≤ 70 characters (as many as fit, in that order); the date is never
+  dropped. « Programme » is never promised: no description carries one. The brand suffix only
+  when the whole title stays ≤ 60 characters — in practice, never; Google shows the site name
+  on its own. **The meta description answers before it describes**: « Samedi 3 octobre 2026,
+  10h–18h, Place Saint-Jean à Melun. Gratuit. » then the event text, cut at 155 characters.
 - **Past events are deleted**, not tombstoned: `404.html` does that job for every one of them,
   with no state to keep. A multi-day event keeps its page until its last day.
 - **schema.org `Event` only for events whose link was verified** (`urlStatus: ok`, 173 of 214).
@@ -1376,6 +1385,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-04 | **Hubs de vacances scolaires (`/sorties/vacances-toussaint/`) et index `/sorties/` (item 81).** Choix par **dates**, pas par titre ; une rubrique « en famille » choisie sur le titre ; FAQ rédigée par nous sur les hubs Halloween et Toussaint ; titre Halloween calqué sur la requête | Les recherches génériques (« que faire à Fontainebleau ») étaient en position 46-87 : une page qui rassemble 94 événements sur une requête saisonnière à fort volume a plus de chances qu'une fiche isolée. En ligne le 04/10 pour laisser à Google deux semaines avant le 17/10. Tranche d'âge inutilisable (tout est 0-99) d'où le titre ; Halloween reste sur le seul mot « halloween » : les deux autres candidats mesurés (« … de la Toussaint » à Blandy) sont couverts par le hub des vacances. Pas de Noël en vacances pour l'instant : il ferait doublon avec `/sorties/noel/` |
 | 2026-10-04 | **Le lien du widget sort de la ligne des liens grand public** : encart « Vous avez un site web ? » dans le pied de page de l'accueil (mairie, office de tourisme, club, hôtel ; « gratuitement » ; « Intégrer l’agenda → ») | Il s'adresse à une autre cible que les visiteurs et se perdait entre « Que faire ce week-end ? » et « Vacances et sorties de saison ». Les liens entrants depuis les sites des communes sont une piste de trafic (74 (5), 72c) : le lien doit se lire comme une offre |
 | 2026-10-04 | **Filtre « Prix » sur l'accueil (Tous les prix / Gratuit)**, même règle que le badge « Gratuit » des pages générées : un prix qui dit gratuit et rien d'autre (76 événements sur 299 ; « 5 € (gratuit -18 ans) », « Participation libre » et les prix inconnus n'en sont pas). Même jour : **la rangée de saison du bandeau perd son libellé « En ce moment »** (gardé pour les lecteurs d'écran) | Pas de bouton « Gratuit » dans le bandeau, trop chargé (décision du chef de projet) ; le filtre suffit au visiteur, la page `/gratuit/` (78) servira Google. Un « gratuit » faux coûte un déplacement : en cas de doute, l'événement n'est pas gratuit |
+| 2026-10-04 | **Titres et descriptions des fiches : la réponse avant le clic (item 80).** Titre « {nom} {année} {à commune} ({date}) : horaires, tarif, accès », mots ajoutés seulement s'ils sont **vrais pour la fiche** (`schedule`, `price`, lieu nommé à position exacte) et **tiennent dans 70 caractères** ; suffixe de marque seulement sous 60 (jamais en pratique). Meta description : date, horaires, lieu, tarif, puis le texte | Proposition du chef de projet : « … : Programme, Horaires & Accès ». Écarté tel quel : aucune description ne porte de programme (0 sur 299), et un titre qui promet une information absente renvoie le visiteur sur Google — §5 appliqué au titre. La date reste en tête, c'est le levier du 30/09 ; sur 299 titres, 48 portent des mots, les autres sont déjà longs. **Titre et description changent ensemble** : on mesure l'effet des deux, pas de chacun |
 | 2026-10-04 | **Mobile, premier écran resserré (≤ 560 px)** : la marque passe en petit (32 px) dans le coin haut gauche, au niveau du choix de langue, et le texte du bandeau prend toute la largeur ; pastilles de saison plus petites ; filtres sur deux colonnes ; « Gratuit » devient un interrupteur « Gratuit uniquement » (case à cocher `role="switch"`), sur sa propre ligne au téléphone, en bout de rangée sur ordinateur. Champs à 16 px sur iOS seulement | Demande du chef de projet : la marque de 48 px poussait tout le texte à droite, et les cinq filtres empilés remplissaient le premier écran. Mesuré à 412 px : la carte commence désormais à 562 px, dans le premier écran. iOS zoome sur tout champ sous 16 px et reste zoomé : la règle `@supports (-webkit-touch-callout: none)` ne vise que lui |
 
 ---
@@ -1417,7 +1427,7 @@ sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
 |---|---|---|---|
 | 1 | **75. Défilement mobile** | 87 % du trafic est mobile, et la page se fait mal défiler : un défaut, pas une amélioration | S |
 | 2 | **81. Hubs Toussaint et Halloween** | Vacances le 17/10, Halloween le 31/10. Google met 1 à 3 semaines à classer une page : c'est cette semaine ou l'an prochain | M |
-| 3 | **80. Titres et descriptions des fiches (CTR)** | Le trafic vient des fiches ; le levier « année + date » du 30/09 a marché, on le prolonge | S |
+| 3 | ~~**80. Titres et descriptions des fiches (CTR)**~~ — fait le 04/10, reste la mesure | Le trafic vient des fiches ; le levier « année + date » du 30/09 a marché, on le prolonge | S |
 | 4 | **76. Positionnement du bandeau** | Quelques lignes, mais une formule à trancher | XS |
 | 5 | **78. Pages « Aujourd'hui » et « Gratuit »** | Gabarit de `/ce-week-end/` réutilisé ; deux requêtes à fort volume | M |
 | 6 | **77. « Ce week-end », page star** | Déjà la plus vue : on l'améliore après lui avoir donné des sœurs (78), pour concevoir la rangée de boutons une seule fois | M |
@@ -1469,7 +1479,7 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
   - **Fait quand** : hubs Toussaint et Halloween en ligne avant le 10/10 et soumis à
     l'indexation dans la Search Console.
 
-- [ ] **80. Titres et descriptions des fiches : gagner le clic.** Format actuel : « Melun Fête son
+- [ ] **80. Titres et descriptions des fiches : gagner le clic — fait le 04/10 (§3.X, §7). Reste, chef de projet : la mesure ci-dessous, du 05/10 au 26/10, sans toucher aux titres entre-temps.** Format d'avant : « Melun Fête son
   Brie 2026 — sam. 3 oct. · Melun | Fontainebleau Live ». Proposition du chef de projet :
   « … : Programme, Horaires & Accès - Fontainebleau Live ». **Recommandation, avec trois garde-fous :**
   - **N'annoncer que ce que la page contient** : « horaires » si `schedule` existe, « tarif »
@@ -1485,6 +1495,20 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
   - **Mesurer** : pages ≥ 100 impressions et CTR < 2 % (Search Console), avant/après sur 3
     semaines, une seule variable changée à la fois. Repris de 74 : CTR de « Melun fête son Brie »,
     positions de `/sorties/marches-de-noel/`, rapport « Pages ».
+  - **Reste à faire (ajouté le 04/10) :**
+    - [ ] **Mesure, chef de projet** (05/10 → 26/10) : relever dans la Search Console le CTR
+      des fiches avant (22/09-04/10) et après. La fiche « Melun Fête son Brie » est passée
+      (supprimée le 04/10) : comparer sur l'ensemble des fiches et sur les pages ≥ 100
+      impressions. Ne modifier ni titres ni descriptions pendant la période.
+    - [ ] **Après le 26/10 — préposition des pages commune** : « Que faire à Le Mée-sur-Seine ? »
+      doit devenir « Que faire au Mée-sur-Seine ? » (titre, `<h1>`, description, textes de
+      `cityPage()`). `atCity()` existe déjà dans `generate-pages.js`. Repoussé pour ne pas
+      changer une deuxième variable pendant la mesure.
+    - [ ] **Selon la mesure** : si le CTR ne bouge pas, essayer une seule variable — par
+      exemple remonter le seuil des mots (70 caractères) ou retirer la commune du titre quand
+      elle figure dans le nom du lieu.
+    - [ ] **« Programme »** : à ajouter aux mots du titre le jour où une source fournit un vrai
+      programme (champ dédié, pas une détection dans la description).
 
 - [ ] **76. Positionnement : affirmer dans le bandeau.** Aujourd'hui : « Agenda de Fontainebleau
   et ses environs » (kicker, FR/EN). Proposé : « Tout ce qu'il y a à faire autour de
