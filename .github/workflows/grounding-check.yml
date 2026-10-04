@@ -1,0 +1,43 @@
+name: Diagnostic de la recherche Google
+
+# Pourquoi ce workflow existe : le 03/10, les quatre scans Gemini ont repondu sans aucune
+# recherche Google (« no grounding metadata »), donc de memoire. La cle API n'existe que dans les
+# secrets GitHub : ce bouton permet de tester sans la copier sur une machine.
+#
+# Un clic sur "Run workflow" dans l'onglet Actions. Lecture seule : rien n'est ecrit ni publie.
+# Cout : quelques appels courts + un vrai scan « sport », quelques centimes.
+on:
+  workflow_dispatch:
+    inputs:
+      modeles:
+        description: "Modeles a tester, separes par des virgules (vide = celui du pipeline)"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Tester la recherche
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MODELES: ${{ inputs.modeles }}
+        run: |
+          if [ -n "$MODELES" ]; then
+            node scripts/check-grounding.js --models "$MODELES"
+          else
+            node scripts/check-grounding.js
+          fi

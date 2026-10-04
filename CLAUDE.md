@@ -28,6 +28,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `evenements/`, `que-faire/`, `sorties/`, `ce-week-end/`, `aujourdhui/`, `agenda/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer. `sorties/` : pages de saison (marchés de Noël, brame…) et de vacances scolaires (dates dans `HOLIDAYS`, à compléter chaque année), jamais supprimées. `ce-week-end/` : le week-end qui vient, reconstruit chaque jour. `aujourdhui/` : le jour même **et le lendemain** (masqué), un script montre le bloc de la date du téléphone. `agenda/` : flux `.ics` (§3.Y), en CRLF protégé par `.gitattributes` |
 | `sources.json` | **Édité à la main.** Registre des sites d'organisateurs lus directement (§3.Z) : type de lecteur, URL, raison d'une désactivation |
 | `scripts/sources.js` | Lecture directe des sites des organisateurs (sans grounding, `robots.txt` respecté) : **quatrième source publiée** depuis le 24/09 (§3.Z2). Une confirmation par un site ne change jamais les dates |
+| `scripts/check-grounding.js` | Diagnostic en lecture seule : la recherche Google tourne-t-elle vraiment ? Workflow `grounding-check.yml`, un clic dans Actions. Le pipeline écarte tout scan Gemini sans recherche (`ALLOW_UNGROUNDED=1` pour lever) |
 | `scripts/compare-sources.js` | Comparatif hebdomadaire en mode observation : part des événements retrouvés par des sources légitimes (critère de sortie du grounding, ≥ 90 %) |
 | `sources-cache.json` | **Généré et commité.** Fiches de l'office de tourisme complétées par Gemini (sans grounding), par URL + empreinte du texte |
 | `scripts/dedupe-judge.js` | Doublons « frères » (§3.W2) : paires repérées sur les mots distinctifs, jugées par Gemini **sans grounding** |
@@ -44,7 +45,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `og-image.png` | Visuel de marque (1200×630) pour les aperçus de lien, composé depuis `BackgroundDeco-FL-v1.png` |
 | `favicon.ico` | Favicon 16/32/48 à la racine — celui que Google Search et les robots demandent directement |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
-| `.github/workflows/` | `daily-check.yml` (collecte) et `translate.yml` (traduction à la demande) |
+| `.github/workflows/` | `daily-check.yml` (collecte), `translate.yml` (traduction à la demande), `grounding-check.yml` (diagnostic de la recherche, lecture seule) |
 
 `app.js` et `style.css` sont des reliquats vides : tout le frontend vit dans `index.html`.
 

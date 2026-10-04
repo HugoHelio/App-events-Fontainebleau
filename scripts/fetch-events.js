@@ -69,6 +69,9 @@ const CONFIG = {
   // at the ~3-day cadence, so one missed mention is never enough to raise it.
   staleAfterDays: envInt('STALE_EVENT_DAYS', 10),
   dryRun: process.env.DRY_RUN === '1',
+  // A scan whose answer shows no web search is discarded (03/10). ALLOW_UNGROUNDED=1 lifts that,
+  // only for a run where the metadata is known to be missing while the search did happen.
+  allowUngrounded: process.env.ALLOW_UNGROUNDED === '1',
   weekdayCheck: process.env.WEEKDAY_CHECK !== '0',
   // Cadence. The workflow triggers every day, but a real (billed) scan only runs when the stored
   // data is older than this. 60 h + a daily trigger gives one scan every ~3 days, and a failed or
@@ -1094,10 +1097,17 @@ function renderSummary(stats, ctx) {
   for (const s of stats.scans) {
     const u = s.usage || {};
     const tokens = s.usage ? `${u.promptTokenCount ?? '?'} / ${u.candidatesTokenCount ?? '?'} / ${u.thoughtsTokenCount ?? 0}` : '–';
-    const status = s.error ? `❌ ${String(s.error).slice(0, 80)}` : (s.salvaged ? '⚠️ truncated, salvaged' : '✅');
+    const status = s.error ? `❌ ${String(s.error).slice(0, 80)}`
+      : s.discarded ? '🚫 écarté : aucune recherche'
+      : (s.salvaged ? '⚠️ truncated, salvaged' : '✅');
     L.push(`| ${s.name} | ${status} | ${s.raw ?? 0} | ${s.attempts ?? '–'} | ${s.grounded === false ? '⚠️ no grounding metadata' : `${s.searchQueries ?? '–'} / ${s.webSources ?? '–'}`} | ${tokens} |`);
   }
   L.push('');
+  const discarded = stats.scans.filter((s) => s.discarded);
+  if (discarded.length) {
+    L.push(`- 🚫 **${discarded.length} scan(s) Gemini sans aucune recherche web : ${discarded.reduce((n, s) => n + (s.raw || 0), 0)} événement(s) écarté(s)**, rien ajouté ni rafraîchi. `
+      + 'Le modèle a répondu de mémoire. Diagnostic : workflow « Diagnostic de la recherche Google ».', '');
+  }
   if (stats.dt) {
     if (stats.dt.error) {
       L.push(`- 📖 DATAtourisme: ❌ ${String(stats.dt.error).slice(0, 160)} (Gemini results kept)`);
@@ -1521,6 +1531,15 @@ async function main() {
     console.log(`🔎 Scan "${scan.name}"…`);
     try {
       const { events, meta } = await runScan(scan, ctx);
+      // An answer without a single search is the model writing from memory: last year's dates,
+      // invented editions (03/10: ten events added that way). Nothing from it is added or
+      // refreshed. The other sources still run, so the scan costs a little and publishes nothing.
+      const searched = meta.searchQueries > 0 || meta.webSources > 0;
+      if (!searched && !CONFIG.allowUngrounded) {
+        stats.scans.push({ name: scan.name, raw: events.length, discarded: true, ...meta });
+        console.warn(`   🚫 ${events.length} raw events discarded: no web search in the answer`);
+        continue;
+      }
       okScans++;
       rawNew.push(...events);
       stats.scans.push({ name: scan.name, raw: events.length, ...meta });

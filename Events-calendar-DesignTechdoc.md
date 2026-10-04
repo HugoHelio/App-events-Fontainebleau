@@ -1398,6 +1398,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-04 | **Pages week-end, thèmes et vacances en anglais (habillage seulement)** | Même adresse, pas de pages `/en/` : chaque texte à nous (titres, intro, sommaire, filtres, en-têtes de jours, FAQ, boutons, pied de page) porte son anglais dans un attribut `data-en`, qu'un petit script applique ; la liste des événements reste en français, comme les titres partout ailleurs. Anglais si `?lang=en` ou si le visiteur l'a choisi (bouton FR/EN ajouté à ces pages, ou l'accueil, qui enregistre désormais la langue affichée même détectée). **La langue du navigateur n'est pas lue sur ces pages** : Googlebot rend en anglais et indexerait en anglais nos pages françaises, celles qui amènent le trafic. Le partage en anglais envoie le lien `?lang=en`. Même jour : la mention « Agenda collecté automatiquement… » apparaissait deux fois (corps et pied de page) sur ces pages ; seule celle du pied de page reste |
 | 2026-10-04 | **Page `/aujourdhui/` et deux pastilles dans le bandeau (item 78).** La page porte le jour et le lendemain ; un script choisit le bloc selon la date du téléphone. Bandeau : « Aujourd'hui : N sorties » et « Ce week-end : N sorties », même comptage que les pages (sorties de 7 jours ou moins) ; le dimanche, seule « Aujourd'hui ». Sur mobile (≤ 560 px) la flèche disparaît et le texte passe à 0,76 rem pour que les deux tiennent sur une ligne à 360 px (vérifié en FR et EN). La page `/gratuit/` n'est pas faite | Le piège de minuit (page reconstruite à 06:00 UTC) se règle sans serveur : le lendemain est déjà connu au moment de générer. Le dimanche, « Ce week-end » et « Aujourd'hui » désigneraient le même jour : une seule pastille. Le bouton « Partager » des deux pages devient une fonction commune (`shareHtml`/`shareScript`) ; la page week-end sort identique |
 | 2026-10-04 | **Mobile, premier écran resserré (≤ 560 px)** : la marque passe en petit (32 px) dans le coin haut gauche, au niveau du choix de langue, et le texte du bandeau prend toute la largeur ; pastilles de saison plus petites ; filtres sur deux colonnes ; « Gratuit » devient un interrupteur « Gratuit uniquement » (case à cocher `role="switch"`), sur sa propre ligne au téléphone, en bout de rangée sur ordinateur. Champs à 16 px sur iOS seulement | Demande du chef de projet : la marque de 48 px poussait tout le texte à droite, et les cinq filtres empilés remplissaient le premier écran. Mesuré à 412 px : la carte commence désormais à 562 px, dans le premier écran. iOS zoome sur tout champ sous 16 px et reste zoomé : la règle `@supports (-webkit-touch-callout: none)` ne vise que lui |
+| 2026-10-04 | **Un scan Gemini sans aucune recherche web est écarté** : ni ajout ni rafraîchissement (`ALLOW_UNGROUNDED=1` pour lever le garde-fou). Workflow « Diagnostic de la recherche Google » (`scripts/check-grounding.js`, lecture seule) pour trouver la cause | Rapport du 03/10 : « no grounding metadata » sur les 4 scans (0 requête dès le 27/09). Les appels réussissent et sont facturés : ce n'est pas un solde épuisé, qui rendrait une erreur HTTP. Le modèle a donc répondu de mémoire — 10 événements ajoutés et 15 « reconfirmés » sans source, le risque des dates de l'an passé (79b). Une date fausse coûte plus cher qu'un événement manquant : tant que la cause n'est pas trouvée, les scans coûtent un peu et ne publient rien ; les trois autres sources continuent. Le diagnostic sépare compte/modèle/API (aucune recherche même sur une question courte) et prompt (recherche sur la question courte, pas sur le vrai scan) |
 
 ---
 
@@ -1597,9 +1598,13 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
 ### B. Pipeline et données — en continu
 
 - [ ] **Lire le rapport de chaque scan**, dans cet ordre :
-  1. Colonne « Search queries / web sources » des scans Gemini : **0 partout le 27/09**. Si
-     « ⚠️ no grounding metadata » ou encore 0 / 0, priorité absolue : le modèle répondrait de
-     mémoire (risque de dates inventées).
+  1. Colonne « Search queries / web sources » des scans Gemini : **0 partout le 27/09,
+     « ⚠️ no grounding metadata » sur les 4 scans le 03/10**. Depuis le 04/10 ces scans sont
+     écartés (« 🚫 écarté : aucune recherche », §7). **En cours (84)** : lancer le workflow
+     « Diagnostic de la recherche Google », réparer selon le résultat (palier de facturation dans
+     AI Studio, modèle 3.7/3.8, ou prompt), puis vérifier au scan suivant que la colonne affiche
+     des requêtes. Les 10 fiches Gemini ajoutées le 03/10 sans recherche restent en ligne,
+     signalées « dates à risque » quand leur lien est une page d'accueil (79b).
   2. « 🏛️ Sites des organisateurs » : `jagis-anvl` (nouveau), `ville-fontainebleau` (❌ 418
      attendu tant que la mairie n'a pas posé l'exception), la ligne « catégorie déduite du titre »
      qui remplace les 22 rejets `invalid_category`.
