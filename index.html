@@ -312,6 +312,8 @@
       transition: filter 0.2s, transform 0.2s;
     }
     .weekend-pill[hidden] { display: none; }
+    /* The weekend pictogram (SAM | DIM, SAT | SUN in English), dark square on the green pill. */
+    .weekend-pill .pill-icon { width: 1.5rem; height: 1.5rem; margin: -0.2rem 0 -0.2rem -0.55rem; border-radius: 0.3rem; flex: none; }
     .day-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.7rem 0 0; }
     .day-pills[hidden] { display: none; }
     .day-pills .weekend-pill { margin-top: 0; }
@@ -1054,10 +1056,10 @@
         <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
         <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
         <p id="lastUpdated" class="last-updated"></p>
-        <!-- Item 78: "Aujourd'hui" and "Ce week-end". On Sunday the weekend is today: one pill. -->
+        <!-- Item 78: "Ce week-end" and "Aujourd'hui". On Sunday, the weekend pill only (04/10). -->
         <p id="dayPills" class="day-pills" hidden>
-          <a id="todayPill" class="weekend-pill" href="/aujourdhui/" hidden></a>
           <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
+          <a id="todayPill" class="weekend-pill" href="/aujourdhui/" hidden></a>
         </p>
         <p id="seasonRow" class="season-row" role="group" hidden></p>
       </div>
@@ -1262,6 +1264,7 @@
         horizonWeekend: 'Ce week-end',
         todayPill: (n) => `Aujourd’hui : ${n} sortie${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `Ce week-end : ${n} sortie${n > 1 ? 's' : ''}`,
+        weekendIcon: 'public/assets/img/brand/weekend-fontainebleau-live-v2.svg',
         seasonNow: 'En ce moment',
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
@@ -1350,6 +1353,7 @@
         horizonWeekend: 'This weekend',
         todayPill: (n) => `Today: ${n} outing${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `This weekend: ${n} outing${n > 1 ? 's' : ''}`,
+        weekendIcon: 'public/assets/img/brand/weekend-fontainebleau-live-v2-en.svg',
         seasonNow: 'Right now (pages in French)',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
@@ -1619,7 +1623,9 @@
 
     // The pills count what their pages list as outings: 7 days or less. Long exhibitions are
     // open too, but "29 sorties" should mean 29 things happening this weekend. Item 78: today
-    // and the weekend; on Sunday the weekend is today, so only "Aujourd'hui" is shown.
+    // and the weekend. On Sunday the two would count the same outings: since 04/10 the weekend
+    // pill is the one kept (the weekend page is the site's star, and on Sunday it also shows the
+    // next weekend), where until then it was "Aujourd'hui".
     function renderWeekendPill() {
       const box = document.getElementById('dayPills');
       if (!box) return;
@@ -1628,15 +1634,21 @@
       const days = (a) => Math.round((isoToDate(a.endDate || a.startDate) - isoToDate(a.startDate)) / 86400000) + 1;
       const count = (from, to) => allActivities.filter((a) => a.startDate && isUpcoming(a)
         && a.startDate <= to && (a.endDate || a.startDate) >= from && days(a) <= 7).length;
-      const set = (id, n, label) => {
+      const set = (id, n, label, icon) => {
         const el = document.getElementById(id);
         el.hidden = loadFailed || !n;
-        el.textContent = el.hidden ? '' : t(label)(n);
-        return !el.hidden;
+        el.replaceChildren();
+        if (el.hidden) return false;
+        if (icon) {
+          const img = Object.assign(document.createElement('img'), { className: 'pill-icon', src: icon, alt: '', width: 22, height: 22 });
+          el.appendChild(img);
+        }
+        el.append(t(label)(n));
+        return true;
       };
       const shown = [
-        set('todayPill', count(today, today), 'todayPill'),
-        set('weekendPill', today === sun ? 0 : count(sat, sun), 'weekendPill'),
+        set('weekendPill', count(today > sat ? today : sat, sun), 'weekendPill', t('weekendIcon')),
+        set('todayPill', today === sun ? 0 : count(today, today), 'todayPill'),
       ];
       box.hidden = !shown.some(Boolean);
     }
