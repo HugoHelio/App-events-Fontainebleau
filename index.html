@@ -314,8 +314,6 @@
       transition: filter 0.2s, transform 0.2s;
     }
     .weekend-pill[hidden] { display: none; }
-    /* The weekend pictogram (SAM | DIM, SAT | SUN in English): a calendar drawn in the pill's ink. */
-    .weekend-pill .pill-icon { width: auto; height: 1.65rem; margin: -0.25rem 0; flex: none; }
     .day-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.7rem 0 0; }
     .day-pills[hidden] { display: none; }
     .day-pills .weekend-pill { margin-top: 0; }
@@ -1269,7 +1267,6 @@
         horizonWeekend: 'Ce week-end',
         todayPill: (n) => `Aujourd’hui : ${n} sortie${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `Ce week-end : ${n} sortie${n > 1 ? 's' : ''}`,
-        weekendIcon: 'public/assets/img/brand/calendrier-sam-dim.svg',
         seasonNow: 'En ce moment',
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
@@ -1360,7 +1357,6 @@
         horizonWeekend: 'This weekend',
         todayPill: (n) => `Today: ${n} outing${n > 1 ? 's' : ''}`,
         weekendPill: (n) => `This weekend: ${n} outing${n > 1 ? 's' : ''}`,
-        weekendIcon: 'public/assets/img/brand/calendrier-sat-sun.svg',
         seasonNow: 'Right now (pages in French)',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
@@ -1644,20 +1640,14 @@
       const days = (a) => Math.round((isoToDate(a.endDate || a.startDate) - isoToDate(a.startDate)) / 86400000) + 1;
       const count = (from, to) => allActivities.filter((a) => a.startDate && isUpcoming(a)
         && a.startDate <= to && (a.endDate || a.startDate) >= from && days(a) <= 7).length;
-      const set = (id, n, label, icon) => {
+      const set = (id, n, label) => {
         const el = document.getElementById(id);
         el.hidden = loadFailed || !n;
-        el.replaceChildren();
-        if (el.hidden) return false;
-        if (icon) {
-          const img = Object.assign(document.createElement('img'), { className: 'pill-icon', src: icon, alt: '', width: 36, height: 28 });
-          el.appendChild(img);
-        }
-        el.append(t(label)(n));
-        return true;
+        el.textContent = el.hidden ? '' : t(label)(n);
+        return !el.hidden;
       };
       const shown = [
-        set('weekendPill', count(today > sat ? today : sat, sun), 'weekendPill', t('weekendIcon')),
+        set('weekendPill', count(today > sat ? today : sat, sun), 'weekendPill'),
         set('todayPill', today === sun ? 0 : count(today, today), 'todayPill'),
       ];
       box.hidden = !shown.some(Boolean);
