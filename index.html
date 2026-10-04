@@ -292,6 +292,8 @@
       font-size: 0.7rem;
       opacity: 0.75;
     }
+    .last-updated .sources-link { color: inherit; }
+    .last-updated span:not(:empty)::after { content: " · "; }
 
     /* "This weekend" pill (item 74.3): the one clickable thing in the banner, in the leaf's
        green so it reads as the brand's own call, not an ad. Hidden until the data says how
@@ -858,6 +860,8 @@
       font-size: 0.75rem;
       color: #718096;
     }
+    .card .fine-print .confirmed { color: #3d5d1d; font-weight: 700; }
+    .card .date-line .unsure { font-size: 0.8rem; font-weight: 600; color: #8a5a00; white-space: nowrap; }
 
     .card .card-actions {
       display: flex;
@@ -1055,7 +1059,8 @@
         <!-- The brand name is the same in both languages, so it carries no data-i18n. -->
         <h1 class="wordmark"><span class="wm-place">Fontainebleau</span> <span class="wm-live">Live</span></h1>
         <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
-        <p id="lastUpdated" class="last-updated"></p>
+        <!-- Item 79: the date of the last collection, and how it is collected. -->
+        <p id="lastUpdated" class="last-updated"><span id="lastUpdatedText"></span><a class="sources-link" href="/nos-sources/" data-i18n="ourSources">Nos sources</a></p>
         <!-- Item 78: "Ce week-end" and "Aujourd'hui". On Sunday, the weekend pill only (04/10). -->
         <p id="dayPills" class="day-pills" hidden>
           <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
@@ -1275,6 +1280,9 @@
         disclaimer: ['Les informations sont collectées automatiquement à partir de sources publiques (offices de tourisme, mairies, associations, plateformes d\u2019inscription…) et peuvent contenir des erreurs ou avoir changé. ', 'Vérifiez toujours auprès de l\u2019organisateur', ' (horaires, tarifs, annulation) avant de vous déplacer.'],
         dataLangNote: '',
         updatedOn: (when) => `Mis à jour le ${when}`,
+        ourSources: 'Nos sources',
+        confirmedBy: { site: '✓ Confirmé par un site officiel', datatourisme: '✓ Confirmé par DATAtourisme', openagenda: '✓ Confirmé par OpenAgenda' },
+        datesUnsure: 'Dates à confirmer',
         staleFor: (days) => ` — ⚠️ non actualisé depuis ${days} jours`,
         feedbackIntro: 'Une erreur ou un événement manquant ?',
         feedbackLink: 'Écrivez-nous',
@@ -1316,7 +1324,6 @@
         resetFilters: 'Réinitialiser les filtres',
         noResultsHint: 'Essayez une période plus large ou une autre catégorie.',
         showMore: (n, left) => `Afficher ${n} de plus (${left} restante${left > 1 ? 's' : ''})`,
-        viaOpenData: 'via l’open data DATAtourisme',
       },
       en: {
         docTitle: 'What’s on in Fontainebleau? Outings, events and activities | Fontainebleau Live',
@@ -1364,6 +1371,9 @@
         disclaimer: ['This information is collected automatically from public sources (tourist offices, town halls, associations, booking platforms…) and may be wrong or out of date. ', 'Always check with the organiser', ' (times, prices, cancellation) before travelling.'],
         dataLangNote: 'Descriptions are machine-translated. Event titles, times and prices are kept in French, exactly as the organisers publish them, so you can recognise them on a poster or at the ticket desk.',
         updatedOn: (when) => `Updated on ${when}`,
+        ourSources: 'Our sources (in French)',
+        confirmedBy: { site: '✓ Confirmed by an official site', datatourisme: '✓ Confirmed by DATAtourisme', openagenda: '✓ Confirmed by OpenAgenda' },
+        datesUnsure: 'Dates to be confirmed',
         staleFor: (days) => ` — ⚠️ not refreshed for ${days} days`,
         feedbackIntro: 'Spotted an error, or a missing event?',
         feedbackLink: 'Tell us',
@@ -1405,7 +1415,6 @@
         resetFilters: 'Reset filters',
         noResultsHint: 'Try a wider period, or another category.',
         showMore: (n, left) => `Show ${n} more (${left} left)`,
-        viaOpenData: 'via DATAtourisme open data',
       },
     };
 
@@ -1565,10 +1574,11 @@
     function renderLastUpdated(generatedAt) {
       lastGeneratedAt = generatedAt ?? lastGeneratedAt;
       const el = document.getElementById('lastUpdated');
-      if (!el) return;
+      const text = document.getElementById('lastUpdatedText');
+      if (!el || !text) return;
       const d = lastGeneratedAt ? new Date(lastGeneratedAt) : null;
       if (!d || Number.isNaN(d.getTime())) {
-        el.textContent = '';
+        text.textContent = '';
         el.classList.remove('stale');
         return;
       }
@@ -1577,7 +1587,7 @@
       const label = new Intl.DateTimeFormat(LOCALES[lang], { timeZone: DISPLAY_TZ, dateStyle: 'long' }).format(d);
       const ageDays = (Date.now() - d.getTime()) / 86400000;
       const stale = ageDays >= STALE_AFTER_DAYS;
-      el.textContent = t('updatedOn')(label) + (stale ? t('staleFor')(Math.floor(ageDays)) : '');
+      text.textContent = t('updatedOn')(label) + (stale ? t('staleFor')(Math.floor(ageDays)) : '');
       el.classList.toggle('stale', stale);
     }
 
@@ -2331,6 +2341,13 @@
       if (i >= listShown) renderUpTo(Math.ceil((i + 1) / PAGE_SIZE) * PAGE_SIZE);
     }
 
+    // Item 79b, same rule as datesAtRisk() in fetch-events.js: Gemini alone, and a link that is
+    // missing or only a home page. Nothing we read shows this year's dates.
+    function datesUnsure(a) {
+      if (['site', 'datatourisme', 'openagenda'].includes(a.source)) return false;
+      try { return !a.url || ['', '/'].includes(new URL(a.url).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; }
+    }
+
     function buildCard(a) {
       const card = document.createElement('div');
       card.className = `card ${categoryClass(a.category)}`;
@@ -2342,14 +2359,13 @@
       const fine = [
         a.organizer ? escapeHtml(t('organizedBy')(a.organizer)) : '',
         host ? escapeHtml(t('sourceLabel')(host)) : '',
-        // Item 46: a quarter of what is published comes from public open data rather than
-        // from the model. Saying so is a credibility signal, not a technical detail.
-        a.source === 'datatourisme' ? escapeHtml(t('viaOpenData')) : ''
+        // Item 79 (after item 46): what a legitimate source confirms is said, never on Gemini alone.
+        t('confirmedBy')[a.source] ? `<span class="confirmed">${escapeHtml(t('confirmedBy')[a.source])}</span>` : ''
       ].filter(Boolean).join(' · ');
       card.innerHTML = `
         <span class="badge">${escapeHtml(categoryLabel(a.category))}</span>
         <h3>${escapeHtml(a.title)}</h3>
-        <div class="date-line">🗓️ ${escapeHtml(formatDateLine(a))}</div>
+        <div class="date-line">🗓️ ${escapeHtml(formatDateLine(a))}${datesUnsure(a) ? ` <span class="unsure">⚠️ ${escapeHtml(t('datesUnsure'))}</span>` : ''}</div>
         <div class="meta">
           📍 <strong>${escapeHtml(a.locationName)}</strong> (${escapeHtml(a.city)})${approx}<br>
           ${a.schedule ? `🕒 ${escapeHtml(a.schedule)}<br>` : ''}

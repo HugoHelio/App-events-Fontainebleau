@@ -32,6 +32,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `sources-cache.json` | **Généré et commité.** Fiches de l'office de tourisme complétées par Gemini (sans grounding), par URL + empreinte du texte |
 | `scripts/dedupe-judge.js` | Doublons « frères » (§3.W2) : paires repérées sur les mots distinctifs, jugées par Gemini **sans grounding** |
 | `dedupe-cache.json` | **Généré et commité.** Verdicts des doublons jugés, par paire d'ids — sans lui, chaque scan reposerait les mêmes questions |
+| `nos-sources/` | **Généré.** Comment l'agenda est collecté et vérifié (item 79), avec les compteurs du jour. Chaque phrase doit rester vraie pour `fetch-events.js` |
 | `publier/` | **Généré.** Brouillons de posts pour les groupes Facebook locaux, par commune. Page privée : `noindex`, hors plan du site, jamais liée |
 | `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
 | `vendor/` | Leaflet et FullCalendar, copies exactes des fichiers CDN (empreintes SRI dans `index.html`, `-text` dans `.gitattributes`). Ne pas éditer |

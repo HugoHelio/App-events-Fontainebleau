@@ -10,6 +10,7 @@
  *   /ce-week-end/                the coming weekend, rebuilt every day
  *   /aujourdhui/                 today (and tomorrow, for the hours before the morning run)
  *   /sorties/<theme>/            seasonal pages (marchés de Noël, brame du cerf…), never removed
+ *   /nos-sources/                how the agenda is collected and checked (item 79)
  *   /sitemap.xml                 every URL above, plus the home page and its English variant
  *
  * Rules that are not obvious from the code:
@@ -199,7 +200,7 @@ ${ld ? `<script type="application/ld+json">${jsonLd(ld)}</script>\n` : ''}<style
 <main>
 ${body}
 </main>
-<footer>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer. · <a href="/${CITIES_DIR}/">Toutes les communes</a> · <a href="https://helioso.com" rel="noopener">Un projet Helioso</a></footer>
+<footer>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer. · <a href="/${CITIES_DIR}/">Toutes les communes</a> · <a href="/${SOURCES_DIR}/">Nos sources</a> · <a href="https://helioso.com" rel="noopener">Un projet Helioso</a></footer>
 </body>
 </html>
 `;
@@ -400,10 +401,11 @@ function provenanceHtml(e, link) {
     lines.push(`Source : recherche web${host ? ` (${esc(host)})` : ''}, à confirmer auprès de l’organisateur.`);
   }
   if (isIsoDate(e.lastSeen)) lines.push(`Dernier relevé le ${esc(dayMonthYear(e.lastSeen))}.`);
+  lines.push(`<a href="/${SOURCES_DIR}/">Comment nous collectons et vérifions</a>`);
   return `<p class="prov">${lines.join('<br>')}</p>`;
 }
 
-const PROV_STYLE = '.prov{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}.prov .ok{color:#3d5d1d;font-weight:700}.unsure{background:#fff4e0;border:1px solid #e8c48a;border-radius:8px;padding:8px 12px;color:#6b4a12;font-size:15px}';
+const PROV_STYLE = '.prov{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}.prov .ok{color:#3d5d1d;font-weight:700}.prov a{color:var(--ink)}.unsure{background:#fff4e0;border:1px solid #e8c48a;border-radius:8px;padding:8px 12px;color:#6b4a12;font-size:15px}';
 
 function eventPage(e, events, today) {
   const canonical = SITE_URL + e.pagePath;
@@ -1146,9 +1148,62 @@ function sitemap(cities, events, homeLastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${home(`${SITE_URL}/`)}
 ${home(`${SITE_URL}/?lang=en`)}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
+}
+
+// ───────────────────────────── /nos-sources/ (item 79) ─────────────────────────────
+// How the agenda is collected and checked, with today's counts. Every claim here is something
+// the pipeline does (fetch-events.js); what it does not do is said as plainly. Gemini is named:
+// hiding where a record comes from was rejected on 24/09 (§7).
+
+const SOURCES_DIR = 'nos-sources';
+const FEEDBACK_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform';
+
+function sourcesPage(events, generatedAt, registry) {
+  const n = events.length;
+  const count = (k) => events.filter((e) => (k ? e.source === k : !SOURCE_LABEL[e.source])).length;
+  const linksOk = events.filter((e) => e.urlStatus === 'ok').length;
+  const unsure = events.filter(datesUnconfirmed).length;
+  const sites = registry.filter((s) => s.enabled !== false && s.name).map((s) => s.name);
+  const when = generatedAt ? dayMonthYear(parisToday(new Date(generatedAt))) : '';
+  const pl = (k, one, many) => `${k} ${k > 1 ? many : one}`;
+
+  const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
+<h1>Nos sources : d’où viennent les sorties de l’agenda</h1>
+<p>Fontainebleau Live rassemble automatiquement les sorties annoncées dans un rayon de 20 km autour de Fontainebleau. Personne ne saisit les fiches à la main. Voici où nous les trouvons, ce que nous vérifions, et ce que nous ne pouvons pas vérifier.</p>
+<p class="when">${when ? `Dernière collecte le ${esc(when)} · ` : ''}${pl(n, 'sortie à venir', 'sorties à venir')}</p>
+
+<h2>Où nous cherchons</h2>
+<ul class="list">
+<li><b>Les sites des organisateurs, de l’office de tourisme et des mairies</b><small>${pl(count('site'), 'fiche confirmée', 'fiches confirmées')}. Lus directement, en respectant les consignes de chaque site aux robots${sites.length ? ` : ${esc(sites.join(', '))}` : ''}.</small></li>
+<li><b>DATAtourisme</b><small>${pl(count('datatourisme'), 'fiche', 'fiches')}. La base nationale ouverte, alimentée par les offices de tourisme.</small></li>
+<li><b>OpenAgenda</b><small>${pl(count('openagenda'), 'fiche', 'fiches')}. Les agendas que les organisateurs publient eux-mêmes, via le portail de la Région Île-de-France.</small></li>
+<li><b>La recherche web</b><small>${pl(count(''), 'fiche', 'fiches')}. Une recherche Google automatisée, menée par Gemini, l’intelligence artificielle de Google. Elle trouve ce que les autres sources ignorent, mais elle est moins sûre : ces fiches portent la mention « recherche web, à confirmer », et ne sont jamais mises en avant.</small></li>
+</ul>
+
+<h2>Ce que nous vérifions, à chaque collecte</h2>
+<p>La collecte a lieu tous les trois jours environ.</p>
+<ul class="list">
+<li><b>Les liens</b><small>Chaque lien est ouvert. Une page introuvable retire la fiche ; un site qui refuse les robots garde la fiche, sans la mention « vérifié ». Aujourd’hui : ${linksOk} lien${linksOk > 1 ? 's' : ''} vérifié${linksOk > 1 ? 's' : ''} sur ${n}.</small></li>
+<li><b>Les dates</b><small>Une date passée, hors de la fenêtre des trois prochains mois, ou qui contredit le jour annoncé (un « samedi » qui tombe un mardi) écarte la fiche.</small></li>
+<li><b>Les dates recopiées</b><small>Une fiche que seule la recherche web annonce, avec un lien qui ne mène qu’à l’accueil d’un site, peut porter les dates de l’an dernier. Elle est marquée « Dates à confirmer »${unsure ? ` (${pl(unsure, 'fiche', 'fiches')} aujourd’hui)` : ''}.</small></li>
+<li><b>Les doublons</b><small>La même sortie annoncée par plusieurs sources n’apparaît qu’une fois.</small></li>
+<li><b>Le lieu</b><small>L’adresse est placée sur la carte grâce à la Base Adresse Nationale ; une sortie à plus de 20 km est écartée.</small></li>
+</ul>
+
+<h2>Ce que nous ne vérifions pas</h2>
+<p>Nous n’appelons pas les organisateurs : une annulation de dernière minute peut nous échapper. Avant un long trajet, un coup d’œil au site de l’organisateur reste prudent.</p>
+<p>Une erreur, une sortie annulée ? <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank">Signalez-la</a> : chaque signalement est relu, et une fiche signalée comme annulée peut être masquée dès la collecte suivante.</p>
+<div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a></div>`;
+
+  return layout({
+    title: 'Nos sources : comment l’agenda de Fontainebleau Live est collecté et vérifié',
+    description: 'Sites des organisateurs, office de tourisme, DATAtourisme, OpenAgenda et recherche web : d’où viennent les sorties de Fontainebleau Live, et ce que nous vérifions.',
+    canonical: `${SITE_URL}/${SOURCES_DIR}/`,
+    body,
+  });
 }
 
 // ───────────────────────────── Build ─────────────────────────────
@@ -1304,7 +1359,7 @@ function subscribeLinks(feedPath) {
 <a class="btn alt" href="${esc(webcal)}">Apple / Outlook</a>`;
 }
 
-function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
+function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [] }) {
   const list = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.events) ? payload.events : null);
   if (!list) throw new Error('data.json: no event list');
   const generatedAt = !Array.isArray(payload) && payload.generatedAt;
@@ -1344,6 +1399,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   // and index.html never re-implements the theme matching.
   files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, k }) => ({ href, name, count: k })), null, 2) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
+  files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
@@ -1367,13 +1423,23 @@ function listDirs(rel) {
   return fs.readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
 }
 
+/** sources.json, for the names on /nos-sources/. Missing or unreadable: the page lists none. */
+function readRegistry() {
+  try {
+    const s = JSON.parse(fs.readFileSync(path.join(ROOT, 'sources.json'), 'utf8'));
+    return Array.isArray(s.sources) ? s.sources : [];
+  } catch {
+    return [];
+  }
+}
+
 function main() {
   const payload = JSON.parse(fs.readFileSync(path.join(ROOT, 'data.json'), 'utf8'));
   const existingFeeds = ['categorie', 'commune'].flatMap((d) => {
     const dir = path.join(ROOT, AGENDA_DIR, d);
     return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.ics')).map((f) => `${AGENDA_DIR}/${d}/${f}`) : [];
   });
-  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds });
+  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry() });
 
   // Communes with nothing left are dropped too.
   const liveCityDirs = new Set([...files.keys()].filter((f) => f.startsWith(`${CITIES_DIR}/`)).map((f) => f.split('/')[1]));
