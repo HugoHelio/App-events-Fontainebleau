@@ -318,7 +318,6 @@
       font-size: 0.82rem;
     }
     .season-row[hidden] { display: none; }
-    .season-row .season-label { opacity: 0.85; margin-right: 0.1rem; }
     .season-chip {
       padding: 0.18rem 0.7rem;
       border: 1px solid rgba(255, 255, 255, 0.5);
@@ -961,7 +960,7 @@
         <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
         <p id="lastUpdated" class="last-updated"></p>
         <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
-        <p id="seasonRow" class="season-row" hidden></p>
+        <p id="seasonRow" class="season-row" role="group" hidden></p>
       </div>
     </div>
     <svg class="header-curve" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
@@ -1005,6 +1004,14 @@
       <label for="filterCity" data-i18n="cityLabel">Ville :</label>
       <select id="filterCity">
         <option value="" data-i18n="cityAll">Toutes les villes</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filterPrice" data-i18n="priceLabel">Prix :</label>
+      <select id="filterPrice">
+        <option value="" data-i18n="priceAll">Tous les prix</option>
+        <option value="free" data-i18n="priceFree">Gratuit</option>
       </select>
     </div>
   </div>
@@ -1136,6 +1143,9 @@
         horizonLabel: 'Période :',
         cityLabel: 'Ville :',
         cityAll: 'Toutes les villes',
+        priceLabel: 'Prix :',
+        priceAll: 'Tous les prix',
+        priceFree: 'Gratuit',
         subscribeBtn: 'Ajouter à mon agenda',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
         subTitleCity: (c) => `Les activités à ${c}`,
@@ -1153,7 +1163,7 @@
         horizonToday: "Aujourd'hui",
         horizonWeekend: 'Ce week-end',
         weekendPill: (n, sunday) => `${sunday ? 'Aujourd’hui' : 'Ce week-end'} : ${n} sortie${n > 1 ? 's' : ''} →`,
-        seasonNow: 'En ce moment :',
+        seasonNow: 'En ce moment',
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
         tabMap: 'Carte & Liste',
@@ -1220,6 +1230,9 @@
         horizonLabel: 'Period:',
         cityLabel: 'Town:',
         cityAll: 'All towns',
+        priceLabel: 'Price:',
+        priceAll: 'Any price',
+        priceFree: 'Free',
         subscribeBtn: 'Add to my calendar',
         subTitleAll: 'Everything on around Fontainebleau',
         subTitleCity: (c) => `What’s on in ${c}`,
@@ -1237,7 +1250,7 @@
         horizonToday: 'Today',
         horizonWeekend: 'This weekend',
         weekendPill: (n, sunday) => `${sunday ? 'Today' : 'This weekend'}: ${n} outing${n > 1 ? 's' : ''} →`,
-        seasonNow: 'Right now (in French):',
+        seasonNow: 'Right now (pages in French)',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
         tabMap: 'Map & List',
@@ -1554,10 +1567,9 @@
       row.replaceChildren();
       row.hidden = !seasonItems.length;
       if (row.hidden) return;
-      const label = document.createElement('span');
-      label.className = 'season-label';
-      label.textContent = t('seasonNow');
-      row.appendChild(label);
+      // No visible label since 04/10: the banner is lighter, and on a site called "Live" the
+      // chips speak for themselves. Screen readers still get one.
+      row.setAttribute('aria-label', t('seasonNow'));
       for (const x of seasonItems) {
         const a = document.createElement('a');
         a.className = 'season-chip';
@@ -1718,6 +1730,7 @@
       document.getElementById('filterCategory').value = '';
       document.getElementById('filterCity').value = '';
       document.getElementById('filterDate').value = '';
+      document.getElementById('filterPrice').value = '';
       document.getElementById('filterHorizon').value = '2weeks';
       applyFilters();
     }
@@ -1772,6 +1785,7 @@
         document.getElementById('filterCategory').value = '';
         document.getElementById('filterCity').value = '';
         document.getElementById('filterDate').value = '';
+        document.getElementById('filterPrice').value = '';
         document.getElementById('filterHorizon').value = '3months';
         applyFilters();
       }
@@ -1848,7 +1862,7 @@
 
       // Écouteurs sur les filtres
       for (const [id, name] of [['filterCategory', 'filter-category'],
-        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period'], ['filterCity', 'filter-city']]) {
+        ['filterDate', 'filter-date'], ['filterHorizon', 'filter-period'], ['filterCity', 'filter-city'], ['filterPrice', 'filter-price']]) {
         document.getElementById(id).addEventListener('change', (e) => {
           // The value of a <select> is a fixed enum, never free text — nothing personal here
           // (the town list is built from data.json, not typed by the visitor).
@@ -1972,10 +1986,17 @@
 }
 
 
+    // Same rule as the "Gratuit" badge of the generated pages (isFree in generate-pages.js): a
+    // price that says free and nothing else. "Gratuit pour les moins de 18 ans. Plein tarif :
+    // 4,50 €" is not free, and an unknown price is not either.
+    const isFree = (a) => /^(gratuit|entr[ée]e libre|acc[èe]s libre)/i.test(String(a.price || '').trim())
+      && !/\d\s*€/.test(String(a.price || ''));
+
     // Filtrage des activités
     function applyFilters() {
       const catVal = document.getElementById('filterCategory').value;
       const cityVal = document.getElementById('filterCity').value;
+      const freeOnly = document.getElementById('filterPrice').value === 'free';
       const dateVal = document.getElementById('filterDate').value;
       // A specific date is a deliberate, narrower request: it overrides the period rather than
       // intersecting with it, so picking a date outside the period cannot return an empty list.
@@ -2007,7 +2028,7 @@
 
         const matchCity = !cityVal || a.city === cityVal;
 
-        return matchCat && matchCity && matchDate && matchHorizon;
+        return matchCat && matchCity && matchDate && matchHorizon && (!freeOnly || isFree(a));
       });
 
       renderCards(filtered);
