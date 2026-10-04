@@ -1123,7 +1123,6 @@
         approxPopup: 'Position approximative',
         organizedBy: (who) => `Organisé par ${who}`,
         sourceLabel: (host) => `Source : ${host}`,
-        checkWithOrganizer: "vérifiez auprès de l'organisateur",
         priceUnknown: 'Non précisé',
         report: 'Signaler une erreur',
         details: 'Voir détails & inscriptions →',
@@ -1204,7 +1203,6 @@
         approxPopup: 'Approximate location',
         organizedBy: (who) => `Organised by ${who}`,
         sourceLabel: (host) => `Source: ${host}`,
-        checkWithOrganizer: 'check with the organiser',
         priceUnknown: 'Not specified',
         report: 'Report an error',
         details: 'Details & booking →',
@@ -2111,7 +2109,7 @@
           ${escapeHtml(formatAge(a))} | 💶 ${escapeHtml(a.price || t('priceUnknown'))}
         </div>
         <p>${escapeHtml(describe(a))}</p>
-        ${fine ? `<div class="fine-print">${fine} — ${escapeHtml(t('checkWithOrganizer'))}</div>` : ''}
+        ${fine ? `<div class="fine-print">${fine}</div>` : ''}
         <div class="card-actions">
           ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
           <span class="card-links">

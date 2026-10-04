@@ -1423,7 +1423,7 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
 
 ### A. Croissance — demandes du 04/10, dans l'ordre de travail
 
-- [ ] **75. Défilement de la page sur mobile — codé le 04/10 (§7), à tester sur le Motorola.** Constat du chef de projet sur Android (Motorola) :
+- [x] **75. Défilement de la page sur mobile — fait le 04/10 (§7), validé sur le Motorola.** Même jour : la mention « vérifiez auprès de l'organisateur » retirée de chaque fiche (elle est dans le pied de page). Constat du chef de projet sur Android (Motorola) :
   pour faire défiler la *page*, il faut viser la fine marge à côté de la carte et des fiches.
   **Cause, lue dans le code** : sur mobile, la carte fait 400 px de haut (le `min-height: 400px`
   l'emporte sur les 350 px du `@media`) et Leaflet capte tout glissement d'un doigt ; la liste des
