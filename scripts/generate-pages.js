@@ -1060,6 +1060,9 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [] }) {
   for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
   for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today));
   files.set(`${THEMES_DIR}/index.html`, seasonIndex(events, today));
+  // The home page's "En ce moment" row reads this: the same picks and counts as the weekend page,
+  // and index.html never re-implements the theme matching.
+  files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, k }) => ({ href, name, count: k })), null, 2) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);

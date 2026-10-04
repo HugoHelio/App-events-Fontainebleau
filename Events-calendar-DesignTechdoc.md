@@ -449,6 +449,7 @@ including on the days the cadence guard skips the scan, and writes plain HTML th
 | `/sorties/<thème>/` | **Since 30/09.** Seasonal pages — marchés de Noël, Noël, brame du cerf, champignons, Halloween — matched on the title. **Never deleted**: the address outlives each year's events, and out of season a short text says when to come back. Every matching event page links to its theme. **Since 04/10 (item 81):** an optional FAQ (our own text, no event data) and a link to a related holiday hub; Halloween's title worded as the search is typed (« Que faire à Fontainebleau pour Halloween 2026 ? ») |
 | `/sorties/vacances-<nom>/` | **Since 04/10 (item 81).** School-holiday hubs, chosen by **date**, not title: everything on during the holidays, one section per day (each outing once, on its first day still to come, « jusqu’au … » when it lasts), long exhibitions apart, contents by week labelled with dates, « Idées de sorties en famille » picked on the title (conté, jeu de piste, magie, Halloween…) unless the organiser set an age floor of 12+ — `ageMin`/`ageMax` cannot do it, every event in the window is 0-99. FAQ. Dates in `HOLIDAYS.periods` (hand-maintained); once the last period is over, the page says so and stays. Every event page inside the period links to it. First: Toussaint 2026 (17/10 → 02/11) |
 | `/sorties/` | **Since 04/10.** Index of every seasonal hub, linked from the home page footer and `/que-faire/` |
+| `/sorties/en-ce-moment.json` | **Since 04/10.** The weekend page's « En ce moment » picks and counts (holiday hubs from 30 days before, then themes with dates in the next 30 days). Read by `index.html` for the row of outlined chips under the weekend pill: the home page never re-implements theme matching, as with `agenda/feeds.json`. Checked on read like any data: `/sorties/<slug>/` paths only, text only, 4 chips at most; hidden when empty or unreadable |
 | `/ce-week-end/` | **Since 30/09.** The coming weekend (on Sunday, the day itself), rebuilt every day: time column sorted by hour, category dots that double as a filter, "Gratuit" badge, clickable contents with sticky day headings, "En ce moment" links to the seasonal pages with dates in the next 30 days (holiday hubs first, from 30 days before they start), share button. Promoted by a pill in the banner of `index.html` (« Ce week-end : N sorties → », counted live) and by a « Ce week-end » option in the Period filter |
 | `/sitemap.xml` | All of the above + the home page and `?lang=en` with their `hreflang` pair (the hand-written sitemap of 22/09 is now generated) |
 | `/404.html` | **Hand-written, not generated.** What GitHub Pages serves for a missing path — mostly a visitor arriving from a search result for an event that is over |
@@ -1444,7 +1445,7 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
   - Vérifier aussi la vue Calendrier. **Fait quand** : sur le Motorola, on traverse la page de
     haut en bas d'un pouce sans jamais déplacer la carte par erreur.
 
-- [ ] **81. Hubs thématiques : Toussaint, Halloween, puis Noël — Toussaint, Halloween et `/sorties/` faits le 04/10 (§3.X, §7). Reste, chef de projet : demander l'indexation de `/sorties/vacances-toussaint/` et `/sorties/halloween/` dans la Search Console. Reste, plus tard : vacances de Noël (sans cannibaliser `/sorties/noel/`), février, printemps ; pastilles « En ce moment » sur l'accueil (avec 78).** **Existe déjà** (§3.X) : cinq pages
+- [ ] **81. Hubs thématiques : Toussaint, Halloween, puis Noël — Toussaint, Halloween et `/sorties/` faits le 04/10 (§3.X, §7). Reste, chef de projet : demander l'indexation de `/sorties/vacances-toussaint/` et `/sorties/halloween/` dans la Search Console. Fait aussi le 04/10 : rangée « En ce moment » sous la pastille du week-end sur l'accueil. Reste, plus tard : vacances de Noël (sans cannibaliser `/sorties/noel/`), février, printemps.** **Existe déjà** (§3.X) : cinq pages
   `/sorties/` (marchés de Noël, Noël, brame, champignons, Halloween), choisies sur le titre, jamais
   supprimées, liées depuis les fiches et `/ce-week-end/`. **Ce qui manque pour capter les requêtes
   génériques :**
@@ -1500,8 +1501,11 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
     la liste du lendemain, déjà générée).
   - `/gratuit/` : « Sorties gratuites autour de Fontainebleau », 30 prochains jours, par date. Même
     règle que l'`Offer` schema.org : « Gratuit pour les adhérents » n'est **pas** gratuit.
-  - **Accueil** : une rangée de trois boutons [Aujourd'hui N] [Ce week-end N] [Gratuit N] remplace
-    la pastille seule — conçue avec 77.
+  - **Accueil — décidé le 04/10 : pas de bouton « Gratuit » dans le bandeau**, qui porte déjà la
+    pastille du week-end et la rangée « En ce moment » ; « Gratuit » devient un filtre (page
+    week-end, filtres de l'accueil) et la page `/gratuit/` existe pour Google, liée depuis le pied
+    de page et `/ce-week-end/`. Reste à décider avec 77 : « Aujourd'hui » à côté de « Ce week-end »
+    en semaine.
   - Ajouter les nouveaux dossiers à la liste `git add` de `daily-check.yml` (leçon du 30/09, §3.X)
     et au `sitemap.xml`.
 

@@ -307,6 +307,31 @@
     .weekend-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
     @media (prefers-reduced-motion: reduce) { .weekend-pill { transition: none; } .weekend-pill:hover { transform: none; } }
 
+    /* "En ce moment" (item 81): the seasonal hubs with dates in the next 30 days. Outlined, so
+       the weekend pill stays the one call in the banner. Empty out of season: hidden. */
+    .season-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 0.6rem 0 0;
+      font-size: 0.82rem;
+    }
+    .season-row[hidden] { display: none; }
+    .season-row .season-label { opacity: 0.85; margin-right: 0.1rem; }
+    .season-chip {
+      padding: 0.18rem 0.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: var(--r-pill);
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .season-chip b { font-weight: 600; opacity: 0.7; margin-left: 0.25rem; }
+    .season-chip:hover { background: rgba(255, 255, 255, 0.12); }
+    .season-chip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
     .last-updated.stale {
       background: #fefcbf;
       color: #744210;
@@ -922,6 +947,7 @@
         <p class="tagline" data-i18n="tagline">Sport, culture et nature, pour adultes et enfants</p>
         <p id="lastUpdated" class="last-updated"></p>
         <a id="weekendPill" class="weekend-pill" href="/ce-week-end/" hidden></a>
+        <p id="seasonRow" class="season-row" hidden></p>
       </div>
     </div>
     <svg class="header-curve" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
@@ -1106,6 +1132,7 @@
         horizonToday: "Aujourd'hui",
         horizonWeekend: 'Ce week-end',
         weekendPill: (n, sunday) => `${sunday ? 'Aujourd’hui' : 'Ce week-end'} : ${n} sortie${n > 1 ? 's' : ''} →`,
+        seasonNow: 'En ce moment :',
         horizon2w: 'Dans les 2 semaines',
         horizon3m: 'Dans les 3 mois',
         tabMap: 'Carte & Liste',
@@ -1187,6 +1214,7 @@
         horizonToday: 'Today',
         horizonWeekend: 'This weekend',
         weekendPill: (n, sunday) => `${sunday ? 'Today' : 'This weekend'}: ${n} outing${n > 1 ? 's' : ''} →`,
+        seasonNow: 'Right now (in French):',
         horizon2w: 'In the next 2 weeks',
         horizon3m: 'In the next 3 months',
         tabMap: 'Map & List',
@@ -1476,6 +1504,45 @@
       // coverage claim about the region rather than a failure to load.
       el.textContent = (loadFailed || !n) ? '' : t('eventCount')(n);
       renderWeekendPill();
+      renderSeasonRow();
+    }
+
+    // ── "En ce moment" (item 81) ──
+    // The list comes from sorties/en-ce-moment.json, written by the generator with the weekend
+    // page's own picks: the page never matches themes itself, so the two cannot disagree. It is
+    // our file, but checked like data all the same: same-site /sorties/ paths only, text only.
+    let seasonItems = [];
+
+    function loadSeasonRow() {
+      fetch('./sorties/en-ce-moment.json', { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : []))
+        .then((list) => {
+          seasonItems = (Array.isArray(list) ? list : []).filter((x) => x
+            && /^\/sorties\/[a-z0-9-]+\/$/.test(String(x.href))
+            && typeof x.name === 'string' && Number.isInteger(x.count) && x.count > 0).slice(0, 4);
+          renderSeasonRow();
+        })
+        .catch(() => { /* no row: the banner is complete without it */ });
+    }
+
+    function renderSeasonRow() {
+      const row = document.getElementById('seasonRow');
+      if (!row) return;
+      row.replaceChildren();
+      row.hidden = !seasonItems.length;
+      if (row.hidden) return;
+      const label = document.createElement('span');
+      label.className = 'season-label';
+      label.textContent = t('seasonNow');
+      row.appendChild(label);
+      for (const x of seasonItems) {
+        const a = document.createElement('a');
+        a.className = 'season-chip';
+        a.href = x.href;
+        a.append(x.name, Object.assign(document.createElement('b'), { textContent: String(x.count) }));
+        a.addEventListener('click', () => track('season-chip', x.href.split('/')[2]));
+        row.appendChild(a);
+      }
     }
 
     // ── Feedback ("Signaler une erreur") ──
@@ -1754,6 +1821,7 @@
       applyLanguage();
       initMap();
       fetchData();
+      loadSeasonRow();
 
       // Écouteurs sur les filtres
       for (const [id, name] of [['filterCategory', 'filter-category'],
