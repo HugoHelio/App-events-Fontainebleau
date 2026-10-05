@@ -98,40 +98,92 @@ const CENTER = { lat: 48.4020, lng: 2.7010 };
 // Generous box around the ~15 km radius (Nemours … Vaux-le-Vicomte … Moret). Anything outside is rejected.
 const BBOX = { latMin: 48.20, latMax: 48.65, lngMin: 2.45, lngMax: 3.00 };
 
-// Every commune inside CONFIG.maxRadiusKm, ordered by distance: their centre (geo.api.gouv.fr,
-// departments 77, 91, 89, 45) is within 20 km of CENTER. Recomputed from geography on 05/10.
-// Until then the list was derived from the published data (22/09, 23 names), which went in a
-// circle: a village where nothing had ever been published was never named, so never searched.
-// Grez-sur-Loing (10.5 km) was missing, and so were its open studios of 2-4 October. Cesson
-// (20.3 km) is kept: part of the commune is inside, and events there were already published.
-// Recompute it if the radius changes.
-const COMMUNES = [
-  'Avon', 'Thomery', 'Samoreau', 'Vulaines-sur-Seine', 'Samois-sur-Seine', 'Bourron-Marlotte',
-  'Héricy', 'Bois-le-Roi', 'Champagne-sur-Seine', 'Recloses', 'Montigny-sur-Loing', 'Barbizon',
-  'Saint-Mammès', 'Fontaine-le-Port', 'Ury', 'Saint-Martin-en-Bière', 'La Genevraye', 'Féricy',
-  'Chailly-en-Bière', 'Chartrettes', 'Moret-Loing-et-Orvanne', 'Grez-sur-Loing',
-  'Arbonne-la-Forêt', 'Villiers-sous-Grez', 'Vernou-la-Celle-sur-Seine', 'Livry-sur-Seine',
-  'Moncourt-Fromonville', 'Achères-la-Forêt', 'La Rochette', 'Machault', 'Villiers-en-Bière',
-  'Fleury-en-Bière', 'Le Châtelet-en-Brie', 'Villecerf', 'Vaux-le-Pénil', 'Nonville',
-  'La Chapelle-la-Reine', 'Dammarie-les-Lys', 'Pamfou', 'La Grande-Paroisse', 'Darvault',
-  'Perthes', 'Villemer', 'Noisy-sur-École', 'Cély', 'Sivry-Courtry', 'Le Vaudoué', 'Boissettes',
-  'Larchant', 'Valence-en-Brie', 'Saint-Pierre-lès-Nemours', 'Nemours', 'Boissise-le-Roi', 'Melun',
-  'Treuzy-Levelay', 'Ville-Saint-Jacques', 'Saint-Germain-sur-École', 'Le Mée-sur-Seine',
-  'Les Écrennes', 'Saint-Sauveur-sur-École', 'Milly-la-Forêt', 'Courances', 'Boissise-la-Bertrand',
-  'Maincy (Vaux-le-Vicomte)', 'Pringy', 'Dormelles', 'Varennes-sur-Seine', 'Châtillon-la-Borde',
-  'Amponville', 'Ormesson', 'Dannemois', 'Moisenay', 'Oncy-sur-École', 'Rubelles', 'Forges',
-  'Nanteau-sur-Lunain', 'La Chapelle-Gauthier', 'Noisy-Rudignon', 'Échouboulains',
-  'Boissy-aux-Cailles', 'Soisy-sur-École', 'Chevrainvilliers', 'Poligny', 'Voisenon',
-  'Guercheville', 'Tousson', 'Vert-Saint-Denis', 'Blandy-les-Tours', 'Flagy',
-  'Nainville-les-Roches', 'Montereau-Fault-Yonne', 'Villemaréchal', 'Moigny-sur-École',
-  'Faÿ-lès-Nemours', 'Châtenoy', 'Seine-Port', 'Saint-Fargeau-Ponthierry', 'Cesson',
+// Every commune whose centre is within CONFIG.maxRadiusKm of CENTER (geo.api.gouv.fr, departments
+// 77, 91, 89, 45; computed 05/10): [name, km from CENTER, population]. Ordered by distance.
+// Until 05/10 the list was derived from the published data (22/09, 23 names), which went in a
+// circle: a village where nothing had ever been published was never named, so never searched —
+// Grez-sur-Loing (10.5 km) and its open studios of 2-4 October. Recompute if the radius changes.
+const COMMUNE_TABLE = [
+  ['Avon', 2.7, 13651], ['Thomery', 5.3, 3384], ['Samoreau', 5.8, 2384],
+  ['Vulaines-sur-Seine', 6.5, 2730], ['Samois-sur-Seine', 6.9, 2126],
+  ['Bourron-Marlotte', 7.3, 2774], ['Héricy', 7.8, 2507], ['Bois-le-Roi', 8.0, 6072],
+  ['Champagne-sur-Seine', 8.1, 6497], ['Recloses', 8.2, 633], ['Montigny-sur-Loing', 8.2, 2669],
+  ['Barbizon', 8.8, 1261], ['Saint-Mammès', 9.0, 3162], ['Fontaine-le-Port', 9.8, 1025],
+  ['Ury', 10.0, 882], ['Saint-Martin-en-Bière', 10.2, 746], ['La Genevraye', 10.2, 840],
+  ['Féricy', 10.2, 625], ['Chailly-en-Bière', 10.2, 2162], ['Chartrettes', 10.4, 2633],
+  ['Moret-Loing-et-Orvanne', 10.5, 12810], ['Grez-sur-Loing', 10.5, 1432],
+  ['Arbonne-la-Forêt', 10.7, 1021], ['Villiers-sous-Grez', 10.7, 706],
+  ['Vernou-la-Celle-sur-Seine', 11.1, 2630], ['Livry-sur-Seine', 11.4, 2226],
+  ['Moncourt-Fromonville', 11.6, 1891], ['Achères-la-Forêt', 11.7, 1191],
+  ['La Rochette', 12.1, 3932], ['Machault', 12.3, 815], ['Villiers-en-Bière', 12.7, 242],
+  ['Fleury-en-Bière', 12.9, 652], ['Le Châtelet-en-Brie', 13.3, 4207], ['Villecerf', 13.4, 724],
+  ['Vaux-le-Pénil', 13.6, 11474], ['Nonville', 13.6, 591], ['La Chapelle-la-Reine', 13.8, 2170],
+  ['Dammarie-les-Lys', 13.9, 23559], ['Pamfou', 14.0, 983], ['La Grande-Paroisse', 14.1, 2893],
+  ['Darvault', 14.1, 987], ['Perthes', 14.2, 2073], ['Villemer', 14.3, 759],
+  ['Noisy-sur-École', 14.4, 1797], ['Cély', 14.6, 1259], ['Sivry-Courtry', 14.7, 1124],
+  ['Le Vaudoué', 14.8, 731], ['Boissettes', 14.9, 437], ['Larchant', 14.9, 730],
+  ['Valence-en-Brie', 15.2, 1007], ['Saint-Pierre-lès-Nemours', 15.5, 5401],
+  ['Nemours', 15.5, 12889], ['Boissise-le-Roi', 15.8, 3941], ['Melun', 15.9, 45995],
+  ['Treuzy-Levelay', 16.0, 458], ['Ville-Saint-Jacques', 16.0, 815],
+  ['Saint-Germain-sur-École', 16.1, 365], ['Le Mée-sur-Seine', 16.2, 19527],
+  ['Les Écrennes', 16.4, 628], ['Saint-Sauveur-sur-École', 16.4, 1125],
+  ['Milly-la-Forêt', 16.5, 4562], ['Courances', 16.6, 348], ['Boissise-la-Bertrand', 16.6, 1206],
+  ['Maincy', 16.9, 1828], ['Pringy', 17.0, 3864], ['Dormelles', 17.2, 816],
+  ['Varennes-sur-Seine', 17.4, 3748], ['Châtillon-la-Borde', 17.7, 226], ['Amponville', 17.8, 349],
+  ['Ormesson', 17.9, 242], ['Dannemois', 18.2, 865], ['Moisenay', 18.2, 1362],
+  ['Oncy-sur-École', 18.2, 1042], ['Rubelles', 18.2, 3537], ['Forges', 18.4, 443],
+  ['Nanteau-sur-Lunain', 18.4, 702], ['La Chapelle-Gauthier', 18.4, 1400],
+  ['Noisy-Rudignon', 18.6, 580], ['Échouboulains', 18.7, 555], ['Boissy-aux-Cailles', 18.7, 272],
+  ['Soisy-sur-École', 18.8, 1174], ['Chevrainvilliers', 18.8, 255], ['Poligny', 18.8, 825],
+  ['Voisenon', 18.8, 1170], ['Guercheville', 18.9, 268], ['Tousson', 18.9, 334],
+  ['Vert-Saint-Denis', 19.0, 9291], ['Blandy-les-Tours', 19.1, 763], ['Flagy', 19.1, 584],
+  ['Nainville-les-Roches', 19.1, 564], ['Montereau-Fault-Yonne', 19.3, 22279],
+  ['Villemaréchal', 19.4, 1055], ['Moigny-sur-École', 19.6, 1294], ['Faÿ-lès-Nemours', 19.7, 524],
+  ['Châtenoy', 19.8, 155], ['Seine-Port', 19.9, 1742], ['Saint-Fargeau-Ponthierry', 20.0, 15724],
+  ['Bagneaux-sur-Loing', 20.2, 1570], ['Cesson', 20.3, 11222],
 ];
+
+// The zone is two rings (05/10, project lead's decision). Up to 15 km, every commune. From 15 to
+// 20 km, only towns and the great sites: the radius alone let in hamlets 19 km away (a basketry
+// course in Guercheville, lotos in Villemaréchal) while a smaller radius would lose Vaux-le-Vicomte
+// (Maincy, 18.4 km) and the château de Blandy (19.3 km). Montereau is a town, but outside our area.
+const INNER_RING_KM = 15;
+const OUTER_RING_MIN_POPULATION = 4000;
+const OUTER_RING_SITES = new Set(['Maincy', 'Blandy-les-Tours']);
+const EXCLUDED_COMMUNES = new Set(['Montereau-Fault-Yonne']);
+
+const communeLetters = (s) => stripAccents(String(s ?? '')).toLowerCase().replace(/[^a-z]/g, '');
+const COMMUNE_BY_LETTERS = new Map(COMMUNE_TABLE.map((c) => [communeLetters(c[0]), c]));
+COMMUNE_BY_LETTERS.set(communeLetters('Fontainebleau'), ['Fontainebleau', 0, 15583]);
+
+/**
+ * A commune name as a source wrote it → its official spelling, whatever the accents, hyphens or
+ * spaces ("Dammarie-lès-Lys" and "Dammarie-les-Lys" were two towns in the city filter on 05/10).
+ * A name that is not a commune of the radius (a hamlet, "Vaux-le-Vicomte", a typo) is kept as is.
+ */
+function canonicalCommune(city) {
+  const hit = COMMUNE_BY_LETTERS.get(communeLetters(city));
+  return hit ? hit[0] : city;
+}
+
+/** False for a commune of the table that the two-ring rule leaves out. Unknown names pass: the radius check on coordinates still applies to them. */
+function inZone(city) {
+  const c = COMMUNE_BY_LETTERS.get(communeLetters(city));
+  if (!c) return true;
+  if (EXCLUDED_COMMUNES.has(c[0])) return false;
+  return c[1] <= INNER_RING_KM || c[2] >= OUTER_RING_MIN_POPULATION || OUTER_RING_SITES.has(c[0]);
+}
+
+// The communes named to the model: the zone, nothing outside it.
+const COMMUNES = COMMUNE_TABLE.filter((c) => inZone(c[0]))
+  .map((c) => (c[0] === 'Maincy' ? 'Maincy (Vaux-le-Vicomte)' : c[0]));
 
 // The villages the "villages" scan names in its searches, by sector. The theme scans ask about
 // "Fontainebleau (20 km)" and the search engine answers with Fontainebleau, Melun and Nemours:
 // a village fête or open studios in Grez is never in those results. Since the two-step scan
 // (04/10) the COMMUNES list above only reaches the formatting step, which does not search.
-// Communes within ~16 km, without the towns the feeds and theme scans already cover.
+// Communes of the inner ring (≤ 15 km) plus Milly-la-Forêt, without the towns the feeds and theme
+// scans already cover.
 const VILLAGE_AREAS = [
   // Vallée du Loing
   ['Bourron-Marlotte', 'Recloses', 'Montigny-sur-Loing', 'Grez-sur-Loing', 'Villiers-sous-Grez',
@@ -144,10 +196,10 @@ const VILLAGE_AREAS = [
     'Chartrettes', 'Bois-le-Roi', 'Livry-sur-Seine', 'La Rochette', 'Le Châtelet-en-Brie', 'Sivry-Courtry'],
   // Plaine de Bière
   ['Barbizon', 'Chailly-en-Bière', 'Saint-Martin-en-Bière', 'Arbonne-la-Forêt', 'Fleury-en-Bière',
-    'Villiers-en-Bière', 'Cély', 'Perthes', 'Saint-Germain-sur-École', 'Saint-Sauveur-sur-École'],
-  // Gâtinais et vallée de l'École
-  ['Ury', 'Achères-la-Forêt', 'La Chapelle-la-Reine', 'Noisy-sur-École', 'Le Vaudoué', 'Tousson',
-    'Boissy-aux-Cailles', 'Amponville', 'Milly-la-Forêt', 'Courances'],
+    'Villiers-en-Bière', 'Cély', 'Perthes'],
+  // Gâtinais et vallée de l'École (Tousson, Courances, the two École villages beyond 15 km: out
+  // of the zone since 05/10)
+  ['Ury', 'Achères-la-Forêt', 'La Chapelle-la-Reine', 'Noisy-sur-École', 'Le Vaudoué', 'Milly-la-Forêt'],
 ];
 
 const RETRYABLE_STATUS = new Set([408, 425, 429, 500, 502, 503, 504]);
@@ -443,9 +495,11 @@ function validateEvent(raw, { today, maxDate }) {
   const url = cleanUrl(raw.url);
   if (!url) return fail('invalid_url');
 
-  const city = cleanText(raw.city, 80);
+  const city = canonicalCommune(cleanText(raw.city, 80));
   const locationName = cleanText(raw.locationName, 160);
   if (!city && !locationName) return fail('missing_location');
+  // Also prunes a stored event of a commune that left the zone (fromExisting comes through here).
+  if (city && !inZone(city)) return fail('outside_zone');
 
   const schedule = cleanText(raw.schedule, 120);
   if (CONFIG.weekdayCheck && weekdayContradictsDates(schedule, startDate, endDate)) return fail('weekday_mismatch');
@@ -2087,6 +2141,7 @@ if (require.main === module) {
 module.exports = {
   main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
   applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, buildQuestions, searchRequestBody, formatRequestBody, runScan, callGemini, frenchMonths, SCANS, COMMUNES,
+  COMMUNE_TABLE, canonicalCommune, inZone, VILLAGE_AREAS,
   refineCategory, CATEGORIES,
   renderSummary,
   addMonths, parisToday, isValidIsoDate, cleanText, cleanUrl, normalizeCategory, checkUrl, geocodeRecord,

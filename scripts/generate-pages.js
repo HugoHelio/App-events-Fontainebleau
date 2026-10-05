@@ -1281,7 +1281,7 @@ function sourcesPage(events, generatedAt, registry) {
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Nos sources : d’où viennent les sorties de l’agenda</h1>
-<p>Fontainebleau Live rassemble automatiquement les sorties annoncées dans un rayon de 20 km autour de Fontainebleau. Personne ne saisit les fiches à la main. Voici où nous les trouvons, ce que nous vérifions, et ce que nous ne pouvons pas vérifier.</p>
+<p>Fontainebleau Live rassemble automatiquement les sorties annoncées autour de Fontainebleau : toutes les communes à moins de 15 km et, jusqu’à 20 km, les villes et les grands sites (Vaux-le-Vicomte, Blandy). Personne ne saisit les fiches à la main. Voici où nous les trouvons, ce que nous vérifions, et ce que nous ne pouvons pas vérifier.</p>
 <p class="when">${when ? `Dernière collecte le ${esc(when)} · ` : ''}${pl(n, 'sortie à venir', 'sorties à venir')}</p>
 
 <h2>Où nous cherchons</h2>
@@ -1299,7 +1299,7 @@ function sourcesPage(events, generatedAt, registry) {
 <li><b>Les dates</b><small>Une date passée, hors de la fenêtre des trois prochains mois, ou qui contredit le jour annoncé (un « samedi » qui tombe un mardi) écarte la fiche.</small></li>
 <li><b>Les dates recopiées</b><small>Une fiche que seule la recherche web annonce, avec un lien qui ne mène qu’à l’accueil d’un site, peut porter les dates de l’an dernier. Elle est marquée « Dates à confirmer »${unsure ? ` (${pl(unsure, 'fiche', 'fiches')} aujourd’hui)` : ''}.</small></li>
 <li><b>Les doublons</b><small>La même sortie annoncée par plusieurs sources n’apparaît qu’une fois.</small></li>
-<li><b>Le lieu</b><small>L’adresse est placée sur la carte grâce à la Base Adresse Nationale ; une sortie à plus de 20 km est écartée.</small></li>
+<li><b>Le lieu</b><small>L’adresse est placée sur la carte grâce à la Base Adresse Nationale ; une sortie hors de cette zone est écartée.</small></li>
 </ul>
 
 <h2>Ce que nous ne vérifions pas</h2>

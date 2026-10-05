@@ -1250,6 +1250,13 @@
         horizonLabel: 'Période :',
         cityLabel: 'Ville :',
         cityAll: 'Toutes les villes',
+        sectorFontainebleau: 'Fontainebleau et Avon',
+        sectorSeine: 'Bords de Seine',
+        sectorMoret: 'Moret et la confluence',
+        sectorLoing: 'Vallée du Loing et Nemours',
+        sectorBiere: 'Plaine de Bière et Gâtinais',
+        sectorMelun: 'Melun et Vaux-le-Vicomte',
+        sectorOther: 'Autres communes',
         priceFree: 'Gratuit',
         subscribeBtn: 'Ajouter à mon agenda',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
@@ -1340,6 +1347,13 @@
         horizonLabel: 'Period:',
         cityLabel: 'Town:',
         cityAll: 'All towns',
+        sectorFontainebleau: 'Fontainebleau and Avon',
+        sectorSeine: 'Along the Seine',
+        sectorMoret: 'Moret and the confluence',
+        sectorLoing: 'Loing valley and Nemours',
+        sectorBiere: 'Bière plain and Gâtinais',
+        sectorMelun: 'Melun and Vaux-le-Vicomte',
+        sectorOther: 'Other towns',
         priceFree: 'Free ',
         subscribeBtn: 'Add to my calendar',
         subTitleAll: 'Everything on around Fontainebleau',
@@ -1807,6 +1821,7 @@
       renderLastUpdated();
       renderFeedbackFooter();
       renderEventCount();
+      populateCityFilter();   // the sector headings are translated
       if (calendar) calendar.setOption('locale', lang);
     }
 
@@ -1928,9 +1943,34 @@
       focusCard(id);
     }
 
+    // Town filter groups (05/10): forty towns in one alphabetical list were too many to read.
+    // Sectors follow the villages scan of scripts/fetch-events.js (VILLAGE_AREAS) plus the towns;
+    // a town missing here falls into « Autres communes », it is never hidden.
+    const CITY_SECTORS = [
+      ['sectorFontainebleau', ['Fontainebleau', 'Avon']],
+      ['sectorSeine', ['Samoreau', 'Vulaines-sur-Seine', 'Samois-sur-Seine', 'Héricy', 'Fontaine-le-Port',
+        'Féricy', 'Chartrettes', 'Bois-le-Roi', 'Livry-sur-Seine', 'La Rochette', 'Le Châtelet-en-Brie',
+        'Sivry-Courtry', 'Machault']],
+      ['sectorMoret', ['Thomery', 'Champagne-sur-Seine', 'Saint-Mammès', 'Moret-Loing-et-Orvanne',
+        'Veneux-les-Sablons', 'Écuelles', 'Épisy', 'Montarlot', 'Vernou-la-Celle-sur-Seine', 'Villecerf',
+        'Villemer', 'La Grande-Paroisse', 'Pamfou']],
+      ['sectorLoing', ['Bourron-Marlotte', 'Recloses', 'Montigny-sur-Loing', 'Grez-sur-Loing',
+        'Villiers-sous-Grez', 'La Genevraye', 'Moncourt-Fromonville', 'Nonville', 'Darvault', 'Larchant',
+        'Nemours', 'Saint-Pierre-lès-Nemours']],
+      ['sectorBiere', ['Barbizon', 'Chailly-en-Bière', 'Saint-Martin-en-Bière', 'Arbonne-la-Forêt',
+        'Fleury-en-Bière', 'Villiers-en-Bière', 'Cély', 'Perthes', 'Ury', 'Achères-la-Forêt',
+        'La Chapelle-la-Reine', 'Noisy-sur-École', 'Le Vaudoué', 'Milly-la-Forêt']],
+      ['sectorMelun', ['Melun', 'Le Mée-sur-Seine', 'Dammarie-les-Lys', 'Vaux-le-Pénil', 'Boissettes',
+        'Maincy', 'Vaux-le-Vicomte', 'Blandy-les-Tours', 'Vert-Saint-Denis', 'Cesson', 'Saint-Fargeau-Ponthierry']],
+    ];
+    // Accent- and hyphen-blind, like canonicalCommune() in the pipeline.
+    const cityKey = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, '');
+    const SECTOR_OF = new Map(CITY_SECTORS.flatMap(([key, towns]) => towns.map((t) => [cityKey(t), key])));
+
     /**
-     * Towns that have at least one upcoming event, alphabetical. Rebuilt on every load, so a
-     * town with nothing left disappears instead of offering an empty result. Names are set as
+     * Towns that have at least one upcoming event, grouped by sector (<optgroup>), alphabetical
+     * inside a sector with Fontainebleau first. Rebuilt on every load and on a language change, so
+     * a town with nothing left disappears instead of offering an empty result. Names are set as
      * text and value, never as HTML. The visitor's choice survives a reload if still present.
      */
     function populateCityFilter() {
@@ -1938,14 +1978,23 @@
       const current = select.value;
       const names = [...new Set(allActivities
         .filter((a) => isUpcoming(a) && isInWindow(a) && typeof a.city === 'string' && a.city.trim())
-        .map((a) => a.city))]
-        .sort((x, y) => x.localeCompare(y, 'fr'));
+        .map((a) => a.city))];
       while (select.options.length > 1) select.remove(1);
-      for (const name of names) {
-        const opt = document.createElement('option');
-        opt.value = name;
-        opt.textContent = name;
-        select.appendChild(opt);
+      select.querySelectorAll('optgroup').forEach((g) => g.remove());
+      const groups = new Map([...CITY_SECTORS.map(([key]) => [key, []]), ['sectorOther', []]]);
+      for (const name of names) groups.get(SECTOR_OF.get(cityKey(name)) || 'sectorOther').push(name);
+      for (const [key, towns] of groups) {
+        if (!towns.length) continue;
+        towns.sort((x, y) => (x === 'Fontainebleau' ? -1 : y === 'Fontainebleau' ? 1 : x.localeCompare(y, 'fr')));
+        const group = document.createElement('optgroup');
+        group.label = t(key);
+        for (const name of towns) {
+          const opt = document.createElement('option');
+          opt.value = name;
+          opt.textContent = name;
+          group.appendChild(opt);
+        }
+        select.appendChild(group);
       }
       select.value = names.includes(current) ? current : '';
     }
