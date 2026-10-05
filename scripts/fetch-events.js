@@ -98,18 +98,56 @@ const CENTER = { lat: 48.4020, lng: 2.7010 };
 // Generous box around the ~15 km radius (Nemours … Vaux-le-Vicomte … Moret). Anything outside is rejected.
 const BBOX = { latMin: 48.20, latMax: 48.65, lngMin: 2.45, lngMax: 3.00 };
 
-// The communes actually inside CONFIG.maxRadiusKm, given to the model so it searches the area we
-// keep rather than a smaller one. Derived from the published data on 22 September and ordered by
-// distance; extend it if the radius changes. La Rochette (12.6 km) and Saint-Fargeau-Ponthierry
-// (18.4 km) were added on 23 September: the feeds were already publishing them, but the model was
-// never asked to look there, so coverage of those two depended on which source happened to find
-// the event.
+// Every commune inside CONFIG.maxRadiusKm, ordered by distance: their centre (geo.api.gouv.fr,
+// departments 77, 91, 89, 45) is within 20 km of CENTER. Recomputed from geography on 05/10.
+// Until then the list was derived from the published data (22/09, 23 names), which went in a
+// circle: a village where nothing had ever been published was never named, so never searched.
+// Grez-sur-Loing (10.5 km) was missing, and so were its open studios of 2-4 October. Cesson
+// (20.3 km) is kept: part of the commune is inside, and events there were already published.
+// Recompute it if the radius changes.
 const COMMUNES = [
-  'Avon', 'Thomery', 'Samois-sur-Seine', 'Bourron-Marlotte', 'Moret-Loing-et-Orvanne',
-  'Bois-le-Roi', 'Barbizon', 'Ury', 'Le Châtelet-en-Brie', 'Villiers-en-Bière',
-  'La Chapelle-la-Reine', 'Sivry-Courtry', 'Nemours', 'Larchant', 'Melun',
-  'Saint-Pierre-lès-Nemours', 'Milly-la-Forêt', 'Maincy (Vaux-le-Vicomte)', 'Vert-Saint-Denis',
-  'Blandy-les-Tours', 'Cesson', 'La Rochette', 'Saint-Fargeau-Ponthierry',
+  'Avon', 'Thomery', 'Samoreau', 'Vulaines-sur-Seine', 'Samois-sur-Seine', 'Bourron-Marlotte',
+  'Héricy', 'Bois-le-Roi', 'Champagne-sur-Seine', 'Recloses', 'Montigny-sur-Loing', 'Barbizon',
+  'Saint-Mammès', 'Fontaine-le-Port', 'Ury', 'Saint-Martin-en-Bière', 'La Genevraye', 'Féricy',
+  'Chailly-en-Bière', 'Chartrettes', 'Moret-Loing-et-Orvanne', 'Grez-sur-Loing',
+  'Arbonne-la-Forêt', 'Villiers-sous-Grez', 'Vernou-la-Celle-sur-Seine', 'Livry-sur-Seine',
+  'Moncourt-Fromonville', 'Achères-la-Forêt', 'La Rochette', 'Machault', 'Villiers-en-Bière',
+  'Fleury-en-Bière', 'Le Châtelet-en-Brie', 'Villecerf', 'Vaux-le-Pénil', 'Nonville',
+  'La Chapelle-la-Reine', 'Dammarie-les-Lys', 'Pamfou', 'La Grande-Paroisse', 'Darvault',
+  'Perthes', 'Villemer', 'Noisy-sur-École', 'Cély', 'Sivry-Courtry', 'Le Vaudoué', 'Boissettes',
+  'Larchant', 'Valence-en-Brie', 'Saint-Pierre-lès-Nemours', 'Nemours', 'Boissise-le-Roi', 'Melun',
+  'Treuzy-Levelay', 'Ville-Saint-Jacques', 'Saint-Germain-sur-École', 'Le Mée-sur-Seine',
+  'Les Écrennes', 'Saint-Sauveur-sur-École', 'Milly-la-Forêt', 'Courances', 'Boissise-la-Bertrand',
+  'Maincy (Vaux-le-Vicomte)', 'Pringy', 'Dormelles', 'Varennes-sur-Seine', 'Châtillon-la-Borde',
+  'Amponville', 'Ormesson', 'Dannemois', 'Moisenay', 'Oncy-sur-École', 'Rubelles', 'Forges',
+  'Nanteau-sur-Lunain', 'La Chapelle-Gauthier', 'Noisy-Rudignon', 'Échouboulains',
+  'Boissy-aux-Cailles', 'Soisy-sur-École', 'Chevrainvilliers', 'Poligny', 'Voisenon',
+  'Guercheville', 'Tousson', 'Vert-Saint-Denis', 'Blandy-les-Tours', 'Flagy',
+  'Nainville-les-Roches', 'Montereau-Fault-Yonne', 'Villemaréchal', 'Moigny-sur-École',
+  'Faÿ-lès-Nemours', 'Châtenoy', 'Seine-Port', 'Saint-Fargeau-Ponthierry', 'Cesson',
+];
+
+// The villages the "villages" scan names in its searches, by sector. The theme scans ask about
+// "Fontainebleau (20 km)" and the search engine answers with Fontainebleau, Melun and Nemours:
+// a village fête or open studios in Grez is never in those results. Since the two-step scan
+// (04/10) the COMMUNES list above only reaches the formatting step, which does not search.
+// Communes within ~16 km, without the towns the feeds and theme scans already cover.
+const VILLAGE_AREAS = [
+  // Vallée du Loing
+  ['Bourron-Marlotte', 'Recloses', 'Montigny-sur-Loing', 'Grez-sur-Loing', 'Villiers-sous-Grez',
+    'La Genevraye', 'Moncourt-Fromonville', 'Nonville', 'Darvault', 'Larchant'],
+  // Moret et la confluence
+  ['Thomery', 'Champagne-sur-Seine', 'Saint-Mammès', 'Moret-Loing-et-Orvanne',
+    'Vernou-la-Celle-sur-Seine', 'Villecerf', 'Villemer', 'La Grande-Paroisse', 'Pamfou', 'Machault'],
+  // Bords de Seine
+  ['Samoreau', 'Vulaines-sur-Seine', 'Samois-sur-Seine', 'Héricy', 'Fontaine-le-Port', 'Féricy',
+    'Chartrettes', 'Bois-le-Roi', 'Livry-sur-Seine', 'La Rochette', 'Le Châtelet-en-Brie', 'Sivry-Courtry'],
+  // Plaine de Bière
+  ['Barbizon', 'Chailly-en-Bière', 'Saint-Martin-en-Bière', 'Arbonne-la-Forêt', 'Fleury-en-Bière',
+    'Villiers-en-Bière', 'Cély', 'Perthes', 'Saint-Germain-sur-École', 'Saint-Sauveur-sur-École'],
+  // Gâtinais et vallée de l'École
+  ['Ury', 'Achères-la-Forêt', 'La Chapelle-la-Reine', 'Noisy-sur-École', 'Le Vaudoué', 'Tousson',
+    'Boissy-aux-Cailles', 'Amponville', 'Milly-la-Forêt', 'Courances'],
 ];
 
 const RETRYABLE_STATUS = new Set([408, 425, 429, 500, 502, 503, 504]);
@@ -158,6 +196,19 @@ const SCANS = [
       'Ateliers enfants, spectacles jeune public, brocantes, marchés du terroir, fêtes locales, ' +
       'animations d\'automne et de fin d\'année, activités à faire en famille.',
     ask: 'ateliers pour enfants, spectacles jeune public, fêtes locales, marchés et brocantes',
+  },
+  {
+    // 05/10: one search per sector of villages, every theme at once (VILLAGE_AREAS).
+    name: 'villages',
+    label: 'Tous thèmes, dans les villages autour de la forêt',
+    focus:
+      'Événements publics des petites communes, de toute nature : fêtes de village, portes ' +
+      'ouvertes d\'ateliers d\'artistes, expositions, salons, concerts, théâtre, brocantes et ' +
+      'vide-greniers, marchés de Noël, courses et randonnées, sorties nature, animations des ' +
+      'bibliothèques. Classe chacun dans la catégorie qui lui correspond.',
+    ask: 'événements publics (fêtes, expositions, portes ouvertes d\'ateliers d\'artistes, concerts, ' +
+      'spectacles, brocantes, courses, sorties nature)',
+    areas: VILLAGE_AREAS,
   },
 ];
 
@@ -578,14 +629,23 @@ function frenchMonths(fromIso, toIso) {
 //      of step 1 and is told it is its only source: it can drop or format an event, not add one.
 // A question answered without any search never reaches step 2.
 
-/** The short, grounded questions of one scan: one per pair of months in the window. */
+/**
+ * The short, grounded questions of one scan: one per pair of months in the window. A scan with
+ * `areas` asks once per sector instead, about the next two months only: a village announces its
+ * fête two or three weeks ahead (Grez's open studios: posted 17/09 for 2/10), and the window
+ * slides with every scan, so later months are asked about when they come close.
+ */
 function buildQuestions(scan, { today, maxDate }) {
   const months = frenchMonths(today, maxDate);
+  const tail = 'Pour chacun : titre, dates exactes, horaires et tarif si indiqués, commune, lieu et lien de la page.';
+  if (scan.areas) {
+    return scan.areas.map((area) => `Cherche sur le web : quels ${scan.ask} sont annoncés à `
+      + `${area.join(', ')} (Seine-et-Marne) en ${months.slice(0, 2).join(' et ')} ? ${tail}`);
+  }
   const out = [];
   for (let i = 0; i < months.length; i += 2) {
     out.push(`Cherche sur le web : quels ${scan.ask} sont annoncés autour de Fontainebleau `
-      + `(${CONFIG.maxRadiusKm} km) en ${months.slice(i, i + 2).join(' et ')} ? `
-      + 'Pour chacun : titre, dates exactes, horaires et tarif si indiqués, commune, lieu et lien de la page.');
+      + `(${CONFIG.maxRadiusKm} km) en ${months.slice(i, i + 2).join(' et ')} ? ${tail}`);
   }
   return out;
 }

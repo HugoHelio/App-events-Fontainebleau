@@ -7,10 +7,12 @@
  * fourth published source (§3.Z2). Grounding stays on until legitimate sources cover ≥ 90 % of
  * the published events.
  *
- * Three readers, chosen per site in sources.json:
+ * Readers, chosen per site in sources.json:
  *   ics        an iCalendar feed. Deterministic.
  *   apidae-ot  the tourist office: list pages + one page per event, parsed with regular
  *              expressions. Deterministic — no model reads a date.
+ *   city-rss   the city of Fontainebleau's RSS feed, dates read from its machine-written line.
+ *   ccmsl      the Moret Seine & Loing intercommunal agenda, machine-written cards. Deterministic.
  *   page       HTML or RSS turned into text, then extracted by Gemini WITHOUT the search tool
  *              (the same kind of call as translate.js, outside the grounding terms).
  *
@@ -387,6 +389,77 @@ async function readCityRss(src, ctx) {
   return { fetched: 1, events };
 }
 
+/**
+ * A commune name as typed in a form → its official spelling: every space becomes a hyphen,
+ * except after a leading article ("La Chapelle-la-Reine", "Le Châtelet-en-Brie"). The agenda of
+ * Moret Seine & Loing writes "Vernou-la Celle sur Seine", which would otherwise open a second
+ * commune page next to "Vernou-la-Celle-sur-Seine".
+ */
+function communeName(s) {
+  const t = decodeEntities(s).replace(/\s*-\s*/g, '-').replace(/\s+/g, ' ').trim();
+  const m = /^(La|Le|Les) (.+)$/i.exec(t);
+  return m ? `${m[1][0].toUpperCase()}${m[1].slice(1).toLowerCase()} ${m[2].replace(/ /g, '-')}` : t.replace(/ /g, '-');
+}
+
+/** "03/10/2026 20:30:00" → { date: "2026-10-03", time: "20:30" } or null. */
+function slashDateTime(s) {
+  const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/.exec(String(s).trim());
+  if (!m || !validDate(+m[3], +m[2], +m[1])) return null;
+  return { date: iso(+m[3], +m[2], +m[1]), time: m[4] ? `${pad(m[4])}:${m[5]}` : '' };
+}
+
+/**
+ * The agenda of the Communauté de communes Moret Seine & Loing (added 05/10): the intercommunal
+ * events of a dozen villages south and east of the forest — Montigny-sur-Loing, Saint-Mammès,
+ * Champagne-sur-Seine, Vernou… — that no other source covers. Each card is machine-written:
+ * "Commune : X <br> Titre : Y <br> Date de début : 03/10/2026 20:30:00 <br> Date de fin : …",
+ * then a <details> block with the organiser's text. Dates are read here, exactly; the text goes
+ * to enrich() for category, venue and description. No card has a page of its own: the URL is
+ * the agenda with an anchor per card, so each one keeps its own entry in the enrichment cache.
+ */
+function parseCcmslCards(html, pageUrl) {
+  const out = [];
+  for (const chunk of String(html).split(/<div class="card\b/).slice(1)) {
+    const field = (label) => {
+      const m = new RegExp(`${label}\\s*:\\s*([^<]*)<`, 'i').exec(chunk);   // up to <br> or, for the last line, </div>
+      return m ? decodeEntities(m[1]).replace(/\s+/g, ' ').trim() : '';
+    };
+    const title = field('Titre');
+    const start = slashDateTime(field('Date de d(?:é|&eacute;)but'));
+    const end = slashDateTime(field('Date de fin')) || start;
+    if (!title || !start) continue;
+    // An end before the start (a loto "25/10 13:00 → 24/10 20:00") is a typo in one of the two,
+    // and nothing says which: a wrong date costs more than a missing event.
+    if (end.date < start.date) { out.push({ title, invalid: 'end_before_start' }); continue; }
+    const hm = (t) => (t.endsWith(':00') ? `${Number(t.slice(0, 2))}h` : `${Number(t.slice(0, 2))}h${t.slice(3)}`);
+    let schedule = '';
+    // 00:00 means "no time given"; 23:45 is the form's stand-in for "until late".
+    if (start.date === end.date && start.time && start.time !== '00:00') {
+      schedule = end.time && end.time !== start.time && !/^23:(45|59)$/.test(end.time)
+        ? `${hm(start.time)} – ${hm(end.time)}` : hm(start.time);
+    }
+    const details = (/<details>([\s\S]*?)<\/details>/i.exec(chunk) || [])[1] || '';
+    const text = htmlToText(details.replace(/<summary>[\s\S]*?<\/summary>/i, ''), pageUrl);
+    const slug = letters(title).slice(0, 40);
+    out.push({
+      title,
+      city: communeName(field('Commune')),
+      startDate: start.date,
+      endDate: end.date,
+      schedule,
+      url: `${pageUrl.split('#')[0]}#${start.date}-${slug}`,
+      detail: `${title}\n${text}`.slice(0, 3000),
+    });
+  }
+  return out;
+}
+
+async function readCcmsl(src, ctx) {
+  const r = await politeGet(src.url);
+  const cards = parseCcmslCards(r.text, src.url);
+  return { fetched: 1, events: cards.filter((e) => !e.invalid && inWindow(e, ctx)), invalid: cards.filter((e) => e.invalid).length };
+}
+
 /** The page title is the line that best matches the URL slug. */
 function pickTitle(text, slugWords) {
   const want = new Set(slugWords.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/\s+/).filter((w) => w.length > 2));
@@ -520,7 +593,7 @@ async function readPage(src, ctx) {
   return { fetched: pages.length, events, usage };
 }
 
-const READERS = { ics: readIcs, 'apidae-ot': readApidaeOt, 'city-rss': readCityRss, page: readPage };
+const READERS = { ics: readIcs, 'apidae-ot': readApidaeOt, 'city-rss': readCityRss, ccmsl: readCcmsl, page: readPage };
 
 function loadRegistry() {
   const json = JSON.parse(fs.readFileSync(CONFIG.registryPath, 'utf8'));
@@ -542,9 +615,16 @@ async function load(ctx, { only } = {}) {
     const t0 = Date.now();
     try {
       const r = await reader(src, ctx);
+      // `exclude` (sources.json): titles that are not outings — an agenda shared by a whole
+      // administration also announces job forums and office hours.
+      const exclude = src.exclude ? new RegExp(src.exclude, 'i') : null;
+      const kept = exclude ? r.events.filter((e) => !exclude.test(e.title)) : r.events;
       // A site-wide default fills what the reader cannot know (an .ics has no category).
-      const events = r.events.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
-      return { ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events };
+      const events = kept.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
+      return {
+        ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events,
+        excluded: r.events.length - kept.length, invalid: r.invalid || 0,
+      };
     } catch (err) {
       return { ...base, status: err.robots ? 'robots' : 'error', error: String(err.message || err).slice(0, 200), ms: Date.now() - t0, events: [] };
     }
@@ -562,7 +642,7 @@ const ENRICH_CACHE = path.resolve(process.env.SOURCES_CACHE_PATH || 'sources-cac
 const ENRICH_CACHE_DAYS = envInt('SOURCES_CACHE_DAYS', 150);
 
 const ENRICH_PROMPT = (items) => `
-Voici des fiches d'événements de l'office de tourisme du Pays de Fontainebleau ou de la Ville de Fontainebleau (texte brut).
+Voici des fiches d'événements d'un office de tourisme, d'une commune ou d'une intercommunalité autour de Fontainebleau (texte brut).
 Les dates sont déjà connues. Pour chaque fiche, donne UNIQUEMENT ce que le texte affirme :
 - "category" : "Sport & Outdoor", "Nature & Environnement", "Scène & Spectacles" (concerts, théâtre, cinéma, festivals) ou "Culture & Ateliers" (expositions, visites, patrimoine, ateliers, brocantes).
 - "description" : une phrase en français, 200 caractères maximum, reformulée (pas un copier-coller).
@@ -697,4 +777,5 @@ function toPipelineEvents(events, { today, maxDate }) {
 module.exports = {
   CONFIG, load, loadRegistry, parseRobots, robotsAllows, htmlToText, parseFrenchPeriods, parseIcs, decodeEntities, pickTitle,
   mainContent, enrich, toPipelineEvents, LONG_EVENT_DAYS, parseCityDateLine, readCityRss, isAllCaps, sameLetters,
+  parseCcmslCards, communeName,
 };

@@ -95,6 +95,25 @@
       "follow": "^/evenement/"
     },
     {
+      "id": "ccmsl",
+      "name": "Communauté de communes Moret Seine & Loing",
+      "type": "ccmsl",
+      "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html",
+      "exclude": "\\bpermanence\\b|\\bemploi\\b",
+      "note": "Added 05/10 after the Grez-sur-Loing open studios (2-4/10) were missed. The intercommunal agenda of the villages south and east of the forest (Montigny-sur-Loing, Saint-Mammès, Champagne, Vernou, Villemer, Flagy…): 44 cards on 05/10, machine-written dates read without a model. Office hours and job forums are excluded by title."
+    },
+    {
+      "id": "grezarts",
+      "name": "Grez'arts (ateliers d'artistes de Grez-sur-Loing)",
+      "type": "page",
+      "urls": [
+        "https://grezarts.com/evenements.html"
+      ],
+      "city": "Grez-sur-Loing",
+      "category": "Culture & Ateliers",
+      "note": "Added 05/10: the yearly open studios (2-4/10/2026) were missed by every source. Static page, robots.txt only forbids /images/ and /download/."
+    },
+    {
       "id": "aaff",
       "name": "Amis de la Forêt de Fontainebleau",
       "enabled": false,
