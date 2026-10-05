@@ -817,6 +817,42 @@
       color: var(--ink-3);
     }
 
+    /* Zoomed out (≤ 10): one bubble per sector of the town filter, with its count. Fixed colours,
+       like the dots: the tiles are the same in both themes. */
+    .sector-bubble {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translate(-50%, -50%);
+      width: max-content;
+      cursor: pointer;
+    }
+    .sector-bubble b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      height: 38px;
+      padding: 0 6px;
+      border-radius: 19px;
+      border: 2px solid #fff;
+      background: #1d3b29;
+      color: #fff;
+      font-size: 0.85rem;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+    }
+    .sector-bubble span {
+      margin-top: 3px;
+      padding: 1px 6px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #1d3b29;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
     .marker-dot.cat-sport   { background: var(--cat-sport); }
     .marker-dot.cat-nature  { background: var(--cat-nature); }
     .marker-dot.cat-culture { background: var(--cat-culture); }
@@ -1257,6 +1293,7 @@
         sectorBiere: 'Plaine de Bière et Gâtinais',
         sectorMelun: 'Melun et Vaux-le-Vicomte',
         sectorOther: 'Autres communes',
+        sectorWhole: (s) => `${s} (tout le secteur)`,
         priceFree: 'Gratuit',
         subscribeBtn: 'Ajouter à mon agenda',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
@@ -1354,6 +1391,7 @@
         sectorBiere: 'Bière plain and Gâtinais',
         sectorMelun: 'Melun and Vaux-le-Vicomte',
         sectorOther: 'Other towns',
+        sectorWhole: (s) => `${s} (whole area)`,
         priceFree: 'Free ',
         subscribeBtn: 'Add to my calendar',
         subTitleAll: 'Everything on around Fontainebleau',
@@ -1862,8 +1900,18 @@
     /** Card clicked: centre the map on its marker and open the popup. */
     function focusMarker(id) {
       highlightCards([id]);
+      if (!map) return;
       const marker = markersById.get(id);
-      if (!marker || !map) return;
+      if (!marker) {
+        // Sector view: the venue has no marker yet. Zooming in redraws the venues (zoomend
+        // listener above, registered first), then its popup opens.
+        const a = allActivities.find((x) => x.id === id);
+        const lat = Number(a && a.lat), lng = Number(a && a.lng);
+        if (!sectorMode || !Number.isFinite(lat) || !Number.isFinite(lng)) return;
+        map.once('zoomend', () => { const m = markersById.get(id); if (m) m.openPopup(); });
+        map.setView([lat, lng], 13, { animate: true });
+        return;
+      }
       map.setView(marker.getLatLng(), Math.max(map.getZoom(), 13), { animate: true });
       marker.openPopup();
     }
@@ -1889,7 +1937,10 @@
       if (!map || !markersGroup) return;
       map.closePopup();
       try {
-        const bounds = markersGroup.getBounds();
+        // The events, not the markers: in the sector view a whole sector is a single bubble.
+        const pts = mapActivities.map((a) => [Number(a.lat), Number(a.lng)])
+          .filter(([la, ln]) => Number.isFinite(la) && Number.isFinite(ln));
+        const bounds = pts.length ? L.latLngBounds(pts) : null;
         // maxZoom: a town with a single venue would otherwise zoom to street level.
         if (bounds && bounds.isValid()) { map.fitBounds(bounds, { padding: [28, 28], maxZoom: 14 }); return; }
       } catch (e) { /* nothing on the map yet */ }
@@ -1966,6 +2017,9 @@
     // Accent- and hyphen-blind, like canonicalCommune() in the pipeline.
     const cityKey = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, '');
     const SECTOR_OF = new Map(CITY_SECTORS.flatMap(([key, towns]) => towns.map((t) => [cityKey(t), key])));
+    const sectorOf = (city) => SECTOR_OF.get(cityKey(city || '')) || 'sectorOther';
+    // A whole sector is chosen in the same <select> as a town: value "sector:<key>".
+    const SECTOR_VALUE = 'sector:';
 
     /**
      * Towns that have at least one upcoming event, grouped by sector (<optgroup>), alphabetical
@@ -1982,12 +2036,19 @@
       while (select.options.length > 1) select.remove(1);
       select.querySelectorAll('optgroup').forEach((g) => g.remove());
       const groups = new Map([...CITY_SECTORS.map(([key]) => [key, []]), ['sectorOther', []]]);
-      for (const name of names) groups.get(SECTOR_OF.get(cityKey(name)) || 'sectorOther').push(name);
+      for (const name of names) groups.get(sectorOf(name)).push(name);
+      const values = [];
       for (const [key, towns] of groups) {
         if (!towns.length) continue;
         towns.sort((x, y) => (x === 'Fontainebleau' ? -1 : y === 'Fontainebleau' ? 1 : x.localeCompare(y, 'fr')));
         const group = document.createElement('optgroup');
         group.label = t(key);
+        // An <optgroup> heading cannot be selected: the whole sector is its first option.
+        const whole = document.createElement('option');
+        whole.value = SECTOR_VALUE + key;
+        whole.textContent = t('sectorWhole')(t(key));
+        group.appendChild(whole);
+        values.push(whole.value);
         for (const name of towns) {
           const opt = document.createElement('option');
           opt.value = name;
@@ -1996,7 +2057,14 @@
         }
         select.appendChild(group);
       }
-      select.value = names.includes(current) ? current : '';
+      select.value = (names.includes(current) || values.includes(current)) ? current : '';
+    }
+
+    /** The town filter's test: one town, a whole sector ("sector:<key>"), or everything. */
+    function matchesPlace(a, cityVal) {
+      if (!cityVal) return true;
+      if (cityVal.startsWith(SECTOR_VALUE)) return sectorOf(a.city) === cityVal.slice(SECTOR_VALUE.length);
+      return a.city === cityVal;
     }
 
     /** Same-origin path of the event's static page, or null. Anything else in the field is ignored. */
@@ -2104,6 +2172,11 @@
 
       // Clicking empty map is the other natural way to drop a selection.
       map.on('click', clearSelection);
+      // Venues or sectors: redrawn only when the zoom crosses the threshold, so an open popup
+      // survives an ordinary zoom.
+      map.on('zoomend', () => {
+        if ((map.getZoom() <= SECTOR_VIEW_MAX_ZOOM) !== sectorMode) renderMapLayer();
+      });
 
       // Popups live inside the map container, so one delegated listener covers every one of
       // them, present and future — no re-binding on each render.
@@ -2214,7 +2287,7 @@
           matchDate = Boolean(a.startDate) && dateVal >= a.startDate && dateVal <= end;
         }
 
-        const matchCity = !cityVal || a.city === cityVal;
+        const matchCity = matchesPlace(a, cityVal);
 
         return matchCat && matchCity && matchDate && matchHorizon && (!freeOnly || isFree(a));
       });
@@ -2447,11 +2520,59 @@
     // different addresses do not.
     const pointKey = (lat, lng) => `${lat.toFixed(4)},${lng.toFixed(4)}`;
 
+    // Zoomed out to 10 or less (the default view is 11), the map shows one bubble per sector of
+    // the town filter instead of the venues: at that scale the dots of a sector overlap anyway.
+    const SECTOR_VIEW_MAX_ZOOM = 10;
+    let mapActivities = [];
+    let sectorMode = null;
+
     function updateMapMarkers(activities) {
-      if (!markersGroup) return;
+      mapActivities = activities;
+      renderMapLayer();
+    }
+
+    function renderMapLayer() {
+      if (!markersGroup || !map) return;
       markersGroup.clearLayers();
       markersById.clear();
+      sectorMode = map.getZoom() <= SECTOR_VIEW_MAX_ZOOM;
+      if (sectorMode) renderSectorBubbles(mapActivities);
+      else renderPointMarkers(mapActivities);
+    }
 
+    /** One bubble per sector, at the mean position of its events; a click picks that sector. */
+    function renderSectorBubbles(activities) {
+      const sectors = new Map();
+      for (const a of activities) {
+        const lat = Number(a.lat), lng = Number(a.lng);
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+        const key = sectorOf(a.city);
+        if (!sectors.has(key)) sectors.set(key, { lat: 0, lng: 0, n: 0 });
+        const s = sectors.get(key);
+        s.lat += lat; s.lng += lng; s.n++;
+      }
+      sectors.forEach((s, key) => {
+        const icon = L.divIcon({
+          className: '',
+          // Our own strings and a number: escaped all the same.
+          html: `<div class="sector-bubble"><b>${s.n}</b><span>${escapeHtml(t(key))}</span></div>`,
+          iconSize: [0, 0],
+        });
+        const marker = L.marker([s.lat / s.n, s.lng / s.n], { icon, title: t('sectorWhole')(t(key)) });
+        marker.on('click', () => {
+          const select = document.getElementById('filterCity');
+          const value = SECTOR_VALUE + key;
+          if (![...select.options].some((o) => o.value === value)) return;
+          track('map-sector', key);
+          select.value = value;
+          applyFilters();
+          clearSelection();   // frames the sector, which brings the venues back
+        });
+        markersGroup.addLayer(marker);
+      });
+    }
+
+    function renderPointMarkers(activities) {
       // Group first. Before this, 26 events in the forest showed as one pin and the other 25
       // were simply unreachable.
       const points = new Map();
