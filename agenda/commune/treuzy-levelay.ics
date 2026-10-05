@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Treuzy-Levelay · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_7f8b7c2759@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Soirée beaujolais nouveau
+LOCATION:Salle polyvalente de Treuzy Levelay\, Treuzy-Levelay
+DESCRIPTION:Horaires : à partir de 19h\n\nCélébrez l'arrivée du Beaujol
+ ais nouveau lors d'une soirée conviviale à Treuzy-Levelay.\n\nOrganisate
+ ur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-20-soireebea
+ ujolaisnouveau\n\nFiche : https://fontainebleaulive.fr/evenements/soiree-b
+ eaujolais-nouveau-treuzy-levelay-7f8b7c2759/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-beaujolais-nouveau-treuz
+ y-levelay-7f8b7c2759/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

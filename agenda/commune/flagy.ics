@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Flagy · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_88ae3abdfc@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Randonnée\, trail et laser run
+LOCATION:Flagy
+DESCRIPTION:Horaires : 8h30 – 16h\n\nOrganisateur : https://www.ccmsl.fr/
+ actu-et-agendas/agenda.html#2026-10-11-randonneetrailetlaserrun\n\nFiche :
+  https://fontainebleaulive.fr/evenements/randonnee-trail-et-laser-run-flag
+ y-88ae3abdfc/\n\nInformations collectées automatiquement : vérifiez-les 
+ auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-trail-et-laser-run-fl
+ agy-88ae3abdfc/
+CATEGORIES:Sport & Outdoor
+GEO:48.31479;2.92264
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_06315a85ca@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261102
+SUMMARY:Devenez bébénvole un jour
+LOCATION:Flagy
+DESCRIPTION:Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
+ #2026-10-31-devenezbebenvoleunjour\n\nFiche : https://fontainebleaulive.fr
+ /evenements/devenez-bebenvole-un-jour-flagy-06315a85ca/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/devenez-bebenvole-un-jour-flagy
+ -06315a85ca/
+CATEGORIES:Culture & Ateliers
+GEO:48.31479;2.92264
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8b2322a3da@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël
+LOCATION:Flagy\, Flagy
+DESCRIPTION:Horaires : 10h à 17h30\n\nVenez déambuler parmi les étals du
+  marché de Noël organisé au cœur du village de Flagy.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-marchedenoel
+ \n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-flagy-8
+ b2322a3da/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-flagy-8b2322a3da
+ /
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

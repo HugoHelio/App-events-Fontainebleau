@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Villemer · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_2219b8be7b@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Conférence " Moïse\, figure du héros : 2000 ans d'histoire de l'
+ Art "
+LOCATION:Salle polyvalente\, rue des Marronniers à Villemer\, Villemer
+DESCRIPTION:Horaires : 16h\n\nAssistez à une conférence retraçant deux m
+ illénaires d'histoire de l'art autour de la figure de Moïse.\n\nOrganisa
+ teur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-08-confere
+ ncemoisefigureduheros2000ansdhist\n\nFiche : https://fontainebleaulive.fr/
+ evenements/conference-moise-figure-du-heros-2000-ans-d-histoire-de-l-ar-vi
+ llemer-2219b8be7b/\n\nInformations collectées automatiquement : vérifiez
+ -les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-moise-figure-du-hero
+ s-2000-ans-d-histoire-de-l-ar-villemer-2219b8be7b/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

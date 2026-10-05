@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chartrettes · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_31638dc066@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Un pour tous
+LOCATION:Espace Culturel Renée Wanner\, Chartrettes
+DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nUne bande de potes d'enfan
+ ce se retrouve dix ans plus tard pour une soirée qui dérape complètemen
+ t.\n\nOrganisateur : https://www.gah-briardises.com/briardises\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/un-pour-tous-chartrettes-31638dc06
+ 6/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/un-pour-tous-chartrettes-31638d
+ c066/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6b76baf353@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+SUMMARY:Je reviens te chercher
+LOCATION:Espace Culturel Renée Wanner\, Chartrettes
+DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nUn homme simule sa fragili
+ té en maison de retraite pour y retrouver son amour de jeunesse centenair
+ e.\n\nOrganisateur : https://www.helloasso.com/associations/generation-art
+ istique-hericy/evenements/je-reviens-te-chercher-1\n\nFiche : https://font
+ ainebleaulive.fr/evenements/je-reviens-te-chercher-chartrettes-6b76baf353/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/je-reviens-te-chercher-chartret
+ tes-6b76baf353/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_1b7e7bcd64@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Randonnée : Écluse de Chartrettes\, Bois de Livry-sur-Seine & l'O
+ bservatoire
+LOCATION:Parking de l'écluse de Chartrettes\, Chartrettes
+DESCRIPTION:Horaires : 14h00–17h00\n\nRandonnée pédestre au départ de 
+ l'écluse de Chartrettes à travers le bois de Livry-sur-Seine.\n\nOrganis
+ ateur : https://www.cafbleau.fr/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/randonnee-ecluse-de-chartrettes-bois-de-livry-sur-seine-et-l-1b7
+ e7bcd64/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-ecluse-de-chartrettes
+ -bois-de-livry-sur-seine-et-l-1b7e7bcd64/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

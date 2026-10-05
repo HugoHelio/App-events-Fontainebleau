@@ -11,6 +11,42 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_4401cd6b8f@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261008
+SUMMARY:État d'urgence
+LOCATION:Salle Marcel Paul\, Bois-le-Roi
+DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nUn dîner de retrouvailles
+  entre amis déraille complètement après l'annonce d'un cambriolage.\n\n
+ Organisateur : https://www.helloasso.com/associations/generation-artistiqu
+ e-hericy/evenements/etat-d-urgence\n\nFiche : https://fontainebleaulive.fr
+ /evenements/etat-d-urgence-bois-le-roi-4401cd6b8f/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/etat-d-urgence-bois-le-roi-4401
+ cd6b8f/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e6407e3bba@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+SUMMARY:L'affaire Buckingham
+LOCATION:Salle Marcel Paul\, Bois-le-Roi
+DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nSpectacle musical burlesqu
+ e retraçant sur canapé les intrigues et complots sous Louis XIII.\n\nOrg
+ anisateur : https://www.helloasso.com/associations/generation-artistique-h
+ ericy/evenements/l-affaire-buckingham\n\nFiche : https://fontainebleaulive
+ .fr/evenements/l-affaire-buckingham-bois-le-roi-e6407e3bba/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/l-affaire-buckingham-bois-le-ro
+ i-e6407e3bba/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_28b842b027@fontainebleaulive.fr
 DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261016

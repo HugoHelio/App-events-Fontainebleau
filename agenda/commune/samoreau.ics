@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Samoreau · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_ed5b96cb2a@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+SUMMARY:Gagnant\, gagnant
+LOCATION:La Grange aux Dîmes\, Samoreau
+DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nLa convention annuelle de 
+ Symbiosis tourne au fiasco déjanté entre dérapages et problèmes techni
+ ques dans une parodie mordante d'entreprise.\n\nOrganisateur : https://www
+ .helloasso.com/associations/generation-artistique-hericy/evenements/gagnan
+ t-gagnant\n\nFiche : https://fontainebleaulive.fr/evenements/gagnant-gagna
+ nt-samoreau-ed5b96cb2a/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/gagnant-gagnant-samoreau-ed5b96
+ cb2a/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3ddbf0121f@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Fallacia
+LOCATION:La Grange aux Dîmes\, Samoreau
+DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nDans un salon huppé\, un 
+ cambrioleur se retrouve coincé dans les querelles et mensonges d'un coupl
+ e adultère.\n\nOrganisateur : https://www.helloasso.com/associations/gene
+ ration-artistique-hericy/evenements/fallacia\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/fallacia-samoreau-3ddbf0121f/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fallacia-samoreau-3ddbf0121f/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

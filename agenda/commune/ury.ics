@@ -30,28 +30,8 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_45461b3470@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
-DTSTART;VALUE=DATE:20261004
-DTEND;VALUE=DATE:20261005
-SUMMARY:Concert symphonique
-LOCATION:Ury
-DESCRIPTION:Tarif : Plein tarif : de 15 à 20 €\, Tarif réduit : de 12 
- à 15 € (Sur réservation\, membr…\n\nConcert symphonique musical orga
- nisé dans la commune d'Ury.\n\nOrganisateur : https://www.fontainebleau-t
- ourisme.com/fr/fiche/7925976/concert-symphonique/\n\nFiche : https://fonta
- inebleaulive.fr/evenements/concert-symphonique-ury-45461b3470/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
-URL:https://fontainebleaulive.fr/evenements/concert-symphonique-ury-45461b3
- 470/
-CATEGORIES:Scène & Spectacles
-GEO:48.34418;2.6029
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_b07e4488a7@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Concert : "Les Solistes du Gâtinais"
@@ -69,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aac3f2bc97@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert de musique baroque
@@ -102,6 +82,25 @@ DESCRIPTION:Horaires : Samedi et dimanche de 10h00 à 18h00\n\nTarif : Grat
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-ury-c65bd4ec2e
  /
 CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d6d343fe1f@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Concert "Au temps de Proust"
+LOCATION:Ury
+DESCRIPTION:Tarif : Tarif unique : Libre participation aux frais.\n\nConcer
+ t de musique classique célébrant l'univers de Marcel Proust.\n\nOrganisa
+ teur : https://www.fontainebleau-tourisme.com/fr/fiche/7926011/concert-au-
+ temps-de-proust/\n\nFiche : https://fontainebleaulive.fr/evenements/concer
+ t-au-temps-de-proust-ury-d6d343fe1f/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-au-temps-de-proust-ury-
+ d6d343fe1f/
+CATEGORIES:Scène & Spectacles
+GEO:48.34418;2.6029
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

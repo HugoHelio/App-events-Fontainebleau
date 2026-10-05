@@ -26,6 +26,31 @@
       "lng": 2.70575,
       "source": "city"
     },
+    "city:champagne sur seine": {
+      "lat": 48.40234,
+      "lng": 2.80035,
+      "source": "city"
+    },
+    "city:chartrettes": {
+      "lat": 48.48805,
+      "lng": 2.71241,
+      "source": "city"
+    },
+    "city:dammarie les lys": {
+      "lat": 48.51514,
+      "lng": 2.62042,
+      "source": "city"
+    },
+    "city:flagy": {
+      "lat": 48.31479,
+      "lng": 2.92264,
+      "source": "city"
+    },
+    "city:fontaine le port": {
+      "lat": 48.48483,
+      "lng": 2.75974,
+      "source": "city"
+    },
     "city:fontainebleau": {
       "lat": 48.40781,
       "lng": 2.70278,
@@ -41,6 +66,16 @@
       "lng": 2.99525,
       "source": "city"
     },
+    "city:le chatelet en brie": {
+      "lat": 48.50619,
+      "lng": 2.80338,
+      "source": "city"
+    },
+    "city:marolles sur seine": {
+      "lat": 48.38359,
+      "lng": 3.03328,
+      "source": "city"
+    },
     "city:milly la foret": {
       "lat": 48.4017,
       "lng": 2.45828,
@@ -51,9 +86,19 @@
       "lng": 2.9574,
       "source": "city"
     },
+    "city:montigny sur loing": {
+      "lat": 48.33545,
+      "lng": 2.7482,
+      "source": "city"
+    },
     "city:moret loing et orvanne": {
       "lat": 48.35661,
       "lng": 2.82107,
+      "source": "city"
+    },
+    "city:nanteau sur lunain": {
+      "lat": 48.25267,
+      "lng": 2.82238,
       "source": "city"
     },
     "city:nemours": {
@@ -61,9 +106,29 @@
       "lng": 2.70305,
       "source": "city"
     },
+    "city:saint mammes": {
+      "lat": 48.38606,
+      "lng": 2.81785,
+      "source": "city"
+    },
     "city:samois sur seine": {
       "lat": 48.45611,
       "lng": 2.75346,
+      "source": "city"
+    },
+    "city:samoreau": {
+      "lat": 48.42179,
+      "lng": 2.7587,
+      "source": "city"
+    },
+    "city:thomery": {
+      "lat": 48.40233,
+      "lng": 2.78149,
+      "source": "city"
+    },
+    "city:treuzy levelay": {
+      "lat": 48.27797,
+      "lng": 2.80453,
       "source": "city"
     },
     "city:ury": {
@@ -76,9 +141,34 @@
       "lng": 2.84915,
       "source": "city"
     },
+    "city:villecerf": {
+      "lat": 48.32745,
+      "lng": 2.85515,
+      "source": "city"
+    },
+    "city:villemarechal": {
+      "lat": 48.27083,
+      "lng": 2.87231,
+      "source": "city"
+    },
+    "city:villemer": {
+      "lat": 48.30364,
+      "lng": 2.82292,
+      "source": "city"
+    },
+    "city:vulaines sur seine": {
+      "lat": 48.43311,
+      "lng": 2.76449,
+      "source": "city"
+    },
     "venue:14 rue des marronniers episy moret loing et orvanne": {
       "lat": 48.33373,
       "lng": 2.78472,
+      "source": "ban"
+    },
+    "venue:38 rue rosa bonheur a thomery thomery": {
+      "lat": 48.39434,
+      "lng": 2.78497,
       "source": "ban"
     },
     "venue:4 quai des platreries samois sur seine": {
@@ -126,7 +216,17 @@
       "lng": 2.60924,
       "source": "ban"
     },
+    "venue:champagne sur seine": {
+      "lat": 48.40234,
+      "lng": 2.80035,
+      "source": "ban"
+    },
     "venue:chateau de fontainebleau fontainebleau": {
+      "lat": 48.40168,
+      "lng": 2.70086,
+      "source": "ban"
+    },
+    "venue:chateau de fontainebleau grands appartements fontainebleau": {
       "lat": 48.40168,
       "lng": 2.70086,
       "source": "ban"
@@ -154,6 +254,11 @@
     "venue:chemin du bois charme le chatelet en brie": {
       "lat": 48.49274,
       "lng": 2.77573,
+      "source": "ban"
+    },
+    "venue:flagy": {
+      "lat": 48.31479,
+      "lng": 2.92264,
       "source": "ban"
     },
     "venue:fontainebleau": {
@@ -201,9 +306,29 @@
       "lng": 2.47163,
       "source": "ban"
     },
+    "venue:mediatheque vernou la celle sur seine": {
+      "lat": 48.39184,
+      "lng": 2.84915,
+      "source": "ban"
+    },
     "venue:mediatheque victor hugo saint germain les corbeil": {
       "lat": 48.62236,
       "lng": 2.49972,
+      "source": "ban"
+    },
+    "venue:montigny sur loing": {
+      "lat": 48.33545,
+      "lng": 2.7482,
+      "source": "ban"
+    },
+    "venue:moret loing et orvanne": {
+      "lat": 48.35661,
+      "lng": 2.82107,
+      "source": "ban"
+    },
+    "venue:nanteau sur lunain": {
+      "lat": 48.25267,
+      "lng": 2.82238,
       "source": "ban"
     },
     "venue:place de la republique et centre ville fontainebleau": {
@@ -241,9 +366,19 @@
       "lng": 2.66264,
       "source": "ban"
     },
+    "venue:pole famille 5 bis rue de la republique moret loing et orvanne": {
+      "lat": 48.37552,
+      "lng": 2.79867,
+      "source": "ban"
+    },
     "venue:rue denis papin mormant mormant": {
       "lat": 48.6136,
       "lng": 2.88478,
+      "source": "ban"
+    },
+    "venue:saint mammes": {
+      "lat": 48.38915,
+      "lng": 2.80788,
       "source": "ban"
     },
     "venue:salle de bal chateau de fontainebleau fontainebleau": {
@@ -261,9 +396,24 @@
       "lng": 2.68988,
       "source": "ban"
     },
+    "venue:thomery": {
+      "lat": 48.40233,
+      "lng": 2.78149,
+      "source": "ban"
+    },
     "venue:ury": {
       "lat": 48.34418,
       "lng": 2.6029,
+      "source": "ban"
+    },
+    "venue:vernou la celle sur seine": {
+      "lat": 48.39184,
+      "lng": 2.84915,
+      "source": "ban"
+    },
+    "venue:ville saint jacques": {
+      "lat": 48.34502,
+      "lng": 2.89854,
       "source": "ban"
     }
   }

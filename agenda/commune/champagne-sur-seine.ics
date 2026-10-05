@@ -1,0 +1,127 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Champagne-sur-Seine · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_1867aba61a@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Grand loto
+LOCATION:Champagne-sur-Seine
+DESCRIPTION:Horaires : 18h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-10-10-grandloto\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/grand-loto-champagne-sur-seine-1867aba61a/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/grand-loto-champagne-sur-seine-
+ 1867aba61a/
+CATEGORIES:Culture & Ateliers
+GEO:48.40234;2.80035
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d00a04cf3c@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Oeuvre d'art participatif " photo ( et) graphie "
+LOCATION:Parc du centre Anne Sylvestre\, place du Général Leclerc à Cham
+ pagne-sur-Seine\, Champagne-sur-Seine
+DESCRIPTION:Découvrez une réalisation artistique collaborative créée pa
+ r les élèves des écoles locales et exposée dans le parc.\n\nOrganisate
+ ur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-15-oeuvredar
+ tparticipatifphotoetgraphie\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/oeuvre-d-art-participatif-photo-et-graphie-champagne-sur-seine-d00a04
+ cf3c/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/oeuvre-d-art-participatif-photo
+ -et-graphie-champagne-sur-seine-d00a04cf3c/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9a23491159@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Color run solidaire
+LOCATION:Palais des Rencontres\, 28 rue Pierre de Coubertin à Champagne-su
+ r-Seine\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 10h\, 14h\n\nÉvénement solidaire au profit d'Octob
+ re Rose comprenant une course colorée le matin et une pièce de théâtre
+  l'après-midi.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/age
+ nda.html#2026-10-18-colorrunsolidaire\n\nFiche : https://fontainebleaulive
+ .fr/evenements/color-run-solidaire-champagne-sur-seine-9a23491159/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/color-run-solidaire-champagne-s
+ ur-seine-9a23491159/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_adfd9661ba@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Double concert
+LOCATION:Champagne-sur-Seine
+DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-10-24-doubleconcert\n\nFiche : https://fontaineble
+ aulive.fr/evenements/double-concert-champagne-sur-seine-adfd9661ba/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/double-concert-champagne-sur-se
+ ine-adfd9661ba/
+CATEGORIES:Scène & Spectacles
+GEO:48.40234;2.80035
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_bdc5e49f92@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Vide ta chambre
+LOCATION:Salle Marcel Pagnol\, rue du Docteur Fleming à Champagne-sur-Sein
+ e\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 8h30 à 17h\n\nParticipez au vide-chambre de Champag
+ ne-sur-Seine pour dénicher des affaires d'occasion.\n\nOrganisateur : htt
+ ps://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-08-videtachambre\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/vide-ta-chambre-champagne-
+ sur-seine-bdc5e49f92/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vide-ta-chambre-champagne-sur-s
+ eine-bdc5e49f92/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_18524de635@fontainebleaulive.fr
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Théâtre-forum " un aidant peut en cacher un autre "
+LOCATION:Palais des Rencontres\, 28 rue Pierre de Coubertin à Champagne-su
+ r-Seine\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 14h à 16h30\n\nAssistez à un théâtre-forum abord
+ ant le quotidien et le rôle essentiel des aidants.\n\nOrganisateur : http
+ s://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-13-theatreforumunaida
+ ntpeutencacherunautre\n\nFiche : https://fontainebleaulive.fr/evenements/t
+ heatre-forum-un-aidant-peut-en-cacher-un-autre-champagne-sur-seine-18524de
+ 635/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/theatre-forum-un-aidant-peut-en
+ -cacher-un-autre-champagne-sur-seine-18524de635/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

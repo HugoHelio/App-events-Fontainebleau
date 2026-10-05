@@ -36,6 +36,11 @@
       "reason": "Il s'agit de la même exposition patrimoniale au Château de Fontainebleau aux mêmes dates.",
       "at": "2026-10-03"
     },
+    "ACT_002|EVT_70ec30ef01": {
+      "same": false,
+      "reason": "Il s'agit d'une visite guidée d'un côté et d'une grande exposition patrimoniale de l'autre.",
+      "at": "2026-10-05"
+    },
     "ACT_002|EVT_8193908330": {
       "same": false,
       "reason": "Une fiche concerne une exposition temporaire et l'autre des promenades musicales.",
@@ -55,6 +60,11 @@
       "same": true,
       "reason": "Il s'agit de la même grande exposition consacrée à Marie-Antoinette et Louis XVI au Château de Fontainebleau.",
       "at": "2026-10-04"
+    },
+    "ACT_002|EVT_d1e260bced": {
+      "same": false,
+      "reason": "L'une est une exposition patrimoniale de plusieurs mois, l'autre est un colloque de deux jours.",
+      "at": "2026-10-05"
     },
     "ACT_003|ACT_020": {
       "same": false,
@@ -111,6 +121,11 @@
       "reason": "L'un est une série de concerts et l'autre une exposition.",
       "at": "2026-10-03"
     },
+    "ACT_008|EVT_70ec30ef01": {
+      "same": false,
+      "reason": "Une série de concerts et une visite guidée des boudoirs sont deux événements distincts.",
+      "at": "2026-10-05"
+    },
     "ACT_008|EVT_8193908330": {
       "same": false,
       "reason": "L'une des fiches présente le programme général tandis que l'autre est un rendez-vous spécifique (les promenades musicales).",
@@ -150,6 +165,11 @@
       "same": false,
       "reason": "Ce sont deux événements différents : un cycle de concerts d'un côté, et une visite théâtralisée de l'autre.",
       "at": "2026-09-24"
+    },
+    "ACT_008|EVT_e052764d87": {
+      "same": false,
+      "reason": "L'un est une série de concerts, l'autre une exposition de costumes.",
+      "at": "2026-10-05"
     },
     "ACT_008|EVT_e444bb4675": {
       "same": false,
@@ -231,10 +251,20 @@
       "reason": "Il s'agit de la même promenade guidée à Larchant le 9 octobre 2026 organisée par l'AAFF.",
       "at": "2026-09-30"
     },
+    "EVT_01502bfb93|EVT_74dbdc83b2": {
+      "same": true,
+      "reason": "Même sortie guidée au Marais de Larchant le 9 octobre 2026 de 10h15 à 17h00.",
+      "at": "2026-10-05"
+    },
     "EVT_01502bfb93|EVT_82d9a441d0": {
       "same": true,
       "reason": "Même sortie guidée nature organisée par Les Amis de la Forêt de Fontainebleau le 9 octobre 2026.",
       "at": "2026-09-24"
+    },
+    "EVT_01502bfb93|EVT_eeeddbe463": {
+      "same": true,
+      "reason": "Même promenade guidée à Larchant organisée le même jour et aux mêmes horaires.",
+      "at": "2026-10-05"
     },
     "EVT_043effb84c|EVT_0ab982a6c4": {
       "same": true,
@@ -276,10 +306,25 @@
       "reason": "Il s'agit du même concert/spectacle de la Saint-Hubert au Château de Fontainebleau le 24 octobre 2026.",
       "at": "2026-09-30"
     },
+    "EVT_090407a470|EVT_db2c47850c": {
+      "same": true,
+      "reason": "Il s'agit du même concert et spectacle d'art campagnard/chasse pour la Saint-Hubert au Château de Fontainebleau le même jour.",
+      "at": "2026-10-05"
+    },
     "EVT_0ab982a6c4|EVT_48bed7795d": {
       "same": true,
       "reason": "Il s'agit de la même balade guidée organisée par les Amis de la Forêt de Fontainebleau le 17 octobre 2026.",
       "at": "2026-09-30"
+    },
+    "EVT_0ab982a6c4|EVT_be4c28246a": {
+      "same": true,
+      "reason": "Même promenade guidée au Mont Merle et au Rocher Fourceau aux mêmes date et horaires.",
+      "at": "2026-10-05"
+    },
+    "EVT_0ab982a6c4|EVT_c46d984519": {
+      "same": true,
+      "reason": "Il s'agit de la même balade guidée organisée le 17 octobre 2026 aux mêmes horaires.",
+      "at": "2026-10-05"
     },
     "EVT_0ab982a6c4|EVT_d547843611": {
       "same": true,
@@ -301,6 +346,16 @@
       "reason": "Même compétition équestre militaire se déroulant sur les mêmes dates et le même lieu.",
       "at": "2026-09-24"
     },
+    "EVT_10bdd5a95e|EVT_60662fe205": {
+      "same": true,
+      "reason": "Même spectacle Le Bibliothécaire au Théâtre Municipal le 12 décembre 2026 aux mêmes horaires.",
+      "at": "2026-10-05"
+    },
+    "EVT_10bdd5a95e|EVT_769f22b469": {
+      "same": true,
+      "reason": "Il s'agit du même spectacle jeune public « Le Bibliothécaire » joué le même jour au Théâtre municipal de Fontainebleau.",
+      "at": "2026-10-05"
+    },
     "EVT_1195115adf|EVT_1a4521c35c": {
       "same": true,
       "reason": "Les deux fiches désignent le même spectacle de sortie de résidence de la compagnie Camina-e le 16 octobre.",
@@ -311,6 +366,21 @@
       "reason": "Il s'agit de la même représentation du spectacle de la compagnie Camina-e le 16 octobre.",
       "at": "2026-09-27"
     },
+    "EVT_12289466f5|EVT_82e77aacb9": {
+      "same": true,
+      "reason": "Même visite guidée thématique en forêt programmée le 22 novembre 2026 à 14h.",
+      "at": "2026-10-05"
+    },
+    "EVT_12289466f5|EVT_ea515f4cb5": {
+      "same": false,
+      "reason": "L'une est la fiche générique du programme des visites et l'autre un parcours spécifique.",
+      "at": "2026-10-05"
+    },
+    "EVT_13b2cb72ac|EVT_28f83599a6": {
+      "same": false,
+      "reason": "Deux événements différents dans deux lieux distincts (le Château vs le Jardin des Arts).",
+      "at": "2026-10-05"
+    },
     "EVT_1455f7d084|EVT_4322eab16b": {
       "same": false,
       "reason": "La première fiche concerne le concert de l'Orchestre de la Garde républicaine au théâtre, tandis que la seconde annonce la célébration globale de l'anniversaire",
@@ -320,6 +390,11 @@
       "same": true,
       "reason": "Les deux fiches font référence à la même brocante organisée au Grand Parquet le 11 novembre.",
       "at": "2026-09-27"
+    },
+    "EVT_1512e83552|EVT_6139b6c3ec": {
+      "same": true,
+      "reason": "Les deux fiches annoncent la même brocante organisée au Grand Parquet le 11 novembre 2026.",
+      "at": "2026-10-05"
     },
     "EVT_1512e83552|EVT_cdf331c51b": {
       "same": true,
@@ -401,6 +476,11 @@
       "reason": "Les deux expositions se déroulent dans des lieux différents à Barbizon avec des dates distinctes.",
       "at": "2026-09-27"
     },
+    "EVT_28f83599a6|EVT_b75f92b9d9": {
+      "same": true,
+      "reason": "Même événement/exposition d'hiver au Jardin des Arts sur la même période.",
+      "at": "2026-10-05"
+    },
     "EVT_297d87a4d1|EVT_9a5a12d0a7": {
       "same": true,
       "reason": "Il s'agit de la même excursion bryologique organisée au Mont Andart à la même date et aux mêmes horaires.",
@@ -420,6 +500,11 @@
       "same": true,
       "reason": "Même activité de découverte de l'église et carnet de dessin le 17 octobre 2026 à Larchant.",
       "at": "2026-09-24"
+    },
+    "EVT_35401f6b62|EVT_efe4049c33": {
+      "same": true,
+      "reason": "Mêmes dates, mêmes horaires, mêmes tarifs et même œuvre musicale de Monteverdi interprétée par les ensembles Balthasar Neumann.",
+      "at": "2026-10-05"
     },
     "EVT_374c79c2fe|EVT_4dc2b6d4a3": {
       "same": false,
@@ -455,6 +540,11 @@
       "same": false,
       "reason": "Une fiche concerne une sortie ponctuelle le 17 octobre alors que l'autre s'étend jusqu'en décembre.",
       "at": "2026-09-24"
+    },
+    "EVT_3d0681976d|EVT_d71e3a1db3": {
+      "same": true,
+      "reason": "Les deux fiches désignent la même édition de novembre de la brocante mensuelle d'antiquités Place de l'Aigle Noir.",
+      "at": "2026-10-05"
     },
     "EVT_3e2913f3ff|EVT_fcf3ac200d": {
       "same": false,
@@ -616,6 +706,11 @@
       "reason": "L'une est une visite théâtralisée au château et l'autre un cycle de films au cinéma.",
       "at": "2026-10-04"
     },
+    "EVT_50a3ab2f84|EVT_e052764d87": {
+      "same": false,
+      "reason": "L'une est une exposition au château, l'autre un événement cinéma à l'Ermitage.",
+      "at": "2026-10-05"
+    },
     "EVT_50dee8210d|EVT_bc6f0f0888": {
       "same": true,
       "reason": "Il s'agit du même concert de la Sainte-Cécile au Théâtre municipal le 20 novembre 2026.",
@@ -631,10 +726,20 @@
       "reason": "Même promenade guidée sur le sentier 17 organisée par les Amis de la Forêt de Fontainebleau le 22 octobre 2026.",
       "at": "2026-10-03"
     },
+    "EVT_5266991852|EVT_6815b56054": {
+      "same": true,
+      "reason": "Même promenade guidée sur le sentier 17 le 22 octobre 2026 de 9h à 12h.",
+      "at": "2026-10-05"
+    },
     "EVT_5266991852|EVT_a5d6e5d6bf": {
       "same": true,
       "reason": "Même promenade guidée sur le sentier 17 le 22 octobre 2026 de 9h à 12h.",
       "at": "2026-09-24"
+    },
+    "EVT_544cf67e58|EVT_e905a99489": {
+      "same": false,
+      "reason": "L'une est une animation spécifique au Château de Rosa Bonheur, l'autre une soirée Halloween globale.",
+      "at": "2026-10-05"
     },
     "EVT_56635afd7b|EVT_5a0dc339fd": {
       "same": false,
@@ -665,6 +770,11 @@
       "same": false,
       "reason": "L'une est une visite guidée spécifique tandis que l'autre est l'exposition générale.",
       "at": "2026-10-03"
+    },
+    "EVT_5cb728f120|EVT_70ec30ef01": {
+      "same": false,
+      "reason": "Ce sont deux parcours de visites guidées distincts avec des thématiques et tarifs différents.",
+      "at": "2026-10-05"
     },
     "EVT_5cb728f120|EVT_8193908330": {
       "same": false,
@@ -701,6 +811,11 @@
       "reason": "L'un est une exposition temporaire et l'autre une visite guidée des appartements.",
       "at": "2026-09-24"
     },
+    "EVT_5cb728f120|EVT_d1e260bced": {
+      "same": false,
+      "reason": "Une visite guidée et un colloque scientifique sont deux événements distincts.",
+      "at": "2026-10-05"
+    },
     "EVT_5cb728f120|EVT_d2a0dae1a0": {
       "same": false,
       "reason": "L'un est une visite guidée et l'autre est un concert.",
@@ -711,10 +826,20 @@
       "reason": "Il s'agit de deux visites différentes avec des dates, thèmes et formats distincts.",
       "at": "2026-09-24"
     },
+    "EVT_5cb728f120|EVT_e052764d87": {
+      "same": false,
+      "reason": "L'une est une visite guidée des appartements, l'autre une exposition de costumes.",
+      "at": "2026-10-05"
+    },
     "EVT_5cb728f120|EVT_e444bb4675": {
       "same": false,
       "reason": "L'un est une visite guidée et l'autre est un concert.",
       "at": "2026-09-24"
+    },
+    "EVT_5cb728f120|EVT_e8f6262b65": {
+      "same": false,
+      "reason": "Deux visites guidées thématiques distinctes du programme avec des thèmes et périodes de dates différents.",
+      "at": "2026-10-05"
     },
     "EVT_5cf92cce1f|EVT_8cd503182f": {
       "same": false,
@@ -736,10 +861,30 @@
       "reason": "Il s'agit d'un cycle de conférences d'un côté et de l'exposition globale de l'autre.",
       "at": "2026-10-03"
     },
+    "EVT_6129d65ad6|EVT_70ec30ef01": {
+      "same": false,
+      "reason": "Une visite guidée et un cycle de conférences sont deux activités différentes.",
+      "at": "2026-10-05"
+    },
     "EVT_6129d65ad6|EVT_b467273a86": {
       "same": false,
       "reason": "Un cycle de conférences et une exposition sont deux activités distinctes.",
       "at": "2026-10-04"
+    },
+    "EVT_6129d65ad6|EVT_d1e260bced": {
+      "same": true,
+      "reason": "Les deux fiches décrivent le même colloque / cycle de conférences aux mêmes dates au Château de Fontainebleau.",
+      "at": "2026-10-05"
+    },
+    "EVT_6139b6c3ec|EVT_cdf331c51b": {
+      "same": true,
+      "reason": "Il s'agit de la même brocante d'automne organisée le 11 novembre au Grand Parquet.",
+      "at": "2026-10-05"
+    },
+    "EVT_6139b6c3ec|EVT_f55e6302f3": {
+      "same": true,
+      "reason": "Les deux fiches décrivent la brocante du 11 novembre au Grand Parquet.",
+      "at": "2026-10-05"
     },
     "EVT_63ec6f5317|EVT_821330a8b5": {
       "same": false,
@@ -786,15 +931,55 @@
       "reason": "Il s'agit du même événement/festival consacré aux prédateurs au Théâtre de Fontainebleau aux mêmes dates.",
       "at": "2026-09-30"
     },
+    "EVT_70ec30ef01|EVT_8193908330": {
+      "same": false,
+      "reason": "Une visite guidée des boudoirs et une déambulation musicale sont deux animations différentes.",
+      "at": "2026-10-05"
+    },
     "EVT_70ec30ef01|EVT_8cd503182f": {
       "same": false,
       "reason": "L'un est un cycle de films au cinéma Ermitage, l'autre une visite guidée au château.",
       "at": "2026-10-03"
     },
+    "EVT_70ec30ef01|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "L'une est une exposition consacrée aux costumes de scène et l'autre une visite guidée des boudoirs.",
+      "at": "2026-10-05"
+    },
+    "EVT_70ec30ef01|EVT_d1e260bced": {
+      "same": false,
+      "reason": "Une visite guidée des appartements intimes et un colloque scientifique sont deux événements distincts.",
+      "at": "2026-10-05"
+    },
+    "EVT_70ec30ef01|EVT_d4afe803bc": {
+      "same": false,
+      "reason": "Il s'agit de deux visites distinctes, l'une thématique classique et l'autre théâtralisée sur la mode.",
+      "at": "2026-10-05"
+    },
+    "EVT_70ec30ef01|EVT_e052764d87": {
+      "same": false,
+      "reason": "Une visite guidée des boudoirs ne correspond pas à l'exposition de costumes de scène Christian Lacroix.",
+      "at": "2026-10-05"
+    },
     "EVT_7387a9aaa4|EVT_8baf5b24c3": {
       "same": true,
       "reason": "Il s'agit du même stage de photographie en forêt le 7 novembre au même tarif.",
       "at": "2026-10-03"
+    },
+    "EVT_74dbdc83b2|EVT_eeeddbe463": {
+      "same": true,
+      "reason": "Même randonnée guidée à Larchant le 9 octobre 2026.",
+      "at": "2026-10-05"
+    },
+    "EVT_7b79741d7e|EVT_93af25d735": {
+      "same": false,
+      "reason": "L'un est une visite guidée de l'école militaire et l'autre un concours équestre au Grand Parquet.",
+      "at": "2026-10-05"
+    },
+    "EVT_7d4a47fcf3|EVT_af1a49c6c7": {
+      "same": true,
+      "reason": "Même représentation de l'opéra La Flûte enchantée au Théâtre municipal le 6 décembre 2026 à 17h.",
+      "at": "2026-10-05"
     },
     "EVT_8193908330|EVT_8cd503182f": {
       "same": false,
@@ -825,6 +1010,11 @@
       "same": false,
       "reason": "Il s'agit de deux activités différentes (une déambulation musicale vs une visite théâtralisée sur la mode).",
       "at": "2026-09-24"
+    },
+    "EVT_8193908330|EVT_e052764d87": {
+      "same": false,
+      "reason": "L'une concerne des déambulations musicales, l'autre une exposition.",
+      "at": "2026-10-05"
     },
     "EVT_8193908330|EVT_e444bb4675": {
       "same": false,
@@ -866,6 +1056,11 @@
       "reason": "Un cycle cinématographique et une visite théâtralisée sont deux activités différentes.",
       "at": "2026-09-24"
     },
+    "EVT_8cd503182f|EVT_e052764d87": {
+      "same": false,
+      "reason": "L'une est une programmation au cinéma Ermitage, l'autre une exposition au château.",
+      "at": "2026-10-05"
+    },
     "EVT_91b696b9a1|EVT_b6381a262c": {
       "same": true,
       "reason": "Il s'agit de la même représentation de la pièce de théâtre La Dictée le 21 novembre 2026.",
@@ -875,6 +1070,11 @@
       "same": true,
       "reason": "Les deux fiches désignent la même compétition hippique organisée par l'École Militaire d'Équitation.",
       "at": "2026-09-24"
+    },
+    "EVT_964a968e35|EVT_db2c47850c": {
+      "same": true,
+      "reason": "Même événement de célébration de la Saint-Hubert à Fontainebleau le 24 octobre 2026.",
+      "at": "2026-10-05"
     },
     "EVT_97f20c8238|EVT_ca277192a3": {
       "same": true,
@@ -911,6 +1111,11 @@
       "reason": "Même visite guidée sur les traces des animaux le 21 novembre 2026 au même endroit.",
       "at": "2026-09-24"
     },
+    "EVT_adf04e7787|EVT_efe4049c33": {
+      "same": true,
+      "reason": "Il s'agit de la même série de concerts consacrée aux Vêpres de Monteverdi aux mêmes dates au Château.",
+      "at": "2026-10-05"
+    },
     "EVT_b1d13ab685|EVT_d72ddbdf1d": {
       "same": true,
       "reason": "Même spectacle seul-en-scène programmé au Théâtre municipal la même soirée.",
@@ -935,6 +1140,11 @@
       "same": false,
       "reason": "L'une est une visite théâtralisée animée par des comédiens et l'autre est la grande exposition du château.",
       "at": "2026-10-04"
+    },
+    "EVT_be4c28246a|EVT_c46d984519": {
+      "same": true,
+      "reason": "C'est la même promenade guidée organisée par les Amis de la Forêt de Fontainebleau le 17 octobre 2026.",
+      "at": "2026-10-05"
     },
     "EVT_be946c379f|EVT_bf4d4eb7c8": {
       "same": false,
@@ -965,6 +1175,11 @@
       "same": true,
       "reason": "Il s'agit du même concours équestre Jump Bost organisé au Grand Parquet aux mêmes dates.",
       "at": "2026-09-27"
+    },
+    "EVT_cd4a6118fa|EVT_e052764d87": {
+      "same": false,
+      "reason": "Les dates de début d'exposition sont nettement différentes (septembre vs juin).",
+      "at": "2026-10-05"
     },
     "EVT_cdf331c51b|EVT_dbb0ab771b": {
       "same": true,

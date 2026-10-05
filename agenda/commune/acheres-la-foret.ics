@@ -11,29 +11,8 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_ed8eb35ed8@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
-DTSTART;VALUE=DATE:20261003
-DTEND;VALUE=DATE:20261005
-SUMMARY:Visite libre du village d’art préludien de Chomo
-LOCATION:Village d’art préludien de Chomo\, Achères-la-Forêt\, Achère
- s-la-Forêt
-DESCRIPTION:Tarif : Plein tarif : 5 €\, Tarif réduit : 3 € (demandeur 
- d'emploi\, minima sociaux\, jeun…\n\nDécouverte en visite libre du vill
- age d'art préludien fondé par Chomo à Achères-la-Forêt.\n\nOrganisate
- ur : https://www.fontainebleau-tourisme.com/fr/fiche/6593209/visite-libre-
- du-village-dart-preludien-de-chomo/\n\nFiche : https://fontainebleaulive.f
- r/evenements/visite-libre-du-village-d-art-preludien-de-chomo-acheres-la-f
- oret-ed8eb35ed8/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-libre-du-village-d-art-p
- reludien-de-chomo-acheres-la-foret-ed8eb35ed8/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_75f2a86ce4@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Les 12 heures d'Octobre rose
@@ -53,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a23001839b@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261019
 SUMMARY:Visite libre du village d’art préludien de Chomo

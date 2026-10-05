@@ -11,23 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:ACT_001@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261004
-DTEND;VALUE=DATE:20261005
-SUMMARY:Le Bouchon de Nemours
-LOCATION:Centre-ville de Nemours\, Nemours
-DESCRIPTION:Horaires : 10h–12h15\n\nTarif : Gratuit\n\nGrand rassemblemen
- t et défilé rétro de voitures anciennes et véhicules de collection rec
- réant l'ambiance des départs en vacances d'antan.\n\nOrganisateur : http
- s://www.nemours.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/le-
- bouchon-de-nemours-act001/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/le-bouchon-de-nemours-act001/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_613596f295@fontainebleaulive.fr
 DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261010
@@ -83,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
