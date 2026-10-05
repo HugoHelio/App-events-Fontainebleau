@@ -1932,6 +1932,20 @@
       applyFilters();
     }
 
+    /**
+     * « Tout afficher » and Escape: drop the town or sector too, then frame everything (05/10).
+     * After picking a sector, the button used to reframe that sector only. Category, period and
+     * « Gratuit » are left alone: they are not a place.
+     */
+    function showAll() {
+      const city = document.getElementById('filterCity');
+      if (city.value) {
+        city.value = '';
+        applyFilters();
+      }
+      clearSelection();
+    }
+
     function clearSelection() {
       highlightCards([]);
       if (!map || !markersGroup) return;
@@ -2130,7 +2144,7 @@
       document.querySelectorAll('.lang-btn').forEach((btn) => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
-      document.getElementById('resetView').addEventListener('click', clearSelection);
+      document.getElementById('resetView').addEventListener('click', showAll);
       document.getElementById('weekendPill').addEventListener('click', () => track('weekend-pill', 'click'));
       document.getElementById('todayPill').addEventListener('click', () => track('today-pill', 'click'));
       // The footer logo returns to the top without reloading: filters and selection are kept.
@@ -2146,7 +2160,8 @@
       }, { passive: true });
       document.getElementById('subscribeBtn').addEventListener('click', toggleSubscribe);
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') clearSelection();
+        // In a form field, Escape closes the dropdown or cancels the typing: not a reset.
+        if (e.key === 'Escape' && !e.target.closest('input, select, textarea')) showAll();
       });
     });
 
