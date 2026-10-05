@@ -940,7 +940,11 @@ async function geocodeRecord(rec, cache) {
     let hit = cache.entries[key];
     if (!hit) {
       const r = await banSearch(e.city, { municipality: true });
-      if (r && inBbox(r.lat, r.lng)) {
+      // A commune just outside the box is still placed where it is, so the radius filter drops
+      // the event. Otherwise the Fontainebleau-centre fallback published it at 0 km: Marolles-sur-
+      // Seine, 24.6 km, on 04/10. Farther away, a namesake elsewhere in France is likelier (Avon
+      // also exists in Deux-Sèvres): the fallback stays.
+      if (r && (inBbox(r.lat, r.lng) || distanceKm(r.lat, r.lng) <= 2 * CONFIG.maxRadiusKm)) {
         hit = { lat: round5(r.lat), lng: round5(r.lng), source: 'city' };
         cache.entries[key] = hit;
         cache.dirty = true;
