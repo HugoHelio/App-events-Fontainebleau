@@ -21,6 +21,7 @@
  *   GEMINI_API_KEY=… node scripts/check-grounding.js
  *   GEMINI_API_KEY=… node scripts/check-grounding.js --models gemini-3.6-flash,gemini-3.8-flash
  *   GEMINI_API_KEY=… node scripts/check-grounding.js --no-scan      # control question only
+ *   GEMINI_API_KEY=… node scripts/check-grounding.js --scans villages   # some scans only
  */
 
 'use strict';
@@ -35,9 +36,16 @@ const args = process.argv.slice(2);
 const argValue = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : undefined; };
 const models = (argValue('--models') || CONFIG.model).split(',').map((m) => m.trim()).filter(Boolean);
 const withScan = !args.includes('--no-scan');
+const onlyScans = (argValue('--scans') || '').split(',').map((s) => s.trim()).filter(Boolean);
 
-const out = [];
-const log = (line = '') => { console.log(line); out.push(line); };
+// Each line reaches the job summary as soon as it is known: on 05/10 the five scans ran past the
+// job's time limit, and a summary written only at the end left nothing to read.
+const log = (line = '') => {
+  console.log(line);
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, line + '\n'); } catch { /* non-fatal */ }
+  }
+};
 const cell = (s) => String(s).replace(/\|/g, '/').replace(/\s+/g, ' ');
 const tokens = (u) => `${u?.promptTokenCount ?? '?'} / ${u?.candidatesTokenCount ?? '?'} / ${u?.thoughtsTokenCount ?? 0}`;
 const isHome = (u) => { try { return new URL(u).pathname.replace(/\/$/, '') === ''; } catch { return false; } };
@@ -101,16 +109,12 @@ async function main() {
     CONFIG.model = model;   // runScan calls the model the pipeline is configured with
     await control(model);
     if (!withScan) continue;
-    for (const s of SCANS) await scan(model, s, ctx);
+    for (const s of SCANS.filter((x) => !onlyScans.length || onlyScans.includes(x.name))) await scan(model, s, ctx);
   }
   log('');
   log('Lecture : question témoin sans recherche → compte ou API (palier de facturation dans AI Studio), '
     + 'HTTP 429 / 403 → quota ou facturation. Scans ✅ → la collecte cherche vraiment ; une question sans '
     + 'recherche est écartée, jamais publiée. Beaucoup de pages d\'accueil dans les liens → réponses de mémoire.');
-
-  if (process.env.GITHUB_STEP_SUMMARY) {
-    try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, out.join('\n') + '\n'); } catch { /* non-fatal */ }
-  }
 }
 
 main().catch((err) => {

@@ -5,13 +5,18 @@ name: Diagnostic de la recherche Google
 # secrets GitHub : ce bouton permet de tester sans la copier sur une machine.
 #
 # Un clic sur "Run workflow" dans l'onglet Actions. Lecture seule : rien n'est ecrit ni publie.
-# Lance les quatre vrais scans (en deux temps, sec. 7 du 04/10) sans rien publier.
-# Cout : environ 0,20 $ par modele.
+# Lance les cinq vrais scans (en deux temps, sec. 7 du 04/10 ; « villages » depuis le 05/10)
+# sans rien publier. Cout : environ 0,25 $ par modele, une dizaine de minutes.
+# Le resume s'ecrit au fur et a mesure : meme interrompu, il montre ce qui a deja tourne.
 on:
   workflow_dispatch:
     inputs:
       modeles:
         description: "Modeles a tester, separes par des virgules (vide = celui du pipeline)"
+        type: string
+        default: ""
+      scans:
+        description: "Scans a tester, separes par des virgules (vide = les cinq ; ex. villages)"
         type: string
         default: ""
 
@@ -21,7 +26,8 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # 10 min suffisaient a quatre scans (7 min le 04/10), plus a cinq : annule le 05/10.
+    timeout-minutes: 25
 
     steps:
       - name: Récupérer le code du dépôt
@@ -36,9 +42,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MODELES: ${{ inputs.modeles }}
+          SCANS: ${{ inputs.scans }}
         run: |
-          if [ -n "$MODELES" ]; then
-            node scripts/check-grounding.js --models "$MODELES"
-          else
-            node scripts/check-grounding.js
-          fi
+          set --
+          if [ -n "$MODELES" ]; then set -- "$@" --models "$MODELES"; fi
+          if [ -n "$SCANS" ]; then set -- "$@" --scans "$SCANS"; fi
+          node scripts/check-grounding.js "$@"
