@@ -209,6 +209,11 @@ const SCANS = [
     ask: 'événements publics (fêtes, expositions, portes ouvertes d\'ateliers d\'artistes, concerts, ' +
       'spectacles, brocantes, courses, sorties nature)',
     areas: VILLAGE_AREAS,
+    // Never adds an event (05/10): the second diagnostic gave the Briardises festival in Vulaines
+    // and Fontaine-le-Port, where it does not play — town sites relay the whole festival's poster
+    // and the model made one date per village. Its records only confirm (lastSeen) an event a
+    // legitimate source or an earlier scan already holds; their fields are never copied.
+    confirmOnly: true,
   },
 ];
 
@@ -1260,6 +1265,9 @@ function renderSummary(stats, ctx) {
       if (dtRej.length) L.push(`  - rejected at validation: ${dtRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
     }
   }
+  if (stats.villagesConfirmed || stats.villagesUnconfirmed) {
+    L.push(`- 🏘️ Scan villages (jamais publié seul) : **${stats.villagesConfirmed}** événement(s) reconfirmé(s) · ${stats.villagesUnconfirmed} sans source légitime, non publié(s)`);
+  }
   if (stats.sites) {
     const st = stats.sites;
     if (st.error) {
@@ -1635,6 +1643,7 @@ async function main() {
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
     sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
+    villagesConfirmed: 0, villagesUnconfirmed: 0,
     unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
@@ -1684,7 +1693,7 @@ async function main() {
         continue;
       }
       okScans++;
-      rawNew.push(...events);
+      rawNew.push(...(scan.confirmOnly ? events.map((e) => ({ ...e, _confirmOnly: true })) : events));
       stats.scans.push({ name: scan.name, raw: events.length, ...meta });
       console.log(`   → ${events.length} raw events${meta.salvaged ? ' (truncated output, salvaged)' : ''}`);
     } catch (err) {
@@ -1769,10 +1778,12 @@ async function main() {
 
   // 2. Validate new records ─────────────────────────────────────────────
   const validNew = [];
+  const validConfirmOnly = [];
   for (const raw of rawNew) {
     const v = validateEvent(raw, ctx);
-    if (v.ok) validNew.push(v);
-    else bump(stats.rejected, v.reason);
+    if (!v.ok) bump(stats.rejected, v.reason);
+    else if (raw && raw._confirmOnly === true) validConfirmOnly.push(v);
+    else validNew.push(v);
   }
   console.log(`🧹 ${validNew.length}/${rawNew.length} new records valid`);
 
@@ -1874,6 +1885,16 @@ async function main() {
   // what nothing matches becomes a new event. Wording that differs more than isSameOccurrence()
   // tolerates is caught by the judged dedupe below, which keeps the stored record as winner.
   for (const v of validSite) addRecord(v, { fuzzy: true, counter: 'siteConfirmed', confirm: true, addNew: !v.long });
+  // After every source that may add: a villages record (confirmOnly scan) only refreshes lastSeen
+  // of an event already held — never its dates or fields, never a new event (§7, 05/10).
+  for (const v of validConfirmOnly) {
+    const rec = records.get(eventKey(v.event))
+      || [...records.values()].find((r) => datatourisme.isSameOccurrence(v.event, r.event));
+    if (!rec) { stats.villagesUnconfirmed++; continue; }
+    rec.refreshed = true;
+    rec.event.lastSeen = today;
+    stats.villagesConfirmed++;
+  }
 
   // A site that lists, date by date, an event we already hold as one span: the tourist office
   // gave "Sauvages !" on 10-11 October while we had the festival 9-11 October, and the judged
