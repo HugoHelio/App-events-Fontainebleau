@@ -1,8 +1,8 @@
 # Technical & Architecture Design Document
 
 **Project:** Autonomous Local Event Aggregator (Fontainebleau Region)
-**Date:** October 4, 2026 (first written September 20)
-**Version:** 2.4 (organisers' sites as a published source, static pages indexed by Google, libraries self-hosted)
+**Date:** October 5, 2026 (first written September 20)
+**Version:** 2.5 (organisers' sites as a published source, static pages indexed by Google, libraries self-hosted, monetisation phase 1: partner offers)
 **Status:** in production at fontainebleaulive.fr, **290 events** from five sources (Gemini, organisers' sites, DATAtourisme, OpenAgenda, and the city's RSS feed once its firewall lets GitHub through), fiches indexed by Google, first organic traffic without any promotion · 🟠 **the grounding terms issue (§3.G) is now a knowingly accepted risk, not a blocker — see the decision of September 20 in §7 and the conditions in §8**
 
 ---
@@ -1127,6 +1127,38 @@ confirmed to survive. A second pass over the result removes nothing further (ide
 
 ---
 
+### AA. Partner offers — monetisation phase 1 (item 83, October 5, 2026)
+
+**Why affiliation, and why not on the existing links.** Measured on the 362 live events: 18
+links lead to a ticketing site (14 HelloAsso, 4 Mapado), and neither runs an affiliate
+programme. Putting a tracking code on the organisers' links would earn nothing. The revenue
+has to come from a **second** link, offered next to the organiser's link when a partner sells
+the very ticket the event needs. Benchmark of 05/10 (programmes, rates, fit): France Billet /
+Fnac Spectacles (Awin, rate not published, **product feed**), Ticketmaster France (Awin,
+0.32 € per ticket), Tiqets and GetYourGuide (8 %, 30-day cookie), Booking.com (CJ, 4 %,
+session only). Rejected: ticket resale aggregators (against the trust promise), HelloAsso and
+Mapado (no programme). Priorities and the full sequence: §9, A2 (work order of 05/10).
+
+**How it works.** `affiliates.json` (hand-edited, like `venues.json`) lists offers. An offer
+applies when it is `active`, the town matches, every `match` word is in `locationName`,
+**every `price` word is in `price`**, and the event is confirmed by a source we read
+(`site`, `datatourisme`, `openagenda`). `scripts/affiliates.js` computes the `booking` field,
+**derived in `serializeEvent()` like `pageUrl`**, never carried over: switching an offer off
+removes it on the next write. The organiser's `url` is never touched.
+
+- First offer: Tiqets « Château de Fontainebleau : billet coupe-file », **17 €, the official
+  price** (checked 05/10). Price words `inclus` + `billet`: it reaches the 4 exhibitions and
+  musical walks « inclus dans le billet d'entrée », **not** the concerts (27 €) or guided
+  tours sold separately, and not the Gemini-only duplicate of the Marie-Antoinette exhibition.
+- Shipped **inactive** (`"active": false`) until the affiliate link exists (step 0, section C).
+- Display: home card (outlined button, `rel="sponsored"`, « Lien partenaire Tiqets, même
+  prix » — the « même prix » only with `samePrice: true`), event page (button after the
+  organiser's, one-line disclosure linking to `/nos-sources/#financement`), and a « Comment le
+  site est financé » paragraph on `/nos-sources/` that exists only while an offer is live.
+  Clicks counted as `booking-click` in GoatCounter.
+- Activation without a paid scan: `node scripts/affiliates.js` (preview) then `--write`
+  (same `serializeEvent()`, `generatedAt` untouched), then `generate-pages.js`.
+
 ## 4. Data Schema (`data.json`, v2.1)
 
 Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the script and the frontend). Fields added in v2 are marked ★.
@@ -1160,6 +1192,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
       "url": "String (http/https URL)",
       "urlStatus": "ok | unverified",
       "urlCheckedAt": "YYYY-MM-DD",
+      "booking": "{ url, label, labelEn, provider, samePrice, offer } ★ — partner offer, derived from affiliates.json on every write (§3.AA); absent most of the time",
       "source": "datatourisme (absent for Gemini events)",
       "pageUrl": "/evenements/<slug>-<token>/ — derived from id + title on every write (§3.X)"
     }
@@ -1416,6 +1449,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-05 | **Un secteur entier se choisit dans le filtre « Ville »** : première option de chaque groupe, « Bords de Seine (tout le secteur) » (valeur `sector:<clé>`, `matchesPlace()`), une ville seule reste possible. **Vue par secteur sur la carte au dézoom** : à partir du zoom 10 (vue par défaut : 11), une bulle par secteur avec son nombre d'événements et son nom, à la position moyenne de ses événements ; un clic sélectionne le secteur dans le filtre et recadre (retour aux lieux). Redessin seulement au franchissement du seuil (une bulle d'info ouverte survit à un zoom ordinaire) ; une fiche cliquée en vue secteurs zoome sur son lieu et ouvre sa bulle. Le recadrage (`clearSelection`) se fait désormais sur les événements filtrés, plus sur les marqueurs. Le flux `.ics` proposé reste celui de la catégorie ou de tout l'agenda quand un secteur est choisi (pas de flux par secteur) | Demande du chef de projet : les groupes du filtre sont faits pour être choisis, pas seulement pour ranger. Un `<optgroup>` ne se sélectionne pas, d'où l'option en tête de groupe. Les bulles sont dessinées à la main (`divIcon`) plutôt qu'avec un greffon de regroupement : zéro dépendance, `vendor/` inchangé, et un regroupement par secteur dit quelque chose que le regroupement par distance ne dit pas. Testé dans Chrome sans interface : 7 groupes, secteur « Bords de Seine » = 36 événements de ses 8 communes, ville seule inchangée, 7 bulles au zoom 10, clic sur une bulle → secteur choisi, zoom 12, lieux affichés |
 | 2026-10-05 | **« Tout afficher » (et Échap) retire aussi le choix de ville ou de secteur**, puis recadre sur tout (`showAll()`) ; catégorie, période et « Gratuit » restent. Échap est ignoré dans un champ du formulaire | Retour du chef de projet : après le choix d'un secteur, le bouton recadrait ce seul secteur. Une ville ou un secteur est un lieu, ce que le bouton de la carte doit défaire ; les autres filtres n'en sont pas. Le recadrage sur toute la zone tombe au zoom 10 : la carte montre alors les bulles de secteurs. Dans une liste déroulante ouverte, Échap sert à la refermer |
 | 2026-10-05 | (1) **Filtre « Ville » insensible à l'orthographe** : une seule entrée par commune même si les données l'écrivent de deux façons (orthographe de `CITY_SECTORS`), et le choix d'une ville retient les deux écritures. (2) **Juge des doublons (§3.W2) : même lieu → un mot distinctif commun suffit, même court** (`sameVenue()` dans `dedupe-judge.js` ; un lieu qui n'est que le nom de la commune ne compte pas ; la proportion de mots communs ≥ 0,5 reste exigée). (3) **Bouton « haut de page »** fixe en bas à droite sur les pages Week-end, Aujourd'hui et Sorties (option `toTop` de `layout()`, lien vers `#top`, masqué tant que la page est en haut). (4) **Colonne horaire des pages Week-end et Sorties** : une date n'est plus lue comme une heure, et un horaire jour par jour s'affiche « 19h / 17h » | (1) « Dammarie-lès-Lys » et « Dammarie-les-Lys » restaient deux entrées : l'orthographe officielle n'est appliquée qu'au prochain scan ; le filtre s'en protège désormais seul. (2) Trois fiches Gemini de l'exposition Lego du château de Blandy (10-11/10 : « LEGO Puissance Brick », « LEGO® au Château de Blandy », « LEGO® Médiéval & Fantaisie ») ne partageaient que « lego », 4 lettres, sous le seuil de 6 : jamais soumises au juge. Mesuré sur `data.json` : 47 paires candidates → 54 (les 2 Lego et 5 autour du festival « Jazz au Théâtre ») ; un premier essai sans les deux garde-fous en ajoutait 24, dont « Marie Puybaraud » contre toutes les fiches Marie-Antoinette. Le juge décide toujours. (3) Demande du chef de projet. (4) « 10/10 : 19h00 ; 11/10 : 17h00 » s'affichait « 10h19–10h17 » : « : » entouré d'espaces était pris pour un séparateur heure-minutes. Les horaires sont découpés sur « ; » (format demandé par le pipeline) et chaque jour garde sa plage ; 9 horaires sur 154 changent d'affichage, tous corrigés |
+| 2026-10-05 | **Monétisation, phase 1 : affiliation par offres partenaires** (item 83, §3.AA). Un bouton « Réserver » **à côté** du lien de l'organisateur, jamais à sa place ; champ `booking` dérivé de `affiliates.json` à chaque écriture ; **jamais sur une fiche Gemini seule** ; l'offre doit correspondre au lieu **et** au tarif ; « lien partenaire » affiché, `rel="sponsored"`, paragraphe « Comment le site est financé » sur `/nos-sources/`. Première offre : billet du château chez Tiqets, livrée **inactive** jusqu'au lien d'affilié | Benchmark du 05/10 : 18 liens sur 362 mènent à une billetterie, aucune n'a de programme (HelloAsso, Mapado) ; marquer les liens existants ne rapporterait rien. Tiqets (8 %) vend le coupe-file du château au prix officiel (17 €) : aucun surcoût pour le visiteur, donc aucune promesse de confiance entamée. Gagner de l'argent sur une date que rien ne confirme irait contre « une date fausse coûte plus cher qu'un événement manquant ». Un concert vendu à part ne doit pas recevoir un billet d'entrée : d'où la condition sur le tarif. Écartés : comparateurs de revente, lien d'affilié à la place du lien de l'organisateur |
+| 2026-10-05 | **Ordre de travail de la monétisation** (§9, A2) : inscriptions (83-0) → activer le château (83b) → bloc « Visiter » avant le 17/10 (83c) → sonde puis intégration du flux France Billet (83d, 83e) → étude des revenus hors affiliation (84) → bilan à deux mois (83f) → hébergement en dernier (83g) | D'abord ce qui débloque, puis ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'être construit. Une offre de monument ne dépend d'aucune date, donc d'aucune donnée Gemini : c'est le revenu le plus sûr, et la Toussaint amène des visiteurs. La couverture locale de France Billet est inconnue : sonder avant d'intégrer. Booking.com rapporte peu (4 %, suivi de session) et sort du cœur « sorties » |
 
 ---
 
@@ -1432,6 +1467,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | Model name / API changes (`gemini-3.6-flash`) | Model is configurable via `GEMINI_MODEL`; failure is loud (exit 1) |
 | Recall of a single source family (web search only) | Source registry + open data (items 37, 27, 38) |
 | Cancelled events stay listed until their end date | Future: stale/`lastSeen` detection, "report an error" feedback |
+| Affiliation (item 83, §3.AA): undisclosed commission, a partner price above the official one, revenue on an unconfirmed date | « Lien partenaire » on every button and a funding paragraph on `/nos-sources/`; « même prix » only with `samePrice: true`, checked by hand; never on Gemini-only events; offer matched on venue **and** price wording. To check with the network before going live: whether its tracking cookie needs consent (CNIL) — the site itself sets none |
 
 ---
 
@@ -1450,12 +1486,29 @@ moyenne 7, **87 % mobile**, tout le trafic sur les fiches, recherches génériqu
 Fontainebleau ») en position 46-87. `/ce-week-end/` est la page la plus vue. Comparatif des
 sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
 
-**Ordre de travail décidé le 04/10 — un item par session, dans cet ordre :**
+**Ordre de travail décidé le 05/10 — monétisation (A2), un item par session, dans cet ordre.**
+L'ordre du 04/10 (croissance, ci-dessous) est terminé ; il ne reste que des mesures côté chef de
+projet. Le principe de priorité : d'abord ce qui débloque tout le reste (les inscriptions), puis
+ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'être construit.
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 1 | **75. Défilement mobile** | 87 % du trafic est mobile, et la page se fait mal défiler : un défaut, pas une amélioration | S |
-| 2 | **81. Hubs Toussaint et Halloween** | Vacances le 17/10, Halloween le 31/10. Google met 1 à 3 semaines à classer une page : c'est cette semaine ou l'an prochain | M |
+| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. À lancer aujourd'hui | XS |
+| 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
+| 2 | **83b. Activer l'offre Tiqets du château** | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
+| 3 | **83c. Bloc « Visiter » hors événements** | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
+| 4 | **83d. Sonde du flux France Billet** (observation seule) | La couverture locale de la billetterie nationale est inconnue : on la mesure avant de construire l'intégration | S |
+| 5 | **83e. Intégration du flux Awin** (France Billet, puis Ticketmaster) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
+| 6 | **84. Chiffrer les revenus hors affiliation** (mise en avant payante, widget premium 71) | Probablement plus rentable que l'affiliation à ce niveau de trafic ; décision grounding à prendre avant toute vente (§8) | S (étude) |
+| 7 | **83f. Bilan à deux mois** | Clics `booking-click`, ventes, revenus par offre. Décide de 83g et de l'abandon d'une plateforme | XS |
+| 8 | **83g. Hébergement (Booking.com via CJ)** | En dernier : 4 %, suivi limité à la session, hors du cœur « sorties » du site | S |
+
+**Ordre de travail décidé le 04/10 (croissance) — terminé, reste les mesures :**
+
+| Ordre | Item | Pourquoi à ce rang | Effort |
+|---|---|---|---|
+| 1 | ~~**75. Défilement mobile**~~ — fait le 04/10 | 87 % du trafic est mobile, et la page se fait mal défiler : un défaut, pas une amélioration | S |
+| 2 | ~~**81. Hubs Toussaint et Halloween**~~ — fait le 04/10, reste l'indexation | Vacances le 17/10, Halloween le 31/10. Google met 1 à 3 semaines à classer une page : c'est cette semaine ou l'an prochain | M |
 | 3 | ~~**80. Titres et descriptions des fiches (CTR)**~~ — fait le 04/10, reste la mesure | Le trafic vient des fiches ; le levier « année + date » du 30/09 a marché, on le prolonge | S |
 | 4 | ~~**76. Positionnement du bandeau**~~ — fait le 04/10 | Quelques lignes, mais une formule à trancher | XS |
 | 5 | ~~**78. Pages « Aujourd'hui » et « Gratuit »**~~ — fait le 04/10 | Gabarit de `/ce-week-end/` réutilisé ; deux requêtes à fort volume | M |
@@ -1612,6 +1665,54 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
     marché de Noël de Fontainebleau portait les dates 2025 et rien ne l'avait vu. Afficher de la
     confiance sur une donnée fausse serait pire que la prudence actuelle.
 
+### A2. Monétisation — démarrée le 05/10, dans l'ordre de travail
+
+Règles communes à tous les items (§3.AA, §7 du 05/10) : le bouton partenaire s'ajoute **à côté**
+du lien de l'organisateur, jamais à sa place ; **jamais sur une fiche Gemini seule** ; l'offre
+doit correspondre au lieu **et** au tarif ; « lien partenaire » toujours affiché ; « même prix »
+seulement si c'est vérifié à la main (`samePrice`). Benchmark du 05/10 : Tiqets et
+GetYourGuide (8 %, cookie 30 jours), France Billet / Fnac Spectacles (Awin, taux non publié,
+flux produit), Ticketmaster France (Awin, 0,32 € par billet), Booking.com (CJ, 4 %, session).
+Écartés : comparateurs de revente, HelloAsso et Mapado (pas de programme), « Blackseat »
+(introuvable). Attente réaliste au trafic actuel (~35 clics/jour) : **quelques ventes par mois**.
+Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de suite.
+
+- [x] **83a. Socle de l'affiliation — fait le 05/10 (§3.AA).** Champ `booking` dérivé dans
+  `serializeEvent()`, `affiliates.json` + `scripts/affiliates.js` (aperçu et `--write` sans
+  scan), bouton sur l'accueil et les fiches, `rel="sponsored"`, paragraphe « Comment le site
+  est financé » sur `/nos-sources/`, clics `booking-click`. Offre Tiqets du château **inactive**.
+- [ ] **83b. Activer l'offre Tiqets du château** — dès le lien d'affilié reçu (83-0). Coller
+  l'URL dans `affiliates.json`, `"active": true`, `node scripts/affiliates.js` (aperçu : 4 fiches
+  attendues), `--write`, `generate-pages.js`, commit. Vérifier sur le site qu'un clic arrive bien
+  dans le tableau de bord Tiqets. **XS.**
+- [ ] **83c. Bloc « Visiter » hors événements.** Une rubrique de monuments (château de
+  Fontainebleau, Vaux-le-Vicomte, Blandy si vendus chez un partenaire) avec billet partenaire,
+  sur la page commune concernée, `/ce-week-end/` et `/sorties/vacances-toussaint/`. Nouveau type
+  d'entrée dans `affiliates.json` (offre de lieu, sans condition d'événement). Avant de coder :
+  vérifier chaque site chez Tiqets, puis GetYourGuide **seulement** pour un site absent de Tiqets
+  ou pour les excursions (paniers de 100 € et plus, public anglophone). Prix comparé au prix
+  officiel, comme pour le château. **S. Avant le 17/10.**
+- [ ] **83d. Sonde du flux France Billet — observation seule.** Dès le compte Awin validé :
+  télécharger le flux produit (CSV compressé, `zlib`, clé en secret GitHub), compter les
+  événements dans la zone (`inZone()`) et ceux qui correspondent déjà à une fiche (règle de
+  doublons). Rapport seulement, rien de publié, comme le comparatif de §3.Z. **S.**
+- [ ] **83e. Intégration du flux Awin** — si 83d trouve assez d'événements (seuil à fixer avec
+  le chef de projet au vu du rapport). Correspondance → `booking` sur la fiche existante ;
+  événement nouveau → observation, puis cinquième source publiée (`source: "francebillet"`,
+  ajoutée à `CONFIRMED_SOURCES`). Ticketmaster par le même code s'il a des salles locales. **M.**
+- [ ] **83f. Bilan à deux mois après 83b.** GoatCounter (`booking-click` par offre) et tableaux
+  de bord des réseaux : clics, ventes, revenus. Décide de 83g, et de garder ou non chaque
+  plateforme. **XS.**
+- [ ] **83g. Hébergement (Booking.com via CJ) — seulement si 83f le justifie.** Bloc
+  « Dormir à proximité » sur les grands événements (Grand Parquet, festival Django) et les
+  pages `/sorties/`, jamais sur toutes les fiches. 4 %, suivi limité à la session. **S.**
+- [ ] **84. Chiffrer les revenus hors affiliation** — étude, rien à coder. Deux pistes, à
+  comparer à l'affiliation au trafic réel : (1) **mise en avant payante pour les organisateurs**
+  (encart signalé « sponsorisé », jamais mêlé au classement des sorties) ; (2) **widget premium**
+  (item 71). Les deux vendent une visibilité construite en partie sur des données Gemini :
+  **décision grounding explicite (§3.G, §8) avant le premier contrat**. Livrable : une
+  recommandation chiffrée pour le chef de projet. **S.**
+
 ### B. Pipeline et données — en continu
 
 - [ ] **Lire le rapport de chaque scan**, dans cet ordre :
@@ -1670,6 +1771,13 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
   (❌ 418 → ✅). Ensuite : ANVL peut générer le `.ics` de son plugin en deux clics ; office de
   tourisme, associations ; plus tard un formulaire « Ajouter mon événement ». Le passage
   « Outreach gate » des Milestones s'applique.
+- [ ] **83-0. Inscriptions aux programmes d'affiliation — priorité 0 de l'ordre du 05/10**
+  (§3.AA). Dans cet ordre : **Tiqets** (programme direct ou Travelpayouts) avec la structure
+  existante ; **compte éditeur Awin**, puis candidatures **Fnac Spectacles / France Billet** et
+  **Ticketmaster** ; GetYourGuide et CJ (Booking.com) plus tard, quand 83c et 83g le demanderont.
+  Ajouter les revenus d'affiliation aux déclarations de la structure. À noter au retour : le **lien d'affilié** du
+  château (à coller dans `affiliates.json`), le taux réel de France Billet, le format de son
+  flux produit, et la réponse du réseau sur le consentement aux cookies de suivi.
 - [ ] **71. Widget premium** — le gratuit est en ligne (§3.Y). Le premium est de la syndication
   **contre paiement** de données issues en partie de Gemini : décision grounding explicite (§3.G,
   §8) **avant** le premier contrat. Contenu à définir avec les premiers partenaires (sans mention,

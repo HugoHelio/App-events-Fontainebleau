@@ -464,11 +464,19 @@ function provenanceHtml(e, link) {
   return `<p class="prov">${lines.join('<br>')}</p>`;
 }
 
-const PROV_STYLE = '.prov{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}.prov .ok{color:#3d5d1d;font-weight:700}.prov a{color:var(--ink)}.unsure{background:#fff4e0;border:1px solid #e8c48a;border-radius:8px;padding:8px 12px;color:#6b4a12;font-size:15px}';
+const PROV_STYLE = '.prov{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}.prov .ok{color:#3d5d1d;font-weight:700}.prov a{color:var(--ink)}.unsure{background:#fff4e0;border:1px solid #e8c48a;border-radius:8px;padding:8px 12px;color:#6b4a12;font-size:15px}.aff{font-size:14px;color:var(--muted);margin-top:-14px}';
+
+/** Partner offer (affiliates.json, derived by the pipeline), or null. Never replaces the organiser's link. */
+function bookingOf(e) {
+  const b = e.booking;
+  const url = b && safeUrl(b.url);
+  return url && b.label ? { url, label: String(b.label), provider: typeof b.provider === 'string' ? b.provider : '', samePrice: b.samePrice === true } : null;
+}
 
 function eventPage(e, events, today) {
   const canonical = SITE_URL + e.pagePath;
   const link = safeUrl(e.url);
+  const booking = bookingOf(e);
   const rows = [
     ['Horaires', e.schedule],
     ['Lieu', [e.locationName, e.city].filter(Boolean).join(', ')],
@@ -486,9 +494,9 @@ ${datesUnconfirmed(e) ? `<p class="unsure">Dates à confirmer : seule une recher
 ${e.description ? `<p>${esc(e.description)}</p>` : ''}
 ${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></p>`).join('')}${holidaysOf(e, today).map(({ h, p }) => `<p><a href="/${THEMES_DIR}/${h.slug}/">${esc(h.name)} ${esc(p.from.slice(0, 4))} : toutes les sorties</a></p>`).join('')}
 <div class="actions">
-${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
+${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}${booking ? `<a class="btn alt" href="${esc(booking.url)}" rel="sponsored noopener" target="_blank">🎟️ ${esc(booking.label)}</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
 </div>
-${provenanceHtml(e, link)}
+${booking ? `<p class="aff">Lien partenaire${booking.provider ? ` ${esc(booking.provider)}` : ''}${booking.samePrice ? ', au même prix que sur place' : ''} : Fontainebleau Live perçoit une commission si vous réservez par ce lien. <a href="/${SOURCES_DIR}/#financement">En savoir plus</a></p>\n` : ''}${provenanceHtml(e, link)}
 ${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>`;
 
   return layout({
@@ -1303,6 +1311,10 @@ function sourcesPage(events, generatedAt, registry) {
   const sites = registry.filter((s) => s.enabled !== false && s.name).map((s) => s.name);
   const when = generatedAt ? dayMonthYear(parisToday(new Date(generatedAt))) : '';
   const pl = (k, one, many) => `${k} ${k > 1 ? many : one}`;
+  // Each sentence must stay true (item 79): the paragraph only exists while an offer is live.
+  const withBooking = events.filter((e) => bookingOf(e));
+  const booked = withBooking.length;
+  const partners = [...new Set(withBooking.map((e) => bookingOf(e).provider).filter(Boolean))].sort();
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Nos sources : d’où viennent les sorties de l’agenda</h1>
@@ -1327,7 +1339,10 @@ function sourcesPage(events, generatedAt, registry) {
 <li><b>Le lieu</b><small>L’adresse est placée sur la carte grâce à la Base Adresse Nationale ; une sortie hors de cette zone est écartée.</small></li>
 </ul>
 
-<h2>Ce que nous ne vérifions pas</h2>
+${partners.length ? `<h2 id="financement">Comment le site est financé</h2>
+<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.</p>
+
+` : ''}<h2>Ce que nous ne vérifions pas</h2>
 <p>Nous n’appelons pas les organisateurs : une annulation de dernière minute peut nous échapper. Avant un long trajet, un coup d’œil au site de l’organisateur reste prudent.</p>
 <p>Une erreur, une sortie annulée ? <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank">Signalez-la</a> : chaque signalement est relu, et une fiche signalée comme annulée peut être masquée dès la collecte suivante.</p>
 <div class="actions"><a class="btn alt" href="/">Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a></div>`;

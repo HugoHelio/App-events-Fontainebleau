@@ -874,6 +874,25 @@
       font-size: 0.9rem;
     }
 
+    /* Partner offer (affiliates.json): an outlined button, never louder than the event itself. */
+    .card .booking {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem 0.6rem;
+    }
+    .card .booking-btn {
+      border: 1px solid var(--secondary-color);
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+      color: var(--secondary-color);
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .card .booking-btn:hover { text-decoration: underline; }
+    .card .booking-note { font-size: 0.75rem; color: #718096; }
+
     .card .link-btn {
       align-self: flex-end;
       color: var(--secondary-color);
@@ -1338,6 +1357,8 @@
         priceUnknown: 'Non précisé',
         report: 'Signaler une erreur',
         details: 'Voir détails & inscriptions →',
+        // Monetisation phase 1: says plainly that the link pays us, at no extra cost.
+        bookingNote: (provider, same) => `Lien partenaire${provider ? ` ${provider}` : ''}${same ? ', même prix' : ''}`,
         eventPage: 'Fiche',
         todayLink: 'Que faire aujourd’hui ?',
         weekendLink: 'Que faire ce week-end ?',
@@ -1436,6 +1457,7 @@
         priceUnknown: 'Not specified',
         report: 'Report an error',
         details: 'Details & booking →',
+        bookingNote: (provider, same) => `Partner link${provider ? ` (${provider})` : ''}${same ? ', same price' : ''}`,
         eventPage: 'Page',
         todayLink: 'Today (in French)',
         weekendLink: 'This weekend (in French)',
@@ -2489,6 +2511,18 @@
       try { return !a.url || ['', '/'].includes(new URL(a.url).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; }
     }
 
+    // Partner offer, derived by the pipeline from affiliates.json. Separate from the organiser's
+    // link, marked as sponsored for search engines and as a partner link for people.
+    function bookingHtml(a) {
+      const b = a.booking;
+      const href = b && safeUrl(b.url);
+      if (!href) return '';
+      const label = (lang === 'en' && b.labelEn) || b.label;
+      if (!label) return '';
+      const provider = typeof b.provider === 'string' ? b.provider : '';
+      return `<div class="booking"><a href="${escapeHtml(href)}" class="booking-btn" target="_blank" rel="sponsored noopener noreferrer">🎟️ ${escapeHtml(label)}</a><span class="booking-note">${escapeHtml(t('bookingNote')(provider, b.samePrice === true))}</span></div>`;
+    }
+
     function buildCard(a) {
       const card = document.createElement('div');
       card.className = `card ${categoryClass(a.category)}`;
@@ -2514,6 +2548,7 @@
         </div>
         <p>${escapeHtml(describe(a))}</p>
         ${fine ? `<div class="fine-print">${fine}</div>` : ''}
+        ${bookingHtml(a)}
         <div class="card-actions">
           ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
           <span class="card-links">
@@ -2528,6 +2563,7 @@
         if (link) {
           // Does the site actually send anyone anywhere? This is the question worth measuring.
           if (link.classList.contains('link-btn')) track('event-click', a.id);
+          else if (link.classList.contains('booking-btn')) track('booking-click', a.id);
           else if (link.classList.contains('report-link')) track('report', a.id);
           else if (link.classList.contains('page-link')) track('page-click', a.id);
           return;

@@ -1,0 +1,48 @@
+{
+  "_README": [
+    "Offres partenaires (affiliation) — édité à la main, comme venues.json. Jamais généré.",
+    "",
+    "CE QUE FAIT CE FICHIER. Une offre ajoute un bouton « Réserver » à côté du lien vers",
+    "l'organisateur, sur la carte de l'accueil et sur la fiche. Le lien de l'organisateur (url)",
+    "ne change jamais : le bouton est un champ à part, booking, recalculé à chaque écriture de",
+    "data.json. Retirer ou désactiver une offre ici la retire partout au run suivant.",
+    "",
+    "QUAND UNE OFFRE S'APPLIQUE. Toutes les conditions à la fois :",
+    "  - \"active\": true, et une url http(s) ;",
+    "  - la ville de l'événement est exactement \"city\" ;",
+    "  - tous les mots de \"match\" apparaissent dans le nom du lieu (locationName) ;",
+    "  - tous les mots de \"price\" apparaissent dans le tarif. C'est ce qui garantit que le billet",
+    "    vendu est bien celui qu'il faut : « Inclus dans le billet d'entrée » oui, un concert à 27 €",
+    "    vendu à part, non ;",
+    "  - l'événement est confirmé par une source lue directement (site de l'organisateur,",
+    "    DATAtourisme, OpenAgenda). JAMAIS sur une fiche que seule la recherche web (Gemini)",
+    "    annonce : on ne gagne pas d'argent sur une date que rien ne confirme.",
+    "Les mots de \"match\" et \"price\" sont en minuscules, sans accent ni apostrophe.",
+    "",
+    "AVANT D'ACTIVER UNE OFFRE.",
+    "  1. Coller dans \"url\" le lien produit par le tableau de bord du partenaire (il contient",
+    "     votre identifiant d'affilié). Sans lui, le clic ne rapporte rien.",
+    "  2. Comparer le prix chez le partenaire au prix officiel. \"samePrice\": true affiche",
+    "     « même prix » à côté du bouton : ne le mettre que si c'est vérifié.",
+    "  3. Passer \"active\" à true, puis : node scripts/affiliates.js        (aperçu, n'écrit rien)",
+    "                                     node scripts/affiliates.js --write (applique à data.json)",
+    "     et node scripts/generate-pages.js pour les fiches. Commiter data.json et les pages.",
+    "     Sinon, le prochain scan l'applique de lui-même."
+  ],
+
+  "offers": [
+    {
+      "id": "tiqets-chateau-fontainebleau",
+      "provider": "Tiqets",
+      "label": "Billet d’entrée du château",
+      "labelEn": "Château entrance ticket",
+      "city": "Fontainebleau",
+      "match": ["chateau de fontainebleau"],
+      "price": ["inclus", "billet"],
+      "url": "https://www.tiqets.com/fr/billets-chateau-de-fontainebleau-l145848/",
+      "samePrice": true,
+      "active": false,
+      "note": "Coupe-file à 17 € chez Tiqets = prix officiel (vérifié le 05/10/2026). En attente du lien d'affilié (étape 0)."
+    }
+  ]
+}

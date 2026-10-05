@@ -33,6 +33,7 @@ const translate = require('./translate');
 const dedupeJudge = require('./dedupe-judge');
 const sites = require('./sources');
 const { matchLevel } = require('./compare-sources');
+const affiliates = require('./affiliates');
 const pages = require('./generate-pages');
 
 // ───────────────────────────── Configuration ─────────────────────────────
@@ -1274,13 +1275,15 @@ function applyOverrides(records, overrides, stats) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'image', 'source', 'lastSeen', 'pageUrl',
+  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'booking', 'image', 'source', 'lastSeen', 'pageUrl',
 ];
 
 function serializeEvent(e) {
   const out = { ...e, geoApprox: !['ban', 'manual', 'venue', 'feed'].includes(e.geoSource) };
   // Derived, never carried over: the static page's address follows the current title (§3.X).
   out.pageUrl = pages.pagePath(out) || undefined;
+  // Derived too (affiliates.json): an offer switched off disappears on the next write.
+  out.booking = affiliates.bookingFor(out);
   const ordered = {};
   for (const f of FIELD_ORDER) if (out[f] !== undefined) ordered[f] = out[f];
   return ordered;

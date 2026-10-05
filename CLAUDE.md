@@ -26,6 +26,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `translate-cache.json` | **Généré et commité.** Cache de traduction — sans lui, chaque run CI retraduirait tout |
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `venues.json` | **Édité à la main.** Coordonnées exactes des lieux récurrents, consultées avant la BAN — qui ne connaît que des adresses, pas des noms de salles |
+| `affiliates.json` | **Édité à la main.** Offres partenaires (affiliation, §3.AA) : un bouton « Réserver » à côté du lien de l'organisateur, si le lieu **et** le tarif correspondent, jamais sur une fiche Gemini seule. Une offre est inactive tant que son lien d'affilié n'est pas collé |
+| `scripts/affiliates.js` | Calcule le champ `booking` (dérivé dans `serializeEvent()`, comme `pageUrl`). `node scripts/affiliates.js` = aperçu, `--write` = appliquer à `data.json` sans scan |
 | `scripts/generate-pages.js` | Pages statiques indexables (§3.X) : une fiche par événement, une page par commune, `sitemap.xml`. N'écrit **jamais** `data.json` |
 | `evenements/`, `que-faire/`, `sorties/`, `ce-week-end/`, `aujourdhui/`, `agenda/`, `sitemap.xml` | **Générés** par `generate-pages.js` à chaque run — ne pas éditer. `sorties/` : pages de saison (marchés de Noël, brame…) et de vacances scolaires (dates dans `HOLIDAYS`, à compléter chaque année), jamais supprimées. `ce-week-end/` : le week-end qui vient, reconstruit chaque jour. `aujourdhui/` : le jour même **et le lendemain** (masqué), un script montre le bloc de la date du téléphone. `agenda/` : flux `.ics` (§3.Y), en CRLF protégé par `.gitattributes` |
 | `sources.json` | **Édité à la main.** Registre des sites d'organisateurs lus directement (§3.Z) : type de lecteur, URL, raison d'une désactivation |
@@ -51,7 +53,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 
 `app.js` et `style.css` sont des reliquats vides : tout le frontend vit dans `index.html`.
 
-`overrides.json` et `venues.json` sont les **seuls** fichiers de données modifiables à la main. `data.json` est
+`overrides.json`, `venues.json` et `affiliates.json` sont les **seuls** fichiers de données modifiables à la main. `data.json` est
 régénéré à chaque scan : toute correction faite directement dedans est perdue au run suivant.
 
 ## Contraintes à respecter
