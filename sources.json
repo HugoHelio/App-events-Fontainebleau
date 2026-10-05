@@ -134,6 +134,17 @@
       "note": "Agenda rendered by JavaScript: the raw page holds no event."
     },
     {
+      "id": "courances",
+      "name": "Château et jardins de Courances",
+      "enabled": false,
+      "type": "page",
+      "urls": [
+        "https://domainedecourances.com/"
+      ],
+      "city": "Courances",
+      "note": "Checked 05/10, when Courances joined the zone as a great site. domainedecourances.com is a Wix site (content rendered by JavaScript); the news page of courances.net answers 403. Events come from the culture scan, which names the château in its question."
+    },
+    {
       "id": "vaux-le-vicomte",
       "name": "Vaux-le-Vicomte",
       "enabled": false,

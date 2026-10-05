@@ -149,7 +149,8 @@ const COMMUNE_TABLE = [
 // (Maincy, 18.4 km) and the château de Blandy (19.3 km). Montereau is a town, but outside our area.
 const INNER_RING_KM = 15;
 const OUTER_RING_MIN_POPULATION = 4000;
-const OUTER_RING_SITES = new Set(['Maincy', 'Blandy-les-Tours']);
+// Courances (16.6 km, 348 inhabitants) for its château and gardens: added the same day.
+const OUTER_RING_SITES = new Set(['Maincy', 'Blandy-les-Tours', 'Courances']);
 const EXCLUDED_COMMUNES = new Set(['Montereau-Fault-Yonne']);
 
 const communeLetters = (s) => stripAccents(String(s ?? '')).toLowerCase().replace(/[^a-z]/g, '');
@@ -238,8 +239,10 @@ const SCANS = [
       'guidées, patrimoine, musées, médiathèques, conférences, ateliers, brocantes et ' +
       'vide-greniers. De l\'autre « Scène & Spectacles » : concerts, théâtre, opéra, danse, ' +
       'cirque, humour, cinéma et festivals. Inclure les événements aux châteaux de ' +
-      'Fontainebleau, Vaux-le-Vicomte et Blandy-les-Tours dans l\'une ou l\'autre selon leur nature.',
-    ask: 'expositions, concerts, spectacles, visites guidées et conférences (dont les châteaux)',
+      'Fontainebleau, Vaux-le-Vicomte, Blandy-les-Tours et Courances dans l\'une ou l\'autre selon leur nature.',
+    // The châteaux named (05/10): Courances has no readable agenda of its own (403, Wix site).
+    ask: 'expositions, concerts, spectacles, visites guidées et conférences (dont les châteaux de '
+      + 'Fontainebleau, Vaux-le-Vicomte, Blandy et Courances)',
   },
   {
     name: 'famille',

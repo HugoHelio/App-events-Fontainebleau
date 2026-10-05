@@ -1281,7 +1281,7 @@ function sourcesPage(events, generatedAt, registry) {
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Nos sources : d’où viennent les sorties de l’agenda</h1>
-<p>Fontainebleau Live rassemble automatiquement les sorties annoncées autour de Fontainebleau : toutes les communes à moins de 15 km et, jusqu’à 20 km, les villes et les grands sites (Vaux-le-Vicomte, Blandy). Personne ne saisit les fiches à la main. Voici où nous les trouvons, ce que nous vérifions, et ce que nous ne pouvons pas vérifier.</p>
+<p>Fontainebleau Live rassemble automatiquement les sorties annoncées autour de Fontainebleau : toutes les communes à moins de 15 km et, jusqu’à 20 km, les villes et les grands sites (Vaux-le-Vicomte, Blandy, Courances). Personne ne saisit les fiches à la main. Voici où nous les trouvons, ce que nous vérifions, et ce que nous ne pouvons pas vérifier.</p>
 <p class="when">${when ? `Dernière collecte le ${esc(when)} · ` : ''}${pl(n, 'sortie à venir', 'sorties à venir')}</p>
 
 <h2>Où nous cherchons</h2>

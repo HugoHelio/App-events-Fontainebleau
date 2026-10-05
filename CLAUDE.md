@@ -2,8 +2,8 @@
 
 Application web statique qui collecte automatiquement les événements autour de Fontainebleau
 (**deux cercles** depuis le 05/10 : toutes les communes à moins de 15 km, puis jusqu'à 20 km —
-`MAX_RADIUS_KM` — seulement les villes de plus de 4 000 habitants et les grands sites, Vaux-le-Vicomte
-et Blandy ; Montereau exclue. Table `COMMUNE_TABLE` et `inZone()` dans `scripts/fetch-events.js`) et les affiche sur une carte
+`MAX_RADIUS_KM` — seulement les villes de plus de 4 000 habitants et les grands sites, Vaux-le-Vicomte,
+Blandy et Courances ; Montereau exclue. Table `COMMUNE_TABLE` et `inZone()` dans `scripts/fetch-events.js`) et les affiche sur une carte
 et un calendrier. Trois sources : Gemini, DATAtourisme, OpenAgenda.
 
 ## À lire en premier
