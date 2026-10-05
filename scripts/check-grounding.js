@@ -84,8 +84,10 @@ async function scan(model, s, ctx) {
     log(`| \`${model}\` | scan « ${s.name} » | ${verdict} | ${meta.searchQueries} / ${meta.webSources} | `
       + `${meta.unsearched}/${meta.questions} | ${tokens(meta.usage)} |`);
     log(`|  | liens | ${urls.length}, dont ${homes} page(s) d'accueil | | | |`);
-    for (const e of events.slice(0, 4)) {
-      log(`|  |  | ${cell(`${e.startDate} · ${String(e.title).slice(0, 70)} · ${host(e.url)}`)} | | | |`);
+    // The end date too: a festival begun before today must not come back "starting today".
+    for (const e of events.slice(0, 8)) {
+      const when = e.endDate && e.endDate !== e.startDate ? `${e.startDate} → ${e.endDate}` : e.startDate;
+      log(`|  |  | ${cell(`${when} · ${String(e.title).slice(0, 70)} · ${host(e.url)}${isHome(e.url) ? ' (accueil)' : ''}`)} | | | |`);
     }
   } catch (err) {
     log(`| \`${model}\` | scan « ${s.name} » | ❌ ${cell(String(err.message).slice(0, 200))} | | | |`);

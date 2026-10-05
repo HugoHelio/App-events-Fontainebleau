@@ -639,8 +639,13 @@ function buildQuestions(scan, { today, maxDate }) {
   const months = frenchMonths(today, maxDate);
   const tail = 'Pour chacun : titre, dates exactes, horaires et tarif si indiqués, commune, lieu et lien de la page.';
   if (scan.areas) {
+    // The first villages diagnostic (05/10) searched well — 52 queries, 141 pages — but 28 of its
+    // 40 links were a town hall's home page: the model keeps the site, not the page. Asked for
+    // here only; the theme questions are left exactly as the 04/10 diagnostic validated them.
+    const villageTail = 'Pour chacun : titre, dates exactes, horaires et tarif si indiqués, commune, lieu, '
+      + 'et l\'adresse exacte de la page qui annonce cet événement (pas la page d\'accueil du site).';
     return scan.areas.map((area) => `Cherche sur le web : quels ${scan.ask} sont annoncés à `
-      + `${area.join(', ')} (Seine-et-Marne) en ${months.slice(0, 2).join(' et ')} ? ${tail}`);
+      + `${area.join(', ')} (Seine-et-Marne) en ${months.slice(0, 2).join(' et ')} ? ${villageTail}`);
   }
   const out = [];
   for (let i = 0; i < months.length; i += 2) {
