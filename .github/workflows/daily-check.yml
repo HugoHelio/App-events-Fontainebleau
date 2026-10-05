@@ -23,7 +23,8 @@ jobs:
   update-data:
     runs-on: ubuntu-latest
     # 30 et non 20 depuis le 24/09 : la lecture polie des sites (une requête par seconde) prend ~5 min.
-    timeout-minutes: 30
+    # 45 depuis le 05/10 : avec le scan villages et trois nouvelles sources, le run a pris 24 min.
+    timeout-minutes: 45
 
     steps:
       - name: Récupérer le code du dépôt

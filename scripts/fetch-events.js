@@ -1267,6 +1267,17 @@ function renderSummary(stats, ctx) {
   }
   if (stats.villagesConfirmed || stats.villagesUnconfirmed) {
     L.push(`- 🏘️ Scan villages (jamais publié seul) : **${stats.villagesConfirmed}** événement(s) reconfirmé(s) · ${stats.villagesUnconfirmed} sans source légitime, non publié(s)`);
+    // Listed so a person can judge them (05/10): good finds here mean either a source to add to
+    // sources.json or a case for letting the scan publish again, flagged « Dates à confirmer ».
+    const list = [...stats.villagesUnconfirmedList].sort((a, b) => a.startDate.localeCompare(b.startDate));
+    if (list.length) L.push('  - Non publiés (à juger : bonne trouvaille ? date juste ?) :');
+    for (const e of list.slice(0, 40)) {
+      let link = '';
+      try { const u = new URL(e.url); link = u.hostname.replace(/^www\./, '') + (u.pathname.replace(/\/$/, '') === '' ? ' (accueil)' : ''); } catch { /* no link */ }
+      const when = e.endDate && e.endDate !== e.startDate ? `${e.startDate} → ${e.endDate}` : e.startDate;
+      L.push(`    - ${when} · ${e.city} · ${e.title} · ${link}`);
+    }
+    if (list.length > 40) L.push(`    - … et ${list.length - 40} autre(s)`);
   }
   if (stats.sites) {
     const st = stats.sites;
@@ -1482,13 +1493,16 @@ function dedupeFuzzy(records, stats) {
   }
 
   // ── Rule 1: identical word sets on the same date ────────────────────────────
-  // A signature of a single word is too weak to merge across cities ("Exposition" in Nemours is
-  // not "Exposition" in Barbizon), so a one-word title only groups with its own commune.
+  // A short signature is too weak to merge across cities ("Exposition" in Nemours is not
+  // "Exposition" in Barbizon), so a title of one or two significant words only groups with its
+  // own commune. Two words used to be enough: on 05/10, with the villages covered, the Christmas
+  // market of Ville-Saint-Jacques was folded into Flagy's (« Marché de Noël », same Sunday). A
+  // duplicate costs less than a deleted event; the judged dedupe (§3.W2) still sees same-city pairs.
   // A title left with no significant word at all never merges.
   function signature(event, uniqueFallback) {
     const words = [...wordSet(event.title)].sort();
     if (!words.length) return `__unique__${uniqueFallback}`;
-    return words.length >= 2 ? words.join(' ') : `${words[0]}|${norm(event.city)}`;
+    return words.length >= 3 ? words.join(' ') : `${words.join(' ')}|${norm(event.city)}`;
   }
 
   // Grouped by word set alone; the date rule is applied inside the group, because two records
@@ -1643,7 +1657,7 @@ async function main() {
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
     sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
-    villagesConfirmed: 0, villagesUnconfirmed: 0,
+    villagesConfirmed: 0, villagesUnconfirmed: 0, villagesUnconfirmedList: [],
     unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
@@ -1890,7 +1904,7 @@ async function main() {
   for (const v of validConfirmOnly) {
     const rec = records.get(eventKey(v.event))
       || [...records.values()].find((r) => datatourisme.isSameOccurrence(v.event, r.event));
-    if (!rec) { stats.villagesUnconfirmed++; continue; }
+    if (!rec) { stats.villagesUnconfirmed++; stats.villagesUnconfirmedList.push(v.event); continue; }
     rec.refreshed = true;
     rec.event.lastSeen = today;
     stats.villagesConfirmed++;

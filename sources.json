@@ -99,7 +99,7 @@
       "name": "Communauté de communes Moret Seine & Loing",
       "type": "ccmsl",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html",
-      "exclude": "\\bpermanence\\b|\\bemploi\\b",
+      "exclude": "\\bpermanence\\b|\\bemploi\\b|\\bloto\\b|biblioth[eè]que|\\bb[eé]b[eé]s? lecteurs\\b|petites histoires|mots doux|\\bdes parents\\b|forum s[eé]niors|b[eé]b[eé]n[eé]?vole",
       "note": "Added 05/10 after the Grez-sur-Loing open studios (2-4/10) were missed. The intercommunal agenda of the villages south and east of the forest (Montigny-sur-Loing, Saint-Mammès, Champagne, Vernou, Villemer, Flagy…): 44 cards on 05/10, machine-written dates read without a model. Office hours and job forums are excluded by title."
     },
     {
