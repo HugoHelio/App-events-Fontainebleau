@@ -215,7 +215,21 @@ const LANG_SCRIPT = `(function () {
   if (root.className === 'en') apply('en');
 })();`;
 
-function layout({ title, description, canonical, body, ld, noindex, refresh, titleEn }) {
+// ─── Back to top (05/10) ───
+// On the long pages (weekend, today, themes, holidays: `toTop`, on by default with titleEn), a fixed button at
+// the bottom right. A plain link to #top, so it works without JavaScript; the script only hides
+// it while the page is still at the top, where it would have nothing to do.
+const TOP_STYLE = '.to-top{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;font-size:1.3rem;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}.to-top.is-hidden{display:none}.to-top:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}';
+const TOP_LINK = `<a href="#top" class="to-top"><span aria-hidden="true">↑</span><span class="sr-only"${en('Back to top')}>Haut de page</span></a>`;
+const TOP_SCRIPT = `(function () {
+  var b = document.querySelector('.to-top');
+  if (!b) return;
+  var f = function () { b.classList.toggle('is-hidden', window.scrollY < 400); };
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+})();`;
+
+function layout({ title, description, canonical, body, ld, noindex, refresh, titleEn, toTop = Boolean(titleEn) }) {
   return `<!doctype html>
 <html lang="fr"${titleEn ? ` data-title-en="${esc(titleEn)}"` : ''}>
 <head>
@@ -238,15 +252,15 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-${ld ? `<script type="application/ld+json">${jsonLd(ld)}</script>\n` : ''}<style>${STYLE}${titleEn ? `\n${LANG_STYLE}` : ''}</style>
+${ld ? `<script type="application/ld+json">${jsonLd(ld)}</script>\n` : ''}<style>${STYLE}${titleEn ? `\n${LANG_STYLE}` : ''}${toTop ? `\n${TOP_STYLE}` : ''}</style>
 </head>
 <body>
-<header><a href="/"><img src="${ICON}" alt="" width="32" height="32">Fontainebleau Live</a>${titleEn ? LANG_SWITCH : ''}</header>
+<header${toTop ? ' id="top"' : ''}><a href="/"><img src="${ICON}" alt="" width="32" height="32">Fontainebleau Live</a>${titleEn ? LANG_SWITCH : ''}</header>
 <main>
 ${body}
 </main>
 <footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a></footer>
-${titleEn ? `<script>\n${LANG_SCRIPT}\n</script>\n` : ''}</body>
+${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}</body>
 </html>
 `;
 }
@@ -804,16 +818,26 @@ const place = (e) => (e.locationName && slugify(e.locationName, 200).includes(sl
 const CAT_CLASS = { 'Sport & Outdoor': 'c-sport', 'Nature & Environnement': 'c-nature', 'Scène & Spectacles': 'c-scene', 'Culture & Ateliers': 'c-culture' };
 
 // "08h00–18h00", "Dimanche à 16h00", "10h15 à 11h30" → "8h–18h", "16h", "10h15–11h30".
-function times(schedule) {
-  return [...String(schedule || '').matchAll(/(?<!\d)([01]?\d|2[0-3])\s*[h:]\s*([0-5]\d)?(?!\d)/gi)].slice(0, 2);
+// A colon only separates hours and minutes when it touches both ("19:00"), and a number next to a
+// slash is a date: « 10/10 : 19h00 ; 11/10 : 17h00 » was shown as "10h19–10h17" (05/10).
+const TIME_RE = /(?<![\d/])([01]?\d|2[0-3])(?:\s*h\s*([0-5]\d)?|:([0-5]\d))(?![\d/])/gi;
+function allTimes(schedule) {
+  return [...String(schedule || '').matchAll(TIME_RE)].map((m) => ({ h: Number(m[1]), m: Number(m[2] || m[3] || 0) }));
 }
+const hm = (t) => `${t.h}h${t.m ? String(t.m).padStart(2, '0') : ''}`;
+const range = (s) => allTimes(s).slice(0, 2).map(hm).join('–');
 function timeOf(schedule) {
-  return times(schedule).map((m) => `${Number(m[1])}h${m[2] && m[2] !== '00' ? m[2] : ''}`).join('–');
+  // Hours given day by day are separated by « ; » (« sam. 10 : 10h–18h ; dim. 11 : 13h–18h »,
+  // the format the pipeline asks for). Each day keeps its own range, and different days are
+  // alternatives — "19h / 17h", never the range "19h–17h". Same hours every day: said once.
+  const days = [...new Set(String(schedule || '').split(';').map(range).filter(Boolean))];
+  // A schedule cut at 120 characters can end on half a range ("10h" after "10h–12h" days).
+  return days.filter((r) => !days.some((o) => o !== r && o.startsWith(`${r}–`))).slice(0, 2).join(' / ');
 }
 /** Minutes after midnight of the first time, for sorting; untimed outings last. */
 function timeKey(e) {
-  const m = times(e.schedule)[0];
-  return m ? Number(m[1]) * 60 + Number(m[2] || 0) : 24 * 60;
+  const t = allTimes(e.schedule)[0];
+  return t ? t.h * 60 + t.m : 24 * 60;
 }
 // Only a price that says free and nothing else: "Gratuit pour les adhérents, 10 €" is not.
 const isFree = (e) => /^(gratuit|entr[ée]e libre|acc[èe]s libre)/i.test(String(e.price || '').trim()) && !/\d\s*€/.test(String(e.price || ''));
@@ -1224,6 +1248,7 @@ ${shareScript(`${SITE_URL}/${TODAY_DIR}/`, 'Que faire aujourd’hui autour de Fo
     description: truncate(`${n ? `${n} sortie${n > 1 ? 's' : ''}` : 'Les sorties'} aujourd’hui, ${dayName(today)}, à Fontainebleau et alentour : sport, nature, spectacles, culture, en famille. Mis à jour chaque matin.`, 155),
     canonical: `${SITE_URL}/${TODAY_DIR}/`,
     body,
+    toTop: true,   // no English on this page, but just as long
   }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
 }
 

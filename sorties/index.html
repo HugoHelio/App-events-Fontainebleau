@@ -49,10 +49,11 @@ ul.list small{display:block;color:var(--muted)}
 footer{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
 @media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px}.lang{display:inline-flex;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}.lang-btn{font:inherit;font-size:13px;font-weight:700;padding:3px 10px;border:0;background:transparent;color:#fff;cursor:pointer}.lang-btn[aria-pressed="true"]{background:#fff;color:var(--ink)}</style>
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}.lang{display:inline-flex;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}.lang-btn{font:inherit;font-size:13px;font-weight:700;padding:3px 10px;border:0;background:transparent;color:#fff;cursor:pointer}.lang-btn[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.to-top{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;font-size:1.3rem;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}.to-top.is-hidden{display:none}.to-top:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}</style>
 </head>
 <body>
-<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a><span class="lang" role="group" aria-label="Langue / Language"><button type="button" class="lang-btn" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button></span></header>
+<header id="top"><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a><span class="lang" role="group" aria-label="Langue / Language"><button type="button" class="lang-btn" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button></span></header>
 <main>
 <nav class="crumbs"><a href="/" data-en="Home">Accueil</a> › <a href="/que-faire/" data-en="Things to do around Fontainebleau">Que faire autour de Fontainebleau</a></nav>
 <h1 data-en="Seasonal outings around Fontainebleau">Sorties de saison autour de Fontainebleau</h1>
@@ -64,6 +65,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px}.l
 <div class="actions"><a class="btn alt" href="/" data-en="Full agenda on the map">Tout l’agenda sur la carte</a> <a class="btn alt" href="/ce-week-end/" data-en="This weekend">Ce week-end</a></div>
 </main>
 <footer><span data-en="Agenda collected automatically. Check the details with the organiser before you go.">Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/que-faire/" data-en="All towns (in French)">Toutes les communes</a> · <a href="/nos-sources/" data-en="Our sources (in French)">Nos sources</a> · <a href="https://helioso.com" rel="noopener" data-en="A Helioso project">Un projet Helioso</a></footer>
+<a href="#top" class="to-top"><span aria-hidden="true">↑</span><span class="sr-only" data-en="Back to top">Haut de page</span></a>
 <script>
 (function () {
   // Swaps our own strings between French and English (see "English" in generate-pages.js).
@@ -88,6 +90,13 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px}.l
     });
   });
   if (root.className === 'en') apply('en');
+})();
+(function () {
+  var b = document.querySelector('.to-top');
+  if (!b) return;
+  var f = function () { b.classList.toggle('is-hidden', window.scrollY < 400); };
+  window.addEventListener('scroll', f, { passive: true });
+  f();
 })();
 </script>
 </body>

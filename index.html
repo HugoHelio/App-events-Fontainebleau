@@ -2032,6 +2032,7 @@
     const cityKey = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, '');
     const SECTOR_OF = new Map(CITY_SECTORS.flatMap(([key, towns]) => towns.map((t) => [cityKey(t), key])));
     const sectorOf = (city) => SECTOR_OF.get(cityKey(city || '')) || 'sectorOther';
+    const CANONICAL_TOWN = new Map(CITY_SECTORS.flatMap(([, towns]) => towns.map((t) => [cityKey(t), t])));
     // A whole sector is chosen in the same <select> as a town: value "sector:<key>".
     const SECTOR_VALUE = 'sector:';
 
@@ -2044,9 +2045,15 @@
     function populateCityFilter() {
       const select = document.getElementById('filterCity');
       const current = select.value;
-      const names = [...new Set(allActivities
-        .filter((a) => isUpcoming(a) && isInWindow(a) && typeof a.city === 'string' && a.city.trim())
-        .map((a) => a.city))];
+      // One entry per town even when the data spells it two ways (« Dammarie-lès-Lys » and
+      // « Dammarie-les-Lys », 05/10): the spelling of CITY_SECTORS wins, else the first seen.
+      const byKey = new Map();
+      for (const a of allActivities) {
+        if (!isUpcoming(a) || !isInWindow(a) || typeof a.city !== 'string' || !a.city.trim()) continue;
+        const k = cityKey(a.city);
+        if (!byKey.has(k)) byKey.set(k, CANONICAL_TOWN.get(k) || a.city);
+      }
+      const names = [...byKey.values()];
       while (select.options.length > 1) select.remove(1);
       select.querySelectorAll('optgroup').forEach((g) => g.remove());
       const groups = new Map([...CITY_SECTORS.map(([key]) => [key, []]), ['sectorOther', []]]);
@@ -2078,7 +2085,7 @@
     function matchesPlace(a, cityVal) {
       if (!cityVal) return true;
       if (cityVal.startsWith(SECTOR_VALUE)) return sectorOf(a.city) === cityVal.slice(SECTOR_VALUE.length);
-      return a.city === cityVal;
+      return cityKey(a.city || '') === cityKey(cityVal);   // spelling-blind, like the list
     }
 
     /** Same-origin path of the event's static page, or null. Anything else in the field is ignored. */

@@ -81,6 +81,18 @@ function townsCompatible(a, b) {
   return !x || !y || x === y || x.includes(y) || y.includes(x);
 }
 
+/**
+ * Both name a place, and one name holds the other: « Château de Blandy » / « Château de
+ * Blandy-les-Tours ». A place that is only the town's name (« Fontainebleau ») is no venue: it
+ * would hold every place of the town.
+ */
+function sameVenue(a, b) {
+  const x = norm(a.locationName), y = norm(b.locationName);
+  const towns = new Set([norm(a.city), norm(b.city)]);
+  if (x.length < 4 || y.length < 4 || towns.has(x) || towns.has(y)) return false;
+  return x === y || x.includes(y) || y.includes(x);
+}
+
 /** Pairs worth a question, most similar first. */
 function candidatePairs(recs, { skip = () => false } = {}) {
   const out = [];
@@ -94,9 +106,13 @@ function candidatePairs(recs, { skip = () => false } = {}) {
       const common = [...wa].filter((w) => wb.has(w));
       if (!common.length) continue;
       const coef = common.length / Math.min(wa.size, wb.size);
+      if (coef < 0.5) continue;
       // One shared word only counts when it is a long one ("collectionnistes", "hengelbrock");
-      // "noel" alone would pair every Christmas event of a town.
-      if (coef < 0.5 || (common.length < 2 && common[0].length < 6)) continue;
+      // "noel" alone would pair every Christmas event of a town. Unless both name the same venue:
+      // three Gemini records of one Lego exhibition at the château de Blandy (10-11/10) shared
+      // only « lego », four letters, and were never put to the judge (05/10). The judge still
+      // decides; this only widens what it is asked.
+      if (common.length < 2 && common[0].length < 6 && !sameVenue(a, b)) continue;
       out.push({ a: recs[i], b: recs[j], score: coef + common.length / 100 });
     }
   }
