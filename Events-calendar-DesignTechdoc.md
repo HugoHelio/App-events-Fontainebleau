@@ -1150,7 +1150,7 @@ removes it on the next write. The organiser's `url` is never touched.
   price** (checked 05/10). Price words `inclus` + `billet`: it reaches the 4 exhibitions and
   musical walks « inclus dans le billet d'entrée », **not** the concerts (27 €) or guided
   tours sold separately, and not the Gemini-only duplicate of the Marie-Antoinette exhibition.
-- Shipped **inactive** (`"active": false`) until the affiliate link exists (step 0, section C).
+- Shipped **inactive** (`"active": false`) until the affiliate link exists (step 0, section C). **Activated on 07/10** (83b).
 - Display: home card (outlined button, `rel="sponsored"`, « Lien partenaire Tiqets, même
   prix » — the « même prix » only with `samePrice: true`), event page (button after the
   organiser's, one-line disclosure linking to `/nos-sources/#financement`), and a « Comment le
@@ -1457,6 +1457,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-05 | **Ordre de travail de la monétisation** (§9, A2) : inscriptions (83-0) → activer le château (83b) → bloc « Visiter » avant le 17/10 (83c) → sonde puis intégration du flux France Billet (83d, 83e) → étude des revenus hors affiliation (84) → bilan à deux mois (83f) → hébergement en dernier (83g) | D'abord ce qui débloque, puis ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'être construit. Une offre de monument ne dépend d'aucune date, donc d'aucune donnée Gemini : c'est le revenu le plus sûr, et la Toussaint amène des visiteurs. La couverture locale de France Billet est inconnue : sonder avant d'intégrer. Booking.com rapporte peu (4 %, suivi de session) et sort du cœur « sorties » |
 | 2026-10-07 | **Search Console, « Page alternative avec balise canonique correcte » (76), 404 (3), « noindex » (1) : voulus, sauf un point.** (1) `/?lang=en` **retiré du sitemap**, et les `hreflang` retirés de l'accueil et du sitemap : la page déclare `/` comme canonique, le sitemap demandait donc d'indexer une page qui s'en remet à une autre (l'e-mail « pages in a sitemap »), et Google ignore un `hreflang` vers une page canonicalisée ailleurs. (2) **`rel="nofollow"` sur « Voir sur la carte »** (`/?event=`, `/?ville=`) et sur « Intégrer l'agenda » (`/widget/integrer/?ville=`) : ~400 liens internes vers des copies de l'accueil, source des 76 « alternatives ». Le lien du widget chez les partenaires reste suivi (c'est un lien entrant). Les 404 sont les fiches d'événements terminés, le « noindex » une ancienne adresse de fiche redirigée. | L'exclusion de ces adresses est le comportement voulu : les « valider » dans la Search Console échouerait. Pas de `Disallow` dans `robots.txt` : Google pourrait indexer une adresse bloquée sans en lire la canonique. Le `nofollow` libère du temps d'exploration pour les 58 fiches « détectées, non indexées ». Les titres et descriptions des fiches ne changent pas : la mesure de l'item 80 n'est pas faussée |
 | 2026-10-07 | **Mention d'affiliation discrète en pied de page, sur tout le site** : « Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous. » (accueil et pages générées, FR/EN). Inscription Tiqets le 07/10 (83-0) | Demande du chef de projet. Affichée en permanence, avant même la première offre active : la transparence précède le premier lien, et « pouvons » reste vrai sans offre. La mention de chaque bouton et le paragraphe de `/nos-sources/` (seulement quand une offre est active) restent |
+| 2026-10-07 | **Offre Tiqets du château activée** (83b) : lien d'affilié avec la campagne `fontainebleaulive-chateau`, coupe-file toujours à 17 € = prix officiel (« même prix » maintenu), 4 fiches (deux expositions Marie-Antoinette, Le panache des Lumières, promenades musicales). Appliqué sans scan (`affiliates.js --write`, `generatedAt` inchangé) | Premier lien rémunéré du site. Une campagne par offre permet de lire le bilan 83f (vers le 07/12) offre par offre dans le tableau de bord Tiqets, en plus des `booking-click` de GoatCounter |
 
 ---
 
@@ -1501,7 +1502,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 |---|---|---|---|
 | 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. À lancer aujourd'hui | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
-| 2 | **83b. Activer l'offre Tiqets du château** | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
+| 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | **83c. Bloc « Visiter » hors événements** | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
 | 4 | **83d. Sonde du flux France Billet** (observation seule) | La couverture locale de la billetterie nationale est inconnue : on la mesure avant de construire l'intégration | S |
 | 5 | **83e. Intégration du flux Awin** (France Billet, puis Ticketmaster) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
@@ -1687,7 +1688,9 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   `serializeEvent()`, `affiliates.json` + `scripts/affiliates.js` (aperçu et `--write` sans
   scan), bouton sur l'accueil et les fiches, `rel="sponsored"`, paragraphe « Comment le site
   est financé » sur `/nos-sources/`, clics `booking-click`. Offre Tiqets du château **inactive**.
-- [ ] **83b. Activer l'offre Tiqets du château** — dès le lien d'affilié reçu (83-0). Coller
+- [x] **83b. Activer l'offre Tiqets du château — fait le 07/10** : lien d'affilié (`partner=helioso-190732`,
+  campagne `fontainebleaulive-chateau`), prix revérifié à 17 €, 4 fiches. **Reste, chef de projet** : cliquer
+  le bouton sur une fiche en ligne et vérifier que le clic arrive dans le tableau de bord Tiqets. Texte d'origine — dès le lien d'affilié reçu (83-0). Coller
   l'URL dans `affiliates.json`, `"active": true`, `node scripts/affiliates.js` (aperçu : 4 fiches
   attendues), `--write`, `generate-pages.js`, commit. Vérifier sur le site qu'un clic arrive bien
   dans le tableau de bord Tiqets. **XS.**
@@ -1706,7 +1709,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   le chef de projet au vu du rapport). Correspondance → `booking` sur la fiche existante ;
   événement nouveau → observation, puis cinquième source publiée (`source: "francebillet"`,
   ajoutée à `CONFIRMED_SOURCES`). Ticketmaster par le même code s'il a des salles locales. **M.**
-- [ ] **83f. Bilan à deux mois après 83b.** GoatCounter (`booking-click` par offre) et tableaux
+- [ ] **83f. Bilan à deux mois après 83b — vers le 07/12.** GoatCounter (`booking-click` par offre) et tableaux
   de bord des réseaux : clics, ventes, revenus. Décide de 83g, et de garder ou non chaque
   plateforme. **XS.**
 - [ ] **83g. Hébergement (Booking.com via CJ) — seulement si 83f le justifie.** Bloc
