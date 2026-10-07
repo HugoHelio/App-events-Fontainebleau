@@ -1927,7 +1927,15 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
     catalogue. En attente (1 à 15 jours). À noter à l'acceptation : le taux réel, le format et
     l'URL du **flux produit** (Toolbox → Create-a-Feed, débloque 83d), et la réponse du réseau
     sur le consentement aux cookies de suivi.
-  - [ ] **Cdiscount Billetterie — à tenter.** Avant de candidater, vérifier : (1) billets
+  - [ ] **Cdiscount Billetterie — en attente, pas de candidature pour l'instant (07/10).** Vérifié
+    par le chef de projet : billets neufs (dont le château) ; lieux déjà vendus dans la zone —
+    théâtre municipal, château (dont la chapelle de la Trinité), église Saint-Louis, halle de
+    Villars, Grand Parquet, prairie du Bois d'Hyver — mais **aucun spectacle en vente** ce jour.
+    Les noms de lieux au format « LIEU - VILLE - VILLE » sont ceux de France Billet : catalogue
+    probablement revendu. Décision : attendre la sonde 83d ; ne candidater que si Fnac Spectacles
+    refuse, ou si 83d montre que Cdiscount vend des dates absentes du flux France Billet. Le
+    billet du château y fait doublon avec Tiqets : à comparer (prix, commission) seulement si
+    Tiqets décevait en 83f. Texte d'origine — Avant de candidater, vérifier : (1) billets
     **neufs**, pas de revente entre particuliers (écartée le 05/10) ; (2) chercher un spectacle du
     théâtre municipal de Fontainebleau ou de L'Escale (Melun) sur leur site, pour voir quel
     billettiste fournit le catalogue (s'il recoupe France Billet, il n'apporte rien) ; (3) flux
