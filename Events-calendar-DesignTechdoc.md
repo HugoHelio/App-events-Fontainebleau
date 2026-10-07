@@ -1134,7 +1134,7 @@ links lead to a ticketing site (14 HelloAsso, 4 Mapado), and neither runs an aff
 programme. Putting a tracking code on the organisers' links would earn nothing. The revenue
 has to come from a **second** link, offered next to the organiser's link when a partner sells
 the very ticket the event needs. Benchmark of 05/10 (programmes, rates, fit): France Billet /
-Fnac Spectacles (Awin, rate not published, **product feed**; publisher account `3117734` validated 07/10), Ticketmaster France (Awin,
+Fnac Spectacles (Awin, rate not published, **product feed**; publisher account `3117734` validated 07/10), Ticketmaster France (announced on Awin; **not found in Awin France on 07/10**,
 0.32 € per ticket), Tiqets and GetYourGuide (8 %, 30-day cookie), Booking.com (CJ, 4 %,
 session only). Rejected: ticket resale aggregators (against the trust promise), HelloAsso and
 Mapado (no programme). Priorities and the full sequence: §9, A2 (work order of 05/10).
@@ -1210,7 +1210,7 @@ noindex pages (redirects, `/publier/`) and the widget load nothing.
 **Affiliation, for comparison (§3.AA).** A visitor must land where a button is (~5–10 % of
 visits today: 4 fiches + the « À visiter » blocks), click (~5 %), buy (~5–10 %); 8 % of a
 ~35 € basket ≈ 2.8 €. At today's traffic: **0–5 €/month**; at 15 000 visits: 20–60 €.
-Ticketmaster's 0.32 €/ticket changes nothing; France Billet unknown until 83d.
+Ticketmaster's 0.32 €/ticket would change nothing (and it is not on Awin France); France Billet unknown until 83d.
 
 **Option 1 — paid highlight for organisers.** One « À la une » slot on `/ce-week-end/` (the
 most-viewed page) and the home page, labelled « Sponsorisé » (LCEN art. 20), never mixed into
@@ -1559,6 +1559,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-07 | **Étude des revenus hors affiliation (item 84, §3.AB) : ne rien vendre au trafic actuel.** Ordre proposé : mesure sur les pages générées (84a), widget premium dès qu'un site utilise le gratuit, mise en avant vers ~5 000 visites/mois. Règle proposée, **à trancher par le chef de projet** : rien de payant ne contient de donnée Gemini seule | À ~1 500 visites/mois, un emplacement vaut quelques euros par semaine et la prospection coûte plus ; le widget premium ne dépend pas du trafic et, limité aux sources lues (69 %), échappe à l'interdiction de revendre les résultats grounded (§3.G) |
 | 2026-10-07 | **GoatCounter sur les pages générées (84a)** : vues de toutes les pages indexables, clics `event-click`, `booking-click` (id d'événement, comme l'accueil) et `visit-click` (id du lieu). Code relu dans `ANALYTICS.code` d'`index.html` ; rien sur les pages noindex (redirections, `/publier/`) ni dans le widget | Le trafic arrive sur les fiches et `/ce-week-end/`, que rien ne mesurait : ni 80, 82 et 83f, ni une vente de visibilité n'avaient de chiffre. Un seul interrupteur, pour qu'éteindre la mesure sur l'accueil l'éteigne partout. Sans cookie, donc sans bandeau (décision du 21/09) |
 | 2026-10-07 | **Compte éditeur Awin validé, identifiant `3117734`** (83-0) | Débloque les candidatures Fnac Spectacles / France Billet et Ticketmaster, puis la sonde du flux (83d). L'identifiant est noté dans le doc : il est public dans chaque lien d'affilié, contrairement à la clé du flux |
+| 2026-10-07 | **Awin France : candidature Fnac Spectacles (= France Billet) ; Ticketmaster, Ceetiz, Funbooker, Smartbox et Wonderbox absents** (83-0). Cdiscount Billetterie à tenter après vérification ; billetterie d'activités mise au backlog (item 85) | Le benchmark du 05/10 plaçait Ticketmaster sur Awin : faux pour la France à ce jour. Cdiscount Billetterie n'est utile que s'il ne revend pas le catalogue de France Billet et ne fait pas de revente entre particuliers |
 | 2026-10-07 | **`EVT_e052764d87` masqué** (overrides.json) : exposition Lacroix « Marie-Antoinette… » en double sur l'accueil. Gardé : `EVT_cd4a6118fa`, confirmé par le site du château et porteur du bouton Tiqets | Signalé par le chef de projet. La déduplication ne pouvait pas le voir : dates de début différentes (05/06 chez Gemini, 19/09 sur le site du château), et un titre long n'est pas contenu dans l'autre mot pour mot. Effectif au prochain scan |
 
 ---
@@ -1602,12 +1603,12 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets et compte Awin faits le 07/10, **candidatures France Billet et Ticketmaster ensuite** | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
+| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets, compte Awin et candidature Fnac Spectacles faits le 07/10 ; reste Cdiscount Billetterie (Ticketmaster absent d'Awin) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
 | 4 | **83d. Sonde du flux France Billet** (observation seule) | La couverture locale de la billetterie nationale est inconnue : on la mesure avant de construire l'intégration | S |
-| 5 | **83e. Intégration du flux Awin** (France Billet, puis Ticketmaster) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
+| 5 | **83e. Intégration du flux Awin** (France Billet, puis Cdiscount Billetterie si accepté) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
 | 6 | ~~**84. Chiffrer les revenus hors affiliation**~~ — étude livrée le 07/10 (§3.AB) ; reste la décision grounding | Rien à vendre avant l'audience ; mesure sur les pages générées faite le 07/10 (84a) | S (étude) |
 | 7 | **83f. Bilan à deux mois** | Clics `booking-click`, ventes, revenus par offre. Décide de 83g et de l'abandon d'une plateforme | XS |
 | 8 | **83g. Hébergement (Booking.com via CJ)** | En dernier : 4 %, suivi limité à la session, hors du cœur « sorties » du site | S |
@@ -1815,7 +1816,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
 - [ ] **83e. Intégration du flux Awin** — si 83d trouve assez d'événements (seuil à fixer avec
   le chef de projet au vu du rapport). Correspondance → `booking` sur la fiche existante ;
   événement nouveau → observation, puis cinquième source publiée (`source: "francebillet"`,
-  ajoutée à `CONFIRMED_SOURCES`). Ticketmaster par le même code s'il a des salles locales. **M.**
+  ajoutée à `CONFIRMED_SOURCES`). Cdiscount Billetterie par le même code s'il a des salles locales (Ticketmaster : absent d'Awin France au 07/10). **M.**
 - [ ] **83f. Bilan à deux mois après 83b — vers le 07/12.** GoatCounter (`booking-click` par offre) et tableaux
   de bord des réseaux : clics, ventes, revenus. Décide de 83g, et de garder ou non chaque
   plateforme. **XS.**
@@ -1839,6 +1840,14 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   (item 71). Les deux vendent une visibilité construite en partie sur des données Gemini :
   **décision grounding explicite (§3.G, §8) avant le premier contrat**. Livrable : une
   recommandation chiffrée pour le chef de projet. **S.**
+- [ ] **85. Billetterie d'activités — backlog (idée du 07/10, plus tard).** Activités vendues
+  toute l'année, sans date d'événement : initiation à l'escalade de bloc, canoë sur le Loing,
+  accrobranche, balades guidées. Même mécanique que le bloc « À visiter » (83c) : une entrée
+  `places` (ou un type voisin) par activité, sur les pages communes, `/ce-week-end/`, les
+  vacances, et les pages Sport et Nature. **Bloquant : aucun programme trouvé** — Ceetiz et
+  Funbooker absents d'Awin France (07/10). Piste à vérifier d'abord : **GetYourGuide** (programme
+  direct, 8 %, déjà prévu pour Blandy et Courances en 83c) vend des activités autour de
+  Fontainebleau ; un seul compte servirait les deux. **S** une fois le programme trouvé.
 
 ### B. Pipeline et données — en continu
 
@@ -1899,7 +1908,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   tourisme, associations ; plus tard un formulaire « Ajouter mon événement ». Le passage
   « Outreach gate » des Milestones s'applique.
 - [ ] **83-0. Inscriptions aux programmes d'affiliation — priorité 0 de l'ordre du 05/10** (§3.AA).
-  Ordre : Tiqets → Awin (France Billet, Ticketmaster) → GetYourGuide et CJ plus tard. Ajouter les
+  Ordre : Tiqets → Awin (France Billet, Cdiscount Billetterie) → GetYourGuide et CJ plus tard. Ajouter les
   revenus d'affiliation aux déclarations de la structure.
   - [x] **Tiqets — inscrit le 07/10**, lien d'affilié reçu et collé (83b, 83c).
     - [ ] **Saisir le numéro de TVA intracommunautaire** de la structure dans le compte
@@ -1913,11 +1922,18 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
     - [ ] **Saisir le numéro de TVA intracommunautaire** de la structure dans le compte Awin
       (Account → Payment details / Company details), comme pour Tiqets. Sans lui, les commissions
       ne peuvent pas être facturées ni versées.
-  - [ ] **Suivant : candidater** dans l'annuaire des annonceurs Awin (Advertisers → Join
-    programmes) à **Fnac Spectacles / France Billet**, puis **Ticketmaster France**. Validation :
-    1 à 15 jours par annonceur. À noter au retour : le taux réel de France Billet, le format et
-    l'URL de son **flux produit** (Toolbox → Create-a-Feed, débloque 83d), et la réponse du
-    réseau sur le consentement aux cookies de suivi.
+  - [x] **Fnac Spectacles — candidature envoyée le 07/10.** France Billet est la société de
+    billetterie du groupe Fnac Darty, Fnac Spectacles sa vitrine : un seul programme, un seul
+    catalogue. En attente (1 à 15 jours). À noter à l'acceptation : le taux réel, le format et
+    l'URL du **flux produit** (Toolbox → Create-a-Feed, débloque 83d), et la réponse du réseau
+    sur le consentement aux cookies de suivi.
+  - [ ] **Cdiscount Billetterie — à tenter.** Avant de candidater, vérifier : (1) billets
+    **neufs**, pas de revente entre particuliers (écartée le 05/10) ; (2) chercher un spectacle du
+    théâtre municipal de Fontainebleau ou de L'Escale (Melun) sur leur site, pour voir quel
+    billettiste fournit le catalogue (s'il recoupe France Billet, il n'apporte rien) ; (3) flux
+    produit disponible ou non. Même sonde que 83d s'il est accepté.
+  - **Absents d'Awin France (07/10)** : Ticketmaster, Ceetiz, Funbooker, Smartbox, Wonderbox.
+    Ticketmaster sort de 83e tant qu'on ne lui trouve pas un autre réseau.
   - [ ] **Plus tard** : GetYourGuide (seulement pour Blandy, Courances ou les excursions, 83c) et
     CJ / Booking.com (seulement si 83f le justifie, 83g).
 - [ ] **71. Widget premium** — le gratuit est en ligne (§3.Y). Le premium est de la syndication
