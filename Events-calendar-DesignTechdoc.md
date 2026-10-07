@@ -1192,6 +1192,69 @@ The Vaux place now shows « 18 €, même prix » (Tiqets price checked).
 - Activation without a paid scan: `node scripts/affiliates.js` (preview) then `--write`
   (same `serializeEvent()`, `generatedAt` untouched), then `generate-pages.js`.
 
+### AB. Revenue beyond affiliation — study (item 84, October 7, 2026)
+
+A study, nothing built. Every figure below is an **order of magnitude from stated assumptions**,
+to be replaced by measured numbers; none is a quote from a buyer.
+
+**Starting point.** Search Console, late September: ~35 clicks/day, i.e. **~1 000–1 500
+visits/month** with direct traffic, 87 % mobile. Data of 05/10: 362 events, **113 Gemini-only
+(31 %)**, 249 from a source we read. Running costs: Gemini $2–5/month (§8) + the domain —
+**~5–10 €/month to break even.** Measurement gap: GoatCounter runs on the home page only; the
+fiches, `/ce-week-end/` and the commune pages — where the traffic lands — count nothing.
+
+**Affiliation, for comparison (§3.AA).** A visitor must land where a button is (~5–10 % of
+visits today: 4 fiches + the « À visiter » blocks), click (~5 %), buy (~5–10 %); 8 % of a
+~35 € basket ≈ 2.8 €. At today's traffic: **0–5 €/month**; at 15 000 visits: 20–60 €.
+Ticketmaster's 0.32 €/ticket changes nothing; France Billet unknown until 83d.
+
+**Option 1 — paid highlight for organisers.** One « À la une » slot on `/ce-week-end/` (the
+most-viewed page) and the home page, labelled « Sponsorisé » (LCEN art. 20), never mixed into
+the ranking of « À ne pas manquer ». Value = the audience it reaches: at 5 000 visits/month,
+~500 views/week of the slot, 2–4 % clicks → 10–20 clicks/week, worth what a local Facebook ad
+costs for the same clicks (CPC ~0.3–0.6 €, to be checked): **~10–20 € per week sold.**
+Buyers: theatres, festivals (Briardises: 19 events, Django), restaurants, shops' union. Public
+venues (théâtre municipal, châteaux) buy through their own procedures — slow, not the first
+customers.
+
+**Option 2 — premium widget (item 71).** The free widget (§3.Y) without the mention, in the
+partner's colours, their own events first, a monthly count of clicks. The value does **not**
+depend on our traffic but on the time the buyer saves keeping an agenda by hand: a commune or
+the tourist office (~300–600 €/year), lodging, campsites (~10–15 €/month). Constraints:
+communes pay on invoice via **Chorus Pro** (mandatory for public buyers), not by card — so a
+Stripe link only for private buyers; and the premium is sold first to those already using
+the free one (none confirmed yet; the Fontainebleau town hall was contacted on 29/09).
+
+**The grounding question (§3.G, §8), made concrete.** Selling data that came from grounded
+results is « syndicate, resell » in the plainest sense. Both options can avoid it:
+- **Premium widget: legitimate sources only** — events with a source we read (69 % today, the
+  share item 72 is raising). The free widget can keep everything.
+- **Highlight: the organiser supplies the content** (text, date, link) — the paid slot itself
+  contains no Gemini data. The pages around it still do: the same knowingly accepted risk as
+  the affiliate buttons, no more.
+
+**Estimate, per month** (assumption: 1 to 3 customers for options 1–2 within a season of
+canvassing):
+
+| Visits / month | ~1 500 (now) | ~5 000 | ~15 000 |
+|---|---|---|---|
+| Affiliation | 0–5 € | 5–20 € | 20–60 € |
+| Highlight (1 slot, 30–50 % of weeks sold) | 0–25 € | 25–80 € | 80–250 € |
+| Premium widget | 0–50 € | 25–100 € | 50–150 € |
+
+**Recommendation.**
+1. **Sell nothing yet.** At today's audience, a slot is worth a few euros a week and the
+   canvassing time costs more. The figure that unlocks the rest is the audience.
+2. **First prerequisite, small (XS): GoatCounter on the generated pages** (same code, same
+   rule — nothing when `ANALYTICS.code` is empty; never in the widget). Without it there is
+   nothing to show a buyer, and nothing to measure 80, 82 and 83f with.
+3. **Premium widget first**, as soon as one site uses the free one: recurring, independent of
+   traffic, already in line with the outreach (72c), and clean on grounding once filtered.
+4. **Highlight from ~5 000 visits/month**, first slot offered free to one organiser to get a
+   real click count, then priced from it.
+5. **Decision for the project lead before any sale**: adopt the rule « nothing paid contains
+   Gemini-only data » (premium widget filtered, organiser-supplied highlight).
+
 ## 4. Data Schema (`data.json`, v2.1)
 
 Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the script and the frontend). Fields added in v2 are marked ★.
@@ -1489,6 +1552,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-07 | **Offre Tiqets du château activée** (83b) : lien d'affilié avec la campagne `fontainebleaulive-chateau`, coupe-file toujours à 17 € = prix officiel (« même prix » maintenu), 4 fiches (deux expositions Marie-Antoinette, Le panache des Lumières, promenades musicales). Appliqué sans scan (`affiliates.js --write`, `generatedAt` inchangé) | Premier lien rémunéré du site. Une campagne par offre permet de lire le bilan 83f (vers le 07/12) offre par offre dans le tableau de bord Tiqets, en plus des `booking-click` de GoatCounter |
 | 2026-10-07 | **Bloc « À visiter » (83c)** : billet d'entrée chez Tiqets du château de Fontainebleau et de Vaux-le-Vicomte, sur la page de la commune, `/ce-week-end/` et les pages de vacances, seulement les jours d'ouverture ; fermetures exceptionnelles signalées (Vaux, samedi 10/10). Nouvelle entrée `places` dans `affiliates.json`, rendue par `generate-pages.js` seul | Les trois événements de Vaux sont Gemini seul : une offre liée aux fiches n'y aurait rien mis. Un monument ne dépend d'aucune date annoncée, c'est donc le revenu qui ne risque pas une date fausse ; ce qui doit rester vrai, ce sont la saison et les fermetures, relevées sur le site officiel. Prix de Vaux non affiché tant qu'il n'est pas comparé au tarif officiel. Une campagne Tiqets par lieu pour le bilan 83f |
 | 2026-10-07 | **Exception à la règle « jamais sur une fiche Gemini seule » pour Vaux-le-Vicomte** (`officialHosts`, §3.AA) : une fiche Gemini compte comme confirmée si son lien est une page d'événement du site officiel du château, vérifiée en ligne. Bouton Tiqets 18 € sur les vacances de la Toussaint à Vaux (lien corrigé dans `overrides.json`, effectif au prochain scan), **pas** sur le Grand Noël. `ACT_020` masqué (doublon du Grand Noël) | Décision du chef de projet : le château publie son propre agenda, et vendre son billet dans le bloc « À visiter » mais pas sur ses événements n'avait pas de sens. Garde-fous : page d'événement seulement (une page d'accueil laisserait « Dates à confirmer » à côté du bouton), lien vivant, et le tarif doit être celui du billet vendu — le Grand Noël a sa billetterie à part et le billet Tiqets n'y donne pas accès. À ne pas étendre sans un site officiel qui publie son agenda |
+| 2026-10-07 | **Étude des revenus hors affiliation (item 84, §3.AB) : ne rien vendre au trafic actuel.** Ordre proposé : mesure sur les pages générées (84a), widget premium dès qu'un site utilise le gratuit, mise en avant vers ~5 000 visites/mois. Règle proposée, **à trancher par le chef de projet** : rien de payant ne contient de donnée Gemini seule | À ~1 500 visites/mois, un emplacement vaut quelques euros par semaine et la prospection coûte plus ; le widget premium ne dépend pas du trafic et, limité aux sources lues (69 %), échappe à l'interdiction de revendre les résultats grounded (§3.G) |
 | 2026-10-07 | **`EVT_e052764d87` masqué** (overrides.json) : exposition Lacroix « Marie-Antoinette… » en double sur l'accueil. Gardé : `EVT_cd4a6118fa`, confirmé par le site du château et porteur du bouton Tiqets | Signalé par le chef de projet. La déduplication ne pouvait pas le voir : dates de début différentes (05/06 chez Gemini, 19/09 sur le site du château), et un titre long n'est pas contenu dans l'autre mot pour mot. Effectif au prochain scan |
 
 ---
@@ -1538,7 +1602,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
 | 4 | **83d. Sonde du flux France Billet** (observation seule) | La couverture locale de la billetterie nationale est inconnue : on la mesure avant de construire l'intégration | S |
 | 5 | **83e. Intégration du flux Awin** (France Billet, puis Ticketmaster) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
-| 6 | **84. Chiffrer les revenus hors affiliation** (mise en avant payante, widget premium 71) | Probablement plus rentable que l'affiliation à ce niveau de trafic ; décision grounding à prendre avant toute vente (§8) | S (étude) |
+| 6 | ~~**84. Chiffrer les revenus hors affiliation**~~ — étude livrée le 07/10 (§3.AB) ; reste la décision grounding | Rien à vendre avant l'audience ; prérequis : mesure sur les pages générées (84a) | S (étude) |
 | 7 | **83f. Bilan à deux mois** | Clics `booking-click`, ventes, revenus par offre. Décide de 83g et de l'abandon d'une plateforme | XS |
 | 8 | **83g. Hébergement (Booking.com via CJ)** | En dernier : 4 %, suivi limité à la session, hors du cœur « sorties » du site | S |
 
@@ -1752,7 +1816,16 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
 - [ ] **83g. Hébergement (Booking.com via CJ) — seulement si 83f le justifie.** Bloc
   « Dormir à proximité » sur les grands événements (Grand Parquet, festival Django) et les
   pages `/sorties/`, jamais sur toutes les fiches. 4 %, suivi limité à la session. **S.**
-- [ ] **84. Chiffrer les revenus hors affiliation** — étude, rien à coder. Deux pistes, à
+- [x] **84. Chiffrer les revenus hors affiliation — étude livrée le 07/10 (§3.AB).** Conclusion :
+  rien à vendre au trafic actuel ; widget premium d'abord (dès qu'un site utilise le gratuit),
+  mise en avant à partir de ~5 000 visites/mois. **Reste, chef de projet** : (1) trancher la
+  règle « rien de payant ne contient de donnée Gemini seule » (widget premium limité aux sources
+  lues, mise en avant fournie par l'organisateur) ; (2) les idées du chef de projet, à voir après
+  les inscriptions (83-0).
+  - [ ] **84a. GoatCounter sur les pages générées** (fiches, `/ce-week-end/`, communes,
+    `/sorties/`) : même code, même règle (rien si `ANALYTICS.code` est vide), jamais dans le
+    widget. Prérequis de toute vente de visibilité, et de la mesure de 80, 82 et 83f. **XS.**
+  Texte d'origine — étude, rien à coder. Deux pistes, à
   comparer à l'affiliation au trafic réel : (1) **mise en avant payante pour les organisateurs**
   (encart signalé « sponsorisé », jamais mêlé au classement des sorties) ; (2) **widget premium**
   (item 71). Les deux vendent une visibilité construite en partie sur des données Gemini :
