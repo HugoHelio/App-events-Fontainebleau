@@ -11,25 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_3a81e47387@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261007
-SUMMARY:Chevauchée nocturne pour le brame du cerf
-LOCATION:Écuries Des Sabots dans la Forêt\, Ury
-DESCRIPTION:Horaires : 19h30–22h00\n\nTarif : 80 €\n\nPublic : Dès 12 
- ans\n\nSortie équestre nocturne guidée en lisière de forêt pour vivre 
- l'expérience sonore saisissante du brame des cerfs.\n\nOrganisateur : htt
- ps://www.dessabotsdanslaforet.com/\n\nFiche : https://fontainebleaulive.fr
- /evenements/chevauchee-nocturne-pour-le-brame-du-cerf-ury-3a81e47387/\n\nI
- nformations collectées automatiquement : vérifiez-les auprès de l’org
- anisateur.
-URL:https://fontainebleaulive.fr/evenements/chevauchee-nocturne-pour-le-bra
- me-du-cerf-ury-3a81e47387/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_a449c7a09c@fontainebleaulive.fr
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261005
@@ -45,98 +26,6 @@ URL:https://fontainebleaulive.fr/evenements/octobre-rose-samois-sur-seine-a
  449c7a09c/
 CATEGORIES:Scène & Spectacles
 GEO:48.45134;2.74946
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d0c36bac6b@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Bébes Lecteurs
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 9h30 ou 10h45\n\nPublic : Jusqu’à 3 ans\n\nUn ate
- lier de lecture mensuel destiné à faire découvrir les livres aux tout-p
- etits.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#
- 2026-10-06-bebeslecteurs\n\nFiche : https://fontainebleaulive.fr/evenement
- s/bebes-lecteurs-moret-loing-et-orvanne-d0c36bac6b/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/bebes-lecteurs-moret-loing-et-o
- rvanne-d0c36bac6b/
-CATEGORIES:Culture & Ateliers
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_3ddbf0121f@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Fallacia
-LOCATION:La Grange aux Dîmes\, Samoreau
-DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nDans un salon huppé\, un 
- cambrioleur se retrouve coincé dans les querelles et mensonges d'un coupl
- e adultère.\n\nOrganisateur : https://www.helloasso.com/associations/gene
- ration-artistique-hericy/evenements/fallacia\n\nFiche : https://fontainebl
- eaulive.fr/evenements/fallacia-samoreau-3ddbf0121f/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/fallacia-samoreau-3ddbf0121f/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_52ca39d1e8@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:La folle du 5ème
-LOCATION:Salle des Fêtes\, Fontaine-le-Port
-DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nUne voisine impulsive et l
- oufoque transforme la vie de Victor en enfer dans cette comédie hilarante
- .\n\nOrganisateur : https://www.gah-briardises.com/briardises\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/la-folle-du-5eme-fontaine-le-port-5
- 2ca39d1e8/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/la-folle-du-5eme-fontaine-le-po
- rt-52ca39d1e8/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_1199b6f930@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Soirée des Parents
-LOCATION:Pôle famille\, 5 bis rue de la République\, Moret-Loing-et-Orvan
- ne
-DESCRIPTION:Horaires : 19h30 à 21h30\n\nUne soirée de sensibilisation et 
- d'échange pour informer les parents sur le harcèlement scolaire.\n\nOrga
- nisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-06-soi
- reedesparents\n\nFiche : https://fontainebleaulive.fr/evenements/soiree-de
- s-parents-moret-loing-et-orvanne-1199b6f930/\n\nInformations collectées a
- utomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/soiree-des-parents-moret-loing-
- et-orvanne-1199b6f930/
-CATEGORIES:Culture & Ateliers
-GEO:48.37552;2.79867
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_31638dc066@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Un pour tous
-LOCATION:Espace Culturel Renée Wanner\, Chartrettes
-DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nUne bande de potes d'enfan
- ce se retrouve dix ans plus tard pour une soirée qui dérape complètemen
- t.\n\nOrganisateur : https://www.gah-briardises.com/briardises\n\nFiche : 
- https://fontainebleaulive.fr/evenements/un-pour-tous-chartrettes-31638dc06
- 6/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
- l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/un-pour-tous-chartrettes-31638d
- c066/
-CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
