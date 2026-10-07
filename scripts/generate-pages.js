@@ -231,6 +231,39 @@ const TOP_SCRIPT = `(function () {
   f();
 })();`;
 
+// ─── Analytics (item 84a, 07/10) ───
+// The same GoatCounter site as the home page, read from index.html's ANALYTICS.code so there is
+// a single switch: empty there = nothing here, not even the script. Page views count by path;
+// a click on a link carrying data-track counts as an event with the same names as the home page
+// (event-click, booking-click with the event id; visit-click with the place id). Never on a
+// noindex page (redirects, /publier/), and never in the widget, which runs on other people's sites.
+function analyticsCode() {
+  try {
+    const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+    const m = /const ANALYTICS = \{\s*code: '([a-z0-9-]*)'/.exec(html);
+    return m ? m[1] : '';
+  } catch (e) {
+    return '';
+  }
+}
+const ANALYTICS_CODE = analyticsCode();
+const TRACK_SCRIPT = `(function () {
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[data-track]') : null;
+    if (!a) return;
+    try {
+      var name = a.getAttribute('data-track');
+      var id = (a.getAttribute('data-id') || '').slice(0, 80);
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path: id ? name + '/' + id : name, title: name, event: true });
+      }
+    } catch (e) { /* measurement is never worth an error */ }
+  });
+})();`;
+const analyticsTags = () => (ANALYTICS_CODE
+  ? `<script data-goatcounter="https://${ANALYTICS_CODE}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>\n<script>\n${TRACK_SCRIPT}\n</script>\n`
+  : '');
+
 function layout({ title, description, canonical, body, ld, noindex, refresh, titleEn, toTop = Boolean(titleEn) }) {
   return `<!doctype html>
 <html lang="fr"${titleEn ? ` data-title-en="${esc(titleEn)}"` : ''}>
@@ -263,7 +296,7 @@ ${body}
 </main>
 <footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a>
 <small class="aff-note"${en('Some links are partner links: we may earn a commission, at no extra cost to you.')}>Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
-${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}</body>
+${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}${noindex ? '' : analyticsTags()}</body>
 </html>
 `;
 }
@@ -497,7 +530,7 @@ ${datesUnconfirmed(e) ? `<p class="unsure">Dates à confirmer : seule une recher
 ${e.description ? `<p>${esc(e.description)}</p>` : ''}
 ${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></p>`).join('')}${holidaysOf(e, today).map(({ h, p }) => `<p><a href="/${THEMES_DIR}/${h.slug}/">${esc(h.name)} ${esc(p.from.slice(0, 4))} : toutes les sorties</a></p>`).join('')}
 <div class="actions">
-${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}${booking ? `<a class="btn alt" href="${esc(booking.url)}" rel="sponsored noopener" target="_blank">🎟️ ${esc(booking.label)}</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}" rel="nofollow">Voir sur la carte</a>
+${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank" data-track="event-click" data-id="${esc(e.id)}">Site de l’organisateur</a>\n` : ''}${booking ? `<a class="btn alt" href="${esc(booking.url)}" rel="sponsored noopener" target="_blank" data-track="booking-click" data-id="${esc(e.id)}">🎟️ ${esc(booking.label)}</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}" rel="nofollow">Voir sur la carte</a>
 </div>
 ${booking ? `<p class="aff">Lien partenaire${booking.provider ? ` ${esc(booking.provider)}` : ''}${booking.samePrice ? ', au même prix que sur place' : ''} : Fontainebleau Live perçoit une commission si vous réservez par ce lien. <a href="/${SOURCES_DIR}/#financement">En savoir plus</a></p>\n` : ''}${provenanceHtml(e, link)}
 ${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>`;
@@ -566,7 +599,7 @@ function visitHtml(list, heading = 'À visiter', headingEn = 'Places to visit') 
     const atEn = p.provider ? ` on ${p.provider}` : '';
     return `<li><b>${esc(p.name)}</b> · ${esc(p.city)}${p.blurb ? `<small${p.blurbEn ? en(esc(p.blurbEn)) : ''}>${esc(p.blurb)}</small>` : ''}`
       + `${p.closedIn.length && p.closedNote ? `<small class="closed"${p.closedNoteEn ? en(esc(p.closedNoteEn)) : ''}>${esc(p.closedNote)}</small>` : ''}`
-      + `<a class="btn alt" href="${esc(p.url)}" rel="sponsored noopener" target="_blank"${en(`🎟️ ${esc(p.labelEn || p.label)}${esc(atEn)}${esc(priceEn)}`)}>🎟️ ${esc(p.label)}${esc(at)}${esc(price)}</a></li>`;
+      + `<a class="btn alt" href="${esc(p.url)}" rel="sponsored noopener" target="_blank" data-track="visit-click" data-id="${esc(p.id)}"${en(`🎟️ ${esc(p.labelEn || p.label)}${esc(atEn)}${esc(priceEn)}`)}>🎟️ ${esc(p.label)}${esc(at)}${esc(price)}</a></li>`;
   };
   const disclosureEn = `Partner link${many ? 's' : ''}${providers ? ` (${esc(providers)})` : ''}: Fontainebleau Live earns a commission if you book through ${many ? 'them' : 'it'}, at no extra cost to you. <a href="/${SOURCES_DIR}/#financement">Learn more</a>`;
   return `

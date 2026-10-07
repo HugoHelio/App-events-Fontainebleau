@@ -62,7 +62,7 @@ footer a{color:var(--muted)}
 <p>Création en vannerie</p>
 <p><a href="/sorties/vacances-toussaint/">Vacances de la Toussaint 2026 : toutes les sorties</a></p>
 <div class="actions">
-<a class="btn" href="https://openagenda.com/econature/events/vannerie-artistique-stage-12-journee" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>
+<a class="btn" href="https://openagenda.com/econature/events/vannerie-artistique-stage-12-journee" rel="nofollow noopener" target="_blank" data-track="event-click" data-id="EVT_cb91836cce">Site de l’organisateur</a>
 <a class="btn alt" href="/?event=EVT_cb91836cce" rel="nofollow">Voir sur la carte</a>
 </div>
 <p class="prov"><span class="ok">✓ Confirmé par OpenAgenda, l’agenda des organisateurs</span><br>Lien vers openagenda.com vérifié le 30 septembre 2026.<br>Dernier relevé le 5 octobre 2026.<br><a href="/nos-sources/">Comment nous collectons et vérifions</a></p>
@@ -72,5 +72,21 @@ footer a{color:var(--muted)}
 </main>
 <footer><span data-en="Agenda collected automatically. Check the details with the organiser before you go.">Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/que-faire/" data-en="All towns (in French)">Toutes les communes</a> · <a href="/nos-sources/" data-en="Our sources (in French)">Nos sources</a> · <a href="https://helioso.com" rel="noopener" data-en="A Helioso project">Un projet Helioso</a>
 <small class="aff-note" data-en="Some links are partner links: we may earn a commission, at no extra cost to you.">Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
+<script data-goatcounter="https://fontainebleaulive.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[data-track]') : null;
+    if (!a) return;
+    try {
+      var name = a.getAttribute('data-track');
+      var id = (a.getAttribute('data-id') || '').slice(0, 80);
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path: id ? name + '/' + id : name, title: name, event: true });
+      }
+    } catch (e) { /* measurement is never worth an error */ }
+  });
+})();
+</script>
 </body>
 </html>

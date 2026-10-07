@@ -101,5 +101,21 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px}.l
   f();
 })();
 </script>
+<script data-goatcounter="https://fontainebleaulive.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[data-track]') : null;
+    if (!a) return;
+    try {
+      var name = a.getAttribute('data-track');
+      var id = (a.getAttribute('data-id') || '').slice(0, 80);
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path: id ? name + '/' + id : name, title: name, event: true });
+      }
+    } catch (e) { /* measurement is never worth an error */ }
+  });
+})();
+</script>
 </body>
 </html>
