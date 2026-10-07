@@ -33,11 +33,9 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://fontainebleaulive.fr/">
-  <!-- Dit à Google que les deux langues sont la même page, pas du contenu dupliqué.
-       x-default = la version servie à qui n'est ni francophone ni anglophone. -->
-  <link rel="alternate" hreflang="fr" href="https://fontainebleaulive.fr/">
-  <link rel="alternate" hreflang="en" href="https://fontainebleaulive.fr/?lang=en">
-  <link rel="alternate" hreflang="x-default" href="https://fontainebleaulive.fr/">
+  <!-- Pas de hreflang (07/10) : /?lang=en déclare / comme canonique, et Google ignore un hreflang
+       qui vise une page canonicalisée ailleurs. La Search Console le signalait. -->
+
 
   <!-- Leaflet CSS -->
   <!-- Served from this site (vendor/), not from unpkg: a stylesheet in <head> blocks the first

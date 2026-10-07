@@ -494,7 +494,7 @@ ${datesUnconfirmed(e) ? `<p class="unsure">Dates à confirmer : seule une recher
 ${e.description ? `<p>${esc(e.description)}</p>` : ''}
 ${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></p>`).join('')}${holidaysOf(e, today).map(({ h, p }) => `<p><a href="/${THEMES_DIR}/${h.slug}/">${esc(h.name)} ${esc(p.from.slice(0, 4))} : toutes les sorties</a></p>`).join('')}
 <div class="actions">
-${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}${booking ? `<a class="btn alt" href="${esc(booking.url)}" rel="sponsored noopener" target="_blank">🎟️ ${esc(booking.label)}</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}">Voir sur la carte</a>
+${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank">Site de l’organisateur</a>\n` : ''}${booking ? `<a class="btn alt" href="${esc(booking.url)}" rel="sponsored noopener" target="_blank">🎟️ ${esc(booking.label)}</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}" rel="nofollow">Voir sur la carte</a>
 </div>
 ${booking ? `<p class="aff">Lien partenaire${booking.provider ? ` ${esc(booking.provider)}` : ''}${booking.samePrice ? ', au même prix que sur place' : ''} : Fontainebleau Live perçoit une commission si vous réservez par ce lien. <a href="/${SOURCES_DIR}/#financement">En savoir plus</a></p>\n` : ''}${provenanceHtml(e, link)}
 ${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>`;
@@ -527,13 +527,13 @@ function cityPage(c) {
 <h1>Que faire à ${esc(c.name)} ?</h1>
 <p>${n} activité${n > 1 ? 's' : ''} à venir à ${esc(c.name)} : sport, nature, culture et sorties en famille.</p>
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
-<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}">Voir sur la carte</a></div>
+<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
 <div class="partner-box"><p class="partner-title">Vous avez un site web ?</p>
 <p>Mairie, office de tourisme, club, hôtel : affichez gratuitement les prochaines sorties de ${esc(c.name)} sur votre site.</p>
-<a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}">Intégrer l’agenda de ${esc(c.name)} →</a></div>`;
+<a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Intégrer l’agenda de ${esc(c.name)} →</a></div>`;
   return layout({
     title: `Que faire à ${c.name} ? Agenda des activités | Fontainebleau Live`,
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),
@@ -1280,16 +1280,13 @@ function citiesIndex(cities) {
 }
 
 function sitemap(cities, events, homeLastmod) {
-  const alt = [
-    '    <xhtml:link rel="alternate" hreflang="fr" href="https://fontainebleaulive.fr/"/>',
-    '    <xhtml:link rel="alternate" hreflang="en" href="https://fontainebleaulive.fr/?lang=en"/>',
-  ].join('\n');
-  const home = (loc) => `  <url>\n    <loc>${loc}</loc>\n${homeLastmod ? `    <lastmod>${homeLastmod}</lastmod>\n` : ''}${alt}\n  </url>`;
+  // Only self-canonical addresses (07/10): /?lang=en declares / as its canonical, so listing it
+  // (or pointing an hreflang at it) told Google to index a page that defers to another one.
+  const home = `  <url>\n    <loc>${SITE_URL}/</loc>\n${homeLastmod ? `    <lastmod>${homeLastmod}</lastmod>\n` : ''}  </url>`;
   const plain = (p) => `  <url><loc>${SITE_URL}${p}</loc></url>`;
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${home(`${SITE_URL}/`)}
-${home(`${SITE_URL}/?lang=en`)}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${home}
 ${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
