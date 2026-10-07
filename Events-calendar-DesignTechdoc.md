@@ -1134,7 +1134,7 @@ links lead to a ticketing site (14 HelloAsso, 4 Mapado), and neither runs an aff
 programme. Putting a tracking code on the organisers' links would earn nothing. The revenue
 has to come from a **second** link, offered next to the organiser's link when a partner sells
 the very ticket the event needs. Benchmark of 05/10 (programmes, rates, fit): France Billet /
-Fnac Spectacles (Awin, rate not published, **product feed**), Ticketmaster France (Awin,
+Fnac Spectacles (Awin, rate not published, **product feed**; publisher account `3117734` validated 07/10), Ticketmaster France (Awin,
 0.32 € per ticket), Tiqets and GetYourGuide (8 %, 30-day cookie), Booking.com (CJ, 4 %,
 session only). Rejected: ticket resale aggregators (against the trust promise), HelloAsso and
 Mapado (no programme). Priorities and the full sequence: §9, A2 (work order of 05/10).
@@ -1558,6 +1558,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-07 | **Exception à la règle « jamais sur une fiche Gemini seule » pour Vaux-le-Vicomte** (`officialHosts`, §3.AA) : une fiche Gemini compte comme confirmée si son lien est une page d'événement du site officiel du château, vérifiée en ligne. Bouton Tiqets 18 € sur les vacances de la Toussaint à Vaux (lien corrigé dans `overrides.json`, effectif au prochain scan), **pas** sur le Grand Noël. `ACT_020` masqué (doublon du Grand Noël) | Décision du chef de projet : le château publie son propre agenda, et vendre son billet dans le bloc « À visiter » mais pas sur ses événements n'avait pas de sens. Garde-fous : page d'événement seulement (une page d'accueil laisserait « Dates à confirmer » à côté du bouton), lien vivant, et le tarif doit être celui du billet vendu — le Grand Noël a sa billetterie à part et le billet Tiqets n'y donne pas accès. À ne pas étendre sans un site officiel qui publie son agenda |
 | 2026-10-07 | **Étude des revenus hors affiliation (item 84, §3.AB) : ne rien vendre au trafic actuel.** Ordre proposé : mesure sur les pages générées (84a), widget premium dès qu'un site utilise le gratuit, mise en avant vers ~5 000 visites/mois. Règle proposée, **à trancher par le chef de projet** : rien de payant ne contient de donnée Gemini seule | À ~1 500 visites/mois, un emplacement vaut quelques euros par semaine et la prospection coûte plus ; le widget premium ne dépend pas du trafic et, limité aux sources lues (69 %), échappe à l'interdiction de revendre les résultats grounded (§3.G) |
 | 2026-10-07 | **GoatCounter sur les pages générées (84a)** : vues de toutes les pages indexables, clics `event-click`, `booking-click` (id d'événement, comme l'accueil) et `visit-click` (id du lieu). Code relu dans `ANALYTICS.code` d'`index.html` ; rien sur les pages noindex (redirections, `/publier/`) ni dans le widget | Le trafic arrive sur les fiches et `/ce-week-end/`, que rien ne mesurait : ni 80, 82 et 83f, ni une vente de visibilité n'avaient de chiffre. Un seul interrupteur, pour qu'éteindre la mesure sur l'accueil l'éteigne partout. Sans cookie, donc sans bandeau (décision du 21/09) |
+| 2026-10-07 | **Compte éditeur Awin validé, identifiant `3117734`** (83-0) | Débloque les candidatures Fnac Spectacles / France Billet et Ticketmaster, puis la sonde du flux (83d). L'identifiant est noté dans le doc : il est public dans chaque lien d'affilié, contrairement à la clé du flux |
 | 2026-10-07 | **`EVT_e052764d87` masqué** (overrides.json) : exposition Lacroix « Marie-Antoinette… » en double sur l'accueil. Gardé : `EVT_cd4a6118fa`, confirmé par le site du château et porteur du bouton Tiqets | Signalé par le chef de projet. La déduplication ne pouvait pas le voir : dates de début différentes (05/06 chez Gemini, 19/09 sur le site du château), et un titre long n'est pas contenu dans l'autre mot pour mot. Effectif au prochain scan |
 
 ---
@@ -1601,7 +1602,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets fait le 07/10, **Awin ensuite** | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
+| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets et compte Awin faits le 07/10, **candidatures France Billet et Ticketmaster ensuite** | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
@@ -1807,7 +1808,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   vérifier chaque site chez Tiqets, puis GetYourGuide **seulement** pour un site absent de Tiqets
   ou pour les excursions (paniers de 100 € et plus, public anglophone). Prix comparé au prix
   officiel, comme pour le château. **S. Avant le 17/10.**
-- [ ] **83d. Sonde du flux France Billet — observation seule.** Dès le compte Awin validé :
+- [ ] **83d. Sonde du flux France Billet — observation seule.** Compte Awin validé le 07/10 (éditeur `3117734`) ; reste l'acceptation de France Billet, qui ouvre l'accès à son flux. Alors :
   télécharger le flux produit (CSV compressé, `zlib`, clé en secret GitHub), compter les
   événements dans la zone (`inZone()`) et ceux qui correspondent déjà à une fiche (règle de
   doublons). Rapport seulement, rien de publié, comme le comparatif de §3.Z. **S.**
@@ -1906,13 +1907,14 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
       être facturées ni versées.
     - [ ] Cliquer le bouton sur une fiche en ligne et vérifier que le clic arrive dans le
       tableau de bord (83b).
-  - [ ] **Suivant : compte éditeur Awin** (awin.com, « Publishers »), avec la structure existante
-    et `fontainebleaulive.fr` comme site. Awin peut demander un petit dépôt remboursable à
-    l'inscription. Une fois le compte validé, **candidater** dans l'annuaire des annonceurs à
-    **Fnac Spectacles / France Billet**, puis **Ticketmaster France**. Validation : 1 à 15 jours
-    par annonceur. À noter au retour : le taux réel de France Billet, le format et l'URL de son
-    **flux produit** (débloque 83d), et la réponse du réseau sur le consentement aux cookies de
-    suivi.
+  - [x] **Compte éditeur Awin — validé le 07/10. Identifiant éditeur (publisher ID) : `3117734`.**
+    Pas un secret (il figure dans chaque lien d'affilié Awin) ; la clé du flux produit, elle, ira
+    dans un secret GitHub (83d).
+  - [ ] **Suivant : candidater** dans l'annuaire des annonceurs Awin (Advertisers → Join
+    programmes) à **Fnac Spectacles / France Billet**, puis **Ticketmaster France**. Validation :
+    1 à 15 jours par annonceur. À noter au retour : le taux réel de France Billet, le format et
+    l'URL de son **flux produit** (Toolbox → Create-a-Feed, débloque 83d), et la réponse du
+    réseau sur le consentement aux cookies de suivi.
   - [ ] **Plus tard** : GetYourGuide (seulement pour Blandy, Courances ou les excursions, 83c) et
     CJ / Booking.com (seulement si 83f le justifie, 83g).
 - [ ] **71. Widget premium** — le gratuit est en ligne (§3.Y). Le premium est de la syndication
