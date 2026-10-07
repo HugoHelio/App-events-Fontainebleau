@@ -1532,7 +1532,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. À lancer aujourd'hui | XS |
+| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets fait le 07/10, **Awin ensuite** | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
@@ -1817,16 +1817,24 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   (❌ 418 → ✅). Ensuite : ANVL peut générer le `.ics` de son plugin en deux clics ; office de
   tourisme, associations ; plus tard un formulaire « Ajouter mon événement ». Le passage
   « Outreach gate » des Milestones s'applique.
-- [ ] **83-0. Inscriptions aux programmes d'affiliation — priorité 0 de l'ordre du 05/10. Tiqets : inscrit le 07/10.**
-  - [ ] **Tiqets : saisir le numéro de TVA intracommunautaire** de la structure dans le compte
-    partenaire (profil / informations de paiement). Sans lui, les commissions ne peuvent pas être
-    facturées ni versées.
-  (§3.AA). Dans cet ordre : **Tiqets** (programme direct ou Travelpayouts) avec la structure
-  existante ; **compte éditeur Awin**, puis candidatures **Fnac Spectacles / France Billet** et
-  **Ticketmaster** ; GetYourGuide et CJ (Booking.com) plus tard, quand 83c et 83g le demanderont.
-  Ajouter les revenus d'affiliation aux déclarations de la structure. À noter au retour : le **lien d'affilié** du
-  château (à coller dans `affiliates.json`), le taux réel de France Billet, le format de son
-  flux produit, et la réponse du réseau sur le consentement aux cookies de suivi.
+- [ ] **83-0. Inscriptions aux programmes d'affiliation — priorité 0 de l'ordre du 05/10** (§3.AA).
+  Ordre : Tiqets → Awin (France Billet, Ticketmaster) → GetYourGuide et CJ plus tard. Ajouter les
+  revenus d'affiliation aux déclarations de la structure.
+  - [x] **Tiqets — inscrit le 07/10**, lien d'affilié reçu et collé (83b, 83c).
+    - [ ] **Saisir le numéro de TVA intracommunautaire** de la structure dans le compte
+      partenaire (profil / informations de paiement). Sans lui, les commissions ne peuvent pas
+      être facturées ni versées.
+    - [ ] Cliquer le bouton sur une fiche en ligne et vérifier que le clic arrive dans le
+      tableau de bord (83b).
+  - [ ] **Suivant : compte éditeur Awin** (awin.com, « Publishers »), avec la structure existante
+    et `fontainebleaulive.fr` comme site. Awin peut demander un petit dépôt remboursable à
+    l'inscription. Une fois le compte validé, **candidater** dans l'annuaire des annonceurs à
+    **Fnac Spectacles / France Billet**, puis **Ticketmaster France**. Validation : 1 à 15 jours
+    par annonceur. À noter au retour : le taux réel de France Billet, le format et l'URL de son
+    **flux produit** (débloque 83d), et la réponse du réseau sur le consentement aux cookies de
+    suivi.
+  - [ ] **Plus tard** : GetYourGuide (seulement pour Blandy, Courances ou les excursions, 83c) et
+    CJ / Booking.com (seulement si 83f le justifie, 83g).
 - [ ] **71. Widget premium** — le gratuit est en ligne (§3.Y). Le premium est de la syndication
   **contre paiement** de données issues en partie de Gemini : décision grounding explicite (§3.G,
   §8) **avant** le premier contrat. Contenu à définir avec les premiers partenaires (sans mention,
