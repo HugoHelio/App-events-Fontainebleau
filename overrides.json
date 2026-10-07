@@ -38,6 +38,10 @@
     "Vérifié à la main le 22/09 : dans chaque groupe, même date et même lieu.",
     "Pour annuler une proposition, supprimez simplement son bloc ci-dessous."
   ],
+  "EVT_e052764d87": {
+    "hidden": true,
+    "note": "07/10 : doublon de EVT_cd4a6118fa (exposition Lacroix « Marie-Antoinette de l'avant-garde à l'avant-scène »), confirmé par le site du château et porteur du billet Tiqets. Celui-ci : Gemini seul, lien d'accueil, date de début différente (05/06) — la déduplication ne fusionne pas des dates différentes."
+  },
   "EVT_8068526141": {
     "note": "07/10 : lien vers la page de l'événement sur le site du château (le lien d'accueil laissait « Dates à confirmer »). Dates 18-31/10 vérifiées sur vaux-le-vicomte.com.",
     "fields": { "url": "https://vaux-le-vicomte.com/event/vos-vacances-de-la-toussaint-a-vaux-le-vicomte/" }
