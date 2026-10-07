@@ -1177,6 +1177,18 @@ event offer's, so 83f reads them apart.
   25/12, 01/01, 01/05; 17 €, same price) and Vaux-le-Vicomte (regular season 14/03 → 01/11,
   closed Saturday 10/10; Tiqets price not yet compared, so no price shown). Le Grand Noël of
   Vaux has its own ticketing and is outside the offer. Blandy and Courances: not on Tiqets.
+
+**The `officialHosts` exception (October 7, Vaux-le-Vicomte).** Decided by the project lead: the
+château publishes its own agenda, so a Gemini record pointing at it is the venue's word, not a
+guess. Per offer, `officialHosts` lets a Gemini-only event qualify when its link is an **event
+page** (never the home page) on that host and `urlStatus` is `ok`. The home page is excluded on
+purpose: such a fiche says « Dates à confirmer » (79b), and a « Réserver » button beside it
+would contradict it. Offer `tiqets-vaux-le-vicomte`: price word `18` (the regular visit), so
+**not** Le Grand Noël (22-24 €, official booking only, not on Tiqets: the regular ticket would
+not get the visitor in). The Toussaint fiche (`EVT_8068526141`) had the home page as its link:
+`overrides.json` points it at the event page, so the button appears at the next scan. Same day:
+`ACT_020` « Vaux-le-Vicomte en Fête 2026 » hidden as a duplicate of the Grand Noël (`ACT_003`).
+The Vaux place now shows « 18 €, même prix » (Tiqets price checked).
 - Activation without a paid scan: `node scripts/affiliates.js` (preview) then `--write`
   (same `serializeEvent()`, `generatedAt` untouched), then `generate-pages.js`.
 
@@ -1476,6 +1488,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-07 | **Mention d'affiliation discrète en pied de page, sur tout le site** : « Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous. » (accueil et pages générées, FR/EN). Inscription Tiqets le 07/10 (83-0) | Demande du chef de projet. Affichée en permanence, avant même la première offre active : la transparence précède le premier lien, et « pouvons » reste vrai sans offre. La mention de chaque bouton et le paragraphe de `/nos-sources/` (seulement quand une offre est active) restent |
 | 2026-10-07 | **Offre Tiqets du château activée** (83b) : lien d'affilié avec la campagne `fontainebleaulive-chateau`, coupe-file toujours à 17 € = prix officiel (« même prix » maintenu), 4 fiches (deux expositions Marie-Antoinette, Le panache des Lumières, promenades musicales). Appliqué sans scan (`affiliates.js --write`, `generatedAt` inchangé) | Premier lien rémunéré du site. Une campagne par offre permet de lire le bilan 83f (vers le 07/12) offre par offre dans le tableau de bord Tiqets, en plus des `booking-click` de GoatCounter |
 | 2026-10-07 | **Bloc « À visiter » (83c)** : billet d'entrée chez Tiqets du château de Fontainebleau et de Vaux-le-Vicomte, sur la page de la commune, `/ce-week-end/` et les pages de vacances, seulement les jours d'ouverture ; fermetures exceptionnelles signalées (Vaux, samedi 10/10). Nouvelle entrée `places` dans `affiliates.json`, rendue par `generate-pages.js` seul | Les trois événements de Vaux sont Gemini seul : une offre liée aux fiches n'y aurait rien mis. Un monument ne dépend d'aucune date annoncée, c'est donc le revenu qui ne risque pas une date fausse ; ce qui doit rester vrai, ce sont la saison et les fermetures, relevées sur le site officiel. Prix de Vaux non affiché tant qu'il n'est pas comparé au tarif officiel. Une campagne Tiqets par lieu pour le bilan 83f |
+| 2026-10-07 | **Exception à la règle « jamais sur une fiche Gemini seule » pour Vaux-le-Vicomte** (`officialHosts`, §3.AA) : une fiche Gemini compte comme confirmée si son lien est une page d'événement du site officiel du château, vérifiée en ligne. Bouton Tiqets 18 € sur les vacances de la Toussaint à Vaux (lien corrigé dans `overrides.json`, effectif au prochain scan), **pas** sur le Grand Noël. `ACT_020` masqué (doublon du Grand Noël) | Décision du chef de projet : le château publie son propre agenda, et vendre son billet dans le bloc « À visiter » mais pas sur ses événements n'avait pas de sens. Garde-fous : page d'événement seulement (une page d'accueil laisserait « Dates à confirmer » à côté du bouton), lien vivant, et le tarif doit être celui du billet vendu — le Grand Noël a sa billetterie à part et le billet Tiqets n'y donne pas accès. À ne pas étendre sans un site officiel qui publie son agenda |
 
 ---
 
@@ -1713,9 +1726,9 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   attendues), `--write`, `generate-pages.js`, commit. Vérifier sur le site qu'un clic arrive bien
   dans le tableau de bord Tiqets. **XS.**
 - [x] **83c. Bloc « Visiter » hors événements — fait le 07/10 (§3.AA)** pour le château de
-  Fontainebleau et Vaux-le-Vicomte. **Reste, chef de projet** : (1) comparer le prix Tiqets de Vaux au
-  tarif officiel (18 €) — si égal, `"samePrice": true` dans `affiliates.json` affiche « 18 €, même
-  prix » ; (2) après le 01/11, renseigner la saison 2027 de Vaux (`from`, `to`, `closed`) dès
+  Fontainebleau et Vaux-le-Vicomte (prix Tiqets de Vaux = 18 €, « même prix » affiché ; exception
+  `officialHosts` pour ses événements, §3.AA). **Reste** : (1) vérifier après le scan du 08/10 que la
+  fiche des vacances de la Toussaint à Vaux porte le bouton ; (2) après le 01/11, renseigner la saison 2027 de Vaux (`from`, `to`, `closed`) dès
   qu'elle est publiée ; (3) Blandy et Courances absents de Tiqets : GetYourGuide plus tard,
   seulement si un compte y est ouvert. Texte d'origine — Une rubrique de monuments (château de
   Fontainebleau, Vaux-le-Vicomte, Blandy si vendus chez un partenaire) avec billet partenaire,

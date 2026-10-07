@@ -18,6 +18,9 @@
     "    DATAtourisme, OpenAgenda). JAMAIS sur une fiche que seule la recherche web (Gemini)",
     "    annonce : on ne gagne pas d'argent sur une date que rien ne confirme.",
     "Les mots de \"match\" et \"price\" sont en minuscules, sans accent ni apostrophe.",
+    "EXCEPTION, offre par offre : \"officialHosts\" (ex. [\"vaux-le-vicomte.com\"]). Une fiche Gemini",
+    "compte comme confirmée si son lien mène à une page d'événement (pas l'accueil) du site officiel",
+    "du lieu, vérifiée en ligne. À réserver aux monuments dont le site publie son propre agenda.",
     "",
     "AVANT D'ACTIVER UNE OFFRE.",
     "  1. Coller dans \"url\" le lien produit par le tableau de bord du partenaire (il contient",
@@ -55,6 +58,20 @@
       "samePrice": true,
       "active": true,
       "note": "Coupe-file à 17 € chez Tiqets = prix officiel (vérifié le 05/10, revérifié le 07/10/2026). Lien d'affilié reçu et activé le 07/10 (campagne fontainebleaulive-chateau)."
+    },
+    {
+      "id": "tiqets-vaux-le-vicomte",
+      "provider": "Tiqets",
+      "label": "Billet d’entrée du château",
+      "labelEn": "Château entrance ticket",
+      "city": "Maincy",
+      "match": ["vaux le vicomte"],
+      "price": ["18"],
+      "officialHosts": ["vaux-le-vicomte.com"],
+      "url": "https://www.tiqets.com/fr/activites-attractions-maincy-c180111/billets-pour-chateau-de-vaux-le-vicomte-billet-d-entree-p975832/?partner=helioso-190732&tq_campaign=fontainebleaulive-vaux",
+      "samePrice": true,
+      "active": true,
+      "note": "Billet d'entrée de la saison régulière (jusqu'au 01/11), 18 € chez Tiqets = prix officiel (07/10/2026). Le tarif « 18 » ne retient que les fiches au prix de la visite : PAS le Grand Noël (22-24 €, billetterie officielle obligatoire, absent de Tiqets). Exception officialHosts décidée le 07/10 par le chef de projet."
     }
   ],
 
@@ -85,7 +102,7 @@
       "label": "Billet d’entrée",
       "labelEn": "Entrance ticket",
       "price": "18 €",
-      "samePrice": false,
+      "samePrice": true,
       "url": "https://www.tiqets.com/fr/activites-attractions-maincy-c180111/billets-pour-chateau-de-vaux-le-vicomte-billet-d-entree-p975832/?partner=helioso-190732&tq_campaign=fontainebleaulive-visiter-vaux",
       "from": "2026-03-14",
       "to": "2026-11-01",
@@ -93,7 +110,7 @@
       "closedNote": "Fermeture exceptionnelle le samedi 10 octobre, réouverture le dimanche 11 à midi.",
       "closedNoteEn": "Exceptionally closed on Saturday 10 October, reopening on Sunday 11 at noon.",
       "active": true,
-      "note": "Saison régulière du 14/03 au 01/11/2026, 18 € plein tarif (vaux-le-vicomte.com, relevé le 07/10). Le Grand Noël (14/11-03/01) a sa propre billetterie : hors de cette offre. Prix Tiqets à vérifier avant samePrice: true. Le billet Tiqets n'est ni remboursable ni modifiable."
+      "note": "Saison régulière du 14/03 au 01/11/2026, 18 € plein tarif (vaux-le-vicomte.com, relevé le 07/10). Le Grand Noël (14/11-03/01) a sa propre billetterie : hors de cette offre. 18 € chez Tiqets = prix officiel (vérifié le 07/10). Le billet Tiqets n'est ni remboursable ni modifiable."
     }
   ]
 }

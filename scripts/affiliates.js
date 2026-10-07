@@ -10,6 +10,10 @@
  *   - The organiser's `url` is never touched. Provenance stays visible (§7, 24/09).
  *   - Never on an event only Gemini announces (no `source`): no revenue on a date nothing we
  *     read confirms. Same rule as the "À ne pas manquer" selection (item 77).
+ *     One exception, per offer (07/10, Vaux-le-Vicomte): `officialHosts`. A Gemini record whose
+ *     link is an event page (not the home page) on the venue's own site, checked alive, carries
+ *     the venue's word for its dates. A home page never counts: the fiche would also say
+ *     « Dates à confirmer » (79b), and a « Réserver » button next to it would contradict it.
  *   - An offer must match the venue AND the price wording: an entrance ticket is offered on an
  *     exhibition "inclus dans le billet d'entrée", never on a concert sold separately.
  *   - Places (item 83c) are the other kind: a monument's entrance ticket, shown in a "Visiter"
@@ -32,6 +36,10 @@ const CONFIRMED_SOURCES = new Set(['site', 'datatourisme', 'openagenda']);
 
 const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+// Same rule as isHome() in fetch-events.js and isHomeUrl() in generate-pages.js (79b).
+const isHome = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
+const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch { return ''; } };
 
 function httpUrl(value) {
   try {
@@ -67,6 +75,7 @@ function loadOffers(file = AFFILIATES_PATH) {
       active: o.active === true,
       // Shown to visitors (« même prix ») only when someone checked it against the official price.
       samePrice: o.samePrice === true,
+      officialHosts: (Array.isArray(o.officialHosts) ? o.officialHosts : []).map((h) => String(h).replace(/^www\./, '').toLowerCase()).filter(Boolean),
     });
   }
   return out;
@@ -129,11 +138,13 @@ function placesOpen(list, from, to, city = null) {
 
 /** The offer an event qualifies for, active or not (preview), or null. */
 function matchOffer(e, list = offers()) {
-  if (!CONFIRMED_SOURCES.has(e.source)) return null;
+  const confirmed = CONFIRMED_SOURCES.has(e.source);
+  const official = (o) => o.officialHosts.includes(hostOf(e.url)) && !isHome(e.url) && e.urlStatus === 'ok';
   const city = norm(e.city);
   const venue = norm(e.locationName);
   const price = norm(e.price);
-  return list.find((o) => o.city === city
+  return list.find((o) => (confirmed || official(o))
+    && o.city === city
     && o.match.every((w) => venue.includes(w))
     && o.price.every((w) => price.includes(w))) || null;
 }
