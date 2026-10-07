@@ -27,7 +27,19 @@
     "  3. Passer \"active\" à true, puis : node scripts/affiliates.js        (aperçu, n'écrit rien)",
     "                                     node scripts/affiliates.js --write (applique à data.json)",
     "     et node scripts/generate-pages.js pour les fiches. Commiter data.json et les pages.",
-    "     Sinon, le prochain scan l'applique de lui-même."
+    "     Sinon, le prochain scan l'applique de lui-même.",
+    "",
+    "LIEUX À VISITER (\"places\", item 83c). L'autre sorte d'offre : le billet d'entrée d'un monument,",
+    "présenté dans un bloc « Visiter » qui ne dépend d'aucun événement (page de la commune, page du",
+    "week-end, pages des vacances). Pas de règle de source ici : ce qui doit rester vrai, c'est la",
+    "saison et les fermetures, à relever sur le site officiel du monument.",
+    "  - \"from\" / \"to\" : saison d'ouverture (AAAA-MM-JJ, incluses). Absentes = toute l'année ;",
+    "  - \"closed\" : fermetures exceptionnelles et jours fériés fermés (AAAA-MM-JJ). Un lieu fermé",
+    "    tous les jours d'une page n'y apparaît pas ; sinon la page le signale, avec \"closedNote\" ;",
+    "  - \"price\" n'est affiché qu'avec \"samePrice\": true (vérifié contre le prix officiel) ;",
+    "  - \"blurb\" : une phrase sur le lieu, jamais d'horaires (ils changent, la fiche du partenaire",
+    "    les donne). Les jours de fermeture hebdomadaire, oui (« sauf le mardi »).",
+    "Les lieux ne touchent pas data.json : node scripts/generate-pages.js suffit."
   ],
 
   "offers": [
@@ -43,6 +55,45 @@
       "samePrice": true,
       "active": true,
       "note": "Coupe-file à 17 € chez Tiqets = prix officiel (vérifié le 05/10, revérifié le 07/10/2026). Lien d'affilié reçu et activé le 07/10 (campagne fontainebleaulive-chateau)."
+    }
+  ],
+
+  "places": [
+    {
+      "id": "tiqets-visiter-chateau-fontainebleau",
+      "provider": "Tiqets",
+      "name": "Château de Fontainebleau",
+      "city": "Fontainebleau",
+      "blurb": "Huit siècles de souverains, de François Ier à Napoléon III : grands appartements, galerie François Ier et parc. Ouvert tous les jours sauf le mardi.",
+      "blurbEn": "Eight centuries of French monarchs, from Francis I to Napoleon III: state apartments, the Francis I Gallery and the park. Open every day except Tuesday.",
+      "label": "Billet coupe-file",
+      "labelEn": "Skip-the-line ticket",
+      "price": "17 €",
+      "samePrice": true,
+      "url": "https://www.tiqets.com/fr/activites-attractions-fontainebleau-c66966/billets-pour-chateau-de-fontainebleau-billet-coupe-file-p974548/?partner=helioso-190732&tq_campaign=fontainebleaulive-visiter-chateau",
+      "closed": ["2026-12-25", "2027-01-01", "2027-05-01"],
+      "active": true,
+      "note": "Fermé le mardi, le 1er janvier, le 1er mai et le 25 décembre (chateaudefontainebleau.fr, relevé le 07/10/2026). 17 € = prix officiel (07/10)."
+    },
+    {
+      "id": "tiqets-visiter-vaux-le-vicomte",
+      "provider": "Tiqets",
+      "name": "Château de Vaux-le-Vicomte",
+      "city": "Maincy",
+      "blurb": "Le château de Nicolas Fouquet, qui inspira Versailles : château, jardins à la française de Le Nôtre et musée des Équipages.",
+      "blurbEn": "Nicolas Fouquet’s château, the model for Versailles: the château, Le Nôtre’s formal gardens and the Carriage Museum.",
+      "label": "Billet d’entrée",
+      "labelEn": "Entrance ticket",
+      "price": "18 €",
+      "samePrice": false,
+      "url": "https://www.tiqets.com/fr/activites-attractions-maincy-c180111/billets-pour-chateau-de-vaux-le-vicomte-billet-d-entree-p975832/?partner=helioso-190732&tq_campaign=fontainebleaulive-visiter-vaux",
+      "from": "2026-03-14",
+      "to": "2026-11-01",
+      "closed": ["2026-10-10"],
+      "closedNote": "Fermeture exceptionnelle le samedi 10 octobre, réouverture le dimanche 11 à midi.",
+      "closedNoteEn": "Exceptionally closed on Saturday 10 October, reopening on Sunday 11 at noon.",
+      "active": true,
+      "note": "Saison régulière du 14/03 au 01/11/2026, 18 € plein tarif (vaux-le-vicomte.com, relevé le 07/10). Le Grand Noël (14/11-03/01) a sa propre billetterie : hors de cette offre. Prix Tiqets à vérifier avant samePrice: true. Le billet Tiqets n'est ni remboursable ni modifiable."
     }
   ]
 }

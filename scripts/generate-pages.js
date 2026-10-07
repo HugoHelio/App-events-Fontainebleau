@@ -31,6 +31,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadPlaces, placesOpen } = require('./affiliates');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -523,13 +524,13 @@ function redirectPage(e) {
   });
 }
 
-function cityPage(c) {
+function cityPage(c, places = []) {
   const n = c.events.length;
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Communes</a></nav>
 <h1>Que faire à ${esc(c.name)} ?</h1>
 <p>${n} activité${n > 1 ? 's' : ''} à venir à ${esc(c.name)} : sport, nature, culture et sorties en famille.</p>
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
-<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>
+<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${visitHtml(places, `À visiter à ${c.name}`)}
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
@@ -541,12 +542,38 @@ function cityPage(c) {
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),
     canonical: `${SITE_URL}/${CITIES_DIR}/${c.slug}/`,
     body,
-  }).replace('</style>', `${PARTNER_STYLE}\n</style>`);
+  }).replace('</style>', `${PARTNER_STYLE}\n${places.length ? `${VISIT_STYLE}\n` : ''}</style>`);
 }
 
 // Same box as the home page footer (04/10): the widget is an offer to other websites, so it is
 // set apart from the visitor's content instead of a grey line under it.
 const PARTNER_STYLE = '.partner-box{margin:32px 0 8px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:10px}.partner-box p{margin:0 0 6px}.partner-title{font-weight:700;color:var(--ink)}.partner-box a{color:var(--ink);font-weight:700}';
+
+// ─── « Visiter » (item 83c) ───
+// A monument's entrance ticket at a partner, independent of any event (affiliates.json, "places").
+// Shown on the commune page, the weekend page and the holiday pages, for the days the page
+// covers: a place closed on all of them is left out, an exceptional closure among them is said.
+const VISIT_STYLE = '.visit li{padding:14px 0}.visit .btn{margin-top:8px;padding:8px 14px;font-size:15px}.visit .closed{color:#8a4b00}.visit-aff{font-size:14px;color:var(--muted)}';
+
+function visitHtml(list, heading = 'À visiter', headingEn = 'Places to visit') {
+  if (!list.length) return '';
+  const many = list.length > 1;
+  const providers = [...new Set(list.map((p) => p.provider).filter(Boolean))].join(', ');
+  const item = (p) => {
+    const price = p.samePrice && p.price ? ` · ${p.price}, même prix que sur place` : '';
+    const priceEn = p.samePrice && p.price ? ` · ${p.price}, same price as at the door` : '';
+    const at = p.provider ? ` chez ${p.provider}` : '';
+    const atEn = p.provider ? ` on ${p.provider}` : '';
+    return `<li><b>${esc(p.name)}</b> · ${esc(p.city)}${p.blurb ? `<small${p.blurbEn ? en(esc(p.blurbEn)) : ''}>${esc(p.blurb)}</small>` : ''}`
+      + `${p.closedIn.length && p.closedNote ? `<small class="closed"${p.closedNoteEn ? en(esc(p.closedNoteEn)) : ''}>${esc(p.closedNote)}</small>` : ''}`
+      + `<a class="btn alt" href="${esc(p.url)}" rel="sponsored noopener" target="_blank"${en(`🎟️ ${esc(p.labelEn || p.label)}${esc(atEn)}${esc(priceEn)}`)}>🎟️ ${esc(p.label)}${esc(at)}${esc(price)}</a></li>`;
+  };
+  const disclosureEn = `Partner link${many ? 's' : ''}${providers ? ` (${esc(providers)})` : ''}: Fontainebleau Live earns a commission if you book through ${many ? 'them' : 'it'}, at no extra cost to you. <a href="/${SOURCES_DIR}/#financement">Learn more</a>`;
+  return `
+<h2 id="visiter"${en(esc(headingEn))}>${esc(heading)}</h2>
+<ul class="list visit">${list.map(item).join('')}</ul>
+<p class="visit-aff"${en(disclosureEn)}>Lien${many ? 's' : ''} partenaire${many ? 's' : ''}${providers ? ` ${esc(providers)}` : ''} : Fontainebleau Live perçoit une commission si vous réservez par ce${many ? 's' : ''} lien${many ? 's' : ''}, sans surcoût pour vous. <a href="/${SOURCES_DIR}/#financement">En savoir plus</a></p>`;
+}
 
 // ───────────────────────────── Posts to share (item 70) ─────────────────────────────
 //
@@ -972,7 +999,7 @@ function holidayEvents(p, events, today) {
 const holidaysOf = (e, today) => HOLIDAYS.map((h) => ({ h, p: holidayPeriod(h, today) }))
   .filter(({ p }) => !p.over && e.startDate <= p.to && endOf(e) >= p.from);
 
-function holidayPage(h, events, today) {
+function holidayPage(h, events, today, places = []) {
   const p = holidayPeriod(h, today);
   const year = p.from.slice(0, 4);
   const { start, short, long } = holidayEvents(p, events, today);
@@ -1036,7 +1063,7 @@ ${nowHtml(themesHere, 'Pendant les vacances', 'During the holidays')}
 ${toc.length > 1 ? `<nav class="toc" aria-label="Sommaire">${toc.map((s) => `<a href="#${s.id}"${en(esc(s.navEn))}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${family.length ? `<h2 id="en-famille"${en('Family outing ideas')}>Idées de sorties en famille</h2>\n<ul class="list">${family.map(eventItem).join('')}</ul>` : ''}
 ${n ? LEGEND : ''}
-${sections.map(daySection).join('\n')}
+${sections.map(daySection).join('\n')}${p.over ? '' : visitHtml(placesOpen(places, start, p.to), 'À visiter pendant les vacances', 'Places to visit during the holidays')}
 ${faqHtml(h.faq, h.faqEn)}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>
 <script>
 ${FILTER_SCRIPT}
@@ -1048,7 +1075,7 @@ ${FILTER_SCRIPT}
     canonical: `${SITE_URL}/${THEMES_DIR}/${h.slug}/`,
     body,
     titleEn: `${h.titleEn(year)} | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n${VISIT_STYLE}\n</style>`);
 }
 
 /** /sorties/ — every seasonal hub, holidays first. A plain page of links a crawler can follow. */
@@ -1124,7 +1151,7 @@ function picksOf(list) {
     .map(({ e }) => e);
 }
 
-function weekendPage(events, today) {
+function weekendPage(events, today, places = []) {
   const { sat, sun } = weekendOf(today);
   const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
   // Still to come (a Sunday page drops Saturday-only outings) and overlapping the weekend.
@@ -1177,7 +1204,7 @@ function weekendPage(events, today) {
 ${nowHtml(now)}
 ${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}"${s.navEn ? en(esc(s.navEn)) : ''}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${n || nextList.length ? LEGEND : ''}
-${sections.map(daySection).join('\n')}
+${sections.map(daySection).join('\n')}${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/"${en('Today')}>Aujourd’hui</a> `}<a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText, shareTextEn)}
 <p class="note"><span${en('Seasonal outings:')}>Sorties de saison :</span> ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.nameEn))}>${esc(t.name)}</a>`).join(' · ')}.</p>
@@ -1192,7 +1219,7 @@ ${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fo
     canonical: `${SITE_URL}/${WEEKEND_DIR}/`,
     body,
     titleEn: `What’s on this weekend around Fontainebleau? (${rangeEn}) | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n</style>`);
 }
 
 // ─── /aujourdhui/ (item 78) ───
@@ -1302,7 +1329,7 @@ ${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`,
 const SOURCES_DIR = 'nos-sources';
 const FEEDBACK_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform';
 
-function sourcesPage(events, generatedAt, registry) {
+function sourcesPage(events, generatedAt, registry, places = [], today = '') {
   const n = events.length;
   const count = (k) => events.filter((e) => (k ? e.source === k : !SOURCE_LABEL[e.source])).length;
   const linksOk = events.filter((e) => e.urlStatus === 'ok').length;
@@ -1313,7 +1340,8 @@ function sourcesPage(events, generatedAt, registry) {
   // Each sentence must stay true (item 79): the paragraph only exists while an offer is live.
   const withBooking = events.filter((e) => bookingOf(e));
   const booked = withBooking.length;
-  const partners = [...new Set(withBooking.map((e) => bookingOf(e).provider).filter(Boolean))].sort();
+  const visits = today ? placesOpen(places, today, addDays(today, 365)) : [];
+  const partners = [...new Set([...withBooking.map((e) => bookingOf(e).provider), ...visits.map((p) => p.provider)].filter(Boolean))].sort();
 
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Nos sources : d’où viennent les sorties de l’agenda</h1>
@@ -1339,7 +1367,8 @@ function sourcesPage(events, generatedAt, registry) {
 </ul>
 
 ${partners.length ? `<h2 id="financement">Comment le site est financé</h2>
-<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.</p>
+${booked ? `<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.</p>` : ''}${visits.length ? `
+<p>Les encarts « À visiter » proposent le billet d’entrée ${esc(visits.map((p) => `du ${p.name.replace(/^Château de /, 'château de ')}`).join(', ').replace(/, ([^,]*)$/, ' et $1'))} chez un partenaire, avec la même commission. Ils ne dépendent d’aucune sortie de l’agenda et n’apparaissent que les jours d’ouverture.</p>` : ''}
 
 ` : ''}<h2>Ce que nous ne vérifions pas</h2>
 <p>Nous n’appelons pas les organisateurs : une annulation de dernière minute peut nous échapper. Avant un long trajet, un coup d’œil au site de l’organisateur reste prudent.</p>
@@ -1507,7 +1536,7 @@ function subscribeLinks(feedPath) {
 <a class="btn alt" href="${esc(webcal)}">Apple / Outlook</a>`;
 }
 
-function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [] }) {
+function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [], places = [] }) {
   const list = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.events) ? payload.events : null);
   if (!list) throw new Error('data.json: no event list');
   const generatedAt = !Array.isArray(payload) && payload.generatedAt;
@@ -1535,19 +1564,20 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
     byToken.set(idToken(e), e);
     files.set(`${EVENTS_DIR}/${dir}/index.html`, eventPage(e, events, today));
   }
-  for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c));
+  // A commune page lists what is coming: a monument shows there if it opens in the next 30 days.
+  for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c, placesOpen(places, today, addDays(today, 30), c.name)));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
-  files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today));
+  files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today, places));
   files.set(`${TODAY_DIR}/index.html`, todayPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
   for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
-  for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today));
+  for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today, places));
   files.set(`${THEMES_DIR}/index.html`, seasonIndex(events, today));
   // The home page's "En ce moment" row reads this: the same picks and counts as the weekend page,
   // and index.html never re-implements the theme matching.
   files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, nameEn, k }) => ({ href, name, nameEn, count: k })), null, 2) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
-  files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry));
+  files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry, places, today));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
@@ -1587,7 +1617,7 @@ function main() {
     const dir = path.join(ROOT, AGENDA_DIR, d);
     return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.ics')).map((f) => `${AGENDA_DIR}/${d}/${f}`) : [];
   });
-  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry() });
+  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces() });
 
   // Communes with nothing left are dropped too.
   const liveCityDirs = new Set([...files.keys()].filter((f) => f.startsWith(`${CITIES_DIR}/`)).map((f) => f.split('/')[1]));

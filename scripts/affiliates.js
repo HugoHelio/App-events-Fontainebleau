@@ -12,6 +12,9 @@
  *     read confirms. Same rule as the "À ne pas manquer" selection (item 77).
  *   - An offer must match the venue AND the price wording: an entrance ticket is offered on an
  *     exhibition "inclus dans le billet d'entrée", never on a concert sold separately.
+ *   - Places (item 83c) are the other kind: a monument's entrance ticket, shown in a "Visiter"
+ *     block that depends on no event, so no source rule applies. What keeps them true is the
+ *     season (`from`/`to`) and the exceptional closures (`closed`), checked on the official site.
  *
  * Zero dependencies.
  *   node scripts/affiliates.js           preview: which events each offer would reach (writes nothing)
@@ -72,6 +75,58 @@ function loadOffers(file = AFFILIATES_PATH) {
 let cached = null;
 const offers = () => (cached ??= loadOffers());
 
+const isIso = (d) => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d);
+
+/** Every well-formed place (item 83c), active or not. Same rule: malformed is skipped. */
+function loadPlaces(file = AFFILIATES_PATH) {
+  let raw;
+  try { raw = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw new Error(`affiliates.json unreadable: ${err.message}`);
+  }
+  const out = [];
+  for (const p of Array.isArray(raw?.places) ? raw.places : []) {
+    const url = httpUrl(p.url);
+    if (!url || !p.id || !p.name || !p.city || !p.label) continue;
+    out.push({
+      id: String(p.id),
+      provider: String(p.provider || ''),
+      name: String(p.name),
+      city: String(p.city),
+      blurb: p.blurb ? String(p.blurb) : '',
+      blurbEn: p.blurbEn ? String(p.blurbEn) : '',
+      label: String(p.label),
+      labelEn: p.labelEn ? String(p.labelEn) : '',
+      // Shown only next to « même prix », i.e. when someone checked it.
+      price: p.samePrice === true && p.price ? String(p.price) : '',
+      url,
+      // Open season, inclusive; either end may be left out (open all year).
+      from: isIso(p.from) ? p.from : '',
+      to: isIso(p.to) ? p.to : '',
+      closed: (Array.isArray(p.closed) ? p.closed : []).filter(isIso).sort(),
+      closedNote: p.closedNote ? String(p.closedNote) : '',
+      closedNoteEn: p.closedNoteEn ? String(p.closedNoteEn) : '',
+      active: p.active === true,
+      samePrice: p.samePrice === true,
+    });
+  }
+  return out;
+}
+
+/**
+ * Active places open on at least one day of [from, to] (ISO, inclusive), optionally in one town.
+ * Each carries `closedIn`: its exceptional closures within the period, for the page to say so.
+ * A place closed on every day of the period is left out.
+ */
+function placesOpen(list, from, to, city = null) {
+  const days = [];
+  for (let d = from; d <= to; d = new Date(Date.parse(`${d}T12:00:00Z`) + 864e5).toISOString().slice(0, 10)) days.push(d);
+  return list
+    .filter((p) => p.active && (!city || norm(p.city) === norm(city)))
+    .map((p) => ({ ...p, closedIn: p.closed.filter((d) => d >= from && d <= to) }))
+    .filter((p) => days.some((d) => (!p.from || d >= p.from) && (!p.to || d <= p.to) && !p.closed.includes(d)));
+}
+
 /** The offer an event qualifies for, active or not (preview), or null. */
 function matchOffer(e, list = offers()) {
   if (!CONFIRMED_SOURCES.has(e.source)) return null;
@@ -90,7 +145,7 @@ function bookingFor(e, list = offers()) {
   return { url: o.url, label: o.label, labelEn: o.labelEn, provider: o.provider, samePrice: o.samePrice || undefined, offer: o.id };
 }
 
-module.exports = { loadOffers, matchOffer, bookingFor, CONFIRMED_SOURCES };
+module.exports = { loadOffers, matchOffer, bookingFor, loadPlaces, placesOpen, CONFIRMED_SOURCES };
 
 if (require.main === module) {
   // Required here, not at the top: fetch-events requires this module.
@@ -107,6 +162,11 @@ if (require.main === module) {
     for (const e of hits) console.log(`   ${e.id} · ${e.startDate} · ${e.title.slice(0, 70)} · ${e.price}`);
   }
   if (!list.length) console.log('Aucune offre valide dans affiliates.json.');
+  // Places live on the generated pages only: generate-pages.js reads them, data.json never does.
+  for (const p of loadPlaces()) {
+    const season = p.from || p.to ? `ouvert ${p.from ? `du ${p.from} ` : ''}${p.to ? `au ${p.to}` : ''}`.trim() : 'toute l’année';
+    console.log(`${p.active ? '✅' : '⏸️ '} ${p.id} (${p.provider}) → bloc « Visiter » · ${p.name}, ${p.city} · ${season}${p.closed.length ? ` · fermé ${p.closed.join(', ')}` : ''}${p.active ? '' : ' — inactif'}`);
+  }
 
   if (write) {
     // Same function as the pipeline, so an offline pass and a scan cannot disagree. generatedAt

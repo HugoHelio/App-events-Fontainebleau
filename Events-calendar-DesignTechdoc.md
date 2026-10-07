@@ -1160,6 +1160,23 @@ removes it on the next write. The organiser's `url` is never touched.
   percevoir une commission, sans surcoût pour vous. » on the home page (`footerAffiliate`, FR/EN)
   and every generated page (`.aff-note`). Unlike the `/nos-sources/` paragraph it does not wait
   for a live offer: the wording (« pouvons ») stays true while every offer is inactive.
+
+**Places to visit (item 83c, October 7).** The second kind of entry in `affiliates.json`:
+`places`, a monument's entrance ticket, independent of any event — so the « never on a
+Gemini-only event » rule has nothing to apply to, and the Vaux-le-Vicomte events (all three
+Gemini-only on 07/10) could not have carried a button anyway. What must stay true instead is
+the **season** (`from`/`to`) and the **closures** (`closed`, with `closedNote` shown when one
+falls in the page's days), copied from the official site. `placesOpen()` (`affiliates.js`)
+keeps a place open on at least one day of the page's period. The block « À visiter » is
+written by `generate-pages.js` only (never in `data.json`) on: the commune page (next 30 days),
+`/ce-week-end/` (the remaining days of the weekend) and each holiday page (its remaining days).
+Price shown only with `samePrice`; one disclosure line under the block; `/nos-sources/` names
+the monuments. One Tiqets campaign per place (`fontainebleaulive-visiter-…`), distinct from the
+event offer's, so 83f reads them apart.
+- 07/10: château de Fontainebleau (all year, closed Tuesdays — said in the blurb — and on
+  25/12, 01/01, 01/05; 17 €, same price) and Vaux-le-Vicomte (regular season 14/03 → 01/11,
+  closed Saturday 10/10; Tiqets price not yet compared, so no price shown). Le Grand Noël of
+  Vaux has its own ticketing and is outside the offer. Blandy and Courances: not on Tiqets.
 - Activation without a paid scan: `node scripts/affiliates.js` (preview) then `--write`
   (same `serializeEvent()`, `generatedAt` untouched), then `generate-pages.js`.
 
@@ -1458,6 +1475,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-07 | **Search Console, « Page alternative avec balise canonique correcte » (76), 404 (3), « noindex » (1) : voulus, sauf un point.** (1) `/?lang=en` **retiré du sitemap**, et les `hreflang` retirés de l'accueil et du sitemap : la page déclare `/` comme canonique, le sitemap demandait donc d'indexer une page qui s'en remet à une autre (l'e-mail « pages in a sitemap »), et Google ignore un `hreflang` vers une page canonicalisée ailleurs. (2) **`rel="nofollow"` sur « Voir sur la carte »** (`/?event=`, `/?ville=`) et sur « Intégrer l'agenda » (`/widget/integrer/?ville=`) : ~400 liens internes vers des copies de l'accueil, source des 76 « alternatives ». Le lien du widget chez les partenaires reste suivi (c'est un lien entrant). Les 404 sont les fiches d'événements terminés, le « noindex » une ancienne adresse de fiche redirigée. | L'exclusion de ces adresses est le comportement voulu : les « valider » dans la Search Console échouerait. Pas de `Disallow` dans `robots.txt` : Google pourrait indexer une adresse bloquée sans en lire la canonique. Le `nofollow` libère du temps d'exploration pour les 58 fiches « détectées, non indexées ». Les titres et descriptions des fiches ne changent pas : la mesure de l'item 80 n'est pas faussée |
 | 2026-10-07 | **Mention d'affiliation discrète en pied de page, sur tout le site** : « Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous. » (accueil et pages générées, FR/EN). Inscription Tiqets le 07/10 (83-0) | Demande du chef de projet. Affichée en permanence, avant même la première offre active : la transparence précède le premier lien, et « pouvons » reste vrai sans offre. La mention de chaque bouton et le paragraphe de `/nos-sources/` (seulement quand une offre est active) restent |
 | 2026-10-07 | **Offre Tiqets du château activée** (83b) : lien d'affilié avec la campagne `fontainebleaulive-chateau`, coupe-file toujours à 17 € = prix officiel (« même prix » maintenu), 4 fiches (deux expositions Marie-Antoinette, Le panache des Lumières, promenades musicales). Appliqué sans scan (`affiliates.js --write`, `generatedAt` inchangé) | Premier lien rémunéré du site. Une campagne par offre permet de lire le bilan 83f (vers le 07/12) offre par offre dans le tableau de bord Tiqets, en plus des `booking-click` de GoatCounter |
+| 2026-10-07 | **Bloc « À visiter » (83c)** : billet d'entrée chez Tiqets du château de Fontainebleau et de Vaux-le-Vicomte, sur la page de la commune, `/ce-week-end/` et les pages de vacances, seulement les jours d'ouverture ; fermetures exceptionnelles signalées (Vaux, samedi 10/10). Nouvelle entrée `places` dans `affiliates.json`, rendue par `generate-pages.js` seul | Les trois événements de Vaux sont Gemini seul : une offre liée aux fiches n'y aurait rien mis. Un monument ne dépend d'aucune date annoncée, c'est donc le revenu qui ne risque pas une date fausse ; ce qui doit rester vrai, ce sont la saison et les fermetures, relevées sur le site officiel. Prix de Vaux non affiché tant qu'il n'est pas comparé au tarif officiel. Une campagne Tiqets par lieu pour le bilan 83f |
 
 ---
 
@@ -1503,7 +1521,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 | 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. À lancer aujourd'hui | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
-| 3 | **83c. Bloc « Visiter » hors événements** | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
+| 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
 | 4 | **83d. Sonde du flux France Billet** (observation seule) | La couverture locale de la billetterie nationale est inconnue : on la mesure avant de construire l'intégration | S |
 | 5 | **83e. Intégration du flux Awin** (France Billet, puis Ticketmaster) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
 | 6 | **84. Chiffrer les revenus hors affiliation** (mise en avant payante, widget premium 71) | Probablement plus rentable que l'affiliation à ce niveau de trafic ; décision grounding à prendre avant toute vente (§8) | S (étude) |
@@ -1694,7 +1712,12 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   l'URL dans `affiliates.json`, `"active": true`, `node scripts/affiliates.js` (aperçu : 4 fiches
   attendues), `--write`, `generate-pages.js`, commit. Vérifier sur le site qu'un clic arrive bien
   dans le tableau de bord Tiqets. **XS.**
-- [ ] **83c. Bloc « Visiter » hors événements.** Une rubrique de monuments (château de
+- [x] **83c. Bloc « Visiter » hors événements — fait le 07/10 (§3.AA)** pour le château de
+  Fontainebleau et Vaux-le-Vicomte. **Reste, chef de projet** : (1) comparer le prix Tiqets de Vaux au
+  tarif officiel (18 €) — si égal, `"samePrice": true` dans `affiliates.json` affiche « 18 €, même
+  prix » ; (2) après le 01/11, renseigner la saison 2027 de Vaux (`from`, `to`, `closed`) dès
+  qu'elle est publiée ; (3) Blandy et Courances absents de Tiqets : GetYourGuide plus tard,
+  seulement si un compte y est ouvert. Texte d'origine — Une rubrique de monuments (château de
   Fontainebleau, Vaux-le-Vicomte, Blandy si vendus chez un partenaire) avec billet partenaire,
   sur la page commune concernée, `/ce-week-end/` et `/sorties/vacances-toussaint/`. Nouveau type
   d'entrée dans `affiliates.json` (offre de lieu, sans condition d'événement). Avant de coder :
