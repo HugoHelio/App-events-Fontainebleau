@@ -167,6 +167,7 @@ ul.list li{padding:12px 0;border-bottom:1px solid var(--line)}
 ul.list a{color:var(--ink);font-weight:600}
 ul.list small{display:block;color:var(--muted)}
 footer{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
+.aff-note{display:block;margin-top:8px;font-size:12px}
 footer a{color:var(--muted)}
 @media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
 `.trim();
@@ -259,7 +260,8 @@ ${ld ? `<script type="application/ld+json">${jsonLd(ld)}</script>\n` : ''}<style
 <main>
 ${body}
 </main>
-<footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a></footer>
+<footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a>
+<small class="aff-note"${en('Some links are partner links: we may earn a commission, at no extra cost to you.')}>Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
 ${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}</body>
 </html>
 `;
