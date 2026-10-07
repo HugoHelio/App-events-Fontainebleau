@@ -1910,6 +1910,9 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   - [x] **Compte éditeur Awin — validé le 07/10. Identifiant éditeur (publisher ID) : `3117734`.**
     Pas un secret (il figure dans chaque lien d'affilié Awin) ; la clé du flux produit, elle, ira
     dans un secret GitHub (83d).
+    - [ ] **Saisir le numéro de TVA intracommunautaire** de la structure dans le compte Awin
+      (Account → Payment details / Company details), comme pour Tiqets. Sans lui, les commissions
+      ne peuvent pas être facturées ni versées.
   - [ ] **Suivant : candidater** dans l'annuaire des annonceurs Awin (Advertisers → Join
     programmes) à **Fnac Spectacles / France Billet**, puis **Ticketmaster France**. Validation :
     1 à 15 jours par annonceur. À noter au retour : le taux réel de France Billet, le format et
