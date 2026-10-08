@@ -1295,7 +1295,7 @@
     <!-- Item 86 (08/10): plain HTML for search engines, under everything the visitor came for.
          The list between the two markers is rewritten by scripts/generate-pages.js on every run:
          never edit it by hand. renderHomePicks() hides what is over and translates the dates.
-         The about text is ours and stays true for fetch-events.js (radius, cadence, sources). -->
+         The about text is ours and stays true for fetch-events.js (radius); sources and checks are the footer's job. -->
     <div class="home-more">
       <section id="homePicks" class="home-picks" aria-labelledby="homePicksTitle">
         <h2 id="homePicksTitle" data-i18n="homePicksTitle">Suggestions pour les prochains jours</h2>
@@ -1313,7 +1313,7 @@
       <section class="home-about" aria-labelledby="homeAboutTitle">
         <h2 id="homeAboutTitle" data-i18n="homeAboutTitle">Fontainebleau et ses environs</h2>
         <p data-i18n="homeAbout1">Le château, classé au patrimoine mondial de l’UNESCO, une forêt de plus de 20 000 hectares connue des grimpeurs du monde entier pour ses blocs d’escalade, Barbizon et ses peintres, Moret-sur-Loing au bord de l’eau, Vaux-le-Vicomte un peu plus loin : autour de Fontainebleau, les idées de sortie ne manquent pas.</p>
-        <p data-i18n="homeAbout2">Fontainebleau Live rassemble sur une carte et un calendrier ce qui s’y passe dans un rayon de 20 km : concerts, théâtre, expositions, marchés, sorties nature et activités pour les enfants. L’agenda est mis à jour environ tous les trois jours, à partir des sites des organisateurs, des agendas publics et d’une recherche sur le web. Chaque fiche indique sa source, pour vérifier l’horaire avant de partir.</p>
+        <p data-i18n="homeAbout2">Fontainebleau Live rassemble sur une carte et un calendrier ce qui s’y passe dans un rayon de 20 km : concerts, théâtre, expositions, sorties nature et activités pour les enfants.</p>
       </section>
     </div>
   </main>
@@ -1417,7 +1417,7 @@
         homePicksTitle: 'Suggestions pour les prochains jours',
         homeAboutTitle: 'Fontainebleau et ses environs',
         homeAbout1: 'Le château, classé au patrimoine mondial de l’UNESCO, une forêt de plus de 20 000 hectares connue des grimpeurs du monde entier pour ses blocs d’escalade, Barbizon et ses peintres, Moret-sur-Loing au bord de l’eau, Vaux-le-Vicomte un peu plus loin : autour de Fontainebleau, les idées de sortie ne manquent pas.',
-        homeAbout2: 'Fontainebleau Live rassemble sur une carte et un calendrier ce qui s’y passe dans un rayon de 20 km : concerts, théâtre, expositions, marchés, sorties nature et activités pour les enfants. L’agenda est mis à jour environ tous les trois jours, à partir des sites des organisateurs, des agendas publics et d’une recherche sur le web. Chaque fiche indique sa source, pour vérifier l’horaire avant de partir.',
+        homeAbout2: 'Fontainebleau Live rassemble sur une carte et un calendrier ce qui s’y passe dans un rayon de 20 km : concerts, théâtre, expositions, sorties nature et activités pour les enfants.',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
         subTitleCity: (c) => `Les activités à ${c}`,
         subTitleCat: (c) => `${c} autour de Fontainebleau`,
@@ -1522,7 +1522,7 @@
         homePicksTitle: 'Suggestions for the days ahead',
         homeAboutTitle: 'Fontainebleau and around',
         homeAbout1: 'The château, a UNESCO World Heritage Site; a forest of more than 20,000 hectares, known to climbers the world over for its boulders; Barbizon and its painters; Moret-sur-Loing by the water; Vaux-le-Vicomte a little further: around Fontainebleau, there is no shortage of things to do.',
-        homeAbout2: 'Fontainebleau Live gathers what is on within 20 km on one map and one calendar: concerts, theatre, exhibitions, markets, nature outings and activities for children. The listings are refreshed about every three days from organisers’ websites, public event calendars and a web search. Every event page names its source, so you can check the time before you go.',
+        homeAbout2: 'Fontainebleau Live gathers what is on within 20 km on one map and one calendar: concerts, theatre, exhibitions, nature outings and activities for children.',
         subTitleAll: 'Everything on around Fontainebleau',
         subTitleCity: (c) => `What’s on in ${c}`,
         subTitleCat: (c) => `${c} around Fontainebleau`,
