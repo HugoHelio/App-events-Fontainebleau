@@ -583,6 +583,80 @@
       padding: 0 1rem 2rem 1rem;
     }
 
+    /* Item 86: suggestions and a few lines about the area, below the views and the subscribe
+       button. Quiet on purpose: small type, no cards, a hairline above — it must not compete with
+       the map. */
+    .home-more {
+      max-width: 760px;
+      margin: 2.75rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.9rem;
+      color: var(--ink-2);
+    }
+
+    .home-more h2 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-ink);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Nothing to suggest (or no JavaScript and an empty list): no orphan heading. */
+    .home-picks:not(:has(li)) { display: none; }
+
+    .home-picks-list { list-style: none; }
+
+    .home-picks-list li {
+      position: relative;
+      padding: 0.3rem 0 0.3rem 1rem;
+      line-height: 1.4;
+    }
+    .home-picks-list li[hidden] { display: none; }
+
+    .pk-dot {
+      position: absolute;
+      left: 0;
+      top: 0.78rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cat-other);
+    }
+    .pk-dot[data-cat="sport"] { background: var(--cat-sport); }
+    .pk-dot[data-cat="nature"] { background: var(--cat-nature); }
+    .pk-dot[data-cat="scene"] { background: var(--cat-scene); }
+    .pk-dot[data-cat="culture"] { background: var(--cat-culture); }
+
+    .home-picks-list time {
+      display: inline-block;
+      min-width: 6.2em;
+      margin-right: 0.35rem;
+      color: var(--ink-3);
+      font-size: 0.82rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .home-picks-list a {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .home-picks-list a:hover,
+    .home-picks-list a:focus-visible { text-decoration: underline; }
+
+    .pk-city {
+      margin-left: 0.25rem;
+      color: var(--ink-3);
+      font-size: 0.82rem;
+    }
+
+    .home-about { margin-top: 1.75rem; }
+    .home-about p { line-height: 1.6; }
+    .home-about p + p { margin-top: 0.6rem; }
+
     .view-panel {
       display: none;
     }
@@ -1217,6 +1291,31 @@
       </button>
       <div id="subscribePanel" class="subscribe-panel" hidden></div>
     </div>
+
+    <!-- Item 86 (08/10): plain HTML for search engines, under everything the visitor came for.
+         The list between the two markers is rewritten by scripts/generate-pages.js on every run:
+         never edit it by hand. renderHomePicks() hides what is over and translates the dates.
+         The about text is ours and stays true for fetch-events.js (radius, cadence, sources). -->
+    <div class="home-more">
+      <section id="homePicks" class="home-picks" aria-labelledby="homePicksTitle">
+        <h2 id="homePicksTitle" data-i18n="homePicksTitle">Suggestions pour les prochains jours</h2>
+        <!-- home-picks:start — written by scripts/generate-pages.js, do not edit -->
+        <ul class="home-picks-list">
+          <li data-start="2026-10-07" data-end="2026-10-10"><span class="pk-dot" data-cat="scene" aria-hidden="true"></span><time datetime="2026-10-07">7–10 oct.</time> <a href="/evenements/23e-festival-des-briardises-hericy-301f795e18/">23e Festival des Briardises</a> <span class="pk-city">Héricy</span></li>
+          <li data-start="2026-10-08" data-end="2026-10-11"><span class="pk-dot" data-cat="sport" aria-hidden="true"></span><time datetime="2026-10-08">8–11 oct.</time> <a href="/evenements/concours-equestre-militaire-de-saut-d-obstacles-fontainebleau-d08275dd1e/">Concours Équestre Militaire de Saut d&#39;Obstacles</a> <span class="pk-city">Fontainebleau</span></li>
+          <li data-start="2026-10-10" data-end="2026-10-10"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-10-10">sam. 10 oct.</time> <a href="/evenements/fete-de-la-science-2026-a-mines-paris-psl-fontainebleau-56e24a1208/">Fête de la Science 2026 à Mines Paris – PSL</a> <span class="pk-city">Fontainebleau</span></li>
+          <li data-start="2026-10-10" data-end="2026-10-11"><span class="pk-dot" data-cat="sport" aria-hidden="true"></span><time datetime="2026-10-10">10–11 oct.</time> <a href="/evenements/marche-aux-velos-du-pays-de-fontainebleau-bourron-marlotte-87c60f7fa6/">Marché aux vélos du Pays de Fontainebleau</a> <span class="pk-city">Bourron-Marlotte</span></li>
+          <li data-start="2026-10-17" data-end="2026-10-17"><span class="pk-dot" data-cat="nature" aria-hidden="true"></span><time datetime="2026-10-17">sam. 17 oct.</time> <a href="/evenements/sortie-d-initiation-a-la-mycologie-en-foret-de-fontainebleau-cf953e6d98/">Sortie d&#39;initiation à la mycologie en forêt de Fontainebleau</a> <span class="pk-city">Fontainebleau</span></li>
+          <li data-start="2026-10-18" data-end="2026-10-18"><span class="pk-dot" data-cat="sport" aria-hidden="true"></span><time datetime="2026-10-18">dim. 18 oct.</time> <a href="/evenements/marche-ou-course-montigny-sur-loing-1c273d544c/">Marche ou course</a> <span class="pk-city">Montigny-sur-Loing</span></li>
+        </ul>
+        <!-- home-picks:end -->
+      </section>
+      <section class="home-about" aria-labelledby="homeAboutTitle">
+        <h2 id="homeAboutTitle" data-i18n="homeAboutTitle">Fontainebleau et ses environs</h2>
+        <p data-i18n="homeAbout1">Le château, classé au patrimoine mondial de l’UNESCO, une forêt de plus de 20 000 hectares connue des grimpeurs du monde entier pour ses blocs d’escalade, Barbizon et ses peintres, Moret-sur-Loing au bord de l’eau, Vaux-le-Vicomte un peu plus loin : autour de Fontainebleau, les idées de sortie ne manquent pas.</p>
+        <p data-i18n="homeAbout2">Fontainebleau Live rassemble sur une carte et un calendrier ce qui s’y passe dans un rayon de 20 km : concerts, théâtre, expositions, marchés, sorties nature et activités pour les enfants. L’agenda est mis à jour environ tous les trois jours, à partir des sites des organisateurs, des agendas publics et d’une recherche sur le web. Chaque fiche indique sa source, pour vérifier l’horaire avant de partir.</p>
+      </section>
+    </div>
   </main>
 
   <button type="button" id="toTop" class="to-top"><span aria-hidden="true">↑</span><span class="sr-only" data-i18n="toTop">Haut de page</span></button>
@@ -1315,6 +1414,10 @@
         sectorWhole: (s) => `${s} (tout le secteur)`,
         priceFree: 'Gratuit',
         subscribeBtn: 'Ajouter à mon agenda',
+        homePicksTitle: 'Suggestions pour les prochains jours',
+        homeAboutTitle: 'Fontainebleau et ses environs',
+        homeAbout1: 'Le château, classé au patrimoine mondial de l’UNESCO, une forêt de plus de 20 000 hectares connue des grimpeurs du monde entier pour ses blocs d’escalade, Barbizon et ses peintres, Moret-sur-Loing au bord de l’eau, Vaux-le-Vicomte un peu plus loin : autour de Fontainebleau, les idées de sortie ne manquent pas.',
+        homeAbout2: 'Fontainebleau Live rassemble sur une carte et un calendrier ce qui s’y passe dans un rayon de 20 km : concerts, théâtre, expositions, marchés, sorties nature et activités pour les enfants. L’agenda est mis à jour environ tous les trois jours, à partir des sites des organisateurs, des agendas publics et d’une recherche sur le web. Chaque fiche indique sa source, pour vérifier l’horaire avant de partir.',
         subTitleAll: 'Toutes les activités autour de Fontainebleau',
         subTitleCity: (c) => `Les activités à ${c}`,
         subTitleCat: (c) => `${c} autour de Fontainebleau`,
@@ -1416,6 +1519,10 @@
         sectorWhole: (s) => `${s} (whole area)`,
         priceFree: 'Free ',
         subscribeBtn: 'Add to my calendar',
+        homePicksTitle: 'Suggestions for the days ahead',
+        homeAboutTitle: 'Fontainebleau and around',
+        homeAbout1: 'The château, a UNESCO World Heritage Site; a forest of more than 20,000 hectares, known to climbers the world over for its boulders; Barbizon and its painters; Moret-sur-Loing by the water; Vaux-le-Vicomte a little further: around Fontainebleau, there is no shortage of things to do.',
+        homeAbout2: 'Fontainebleau Live gathers what is on within 20 km on one map and one calendar: concerts, theatre, exhibitions, markets, nature outings and activities for children. The listings are refreshed about every three days from organisers’ websites, public event calendars and a web search. Every event page names its source, so you can check the time before you go.',
         subTitleAll: 'Everything on around Fontainebleau',
         subTitleCity: (c) => `What’s on in ${c}`,
         subTitleCat: (c) => `${c} around Fontainebleau`,
@@ -1853,6 +1960,31 @@
       return String(navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'en';
     }
 
+    // Item 86: the suggestions under the map are plain HTML written by generate-pages.js, for
+    // search engines. Here: hide what is already over (the page may be a day or two old) and give
+    // the dates the visitor's language — same Intl options as homePickDate(), so the French text
+    // does not change under the reader's eyes.
+    function renderHomePicks() {
+      const section = document.getElementById('homePicks');
+      if (!section) return;
+      const today = todayStr();
+      const f = (iso, opts) => fmtDate(isoToDate(iso), opts);
+      let shown = 0;
+      section.querySelectorAll('li[data-start]').forEach((li) => {
+        const { start, end } = li.dataset;
+        li.hidden = end < today;
+        if (li.hidden) return;
+        shown++;
+        const time = li.querySelector('time');
+        if (!time) return;
+        const sameMonth = start.slice(0, 7) === end.slice(0, 7);
+        time.textContent = end <= start
+          ? f(start, { weekday: 'short', day: 'numeric', month: 'short' })
+          : `${f(start, sameMonth ? { day: 'numeric' } : { day: 'numeric', month: 'short' })}–${f(end, { day: 'numeric', month: 'short' })}`;
+      });
+      section.hidden = !shown;
+    }
+
     function applyLanguage() {
       document.documentElement.lang = lang;
       // Saved even when it came from the browser: the weekend and theme pages read it, and they
@@ -1883,6 +2015,7 @@
       renderLastUpdated();
       renderFeedbackFooter();
       renderEventCount();
+      renderHomePicks();
       populateCityFilter();   // the sector headings are translated
       if (calendar) calendar.setOption('locale', lang);
     }

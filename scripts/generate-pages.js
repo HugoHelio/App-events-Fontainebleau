@@ -1174,14 +1174,61 @@ const shareScript = (url, title) => `(function () {
 const PICKS_MAX = 4;
 const BIG_DATE = /\b(fetes?|festivals?|salons?|foires?|marches?|concours|brocantes?|vide-greniers?)\b/;
 
-function picksOf(list) {
+function picksOf(list, max = PICKS_MAX) {
   const score = (e) => [themesOf(e).length ? 0 : 1, BIG_DATE.test(themeKey(e.title)) ? 0 : 1, -spanDays(e)];
   return list
     .filter((e) => e.source && e.urlStatus === 'ok' && spanDays(e) <= 4)
     .map((e) => ({ e, k: score(e) }))
     .sort((a, b) => a.k[0] - b.k[0] || a.k[1] - b.k[1] || a.k[2] - b.k[2] || a.e.title.localeCompare(b.e.title, 'fr'))
-    .slice(0, PICKS_MAX)
+    .slice(0, max)
     .map(({ e }) => e);
+}
+
+/**
+ * Home page suggestions (item 86): the "À ne pas manquer" rule over the next two weeks, written
+ * into index.html as plain HTML. Everything else on the home page is drawn by JavaScript, so
+ * without this a crawler finds no event and no link to a fiche on the site's strongest page.
+ * Shown by date under the map, the calendar and the subscribe button: suggestions, not a list.
+ * index.html's own script hides what is over and formats the dates for English, with the same
+ * Intl options as homePickDate() so the French text does not change when the script runs.
+ */
+const HOME_PICKS_MAX = 6;
+const HOME_PICKS_DAYS = 14;
+const HOME_PICKS_RE = /(<!-- home-picks:start[^>]*-->)[\s\S]*?(<!-- home-picks:end -->)/;
+const HOME_CAT = { 'Sport & Outdoor': 'sport', 'Nature & Environnement': 'nature', 'Scène & Spectacles': 'scene', 'Culture & Ateliers': 'culture' };
+
+const homeFmt = (iso, opts) => new Intl.DateTimeFormat('fr-FR', { timeZone: 'UTC', ...opts }).format(new Date(`${iso}T12:00:00Z`));
+/** "sam. 10 oct." for one day, "10–11 oct." or "31 oct.–2 nov." for a few. */
+function homePickDate(start, end) {
+  if (!end || end <= start) return homeFmt(start, { weekday: 'short', day: 'numeric', month: 'short' });
+  const sameMonth = start.slice(0, 7) === end.slice(0, 7);
+  return `${homeFmt(start, sameMonth ? { day: 'numeric' } : { day: 'numeric', month: 'short' })}–${homeFmt(end, { day: 'numeric', month: 'short' })}`;
+}
+
+function homePicks(events, today) {
+  const last = addDays(today, HOME_PICKS_DAYS - 1);
+  const open = events.filter((e) => e.startDate <= last && endOf(e) >= today);
+  return picksOf(open, HOME_PICKS_MAX)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
+}
+
+/** The block between the markers, indented like index.html around it. */
+function homePicksHtml(picks) {
+  const items = picks.map((e) => {
+    const end = endOf(e);
+    return `          <li data-start="${esc(e.startDate)}" data-end="${esc(end)}"><span class="pk-dot" data-cat="${HOME_CAT[e.category] || 'other'}" aria-hidden="true"></span>`
+      + `<time datetime="${esc(e.startDate)}">${esc(homePickDate(e.startDate, end))}</time> `
+      + `<a href="${esc(e.pagePath)}">${esc(e.title)}</a> <span class="pk-city">${esc(e.city)}</span></li>`;
+  });
+  return ['', '        <ul class="home-picks-list">', ...items, '        </ul>', '        '].join('\n');
+}
+
+/** index.html with a new block, or null when the markers are missing (a hand edit removed them). */
+function withHomePicks(indexHtml, picks) {
+  if (!HOME_PICKS_RE.test(indexHtml)) return null;
+  const eol = indexHtml.includes('\r\n') ? '\r\n' : '\n';
+  const block = homePicksHtml(picks).replace(/\n/g, eol);
+  return indexHtml.replace(HOME_PICKS_RE, (m, open, close) => `${open}${block}${close}`);
 }
 
 function weekendPage(events, today, places = []) {
@@ -1625,7 +1672,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
     else remove.push(`${EVENTS_DIR}/${dir}`);
   }
 
-  return { files, remove, stats: { events: events.length, cities: cities.length, ...feeds.stats } };
+  return { files, remove, homePicks: homePicks(events, today), stats: { events: events.length, cities: cities.length, ...feeds.stats } };
 }
 
 function listDirs(rel) {
@@ -1650,7 +1697,13 @@ function main() {
     const dir = path.join(ROOT, AGENDA_DIR, d);
     return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.ics')).map((f) => `${AGENDA_DIR}/${d}/${f}`) : [];
   });
-  const { files, remove, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces() });
+  const { files, remove, homePicks: picks, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces() });
+
+  // The one hand-written file the generator touches, and only between its markers (item 86).
+  const indexFile = path.join(ROOT, 'index.html');
+  const home = fs.existsSync(indexFile) ? withHomePicks(fs.readFileSync(indexFile, 'utf8'), picks) : null;
+  if (home) files.set('index.html', home);
+  else console.warn('generate-pages: marqueurs home-picks absents de index.html, suggestions de l’accueil non écrites');
 
   // Communes with nothing left are dropped too.
   const liveCityDirs = new Set([...files.keys()].filter((f) => f.startsWith(`${CITIES_DIR}/`)).map((f) => f.split('/')[1]));
@@ -1666,7 +1719,7 @@ function main() {
   }
   for (const rel of remove) fs.rmSync(path.join(ROOT, rel), { recursive: true, force: true });
 
-  const line = `generate-pages: ${stats.events} événement(s), ${stats.cities} commune(s) · agendas : ${stats.feedEvents} événement(s), ${stats.longLeftOut} de plus de ${FEED_MAX_DAYS} jours écarté(s) · ${written} fichier(s) écrit(s), ${remove.length} dossier(s) supprimé(s)`;
+  const line = `generate-pages: ${stats.events} événement(s), ${stats.cities} commune(s), ${picks.length} suggestion(s) sur l’accueil · agendas : ${stats.feedEvents} événement(s), ${stats.longLeftOut} de plus de ${FEED_MAX_DAYS} jours écarté(s) · ${written} fichier(s) écrit(s), ${remove.length} dossier(s) supprimé(s)`;
   console.log(line);
   if (process.env.GITHUB_STEP_SUMMARY) {
     try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n### 📄 Pages statiques\n\n${line}\n`); } catch { /* non-fatal */ }
@@ -1684,4 +1737,5 @@ module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
   THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf, TODAY_DIR,
+  homePicks, homePickDate, withHomePicks,
 };
