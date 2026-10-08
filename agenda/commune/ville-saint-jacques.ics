@@ -3,28 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Ville-Saint-Jacques · Fontainebleau Live
+X-WR-CALNAME:ville-saint-jacques · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_0fc5c36317@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:Loto
-LOCATION:Ville-Saint-Jacques
-DESCRIPTION:Horaires : 19h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
- gendas/agenda.html#2026-10-10-loto\n\nFiche : https://fontainebleaulive.fr
- /evenements/loto-ville-saint-jacques-0fc5c36317/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/loto-ville-saint-jacques-0fc5c3
- 6317/
-CATEGORIES:Culture & Ateliers
-GEO:48.34502;2.89854
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

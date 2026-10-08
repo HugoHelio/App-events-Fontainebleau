@@ -48,7 +48,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8672a617e1@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Vide-dressing
@@ -66,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_976c124f02@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Ciné-débat " Je n'avais que le néant "
@@ -85,7 +85,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08f2a3660e@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Concert mélodies mélancoliques de Schibert à Piazzolla
@@ -103,7 +103,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween
@@ -140,24 +140,8 @@ GEO:48.394;2.78514
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_0403d5562d@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261108
-SUMMARY:Grand loto
-LOCATION:Thomery
-DESCRIPTION:Horaires : 19h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
- gendas/agenda.html#2026-11-07-grandloto\n\nFiche : https://fontainebleauli
- ve.fr/evenements/grand-loto-thomery-0403d5562d/\n\nInformations collectée
- s automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/grand-loto-thomery-0403d5562d/
-CATEGORIES:Culture & Ateliers
-GEO:48.40233;2.78149
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing
@@ -170,24 +154,6 @@ DESCRIPTION:Horaires : 9h à 17h\n\nUn vide-dressing réservé aux vêtemen
  rganisateur.
 URL:https://fontainebleaulive.fr/evenements/vide-dressing-thomery-4d6759674
  c/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_f7a4471f59@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261129
-DTEND;VALUE=DATE:20261130
-SUMMARY:Loto des enfants
-LOCATION:Salle de la Plage\, 1 chemin des Prés à Thomery\, Thomery
-DESCRIPTION:Horaires : 14h\n\nParticipez à un loto réservé aux enfants o
- rganisé à la Salle de la Plage de Thomery.\n\nOrganisateur : https://www
- .ccmsl.fr/actu-et-agendas/agenda.html#2026-11-29-lotodesenfants\n\nFiche :
-  https://fontainebleaulive.fr/evenements/loto-des-enfants-thomery-f7a4471f
- 59/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/loto-des-enfants-thomery-f7a447
- 1f59/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT

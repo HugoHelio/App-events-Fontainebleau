@@ -3,48 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Nanteau-sur-Lunain · Fontainebleau Live
+X-WR-CALNAME:nanteau-sur-lunain · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_27b6c0be42@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-SUMMARY:Théâtre et concert " Ravie "
-LOCATION:COS\, 2 rue des Arches à Nanteau-sur-Lunain\, Nanteau-sur-Lunain
-DESCRIPTION:Horaires : 19h30\n\nAssistez gratuitement au spectacle Ravie co
- mbinant théâtre et concert sur inscription préalable.\n\nOrganisateur :
-  https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-14-theatreetconc
- ertravie\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-et-con
- cert-ravie-nanteau-sur-lunain-27b6c0be42/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/theatre-et-concert-ravie-nantea
- u-sur-lunain-27b6c0be42/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_f95cc843ea@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261018
-DTEND;VALUE=DATE:20261019
-SUMMARY:Marche pour octobre rose
-LOCATION:Nanteau-sur-Lunain
-DESCRIPTION:Horaires : départ à 14h\n\nUne marche solidaire est organisé
- e à Nanteau-sur-Lunain dans le cadre de la campagne Octobre Rose.\n\nOrga
- nisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-18-mar
- chepouroctobrerose\n\nFiche : https://fontainebleaulive.fr/evenements/marc
- he-pour-octobre-rose-nanteau-sur-lunain-f95cc843ea/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/marche-pour-octobre-rose-nantea
- u-sur-lunain-f95cc843ea/
-CATEGORIES:Sport & Outdoor
-GEO:48.25267;2.82238
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

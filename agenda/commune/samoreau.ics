@@ -3,11 +3,31 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:samoreau · Fontainebleau Live
+X-WR-CALNAME:Samoreau · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_8e33e78d92@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261117
+SUMMARY:Salon de la Gastronomie du vin et des Arts de la table
+LOCATION:Samoreau
+DESCRIPTION:Tarif : Gratuit.\n\nUn rendez-vous gourmand réunissant product
+ eurs de vin\, gastronomie et univers des arts de la table à Samoreau.\n\n
+ Organisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8023657/sal
+ on-de-la-gastronomie-du-vin-et-des-arts-de-la-table/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/salon-de-la-gastronomie-du-vin-et-des-arts-d
+ e-la-table-samoreau-8e33e78d92/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/salon-de-la-gastronomie-du-vin-
+ et-des-arts-de-la-table-samoreau-8e33e78d92/
+CATEGORIES:Culture & Ateliers
+GEO:48.42179;2.7587
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

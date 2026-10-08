@@ -3,7 +3,7 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Dammarie-lès-Lys · Fontainebleau Live
+X-WR-CALNAME:Dammarie-les-Lys · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
@@ -16,7 +16,7 @@ DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Mulan
-LOCATION:Espace Nino Ferrer\, Dammarie-lès-Lys
+LOCATION:Espace Nino Ferrer\, Dammarie-les-Lys
 DESCRIPTION:Horaires : 14h30\n\nTarif : À partir de 13 €\n\nConte musica
  l et théâtral adapté pour toute la famille.\n\nOrganisateur : https://w
  ww.mairie-dammarie-les-lys.fr/\n\nFiche : https://fontainebleaulive.fr/eve
@@ -25,6 +25,47 @@ DESCRIPTION:Horaires : 14h30\n\nTarif : À partir de 13 €\n\nConte musica
 URL:https://fontainebleaulive.fr/evenements/mulan-dammarie-les-lys-b4318199
  94/
 CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_23ccc433a8@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:Venez découvrir le secteur de l'industrie !
+LOCATION:Agence Dammarie-les-Lys\, Dammarie-les-Lys
+DESCRIPTION:Envie de donner un nouvel élan à votre carrière ? Et si l'av
+ enir se trouvait dans l'industrie ? Oubliez les clichés !\n\nOrganisateur
+  : https://openagenda.com/semaine-industrie-2026/events/venez-decouvrir-le
+ -secteur-de-lindustrie-7072647\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/venez-decouvrir-le-secteur-de-l-industrie-dammarie-les-lys-23ccc43
+ 3a8/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/venez-decouvrir-le-secteur-de-l
+ -industrie-dammarie-les-lys-23ccc433a8/
+CATEGORIES:Culture & Ateliers
+GEO:48.51846;2.63439
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_57925be5b9@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:recrutement DEDIENNE AEROSPACE site de Villaroche
+LOCATION:Agence Dammarie-les-Lys\, Dammarie-les-Lys
+DESCRIPTION:Dedienne Aerospace est une entreprise familiale dans le domaine
+  de la fabrication et la maintenance d'outillages aéronautiques\, située
+  sur l'aérodrome de Paris-Villaroche (77).\n\nOrganisateur : https://open
+ agenda.com/semaine-industrie-2026/events/recrutement-dedienne-aerospace-si
+ te-de-villaroche\n\nFiche : https://fontainebleaulive.fr/evenements/recrut
+ ement-dedienne-aerospace-site-de-villaroche-dammarie-les-lys-57925be5b9/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/recrutement-dedienne-aerospace-
+ site-de-villaroche-dammarie-les-lys-57925be5b9/
+CATEGORIES:Culture & Ateliers
+GEO:48.51846;2.63439
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

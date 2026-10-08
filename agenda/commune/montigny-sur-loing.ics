@@ -31,16 +31,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_392cab0309@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Course solidaire pour octobre rose
 LOCATION:Montigny-sur-Loing
-DESCRIPTION:Horaires : 10h – 14h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-11-coursesolidairepouroctobrerose\n\nFi
- che : https://fontainebleaulive.fr/evenements/course-solidaire-pour-octobr
- e-rose-montigny-sur-loing-392cab0309/\n\nInformations collectées automati
- quement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h – 14h\n\nParticipez à une course solidaire de
+  5 ou 10 km organisée à Montigny-sur-Loing dans le cadre d'Octobre Rose.
+ \n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-1
+ 0-11-coursesolidairepouroctobrerose\n\nFiche : https://fontainebleaulive.f
+ r/evenements/course-solidaire-pour-octobre-rose-montigny-sur-loing-392cab0
+ 309/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/course-solidaire-pour-octobre-r
  ose-montigny-sur-loing-392cab0309/
 CATEGORIES:Sport & Outdoor
@@ -48,8 +50,28 @@ GEO:48.33545;2.7482
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b13e0aa559@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:La Nordique Bellifontaine
+LOCATION:Bords du Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : Départ à partir de 10h10\n\nTarif : À partir de 1
+ 3\,50 €\n\nÉpreuve de marche nordique et randonnée sur plusieurs parco
+ urs le long du Loing et en forêt.\n\nOrganisateur : https://fr.milesrepub
+ lic.com/event/nordique-belifontaine-2026\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/la-nordique-bellifontaine-montigny-sur-loing-b13e0aa559/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-nordique-bellifontaine-monti
+ gny-sur-loing-b13e0aa559/
+CATEGORIES:Sport & Outdoor
+GEO:48.33524;2.74552
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_1c273d544c@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Marche ou course
@@ -63,6 +85,25 @@ DESCRIPTION:Horaires : 8h à 18h\n\nSoutenez la cause d'Octobre Rose à tra
 URL:https://fontainebleaulive.fr/evenements/marche-ou-course-montigny-sur-l
  oing-1c273d544c/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_65b2d95b25@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261102
+SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
+LOCATION:Salle Georges Barrois\, Montigny-sur-Loing
+DESCRIPTION:Horaires : À partir de 09h00\n\nTarif : Gratuit\n\nVente de jo
+ uets\, matériel de puériculture et livres pour enfants à petit prix.\n\
+ nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-3
+ 0-bourseauxjouetspuericultureetlivresdenfa\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/bourse-aux-jouets-puericulture-et-livres-d-enfants-mon
+ tigny-sur-loing-65b2d95b25/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/bourse-aux-jouets-puericulture-
+ et-livres-d-enfants-montigny-sur-loing-65b2d95b25/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

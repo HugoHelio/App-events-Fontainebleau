@@ -3,29 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Vulaines-sur-Seine · Fontainebleau Live
+X-WR-CALNAME:vulaines-sur-seine · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_5875909b14@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261007
-DTEND;VALUE=DATE:20261008
-SUMMARY:Vous permettez
-LOCATION:Salle Guy Cresson\, Vulaines-sur-Seine
-DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nDeux couples de beaux-pare
- nts doivent dîner ensemble en attendant désespérément la venue de leur
- s enfants.\n\nOrganisateur : https://www.gah-briardises.com/briardises\n\n
- Fiche : https://fontainebleaulive.fr/evenements/vous-permettez-vulaines-su
- r-seine-5875909b14/\n\nInformations collectées automatiquement : vérifie
- z-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/vous-permettez-vulaines-sur-sei
- ne-5875909b14/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

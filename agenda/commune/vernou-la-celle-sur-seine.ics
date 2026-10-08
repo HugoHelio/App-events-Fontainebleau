@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1bf1b4da9a@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261012
 SUMMARY:Exposition " Arts à Vernou " Peintures - Sculptures
@@ -30,16 +30,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a50ebc4022@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:FIL-GOOD
 LOCATION:Vernou-la-Celle-sur-Seine
-DESCRIPTION:Horaires : 10h30 – 11h30\n\nOrganisateur : https://www.ccmsl.
- fr/actu-et-agendas/agenda.html#2026-10-10-filgood\n\nFiche : https://fonta
- inebleaulive.fr/evenements/fil-good-vernou-la-celle-sur-seine-a50ebc4022/\
- n\nInformations collectées automatiquement : vérifiez-les auprès de l
- ’organisateur.
+DESCRIPTION:Horaires : 10h30 – 11h30\n\nParticipez à un atelier convivia
+ l de tricot ouvert à tous les niveaux pour échanger techniques et projet
+ s autour d'un café.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agenda
+ s/agenda.html#2026-10-10-filgood\n\nFiche : https://fontainebleaulive.fr/e
+ venements/fil-good-vernou-la-celle-sur-seine-a50ebc4022/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/fil-good-vernou-la-celle-sur-se
  ine-a50ebc4022/
 CATEGORIES:Culture & Ateliers
@@ -48,25 +49,28 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4952e6e3aa@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Portes ouvertes Atelier Pierre Pentchev
-LOCATION:Vernou-la-Celle-sur-Seine
-DESCRIPTION:Horaires : 13h – 16h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-10-portesouvertesatelierpierrepentchev\
- n\nFiche : https://fontainebleaulive.fr/evenements/portes-ouvertes-atelier
- -pierre-pentchev-vernou-la-celle-sur-seine-4952e6e3aa/\n\nInformations col
- lectées automatiquement : vérifiez-les auprès de l’organisateur.
+LOCATION:Atelier Pierre Pentchev\, 1 rue des Ecoles à Vernou-La-Celle-sur 
+ Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 13h – 16h\n\nDécouvrez l'atelier Pierre Pentchev 
+ lors de ses journées portes ouvertes comprenant une exposition et un réc
+ ital de clavecin.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/a
+ genda.html#2026-10-10-portesouvertesatelierpierrepentchev\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/portes-ouvertes-atelier-pierre-pentchev
+ -vernou-la-celle-sur-seine-4952e6e3aa/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/portes-ouvertes-atelier-pierre-
  pentchev-vernou-la-celle-sur-seine-4952e6e3aa/
-CATEGORIES:Culture & Ateliers
+CATEGORIES:Scène & Spectacles
 GEO:48.39184;2.84915
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_66dbdcf408@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Portes ouvertes Atelier Pierre Pentchev
@@ -85,27 +89,8 @@ GEO:48.39184;2.84915
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_c23fa3e42a@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-SUMMARY:(R)éveil & Mots doux !
-LOCATION:Médiathèque\, Vernou-la-Celle-sur-Seine
-DESCRIPTION:Horaires : 10h15\n\nLes jeunes enfants sont invités à écoute
- r des histoires\, des comptines et des jeux de doigts à la médiathèque.
- \n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-1
- 0-14-reveilmotsdoux\n\nFiche : https://fontainebleaulive.fr/evenements/r-e
- veil-et-mots-doux-vernou-la-celle-sur-seine-c23fa3e42a/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/r-eveil-et-mots-doux-vernou-la-
- celle-sur-seine-c23fa3e42a/
-CATEGORIES:Culture & Ateliers
-GEO:48.39184;2.84915
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_cf242542ce@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Concert
@@ -124,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_84e0a9c617@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Soirée orientale
@@ -143,7 +128,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up

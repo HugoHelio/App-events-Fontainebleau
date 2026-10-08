@@ -66,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
@@ -138,6 +138,24 @@ DESCRIPTION:Horaires : 15h00\n\nTarif : Consulter la billetterie\n\nSpectac
 URL:https://fontainebleaulive.fr/evenements/spectacle-spicy-battle-nemours-
  2a545a569c/
 CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_22291ce511@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Co-Nuit ANSA
+LOCATION:Centre-ville et massif forestier de Nemours\, Nemours
+DESCRIPTION:Horaires : En soirée\n\nTarif : Don solidaire au profit du Té
+ léthon\n\nCourse d'orientation nocturne\, parcours urbain et forêt\, ain
+ si que chasse au trésor pour le Téléthon.\n\nOrganisateur : https://got
+ rail.run/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-
+ nemours-22291ce511/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/co-nuit-ansa-nemours-22291ce511
+ /
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

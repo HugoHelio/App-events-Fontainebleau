@@ -11,57 +11,19 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_1b7fecf612@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261007
-DTEND;VALUE=DATE:20261008
-SUMMARY:Atelier « Vous avez des fruits sauvages dans vos haies mais comest
- ibles ou pas ? »
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
- s://moretloingetorvanne.fr/events/jardin-des-noues-octobre-2026/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/atelier-vous-avez-des-fruits-sau
- vages-dans-vos-haies-mais-co-moret-loing-et-orvanne-1b7fecf612/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
-URL:https://fontainebleaulive.fr/evenements/atelier-vous-avez-des-fruits-sa
- uvages-dans-vos-haies-mais-co-moret-loing-et-orvanne-1b7fecf612/
-CATEGORIES:Nature & Environnement
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_2d3f365bf4@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261007
-DTEND;VALUE=DATE:20261008
-SUMMARY:Show Deliscience
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 16h\n\nPublic : Dès 6 ans\n\nUn spectacle scientifi
- que interactif proposant des expériences ludiques sur la cuisine pour la 
- Fête de la Science.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agenda
- s/agenda.html#2026-10-07-showdeliscience\n\nFiche : https://fontainebleaul
- ive.fr/evenements/show-deliscience-moret-loing-et-orvanne-2d3f365bf4/\n\nI
- nformations collectées automatiquement : vérifiez-les auprès de l’org
- anisateur.
-URL:https://fontainebleaulive.fr/evenements/show-deliscience-moret-loing-et
- -orvanne-2d3f365bf4/
-CATEGORIES:Scène & Spectacles
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_7a7f720f35@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Atelier bijoux en cyanotypes
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h30 – 16h30\n\nOrganisateur : https://www.ccmsl.
- fr/actu-et-agendas/agenda.html#2026-10-10-atelierbijouxencyanotypes\n\nFic
- he : https://fontainebleaulive.fr/evenements/atelier-bijoux-en-cyanotypes-
- moret-loing-et-orvanne-7a7f720f35/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+LOCATION:7 rue de l'Eglise ( Moret-sur-Loing) à Moret Loing-et-Orvanne\, M
+ oret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 14h30 – 16h30\n\nInitiez-vous à la confection de 
+ bijoux en utilisant la technique photographique du cyanotype.\n\nOrganisat
+ eur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-10-atelierb
+ ijouxencyanotypes\n\nFiche : https://fontainebleaulive.fr/evenements/ateli
+ er-bijoux-en-cyanotypes-moret-loing-et-orvanne-7a7f720f35/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-bijoux-en-cyanotypes-mo
  ret-loing-et-orvanne-7a7f720f35/
 CATEGORIES:Culture & Ateliers
@@ -69,35 +31,39 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_698e9a1549@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+UID:EVT_423a95d130@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
-SUMMARY:Loto solidaire
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 19h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
- gendas/agenda.html#2026-10-10-lotosolidaire\n\nFiche : https://fontaineble
- aulive.fr/evenements/loto-solidaire-moret-loing-et-orvanne-698e9a1549/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
-URL:https://fontainebleaulive.fr/evenements/loto-solidaire-moret-loing-et-o
- rvanne-698e9a1549/
-CATEGORIES:Culture & Ateliers
-GEO:48.35661;2.82107
+SUMMARY:Conte l'Arbre qu'on écoute
+LOCATION:Salle culturelle de l'Eglise\, rue de la Passerelle à ( Veneux-Le
+ s Sablons) Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 16h30\n\nAssistez en famille au conte L'Arbre qu'on 
+ écoute lors d'une représentation à la salle culturelle de l'Église.\n\
+ nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-1
+ 0-contelarbrequonecoute\n\nFiche : https://fontainebleaulive.fr/evenements
+ /conte-l-arbre-qu-on-ecoute-moret-loing-et-orvanne-423a95d130/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/conte-l-arbre-qu-on-ecoute-more
+ t-loing-et-orvanne-423a95d130/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b8a70f463d@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Paroles de Rockeurs
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 15h – 23h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-10-parolesderockeurs\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/paroles-de-rockeurs-moret-loing-et-orvann
- e-b8a70f463d/\n\nInformations collectées automatiquement : vérifiez-les 
- auprès de l’organisateur.
+LOCATION:salle Roland Dagnaud\, route de Saint-Mammès ( Moret-sur-Loing) 
+ à Moret Loing et Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 15h – 23h\n\nUn rendez-vous musical et culturel au
+ tour de l'univers du rock à Moret-Loing-et-Orvanne.\n\nOrganisateur : htt
+ ps://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-10-parolesderockeurs
+ \n\nFiche : https://fontainebleaulive.fr/evenements/paroles-de-rockeurs-mo
+ ret-loing-et-orvanne-b8a70f463d/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/paroles-de-rockeurs-moret-loing
  -et-orvanne-b8a70f463d/
 CATEGORIES:Culture & Ateliers
@@ -105,8 +71,26 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_85ab78d071@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Concert
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 16h30 – 18h30\n\nOrganisateur : https://www.ccmsl.
+ fr/actu-et-agendas/agenda.html#2026-10-11-concert\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/concert-moret-loing-et-orvanne-85ab78d071/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-moret-loing-et-orvanne-
+ 85ab78d071/
+CATEGORIES:Scène & Spectacles
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_0b50472941@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Vide-greniers d'Épisy
@@ -142,44 +126,6 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_2f9bed8f20@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261015
-DTEND;VALUE=DATE:20261016
-SUMMARY:Café des Parents
-LOCATION:Pôle famille\, 5 bis rue de la République à ( Veneux-Les Sablon
- s) Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 9h30 à 11h30\n\nUn temps d'échange gratuit et sur 
- inscription dédié au développement de l'enfant\, de sa naissance à l'a
- dolescence.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.
- html#2026-10-15-cafedesparents\n\nFiche : https://fontainebleaulive.fr/eve
- nements/cafe-des-parents-moret-loing-et-orvanne-2f9bed8f20/\n\nInformation
- s collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/cafe-des-parents-moret-loing-et
- -orvanne-2f9bed8f20/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_4fa1f1ef96@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261016
-DTEND;VALUE=DATE:20261017
-SUMMARY:La petite bibliothèque
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Un rendez-vous pour partager vos lectures coups de cœur et en 
- lire des extraits à voix haute.\n\nOrganisateur : https://www.ccmsl.fr/ac
- tu-et-agendas/agenda.html#2026-10-16-lapetitebibliotheque\n\nFiche : https
- ://fontainebleaulive.fr/evenements/la-petite-bibliotheque-moret-loing-et-o
- rvanne-4fa1f1ef96/\n\nInformations collectées automatiquement : vérifiez
- -les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/la-petite-bibliotheque-moret-lo
- ing-et-orvanne-4fa1f1ef96/
-CATEGORIES:Culture & Ateliers
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_b4c2e59fdd@fontainebleaulive.fr
 DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261018
@@ -200,7 +146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_48db600ea0@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261025
 SUMMARY:MLO Game's Week !
@@ -217,7 +163,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_26b82e4407@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Bourse aux collectionneurs d'Octobre Rose
@@ -236,7 +182,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_847c0a2b7d@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Stage aquarelle et techniques mixtes
@@ -253,26 +199,26 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_cc04dd57ed@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261027
-DTEND;VALUE=DATE:20261028
-SUMMARY:Les petites histoires
+UID:EVT_1c36ac36ec@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261031
+SUMMARY:Stage de perfectionnement Tennis
 LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h – 11h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-27-lespetiteshistoires\n\nFiche : https
- ://fontainebleaulive.fr/evenements/les-petites-histoires-moret-loing-et-or
- vanne-cc04dd57ed/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-petites-histoires-moret-loi
- ng-et-orvanne-cc04dd57ed/
+DESCRIPTION:Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
+ #2026-10-26-stagedeperfectionnementtennis\n\nFiche : https://fontainebleau
+ live.fr/evenements/stage-de-perfectionnement-tennis-moret-loing-et-orvanne
+ -1c36ac36ec/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-de-perfectionnement-tenni
+ s-moret-loing-et-orvanne-1c36ac36ec/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b7ac9f1ee7@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du cinéma d'animation
@@ -303,62 +249,6 @@ DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
 URL:https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-d
  es-noues-moret-loing-et-orvanne-b33ec7b4bc/
 CATEGORIES:Nature & Environnement
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_97fbb7f299@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261108
-SUMMARY:Loto
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 18h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
- gendas/agenda.html#2026-11-07-loto\n\nFiche : https://fontainebleaulive.fr
- /evenements/loto-moret-loing-et-orvanne-97fbb7f299/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/loto-moret-loing-et-orvanne-97f
- bb7f299/
-CATEGORIES:Culture & Ateliers
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_4fccfc765a@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:La petite bibliothèque
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Rejoignez un groupe de lecture pour partager et lire à voix ha
- ute vos coups de cœur littéraires.\n\nOrganisateur : https://www.ccmsl.f
- r/actu-et-agendas/agenda.html#2026-11-20-lapetitebibliotheque\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/la-petite-bibliotheque-moret-loing-
- et-orvanne-4fccfc765a/\n\nInformations collectées automatiquement : véri
- fiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/la-petite-bibliotheque-moret-lo
- ing-et-orvanne-4fccfc765a/
-CATEGORIES:Culture & Ateliers
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_67debcab50@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261211
-DTEND;VALUE=DATE:20261212
-SUMMARY:La petite bibliothèque
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Rejoignez la petite bibliothèque pour échanger autour de vos 
- lectures et partager à voix haute un extrait de votre livre coup de cœur
- .\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-
- 12-11-lapetitebibliotheque\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/la-petite-bibliotheque-moret-loing-et-orvanne-67debcab50/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
-URL:https://fontainebleaulive.fr/evenements/la-petite-bibliotheque-moret-lo
- ing-et-orvanne-67debcab50/
-CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT

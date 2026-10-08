@@ -11,6 +11,11 @@
       "lng": 2.56469,
       "source": "city"
     },
+    "city:avon": {
+      "lat": 48.413,
+      "lng": 2.72893,
+      "source": "city"
+    },
     "city:barbizon": {
       "lat": 48.44575,
       "lng": 2.60775,
@@ -26,6 +31,16 @@
       "lng": 2.70575,
       "source": "city"
     },
+    "city:cannes ecluse": {
+      "lat": 48.36539,
+      "lng": 2.98434,
+      "source": "city"
+    },
+    "city:chailly en biere": {
+      "lat": 48.46717,
+      "lng": 2.60924,
+      "source": "city"
+    },
     "city:champagne sur seine": {
       "lat": 48.40234,
       "lng": 2.80035,
@@ -34,6 +49,11 @@
     "city:chartrettes": {
       "lat": 48.48805,
       "lng": 2.71241,
+      "source": "city"
+    },
+    "city:courances": {
+      "lat": 48.44052,
+      "lng": 2.47539,
       "source": "city"
     },
     "city:dammarie les lys": {
@@ -209,6 +229,11 @@
     "venue:barbizon": {
       "lat": 48.44575,
       "lng": 2.60775,
+      "source": "ban"
+    },
+    "venue:bords du loing montigny sur loing": {
+      "lat": 48.33524,
+      "lng": 2.74552,
       "source": "ban"
     },
     "venue:chailly en biere": {
@@ -389,6 +414,11 @@
     "venue:salle de bal du chateau de fontainebleau fontainebleau": {
       "lat": 48.40168,
       "lng": 2.70086,
+      "source": "ban"
+    },
+    "venue:samoreau": {
+      "lat": 48.42179,
+      "lng": 2.7587,
       "source": "ban"
     },
     "venue:site de la faisanderie l empreinte fontainebleau": {

@@ -11,8 +11,45 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_fe418ce812@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:La Fête du Parc naturel régional du Gâtinais français & Grand P
+ ique-Nique
+LOCATION:Salle Claude Cottereau et ses abords\, Chailly-en-Bière
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nAnimations natur
+ e et botanique accompagnées d'un grand pique-nique convivial.\n\nOrganisa
+ teur : https://www.fontainebleau-tourisme.com/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/la-fete-du-parc-naturel-regional-du-gatinais-franc
+ ais-et-gra-chailly-en-biere-fe418ce812/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-fete-du-parc-naturel-regiona
+ l-du-gatinais-francais-et-gra-chailly-en-biere-fe418ce812/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3a60161a09@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261019
+SUMMARY:La Balade du Goût
+LOCATION:Chailly-en-Bière\, Chailly-en-Bière
+DESCRIPTION:Tarif : Gratuit.\n\nÉvénement gourmand invitant à la découv
+ erte des spécialités du terroir à Chailly-en-Bière.\n\nOrganisateur : 
+ https://www.fontainebleau-tourisme.com/fr/fiche/6294769/la-balade-du-gout/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/la-balade-du-gout-chai
+ lly-en-biere-3a60161a09/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-balade-du-gout-chailly-en-bi
+ ere-3a60161a09/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b73078ac9b@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Marché de Noël

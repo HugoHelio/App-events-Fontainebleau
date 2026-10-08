@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_301f795e18@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261007
 DTEND;VALUE=DATE:20261011
 SUMMARY:23e Festival des Briardises
@@ -27,24 +27,6 @@ DESCRIPTION:Horaires : 20h30\n\nTarif : Tarif unique : à partir de 17 €.
  près de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/23e-festival-des-briardises-her
  icy-301f795e18/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_b4668e372a@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261007
-DTEND;VALUE=DATE:20261008
-SUMMARY:Un fil à la patte
-LOCATION:Salle de l'Orangerie\, Héricy
-DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nComédie vaudeville classi
- que de Georges Feydeau sur les désaventures de Fernand de Bois-d'Enghien.
- \n\nOrganisateur : https://www.helloasso.com/associations/generation-artis
- tique-hericy/evenements/un-fil-a-la-patte\n\nFiche : https://fontainebleau
- live.fr/evenements/un-fil-a-la-patte-hericy-b4668e372a/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/un-fil-a-la-patte-hericy-b4668e
- 372a/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT

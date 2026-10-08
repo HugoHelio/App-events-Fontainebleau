@@ -11,27 +11,8 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_f7e2aed67f@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:Forum Séniors
-LOCATION:Saint-Mammès
-DESCRIPTION:Horaires : 10h à 16h\n\nUn forum proposant des stands\, animat
- ions et espaces de rencontre pour les séniors.\n\nOrganisateur : https://
- www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-10-forumseniors\n\nFiche 
- : https://fontainebleaulive.fr/evenements/forum-seniors-saint-mammes-f7e2a
- ed67f/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/forum-seniors-saint-mammes-f7e2
- aed67f/
-CATEGORIES:Culture & Ateliers
-GEO:48.38915;2.80788
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_808251db19@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Journée pour Octobre Rose
@@ -49,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2108dbd3a3@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Randonnée solidaire

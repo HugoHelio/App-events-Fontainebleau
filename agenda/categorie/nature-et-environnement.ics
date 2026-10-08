@@ -11,47 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_1b7fecf612@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261007
-DTEND;VALUE=DATE:20261008
-SUMMARY:Atelier « Vous avez des fruits sauvages dans vos haies mais comest
- ibles ou pas ? »
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
- s://moretloingetorvanne.fr/events/jardin-des-noues-octobre-2026/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/atelier-vous-avez-des-fruits-sau
- vages-dans-vos-haies-mais-co-moret-loing-et-orvanne-1b7fecf612/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
-URL:https://fontainebleaulive.fr/evenements/atelier-vous-avez-des-fruits-sa
- uvages-dans-vos-haies-mais-co-moret-loing-et-orvanne-1b7fecf612/
-CATEGORIES:Nature & Environnement
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_b5100c4ea4@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261007
-DTEND;VALUE=DATE:20261008
-SUMMARY:Vous avez des fruits sauvages dans vos haies mais comestibles ou pa
- s ?
-LOCATION:Jardin des Noues\, Veneux-les-Sablons
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nUn atelier gratuit 
- pour apprendre à mieux reconnaître les fruits sauvages présents dans le
- s haies.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-de
- s-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements/v
- ous-avez-des-fruits-sauvages-dans-vos-haies-mais-comestible-veneux-les-sab
- lons-b5100c4ea4/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/vous-avez-des-fruits-sauvages-d
- ans-vos-haies-mais-comestible-veneux-les-sablons-b5100c4ea4/
-CATEGORIES:Nature & Environnement
-GEO:48.37483;2.8074
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_01502bfb93@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261009
@@ -71,17 +30,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_faeff665c0@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261012
 SUMMARY:Événement SAUVAGES! Spécial prédateurs
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h–18h\n\nTarif : Gratuit\n\nAteliers nature\, co
- nférences et animations éducatives axés sur la biodiversité et les pr
- édateurs locaux.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/evenement-sauvages-special-predat
- eurs-fontainebleau-faeff665c0/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nAteliers nature\
+ , conférences et animations éducatives axés sur la biodiversité et les
+  prédateurs locaux.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFich
+ e : https://fontainebleaulive.fr/evenements/evenement-sauvages-special-pre
+ dateurs-fontainebleau-faeff665c0/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/evenement-sauvages-special-pred
  ateurs-fontainebleau-faeff665c0/
 CATEGORIES:Nature & Environnement
@@ -103,6 +62,25 @@ DESCRIPTION:Horaires : 14h30–16h30\n\nTarif : Gratuit\n\nAtelier pratique
  iez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/animation-jardinage-au-naturel-
  fontainebleau-fac6ac17a6/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fe418ce812@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:La Fête du Parc naturel régional du Gâtinais français & Grand P
+ ique-Nique
+LOCATION:Salle Claude Cottereau et ses abords\, Chailly-en-Bière
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nAnimations natur
+ e et botanique accompagnées d'un grand pique-nique convivial.\n\nOrganisa
+ teur : https://www.fontainebleau-tourisme.com/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/la-fete-du-parc-naturel-regional-du-gatinais-franc
+ ais-et-gra-chailly-en-biere-fe418ce812/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-fete-du-parc-naturel-regiona
+ l-du-gatinais-francais-et-gra-chailly-en-biere-fe418ce812/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -244,7 +222,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf953e6d98@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Sortie d'initiation à la mycologie en forêt de Fontainebleau
@@ -301,8 +279,28 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_08a6496d84@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Visites guidées thématiques en forêt
+LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Adulte : 16 €\, Enfant (6-12 ans) : 9 €. Gratuit po
+ ur les moins de 6 ans. Réserv…\n\nPartez à la découverte de la faune 
+ et de la flore locales au cours d'une visite guidée thématique en forêt
+  de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/4971254/visites-guidees-thematiques-en-foret/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-foret-fon
+ tainebleau-08a6496d84/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-
+ foret-fontainebleau-08a6496d84/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5266991852@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Promenade guidée : Découverte du sentier 17
@@ -394,7 +392,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -492,7 +490,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bb66b3af@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Mes premiers pas avec...les champignons !
@@ -530,18 +528,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_249e4be334@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier rapaces nocturnes « Chouette\, une pelote ! »
 LOCATION:Hôtel de Ville de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit\n\nPublic : Dès 6 an
- s\n\nAtelier ludique d'analyse des pelotes de réjection de rapaces noctur
- nes pour comprendre le régime alimentaire des chouettes.\n\nOrganisateur 
- : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/even
- ements/atelier-rapaces-nocturnes-chouette-une-pelote-fontainebleau-249e4be
- 334/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
+DESCRIPTION:Horaires : 18h00\n\nTarif : Gratuit\n\nPublic : Dès 6 ans\n\nA
+ telier ludique d'analyse des pelotes de réjection de rapaces nocturnes po
+ ur comprendre le régime alimentaire des chouettes.\n\nOrganisateur : http
+ s://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /atelier-rapaces-nocturnes-chouette-une-pelote-fontainebleau-249e4be334/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-rapaces-nocturnes-choue
  tte-une-pelote-fontainebleau-249e4be334/
 CATEGORIES:Nature & Environnement
@@ -621,6 +619,26 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_abac6f2f82@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Visite sur la trace des animaux en forêt de Fontainebleau
+LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Adulte : 16 €\, Enfant (8-12 ans) : 9 €. Visite sou
+ mise à un nombre minimum de p…\n\nApprenez à repérer et interpréter 
+ les empreintes et indices laissés par la faune sauvage en forêt de Fonta
+ inebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fich
+ e/5643672/visite-sur-la-trace-des-animaux-en-foret-de-fontainebleau/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/visite-sur-la-trace-des-anim
+ aux-en-foret-de-fontainebleau-abac6f2f82/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-sur-la-trace-des-animaux
+ -en-foret-de-fontainebleau-abac6f2f82/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d27898b9bd@fontainebleaulive.fr
 DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261122
@@ -643,22 +661,22 @@ UID:EVT_b65cb259d8@fontainebleaulive.fr
 DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
-SUMMARY:Promenades guidées – Clair Bois et Désert d'Apremont
+SUMMARY:Promenade guidée : Clair Bois et Désert d'Apremont
 LOCATION:Gorges\, Clair Bois et Désert d'Apremont\, Barbizon
 DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nPromenade guidé
  e à travers le Clair Bois et le secteur rocheux du Désert d'Apremont.\n\
  nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontaineble
- aulive.fr/evenements/promenades-guidees-clair-bois-et-desert-d-apremont-ba
- rbizon-b65cb259d8/\n\nInformations collectées automatiquement : vérifiez
- -les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/promenades-guidees-clair-bois-e
- t-desert-d-apremont-barbizon-b65cb259d8/
+ aulive.fr/evenements/promenade-guidee-clair-bois-et-desert-d-apremont-barb
+ izon-b65cb259d8/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/promenade-guidee-clair-bois-et-
+ desert-d-apremont-barbizon-b65cb259d8/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ea515f4cb5@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visites guidées thématiques en forêt
@@ -749,6 +767,24 @@ DESCRIPTION:Horaires : 14h–16h\n\nTarif : 16 € adulte / 9 € enfant\n\
   vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-
  animaux-edition-decembre-fontainebleau-1de0024e70/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_252dc9d8cb@fontainebleaulive.fr
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270109
+SUMMARY:Café des Sciences (FabLab Moebius)
+LOCATION:FabLab Moebius\, Fontainebleau
+DESCRIPTION:Horaires : 18h00–20h00\n\nRencontre et échanges autour des s
+ ciences et de la biodiversité.\n\nOrganisateur : https://www.fontaineblea
+ u-tourisme.com/fr/fiche/8011881/cafe-des-sciences-par-fablab-moebius/\n\nF
+ iche : https://fontainebleaulive.fr/evenements/cafe-des-sciences-fablab-mo
+ ebius-fontainebleau-252dc9d8cb/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cafe-des-sciences-fablab-moebiu
+ s-fontainebleau-252dc9d8cb/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
