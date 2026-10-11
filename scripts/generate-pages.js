@@ -1126,7 +1126,7 @@ function seasonIndex(events, today) {
     const year = (list[0] ? list[0].startDate : today).slice(0, 4);
     return `<li><a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</a><small${en(list.length ? `${enPl(list.length, 'upcoming date')}` : 'No date announced yet')}>${list.length ? `${list.length} date${list.length > 1 ? 's' : ''} à venir` : 'Pas encore de date annoncée'}</small></li>`;
   });
-  const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${CITIES_DIR}/"${en('Things to do around Fontainebleau')}>Que faire autour de Fontainebleau</a></nav>
+  const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${CITIES_DIR}/"${en('Towns')}>Communes</a></nav>
 <h1${en('Seasonal outings around Fontainebleau')}>Sorties de saison autour de Fontainebleau</h1>
 <p${en('School holidays, festivals and the great moments of nature: the pages that come back every year, updated every day.')}>Vacances scolaires, fêtes et rendez-vous de la nature : les pages qui reviennent chaque année, mises à jour chaque jour.</p>
 <h2${en('School holidays')}>Vacances scolaires</h2>
@@ -1277,7 +1277,7 @@ function weekendPage(events, today, places = []) {
   const shareText = `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} autour de Fontainebleau`;
   const shareTextEn = `${enPl(n, 'outing')} ${today === sun ? 'today' : 'this weekend'} around Fontainebleau`;
 
-  const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${CITIES_DIR}/"${en('Things to do around Fontainebleau')}>Que faire autour de Fontainebleau</a></nav>
+  const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${CITIES_DIR}/"${en('Towns')}>Communes</a></nav>
 <h1${en('What’s on this weekend around Fontainebleau?')}>Que faire ce week-end autour de Fontainebleau ?</h1>
 <p class="when"><span class="we"><img src="/public/assets/img/brand/calendrier-sam-dim.svg" alt="" width="46" height="36"><span${en('Weekend')}>Week-end</span></span> <span${en(`of ${esc(rangeEn)}${today === sun ? ' · today, Sunday' : ''}`)}>du ${esc(range)}${today === sun ? ` · aujourd’hui ${esc(sunLabel.replace(/ \d.*$/, ''))}` : ''}</span></p>
 <p${en(n ? `${enPl(n, 'outing')} ${today === sun ? 'today' : 'this weekend'} in Fontainebleau and the neighbouring towns: sport, nature, shows, culture and family outings. Updated every day.` : 'Nothing announced for this weekend yet: come back in a few days, the programme is updated every day.')}>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
@@ -1336,7 +1336,7 @@ ${sections.map(daySection).join('\n')}
   };
 
   const shareText = `${n} sortie${n > 1 ? 's' : ''} aujourd’hui autour de Fontainebleau`;
-  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Que faire autour de Fontainebleau</a></nav>
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Communes</a></nav>
 <h1>Que faire aujourd’hui autour de Fontainebleau ?</h1>
 <p class="note" id="stale" hidden>Ce programme date du ${esc(dayName(today))} et n’a pas encore été mis à jour : <a href="/">l’agenda complet</a> est à jour.</p>
 ${nowHtml(seasonNow(events, today))}
@@ -1369,11 +1369,18 @@ ${shareScript(`${SITE_URL}/${TODAY_DIR}/`, 'Que faire aujourd’hui autour de Fo
   }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
 }
 
+// The hub is the "by town" page, not a second answer to "que faire à Fontainebleau" (11/10): it
+// carried the home page's <h1> word for word, and Google ranked it in the home page's place.
+// The towns in its title are a fixed list, shortened as people type them, kept only while they
+// have a page, so the title does not change with every scan.
+const HUB_TOWNS = [['barbizon', 'Barbizon'], ['samois-sur-seine', 'Samois'], ['moret-loing-et-orvanne', 'Moret'], ['thomery', 'Thomery'], ['nemours', 'Nemours']];
+
 function citiesIndex(cities) {
   const seasonal = [...HOLIDAYS, ...THEMES].map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
+  const towns = HUB_TOWNS.filter(([slug]) => cities.some((c) => c.slug === slug)).slice(0, 3).map(([, name]) => name);
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
-<h1>Que faire autour de Fontainebleau ?</h1>
-<p>Les activités à venir, commune par commune.</p>
+<h1>Les sorties commune par commune autour de Fontainebleau</h1>
+<p>Les activités à venir dans les ${cities.length} communes où quelque chose est annoncé. Pour tout voir d’un coup sur une carte et un calendrier : <a href="/">l’agenda complet de Fontainebleau et ses environs</a>.</p>
 <ul class="list">${cities.map((c) => `<li><a href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a><small>${c.events.length} activité${c.events.length > 1 ? 's' : ''} à venir</small></li>`).join('')}</ul>
 <h2>Aujourd’hui et ce week-end</h2>
 <p><a href="/${TODAY_DIR}/">Que faire aujourd’hui autour de Fontainebleau ?</a></p>
@@ -1381,8 +1388,8 @@ function citiesIndex(cities) {
 <h2><a href="/${THEMES_DIR}/">Sorties de saison</a></h2>
 <p>${seasonal}</p>`;
   return layout({
-    title: 'Que faire autour de Fontainebleau ? Agenda par commune | Fontainebleau Live',
-    description: 'Les activités sportives, culturelles et nature à venir autour de Fontainebleau, classées par commune.',
+    title: `Sorties par commune autour de Fontainebleau${towns.length ? ` : ${towns.join(', ')}…` : ''}`,
+    description: `${towns.length ? `${towns.join(', ')}… : ` : ''}les activités culturelles, sportives et nature à venir autour de Fontainebleau, commune par commune.`,
     canonical: `${SITE_URL}/${CITIES_DIR}/`,
     body,
   });
