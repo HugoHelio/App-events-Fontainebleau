@@ -12,16 +12,17 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_808251db19@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Journée pour Octobre Rose
 LOCATION:Saint-Mammès
-DESCRIPTION:Horaires : 10h – 16h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-11-journeepouroctobrerose\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/journee-pour-octobre-rose-saint-mamm
- es-808251db19/\n\nInformations collectées automatiquement : vérifiez-les
-  auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h – 16h\n\nParticipez à une journée spéciale 
+ organisée à Saint-Mammès dans le cadre de l'action Octobre Rose.\n\nOrg
+ anisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-11-jo
+ urneepouroctobrerose\n\nFiche : https://fontainebleaulive.fr/evenements/jo
+ urnee-pour-octobre-rose-saint-mammes-808251db19/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/journee-pour-octobre-rose-saint
  -mammes-808251db19/
 CATEGORIES:Culture & Ateliers
@@ -30,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2108dbd3a3@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Randonnée solidaire
@@ -44,6 +45,41 @@ DESCRIPTION:Horaires : 10h\n\nUne marche solidaire de 8 kilomètres est org
 URL:https://fontainebleaulive.fr/evenements/randonnee-solidaire-saint-mamme
  s-2108dbd3a3/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5aea2aefcf@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Bric-à-Brac de Saint-Mammès
+LOCATION:Salle MLC\, Saint-Mammès
+DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée libre\n\nGrand bric
+ -à-brac et vide-greniers d'automne.\n\nOrganisateur : https://www.alentoo
+ r.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bric-a-brac-de-sa
+ int-mammes-5aea2aefcf/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/bric-a-brac-de-saint-mammes-5ae
+ a2aefcf/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a3994dd502@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Marché de Noël de Saint-Mammès
+LOCATION:Quai de Seine\, 77670 Saint-Mammès\, Saint-Mammès
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nMarché de Noël
+  artisanal au bord du Quai de Seine.\n\nOrganisateur : https://www.fontain
+ ebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/evenements/ma
+ rche-de-noel-de-saint-mammes-a3994dd502/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-saint-mammes-
+ a3994dd502/
+CATEGORIES:Culture & Ateliers
+GEO:48.38775;2.80549
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

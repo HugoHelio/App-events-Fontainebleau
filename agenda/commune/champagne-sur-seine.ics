@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_d00a04cf3c@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261015
 DTEND;VALUE=DATE:20261016
 SUMMARY:Oeuvre d'art participatif " photo ( et) graphie "
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9a23491159@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Color run solidaire
@@ -52,16 +52,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_adfd9661ba@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Double concert
 LOCATION:Champagne-sur-Seine
-DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
- gendas/agenda.html#2026-10-24-doubleconcert\n\nFiche : https://fontaineble
- aulive.fr/evenements/double-concert-champagne-sur-seine-adfd9661ba/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
+DESCRIPTION:Horaires : 20h\n\nAssistez à une soirée de concert réunissan
+ t les groupes Stay Tuned et No Fuss sur scène.\n\nOrganisateur : https://
+ www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-24-doubleconcert\n\nFiche
+  : https://fontainebleaulive.fr/evenements/double-concert-champagne-sur-se
+ ine-adfd9661ba/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/double-concert-champagne-sur-se
  ine-adfd9661ba/
 CATEGORIES:Scène & Spectacles
@@ -70,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdc5e49f92@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Vide ta chambre
@@ -89,7 +90,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18524de635@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Théâtre-forum " un aidant peut en cacher un autre "
@@ -105,6 +106,25 @@ DESCRIPTION:Horaires : 14h à 16h30\n\nAssistez à un théâtre-forum abord
 URL:https://fontainebleaulive.fr/evenements/theatre-forum-un-aidant-peut-en
  -cacher-un-autre-champagne-sur-seine-18524de635/
 CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_184d6eb8ca@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Les oiseaux en hiver
+LOCATION:Réserve Naturelle Régionale (RNR) des Seiglats\, Champagne-sur-S
+ eine
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nAnimation d'obse
+ rvation de la faune aviaire hivernante en réserve naturelle.\n\nOrganisat
+ eur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/les-oiseaux-en-hiver-champagne-sur-sei
+ ne-184d6eb8ca/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-oiseaux-en-hiver-champagne-
+ sur-seine-184d6eb8ca/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

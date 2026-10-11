@@ -11,62 +11,25 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_a449c7a09c@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261005
-DTEND;VALUE=DATE:20261011
-SUMMARY:Octobre Rose
-LOCATION:Place de la République\, Samois-sur-Seine
-DESCRIPTION:Horaires : 18h30\n\nTarif : Gratuit\n\nOrganisateur : https://s
- amois-sur-seine.fr/evenement/octobre-rose/\n\nFiche : https://fontaineblea
- ulive.fr/evenements/octobre-rose-samois-sur-seine-a449c7a09c/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
-URL:https://fontainebleaulive.fr/evenements/octobre-rose-samois-sur-seine-a
- 449c7a09c/
-CATEGORIES:Scène & Spectacles
-GEO:48.45134;2.74946
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_a956be0e53@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:... Et c'est tant mieux - Jean-Jacques Vanier
-LOCATION:La Samoisienne\, Samois-sur-Seine
-DESCRIPTION:Horaires : 20h30\n\nTarif : 17€\n\nSpectacle cent pour cent s
- ketchs marquant un retour aux origines comiques avec Jean-Jacques Vanier.\
- n\nOrganisateur : https://www.helloasso.com/associations/generation-artist
- ique-hericy/evenements/et-c-est-tant-mieux-jean-jacques-vanier-2\n\nFiche 
- : https://fontainebleaulive.fr/evenements/et-c-est-tant-mieux-jean-jacques
- -vanier-samois-sur-seine-a956be0e53/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/et-c-est-tant-mieux-jean-jacque
- s-vanier-samois-sur-seine-a956be0e53/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_23fc7e3b87@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:Semaine Bleue à Samois : les générations se racontent !
+UID:EVT_e396a51ac4@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:À la découverte de la forêt de Fontainebleau !
 LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 15h00\n\nOrganisateur : https://samois-sur-seine.fr/
- evenement/semaine-bleue-a-samois-les-generations-se-racontent/\n\nFiche : 
- https://fontainebleaulive.fr/evenements/semaine-bleue-a-samois-les-generat
- ions-se-racontent-samois-sur-seine-23fc7e3b87/\n\nInformations collectées
-  automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/semaine-bleue-a-samois-les-gene
- rations-se-racontent-samois-sur-seine-23fc7e3b87/
-CATEGORIES:Culture & Ateliers
+DESCRIPTION:Horaires : 14h00 à 16h30\n\nOrganisateur : https://samois-sur-
+ seine.fr/evenement/a-la-decouverte-de-la-foret-de-fontainebleau/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/a-la-decouverte-de-la-foret-de-f
+ ontainebleau-samois-sur-seine-e396a51ac4/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/a-la-decouverte-de-la-foret-de-
+ fontainebleau-samois-sur-seine-e396a51ac4/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_61430f6751@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Loto annuel
@@ -82,26 +45,61 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3629202698@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:ANFA Aviron – 6e édition de la régate du Pays de Fontainebleau
 LOCATION:La Seine\, Samois-sur-Seine
-DESCRIPTION:Horaires : 09h–16h\n\nTarif : Gratuit\n\n6e édition de la r
- égate d'aviron sur la Seine réunissant les équipes du club et invités 
- régionaux.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/anfa-a
- viron-6e-edition-de-la-regate-du-pays-de-fontainebleau/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/anfa-aviron-6e-edition-de-la-regate-du-pa
- ys-de-fontainebleau-samois-sur-seine-3629202698/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 08h00–15h00\n\nTarif : Gratuit\n\n6e édition de l
+ a régate d'aviron sur la Seine réunissant les équipes du club et invit
+ és régionaux.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/an
+ fa-aviron-6e-edition-de-la-regate-du-pays-de-fontainebleau/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/anfa-aviron-6e-edition-de-la-regate-d
+ u-pays-de-fontainebleau-samois-sur-seine-3629202698/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/anfa-aviron-6e-edition-de-la-re
  gate-du-pays-de-fontainebleau-samois-sur-seine-3629202698/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ce0fde7d25@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Cérémonie du 11 nov 2026
+LOCATION:Monument aux Morts\, Samois-sur-Seine
+DESCRIPTION:Horaires : 11h30\n\nOrganisateur : https://samois-sur-seine.fr/
+ evenement/ceremonie-du-11-nov-2026/\n\nFiche : https://fontainebleaulive.f
+ r/evenements/ceremonie-du-11-nov-2026-samois-sur-seine-ce0fde7d25/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/ceremonie-du-11-nov-2026-samois
+ -sur-seine-ce0fde7d25/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_05bc7d1947@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Café du Maire et de ses élus
+LOCATION:Place de la République\, Samois-sur-Seine
+DESCRIPTION:Horaires : 09h30 à 11h30\n\nOrganisateur : https://samois-sur-
+ seine.fr/evenement/cafe-du-maire-et-de-ses-elus/\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/cafe-du-maire-et-de-ses-elus-samois-sur-seine-05
+ bc7d1947/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cafe-du-maire-et-de-ses-elus-sa
+ mois-sur-seine-05bc7d1947/
+CATEGORIES:Culture & Ateliers
+GEO:48.45134;2.74946
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4056eda6ee@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Festival de la terre au bol
@@ -118,7 +116,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb26d04362@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:NOUVEAUX HABITANTS\, inscrivez vous !
@@ -135,7 +133,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël
@@ -151,7 +149,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine
@@ -165,6 +163,23 @@ DESCRIPTION:Horaires : 14h–18h\n\nTarif : Inscription payante\n\nCourse p
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-6d9b7e1830/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4762e2cdf5@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Réveillon de la Saint-Sylvestre avec LB SALSA
+LOCATION:LA SAMOISIENNE\, Samois-sur-Seine
+DESCRIPTION:Horaires : 22h\n\nOrganisateur : https://samois-sur-seine.fr/ev
+ enement/reveillon-de-la-saint-sylvestre/\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/reveillon-de-la-saint-sylvestre-avec-lb-salsa-samois-sur
+ -seine-4762e2cdf5/\n\nInformations collectées automatiquement : vérifiez
+ -les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/reveillon-de-la-saint-sylvestre
+ -avec-lb-salsa-samois-sur-seine-4762e2cdf5/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

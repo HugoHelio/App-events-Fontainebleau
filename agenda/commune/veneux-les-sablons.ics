@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_7baa3fa215@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:Visite guidée du Jardin des Noues
-LOCATION:Jardin des Noues\, Veneux-les-Sablons
-DESCRIPTION:Horaires : 10h à 11h30\n\nTarif : Gratuit\n\nUne visite guidé
- e pour échanger sur les actions à engager pour rendre un jardin plus ré
- silient.\n\nOrganisateur : https://moretloingetorvanne.fr/events/jardin-de
- s-noues-octobre-2026/\n\nFiche : https://fontainebleaulive.fr/evenements/v
- isite-guidee-du-jardin-des-noues-veneux-les-sablons-7baa3fa215/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
-URL:https://fontainebleaulive.fr/evenements/visite-guidee-du-jardin-des-nou
- es-veneux-les-sablons-7baa3fa215/
-CATEGORIES:Nature & Environnement
-GEO:48.37483;2.8074
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_cdccefb481@fontainebleaulive.fr
 DTSTAMP:20261003T000000Z
 DTSTART;VALUE=DATE:20261014

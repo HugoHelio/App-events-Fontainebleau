@@ -11,46 +11,8 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_2d789b6f82@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:Éveil artistique – Atelier « En toute liberté »
-LOCATION:Médiathèque Les Sources Vives\, Avon
-DESCRIPTION:Horaires : 10h00–10h30 (0–3 ans) | 10h45–11h15 (4–10 an
- s)\n\nTarif : Gratuit\n\nPublic : Jusqu’à 10 ans\n\nAtelier d'éveil ar
- tistique proposé aux enfants de 0 à 10 ans sur inscription.\n\nOrganisat
- eur : https://www.avon77.com/evenement/eveil-artistique-2/\n\nFiche : http
- s://fontainebleaulive.fr/evenements/eveil-artistique-atelier-en-toute-libe
- rte-avon-2d789b6f82/\n\nInformations collectées automatiquement : vérifi
- ez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/eveil-artistique-atelier-en-tou
- te-liberte-avon-2d789b6f82/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d93384a80c@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
-SUMMARY:Théâtre Le Journal de Maïa
-LOCATION:Avon\, Avon
-DESCRIPTION:Horaires : 20h30\n\nTarif : Payant\n\nRendez-vous à Avon pour 
- découvrir la présentation artistique Le journal de Maïa.\n\nOrganisateu
- r : https://www.fontainebleau-tourisme.com/fr/fiche/7942598/le-journal-de-
- maia/\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-le-journa
- l-de-maia-avon-d93384a80c/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/theatre-le-journal-de-maia-avon
- -d93384a80c/
-CATEGORIES:Scène & Spectacles
-GEO:48.40088;2.72258
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_c5047390bf@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:concert trioxymore
@@ -70,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c45e16df11@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261026
 SUMMARY:Kino Avoblo 2026 : 72 heures pour créer un court-métrage à Avon-
@@ -90,8 +52,26 @@ GEO:48.413;2.72893
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_48dc10819d@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261110
+SUMMARY:25ᵉ Salon du Champignon
+LOCATION:Maison dans la Vallée\, Avon\, Avon
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nExposition\, con
+ seils et identification de la flore fongique.\n\nOrganisateur : https://ww
+ w.avon77.com/\n\nFiche : https://fontainebleaulive.fr/evenements/25-salon-
+ du-champignon-avon-48dc10819d/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/25-salon-du-champignon-avon-48d
+ c10819d/
+CATEGORIES:Nature & Environnement
+GEO:48.41089;2.7265
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9be6481b48@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Caféministe
@@ -126,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_988de8cc23@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Projection débat : Réinventer l'enfance
@@ -147,7 +127,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4546bc32d4@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert : A visages découverts en musique
@@ -184,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
