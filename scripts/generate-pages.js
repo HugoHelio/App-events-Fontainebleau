@@ -605,13 +605,28 @@ function nearbyHtml(c, near) {
 ${near.map(town).join('\n')}`;
 }
 
+// ─── A few lines about the town (item 87) ───
+// Hand-written, for the towns with steady volume: what is there all year, never what is on (that
+// is the list's job). Every sentence must stay true without a scan; nothing here is data.
+const CITY_ABOUT = {
+  'barbizon': 'Barbizon est le village des peintres : Théodore Rousseau, Jean-François Millet et Camille Corot y ont travaillé au XIXe siècle, en lisière de la forêt. Ce groupe informel, l’École de Barbizon, à la croisée du romantisme et du réalisme, a donné naissance à ce que l’on appelle le pré-impressionnisme. L’Auberge Ganne et la maison-atelier de Théodore Rousseau forment aujourd’hui le musée départemental des Peintres de Barbizon, et la Grande Rue aligne galeries et maisons d’artistes. Les gorges d’Apremont, parmi les sites les plus connus de la forêt, commencent à la sortie du village.',
+  'moret-loing-et-orvanne': 'Moret-Loing-et-Orvanne réunit Moret-sur-Loing, Écuelles, Épisy et Montarlot-lès-Champagne. À Moret, la cité médiévale garde ses portes de Samois et de Bourgogne, son donjon et ses berges du Loing, que le peintre Alfred Sisley a peintes jusqu’à sa mort, en 1899. Moret abrite aussi le musée du célèbre sucre d’orge des Religieuses, qui se visite selon les saisons.',
+  'samois-sur-seine': 'Samois-sur-Seine s’étire au bord de la Seine, entre le fleuve et la forêt de Fontainebleau. Le guitariste Django Reinhardt y a vécu ses dernières années et repose au cimetière du village. Ses quais et ses îles en font un lieu de promenade et de sorties au fil de l’eau.',
+  'thomery': 'Thomery est la patrie du chasselas : ses murs à treilles, où le raisin était cultivé contre la pierre, ont fait la renommée du village. Au hameau de By, le château où la peintre Rosa Bonheur a vécu et travaillé se visite. Le village borde la Seine et la forêt de Fontainebleau.',
+  'nemours': 'Nemours, sur le Loing, garde un château du XIIe siècle devenu musée, au bord de la rivière. Le musée départemental de Préhistoire d’Île-de-France y présente les premiers habitants de la région, et les rochers Gréau offrent un massif de grès en pleine ville.',
+  'avon': 'Avon touche Fontainebleau : la gare de Fontainebleau-Avon s’y trouve, et la commune borde le parc du château et la forêt. Son église Saint-Pierre compte parmi les plus anciennes du secteur.',
+};
+
 function cityPage(c, places = [], near = []) {
   const n = c.events.length;
+  const about = CITY_ABOUT[c.slug];
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Communes</a></nav>
 <h1>Que faire à ${esc(c.name)} ?</h1>
 <p>${n} activité${n > 1 ? 's' : ''} à venir à ${esc(c.name)} : sport, nature, culture et sorties en famille.</p>
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
-<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
+<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${about ? `
+<h2>${esc(c.name)} en quelques mots</h2>
+<p>${esc(about)}</p>` : ''}${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
