@@ -557,13 +557,61 @@ function redirectPage(e) {
   });
 }
 
-function cityPage(c, places = []) {
+// ─── « Autour de … » (item 87) ───
+// A commune page with one or two events is thin for Google, and a noindex under a threshold would
+// flip with every scan. Instead, a small page shows the nearest communes and their next outings:
+// real events, more internal links, no hand-written text.
+const NEARBY_BELOW = 5;     // pages with fewer events get the block
+const NEARBY_KM = 8;        // the farthest a commune counts as "voisine"
+const NEARBY_TOWNS = 3;
+const NEARBY_EACH = 2;
+
+// A commune's position: the median of its events' positions, leaving out the model's own
+// coordinates when anything better exists. Every event of a commune is in it, so the median is too.
+function townCentre(c) {
+  const placed = c.events.filter((e) => Number.isFinite(Number(e.lat)) && Number.isFinite(Number(e.lng)));
+  const sure = placed.filter((e) => e.geoSource !== 'model');
+  const list = sure.length ? sure : placed;
+  if (!list.length) return null;
+  const med = (xs) => xs.sort((a, b) => a - b)[xs.length >> 1];
+  return { lat: med(list.map((e) => Number(e.lat))), lng: med(list.map((e) => Number(e.lng))) };
+}
+
+function nearbyTowns(c, cities) {
+  if (c.events.length >= NEARBY_BELOW || !c.centre) return [];
+  return cities.filter((o) => o !== c && o.centre)
+    .map((o) => ({ c: o, km: distKm(c.centre, o.centre) }))
+    .filter((x) => x.km <= NEARBY_KM)
+    .sort((a, b) => a.km - b.km || a.c.name.localeCompare(b.c.name, 'fr'))
+    .slice(0, NEARBY_TOWNS);
+}
+
+function nearbyHtml(c, near) {
+  if (!near.length) return '';
+  // Outings first: a two-month exhibition would take a slot every time.
+  const next = (o) => {
+    const short = o.events.filter((e) => spanDays(e) <= FEED_MAX_DAYS);
+    return (short.length ? short : o.events).slice(0, NEARBY_EACH);
+  };
+  const town = ({ c: o, km }) => {
+    const n = o.events.length;
+    return `<h3><a href="/${CITIES_DIR}/${o.slug}/">${esc(o.name)}</a> · à ${km < 1 ? 'moins d’1' : Math.round(km)} km</h3>
+<ul class="list">${next(o).map(eventItem).join('')}</ul>${n > NEARBY_EACH ? `
+<p><a href="/${CITIES_DIR}/${o.slug}/">Les ${n} activités ${esc(atCity(o.name))} →</a></p>` : ''}`;
+  };
+  return `
+<h2>Autour de ${esc(c.name)}</h2>
+<p>Dans les communes voisines, à moins de ${NEARBY_KM} km :</p>
+${near.map(town).join('\n')}`;
+}
+
+function cityPage(c, places = [], near = []) {
   const n = c.events.length;
   const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${CITIES_DIR}/">Communes</a></nav>
 <h1>Que faire à ${esc(c.name)} ?</h1>
 <p>${n} activité${n > 1 ? 's' : ''} à venir à ${esc(c.name)} : sport, nature, culture et sorties en famille.</p>
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
-<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${visitHtml(places, `À visiter à ${c.name}`)}
+<div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
@@ -1641,6 +1689,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
     byCity.get(e.citySlug).events.push(e);
   }
   const cities = [...byCity.values()].sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+  for (const c of cities) c.centre = townCentre(c);
 
   const files = new Map();
   const liveDirs = new Set();
@@ -1652,7 +1701,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
     files.set(`${EVENTS_DIR}/${dir}/index.html`, eventPage(e, events, today));
   }
   // A commune page lists what is coming: a monument shows there if it opens in the next 30 days.
-  for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c, placesOpen(places, today, addDays(today, 30), c.name)));
+  for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c, placesOpen(places, today, addDays(today, 30), c.name), nearbyTowns(c, cities)));
   files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
   files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today, places));
   files.set(`${TODAY_DIR}/index.html`, todayPage(events, today));
