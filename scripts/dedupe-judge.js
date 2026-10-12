@@ -10,8 +10,8 @@
  * Same shape, opposite answers. What separates them is meaning, so this step:
  *
  *   1. finds candidate pairs mechanically: same occasion (same day, or overlapping runs), compatible
- *      towns, and shared DISTINCTIVE words — kind-of-event words (concert, visite, sortie…) and
- *      place words (Fontainebleau, forêt, château…) do not count;
+ *      towns (since 12/10, also two towns with the same page or the same distinctive words), and
+ *      shared DISTINCTIVE words — kind-of-event words (concert, visite, sortie…) and place words (Fontainebleau, forêt, château…) do not count;
  *   2. asks Gemini, with both full records, whether they are the same event. No search tool: the
  *      call only compares two records we already hold, outside the grounding terms (§3.G);
  *   3. remembers every verdict in dedupe-cache.json (keyed by the two ids), so a pair is judged
@@ -93,16 +93,34 @@ function sameVenue(a, b) {
   return x === y || x.includes(y) || y.includes(x);
 }
 
+/** The same page of one event, not a site's home page: a path, its query kept (`?id=…`). */
+function pageKey(url) {
+  try {
+    const u = new URL(url);
+    const p = u.pathname.replace(/\/+$/, '');
+    if (!p && !u.search) return '';
+    return `${u.hostname.replace(/^www\./, '')}${p}${u.search}`;
+  } catch { return ''; }
+}
+
+const nestedOrEqual = (x, y) => [...x].every((w) => y.has(w)) || [...y].every((w) => x.has(w));
+
 /** Pairs worth a question, most similar first. */
 function candidatePairs(recs, { skip = () => false } = {}) {
   const out = [];
   for (let i = 0; i < recs.length; i++) {
     for (let j = i + 1; j < recs.length; j++) {
       const a = recs[i].event, b = recs[j].event;
-      if (!sameOccasion(a, b) || !townsCompatible(a, b) || skip(a.id, b.id)) continue;
+      if (!sameOccasion(a, b) || skip(a.id, b.id)) continue;
       const towns = [a.city, b.city];
       const wa = distinctive(a.title, towns), wb = distinctive(b.title, towns);
       if (!wa.size || !wb.size) continue;
+      // Two towns for one event: a source files it under Fontainebleau, another under the village
+      // (« La Balade du Goût », Fontainebleau / Chailly, same page of the tourist office, 12/10).
+      // Asked when both link to the same page, or when one title's distinctive words hold the
+      // other's; the judge still decides, and two markets in two villages stay two.
+      const samePage = Boolean(pageKey(a.url)) && pageKey(a.url) === pageKey(b.url);
+      if (!townsCompatible(a, b) && !samePage && !nestedOrEqual(wa, wb)) continue;
       const common = [...wa].filter((w) => wb.has(w));
       if (!common.length) continue;
       const coef = common.length / Math.min(wa.size, wb.size);
@@ -112,7 +130,7 @@ function candidatePairs(recs, { skip = () => false } = {}) {
       // three Gemini records of one Lego exhibition at the château de Blandy (10-11/10) shared
       // only « lego », four letters, and were never put to the judge (05/10). The judge still
       // decides; this only widens what it is asked.
-      if (common.length < 2 && common[0].length < 6 && !sameVenue(a, b)) continue;
+      if (common.length < 2 && common[0].length < 6 && !sameVenue(a, b) && !samePage) continue;
       out.push({ a: recs[i], b: recs[j], score: coef + common.length / 100 });
     }
   }
@@ -164,6 +182,10 @@ Réponds false quand :
 - l'une est le programme ou le festival, l'autre un de ses rendez-vous ;
 - elles partagent seulement un thème, un lieu ou un organisateur ;
 - tu as un doute.
+
+Deux communes différentes ne suffisent pas à répondre false : une source range souvent un
+événement de village sous « Fontainebleau ». Si le lien, le lieu ou la description montrent le même
+événement, c'est le même ; sinon, deux communes = deux événements.
 
 Une différence de formulation, un titre plus long ou plus court, une année ou un numéro d'édition
 en plus ne sont PAS des différences.

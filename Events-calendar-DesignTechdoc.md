@@ -561,6 +561,20 @@ is how a merge listed in the run report is undone. Without a key, only cached ve
 failing call changes nothing. Tested with a simulated Gemini: merges, siblings kept, cache reuse,
 escape hatches, failure, and candidates that must never be asked (two evenings, two towns).
 
+**Since 12/10: two towns for one event.** Candidates used to need compatible towns, so a source
+filing a village event under « Fontainebleau » kept it on the site twice: « La Balade du Goût »
+(Fontainebleau / Chailly-en-Bière, the same tourist-office page), « Jardin des Noues »
+(Veneux-les-Sablons / Moret-Loing-et-Orvanne, same page), « Nordique Bellifontaine » (Montigny /
+Fontainebleau), « Nord-est des Trois-Pignons » ×3. Rule 1 of `dedupeFuzzy()` does not catch them
+either: since 05/10 a title of two significant words never merges across towns (the Christmas
+markets of Flagy and Ville-Saint-Jacques). Two towns are now asked when **both link to the same
+page** (`pageKey()`: host + path + query, never a bare home page — this also lifts the
+short-word rule) **or one title's distinctive words hold the other's**. The judge still decides;
+its prompt says two towns alone are not a « no », but two towns with nothing else in common are
+two events. Measured on `data.json` of 11/10: 66 candidates, 15 of them across towns — the five
+duplicates above plus the 25ᵉ Salon du Champignon (Avon / Fontainebleau), and a few the judge
+should turn down (Octobre Rose in two villages, Halloween evenings).
+
 **Note on timing**: the step runs inside a real scan. The cadence guard (60 h) skips everything on
 the days in between, so the first merges appear on the next scan.
 
@@ -1569,6 +1583,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-11 | **Pages commune de moins de 5 événements : bloc « Autour de … »** (3 communes voisines à moins de 8 km, 2 sorties chacune, lien vers leur page) | 22 pages sur 33 n'avaient qu'un à quatre événements : maigres pour Google. Le `noindex` sous un seuil basculerait à chaque scan. Le bloc ajoute de vrais événements et des liens internes sans texte écrit à la main. Seuil 8 km : à 5 km, Bourron-Marlotte ou Blandy n'avaient qu'un voisin |
 | 2026-10-11 | **`/que-faire/` devient le hub « par commune »** : `<h1>` « Les sorties commune par commune autour de Fontainebleau », titre « Sorties par commune autour de Fontainebleau : Barbizon, Samois, Moret… », intro avec un lien vers l'accueil (« l'agenda complet de Fontainebleau et ses environs ») ; fil d'Ariane « Communes » au lieu de « Que faire autour de Fontainebleau » sur `/ce-week-end/`, `/aujourdhui/`, `/sorties/` | Cannibalisation créée le 08/10 : le `<h1>` de l'accueil était devenu mot pour mot celui de `/que-faire/`, et Google a classé `/que-faire/` (~65e) à la place de l'accueil sur la requête générique. Une intention par page. Rien de perdu à ce jour : l'accueil était déjà 46-87e, et ses clics viennent de la marque (« fontainebleau live », 22 sur 29, GSC 11/10). Écartés le même jour, sur avis extérieur : une liste de ~20 événements sur l'accueil (contraire à la décision du 08/10 ; mesurer d'abord l'item 86), et le `noindex` des communes sous 3 événements (21 sur 37 ; la page basculerait à chaque scan, voir item 87). **Pas touché** : `/que-faire/fontainebleau/` (« Que faire à Fontainebleau ? »), autre doublon de l'accueil, laissé tant que la Search Console ne dit pas laquelle des deux rapporte |
 | 2026-10-12 | **Reconstruction de nuit des pages (`pages.yml`, 23:17 UTC) et bascule côté navigateur de `/ce-week-end/` (item 88)** : la page bâtie le dimanche porte le week-end suivant ; lue après ce dimanche (date de Paris du téléphone), elle masque le week-end passé et montre le suivant. Pas de bandeau « pas encore à jour » (choix du chef de projet) | Lundi midi, la page montrait encore le dimanche : le cron de 06:00 UTC est lancé par GitHub avec 6 à 7 h de retard (05-11/10 : 11:50-13:29 UTC), et la page ne change qu'à ce run. Le workflow de nuit ne fait que `generate-pages.js` (aucun coût Gemini), même groupe de concurrence que la collecte ; 23:17 UTC tombe après minuit à Paris été comme hiver, minute décalée car les crons à l'heure pile sont les plus retardés. La bascule navigateur couvre le retard restant et un run de nuit manqué |
+| 2026-10-12 | **Juge des doublons (§3.W2) : deux communes peuvent être le même événement** — paire soumise si même page (`pageKey()`, jamais une page d'accueil) ou si les mots distinctifs de l'un contiennent ceux de l'autre ; le prompt dit que deux communes seules ne suffisent pas à répondre « non » | Doublons visibles sur `/ce-week-end/` du 17-18/10 (Balade du Goût, Nordique Bellifontaine) : une source range l'événement sous Fontainebleau, une autre sous le village. Pas de règle déterministe « même URL » : une page d'agenda partagée (aaff.fr/agenda/) aurait fusionné deux sorties du même jour ; le juge garde le « dans le doute, non ». 15 paires de plus, une fois (cache) |
 
 ---
 
@@ -1900,6 +1915,25 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000 requêtes (stockage seulement sur un plan
   qui l'accorde explicitement), Exa 7 $/1 000, Tavily 0,008 $/crédit. À mesurer, pas à supposer.
 
+- [ ] **89. Fiches « dates à vérifier » qui ne reviennent plus — à décider (scan du 11/10).** 80 fiches
+  sur 331 reposent sur Gemini seul avec un lien de page d'accueil (79b) ; **33 n'ont été revues par
+  aucun scan depuis 14 jours ou plus**. Une date fausse coûte plus cher qu'un événement manquant :
+  proposition, **retirer du site une fiche 79b non revue depuis 14 jours** (elle revient d'elle-même
+  si un scan la retrouve). D'abord une ligne du rapport qui les compte sans rien retirer, sur deux
+  scans, puis décision. 14 des 80 sont des fiches fontainebleau.fr : le flux RSS (72c) les
+  remplacerait.
+- [ ] **90. Lecteurs directs pour les mairies productives du scan villages (11/10).** Le scan
+  villages ne publie jamais seul (`confirmOnly`) ; 32 trouvailles sont restées en attente, dont
+  plusieurs sur des sites officiels : Le Châtelet-en-Brie (4), Saint-Mammès (3), Bourron-Marlotte,
+  Héricy, Milly-la-Forêt. Pour chacune : `robots.txt`, format de l'agenda (flux, page HTML,
+  IntraMuros), puis une entrée dans `sources.json` comme `ccmsl`. Commencer par les deux premières.
+- [ ] **91. Adresses de fiches qui changent (Search Console, 12/10).** 37 dossiers de `evenements/`
+  sont des redirections `noindex` : la partie lisible de l'adresse suit le titre, et une fusion
+  adopte souvent le titre le plus long. Google découvre l'adresse, puis la voit partir. Piste :
+  figer la partie lisible à la première publication (stockée dans `data.json`). Petit gain,
+  à faire si « Découverte, non indexée » (51 le 12/10, surtout des fiches vivantes jamais explorées)
+  ne baisse pas d'ici fin octobre.
+
 ### C. Pour le chef de projet — rien à coder
 
 - [ ] **73. Page blanche sur Android — corrigé le 29/09** (§7). Pendant une semaine, ouvrir le site
@@ -1922,7 +1956,28 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   profil personnel ont pris. Pas depuis une page professionnelle de conseil.
 - [ ] **72c / 74 (5). Liens entrants et partenariats** — mairie de Fontainebleau contactée le 29/09
   (exception pare-feu pour son flux RSS + widget) : surveiller la ligne `ville-fontainebleau`
-  (❌ 418 → ✅). Ensuite : ANVL peut générer le `.ics` de son plugin en deux clics ; office de
+  (❌ 418 → ✅ ; toujours 418 au scan du 11/10). **Relance le mardi 03/11, après les vacances de la
+  Toussaint** (choix du chef de projet). Brouillon :
+  > Objet : Agenda de Fontainebleau Live — accès au flux RSS de l'agenda municipal
+  >
+  > Bonjour,
+  >
+  > Je reviens vers vous au sujet de ma demande du 29 septembre. Fontainebleau Live
+  > (fontainebleaulive.fr) reprend l'agenda de la Ville pour le faire connaître, avec un lien vers
+  > chaque fiche de fontainebleau.fr. Notre robot lit uniquement le flux RSS public
+  > (/bouger-et-sortir/agenda-133/flux-rss.xml), une fois par jour, en s'identifiant
+  > « FontainebleauEventsBot ». Votre pare-feu le refuse (code 418) car il tourne depuis les serveurs
+  > de GitHub ; ailleurs, le flux répond normalement.
+  >
+  > Pourriez-vous autoriser ce robot sur cette seule adresse ? Sans cela, une partie des
+  > événements de la Ville reste absente ou moins précise sur notre agenda : aujourd'hui, 14 fiches
+  > renvoient seulement à la page d'accueil de fontainebleau.fr.
+  >
+  > Je reste disponible pour en parler, et pour vous présenter l'encart gratuit qui affiche
+  > l'agenda sur un site partenaire.
+  >
+  > Bien cordialement,
+  Ensuite : ANVL peut générer le `.ics` de son plugin en deux clics ; office de
   tourisme, associations ; plus tard un formulaire « Ajouter mon événement ». Le passage
   « Outreach gate » des Milestones s'applique.
 - [ ] **83-0. Inscriptions aux programmes d'affiliation — priorité 0 de l'ordre du 05/10** (§3.AA).
