@@ -573,7 +573,10 @@ short-word rule) **or one title's distinctive words hold the other's**. The judg
 its prompt says two towns alone are not a « no », but two towns with nothing else in common are
 two events. Measured on `data.json` of 11/10: 66 candidates, 15 of them across towns — the five
 duplicates above plus the 25ᵉ Salon du Champignon (Avon / Fontainebleau), and a few the judge
-should turn down (Octobre Rose in two villages, Halloween evenings).
+should turn down (Octobre Rose in two villages, Halloween evenings). Same day, a title made of
+a number: « 4211 km » ×4 at the Théâtre municipal had no distinctive word at all, numbers being
+dropped as ordinals and years. A number of three digits or more that is not a year now counts,
+« 4 211 » written « 4211 », and stands alone like a long word (`isNameNumber()`).
 
 **Note on timing**: the step runs inside a real scan. The cadence guard (60 h) skips everything on
 the days in between, so the first merges appear on the next scan.
@@ -1924,7 +1927,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   À l'abordage ! — la Ville annonce La Flûte enchantée ce soir-là —, D.I.V.A — la Ville annonce
   Fantasmagloria —, Schubert in Love) : **la saison précédente, recopiée par Gemini**. Masqués
   dans `overrides.json` (choix du chef de projet). Le contrôle relève une 11ᵉ fiche du même genre,
-  « Dans les coulisses du Père Noël » (19-24/12), non masquée, à trancher.
+  « Dans les coulisses du Père Noël » (19-24/12), masquée aussi le 12/10.
   - [ ] **Récurrent, tous les 15 jours (prochain : lundi 26/10)** : `node scripts/check-city-feed.js`
     depuis le poste du chef de projet ou une session Claude Code locale, puis masquer dans
     `overrides.json` ce que le script marque « à masquer probablement » et ce qu'il dit
@@ -1935,8 +1938,10 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
     scan depuis 14 jours ou plus**. Proposition : retirer du site une fiche 79b non revue depuis
     14 jours (elle revient seule si un scan la retrouve). D'abord une ligne du rapport qui les
     compte, sur deux scans.
-  - Vu au passage : « 4211 km » ×3 et « Jazz au Théâtre » ×5 au Théâtre municipal. Le juge des
-    doublons (§3.W2) ne voit pas un titre fait d'un nombre (« 4211 » n'est pas un mot distinctif).
+  - Vu au passage : « 4211 km » ×4 au Théâtre municipal — **corrigé le 12/10** (§3.W2 : un nombre
+    de 3 chiffres ou plus, hors année, compte comme mot distinctif ; « 4 211 » = « 4211 » ; 6 paires
+    de plus, toutes « 4211 km »). « Jazz au Théâtre » : le festival (26-28/11), ses concerts et une
+    fiche OpenAgenda par soir — un programme et ses rendez-vous, laissé au juge.
 - [ ] **90. Lecteurs directs pour les mairies productives du scan villages (11/10).** Le scan
   villages ne publie jamais seul (`confirmOnly`) ; 32 trouvailles sont restées en attente, dont
   plusieurs sur des sites officiels : Le Châtelet-en-Brie (4), Saint-Mammès (3), Bourron-Marlotte,

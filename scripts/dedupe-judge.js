@@ -63,10 +63,14 @@ const CONNECTOR = new Set(['le', 'la', 'les', 'de', 'des', 'du', 'un', 'une', 'e
   'sur', 'pour', 'par', 'avec', 'dans', 'chez', 'ou', 'son', 'sa', 'ses', 'nos', 'vos', 'leur']);
 const singular = (w) => (w.length >= 5 && /[sx]$/.test(w) ? w.slice(0, -1) : w);
 
+// A number names the show when it is the title (« 4211 km », « 4 211 km »: 12/10, four records of
+// one play); an ordinal, a year or a short count does not.
+const isNameNumber = (w) => /^\d{3,}$/.test(w) && !/^(19|20)\d\d$/.test(w);
+
 function distinctive(title, towns) {
   const townWords = new Set(towns.flatMap((t) => norm(t).split(' ')));
-  return new Set(norm(title).split(' ')
-    .filter((w) => w.length > 2 && !/^\d+(?:e|er|eme)?$/.test(w))
+  return new Set(norm(title).replace(/(\d) (?=\d{3}(?!\d))/g, '$1').split(' ')
+    .filter((w) => w.length > 2 && (isNameNumber(w) || !/^\d+(?:e|er|eme)?$/.test(w)))
     .map(singular)
     .filter((w) => !KIND.has(w) && !PLACE.has(w) && !CONNECTOR.has(w) && !townWords.has(w)));
 }
@@ -130,7 +134,7 @@ function candidatePairs(recs, { skip = () => false } = {}) {
       // three Gemini records of one Lego exhibition at the château de Blandy (10-11/10) shared
       // only « lego », four letters, and were never put to the judge (05/10). The judge still
       // decides; this only widens what it is asked.
-      if (common.length < 2 && common[0].length < 6 && !sameVenue(a, b) && !samePage) continue;
+      if (common.length < 2 && common[0].length < 6 && !isNameNumber(common[0]) && !sameVenue(a, b) && !samePage) continue;
       out.push({ a: recs[i], b: recs[j], score: coef + common.length / 100 });
     }
   }
