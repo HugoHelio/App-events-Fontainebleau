@@ -69,6 +69,10 @@ const CONFIG = {
   // Days without any source confirming an event before it is reported for review. Three scans
   // at the ~3-day cadence, so one missed mention is never enough to raise it.
   staleAfterDays: envInt('STALE_EVENT_DAYS', 10),
+  // Item 89, observation only: a 79b record (Gemini alone, home-page link) that no scan has seen
+  // for this long is counted apart in the report. The proposed rule would unpublish it; the count
+  // over two scans decides whether it does more good than harm.
+  riskStaleDays: envInt('RISK_STALE_DAYS', 14),
   dryRun: process.env.DRY_RUN === '1',
   // A scan question answered without any web search is discarded (03/10). ALLOW_UNGROUNDED=1 lifts that,
   // only for a run where the metadata is known to be missing while the search did happen.
@@ -1466,6 +1470,10 @@ function renderSummary(stats, ctx) {
     for (const v of stats.datesAtRisk.slice(0, 10)) L.push(`  - ${v}`);
     if (stats.datesAtRisk.length > 10) L.push(`  - … et ${stats.datesAtRisk.length - 10} autre(s)`);
     L.push(`  La fiche le dit déjà au visiteur. Si les dates sont fausses : overrides.json (dates ou masquage).`);
+    const stale = stats.datesAtRiskStale;
+    L.push(`  - 🧪 **Dont non revues par aucun scan depuis ${CONFIG.riskStaleDays} jours ou plus : ${stale.length}** (item 89, observation : la règle à l’étude les retirerait du site, jusqu’à ce qu’un scan les retrouve)`);
+    for (const v of stale.slice(0, 10)) L.push(`    - ${v}`);
+    if (stale.length > 10) L.push(`    - … et ${stale.length - 10} autre(s)`);
   }
   if (stats.unconfirmed.length) {
     L.push(`- 🕰️ Sans confirmation depuis plus de ${CONFIG.staleAfterDays} jours : ${stats.unconfirmed.length} (information, pas alerte : la recall du modèle varie)`);
@@ -1751,7 +1759,7 @@ async function main() {
     fb: null, fbRejected: {}, fbConfirmed: 0, fbTicketsDropped: 0,
     sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
     villagesConfirmed: 0, villagesUnconfirmed: 0, villagesUnconfirmedList: [],
-    unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], recategorised: 0,
+    unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], datesAtRiskStale: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -2177,7 +2185,11 @@ async function main() {
   }
   // 6a'. Item 79b. `kept` is sorted by date: soonest first, where a wrong date costs the most.
   for (const e of kept) {
-    if (datesAtRisk(e)) stats.datesAtRisk.push(`${e.id} — ${e.title} (${e.startDate}, ${e.url || 'sans lien'})`);
+    if (!datesAtRisk(e)) continue;
+    stats.datesAtRisk.push(`${e.id} — ${e.title} (${e.startDate}, ${e.url || 'sans lien'})`);
+    if (daysBetween(e.lastSeen || today, today) >= CONFIG.riskStaleDays) {
+      stats.datesAtRiskStale.push(`${e.id} — ${e.title} (${e.startDate}, vu le ${e.lastSeen || '?'})`);
+    }
   }
 
   // 6b. English descriptions ─────────────────────────────────────────────
