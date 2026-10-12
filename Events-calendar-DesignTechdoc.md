@@ -2054,9 +2054,10 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
       ne peuvent pas être facturées ni versées.
   - [x] **Fnac Spectacles — candidature envoyée le 07/10.** France Billet est la société de
     billetterie du groupe Fnac Darty, Fnac Spectacles sa vitrine : un seul programme, un seul
-    catalogue. **Acceptée le 12/10 : 0,30 à 0,50 € par billet selon la catégorie.** Restent : lire
-    les conditions du programme (fiche de l'annonceur sur Awin), créer l'URL du **flux produit**
-    (Toolbox → Create-a-Feed, débloque 83d) et la ranger dans le secret `AWIN_FEED_URL`.
+    catalogue. **Acceptée le 12/10 : 0,30 à 0,50 € par billet selon la catégorie.** Conditions du
+    programme lues le 12/10 par le chef de projet : la publication des données du flux est
+    autorisée, et même recommandée. Flux produit créé (Toolbox → Create-a-Feed) et rangé dans le
+    secret `AWIN_FEED_URL` le 12/10.
   - [ ] **Cdiscount Billetterie — en attente, pas de candidature pour l'instant (07/10).** Vérifié
     par le chef de projet : billets neufs (dont le château) ; lieux déjà vendus dans la zone —
     théâtre municipal, château (dont la chapelle de la Trinité), église Saint-Louis, halle de
