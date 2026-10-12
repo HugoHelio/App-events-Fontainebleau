@@ -52,6 +52,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `og-image.png` | Visuel de marque (1200×630) pour les aperçus de lien, composé depuis `BackgroundDeco-FL-v1.png` |
 | `favicon.ico` | Favicon 16/32/48 à la racine — celui que Google Search et les robots demandent directement |
 | `geocode-cache.json` | **Généré.** Cache de géocodage BAN |
+| `dead-urls.json` | **Généré et commité.** Liens morts (404/410, domaine inexistant) déjà vérifiés, oubliés après 14 jours (`DEAD_URL_TTL_DAYS`, item 31) : un lien que Gemini repropose est écarté sans requête |
 | `.github/workflows/` | `daily-check.yml` (collecte), `translate.yml` (traduction à la demande), `grounding-check.yml` (diagnostic de la recherche, lecture seule) |
 
 `app.js` et `style.css` sont des reliquats vides : tout le frontend vit dans `index.html`.

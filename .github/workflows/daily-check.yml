@@ -73,6 +73,8 @@ jobs:
           if [ -f dedupe-cache.json ]; then git add dedupe-cache.json; fi
           # Fiches de l'office de tourisme déjà complétées par Gemini (§3.Z2) : sans ce cache, chaque run repaierait tout.
           if [ -f sources-cache.json ]; then git add sources-cache.json; fi
+          # Liens morts déjà vérifiés (item 31) : un lien que Gemini repropose n'est pas revérifié pendant 14 jours.
+          if [ -f dead-urls.json ]; then git add dead-urls.json; fi
           # Pages générées : chemins nommés un par un, jamais `git add -A` à la racine — le bot
           # publie sur main sans relecture, un fichier parasite partirait en ligne. `-A` sur ces
           # dossiers seulement, pour publier aussi les suppressions (événements terminés).

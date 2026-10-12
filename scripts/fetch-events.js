@@ -56,6 +56,11 @@ const CONFIG = {
   urlCheckTimeoutMs: envInt('URL_TIMEOUT_MS', 10_000),
   urlCheckConcurrency: 6,
   urlRecheckAfterDays: 7,
+  // Item 31: a link that answered 404/410 (or whose domain does not exist) is remembered, so the
+  // same link proposed again by a scan is dropped without a request. Short-lived on purpose: a
+  // page can be published later at an address that was dead.
+  deadUrlCachePath: path.resolve(process.env.DEAD_URL_CACHE_PATH || 'dead-urls.json'),
+  deadUrlTtlDays: envInt('DEAD_URL_TTL_DAYS', 14),
   geocodeTimeoutMs: 8_000,
   banMinScore: 0.6,
   dataPath: path.resolve(process.env.DATA_PATH || 'data.json'),
@@ -1143,11 +1148,30 @@ function needsUrlCheck(e, today) {
   return daysBetween(e.urlCheckedAt, today) >= CONFIG.urlRecheckAfterDays;
 }
 
-async function verifyUrls(records, today) {
+function loadDeadUrls(today) {
+  const raw = loadJson(CONFIG.deadUrlCachePath, null);
+  const all = raw && raw.entries && typeof raw.entries === 'object' ? raw.entries : {};
+  const entries = {};
+  for (const [url, date] of Object.entries(all)) {
+    if (isValidIsoDate(date) && daysBetween(date, today) < CONFIG.deadUrlTtlDays) entries[url] = date;
+  }
+  return { entries, dirty: Object.keys(entries).length !== Object.keys(all).length };
+}
+
+function saveDeadUrls(dead) {
+  const sorted = Object.fromEntries(Object.entries(dead.entries).sort(([a], [b]) => a.localeCompare(b)));
+  fs.writeFileSync(CONFIG.deadUrlCachePath, JSON.stringify({ version: 1, entries: sorted }, null, 2) + '\n');
+}
+
+async function verifyUrls(records, today, dead = { entries: {}, dirty: false }) {
   const todo = records.filter((r) => !r.drop && needsUrlCheck(r.event, today));
+  let cached = 0;
   await pool(todo, CONFIG.urlCheckConcurrency, async (rec) => {
     const e = rec.event;
+    if (dead.entries[e.url]) { rec.drop = 'dead_url'; cached++; return; }
     const res = await checkUrl(e.url);
+    // Remembered before the grounding rewrite below: a redirect link is temporary, never cached.
+    if (res.status === 'dead' && !isGroundingRedirect(e.url)) { dead.entries[e.url] = today; dead.dirty = true; }
 
     // Google grounding redirect links are temporary: resolve them to the real page or drop the event.
     if (isGroundingRedirect(e.url)) {
@@ -1160,7 +1184,7 @@ async function verifyUrls(records, today) {
     if (res.status === 'dead') { rec.drop = 'dead_url'; return; }
     e.urlStatus = res.status;
   });
-  return todo.length;
+  return { checked: todo.length - cached, cached };
 }
 
 // ───────────────────────────── Manual overrides ─────────────────────────────
@@ -1546,7 +1570,7 @@ function renderSummary(stats, ctx) {
       for (const e of tr.errors) L.push(`  - ⚠️ ${e}`);
     }
   }
-  L.push(`- Dead URLs dropped: **${stats.deadUrls}** · URLs checked this run: ${stats.urlsChecked} · unverified (kept): ${stats.unverified}`);
+  L.push(`- Dead URLs dropped: **${stats.deadUrls}**${stats.deadUrlsCached ? ` (dont ${stats.deadUrlsCached} déjà connue(s) morte(s), sans requête)` : ''} · URLs checked this run: ${stats.urlsChecked} · unverified (kept): ${stats.unverified}`);
   L.push(`- Geocoding sources: ${Object.entries(stats.geo).map(([k, v]) => `${k}=${v}`).join(', ') || 'n/a'}`);
   const rej = Object.entries(stats.rejected);
   L.push(`- Rejected new records: ${rej.length ? rej.map(([k, v]) => `${k}=${v}`).join(', ') : 'none'}`);
@@ -1801,7 +1825,7 @@ async function main() {
 
   const stats = {
     scans: [], rejected: {}, legacyRejected: {}, added: 0, refreshed: 0, pruned: 0,
-    deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
+    deadUrls: 0, deadUrlsCached: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
     fb: null, fbRejected: {}, fbConfirmed: 0, fbTicketsDropped: 0,
@@ -2191,7 +2215,10 @@ async function main() {
 
   // 5. Verify URLs ──────────────────────────────────────────────────────
   console.log('🔗 Verifying URLs…');
-  stats.urlsChecked = await verifyUrls(all, today);
+  const deadUrls = loadDeadUrls(today);
+  const urlRun = await verifyUrls(all, today, deadUrls);
+  stats.urlsChecked = urlRun.checked;
+  stats.deadUrlsCached = urlRun.cached;
 
   // 6. Finalise ─────────────────────────────────────────────────────────
   const kept = [];
@@ -2271,6 +2298,7 @@ async function main() {
   if (!CONFIG.dryRun) {
     if (changed) fs.writeFileSync(CONFIG.dataPath, output);
     if (cache.dirty) saveCache(cache);
+    if (deadUrls.dirty) saveDeadUrls(deadUrls);
   }
 
   const summary = renderSummary(stats, ctx);
@@ -2287,7 +2315,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  main, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
+  main, verifyUrls, loadDeadUrls, validateEvent, fromExisting, extractJsonArray, extractText, eventKey, eventId, mergeInto, enrichFrom, dedupeFuzzy, serializeEvent,
   applyOverrides, coerceOverride, datesAtRisk, matchVenue, loadVenues, distanceKm, buildPrompt, buildQuestions, searchRequestBody, formatRequestBody, runScan, callGemini, frenchMonths, SCANS, COMMUNES,
   COMMUNE_TABLE, canonicalCommune, inZone, VILLAGE_AREAS,
   refineCategory, CATEGORIES,
