@@ -241,6 +241,15 @@ function icsDate(value, params) {
   return `${m[1]}-${m[2]}-${m[3]}`;  // floating or TZID time: the local date is the date
 }
 
+/** Local start time "HH:MM", or '' for an all-day event. Only used as text for enrich(). */
+function icsTime(value) {
+  const m = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(Z)?$/.exec(value.trim());
+  if (!m) return '';
+  if (!m[7]) return `${m[4]}:${m[5]}`;
+  return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]))
+    .toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' });
+}
+
 function parseIcs(text) {
   const lines = String(text).replace(/\r\n[ \t]/g, '').replace(/\n[ \t]/g, '').split(/\r?\n/);
   const events = [];
@@ -254,6 +263,7 @@ function parseIcs(text) {
     const [, name, params, value] = m;
     if (name === 'DTSTART' || name === 'DTEND') {
       cur[name] = icsDate(value, params);
+      if (name === 'DTSTART') cur.time = icsTime(value);
       cur[name + '_isDate'] = /VALUE=DATE(?!-)/.test(params) || /^\d{8}$/.test(value.trim());
     } else if (['SUMMARY', 'LOCATION', 'URL', 'DESCRIPTION'].includes(name)) {
       cur[name] = icsUnescape(value);
@@ -266,7 +276,7 @@ function parseIcs(text) {
       const [y, mo, d] = e.DTEND.split('-').map(Number);
       end = new Date(Date.UTC(y, mo - 1, d - 1)).toISOString().slice(0, 10);
     }
-    return { title: (e.SUMMARY || '').trim(), startDate: e.DTSTART, endDate: end, locationName: (e.LOCATION || '').trim(), url: e.URL || '', description: e.DESCRIPTION || '' };
+    return { title: (e.SUMMARY || '').trim(), startDate: e.DTSTART, endDate: end, time: e.time || '', locationName: (e.LOCATION || '').trim(), url: e.URL || '', description: e.DESCRIPTION || '' };
   }).filter((e) => e.title && e.startDate);
 }
 
@@ -279,7 +289,20 @@ async function readIcs(src, ctx) {
   const all = parseIcs(r.text);
   return {
     fetched: 1,
-    events: all.filter((e) => inWindow(e, ctx)).map((e) => ({ ...e, city: src.city || '', url: e.url || src.url })),
+    events: all.filter((e) => inWindow(e, ctx)).map((e) => {
+      const out = { ...e, city: src.city || '', url: e.url || src.url };
+      // A feed with no page per event (Héricy, 12/10): one anchor per event on the agenda page
+      // (`link`), as for ccmsl. The enrichment cache is keyed by URL, so events must not share one.
+      if (!e.url && src.link) out.url = `${src.link.split('#')[0]}#${e.startDate}-${letters(e.title).slice(0, 40)}`;
+      // A feed with no category: its own fields become the text enrich() reads for one. Its
+      // DESCRIPTION may be HTML (Héricy's is a poster image): never published as it is.
+      if (!src.category) {
+        const text = htmlToText(e.description, src.url);
+        out.description = '';
+        out.detail = [e.title, e.time && `Heure : ${e.time}`, e.locationName && `Lieu : ${e.locationName}`, text].filter(Boolean).join('\n').slice(0, 3000);
+      }
+      return out;
+    }),
   };
 }
 

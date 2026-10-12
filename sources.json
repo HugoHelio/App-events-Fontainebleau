@@ -134,6 +134,42 @@
       "note": "Added 12/10 (item 90): the town hall found 4 events the villages scan could only hold back. The agenda page carries every event in full (date, time, place, price), so nothing is followed: one request per run, which also keeps within the site's Crawl-delay of 15 s that the reader does not otherwise honour."
     },
     {
+      "id": "hericy",
+      "name": "Héricy",
+      "type": "ics",
+      "url": "https://www.hericy.fr/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events",
+      "link": "https://www.hericy.fr/agenda/",
+      "city": "Héricy",
+      "exclude": "conseil municipal|\\bemploi\\b|don de sang|comm[eé]moration",
+      "note": "Added 12/10 (item 90). The town's WordPress calendar (All-in-One Event Calendar) exports the whole agenda as iCalendar: exact dates, no model. The feed has no page per event and no category: each event gets an anchor on the agenda page (`link`) and enrich() gives the category from title, time and place. robots.txt only forbids the calendar's view pages (/agenda/action~…), not the export. The calendar also has a category for neighbours' events: none in the feed on 12/10, but one would be placed in Héricy — watch the report."
+    },
+    {
+      "id": "bourron-marlotte",
+      "name": "Bourron-Marlotte",
+      "type": "page",
+      "urls": [
+        "https://bourronmarlotte.fr/agenda/"
+      ],
+      "city": "Bourron-Marlotte",
+      "follow": "^/agenda/(?!feed/|page/)[^/]+/$",
+      "maxFollow": 12,
+      "exclude": "comm[eé]morat|collecte|caf[eé] du maire",
+      "note": "Added 12/10 (item 90). WordPress agenda: an 'À venir' list (date, time, place) above the archives, one page per event under /agenda/. Upcoming events come first in the page, so maxFollow mostly keeps them; the archive pages that slip in are outside the window. robots.txt forbids nothing."
+    },
+    {
+      "id": "milly-la-foret",
+      "name": "Milly-la-Forêt",
+      "type": "page",
+      "urls": [
+        "https://www.milly-la-foret.fr/agenda/"
+      ],
+      "city": "Milly-la-Forêt",
+      "follow": "^/20\\d\\d/\\d\\d/\\d\\d/[^/]+/$",
+      "maxFollow": 20,
+      "exclude": "sortie jeunesse|stage ados|caf[eé] des aidants|caf[eé] poussette|parentalit[eé]|souriscontines|coupures?|travaux|fermeture",
+      "note": "Added 12/10 (item 90). WordPress list of posts whose title starts with the date ('15/10/26 – Ciné-club…'), one post per event. Excluded by title: the youth service's trips elsewhere (zoo, Nigloland), registration-only workshops and the support-group meetings — not outings in Milly, the same rule as the 'micro' meetings of ccmsl. Milly is at 16.5 km: in the outer circle, above the 4 000-inhabitant threshold. robots.txt forbids nothing."
+    },
+    {
       "id": "saint-mammes",
       "name": "Saint-Mammès",
       "type": "page",
