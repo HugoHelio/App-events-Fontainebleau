@@ -1584,6 +1584,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-11 | **`/que-faire/` devient le hub « par commune »** : `<h1>` « Les sorties commune par commune autour de Fontainebleau », titre « Sorties par commune autour de Fontainebleau : Barbizon, Samois, Moret… », intro avec un lien vers l'accueil (« l'agenda complet de Fontainebleau et ses environs ») ; fil d'Ariane « Communes » au lieu de « Que faire autour de Fontainebleau » sur `/ce-week-end/`, `/aujourdhui/`, `/sorties/` | Cannibalisation créée le 08/10 : le `<h1>` de l'accueil était devenu mot pour mot celui de `/que-faire/`, et Google a classé `/que-faire/` (~65e) à la place de l'accueil sur la requête générique. Une intention par page. Rien de perdu à ce jour : l'accueil était déjà 46-87e, et ses clics viennent de la marque (« fontainebleau live », 22 sur 29, GSC 11/10). Écartés le même jour, sur avis extérieur : une liste de ~20 événements sur l'accueil (contraire à la décision du 08/10 ; mesurer d'abord l'item 86), et le `noindex` des communes sous 3 événements (21 sur 37 ; la page basculerait à chaque scan, voir item 87). **Pas touché** : `/que-faire/fontainebleau/` (« Que faire à Fontainebleau ? »), autre doublon de l'accueil, laissé tant que la Search Console ne dit pas laquelle des deux rapporte |
 | 2026-10-12 | **Reconstruction de nuit des pages (`pages.yml`, 23:17 UTC) et bascule côté navigateur de `/ce-week-end/` (item 88)** : la page bâtie le dimanche porte le week-end suivant ; lue après ce dimanche (date de Paris du téléphone), elle masque le week-end passé et montre le suivant. Pas de bandeau « pas encore à jour » (choix du chef de projet) | Lundi midi, la page montrait encore le dimanche : le cron de 06:00 UTC est lancé par GitHub avec 6 à 7 h de retard (05-11/10 : 11:50-13:29 UTC), et la page ne change qu'à ce run. Le workflow de nuit ne fait que `generate-pages.js` (aucun coût Gemini), même groupe de concurrence que la collecte ; 23:17 UTC tombe après minuit à Paris été comme hiver, minute décalée car les crons à l'heure pile sont les plus retardés. La bascule navigateur couvre le retard restant et un run de nuit manqué |
 | 2026-10-12 | **Juge des doublons (§3.W2) : deux communes peuvent être le même événement** — paire soumise si même page (`pageKey()`, jamais une page d'accueil) ou si les mots distinctifs de l'un contiennent ceux de l'autre ; le prompt dit que deux communes seules ne suffisent pas à répondre « non » | Doublons visibles sur `/ce-week-end/` du 17-18/10 (Balade du Goût, Nordique Bellifontaine) : une source range l'événement sous Fontainebleau, une autre sous le village. Pas de règle déterministe « même URL » : une page d'agenda partagée (aaff.fr/agenda/) aurait fusionné deux sorties du même jour ; le juge garde le « dans le doute, non ». 15 paires de plus, une fois (cache) |
+| 2026-10-12 | **10 spectacles du Théâtre municipal masqués, contrôle manuel du flux de la Ville tous les 15 jours** (`scripts/check-city-feed.js`, item 89) | Les 14 fiches Gemini liées à l'accueil de fontainebleau.fr ne venaient pas du site de la Ville : Gemini avait mis l'accueil faute de mieux. Le flux, lisible depuis une connexion domestique, publie toute la saison du théâtre ; 10 spectacles n'y sont pas, dont deux soirs où la Ville annonce autre chose. On ne contourne pas le blocage de GitHub (§3.Z2) : le contrôle reste manuel, en lecture seule, et ne tourne jamais dans un workflow |
 
 ---
 
@@ -1915,13 +1916,27 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   plafonnent sous 90 %. Relevé le 24/09 : Brave 5 $/1 000 requêtes (stockage seulement sur un plan
   qui l'accorde explicitement), Exa 7 $/1 000, Tavily 0,008 $/crédit. À mesurer, pas à supposer.
 
-- [ ] **89. Fiches « dates à vérifier » qui ne reviennent plus — à décider (scan du 11/10).** 80 fiches
-  sur 331 reposent sur Gemini seul avec un lien de page d'accueil (79b) ; **33 n'ont été revues par
-  aucun scan depuis 14 jours ou plus**. Une date fausse coûte plus cher qu'un événement manquant :
-  proposition, **retirer du site une fiche 79b non revue depuis 14 jours** (elle revient d'elle-même
-  si un scan la retrouve). D'abord une ligne du rapport qui les compte sans rien retirer, sur deux
-  scans, puis décision. 14 des 80 sont des fiches fontainebleau.fr : le flux RSS (72c) les
-  remplacerait.
+- [ ] **89. Fiches « dates à vérifier » (79b) — contrôle manuel récurrent, et règle à décider.**
+  **12/10** : les 14 fiches Gemini liées à la page d'accueil de fontainebleau.fr, comparées à la
+  main au flux de la Ville (lu depuis une connexion domestique, le site refusant GitHub) : 2
+  confirmées, **10 spectacles du Théâtre municipal absents de la saison 2026-27 que la Ville publie
+  en entier** (Phèdre, Félix Radu, Gus, Plexus, La Dictée, L'épopée impériale, La Yegros,
+  À l'abordage ! — la Ville annonce La Flûte enchantée ce soir-là —, D.I.V.A — la Ville annonce
+  Fantasmagloria —, Schubert in Love) : **la saison précédente, recopiée par Gemini**. Masqués
+  dans `overrides.json` (choix du chef de projet). Le contrôle relève une 11ᵉ fiche du même genre,
+  « Dans les coulisses du Père Noël » (19-24/12), non masquée, à trancher.
+  - [ ] **Récurrent, tous les 15 jours (prochain : lundi 26/10)** : `node scripts/check-city-feed.js`
+    depuis le poste du chef de projet ou une session Claude Code locale, puis masquer dans
+    `overrides.json` ce que le script marque « à masquer probablement » et ce qu'il dit
+    « autre spectacle ce soir-là ». Les fiches « absentes » hors théâtre ne prouvent rien (château,
+    forêt) : les laisser. Le jour où la Ville pose l'exception (72c), le lecteur `city-rss` fait ce
+    travail à chaque scan et ce contrôle s'arrête.
+  - [ ] **Règle, à décider** : 80 fiches « dates à vérifier » sur 331, dont **33 non revues par aucun
+    scan depuis 14 jours ou plus**. Proposition : retirer du site une fiche 79b non revue depuis
+    14 jours (elle revient seule si un scan la retrouve). D'abord une ligne du rapport qui les
+    compte, sur deux scans.
+  - Vu au passage : « 4211 km » ×3 et « Jazz au Théâtre » ×5 au Théâtre municipal. Le juge des
+    doublons (§3.W2) ne voit pas un titre fait d'un nombre (« 4211 » n'est pas un mot distinctif).
 - [ ] **90. Lecteurs directs pour les mairies productives du scan villages (11/10).** Le scan
   villages ne publie jamais seul (`confirmOnly`) ; 32 trouvailles sont restées en attente, dont
   plusieurs sur des sites officiels : Le Châtelet-en-Brie (4), Saint-Mammès (3), Bourron-Marlotte,
