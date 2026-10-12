@@ -1418,7 +1418,7 @@ function renderSummary(stats, ctx) {
     L.push('  Chaque paire porte un mot que l\'autre n\'a pas — impossible de distinguer une');
     L.push('  reformulation d\'un vrai sous-événement. Pour en masquer un : copier son id dans');
     L.push('  overrides.json avec `"hidden": true`.');
-    for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s}`);
+    for (const s of stats.similarSameDay.slice(0, 8)) L.push(`  - ${s.date} — \`${s.a.id}\` « ${s.a.title} » ↔ \`${s.b.id}\` « ${s.b.title} »`);
     if (stats.similarSameDay.length > 8) L.push(`  - … et ${stats.similarSameDay.length - 8} autre(s)`);
   }
   const fb = stats.feedback;
@@ -1720,11 +1720,13 @@ function dedupeFuzzy(records, stats) {
       for (let j = i + 1; j < list.length; j++) {
         if (jaccard(list[i].event.title, list[j].event.title) >= SIMILARITY_REVIEW_THRESHOLD) {
           // With the ids, deciding on a pair is one paste into overrides.json rather than a
-          // hunt through data.json.
-          stats.similarSameDay.push(
-            `${list[i].event.startDate} — \`${list[i].event.id}\` « ${list[i].event.title} »`
-            + ` ↔ \`${list[j].event.id}\` « ${list[j].event.title} »`
-          );
+          // hunt through data.json. Kept as ids: the judged dedupe and the overrides run after
+          // this, and only pairs still both published are reported (main(), after step 6).
+          stats.similarSameDay.push({
+            date: list[i].event.startDate,
+            a: { id: list[i].event.id, title: list[i].event.title },
+            b: { id: list[j].event.id, title: list[j].event.title },
+          });
         }
       }
     }
@@ -2152,6 +2154,10 @@ async function main() {
   }
   kept.sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
   stats.total = kept.length;
+  // 12/10: the report listed pairs the judged dedupe had just merged (Jardin des Noues,
+  // Trois-Pignons), announcing duplicates that no longer existed and burying the real ones.
+  const published = new Set(kept.map((e) => e.id));
+  stats.similarSameDay = stats.similarSameDay.filter((p) => published.has(p.a.id) && published.has(p.b.id));
 
   // 6a. Events no source has confirmed for a while ────────────────────────
   // Reported, never deleted: absence is not evidence (decision of 19 September). A feed that

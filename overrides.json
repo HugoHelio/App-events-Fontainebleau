@@ -49,6 +49,22 @@
       "price": "18 € (billet d'entrée, animations incluses) ; exploration à la lampe torche et Carnaval des animaux en supplément, sur réservation"
     }
   },
+  "EVT_226c25c53d": {
+    "hidden": true,
+    "note": "12/10 : doublon de EVT_3a60161a09 « La Balade du Goût » (17-18/10) — même fiche de l'office de tourisme (6294769). On garde celle que le site de l'office confirme."
+  },
+  "EVT_a06082177d": {
+    "hidden": true,
+    "note": "12/10 : « La Balade du Goût 2026 » à Thomery, doublon de EVT_3a60161a09 — un seul événement réparti sur les fermes du Pays de Fontainebleau, mêmes dates."
+  },
+  "EVT_b13e0aa559": {
+    "hidden": true,
+    "note": "12/10 : doublon de EVT_0cd8de414d « Nordique Bellifontaine » (18/10). Gemini la plaçait à Montigny-sur-Loing ; l'office de tourisme la donne au stade Philippe Mahut, à Fontainebleau."
+  },
+  "EVT_39a65cd1ec": {
+    "note": "12/10 : le Village & Marché de Noël a lieu à la Maison des Arts de Saint-Pierre-lès-Nemours (commune distincte de Nemours), d'après saintpierrelesnemours.fr.",
+    "fields": { "city": "Saint-Pierre-lès-Nemours" }
+  },
   "ACT_020": {
     "hidden": true,
     "note": "07/10 : doublon de ACT_003 « Le Grand Noël de Vaux-le-Vicomte » — même château, mêmes dates (14/11-03/01), mêmes horaires."
