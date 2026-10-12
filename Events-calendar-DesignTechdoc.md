@@ -1865,8 +1865,8 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   dans le tableau de bord Tiqets. **XS.**
 - [x] **83c. Bloc « Visiter » hors événements — fait le 07/10 (§3.AA)** pour le château de
   Fontainebleau et Vaux-le-Vicomte (prix Tiqets de Vaux = 18 €, « même prix » affiché ; exception
-  `officialHosts` pour ses événements, §3.AA). **Reste** : (1) vérifier après le scan du 08/10 que la
-  fiche des vacances de la Toussaint à Vaux porte le bouton ; (2) après le 01/11, renseigner la saison 2027 de Vaux (`from`, `to`, `closed`) dès
+  `officialHosts` pour ses événements, §3.AA). **Reste** : (1) ~~vérifier que la
+  fiche des vacances de la Toussaint à Vaux porte le bouton~~ — vérifié le 12/10 (`EVT_8068526141`) ; (2) après le 01/11, renseigner la saison 2027 de Vaux (`from`, `to`, `closed`) dès
   qu'elle est publiée ; (3) Blandy et Courances absents de Tiqets : GetYourGuide plus tard,
   seulement si un compte y est ouvert. Texte d'origine — Une rubrique de monuments (château de
   Fontainebleau, Vaux-le-Vicomte, Blandy si vendus chez un partenaire) avec billet partenaire,
