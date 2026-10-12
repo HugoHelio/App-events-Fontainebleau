@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_976c124f02@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Ciné-débat " Je n'avais que le néant "
@@ -30,8 +30,27 @@ GEO:48.39434;2.78497
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_a06082177d@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261019
+SUMMARY:La Balade du Goût 2026
+LOCATION:Fermes participantes du Pays de Fontainebleau\, Thomery
+DESCRIPTION:Horaires : 2026-10-17 : 14h–18h \; 2026-10-18 : 11h–17h\n\n
+ Tarif : Entrée libre / Gratuit\n\nPortes ouvertes et animations dans les 
+ fermes du Pays de Fontainebleau pour découvrir les produits locaux.\n\nOr
+ ganisateur : https://www.baladedugout.fr/\n\nFiche : https://fontainebleau
+ live.fr/evenements/la-balade-du-gout-2026-thomery-a06082177d/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
+URL:https://fontainebleaulive.fr/evenements/la-balade-du-gout-2026-thomery-
+ a06082177d/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_08f2a3660e@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Concert mélodies mélancoliques de Schibert à Piazzolla
@@ -51,36 +70,37 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
-SUMMARY:Soirée Halloween
-LOCATION:Thomery
-DESCRIPTION:Horaires : 18h – 22h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-31-soireehalloween\n\nFiche : https://f
- ontainebleaulive.fr/evenements/soiree-halloween-thomery-e905a99489/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
-URL:https://fontainebleaulive.fr/evenements/soiree-halloween-thomery-e905a9
- 9489/
+SUMMARY:Soirée Halloween à Thomery
+LOCATION:Centre-bourg de Thomery\, Thomery
+DESCRIPTION:Horaires : Soirée\n\nTarif : Accès libre\n\nAnimations festiv
+ es et soirée d'Halloween dans le centre-bourg de Thomery.\n\nOrganisateur
+  : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-31-soireehallo
+ ween\n\nFiche : https://fontainebleaulive.fr/evenements/soiree-halloween-a
+ -thomery-e905a99489/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-halloween-a-thomery-e905
+ a99489/
 CATEGORIES:Culture & Ateliers
 GEO:48.40233;2.78149
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_544cf67e58@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Visites mystérieuses d'Halloween & Distribution de bonbons
 LOCATION:Château de Rosa Bonheur\, Thomery
-DESCRIPTION:Horaires : À partir de 17h40\n\nTarif : Inclus dans l'accès c
- hâteau\n\nVisites mystérieuses et distribution de bonbons pour Halloween
-  au Château de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-b
- onheur.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-myst
- erieuses-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
+DESCRIPTION:Horaires : En journée\n\nTarif : Inclus dans le droit d'entré
+ e\n\nVisites mystérieuses et distribution de bonbons pour Halloween au Ch
+ âteau de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-bonheur
+ .fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-mysterieus
+ es-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
 URL:https://fontainebleaulive.fr/evenements/visites-mysterieuses-d-hallowee
  n-et-distribution-de-bonbons-thomery-544cf67e58/
 CATEGORIES:Culture & Ateliers
@@ -106,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing

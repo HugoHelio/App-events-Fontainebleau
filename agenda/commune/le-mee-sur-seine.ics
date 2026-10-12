@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8dee5271f4@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Réunions d'information Transmission
@@ -29,6 +29,77 @@ URL:https://fontainebleaulive.fr/evenements/reunions-d-information-transmis
  sion-le-mee-sur-seine-8dee5271f4/
 CATEGORIES:Culture & Ateliers
 GEO:48.53915;2.64299
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6d54eb206f@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Christelle Chollet - Culottée
+LOCATION:Salle Michel Dauvergne - Le Mas\, Le Mée-sur-Seine
+DESCRIPTION:Tarif : 25\,30 €\n\nChristelle Chollet fête ses 20 ans de ca
+ rrière avec un nouveau spectacle Culottée. Accompagnée en live par ses 
+ musiciens\, dans ce nouveau show elle embarque le public avec son énergie
+  et promet des crises de fous rire\, de la folie\, de la dérision\, des h
+ éros\, des personnages épicés\, encore des rires et des émotions. Chri
+ stelle cherche\, fouille\, creuse\, plonge au cœur de notre société pou
+ r en sorti…\n\nOrganisateur : https://www.fnacspectacles.com/artist/chri
+ stelle-chollet/christelle-chollet-culottee-tournee-4089659/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/christelle-chollet-culottee-le-mee-su
+ r-seine-6d54eb206f/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/christelle-chollet-culottee-le-
+ mee-sur-seine-6d54eb206f/
+CATEGORIES:Scène & Spectacles
+GEO:48.54465;2.63264
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b824409b93@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Les Amplifiés - Black Bomb. A & Monnekyn
+LOCATION:Le Chaudron\, Le Mée-sur-Seine
+DESCRIPTION:Tarif : 8 €\n\nAvec huit albums\, un EP et deux DVD live à s
+ on actif\, Black Bomb A s'est forgé une solide réputation de groupe parm
+ i les plus influents de l'histoire du metal français. Leur énergie inces
+ sante\, leur attitude intransigeante et leur passion inébranlable ont fai
+ t d'eux un pilier de la scène\, leur valant le respect de leurs pairs et 
+ de leurs fans. En continuant à repousser les limites de son genre\, B…\
+ n\nOrganisateur : https://www.fnacspectacles.com/eventseries/les-amplifies
+ -black-bomb-a-monnekyn-4242342/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/les-amplifies-black-bomb-a-et-monnekyn-le-mee-sur-seine-b824409b9
+ 3/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-amplifies-black-bomb-a-et-m
+ onnekyn-le-mee-sur-seine-b824409b93/
+CATEGORIES:Scène & Spectacles
+GEO:48.54257;2.63584
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7eccfc6a49@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Giorda - Hypn'Ose
+LOCATION:Salle Michel Dauvergne - Le Mas\, Le Mée-sur-Seine
+DESCRIPTION:Tarif : 16 €\n\nSur scène comme dans le public\, OSEZ vivre 
+ une expérience extraordinaire !Laissez-moi vous emmener dans mon univers 
+ où l’hypnose se mêle à la bienveillance et à l’émerveillement.HYP
+ N’OSE n’est pas seulement un spectacle\, c’est une véritable aventu
+ re collective\, où chacun choisit librement de participer. Un moment uniq
+ ue\, qui crée du lien\, interroge et bouscule vos certitudes. Une parenth
+ èse hors…\n\nOrganisateur : https://www.fnacspectacles.com/artist/giord
+ a/giorda-hypnose-3979873/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/giorda-hypn-ose-le-mee-sur-seine-7eccfc6a49/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/giorda-hypn-ose-le-mee-sur-sein
+ e-7eccfc6a49/
+CATEGORIES:Scène & Spectacles
+GEO:48.54465;2.63264
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

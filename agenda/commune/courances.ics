@@ -10,4 +10,23 @@ X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_426d83189b@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Festival « Les Feux de Courances – Festival Médiéval Immersif 
+ »
+LOCATION:Parc et Domaine de Courances\, Courances
+DESCRIPTION:Horaires : À partir de 10h00\n\nTarif : Sur réservation / bil
+ letterie en ligne\n\nFestival historique et médiéval immersif dans le pa
+ rc du domaine de Courances.\n\nOrganisateur : https://feuxdecourances.com/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/festival-les-feux-de-c
+ ourances-festival-medieval-immersif-426d83189b/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/festival-les-feux-de-courances-
+ festival-medieval-immersif-426d83189b/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

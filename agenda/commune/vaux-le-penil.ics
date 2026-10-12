@@ -1,0 +1,83 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Vaux-le-Pénil · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_eac8a2a280@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Jérémy Charbonnel - Seul Tout
+LOCATION:La Grange de la Ferme des Jeux\, Vaux-le-Pénil
+DESCRIPTION:Tarif : 21\,20 €\n\nDans ce stand-up intime et hilarant\, Jé
+ rémy Charbonnel nous raconte son itinéraire : l’histoire vraie d’un 
+ mec un peu lâche qui décide de prendre des risques pour la première foi
+ s de sa vie ! De son enfance au Laos à son idylle avec une narcotrafiquan
+ te... Jérémy Charbonnel ne racontera rien ! Sûrement parce qu’il a gr
+ andi à St-Cyr-Au-Mont-d’Or\, qu’il s’est marié avec une fille de b
+ onne famille e…\n\nOrganisateur : https://www.fnacspectacles.com/artist/
+ jeremy-charbonnel/jeremy-charbonnel-seul-tout-tournee-3578561/\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/jeremy-charbonnel-seul-tout-vaux-l
+ e-penil-eac8a2a280/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/jeremy-charbonnel-seul-tout-vau
+ x-le-penil-eac8a2a280/
+CATEGORIES:Scène & Spectacles
+GEO:48.52794;2.68965
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ff1e230b1a@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:4211 km - Aïla Navidi
+LOCATION:La Grange de la Ferme des Jeux\, Vaux-le-Pénil
+DESCRIPTION:Tarif : 18\,20 €\n\n4211 kmEcrit et mis en scène par Aïla N
+ avidi\, « 4211 km » est un véritable bijou théâtral\, réflexion prof
+ onde sur le déracinement\, l’héritage et l’identité\, interprété 
+ par des comédiens saisissants.« 4211 km » c’est la distance entre Par
+ is et Téhéran\, cette même distance parcourue par Mina et Fereydoun ven
+ us se réfugier en France après une révolution qu’on leur a volée. Ya
+ lda leur fille\, née à Pa…\n\nOrganisateur : https://www.fnacspectacle
+ s.com/artist/4211-km/4211-km-aila-navidi-tournee-4172152/\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/4211-km-aila-navidi-vaux-le-penil-ff1e2
+ 30b1a/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/4211-km-aila-navidi-vaux-le-pen
+ il-ff1e230b1a/
+CATEGORIES:Scène & Spectacles
+GEO:48.52794;2.68965
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d706b19e2a@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+SUMMARY:Lisa
+LOCATION:La Grange de la Ferme des Jeux\, Vaux-le-Pénil
+DESCRIPTION:Tarif : 18\,20 €\n\nLisa a 15 ans. Elle est préoccupée. Par
+  l’avenir\, par le monde\, par sa mère… Au lycée\, elle se fait un a
+ mi\, le premier depuis toujours. Au même moment\, sa mère rencontre un h
+ omme\, le premier depuis longtemps. Dans ce quotidien bien balisé\, bien 
+ réglé\, un vent nouveau va s’imposer et redessiner les liens de ces de
+ ux femmes jusque-là préservés. Comment se construire ou se reconstruire
+  quand nos con…\n\nOrganisateur : https://www.fnacspectacles.com/artist/
+ lisa/\n\nFiche : https://fontainebleaulive.fr/evenements/lisa-vaux-le-peni
+ l-d706b19e2a/\n\nInformations collectées automatiquement : vérifiez-les 
+ auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/lisa-vaux-le-penil-d706b19e2a/
+CATEGORIES:Scène & Spectacles
+GEO:48.52794;2.68965
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_2108dbd3a3@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Randonnée solidaire
@@ -43,6 +43,24 @@ DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée libre\n\nGrand bric
 URL:https://fontainebleaulive.fr/evenements/bric-a-brac-de-saint-mammes-5ae
  a2aefcf/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5258aab0a6@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Forum des artisants et des entrepreneurs
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 9h – 14h\n\nOrganisateur : https://www.ccmsl.fr/ac
+ tu-et-agendas/agenda.html#2026-11-08-forumdesartisantsetdesentrepreneurs\n
+ \nFiche : https://fontainebleaulive.fr/evenements/forum-des-artisants-et-d
+ es-entrepreneurs-saint-mammes-5258aab0a6/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/forum-des-artisants-et-des-entr
+ epreneurs-saint-mammes-5258aab0a6/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

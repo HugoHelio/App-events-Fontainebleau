@@ -11,20 +11,20 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_bc21a5418e@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-SUMMARY:Ouverture au public du Jardin des Noues
+UID:EVT_08a8d79115@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Café musique
 LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
- s://moretloingetorvanne.fr/events/jardin-des-noues-octobre-2026/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-de
- s-noues-moret-loing-et-orvanne-bc21a5418e/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-d
- es-noues-moret-loing-et-orvanne-bc21a5418e/
-CATEGORIES:Nature & Environnement
+DESCRIPTION:Horaires : 20h – 22h30\n\nOrganisateur : https://www.ccmsl.fr
+ /actu-et-agendas/agenda.html#2026-10-18-cafemusique\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/cafe-musique-moret-loing-et-orvanne-08a8d7911
+ 5/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cafe-musique-moret-loing-et-orv
+ anne-08a8d79115/
+CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_48db600ea0@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261025
 SUMMARY:MLO Game's Week !
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_26b82e4407@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Bourse aux collectionneurs d'Octobre Rose
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_847c0a2b7d@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Stage aquarelle et techniques mixtes
@@ -107,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1c36ac36ec@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261031
 SUMMARY:Stage de perfectionnement Tennis
@@ -126,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b7ac9f1ee7@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du cinéma d'animation
@@ -141,24 +141,6 @@ DESCRIPTION:Horaires : 15h30\n\nLa médiathèque propose la projection du f
 URL:https://fontainebleaulive.fr/evenements/fete-du-cinema-d-animation-more
  t-loing-et-orvanne-b7ac9f1ee7/
 CATEGORIES:Scène & Spectacles
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_b33ec7b4bc@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261029
-SUMMARY:Ouverture au public du Jardin des Noues
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
- s://moretloingetorvanne.fr/events/jardin-des-noues-octobre-2026/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-de
- s-noues-moret-loing-et-orvanne-b33ec7b4bc/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-d
- es-noues-moret-loing-et-orvanne-b33ec7b4bc/
-CATEGORIES:Nature & Environnement
 GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT

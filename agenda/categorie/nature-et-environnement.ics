@@ -31,24 +31,6 @@ GEO:48.37483;2.8074
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_bc21a5418e@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-SUMMARY:Ouverture au public du Jardin des Noues
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
- s://moretloingetorvanne.fr/events/jardin-des-noues-octobre-2026/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-de
- s-noues-moret-loing-et-orvanne-bc21a5418e/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-d
- es-noues-moret-loing-et-orvanne-bc21a5418e/
-CATEGORIES:Nature & Environnement
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_28b842b027@fontainebleaulive.fr
 DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261016
@@ -82,6 +64,24 @@ DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nSortie pédestre
  r.
 URL:https://fontainebleaulive.fr/evenements/balade-guidee-au-mont-merle-et-
  au-rocher-fourceau-fontainebleau-0ab982a6c4/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7ce18cb26b@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Initiation à la découverte des champignons en forêt
+LOCATION:Massif forestier de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit (sur inscription)\n
+ \nSortie d'initiation à la découverte des champignons dans le massif for
+ estier de Fontainebleau.\n\nOrganisateur : https://anvl.fr/calendrier/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/initiation-a-la-decouverte
+ -des-champignons-en-foret-fontainebleau-7ce18cb26b/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/initiation-a-la-decouverte-des-
+ champignons-en-foret-fontainebleau-7ce18cb26b/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -130,14 +130,13 @@ DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Visite guidée forêt : Biodiversité et Sentiers des peintres
 LOCATION:Sentier des Peintres de Barbizon\, Barbizon
-DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
- s) : 9 € | Gratuit pour les moins de 6 ans\n\nVisite guidée thématique
-  en forêt sur les traces des peintres paysagistes à la découverte de la
-  biodiversité locale.\n\nOrganisateur : https://www.fontainebleau-tourism
- e.com/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-fo
- ret-biodiversite-et-sentiers-des-peintres-barbizon-ac4f2ac287/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 14h00–16h00\n\nTarif : Adulte : 16 € | Enfant (6
+  à 12 ans) : 9 €\n\nVisite guidée thématique en forêt sur les traces
+  des peintres paysagistes à la découverte de la biodiversité locale.\n\
+ nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/visite-guidee-foret-biodiversite-et-senti
+ ers-des-peintres-barbizon-ac4f2ac287/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-foret-biodiversit
  e-et-sentiers-des-peintres-barbizon-ac4f2ac287/
 CATEGORIES:Nature & Environnement
@@ -205,7 +204,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5266991852@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Promenade guidée : Découverte du sentier 17
@@ -284,12 +283,12 @@ DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Découverte du nord-est des Trois-Pignons
 LOCATION:Massif des Trois-Pignons\, Achères-la-Forêt
-DESCRIPTION:Horaires : 13h30–17h00\n\nPromenade guidée pour explorer le 
- secteur nord-est du massif des Trois-Pignons.\n\nOrganisateur : https://ww
- w.aaff.fr/agenda/\n\nFiche : https://fontainebleaulive.fr/evenements/decou
- verte-du-nord-est-des-trois-pignons-acheres-la-foret-bac6c34a35/\n\nInform
- ations collectées automatiquement : vérifiez-les auprès de l’organisa
- teur.
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nPromenade guidé
+ e pour explorer le secteur nord-est du massif des Trois-Pignons.\n\nOrgani
+ sateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/decouverte-du-nord-est-des-trois-pignons-acheres-la-foret-ba
+ c6c34a35/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-du-nord-est-des-troi
  s-pignons-acheres-la-foret-bac6c34a35/
 CATEGORIES:Nature & Environnement
@@ -297,7 +296,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -314,24 +313,6 @@ URL:https://fontainebleaulive.fr/evenements/les-champignons-et-la-foret-de-
  fontainebleau-en-automne-bfaafc9a1c/
 CATEGORIES:Nature & Environnement
 GEO:48.44815;2.72904
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_cacbb59c55@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20261025
-DTEND;VALUE=DATE:20261026
-SUMMARY:Promenade guidée : Découverte du nord-est des Trois-Pignons
-LOCATION:Massif des Trois-Pignons\, Noisy-sur-École
-DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nIncursion guidé
- e au cœur des platières\, sables et pins du nord-est du massif des Trois
- -Pignons.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/promenade-guidee-decouverte-du-nord-est-d
- es-trois-pignons-noisy-sur-ecole-cacbb59c55/\n\nInformations collectées a
- utomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/promenade-guidee-decouverte-du-
- nord-est-des-trois-pignons-noisy-sur-ecole-cacbb59c55/
-CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -376,39 +357,22 @@ GEO:48.37483;2.8074
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_b33ec7b4bc@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261029
-SUMMARY:Ouverture au public du Jardin des Noues
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h à 17h\n\nTarif : Gratuit\n\nOrganisateur : http
- s://moretloingetorvanne.fr/events/jardin-des-noues-octobre-2026/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-de
- s-noues-moret-loing-et-orvanne-b33ec7b4bc/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/ouverture-au-public-du-jardin-d
- es-noues-moret-loing-et-orvanne-b33ec7b4bc/
-CATEGORIES:Nature & Environnement
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_04bb66b3af@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
-SUMMARY:Mes premiers pas avec...les champignons !
+SUMMARY:Sortie « Mes premiers pas avec les champignons »
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nVenez découvrir
-  la beauté des champignons dans la belle forêt de Fontainebleau à trave
- rs une animation ludique et riche en découverte !\n\nOrganisateur : https
- ://www.jagispourlanature.org/activite/mes-premiers-pas-avecles-champignons
- \n\nFiche : https://fontainebleaulive.fr/evenements/mes-premiers-pas-avec-
- les-champignons-fontainebleau-04bb66b3af/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/mes-premiers-pas-avec-les-champ
- ignons-fontainebleau-04bb66b3af/
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
+ \nVenez découvrir la beauté des champignons dans la belle forêt de Font
+ ainebleau à travers une animation ludique et riche en découverte !\n\nOr
+ ganisateur : https://www.jagispourlanature.org/activite/mes-premiers-pas-a
+ vecles-champignons\n\nFiche : https://fontainebleaulive.fr/evenements/sort
+ ie-mes-premiers-pas-avec-les-champignons-fontainebleau-04bb66b3af/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-mes-premiers-pas-avec-le
+ s-champignons-fontainebleau-04bb66b3af/
 CATEGORIES:Nature & Environnement
 GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
@@ -433,18 +397,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_249e4be334@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier rapaces nocturnes « Chouette\, une pelote ! »
 LOCATION:Hôtel de Ville de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit\n\nPublic : Dès 6 
- ans\n\nAtelier ludique d'analyse des pelotes de réjection de rapaces noct
- urnes pour comprendre le régime alimentaire des chouettes.\n\nOrganisateu
- r : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/ev
- enements/atelier-rapaces-nocturnes-chouette-une-pelote-fontainebleau-249e4
- be334/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit (sur inscription)\n
+ \nPublic : Dès 6 ans\n\nAtelier ludique d'analyse des pelotes de réjecti
+ on de rapaces nocturnes pour comprendre le régime alimentaire des chouett
+ es.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/atelier-rapaces-nocturnes-chouette-une-pelote-f
+ ontainebleau-249e4be334/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-rapaces-nocturnes-choue
  tte-une-pelote-fontainebleau-249e4be334/
 CATEGORIES:Nature & Environnement
@@ -457,40 +421,22 @@ DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Grand inventaire mycologique en forêt de Fontainebleau
 LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Sur inscription\n\nSortie d
- e collecte et d'identification des espèces mycologiques en vue du salon a
- nnuel du champignon.\n\nOrganisateur : https://anvl.fr/grand-public/\n\nFi
- che : https://fontainebleaulive.fr/evenements/grand-inventaire-mycologique
- -en-foret-de-fontainebleau-ba96acfe80/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Gratuit (sur inscription)\n
+ \nSortie de collecte et d'identification des espèces mycologiques en vue 
+ du salon annuel du champignon.\n\nOrganisateur : https://anvl.fr/grand-pub
+ lic/\n\nFiche : https://fontainebleaulive.fr/evenements/grand-inventaire-m
+ ycologique-en-foret-de-fontainebleau-ba96acfe80/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/grand-inventaire-mycologique-en
  -foret-de-fontainebleau-ba96acfe80/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_48dc10819d@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261110
-SUMMARY:25ᵉ Salon du Champignon
-LOCATION:Maison dans la Vallée\, Avon\, Avon
-DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nExposition\, con
- seils et identification de la flore fongique.\n\nOrganisateur : https://ww
- w.avon77.com/\n\nFiche : https://fontainebleaulive.fr/evenements/25-salon-
- du-champignon-avon-48dc10819d/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/25-salon-du-champignon-avon-48d
- c10819d/
-CATEGORIES:Nature & Environnement
-GEO:48.41089;2.7265
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_bc7bc2a26d@fontainebleaulive.fr
 DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
 SUMMARY:25ème Salon du Champignon
 LOCATION:Pays de Fontainebleau\, Fontainebleau
 DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nExposition mycol
@@ -501,6 +447,26 @@ DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nExposition mycol
  fiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/25eme-salon-du-champignon-fonta
  inebleau-bc7bc2a26d/
+CATEGORIES:Nature & Environnement
+GEO:48.41089;2.7265
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b06d886e53@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Chantier nature bénévole d'entretien des pelouses de la Platière
+  de Meun
+LOCATION:Platière de Meun\, Achères-la-Forêt
+DESCRIPTION:Horaires : 09h00–16h00\n\nTarif : Gratuit\n\nChantier nature 
+ bénévole pour la préservation et l'entretien des pelouses de la Platiè
+ re de Meun.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/chantier-nature-benevole-d-entretien-de
+ s-pelouses-de-la-plat-acheres-la-foret-b06d886e53/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/chantier-nature-benevole-d-entr
+ etien-des-pelouses-de-la-plat-acheres-la-foret-b06d886e53/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -564,6 +530,24 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_f8910fb196@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:Animation nature en famille « Le Trésor de Praline »
+LOCATION:Fontainebleau / environs proches\, Fontainebleau
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
+ \nAnimation nature en famille et parcours de découverte au sein de l'envi
+ ronnement forestier.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFich
+ e : https://fontainebleaulive.fr/evenements/animation-nature-en-famille-le
+ -tresor-de-praline-fontainebleau-f8910fb196/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/animation-nature-en-famille-le-
+ tresor-de-praline-fontainebleau-f8910fb196/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_abac6f2f82@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261121
@@ -607,34 +591,38 @@ UID:EVT_d27898b9bd@fontainebleaulive.fr
 DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
-SUMMARY:Clair Bois et Désert d'Apremont
+SUMMARY:Promenade découverte : Clair Bois et Désert d'Apremont
 LOCATION:Forêt de Fontainebleau (Secteur Clair Bois & Gorges d'Apremont)\,
   Fontainebleau
-DESCRIPTION:Horaires : 13h30–17h00\n\nPromenade guidée nature à travers
-  Clair Bois et les paysages des Gorges d'Apremont.\n\nOrganisateur : https
- ://www.aaff.fr/agenda/\n\nFiche : https://fontainebleaulive.fr/evenements/
- clair-bois-et-desert-d-apremont-fontainebleau-d27898b9bd/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/clair-bois-et-desert-d-apremont
- -fontainebleau-d27898b9bd/
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nPromenade guidé
+ e nature à travers Clair Bois et les paysages des Gorges d'Apremont.\n\nO
+ rganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontainebleau
+ live.fr/evenements/promenade-decouverte-clair-bois-et-desert-d-apremont-fo
+ ntainebleau-d27898b9bd/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/promenade-decouverte-clair-bois
+ -et-desert-d-apremont-fontainebleau-d27898b9bd/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_b65cb259d8@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+UID:EVT_5694ed0d4e@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
-SUMMARY:Promenade guidée : Clair Bois et Désert d'Apremont
-LOCATION:Gorges\, Clair Bois et Désert d'Apremont\, Barbizon
-DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nPromenade guidé
- e à travers le Clair Bois et le secteur rocheux du Désert d'Apremont.\n\
- nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontaineble
- aulive.fr/evenements/promenade-guidee-clair-bois-et-desert-d-apremont-barb
- izon-b65cb259d8/\n\nInformations collectées automatiquement : vérifiez-l
+SUMMARY:Visite guidée thématique « Biodiversité – Le Chemin des fonta
+ ines & Tour Denecourt »
+LOCATION:Sentier des Fontaines\, Tour Denecourt\, forêt de Fontainebleau\,
+  Fontainebleau
+DESCRIPTION:Horaires : 14h00\n\nTarif : Sur réservation préalable auprès
+  de l'Office de Tourisme\n\nVisite guidée sur la biodiversité du sentier
+  des Fontaines jusqu'à la Tour Denecourt.\n\nOrganisateur : https://www.f
+ ontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/visite-guidee-thematique-biodiversite-le-chemin-des-fontaine-fontaineb
+ leau-5694ed0d4e/\n\nInformations collectées automatiquement : vérifiez-l
  es auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/promenade-guidee-clair-bois-et-
- desert-d-apremont-barbizon-b65cb259d8/
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-thematique-biodiv
+ ersite-le-chemin-des-fontaine-fontainebleau-5694ed0d4e/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -673,6 +661,25 @@ DESCRIPTION:Horaires : 20h\n\nTarif : Tarif cinéma\n\nProjection du film A
  nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cine-debat-arutam-gardiens-de-l
  -amazonie-fontainebleau-253b922c23/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8efa6ff955@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Chantier nature bénévole d'entretien des pelouses de la Platière
+  de Meun
+LOCATION:Platière de Meun\, Achères-la-Forêt
+DESCRIPTION:Horaires : 09h00–16h00\n\nTarif : Gratuit\n\nChantier nature 
+ bénévole pour la préservation et l'entretien des pelouses de la Platiè
+ re de Meun.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/chantier-nature-benevole-d-entretien-de
+ s-pelouses-de-la-plat-acheres-la-foret-8efa6ff955/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/chantier-nature-benevole-d-entr
+ etien-des-pelouses-de-la-plat-acheres-la-foret-8efa6ff955/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -721,12 +728,12 @@ DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Initiation à la bryologie en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit\n\nJournée de déc
- ouverte botanique axée sur l'observation des mousses.\n\nOrganisateur : h
- ttps://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/initiation-a-la-bryologie-en-foret-de-fontainebleau-734a43c14d/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
+DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit (sur inscription)\n
+ \nJournée de découverte botanique axée sur l'observation des mousses.\n
+ \nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/initiation-a-la-bryologie-en-foret-de-fontainebleau-
+ 734a43c14d/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/initiation-a-la-bryologie-en-fo
  ret-de-fontainebleau-734a43c14d/
 CATEGORIES:Nature & Environnement
@@ -779,11 +786,12 @@ DTEND;VALUE=DATE:20261231
 SUMMARY:Animation nature – L'arbre à vœux
 LOCATION:Lisière de la forêt / centre-ville de Fontainebleau\, Fontainebl
  eau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nAnimation nature
-  de fin d'année autour de l'arbre à vœux.\n\nOrganisateur : https://anv
- l.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/animat
- ion-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\nInformations colle
- ctées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
+ \nAnimation nature de fin d'année autour de l'arbre à vœux.\n\nOrganisa
+ teur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/animation-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
 URL:https://fontainebleaulive.fr/evenements/animation-nature-l-arbre-a-voeu
  x-fontainebleau-39d27c9c8d/
 CATEGORIES:Nature & Environnement
@@ -796,12 +804,12 @@ DTSTART;VALUE=DATE:20270108
 DTEND;VALUE=DATE:20270109
 SUMMARY:Café des Sciences (FabLab Moebius)
 LOCATION:FabLab Moebius\, Fontainebleau
-DESCRIPTION:Horaires : 18h00–20h00\n\nRencontre et échanges autour des s
- ciences et de la biodiversité.\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8011881/cafe-des-sciences-par-fablab-moebius/\n\nF
- iche : https://fontainebleaulive.fr/evenements/cafe-des-sciences-fablab-mo
- ebius-fontainebleau-252dc9d8cb/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit\n\nRencontre et éc
+ hanges autour des sciences et de la biodiversité.\n\nOrganisateur : https
+ ://www.fontainebleau-tourisme.com/fr/fiche/8011881/cafe-des-sciences-par-f
+ ablab-moebius/\n\nFiche : https://fontainebleaulive.fr/evenements/cafe-des
+ -sciences-fablab-moebius-fontainebleau-252dc9d8cb/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cafe-des-sciences-fablab-moebiu
  s-fontainebleau-252dc9d8cb/
 CATEGORIES:Nature & Environnement

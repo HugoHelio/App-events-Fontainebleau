@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_d00a04cf3c@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261015
 DTEND;VALUE=DATE:20261016
 SUMMARY:Oeuvre d'art participatif " photo ( et) graphie "
@@ -32,27 +32,27 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9a23491159@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
-SUMMARY:Color run solidaire
+SUMMARY:Pink Color Run & Marche Solidaires
 LOCATION:Palais des Rencontres\, 28 rue Pierre de Coubertin à Champagne-su
  r-Seine\, Champagne-sur-Seine
-DESCRIPTION:Horaires : 10h\, 14h\n\nÉvénement solidaire au profit d'Octob
- re Rose comprenant une course colorée le matin et une pièce de théâtre
-  l'après-midi.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/age
- nda.html#2026-10-18-colorrunsolidaire\n\nFiche : https://fontainebleaulive
- .fr/evenements/color-run-solidaire-champagne-sur-seine-9a23491159/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/color-run-solidaire-champagne-s
- ur-seine-9a23491159/
+DESCRIPTION:Horaires : 10h00\n\nTarif : 5 €\n\nÉvénement solidaire au p
+ rofit d'Octobre Rose comprenant une course colorée le matin et une pièce
+  de théâtre l'après-midi.\n\nOrganisateur : https://www.ccmsl.fr/actu-e
+ t-agendas/agenda.html#2026-10-18-colorrunsolidaire\n\nFiche : https://font
+ ainebleaulive.fr/evenements/pink-color-run-et-marche-solidaires-champagne-
+ sur-seine-9a23491159/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/pink-color-run-et-marche-solida
+ ires-champagne-sur-seine-9a23491159/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_adfd9661ba@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Double concert
@@ -71,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdc5e49f92@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Vide ta chambre
@@ -90,7 +90,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18524de635@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Théâtre-forum " un aidant peut en cacher un autre "

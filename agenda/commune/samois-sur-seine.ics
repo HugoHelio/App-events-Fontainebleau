@@ -12,15 +12,16 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_61430f6751@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Loto annuel
 LOCATION:LA SAMOISIENNE\, Samois-sur-Seine
-DESCRIPTION:Horaires : 14h00\n\nOrganisateur : https://samois-sur-seine.fr/
- evenement/loto-annuel/\n\nFiche : https://fontainebleaulive.fr/evenements/
- loto-annuel-samois-sur-seine-61430f6751/\n\nInformations collectées autom
- atiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 14h00\n\nLoto annuel organisé par l'Association bé
+ névoles sans frontières.\n\nOrganisateur : https://samois-sur-seine.fr/e
+ venement/loto-annuel/\n\nFiche : https://fontainebleaulive.fr/evenements/l
+ oto-annuel-samois-sur-seine-61430f6751/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/loto-annuel-samois-sur-seine-61
  430f6751/
 CATEGORIES:Culture & Ateliers
@@ -28,7 +29,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3629202698@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:ANFA Aviron – 6e édition de la régate du Pays de Fontainebleau
@@ -47,16 +48,16 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce0fde7d25@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cérémonie du 11 nov 2026
 LOCATION:Monument aux Morts\, Samois-sur-Seine
-DESCRIPTION:Horaires : 11h30\n\nOrganisateur : https://samois-sur-seine.fr/
- evenement/ceremonie-du-11-nov-2026/\n\nFiche : https://fontainebleaulive.f
- r/evenements/ceremonie-du-11-nov-2026-samois-sur-seine-ce0fde7d25/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
+DESCRIPTION:Horaires : 11h30\n\nCérémonie commémorative de l'armistice d
+ u 11 novembre 1918.\n\nOrganisateur : https://samois-sur-seine.fr/evenemen
+ t/ceremonie-du-11-nov-2026/\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/ceremonie-du-11-nov-2026-samois-sur-seine-ce0fde7d25/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/ceremonie-du-11-nov-2026-samois
  -sur-seine-ce0fde7d25/
 CATEGORIES:Culture & Ateliers
@@ -64,16 +65,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_05bc7d1947@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Café du Maire et de ses élus
 LOCATION:Place de la République\, Samois-sur-Seine
-DESCRIPTION:Horaires : 09h30 à 11h30\n\nOrganisateur : https://samois-sur-
- seine.fr/evenement/cafe-du-maire-et-de-ses-elus/\n\nFiche : https://fontai
- nebleaulive.fr/evenements/cafe-du-maire-et-de-ses-elus-samois-sur-seine-05
- bc7d1947/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
+DESCRIPTION:Horaires : 09h30 à 11h30\n\nMoment d'échange convivial entre 
+ habitants\, le Maire et les élus autour d'un café et viennoiseries.\n\nO
+ rganisateur : https://samois-sur-seine.fr/evenement/cafe-du-maire-et-de-se
+ s-elus/\n\nFiche : https://fontainebleaulive.fr/evenements/cafe-du-maire-e
+ t-de-ses-elus-samois-sur-seine-05bc7d1947/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cafe-du-maire-et-de-ses-elus-sa
  mois-sur-seine-05bc7d1947/
 CATEGORIES:Culture & Ateliers
@@ -82,16 +84,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4056eda6ee@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Festival de la terre au bol
 LOCATION:La Passerelle des Arts\, Samois-sur-Seine
-DESCRIPTION:Horaires : 10h à 18h\n\nOrganisateur : https://samois-sur-sein
- e.fr/evenement/exposition-de-la-terre-au-bol/\n\nFiche : https://fontaineb
- leaulive.fr/evenements/festival-de-la-terre-au-bol-samois-sur-seine-4056ed
- a6ee/\n\nInformations collectées automatiquement : vérifiez-les auprès 
- de l’organisateur.
+DESCRIPTION:Horaires : 10h à 18h\n\nTroisième édition du festival potier
+  avec marché\, causeries\, ateliers modelage et soupe partagée.\n\nOrgan
+ isateur : https://samois-sur-seine.fr/evenement/exposition-de-la-terre-au-
+ bol/\n\nFiche : https://fontainebleaulive.fr/evenements/festival-de-la-ter
+ re-au-bol-samois-sur-seine-4056eda6ee/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/festival-de-la-terre-au-bol-sam
  ois-sur-seine-4056eda6ee/
 CATEGORIES:Scène & Spectacles
@@ -99,16 +102,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb26d04362@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:NOUVEAUX HABITANTS\, inscrivez vous !
 LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 18h30\n\nOrganisateur : https://samois-sur-seine.fr/
- evenement/nouveaux-habitants-inscrivez-vous/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/nouveaux-habitants-inscrivez-vous-samois-sur-seine-c
- b26d04362/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+DESCRIPTION:Horaires : 18h30\n\nAccueil convivial des nouveaux habitants pa
+ r la municipalité dans la cour du Foyer Django Reinhardt.\n\nOrganisateur
+  : https://samois-sur-seine.fr/evenement/nouveaux-habitants-inscrivez-vous
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/nouveaux-habitants-in
+ scrivez-vous-samois-sur-seine-cb26d04362/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/nouveaux-habitants-inscrivez-vo
  us-samois-sur-seine-cb26d04362/
 CATEGORIES:Culture & Ateliers
@@ -116,15 +120,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël
 LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Organisateur : https://samois-sur-seine.fr/evenement/marche-de-
- noel-2/\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-
- samois-sur-seine-cbb7493942/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Toute la journée jusqu'en soirée\n\nTarif : Entré
+ e libre\n\nMarché de Noël organisé au Foyer Django Reinhardt.\n\nOrgani
+ sateur : https://samois-sur-seine.fr/evenement/marche-de-noel-2/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/marche-de-noel-samois-sur-seine-
+ cbb7493942/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-samois-sur-seine
  -cbb7493942/
 CATEGORIES:Culture & Ateliers
@@ -132,17 +138,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine
 LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
-DESCRIPTION:Horaires : 14h–18h\n\nTarif : Inscription payante\n\nCourse p
- édestre festive de fin d'année proposant des parcours de 800 m\, 1\,6 km
-  et 5 km au bord de la Seine.\n\nOrganisateur : https://samois-sur-seine.f
- r/evenement/course-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenem
- ents/course-de-noel-de-samois-sur-seine-6d9b7e1830/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 14h30\n\nTarif : 5 € à 10 €\n\nCourse pédestre
+  festive de fin d'année proposant des parcours de 800 m\, 1\,6 km et 5 km
+  au bord de la Seine.\n\nOrganisateur : https://samois-sur-seine.fr/evenem
+ ent/course-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/cou
+ rse-de-noel-de-samois-sur-seine-6d9b7e1830/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-6d9b7e1830/
 CATEGORIES:Sport & Outdoor
@@ -150,16 +156,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4762e2cdf5@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Réveillon de la Saint-Sylvestre avec LB SALSA
 LOCATION:LA SAMOISIENNE\, Samois-sur-Seine
-DESCRIPTION:Horaires : 22h\n\nOrganisateur : https://samois-sur-seine.fr/ev
- enement/reveillon-de-la-saint-sylvestre/\n\nFiche : https://fontainebleaul
- ive.fr/evenements/reveillon-de-la-saint-sylvestre-avec-lb-salsa-samois-sur
- -seine-4762e2cdf5/\n\nInformations collectées automatiquement : vérifiez
- -les auprès de l’organisateur.
+DESCRIPTION:Horaires : 22h\n\nTarif : 40 €\n\nSoirée dansante et festive
+  pour célébrer le Nouvel An avec buffet festif et animations.\n\nOrganis
+ ateur : https://samois-sur-seine.fr/evenement/reveillon-de-la-saint-sylves
+ tre/\n\nFiche : https://fontainebleaulive.fr/evenements/reveillon-de-la-sa
+ int-sylvestre-avec-lb-salsa-samois-sur-seine-4762e2cdf5/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/reveillon-de-la-saint-sylvestre
  -avec-lb-salsa-samois-sur-seine-4762e2cdf5/
 CATEGORIES:Scène & Spectacles

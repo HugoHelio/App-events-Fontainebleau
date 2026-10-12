@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_db61b20f20@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Le Japon à Barbizon
@@ -75,14 +75,13 @@ DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Visite guidée forêt : Biodiversité et Sentiers des peintres
 LOCATION:Sentier des Peintres de Barbizon\, Barbizon
-DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
- s) : 9 € | Gratuit pour les moins de 6 ans\n\nVisite guidée thématique
-  en forêt sur les traces des peintres paysagistes à la découverte de la
-  biodiversité locale.\n\nOrganisateur : https://www.fontainebleau-tourism
- e.com/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-fo
- ret-biodiversite-et-sentiers-des-peintres-barbizon-ac4f2ac287/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 14h00–16h00\n\nTarif : Adulte : 16 € | Enfant (6
+  à 12 ans) : 9 €\n\nVisite guidée thématique en forêt sur les traces
+  des peintres paysagistes à la découverte de la biodiversité locale.\n\
+ nOrganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/visite-guidee-foret-biodiversite-et-senti
+ ers-des-peintres-barbizon-ac4f2ac287/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-foret-biodiversit
  e-et-sentiers-des-peintres-barbizon-ac4f2ac287/
 CATEGORIES:Nature & Environnement
@@ -90,18 +89,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fbf407795d@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Visite contée "Les Contes du chat perché"
 LOCATION:Barbizon\, Barbizon
-DESCRIPTION:Horaires : Séances en journée\n\nTarif : Inclus dans le bille
- t d'entrée du musée\n\nVisite guidée et contée inspirée des histoires
-  du Chat perché à Barbizon.\n\nOrganisateur : https://www.fontainebleau-
- tourisme.com/fr/fiche/7957826/visite-contee-les-contes-du-chat-perche/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/visite-contee-les-contes-d
- u-chat-perche-barbizon-fbf407795d/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Après-midi\n\nTarif : Sur réservation / Consulter 
+ le site\n\nVisite guidée et contée inspirée des histoires du Chat perch
+ é à Barbizon.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/f
+ r/fiche/7957826/visite-contee-les-contes-du-chat-perche/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/visite-contee-les-contes-du-chat-perche-
+ barbizon-fbf407795d/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-contee-les-contes-du-cha
  t-perche-barbizon-fbf407795d/
 CATEGORIES:Culture & Ateliers
@@ -352,24 +351,6 @@ URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
  zon-d757249270/
 CATEGORIES:Scène & Spectacles
 GEO:48.44575;2.60775
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_b65cb259d8@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261122
-DTEND;VALUE=DATE:20261123
-SUMMARY:Promenade guidée : Clair Bois et Désert d'Apremont
-LOCATION:Gorges\, Clair Bois et Désert d'Apremont\, Barbizon
-DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nPromenade guidé
- e à travers le Clair Bois et le secteur rocheux du Désert d'Apremont.\n\
- nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontaineble
- aulive.fr/evenements/promenade-guidee-clair-bois-et-desert-d-apremont-barb
- izon-b65cb259d8/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/promenade-guidee-clair-bois-et-
- desert-d-apremont-barbizon-b65cb259d8/
-CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

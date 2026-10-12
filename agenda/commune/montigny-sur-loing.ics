@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1c273d544c@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Marche ou course
@@ -49,22 +49,57 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
 LOCATION:Salle Georges Barrois\, Montigny-sur-Loing
-DESCRIPTION:Horaires : 2026-10-30 et 2026-10-31 : 09h00–18h00 \; 2026-11-
- 01 : 09h00–12h00\n\nTarif : Entrée libre\n\nVente de jouets\, matériel
-  de puériculture et livres pour enfants à petit prix.\n\nOrganisateur : 
- https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-30-bourseauxjouet
- spuericultureetlivresdenfa\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/bourse-aux-jouets-puericulture-et-livres-d-enfants-montigny-sur-loing-
- 65b2d95b25/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
+DESCRIPTION:Horaires : En journée\n\nTarif : Entrée libre\n\nVente de jou
+ ets\, matériel de puériculture et livres pour enfants à petit prix.\n\n
+ Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-30
+ -bourseauxjouetspuericultureetlivresdenfa\n\nFiche : https://fontainebleau
+ live.fr/evenements/bourse-aux-jouets-puericulture-et-livres-d-enfants-mont
+ igny-sur-loing-65b2d95b25/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-jouets-puericulture-
  et-livres-d-enfants-montigny-sur-loing-65b2d95b25/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6cb6271af1@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Soirée ados / Film d'Halloween
+LOCATION:Montigny-sur-Loing
+DESCRIPTION:Horaires : 20h – 22h30\n\nOrganisateur : https://www.ccmsl.fr
+ /actu-et-agendas/agenda.html#2026-10-30-soireeadosfilmdhalloween\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/soiree-ados-film-d-halloween-mon
+ tigny-sur-loing-6cb6271af1/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-ados-film-d-halloween-mo
+ ntigny-sur-loing-6cb6271af1/
+CATEGORIES:Scène & Spectacles
+GEO:48.33545;2.7482
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_99b337a3a7@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween
+LOCATION:Montigny-sur-Loing
+DESCRIPTION:Horaires : 14h – 17h\n\nOrganisateur : https://www.ccmsl.fr/a
+ ctu-et-agendas/agenda.html#2026-10-31-halloween\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/halloween-montigny-sur-loing-99b337a3a7/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-montigny-sur-loing-99
+ b337a3a7/
+CATEGORIES:Culture & Ateliers
+GEO:48.33545;2.7482
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

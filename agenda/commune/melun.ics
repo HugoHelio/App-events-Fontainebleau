@@ -12,17 +12,18 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4d9dab55b0@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Pièce de théâtre « Coup de Bluff au Cabaret »
 LOCATION:L'Escale\, Melun
 DESCRIPTION:Horaires : 20h30\n\nTarif : De 29 € à 36 €\n\nComédie hil
  arante avec Franck Leboeuf\, Jérôme Anthony et Nicolas Vitiello pour sau
- ver un cabaret en faillite.\n\nOrganisateur : https://www.ville-melun.fr/\
- n\nFiche : https://fontainebleaulive.fr/evenements/piece-de-theatre-coup-d
- e-bluff-au-cabaret-melun-4d9dab55b0/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+ ver un cabaret en faillite.\n\nOrganisateur : https://www.fnacspectacles.c
+ om/artist/coup-de-bluff-au-cabaret/\n\nFiche : https://fontainebleaulive.f
+ r/evenements/piece-de-theatre-coup-de-bluff-au-cabaret-melun-4d9dab55b0/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
 URL:https://fontainebleaulive.fr/evenements/piece-de-theatre-coup-de-bluff-
  au-cabaret-melun-4d9dab55b0/
 CATEGORIES:Scène & Spectacles
@@ -48,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f0502eebfd@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Spectacle de magie « Clément Blouin - Magicien c'est pas un méti
@@ -56,18 +57,113 @@ SUMMARY:Spectacle de magie « Clément Blouin - Magicien c'est pas un méti
 LOCATION:L'Escale\, Melun
 DESCRIPTION:Horaires : 16h00\n\nTarif : À partir de 25 €\n\nSpectacle al
  liant humour et illusions modernes par le magicien Clément Blouin.\n\nOrg
- anisateur : https://www.ville-melun.fr/\n\nFiche : https://fontainebleauli
- ve.fr/evenements/spectacle-de-magie-clement-blouin-magicien-c-est-pas-un-m
- eti-melun-f0502eebfd/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
+ anisateur : https://www.fnacspectacles.com/artist/clement-blouin/clement-b
+ louin-magicien-cest-pas-un-metier-tournee-3586133/\n\nFiche : https://font
+ ainebleaulive.fr/evenements/spectacle-de-magie-clement-blouin-magicien-c-e
+ st-pas-un-meti-melun-f0502eebfd/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-de-magie-clement-blou
  in-magicien-c-est-pas-un-meti-melun-f0502eebfd/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_9c4644063e@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:To Your Eternity
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : De 28\,70 € à 63\,70 €\n\nAfter a successful premi
+ ere in Belgium\, Ballet Del’Art arrives in France! Let yourself be swept
+  away into a captivating world of forbidden love\, supernatural secrets\, 
+ and an eternal battle between vampires and werewolves. Ballet Del’Art in
+ vites you to discover an original creation where the supernatural world co
+ mes to life on stage in a spectacular choreographic production. From the m
+ oment the cu…\n\nOrganisateur : https://www.fnacspectacles.com/artist/to
+ -your-eternity/\n\nFiche : https://fontainebleaulive.fr/evenements/to-your
+ -eternity-melun-9c4644063e/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/to-your-eternity-melun-9c464406
+ 3e/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4a4198ac35@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Le Tourbillon de la Fête
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : 39\,60 €\n\nLe Tourbillon de la Fête est notre nouve
+ au spectacle conçu comme une porte ouverte sur la richesse de notre culte
+  de la fête.Attention de ne pas lâcher le rythme dans cette échappée q
+ ui va enchaîner les ambiances du divertissement musical. Retrouvez-vous a
+ u cœur de rendez-vous populaire guinguette\, bal des pompiers\, feria\, f
+ est-noz\, festival et carnaval\, boum et surprise party... autant d'univer
+ s…\n\nOrganisateur : https://www.fnacspectacles.com/artist/le-tourbillon
+ -de-la-fete/\n\nFiche : https://fontainebleaulive.fr/evenements/le-tourbil
+ lon-de-la-fete-melun-4a4198ac35/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-tourbillon-de-la-fete-melun-
+ 4a4198ac35/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6e1e0ff6e3@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Le Radeau de la Méduse par Anne Cangelosi
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : 28\,60 €\n\nLe Radeau de la MéduseDe Alexandre Delim
+ ogesPar Anne CangelosiGrâce à une drôle de conférencière\, découvrez
+  les secrets du tableau "Le radeau de la méduse" qui choqua le monde et 
+ ébranla le trône !En 1818\, Géricault démarre sa plus célèbre toile 
+ "Le radeau de la méduse" et fait scandale autant sur le plan artistique q
+ ue sur le plan politique. Il devient le maître du romantisme comme Hugo a
+ vec ses…\n\nOrganisateur : https://www.fnacspectacles.com/artist/radeau-
+ meduse/le-radeau-de-la-meduse-par-anne-cangelosi-3970637/\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/le-radeau-de-la-meduse-par-anne-cangelo
+ si-melun-6e1e0ff6e3/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-radeau-de-la-meduse-par-anne
+ -cangelosi-melun-6e1e0ff6e3/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_27a2f68fb8@fontainebleaulive.fr
+DTSTAMP:20261012T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Les Coquettes - Nouveau Spectacle
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : De 29 € à 39\,40 €\n\nLes CoquettesEn tournéeLe n
+ ouveau spectacle d’un duo qui chante\, charme et désarme dans la bonne 
+ humeur !Les Coquettes c’est Lola et Marie\, deux chanteuses qui cultiven
+ t un humour décalé et impertinent. Leurs spectacles\, mêlant chansons e
+ ngagées\, répliques piquantes et interactions avec le public\, restent l
+ e meilleur des antidotes contre la déprime. Que ce soit dans leurs vidéo
+ s « Les petites cha…\n\nOrganisateur : https://www.fnacspectacles.com/a
+ rtist/les-coquettes/les-coquettes-nouveau-spectacle-tournee-4139277/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/les-coquettes-nouveau-specta
+ cle-melun-27a2f68fb8/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-coquettes-nouveau-spectacle
+ -melun-27a2f68fb8/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
