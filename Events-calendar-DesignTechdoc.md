@@ -1626,6 +1626,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-12 | **Sonde du flux Fnac Spectacles (83d), premier relevé** (`scripts/probe-francebillet.js`, lecture seule) : flux national de 111 425 produits (524 Mo décompressé, lu en flux). Dans la zone, **67 dates, toutes dans l'agglomération de Melun** (L'Escale, Espace Pierre Bachelet - La Cartonnerie, Espace Nino Ferrer, Le Mas, La Ferme des Jeux, Le Chaudron), dont **21 dans la fenêtre** de 3 mois ; **18 absentes du site**, 3 qui confirment des fiches Gemini seules (Coup de Bluff au Cabaret, Clément Blouin, Mulan, qui pointent vers l'accueil de ville-melun.fr). Rien à Fontainebleau même, sauf le billet d'entrée du château (17 €) et celui de Vaux (18 €) | Le flux couvre les grandes salles de l'agglomération de Melun, que les autres sources voient mal (4 fiches publiées dans ces salles, toutes Gemini seules), et rien des petites salles de Fontainebleau (le Théâtre municipal vend chez Mapado). Les billets des châteaux restent chez Tiqets : même prix, 8 % contre 0,30-0,50 € par billet. Forme du flux : `event_location_city` toujours vide, la commune est dans `venue_address` ; colonnes préfixées `Tickets:` ; une ligne par date. La règle de correspondance de `compare-sources.js` manque les titres d'un seul mot court (« Mulan ») : 83e devra tenir compte de la salle |
 | 2026-10-12 | **Fnac Spectacles devient la cinquième source publiée, avec un bouton « Billets »** (83e, §3.AA) : `scripts/francebillet.js`, `source: "francebillet"`, lien d'affilié `ticketUrl` rangé sur chaque date vendue, bouton dérivé de l'entrée `feeds` d'`affiliates.json`. Secret `AWIN_FEED_URL` dans `daily-check.yml`. Décidé par le chef de projet au vu de la sonde (« un trou dans notre listing ») | Les grandes salles de l'agglomération de Melun manquaient presque entièrement (4 fiches, toutes Gemini seul) ; la billetterie qui vend la date est une source plus sûre que la recherche web. Le lien de la fiche reste la page Fnac en clair (d'où vient l'information) ; seul le bouton porte l'affiliation, marqué « lien partenaire ». Quand les deux mèneraient à la même page, un seul est montré. Un `ticketUrl` n'est accepté que de ce flux et au format Awin exact : aucune sortie du modèle ne peut devenir un lien rémunéré. Les fiches Fnac ne sont jamais mises en avant (lien non vérifiable, pages fermées aux robots) |
 | 2026-10-12 | **Rapport « Titres proches le même jour » : seulement les paires encore publiées** (fin de l'étape 6). Premier scan avec la Fnac relu : 3 doublons masqués (Balade du Goût ×2, Nordique Bellifontaine placée à tort à Montigny), Village de Noël rendu à Saint-Pierre-lès-Nemours | La liste était calculée avant le juge des doublons et les corrections : sur 20 paires, plusieurs venaient d'être fusionnées (Jardin des Noues, Trois-Pignons), et le rapport annonçait des doublons qui n'existaient plus en noyant les vrais. « 4211 km » le 14/11 (Théâtre de Fontainebleau) et le 19/11 (Vaux-le-Pénil, Fnac) sont deux dates de tournée, pas un doublon |
+| 2026-10-12 | **Halloween (81) : la détection reste sur le seul mot « halloween » dans le titre, mesure faite** | Fiches jusqu'au 08/11 relues avec frisson, sorcière, citrouille, fantôme, monstre, épouvante, horreur, hantée, bonbons, déguisement… dans le titre **et** la description : rien de plus que les 8 fiches déjà sur la page, toutes titrées « Halloween ». Chercher aussi dans les descriptions n'ajouterait qu'une fiche, « Blandy des Légendes », dont la description dit « ateliers d'Halloween » alors que le château n'emploie le mot sur aucune de ses deux pages (il dit « vacances de la Toussaint », comme pour sa murder party) : un faux positif, issu de la rédaction de la description. Les animations de la Toussaint figurent déjà sur `/sorties/vacances-toussaint/`, liée depuis la page Halloween |
 | 2026-10-12 | **Invitations Awin GoWithGuide et Brickzonehub refusées, sans réponse** (section E) ; **suivi GetYourGuide** ajouté pour 83c et 85 (section C) | Aucune des deux ne vend quelque chose dans la zone à un lieu et un prix vérifiables (§3.AA) : guides privés sans offre à Fontainebleau, vitrines pour LEGO. Messages automatiques envoyés en masse. GetYourGuide reste le seul programme qui couvrirait Blandy, Courances et les activités de 85 |
 
 ---
@@ -1731,8 +1732,9 @@ En parallèle, à chaque scan : lire le rapport (B, premier item).
     courte FAQ (« Où fêter Halloween avec des enfants ? »), les classiques de la saison — rédigés
     par nous, aucune donnée inventée.
   - **Liens** : rangée « En ce moment » sur l'accueil (comme sur `/ce-week-end/`), `/que-faire/`.
-  - **Halloween ne reconnaît que le mot « halloween »** : mesurer ce qui manque (frisson,
-    sorcières, citrouilles…) avant d'élargir — gare aux faux positifs.
+  - ~~**Halloween ne reconnaît que le mot « halloween »** : mesurer ce qui manque (frisson,
+    sorcières, citrouilles…) avant d'élargir — gare aux faux positifs.~~ **Mesuré le 12/10 (§7) :
+    rien ne manque**, la règle reste la même. À refaire en octobre 2027 si la page paraît maigre.
   - Repris de 74 (6) : **adresses stables pour les événements annuels** — ce sont ces hubs.
   - **Fait quand** : hubs Toussaint et Halloween en ligne avant le 10/10 et soumis à
     l'indexation dans la Search Console.
@@ -1858,8 +1860,8 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   scan), bouton sur l'accueil et les fiches, `rel="sponsored"`, paragraphe « Comment le site
   est financé » sur `/nos-sources/`, clics `booking-click`. Offre Tiqets du château **inactive**.
 - [x] **83b. Activer l'offre Tiqets du château — fait le 07/10** : lien d'affilié (`partner=helioso-190732`,
-  campagne `fontainebleaulive-chateau`), prix revérifié à 17 €, 4 fiches. **Reste, chef de projet** : cliquer
-  le bouton sur une fiche en ligne et vérifier que le clic arrive dans le tableau de bord Tiqets. Texte d'origine — dès le lien d'affilié reçu (83-0). Coller
+  campagne `fontainebleaulive-chateau`), prix revérifié à 17 €, 4 fiches. **Reste, chef de projet** : le clic a
+  été fait le 12/10 depuis le mobile ; vérifier le 13/10 qu'il est arrivé dans le tableau de bord Tiqets. Texte d'origine — dès le lien d'affilié reçu (83-0). Coller
   l'URL dans `affiliates.json`, `"active": true`, `node scripts/affiliates.js` (aperçu : 4 fiches
   attendues), `--write`, `generate-pages.js`, commit. Vérifier sur le site qu'un clic arrive bien
   dans le tableau de bord Tiqets. **XS.**
@@ -2047,7 +2049,8 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
       partenaire (profil / informations de paiement). Sans lui, les commissions ne peuvent pas
       être facturées ni versées.
     - [ ] Cliquer le bouton sur une fiche en ligne et vérifier que le clic arrive dans le
-      tableau de bord (83b).
+      tableau de bord (83b). **Clic fait le 12/10 depuis le mobile** : vérifier le 13/10 dans
+      le tableau de bord Tiqets qu'il y figure.
   - [x] **Compte éditeur Awin — validé le 07/10. Identifiant éditeur (publisher ID) : `3117734`.**
     Pas un secret (il figure dans chaque lien d'affilié Awin) ; la clé du flux produit, elle, ira
     dans un secret GitHub (83d).
