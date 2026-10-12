@@ -141,7 +141,8 @@ async function translateBatch(batch, stats) {
       const { items, usage } = extractJson(await callGemini(prompt));
       if (usage) {
         stats.tokensIn += usage.promptTokenCount ?? 0;
-        stats.tokensOut += usage.candidatesTokenCount ?? 0;
+        // Thinking is billed as output (§3.G): counted with it, for the run's cost estimate (item 39).
+        stats.tokensOut += (usage.candidatesTokenCount ?? 0) + (usage.thoughtsTokenCount ?? 0);
       }
       const out = new Map();
       for (const item of items) {

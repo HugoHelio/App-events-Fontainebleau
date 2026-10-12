@@ -717,7 +717,8 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
     await mapLimit(batches, 3, async (batch) => {
       try {
         const { items, usage } = await extractWithGemini(ENRICH_PROMPT(batch.map((b) => b.e)), ENRICH_SCHEMA);
-        if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += usage.candidatesTokenCount || 0; }
+        // Thinking is billed as output (§3.G): counted with it, for the run's cost estimate (item 39).
+        if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += (usage.candidatesTokenCount || 0) + (usage.thoughtsTokenCount || 0); }
         for (const it of items) {
           const b = batch[Number(it && it.i)];
           if (!b || !CATEGORIES.includes(it.category)) continue;

@@ -306,7 +306,8 @@ async function run(records, { overrides = {}, eventKey, mergeInto, enrichFrom, t
         const batch = batches[next++];
         try {
           const { items, usage } = await callGemini(PROMPT(batch));
-          if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += usage.candidatesTokenCount || 0; }
+          // Thinking is billed as output (§3.G): counted with it, for the run's cost estimate (item 39).
+          if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += (usage.candidatesTokenCount || 0) + (usage.thoughtsTokenCount || 0); }
           for (const it of items) {
             const p = batch[Number(it && it.i)];
             if (!p || typeof it.same !== 'boolean') continue;

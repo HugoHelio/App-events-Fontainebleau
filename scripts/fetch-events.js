@@ -1320,6 +1320,46 @@ function writeStepSummary(text) {
   try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, text); } catch { /* non-fatal */ }
 }
 
+// ───────────────────────────── Cost estimate (item 39) ─────────────────────────────
+//
+// Prices of gemini-3.6-flash, paid tier, read on the pricing page on 20/09 (§3.G). Thinking is
+// billed as output. They double on 1 January 2027: the report shows both, to choose the model
+// before the rise. Another GEMINI_MODEL makes the estimate wrong, and the report says so.
+const PRICING = {
+  model: 'gemini-3.6-flash',
+  periods: [
+    { until: '2026-12-31', inPerM: 0.75, outPerM: 3.75 },
+    { until: '9999-12-31', inPerM: 1.5, outPerM: 7.5 },
+  ],
+  freeSearchesPerMonth: 5000,
+  searchPer1000: 14,
+};
+
+/** Tokens and searches of every Gemini call of the run, by step, and their price in dollars. */
+function runCost(stats, today) {
+  const steps = [];
+  const add = (name, tin, tout) => { if (tin || tout) steps.push({ name, tin, tout }); };
+  let searches = 0;
+  for (const s of stats.scans) {
+    const u = s.usage || {};
+    add(`scan ${s.name}`, u.promptTokenCount || 0, (u.candidatesTokenCount || 0) + (u.thoughtsTokenCount || 0));
+    searches += s.searchQueries || 0;
+  }
+  const st = stats.sites || {};
+  add('sites (lecture)', st.tokensIn || 0, st.tokensOut || 0);
+  add('sites (fiches complétées)', (st.enrich && st.enrich.tokensIn) || 0, (st.enrich && st.enrich.tokensOut) || 0);
+  add('doublons (juge)', (stats.judged && stats.judged.tokensIn) || 0, (stats.judged && stats.judged.tokensOut) || 0);
+  add('traduction', (stats.translation && stats.translation.tokensIn) || 0, (stats.translation && stats.translation.tokensOut) || 0);
+  const tin = steps.reduce((a, s) => a + s.tin, 0);
+  const tout = steps.reduce((a, s) => a + s.tout, 0);
+  const now = PRICING.periods.find((p) => today <= p.until);
+  const last = PRICING.periods[PRICING.periods.length - 1];
+  const at = (p) => (i, o) => (i * p.inPerM + o * p.outPerM) / 1e6;
+  return { steps, tin, tout, searches, price: at(now), usd: at(now)(tin, tout), usdLater: now === last ? null : at(last)(tin, tout) };
+}
+
+const usd = (n) => `${n.toFixed(n < 1 ? 3 : 2).replace('.', ',')} $`;
+
 function renderSummary(stats, ctx) {
   const L = [];
   L.push('## 🗓️ Daily events update', '');
@@ -1340,6 +1380,14 @@ function renderSummary(stats, ctx) {
   if (discarded.length) {
     L.push(`- 🚫 **${discarded.length} scan(s) Gemini sans aucune recherche web**, rien ajouté ni rafraîchi. `
       + 'Le modèle a répondu de mémoire. Diagnostic : workflow « Diagnostic de la recherche Google ».', '');
+  }
+  const cost = runCost(stats, ctx.today);
+  if (cost.steps.length) {
+    const runsPerMonth = 10;   // one scan every ~3 days: 60 h minimum, then the next daily trigger
+    L.push(`- 💶 **Coût Gemini estimé du run : ${usd(cost.usd)}** (~${usd(cost.usd * runsPerMonth)} par mois)${cost.usdLater === null ? '' : ` · **${usd(cost.usdLater)} au tarif du 1er janvier 2027** (~${usd(cost.usdLater * runsPerMonth)} par mois)`} — ${cost.tin} tokens en entrée, ${cost.tout} en sortie (réflexion comprise)${CONFIG.model === PRICING.model ? '' : ` · ⚠️ tarif de \`${PRICING.model}\`, pas de \`${CONFIG.model}\` : estimation fausse`}`);
+    L.push(`  - par étape : ${cost.steps.map((s) => `${s.name} ${usd(cost.price(s.tin, s.tout))}`).join(' · ')}`);
+    L.push(`  - recherches Google : ${cost.searches} ce run, soit ~${cost.searches * runsPerMonth} par mois à ~${runsPerMonth} scans (gratuites jusqu’à ${PRICING.freeSearchesPerMonth}, puis ${PRICING.searchPer1000} $ les 1 000)`);
+    L.push('');
   }
   if (stats.dt) {
     if (stats.dt.error) {
@@ -1877,6 +1925,9 @@ async function main() {
         records: siteRaw.length,
         long: siteRaw.filter((e) => e.long).length,
         enrich: enriched,
+        // The `page` readers' extraction calls, for the run's cost estimate (item 39).
+        tokensIn: results.reduce((a, r) => a + ((r.usage && r.usage.promptTokenCount) || 0), 0),
+        tokensOut: results.reduce((a, r) => a + ((r.usage && ((r.usage.candidatesTokenCount || 0) + (r.usage.thoughtsTokenCount || 0))) || 0), 0),
       };
       console.log(`   → ${read.length} événement(s) lus sur ${results.filter((r) => r.status === 'ok').length} site(s) → ${siteRaw.length} fiche(s)`);
     } catch (err) {
