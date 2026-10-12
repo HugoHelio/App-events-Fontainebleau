@@ -1001,6 +1001,7 @@ ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .share-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
 .share-btn:hover{background:#e6efe9}
 .share-btn[hidden]{display:none}
+.wk-cur[hidden]{display:none}
 @media (max-width:480px){ul.agenda li{grid-template-columns:1fr;gap:2px}ul.agenda .t:empty{display:none}}
 `.trim();
 
@@ -1327,13 +1328,15 @@ function weekendPage(events, today, places = []) {
     { id: 'dimanche', nav: today === sun ? 'Aujourd’hui' : 'Dimanche', navEn: today === sun ? 'Today' : 'Sunday', h: today === sun ? `Aujourd’hui, ${sunLabel}` : cap(sunLabel), hEn: today === sun ? `Today, ${enDay(sun)}` : enDay(sun), list: sunOnly },
   ].filter((s) => s.list.length);
   if (long.length) sections.push({ id: 'expositions', nav: 'Expositions', navEn: 'Exhibitions', h: 'Expositions et visites en cours', hEn: 'Exhibitions and visits on now', list: long, long: true });
+  const curSections = sections.slice();
   if (nextList.length) {
     const sameMonth = next.sat.slice(5, 7) === next.sun.slice(5, 7);
     sections.push({ id: 'week-end-prochain', nav: 'Week-end prochain', navEn: 'Next weekend', h: `Le week-end prochain : ${sameMonth ? dayName(next.sat).replace(/ \S+$/, '') : dayName(next.sat)} et ${dayName(next.sun)}`, hEn: `Next weekend: ${sameMonth ? enDate(next.sat, { weekday: 'long', day: 'numeric' }) : enDay(next.sat)} and ${enDay(next.sun)}`, list: nextList, note: nextWord });
   }
 
-  const range = first(`${sat.slice(8, 10).replace(/^0/, '')}${sat.slice(5, 7) === sun.slice(5, 7) ? '' : ` ${frDate(sat).split(' ')[2]}`}-${frDate(sun).split(' ').slice(1).join(' ')}`);
-  const rangeEn = sat.slice(5, 7) === sun.slice(5, 7) ? `${Number(sat.slice(8))}–${enDMY(sun)}` : `${enDM(sat)} – ${enDMY(sun)}`;
+  const weRange = (a, b) => first(`${a.slice(8, 10).replace(/^0/, '')}${a.slice(5, 7) === b.slice(5, 7) ? '' : ` ${frDate(a).split(' ')[2]}`}-${frDate(b).split(' ').slice(1).join(' ')}`);
+  const weRangeEn = (a, b) => (a.slice(5, 7) === b.slice(5, 7) ? `${Number(a.slice(8))}–${enDMY(b)}` : `${enDM(a)} – ${enDMY(b)}`);
+  const range = weRange(sat, sun), rangeEn = weRangeEn(sat, sun);
   const n = short.length;
 
   const now = seasonNow(events, today);
@@ -1342,17 +1345,28 @@ function weekendPage(events, today, places = []) {
 
   const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${CITIES_DIR}/"${en('Towns')}>Communes</a></nav>
 <h1${en('What’s on this weekend around Fontainebleau?')}>Que faire ce week-end autour de Fontainebleau ?</h1>
-<p class="when"><span class="we"><img src="/public/assets/img/brand/calendrier-sam-dim.svg" alt="" width="46" height="36"><span${en('Weekend')}>Week-end</span></span> <span${en(`of ${esc(rangeEn)}${today === sun ? ' · today, Sunday' : ''}`)}>du ${esc(range)}${today === sun ? ` · aujourd’hui ${esc(sunLabel.replace(/ \d.*$/, ''))}` : ''}</span></p>
-<p${en(n ? `${enPl(n, 'outing')} ${today === sun ? 'today' : 'this weekend'} in Fontainebleau and the neighbouring towns: sport, nature, shows, culture and family outings. Updated every day.` : 'Nothing announced for this weekend yet: come back in a few days, the programme is updated every day.')}>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p>
-${nowHtml(now)}
-${sections.length > 1 ? `<nav class="toc" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}"${s.navEn ? en(esc(s.navEn)) : ''}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
+<div class="wk-cur"><p class="when"><span class="we"><img src="/public/assets/img/brand/calendrier-sam-dim.svg" alt="" width="46" height="36"><span${en('Weekend')}>Week-end</span></span> <span${en(`of ${esc(rangeEn)}${today === sun ? ' · today, Sunday' : ''}`)}>du ${esc(range)}${today === sun ? ` · aujourd’hui ${esc(sunLabel.replace(/ \d.*$/, ''))}` : ''}</span></p>
+<p${en(n ? `${enPl(n, 'outing')} ${today === sun ? 'today' : 'this weekend'} in Fontainebleau and the neighbouring towns: sport, nature, shows, culture and family outings. Updated every day.` : 'Nothing announced for this weekend yet: come back in a few days, the programme is updated every day.')}>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p></div>
+${nextList.length ? `<div class="wk-next" hidden><p class="when"><span class="we"><img src="/public/assets/img/brand/calendrier-sam-dim.svg" alt="" width="46" height="36"><span${en('Weekend')}>Week-end</span></span> <span${en(`of ${esc(weRangeEn(next.sat, next.sun))}`)}>du ${esc(weRange(next.sat, next.sun))}</span></p>
+<p${en(`${enPl(nextList.length, 'outing')} this weekend in Fontainebleau and the neighbouring towns: sport, nature, shows, culture and family outings. Updated every day.`)}>${nextList.length} sortie${nextList.length > 1 ? 's' : ''} ce week-end à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.</p></div>\n` : ''}${nowHtml(now)}
+${sections.length > 1 ? `<nav class="toc wk-cur" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}"${s.navEn ? en(esc(s.navEn)) : ''}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${n || nextList.length ? LEGEND : ''}
-${sections.map(daySection).join('\n')}${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}
+<div class="wk-cur">${curSections.map(daySection).join('\n')}</div>
+${sections.filter((s) => !curSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/"${en('Today')}>Aujourd’hui</a> `}<a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText, shareTextEn)}
 <p class="note"><span${en('Seasonal outings:')}>Sorties de saison :</span> ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.nameEn))}>${esc(t.name)}</a>`).join(' · ')}.</p>
 <script>
-${FILTER_SCRIPT}
+${FILTER_SCRIPT}${nextList.length ? `
+(function () {
+  // Built on Sunday, the page is read on Monday morning too, before the night rebuild lands
+  // (GitHub starts scheduled runs hours late): past that Sunday, the next weekend takes over.
+  var d;
+  try { d = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Paris' }); } catch (e) { return; }
+  if (d <= '${sun}') return;
+  Array.prototype.forEach.call(document.querySelectorAll('.wk-cur'), function (x) { x.hidden = true; });
+  Array.prototype.forEach.call(document.querySelectorAll('.wk-next'), function (x) { x.hidden = false; });
+})();` : ''}
 ${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fontainebleau ? — Fontainebleau Live')}
 </script>`;
 
@@ -1366,7 +1380,7 @@ ${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fo
 }
 
 // ─── /aujourdhui/ (item 78) ───
-// What is on today, rebuilt with the other pages every morning (06:00 UTC). Between midnight
+// What is on today, rebuilt with the other pages every night (pages.yml, 23:17 UTC, often hours late). Between midnight
 // and that run the page would show yesterday, so it carries tomorrow too, hidden: a small script
 // shows the block of the phone's date. Without JavaScript, the day it was built.
 
@@ -1410,7 +1424,7 @@ ${shareHtml(shareText)}
 <script>
 ${FILTER_SCRIPT}
 (function () {
-  // The block of the phone's date (Paris): tomorrow's between midnight and the morning rebuild.
+  // The block of the phone's date (Paris): tomorrow's between midnight and the nightly rebuild.
   // Past both, the page is stale (a failed run): it says so instead of showing a past day.
   var d;
   try { d = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Paris' }); } catch (e) { return; }

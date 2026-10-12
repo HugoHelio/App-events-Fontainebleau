@@ -1,0 +1,67 @@
+name: Pages statiques (reconstruction de nuit)
+
+# Les pages datées (/ce-week-end/, /aujourdhui/, /agenda/) changent avec la date, pas seulement
+# avec les données. Le cron de 06:00 UTC du workflow quotidien est lancé par GitHub avec 6 à 7 h
+# de retard (constaté du 05 au 11/10 : entre 11:50 et 13:29 UTC) : le lundi matin,
+# /ce-week-end/ montrait encore le dimanche. Ce workflow ne fait que regénérer les pages à partir
+# de data.json : aucun appel Gemini, aucune clé, gratuit.
+# 23:17 UTC = 01:17 à Paris l'été, 00:17 l'hiver : toujours après minuit. Minute décalée exprès,
+# les crons à l'heure pile sont les plus retardés.
+on:
+  schedule:
+    - cron: '17 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Même groupe que la collecte : jamais deux publications sur main en même temps.
+concurrency:
+  group: daily-events-update
+  cancel-in-progress: false
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Génération des pages statiques
+        run: node scripts/generate-pages.js
+
+      - name: Commit et Push des pages
+        run: |
+          git config user.name "GitHub Action Bot"
+          git config user.email "action@github.com"
+
+          # Mêmes chemins que daily-check.yml, sans les données : ce workflow ne les touche pas.
+          git add sitemap.xml index.html
+          for d in evenements que-faire sorties ce-week-end aujourdhui agenda publier nos-sources; do
+            if [ -e "$d" ] || git ls-files --error-unmatch "$d" >/dev/null 2>&1; then git add -A -- "$d"; fi
+          done
+          if git diff --staged --quiet; then
+            echo "Aucun changement dans les pages — rien à publier."
+            exit 0
+          fi
+
+          git commit -m "🤖 Pages statiques : reconstruction de nuit"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "Publié sur main (tentative $attempt)."
+              exit 0
+            fi
+            echo "Push échoué (tentative $attempt), nouvel essai…"
+            sleep $((attempt * 5))
+          done
+
+          echo "Impossible de publier sur main après 3 tentatives."
+          exit 1
