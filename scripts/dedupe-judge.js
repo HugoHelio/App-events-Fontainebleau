@@ -210,7 +210,6 @@ async function callGemini(prompt) {
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
-            temperature: 0,
             responseMimeType: 'application/json',
             responseSchema: {
               type: 'ARRAY',

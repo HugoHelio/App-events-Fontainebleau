@@ -521,7 +521,7 @@ async function extractWithGemini(prompt, schema = EVENT_SCHEMA) {
         // available precisely because the search tool is absent (§3.A).
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.1, responseMimeType: 'application/json', responseSchema: schema },
+          generationConfig: { responseMimeType: 'application/json', responseSchema: schema },
         }),
         signal: AbortSignal.timeout(CONFIG.llmTimeoutMs),
       });

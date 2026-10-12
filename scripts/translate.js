@@ -96,7 +96,6 @@ async function callGemini(prompt) {
       // No google_search tool here: pure text transformation. That is what makes structured
       // output available (it collides with the search tool — see §3.A).
       generationConfig: {
-        temperature: 0.1,
         responseMimeType: 'application/json',
         responseSchema: {
           type: 'ARRAY',

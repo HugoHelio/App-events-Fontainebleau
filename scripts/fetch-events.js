@@ -47,7 +47,6 @@ const CONFIG = {
   model: process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   maxOutputTokens: envInt('GEMINI_MAX_OUTPUT_TOKENS', 16384),
   maxEventsPerScan: envInt('MAX_EVENTS_PER_SCAN', 20),
-  temperature: 0.2,
   windowMonths: envInt('WINDOW_MONTHS', 3),
   apiTimeoutMs: envInt('API_TIMEOUT_MS', 180_000),
   maxAttempts: 3,
@@ -724,7 +723,7 @@ function searchRequestBody(question) {
     contents: [{ parts: [{ text: question }] }],
     tools: [{ google_search: {} }],
     // No responseMimeType: it collides with the search tool (see design doc §3.A).
-    generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens },
+    generationConfig: { maxOutputTokens: CONFIG.maxOutputTokens },
   };
 }
 
@@ -732,7 +731,7 @@ function searchRequestBody(question) {
 function formatRequestBody(prompt) {
   return {
     contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: { temperature: CONFIG.temperature, maxOutputTokens: CONFIG.maxOutputTokens, responseMimeType: 'application/json' },
+    generationConfig: { maxOutputTokens: CONFIG.maxOutputTokens, responseMimeType: 'application/json' },
   };
 }
 
