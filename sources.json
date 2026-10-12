@@ -124,6 +124,29 @@
       "note": "Added 05/10: the yearly open studios (2-4/10/2026) were missed by every source. Static page, robots.txt only forbids /images/ and /download/."
     },
     {
+      "id": "chatelet-en-brie",
+      "name": "Le Châtelet-en-Brie",
+      "type": "page",
+      "urls": [
+        "https://www.chatelet-en-brie.fr/index.php/Agenda?idpage=9"
+      ],
+      "city": "Le Châtelet-en-Brie",
+      "note": "Added 12/10 (item 90): the town hall found 4 events the villages scan could only hold back. The agenda page carries every event in full (date, time, place, price), so nothing is followed: one request per run, which also keeps within the site's Crawl-delay of 15 s that the reader does not otherwise honour."
+    },
+    {
+      "id": "saint-mammes",
+      "name": "Saint-Mammès",
+      "type": "page",
+      "urls": [
+        "https://www.saint-mammes.com/vie-locale_agenda/"
+      ],
+      "city": "Saint-Mammès",
+      "follow": "^/(?!vie-locale_|lacommune_|wp-|feed/|englishpage/|tourisme/|campus-jeunes/|mentionlegale/|plansite/)[a-z0-9-]+/$",
+      "maxFollow": 12,
+      "exclude": "balayeuse|collecte|\\bcrues?\\b|travaux",
+      "note": "Added 12/10 (item 90). WordPress: the agenda lists posts by date, and each post (at the site root, no prefix) gives time and meeting point. The follow pattern keeps root slugs and drops the site's own sections. The list also announces events of the Communauté de communes, already read by `ccmsl`: the dedupe merges them. robots.txt forbids nothing."
+    },
+    {
       "id": "aaff",
       "name": "Amis de la Forêt de Fontainebleau",
       "enabled": false,
