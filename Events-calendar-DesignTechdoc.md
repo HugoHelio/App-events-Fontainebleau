@@ -1626,6 +1626,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-12 | **Sonde du flux Fnac Spectacles (83d), premier relevé** (`scripts/probe-francebillet.js`, lecture seule) : flux national de 111 425 produits (524 Mo décompressé, lu en flux). Dans la zone, **67 dates, toutes dans l'agglomération de Melun** (L'Escale, Espace Pierre Bachelet - La Cartonnerie, Espace Nino Ferrer, Le Mas, La Ferme des Jeux, Le Chaudron), dont **21 dans la fenêtre** de 3 mois ; **18 absentes du site**, 3 qui confirment des fiches Gemini seules (Coup de Bluff au Cabaret, Clément Blouin, Mulan, qui pointent vers l'accueil de ville-melun.fr). Rien à Fontainebleau même, sauf le billet d'entrée du château (17 €) et celui de Vaux (18 €) | Le flux couvre les grandes salles de l'agglomération de Melun, que les autres sources voient mal (4 fiches publiées dans ces salles, toutes Gemini seules), et rien des petites salles de Fontainebleau (le Théâtre municipal vend chez Mapado). Les billets des châteaux restent chez Tiqets : même prix, 8 % contre 0,30-0,50 € par billet. Forme du flux : `event_location_city` toujours vide, la commune est dans `venue_address` ; colonnes préfixées `Tickets:` ; une ligne par date. La règle de correspondance de `compare-sources.js` manque les titres d'un seul mot court (« Mulan ») : 83e devra tenir compte de la salle |
 | 2026-10-12 | **Fnac Spectacles devient la cinquième source publiée, avec un bouton « Billets »** (83e, §3.AA) : `scripts/francebillet.js`, `source: "francebillet"`, lien d'affilié `ticketUrl` rangé sur chaque date vendue, bouton dérivé de l'entrée `feeds` d'`affiliates.json`. Secret `AWIN_FEED_URL` dans `daily-check.yml`. Décidé par le chef de projet au vu de la sonde (« un trou dans notre listing ») | Les grandes salles de l'agglomération de Melun manquaient presque entièrement (4 fiches, toutes Gemini seul) ; la billetterie qui vend la date est une source plus sûre que la recherche web. Le lien de la fiche reste la page Fnac en clair (d'où vient l'information) ; seul le bouton porte l'affiliation, marqué « lien partenaire ». Quand les deux mèneraient à la même page, un seul est montré. Un `ticketUrl` n'est accepté que de ce flux et au format Awin exact : aucune sortie du modèle ne peut devenir un lien rémunéré. Les fiches Fnac ne sont jamais mises en avant (lien non vérifiable, pages fermées aux robots) |
 | 2026-10-12 | **Rapport « Titres proches le même jour » : seulement les paires encore publiées** (fin de l'étape 6). Premier scan avec la Fnac relu : 3 doublons masqués (Balade du Goût ×2, Nordique Bellifontaine placée à tort à Montigny), Village de Noël rendu à Saint-Pierre-lès-Nemours | La liste était calculée avant le juge des doublons et les corrections : sur 20 paires, plusieurs venaient d'être fusionnées (Jardin des Noues, Trois-Pignons), et le rapport annonçait des doublons qui n'existaient plus en noyant les vrais. « 4211 km » le 14/11 (Théâtre de Fontainebleau) et le 19/11 (Vaux-le-Pénil, Fnac) sont deux dates de tournée, pas un doublon |
+| 2026-10-12 | **Invitations Awin GoWithGuide et Brickzonehub refusées, sans réponse** (section E) ; **suivi GetYourGuide** ajouté pour 83c et 85 (section C) | Aucune des deux ne vend quelque chose dans la zone à un lieu et un prix vérifiables (§3.AA) : guides privés sans offre à Fontainebleau, vitrines pour LEGO. Messages automatiques envoyés en masse. GetYourGuide reste le seul programme qui couvrirait Blandy, Courances et les activités de 85 |
 
 ---
 
@@ -1668,7 +1669,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets, compte Awin et candidature Fnac Spectacles faits le 07/10, Fnac acceptée le 12/10 (0,30-0,50 €/billet) ; reste l'URL du flux (secret `AWIN_FEED_URL`) et Cdiscount Billetterie (Ticketmaster absent d'Awin) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
+| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets, compte Awin et candidature Fnac Spectacles faits le 07/10, Fnac acceptée le 12/10 (0,30-0,50 €/billet), flux rangé dans `AWIN_FEED_URL` le 12/10 ; reste Cdiscount Billetterie (Ticketmaster absent d'Awin) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
@@ -2074,8 +2075,13 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
     produit disponible ou non. Même sonde que 83d s'il est accepté.
   - **Absents d'Awin France (07/10)** : Ticketmaster, Ceetiz, Funbooker, Smartbox, Wonderbox.
     Ticketmaster sort de 83e tant qu'on ne lui trouve pas un autre réseau.
-  - [ ] **Plus tard** : GetYourGuide (seulement pour Blandy, Courances ou les excursions, 83c) et
-    CJ / Booking.com (seulement si 83f le justifie, 83g).
+  - [ ] **GetYourGuide — suivi à faire (noté le 12/10).** Seul programme qui servirait à la fois
+    83c (Blandy, Courances, absents de Tiqets) et 85 (escalade, canoë, accrobranche, visites
+    guidées) : programme direct, 8 %, cookie 30 jours. Avant de candidater : relever ce que
+    GetYourGuide vend **dans la zone** (lieu précis, prix affiché, comparable au tarif officiel) ;
+    sans offre locale, rien à faire. C'est aussi la réponse aux visites guidées privées proposées
+    par GoWithGuide (refusé le 12/10, section E).
+  - [ ] **Plus tard** : CJ / Booking.com (seulement si 83f le justifie, 83g).
 - [ ] **71. Widget premium** — le gratuit est en ligne (§3.Y). Le premium est de la syndication
   **contre paiement** de données issues en partie de Gemini : décision grounding explicite (§3.G,
   §8) **avant** le premier contrat. Contenu à définir avec les premiers partenaires (sans mention,
@@ -2117,6 +2123,15 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
 - **48c. Filtrage des colonnes du tableau de réponses : non (23/09).** Risque accepté par le chef
   de projet ; l'URL est dans un secret GitHub. Rouvrir si le formulaire collecte plus qu'un
   e-mail, ou si l'URL circule.
+- **Invitations Awin non sollicitées : refusées (12/10).** Deux invitations automatiques, sans
+  réponse ni adhésion : **GoWithGuide** (guides privés sur mesure, 10 %, cookie 30 jours — aucune
+  visite à Fontainebleau, public de touristes américains, offre sans lieu ni prix à vérifier, donc
+  incompatible avec §3.AA ; les visites guidées passeront par GetYourGuide, section C) et
+  **Brickzonehub** (vitrines pour LEGO, marque britannique — aucun rapport avec une sortie ; aucun
+  set LEGO du château n'existe de toute façon). Règle pour les suivantes : une invitation n'est
+  étudiée que si le partenaire vend un billet ou une activité **dans la zone**, à un lieu et un
+  prix vérifiables ; sinon, ni réponse ni adhésion (adhérer, c'est accepter des conditions pour
+  rien et encombrer les rapports de 83f).
 - **30. Keep-alive du workflow : sans objet.** La règle d'inactivité de 60 jours ne peut pas se
   déclencher avec un cron quotidien.
 
