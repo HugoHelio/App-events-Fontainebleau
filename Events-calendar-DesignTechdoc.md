@@ -1153,7 +1153,7 @@ links lead to a ticketing site (14 HelloAsso, 4 Mapado), and neither runs an aff
 programme. Putting a tracking code on the organisers' links would earn nothing. The revenue
 has to come from a **second** link, offered next to the organiser's link when a partner sells
 the very ticket the event needs. Benchmark of 05/10 (programmes, rates, fit): France Billet /
-Fnac Spectacles (Awin, rate not published, **product feed**; publisher account `3117734` validated 07/10), Ticketmaster France (announced on Awin; **not found in Awin France on 07/10**,
+Fnac Spectacles (Awin, **product feed**; publisher account `3117734` validated 07/10, programme accepted 12/10 at **0.30–0.50 € per ticket**), Ticketmaster France (announced on Awin; **not found in Awin France on 07/10**,
 0.32 € per ticket), Tiqets and GetYourGuide (8 %, 30-day cookie), Booking.com (CJ, 4 %,
 session only). Rejected: ticket resale aggregators (against the trust promise), HelloAsso and
 Mapado (no programme). Priorities and the full sequence: §9, A2 (work order of 05/10).
@@ -1229,7 +1229,7 @@ noindex pages (redirects, `/publier/`) and the widget load nothing.
 **Affiliation, for comparison (§3.AA).** A visitor must land where a button is (~5–10 % of
 visits today: 4 fiches + the « À visiter » blocks), click (~5 %), buy (~5–10 %); 8 % of a
 ~35 € basket ≈ 2.8 €. At today's traffic: **0–5 €/month**; at 15 000 visits: 20–60 €.
-Ticketmaster's 0.32 €/ticket would change nothing (and it is not on Awin France); France Billet unknown until 83d.
+Ticketmaster's 0.32 €/ticket would change nothing (and it is not on Awin France); nor would Fnac Spectacles, accepted on 12/10 at 0.30–0.50 € per ticket — its feed is worth more as a legitimate source (item 72) than as revenue.
 
 **Option 1 — paid highlight for organisers.** One « À la une » slot on `/ce-week-end/` (the
 most-viewed page) and the home page, labelled « Sponsorisé » (LCEN art. 20), never mixed into
@@ -1589,6 +1589,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-12 | **Juge des doublons (§3.W2) : deux communes peuvent être le même événement** — paire soumise si même page (`pageKey()`, jamais une page d'accueil) ou si les mots distinctifs de l'un contiennent ceux de l'autre ; le prompt dit que deux communes seules ne suffisent pas à répondre « non » | Doublons visibles sur `/ce-week-end/` du 17-18/10 (Balade du Goût, Nordique Bellifontaine) : une source range l'événement sous Fontainebleau, une autre sous le village. Pas de règle déterministe « même URL » : une page d'agenda partagée (aaff.fr/agenda/) aurait fusionné deux sorties du même jour ; le juge garde le « dans le doute, non ». 15 paires de plus, une fois (cache) |
 | 2026-10-12 | **10 spectacles du Théâtre municipal masqués, contrôle manuel du flux de la Ville tous les 15 jours** (`scripts/check-city-feed.js`, item 89) | Les 14 fiches Gemini liées à l'accueil de fontainebleau.fr ne venaient pas du site de la Ville : Gemini avait mis l'accueil faute de mieux. Le flux, lisible depuis une connexion domestique, publie toute la saison du théâtre ; 10 spectacles n'y sont pas, dont deux soirs où la Ville annonce autre chose. On ne contourne pas le blocage de GitHub (§3.Z2) : le contrôle reste manuel, en lecture seule, et ne tourne jamais dans un workflow |
 | 2026-10-12 | **Plus aucun paramètre d'échantillonnage envoyé à Gemini** : `temperature` retiré des quatre appels (scans, traduction, juge des doublons, lecture des sites). Aucun `thinkingBudget` ni `thinkingLevel` non plus : le modèle garde sa réflexion par défaut | Avis Google AI Studio du 12/10 : depuis Gemini 3.6 Flash, `temperature`/`top_p`/`top_k` sont forcés à leur valeur par défaut (nos réglages n'avaient déjà plus d'effet) et les prochains modèles répondront 400 s'ils sont présents ; `thinking_budget` aussi. Le `thinkingBudget` avait déjà quitté le code le 18/09 et le `thinkingLevel` le 04/10. Si on fixe un jour la réflexion, c'est `thinkingLevel` ("minimal" à "high"), jamais `thinkingBudget`. Migration vers l'Interactions API non faite : `generateContent` reste supporté |
+| 2026-10-12 | **Fnac Spectacles FR accepté sur Awin : 0,30 à 0,50 € par billet selon la catégorie** (83-0). Le flux sert d'abord de **source légitime** (item 72) ; les boutons « Réserver » Fnac sont un bonus, pas l'objectif. Les conditions du programme sont lues avant toute diffusion. TVA intracommunautaire saisie chez Awin et Tiqets | À ce taux, la Fnac rapporte comme Ticketmaster (0,32 €), que §3.AB jugeait sans effet : une dizaine de billets par mois ne fait pas un euro de plus. Un flux de dates vendues par la billetterie de la salle, en revanche, confirme des spectacles sans grounding. 83d reste une sonde : on mesure la couverture locale avant de coder l'intégration |
+| 2026-10-12 | **Vaux-le-Vicomte, Toussaint : le prix de la fiche nomme le billet principal à 18 €** (`overrides.json`, `EVT_8068526141`), ce qui lui donne le bouton Tiqets. Les animations à réserver (exploration à la lampe torche, billet à part ; Carnaval des animaux, 23,50 €, 4-6 ans) restent sans bouton, citées dans le prix | Relevé du chef de projet sur vaux-le-vicomte.com : les autres animations sont incluses dans l'entrée à 18 €. La fiche Gemini affichait « 17 € à 22 € » : sans le mot « 18 », l'offre ne s'appliquait pas, malgré le lien corrigé le 07/10. On ne vend que le billet qui fait vraiment entrer : celui de la visite, pas une animation au créneau limité. Bouton visible au prochain scan (`affiliates.js --write` ne rejoue pas les corrections) |
 
 ---
 
@@ -1631,7 +1633,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets, compte Awin et candidature Fnac Spectacles faits le 07/10 ; reste Cdiscount Billetterie (Ticketmaster absent d'Awin) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
+| 0 | **83-0. Inscriptions aux programmes** (chef de projet, section C) — Tiqets, compte Awin et candidature Fnac Spectacles faits le 07/10, Fnac acceptée le 12/10 (0,30-0,50 €/billet) ; reste l'URL du flux (secret `AWIN_FEED_URL`) et Cdiscount Billetterie (Ticketmaster absent d'Awin) | Bloque tout : aucun clic ne rapporte sans lien d'affilié, et la validation prend 1 à 15 jours. Awin débloque 83d | XS |
 | 1 | ~~**83a. Socle de l'affiliation**~~ — fait le 05/10 (§3.AA) | Champ `booking`, `affiliates.json`, bouton, transparence ; offre du château livrée inactive | S |
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
@@ -1837,7 +1839,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   vérifier chaque site chez Tiqets, puis GetYourGuide **seulement** pour un site absent de Tiqets
   ou pour les excursions (paniers de 100 € et plus, public anglophone). Prix comparé au prix
   officiel, comme pour le château. **S. Avant le 17/10.**
-- [ ] **83d. Sonde du flux France Billet — observation seule.** Compte Awin validé le 07/10 (éditeur `3117734`) ; reste l'acceptation de France Billet, qui ouvre l'accès à son flux. Alors :
+- [ ] **83d. Sonde du flux France Billet — observation seule.** Compte Awin validé le 07/10 (éditeur `3117734`) ; Fnac Spectacles FR accepté le 12/10, ce qui ouvre l'accès à son flux. Reste à créer l'URL du flux et la ranger dans le secret `AWIN_FEED_URL`. Alors :
   télécharger le flux produit (CSV compressé, `zlib`, clé en secret GitHub), compter les
   événements dans la zone (`inZone()`) et ceux qui correspondent déjà à une fiche (règle de
   doublons). Rapport seulement, rien de publié, comme le comparatif de §3.Z. **S.**
@@ -2005,7 +2007,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   Ordre : Tiqets → Awin (France Billet, Cdiscount Billetterie) → GetYourGuide et CJ plus tard. Ajouter les
   revenus d'affiliation aux déclarations de la structure.
   - [x] **Tiqets — inscrit le 07/10**, lien d'affilié reçu et collé (83b, 83c).
-    - [ ] **Saisir le numéro de TVA intracommunautaire** de la structure dans le compte
+    - [x] **Saisir le numéro de TVA intracommunautaire** (fait le 12/10) de la structure dans le compte
       partenaire (profil / informations de paiement). Sans lui, les commissions ne peuvent pas
       être facturées ni versées.
     - [ ] Cliquer le bouton sur une fiche en ligne et vérifier que le clic arrive dans le
@@ -2013,14 +2015,14 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   - [x] **Compte éditeur Awin — validé le 07/10. Identifiant éditeur (publisher ID) : `3117734`.**
     Pas un secret (il figure dans chaque lien d'affilié Awin) ; la clé du flux produit, elle, ira
     dans un secret GitHub (83d).
-    - [ ] **Saisir le numéro de TVA intracommunautaire** de la structure dans le compte Awin
+    - [x] **Saisir le numéro de TVA intracommunautaire** (fait le 12/10) de la structure dans le compte Awin
       (Account → Payment details / Company details), comme pour Tiqets. Sans lui, les commissions
       ne peuvent pas être facturées ni versées.
   - [x] **Fnac Spectacles — candidature envoyée le 07/10.** France Billet est la société de
     billetterie du groupe Fnac Darty, Fnac Spectacles sa vitrine : un seul programme, un seul
-    catalogue. En attente (1 à 15 jours). À noter à l'acceptation : le taux réel, le format et
-    l'URL du **flux produit** (Toolbox → Create-a-Feed, débloque 83d), et la réponse du réseau
-    sur le consentement aux cookies de suivi.
+    catalogue. **Acceptée le 12/10 : 0,30 à 0,50 € par billet selon la catégorie.** Restent : lire
+    les conditions du programme (fiche de l'annonceur sur Awin), créer l'URL du **flux produit**
+    (Toolbox → Create-a-Feed, débloque 83d) et la ranger dans le secret `AWIN_FEED_URL`.
   - [ ] **Cdiscount Billetterie — en attente, pas de candidature pour l'instant (07/10).** Vérifié
     par le chef de projet : billets neufs (dont le château) ; lieux déjà vendus dans la zone —
     théâtre municipal, château (dont la chapelle de la Trinité), église Saint-Louis, halle de
