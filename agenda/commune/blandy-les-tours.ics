@@ -10,23 +10,4 @@ X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_daee512ccb@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261012
-SUMMARY:Exposition LEGO Puissance Brick
-LOCATION:Château de Blandy\, Blandy-les-Tours
-DESCRIPTION:Horaires : 10h–18h\n\nTarif : Droit d'entrée du château\n\n
- Exposition de créations Lego sur le thème médiéval et fantastique avec
-  ateliers participatifs et mosaïque géante.\n\nOrganisateur : https://ww
- w.puissancebrick.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/ex
- position-lego-puissance-brick-blandy-les-tours-daee512ccb/\n\nInformations
-  collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/exposition-lego-puissance-brick
- -blandy-les-tours-daee512ccb/
-CATEGORIES:Culture & Ateliers
-GEO:48.56716;2.78188
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

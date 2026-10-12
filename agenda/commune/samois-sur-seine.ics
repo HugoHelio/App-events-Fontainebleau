@@ -11,23 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_e396a51ac4@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261011
-DTEND;VALUE=DATE:20261012
-SUMMARY:À la découverte de la forêt de Fontainebleau !
-LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 14h00 à 16h30\n\nOrganisateur : https://samois-sur-
- seine.fr/evenement/a-la-decouverte-de-la-foret-de-fontainebleau/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/a-la-decouverte-de-la-foret-de-f
- ontainebleau-samois-sur-seine-e396a51ac4/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/a-la-decouverte-de-la-foret-de-
- fontainebleau-samois-sur-seine-e396a51ac4/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_61430f6751@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261018
