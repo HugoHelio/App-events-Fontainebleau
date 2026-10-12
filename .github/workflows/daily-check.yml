@@ -47,6 +47,9 @@ jobs:
           # une réponse peut contenir le contact facultatif du visiteur, et le dépôt est public.
           # Secret absent = lecture du formulaire simplement désactivée, le scan continue.
           FEEDBACK_CSV_URL: ${{ secrets.FEEDBACK_CSV_URL }}
+          # Flux produit Awin de Fnac Spectacles (item 83e). L'URL contient la clé personnelle
+          # du compte éditeur : jamais en clair. Secret absent = source Fnac simplement sautée.
+          AWIN_FEED_URL: ${{ secrets.AWIN_FEED_URL }}
         run: node scripts/fetch-events.js
 
       # Pages statiques indexables (§3.X). Tourne aussi les jours sans scan : c'est ici que les

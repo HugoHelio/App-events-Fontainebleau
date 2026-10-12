@@ -8,8 +8,9 @@
  * source). The report also shows the feed's shape (which columns are filled, date format), since
  * the integration will depend on it.
  *
- * The feed is the whole national catalogue (12/10: ~200 000 lines, 524 MB uncompressed), so it is
- * read as a stream: only the rows inside the zone are kept, the rest feeds counters.
+ * The feed is the whole national catalogue (12/10: ~111 000 products, 524 MB uncompressed), so it is
+ * read as a stream (scripts/francebillet.js, shared with the pipeline): only the rows inside the
+ * zone are kept, the rest feeds counters.
  *
  * The feed URL holds a personal API key: it is read from AWIN_FEED_URL (GitHub secret of the same
  * name) and never printed, not even in an error message.
@@ -24,19 +25,13 @@
 
 const fs = require('fs');
 const path = require('path');
-const zlib = require('zlib');
-const { Readable } = require('stream');
-const { canonicalCommune, inZone, distanceKm, CONFIG, parisToday, addMonths, COMMUNE_TABLE } = require('./fetch-events');
+const fb = require('./francebillet');
+const { canonicalCommune, CONFIG, parisToday, addMonths } = require('./fetch-events');
 const { matchLevel } = require('./compare-sources');
-
-// canonicalCommune() returns an unknown name unchanged: the table tells a known commune apart.
-const KNOWN = new Set(['Fontainebleau', ...COMMUNE_TABLE.map((c) => c[0])]);
 
 const REPORT_DIR = path.resolve(process.env.REPORT_DIR || 'reports');
 const SNAPSHOT = path.join(REPORT_DIR, 'francebillet-feed.csv.gz');
 const REPORT = path.join(REPORT_DIR, 'francebillet-probe.md');
-
-// ───────────────────────────── Feed ─────────────────────────────
 
 /** Downloads the feed to SNAPSHOT (streamed, never held in memory), unless REUSE_SNAPSHOT=1. */
 async function fetchSnapshot() {
@@ -44,84 +39,8 @@ async function fetchSnapshot() {
     if (!fs.existsSync(SNAPSHOT)) throw new Error(`REUSE_SNAPSHOT=1 mais ${SNAPSHOT} n'existe pas : lancer une fois avec AWIN_FEED_URL.`);
     return;
   }
-  const url = (process.env.AWIN_FEED_URL || '').trim();
-  if (!/^https:\/\/productdata\.awin\.com\//.test(url)) {
-    throw new Error('AWIN_FEED_URL absente ou inattendue (doit commencer par https://productdata.awin.com/).');
-  }
-  // The URL carries the API key: errors report the HTTP status only.
-  const res = await fetch(url, { signal: AbortSignal.timeout(600000) });
-  if (!res.ok) throw new Error(`Téléchargement du flux refusé : HTTP ${res.status}.`);
   fs.mkdirSync(REPORT_DIR, { recursive: true });
-  await new Promise((resolve, reject) => {
-    Readable.fromWeb(res.body).pipe(fs.createWriteStream(SNAPSHOT)).on('finish', resolve).on('error', reject);
-  });
-}
-
-/**
- * Streaming RFC 4180 parser (same rules as datatourisme.parseCsv, which needs the whole text):
- * calls onRow(fields) for each record. A quote at the end of a chunk is resolved by the next one.
- */
-function csvStream(onRow) {
-  let row = [], field = '', quoted = false, quoteSeen = false;
-  return {
-    write(text) {
-      for (let i = 0; i < text.length; i++) {
-        const c = text[i];
-        if (quoteSeen) {
-          quoteSeen = false;
-          if (c === '"') { field += '"'; continue; }
-          quoted = false;
-        }
-        if (quoted) {
-          if (c === '"') quoteSeen = true; else field += c;
-        } else if (c === '"') quoted = true;
-        else if (c === ',') { row.push(field); field = ''; }
-        else if (c === '\n') { row.push(field); field = ''; onRow(row); row = []; }
-        else if (c !== '\r') field += c;
-      }
-    },
-    end() { if (field !== '' || row.length) { row.push(field); onRow(row); } },
-  };
-}
-
-function readFeed(onRow) {
-  const parser = csvStream(onRow);
-  return new Promise((resolve, reject) => {
-    const gunzip = zlib.createGunzip();
-    gunzip.setEncoding('utf8');
-    gunzip.on('data', (chunk) => parser.write(chunk));
-    gunzip.on('end', () => { parser.end(); resolve(); });
-    gunzip.on('error', () => reject(new Error('Le flux reçu n\'est pas en gzip : choisir « Compression Type : gzip » dans Create-a-Feed.')));
-    fs.createReadStream(SNAPSHOT).on('error', reject).pipe(gunzip);
-  });
-}
-
-// ───────────────────────────── Fields ─────────────────────────────
-
-const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Number(v));
-
-/** "2026-10-24 20:00:00", "2026-10-24T20:00", "24/10/2026 20:00" → "2026-10-24"; else null. */
-function isoDate(raw) {
-  const s = String(raw || '').trim();
-  let m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if (m) return `${m[1]}-${m[2]}-${m[3]}`;
-  m = s.match(/^(\d{2})\/(\d{2})\/(\d{4})/);
-  if (m) return `${m[3]}-${m[2]}-${m[1]}`;
-  return null;
-}
-
-/**
- * 'zone' — a commune of COMMUNE_TABLE that the two-ring rule keeps;
- * 'near' — a name we do not know (old commune, hamlet) but coordinates within the radius;
- * 'out'  — everything else. inZone() lets unknown names pass, so it is not enough on its own here:
- *          the feed is national.
- */
-function zoneOf(row) {
-  const city = canonicalCommune(row.event_location_city || '');
-  if (KNOWN.has(city)) return inZone(city) ? 'zone' : 'out';
-  const lat = num(row.latitude), lng = num(row.longitude);
-  if (lat != null && lng != null && distanceKm(lat, lng) <= CONFIG.maxRadiusKm) return 'near';
-  return 'out';
+  await fb.download(SNAPSHOT);
 }
 
 // ───────────────────────────── Report ─────────────────────────────
@@ -209,27 +128,23 @@ async function main() {
   let header = null;
   const zone = [];
   const stats = { rows: 0, filled: [], example: [], undated: 0, undatedSamples: [], cities: new Map(), categories: new Map(), firstRows: [] };
-  await readFeed((cols) => {
+  await fb.readFeed(SNAPSHOT, (r, cols) => {
     if (!header) {
-      header = cols.map((h, i) => (i === 0 ? h.replace(/^﻿/, '') : h).replace(/^Tickets:/, ''));
+      header = cols;
       stats.filled = header.map(() => 0);
       stats.example = header.map(() => '');
-      return;
     }
-    if (cols.length < 2) return;
     stats.rows++;
-    cols.forEach((v, i) => { if (v.trim()) { stats.filled[i]++; if (!stats.example[i]) stats.example[i] = v; } });
-    const r = Object.fromEntries(header.map((h, i) => [h, cols[i] ?? '']));
-    // 12/10: event_location_city is empty on every row; the town is in venue_address (« MELUN »).
-    if (!r.event_location_city.trim()) r.event_location_city = r.venue_address.trim() === '.' ? '' : r.venue_address.trim();
+    header.forEach((h, i) => { const v = r[h]; if (v.trim()) { stats.filled[i]++; if (!stats.example[i]) stats.example[i] = v; } });
+    r.event_location_city = fb.rowCity(r);
     r.title = r.event_name || r.product_name || '';
-    r.date = isoDate(r.event_date) || isoDate(r.valid_from);
+    r.date = fb.isoDate(r.event_date) || fb.isoDate(r.valid_from);
     if (!r.date) { stats.undated++; if (r.event_date && stats.undatedSamples.length < 5) stats.undatedSamples.push(r.event_date); }
     const city = r.event_location_city || '(vide)';
     stats.cities.set(city, (stats.cities.get(city) || 0) + 1);
     stats.categories.set(r.merchant_category || '(vide)', (stats.categories.get(r.merchant_category || '(vide)') || 0) + 1);
     if (stats.firstRows.length < 3) stats.firstRows.push(r);
-    r.zone = zoneOf(r);
+    r.zone = fb.zoneOf(r);
     if (r.zone !== 'out') zone.push(r);
   });
   if (!header) throw new Error('Flux vide.');
@@ -251,4 +166,3 @@ if (require.main === module) {
   main().catch((err) => { console.error('❌ probe-francebillet:', err && err.message ? err.message : err); process.exit(1); });
 }
 
-module.exports = { isoDate, zoneOf, csvStream };

@@ -42,7 +42,29 @@
     "  - \"price\" n'est affiché qu'avec \"samePrice\": true (vérifié contre le prix officiel) ;",
     "  - \"blurb\" : une phrase sur le lieu, jamais d'horaires (ils changent, la fiche du partenaire",
     "    les donne). Les jours de fermeture hebdomadaire, oui (« sauf le mardi »).",
-    "Les lieux ne touchent pas data.json : node scripts/generate-pages.js suffit."
+    "Les lieux ne touchent pas data.json : node scripts/generate-pages.js suffit.",
+    "",
+    "FLUX DE BILLETTERIE (\"feeds\", item 83e). La troisième sorte : la Fnac (Fnac Spectacles, via",
+    "Awin). Le pipeline lit son catalogue et range, sur chaque date qu'elle vend dans la zone, son",
+    "propre lien d'affilié (ticketUrl). L'entrée ci-dessous ne fait qu'allumer ou éteindre les",
+    "boutons « Billets » : \"active\": false les retire tous au prochain scan (ou tout de suite avec",
+    "node scripts/affiliates.js --write). Pas de règle de lieu ni de tarif : la Fnac vend cette",
+    "date-là. \"host\" : quand le lien de la fiche est déjà la page Fnac, le bouton le remplace,",
+    "pour ne pas montrer deux liens vers la même page. Pas de « même prix » : rien n'est comparé",
+    "au tarif de la salle."
+  ],
+
+  "feeds": [
+    {
+      "id": "fnac-spectacles",
+      "source": "francebillet",
+      "provider": "Fnac Spectacles",
+      "label": "Billets",
+      "labelEn": "Tickets",
+      "host": "fnacspectacles.com",
+      "active": true,
+      "note": "Programme Fnac Spectacles FR accepté sur Awin le 12/10/2026 : 0,30 à 0,50 € par billet. Le flux sert d'abord de source (agglomération de Melun) ; la commission est un bonus."
+    }
   ],
 
   "offers": [

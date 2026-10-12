@@ -1211,6 +1211,38 @@ The Vaux place now shows « 18 €, même prix » (Tiqets price checked).
 - Activation without a paid scan: `node scripts/affiliates.js` (preview) then `--write`
   (same `serializeEvent()`, `generatedAt` untouched), then `generate-pages.js`.
 
+**Fnac Spectacles feed (item 83e, October 12).** The third kind of entry in `affiliates.json`:
+`feeds`. `scripts/francebillet.js` downloads the Awin product feed (the national catalogue,
+~111 000 products, 524 MB uncompressed: streamed to a temporary file, never held in memory),
+keeps the dates inside the zone and the window, and hands them to the pipeline as a **fifth
+source**, `source: "francebillet"`. Each record carries two links: `url`, the show's page on
+fnacspectacles.com, plain — where the information comes from — and `ticketUrl`, the same page
+through Awin. `validateEvent()` accepts a `ticketUrl` only from this source and only if it is an
+Awin click link for our publisher id (`3117734`) and Fnac Spectacles (`m=12494`): nothing a
+model writes can become a button. `bookingFor()` turns it into the « 🎟️ Billets » button while
+the feed entry is `active`; switching it off removes every button on the next write.
+- **Merge.** A Fnac date confirms a show we hold (`enrichFrom()`: the ticket link follows, a
+  home-page link is replaced by the show's page, `source` becomes `francebillet`), or becomes a
+  new record. A duplicate fold (`mergeInto()`) carries the ticket and its source to the winner.
+  Titles lose the tour and the venue (« Mulan - Espace Nino Ferrer, Dammarie-lès-Lys » →
+  « Mulan »): the bare title is what matches another source's record. The organiser comes from
+  « Présenté par X (licence) » only when a licence closes it; the preamble is cut from the text.
+- **No longer on sale.** When the feed loaded and a date is gone from it, its `ticketUrl` is
+  dropped (the button goes); the event stays, pruned by date like any other. A failed download
+  drops nothing.
+- **One link, not two.** When the event's `url` is on `fnacspectacles.com` (the feed's `host`),
+  `booking.samePage` hides the « organiser » link on the card and the page: both would open the
+  same Fnac page, one of them unpaid. Where a real organiser page exists, both links stay.
+- **Not promoted.** The Fnac pages refuse robots, so the links stay `unverified`, and « À ne
+  pas manquer » (item 77) requires a verified link: Fnac records never reach the home picks.
+  `/nos-sources/` says it: the Fnac is a partner **and** a source, published like the others.
+- No « même prix »: nothing compares the Fnac price with the venue's box office.
+- First run (simulation of 12/10, Gemini off): 21 dates in the window, **18 new records**, 3
+  Gemini-only records confirmed (Coup de Bluff au Cabaret, Clément Blouin, Mulan, whose link was
+  the home page of ville-melun.fr).
+- Test without the key: `FRANCEBILLET_FILE=reports/francebillet-feed.csv.gz` reads the probe's
+  snapshot. `FRANCEBILLET=0` disables the source; without the `AWIN_FEED_URL` secret it is skipped.
+
 ### AB. Revenue beyond affiliation — study (item 84, October 7, 2026)
 
 A study, nothing built. Every figure below is an **order of magnitude from stated assumptions**,
@@ -1592,6 +1624,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-12 | **Fnac Spectacles FR accepté sur Awin : 0,30 à 0,50 € par billet selon la catégorie** (83-0). Le flux sert d'abord de **source légitime** (item 72) ; les boutons « Réserver » Fnac sont un bonus, pas l'objectif. Les conditions du programme sont lues avant toute diffusion. TVA intracommunautaire saisie chez Awin et Tiqets | À ce taux, la Fnac rapporte comme Ticketmaster (0,32 €), que §3.AB jugeait sans effet : une dizaine de billets par mois ne fait pas un euro de plus. Un flux de dates vendues par la billetterie de la salle, en revanche, confirme des spectacles sans grounding. 83d reste une sonde : on mesure la couverture locale avant de coder l'intégration |
 | 2026-10-12 | **Vaux-le-Vicomte, Toussaint : le prix de la fiche nomme le billet principal à 18 €** (`overrides.json`, `EVT_8068526141`), ce qui lui donne le bouton Tiqets. Les animations à réserver (exploration à la lampe torche, billet à part ; Carnaval des animaux, 23,50 €, 4-6 ans) restent sans bouton, citées dans le prix | Relevé du chef de projet sur vaux-le-vicomte.com : les autres animations sont incluses dans l'entrée à 18 €. La fiche Gemini affichait « 17 € à 22 € » : sans le mot « 18 », l'offre ne s'appliquait pas, malgré le lien corrigé le 07/10. On ne vend que le billet qui fait vraiment entrer : celui de la visite, pas une animation au créneau limité. Bouton visible au prochain scan (`affiliates.js --write` ne rejoue pas les corrections) |
 | 2026-10-12 | **Sonde du flux Fnac Spectacles (83d), premier relevé** (`scripts/probe-francebillet.js`, lecture seule) : flux national de 111 425 produits (524 Mo décompressé, lu en flux). Dans la zone, **67 dates, toutes dans l'agglomération de Melun** (L'Escale, Espace Pierre Bachelet - La Cartonnerie, Espace Nino Ferrer, Le Mas, La Ferme des Jeux, Le Chaudron), dont **21 dans la fenêtre** de 3 mois ; **18 absentes du site**, 3 qui confirment des fiches Gemini seules (Coup de Bluff au Cabaret, Clément Blouin, Mulan, qui pointent vers l'accueil de ville-melun.fr). Rien à Fontainebleau même, sauf le billet d'entrée du château (17 €) et celui de Vaux (18 €) | Le flux couvre les grandes salles de l'agglomération de Melun, que les autres sources voient mal (4 fiches publiées dans ces salles, toutes Gemini seules), et rien des petites salles de Fontainebleau (le Théâtre municipal vend chez Mapado). Les billets des châteaux restent chez Tiqets : même prix, 8 % contre 0,30-0,50 € par billet. Forme du flux : `event_location_city` toujours vide, la commune est dans `venue_address` ; colonnes préfixées `Tickets:` ; une ligne par date. La règle de correspondance de `compare-sources.js` manque les titres d'un seul mot court (« Mulan ») : 83e devra tenir compte de la salle |
+| 2026-10-12 | **Fnac Spectacles devient la cinquième source publiée, avec un bouton « Billets »** (83e, §3.AA) : `scripts/francebillet.js`, `source: "francebillet"`, lien d'affilié `ticketUrl` rangé sur chaque date vendue, bouton dérivé de l'entrée `feeds` d'`affiliates.json`. Secret `AWIN_FEED_URL` dans `daily-check.yml`. Décidé par le chef de projet au vu de la sonde (« un trou dans notre listing ») | Les grandes salles de l'agglomération de Melun manquaient presque entièrement (4 fiches, toutes Gemini seul) ; la billetterie qui vend la date est une source plus sûre que la recherche web. Le lien de la fiche reste la page Fnac en clair (d'où vient l'information) ; seul le bouton porte l'affiliation, marqué « lien partenaire ». Quand les deux mèneraient à la même page, un seul est montré. Un `ticketUrl` n'est accepté que de ce flux et au format Awin exact : aucune sortie du modèle ne peut devenir un lien rémunéré. Les fiches Fnac ne sont jamais mises en avant (lien non vérifiable, pages fermées aux robots) |
 
 ---
 
@@ -1639,7 +1672,7 @@ ce qui rapporte vite pour peu de code, puis ce qui demande une mesure avant d'ê
 | 2 | ~~**83b. Activer l'offre Tiqets du château**~~ — fait le 07/10 | Dix minutes dès le lien reçu ; 4 fiches aujourd'hui, et le château est la première attraction de la zone | XS |
 | 3 | ~~**83c. Bloc « Visiter » hors événements**~~ — fait le 07/10 (château, Vaux) | Une offre de monument ne dépend d'aucune date : c'est le revenu le plus sûr. **Avant le 17/10** pour la page des vacances de la Toussaint, quand arrivent les visiteurs | S |
 | 4 | **83d. Sonde du flux France Billet** (observation seule) — **faite le 12/10** : 21 dates dans la fenêtre, 18 nouvelles, agglomération de Melun | La couverture locale de la billetterie nationale est inconnue : on la mesure avant de construire l'intégration | S |
-| 5 | **83e. Intégration du flux Awin** (France Billet, puis Cdiscount Billetterie si accepté) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
+| 5 | **83e. Intégration du flux Awin** (France Billet, puis Cdiscount Billetterie si accepté) — **Fnac faite le 12/10** (§3.AA) | Seulement si 83d trouve assez d'événements dans la zone. Double bénéfice : boutons « Réserver » **et** source légitime pour l'item 72 | M |
 | 6 | ~~**84. Chiffrer les revenus hors affiliation**~~ — étude livrée le 07/10 (§3.AB) ; reste la décision grounding | Rien à vendre avant l'audience ; mesure sur les pages générées faite le 07/10 (84a) | S (étude) |
 | 7 | **83f. Bilan à deux mois** | Clics `booking-click`, ventes, revenus par offre. Décide de 83g et de l'abandon d'une plateforme | XS |
 | 8 | **83g. Hébergement (Booking.com via CJ)** | En dernier : 4 %, suivi limité à la session, hors du cœur « sorties » du site | S |
@@ -1844,7 +1877,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   télécharger le flux produit (CSV compressé, `zlib`, clé en secret GitHub), compter les
   événements dans la zone (`inZone()`) et ceux qui correspondent déjà à une fiche (règle de
   doublons). Rapport seulement, rien de publié, comme le comparatif de §3.Z. **S.**
-- [ ] **83e. Intégration du flux Awin** — si 83d trouve assez d'événements (seuil à fixer avec
+- [x] **83e. Intégration du flux Awin — Fnac Spectacles faite le 12/10** (§3.AA, journal du 12/10). Reste Cdiscount Billetterie, seulement s'il est accepté et vend des dates absentes du flux Fnac. Texte d'origine — si 83d trouve assez d'événements (seuil à fixer avec
   le chef de projet au vu du rapport). Correspondance → `booking` sur la fiche existante ;
   événement nouveau → observation, puis cinquième source publiée (`source: "francebillet"`,
   ajoutée à `CONFIRMED_SOURCES`). Cdiscount Billetterie par le même code s'il a des salles locales (Ticketmaster : absent d'Awin France au 07/10). **M.**

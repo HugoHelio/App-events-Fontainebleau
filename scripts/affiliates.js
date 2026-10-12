@@ -16,6 +16,11 @@
  *     « Dates à confirmer » (79b), and a « Réserver » button next to it would contradict it.
  *   - An offer must match the venue AND the price wording: an entrance ticket is offered on an
  *     exhibition "inclus dans le billet d'entrée", never on a concert sold separately.
+ *   - Feeds (item 83e) are the third kind: a ticketing feed read by the pipeline stores, on each
+ *     date it sells, its own affiliate link (`ticketUrl`, Fnac Spectacles). The entry in `feeds`
+ *     only turns those links into buttons, or off. No venue or price rule: the feed sells that
+ *     very date. When the event's own link is the same ticketing page, the button stands for it
+ *     (`samePage`): the pages show one link to the Fnac, not two.
  *   - Places (item 83c) are the other kind: a monument's entrance ticket, shown in a "Visiter"
  *     block that depends on no event, so no source rule applies. What keeps them true is the
  *     season (`from`/`to`) and the exceptional closures (`closed`), checked on the official site.
@@ -32,7 +37,7 @@ const path = require('path');
 const AFFILIATES_PATH = path.resolve(process.env.AFFILIATES_PATH || 'affiliates.json');
 
 // Sources we read ourselves. Gemini records carry no `source` at all.
-const CONFIRMED_SOURCES = new Set(['site', 'datatourisme', 'openagenda']);
+const CONFIRMED_SOURCES = new Set(['site', 'datatourisme', 'openagenda', 'francebillet']);
 
 const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -83,6 +88,29 @@ function loadOffers(file = AFFILIATES_PATH) {
 
 let cached = null;
 const offers = () => (cached ??= loadOffers());
+
+/** Ticketing feeds (item 83e): { id, source, provider, label, labelEn, host, active }. */
+function loadFeeds(file = AFFILIATES_PATH) {
+  let raw;
+  try { raw = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw new Error(`affiliates.json unreadable: ${err.message}`);
+  }
+  return (Array.isArray(raw?.feeds) ? raw.feeds : [])
+    .filter((f) => f && f.id && f.source && f.label)
+    .map((f) => ({
+      id: String(f.id),
+      source: String(f.source),
+      provider: String(f.provider || ''),
+      label: String(f.label),
+      labelEn: f.labelEn ? String(f.labelEn) : undefined,
+      host: String(f.host || '').replace(/^www\./, '').toLowerCase(),
+      active: f.active === true,
+    }));
+}
+
+let cachedFeeds = null;
+const feeds = () => (cachedFeeds ??= loadFeeds());
 
 const isIso = (d) => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d);
 
@@ -150,13 +178,17 @@ function matchOffer(e, list = offers()) {
 }
 
 /** The `booking` field for data.json, or undefined. Only active offers are ever published. */
-function bookingFor(e, list = offers()) {
+function bookingFor(e, list = offers(), feedList = feeds()) {
   const o = matchOffer(e, list.filter((x) => x.active));
-  if (!o) return undefined;
-  return { url: o.url, label: o.label, labelEn: o.labelEn, provider: o.provider, samePrice: o.samePrice || undefined, offer: o.id };
+  if (o) return { url: o.url, label: o.label, labelEn: o.labelEn, provider: o.provider, samePrice: o.samePrice || undefined, offer: o.id };
+  // Only the Fnac feed writes a ticketUrl (validateEvent checks it is an Awin link for Fnac).
+  const f = e.ticketUrl && feedList.find((x) => x.active && x.source === 'francebillet');
+  const url = f && httpUrl(e.ticketUrl);
+  if (!url) return undefined;
+  return { url, label: f.label, labelEn: f.labelEn, provider: f.provider, offer: f.id, samePage: (f.host && hostOf(e.url) === f.host) || undefined };
 }
 
-module.exports = { loadOffers, matchOffer, bookingFor, loadPlaces, placesOpen, CONFIRMED_SOURCES };
+module.exports = { loadOffers, matchOffer, bookingFor, loadFeeds, loadPlaces, placesOpen, CONFIRMED_SOURCES };
 
 if (require.main === module) {
   // Required here, not at the top: fetch-events requires this module.
@@ -173,6 +205,11 @@ if (require.main === module) {
     for (const e of hits) console.log(`   ${e.id} · ${e.startDate} · ${e.title.slice(0, 70)} · ${e.price}`);
   }
   if (!list.length) console.log('Aucune offre valide dans affiliates.json.');
+  for (const f of feeds()) {
+    const hits = events.filter((e) => e.ticketUrl);
+    console.log(`${f.active ? '✅' : '⏸️ '} ${f.id} (${f.provider}) → ${hits.length} date(s) avec un lien de billetterie${f.active ? '' : ' — inactif, rien de publié'}`);
+    for (const e of hits) console.log(`   ${e.id} · ${e.startDate} · ${e.title.slice(0, 70)} · ${e.price}`);
+  }
   // Places live on the generated pages only: generate-pages.js reads them, data.json never does.
   for (const p of loadPlaces()) {
     const season = p.from || p.to ? `ouvert ${p.from ? `du ${p.from} ` : ''}${p.to ? `au ${p.to}` : ''}`.trim() : 'toute l’année';

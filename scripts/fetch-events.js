@@ -28,6 +28,7 @@ const path = require('path');
 const crypto = require('crypto');
 const datatourisme = require('./datatourisme');
 const openagenda = require('./openagenda');
+const francebillet = require('./francebillet');
 const feedback = require('./feedback');
 const translate = require('./translate');
 const dedupeJudge = require('./dedupe-judge');
@@ -78,6 +79,9 @@ const CONFIG = {
   // skipped day is retried the next morning instead of waiting three more.
   minRunIntervalHours: envInt('MIN_RUN_INTERVAL_HOURS', 60),
   forceRun: process.env.FORCE_RUN === '1',
+  // Fnac Spectacles / France Billet, fifth source (Awin product feed, item 83e). Needs the
+  // AWIN_FEED_URL secret; without it the source is skipped. FRANCEBILLET=0 disables it.
+  francebillet: process.env.FRANCEBILLET !== '0',
   // OpenAgenda, third source (open data, via the Île-de-France portal). OPENAGENDA=0 disables it.
   openagenda: process.env.OPENAGENDA !== '0',
   // DATAtourisme, second source (open data). Set DATATOURISME=0 to collect from Gemini only.
@@ -85,6 +89,9 @@ const CONFIG = {
   // Organisers' own sites, read without grounding (sources.json, §3.Z2). SITES=0 disables them.
   sites: process.env.SITES !== '0',
 };
+
+// Sources we read ourselves. Gemini records carry no `source` at all.
+const READ_SOURCES = ['datatourisme', 'openagenda', 'site', 'francebillet'];
 
 const CATEGORIES = [
   'Sport & Outdoor',
@@ -542,7 +549,10 @@ function validateEvent(raw, { today, maxDate }) {
       url,
       // Provenance. Absent (undefined) on Gemini records, so serializeEvent omits the field and
       // the existing data.json entries stay byte-identical.
-      source: ['datatourisme', 'openagenda', 'site'].includes(raw.source) ? raw.source : undefined,
+      source: READ_SOURCES.includes(raw.source) ? raw.source : undefined,
+      // The Fnac « Billets » link (item 83e). Only the feed may set it, and only an Awin click
+      // link for our publisher id and Fnac Spectacles: nothing a model writes becomes a button.
+      ticketUrl: raw.source === 'francebillet' && francebillet.isTicketUrl(raw.ticketUrl) ? raw.ticketUrl : undefined,
       // Only OpenAgenda carries one today. Through cleanUrl() like any other link: it ends up in
       // an <img src> eventually, and the value comes from a third party.
       image: cleanUrl(raw.image) || undefined,
@@ -568,7 +578,10 @@ function fromExisting(old, ctx) {
   // text and replaces it if that text has changed.
   if (typeof old.descriptionEn === 'string' && old.descriptionEn.trim()) e.descriptionEn = cleanText(old.descriptionEn, 600);
   if (old.image) e.image = cleanUrl(old.image) || undefined;
-  if (['datatourisme', 'openagenda', 'site'].includes(old.source)) e.source = old.source;
+  if (READ_SOURCES.includes(old.source)) e.source = old.source;
+  // A Fnac link survives between scans (affiliates.js --write needs it); the next scan whose feed
+  // loads drops it if Fnac no longer sells the date.
+  if (francebillet.isTicketUrl(old.ticketUrl)) e.ticketUrl = old.ticketUrl;
 
   const oLat = toNum(old.lat);
   const oLng = toNum(old.lng);
@@ -612,6 +625,12 @@ function mergeInto(target, incoming) {
   for (const f of ['description', 'organizer', 'locationName', 'city']) {
     if (!target[f] && incoming[f]) target[f] = incoming[f];
   }
+  // A duplicate fold must not lose the Fnac ticket (item 83e), nor the confirmation it carries:
+  // Fnac selling the date is a source we read.
+  if (incoming.ticketUrl && !target.ticketUrl) {
+    target.ticketUrl = incoming.ticketUrl;
+    if (!target.source) target.source = incoming.source;
+  }
   // Keep a URL that already verified fine (stable across runs); otherwise adopt the newly reported one,
   // unless it is a temporary Google grounding redirect.
   //
@@ -635,8 +654,9 @@ function mergeInto(target, incoming) {
  *   - a link to the event's own page when ours is a home page, or a deeper page on the same site;
  *   - a postal address when our position is only approximate (the next step re-geocodes it);
  *   - whatever we left blank.
- * And it marks the record as confirmed by a legitimate source (`source: 'site'`), which is what
- * the grounding exit criterion counts (decision of 24 September).
+ * And it marks the record as confirmed by a legitimate source (`source: 'site'`, or the reading
+ * source's own name, e.g. 'francebillet'), which is what the grounding exit criterion counts
+ * (decision of 24 September).
  */
 const isHome = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
 
@@ -663,7 +683,9 @@ function enrichFrom(target, incoming) {
   for (const f of ['schedule', 'price', 'organizer', 'description', 'locationName']) {
     if (!target[f] && incoming[f]) target[f] = incoming[f];
   }
-  if (!target.source) target.source = 'site';
+  // A Fnac link always follows the latest feed: the show's page may move, the sale may close.
+  if (incoming.ticketUrl) target.ticketUrl = incoming.ticketUrl;
+  if (!target.source) target.source = incoming.source || 'site';
 }
 
 // ───────────────────────────── Gemini ─────────────────────────────
@@ -1274,7 +1296,7 @@ function applyOverrides(records, overrides, stats) {
 const FIELD_ORDER = [
   'id', 'title', 'category', 'ageMin', 'ageMax', 'city', 'locationName', 'lat', 'lng',
   'geoSource', 'geoApprox', 'dateType', 'startDate', 'endDate', 'schedule', 'price',
-  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'booking', 'image', 'source', 'lastSeen', 'pageUrl',
+  'organizer', 'description', 'descriptionEn', 'url', 'urlStatus', 'urlCheckedAt', 'ticketUrl', 'booking', 'image', 'source', 'lastSeen', 'pageUrl',
 ];
 
 function serializeEvent(e) {
@@ -1361,6 +1383,15 @@ function renderSummary(stats, ctx) {
       L.push(`- 📅 OpenAgenda (${stats.oa.agendas} agenda(s)) : ${stats.oa.total} bruts → ${stats.oa.excludedAgendas} agenda(s) emploi écarté(s)${stats.oa.cancelled ? `, ${stats.oa.cancelled} annulé(s)` : ''} → **${stats.oa.records}** fiche(s), ${stats.oaDeduped} doublon(s) d'une autre source`);
       const oaRej = Object.entries(stats.oaRejected);
       if (oaRej.length) L.push(`  - rejected at validation: ${oaRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+    }
+  }
+  if (stats.fb && !stats.fb.skipped) {
+    if (stats.fb.error) {
+      L.push(`- 🎟️ Fnac Spectacles: ❌ ${String(stats.fb.error).slice(0, 160)} (les autres sources sont conservées)`);
+    } else {
+      L.push(`- 🎟️ Fnac Spectacles : ${stats.fb.total} produits, ${stats.fb.inZone} dans la zone → **${stats.fb.records}** date(s) dans la fenêtre, ${stats.fbConfirmed} confirment une fiche existante${stats.fbTicketsDropped ? `, ${stats.fbTicketsDropped} lien(s) « Billets » retiré(s) (plus en vente)` : ''}`);
+      const fbRej = Object.entries(stats.fbRejected);
+      if (fbRej.length) L.push(`  - rejected at validation: ${fbRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
     }
   }
   if (stats.crossCityDeduped) {
@@ -1715,6 +1746,7 @@ async function main() {
     deadUrls: 0, urlsChecked: 0, unverified: 0, geo: {}, total: 0, written: false,
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
+    fb: null, fbRejected: {}, fbConfirmed: 0, fbTicketsDropped: 0,
     sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
     villagesConfirmed: 0, villagesUnconfirmed: 0, villagesUnconfirmedList: [],
     unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], recategorised: 0,
@@ -1843,10 +1875,32 @@ async function main() {
     }
   }
 
+  // 1e. Fnac Spectacles — the large venues of the Melun area (item 83e) ──────────
+  // A national feed: only the dates inside the zone and the window come out of load().
+  let fbRaw = [];
+  if (CONFIG.francebillet) {
+    console.log('🎟️ Fnac Spectacles…');
+    try {
+      // FRANCEBILLET_FILE: a feed already downloaded (the probe's snapshot), for a test run.
+      const loaded = await francebillet.load({ today, windowEnd: maxDate, file: process.env.FRANCEBILLET_FILE || undefined });
+      if (loaded.skipped) {
+        stats.fb = { skipped: true };
+        console.log('   → AWIN_FEED_URL absente, source sautée');
+      } else {
+        fbRaw = francebillet.toPipelineEvents(loaded.rows);
+        stats.fb = { ...loaded.meta, records: fbRaw.length };
+        console.log(`   → ${loaded.meta.total} produits, ${loaded.meta.inZone} dans la zone → ${fbRaw.length} date(s) dans la fenêtre`);
+      }
+    } catch (err) {
+      stats.fb = { error: err.message };
+      console.error(`   ❌ Fnac Spectacles: ${String(err.message).slice(0, 300)}`);
+    }
+  }
+
   // A source failing is survivable as long as one of them produced something: events are pruned
   // by date only, never by absence, so a partial failure deletes nothing.
-  if (okScans === 0 && dtRaw.length === 0 && oaRaw.length === 0 && siteRaw.length === 0) {
-    throw new Error('Every source failed (Gemini, DATAtourisme, OpenAgenda) — data.json left untouched');
+  if (okScans === 0 && dtRaw.length === 0 && oaRaw.length === 0 && siteRaw.length === 0 && fbRaw.length === 0) {
+    throw new Error('Every source failed (Gemini, DATAtourisme, OpenAgenda, sites, Fnac) — data.json left untouched');
   }
 
   // 2. Validate new records ─────────────────────────────────────────────
@@ -1892,7 +1946,15 @@ async function main() {
   }
   if (siteRaw.length) console.log(`🧹 ${validSite.length}/${siteRaw.length} site records valid`);
 
-  if (validNew.length === 0 && validDt.length === 0 && validOa.length === 0 && validSite.length === 0) {
+  const validFb = [];
+  for (const raw of fbRaw) {
+    const v = validateEvent(raw, ctx);
+    if (v.ok) validFb.push(v);
+    else bump(stats.fbRejected, v.reason);
+  }
+  if (fbRaw.length) console.log(`🧹 ${validFb.length}/${fbRaw.length} Fnac records valid`);
+
+  if (validNew.length === 0 && validDt.length === 0 && validOa.length === 0 && validSite.length === 0 && validFb.length === 0) {
     throw new Error('Sources returned no valid event — data.json left untouched');
   }
 
@@ -1958,6 +2020,17 @@ async function main() {
   // what nothing matches becomes a new event. Wording that differs more than isSameOccurrence()
   // tolerates is caught by the judged dedupe below, which keeps the stored record as winner.
   for (const v of validSite) addRecord(v, { fuzzy: true, counter: 'siteConfirmed', confirm: true, addNew: !v.long });
+  // A dated performance on sale at the Fnac: confirms the show we already hold (its link to the
+  // ticket follows), or becomes a new one. Its date is a sale date, so it may add.
+  for (const v of validFb) addRecord(v, { fuzzy: true, counter: 'fbConfirmed', confirm: true });
+  // Fnac no longer sells a date (sold out, withdrawn): its button goes, the event stays — pruned
+  // by date like any other. Only when the feed loaded: a failed download proves nothing.
+  if (stats.fb && !stats.fb.error && !stats.fb.skipped) {
+    const onSale = new Set(validFb.map((v) => v.event.ticketUrl).filter(Boolean));
+    for (const rec of records.values()) {
+      if (rec.event.ticketUrl && !onSale.has(rec.event.ticketUrl)) { delete rec.event.ticketUrl; stats.fbTicketsDropped++; }
+    }
+  }
   // After every source that may add: a villages record (confirmOnly scan) only refreshes lastSeen
   // of an event already held — never its dates or fields, never a new event (§7, 05/10).
   for (const v of validConfirmOnly) {
@@ -2087,6 +2160,7 @@ async function main() {
   const feedsHealthy = {
     datatourisme: Boolean(stats.dt && !stats.dt.error),
     openagenda: Boolean(stats.oa && !stats.oa.error),
+    francebillet: Boolean(stats.fb && !stats.fb.error && !stats.fb.skipped),
   };
   for (const e of kept) {
     const age = daysBetween(e.lastSeen || today, today);

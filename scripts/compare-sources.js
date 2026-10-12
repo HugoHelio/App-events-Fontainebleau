@@ -106,7 +106,7 @@ const cell = (s) => String(s ?? '').replace(/\|/g, '/').replace(/\s+/g, ' ').tri
 
 function compare(published, pools) {
   const rows = published.map((e) => {
-    const openSource = ['datatourisme', 'openagenda', 'site'].includes(e.source);
+    const openSource = ['datatourisme', 'openagenda', 'site', 'francebillet'].includes(e.source);
     let best = openSource ? { level: 'strict', pool: e.source, title: e.title } : null;
     for (const pool of pools) {
       for (const c of pool.events) {

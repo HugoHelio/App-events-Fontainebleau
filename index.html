@@ -1447,7 +1447,7 @@
         dataLangNote: '',
         updatedOn: (when) => `Mis à jour le ${when}`,
         ourSources: 'Nos sources',
-        confirmedBy: { site: '✓ Confirmé par un site officiel', datatourisme: '✓ Confirmé par DATAtourisme', openagenda: '✓ Confirmé par OpenAgenda' },
+        confirmedBy: { site: '✓ Confirmé par un site officiel', datatourisme: '✓ Confirmé par DATAtourisme', openagenda: '✓ Confirmé par OpenAgenda', francebillet: '✓ En vente sur Fnac Spectacles' },
         datesUnsure: 'Dates à confirmer',
         staleFor: (days) => ` — ⚠️ non actualisé depuis ${days} jours`,
         feedbackIntro: 'Une erreur ou un événement manquant ?',
@@ -1552,7 +1552,7 @@
         dataLangNote: 'Descriptions are machine-translated. Event titles, times and prices are kept in French, exactly as the organisers publish them, so you can recognise them on a poster or at the ticket desk.',
         updatedOn: (when) => `Updated on ${when}`,
         ourSources: 'Our sources (in French)',
-        confirmedBy: { site: '✓ Confirmed by an official site', datatourisme: '✓ Confirmed by DATAtourisme', openagenda: '✓ Confirmed by OpenAgenda' },
+        confirmedBy: { site: '✓ Confirmed by an official site', datatourisme: '✓ Confirmed by DATAtourisme', openagenda: '✓ Confirmed by OpenAgenda', francebillet: '✓ On sale at Fnac Spectacles' },
         datesUnsure: 'Dates to be confirmed',
         staleFor: (days) => ` — ⚠️ not refreshed for ${days} days`,
         feedbackIntro: 'Spotted an error, or a missing event?',
@@ -2642,7 +2642,7 @@
     // Item 79b, same rule as datesAtRisk() in fetch-events.js: Gemini alone, and a link that is
     // missing or only a home page. Nothing we read shows this year's dates.
     function datesUnsure(a) {
-      if (['site', 'datatourisme', 'openagenda'].includes(a.source)) return false;
+      if (['site', 'datatourisme', 'openagenda', 'francebillet'].includes(a.source)) return false;
       try { return !a.url || ['', '/'].includes(new URL(a.url).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; }
     }
 
@@ -2688,7 +2688,7 @@
           ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
           <span class="card-links">
             ${pageHref(a) ? `<a href="${escapeHtml(pageHref(a))}" class="page-link">${escapeHtml(t('eventPage'))}</a>` : ''}
-            ${linkHtml(a.url, t('details'), 'link-btn')}
+            ${a.booking && a.booking.samePage === true ? '' : linkHtml(a.url, t('details'), 'link-btn')}
           </span>
         </div>
       `;

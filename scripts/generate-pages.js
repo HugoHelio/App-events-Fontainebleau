@@ -481,6 +481,7 @@ const SOURCE_LABEL = {
   site: 'le site d’un organisateur, de l’office de tourisme ou d’une mairie',
   datatourisme: 'DATAtourisme, la base des offices de tourisme',
   openagenda: 'OpenAgenda, l’agenda des organisateurs',
+  francebillet: 'Fnac Spectacles, la billetterie qui vend la date',
 };
 const isHomeUrl = (u) => { try { return ['', '/'].includes(new URL(u).pathname.replace(/\/(fr|en)\/?$/, '/')); } catch { return false; } };
 const datesUnconfirmed = (e) => !SOURCE_LABEL[e.source] && (!e.url || isHomeUrl(e.url));
@@ -506,13 +507,14 @@ const PROV_STYLE = '.prov{font-size:14px;color:var(--muted);border-left:3px soli
 function bookingOf(e) {
   const b = e.booking;
   const url = b && safeUrl(b.url);
-  return url && b.label ? { url, label: String(b.label), provider: typeof b.provider === 'string' ? b.provider : '', samePrice: b.samePrice === true } : null;
+  return url && b.label ? { url, label: String(b.label), provider: typeof b.provider === 'string' ? b.provider : '', samePrice: b.samePrice === true, samePage: b.samePage === true } : null;
 }
 
 function eventPage(e, events, today) {
   const canonical = SITE_URL + e.pagePath;
-  const link = safeUrl(e.url);
   const booking = bookingOf(e);
+  // The event's own link is the ticketing page the button already leads to (Fnac): one link, not two.
+  const link = booking && booking.samePage ? null : safeUrl(e.url);
   const rows = [
     ['Horaires', e.schedule],
     ['Lieu', [e.locationName, e.city].filter(Boolean).join(', ')],
@@ -1517,6 +1519,7 @@ function sourcesPage(events, generatedAt, registry, places = [], today = '') {
 <li><b>Les sites des organisateurs, de l’office de tourisme et des mairies</b><small>${pl(count('site'), 'fiche confirmée', 'fiches confirmées')}. Lus directement, en respectant les consignes de chaque site aux robots${sites.length ? ` : ${esc(sites.join(', '))}` : ''}.</small></li>
 <li><b>DATAtourisme</b><small>${pl(count('datatourisme'), 'fiche', 'fiches')}. La base nationale ouverte, alimentée par les offices de tourisme.</small></li>
 <li><b>OpenAgenda</b><small>${pl(count('openagenda'), 'fiche', 'fiches')}. Les agendas que les organisateurs publient eux-mêmes, via le portail de la Région Île-de-France.</small></li>
+<li><b>Fnac Spectacles</b><small>${pl(count('francebillet'), 'fiche', 'fiches')}. Le catalogue de la billetterie, pour les spectacles qu’elle vend dans la zone, surtout dans les salles de l’agglomération de Melun.</small></li>
 <li><b>La recherche web</b><small>${pl(count(''), 'fiche', 'fiches')}. Une recherche Google automatisée, menée par Gemini, l’intelligence artificielle de Google. Elle trouve ce que les autres sources ignorent, mais elle est moins sûre : ces fiches portent la mention « recherche web, à confirmer », et ne sont jamais mises en avant.</small></li>
 </ul>
 
@@ -1531,7 +1534,7 @@ function sourcesPage(events, generatedAt, registry, places = [], today = '') {
 </ul>
 
 ${partners.length ? `<h2 id="financement">Comment le site est financé</h2>
-${booked ? `<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.</p>` : ''}${visits.length ? `
+${booked ? `<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.${count('francebillet') ? ' Fnac Spectacles est aussi une source : les spectacles qu’elle vend dans la zone sont publiés comme ceux des autres sources, sans être mis en avant.' : ''}</p>` : ''}${visits.length ? `
 <p>Les encarts « À visiter » proposent le billet d’entrée ${esc(visits.map((p) => `du ${p.name.replace(/^Château de /, 'château de ')}`).join(', ').replace(/, ([^,]*)$/, ' et $1'))} chez un partenaire, avec la même commission. Ils ne dépendent d’aucune sortie de l’agenda et n’apparaissent que les jours d’ouverture.</p>` : ''}
 
 ` : ''}<h2>Ce que nous ne vérifions pas</h2>

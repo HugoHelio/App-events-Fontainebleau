@@ -4,7 +4,7 @@ Application web statique qui collecte automatiquement les événements autour de
 (**deux cercles** depuis le 05/10 : toutes les communes à moins de 15 km, puis jusqu'à 20 km —
 `MAX_RADIUS_KM` — seulement les villes de plus de 4 000 habitants et les grands sites, Vaux-le-Vicomte,
 Blandy et Courances ; Montereau exclue. Table `COMMUNE_TABLE` et `inZone()` dans `scripts/fetch-events.js`) et les affiche sur une carte
-et un calendrier. Trois sources : Gemini, DATAtourisme, OpenAgenda.
+et un calendrier. Cinq sources : Gemini, DATAtourisme, OpenAgenda, les sites des organisateurs et Fnac Spectacles.
 
 ## À lire en premier
 
@@ -20,6 +20,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/fetch-events.js` | Pipeline de collecte : scans Gemini + DATAtourisme → validation → fusion → géocodage → vérification des URL |
 | `scripts/datatourisme.js` | Bibliothèque partagée DATAtourisme (téléchargement, parsing, correspondance) — utilisée par le pipeline **et** par la sonde |
 | `scripts/openagenda.js` | Troisième source : OpenAgenda via le portail Île-de-France. Sans clé, filtrage côté serveur. Les agendas emploi sont exclus par éditeur |
+| `scripts/francebillet.js` | **Cinquième source** (item 83e, §3.AA) : flux produit Awin de Fnac Spectacles, catalogue national lu en flux, gardé dans la zone. Chaque date porte le lien de la page Fnac (`url`) et le lien d'affilié (`ticketUrl`, accepté seulement au format Awin exact), qui devient le bouton « Billets » via `feeds` dans `affiliates.json`. Clé dans le secret `AWIN_FEED_URL`, jamais affichée ; sans lui, source sautée |
 | `scripts/feedback.js` | Lecture du formulaire de signalement (CSV publié). Seul le masquage est automatique ; tout le reste part en relecture humaine |
 | `scripts/translate.js` | Descriptions anglaises. Appel Gemini **non grounded**, cache par hash du texte français |
 | `scripts/translate-data.js` | Utilitaire hors bande : traduit les descriptions de `data.json` sans lancer de scan (`--sample` pour relire avant publication) |
@@ -88,8 +89,9 @@ GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js
 # Forcer un scan malgré la cadence de 60 h
 GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js
 
-# Le pipeline principal importe aussi DATAtourisme, OpenAgenda et les sites des organisateurs ;
-# DATATOURISME=0, OPENAGENDA=0, SITES=0 pour les désactiver
+# Le pipeline principal importe aussi DATAtourisme, OpenAgenda, les sites des organisateurs et
+# Fnac Spectacles (secret AWIN_FEED_URL) ; DATATOURISME=0, OPENAGENDA=0, SITES=0, FRANCEBILLET=0
+# pour les désactiver. FRANCEBILLET_FILE=reports/francebillet-feed.csv.gz lit le flux de la sonde
 GEMINI_API_KEY=… DATATOURISME=0 OPENAGENDA=0 DRY_RUN=1 node scripts/fetch-events.js
 
 # Lecture du formulaire de signalement. Sans FEEDBACK_CSV_URL, la fonctionnalité est simplement
