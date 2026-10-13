@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_c25f21ed85@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261012
-DTEND;VALUE=DATE:20261013
-SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
-LOCATION:La Solle\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : 4\,50 € | Tarif réduit : 3\,50 € | G
- ratuit pour les moins de 18 ans\n\nJournées et événements équestres or
- ganisés à l'hippodrome de la Solle à Fontainebleau.\n\nOrganisateur : h
- ttps://www.fontainebleau-tourisme.com/fr/fiche/6809478/les-rendez-vous-de-
- la-solle/\n\nFiche : https://fontainebleaulive.fr/evenements/les-rendez-vo
- us-de-la-solle-course-hippique-obstacles-fontainebleau-c25f21ed85/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-solle-cou
- rse-hippique-obstacles-fontainebleau-c25f21ed85/
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:ACT_019@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261013
