@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_572febe4a6@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-SUMMARY:Séances débats à l'Ermitage
-LOCATION:L'Ermitage\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Projections suivies de débats organisées au cinéma L'Ermitag
- e à Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
- om/fr/fiche/7557871/seances-debats-a-lermitage/\n\nFiche : https://fontain
- ebleaulive.fr/evenements/seances-debats-a-l-ermitage-fontainebleau-572febe
- 4a6/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/seances-debats-a-l-ermitage-fon
- tainebleau-572febe4a6/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_3d64bcbcdf@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261015
