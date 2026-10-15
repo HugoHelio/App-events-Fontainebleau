@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_28b842b027@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Rendez-vous de la biosphère
@@ -26,25 +26,6 @@ DESCRIPTION:Horaires : À partir de 16h00\n\nTarif : Gratuit\n\nRencontre e
 URL:https://fontainebleaulive.fr/evenements/rendez-vous-de-la-biosphere-boi
  s-le-roi-28b842b027/
 CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_d6bb0051f0@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261025
-DTEND;VALUE=DATE:20261026
-SUMMARY:RANDO SOLIDAIRE Sud
-LOCATION:Bois-le-Roi
-DESCRIPTION:Tarif : Adulte : de 5 à 50 €.\n\nUne randonnée pédestre et
-  solidaire organisée à travers le secteur sud au départ de Bois-le-Roi.
- \n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8023358
- /rando-solidaire-sud/\n\nFiche : https://fontainebleaulive.fr/evenements/r
- ando-solidaire-sud-bois-le-roi-d6bb0051f0/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/rando-solidaire-sud-bois-le-roi
- -d6bb0051f0/
-CATEGORIES:Sport & Outdoor
-GEO:48.47294;2.69243
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -64,6 +45,7 @@ DESCRIPTION:Horaires : 09h00–10h30\n\nTarif : 5 € minimum (gratuit -12
 URL:https://fontainebleaulive.fr/evenements/randonnee-solidaire-restauratio
  n-de-la-foret-de-fontaineblea-bois-le-roi-65bb236269/
 CATEGORIES:Sport & Outdoor
+GEO:48.47294;2.69243
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

@@ -12,20 +12,74 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_2108dbd3a3@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Randonnée solidaire
 LOCATION:Place de la Bosse à Saint-Mammès\, Saint-Mammès
-DESCRIPTION:Horaires : 10h\n\nUne marche solidaire de 8 kilomètres est org
- anisée pour lutter contre le cancer du sein.\n\nOrganisateur : https://ww
- w.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-18-randonneesolidaire\n\nFi
- che : https://fontainebleaulive.fr/evenements/randonnee-solidaire-saint-ma
- mmes-2108dbd3a3/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h\n\nTarif : Inscription minimum 2\,50€\, dons p
+ ossibles à la ligue\n\nUne marche solidaire de 8 kilomètres est organis
+ ée pour lutter contre le cancer du sein.\n\nOrganisateur : https://www.cc
+ msl.fr/actu-et-agendas/agenda.html#2026-10-18-randonneesolidaire\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/randonnee-solidaire-saint-mammes
+ -2108dbd3a3/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/randonnee-solidaire-saint-mamme
  s-2108dbd3a3/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_82888ce71a@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261026
+SUMMARY:Expo photo – Octobre Rose
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : Samedi 14h à 18h / Dimanche 10h à 17h\n\nTarif : P
+ articipation demandée\n\nOrganisateur : https://www.saint-mammes.com/expo
+ -photo-octobre-rose/\n\nFiche : https://fontainebleaulive.fr/evenements/ex
+ po-photo-octobre-rose-saint-mammes-82888ce71a/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/expo-photo-octobre-rose-saint-m
+ ammes-82888ce71a/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7c9fb6b5fd@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Soirée musicale – Octobre Rose
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 20h à 1h\n\nTarif : Tarif adulte : 10€ / enfant (
+ 3-17 ans) : 5€\n\nOrganisateur : https://www.saint-mammes.com/soiree-mus
+ icale-octobre-rose/\n\nFiche : https://fontainebleaulive.fr/evenements/soi
+ ree-musicale-octobre-rose-saint-mammes-7c9fb6b5fd/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-musicale-octobre-rose-sa
+ int-mammes-7c9fb6b5fd/
+CATEGORIES:Scène & Spectacles
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c3604d84da@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Balade d’Halloween
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 17h30\n\nOrganisateur : https://www.saint-mammes.com
+ /balade-dhalloween/\n\nFiche : https://fontainebleaulive.fr/evenements/bal
+ ade-d-halloween-saint-mammes-c3604d84da/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-d-halloween-saint-mammes
+ -c3604d84da/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -46,17 +100,36 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_be1a35043c@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Les rendez-vous de la forme
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 10h – 12h\n\nTarif : Gratuit sur inscription\n\nOr
+ ganisateur : https://www.saint-mammes.com/ccmsl-les-rendez-vous-de-la-form
+ e/\n\nFiche : https://fontainebleaulive.fr/evenements/les-rendez-vous-de-l
+ a-forme-saint-mammes-be1a35043c/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-forme-sai
+ nt-mammes-be1a35043c/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
 LOCATION:Saint-Mammès
-DESCRIPTION:Horaires : 9h – 14h\n\nOrganisateur : https://www.ccmsl.fr/ac
- tu-et-agendas/agenda.html#2026-11-08-forumdesartisantsetdesentrepreneurs\n
- \nFiche : https://fontainebleaulive.fr/evenements/forum-des-artisants-et-d
- es-entrepreneurs-saint-mammes-5258aab0a6/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 9h – 14h\n\nTarif : Entrée libre\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-08-forumdesarti
+ santsetdesentrepreneurs\n\nFiche : https://fontainebleaulive.fr/evenements
+ /forum-des-artisants-et-des-entrepreneurs-saint-mammes-5258aab0a6/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/forum-des-artisants-et-des-entr
  epreneurs-saint-mammes-5258aab0a6/
 CATEGORIES:Culture & Ateliers

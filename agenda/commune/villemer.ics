@@ -11,8 +11,26 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_10680b2437@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween/ randonnée frisson
+LOCATION:Salle polyvalente\, rue des Marronniers à Villemer\, Villemer
+DESCRIPTION:Horaires : à 17h\n\nUne marche thématique et frissonnante org
+ anisée à l'occasion d'Halloween au départ de Villemer.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-31-halloweenran
+ donneefrisson\n\nFiche : https://fontainebleaulive.fr/evenements/halloween
+ -randonnee-frisson-villemer-10680b2437/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-randonnee-frisson-vil
+ lemer-10680b2437/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_2219b8be7b@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Conférence " Moïse\, figure du héros : 2000 ans d'histoire de l'

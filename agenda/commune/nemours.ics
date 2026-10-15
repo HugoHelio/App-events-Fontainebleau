@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
@@ -55,16 +55,16 @@ UID:EVT_97e8e14fe0@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
-SUMMARY:Cross Duathlon de Nemours
+SUMMARY:Cross Duathlon / Tri Cross de Nemours
 LOCATION:Base de loisirs de Nemours\, Nemours
-DESCRIPTION:Horaires : 09h–13h\n\nTarif : Payant\n\nPublic : Dès 16 ans\
- n\nÉpreuve outdoor combinant course à pied et VTT en sous-bois autour de
-  Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : https://fon
- tainebleaulive.fr/evenements/cross-duathlon-de-nemours-97e8e14fe0/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/cross-duathlon-de-nemours-97e8e
- 14fe0/
+DESCRIPTION:Horaires : Épreuves en journée\n\nTarif : Payant\n\nPublic : 
+ Dès 16 ans\n\nÉpreuve outdoor combinant course à pied et VTT en sous-bo
+ is autour de Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nemou
+ rs-97e8e14fe0/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nem
+ ours-97e8e14fe0/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -87,8 +87,30 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_567e428004@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
+  un leader industriel mondial ! Basé dans le sud Seine et Marne
+LOCATION:Nemours - Agence Montereau-Fault-Yonne\, Nemours
+DESCRIPTION:Nous vous invitons à une rencontre exclusive pour découvrir l
+ e poste d' Agent de contrôle qualité polyvalent (H/F) basé dans le sud 
+ Seine et Marne.\n\nOrganisateur : https://openagenda.com/semaine-industrie
+ -2026/events/interim-agent-de-controle-qualite-polyvalent-hf-rejoignez-un-
+ leader-industriel-mondial-base-dans-le-sud-seine-et-marne\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/interim-agent-de-controle-qualite-polyv
+ alent-h-f-rejoignez-u-nemours-567e428004/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/interim-agent-de-controle-quali
+ te-polyvalent-h-f-rejoignez-u-nemours-567e428004/
+CATEGORIES:Culture & Ateliers
+GEO:48.26374;2.7001
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d4de9594c9@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Conférence de Sébastien Ronsseray
@@ -107,40 +129,24 @@ GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_22291ce511@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261205
-DTEND;VALUE=DATE:20261206
-SUMMARY:Co-Nuit ANSA
-LOCATION:Centre-ville et massif forestier de Nemours\, Nemours
-DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : 6 € minimum (gratuit pour
-  les enfants)\n\nCourse d'orientation nocturne\, parcours urbain et forêt
- \, ainsi que chasse au trésor pour le Téléthon.\n\nOrganisateur : https
- ://gotrail.run/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit
- -ansa-nemours-22291ce511/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/co-nuit-ansa-nemours-22291ce511
- /
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_39a65cd1ec@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261212
-DTEND;VALUE=DATE:20261214
-SUMMARY:Village & Marché de Noël
-LOCATION:Maison des Arts\, Saint-Pierre-lès-Nemours\, Nemours
-DESCRIPTION:Horaires : 2026-12-12 : 10h00–21h00 \; 2026-12-13 : 10h00–1
- 8h30\n\nTarif : Entrée libre\n\nVillage de Noël réunissant soixante exp
- osants\, expositions artistiques et animations féériques pour toute la f
- amille.\n\nOrganisateur : https://www.saintpierrelesnemours.fr/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-nemours
- -39a65cd1ec/\n\nInformations collectées automatiquement : vérifiez-les a
- uprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-nemou
- rs-39a65cd1ec/
+UID:EVT_5d149ee44b@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Visite flash de l'exposition Ça en jette !
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Suivez le guide et découvrez la toute nouvelle exposition du m
+ usée de Préhistoire consacrée aux déchets. Ce que nos ancêtres ont re
+ jeté représente en effet une véritable mine d'or pour les archéologues
+  !\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/fr\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca-en-j
+ ette-nemours-5d149ee44b/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca
+ -en-jette-nemours-5d149ee44b/
 CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

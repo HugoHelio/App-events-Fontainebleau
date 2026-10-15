@@ -3,11 +3,166 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:le-chatelet-en-brie · Fontainebleau Live
+X-WR-CALNAME:Le Châtelet-en-Brie · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_3f36e553a1@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Salon du bien-être
+LOCATION:Salle de la Bergerie\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 13h à 17h\n\nTarif : Gratuit\n\nSalon du bien-être
+  pour découvrir différents professionnels et activités autour de la dé
+ tente et de la santé.\n\nOrganisateur : https://www.chatelet-en-brie.fr/i
+ ndex.php/Agenda?idpage=9&idmetacontenu=2917&iddossiercontenu=42&positionco
+ ntenu=A1\n\nFiche : https://fontainebleaulive.fr/evenements/salon-du-bien-
+ etre-le-chatelet-en-brie-3f36e553a1/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/salon-du-bien-etre-le-chatelet-
+ en-brie-3f36e553a1/
+CATEGORIES:Culture & Ateliers
+GEO:48.50344;2.78789
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_22393c5c1d@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Concert "Lily"
+LOCATION:Salle Le Manège\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 20h30\n\nSoirée musicale exceptionnelle avec Lily\,
+  artiste belge\, proposant compositions et reprises de grands noms de la c
+ hanson française.\n\nOrganisateur : https://www.chatelet-en-brie.fr/index
+ .php/Agenda?idpage=9&idmetacontenu=2922&iddossiercontenu=42&positionconten
+ u=A1\n\nFiche : https://fontainebleaulive.fr/evenements/concert-lily-le-ch
+ atelet-en-brie-22393c5c1d/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-lily-le-chatelet-en-bri
+ e-22393c5c1d/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_11d333415a@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Ciné jeunesse Halloween "Un amour de vampire"
+LOCATION:Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 14h30\n\nTarif : adultes 5€ | 12-17 ans 3€ | –
+  12 ans gratuit\n\nPublic : Dès 6 ans\n\nProjection du film d'animation K
+ oshchey pour le ciné jeunesse spécial Halloween.\n\nOrganisateur : https
+ ://billetterie-lechateletenbrie.mapado.com/event/758636-cine-jeunesse-spec
+ ial-halloween\n\nFiche : https://fontainebleaulive.fr/evenements/cine-jeun
+ esse-halloween-un-amour-de-vampire-le-chatelet-en-brie-11d333415a/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/cine-jeunesse-halloween-un-amou
+ r-de-vampire-le-chatelet-en-brie-11d333415a/
+CATEGORIES:Scène & Spectacles
+GEO:48.50619;2.80338
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7305643afb@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Théâtre musical - Lennon & McCartney
+LOCATION:Salle Le Manège\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 20h30\n\nTarif : adultes 10€ | 12-17 ans 5€ | -1
+ 2 ans gratuit\n\nPremière pièce de théâtre musical racontant les Beatl
+ es avec des extraits de leurs plus grandes chansons.\n\nOrganisateur : htt
+ ps://billetterie-lechateletenbrie.mapado.com/event/758363-theatre-lennon-m
+ c-cartney\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-music
+ al-lennon-et-mccartney-le-chatelet-en-brie-7305643afb/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/theatre-musical-lennon-et-mccar
+ tney-le-chatelet-en-brie-7305643afb/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6f02416d94@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Commémoration du 11 novembre 1918
+LOCATION:Cimetière du Châtelet-en-Brie\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 11h\n\nCérémonie de commémoration de l'Armistice 
+ du 11 novembre 1918 suivie d'un vin d'honneur.\n\nOrganisateur : https://w
+ ww.chatelet-en-brie.fr/index.php/Agenda?idpage=9&idmetacontenu=2931&iddoss
+ iercontenu=42&positioncontenu=A1\n\nFiche : https://fontainebleaulive.fr/e
+ venements/commemoration-du-11-novembre-1918-le-chatelet-en-brie-6f02416d94
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/commemoration-du-11-novembre-19
+ 18-le-chatelet-en-brie-6f02416d94/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_1e23e80759@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Documentaire "Ce qui reste des amours de nos mères"
+LOCATION:Salle Le Manège\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 14h\n\nTarif : Gratuit\n\nProjection documentaire en
+  présence de la réalisatrice Cathy Dubois\, suivie d'un échange avec la
+  salle.\n\nOrganisateur : https://www.chatelet-en-brie.fr/index.php/Agenda
+ ?idpage=9&idmetacontenu=2927&iddossiercontenu=42&positioncontenu=A1\n\nFic
+ he : https://fontainebleaulive.fr/evenements/documentaire-ce-qui-reste-des
+ -amours-de-nos-meres-le-chatelet-en-brie-1e23e80759/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/documentaire-ce-qui-reste-des-a
+ mours-de-nos-meres-le-chatelet-en-brie-1e23e80759/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f39087e9f8@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Concert "Danny Buckton"
+LOCATION:Médiathèque\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 17h30\n\nTarif : Gratuit sur réservation\n\nConcert
+  intimiste de Danny Buckton à la guitare et au chant.\n\nOrganisateur : h
+ ttps://billetterie-lechateletenbrie.mapado.com/event/777661-danny-buckton-
+ en-concert\n\nFiche : https://fontainebleaulive.fr/evenements/concert-dann
+ y-buckton-le-chatelet-en-brie-f39087e9f8/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-danny-buckton-le-chatel
+ et-en-brie-f39087e9f8/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8f3af5ae31@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Spectacle - La princesse au petit pois
+LOCATION:Salle Le Manège\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 16h\n\nTarif : adultes : 10€ | 12-17 ans : 6€ | 
+ – 12 ans : 5€\n\nPublic : Dès 5 ans\n\nComédie drôle\, sincère et 
+ déjantée interprétée par quatre comédiens aux allures de clowns.\n\nO
+ rganisateur : https://billetterie-lechateletenbrie.mapado.com/event/758615
+ -spectacle-jeune-public-la-princesse-au-petit-pois\n\nFiche : https://font
+ ainebleaulive.fr/evenements/spectacle-la-princesse-au-petit-pois-le-chatel
+ et-en-brie-8f3af5ae31/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-la-princesse-au-petit
+ -pois-le-chatelet-en-brie-8f3af5ae31/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

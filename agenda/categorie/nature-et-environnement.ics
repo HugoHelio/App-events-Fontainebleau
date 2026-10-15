@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_28b842b027@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Rendez-vous de la biosphère
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf953e6d98@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Sortie d'initiation à la mycologie en forêt de Fontainebleau
@@ -240,7 +240,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f798516c8f@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Découverte des oiseaux migrateurs
@@ -276,7 +276,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -338,19 +338,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bb66b3af@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Sortie « Mes premiers pas avec les champignons »
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
- \nVenez découvrir la beauté des champignons dans la belle forêt de Font
- ainebleau à travers une animation ludique et riche en découverte !\n\nOr
- ganisateur : https://www.jagispourlanature.org/activite/mes-premiers-pas-a
- vecles-champignons\n\nFiche : https://fontainebleaulive.fr/evenements/sort
- ie-mes-premiers-pas-avec-les-champignons-fontainebleau-04bb66b3af/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nVenez découvrir
+  la beauté des champignons dans la belle forêt de Fontainebleau à trave
+ rs une animation ludique et riche en découverte !\n\nOrganisateur : https
+ ://www.jagispourlanature.org/activite/mes-premiers-pas-avecles-champignons
+ \n\nFiche : https://fontainebleaulive.fr/evenements/sortie-mes-premiers-pa
+ s-avec-les-champignons-fontainebleau-04bb66b3af/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-mes-premiers-pas-avec-le
  s-champignons-fontainebleau-04bb66b3af/
 CATEGORIES:Nature & Environnement
@@ -377,18 +376,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_249e4be334@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier rapaces nocturnes « Chouette\, une pelote ! »
 LOCATION:Hôtel de Ville de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit (sur inscription)\n
- \nPublic : Dès 6 ans\n\nAtelier ludique d'analyse des pelotes de réjecti
- on de rapaces nocturnes pour comprendre le régime alimentaire des chouett
- es.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fonta
- inebleaulive.fr/evenements/atelier-rapaces-nocturnes-chouette-une-pelote-f
- ontainebleau-249e4be334/\n\nInformations collectées automatiquement : vé
- rifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit\n\nPublic : Dès 6 
+ ans\n\nAtelier ludique d'analyse des pelotes de réjection de rapaces noct
+ urnes pour comprendre le régime alimentaire des chouettes.\n\nOrganisateu
+ r : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/atelier-rapaces-nocturnes-chouette-une-pelote-fontainebleau-249e4
+ be334/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-rapaces-nocturnes-choue
  tte-une-pelote-fontainebleau-249e4be334/
 CATEGORIES:Nature & Environnement
@@ -524,6 +523,24 @@ DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
  utomatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/animation-nature-en-famille-le-
  tresor-de-praline-fontainebleau-f8910fb196/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e782c3d872@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Échange de plantes
+LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
+DESCRIPTION:Horaires : 10h\n\nRencontre conviviale organisée avec le Comit
+ é de fleurissement pour échanger des plantes.\n\nOrganisateur : https://
+ samois-sur-seine.fr/evenement/echange-de-plantes-2/\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/echange-de-plantes-samois-sur-seine-e782c3d87
+ 2/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/echange-de-plantes-samois-sur-s
+ eine-e782c3d872/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -706,16 +723,16 @@ UID:EVT_734a43c14d@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
-SUMMARY:Initiation à la bryologie en forêt de Fontainebleau
+SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit (sur inscription)\n
- \nJournée de découverte botanique axée sur l'observation des mousses.\n
- \nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/initiation-a-la-bryologie-en-foret-de-fontainebleau-
- 734a43c14d/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/initiation-a-la-bryologie-en-fo
- ret-de-fontainebleau-734a43c14d/
+DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit\n\nJournée de déc
+ ouverte botanique axée sur l'observation des mousses.\n\nOrganisateur : h
+ ttps://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/sortie-d-initiation-a-la-bryologie-en-foret-de-fontainebleau-734a43c14
+ d/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-bryolo
+ gie-en-foret-de-fontainebleau-734a43c14d/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -763,17 +780,17 @@ UID:EVT_39d27c9c8d@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261230
 DTEND;VALUE=DATE:20261231
-SUMMARY:Animation nature – L'arbre à vœux
+SUMMARY:Animation & balade nature « L'arbre à vœux »
 LOCATION:Lisière de la forêt / centre-ville de Fontainebleau\, Fontainebl
  eau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
- \nAnimation nature de fin d'année autour de l'arbre à vœux.\n\nOrganisa
- teur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr
- /evenements/animation-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
-URL:https://fontainebleaulive.fr/evenements/animation-nature-l-arbre-a-voeu
- x-fontainebleau-39d27c9c8d/
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nAnimation nature
+  de fin d'année autour de l'arbre à vœux.\n\nOrganisateur : https://anv
+ l.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/animat
+ ion-et-balade-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/animation-et-balade-nature-l-ar
+ bre-a-voeux-fontainebleau-39d27c9c8d/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT

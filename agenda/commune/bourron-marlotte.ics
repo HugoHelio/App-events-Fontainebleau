@@ -3,11 +3,131 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:bourron-marlotte · Fontainebleau Live
+X-WR-CALNAME:Bourron-Marlotte · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_98321e1533@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261019
+SUMMARY:Balade du goût
+LOCATION:72 rue du Général de Gaulle - Bourron-Marlotte\, Bourron-Marlott
+ e
+DESCRIPTION:Organisateur : https://bourronmarlotte.fr/agenda/balade-du-gout
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/balade-du-gout-bourro
+ n-marlotte-98321e1533/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-du-gout-bourron-marlotte
+ -98321e1533/
+CATEGORIES:Culture & Ateliers
+GEO:48.34034;2.70451
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_26df58bf64@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Conseil Municipal
+LOCATION:Mairie - Salle du Conseil\, Bourron-Marlotte
+DESCRIPTION:Horaires : 20h00\n\nOrganisateur : https://bourronmarlotte.fr/a
+ genda/conseil-municipal-6/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/conseil-municipal-bourron-marlotte-26df58bf64/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conseil-municipal-bourron-marlo
+ tte-26df58bf64/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_238ad12fc3@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Vernissage _ Photos et Peintures
+LOCATION:Résidence des Chênes Rouges\, Bourron-Marlotte
+DESCRIPTION:Horaires : de 14h30 à 17h30\n\nOrganisateur : https://bourronm
+ arlotte.fr/agenda/vernissage-_-photos-et-peintures/\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/vernissage-photos-et-peintures-bourron-marlot
+ te-238ad12fc3/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vernissage-photos-et-peintures-
+ bourron-marlotte-238ad12fc3/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ecf3ae36dc@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Concours de Pétanque en doublettes
+LOCATION:Terrains municipaux de pétanque\, Bourron-Marlotte
+DESCRIPTION:Horaires : 13h00\n\nOrganisateur : https://bourronmarlotte.fr/a
+ genda/concours-de-petanque-en-doublettes/\n\nFiche : https://fontainebleau
+ live.fr/evenements/concours-de-petanque-en-doublettes-bourron-marlotte-ecf
+ 3ae36dc/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concours-de-petanque-en-doublet
+ tes-bourron-marlotte-ecf3ae36dc/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a5c21898e7@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween
+LOCATION:Mairie\, Bourron-Marlotte
+DESCRIPTION:Horaires : de 17h30 à 20h00\n\nOrganisateur : https://bourronm
+ arlotte.fr/agenda/halloween/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/halloween-bourron-marlotte-a5c21898e7/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-bourron-marlotte-a5c2
+ 1898e7/
+CATEGORIES:Culture & Ateliers
+GEO:48.34297;2.70575
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_755854b797@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Spectacle chanté
+LOCATION:Salle des fêtes\, Bourron-Marlotte
+DESCRIPTION:Horaires : 15h00\n\nL’association Au Cœur des Voix vous invi
+ te à son nouveau spectacle » Love is All «.\n\nOrganisateur : https://b
+ ourronmarlotte.fr/agenda/spectacle-chante/\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/spectacle-chante-bourron-marlotte-755854b797/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-chante-bourron-marlot
+ te-755854b797/
+CATEGORIES:Scène & Spectacles
+GEO:48.33859;2.70057
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a0096844bf@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël
+LOCATION:Espace Jean Renoir\, Bourron-Marlotte
+DESCRIPTION:Horaires : de 10h à 18h\n\nOrganisateur : https://bourronmarlo
+ tte.fr/agenda/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/marche-de-noel-bourron-marlotte-a0096844bf/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-bourron-marlotte
+ -a0096844bf/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

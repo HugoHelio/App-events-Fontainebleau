@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_976c124f02@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Ciné-débat " Je n'avais que le néant "
@@ -30,27 +30,8 @@ GEO:48.39434;2.78497
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_a06082177d@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261019
-SUMMARY:La Balade du Goût 2026
-LOCATION:Fermes participantes du Pays de Fontainebleau\, Thomery
-DESCRIPTION:Horaires : 2026-10-17 : 14h–18h \; 2026-10-18 : 11h–17h\n\n
- Tarif : Entrée libre / Gratuit\n\nPortes ouvertes et animations dans les 
- fermes du Pays de Fontainebleau pour découvrir les produits locaux.\n\nOr
- ganisateur : https://www.baladedugout.fr/\n\nFiche : https://fontainebleau
- live.fr/evenements/la-balade-du-gout-2026-thomery-a06082177d/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
-URL:https://fontainebleaulive.fr/evenements/la-balade-du-gout-2026-thomery-
- a06082177d/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_08f2a3660e@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Concert mélodies mélancoliques de Schibert à Piazzolla
@@ -69,8 +50,26 @@ GEO:48.40233;2.78149
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_89eaead9ad@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261026
+SUMMARY:Atelier céramiques
+LOCATION:Atelier MUJU\, 7 Rue Docteur Schweitzer à Thomery\, Thomery
+DESCRIPTION:Horaires : 10h à 13h et 15h à 18h\n\nUn stage d'initiation et
+  de pratique de la céramique à l'Atelier MUJU.\n\nOrganisateur : https:/
+ /www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-24-atelierceramiques\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/atelier-ceramiques-thomery
+ -89eaead9ad/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-ceramiques-thomery-89ea
+ ead9ad/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween à Thomery
@@ -89,18 +88,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_544cf67e58@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Visites mystérieuses d'Halloween & Distribution de bonbons
 LOCATION:Château de Rosa Bonheur\, Thomery
-DESCRIPTION:Horaires : En journée\n\nTarif : Inclus dans le droit d'entré
- e\n\nVisites mystérieuses et distribution de bonbons pour Halloween au Ch
- âteau de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-bonheur
- .fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-mysterieus
- es-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
+DESCRIPTION:Horaires : Toute la journée\n\nTarif : Billet d'entrée au mus
+ ée\n\nVisites mystérieuses et distribution de bonbons pour Halloween au 
+ Château de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-bonhe
+ ur.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-mysterie
+ uses-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
 URL:https://fontainebleaulive.fr/evenements/visites-mysterieuses-d-hallowee
  n-et-distribution-de-bonbons-thomery-544cf67e58/
 CATEGORIES:Culture & Ateliers
@@ -126,7 +125,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing

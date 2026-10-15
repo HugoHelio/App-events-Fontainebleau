@@ -77,13 +77,13 @@ DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Spectacle de sortie de résidence de la compagnie "Camina-e"
 LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Payant\n\nSortie de résidence arti
- stique et représentation théâtrale de la compagnie CaminaO.\n\nOrganisa
- teur : https://www.fontainebleau-tourisme.com/fr/fiche/7956465/spectacle-d
- e-sortie-de-residence-de-la-compagnie-camina-e/\n\nFiche : https://fontain
- ebleaulive.fr/evenements/spectacle-de-sortie-de-residence-de-la-compagnie-
- camina-e-fontainebleau-1a4521c35c/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h30\n\nTarif : De 15 € à 35 €\n\nSortie de r
+ ésidence artistique et représentation théâtrale de la compagnie Camina
+ O.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79564
+ 65/spectacle-de-sortie-de-residence-de-la-compagnie-camina-e/\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/spectacle-de-sortie-de-residence-de
+ -la-compagnie-camina-e-fontainebleau-1a4521c35c/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-de-sortie-de-residenc
  e-de-la-compagnie-camina-e-fontainebleau-1a4521c35c/
 CATEGORIES:Scène & Spectacles
@@ -128,27 +128,8 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_226c25c53d@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261019
-SUMMARY:La Balade du Goût
-LOCATION:Fermes du Pays de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : sam. 17/10 : 14h–18h \; dim. 18/10 : 11h–17h\n\n
- Tarif : Gratuit.\n\nPortes ouvertes gourmandes dans les fermes locales ave
- c dégustations\, visites guidées et ateliers ludiques en famille.\n\nOrg
- anisateur : https://www.fontainebleau-tourisme.com/fr/fiche/6294769/la-bal
- ade-du-gout/\n\nFiche : https://fontainebleaulive.fr/evenements/la-balade-
- du-gout-fontainebleau-226c25c53d/\n\nInformations collectées automatiquem
- ent : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/la-balade-du-gout-fontainebleau
- -226c25c53d/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_9ff7d4e4e2@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:La Philosophe
@@ -188,7 +169,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf953e6d98@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Sortie d'initiation à la mycologie en forêt de Fontainebleau
@@ -211,13 +192,13 @@ DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261019
 SUMMARY:Spectacle musical : Brass & Bleau (Week-end cuivré)
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : Entrée libre. Places limitées.\n\nProfitez d'un rende
- z-vous musical dynamique et cuivré avec l'événement Brass & Bleau à Fo
- ntainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/f
- iche/7957162/brass-bleau/\n\nFiche : https://fontainebleaulive.fr/evenemen
- ts/spectacle-musical-brass-et-bleau-week-end-cuivre-fontainebleau-453c9d06
- 96/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
+DESCRIPTION:Horaires : 20h00\n\nTarif : De 15 € à 35 €\n\nProfitez d'u
+ n rendez-vous musical dynamique et cuivré avec l'événement Brass & Blea
+ u à Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
+ om/fr/fiche/7957162/brass-bleau/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/spectacle-musical-brass-et-bleau-week-end-cuivre-fontainebleau-4
+ 53c9d0696/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-musical-brass-et-blea
  u-week-end-cuivre-fontainebleau-453c9d0696/
 CATEGORIES:Scène & Spectacles
@@ -291,16 +272,36 @@ DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Antiquités - Brocante mensuelle de Fontainebleau (Octobre)
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Entrée gratuite\n\nRendez-
- vous mensuel d'antiquaires et brocanteurs professionnels en plein cœur de
-  Fontainebleau.\n\nOrganisateur : https://brocabrac.fr/77/fontainebleau/11
- 83307-antiquites-brocante/\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/antiquites-brocante-mensuelle-de-fontainebleau-octobre-f7fe50ded0/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
+DESCRIPTION:Horaires : 8h00–18h00\n\nTarif : Gratuit\n\nRendez-vous mensu
+ el d'antiquaires et brocanteurs professionnels en plein cœur de Fontaineb
+ leau.\n\nOrganisateur : https://brocabrac.fr/77/fontainebleau/1183307-anti
+ quites-brocante/\n\nFiche : https://fontainebleaulive.fr/evenements/antiqu
+ ites-brocante-mensuelle-de-fontainebleau-octobre-f7fe50ded0/\n\nInformatio
+ ns collectées automatiquement : vérifiez-les auprès de l’organisateur
+ .
 URL:https://fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-d
  e-fontainebleau-octobre-f7fe50ded0/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_0f33ca4a5e@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Apéro-Contes à l'Hôtel Victoria - Miroirs et reflets
+LOCATION:Hôtel Victoria (112 rue de France)\, Fontainebleau
+DESCRIPTION:Horaires : 18h30\n\nTarif : Consommation 7 € + libre particip
+ ation pour le conte\n\nPublic : Dès 10 ans\n\nSoirée apéro-contes sur l
+ e thème « Miroirs et reflets ».\n\nOrganisateur : https://fontyblog.fr/
+ apero-contes-hotel-victoria-fontainebleau/\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/apero-contes-a-l-hotel-victoria-miroirs-et-reflets-fon
+ tainebleau-0f33ca4a5e/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-contes-a-l-hotel-victoria
+ -miroirs-et-reflets-fontainebleau-0f33ca4a5e/
+CATEGORIES:Scène & Spectacles
+GEO:48.40666;2.69251
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -442,7 +443,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a722387529@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Gudule et Trampo
@@ -465,25 +466,24 @@ UID:EVT_08a39f58ca@fontainebleaulive.fr
 DTSTAMP:20261005T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261026
-SUMMARY:Championnats de France Amateur de Concours Complet d'Équitation (C
- CE)
+SUMMARY:Championnat de France Amateur CCE (Concours Complet d'Équitation)
 LOCATION:Grand Parquet\, Fontainebleau
 DESCRIPTION:Horaires : Épreuves en journée\n\nTarif : Gratuit\n\nChampion
  nat national d'équitation regroupant les meilleures équipes amateurs en 
  dressage\, cross et saut d'obstacles.\n\nOrganisateur : https://www.grandp
  arquet.com/evenement/championnat-de-france-cce/\n\nFiche : https://fontain
- ebleaulive.fr/evenements/championnats-de-france-amateur-de-concours-comple
+ ebleaulive.fr/evenements/championnat-de-france-amateur-cce-concours-comple
  t-d-equitat-fontainebleau-08a39f58ca/\n\nInformations collectées automati
  quement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/championnats-de-france-amateur-
- de-concours-complet-d-equitat-fontainebleau-08a39f58ca/
+URL:https://fontainebleaulive.fr/evenements/championnat-de-france-amateur-c
+ ce-concours-complet-d-equitat-fontainebleau-08a39f58ca/
 CATEGORIES:Sport & Outdoor
 GEO:48.39283;2.67347
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f0f64a41df@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Gudule et Trampo
@@ -521,7 +521,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fb8615d83f@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:Gudule et Trampo
@@ -559,7 +559,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f798516c8f@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Découverte des oiseaux migrateurs
@@ -577,7 +577,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dc9a7eebb8@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Gudule et Trampo
@@ -642,13 +642,14 @@ DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Spectacle & Rassemblement de la Saint-Hubert
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : Dans la journée\n\nTarif : Accès gratuit\n\nAssist
- ez aux célébrations et démonstrations traditionnelles présentées lors
-  du spectacle de la Saint-Hubert à Fontainebleau.\n\nOrganisateur : https
- ://www.fontainebleau-tourisme.com/fr/fiche/6588161/spectacle-saint-hubert/
- \n\nFiche : https://fontainebleaulive.fr/evenements/spectacle-et-rassemble
- ment-de-la-saint-hubert-fontainebleau-964a968e35/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Dans la journée\n\nTarif : Billet château ou accè
+ s libre dans les cours\n\nAssistez aux célébrations et démonstrations t
+ raditionnelles présentées lors du spectacle de la Saint-Hubert à Fontai
+ nebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche
+ /6588161/spectacle-saint-hubert/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/spectacle-et-rassemblement-de-la-saint-hubert-fontainebleau-964a
+ 968e35/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-et-rassemblement-de-l
  a-saint-hubert-fontainebleau-964a968e35/
 CATEGORIES:Scène & Spectacles
@@ -677,7 +678,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bfaafc9a1c@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -797,18 +798,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e57caa47c3@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Meeting d'Automne TDA (Tournée des As)
 LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
-DESCRIPTION:Horaires : Épreuves en journée\n\nTarif : Gratuit\n\nÉvénem
- ent équestre majeur regroupant des compétiteurs poneys\, amateurs\, club
- s et pros sur les pistes du Grand Parquet.\n\nOrganisateur : https://www.g
- randparquet.com/evenement/meeting-dautomne-tda/\n\nFiche : https://fontain
- ebleaulive.fr/evenements/meeting-d-automne-tda-tournee-des-as-fontaineblea
- u-e57caa47c3/\n\nInformations collectées automatiquement : vérifiez-les 
- auprès de l’organisateur.
+DESCRIPTION:Horaires : Épreuves étalées sur les 3 jours\n\nTarif : Gratu
+ it\n\nÉvénement équestre majeur regroupant des compétiteurs poneys\, a
+ mateurs\, clubs et pros sur les pistes du Grand Parquet.\n\nOrganisateur :
+  https://www.grandparquet.com/evenement/meeting-dautomne-tda/\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/meeting-d-automne-tda-tournee-des-a
+ s-fontainebleau-e57caa47c3/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/meeting-d-automne-tda-tournee-d
  es-as-fontainebleau-e57caa47c3/
 CATEGORIES:Sport & Outdoor
@@ -836,20 +837,38 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1cee776589@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Soirée Halloween jeux de société
+LOCATION:Médiathèque de la Charité Royale (15 rue Royale)\, Fontaineblea
+ u
+DESCRIPTION:Horaires : 19h à 21h\n\nTarif : Gratuit\n\nPublic : Dès 12 an
+ s\n\nSoirée Halloween et jeux de société pour ados et adultes.\n\nOrgan
+ isateur : https://www.saint-mammes.com/soiree-halloween-jeux-de-societe/\n
+ \nFiche : https://fontainebleaulive.fr/evenements/soiree-halloween-jeux-de
+ -societe-fontainebleau-1cee776589/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-halloween-jeux-de-societ
+ e-fontainebleau-1cee776589/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_04bb66b3af@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Sortie « Mes premiers pas avec les champignons »
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
- \nVenez découvrir la beauté des champignons dans la belle forêt de Font
- ainebleau à travers une animation ludique et riche en découverte !\n\nOr
- ganisateur : https://www.jagispourlanature.org/activite/mes-premiers-pas-a
- vecles-champignons\n\nFiche : https://fontainebleaulive.fr/evenements/sort
- ie-mes-premiers-pas-avec-les-champignons-fontainebleau-04bb66b3af/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nVenez découvrir
+  la beauté des champignons dans la belle forêt de Fontainebleau à trave
+ rs une animation ludique et riche en découverte !\n\nOrganisateur : https
+ ://www.jagispourlanature.org/activite/mes-premiers-pas-avecles-champignons
+ \n\nFiche : https://fontainebleaulive.fr/evenements/sortie-mes-premiers-pa
+ s-avec-les-champignons-fontainebleau-04bb66b3af/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-mes-premiers-pas-avec-le
  s-champignons-fontainebleau-04bb66b3af/
 CATEGORIES:Nature & Environnement
@@ -914,25 +933,6 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_7df7bfd9a6@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Visite contée : Halloween à la Faisanderie
-LOCATION:Site de la Faisanderie / L'Empreinte\, Fontainebleau
-DESCRIPTION:Horaires : En journée\n\nTarif : Accès libre / Réservation c
- onseillée\n\nVisite contée thématique sur le site de la Faisanderie à 
- l'occasion d'Halloween.\n\nOrganisateur : https://www.fontainebleau-touris
- me.com/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-contee-h
- alloween-a-la-faisanderie-fontainebleau-7df7bfd9a6/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-contee-halloween-a-la-fa
- isanderie-fontainebleau-7df7bfd9a6/
-CATEGORIES:Culture & Ateliers
-GEO:48.40844;2.68988
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_3f4a266dbe@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261102
@@ -954,18 +954,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_249e4be334@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier rapaces nocturnes « Chouette\, une pelote ! »
 LOCATION:Hôtel de Ville de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit (sur inscription)\n
- \nPublic : Dès 6 ans\n\nAtelier ludique d'analyse des pelotes de réjecti
- on de rapaces nocturnes pour comprendre le régime alimentaire des chouett
- es.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fonta
- inebleaulive.fr/evenements/atelier-rapaces-nocturnes-chouette-une-pelote-f
- ontainebleau-249e4be334/\n\nInformations collectées automatiquement : vé
- rifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 18h00–20h00\n\nTarif : Gratuit\n\nPublic : Dès 6 
+ ans\n\nAtelier ludique d'analyse des pelotes de réjection de rapaces noct
+ urnes pour comprendre le régime alimentaire des chouettes.\n\nOrganisateu
+ r : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/atelier-rapaces-nocturnes-chouette-une-pelote-fontainebleau-249e4
+ be334/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-rapaces-nocturnes-choue
  tte-une-pelote-fontainebleau-249e4be334/
 CATEGORIES:Nature & Environnement
@@ -1215,13 +1215,12 @@ DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Grande Brocante du 11 Novembre
 LOCATION:Grand Parquet de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 06h00–18h00\n\nTarif : Accès libre / Entrée grat
- uite\n\nGrande brocante d'automne organisée dans le cadre d'exception du 
- Grand Parquet pour chiner en famille.\n\nOrganisateur : https://www.grandp
- arquet.com/event/brocante-5/\n\nFiche : https://fontainebleaulive.fr/evene
- ments/grande-brocante-du-11-novembre-fontainebleau-f55e6302f3/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 6h00–18h00\n\nTarif : Gratuit\n\nGrande brocante d
+ 'automne organisée dans le cadre d'exception du Grand Parquet pour chiner
+  en famille.\n\nOrganisateur : https://www.grandparquet.com/event/brocante
+ -5/\n\nFiche : https://fontainebleaulive.fr/evenements/grande-brocante-du-
+ 11-novembre-fontainebleau-f55e6302f3/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/grande-brocante-du-11-novembre-
  fontainebleau-f55e6302f3/
 CATEGORIES:Culture & Ateliers
@@ -1288,7 +1287,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_614c38ea82@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Le colonel Barbaque
@@ -1334,12 +1333,12 @@ DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Spectacle « 4211 KM »
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Tarifs spectacles municipaux\n\nPi
- èce de théâtre poignante sur l'exil et le destin d'une famille iranienn
- e réfugiée en France.\n\nOrganisateur : https://www.fontainebleau-touris
- me.com/fr/fiche/7957638/4211-km/\n\nFiche : https://fontainebleaulive.fr/e
- venements/spectacle-4211-km-fontainebleau-59eddc85af/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h00\n\nTarif : De 15 € à 35 €\n\nPièce de th
+ éâtre poignante sur l'exil et le destin d'une famille iranienne réfugi
+ ée en France.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr
+ /fiche/7957638/4211-km/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /spectacle-4211-km-fontainebleau-59eddc85af/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-4211-km-fontainebleau
  -59eddc85af/
 CATEGORIES:Scène & Spectacles
@@ -1372,12 +1371,12 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Antiquités - Brocante mensuelle de Fontainebleau (Novembre)
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Entrée gratuite\n\nBrocant
- e mensuelle d'antiquités sur la Place de l'Aigle Noir.\n\nOrganisateur : 
- https://brocabrac.fr/77/fontainebleau/antiquites-brocante-600308/\n\nFiche
-  : https://fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-d
- e-fontainebleau-novembre-3d0681976d/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 8h00–18h00\n\nTarif : Gratuit\n\nBrocante mensuell
+ e d'antiquités sur la Place de l'Aigle Noir.\n\nOrganisateur : https://br
+ ocabrac.fr/77/fontainebleau/antiquites-brocante-600308/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-de-fontaine
+ bleau-novembre-3d0681976d/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-d
  e-fontainebleau-novembre-3d0681976d/
 CATEGORIES:Culture & Ateliers
@@ -1403,7 +1402,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_728f88dda5@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Le colonel Barbaque
@@ -1518,7 +1517,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_45420fd9ba@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -1583,6 +1582,25 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_dc203b48f6@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Spectacle : La Dictée
+LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 20h00\n\nTarif : De 15 € à 35 €\n\nReprésentat
+ ion du spectacle La Dictée sur la scène du Théâtre Municipal.\n\nOrgan
+ isateur : https://www.fontainebleau.fr/vivre-a-fontainebleau/culture/le-th
+ eatre-municipal-283.html\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/spectacle-la-dictee-fontainebleau-dc203b48f6/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-la-dictee-fontaineble
+ au-dc203b48f6/
+CATEGORIES:Scène & Spectacles
+GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_142ff41db0@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261121
@@ -1623,8 +1641,28 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_32aaefd876@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Apéro-Contes à l'Hôtel Victoria - Silence et secrets
+LOCATION:Hôtel Victoria (112 rue de France)\, Fontainebleau
+DESCRIPTION:Horaires : 18h30\n\nTarif : Consommation 7 € + libre particip
+ ation pour le conte\n\nPublic : Dès 10 ans\n\nSoirée apéro-contes sous 
+ le thème « Silence et secrets ».\n\nOrganisateur : https://fontyblog.fr
+ /apero-contes-hotel-victoria-fontainebleau/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/apero-contes-a-l-hotel-victoria-silence-et-secrets-fo
+ ntainebleau-32aaefd876/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-contes-a-l-hotel-victoria
+ -silence-et-secrets-fontainebleau-32aaefd876/
+CATEGORIES:Scène & Spectacles
+GEO:48.40666;2.69251
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d70743fefd@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -1741,6 +1779,26 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_412d65949f@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261127
+SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
+ ontainebleau
+LOCATION:Théâtre de Fontainebleau\, Fontainebleau
+DESCRIPTION:Festival de jazz du jeudi 26 au samedi 28 novembre\n\nOrganisat
+ eur : https://openagenda.com/lacavedujazz/events/26-au-28-novembre-festiva
+ l-django-reinhardt-jazz-au-theatre-de-fontainebleau\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/26-au-28-novembre-festival-django-reinhardt-j
+ azz-au-theatre-fontainebleau-412d65949f/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/26-au-28-novembre-festival-djan
+ go-reinhardt-jazz-au-theatre-fontainebleau-412d65949f/
+CATEGORIES:Scène & Spectacles
+GEO:48.40365;2.69883
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_e9b08ae25f@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261126
@@ -1786,14 +1844,12 @@ DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261129
 SUMMARY:Festival musical : Jazz au Théâtre
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : Concerts du soir à 20h00 et 21h30 \; 2026-11-28 : P
- odium Jeunes Talents 13h30–15h30\n\nTarif : Payant pour les concerts \; 
- Podium Jeunes Talents en accès libre\n\nFestival de jazz proposant plusie
- urs soirées de concerts au Théâtre municipal.\n\nOrganisateur : https:/
- /www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/e
- venements/festival-musical-jazz-au-theatre-fontainebleau-03cad66ce8/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
+DESCRIPTION:Horaires : 20h00\n\nTarif : De 15 € à 35 €\n\nFestival de 
+ jazz proposant plusieurs soirées de concerts au Théâtre municipal.\n\nO
+ rganisateur : https://www.fontainebleau-tourisme.com/\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/festival-musical-jazz-au-theatre-fontainebl
+ eau-03cad66ce8/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/festival-musical-jazz-au-theatr
  e-fontainebleau-03cad66ce8/
 CATEGORIES:Scène & Spectacles
@@ -1802,7 +1858,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f8dd208372@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -1824,7 +1880,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d4e75908f@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -1863,7 +1919,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6129d65ad6@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Cycle de conférences « Marie-Antoinette et Louis XVI : entre myth
@@ -1885,7 +1941,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aa84102806@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:L'Avare
@@ -1983,7 +2039,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1cf34759cb@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:L'Avare
@@ -2063,12 +2119,12 @@ DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Théâtre : Le Legs (Marivaux)
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Selon catégorie\n\nReprésentation
-  de la fameuse comédie sentimentale de Marivaux mise en scène par Alain 
- de Bock.\n\nOrganisateur : https://theatredefontainebleau.mapado.com/\n\nF
- iche : https://fontainebleaulive.fr/evenements/theatre-le-legs-marivaux-fo
- ntainebleau-f6b357bd56/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h30\n\nTarif : Selon grille tarifaire municipale\n
+ \nReprésentation de la fameuse comédie sentimentale de Marivaux mise en 
+ scène par Alain de Bock.\n\nOrganisateur : https://theatredefontainebleau
+ .mapado.com/\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-le
+ -legs-marivaux-fontainebleau-f6b357bd56/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/theatre-le-legs-marivaux-fontai
  nebleau-f6b357bd56/
 CATEGORIES:Scène & Spectacles
@@ -2077,18 +2133,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b0c33a401@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Stage photographique magie de la forêt
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : Sur réservation\n\nStage d
- e perfectionnement photographique axé sur l'atmosphère magique de la for
- êt.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/685
- 1770/stage-photographique-magie-de-la-foret/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/stage-photographique-magie-de-la-foret-fontainebleau
- -3b0c33a401/\n\nInformations collectées automatiquement : vérifiez-les a
- uprès de l’organisateur.
+DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : 49 €\n\nStage de perfecti
+ onnement photographique axé sur l'atmosphère magique de la forêt.\n\nOr
+ ganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/6851770/stage
+ -photographique-magie-de-la-foret/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/stage-photographique-magie-de-la-foret-fontainebleau-3b0c33a40
+ 1/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/stage-photographique-magie-de-l
  a-foret-fontainebleau-3b0c33a401/
 CATEGORIES:Culture & Ateliers
@@ -2116,41 +2172,41 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261206
-DTEND;VALUE=DATE:20261207
-SUMMARY:Initiation à la bryologie en forêt de Fontainebleau
-LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit (sur inscription)\n
- \nJournée de découverte botanique axée sur l'observation des mousses.\n
- \nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/initiation-a-la-bryologie-en-foret-de-fontainebleau-
- 734a43c14d/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/initiation-a-la-bryologie-en-fo
- ret-de-fontainebleau-734a43c14d/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_af1a49c6c7@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Opéra « La Flûte enchantée » par la compagnie Opéra 2001
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 17h00\n\nTarif : Selon catégorie\n\nGrand opéra f
- éerique de Mozart présenté dans la magnifique salle à l'italienne du T
- héâtre municipal.\n\nOrganisateur : https://theatredefontainebleau.mapad
- o.com/\n\nFiche : https://fontainebleaulive.fr/evenements/opera-la-flute-e
- nchantee-par-la-compagnie-opera-2001-fontainebleau-af1a49c6c7/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 17h00\n\nTarif : Selon catégorie du Théâtre munic
+ ipal\n\nGrand opéra féerique de Mozart présenté dans la magnifique sal
+ le à l'italienne du Théâtre municipal.\n\nOrganisateur : https://theatr
+ edefontainebleau.mapado.com/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/opera-la-flute-enchantee-par-la-compagnie-opera-2001-fontainebleau-a
+ f1a49c6c7/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/opera-la-flute-enchantee-par-la
  -compagnie-opera-2001-fontainebleau-af1a49c6c7/
 CATEGORIES:Scène & Spectacles
 GEO:48.40335;2.69762
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_734a43c14d@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
+LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 10h00–16h00\n\nTarif : Gratuit\n\nJournée de déc
+ ouverte botanique axée sur l'observation des mousses.\n\nOrganisateur : h
+ ttps://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/sortie-d-initiation-a-la-bryologie-en-foret-de-fontainebleau-734a43c14
+ d/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-bryolo
+ gie-en-foret-de-fontainebleau-734a43c14d/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2215,6 +2271,26 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_a6dd41c565@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261214
+SUMMARY:Concerts de Noël par Thomas Hengelbrock
+LOCATION:Château de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : ven. 11 et sam. 12 : 19h30 \; dim. 13 : 15h00\n\nTar
+ if : 27 € (plein tarif)\, 20 € (tarif réduit)\n\nConcerts de Noël av
+ ec l'interprétation des Vespro della Beata Vergine de Monteverdi dans la 
+ Salle de Bal.\n\nOrganisateur : https://www.chateaudefontainebleau.fr/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/concerts-de-noel-par-thoma
+ s-hengelbrock-fontainebleau-a6dd41c565/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concerts-de-noel-par-thomas-hen
+ gelbrock-fontainebleau-a6dd41c565/
+CATEGORIES:Scène & Spectacles
+GEO:48.40168;2.70086
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_cdf020a3aa@fontainebleaulive.fr
 DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261211
@@ -2236,7 +2312,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b6186d716@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Deux sur la balançoire
@@ -2278,13 +2354,13 @@ DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle Jeune Public & Cirque « Le Bibliothécaire »
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 17h30\n\nTarif : De 4 € à 12 €\n\nPublic : Dès
-  4 ans\n\nSpectacle burlesque et acrobatique familial célébrant le plais
- ir de la lecture par la cie Le Gros Orteil.\n\nOrganisateur : https://thea
- tredefontainebleau.mapado.com/\n\nFiche : https://fontainebleaulive.fr/eve
- nements/spectacle-jeune-public-et-cirque-le-bibliothecaire-fontainebleau-7
- 69f22b469/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+DESCRIPTION:Horaires : 17h30\n\nTarif : Tarif jeune public / famille\n\nPub
+ lic : Dès 4 ans\n\nSpectacle burlesque et acrobatique familial célébran
+ t le plaisir de la lecture par la cie Le Gros Orteil.\n\nOrganisateur : ht
+ tps://theatredefontainebleau.mapado.com/\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/spectacle-jeune-public-et-cirque-le-bibliothecaire-fonta
+ inebleau-769f22b469/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-jeune-public-et-cirqu
  e-le-bibliothecaire-fontainebleau-769f22b469/
 CATEGORIES:Scène & Spectacles
@@ -2313,7 +2389,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e894b7314b@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Deux sur la balançoire
@@ -2347,6 +2423,25 @@ URL:https://fontainebleaulive.fr/evenements/les-conferences-de-l-insead-fon
  tainebleau-a139f212f7/
 CATEGORIES:Culture & Ateliers
 GEO:48.40168;2.70086
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c6ecc3650f@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Dans les coulisses du Père Noël
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:"Dans les coulisses du Père Noël" est un spectacle de Noël j
+ eune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nO
+ rganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-c6ecc3650f/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
+ -fontainebleau-c6ecc3650f/
+CATEGORIES:Sport & Outdoor
+GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2417,16 +2512,110 @@ DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:Brocante Antiquité Mensuelle de Fontainebleau - Décembre
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée libre\n\nÉdition d
- e décembre de la brocante mensuelle d'antiquités à Fontainebleau.\n\nOr
- ganisateur : https://vide-greniers.org/77-Seine-et-Marne/Fontainebleau/bro
- cante-antiquite_198533\n\nFiche : https://fontainebleaulive.fr/evenements/
- brocante-antiquite-mensuelle-de-fontainebleau-decembre-c282cb05dc/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
+DESCRIPTION:Horaires : 9h00–17h00\n\nTarif : Gratuit\n\nÉdition de déce
+ mbre de la brocante mensuelle d'antiquités à Fontainebleau.\n\nOrganisat
+ eur : https://vide-greniers.org/77-Seine-et-Marne/Fontainebleau/brocante-a
+ ntiquite_198533\n\nFiche : https://fontainebleaulive.fr/evenements/brocant
+ e-antiquite-mensuelle-de-fontainebleau-decembre-c282cb05dc/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/brocante-antiquite-mensuelle-de
  -fontainebleau-decembre-c282cb05dc/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_733349b698@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Dans les coulisses du Père Noël
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:"Dans les coulisses du Père Noël" est un spectacle de Noël j
+ eune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nO
+ rganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-733349b698/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
+ -fontainebleau-733349b698/
+CATEGORIES:Sport & Outdoor
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_baa4ba8365@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261222
+SUMMARY:Dans les coulisses du Père Noël
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:"Dans les coulisses du Père Noël" est un spectacle de Noël j
+ eune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nO
+ rganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-baa4ba8365/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
+ -fontainebleau-baa4ba8365/
+CATEGORIES:Sport & Outdoor
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_84682cbd82@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261222
+DTEND;VALUE=DATE:20261223
+SUMMARY:Dans les coulisses du Père Noël
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:"Dans les coulisses du Père Noël" est un spectacle de Noël j
+ eune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nO
+ rganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-84682cbd82/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
+ -fontainebleau-84682cbd82/
+CATEGORIES:Sport & Outdoor
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_391c24f317@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261223
+DTEND;VALUE=DATE:20261224
+SUMMARY:Dans les coulisses du Père Noël
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:"Dans les coulisses du Père Noël" est un spectacle de Noël j
+ eune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nO
+ rganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-391c24f317/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
+ -fontainebleau-391c24f317/
+CATEGORIES:Sport & Outdoor
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9babe1b007@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261225
+SUMMARY:Dans les coulisses du Père Noël
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:"Dans les coulisses du Père Noël" est un spectacle de Noël j
+ eune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nO
+ rganisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-9babe1b007/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
+ -fontainebleau-9babe1b007/
+CATEGORIES:Sport & Outdoor
+GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2434,23 +2623,23 @@ UID:EVT_39d27c9c8d@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261230
 DTEND;VALUE=DATE:20261231
-SUMMARY:Animation nature – L'arbre à vœux
+SUMMARY:Animation & balade nature « L'arbre à vœux »
 LOCATION:Lisière de la forêt / centre-ville de Fontainebleau\, Fontainebl
  eau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit (sur inscription)\n
- \nAnimation nature de fin d'année autour de l'arbre à vœux.\n\nOrganisa
- teur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr
- /evenements/animation-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
-URL:https://fontainebleaulive.fr/evenements/animation-nature-l-arbre-a-voeu
- x-fontainebleau-39d27c9c8d/
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nAnimation nature
+  de fin d'année autour de l'arbre à vœux.\n\nOrganisateur : https://anv
+ l.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/animat
+ ion-et-balade-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/animation-et-balade-nature-l-ar
+ bre-a-voeux-fontainebleau-39d27c9c8d/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7444455eaa@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:J'ai mangé ma fourchette
@@ -2473,15 +2662,16 @@ UID:EVT_2005ad3717@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
-SUMMARY:Spectacle du Réveillon « Fantasmagloria »
+SUMMARY:Spectacle de Réveillon : Fantasmagloria
 LOCATION:Théâtre municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Tarif soirée de réveillon\n\nSpec
- tacle féerique de la Saint-Sylvestre au Théâtre municipal pour célébr
- er le passage au Nouvel An.\n\nOrganisateur : https://theatredefontaineble
- au.mapado.com/\n\nFiche : https://fontainebleaulive.fr/evenements/spectacl
- e-du-reveillon-fantasmagloria-fontainebleau-2005ad3717/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/spectacle-du-reveillon-fantasma
+DESCRIPTION:Horaires : 20h30\n\nTarif : Tarif spécial réveillon de la Sai
+ nt-Sylvestre\n\nSpectacle féerique de la Saint-Sylvestre au Théâtre mun
+ icipal pour célébrer le passage au Nouvel An.\n\nOrganisateur : https://
+ theatredefontainebleau.mapado.com/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/spectacle-de-reveillon-fantasmagloria-fontainebleau-2005ad3717
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-de-reveillon-fantasma
  gloria-fontainebleau-2005ad3717/
 CATEGORIES:Scène & Spectacles
 GEO:48.40335;2.69762
@@ -2510,16 +2700,16 @@ UID:EVT_b8f959b063@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
-SUMMARY:Pablo Mira cherche encore le titre de son spectacle
+SUMMARY:Humour : Pablo Mira – Cherche encore le titre de son spectacle
 LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Selon catégorie\n\nSpectacle d'hum
- our présenté par Pablo Mira.\n\nOrganisateur : https://www.fontainebleau
- .fr/vie-culturelle/theatre-municipal-de-fontainebleau-tmf\n\nFiche : https
- ://fontainebleaulive.fr/evenements/pablo-mira-cherche-encore-le-titre-de-s
- on-spectacle-fontainebleau-b8f959b063/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/pablo-mira-cherche-encore-le-ti
- tre-de-son-spectacle-fontainebleau-b8f959b063/
+DESCRIPTION:Horaires : 20h30\n\nTarif : Selon grille tarifaire du théâtre
+ \n\nSpectacle d'humour présenté par Pablo Mira.\n\nOrganisateur : https:
+ //www.fontainebleau.fr/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /humour-pablo-mira-cherche-encore-le-titre-de-son-spectacle-fontainebleau-
+ b8f959b063/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/humour-pablo-mira-cherche-encor
+ e-le-titre-de-son-spectacle-fontainebleau-b8f959b063/
 CATEGORIES:Scène & Spectacles
 GEO:48.40335;2.69762
 TRANSP:TRANSPARENT

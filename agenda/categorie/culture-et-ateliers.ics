@@ -51,8 +51,24 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_7a121705c4@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:La grande lessive 2026
+LOCATION:Korian Sainte Geneviève @ 1 Place de l'église\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-15-lagrand
+ elessive2026\n\nFiche : https://fontainebleaulive.fr/evenements/la-grande-
+ lessive-2026-hericy-7a121705c4/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-grande-lessive-2026-hericy-7
+ a121705c4/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d00a04cf3c@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261015
 DTEND;VALUE=DATE:20261016
 SUMMARY:Oeuvre d'art participatif " photo ( et) graphie "
@@ -71,8 +87,46 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_3f36e553a1@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Salon du bien-être
+LOCATION:Salle de la Bergerie\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 13h à 17h\n\nTarif : Gratuit\n\nSalon du bien-être
+  pour découvrir différents professionnels et activités autour de la dé
+ tente et de la santé.\n\nOrganisateur : https://www.chatelet-en-brie.fr/i
+ ndex.php/Agenda?idpage=9&idmetacontenu=2917&iddossiercontenu=42&positionco
+ ntenu=A1\n\nFiche : https://fontainebleaulive.fr/evenements/salon-du-bien-
+ etre-le-chatelet-en-brie-3f36e553a1/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/salon-du-bien-etre-le-chatelet-
+ en-brie-3f36e553a1/
+CATEGORIES:Culture & Ateliers
+GEO:48.50344;2.78789
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_98321e1533@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261019
+SUMMARY:Balade du goût
+LOCATION:72 rue du Général de Gaulle - Bourron-Marlotte\, Bourron-Marlott
+ e
+DESCRIPTION:Organisateur : https://bourronmarlotte.fr/agenda/balade-du-gout
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/balade-du-gout-bourro
+ n-marlotte-98321e1533/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-du-gout-bourron-marlotte
+ -98321e1533/
+CATEGORIES:Culture & Ateliers
+GEO:48.34034;2.70451
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_2e255f251c@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Découverte des lieux historiques du village et création d'un carn
@@ -93,7 +147,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e76e8e9f90@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Imaginer la restauration de l'église Saint Mathurin de Larchant
@@ -107,25 +161,6 @@ URL:https://fontainebleaulive.fr/evenements/imaginer-la-restauration-de-l-e
  glise-saint-mathurin-de-larch-larchant-e76e8e9f90/
 CATEGORIES:Culture & Ateliers
 GEO:48.28406;2.59622
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_226c25c53d@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261019
-SUMMARY:La Balade du Goût
-LOCATION:Fermes du Pays de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : sam. 17/10 : 14h–18h \; dim. 18/10 : 11h–17h\n\n
- Tarif : Gratuit.\n\nPortes ouvertes gourmandes dans les fermes locales ave
- c dégustations\, visites guidées et ateliers ludiques en famille.\n\nOrg
- anisateur : https://www.fontainebleau-tourisme.com/fr/fiche/6294769/la-bal
- ade-du-gout/\n\nFiche : https://fontainebleaulive.fr/evenements/la-balade-
- du-gout-fontainebleau-226c25c53d/\n\nInformations collectées automatiquem
- ent : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/la-balade-du-gout-fontainebleau
- -226c25c53d/
-CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -147,27 +182,8 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_a06082177d@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261019
-SUMMARY:La Balade du Goût 2026
-LOCATION:Fermes participantes du Pays de Fontainebleau\, Thomery
-DESCRIPTION:Horaires : 2026-10-17 : 14h–18h \; 2026-10-18 : 11h–17h\n\n
- Tarif : Entrée libre / Gratuit\n\nPortes ouvertes et animations dans les 
- fermes du Pays de Fontainebleau pour découvrir les produits locaux.\n\nOr
- ganisateur : https://www.baladedugout.fr/\n\nFiche : https://fontainebleau
- live.fr/evenements/la-balade-du-gout-2026-thomery-a06082177d/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
-URL:https://fontainebleaulive.fr/evenements/la-balade-du-gout-2026-thomery-
- a06082177d/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_9ff7d4e4e2@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:La Philosophe
@@ -205,8 +221,25 @@ GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b4503f1342@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Soirée Portugaise
+LOCATION:Salle de l'Orangerie @ 8 rue de l'église\, 77850\, Héricy\, Hér
+ icy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-17-soireep
+ ortugaise\n\nFiche : https://fontainebleaulive.fr/evenements/soiree-portug
+ aise-hericy-b4503f1342/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-portugaise-hericy-b4503f
+ 1342/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4e6974ffa4@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Visite guidée du village des peintres de Barbizon
@@ -252,13 +285,13 @@ DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Antiquités - Brocante mensuelle de Fontainebleau (Octobre)
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Entrée gratuite\n\nRendez-
- vous mensuel d'antiquaires et brocanteurs professionnels en plein cœur de
-  Fontainebleau.\n\nOrganisateur : https://brocabrac.fr/77/fontainebleau/11
- 83307-antiquites-brocante/\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/antiquites-brocante-mensuelle-de-fontainebleau-octobre-f7fe50ded0/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
+DESCRIPTION:Horaires : 8h00–18h00\n\nTarif : Gratuit\n\nRendez-vous mensu
+ el d'antiquaires et brocanteurs professionnels en plein cœur de Fontaineb
+ leau.\n\nOrganisateur : https://brocabrac.fr/77/fontainebleau/1183307-anti
+ quites-brocante/\n\nFiche : https://fontainebleaulive.fr/evenements/antiqu
+ ites-brocante-mensuelle-de-fontainebleau-octobre-f7fe50ded0/\n\nInformatio
+ ns collectées automatiquement : vérifiez-les auprès de l’organisateur
+ .
 URL:https://fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-d
  e-fontainebleau-octobre-f7fe50ded0/
 CATEGORIES:Culture & Ateliers
@@ -266,16 +299,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08a8d79115@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Café musique
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 20h – 22h30\n\nOrganisateur : https://www.ccmsl.fr
- /actu-et-agendas/agenda.html#2026-10-18-cafemusique\n\nFiche : https://fon
- tainebleaulive.fr/evenements/cafe-musique-moret-loing-et-orvanne-08a8d7911
- 5/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
- l’organisateur.
+LOCATION:Salle Louis Durant\, 11 rue Georges Villette ( Ecuelles ) à Moret
+ -Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 20h – 22h30\n\nUn moment musical et convivial prop
+ osé à la salle Louis Durant à Écuelles.\n\nOrganisateur : https://www.
+ ccmsl.fr/actu-et-agendas/agenda.html#2026-10-18-cafemusique\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/cafe-musique-moret-loing-et-orvanne-0
+ 8a8d79115/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cafe-musique-moret-loing-et-orv
  anne-08a8d79115/
 CATEGORIES:Culture & Ateliers
@@ -283,8 +318,27 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b28572d441@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Fête des vendanges et de la gastronomie
+LOCATION:Sous la Halle\, Milly-la-Forêt
+DESCRIPTION:Horaires : 10h à 18h\n\nTarif : Entrée libre\n\nJournée conv
+ iviale sous la Halle à la découverte de produits gourmands\, dégustatio
+ ns de vins et ventes de raisins.\n\nOrganisateur : https://www.milly-la-fo
+ ret.fr/2026/01/30/18-10-26-fete-des-vendanges-et-de-la-gastronomie/\n\nFic
+ he : https://fontainebleaulive.fr/evenements/fete-des-vendanges-et-de-la-g
+ astronomie-milly-la-foret-b28572d441/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fete-des-vendanges-et-de-la-gas
+ tronomie-milly-la-foret-b28572d441/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_61430f6751@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Loto annuel
@@ -296,6 +350,26 @@ DESCRIPTION:Horaires : 14h00\n\nLoto annuel organisé par l'Association bé
  tiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/loto-annuel-samois-sur-seine-61
  430f6751/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3d1c30e0ef@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261022
+SUMMARY:Stages arts plasqitques " Cauchemars et attrape-rêves"
+LOCATION:Centre d'Art Camille Varlet\, rue du Port ( Veneux-Les Sablons ) 
+ à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h à 12h30 / 10h à 12h15\n\nDes ateliers d'arts p
+ lastiques parents-enfants sur le thème des cauchemars et attrape-rêves.\
+ n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10
+ -18-stagesartsplasqitquescauchemarsetattrape\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/stages-arts-plasqitques-cauchemars-et-attrape-reves-
+ moret-loing-et-orvanne-3d1c30e0ef/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stages-arts-plasqitques-cauchem
+ ars-et-attrape-reves-moret-loing-et-orvanne-3d1c30e0ef/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -337,8 +411,24 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_26df58bf64@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Conseil Municipal
+LOCATION:Mairie - Salle du Conseil\, Bourron-Marlotte
+DESCRIPTION:Horaires : 20h00\n\nOrganisateur : https://bourronmarlotte.fr/a
+ genda/conseil-municipal-6/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/conseil-municipal-bourron-marlotte-26df58bf64/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conseil-municipal-bourron-marlo
+ tte-26df58bf64/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_48db600ea0@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261025
 SUMMARY:MLO Game's Week !
@@ -399,7 +489,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a722387529@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Gudule et Trampo
@@ -418,8 +508,24 @@ GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_626e1314a5@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261022
+DTEND;VALUE=DATE:20261026
+SUMMARY:Art’icy
+LOCATION:Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-22-articy\
+ n\nFiche : https://fontainebleaulive.fr/evenements/art-icy-hericy-626e1314
+ a5/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/art-icy-hericy-626e1314a5/
+CATEGORIES:Culture & Ateliers
+GEO:48.44696;2.7794
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f0f64a41df@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Gudule et Trampo
@@ -439,7 +545,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fb8615d83f@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:Gudule et Trampo
@@ -458,8 +564,26 @@ GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_89eaead9ad@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261026
+SUMMARY:Atelier céramiques
+LOCATION:Atelier MUJU\, 7 Rue Docteur Schweitzer à Thomery\, Thomery
+DESCRIPTION:Horaires : 10h à 13h et 15h à 18h\n\nUn stage d'initiation et
+  de pratique de la céramique à l'Atelier MUJU.\n\nOrganisateur : https:/
+ /www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-24-atelierceramiques\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/atelier-ceramiques-thomery
+ -89eaead9ad/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-ceramiques-thomery-89ea
+ ead9ad/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_26b82e4407@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Bourse aux collectionneurs d'Octobre Rose
@@ -477,8 +601,26 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_82888ce71a@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261026
+SUMMARY:Expo photo – Octobre Rose
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : Samedi 14h à 18h / Dimanche 10h à 17h\n\nTarif : P
+ articipation demandée\n\nOrganisateur : https://www.saint-mammes.com/expo
+ -photo-octobre-rose/\n\nFiche : https://fontainebleaulive.fr/evenements/ex
+ po-photo-octobre-rose-saint-mammes-82888ce71a/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/expo-photo-octobre-rose-saint-m
+ ammes-82888ce71a/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_dc9a7eebb8@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Gudule et Trampo
@@ -497,8 +639,24 @@ GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_541a2c91c2@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Halloween enfant
+LOCATION:Place du Clos\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-24-hallowe
+ enenfant\n\nFiche : https://fontainebleaulive.fr/evenements/halloween-enfa
+ nt-hericy-541a2c91c2/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-enfant-hericy-541a2c9
+ 1c2/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_847c0a2b7d@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Stage aquarelle et techniques mixtes
@@ -514,6 +672,23 @@ URL:https://fontainebleaulive.fr/evenements/stage-aquarelle-et-techniques-m
  ixtes-moret-loing-et-orvanne-847c0a2b7d/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_238ad12fc3@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Vernissage _ Photos et Peintures
+LOCATION:Résidence des Chênes Rouges\, Bourron-Marlotte
+DESCRIPTION:Horaires : de 14h30 à 17h30\n\nOrganisateur : https://bourronm
+ arlotte.fr/agenda/vernissage-_-photos-et-peintures/\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/vernissage-photos-et-peintures-bourron-marlot
+ te-238ad12fc3/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vernissage-photos-et-peintures-
+ bourron-marlotte-238ad12fc3/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -573,7 +748,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1c36ac36ec@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261031
 SUMMARY:Stage de perfectionnement Tennis
@@ -588,6 +763,24 @@ URL:https://fontainebleaulive.fr/evenements/stage-de-perfectionnement-tenni
  s-moret-loing-et-orvanne-1c36ac36ec/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fa0515afcd@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Fête du Potiron
+LOCATION:Sous la Halle\, Milly-la-Forêt
+DESCRIPTION:Horaires : À partir de 13h30\n\nAnimations pour petits et gran
+ ds\, défilé costumé et dégustation de soupe de potiron sous la Halle.\
+ n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/30/28-10-26-fete-d
+ u-potiron/\n\nFiche : https://fontainebleaulive.fr/evenements/fete-du-poti
+ ron-milly-la-foret-fa0515afcd/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fete-du-potiron-milly-la-foret-
+ fa0515afcd/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -634,11 +827,12 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
-LOCATION:Salle Georges Barrois\, Montigny-sur-Loing
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
+ oing\, Montigny-sur-Loing
 DESCRIPTION:Horaires : En journée\n\nTarif : Entrée libre\n\nVente de jou
  ets\, matériel de puériculture et livres pour enfants à petit prix.\n\n
  Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-30
@@ -652,17 +846,51 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0cfa5dd222@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Halloween Ados
+LOCATION:Parc de la Mairie\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-30-hallowe
+ enados\n\nFiche : https://fontainebleaulive.fr/evenements/halloween-ados-h
+ ericy-0cfa5dd222/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-ados-hericy-0cfa5dd22
+ 2/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c3604d84da@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Balade d’Halloween
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 17h30\n\nOrganisateur : https://www.saint-mammes.com
+ /balade-dhalloween/\n\nFiche : https://fontainebleaulive.fr/evenements/bal
+ ade-d-halloween-saint-mammes-c3604d84da/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-d-halloween-saint-mammes
+ -c3604d84da/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_279a3ca0f3@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Boom d'Halloween
 LOCATION:Villecerf
-DESCRIPTION:Horaires : 19h – 22h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-31-boomdhalloween\n\nFiche : https://fo
- ntainebleaulive.fr/evenements/boom-d-halloween-villecerf-279a3ca0f3/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
+DESCRIPTION:Horaires : 19h – 22h\n\nVenez participer au concours du dégu
+ isement le plus terrifiant lors de la boom d'Halloween réservée aux pré
+ ados et ados.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agend
+ a.html#2026-10-31-boomdhalloween\n\nFiche : https://fontainebleaulive.fr/e
+ venements/boom-d-halloween-villecerf-279a3ca0f3/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/boom-d-halloween-villecerf-279a
  3ca0f3/
 CATEGORIES:Culture & Ateliers
@@ -671,20 +899,73 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99b337a3a7@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
-LOCATION:Montigny-sur-Loing
-DESCRIPTION:Horaires : 14h – 17h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-10-31-halloween\n\nFiche : https://fontain
- ebleaulive.fr/evenements/halloween-montigny-sur-loing-99b337a3a7/\n\nInfor
- mations collectées automatiquement : vérifiez-les auprès de l’organis
- ateur.
+LOCATION:Salle du Long Rocher\, 3 rue Renée Montgermont à Montigny sur Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 14h – 17h\n\nUne après-midi récréative sur le t
+ hème d'Halloween à la salle du Long Rocher.\n\nOrganisateur : https://ww
+ w.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-31-halloween\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/halloween-montigny-sur-loing-99b337a3
+ a7/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/halloween-montigny-sur-loing-99
  b337a3a7/
 CATEGORIES:Culture & Ateliers
 GEO:48.33545;2.7482
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a5c21898e7@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween
+LOCATION:Mairie\, Bourron-Marlotte
+DESCRIPTION:Horaires : de 17h30 à 20h00\n\nOrganisateur : https://bourronm
+ arlotte.fr/agenda/halloween/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/halloween-bourron-marlotte-a5c21898e7/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-bourron-marlotte-a5c2
+ 1898e7/
+CATEGORIES:Culture & Ateliers
+GEO:48.34297;2.70575
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_bb14826b3a@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween Adultes
+LOCATION:Salle de l'Orangerie\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-31-hallowe
+ enadultes\n\nFiche : https://fontainebleaulive.fr/evenements/halloween-adu
+ ltes-hericy-bb14826b3a/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-adultes-hericy-bb1482
+ 6b3a/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9c3a8a48c3@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Samedis Switch – Médiathèque
+LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h à 12h\n\nTarif : Accès libre\n\nMoment conv
+ ivial autour de la Nintendo Switch seul\, entre amis ou en famille.\n\nOrg
+ anisateur : https://www.milly-la-foret.fr/2026/01/30/31-10-26-samedis-swit
+ ch-mediatheque/\n\nFiche : https://fontainebleaulive.fr/evenements/samedis
+ -switch-mediatheque-milly-la-foret-9c3a8a48c3/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/samedis-switch-mediatheque-mill
+ y-la-foret-9c3a8a48c3/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -709,7 +990,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween à Thomery
@@ -727,19 +1008,38 @@ GEO:48.40233;2.78149
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1cee776589@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Soirée Halloween jeux de société
+LOCATION:Médiathèque de la Charité Royale (15 rue Royale)\, Fontaineblea
+ u
+DESCRIPTION:Horaires : 19h à 21h\n\nTarif : Gratuit\n\nPublic : Dès 12 an
+ s\n\nSoirée Halloween et jeux de société pour ados et adultes.\n\nOrgan
+ isateur : https://www.saint-mammes.com/soiree-halloween-jeux-de-societe/\n
+ \nFiche : https://fontainebleaulive.fr/evenements/soiree-halloween-jeux-de
+ -societe-fontainebleau-1cee776589/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-halloween-jeux-de-societ
+ e-fontainebleau-1cee776589/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_544cf67e58@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Visites mystérieuses d'Halloween & Distribution de bonbons
 LOCATION:Château de Rosa Bonheur\, Thomery
-DESCRIPTION:Horaires : En journée\n\nTarif : Inclus dans le droit d'entré
- e\n\nVisites mystérieuses et distribution de bonbons pour Halloween au Ch
- âteau de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-bonheur
- .fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-mysterieus
- es-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
+DESCRIPTION:Horaires : Toute la journée\n\nTarif : Billet d'entrée au mus
+ ée\n\nVisites mystérieuses et distribution de bonbons pour Halloween au 
+ Château de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-bonhe
+ ur.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-mysterie
+ uses-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
 URL:https://fontainebleaulive.fr/evenements/visites-mysterieuses-d-hallowee
  n-et-distribution-de-bonbons-thomery-544cf67e58/
 CATEGORIES:Culture & Ateliers
@@ -747,27 +1047,8 @@ GEO:48.394;2.78514
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_7df7bfd9a6@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Visite contée : Halloween à la Faisanderie
-LOCATION:Site de la Faisanderie / L'Empreinte\, Fontainebleau
-DESCRIPTION:Horaires : En journée\n\nTarif : Accès libre / Réservation c
- onseillée\n\nVisite contée thématique sur le site de la Faisanderie à 
- l'occasion d'Halloween.\n\nOrganisateur : https://www.fontainebleau-touris
- me.com/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-contee-h
- alloween-a-la-faisanderie-fontainebleau-7df7bfd9a6/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-contee-halloween-a-la-fa
- isanderie-fontainebleau-7df7bfd9a6/
-CATEGORIES:Culture & Ateliers
-GEO:48.40844;2.68988
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
@@ -788,8 +1069,27 @@ GEO:48.26374;2.7001
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_cb1ab08abe@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Atelier collectif " Dispositifs engagements jeunes "
+LOCATION:Champagne-sur-Seine
+DESCRIPTION:Horaires : 15h – 17h\n\nOrganisateur : https://www.ccmsl.fr/a
+ ctu-et-agendas/agenda.html#2026-11-04-ateliercollectifdispositifsengagemen
+ tsje\n\nFiche : https://fontainebleaulive.fr/evenements/atelier-collectif-
+ dispositifs-engagements-jeunes-champagne-sur-seine-cb1ab08abe/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/atelier-collectif-dispositifs-e
+ ngagements-jeunes-champagne-sur-seine-cb1ab08abe/
+CATEGORIES:Culture & Ateliers
+GEO:48.40234;2.80035
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_8dee5271f4@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Réunions d'information Transmission
@@ -884,6 +1184,24 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_be1a35043c@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Les rendez-vous de la forme
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 10h – 12h\n\nTarif : Gratuit sur inscription\n\nOr
+ ganisateur : https://www.saint-mammes.com/ccmsl-les-rendez-vous-de-la-form
+ e/\n\nFiche : https://fontainebleaulive.fr/evenements/les-rendez-vous-de-l
+ a-forme-saint-mammes-be1a35043c/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-forme-sai
+ nt-mammes-be1a35043c/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_7387a9aaa4@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261107
@@ -945,7 +1263,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2219b8be7b@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Conférence " Moïse\, figure du héros : 2000 ans d'histoire de l'
@@ -985,16 +1303,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
 LOCATION:Saint-Mammès
-DESCRIPTION:Horaires : 9h – 14h\n\nOrganisateur : https://www.ccmsl.fr/ac
- tu-et-agendas/agenda.html#2026-11-08-forumdesartisantsetdesentrepreneurs\n
- \nFiche : https://fontainebleaulive.fr/evenements/forum-des-artisants-et-d
- es-entrepreneurs-saint-mammes-5258aab0a6/\n\nInformations collectées auto
- matiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 9h – 14h\n\nTarif : Entrée libre\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-08-forumdesarti
+ santsetdesentrepreneurs\n\nFiche : https://fontainebleaulive.fr/evenements
+ /forum-des-artisants-et-des-entrepreneurs-saint-mammes-5258aab0a6/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/forum-des-artisants-et-des-entr
  epreneurs-saint-mammes-5258aab0a6/
 CATEGORIES:Culture & Ateliers
@@ -1003,7 +1322,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdc5e49f92@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Vide ta chambre
@@ -1022,7 +1341,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23ccc433a8@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:Venez découvrir le secteur de l'industrie !
@@ -1042,7 +1361,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce0fde7d25@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cérémonie du 11 nov 2026
@@ -1058,19 +1377,37 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_6f02416d94@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Commémoration du 11 novembre 1918
+LOCATION:Cimetière du Châtelet-en-Brie\, Le Châtelet-en-Brie
+DESCRIPTION:Horaires : 11h\n\nCérémonie de commémoration de l'Armistice 
+ du 11 novembre 1918 suivie d'un vin d'honneur.\n\nOrganisateur : https://w
+ ww.chatelet-en-brie.fr/index.php/Agenda?idpage=9&idmetacontenu=2931&iddoss
+ iercontenu=42&positioncontenu=A1\n\nFiche : https://fontainebleaulive.fr/e
+ venements/commemoration-du-11-novembre-1918-le-chatelet-en-brie-6f02416d94
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/commemoration-du-11-novembre-19
+ 18-le-chatelet-en-brie-6f02416d94/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f55e6302f3@fontainebleaulive.fr
 DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Grande Brocante du 11 Novembre
 LOCATION:Grand Parquet de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 06h00–18h00\n\nTarif : Accès libre / Entrée grat
- uite\n\nGrande brocante d'automne organisée dans le cadre d'exception du 
- Grand Parquet pour chiner en famille.\n\nOrganisateur : https://www.grandp
- arquet.com/event/brocante-5/\n\nFiche : https://fontainebleaulive.fr/evene
- ments/grande-brocante-du-11-novembre-fontainebleau-f55e6302f3/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
+DESCRIPTION:Horaires : 6h00–18h00\n\nTarif : Gratuit\n\nGrande brocante d
+ 'automne organisée dans le cadre d'exception du Grand Parquet pour chiner
+  en famille.\n\nOrganisateur : https://www.grandparquet.com/event/brocante
+ -5/\n\nFiche : https://fontainebleaulive.fr/evenements/grande-brocante-du-
+ 11-novembre-fontainebleau-f55e6302f3/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/grande-brocante-du-11-novembre-
  fontainebleau-f55e6302f3/
 CATEGORIES:Culture & Ateliers
@@ -1098,7 +1435,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_05bc7d1947@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Café du Maire et de ses élus
@@ -1134,7 +1471,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_614c38ea82@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Le colonel Barbaque
@@ -1175,7 +1512,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up
@@ -1218,12 +1555,12 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Antiquités - Brocante mensuelle de Fontainebleau (Novembre)
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Entrée gratuite\n\nBrocant
- e mensuelle d'antiquités sur la Place de l'Aigle Noir.\n\nOrganisateur : 
- https://brocabrac.fr/77/fontainebleau/antiquites-brocante-600308/\n\nFiche
-  : https://fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-d
- e-fontainebleau-novembre-3d0681976d/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 8h00–18h00\n\nTarif : Gratuit\n\nBrocante mensuell
+ e d'antiquités sur la Place de l'Aigle Noir.\n\nOrganisateur : https://br
+ ocabrac.fr/77/fontainebleau/antiquites-brocante-600308/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-de-fontaine
+ bleau-novembre-3d0681976d/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/antiquites-brocante-mensuelle-d
  e-fontainebleau-novembre-3d0681976d/
 CATEGORIES:Culture & Ateliers
@@ -1231,7 +1568,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_728f88dda5@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Le colonel Barbaque
@@ -1290,7 +1627,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_57925be5b9@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261117
 SUMMARY:recrutement DEDIENNE AEROSPACE site de Villaroche
@@ -1347,8 +1684,30 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_567e428004@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
+  un leader industriel mondial ! Basé dans le sud Seine et Marne
+LOCATION:Nemours - Agence Montereau-Fault-Yonne\, Nemours
+DESCRIPTION:Nous vous invitons à une rencontre exclusive pour découvrir l
+ e poste d' Agent de contrôle qualité polyvalent (H/F) basé dans le sud 
+ Seine et Marne.\n\nOrganisateur : https://openagenda.com/semaine-industrie
+ -2026/events/interim-agent-de-controle-qualite-polyvalent-hf-rejoignez-un-
+ leader-industriel-mondial-base-dans-le-sud-seine-et-marne\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/interim-agent-de-controle-qualite-polyv
+ alent-h-f-rejoignez-u-nemours-567e428004/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/interim-agent-de-controle-quali
+ te-polyvalent-h-f-rejoignez-u-nemours-567e428004/
+CATEGORIES:Culture & Ateliers
+GEO:48.26374;2.7001
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_cb26d04362@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:NOUVEAUX HABITANTS\, inscrivez vous !
@@ -1387,7 +1746,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_45420fd9ba@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -1407,7 +1766,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d4de9594c9@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Conférence de Sébastien Ronsseray
@@ -1485,8 +1844,24 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ec24de15f3@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Broc’enfants et ados
+LOCATION:Salle du Clos\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-11-22-brocenf
+ antsetados\n\nFiche : https://fontainebleaulive.fr/evenements/broc-enfants
+ -et-ados-hericy-ec24de15f3/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/broc-enfants-et-ados-hericy-ec2
+ 4de15f3/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d70743fefd@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -1502,6 +1877,23 @@ URL:https://fontainebleaulive.fr/evenements/colette-l-incorrigible-besoin-d
  -ecrire-fontainebleau-d70743fefd/
 CATEGORIES:Culture & Ateliers
 GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8b62d5debb@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:LOTO
+LOCATION:LA SAMOISIENNE\, Samois-sur-Seine
+DESCRIPTION:Horaires : 14h\n\nGrand loto avec de nombreux lots à gagner\, 
+ tombola\, buvette et gâteaux.\n\nOrganisateur : https://samois-sur-seine.
+ fr/evenement/loto/\n\nFiche : https://fontainebleaulive.fr/evenements/loto
+ -samois-sur-seine-8b62d5debb/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/loto-samois-sur-seine-8b62d5deb
+ b/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -1543,8 +1935,29 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_5d149ee44b@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Visite flash de l'exposition Ça en jette !
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Suivez le guide et découvrez la toute nouvelle exposition du m
+ usée de Préhistoire consacrée aux déchets. Ce que nos ancêtres ont re
+ jeté représente en effet une véritable mine d'or pour les archéologues
+  !\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/fr\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca-en-j
+ ette-nemours-5d149ee44b/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca
+ -en-jette-nemours-5d149ee44b/
+CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_6129d65ad6@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Cycle de conférences « Marie-Antoinette et Louis XVI : entre myth
@@ -1566,7 +1979,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aa84102806@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:L'Avare
@@ -1644,7 +2057,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing
@@ -1662,7 +2075,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1cf34759cb@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:L'Avare
@@ -1717,7 +2130,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
@@ -1735,8 +2148,40 @@ GEO:48.40493;2.72051
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1ee0cb8764@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Inauguration illuminations de Noël
+LOCATION:Place de l'Orangerie\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-12-04-inaugur
+ ationilluminationsdenoel\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/inauguration-illuminations-de-noel-hericy-1ee0cb8764/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/inauguration-illuminations-de-n
+ oel-hericy-1ee0cb8764/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4885be582a@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël
+LOCATION:Salle du Clos / Salle de l'Orangerie\, Héricy
+DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-12-05-marched
+ enoel\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-he
+ ricy-4885be582a/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-hericy-4885be582
+ a/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël
@@ -1754,18 +2199,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b0c33a401@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Stage photographique magie de la forêt
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : Sur réservation\n\nStage d
- e perfectionnement photographique axé sur l'atmosphère magique de la for
- êt.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/685
- 1770/stage-photographique-magie-de-la-foret/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/stage-photographique-magie-de-la-foret-fontainebleau
- -3b0c33a401/\n\nInformations collectées automatiquement : vérifiez-les a
- uprès de l’organisateur.
+DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : 49 €\n\nStage de perfecti
+ onnement photographique axé sur l'atmosphère magique de la forêt.\n\nOr
+ ganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/6851770/stage
+ -photographique-magie-de-la-foret/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/stage-photographique-magie-de-la-foret-fontainebleau-3b0c33a40
+ 1/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/stage-photographique-magie-de-l
  a-foret-fontainebleau-3b0c33a401/
 CATEGORIES:Culture & Ateliers
@@ -1797,17 +2242,33 @@ UID:EVT_18062a504e@fontainebleaulive.fr
 DTSTAMP:20261004T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
-SUMMARY:16ème Salon Multi-Collections & Bourse du Téléthon
+SUMMARY:16ᵉ Salon Multi-collections & Bourse au profit du Téléthon
 LOCATION:Maison des Associations & Gymnase (rue de l'Hermite)\, Milly-la-Fo
  rêt
-DESCRIPTION:Horaires : 8h30–17h00\n\nTarif : Gratuit\n\nSalon multi-colle
- ctions et bourse organisés au profit du Téléthon.\n\nOrganisateur : htt
- ps://brocabrac.fr/91/milly-la-foret/\n\nFiche : https://fontainebleaulive.
- fr/evenements/16eme-salon-multi-collections-et-bourse-du-telethon-milly-la
- -foret-18062a504e/\n\nInformations collectées automatiquement : vérifiez
- -les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/16eme-salon-multi-collections-e
- t-bourse-du-telethon-milly-la-foret-18062a504e/
+DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Gratuit\n\nSalon multi-coll
+ ections et bourse organisés au profit du Téléthon.\n\nOrganisateur : ht
+ tps://brocabrac.fr/91/milly-la-foret/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/16-salon-multi-collections-et-bourse-au-profit-du-telethon-
+ milly-la-foret-18062a504e/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/16-salon-multi-collections-et-b
+ ourse-au-profit-du-telethon-milly-la-foret-18062a504e/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a0096844bf@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël
+LOCATION:Espace Jean Renoir\, Bourron-Marlotte
+DESCRIPTION:Horaires : de 10h à 18h\n\nOrganisateur : https://bourronmarlo
+ tte.fr/agenda/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/marche-de-noel-bourron-marlotte-a0096844bf/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-bourron-marlotte
+ -a0096844bf/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1871,7 +2332,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b6186d716@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Deux sur la balançoire
@@ -1912,16 +2373,17 @@ DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261214
 SUMMARY:Village & Marché de Noël
-LOCATION:Maison des Arts\, Saint-Pierre-lès-Nemours\, Nemours
-DESCRIPTION:Horaires : 2026-12-12 : 10h00–21h00 \; 2026-12-13 : 10h00–1
- 8h30\n\nTarif : Entrée libre\n\nVillage de Noël réunissant soixante exp
+LOCATION:Maison des Arts\, Saint-Pierre-lès-Nemours\, Saint-Pierre-lès-Ne
+ mours
+DESCRIPTION:Horaires : sam. 12 déc. : 10h00–21h00 \; dim. 13 déc. : 10h
+ 00–18h30\n\nTarif : Gratuit\n\nVillage de Noël réunissant soixante exp
  osants\, expositions artistiques et animations féériques pour toute la f
  amille.\n\nOrganisateur : https://www.saintpierrelesnemours.fr/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-nemours
- -39a65cd1ec/\n\nInformations collectées automatiquement : vérifiez-les a
- uprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-nemou
- rs-39a65cd1ec/
+  https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-saint-p
+ ierre-les-nemours-39a65cd1ec/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-saint
+ -pierre-les-nemours-39a65cd1ec/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1945,7 +2407,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e894b7314b@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Deux sur la balançoire
@@ -2001,7 +2463,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
@@ -2039,6 +2501,26 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_d3e57063ae@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261223
+SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
+LOCATION:Place de l'Hôtel de Ville\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : ven. 19 déc. : 16h00–21h00 \; du sam. 20 au lun. 
+ 22 déc. : 10h00–19h30\n\nTarif : Gratuit\n\nMarché de Noël artisanal 
+ au cœur de Moret-sur-Loing.\n\nOrganisateur : https://moret-loing-et-orva
+ nne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-
+ artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57063ae/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
+ et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
+CATEGORIES:Culture & Ateliers
+GEO:48.37226;2.81721
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_40d68b424a@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261219
@@ -2065,13 +2547,12 @@ DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:Brocante Antiquité Mensuelle de Fontainebleau - Décembre
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée libre\n\nÉdition d
- e décembre de la brocante mensuelle d'antiquités à Fontainebleau.\n\nOr
- ganisateur : https://vide-greniers.org/77-Seine-et-Marne/Fontainebleau/bro
- cante-antiquite_198533\n\nFiche : https://fontainebleaulive.fr/evenements/
- brocante-antiquite-mensuelle-de-fontainebleau-decembre-c282cb05dc/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
+DESCRIPTION:Horaires : 9h00–17h00\n\nTarif : Gratuit\n\nÉdition de déce
+ mbre de la brocante mensuelle d'antiquités à Fontainebleau.\n\nOrganisat
+ eur : https://vide-greniers.org/77-Seine-et-Marne/Fontainebleau/brocante-a
+ ntiquite_198533\n\nFiche : https://fontainebleaulive.fr/evenements/brocant
+ e-antiquite-mensuelle-de-fontainebleau-decembre-c282cb05dc/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/brocante-antiquite-mensuelle-de
  -fontainebleau-decembre-c282cb05dc/
 CATEGORIES:Culture & Ateliers

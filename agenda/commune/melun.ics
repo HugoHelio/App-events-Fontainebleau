@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4d9dab55b0@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Pièce de théâtre « Coup de Bluff au Cabaret »
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f0502eebfd@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Spectacle de magie « Clément Blouin - Magicien c'est pas un méti
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9c4644063e@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:To Your Eternity
@@ -92,7 +92,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4a4198ac35@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Le Tourbillon de la Fête
@@ -115,7 +115,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6e1e0ff6e3@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Le Radeau de la Méduse par Anne Cangelosi
@@ -139,7 +139,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_27a2f68fb8@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Les Coquettes - Nouveau Spectacle
@@ -163,7 +163,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
@@ -177,6 +177,55 @@ URL:https://fontainebleaulive.fr/evenements/histoires-de-nains-geants-et-fa
  rfadets-melun-c2544a035d/
 CATEGORIES:Culture & Ateliers
 GEO:48.54238;2.67597
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_275dc9ff4b@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:Le Seigneur des Anneaux & Le Hobbit - En Concert
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : De 49\,99 € à 79\,99 €\n\nLancelot Productions pr
+ ésente « LE SEIGNEUR DES ANNEAUX ET LE HOBBIT » arrivent ! Découvrez l
+ ’univers musical exceptionnel de J.R.R. Tolkien lors d’un concert avec
+  un orchestre et un cœur\, des sonorités menaçantes de Mordor et des at
+ taques stridentes des Cavaliers Noirs aux magnifiques mélodies lyriques d
+ es Elfes ! Ce spectacle n’est pas un ciné-concert. Les images des films
+  ne seront pas diffusé…\n\nOrganisateur : https://www.fnacspectacles.co
+ m/artist/leseigneurdesanneauxlehobbit/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/le-seigneur-des-anneaux-et-le-hobbit-en-concert-melun-275d
+ c9ff4b/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-seigneur-des-anneaux-et-le-h
+ obbit-en-concert-melun-275dc9ff4b/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_52e67e12f3@fontainebleaulive.fr
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:The Music of Hans Zimmer & Others - A Celebration of Film Music
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : De 49\,99 € à 79\,99 €\n\nThe Music of Hans Zimmer
+  & Others – A Celebration of Film Music« Le Roi Lion » \, « Dune »\,
+  « Pirates des Caraïbes »\, « Gladiator »\, « The Dark Knight »\, 
+ « Man of Steel »\, « Spiderman »\, « Inception »\, « Interstellar 
+ »\, « Dunkerque » et plus encore … !Hans Zimmer est reconnu mondialem
+ ent comme l’un des talents musicaux les plus innovants d’Hollywood. Au
+ cun autre compositeur n’a autant influencé le…\n\nOrganisateur : http
+ s://www.fnacspectacles.com/artist/themusicofhanszimmerothers/the-music-of-
+ hans-zimmer-others-a-celebration-of-film-music-3617700/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/the-music-of-hans-zimmer-et-others-a-cele
+ bration-of-film-mus-melun-52e67e12f3/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/the-music-of-hans-zimmer-et-oth
+ ers-a-celebration-of-film-mus-melun-52e67e12f3/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

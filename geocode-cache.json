@@ -91,6 +91,11 @@
       "lng": 2.80338,
       "source": "city"
     },
+    "city:lorrez le bocage preaux": {
+      "lat": 48.23788,
+      "lng": 2.89771,
+      "source": "city"
+    },
     "city:marolles sur seine": {
       "lat": 48.38359,
       "lng": 3.03328,
@@ -124,6 +129,11 @@
     "city:nemours": {
       "lat": 48.26671,
       "lng": 2.70305,
+      "source": "city"
+    },
+    "city:paley": {
+      "lat": 48.23892,
+      "lng": 2.85668,
       "source": "city"
     },
     "city:saint mammes": {
@@ -194,6 +204,11 @@
     "venue:4 quai des platreries samois sur seine": {
       "lat": 48.43665,
       "lng": 2.74479,
+      "source": "ban"
+    },
+    "venue:72 rue du general de gaulle bourron marlotte bourron marlotte": {
+      "lat": 48.34034,
+      "lng": 2.70451,
       "source": "ban"
     },
     "venue:ane vert theatre 6 rue des sablons fontainebleau": {
@@ -311,14 +326,39 @@
       "lng": 2.67503,
       "source": "ban"
     },
+    "venue:hericy": {
+      "lat": 48.44696,
+      "lng": 2.7794,
+      "source": "ban"
+    },
+    "venue:hotel victoria 112 rue de france fontainebleau": {
+      "lat": 48.40666,
+      "lng": 2.69251,
+      "source": "ban"
+    },
     "venue:jardin des noues veneux les sablons": {
       "lat": 48.37483,
       "lng": 2.8074,
       "source": "ban"
     },
+    "venue:laval en brie": {
+      "lat": 48.42631,
+      "lng": 2.99525,
+      "source": "ban"
+    },
+    "venue:le chatelet en brie": {
+      "lat": 48.50619,
+      "lng": 2.80338,
+      "source": "ban"
+    },
     "venue:le grand parquet fontainebleau": {
       "lat": 48.3915,
       "lng": 2.67095,
+      "source": "ban"
+    },
+    "venue:mairie bourron marlotte": {
+      "lat": 48.34297,
+      "lng": 2.70575,
       "source": "ban"
     },
     "venue:maison dans la vallee avon": {
@@ -374,6 +414,11 @@
     "venue:paley": {
       "lat": 48.23892,
       "lng": 2.85668,
+      "source": "ban"
+    },
+    "venue:place de l hotel de ville moret loing et orvanne": {
+      "lat": 48.37226,
+      "lng": 2.81721,
       "source": "ban"
     },
     "venue:place de la republique 77300 fontainebleau fontainebleau": {
@@ -444,6 +489,16 @@
     "venue:salle de bal du chateau de fontainebleau fontainebleau": {
       "lat": 48.40168,
       "lng": 2.70086,
+      "source": "ban"
+    },
+    "venue:salle de la bergerie le chatelet en brie": {
+      "lat": 48.50344,
+      "lng": 2.78789,
+      "source": "ban"
+    },
+    "venue:salle des fetes bourron marlotte": {
+      "lat": 48.33859,
+      "lng": 2.70057,
       "source": "ban"
     },
     "venue:samoreau": {
