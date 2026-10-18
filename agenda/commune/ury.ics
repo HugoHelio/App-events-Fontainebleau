@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_b07e4488a7@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-SUMMARY:Concert : "Les Solistes du Gâtinais"
-LOCATION:Ury\, Ury
-DESCRIPTION:Tarif : Participation libre.\n\nReprésentation musicale donné
- e par le groupe Les Solistes du Gâtinais dans la commune d'Ury.\n\nOrgani
- sateur : https://www.fontainebleau-tourisme.com/fr/fiche/8016419/concert-l
- es-solistes-du-gatinais/\n\nFiche : https://fontainebleaulive.fr/evenement
- s/concert-les-solistes-du-gatinais-ury-b07e4488a7/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/concert-les-solistes-du-gatinai
- s-ury-b07e4488a7/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_aac3f2bc97@fontainebleaulive.fr
 DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261122

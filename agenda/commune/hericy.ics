@@ -11,23 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_b4503f1342@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-SUMMARY:Soirée Portugaise
-LOCATION:Salle de l'Orangerie @ 8 rue de l'église\, 77850\, Héricy\, Hér
- icy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-17-soireep
- ortugaise\n\nFiche : https://fontainebleaulive.fr/evenements/soiree-portug
- aise-hericy-b4503f1342/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/soiree-portugaise-hericy-b4503f
- 1342/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_626e1314a5@fontainebleaulive.fr
 DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261022

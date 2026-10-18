@@ -3,50 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Larchant · Fontainebleau Live
+X-WR-CALNAME:larchant · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_2e255f251c@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-SUMMARY:Découverte des lieux historiques du village et création d'un carn
- et de dessins
-LOCATION:Église Saint-Mathurin\, Larchant
-DESCRIPTION:Parcours-découverte du patrimoine de Larchant à travers QR co
- des\, dessins et observations.\n\nOrganisateur : https://openagenda.com/pl
- anlibre/events/decouverte-des-lieux-historiques-du-village-et-creation-dun
- -carnet-de-dessins\n\nFiche : https://fontainebleaulive.fr/evenements/deco
- uverte-des-lieux-historiques-du-village-et-creation-d-un-larchant-2e255f25
- 1c/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/decouverte-des-lieux-historique
- s-du-village-et-creation-d-un-larchant-2e255f251c/
-CATEGORIES:Culture & Ateliers
-GEO:48.28406;2.59622
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_e76e8e9f90@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-SUMMARY:Imaginer la restauration de l'église Saint Mathurin de Larchant
-LOCATION:Église Saint-Mathurin\, Larchant
-DESCRIPTION:Visite libre\n\nOrganisateur : https://openagenda.com/planlibre
- /events/imaginer-la-restauration-de-leglise-saint-mathurin-de-larchant\n\n
- Fiche : https://fontainebleaulive.fr/evenements/imaginer-la-restauration-d
- e-l-eglise-saint-mathurin-de-larch-larchant-e76e8e9f90/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/imaginer-la-restauration-de-l-e
- glise-saint-mathurin-de-larch-larchant-e76e8e9f90/
-CATEGORIES:Culture & Ateliers
-GEO:48.28406;2.59622
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR
