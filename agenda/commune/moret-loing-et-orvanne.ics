@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_08a8d79115@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Café musique
@@ -51,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3d1c30e0ef@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261022
 SUMMARY:Stages arts plasqitques " Cauchemars et attrape-rêves"
@@ -71,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_48db600ea0@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261025
 SUMMARY:MLO Game's Week !
@@ -90,7 +90,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_26b82e4407@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Bourse aux collectionneurs d'Octobre Rose
@@ -109,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_847c0a2b7d@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Stage aquarelle et techniques mixtes
@@ -129,7 +129,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1c36ac36ec@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261031
 SUMMARY:Stage de perfectionnement Tennis
@@ -148,7 +148,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b7ac9f1ee7@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du cinéma d'animation
@@ -168,18 +168,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3e57063ae@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261223
 SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
 LOCATION:Place de l'Hôtel de Ville\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : ven. 19 déc. : 16h00–21h00 \; du sam. 20 au lun. 
- 22 déc. : 10h00–19h30\n\nTarif : Gratuit\n\nMarché de Noël artisanal 
- au cœur de Moret-sur-Loing.\n\nOrganisateur : https://moret-loing-et-orva
- nne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-
- artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57063ae/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
+DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit\n\nMarché de Noël a
+ rtisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://moret-loin
+ g-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/marche
+ -de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57063ae/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
  et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
 CATEGORIES:Culture & Ateliers

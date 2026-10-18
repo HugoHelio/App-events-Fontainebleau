@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1c273d544c@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Marche ou course
@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6cb6271af1@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Soirée ados / Film d'Halloween
@@ -71,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99b337a3a7@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -91,16 +91,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4cb0db304f@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Montigny fait son cinéma " Quand je serai Grand "
-LOCATION:Montigny-sur-Loing
-DESCRIPTION:Horaires : 19h30 – 22h\n\nOrganisateur : https://www.ccmsl.fr
- /actu-et-agendas/agenda.html#2026-11-07-montignyfaitsoncinemaquandjeseraig
- rand\n\nFiche : https://fontainebleaulive.fr/evenements/montigny-fait-son-
- cinema-quand-je-serai-grand-montigny-sur-loing-4cb0db304f/\n\nInformations
-  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+LOCATION:Bibliothèque municipale\, 2 rue du Loing à Montigny sur Loing\, 
+ Montigny-sur-Loing
+DESCRIPTION:Horaires : 19h30 – 22h\n\nProjection cinématographique du fi
+ lm Quand je serai Grand organisée à la bibliothèque de Montigny-sur-Loi
+ ng.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#202
+ 6-11-07-montignyfaitsoncinemaquandjeseraigrand\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/montigny-fait-son-cinema-quand-je-serai-grand-mont
+ igny-sur-loing-4cb0db304f/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/montigny-fait-son-cinema-quand-
  je-serai-grand-montigny-sur-loing-4cb0db304f/
 CATEGORIES:Scène & Spectacles

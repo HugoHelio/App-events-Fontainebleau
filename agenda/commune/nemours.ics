@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
@@ -57,12 +57,12 @@ DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cross Duathlon / Tri Cross de Nemours
 LOCATION:Base de loisirs de Nemours\, Nemours
-DESCRIPTION:Horaires : Épreuves en journée\n\nTarif : Payant\n\nPublic : 
- Dès 16 ans\n\nÉpreuve outdoor combinant course à pied et VTT en sous-bo
- is autour de Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche :
-  https://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nemou
- rs-97e8e14fe0/\n\nInformations collectées automatiquement : vérifiez-les
-  auprès de l’organisateur.
+DESCRIPTION:Horaires : Matinée\n\nTarif : Selon la catégorie et la licenc
+ e\n\nPublic : Dès 16 ans\n\nÉpreuve outdoor combinant course à pied et 
+ VTT en sous-bois autour de Nemours.\n\nOrganisateur : https://www.nemours.
+ fr/\n\nFiche : https://fontainebleaulive.fr/evenements/cross-duathlon-tri-
+ cross-de-nemours-97e8e14fe0/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nem
  ours-97e8e14fe0/
 CATEGORIES:Sport & Outdoor
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_567e428004@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
@@ -110,7 +110,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d4de9594c9@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Conférence de Sébastien Ronsseray
@@ -130,7 +130,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d149ee44b@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite flash de l'exposition Ça en jette !

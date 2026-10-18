@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_626e1314a5@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261026
 SUMMARY:Art’icy
@@ -28,7 +28,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_541a2c91c2@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Halloween enfant
@@ -44,7 +44,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0cfa5dd222@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Halloween Ados
@@ -60,7 +60,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bb14826b3a@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween Adultes
@@ -76,7 +76,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ec24de15f3@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Broc’enfants et ados
@@ -92,7 +92,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ee0cb8764@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Inauguration illuminations de Noël
@@ -108,15 +108,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4885be582a@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
 LOCATION:Salle du Clos / Salle de l'Orangerie\, Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-12-05-marched
- enoel\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-he
- ricy-4885be582a/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
+DESCRIPTION:Horaires : 09:00\n\nDécouvrez le marché de Noël d'Héricy po
+ ur profiter de l'ambiance des fêtes de fin d'année.\n\nOrganisateur : ht
+ tps://www.hericy.fr/agenda/#2026-12-05-marchedenoel\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/marche-de-noel-hericy-4885be582a/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-hericy-4885be582
  a/
 CATEGORIES:Culture & Ateliers

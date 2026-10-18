@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_b431819994@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Mulan
@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_15c4a0a013@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Malik Bentalha - Nouveau Monde
@@ -54,7 +54,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8d8a4f390a@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:Michèle Laroque & Kad Merad - L'Âge Bête
@@ -78,7 +78,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d2ef44352d@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Le Misanthrope d'après Molière
@@ -101,7 +101,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23ccc433a8@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:Venez découvrir le secteur de l'industrie !
@@ -121,7 +121,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_57925be5b9@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261117
 SUMMARY:recrutement DEDIENNE AEROSPACE site de Villaroche
@@ -142,7 +142,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5463a8e8ef@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:La Troupe du Jamel Comedy Club
@@ -166,7 +166,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5dbf93d717@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Laurent Voulzy en Concert
@@ -178,10 +178,10 @@ DESCRIPTION:Tarif : De 49 € à 70 €\n\nLaurent Voulzy fait son grand re
  e et composer\, l’envie m’a pris de retrouver la scène\, découvrir d
  ’autres lieux\, jouer\, chanter et partager à nouveau\, mes rêves acou
  stiques et mes rêves élect…\n\nOrganisateur : https://www.fnacspectacl
- es.com/artist/laurent-voulzy/laurent-voulzy-en-concert-tournee-3566853/\n\
- nFiche : https://fontainebleaulive.fr/evenements/laurent-voulzy-en-concert
- -dammarie-les-lys-5dbf93d717/\n\nInformations collectées automatiquement 
- : vérifiez-les auprès de l’organisateur.
+ es.com/artist/laurent-voulzy/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/laurent-voulzy-en-concert-dammarie-les-lys-5dbf93d717/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
 URL:https://fontainebleaulive.fr/evenements/laurent-voulzy-en-concert-damma
  rie-les-lys-5dbf93d717/
 CATEGORIES:Scène & Spectacles
@@ -190,7 +190,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b486c9aad@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Philippe Caverivière - Tu Crois Que C'est une Bonne Idée ?
@@ -215,7 +215,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_25ba0a53a7@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Fabrice Eboué - SolitudeS
@@ -236,7 +236,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ad9e28b1f3@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Ultimissimo\, la Framboise Frivole - Le Best-Of!
@@ -259,7 +259,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_613e066d0f@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Ilyes Djadel - Déjà
@@ -274,6 +274,53 @@ DESCRIPTION:Tarif : De 39 € à 45 €\n\nApres le succès de son premier
  t : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/ilyes-djadel-deja-dammarie-les-
  lys-613e066d0f/
+CATEGORIES:Scène & Spectacles
+GEO:48.5185;2.62419
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_75c25ef44a@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:Victoria Dauberville - Classique ?
+LOCATION:Espace Pierre Bachelet - La Cartonnerie\, Dammarie-les-Lys
+DESCRIPTION:Tarif : De 45 € à 55 €\n\n"Classique ?" de Victoria Dauber
+ villeCLASSIQUE ? C’est quoi ?Suivre une ballerine qui s’échappe litt
+ éralement de sa boîte à musique pour découvrir par elle-même tout un 
+ nouveau monde. Pour se retrouver elle-même. Telle une poupée\, symbole d
+ ’une discipline où chaque mouvement est imposé et millimétré\, la ba
+ llerine fuit ce qui l’a pourtant construite. Elle se découvre elle-mêm
+ e à travers de multipl…\n\nOrganisateur : https://www.fnacspectacles.co
+ m/artist/victoria-dauberville/victoria-dauberville-classique-tournee-39148
+ 62/\n\nFiche : https://fontainebleaulive.fr/evenements/victoria-daubervill
+ e-classique-dammarie-les-lys-75c25ef44a/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/victoria-dauberville-classique-
+ dammarie-les-lys-75c25ef44a/
+CATEGORIES:Scène & Spectacles
+GEO:48.5185;2.62419
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8b254bb73b@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+SUMMARY:Frédéric François
+LOCATION:Espace Pierre Bachelet - La Cartonnerie\, Dammarie-les-Lys
+DESCRIPTION:Tarif : De 55 € à 75 €\n\nAprès 50 ans de carrière\, Fr
+ édéric François reste un des plus célèbres chanteurs de variétés en
+  Belgique et en France. Toutes ses tournées affichent complet. Ses ventes
+  de disques avoisinent les 35 millions d'exemplaires. Il a déjà obtenu 8
+ 5 disques d'or\, singles et albums confondus\, 15 videos et DVD d'or. Il a
+  enregistré quelques 350 chansons.Frédéric François sera de retour sur
+  scène pour le pl…\n\nOrganisateur : https://www.fnacspectacles.com/art
+ ist/frederic-francois/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ frederic-francois-dammarie-les-lys-8b254bb73b/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/frederic-francois-dammarie-les-
+ lys-8b254bb73b/
 CATEGORIES:Scène & Spectacles
 GEO:48.5185;2.62419
 TRANSP:TRANSPARENT

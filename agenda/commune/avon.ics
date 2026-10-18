@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c45e16df11@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261026
 SUMMARY:Kino Avoblo 2026 : 72 heures pour créer un court-métrage à Avon-
@@ -33,7 +33,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9be6481b48@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Caféministe
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_988de8cc23@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Projection débat : Réinventer l'enfance
@@ -89,7 +89,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4546bc32d4@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert : A visages découverts en musique
@@ -109,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_011@fontainebleaulive.fr
-DTSTAMP:20261008T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël d'Avon
@@ -117,30 +117,93 @@ LOCATION:Parvis de l'Église Saint-Pierre\, Avon
 DESCRIPTION:Horaires : 9h00–20h00\n\nTarif : Gratuit\n\nMarché artisanal
   de fin d'année avec chalets de producteurs régionaux\, animations de ru
  e\, contes pour enfants et rando-marche festive de Noël.\n\nOrganisateur 
- : https://www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleau
- live.fr/evenements/marche-de-noel-d-avon-act011/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
+ : https://www.fontainebleau-tourisme.com/fr/fiche/7942779/marche-de-noel/\
+ n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-d-avon-a
+ ct011/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-avon-act011/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
 LOCATION:Ville d'Avon\, Avon
-DESCRIPTION:Public : Dès 12 ans\n\nCompagnie Vertical Détour - Frédéric
-  Ferrer\n\nOrganisateur : https://openagenda.com/culture/events/a-la-reche
- rche-des-canards-perdus-cartographie-1-6233787\n\nFiche : https://fontaine
- bleaulive.fr/evenements/a-la-recherche-des-canards-perdus-cartographie-1-a
- von-f9833d2e90/\n\nInformations collectées automatiquement : vérifiez-le
- s auprès de l’organisateur.
+DESCRIPTION:Tarif : Plein tarif : 10 €\, Tarif réduit : de 4 à 6 € (T
+ arif réduit A (6 €) : Personnes…\n\nPublic : Dès 12 ans\n\nCompagnie
+  Vertical Détour - Frédéric Ferrer\n\nOrganisateur : https://openagenda
+ .com/culture/events/a-la-recherche-des-canards-perdus-cartographie-1-62337
+ 87\n\nFiche : https://fontainebleaulive.fr/evenements/a-la-recherche-des-c
+ anards-perdus-cartographie-1-avon-f9833d2e90/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/a-la-recherche-des-canards-perd
  us-cartographie-1-avon-f9833d2e90/
 CATEGORIES:Culture & Ateliers
 GEO:48.40493;2.72051
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fdd2caa4ab@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:La poésie de Claire Médard
+LOCATION:Avon
+DESCRIPTION:Tarif : Gratuit.\n\nRencontre et événement poétique autour d
+ es œuvres de Claire Médard à Avon.\n\nOrganisateur : https://www.fontai
+ nebleau-tourisme.com/fr/fiche/8033404/la-poesie-de-claire-medard/\n\nFiche
+  : https://fontainebleaulive.fr/evenements/la-poesie-de-claire-medard-avon
+ -fdd2caa4ab/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-poesie-de-claire-medard-avon
+ -fdd2caa4ab/
+CATEGORIES:Culture & Ateliers
+GEO:48.413;2.72893
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7b2a5f2ea8@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Les séjours de Louis XIV à Fontainebleau\, les liens avec la popu
+ lation du bourg d'Avon (1661 – 1714)
+LOCATION:Avon
+DESCRIPTION:Tarif : Gratuit. Inscription sur la billetterie en ligne.\n\nPr
+ ésentation historique consacrée aux résidences de Louis XIV à Fontaine
+ bleau et à ses relations avec les habitants d'Avon.\n\nOrganisateur : htt
+ ps://www.fontainebleau-tourisme.com/fr/fiche/8022084/les-sejours-de-louis-
+ xiv-a-fontainebleau-les-liens-avec-la-population-du-bourg-davon-1661-1714/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/les-sejours-de-louis-x
+ iv-a-fontainebleau-les-liens-avec-la-p-avon-7b2a5f2ea8/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-sejours-de-louis-xiv-a-font
+ ainebleau-les-liens-avec-la-p-avon-7b2a5f2ea8/
+CATEGORIES:Culture & Ateliers
+GEO:48.413;2.72893
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_799c34523c@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Concert : Du baroque au moderne
+LOCATION:Avon
+DESCRIPTION:Tarif : Plein tarif : 10 €\, Tarif réduit : de 4 à 6 € (T
+ arif réduit A (6 €) : Personnes…\n\nConcert proposant une traversée 
+ musicale de l'ère baroque à la création moderne à Avon.\n\nOrganisateu
+ r : https://www.fontainebleau-tourisme.com/fr/fiche/8022110/concert-du-bar
+ oque-au-moderne/\n\nFiche : https://fontainebleaulive.fr/evenements/concer
+ t-du-baroque-au-moderne-avon-799c34523c/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-du-baroque-au-moderne-a
+ von-799c34523c/
+CATEGORIES:Scène & Spectacles
+GEO:48.413;2.72893
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

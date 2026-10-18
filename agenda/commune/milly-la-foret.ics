@@ -12,18 +12,18 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_b28572d441@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Fête des vendanges et de la gastronomie
 LOCATION:Sous la Halle\, Milly-la-Forêt
-DESCRIPTION:Horaires : 10h à 18h\n\nTarif : Entrée libre\n\nJournée conv
- iviale sous la Halle à la découverte de produits gourmands\, dégustatio
- ns de vins et ventes de raisins.\n\nOrganisateur : https://www.milly-la-fo
- ret.fr/2026/01/30/18-10-26-fete-des-vendanges-et-de-la-gastronomie/\n\nFic
- he : https://fontainebleaulive.fr/evenements/fete-des-vendanges-et-de-la-g
- astronomie-milly-la-foret-b28572d441/\n\nInformations collectées automati
- quement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nJournée convivi
+ ale sous la Halle à la découverte de produits gourmands\, dégustations 
+ de vins et ventes de raisins.\n\nOrganisateur : https://www.milly-la-foret
+ .fr/2026/01/30/18-10-26-fete-des-vendanges-et-de-la-gastronomie/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/fete-des-vendanges-et-de-la-gast
+ ronomie-milly-la-foret-b28572d441/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/fete-des-vendanges-et-de-la-gas
  tronomie-milly-la-foret-b28572d441/
 CATEGORIES:Culture & Ateliers
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fe0f61015a@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Concours de pétanques – OCTOBRE ROSE
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_42c70c40c5@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Concert – Église notre dame de l’Assomption
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa0515afcd@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du Potiron
@@ -86,8 +86,28 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_d2df7805de@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261102
+SUMMARY:Grande fête portugaise – 45e anniversaire
+LOCATION:Gymnase municipal\, Milly-la-Forêt
+DESCRIPTION:Horaires : Samedi dès 20h\, Dimanche dès 11h\n\nTarif : Samed
+ i : 10 € / Dimanche : gratuit\n\nWeek-end festif avec spectacles\, conce
+ rts\, groupes folkloriques\, spécialités gastronomiques et grillades.\n\
+ nOrganisateur : https://www.milly-la-foret.fr/2026/01/30/31-10-26-grande-f
+ ete-portugaise-45e-anniversaire/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/grande-fete-portugaise-45e-anniversaire-milly-la-foret-d2df7805d
+ e/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/grande-fete-portugaise-45e-anni
+ versaire-milly-la-foret-d2df7805de/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9c3a8a48c3@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Samedis Switch – Médiathèque
@@ -105,7 +125,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a593951ce6@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage chorégraphies mythiques – Claude François – Club Mill
@@ -126,7 +146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dba14b7e32@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage Piloxing & Zumboxing – Club Mill’ Danses
@@ -144,8 +164,26 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0588656fb0@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Brocante Antiquités de Milly-la-Forêt
+LOCATION:Halle de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : À partir de 07h00\n\nTarif : Entrée libre\n\nBroca
+ nte d'antiquités sous la halle historique du centre-ville.\n\nOrganisateu
+ r : https://www.alentoor.fr/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/brocante-antiquites-de-milly-la-foret-0588656fb0/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/brocante-antiquites-de-milly-la
+ -foret-0588656fb0/
+CATEGORIES:Culture & Ateliers
+GEO:48.4019;2.45349
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_764fb661fa@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -165,7 +203,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8eb8658951@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Stage d’initiation au Heels – Club Mill’ Danses

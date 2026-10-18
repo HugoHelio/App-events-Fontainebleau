@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8dee5271f4@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Réunions d'information Transmission
@@ -33,7 +33,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d54eb206f@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Christelle Chollet - Culottée
@@ -57,7 +57,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b824409b93@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Les Amplifiés - Black Bomb. A & Monnekyn
@@ -81,7 +81,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7eccfc6a49@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Giorda - Hypn'Ose
@@ -100,6 +100,29 @@ URL:https://fontainebleaulive.fr/evenements/giorda-hypn-ose-le-mee-sur-sein
  e-7eccfc6a49/
 CATEGORIES:Scène & Spectacles
 GEO:48.54465;2.63264
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_16a63f9d68@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+SUMMARY:Cérémonie de clôture du projet Open Data de la Communauté d'Agg
+ lomération Melun Val de Seine
+LOCATION:Maison des associations\, Le Mée-sur-Seine
+DESCRIPTION:Valoriser toutes les actions réalisées et les acteurs ayant c
+ ontribué au projet (plateforme\, challenge étudiants open data..)\, asso
+ cier tous les acteurs à la réflexion sur la poursuite du projet.\n\nOrga
+ nisateur : https://openagenda.com/agenda-de-leurope-en-guyane/events/cerem
+ onie-de-cloture-du-projet-open-data-de-la-communaute-dagglomeration-melun-
+ val-de-seine\n\nFiche : https://fontainebleaulive.fr/evenements/ceremonie-
+ de-cloture-du-projet-open-data-de-la-communaute-d-le-mee-sur-seine-16a63f9
+ d68/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ceremonie-de-cloture-du-projet-
+ open-data-de-la-communaute-d-le-mee-sur-seine-16a63f9d68/
+CATEGORIES:Culture & Ateliers
+GEO:48.53858;2.63359
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

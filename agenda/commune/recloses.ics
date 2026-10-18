@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Recloses · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_3c5ff56846@fontainebleaulive.fr
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Journée Stevenson
+LOCATION:Recloses
+DESCRIPTION:Journée dédiée à Robert Louis Stevenson organisée dans le 
+ secteur de Recloses.\n\nOrganisateur : https://www.fontainebleau-tourisme.
+ com/fr/fiche/8031897/journee-stevenson/\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/journee-stevenson-recloses-3c5ff56846/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/journee-stevenson-recloses-3c5f
+ f56846/
+CATEGORIES:Culture & Ateliers
+GEO:48.34711;2.64528
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
