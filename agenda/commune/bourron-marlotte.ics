@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_98321e1533@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261019
-SUMMARY:Balade du goût
-LOCATION:72 rue du Général de Gaulle - Bourron-Marlotte\, Bourron-Marlott
- e
-DESCRIPTION:Organisateur : https://bourronmarlotte.fr/agenda/balade-du-gout
- /\n\nFiche : https://fontainebleaulive.fr/evenements/balade-du-gout-bourro
- n-marlotte-98321e1533/\n\nInformations collectées automatiquement : véri
- fiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/balade-du-gout-bourron-marlotte
- -98321e1533/
-CATEGORIES:Culture & Ateliers
-GEO:48.34034;2.70451
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_26df58bf64@fontainebleaulive.fr
 DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261020

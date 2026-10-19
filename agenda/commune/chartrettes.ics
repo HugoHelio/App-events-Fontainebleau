@@ -3,50 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Chartrettes · Fontainebleau Live
+X-WR-CALNAME:chartrettes · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_f6b1d20177@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261018
-DTEND;VALUE=DATE:20261019
-SUMMARY:Color Run Octobre Rose – Chartrettes
-LOCATION:Espace des Vergers\, Chartrettes
-DESCRIPTION:Horaires : Matinée (départ entre 9h30 et 10h)\n\nTarif : Part
- icipation solidaire\n\nCourse colorée solidaire de 3 km et 6 km organisé
- e dans le cadre d'Octobre Rose.\n\nOrganisateur : https://www.mairie-chart
- rettes.fr/evenement/evenement-octobre-rose-color-run-chartrettes/\n\nFiche
-  : https://fontainebleaulive.fr/evenements/color-run-octobre-rose-chartret
- tes-f6b1d20177/\n\nInformations collectées automatiquement : vérifiez-le
- s auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/color-run-octobre-rose-chartret
- tes-f6b1d20177/
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_1b7e7bcd64@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261018
-DTEND;VALUE=DATE:20261019
-SUMMARY:Sortie Randonnée : Écluse de Chartrettes\, bois de Livry-sur-Sein
- e et l'Observatoire
-LOCATION:Parking de l'écluse de Chartrettes\, Chartrettes
-DESCRIPTION:Horaires : 14h00–17h00\n\nTarif : Gratuit pour les adhérents
-  CAF\n\nRandonnée pédestre au départ de l'écluse de Chartrettes à tra
- vers le bois de Livry-sur-Seine.\n\nOrganisateur : https://www.cafbleau.fr
- /activites/randonnee/\n\nFiche : https://fontainebleaulive.fr/evenements/s
- ortie-randonnee-ecluse-de-chartrettes-bois-de-livry-sur-sei-1b7e7bcd64/\n\
- nInformations collectées automatiquement : vérifiez-les auprès de l’o
- rganisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-randonnee-ecluse-de-char
- trettes-bois-de-livry-sur-sei-1b7e7bcd64/
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR
