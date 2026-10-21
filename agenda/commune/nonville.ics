@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nonville · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_cb0950c7bb@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Tournoi des 3 lancers
+LOCATION:Nonville
+DESCRIPTION:Horaires : 13h30 à 18h\n\nInscrivez-vous gratuitement pour par
+ ticiper à un tournoi convivial axé sur trois disciplines de lancer à No
+ nville.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
+ #2026-11-08-tournoides3lancers\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/tournoi-des-3-lancers-nonville-cb0950c7bb/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/tournoi-des-3-lancers-nonville-
+ cb0950c7bb/
+CATEGORIES:Sport & Outdoor
+GEO:48.29064;2.78208
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

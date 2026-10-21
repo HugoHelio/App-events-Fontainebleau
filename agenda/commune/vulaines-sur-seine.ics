@@ -3,11 +3,30 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:vulaines-sur-seine · Fontainebleau Live
+X-WR-CALNAME:Vulaines-sur-Seine · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_e4e93d3b80@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween en famille pour toutes et pour tous !
+LOCATION:Vulaines-sur-Seine
+DESCRIPTION:Tarif : Gratuit.\n\nCélébrez Halloween en famille grâce à u
+ ne animation festive ouverte à tous à Vulaines-sur-Seine.\n\nOrganisateu
+ r : https://www.fontainebleau-tourisme.com/fr/fiche/8036463/halloween-en-f
+ amille-pour-toutes-et-pour-tous/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/halloween-en-famille-pour-toutes-et-pour-tous-vulaines-sur-seine
+ -e4e93d3b80/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-en-famille-pour-toute
+ s-et-pour-tous-vulaines-sur-seine-e4e93d3b80/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_aac3f2bc97@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert de musique baroque
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d6d343fe1f@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Concert "Au temps de Proust"
@@ -62,6 +62,25 @@ DESCRIPTION:Tarif : Tarif unique : Libre participation aux frais.\n\nConcer
  uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/concert-au-temps-de-proust-ury-
  d6d343fe1f/
+CATEGORIES:Scène & Spectacles
+GEO:48.34418;2.6029
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_55d5b44a0c@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270102
+SUMMARY:Réveillon de la St Sylvestre
+LOCATION:Ury
+DESCRIPTION:Tarif : Adulte : à partir de 120 €.\n\nSoirée de réveillon
+  de la Saint-Sylvestre organisée dans la commune d'Ury.\n\nOrganisateur :
+  https://www.fontainebleau-tourisme.com/fr/fiche/8028587/reveillon-de-la-s
+ t-sylvestre/\n\nFiche : https://fontainebleaulive.fr/evenements/reveillon-
+ de-la-st-sylvestre-ury-55d5b44a0c/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/reveillon-de-la-st-sylvestre-ur
+ y-55d5b44a0c/
 CATEGORIES:Scène & Spectacles
 GEO:48.34418;2.6029
 TRANSP:TRANSPARENT

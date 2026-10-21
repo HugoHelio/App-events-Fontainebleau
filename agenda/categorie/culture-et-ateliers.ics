@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_3d1c30e0ef@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261022
 SUMMARY:Stages arts plasqitques " Cauchemars et attrape-rêves"
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_48db600ea0@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261025
 SUMMARY:MLO Game's Week !
@@ -50,8 +50,27 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_a8e666f3b0@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Atelier cuisine Colibris Solidaires
+LOCATION:Cuisine pédagogique du Bréau\, 5 rue des Rossignols\, Fontainebl
+ eau
+DESCRIPTION:Horaires : 10h00–17h30\n\nTarif : Gratuit (sur inscription)\n
+ \nAtelier de médiation culinaire proposé par Colibris Solidaires.\n\nOrg
+ anisateur : https://fontyblog.fr/\n\nFiche : https://fontainebleaulive.fr/
+ evenements/atelier-cuisine-colibris-solidaires-fontainebleau-a8e666f3b0/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-cuisine-colibris-solida
+ ires-fontainebleau-a8e666f3b0/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a722387529@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Gudule et Trampo
@@ -71,15 +90,16 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_626e1314a5@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261026
 SUMMARY:Art’icy
 LOCATION:Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-22-articy\
- n\nFiche : https://fontainebleaulive.fr/evenements/art-icy-hericy-626e1314
- a5/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
+DESCRIPTION:Horaires : 15:00\n\nÉvénement culturel et artistique Art’ic
+ y se déroulant dans la commune d'Héricy.\n\nOrganisateur : https://www.h
+ ericy.fr/agenda/#2026-10-22-articy\n\nFiche : https://fontainebleaulive.fr
+ /evenements/art-icy-hericy-626e1314a5/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/art-icy-hericy-626e1314a5/
 CATEGORIES:Culture & Ateliers
 GEO:48.44696;2.7794
@@ -87,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f0f64a41df@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:Gudule et Trampo
@@ -107,7 +127,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fb8615d83f@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:Gudule et Trampo
@@ -127,7 +147,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89eaead9ad@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261026
 SUMMARY:Atelier céramiques
@@ -150,13 +170,13 @@ DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Bourse aux collectionneurs d'Octobre Rose
 LOCATION:Salle Roland Dagnaud (Moret-sur-Loing)\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 9h–18h\n\nTarif : Entrée libre\n\nBourse thémati
- que aux objets de collection dont les bénéfices sont versés pour la rec
- herche contre le cancer.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-ag
- endas/agenda.html#2026-10-24-bourseauxcollectionneurs\n\nFiche : https://f
- ontainebleaulive.fr/evenements/bourse-aux-collectionneurs-d-octobre-rose-m
- oret-loing-et-orvanne-26b82e4407/\n\nInformations collectées automatiquem
- ent : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 9h00–17h00\n\nTarif : Accès libre\n\nBourse thém
+ atique aux objets de collection dont les bénéfices sont versés pour la 
+ recherche contre le cancer.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-10-24-bourseauxcollectionneurs\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/bourse-aux-collectionneurs-d-octobre-ros
+ e-moret-loing-et-orvanne-26b82e4407/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-collectionneurs-d-oc
  tobre-rose-moret-loing-et-orvanne-26b82e4407/
 CATEGORIES:Culture & Ateliers
@@ -164,7 +184,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_82888ce71a@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261026
 SUMMARY:Expo photo – Octobre Rose
@@ -184,7 +204,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dc9a7eebb8@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Gudule et Trampo
@@ -204,15 +224,16 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_541a2c91c2@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Halloween enfant
 LOCATION:Place du Clos\, Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-24-hallowe
- enenfant\n\nFiche : https://fontainebleaulive.fr/evenements/halloween-enfa
- nt-hericy-541a2c91c2/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 15:00\n\nAnimation de fête d'Halloween organisée p
+ our les enfants sur la place du Clos.\n\nOrganisateur : https://www.hericy
+ .fr/agenda/#2026-10-24-halloweenenfant\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/halloween-enfant-hericy-541a2c91c2/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/halloween-enfant-hericy-541a2c9
  1c2/
 CATEGORIES:Culture & Ateliers
@@ -220,7 +241,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_847c0a2b7d@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Stage aquarelle et techniques mixtes
@@ -240,7 +261,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_238ad12fc3@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Vernissage _ Photos et Peintures
@@ -257,7 +278,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_32a2a74f3d@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -280,21 +301,21 @@ UID:EVT_a3e665fe34@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
-SUMMARY:Brocante de Barbizon
+SUMMARY:Brocante professionnelle de Barbizon
 LOCATION:Grande Rue / Centre-village\, Barbizon
-DESCRIPTION:Horaires : 08h30–18h00\n\nTarif : Entrée libre\n\nBrocante a
- u cœur du village des peintres de Barbizon.\n\nOrganisateur : https://www
- .alentoor.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/brocante-
- de-barbizon-a3e665fe34/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/brocante-de-barbizon-a3e665fe34
- /
+DESCRIPTION:Horaires : 8h30–18h00\n\nTarif : Accès libre\n\nBrocante au 
+ cœur du village des peintres de Barbizon.\n\nOrganisateur : https://www.a
+ lentoor.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/brocante-pr
+ ofessionnelle-de-barbizon-a3e665fe34/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/brocante-professionnelle-de-bar
+ bizon-a3e665fe34/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2cb286e7bd@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Parenthesis
@@ -312,7 +333,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1c36ac36ec@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261031
 SUMMARY:Stage de perfectionnement Tennis
@@ -331,17 +352,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_80eeb78c87@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Atelier de création de masques de calaveritas
 LOCATION:Fontainebleau
-DESCRIPTION:Tarif : Gratuit. Pour les 5 à 12 ans.\n\nOrganisateur : https:
- //www.fontainebleau-tourisme.com/fr/fiche/8035666/atelier-de-creation-de-m
- asques-de-calaveritas/\n\nFiche : https://fontainebleaulive.fr/evenements/
- atelier-de-creation-de-masques-de-calaveritas-fontainebleau-80eeb78c87/\n\
- nInformations collectées automatiquement : vérifiez-les auprès de l’o
- rganisateur.
+DESCRIPTION:Tarif : Gratuit. Pour les 5 à 12 ans.\n\nUn atelier créatif d
+ édié à la confection de masques de calaveritas est proposé à Fontaine
+ bleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8
+ 035666/atelier-de-creation-de-masques-de-calaveritas/\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/atelier-de-creation-de-masques-de-calaverit
+ as-fontainebleau-80eeb78c87/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-de-creation-de-masques-
  de-calaveritas-fontainebleau-80eeb78c87/
 CATEGORIES:Culture & Ateliers
@@ -350,17 +372,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa0515afcd@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du Potiron
 LOCATION:Sous la Halle\, Milly-la-Forêt
-DESCRIPTION:Horaires : À partir de 13h30\n\nAnimations pour petits et gran
- ds\, défilé costumé et dégustation de soupe de potiron sous la Halle.\
- n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/30/28-10-26-fete-d
- u-potiron/\n\nFiche : https://fontainebleaulive.fr/evenements/fete-du-poti
- ron-milly-la-foret-fa0515afcd/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 13h30\n\nTarif : Gratuit\n\nAnimations 
+ pour petits et grands\, défilé costumé et dégustation de soupe de poti
+ ron sous la Halle.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/01
+ /30/28-10-26-fete-du-potiron/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/fete-du-potiron-milly-la-foret-fa0515afcd/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/fete-du-potiron-milly-la-foret-
  fa0515afcd/
 CATEGORIES:Culture & Ateliers
@@ -390,7 +412,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_372a75bdb4@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261030
 SUMMARY:Visite guidée Second Empire dans la ville impériale de Fontainebl
@@ -412,7 +434,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
@@ -432,42 +454,24 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0cfa5dd222@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Halloween Ados
 LOCATION:Parc de la Mairie\, Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-30-hallowe
- enados\n\nFiche : https://fontainebleaulive.fr/evenements/halloween-ados-h
- ericy-0cfa5dd222/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
+DESCRIPTION:Horaires : 19:30\n\nRendez-vous festif d'Halloween spécialemen
+ t destiné aux adolescents au parc de la Mairie.\n\nOrganisateur : https:/
+ /www.hericy.fr/agenda/#2026-10-30-halloweenados\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/halloween-ados-hericy-0cfa5dd222/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/halloween-ados-hericy-0cfa5dd22
  2/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_c3604d84da@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Balade d’Halloween
-LOCATION:Place de la Bosse\, Saint-Mammès
-DESCRIPTION:Horaires : 17h30\n\nBalade déguisée et conte à 2 voix avec d
- istribution de bonbons\, crêpes et boissons chaudes.\n\nOrganisateur : ht
- tps://www.saint-mammes.com/balade-dhalloween/\n\nFiche : https://fontaineb
- leaulive.fr/evenements/balade-d-halloween-saint-mammes-c3604d84da/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/balade-d-halloween-saint-mammes
- -c3604d84da/
-CATEGORIES:Culture & Ateliers
-GEO:48.38915;2.80788
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_279a3ca0f3@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Boom d'Halloween
@@ -486,7 +490,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99b337a3a7@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -506,7 +510,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a5c21898e7@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -522,24 +526,63 @@ GEO:48.34297;2.70575
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_c3604d84da@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween " Balade et conte à 2 voix "
+LOCATION:Place de la Bosse\, Saint-Mammès
+DESCRIPTION:Horaires : 18h\n\nBalade déguisée et conte à 2 voix avec dis
+ tribution de bonbons\, crêpes et boissons chaudes.\n\nOrganisateur : http
+ s://www.saint-mammes.com/balade-dhalloween/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/halloween-balade-et-conte-a-2-voix-saint-mammes-c3604
+ d84da/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-balade-et-conte-a-2-v
+ oix-saint-mammes-c3604d84da/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_bb14826b3a@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween Adultes
 LOCATION:Salle de l'Orangerie\, Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-10-31-hallowe
- enadultes\n\nFiche : https://fontainebleaulive.fr/evenements/halloween-adu
- ltes-hericy-bb14826b3a/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20:00\n\nSoirée d'Halloween s'adressant aux adultes
+  à la salle de l'Orangerie.\n\nOrganisateur : https://www.hericy.fr/agend
+ a/#2026-10-31-halloweenadultes\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/halloween-adultes-hericy-bb14826b3a/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/halloween-adultes-hericy-bb1482
  6b3a/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_e4e93d3b80@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Halloween en famille pour toutes et pour tous !
+LOCATION:Vulaines-sur-Seine
+DESCRIPTION:Tarif : Gratuit.\n\nCélébrez Halloween en famille grâce à u
+ ne animation festive ouverte à tous à Vulaines-sur-Seine.\n\nOrganisateu
+ r : https://www.fontainebleau-tourisme.com/fr/fiche/8036463/halloween-en-f
+ amille-pour-toutes-et-pour-tous/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/halloween-en-famille-pour-toutes-et-pour-tous-vulaines-sur-seine
+ -e4e93d3b80/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/halloween-en-famille-pour-toute
+ s-et-pour-tous-vulaines-sur-seine-e4e93d3b80/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9c3a8a48c3@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Samedis Switch – Médiathèque
@@ -557,7 +600,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d5e276f3e@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween à la Médiathèque de la Charité Royale
@@ -577,7 +620,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween à Thomery
@@ -602,12 +645,12 @@ DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween jeux de société
 LOCATION:Médiathèque de la Charité Royale (15 rue Royale)\, Fontaineblea
  u
-DESCRIPTION:Horaires : 19h à 21h\n\nTarif : Gratuit\n\nPublic : Dès 12 an
- s\n\nSoirée Halloween et jeux de société pour ados et adultes.\n\nOrgan
- isateur : https://www.saint-mammes.com/soiree-halloween-jeux-de-societe/\n
- \nFiche : https://fontainebleaulive.fr/evenements/soiree-halloween-jeux-de
- -societe-fontainebleau-1cee776589/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 19h à 23h\n\nTarif : Gratuit (sur réservation)\n\n
+ Public : Dès 12 ans\n\nSoirée Halloween et jeux de société pour ados e
+ t adultes.\n\nOrganisateur : https://www.saint-mammes.com/soiree-halloween
+ -jeux-de-societe/\n\nFiche : https://fontainebleaulive.fr/evenements/soire
+ e-halloween-jeux-de-societe-fontainebleau-1cee776589/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/soiree-halloween-jeux-de-societ
  e-fontainebleau-1cee776589/
 CATEGORIES:Culture & Ateliers
@@ -635,17 +678,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_901d49999c@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Atelier artistique de création d’une ofrenda encadrée
 LOCATION:Fontainebleau
-DESCRIPTION:Tarif : Gratuit. A partir de 13 ans.\n\nOrganisateur : https://
- www.fontainebleau-tourisme.com/fr/fiche/8035773/atelier-artistique-de-crea
- tion-dune-ofrenda-encadree/\n\nFiche : https://fontainebleaulive.fr/evenem
- ents/atelier-artistique-de-creation-d-une-ofrenda-encadree-fontainebleau-9
- 01d49999c/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+DESCRIPTION:Tarif : Gratuit. A partir de 13 ans.\n\nParticipez à un atelie
+ r artistique pour réaliser une ofrenda encadrée à Fontainebleau.\n\nOrg
+ anisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8035773/atelie
+ r-artistique-de-creation-dune-ofrenda-encadree/\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/atelier-artistique-de-creation-d-une-ofrenda-enca
+ dree-fontainebleau-901d49999c/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-artistique-de-creation-
  d-une-ofrenda-encadree-fontainebleau-901d49999c/
 CATEGORIES:Culture & Ateliers
@@ -654,7 +698,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
@@ -676,7 +720,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb1ab08abe@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier collectif " Dispositifs engagements jeunes "
@@ -697,7 +741,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8dee5271f4@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Réunions d'information Transmission
@@ -718,7 +762,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ca57c61994@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:Conférence "Mary Cassatt\, femme impressionniste"
@@ -772,7 +816,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c68e5654ec@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261109
 SUMMARY:Le petit train du château de Fontainebleau
@@ -793,7 +837,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be1a35043c@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les rendez-vous de la forme
@@ -812,8 +856,27 @@ GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_4572983ce4@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Soirée méxicaine
+LOCATION:Villecerf
+DESCRIPTION:Horaires : 19h30\n\nParticipez à une soirée festive sur le th
+ ème du Mexique organisée à la Maison des associations de Villecerf.\n\n
+ Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-07
+ -soireemexicaine\n\nFiche : https://fontainebleaulive.fr/evenements/soiree
+ -mexicaine-villecerf-4572983ce4/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-mexicaine-villecerf-4572
+ 983ce4/
+CATEGORIES:Culture & Ateliers
+GEO:48.32745;2.85515
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_7387a9aaa4@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Stage photographique magie de la forêt
@@ -833,7 +896,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3a5fba756f@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Sur la trace de La Couseuse
@@ -853,7 +916,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7141722f08@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -891,7 +954,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2219b8be7b@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Conférence " Moïse\, figure du héros : 2000 ans d'histoire de l'
@@ -911,7 +974,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4b85a91fce@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Conférence "Magellan\, le pari de repousser l'horizon"
@@ -931,7 +994,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
@@ -951,7 +1014,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdc5e49f92@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Vide ta chambre
@@ -970,7 +1033,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23ccc433a8@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:Venez découvrir le secteur de l'industrie !
@@ -1007,7 +1070,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6f02416d94@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Commémoration du 11 novembre 1918
@@ -1045,7 +1108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4374fa4330@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Café des Sciences par FabLab Moebius
@@ -1060,6 +1123,24 @@ URL:https://fontainebleaulive.fr/evenements/cafe-des-sciences-par-fablab-mo
  ebius-fontainebleau-4374fa4330/
 CATEGORIES:Culture & Ateliers
 GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_74ffd2372a@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Le colonel Barbaque
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:“Un homme assoiffé d’aventures et de colère\, crève de c
+ haleur au fond d’une barque africaine… »\n\nOrganisateur : https://ww
+ w.anevert.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/le-colone
+ l-barbaque-fontainebleau-74ffd2372a/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-colonel-barbaque-fontaineble
+ au-74ffd2372a/
+CATEGORIES:Culture & Ateliers
+GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -1083,7 +1164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9be6481b48@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Caféministe
@@ -1100,7 +1181,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_614c38ea82@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Le colonel Barbaque
@@ -1120,7 +1201,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4b47390dc9@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Le petit train du château de Fontainebleau
@@ -1140,8 +1221,27 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_119d0c6981@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Lecture à Voix Haute
+LOCATION:Montigny-sur-Loing
+DESCRIPTION:Horaires : 18h30\n\nAssistez à une séance dédiée à la lect
+ ure à voix haute au sein de la bibliothèque de Montigny-sur-Loing.\n\nOr
+ ganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-14-l
+ ectureavoixhaute\n\nFiche : https://fontainebleaulive.fr/evenements/lectur
+ e-a-voix-haute-montigny-sur-loing-119d0c6981/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/lecture-a-voix-haute-montigny-s
+ ur-loing-119d0c6981/
+CATEGORIES:Culture & Ateliers
+GEO:48.33545;2.7482
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up
@@ -1160,7 +1260,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0c5d619702@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -1197,7 +1297,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_728f88dda5@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Le colonel Barbaque
@@ -1217,7 +1317,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8e33e78d92@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261117
 SUMMARY:Salon de la Gastronomie du vin et des Arts de la table
@@ -1237,7 +1337,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c45baf6087@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -1256,7 +1356,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_57925be5b9@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261117
 SUMMARY:recrutement DEDIENNE AEROSPACE site de Villaroche
@@ -1316,7 +1416,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_567e428004@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
@@ -1334,6 +1434,45 @@ URL:https://fontainebleaulive.fr/evenements/interim-agent-de-controle-quali
  te-polyvalent-h-f-rejoignez-u-nemours-567e428004/
 CATEGORIES:Culture & Ateliers
 GEO:48.26374;2.7001
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9159f1de5d@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Colette\, l'incorrigible besoin d'écrire
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:Colette\, L’incorrigible besoin d’écrire\, de Nathalie Pro
+ khoris\, d’après les écrits de Colette\, Compagnie Trois Six Neuf.\n\n
+ Organisateur : https://www.anevert.fr/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/colette-l-incorrigible-besoin-d-ecrire-fontainebleau-9159f
+ 1de5d/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/colette-l-incorrigible-besoin-d
+ -ecrire-fontainebleau-9159f1de5d/
+CATEGORIES:Culture & Ateliers
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_da74796de2@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Conférence de Sébastien Ronsseray
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Sébastien Ronsseray présente les découvertes de sept campagn
+ es de fouilles à la Butte Saint-Louis\, retraçant sept siècles d’hist
+ oire\, du XIe au XVIIIe siècle.\n\nOrganisateur : https://www.musee-prehi
+ stoire-idf.fr/fr\n\nFiche : https://fontainebleaulive.fr/evenements/confer
+ ence-de-sebastien-ronsseray-nemours-da74796de2/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-de-sebastien-ronsser
+ ay-nemours-da74796de2/
+CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -1356,7 +1495,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_70b3109999@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:"Nouveau regard sur le monde paysan par Jean-François Millet"
@@ -1376,8 +1515,27 @@ GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_761f3d6577@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Atelier bien-être duo
+LOCATION:Villemer
+DESCRIPTION:Horaires : 15h à 17h30\n\nProfitez d'un temps de relaxation et
+  de partage grâce à cet atelier de bien-être à suivre en duo à Villem
+ er.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#202
+ 6-11-21-atelierbienetreduo\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/atelier-bien-etre-duo-villemer-761f3d6577/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-bien-etre-duo-villemer-
+ 761f3d6577/
+CATEGORIES:Culture & Ateliers
+GEO:48.30364;2.82292
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_45420fd9ba@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -1417,7 +1575,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ba24744302@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Le petit train du château de Fontainebleau
@@ -1438,7 +1596,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b73078ac9b@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Marché de Noël
@@ -1455,8 +1613,29 @@ GEO:48.46717;2.60924
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_80400315e9@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Visite flash de l'exposition Ça en jette !
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Suivez le guide et découvrez la toute nouvelle exposition du m
+ usée de Préhistoire consacrée aux déchets. Ce que nos ancêtres ont re
+ jeté représente en effet une véritable mine d'or pour les archéologues
+  !\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/fr\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca-en-j
+ ette-nemours-80400315e9/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca
+ -en-jette-nemours-80400315e9/
+CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_142ff41db0@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -1476,15 +1655,16 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ec24de15f3@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Broc’enfants et ados
 LOCATION:Salle du Clos\, Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-11-22-brocenf
- antsetados\n\nFiche : https://fontainebleaulive.fr/evenements/broc-enfants
- -et-ados-hericy-ec24de15f3/\n\nInformations collectées automatiquement : 
- vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 09:30\n\nVide-grenier consacré aux enfants et ados 
+ dans la salle du Clos.\n\nOrganisateur : https://www.hericy.fr/agenda/#202
+ 6-11-22-brocenfantsetados\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/broc-enfants-et-ados-hericy-ec24de15f3/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/broc-enfants-et-ados-hericy-ec2
  4de15f3/
 CATEGORIES:Culture & Ateliers
@@ -1492,7 +1672,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d70743fefd@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Colette\, l'incorrigible besoin d'écrire
@@ -1587,8 +1767,26 @@ GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_c3d86e43ae@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:L'Avare
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:Le chef d’œuvre de Molière nous plonge tout en rire et en p
+ rofondeur sur la terrible avarice d’Harpagon. Avec la Compagnie Naphraly
+ tep.\n\nOrganisateur : https://www.anevert.fr/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/l-avare-fontainebleau-c3d86e43ae/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/l-avare-fontainebleau-c3d86e43a
+ e/
+CATEGORIES:Culture & Ateliers
+GEO:48.4049;2.69855
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_6129d65ad6@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Cycle de conférences « Marie-Antoinette et Louis XVI : entre myth
@@ -1610,7 +1808,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aa84102806@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:L'Avare
@@ -1628,7 +1826,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_163bf381df@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:lavare
@@ -1647,7 +1845,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_187c641b5b@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Le petit train du château de Fontainebleau
@@ -1688,7 +1886,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing
@@ -1724,7 +1922,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5ae3ab0be1@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:lavare
@@ -1761,7 +1959,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_16a63f9d68@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261204
 SUMMARY:Cérémonie de clôture du projet Open Data de la Communauté d'Agg
@@ -1784,7 +1982,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
@@ -1804,15 +2002,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ee0cb8764@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Inauguration illuminations de Noël
 LOCATION:Place de l'Orangerie\, Héricy
-DESCRIPTION:Organisateur : https://www.hericy.fr/agenda/#2026-12-04-inaugur
- ationilluminationsdenoel\n\nFiche : https://fontainebleaulive.fr/evenement
- s/inauguration-illuminations-de-noel-hericy-1ee0cb8764/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 09:00\n\nÉvénement d'inauguration lançant les ill
+ uminations de Noël sur la place de l'Orangerie.\n\nOrganisateur : https:/
+ /www.hericy.fr/agenda/#2026-12-04-inaugurationilluminationsdenoel\n\nFiche
+  : https://fontainebleaulive.fr/evenements/inauguration-illuminations-de-n
+ oel-hericy-1ee0cb8764/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/inauguration-illuminations-de-n
  oel-hericy-1ee0cb8764/
 CATEGORIES:Culture & Ateliers
@@ -1820,7 +2020,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fdd2caa4ab@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:La poésie de Claire Médard
@@ -1839,7 +2039,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4885be582a@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
@@ -1857,16 +2057,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_356adfe18d@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël de Fleury-en-Bière
 LOCATION:Fleury-en-Bière
-DESCRIPTION:Tarif : Gratuit.\n\nOrganisateur : https://www.fontainebleau-to
- urisme.com/fr/fiche/8015068/marche-de-noel-de-fleury-en-biere/\n\nFiche : 
- https://fontainebleaulive.fr/evenements/marche-de-noel-de-fleury-en-biere-
- 356adfe18d/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
+DESCRIPTION:Tarif : Gratuit.\n\nDécouvrez les festivités et artisans lors
+  du marché de Noël de Fleury-en-Bière.\n\nOrganisateur : https://www.fo
+ ntainebleau-tourisme.com/fr/fiche/8015068/marche-de-noel-de-fleury-en-bier
+ e/\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-de-fl
+ eury-en-biere-356adfe18d/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-fleury-en-bie
  re-356adfe18d/
 CATEGORIES:Culture & Ateliers
@@ -1874,27 +2075,8 @@ GEO:48.44399;2.54959
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_069d0decbb@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
-DTSTART;VALUE=DATE:20261205
-DTEND;VALUE=DATE:20261206
-SUMMARY:Peer Gynt\, l'homme qui voulait être lui-même
-LOCATION:Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nOrganisate
- ur : https://www.fontainebleau-tourisme.com/fr/fiche/7947262/peer-gynt-lho
- mme-qui-voulait-etre-lui-meme/\n\nFiche : https://fontainebleaulive.fr/eve
- nements/peer-gynt-l-homme-qui-voulait-etre-lui-meme-fontainebleau-069d0dec
- bb/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/peer-gynt-l-homme-qui-voulait-e
- tre-lui-meme-fontainebleau-069d0decbb/
-CATEGORIES:Culture & Ateliers
-GEO:48.40781;2.70278
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_3b0c33a401@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Stage photographique magie de la forêt
@@ -1914,7 +2096,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Village et Marché de Noël de Samois-sur-Seine
@@ -1932,7 +2114,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_549cfe3e70@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -1971,7 +2153,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7b2a5f2ea8@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Les séjours de Louis XIV à Fontainebleau\, les liens avec la popu
@@ -2026,25 +2208,6 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_b23f1218c8@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
-DTSTART;VALUE=DATE:20261206
-DTEND;VALUE=DATE:20261207
-SUMMARY:Peer Gynt\, l'homme qui voulait être lui-même
-LOCATION:Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nOrganisate
- ur : https://www.fontainebleau-tourisme.com/fr/fiche/7947262/peer-gynt-lho
- mme-qui-voulait-etre-lui-meme/\n\nFiche : https://fontainebleaulive.fr/eve
- nements/peer-gynt-l-homme-qui-voulait-etre-lui-meme-fontainebleau-b23f1218
- c8/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/peer-gynt-l-homme-qui-voulait-e
- tre-lui-meme-fontainebleau-b23f1218c8/
-CATEGORIES:Culture & Ateliers
-GEO:48.40781;2.70278
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_58c5d71344@fontainebleaulive.fr
 DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261211
@@ -2062,6 +2225,24 @@ URL:https://fontainebleaulive.fr/evenements/cafe-des-sciences-fablab-moebiu
  s-fontainebleau-58c5d71344/
 CATEGORIES:Culture & Ateliers
 GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4ef3fc8fcc@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:Deux sur la balançoire
+LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
+DESCRIPTION:Découvrez "Deux sur la balançoire"\, de William Gibson propos
+ é par la Compagnie Ophélia.\n\nOrganisateur : https://www.anevert.fr/\n\
+ nFiche : https://fontainebleaulive.fr/evenements/deux-sur-la-balancoire-fo
+ ntainebleau-4ef3fc8fcc/\n\nInformations collectées automatiquement : vér
+ ifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/deux-sur-la-balancoire-fontaine
+ bleau-4ef3fc8fcc/
+CATEGORIES:Culture & Ateliers
+GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2086,7 +2267,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b6186d716@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Deux sur la balançoire
@@ -2120,6 +2301,23 @@ URL:https://fontainebleaulive.fr/evenements/grand-marche-de-noel-de-la-cite
  -imperiale-fontainebleau-de33599725/
 CATEGORIES:Culture & Ateliers
 GEO:48.40634;2.70104
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_37ab455673@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Héri’Lud
+LOCATION:Héricy
+DESCRIPTION:Horaires : 10:00\n\nRendez-vous ludique Héri’Lud proposé da
+ ns la commune d'Héricy.\n\nOrganisateur : https://www.hericy.fr/agenda/#2
+ 026-12-12-herilud\n\nFiche : https://fontainebleaulive.fr/evenements/heri-
+ lud-hericy-37ab455673/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/heri-lud-hericy-37ab455673/
+CATEGORIES:Culture & Ateliers
+GEO:48.44696;2.7794
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2162,7 +2360,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e894b7314b@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Deux sur la balançoire
@@ -2199,7 +2397,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a139f212f7@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261217
 DTEND;VALUE=DATE:20261218
 SUMMARY:Les conférences de l'INSEAD
@@ -2218,8 +2416,28 @@ GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0b70bd4948@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261221
+SUMMARY:Marché de Noël de Fontainebleau
+LOCATION:Place de la République\, Fontainebleau
+DESCRIPTION:Horaires : 2026-12-18 : 10h–20h \; 2026-12-19 : 10h–21h \; 
+ 2026-12-20 : 10h–18h\n\nTarif : Entrée libre\n\nMarché de Noël tradit
+ ionnel au cœur de la cité impériale.\n\nOrganisateur : https://www.font
+ ainebleau-tourisme.com/fr/decouvrir/les-temps-forts/les-marches-de-noel/\n
+ \nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-de-fontai
+ nebleau-0b70bd4948/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-fontainebleau
+ -0b70bd4948/
+CATEGORIES:Culture & Ateliers
+GEO:48.40634;2.70104
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
@@ -2237,7 +2455,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_73c768adc2@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Le petit train du château de Fontainebleau
@@ -2258,17 +2476,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3e57063ae@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261223
 SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
 LOCATION:Place de l'Hôtel de Ville\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit\n\nMarché de Noël a
- rtisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://moret-loin
- g-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/marche
- -de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57063ae/\n
- \nInformations collectées automatiquement : vérifiez-les auprès de l’
- organisateur.
+DESCRIPTION:Horaires : 10h00–19h30\n\nTarif : Entrée libre\n\nMarché de
+  Noël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://mo
+ ret-loing-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/marche-de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57
+ 063ae/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
  et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
 CATEGORIES:Culture & Ateliers
@@ -2277,7 +2495,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_40d68b424a@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -2302,13 +2520,13 @@ DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:Brocante Antiquité Mensuelle de Fontainebleau - Décembre
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Gratuit\n\nÉdition de déc
- embre de la brocante mensuelle d'antiquités à Fontainebleau.\n\nOrganisa
- teur : https://vide-greniers.org/77-Seine-et-Marne/Fontainebleau/brocante-
- antiquite_198533\n\nFiche : https://fontainebleaulive.fr/evenements/brocan
- te-antiquite-mensuelle-de-fontainebleau-decembre-c282cb05dc/\n\nInformatio
- ns collectées automatiquement : vérifiez-les auprès de l’organisateur
- .
+DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée gratuite\n\nÉditio
+ n de décembre de la brocante mensuelle d'antiquités à Fontainebleau.\n\
+ nOrganisateur : https://vide-greniers.org/77-Seine-et-Marne/Fontainebleau/
+ brocante-antiquite_198533\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/brocante-antiquite-mensuelle-de-fontainebleau-decembre-c282cb05dc/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
 URL:https://fontainebleaulive.fr/evenements/brocante-antiquite-mensuelle-de
  -fontainebleau-decembre-c282cb05dc/
 CATEGORIES:Culture & Ateliers
@@ -2321,15 +2539,74 @@ DTSTART;VALUE=DATE:20270117
 DTEND;VALUE=DATE:20270118
 SUMMARY:Brocante Antiquités de Fontainebleau - Janvier
 LOCATION:Place de l'Aigle Noir\, Fontainebleau
-DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Gratuit\n\nPremière brocan
- te de l'année au pied du château de Fontainebleau pour chiner objets anc
- iens et antiquités.\n\nOrganisateur : https://www.fontainebleau-tourisme.
- com/\n\nFiche : https://fontainebleaulive.fr/evenements/brocante-antiquite
- s-de-fontainebleau-janvier-4b4413f55b/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée gratuite\n\nPremiè
+ re brocante de l'année au pied du château de Fontainebleau pour chiner o
+ bjets anciens et antiquités.\n\nOrganisateur : https://vide-greniers.org/
+ 77-Seine-et-Marne/Fontainebleau/brocante-antiquite-fontainebleau_600308\n\
+ nFiche : https://fontainebleaulive.fr/evenements/brocante-antiquites-de-fo
+ ntainebleau-janvier-4b4413f55b/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/brocante-antiquites-de-fontaine
  bleau-janvier-4b4413f55b/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6678c3a89c@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Images dirigées : la photographie de propagande
+LOCATION:Musée d'art et d'histoire de Melun\, Melun
+DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
+ eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
+ rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
+ fr/evenements/images-dirigees-la-photographie-de-propagande-melun-6678c3a8
+ 9c/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
+ -de-propagande-melun-6678c3a89c/
+CATEGORIES:Culture & Ateliers
+GEO:48.5364;2.65882
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9a21f7e9f3@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+SUMMARY:Images dirigées : la photographie de propagande
+LOCATION:Musée d'art et d'histoire de Melun\, Melun
+DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
+ eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
+ rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
+ fr/evenements/images-dirigees-la-photographie-de-propagande-melun-9a21f7e9
+ f3/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
+ -de-propagande-melun-9a21f7e9f3/
+CATEGORIES:Culture & Ateliers
+GEO:48.5364;2.65882
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fb2c39233f@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+SUMMARY:Les conférences de l'INSEAD
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Entrée libre. Les conférences sont en accès libre et
+  gratuites. Les portes (ent…\n\nCycle de conférences académiques organ
+ isé sur le campus de l'INSEAD.\n\nOrganisateur : https://www.fontaineblea
+ u-tourisme.com/fr/fiche/6218809/les-conferences-de-linsead/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/les-conferences-de-l-insead-fontaineb
+ leau-fb2c39233f/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-conferences-de-l-insead-fon
+ tainebleau-fb2c39233f/
+CATEGORIES:Culture & Ateliers
+GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

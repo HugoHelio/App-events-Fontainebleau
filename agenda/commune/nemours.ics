@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1658dee4b1@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Explorez les opportunités dans l'industrie et la plateforme FORIND
@@ -57,12 +57,12 @@ DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cross Duathlon / Tri Cross de Nemours
 LOCATION:Base de loisirs de Nemours\, Nemours
-DESCRIPTION:Horaires : Matinée\n\nTarif : Selon la catégorie et la licenc
- e\n\nPublic : Dès 16 ans\n\nÉpreuve outdoor combinant course à pied et 
- VTT en sous-bois autour de Nemours.\n\nOrganisateur : https://www.nemours.
- fr/\n\nFiche : https://fontainebleaulive.fr/evenements/cross-duathlon-tri-
- cross-de-nemours-97e8e14fe0/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Matinée\n\nTarif : Selon catégorie\n\nPublic : Dè
+ s 16 ans\n\nÉpreuve outdoor combinant course à pied et VTT en sous-bois 
+ autour de Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nemours-
+ 97e8e14fe0/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nem
  ours-97e8e14fe0/
 CATEGORIES:Sport & Outdoor
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_567e428004@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
@@ -109,6 +109,26 @@ GEO:48.26374;2.7001
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_da74796de2@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Conférence de Sébastien Ronsseray
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Sébastien Ronsseray présente les découvertes de sept campagn
+ es de fouilles à la Butte Saint-Louis\, retraçant sept siècles d’hist
+ oire\, du XIe au XVIIIe siècle.\n\nOrganisateur : https://www.musee-prehi
+ stoire-idf.fr/fr\n\nFiche : https://fontainebleaulive.fr/evenements/confer
+ ence-de-sebastien-ronsseray-nemours-da74796de2/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-de-sebastien-ronsser
+ ay-nemours-da74796de2/
+CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d4de9594c9@fontainebleaulive.fr
 DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261121
@@ -124,6 +144,27 @@ DESCRIPTION:Sébastien Ronsseray présente les découvertes de sept campagn
  s automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/conference-de-sebastien-ronsser
  ay-nemours-d4de9594c9/
+CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_80400315e9@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Visite flash de l'exposition Ça en jette !
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Suivez le guide et découvrez la toute nouvelle exposition du m
+ usée de Préhistoire consacrée aux déchets. Ce que nos ancêtres ont re
+ jeté représente en effet une véritable mine d'or pour les archéologues
+  !\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/fr\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca-en-j
+ ette-nemours-80400315e9/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-flash-de-l-exposition-ca
+ -en-jette-nemours-80400315e9/
 CATEGORIES:Culture & Ateliers
 GEO:48.26045;2.71392
 TRANSP:TRANSPARENT

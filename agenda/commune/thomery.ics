@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_89eaead9ad@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261026
 SUMMARY:Atelier céramiques
@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween à Thomery
@@ -86,7 +86,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing
@@ -119,6 +119,25 @@ DESCRIPTION:Horaires : 10h00–17h00\n\nRandonnée pédestre organisée à
 URL:https://fontainebleaulive.fr/evenements/randonnee-thomery-foret-de-font
  ainebleau-sur-les-pas-de-rosa-14e1f3a4b0/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fa55d203f8@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+SUMMARY:Rayss Bek
+LOCATION:Théâtre de Vanves\, Thomery
+DESCRIPTION:En regard de l'exposition Damaskus\, de la photographe Frizzi K
+ rella\, le théâtre de Vanves programme l'artiste musicien Rayss Bek/Wael
+  Koudaih. Celui-ci partage sa vie entre la France et le Liban. Il …\n\nO
+ rganisateur : https://openagenda.com/bicentenaire-photographie-fr/events/r
+ ayss-bek\n\nFiche : https://fontainebleaulive.fr/evenements/rayss-bek-thom
+ ery-fa55d203f8/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rayss-bek-thomery-fa55d203f8/
+CATEGORIES:Scène & Spectacles
+GEO:48.41243;2.78476
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

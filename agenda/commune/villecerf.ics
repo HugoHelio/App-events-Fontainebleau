@@ -11,8 +11,27 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_aea660fd8e@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Concert " Karoun Loop Cover"
+LOCATION:Villecerf
+DESCRIPTION:Horaires : 20h\n\nConcert Karoun Loop Cover programmé au No St
+ ress à Villecerf.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/
+ agenda.html#2026-10-24-concertkarounloopcover\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/concert-karoun-loop-cover-villecerf-aea660fd8e/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-karoun-loop-cover-ville
+ cerf-aea660fd8e/
+CATEGORIES:Scène & Spectacles
+GEO:48.32745;2.85515
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_279a3ca0f3@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Boom d'Halloween
@@ -25,6 +44,25 @@ DESCRIPTION:Horaires : 19h – 22h\n\nVenez participer au concours du dégu
  es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/boom-d-halloween-villecerf-279a
  3ca0f3/
+CATEGORIES:Culture & Ateliers
+GEO:48.32745;2.85515
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4572983ce4@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Soirée méxicaine
+LOCATION:Villecerf
+DESCRIPTION:Horaires : 19h30\n\nParticipez à une soirée festive sur le th
+ ème du Mexique organisée à la Maison des associations de Villecerf.\n\n
+ Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-07
+ -soireemexicaine\n\nFiche : https://fontainebleaulive.fr/evenements/soiree
+ -mexicaine-villecerf-4572983ce4/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-mexicaine-villecerf-4572
+ 983ce4/
 CATEGORIES:Culture & Ateliers
 GEO:48.32745;2.85515
 TRANSP:TRANSPARENT

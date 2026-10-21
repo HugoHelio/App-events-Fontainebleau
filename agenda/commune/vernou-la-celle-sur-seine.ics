@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_84e0a9c617@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Soirée orientale
@@ -30,8 +30,28 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_651d8d6564@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Concert " les agités du bocage"
+LOCATION:Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 20h\n\nAssistez au concert gratuit du groupe Les Agi
+ tés du Bocage à la salle polyvalente de Vernou-la-Celle-sur-Seine.\n\nOr
+ ganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-14-c
+ oncertlesagitesdubocage\n\nFiche : https://fontainebleaulive.fr/evenements
+ /concert-les-agites-du-bocage-vernou-la-celle-sur-seine-651d8d6564/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/concert-les-agites-du-bocage-ve
+ rnou-la-celle-sur-seine-651d8d6564/
+CATEGORIES:Scène & Spectacles
+GEO:48.39184;2.84915
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up

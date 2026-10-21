@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6cb6271af1@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Soirée ados / Film d'Halloween
@@ -53,7 +53,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99b337a3a7@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -73,7 +73,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4cb0db304f@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Montigny fait son cinéma " Quand je serai Grand "
@@ -89,6 +89,25 @@ DESCRIPTION:Horaires : 19h30 – 22h\n\nProjection cinématographique du fi
 URL:https://fontainebleaulive.fr/evenements/montigny-fait-son-cinema-quand-
  je-serai-grand-montigny-sur-loing-4cb0db304f/
 CATEGORIES:Scène & Spectacles
+GEO:48.33545;2.7482
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_119d0c6981@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Lecture à Voix Haute
+LOCATION:Montigny-sur-Loing
+DESCRIPTION:Horaires : 18h30\n\nAssistez à une séance dédiée à la lect
+ ure à voix haute au sein de la bibliothèque de Montigny-sur-Loing.\n\nOr
+ ganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-14-l
+ ectureavoixhaute\n\nFiche : https://fontainebleaulive.fr/evenements/lectur
+ e-a-voix-haute-montigny-sur-loing-119d0c6981/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/lecture-a-voix-haute-montigny-s
+ ur-loing-119d0c6981/
+CATEGORIES:Culture & Ateliers
 GEO:48.33545;2.7482
 TRANSP:TRANSPARENT
 END:VEVENT

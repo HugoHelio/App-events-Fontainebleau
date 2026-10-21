@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_fe0f61015a@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Concours de pétanques – OCTOBRE ROSE
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_42c70c40c5@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Concert – Église notre dame de l’Assomption
@@ -50,17 +50,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa0515afcd@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du Potiron
 LOCATION:Sous la Halle\, Milly-la-Forêt
-DESCRIPTION:Horaires : À partir de 13h30\n\nAnimations pour petits et gran
- ds\, défilé costumé et dégustation de soupe de potiron sous la Halle.\
- n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/30/28-10-26-fete-d
- u-potiron/\n\nFiche : https://fontainebleaulive.fr/evenements/fete-du-poti
- ron-milly-la-foret-fa0515afcd/\n\nInformations collectées automatiquement
-  : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 13h30\n\nTarif : Gratuit\n\nAnimations 
+ pour petits et grands\, défilé costumé et dégustation de soupe de poti
+ ron sous la Halle.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/01
+ /30/28-10-26-fete-du-potiron/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/fete-du-potiron-milly-la-foret-fa0515afcd/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/fete-du-potiron-milly-la-foret-
  fa0515afcd/
 CATEGORIES:Culture & Ateliers
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d2df7805de@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261102
 SUMMARY:Grande fête portugaise – 45e anniversaire
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9c3a8a48c3@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Samedis Switch – Médiathèque
@@ -106,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a593951ce6@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage chorégraphies mythiques – Claude François – Club Mill
@@ -127,7 +127,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dba14b7e32@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage Piloxing & Zumboxing – Club Mill’ Danses
@@ -164,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_764fb661fa@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -184,26 +184,46 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8eb8658951@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Stage d’initiation au Heels – Club Mill’ Danses
 LOCATION:Salle Clovis Lelong\, Milly-la-Forêt
-DESCRIPTION:Horaires : De 10h30 à 12h\n\nPublic : Dès 16 ans\n\nStage pou
- r découvrir le Heels\, une danse pratiquée en talons associant technique
-  et chorégraphie.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/01
- /29/15-11-26-stage-dinitiation-au-heels-club-mill-danses/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/stage-d-initiation-au-heels-club-mill-d
- anses-milly-la-foret-8eb8658951/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : De 10h30 à 12h\n\nTarif : Payant\n\nPublic : Dès 1
+ 6 ans\n\nStage pour découvrir le Heels\, une danse pratiquée en talons a
+ ssociant technique et chorégraphie.\n\nOrganisateur : https://www.milly-l
+ a-foret.fr/2026/01/29/15-11-26-stage-dinitiation-au-heels-club-mill-danses
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/stage-d-initiation-au
+ -heels-club-mill-danses-milly-la-foret-8eb8658951/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/stage-d-initiation-au-heels-clu
  b-mill-danses-milly-la-foret-8eb8658951/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ac93a38421@fontainebleaulive.fr
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
+LOCATION:Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 14h30 à 17h\n\nTarif : 10 € à 20 €\n\nStage
+  pour apprendre et perfectionner des chorégraphies inspirées de la K-Pop
+ .\n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/28/22-11-26-stag
+ e-de-danse-k-pop-club-mill-danses/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/stage-de-danse-k-pop-club-mill-danses-milly-la-foret-ac93a3842
+ 1/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-de-danse-k-pop-club-mill-
+ danses-milly-la-foret-ac93a38421/
+CATEGORIES:Scène & Spectacles
+GEO:48.4019;2.45349
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses

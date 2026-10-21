@@ -381,6 +381,11 @@
       "reason": "Même spectacle jeune public représenté aux mêmes dates et au même théâtre.",
       "at": "2026-10-18"
     },
+    "EVT_068663487e|EVT_ad664dc40a": {
+      "same": true,
+      "reason": "Il s'agit du même spectacle de clown joué aux mêmes dates à l'Âne Vert Théâtre.",
+      "at": "2026-10-21"
+    },
     "EVT_06ff298cb0|EVT_a153c32127": {
       "same": true,
       "reason": "Il s'agit de la même exposition de photographies de l'église Saint-Jean-Baptiste à Nemours.",
@@ -445,6 +450,11 @@
       "same": true,
       "reason": "Même programmation festive de fin d'année au Château de Fontainebleau.",
       "at": "2026-10-18"
+    },
+    "EVT_08e101e9e6|EVT_22b1c75dfc": {
+      "same": true,
+      "reason": "Même randonnée nature guidée organisée par EcoNature aux mêmes date et heure.",
+      "at": "2026-10-21"
     },
     "EVT_090407a470|EVT_964a968e35": {
       "same": true,
@@ -696,6 +706,11 @@
       "reason": "Les deux fiches font référence à la même brocante organisée au Grand Parquet le 11 novembre.",
       "at": "2026-09-27"
     },
+    "EVT_1512e83552|EVT_27dcf225f7": {
+      "same": true,
+      "reason": "Même brocante organisée au Grand Parquet le 11 novembre 2026.",
+      "at": "2026-10-21"
+    },
     "EVT_1512e83552|EVT_6139b6c3ec": {
       "same": true,
       "reason": "Les deux fiches annoncent la même brocante organisée au Grand Parquet le 11 novembre 2026.",
@@ -861,6 +876,11 @@
       "reason": "Même visite guidée sur les traces des animaux le 12 décembre 2026.",
       "at": "2026-09-24"
     },
+    "EVT_2005ad3717|EVT_55d5b44a0c": {
+      "same": false,
+      "reason": "Deux événements du réveillon distincts se déroulant dans des lieux et communes différents.",
+      "at": "2026-10-21"
+    },
     "EVT_2005ad3717|EVT_821330a8b5": {
       "same": true,
       "reason": "Il s'agit du même spectacle du réveillon de la Saint-Sylvestre « Fantasmagloria » au Théâtre municipal.",
@@ -926,6 +946,11 @@
       "reason": "Les deux expositions se déroulent dans des lieux différents à Barbizon avec des dates distinctes.",
       "at": "2026-09-27"
     },
+    "EVT_252dc9d8cb|EVT_d9787cee76": {
+      "same": true,
+      "reason": "Même rencontre Café des Sciences organisée au FabLab Moebius le 8 janvier 2027.",
+      "at": "2026-10-21"
+    },
     "EVT_26569c3ac7|EVT_cbb7493942": {
       "same": true,
       "reason": "Il s'agit du même marché de Noël organisé à Samois-sur-Seine le 5 décembre 2026.",
@@ -956,6 +981,11 @@
       "reason": "Il s'agit de deux fêtes d'Halloween distinctes se déroulant dans deux communes différentes (Villecerf et Thomery).",
       "at": "2026-10-12"
     },
+    "EVT_27dcf225f7|EVT_f55e6302f3": {
+      "same": true,
+      "reason": "Il s'agit de la même brocante organisée au Grand Parquet le 11 novembre 2026.",
+      "at": "2026-10-21"
+    },
     "EVT_28f83599a6|EVT_b75f92b9d9": {
       "same": true,
       "reason": "Même événement/exposition d'hiver au Jardin des Arts sur la même période.",
@@ -981,6 +1011,11 @@
       "reason": "Il s'agit de la même exposition d'art de Wawapod à la Galerie Artfontainebleau.",
       "at": "2026-10-04"
     },
+    "EVT_2c8a9ba05f|EVT_d27898b9bd": {
+      "same": true,
+      "reason": "Il s'agit de la même promenade guidée organisée par les AAFF aux mêmes date et horaires.",
+      "at": "2026-10-21"
+    },
     "EVT_2cf741d5c5|EVT_efe4049c33": {
       "same": true,
       "reason": "Il s'agit de la même série de concerts des Vêpres de Monteverdi au Château de Fontainebleau.",
@@ -990,6 +1025,11 @@
       "same": true,
       "reason": "Même activité de découverte de l'église et carnet de dessin le 17 octobre 2026 à Larchant.",
       "at": "2026-09-24"
+    },
+    "EVT_30423f4689|EVT_f04cdbf72d": {
+      "same": false,
+      "reason": "Ce sont deux spectacles d'hommage distincts dédiés à deux albums différents de Pink Floyd.",
+      "at": "2026-10-21"
     },
     "EVT_3219b927d1|EVT_bac6c34a35": {
       "same": true,
@@ -1015,6 +1055,11 @@
       "same": true,
       "reason": "Mêmes dates, mêmes horaires, mêmes tarifs et même œuvre musicale de Monteverdi interprétée par les ensembles Balthasar Neumann.",
       "at": "2026-10-05"
+    },
+    "EVT_3541acd304|EVT_a73f557c91": {
+      "same": true,
+      "reason": "Les deux fiches décrivent le même programme de festivités de Noël au Château de Fontainebleau.",
+      "at": "2026-10-21"
     },
     "EVT_3629202698|EVT_9b45d6181f": {
       "same": true,
@@ -1191,6 +1236,16 @@
       "reason": "Ce sont deux événements distincts se déroulant dans des lieux différents.",
       "at": "2026-10-18"
     },
+    "EVT_4762e2cdf5|EVT_55d5b44a0c": {
+      "same": false,
+      "reason": "Deux soirées de réveillon distinctes organisées dans des communes différentes (Samois-sur-Seine et Ury).",
+      "at": "2026-10-21"
+    },
+    "EVT_47d645660b|EVT_66bddc0508": {
+      "same": false,
+      "reason": "Les lieux d'observation indiqués sont différents (massif forestier de Fontainebleau vs Réserve Naturelle des Seiglats à Moret).",
+      "at": "2026-10-21"
+    },
     "EVT_48dc10819d|EVT_bc7bc2a26d": {
       "same": true,
       "reason": "Il s'agit de la même 25e édition du Salon du Champignon organisée le même week-end par l'ANVL dans le Pays de Fontainebleau.",
@@ -1250,6 +1305,11 @@
       "same": false,
       "reason": "L'une des fiches présente la programmation globale tandis que l'autre cible un spectacle précis.",
       "at": "2026-10-18"
+    },
+    "EVT_4c1645a44c|EVT_734a43c14d": {
+      "same": true,
+      "reason": "Même sortie d'initiation à la bryologie proposée par l'ANVL aux mêmes date et horaires.",
+      "at": "2026-10-21"
     },
     "EVT_4da520497e|EVT_5266991852": {
       "same": true,
@@ -1886,6 +1946,16 @@
       "reason": "Même représentation de l'opéra La Flûte enchantée au Théâtre municipal le 6 décembre 2026 à 17h.",
       "at": "2026-10-05"
     },
+    "EVT_7df65d9d13|EVT_f5ce022c8e": {
+      "same": true,
+      "reason": "Même programme de visites guidées du château et du parc au Domaine de Courances.",
+      "at": "2026-10-21"
+    },
+    "EVT_8068526141|EVT_9417c90b62": {
+      "same": true,
+      "reason": "Les deux fiches décrivent le même programme d'animations pour les vacances de la Toussaint au château de Vaux-le-Vicomte.",
+      "at": "2026-10-21"
+    },
     "EVT_80e3611629|EVT_8dc9a77df7": {
       "same": false,
       "reason": "La première fiche concerne l'ensemble du festival et la seconde un concert particulier d'une soirée.",
@@ -2081,6 +2151,11 @@
       "reason": "Les lieux et horaires sont différents (Montigny-sur-Loing vs Saint-Mammès).",
       "at": "2026-10-15"
     },
+    "EVT_99b337a3a7|EVT_e4e93d3b80": {
+      "same": false,
+      "reason": "Deux animations d'Halloween distinctes organisées dans des communes différentes.",
+      "at": "2026-10-21"
+    },
     "EVT_99b337a3a7|EVT_e905a99489": {
       "same": false,
       "reason": "Deux soirées d'Halloween distinctes dans deux communes différentes (Thomery et Montigny-sur-Loing).",
@@ -2120,6 +2195,11 @@
       "same": false,
       "reason": "Deux évènements distincts d'Halloween à Bourron-Marlotte et Saint-Mammès.",
       "at": "2026-10-15"
+    },
+    "EVT_a5c21898e7|EVT_e4e93d3b80": {
+      "same": false,
+      "reason": "Deux événements d'Halloween distincts dans deux communes différentes.",
+      "at": "2026-10-21"
     },
     "EVT_a5c21898e7|EVT_e905a99489": {
       "same": false,
@@ -2176,6 +2256,11 @@
       "reason": "Les deux fiches annoncent la même fête du PNR du Gâtinais français à Chailly-en-Bière aux mêmes dates.",
       "at": "2026-10-08"
     },
+    "EVT_ac93a38421|EVT_e009f9aecd": {
+      "same": false,
+      "reason": "Ce sont deux stages de danse distincts (Zumba le matin et K-Pop l'après-midi).",
+      "at": "2026-10-21"
+    },
     "EVT_acb454a9f6|EVT_cf953e6d98": {
       "same": true,
       "reason": "Même sortie mycologique organisée par l'ANVL aux mêmes horaires.",
@@ -2190,6 +2275,11 @@
       "same": true,
       "reason": "Il s'agit de la même représentation de l'opéra de Mozart par la compagnie Opéra 2001 au Théâtre municipal de Fontainebleau le 6 décembre 2026.",
       "at": "2026-10-08"
+    },
+    "EVT_af1a49c6c7|EVT_d00e3704ba": {
+      "same": true,
+      "reason": "Même représentation de l'opéra La Flûte enchantée au Théâtre municipal de Fontainebleau.",
+      "at": "2026-10-21"
     },
     "EVT_b06d886e53|EVT_e5f4aec24d": {
       "same": true,
@@ -2450,6 +2540,11 @@
       "same": true,
       "reason": "Il s'agit de la même brocante organisée le 11 novembre au Grand Parquet.",
       "at": "2026-10-03"
+    },
+    "EVT_e4e93d3b80|EVT_e905a99489": {
+      "same": false,
+      "reason": "Deux soirées d'Halloween distinctes dans des communes différentes.",
+      "at": "2026-10-21"
     },
     "EVT_eace8caaff|EVT_f55e6302f3": {
       "same": true,
