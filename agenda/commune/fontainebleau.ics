@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_2fc524cfef@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Conférence « Science et Politique » par Didier Roux
-LOCATION:Amphithéâtre de l'IEP de Fontainebleau (UPEC)\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nConférence univ
- ersitaire du cycle Science et Politique animée par Didier Roux.\n\nOrgani
- sateur : https://www.u-pec.fr/\n\nFiche : https://fontainebleaulive.fr/eve
- nements/conference-science-et-politique-par-didier-roux-fontainebleau-2fc5
- 24cfef/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/conference-science-et-politique
- -par-didier-roux-fontainebleau-2fc524cfef/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_068663487e@fontainebleaulive.fr
 DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -46,48 +28,6 @@ URL:https://fontainebleaulive.fr/evenements/spectacle-jeune-public-gudule-e
  t-trampo-fontainebleau-068663487e/
 CATEGORIES:Scène & Spectacles
 GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_592af92e9b@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Visite guidée exclusive du théâtre municipal de Fontainebleau
-LOCATION:Théâtre municipal\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : Tarif unique : 24 €. A partir de 12 ans et non adapt
- ée aux personnes à mobilité…\n\nExplorez les coulisses et l'architect
- ure historique du théâtre municipal de Fontainebleau lors d'une visite g
- uidée exclusive.\n\nOrganisateur : https://www.fontainebleau-tourisme.com
- /fr/fiche/5889403/visite-guidee-exclusive-du-theatre-municipal-de-fontaine
- bleau/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-ex
- clusive-du-theatre-municipal-de-fontaineblea-fontainebleau-592af92e9b/\n\n
- Informations collectées automatiquement : vérifiez-les auprès de l’or
- ganisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-guidee-exclusive-du-thea
- tre-municipal-de-fontaineblea-fontainebleau-592af92e9b/
-CATEGORIES:Culture & Ateliers
-GEO:48.40335;2.69762
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_baac33fba8@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Visite guidée patrimoniale du Théâtre Municipal
-LOCATION:Théâtre Municipal de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h et 16h\n\nTarif : Payant\n\nVisite guidée exclu
- sive à la découverte de l'architecture italienne de 1912 et des coulisse
- s du Théâtre municipal.\n\nOrganisateur : https://www.fontainebleau-tour
- isme.com/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee
- -patrimoniale-du-theatre-municipal-fontainebleau-baac33fba8/\n\nInformatio
- ns collectées automatiquement : vérifiez-les auprès de l’organisateur
- .
-URL:https://fontainebleaulive.fr/evenements/visite-guidee-patrimoniale-du-t
- heatre-municipal-fontainebleau-baac33fba8/
-CATEGORIES:Culture & Ateliers
-GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
