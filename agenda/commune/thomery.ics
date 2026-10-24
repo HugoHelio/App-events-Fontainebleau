@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_89eaead9ad@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261026
 SUMMARY:Atelier céramiques
@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e905a99489@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Soirée Halloween à Thomery
@@ -54,13 +54,13 @@ DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Visites mystérieuses d'Halloween & Distribution de bonbons
 LOCATION:Château de Rosa Bonheur\, Thomery
-DESCRIPTION:Horaires : Toute la journée\n\nTarif : Billet d'entrée au mus
- ée\n\nVisites mystérieuses et distribution de bonbons pour Halloween au 
- Château de Rosa Bonheur.\n\nOrganisateur : https://www.chateau-rosa-bonhe
- ur.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-mysterie
- uses-d-halloween-et-distribution-de-bonbons-thomery-544cf67e58/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
+DESCRIPTION:Horaires : Pendant les heures d'ouverture\n\nTarif : Billet d'e
+ ntrée du musée\n\nVisites mystérieuses et distribution de bonbons pour 
+ Halloween au Château de Rosa Bonheur.\n\nOrganisateur : https://www.chate
+ au-rosa-bonheur.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/vis
+ ites-mysterieuses-d-halloween-et-distribution-de-bonbons-thomery-544cf67e5
+ 8/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-mysterieuses-d-hallowee
  n-et-distribution-de-bonbons-thomery-544cf67e58/
 CATEGORIES:Culture & Ateliers
@@ -85,8 +85,28 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_c4dd07f40c@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Stage de yoga " le Corps\, la voix\, le son"
+LOCATION:Thomery
+DESCRIPTION:Horaires : 14h30 à 16h30\n\nProfitez d'un stage de yoga axé s
+ ur le corps\, la voix et le son pour vivre un moment de détente et de pra
+ tique guidée.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agen
+ da.html#2026-11-21-stagedeyogalecorpslavoixleson\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/stage-de-yoga-le-corps-la-voix-le-son-thomery-c4
+ dd07f40c/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-de-yoga-le-corps-la-voix-
+ le-son-thomery-c4dd07f40c/
+CATEGORIES:Sport & Outdoor
+GEO:48.40233;2.78149
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-dressing
@@ -123,7 +143,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa55d203f8@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270122
 SUMMARY:Rayss Bek

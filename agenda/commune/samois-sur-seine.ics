@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_3629202698@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:ANFA Aviron – 6e édition de la régate du Pays de Fontainebleau
@@ -67,7 +67,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4056eda6ee@fontainebleaulive.fr
-DTSTAMP:20261015T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Festival de la terre au bol
@@ -138,7 +138,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Village et Marché de Noël de Samois-sur-Seine
@@ -161,14 +161,12 @@ DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
 LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
-DESCRIPTION:Horaires : Courses enfants en début d'après-midi \; départ a
- dulte (5 km) à 15h00\n\nTarif : 10 € pour l'épreuve de 5 km\n\nCourse 
- pédestre festive de fin d'année proposant des parcours de 800 m\, 1\,6 k
- m et 5 km au bord de la Seine.\n\nOrganisateur : https://samois-sur-seine.
- fr/evenement/course-de-noel/\n\nFiche : https://fontainebleaulive.fr/evene
- ments/course-de-noel-de-samois-sur-seine-12-edition-6d9b7e1830/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
+DESCRIPTION:Horaires : Après-midi\n\nTarif : Environ 10 €\n\nCourse péd
+ estre festive de fin d'année proposant des parcours de 800 m\, 1\,6 km et
+  5 km au bord de la Seine.\n\nOrganisateur : https://samois-sur-seine.fr/e
+ venement/course-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/course-de-noel-de-samois-sur-seine-12-edition-6d9b7e1830/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-12-edition-6d9b7e1830/
 CATEGORIES:Sport & Outdoor

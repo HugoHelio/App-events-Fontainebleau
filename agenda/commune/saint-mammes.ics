@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_82888ce71a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261026
 SUMMARY:Expo photo – Octobre Rose
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7c9fb6b5fd@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Soirée musicale – Octobre Rose
@@ -52,30 +52,31 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c3604d84da@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween " Balade et conte à 2 voix "
 LOCATION:Place de la Bosse\, Saint-Mammès
-DESCRIPTION:Horaires : 18h\n\nBalade déguisée et conte à 2 voix avec dis
- tribution de bonbons\, crêpes et boissons chaudes.\n\nOrganisateur : http
- s://www.saint-mammes.com/balade-dhalloween/\n\nFiche : https://fontaineble
- aulive.fr/evenements/halloween-balade-et-conte-a-2-voix-saint-mammes-c3604
- d84da/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+DESCRIPTION:Horaires : 17h30\n\nBalade déguisée et conte à 2 voix avec d
+ istribution de bonbons\, crêpes et boissons chaudes.\n\nOrganisateur : ht
+ tps://www.saint-mammes.com/balade-dhalloween/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/halloween-balade-et-conte-a-2-voix-saint-mammes-c36
+ 04d84da/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/halloween-balade-et-conte-a-2-v
  oix-saint-mammes-c3604d84da/
-CATEGORIES:Culture & Ateliers
+CATEGORIES:Scène & Spectacles
 GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2531e3d080@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Les 12H de la marche – Octobre Rose
-LOCATION:Résidence La Canopée – 6-7 rue de la Gare\, Saint-Mammès
+LOCATION:Résidence La Canopée\, 6 rue de la Gare à Saint-Mammès\, Saint
+ -Mammès
 DESCRIPTION:Horaires : 9h00 à 21h00\n\nTarif : Un soutien-gorge par partic
  ipant(e) et une touche de rose\n\nJournée solidaire avec marche\, animati
  on musicale et stand gourmand pour sensibiliser au cancer du sein.\n\nOrga
@@ -90,16 +91,16 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5aea2aefcf@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Bric-à-Brac de Saint-Mammès
 LOCATION:Salle MLC\, Saint-Mammès
-DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Entrée libre\n\nGrand bric
- -à-brac et vide-greniers d'automne.\n\nOrganisateur : https://www.alentoo
- r.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bric-a-brac-de-sa
- int-mammes-5aea2aefcf/\n\nInformations collectées automatiquement : véri
- fiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : En journée\n\nTarif : Entrée libre\n\nGrand bric-
+ à-brac et vide-greniers d'automne.\n\nOrganisateur : https://www.alentoor
+ .fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bric-a-brac-de-sai
+ nt-mammes-5aea2aefcf/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bric-a-brac-de-saint-mammes-5ae
  a2aefcf/
 CATEGORIES:Culture & Ateliers
@@ -107,7 +108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be1a35043c@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les rendez-vous de la forme
@@ -127,7 +128,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
@@ -147,7 +148,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_977cb1743f@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:« Un chat botté » – spectacle pour enfants

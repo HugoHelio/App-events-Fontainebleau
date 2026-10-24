@@ -12,9 +12,9 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261031
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
 LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
  oing\, Montigny-sur-Loing
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6cb6271af1@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Soirée ados / Film d'Halloween
@@ -53,7 +53,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99b337a3a7@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -73,7 +73,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4cb0db304f@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Montigny fait son cinéma " Quand je serai Grand "
@@ -94,7 +94,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_119d0c6981@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Lecture à Voix Haute
@@ -109,6 +109,25 @@ URL:https://fontainebleaulive.fr/evenements/lecture-a-voix-haute-montigny-s
  ur-loing-119d0c6981/
 CATEGORIES:Culture & Ateliers
 GEO:48.33545;2.7482
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e2df830d8c@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Concours de Belote par équipe
+LOCATION:Salle du Long Rocher\, 3 rue Renée Montgermont à Montigny sur Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 14h\n\nParticipez à un concours de belote par équi
+ pe et affrontez les autres joueurs dans une ambiance ludique.\n\nOrganisat
+ eur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-15-concours
+ debeloteparequipe\n\nFiche : https://fontainebleaulive.fr/evenements/conco
+ urs-de-belote-par-equipe-montigny-sur-loing-e2df830d8c/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concours-de-belote-par-equipe-m
+ ontigny-sur-loing-e2df830d8c/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

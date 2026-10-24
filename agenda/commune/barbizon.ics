@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_7539d30755@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Apéro piano au coin du feu
@@ -48,7 +48,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2cb286e7bd@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Parenthesis
@@ -66,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c6448b6cba@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Les soirées de l'Esquisse
@@ -85,7 +85,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3a5fba756f@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Sur la trace de La Couseuse
@@ -105,7 +105,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -124,7 +124,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0c5d619702@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -143,7 +143,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c45baf6087@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -162,7 +162,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Les soirées de l'Esquisse
@@ -181,7 +181,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_70b3109999@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:"Nouveau regard sur le monde paysan par Jean-François Millet"
@@ -201,27 +201,8 @@ GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_526e263b43@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261122
-DTEND;VALUE=DATE:20261123
-SUMMARY:Biodiversité – Sur les sentiers des peintres de Barbizon
-LOCATION:Sentiers de la Forêt de Fontainebleau à Barbizon\, Barbizon
-DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
- s) : 9 € | Gratuit pour les moins de 6 ans\n\nBalade nature guidée sur 
- la biodiversité dans les environs de Barbizon.\n\nOrganisateur : https://
- www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/ev
- enements/biodiversite-sur-les-sentiers-des-peintres-de-barbizon-526e263b43
- /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
- ’organisateur.
-URL:https://fontainebleaulive.fr/evenements/biodiversite-sur-les-sentiers-d
- es-peintres-de-barbizon-526e263b43/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les soirées de l'Esquisse
@@ -236,6 +217,26 @@ URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
  zon-d757249270/
 CATEGORIES:Scène & Spectacles
 GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_526e263b43@fontainebleaulive.fr
+DTSTAMP:20261011T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Sortie nature "Biodiversité – Sur les sentiers des peintres de B
+ arbizon"
+LOCATION:Sentiers de la Forêt de Fontainebleau à Barbizon\, Barbizon
+DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
+ s) : 9 € | Gratuit pour les moins de 6 ans\n\nBalade nature guidée sur 
+ la biodiversité dans les environs de Barbizon.\n\nOrganisateur : https://
+ www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/sortie-nature-biodiversite-sur-les-sentiers-des-peintres-de-barbi
+ zon-526e263b43/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-nature-biodiversite-sur-
+ les-sentiers-des-peintres-de-barbizon-526e263b43/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -278,7 +279,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Les soirées de l'Esquisse
@@ -296,8 +297,28 @@ GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_23a8889b67@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Atelier aquarelle botanique "carte de Noël"
+LOCATION:Barbizon
+DESCRIPTION:Tarif : Plein tarif : 10 € (réduction et gratuité sur justi
+ ficatif).\n\nAtelier manuel d'aquarelle botanique pour fabriquer et person
+ naliser sa carte de Noël à Barbizon.\n\nOrganisateur : https://www.fonta
+ inebleau-tourisme.com/fr/fiche/8037950/atelier-aquarelle-botanique-carte-d
+ e-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/atelier-aquarel
+ le-botanique-carte-de-noel-barbizon-23a8889b67/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-aquarelle-botanique-car
+ te-de-noel-barbizon-23a8889b67/
+CATEGORIES:Culture & Ateliers
+GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -316,7 +337,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse

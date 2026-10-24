@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_238ad12fc3@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Vernissage _ Photos et Peintures
@@ -29,7 +29,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ecf3ae36dc@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Concours de Pétanque en doublettes
@@ -82,15 +82,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a0096844bf@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
 LOCATION:Espace Jean Renoir\, Bourron-Marlotte
-DESCRIPTION:Horaires : de 10h à 18h\n\nOrganisateur : https://bourronmarlo
- tte.fr/agenda/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/even
- ements/marche-de-noel-bourron-marlotte-a0096844bf/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : de 10h à 18h\n\nTarif : Gratuit.\n\nAnimations fest
+ ives et stands de créateurs au marché de Noël de Bourron-Marlotte.\n\nO
+ rganisateur : https://bourronmarlotte.fr/agenda/marche-de-noel/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/marche-de-noel-bourron-marlotte-a
+ 0096844bf/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-bourron-marlotte
  -a0096844bf/
 CATEGORIES:Culture & Ateliers

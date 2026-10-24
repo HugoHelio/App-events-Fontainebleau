@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f0502eebfd@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Spectacle de magie « Clément Blouin - Magicien c'est pas un méti
@@ -73,7 +73,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4a4198ac35@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Le Tourbillon de la Fête
@@ -96,7 +96,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6e1e0ff6e3@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Le Radeau de la Méduse par Anne Cangelosi
@@ -120,7 +120,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_27a2f68fb8@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Les Coquettes - Nouveau Spectacle
@@ -144,7 +144,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
@@ -162,7 +162,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_275dc9ff4b@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Le Seigneur des Anneaux & Le Hobbit - En Concert
@@ -186,7 +186,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_52e67e12f3@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:The Music of Hans Zimmer & Others - A Celebration of Film Music
@@ -211,7 +211,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30423f4689@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270119
 DTEND;VALUE=DATE:20270120
 SUMMARY:The Dark Side of the Moon - En concert
@@ -236,7 +236,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f04cdbf72d@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270119
 DTEND;VALUE=DATE:20270120
 SUMMARY:The Wall - En concert
@@ -249,9 +249,9 @@ DESCRIPTION:Tarif : De 49\,99 € à 79\,99 €\n\nConcert en Hommage à
  es chansons originales de The Wall ! Retrouvez les musiciens de l'époque 
  et d'autres invités de prestige qui ont partagé la scène avec Pink Floy
  d ou Roger Waters l…\n\nOrganisateur : https://www.fnacspectacles.com/ar
- tist/the-wall/\n\nFiche : https://fontainebleaulive.fr/evenements/the-wall
- -en-concert-melun-f04cdbf72d/\n\nInformations collectées automatiquement 
- : vérifiez-les auprès de l’organisateur.
+ tist/the-wall/the-wall-en-concert-3929949/\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/the-wall-en-concert-melun-f04cdbf72d/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/the-wall-en-concert-melun-f04cd
  bf72d/
 CATEGORIES:Scène & Spectacles
@@ -260,7 +260,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6678c3a89c@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270120
 DTEND;VALUE=DATE:20270121
 SUMMARY:Images dirigées : la photographie de propagande
@@ -279,7 +279,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9a21f7e9f3@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270122
 SUMMARY:Images dirigées : la photographie de propagande
@@ -292,6 +292,44 @@ DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
   l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
  -de-propagande-melun-9a21f7e9f3/
+CATEGORIES:Culture & Ateliers
+GEO:48.5364;2.65882
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_48ff047001@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:Images dirigées : la photographie de propagande
+LOCATION:Musée d'art et d'histoire de Melun\, Melun
+DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
+ eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
+ rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
+ fr/evenements/images-dirigees-la-photographie-de-propagande-melun-48ff0470
+ 01/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
+ -de-propagande-melun-48ff047001/
+CATEGORIES:Culture & Ateliers
+GEO:48.5364;2.65882
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5d2b8369a3@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:Images dirigées : la photographie de propagande
+LOCATION:Musée d'art et d'histoire de Melun\, Melun
+DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
+ eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
+ rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
+ fr/evenements/images-dirigees-la-photographie-de-propagande-melun-5d2b8369
+ a3/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
+ -de-propagande-melun-5d2b8369a3/
 CATEGORIES:Culture & Ateliers
 GEO:48.5364;2.65882
 TRANSP:TRANSPARENT

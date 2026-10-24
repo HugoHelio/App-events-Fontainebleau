@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8d8a4f390a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:Michèle Laroque & Kad Merad - L'Âge Bête
@@ -36,7 +36,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d2ef44352d@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Le Misanthrope d'après Molière
@@ -59,7 +59,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23ccc433a8@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:Venez découvrir le secteur de l'industrie !
@@ -79,7 +79,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_57925be5b9@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261117
 SUMMARY:recrutement DEDIENNE AEROSPACE site de Villaroche
@@ -99,8 +99,29 @@ GEO:48.51846;2.63439
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_686de3c000@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite du Laboratoire Guinot Mary Cohr
+LOCATION:Laboratoire Guinot - Mary Cohr\, Dammarie-les-Lys
+DESCRIPTION:Découvre le Laboratoire Guinot Mary Cohr:une entreprise franç
+ aise où science et savoir-faire se conjuguent pour créer des soins de be
+ auté innovants. Une immersion au cœur des métiers de la cosmétique.\n\
+ nOrganisateur : https://openagenda.com/semaine-industrie-2026/events/visit
+ e-du-laboratoire-guinot-mary-cohr-5629614\n\nFiche : https://fontainebleau
+ live.fr/evenements/visite-du-laboratoire-guinot-mary-cohr-dammarie-les-lys
+ -686de3c000/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-du-laboratoire-guinot-ma
+ ry-cohr-dammarie-les-lys-686de3c000/
+CATEGORIES:Culture & Ateliers
+GEO:48.5114;2.61179
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5463a8e8ef@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:La Troupe du Jamel Comedy Club
@@ -124,7 +145,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5dbf93d717@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Laurent Voulzy en Concert
@@ -148,7 +169,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b486c9aad@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Philippe Caverivière - Tu Crois Que C'est une Bonne Idée ?
@@ -173,7 +194,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_25ba0a53a7@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Fabrice Eboué - SolitudeS
@@ -194,7 +215,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ad9e28b1f3@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Ultimissimo\, la Framboise Frivole - Le Best-Of!
@@ -217,7 +238,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_613e066d0f@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Ilyes Djadel - Déjà
@@ -238,7 +259,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_75c25ef44a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270116
 DTEND;VALUE=DATE:20270117
 SUMMARY:Victoria Dauberville - Classique ?
@@ -262,7 +283,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b254bb73b@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270117
 DTEND;VALUE=DATE:20270118
 SUMMARY:Frédéric François
@@ -285,7 +306,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e503e31eb7@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20270120
 DTEND;VALUE=DATE:20270121
 SUMMARY:Julien Clerc - Une Vie
@@ -303,6 +324,77 @@ URL:https://fontainebleaulive.fr/evenements/julien-clerc-une-vie-dammarie-l
  es-lys-e503e31eb7/
 CATEGORIES:Scène & Spectacles
 GEO:48.5185;2.62419
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ed82fbd359@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:With U2 Day
+LOCATION:Espace Pierre Bachelet - La Cartonnerie\, Dammarie-les-Lys
+DESCRIPTION:Tarif : De 44 € à 64 €\n\nWITH U2 DAYWith U2 Day vous fait
+  revivre en concert avec passion le son\, l'énergie et la puissance du gr
+ oupe de rock mythique U2.Les quatre membres\, amis à la ville et complice
+ s sur scène\, reprennent les plus grands succès du quatuor irlandais à 
+ travers une performance scénique qui vous entraîne dans la magie de leur
+  groupe fétiche.Pour célébrer le 40ème anniversaire de l'album "War" q
+ ui a consac…\n\nOrganisateur : https://www.fnacspectacles.com/artist/wit
+ h-u2-day/\n\nFiche : https://fontainebleaulive.fr/evenements/with-u2-day-d
+ ammarie-les-lys-ed82fbd359/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/with-u2-day-dammarie-les-lys-ed
+ 82fbd359/
+CATEGORIES:Scène & Spectacles
+GEO:48.5185;2.62419
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ce37e283e8@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:Secret(s) Médical - Une comédie avec Michel Cymes
+LOCATION:Espace Pierre Bachelet - La Cartonnerie\, Dammarie-les-Lys
+DESCRIPTION:Tarif : De 47\,50 € à 69\,50 €\n\nen accord avec Ki m'aime
+  me Suive et Red Velvet.Durée : 1h30Pour la toute première fois au thé
+ âtre\, Michel Cymes monte sur les planches dans une comédie inédite et 
+ féroce sur le milieu médical …Quatre amis\, anciens de la fac de méde
+ cine\, se retrouvent comme à leur habitude chez André\, leur resto favor
+ i.Mais la soirée tourne court quand le psy du groupe fait une révélatio
+ n fracassante : son patien…\n\nOrganisateur : https://www.fnacspectacles
+ .com/artist/secrets-medical/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/secret-s-medical-une-comedie-avec-michel-cymes-dammarie-les-lys-ce37
+ e283e8/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/secret-s-medical-une-comedie-av
+ ec-michel-cymes-dammarie-les-lys-ce37e283e8/
+CATEGORIES:Scène & Spectacles
+GEO:48.5185;2.62419
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e8f82126e2@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:Et Pendant ce Temps Sigmund Freudonne
+LOCATION:Espace Nino Ferrer\, Dammarie-les-Lys
+DESCRIPTION:Tarif : 20 €\n\nMise en scène – Gil Galliot Avec Trinidad-
+  Sébastien Fouillade – Marin Langlois- Patrick Mazet – Clément Vieu 
+ – Nicolas Jazat Durée : 1h30 En 2012\, suite à l’affaire Strauss Ka
+ hn\, j’ai créé “Et pendant ce temps Simone veille”\, qui raconte
+  l’histoire de la féminine en France depuis les années 1950 à nos 
+ jours\, à travers quatre lignées de femmes sur quatre générations.
+ Ce spectacle constit…\n\nOrganisateur : https://www.fnacspectacles.com/a
+ rtist/et-pendant-ce-temps-sigmund-freudonne/\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/et-pendant-ce-temps-sigmund-freudonne-dammarie-les-l
+ ys-e8f82126e2/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/et-pendant-ce-temps-sigmund-fre
+ udonne-dammarie-les-lys-e8f82126e2/
+CATEGORIES:Scène & Spectacles
+GEO:48.51463;2.6347
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

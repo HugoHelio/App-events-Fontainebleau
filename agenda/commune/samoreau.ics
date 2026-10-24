@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8e33e78d92@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261117
 SUMMARY:Salon de la Gastronomie du vin et des Arts de la table
@@ -27,6 +27,26 @@ DESCRIPTION:Tarif : Gratuit.\n\nUn rendez-vous gourmand réunissant product
 URL:https://fontainebleaulive.fr/evenements/salon-de-la-gastronomie-du-vin-
  et-des-arts-de-la-table-samoreau-8e33e78d92/
 CATEGORIES:Culture & Ateliers
+GEO:48.42179;2.7587
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a4c646a862@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Concert Symphonique en résonance
+LOCATION:Samoreau
+DESCRIPTION:Tarif : Adulte : à partir de 17 €\, Enfant : gratuit - 12ans
+ .\n\nConcert de musique symphonique proposé au public dans la commune de 
+ Samoreau.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fich
+ e/8038275/concert-symphonique-en-resonance/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/concert-symphonique-en-resonance-samoreau-a4c646a862/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-symphonique-en-resonanc
+ e-samoreau-a4c646a862/
+CATEGORIES:Scène & Spectacles
 GEO:48.42179;2.7587
 TRANSP:TRANSPARENT
 END:VEVENT

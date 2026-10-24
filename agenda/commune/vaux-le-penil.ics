@@ -11,8 +11,48 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_94234ef40b@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:Visite de STIL – Vaux-le-Pénil
+LOCATION:STIL\, Vaux-le-Pénil
+DESCRIPTION:Découvrez une entreprise experte en métrologie optique qui co
+ nçoit des capteurs et systèmes de mesure de précision pour l’industri
+ e et la recherche.\n\nOrganisateur : https://openagenda.com/semaine-indust
+ rie-2026/events/visite-de-stil-vaux-le-penil-5874405\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/visite-de-stil-vaux-le-penil-94234ef40b/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-stil-vaux-le-penil-94
+ 234ef40b/
+CATEGORIES:Culture & Ateliers
+GEO:48.53526;2.68398
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8fd34e32c6@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite de Top Industrie – Vaux-le-Pénil
+LOCATION:TOP INDUSTRIE\, Vaux-le-Pénil
+DESCRIPTION:Découvrez une entreprise innovante qui conçoit et fabrique de
+ s équipements de haute technologie pour la recherche et l’industrie\, a
+ u service de l’innovation et de la transition énergétique.\n\nOrganisa
+ teur : https://openagenda.com/semaine-industrie-2026/events/visite-de-top-
+ industrie-vaux-le-penil-208715\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/visite-de-top-industrie-vaux-le-penil-8fd34e32c6/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-top-industrie-vaux-le
+ -penil-8fd34e32c6/
+CATEGORIES:Culture & Ateliers
+GEO:48.53509;2.69282
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_ff1e230b1a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:4211 km - Aïla Navidi
@@ -36,7 +76,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d706b19e2a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:Lisa

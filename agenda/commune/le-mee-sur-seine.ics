@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8dee5271f4@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Réunions d'information Transmission
@@ -33,7 +33,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d54eb206f@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Christelle Chollet - Culottée
@@ -57,7 +57,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b824409b93@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Les Amplifiés - Black Bomb. A & Monnekyn
@@ -80,8 +80,26 @@ GEO:48.54257;2.63584
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1ef8e1c325@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Brocante vide-greniers du Mée-sur-Seine
+LOCATION:Parking Mas\, Le Mée-sur-Seine
+DESCRIPTION:Horaires : En journée\n\nTarif : Accès libre\n\nBrocante et v
+ ide-greniers local sur le Parking Mas au Mée-sur-Seine.\n\nOrganisateur :
+  https://brocabrac.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ brocante-vide-greniers-du-mee-sur-seine-le-mee-sur-seine-1ef8e1c325/\n\nIn
+ formations collectées automatiquement : vérifiez-les auprès de l’orga
+ nisateur.
+URL:https://fontainebleaulive.fr/evenements/brocante-vide-greniers-du-mee-s
+ ur-seine-le-mee-sur-seine-1ef8e1c325/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_7eccfc6a49@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Giorda - Hypn'Ose
@@ -104,7 +122,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_16a63f9d68@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261204
 SUMMARY:Cérémonie de clôture du projet Open Data de la Communauté d'Agg
@@ -123,6 +141,29 @@ URL:https://fontainebleaulive.fr/evenements/ceremonie-de-cloture-du-projet-
  open-data-de-la-communaute-d-le-mee-sur-seine-16a63f9d68/
 CATEGORIES:Culture & Ateliers
 GEO:48.53858;2.63359
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_866b5883bb@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:Les Braqueuses
+LOCATION:Salle Michel Dauvergne - Le Mas\, Le Mée-sur-Seine
+DESCRIPTION:Quand la vengeance se transforme en comédie ! Perrine\, fraîc
+ hement larguée par son mari bijoutier\, refuse de se laisser piétiner. A
+ vec Bérengère\, son amie fidèle mais un peu déjantée\, elle monte un 
+ plan aussi audacieux qu’improbable : braquer la bijouterie de son ex ! P
+ our mener ce coup de folie\, elles s’associent à Gabrièle\, une braque
+ use professionnelle tout droit sortie de prison. Entre situat…\n\nOrgani
+ sateur : https://www.fnacspectacles.com/artist/le-kangourou-a-bretelles/le
+ s-braqueuses-4031857/\n\nFiche : https://fontainebleaulive.fr/evenements/l
+ es-braqueuses-le-mee-sur-seine-866b5883bb/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-braqueuses-le-mee-sur-seine
+ -866b5883bb/
+CATEGORIES:Scène & Spectacles
+GEO:48.54465;2.63264
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

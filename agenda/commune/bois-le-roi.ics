@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_d6bb0051f0@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:RANDO SOLIDAIRE Sud
@@ -31,19 +31,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_65bb236269@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
 SUMMARY:Randonnée Solidaire – Restauration de la forêt de Fontainebleau
 LOCATION:Île de loisirs de Bois-le-Roi\, Bois-le-Roi
-DESCRIPTION:Horaires : 9h00–9h30 (14/15 km) et 10h00–10h30 (8 km)\n\nTa
- rif : 5 € minimum (gratuit pour les moins de 12 ans)\n\nRandonnée péde
- stre solidaire (8 km ou 14 km) au profit de la restauration du massif fore
- stier de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-touris
- me.com/fr/fiche/8023358/rando-solidaire-sud/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/randonnee-solidaire-restauration-de-la-foret-de-font
- aineblea-bois-le-roi-65bb236269/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Départ libre entre 9h00 et 9h30\n\nTarif : Particip
+ ation de 5 € minimum (gratuit pour les -12 ans)\n\nRandonnée pédestre 
+ solidaire (8 km ou 14 km) au profit de la restauration du massif forestier
+  de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/8023358/rando-solidaire-sud/\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/randonnee-solidaire-restauration-de-la-foret-de-fontaineb
+ lea-bois-le-roi-65bb236269/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/randonnee-solidaire-restauratio
  n-de-la-foret-de-fontaineblea-bois-le-roi-65bb236269/
 CATEGORIES:Sport & Outdoor
@@ -69,6 +69,44 @@ DESCRIPTION:Horaires : Dimanche à 14h30\n\nTarif : Adulte : 25 € (A part
 URL:https://fontainebleaulive.fr/evenements/sortie-guidee-a-velo-bords-de-s
  eine-au-depart-de-bois-le-roi-3786d85282/
 CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6616954f1d@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:cinemomes halloween
+LOCATION:Bois-le-Roi
+DESCRIPTION:Tarif : Gratuit.\n\nSéance de cinéma spéciale Halloween prop
+ osée aux enfants dans la commune de Bois-le-Roi.\n\nOrganisateur : https:
+ //www.fontainebleau-tourisme.com/fr/fiche/8036997/cinemomes-halloween/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/cinemomes-halloween-bois-l
+ e-roi-6616954f1d/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cinemomes-halloween-bois-le-roi
+ -6616954f1d/
+CATEGORIES:Scène & Spectacles
+GEO:48.47294;2.69243
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_1e3120d159@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Marché de Noël nocturne
+LOCATION:Bois-le-Roi
+DESCRIPTION:Tarif : Gratuit.\n\nMarché d'artisans et d'exposants organisé
+  en soirée à l'occasion des fêtes de fin d'année à Bois-le-Roi.\n\nOr
+ ganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8037020/march
+ e-de-noel-nocturne/\n\nFiche : https://fontainebleaulive.fr/evenements/mar
+ che-de-noel-nocturne-bois-le-roi-1e3120d159/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-nocturne-bois-le
+ -roi-1e3120d159/
+CATEGORIES:Culture & Ateliers
+GEO:48.47294;2.69243
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

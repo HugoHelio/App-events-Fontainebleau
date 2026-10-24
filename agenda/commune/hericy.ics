@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_626e1314a5@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261026
 SUMMARY:Art’icy
@@ -29,7 +29,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_541a2c91c2@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Halloween enfant
@@ -46,7 +46,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0cfa5dd222@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Halloween Ados
@@ -63,7 +63,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bb14826b3a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween Adultes
@@ -80,7 +80,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ec24de15f3@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Broc’enfants et ados
@@ -114,8 +114,27 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_41af39930d@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Lancement des illuminations de Noël
+LOCATION:Héricy
+DESCRIPTION:Horaires : 17:30\n\nRendez-vous sur la place pour le lancement 
+ féérique des illuminations de Noël de la commune.\n\nOrganisateur : htt
+ ps://www.hericy.fr/agenda/#2026-12-04-lancementdesilluminationsdenoel\n\nF
+ iche : https://fontainebleaulive.fr/evenements/lancement-des-illuminations
+ -de-noel-hericy-41af39930d/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/lancement-des-illuminations-de-
+ noel-hericy-41af39930d/
+CATEGORIES:Culture & Ateliers
+GEO:48.44696;2.7794
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4885be582a@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
@@ -133,7 +152,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_37ab455673@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Héri’Lud
@@ -144,6 +163,24 @@ DESCRIPTION:Horaires : 10:00\n\nRendez-vous ludique Héri’Lud proposé da
  lud-hericy-37ab455673/\n\nInformations collectées automatiquement : véri
  fiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/heri-lud-hericy-37ab455673/
+CATEGORIES:Culture & Ateliers
+GEO:48.44696;2.7794
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e4bf80fd4a@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270109
+SUMMARY:Cérémonie des vœux du Maire
+LOCATION:Héricy
+DESCRIPTION:Horaires : 20:00\n\nCérémonie conviviale des vœux du Maire a
+ dressée aux habitants.\n\nOrganisateur : https://www.hericy.fr/agenda/#20
+ 27-01-08-ceremoniedesvuxdumaire\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/ceremonie-des-voeux-du-maire-hericy-e4bf80fd4a/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ceremonie-des-voeux-du-maire-he
+ ricy-e4bf80fd4a/
 CATEGORIES:Culture & Ateliers
 GEO:48.44696;2.7794
 TRANSP:TRANSPARENT

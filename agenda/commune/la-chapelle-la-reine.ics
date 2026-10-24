@@ -3,11 +3,31 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:la-chapelle-la-reine · Fontainebleau Live
+X-WR-CALNAME:La Chapelle-la-Reine · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_dd92469de7@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite de Beissier – La Chapelle-la-Reine
+LOCATION:BESSIER\, La Chapelle-la-Reine
+DESCRIPTION:Découvrez les coulisses de la fabrication d’enduits pour le 
+ bâtiment. Une immersion dans l’industrie des matériaux de construction
+ \, entre innovation et savoir-faire.\n\nOrganisateur : https://openagenda.
+ com/semaine-industrie-2026/events/visite-de-beissier-la-chapelle-la-reine-
+ 6029728\n\nFiche : https://fontainebleaulive.fr/evenements/visite-de-beiss
+ ier-la-chapelle-la-reine-dd92469de7/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-beissier-la-chapelle-
+ la-reine-dd92469de7/
+CATEGORIES:Culture & Ateliers
+GEO:48.31637;2.5685
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

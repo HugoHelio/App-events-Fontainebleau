@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_48db600ea0@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261025
 SUMMARY:MLO Game's Week !
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_26b82e4407@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Bourse aux collectionneurs d'Octobre Rose
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_847c0a2b7d@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Stage aquarelle et techniques mixtes
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1c36ac36ec@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261031
 SUMMARY:Stage de perfectionnement Tennis
@@ -89,7 +89,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b7ac9f1ee7@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du cinéma d'animation
@@ -109,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c06fc473e5@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261102
 SUMMARY:La boutique fantastique
@@ -127,18 +127,195 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_4a5ab1d458@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Atelier Bonhomme de neige
+LOCATION:Médiathèque Sarah Bernhardt\, 5 rue Claude Bernard\, Veneux\, 77
+ 250 Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 16h\n\nPublic : Dès 8 ans\n\nTransformez vos vieill
+ es chaussettes en adorables bonshommes de neige de Noël lors d'un atelier
+  créatif.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.h
+ tml#2026-11-04-atelierbonhommedeneige\n\nFiche : https://fontainebleaulive
+ .fr/evenements/atelier-bonhomme-de-neige-moret-loing-et-orvanne-4a5ab1d458
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-bonhomme-de-neige-moret
+ -loing-et-orvanne-4a5ab1d458/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b02568c7f0@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Atelier Fabrication de Jeu
+LOCATION:Médiathèque Sarah Bernhardt\, 5 rue Claude Bernard\, Veneux\, 77
+ 250 Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 17h\n\nParticipez à la confection d'un jeu de morpi
+ on personnalisé en modelant les pions et leur pochette de rangement.\n\nO
+ rganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-06-
+ atelierfabricationdejeu\n\nFiche : https://fontainebleaulive.fr/evenements
+ /atelier-fabrication-de-jeu-moret-loing-et-orvanne-b02568c7f0/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/atelier-fabrication-de-jeu-more
+ t-loing-et-orvanne-b02568c7f0/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ad31b20d9e@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Ce qui reste des amours de nos mères
+LOCATION:Médiathèque Marina Tsvetaeva\, 6 allée de la céramique\, Ecuel
+ les\, 77250 Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 20h\n\nAssistez à la projection d'un documentaire s
+ ur la quête d'identité en présence de la réalisatrice Cathy Dubois.\n\
+ nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-1
+ 3-cequirestedesamoursdenosmeres\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/ce-qui-reste-des-amours-de-nos-meres-moret-loing-et-orvanne-ad31b
+ 20d9e/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ce-qui-reste-des-amours-de-nos-
+ meres-moret-loing-et-orvanne-ad31b20d9e/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_986fce51ba@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Association Tricot
+LOCATION:Médiathèque Marina Tsvetaeva\, 6 allée de la Céramique\, Ecuel
+ les\, 77250 Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h à 12h\n\nRejoignez un atelier convivial dédié
+  à l'apprentissage et au perfectionnement des techniques de tricot et cro
+ chet.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2
+ 026-11-14-associationtricot\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/association-tricot-moret-loing-et-orvanne-986fce51ba/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/association-tricot-moret-loing-
+ et-orvanne-986fce51ba/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d57e1b24a8@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:P'tit bonhomme de chemin
+LOCATION:Médiathèque Sarah Bernhardt\, 5 rue Claude Bernard\, Veneux\, 77
+ 250 Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Public : Jusqu’à 3 ans\n\nOffrez aux tout-petits un spectacl
+ e musical retraçant le cheminement poétique d'un enfant.\n\nOrganisateur
+  : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-18-ptitbonhomm
+ edechemin\n\nFiche : https://fontainebleaulive.fr/evenements/p-tit-bonhomm
+ e-de-chemin-moret-loing-et-orvanne-d57e1b24a8/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/p-tit-bonhomme-de-chemin-moret-
+ loing-et-orvanne-d57e1b24a8/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d3fca71a44@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261129
+SUMMARY:Exposition Recyrculaire
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Exposition de sculptures et installations créées par Robin La
+ cassin à partir d'objets recyclés\, organisée pour la semaine européen
+ ne de réduction des déchets.\n\nOrganisateur : https://www.ccmsl.fr/actu
+ -et-agendas/agenda.html#2026-11-24-expositionrecyrculaire\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/exposition-recyrculaire-moret-loing-et-
+ orvanne-d3fca71a44/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-recyrculaire-moret-l
+ oing-et-orvanne-d3fca71a44/
+CATEGORIES:Culture & Ateliers
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5e08c56d66@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:En attendant l'ortho\, je fais quoi ?
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 17h à 19h\n\nCycle de trois ateliers pratiques dest
+ inés aux parents d'enfants atteints de troubles du spectre autistique\, a
+ nimés par l'orthophoniste Julie Milard.\n\nOrganisateur : https://www.ccm
+ sl.fr/actu-et-agendas/agenda.html#2026-11-25-enattendantlorthojefaisquoi\n
+ \nFiche : https://fontainebleaulive.fr/evenements/en-attendant-l-ortho-je-
+ fais-quoi-moret-loing-et-orvanne-5e08c56d66/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/en-attendant-l-ortho-je-fais-qu
+ oi-moret-loing-et-orvanne-5e08c56d66/
+CATEGORIES:Culture & Ateliers
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_01417d9f53@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Table ronde "L'Envers des fripes"
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Table ronde et dédicace avec Emmanuelle Durand pour échanger 
+ sur le circuit des vêtements d'occasion et la surconsommation textile.\n\
+ nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-2
+ 7-tablerondelenversdesfripes\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/table-ronde-l-envers-des-fripes-moret-loing-et-orvanne-01417d9f53/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/table-ronde-l-envers-des-fripes
+ -moret-loing-et-orvanne-01417d9f53/
+CATEGORIES:Culture & Ateliers
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4f39e6a1fe@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Soirée ZEN
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 19h30 à 22h30\n\nUne soirée détente avec accès a
+ ux saunas\, au hammam\, à la grotte de sel et possibilité de massages au
+  centre aquatique.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/
+ agenda.html#2026-11-28-soireezen\n\nFiche : https://fontainebleaulive.fr/e
+ venements/soiree-zen-moret-loing-et-orvanne-4f39e6a1fe/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-zen-moret-loing-et-orvan
+ ne-4f39e6a1fe/
+CATEGORIES:Sport & Outdoor
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d3e57063ae@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261223
 SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
 LOCATION:Place de l'Hôtel de Ville\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h00–19h30\n\nTarif : Entrée libre\n\nMarché de
-  Noël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://mo
- ret-loing-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenement
- s/marche-de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57
- 063ae/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+DESCRIPTION:Horaires : 10h00–18h00 / 19h00\n\nTarif : Accès gratuit\n\nM
+ arché de Noël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : h
+ ttps://moret-loing-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/
+ evenements/marche-de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orva
+ nne-d3e57063ae/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
  et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
 CATEGORIES:Culture & Ateliers

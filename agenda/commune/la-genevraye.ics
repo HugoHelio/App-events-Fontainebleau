@@ -3,11 +3,49 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:la-genevraye · Fontainebleau Live
+X-WR-CALNAME:La Genevraye · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_95fadb5ed9@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Patchaoké\, un micro\, des paroles et ta voix
+LOCATION:La Genevraye
+DESCRIPTION:Prenez le micro et partagez votre voix lors d'une session de ka
+ raoké conviviale et ouverte à tous.\n\nOrganisateur : https://www.ccmsl.
+ fr/actu-et-agendas/agenda.html#2026-11-13-patchaokeunmicrodesparolesettavo
+ ix\n\nFiche : https://fontainebleaulive.fr/evenements/patchaoke-un-micro-d
+ es-paroles-et-ta-voix-la-genevraye-95fadb5ed9/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/patchaoke-un-micro-des-paroles-
+ et-ta-voix-la-genevraye-95fadb5ed9/
+CATEGORIES:Scène & Spectacles
+GEO:48.32069;2.74838
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_1f349c4013@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Zonky's -Concert Ska/jazz
+LOCATION:La Genevraye
+DESCRIPTION:Profitez d'un concert dynamique de ska et de jazz proposé en p
+ articipation libre.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas
+ /agenda.html#2026-11-14-zonkysconcertskajazz\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/zonky-s-concert-ska-jazz-la-genevraye-1f349c4013/\n\
+ nInformations collectées automatiquement : vérifiez-les auprès de l’o
+ rganisateur.
+URL:https://fontainebleaulive.fr/evenements/zonky-s-concert-ska-jazz-la-gen
+ evraye-1f349c4013/
+CATEGORIES:Scène & Spectacles
+GEO:48.32069;2.74838
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

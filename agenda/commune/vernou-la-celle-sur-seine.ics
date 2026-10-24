@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_84e0a9c617@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Soirée orientale
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_651d8d6564@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Concert " les agités du bocage"
@@ -50,8 +50,27 @@ GEO:48.39184;2.84915
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_cf985349ce@fontainebleaulive.fr
+DTSTAMP:20261024T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Espace game : Maison de l'horreur
+LOCATION:Maison des associations des Collinettes à Vernou-La-Celle sur-Sei
+ ne\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 17h à 23h\n\nPlongez au cœur d'un jeu d'évasion 
+ à l'ambiance frissonnante dans la Maison de l'horreur.\n\nOrganisateur : 
+ https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-14-espacegamemais
+ ondelhorreur\n\nFiche : https://fontainebleaulive.fr/evenements/espace-gam
+ e-maison-de-l-horreur-vernou-la-celle-sur-seine-cf985349ce/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/espace-game-maison-de-l-horreur
+ -vernou-la-celle-sur-seine-cf985349ce/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up
@@ -70,17 +89,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5bdbb38d9b@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël de Vernou-la-Celle-sur-Seine
 LOCATION:Maison des associations\, Vernou-la-Celle-sur-Seine
-DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit\n\nMarché de Noël f
- estif rassemblant exposants et animations à la Maison des associations.\n
- \nOrganisateur : https://brocabrac.fr/77/vernou-la-celle-sur-seine/1286129
- -marche-de-noel\n\nFiche : https://fontainebleaulive.fr/evenements/marche-
- de-noel-de-vernou-la-celle-sur-seine-5bdbb38d9b/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 10h00\n\nTarif : Entrée libre\n\nMarch
+ é de Noël festif rassemblant exposants et animations à la Maison des as
+ sociations.\n\nOrganisateur : https://brocabrac.fr/77/vernou-la-celle-sur-
+ seine/1286129-marche-de-noel\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/marche-de-noel-de-vernou-la-celle-sur-seine-5bdbb38d9b/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-vernou-la-cel
  le-sur-seine-5bdbb38d9b/
 CATEGORIES:Culture & Ateliers
