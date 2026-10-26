@@ -11,23 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_626e1314a5@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
-DTSTART;VALUE=DATE:20261022
-DTEND;VALUE=DATE:20261026
-SUMMARY:Art’icy
-LOCATION:Héricy
-DESCRIPTION:Horaires : 15:00\n\nÉvénement culturel et artistique Art’ic
- y se déroulant dans la commune d'Héricy.\n\nOrganisateur : https://www.h
- ericy.fr/agenda/#2026-10-22-articy\n\nFiche : https://fontainebleaulive.fr
- /evenements/art-icy-hericy-626e1314a5/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/art-icy-hericy-626e1314a5/
-CATEGORIES:Culture & Ateliers
-GEO:48.44696;2.7794
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_0cfa5dd222@fontainebleaulive.fr
 DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261030
