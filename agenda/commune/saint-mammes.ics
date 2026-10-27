@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c3604d84da@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween " Balade et conte à 2 voix "
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2531e3d080@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Les 12H de la marche – Octobre Rose
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be1a35043c@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les rendez-vous de la forme
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
@@ -108,7 +108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_977cb1743f@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:« Un chat botté » – spectacle pour enfants
@@ -124,6 +124,42 @@ URL:https://fontainebleaulive.fr/evenements/un-chat-botte-spectacle-pour-en
  fants-saint-mammes-977cb1743f/
 CATEGORIES:Scène & Spectacles
 GEO:48.38404;2.8141
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b68a11c7ae@fontainebleaulive.fr
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Cérémonie du 11 novembre
+LOCATION:Place de la Bosse\, Saint-Mammès
+DESCRIPTION:Horaires : 14h45\n\nDéfilé accompagné par la fanfare suivi d
+ 'un discours et d'un dépôt de gerbe pour le 11 novembre.\n\nOrganisateur
+  : https://www.saint-mammes.com/ceremonie-du-11-novembre/\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-mammes-b
+ 68a11c7ae/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-
+ mammes-b68a11c7ae/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_cff9bab306@fontainebleaulive.fr
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Jeux d’histoire
+LOCATION:Salle du conseil\, Saint-Mammès
+DESCRIPTION:Horaires : 15h30 à 18h\n\nDécouverte ludique de jeux de soci
+ été sur la thématique de la Première Guerre mondiale.\n\nOrganisateur 
+ : https://www.saint-mammes.com/jeux-dhistoire/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/jeux-d-histoire-saint-mammes-cff9bab306/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/jeux-d-histoire-saint-mammes-cf
+ f9bab306/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

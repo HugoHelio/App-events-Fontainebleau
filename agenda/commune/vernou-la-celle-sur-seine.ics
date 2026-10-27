@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_84e0a9c617@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Soirée orientale
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_651d8d6564@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Concert " les agités du bocage"
@@ -51,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf985349ce@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Espace game : Maison de l'horreur
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up
@@ -83,6 +83,24 @@ DESCRIPTION:Horaires : 15h\n\nPublic : Dès 7 ans\n\nCréez votre propre co
  tomatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/table-mash-up-vernou-la-celle-s
  ur-seine-9aafb3ca79/
+CATEGORIES:Culture & Ateliers
+GEO:48.39184;2.84915
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4cba1cd0d4@fontainebleaulive.fr
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Soirée annuelle de l'Avent
+LOCATION:Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 20h30\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-11-28-soireeannuelledelavent\n\nFiche : https://
+ fontainebleaulive.fr/evenements/soiree-annuelle-de-l-avent-vernou-la-celle
+ -sur-seine-4cba1cd0d4/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-annuelle-de-l-avent-vern
+ ou-la-celle-sur-seine-4cba1cd0d4/
 CATEGORIES:Culture & Ateliers
 GEO:48.39184;2.84915
 TRANSP:TRANSPARENT

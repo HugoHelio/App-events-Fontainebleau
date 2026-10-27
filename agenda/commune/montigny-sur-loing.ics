@@ -12,19 +12,19 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_65b2d95b25@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux jouets\, puériculture et livres d'enfants
 LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
  oing\, Montigny-sur-Loing
-DESCRIPTION:Horaires : En journée\n\nTarif : Entrée libre\n\nVente de jou
- ets\, matériel de puériculture et livres pour enfants à petit prix.\n\n
- Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-30
- -bourseauxjouetspuericultureetlivresdenfa\n\nFiche : https://fontainebleau
- live.fr/evenements/bourse-aux-jouets-puericulture-et-livres-d-enfants-mont
- igny-sur-loing-65b2d95b25/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit\n\nVente de jouets\, 
+ matériel de puériculture et livres pour enfants à petit prix.\n\nOrgani
+ sateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-30-bours
+ eauxjouetspuericultureetlivresdenfa\n\nFiche : https://fontainebleaulive.f
+ r/evenements/bourse-aux-jouets-puericulture-et-livres-d-enfants-montigny-s
+ ur-loing-65b2d95b25/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-jouets-puericulture-
  et-livres-d-enfants-montigny-sur-loing-65b2d95b25/
 CATEGORIES:Culture & Ateliers
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6cb6271af1@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Soirée ados / Film d'Halloween
@@ -53,7 +53,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99b337a3a7@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -73,7 +73,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4cb0db304f@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Montigny fait son cinéma " Quand je serai Grand "
@@ -94,7 +94,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_119d0c6981@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Lecture à Voix Haute
@@ -113,7 +113,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e2df830d8c@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Concours de Belote par équipe
@@ -137,12 +137,11 @@ DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Vide ta chambre (Bourse aux enfants)
 LOCATION:Salle Georges Barrois\, Montigny-sur-Loing
-DESCRIPTION:Horaires : À partir de 10h00\n\nTarif : Entrée libre\n\nBours
- e aux vêtements\, jouets et matériel pour enfants.\n\nOrganisateur : htt
- ps://brocabrac.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/vide
- -ta-chambre-bourse-aux-enfants-montigny-sur-loing-4ad1ee39f0/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
+DESCRIPTION:Horaires : Journée\n\nTarif : Gratuit\n\nBourse aux vêtements
+ \, jouets et matériel pour enfants.\n\nOrganisateur : https://brocabrac.f
+ r/\n\nFiche : https://fontainebleaulive.fr/evenements/vide-ta-chambre-bour
+ se-aux-enfants-montigny-sur-loing-4ad1ee39f0/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/vide-ta-chambre-bourse-aux-enfa
  nts-montigny-sur-loing-4ad1ee39f0/
 CATEGORIES:Culture & Ateliers

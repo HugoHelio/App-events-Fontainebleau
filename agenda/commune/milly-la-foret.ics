@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_fa0515afcd@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Fête du Potiron
@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d2df7805de@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261102
 SUMMARY:Grande fête portugaise – 45e anniversaire
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9c3a8a48c3@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Samedis Switch – Médiathèque
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a593951ce6@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage chorégraphies mythiques – Claude François – Club Mill
@@ -89,7 +89,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dba14b7e32@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage Piloxing & Zumboxing – Club Mill’ Danses
@@ -126,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_764fb661fa@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -146,7 +146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8eb8658951@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Stage d’initiation au Heels – Club Mill’ Danses
@@ -165,7 +165,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac93a38421@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
@@ -185,7 +185,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -203,21 +203,60 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_f44838703b@fontainebleaulive.fr
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Rencontre & dédicaces – Médiathèque
+LOCATION:Médiathèque du Moustier\, Milly-la-Forêt
+DESCRIPTION:Horaires : 10h à 15h\n\nRencontre avec Dominique Jallon autour
+  de ses deux ouvrages et séance de dédicaces.\n\nOrganisateur : https://
+ www.milly-la-foret.fr/2026/01/28/28-11-26-rencontre-dedicaces-mediatheque/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/rencontre-et-dedicaces
+ -mediatheque-milly-la-foret-f44838703b/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rencontre-et-dedicaces-mediathe
+ que-milly-la-foret-f44838703b/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
-LOCATION:Milly-la-Forêt
-DESCRIPTION:Horaires : 10h à 12h\n\nTarif : Accès libre\n\nOrganisateur :
-  https://www.milly-la-foret.fr/2026/01/28/28-11-26-samedis-switch-mediathe
- que/\n\nFiche : https://fontainebleaulive.fr/evenements/samedis-switch-med
- iatheque-milly-la-foret-04bf65b834/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : 10h à 12h\n\nTarif : Accès libre\n\nSeul\, entre a
+ mis ou en famille\, venez partager un moment convivial autour de la Ninten
+ do Switch !\n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/28/28-
+ 11-26-samedis-switch-mediatheque/\n\nFiche : https://fontainebleaulive.fr/
+ evenements/samedis-switch-mediatheque-milly-la-foret-04bf65b834/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/samedis-switch-mediatheque-mill
  y-la-foret-04bf65b834/
 CATEGORIES:Culture & Ateliers
 GEO:48.4017;2.45828
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a7357d514e@fontainebleaulive.fr
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Soirée Chill 15/18 ans
+LOCATION:Salle des associations\, Milly-la-Forêt
+DESCRIPTION:Horaires : 19h à 23h\n\nTarif : Gratuit\n\nPublic : Dès 15 an
+ s\n\nSoirée conviviale réservée aux 15-18 ans avec musique\, baby-foot\
+ , photobox et repas offert.\n\nOrganisateur : https://www.milly-la-foret.f
+ r/2026/01/28/28-11-26-soiree-chill-15-18-ans/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/soiree-chill-15-18-ans-milly-la-foret-a7357d514e/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-chill-15-18-ans-milly-la
+ -foret-a7357d514e/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -228,12 +267,12 @@ DTEND;VALUE=DATE:20261207
 SUMMARY:16ᵉ Salon Multi-collections & Bourse au profit du Téléthon
 LOCATION:Maison des Associations & Gymnase (rue de l'Hermite)\, Milly-la-Fo
  rêt
-DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Gratuit\n\nSalon multi-coll
- ections et bourse organisés au profit du Téléthon.\n\nOrganisateur : ht
- tps://brocabrac.fr/91/milly-la-foret/\n\nFiche : https://fontainebleaulive
- .fr/evenements/16-salon-multi-collections-et-bourse-au-profit-du-telethon-
- milly-la-foret-18062a504e/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 10h00\n\nTarif : Gratuit\n\nSalon multi
+ -collections et bourse organisés au profit du Téléthon.\n\nOrganisateur
+  : https://brocabrac.fr/91/milly-la-foret/\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/16-salon-multi-collections-et-bourse-au-profit-du-tele
+ thon-milly-la-foret-18062a504e/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/16-salon-multi-collections-et-b
  ourse-au-profit-du-telethon-milly-la-foret-18062a504e/
 CATEGORIES:Culture & Ateliers

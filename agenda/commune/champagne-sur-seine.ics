@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_cb1ab08abe@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier collectif " Dispositifs engagements jeunes "
@@ -33,7 +33,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdc5e49f92@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Vide ta chambre
@@ -52,7 +52,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18524de635@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Théâtre-forum " un aidant peut en cacher un autre "
@@ -75,17 +75,17 @@ UID:EVT_184d6eb8ca@fontainebleaulive.fr
 DTSTAMP:20261011T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
-SUMMARY:Les oiseaux en hiver
+SUMMARY:Sortie ornithologique « Les oiseaux en hiver »
 LOCATION:Réserve Naturelle Régionale (RNR) des Seiglats\, Champagne-sur-S
  eine
-DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
- servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
- ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/les-oiseaux-en-hiver-champagne-sur-s
- eine-184d6eb8ca/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-oiseaux-en-hiver-champagne-
- sur-seine-184d6eb8ca/
+DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nAnimation d'obse
+ rvation de la faune aviaire hivernante en réserve naturelle.\n\nOrganisat
+ eur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oiseaux-en-h
+ iver-champagne-sur-seine-184d6eb8ca/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oisea
+ ux-en-hiver-champagne-sur-seine-184d6eb8ca/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT

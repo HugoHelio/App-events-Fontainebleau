@@ -31,13 +31,13 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_39a65cd1ec@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261214
 SUMMARY:Village & Marché de Noël
 LOCATION:Maison des Arts\, Saint-Pierre-lès-Nemours\, Saint-Pierre-lès-Ne
  mours
-DESCRIPTION:Horaires : 12/12/2026 : 10h00–21h00 \; 13/12/2026 : 10h00–1
+DESCRIPTION:Horaires : 2026-12-12 : 10h00–21h00 \; 2026-12-13 : 10h00–1
  8h30\n\nTarif : Gratuit\n\nVillage de Noël réunissant soixante exposants
  \, expositions artistiques et animations féériques pour toute la famille
  .\n\nOrganisateur : https://www.saintpierrelesnemours.fr/\n\nFiche : https
@@ -67,6 +67,25 @@ URL:https://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-
  saint-pierre-les-nemours-8feb008365/
 CATEGORIES:Sport & Outdoor
 GEO:48.25937;2.68433
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_974a0b9859@fontainebleaulive.fr
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:La Nocturne du Pays de Nemours
+LOCATION:Stade Intercommunal de Saint-Pierre-lès-Nemours\, Saint-Pierre-l
+ ès-Nemours
+DESCRIPTION:Horaires : Départ à 19h00\n\nTarif : 10 € à 12 €\n\nTrai
+ l nocturne semi-urbain et nature de 11 km traversant la Forêt du Gréau e
+ t Nemours.\n\nOrganisateur : https://cdr77.fr/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-saint-pierre-les-ne
+ mours-974a0b9859/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-
+ saint-pierre-les-nemours-974a0b9859/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
