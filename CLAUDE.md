@@ -24,6 +24,8 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `scripts/feedback.js` | Lecture du formulaire de signalement (CSV publié). Seul le masquage est automatique ; tout le reste part en relecture humaine |
 | `scripts/translate.js` | Descriptions anglaises. Appel Gemini **non grounded**, cache par hash du texte français |
 | `scripts/translate-data.js` | Utilitaire hors bande : traduit les descriptions de `data.json` sans lancer de scan (`--sample` pour relire avant publication) |
+| `scripts/domain-age.js` | Âge du domaine des liens (item 92b, RDAP via l'annuaire IANA, sans clé) : une fiche **Gemini seule** dont le domaine a moins de 120 jours (`YOUNG_DOMAIN_DAYS`) n'est pas publiée, elle est listée dans le rapport. `DOMAIN_AGE=0` pour désactiver |
+| `domain-age-cache.json` | **Généré et commité.** Date de création par domaine, gardée à vie (une requête par domaine) ; échec retenté après 7 jours |
 | `translate-cache.json` | **Généré et commité.** Cache de traduction — sans lui, chaque run CI retraduirait tout |
 | `overrides.json` | **Édité à la main, jamais généré.** Corrections durables, appliquées à chaque run et clées par id d'événement |
 | `venues.json` | **Édité à la main.** Coordonnées exactes des lieux récurrents, consultées avant la BAN — qui ne connaît que des adresses, pas des noms de salles |

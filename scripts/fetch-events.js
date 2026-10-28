@@ -31,6 +31,7 @@ const openagenda = require('./openagenda');
 const francebillet = require('./francebillet');
 const feedback = require('./feedback');
 const translate = require('./translate');
+const domainAge = require('./domain-age');
 const dedupeJudge = require('./dedupe-judge');
 const sites = require('./sources');
 const { matchLevel } = require('./compare-sources');
@@ -369,7 +370,9 @@ function cleanUrl(v) {
 // overrides.json only stops one record; the same fake page found again comes back under a new id.
 // feuxdecourances.com (28/10): a fake medieval festival with online "booking", denied by the
 // Domaine de Courances, published by the culture scan from 12/10 to 18/10.
-const BLOCKED_HOSTS = ['feuxdecourances.com'];
+// fontainebleaulive.fr (28/10): our own site. A search scan that cites us as the source of an event
+// is citing itself — found by the domain-age check (item 92b) on a Gemini-only hike, 24/10.
+const BLOCKED_HOSTS = ['feuxdecourances.com', 'fontainebleaulive.fr'];
 
 function isBlockedHost(url) {
   try {
@@ -1555,6 +1558,16 @@ function renderSummary(stats, ctx) {
     if (stats.vanishedFromFeed.length > 8) L.push(`  - … et ${stats.vanishedFromFeed.length - 8} autre(s)`);
     L.push(`  Vérifier auprès de l’organisateur, puis masquer via overrides.json si confirmé.`);
   }
+  const da = stats.domainAge;
+  if (da?.error) L.push(`- 🆕 Âge des domaines (92b) : ❌ ${da.error} — rien n’a été écarté`);
+  else if (da?.enabled) {
+    const looked = da.looked ? ` · ${da.looked} domaine(s) interrogé(s)${da.failed ? `, ${da.failed} sans réponse` : ''}` : '';
+    if (da.young.length) {
+      L.push(`- 🆕 **Domaine de moins de ${da.youngDays} jours, non publié(s) : ${da.young.length}** (92b)${looked} — Gemini seul, lien vers un site tout neuf : c’est ainsi qu’une fausse billetterie est passée le 12/10. Publié dès qu’une autre source le confirme.`);
+      for (const y of da.young) L.push(`  - ${y.id} — ${y.title} (${y.startDate}) · ${y.domain}, créé le ${y.registered} (${y.age} j)`);
+      L.push(`  Arnaque : ajouter le domaine à BLOCKED_HOSTS (fetch-events.js). Vrai événement : attendre une autre source.`);
+    } else if (looked) L.push(`- 🆕 Âge des domaines (92b) : aucun domaine récent${looked}`);
+  }
   if (stats.datesAtRisk.length) {
     L.push(`- 📅 **Dates à vérifier (79b) : ${stats.datesAtRisk.length}** — Gemini seul, et le lien ne mène qu’à une page d’accueil : rien ne montre les dates de cette année. Les plus proches :`);
     for (const v of stats.datesAtRisk.slice(0, 10)) L.push(`  - ${v}`);
@@ -2238,12 +2251,21 @@ async function main() {
   stats.urlsChecked = urlRun.checked;
   stats.deadUrlsCached = urlRun.cached;
 
+  // 5b. Domain age (item 92b) ─────────────────────────────────────────────
+  // After the URL check: a grounding redirect has been resolved to the real site by now.
+  try {
+    stats.domainAge = await domainAge.check(all, { today, dryRun: CONFIG.dryRun });
+  } catch (err) {
+    stats.domainAge = { error: err.message };
+  }
+
   // 6. Finalise ─────────────────────────────────────────────────────────
   const kept = [];
   for (const rec of all) {
     if (rec.drop === 'dead_url') { stats.deadUrls++; continue; }
     if (rec.drop === 'override_hidden') continue;
     if (rec.drop === 'blocked_host') { bump(stats.rejected, 'blocked_host'); continue; }
+    if (rec.drop === 'young_domain') continue; // listed in the report by domainAge.check()
     // Applied here, after geocoding: an event is judged on where it actually is, not on the
     // coordinates a source claimed before we resolved them.
     const km = distanceKm(rec.event.lat, rec.event.lng);
