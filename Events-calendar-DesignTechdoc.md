@@ -1707,8 +1707,9 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 | 7 | **39. Coût Google Cloud** (existant, section B) — facture relevée le 28/10 : 13,19 € en octobre, ~1,1 €/scan ; reste le détail par étape et le choix du modèle avant le 15/12 | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
 | 8 | ~~**98. Plus de mesure pour monétiser ?**~~ — tranché le 28/10 : plus tard, après 5 000 visites/mois | Décision, rien à coder si la réponse est non | XS |
 | 8b | **102. Revue des économies de l'item 39 au prochain scan** | Réflexion basse sur le juge des doublons et la mise en forme : le chef de projet s'en inquiète | XS |
-| 9 | **99. Lien de soutien (dons)** — préparé le 28/10, inactif : attend le lien de paiement | Après 39 : le coût affiché doit être le vrai | XS |
+| 9 | **99. Lien de soutien (dons)** — préparé le 28/10, inactif : Stripe retenu, à retravailler avec 103 | Après 39 : le coût affiché doit être le vrai | XS |
 | 4b | ~~**101. Agenda de la Ville lu depuis le poste du chef de projet**~~ — fait le 28/10 (§7) ; reste l'installation de la tâche planifiée | Décidé le 28/10 : 16 des 22 absents de l'item 95 sont dans ce flux | S |
+| 9b | **103. Ce que le paiement apporte au visiteur** — idées du 28/10 à travailler | Un soutien sans contrepartie détonne à côté de l'affiliation | S (réflexion) |
 | 10 | **100. Lecture du rapport du 27/10** | Les points de suivi qui ne rentrent dans aucun item ci-dessus | XS |
 
 - [ ] **92. « Les Feux de Courances – Festival Médiéval Immersif » (`EVT_426d83189b`) — signalé
@@ -1908,6 +1909,25 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     « le client choisit le montant », au nom d'Helioso ; Ko-fi possible) et me le donner. Le même
     jour : `SUPPORT.url`, Stripe nommé dans `/mentions-legales/` (tiers après le clic), et le
     soutien déclaré comme recette d'Helioso.
+  - **28/10, chef de projet : Stripe retenu, mais le lien reste inactif — à retravailler (item
+    103).** Un appel au soutien sec détonne à côté de liens d'affiliation : le visiteur doit
+    recevoir quelque chose en échange.
+- [ ] **103. Que pourrait apporter le paiement à un visiteur ? (idées du chef de projet, 28/10 —
+  à travailler avant d'activer 99).** Première lecture, à discuter :
+  | Idée | Ce qu'elle demande | Première lecture |
+  |---|---|---|
+  | T-shirt « Fontainebleau » | Logistique | Impression à la demande (aucun stock) ; marge faible, mais fait connaître la marque. Pas de logo du château ni de l'ONF |
+  | Service spécial | À définir | **Alertes et sélection de la semaine par e-mail**, par commune ou par thème, tirées de `data.json` : utile, peu de travail. Il faut un service d'envoi et le RGPD (inscription, désinscription). Gratuit d'abord, pour faire l'audience ; payant ensuite (formule « plus ») |
+  | Réduction chez un commerçant | Partenariats | « Carte ami de Fontainebleau Live » avec l'union des commerçants (UCAIF, vue dans l'item 95) : rapporte aux deux côtés, mais il faut démarcher et suivre les accords |
+  | Mot sur un blog ou livre d'or | Modération | Peu de valeur pour le visiteur, et tout texte publié est à relire (contenu hostile, §5). Écarté sauf meilleure idée |
+  | Ajouter un événement | Relecture | **Payer pour être listé abîme la confiance** : l'agenda vaut parce qu'il ne dépend pas de qui paie. Mieux : ajout gratuit par un formulaire, relu ; payant seulement une relecture accélérée |
+  | Mettre en avant un événement | Règles de §3.AB | Déjà prévu (mise en avant, à partir de ~5 000 visites/mois) : c'est un produit pour les organisateurs, pas pour les visiteurs. Toujours marqué « mis en avant » |
+  | Accueil « privé » à Fontainebleau | Temps du chef de projet | Ne passe pas à l'échelle. Une visite guidée dans un monument demande la carte de guide-conférencier : à vérifier avant d'aller plus loin |
+  | Formule « gold » VIP | À définir | Il n'y a pas de publicité à retirer. Contenu possible : alertes avant tout le monde, sélection personnalisée, le téléchargement ci-dessous |
+  | Téléchargement : visites, balades en forêt | Écriture | **Guides PDF** (« un week-end à Fontainebleau », « 5 balades en famille », « Fontainebleau sous la pluie ») : vendus une fois, sans stock. Concurrence des topo-guides (Amis de la Forêt, office de tourisme) : viser ce qu'ils n'ont pas, l'agenda du moment. **Pas d'itinéraire inventé par l'IA** : il faut le parcourir |
+  - **Benchmarks, à vérifier avant de décider** : bleau.info (site d'escalade de Fontainebleau, financé par les dons de ses utilisateurs) ; les agendas de ville à newsletter (formule gratuite, puis payante) ; les guides de ville vendus en PDF ou en application ; les cartes de réduction des unions commerciales.
+  - **Première recommandation** : distinguer les **organisateurs** (mise en avant, widget premium, §3.AB) des **visiteurs**. Côté visiteurs, dans l'ordre : (1) la sélection par e-mail, gratuite, qui crée l'audience ; (2) les guides PDF ; (3) la carte de réduction avec les commerçants. Le soutien sec de 99 reste une option, une fois une contrepartie en place (« soutenir = recevoir la sélection plus tôt », par exemple).
+  - Décision et chiffrage : chef de projet, après 100. Le RGPD et `/mentions-legales/` évoluent avec toute collecte d'e-mails.
 - [ ] **100. Rapport du 27/10 — points de suivi.**
   - « Dans les coulisses du Père Noël » : la fiche Gemini masquée le 12/10 comme « saison
     recopiée » existe bien — DATAtourisme publie 6 dates (19-24/12, fiche de l'office de
