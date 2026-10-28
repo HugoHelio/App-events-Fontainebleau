@@ -1494,6 +1494,11 @@ ${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`,
 
 const SOURCES_DIR = 'nos-sources';
 const FEEDBACK_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform';
+// Item 99: the support link, under « Comment le site est financé ». Hidden while `url` is empty.
+// The cost is a floor that stays true (28/10): Gemini (~250-350 €/year from 2027, item 39), the
+// domain (~12 €) and the Claude subscription (240 €), without the time or the equipment shared
+// with Helioso. The day the link goes live, the provider is named in /mentions-legales/ too.
+const SUPPORT = { url: '', provider: 'Stripe', minCostPerYear: 400 };
 
 function sourcesPage(events, generatedAt, registry, places = [], today = '') {
   const n = events.length;
@@ -1533,9 +1538,11 @@ function sourcesPage(events, generatedAt, registry, places = [], today = '') {
 <li><b>Le lieu</b><small>L’adresse est placée sur la carte grâce à la Base Adresse Nationale ; une sortie hors de cette zone est écartée.</small></li>
 </ul>
 
-${partners.length ? `<h2 id="financement">Comment le site est financé</h2>
+${partners.length || SUPPORT.url ? `<h2 id="financement">Comment le site est financé</h2>
 ${booked ? `<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.${count('francebillet') ? ' Fnac Spectacles est aussi une source : les spectacles qu’elle vend dans la zone sont publiés comme ceux des autres sources, sans être mis en avant.' : ''}</p>` : ''}${visits.length ? `
-<p>Les encarts « À visiter » proposent le billet d’entrée ${esc(visits.map((p) => `du ${p.name.replace(/^Château de /, 'château de ')}`).join(', ').replace(/, ([^,]*)$/, ' et $1'))} chez un partenaire, avec la même commission. Ils ne dépendent d’aucune sortie de l’agenda et n’apparaissent que les jours d’ouverture.</p>` : ''}
+<p>Les encarts « À visiter » proposent le billet d’entrée ${esc(visits.map((p) => `du ${p.name.replace(/^Château de /, 'château de ')}`).join(', ').replace(/, ([^,]*)$/, ' et $1'))} chez un partenaire, avec la même commission. Ils ne dépendent d’aucune sortie de l’agenda et n’apparaissent que les jours d’ouverture.</p>` : ''}${SUPPORT.url ? `
+<p>Le site coûte au moins ${SUPPORT.minCostPerYear} € par an en frais directs (recherche par IA, nom de domaine, outils de développement), sans compter le temps passé ni le matériel. Il n’affiche aucune publicité. Si l’agenda vous est utile, vous pouvez le soutenir. Le paiement se fait chez ${esc(SUPPORT.provider)} ; Fontainebleau Live étant édité par une entreprise, ce soutien n’ouvre pas droit à un reçu fiscal.</p>
+<div class="actions"><a class="btn" href="${esc(SUPPORT.url)}" rel="noopener" target="_blank" data-track="support-click">Soutenir Fontainebleau Live</a></div>` : ''}
 
 ` : ''}<h2>Ce que nous ne vérifions pas</h2>
 <p>Nous n’appelons pas les organisateurs : une annulation de dernière minute peut nous échapper. Avant un long trajet, un coup d’œil au site de l’organisateur reste prudent.</p>
