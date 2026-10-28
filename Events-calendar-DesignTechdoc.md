@@ -1699,7 +1699,7 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 | 3 | ~~**94. Doublons restants**~~ — fait le 28/10 (§7) ; reste la vérification au prochain scan | Une vingtaine de fiches en 5 familles, dont des dates contradictoires | M |
 | 4 | ~~**95. Événements manquants (comparaison avec fontyblog.fr)**~~ — mesuré le 28/10 : la cause est l'agenda de la Ville (72c) | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
 | 6 | ~~**97. GoatCounter : relevé du trafic**~~ — fait le 28/10 : 3 589 visites/mois, seuil pas atteint, revoir fin novembre | Le seuil de §3.AB (~5 000 visites/mois) décide des revenus hors affiliation | XS |
-| 7 | **39. Coût Google Cloud** (existant, section B) | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
+| 7 | **39. Coût Google Cloud** (existant, section B) — facture relevée le 28/10 : 13,19 € en octobre, ~1,1 €/scan ; reste le détail par étape et le choix du modèle avant le 15/12 | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
 | 8 | **98. Plus de mesure pour monétiser ?** | Décision, rien à coder si la réponse est non | XS |
 | 9 | **99. Lien de soutien (dons)** | Après 39 : le coût affiché doit être le vrai | XS |
 | 4b | ~~**101. Agenda de la Ville lu depuis le poste du chef de projet**~~ — fait le 28/10 (§7) ; reste l'installation de la tâche planifiée | Décidé le 28/10 : 16 des 22 absents de l'item 95 sont dans ce flux | S |
@@ -2168,6 +2168,14 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   Google par mois. Reste : (1) relever la ligne sur 3 ou 4 scans et la comparer à la facture Google
   Cloud du mois ; (2) réévaluer `gemini-3.6-flash` (génération précédente) **avant le 15/12**, au vu
   de ces chiffres. Si le modèle change, mettre à jour `PRICING` dans `fetch-events.js`.
+  - **Facture relevée le 28/10** (Google Cloud, du 1er au 28/10) : **13,19 €**, dont Gemini API
+    13,14 € (+326 % sur septembre), Secret Manager 0,05 €. Le scan forcé du 28/10 : **1,04 €**.
+    12 scans publiés en octobre (git), plus les essais et diagnostics : **~1,1 € par scan**,
+    **~13-15 €/mois** au tarif actuel. Le rapport annonçait ~9 $/mois : il sous-estime d'environ
+    un tiers (essais ratés non comptés, runs hors scan). **Au 1er janvier, ~2 € par scan, soit
+    ~25-30 €/mois (~300-350 €/an)**. Les scans forcés comptent : chacun ≈ 1 €.
+  - Reste : (1) la ligne « 💶 » du rapport du 28/10, par étape, pour savoir laquelle coûte le
+    plus ; (2) la décision du modèle avant le 15/12 (point 2 ci-dessus).
 - [ ] **72. Comparatif des sources légitimes** (§3.Z) — **69,1 %** le 28/09 (181 + 5 probables sur
   269), il en manque 57 pour 90 %. Manqués : fontainebleau.fr 15 (HTTP 418, voir 72c),
   fontainebleau-tourisme.com 14, sites en JavaScript (AAFF, Vaux, Melun) 8, longue traîne ~20.
