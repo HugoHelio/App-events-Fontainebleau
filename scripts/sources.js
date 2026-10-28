@@ -389,10 +389,38 @@ function parseCityDateLine(line) {
  * body goes to enrich() as `detail` for category, venue, description and a readable title
  * (the feed writes titles in capitals).
  */
+/**
+ * The copy of a feed taken from the project lead's computer (item 101), when the site refuses
+ * GitHub: { fetchedAt, url, xml } in `src.snapshot`. Null when absent, unreadable, for another
+ * URL, or older than `src.snapshotMaxDays` (35 by default): an old copy would keep publishing
+ * events the city has since cancelled.
+ */
+function readSnapshot(src, today) {
+  if (!src.snapshot) return null;
+  try {
+    const s = JSON.parse(fs.readFileSync(path.resolve(src.snapshot), 'utf8'));
+    const date = String(s.fetchedAt || '').slice(0, 10);
+    if (s.url !== src.url || typeof s.xml !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+    const age = (Date.parse(`${today}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`)) / 86_400_000;
+    return age <= (src.snapshotMaxDays || 35) ? { text: s.xml, date } : null;
+  } catch {
+    return null;
+  }
+}
+
 async function readCityRss(src, ctx) {
-  const r = await politeGet(src.url);
+  // fontainebleau.fr answers 418 to GitHub: the copy taken at home stands in (item 101).
+  let feed, snapshot = null;
+  try {
+    feed = (await politeGet(src.url)).text;
+  } catch (err) {
+    const snap = readSnapshot(src, ctx.today);
+    if (!snap) throw err;
+    feed = snap.text;
+    snapshot = snap.date;
+  }
   const events = [];
-  for (const chunk of r.text.split(/<item\b[^>]*>/).slice(1)) {
+  for (const chunk of feed.split(/<item\b[^>]*>/).slice(1)) {
     const field = (name) => {
       const f = new RegExp(`<${name}>([\\s\\S]*?)</${name}>`).exec(chunk);
       return f ? f[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, (x, inner) => inner) : '';
@@ -409,7 +437,7 @@ async function readCityRss(src, ctx) {
     const text = htmlToText(body, src.url).split('\n').filter((l) => !/^(Date|Catégories?)\s*:/.test(l)).join('\n');
     events.push({ ...e, detail: `${title}\n${text}`.slice(0, 3000) });
   }
-  return { fetched: 1, events };
+  return { fetched: 1, events, snapshot };
 }
 
 /**
@@ -646,6 +674,7 @@ async function load(ctx, { only } = {}) {
       const events = kept.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
       return {
         ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events,
+        snapshot: r.snapshot || null,
         excluded: r.events.length - kept.length, invalid: r.invalid || 0,
       };
     } catch (err) {

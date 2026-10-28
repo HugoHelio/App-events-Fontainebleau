@@ -1464,7 +1464,7 @@ function renderSummary(stats, ctx) {
     } else {
       const ok = st.perSource.filter((r) => r.status === 'ok');
       L.push(`- 🏛️ Sites des organisateurs (sans grounding) : ${ok.length} lu(s) → **${st.records}** fiche(s) · **${stats.siteConfirmed}** événement(s) confirmé(s) et enrichi(s) · ${st.long} offre(s) permanente(s) jamais ajoutée(s)${stats.siteInsideSpan ? ` · ${stats.siteInsideSpan} date(s) d'un événement déjà publié sur plusieurs jours` : ''}`);
-      L.push(`  - ${st.perSource.map((r) => `${r.id} ${r.status === 'ok' ? r.events : r.status === 'disabled' ? '⏸' : '❌'}`).join(' · ')}`);
+      L.push(`  - ${st.perSource.map((r) => `${r.id} ${r.status === 'ok' ? r.events : r.status === 'disabled' ? '⏸' : '❌'}${r.snapshot ? ` (copie du ${r.snapshot.slice(8, 10)}/${r.snapshot.slice(5, 7)}, item 101)` : ''}`).join(' · ')}`);
       for (const r of st.perSource.filter((x) => x.status === 'error' || x.status === 'robots')) L.push(`  - ⚠️ ${r.id} : ${String(r.error).slice(0, 140)}`);
       const siteRej = Object.entries(stats.siteRejected);
       if (siteRej.length) L.push(`  - rejetées : ${siteRej.map(([k, v]) => `${k}=${v}`).join(', ')}`);
@@ -1981,7 +1981,7 @@ async function main() {
       const enriched = await sites.enrich(read, { dryRun: CONFIG.dryRun, today });
       siteRaw = sites.toPipelineEvents(read, ctx);
       stats.sites = {
-        perSource: results.map((r) => ({ id: r.id, status: r.status, events: r.events.length, error: r.error || r.skipped || r.note || '' })),
+        perSource: results.map((r) => ({ id: r.id, status: r.status, events: r.events.length, error: r.error || r.skipped || r.note || '', snapshot: r.snapshot || null })),
         records: siteRaw.length,
         long: siteRaw.filter((e) => e.long).length,
         enrich: enriched,
