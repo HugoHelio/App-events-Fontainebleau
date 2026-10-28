@@ -1646,6 +1646,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-28 | **Robot local pour l'agenda de la Ville (item 101, mise en œuvre)** : script Node lancé par une tâche planifiée Windows, clone dédié, copie JSON commitée, repli du lecteur `city-rss` limité à 35 jours. Pas d'agent Claude | Le chef de projet ne veut aucun geste manuel. Lire un flux et pousser un fichier est mécanique : un script sans modèle est gratuit, déterministe et plus sûr qu'un agent. Clone dédié : jamais de conflit avec la copie de travail. 35 jours : deux cycles de 15 jours de marge, pas au-delà, pour ne pas publier des annulations. Tâche quotidienne + garde de 14 jours plutôt qu'un déclencheur tous les 15 jours : un PC éteint le jour J rattrape le lendemain |
 | 2026-10-28 | **Agenda de la Ville lu depuis le poste du chef de projet (item 101)** — décision du chef de projet, qui revient sur « pas de contournement » du 24/09 (§3.Z2) | Mesure de l'item 95 : 16 des 22 événements absents par rapport à fontyblog sont dans le flux de la Ville. Le flux est public et publié pour être repris ; le blocage vise les adresses des hébergeurs, pas les lecteurs. Garde-fous : robot identifié sous son nom, une lecture par mois au plus, lien vers chaque fiche de fontainebleau.fr, demande d'exception maintenue (72c) |
 | 2026-10-28 | **Doublons restants (item 94)** : (A) `fetch-events.js`, après le juge : une fiche — toute source, neuve ou stockée — dont les dates tombent dans une période liée à **la même page** (`pageKey()`), titre en correspondance **stricte**, est rangée dans la période (`enrichFrom`, dates de la période intactes), ligne « 📎 » du rapport. (B) `dedupe-judge.js` : une période et un jour qu'elle contient deviennent une paire candidate. (C) Paire Gemini seul / source vérifiée **dans la même commune** : le prompt dit « dans le doute, true », la fiche vérifiée l'emporte (`preferred()`) et garde ses dates ; les « false » déjà en cache pour ces paires sont redemandés une fois (`v: 2`). À la fusion d'une période et d'un jour de même confiance, la période est gardée (`mergeInto()` aurait recopié la date de fin du jour) | Relevé du 28/10 : ~20 doublons en 5 familles. La règle « Sauvages ! » ne rangeait que les fiches **neuves** des **sites** ; l'École militaire (période dont les horaires listent chaque samedi + 4 samedis) faisait 5 cartes. Correspondance stricte seulement : « Cycle de conférences Marie-Antoinette » partage la page d'une série de visites de 3 mois et y aurait perdu ses dates. Asymétrie voulue par le chef de projet : fusionner à tort ne perd qu'une fiche Gemini, la moins fiable. Même commune exigée : le « Halloween » générique d'un village aurait avalé les soirées d'autres communes. Une fiche vérifiée ne prend jamais les dates de Gemini (règle de §3.Z2 étendue au juge) |
+| 2026-10-28 | **Mesure pour monétiser (item 98) : plus tard, avec un bandeau de cookies, après 5 000 visites/mois** | Choix du chef de projet. Rien à mesurer de plus tant que le trafic (3 589 visites/mois) ne justifie aucune offre payante ; la décision du 21/09 (aucun cookie) tiendra jusque-là. L'ajout d'une mesure avec cookies devra mettre à jour la page de confidentialité le même jour (item 93) |
 | 2026-10-28 | **Coût Gemini (item 39) : scan villages un scan sur deux, réflexion basse hors recherche.** (1) Le scan `villages` ne tourne que si le précédent a 5 jours ou plus (`villagesScanAt` dans `data.json`, `VILLAGES_EVERY_DAYS`) ; ligne « ⏭️ » dans le tableau du rapport. (2) `thinkingConfig: { thinkingLevel: 'low' }` sur la mise en forme des scans, la lecture des sites et les fiches complétées, le juge des doublons et la traduction ; **pas sur l'étape de recherche** | Facture d'octobre : 13,19 €, ~1,1 € par scan, **la sortie fait 88 % du coût** et la réflexion est facturée comme sortie ; aucun appel ne la réglait (retirée le 04/10, puis le 12/10, à cause de la recherche). Le scan villages coûte 31 % d'un run pour ne rien publier (`confirmOnly`) : un tous les ~6 jours garde ses reconfirmations sous les 10 jours de `staleAfterDays`. La recherche garde sa réflexion par défaut : un niveau bas ne l'avait pas fait chercher (04/10). Au 1er janvier (prix doublés), ~25-30 €/mois sans ces mesures. Choix du chef de projet ; suppression du scan villages écartée (reconfirmations et trouvailles de l'item 90) |
 | 2026-10-28 | **Trafic relevé (item 97) : 3 589 visites du 28/09 au 28/10, seuil de 5 000 pas atteint — rien de payant hors affiliation pour l'instant (§3.AB inchangé)** | 1 430 visites la dernière semaine, mais c'est Halloween et la Toussaint : on juge sur novembre, pas sur un pic. 518 clics vers les organisateurs contre 11 sur « Réserver » : le site sert d'abord à envoyer vers l'organisateur, et l'affiliation reste marginale (0-5 €/mois, comme estimé). Nouveau : chatgpt.com amène 9 % des visites ; Facebook, rien |
 | 2026-10-28 | **Accueil : la langue du navigateur n'est plus lue (item 96)** : `initialLang()` = `?lang=` → choix enregistré → français. Revient sur la décision du 21/09 | Relevé Search Console du 28/10 : Google affichait le titre anglais de l'accueil (« What's on in Fontainebleau? »), Googlebot rendant la page en en-US — il indexait donc l'accueil en anglais, alors que la requête visée est « que faire à Fontainebleau ». Même règle que les pages générées depuis le 04/10. Le visiteur anglophone (INSEAD) clique une fois sur EN, et son choix est retenu ; le partage en anglais garde `?lang=en`. Décision du chef de projet, préférée à une pastille « Read in English » pour les navigateurs non francophones |
@@ -1703,7 +1704,8 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 | 4 | ~~**95. Événements manquants (comparaison avec fontyblog.fr)**~~ — mesuré le 28/10 : la cause est l'agenda de la Ville (72c) | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
 | 6 | ~~**97. GoatCounter : relevé du trafic**~~ — fait le 28/10 : 3 589 visites/mois, seuil pas atteint, revoir fin novembre | Le seuil de §3.AB (~5 000 visites/mois) décide des revenus hors affiliation | XS |
 | 7 | **39. Coût Google Cloud** (existant, section B) — facture relevée le 28/10 : 13,19 € en octobre, ~1,1 €/scan ; reste le détail par étape et le choix du modèle avant le 15/12 | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
-| 8 | **98. Plus de mesure pour monétiser ?** | Décision, rien à coder si la réponse est non | XS |
+| 8 | ~~**98. Plus de mesure pour monétiser ?**~~ — tranché le 28/10 : plus tard, après 5 000 visites/mois | Décision, rien à coder si la réponse est non | XS |
+| 8b | **102. Revue des économies de l'item 39 au prochain scan** | Réflexion basse sur le juge des doublons et la mise en forme : le chef de projet s'en inquiète | XS |
 | 9 | **99. Lien de soutien (dons)** | Après 39 : le coût affiché doit être le vrai | XS |
 | 4b | ~~**101. Agenda de la Ville lu depuis le poste du chef de projet**~~ — fait le 28/10 (§7) ; reste l'installation de la tâche planifiée | Décidé le 28/10 : 16 des 22 absents de l'item 95 sont dans ce flux | S |
 | 10 | **100. Lecture du rapport du 27/10** | Les points de suivi qui ne rentrent dans aucun item ci-dessus | XS |
@@ -1860,10 +1862,27 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     rouvrir la mise en avant (§3.AB). Suivre chatgpt.com comme source à part entière.
   - Le bloc « À visiter » (`visit-click`) n'a eu aucun clic en un mois : à regarder avant d'y
     ajouter des offres.
-- [ ] **98. Plus de mesure en vue de monétiser ? — recommandation : non.** Les partenaires
-  comptent leurs ventes, GoatCounter compte déjà visites et clics ; Google Analytics ou des pixels
-  publicitaires imposeraient un bandeau de cookies (CNIL) et casseraient la décision du 21/09. À
-  trancher par le chef de projet.
+- [ ] **98. Plus de mesure en vue de monétiser — tranché le 28/10 (§7) : plus tard.** D'abord
+  passer **5 000 visites/mois** (GoatCounter : 3 589 du 28/09 au 28/10, item 97). Ce jour-là, la
+  mesure qu'exige la monétisation sera ajoutée **avec un bandeau de cookies** (CNIL), ce qui
+  revient sur la décision du 21/09 « aucun cookie » : mettre à jour `/mentions-legales/` le jour
+  même. D'ici là, GoatCounter (sans cookie) et les rapports des partenaires suffisent.
+- [ ] **102. Revue des économies de l'item 39 — au premier scan après le 28/10, puis au suivant
+  (chef de projet inquiet pour le juge des doublons et la mise en forme ; la traduction, non).**
+  Comparer au rapport du 28/10 (dernier scan avec la réflexion par défaut) :
+  - **Coût** : ligne « 💶 », par étape. Le scan villages doit être « ⏭️ » au premier scan et
+    revenir au second.
+  - **Mise en forme des scans** : événements bruts par scan (tableau du rapport) ; fiches perdues
+    ou mal datées ; part des « dates à vérifier » (79b). Un scan qui rend nettement moins
+    d'événements pour autant de recherches est le signe à chercher.
+  - **Juge des doublons** : lignes « 🧩 Doublons jugés » et « 📎 Dates rangées » ; relire chaque
+    fusion. Une fusion à tort supprime une fiche (pire qu'un doublon) : à la première, revenir en
+    arrière. Le cache `dedupe-cache.json` garde les anciens verdicts, seuls les nouveaux sont
+    jugés avec la réflexion basse.
+  - **Lecture des sites** : fiches par site, comparées au 28/10 ; sites tombés à 0.
+  - **En cas de recul** : la réflexion se règle par appel, pas tout ou rien. Rendre le niveau
+    par défaut au seul juge, ou à la mise en forme, et garder l'économie ailleurs (traduction).
+    En urgence, `GEMINI_THINKING_LEVEL=default` dans le workflow revient sur tout.
 - [ ] **99. Lien « Soutenir le site »** (idée du chef de projet, 28/10 : coût de maintenance
   annoncé ~500 €/an). Réserves : la structure est une entreprise, un « don » y est un revenu
   déclaré, sans reçu fiscal ; **le coût affiché doit être vrai** (domaine ~10 €/an, Gemini ~110 $/an
