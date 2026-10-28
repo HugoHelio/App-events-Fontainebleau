@@ -1690,7 +1690,7 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 | 1b | ~~**92b. Âge du domaine des fiches Gemini seules**~~ — fait le 28/10 (§7) | Le trou par lequel la fausse billetterie est passée | S |
 | 2 | ~~**93. Mentions légales et confidentialité**~~ — fait le 28/10 (§7) | Obligation légale (LCEN art. 6-III), d'autant plus avec des revenus d'affiliation | S |
 | 3 | ~~**94. Doublons restants**~~ — fait le 28/10 (§7) ; reste la vérification au prochain scan | Une vingtaine de fiches en 5 familles, dont des dates contradictoires | M |
-| 4 | **95. Événements manquants (comparaison avec fontyblog.fr)** | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
+| 4 | ~~**95. Événements manquants (comparaison avec fontyblog.fr)**~~ — mesuré le 28/10 : la cause est l'agenda de la Ville (72c) | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
 | 5 | **96. Search Console : relevé** | Mesure de 80 terminée le 26/10 ; 76, 86, 87 et 91 attendent les mêmes chiffres | XS |
 | 6 | **97. GoatCounter : relevé du trafic** | Le seuil de §3.AB (~5 000 visites/mois) décide des revenus hors affiliation | XS |
 | 7 | **39. Coût Google Cloud** (existant, section B) | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
@@ -1743,7 +1743,13 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
   même commune : fusion dans le doute, la fiche vérifiée gagne et garde ses dates (24 paires à
   juger au prochain scan, dont 15 verdicts « non » redemandés). Marchés de Noël Gemini de
   Fontainebleau (12-14/12, 18-20/12) masqués. **Au prochain scan** : lire « 📎 Dates rangées » et
-  « 🧩 Doublons jugés » ; une fusion à tort se défait par `keepSeparate`. Relevé d'origine — Une fiche par séance
+  « 🧩 Doublons jugés » ; une fusion à tort se défait par `keepSeparate`.
+  - [ ] **Marché de Noël de Fontainebleau — dates à confirmer, à ne pas perdre (chef de projet,
+    28/10).** En ligne : la fiche de l'office de tourisme (`EVT_cdf020a3aa`, 11-13/12). Les deux
+    fiches Gemini masquées (12-14/12, 18-20/12) ne prouvent rien. Confirmer les dates auprès de
+    la Ville ou de l'office (fin novembre au plus tard) ; si elles diffèrent, corriger par
+    `fields` dans `overrides.json`, et ajouter tout autre marché confirmé.
+  Relevé d'origine — Une fiche par séance
   est voulue (§3.I) ; ne comptent ici que les paires qui se chevauchent. Cinq familles :
   1. **Gemini qui se répète** : Courances ×5 (voir 92), concert Tyreek McDole ×3 (Jazz au
      Théâtre), appartements royaux ×2, initiation à la bryologie ×2, Nocturne du Pays de Nemours
@@ -1759,7 +1765,17 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
      Gemini 12-14/12 (« Grand Marché de Noël de la Cité Impériale ») et 18-20/12.
   Méthode : d'abord comprendre pourquoi le juge (§3.W2) et `isSameOccurrence()` laissent passer
   les familles 1 à 3, corriger la règle, et ne masquer à la main que le reste.
-- [ ] **95. Événements manquants — comparer avec fontyblog.fr** (agenda :
+- [x] **95. Mesuré le 28/10.** Agenda fontyblog du 28/10 au 22/11 : **62 événements, presque tous à
+  Fontainebleau ; ~40 chez nous, 22 absents.** Sur les 22, **16 sont dans le flux RSS de la Ville**
+  (lu le 28/10 depuis le poste du chef de projet) : loto des pompiers, thé dansant du CCAS, don du
+  sang, médiathèque (médiation numérique, Actua'litté), sortie de résidence au Théâtre, conférence
+  à l'Hôtel de Ville, expositions (Ivan Loncle, Art de vivre au XVIIIᵉ, Olivier Long), Coupe de
+  France de wushu, cafés des transitions, brocante de l'EHPAD… Deux hors périmètre (salon de
+  l'emploi, croissant Marie-Antoinette des boulangeries) ; le reste, longue traîne (expo
+  Artmosphère, ateliers du Bréau). **Conclusion : le manque, c'est 72c.** Pas de contournement du
+  pare-feu (§3.Z2) : l'argument part dans la relance du 03/11. Vu aussi : les ciné-débats de
+  l'Ermitage (3, 12, 17/11) sont chez nous sous un titre générique (« Séances débats à
+  l'Ermitage ») — le titre du film manque. Texte d'origine — **95. Événements manquants — comparer avec fontyblog.fr** (agenda :
   `https://fontyblog.fr/en/all-events-4/`, centré sur Fontainebleau). Exemple relevé le 28/10 :
   **« Chasse aux bonbons et concours de déguisements » de l'UCAIF** (union des commerçants), sam.
   31/10 à 14 h 30, place de la République — absent du site. À faire : relever leurs événements
@@ -2105,7 +2121,11 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   - [ ] **Récurrent, tous les 15 jours (prochain : lundi 26/10)** : `node scripts/check-city-feed.js`
     depuis le poste du chef de projet ou une session Claude Code locale, puis masquer dans
     `overrides.json` ce que le script marque « à masquer probablement » et ce qu'il dit
-    « autre spectacle ce soir-là ». Les fiches « absentes » hors théâtre ne prouvent rien (château,
+    « autre spectacle ce soir-là ». **Leçon du 28/10** : deux masquages du 12/10 étaient faux.
+    « La Dictée » (21/11) est au programme des Impériales, que la Ville publie en **un seul**
+    article (le spectacle n'est que dans la description) ; « Dans les coulisses du Père Noël »
+    se joue à l'Âne Vert, pas au Théâtre municipal (DATAtourisme le publie). Avant de masquer :
+    chercher le titre **dans les descriptions** du flux, et vérifier le lieu. Les fiches « absentes » hors théâtre ne prouvent rien (château,
     forêt) : les laisser. Le jour où la Ville pose l'exception (72c), le lecteur `city-rss` fait ce
     travail à chaque scan et ce contrôle s'arrête.
   - [ ] **Règle, à décider** : 80 fiches « dates à vérifier » sur 331, dont **33 non revues par aucun
@@ -2181,7 +2201,9 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   >
   > Pourriez-vous autoriser ce robot sur cette seule adresse ? Sans cela, une partie des
   > événements de la Ville reste absente ou moins précise sur notre agenda : aujourd'hui, 14 fiches
-  > renvoient seulement à la page d'accueil de fontainebleau.fr.
+  > renvoient seulement à la page d'accueil de fontainebleau.fr, et sur les quatre prochaines
+  > semaines, 16 rendez-vous publiés par la Ville (loto des pompiers, thé dansant du CCAS, don du
+  > sang, médiathèque, expositions…) manquent sur notre agenda pour cette seule raison.
   >
   > Je reste disponible pour en parler, et pour vous présenter l'encart gratuit qui affiche
   > l'agenda sur un site partenaire.
