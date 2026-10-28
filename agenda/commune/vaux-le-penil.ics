@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_94234ef40b@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261117
 SUMMARY:Visite de STIL – Vaux-le-Pénil
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8fd34e32c6@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Visite de Top Industrie – Vaux-le-Pénil
@@ -52,7 +52,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ff1e230b1a@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:4211 km - Aïla Navidi
@@ -76,7 +76,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d706b19e2a@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:Lisa
@@ -92,6 +92,30 @@ DESCRIPTION:Tarif : 18\,20 €\n\nLisa a 15 ans. Elle est préoccupée. Par
  l-d706b19e2a/\n\nInformations collectées automatiquement : vérifiez-les 
  auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/lisa-vaux-le-penil-d706b19e2a/
+CATEGORIES:Scène & Spectacles
+GEO:48.52794;2.68965
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6c6998c8d3@fontainebleaulive.fr
+DTSTAMP:20261028T000000Z
+DTSTART;VALUE=DATE:20270128
+DTEND;VALUE=DATE:20270129
+SUMMARY:La Maison Tellier a 20 ans
+LOCATION:La Grange de la Ferme des Jeux\, Vaux-le-Pénil
+DESCRIPTION:Tarif : 21\,20 €\n\nLa Maison Tellier revient sur scène pour
+  présenter son nouvel album Timidité des Arbres. Et pour cette grande me
+ sse musicale\, les cinq compères ont mis les petits plats dans les grands
+  en choisissant l'Elysée Montmartre comme écrin pour sublimer ce huitiè
+ me opus. Un rendez-vous résolument immanquable. Timidité des Arbres : Hu
+ itième album du combo normand. Toujours le meilleur rapport qualité-prix
+ …\n\nOrganisateur : https://www.fnacspectacles.com/artist/la-maison-tell
+ ier/la-maison-tellier-a-20-ans-4022966/\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/la-maison-tellier-a-20-ans-vaux-le-penil-6c6998c8d3/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
+URL:https://fontainebleaulive.fr/evenements/la-maison-tellier-a-20-ans-vaux
+ -le-penil-6c6998c8d3/
 CATEGORIES:Scène & Spectacles
 GEO:48.52794;2.68965
 TRANSP:TRANSPARENT

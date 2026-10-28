@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c6448b6cba@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Les soirées de l'Esquisse
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2f76232e60@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Visite-promenade « Du musée au village »
@@ -67,7 +67,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9131407f25@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:Conférence « Nouvelles de Barbizon : la carte postale de vacances
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3a5fba756f@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Atelier « Sur la trace de La Couseuse »
@@ -126,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -145,7 +145,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0c5d619702@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -164,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c45baf6087@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -183,7 +183,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Les soirées de l'Esquisse
@@ -202,7 +202,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_70b3109999@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:"Nouveau regard sur le monde paysan par Jean-François Millet"
@@ -223,17 +223,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f6487ee90d@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Visites guidées du musée
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Gratuit pour les m…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037985/visites-guidees-du-musee/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbizon-f6487
- ee90d/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+ ficatif). Gratuit pour les m…\n\nSuivez un guide pour découvrir en dét
+ ail les collections du musée lors de visites commentées.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/8037985/visites-guidees
+ -du-musee/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-guid
+ ees-du-musee-barbizon-f6487ee90d/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbiz
  on-f6487ee90d/
 CATEGORIES:Culture & Ateliers
@@ -242,7 +243,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les soirées de l'Esquisse
@@ -281,7 +282,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a10ea2f638@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite contée « Les Contes du chat perché »
@@ -301,17 +302,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_edd27034e8@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Visites guidées du musée
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Gratuit pour les m…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037985/visites-guidees-du-musee/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbizon-edd27
- 034e8/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+ ficatif). Gratuit pour les m…\n\nSuivez un guide pour découvrir en dét
+ ail les collections du musée lors de visites commentées.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/8037985/visites-guidees
+ -du-musee/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-guid
+ ees-du-musee-barbizon-edd27034e8/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbiz
  on-edd27034e8/
 CATEGORIES:Culture & Ateliers
@@ -338,7 +340,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Les soirées de l'Esquisse
@@ -357,17 +359,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fe92208886@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Visite thématique « Les artistes étrangers à Barbizon »
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 €. Gratuit pour les moins de 25 ans.
-  A partir de 5 ans.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
- om/fr/fiche/8037947/visite-thematique-les-artistes-etrangers-a-barbizon/\n
- \nFiche : https://fontainebleaulive.fr/evenements/visite-thematique-les-ar
- tistes-etrangers-a-barbizon-fe92208886/\n\nInformations collectées automa
- tiquement : vérifiez-les auprès de l’organisateur.
+  A partir de 5 ans.\n\nCette visite thématique vous invite à découvrir 
+ les peintres venus de l'étranger qui ont marqué Barbizon.\n\nOrganisateu
+ r : https://www.fontainebleau-tourisme.com/fr/fiche/8037947/visite-themati
+ que-les-artistes-etrangers-a-barbizon/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/visite-thematique-les-artistes-etrangers-a-barbizon-fe9220
+ 8886/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-thematique-les-artistes-
  etrangers-a-barbizon-fe92208886/
 CATEGORIES:Culture & Ateliers
@@ -376,7 +380,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23a8889b67@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Atelier aquarelle botanique "carte de Noël"
@@ -396,17 +400,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_573a44c82a@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Visites guidées du musée
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Gratuit pour les m…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037985/visites-guidees-du-musee/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbizon-573a4
- 4c82a/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+ ficatif). Gratuit pour les m…\n\nSuivez un guide pour découvrir en dét
+ ail les collections du musée lors de visites commentées.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/8037985/visites-guidees
+ -du-musee/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-guid
+ ees-du-musee-barbizon-573a44c82a/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbiz
  on-573a44c82a/
 CATEGORIES:Culture & Ateliers
@@ -415,7 +420,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e42881c006@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Visite contée "Les Contes du chat perché"
@@ -434,7 +439,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -453,17 +458,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a9e057d74b@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle théâtral "Un voyage inattendu"
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 12 € (réduction et gratuité sur justi
- ficatif). Gratuit moins de 2…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037978/spectacle-theatral-un-voyage-inattendu/\n\
- nFiche : https://fontainebleaulive.fr/evenements/spectacle-theatral-un-voy
- age-inattendu-barbizon-a9e057d74b/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+ ficatif). Gratuit moins de 2…\n\nAssistez à la représentation théâtr
+ ale Un voyage inattendu proposée dans la commune de Barbizon.\n\nOrganisa
+ teur : https://www.fontainebleau-tourisme.com/fr/fiche/8037978/spectacle-t
+ heatral-un-voyage-inattendu/\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/spectacle-theatral-un-voyage-inattendu-barbizon-a9e057d74b/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-theatral-un-voyage-in
  attendu-barbizon-a9e057d74b/
 CATEGORIES:Scène & Spectacles
@@ -472,17 +479,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_17edeb2692@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Visites guidées du musée
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Gratuit pour les m…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037985/visites-guidees-du-musee/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbizon-17ede
- b2692/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+ ficatif). Gratuit pour les m…\n\nSuivez un guide pour découvrir en dét
+ ail les collections du musée lors de visites commentées.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/8037985/visites-guidees
+ -du-musee/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-guid
+ ees-du-musee-barbizon-17edeb2692/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbiz
  on-17edeb2692/
 CATEGORIES:Culture & Ateliers
@@ -491,7 +499,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse
@@ -510,17 +518,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7fb1b701f9@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Visites guidées du musée
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Gratuit pour les m…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037985/visites-guidees-du-musee/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbizon-7fb1b
- 701f9/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+ ficatif). Gratuit pour les m…\n\nSuivez un guide pour découvrir en dét
+ ail les collections du musée lors de visites commentées.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/8037985/visites-guidees
+ -du-musee/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-guid
+ ees-du-musee-barbizon-7fb1b701f9/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbiz
  on-7fb1b701f9/
 CATEGORIES:Culture & Ateliers
@@ -529,17 +538,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5978341773@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:Visites guidées du musée
 LOCATION:Barbizon
 DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Gratuit pour les m…\n\nOrganisateur : https://www.fontaineblea
- u-tourisme.com/fr/fiche/8037985/visites-guidees-du-musee/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbizon-59783
- 41773/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+ ficatif). Gratuit pour les m…\n\nSuivez un guide pour découvrir en dét
+ ail les collections du musée lors de visites commentées.\n\nOrganisateur
+  : https://www.fontainebleau-tourisme.com/fr/fiche/8037985/visites-guidees
+ -du-musee/\n\nFiche : https://fontainebleaulive.fr/evenements/visites-guid
+ ees-du-musee-barbizon-5978341773/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visites-guidees-du-musee-barbiz
  on-5978341773/
 CATEGORIES:Culture & Ateliers

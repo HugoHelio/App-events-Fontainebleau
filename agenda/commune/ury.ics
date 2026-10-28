@@ -11,8 +11,25 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_8a87a1de3a@fontainebleaulive.fr
+DTSTAMP:20261028T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261102
+SUMMARY:Bourse aux vêtements et aux jouets d'Ury
+LOCATION:Salle des fêtes / Foyer rural\, 77760 Ury\, Ury
+DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Entrée libre\n\nBourse loc
+ ale proposant vêtements et jouets d'occasion.\n\nOrganisateur : https://w
+ ww.mybrocante.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bours
+ e-aux-vetements-et-aux-jouets-d-ury-8a87a1de3a/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/bourse-aux-vetements-et-aux-jou
+ ets-d-ury-8a87a1de3a/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_aac3f2bc97@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert de musique baroque
@@ -49,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d6d343fe1f@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Concert "Au temps de Proust"

@@ -96,6 +96,16 @@
       "reason": "Les dates de fin de l'événement diffèrent nettement (23 décembre vs 3 janvier).",
       "at": "2026-09-24"
     },
+    "ACT_003|EVT_3d99c552ab": {
+      "same": false,
+      "reason": "L'un décrit l'événement global de Noël tandis que l'autre est une offre spécifique de pré-ouverture.",
+      "at": "2026-10-28"
+    },
+    "ACT_003|EVT_8da6688fd3": {
+      "same": true,
+      "reason": "Même événement de Noël au château de Vaux-le-Vicomte sur la même période.",
+      "at": "2026-10-28"
+    },
     "ACT_003|EVT_a30db63b54": {
       "same": true,
       "reason": "Les deux fiches annoncent le même événement annuel de Noël au Château de Vaux-le-Vicomte.",
@@ -341,6 +351,11 @@
       "reason": "Même promenade guidée à Larchant organisée le même jour et aux mêmes horaires.",
       "at": "2026-10-05"
     },
+    "EVT_0317a64cbc|EVT_fcf3ac200d": {
+      "same": true,
+      "reason": "Même murder party théâtralisée au Château de Blandy-les-Tours sur la même période.",
+      "at": "2026-10-28"
+    },
     "EVT_03cad66ce8|EVT_80e3611629": {
       "same": false,
       "reason": "Une fiche correspond à un concert spécifique de la soirée d'ouverture et l'autre au festival sur trois jours.",
@@ -386,10 +401,20 @@
       "reason": "Même sortie guidée naturaliste au Mont Merle et Rocher Fourceau le 17 octobre 2026.",
       "at": "2026-10-12"
     },
+    "EVT_0562ce9e73|EVT_ba96acfe80": {
+      "same": true,
+      "reason": "Même sortie mycologique organisée par l'ANVL en forêt de Fontainebleau le même jour.",
+      "at": "2026-10-28"
+    },
     "EVT_05827888e2|EVT_8068526141": {
       "same": true,
       "reason": "Les deux fiches décrivent le même programme d'animations de la Toussaint au château de Vaux-le-Vicomte.",
       "at": "2026-10-27"
+    },
+    "EVT_05f509ebd6|EVT_1de0024e70": {
+      "same": true,
+      "reason": "Même visite guidée organisée par l'Office de Tourisme le 12 décembre à 14h.",
+      "at": "2026-10-28"
     },
     "EVT_068663487e|EVT_28dbf26b70": {
       "same": true,
@@ -466,6 +491,11 @@
       "reason": "Même programmation festive de fin d'année au Château de Fontainebleau.",
       "at": "2026-10-18"
     },
+    "EVT_08cc124fed|EVT_39e43ca06c": {
+      "same": true,
+      "reason": "Même compétition sportive organisée le même jour par l'USNSPA Athlétisme à l'équipement sportif local commune aux deux villes.",
+      "at": "2026-10-28"
+    },
     "EVT_08e101e9e6|EVT_22b1c75dfc": {
       "same": true,
       "reason": "Même randonnée nature guidée organisée par EcoNature aux mêmes date et heure.",
@@ -505,6 +535,11 @@
       "same": false,
       "reason": "Les lieux de sortie sont différents : l'une est en forêt de Fontainebleau, l'autre à l'ENS du Carreau Franc à Marolles-sur-Seine.",
       "at": "2026-10-24"
+    },
+    "EVT_0aae4289bc|EVT_a73f557c91": {
+      "same": true,
+      "reason": "Les deux fiches décrivent le même événement global Noël au Château de Fontainebleau sur la même période.",
+      "at": "2026-10-28"
     },
     "EVT_0ab982a6c4|EVT_48bed7795d": {
       "same": true,
@@ -806,6 +841,31 @@
       "reason": "Il s'agit du même festival sur la biodiversité organisé par l'ANVL aux mêmes dates et lieu.",
       "at": "2026-09-24"
     },
+    "EVT_15e7ad50db|EVT_99b337a3a7": {
+      "same": false,
+      "reason": "Ce sont deux événements distincts : une fête communale d'Halloween et une randonnée nocturne.",
+      "at": "2026-10-28"
+    },
+    "EVT_15e7ad50db|EVT_a5c21898e7": {
+      "same": false,
+      "reason": "Il s'agit de deux événements différents d'Halloween sur des communes et lieux distincts.",
+      "at": "2026-10-28"
+    },
+    "EVT_15e7ad50db|EVT_e6f1988d30": {
+      "same": false,
+      "reason": "L'un est un événement festif au centre aquatique et l'autre une randonnée nocturne en forêt.",
+      "at": "2026-10-28"
+    },
+    "EVT_15e7ad50db|EVT_e905a99489": {
+      "same": false,
+      "reason": "L'un se déroule dans le centre-bourg de Thomery et l'autre est une randonnée en forêt de Fontainebleau.",
+      "at": "2026-10-28"
+    },
+    "EVT_16446b9b9c|EVT_cd4a6118fa": {
+      "same": false,
+      "reason": "Les dates de début diffèrent significativement (juin contre septembre), ce qui crée un doute sur la période exacte.",
+      "at": "2026-10-28"
+    },
     "EVT_184d6eb8ca|EVT_47d645660b": {
       "same": true,
       "reason": "Même animation ornithologique à la réserve des Seiglats aux mêmes date et horaires.",
@@ -815,6 +875,11 @@
       "same": false,
       "reason": "Deux sorties différentes organisées par des structures distinctes sur des lieux séparés.",
       "at": "2026-10-18"
+    },
+    "EVT_184d6eb8ca|EVT_a7f2b129eb": {
+      "same": true,
+      "reason": "Même sortie ornithologique à la Réserve Naturelle des Seiglats le 12 décembre 2026.",
+      "at": "2026-10-28"
     },
     "EVT_1988d70f89|EVT_8193908330": {
       "same": true,
@@ -840,6 +905,11 @@
       "same": true,
       "reason": "Même programme d'animations et visites au Château de Blandy-les-Tours pour la Toussaint.",
       "at": "2026-10-12"
+    },
+    "EVT_1ab4fee36f|EVT_5fe90237a5": {
+      "same": true,
+      "reason": "Il s'agit de la même sortie guidée organisée par l'AAFF aux Trois Pignons à la même date et heure.",
+      "at": "2026-10-28"
     },
     "EVT_1cd450b6b9|EVT_5cb728f120": {
       "same": false,
@@ -1091,10 +1161,20 @@
       "reason": "Il s'agit de la même exposition d'art de Wawapod à la Galerie Artfontainebleau.",
       "at": "2026-10-04"
     },
+    "EVT_2c2b1a967a|EVT_70ec30ef01": {
+      "same": true,
+      "reason": "Même visite guidée thématique des appartements royaux et boudoirs au Château de Fontainebleau.",
+      "at": "2026-10-28"
+    },
     "EVT_2c2b1a967a|EVT_e8f6262b65": {
       "same": false,
       "reason": "Il s'agit de deux visites guidées distinctes du château, avec des tarifs et un parcours différents (accès aux boudoirs).",
       "at": "2026-10-24"
+    },
+    "EVT_2c8a9ba05f|EVT_8218d93a97": {
+      "same": true,
+      "reason": "Il s'agit de la même promenade de l'AAFF aux Gorges d'Apremont, la différence de commune correspondant au même secteur forestier.",
+      "at": "2026-10-28"
     },
     "EVT_2c8a9ba05f|EVT_d27898b9bd": {
       "same": true,
@@ -1176,6 +1256,11 @@
       "reason": "Il s'agit du même concours hippique d'obstacles organisé par l'École Militaire d'Équitation aux mêmes dates.",
       "at": "2026-09-24"
     },
+    "EVT_39a65cd1ec|EVT_418c4d3198": {
+      "same": false,
+      "reason": "Deux événements complètement différents dans deux communes distinctes.",
+      "at": "2026-10-28"
+    },
     "EVT_39a65cd1ec|EVT_5810457acc": {
       "same": false,
       "reason": "Ce sont deux marchés de Noël distincts organisés dans deux communes différentes.",
@@ -1231,6 +1316,11 @@
       "reason": "Même brocante mensuelle du 15 novembre à Fontainebleau.",
       "at": "2026-10-15"
     },
+    "EVT_3d99c552ab|EVT_8da6688fd3": {
+      "same": false,
+      "reason": "L'une des fiches concerne une offre promotionnelle limitée de lancement, l'autre est l'événement global sur toute la saison.",
+      "at": "2026-10-28"
+    },
     "EVT_3e2913f3ff|EVT_56027dab61": {
       "same": true,
       "reason": "Il s'agit du même programme d'animations de la Toussaint au Château de Blandy.",
@@ -1240,6 +1330,11 @@
       "same": true,
       "reason": "Les deux fiches décrivent le même programme d'animations d'Halloween 'Blandy des Légendes' au Château de Blandy.",
       "at": "2026-10-15"
+    },
+    "EVT_3e2913f3ff|EVT_f9a91bfb5c": {
+      "same": true,
+      "reason": "Même programme d'animations de la Toussaint au château de Blandy-les-Tours aux mêmes dates.",
+      "at": "2026-10-28"
     },
     "EVT_3e2913f3ff|EVT_fcf3ac200d": {
       "same": false,
@@ -1275,6 +1370,11 @@
       "same": false,
       "reason": "Un atelier pratique à Thomery opposé à une exposition d'art à Fontainebleau.",
       "at": "2026-10-18"
+    },
+    "EVT_418c4d3198|EVT_5810457acc": {
+      "same": false,
+      "reason": "Deux événements différents à Barbizon : un marché de Noël et des visites/spectacles au musée.",
+      "at": "2026-10-28"
     },
     "EVT_4204b13d21|EVT_4e6974ffa4": {
       "same": false,
@@ -1335,6 +1435,11 @@
       "same": false,
       "reason": "Ce sont deux événements distincts se déroulant dans des lieux différents.",
       "at": "2026-10-18"
+    },
+    "EVT_46aa13cea9|EVT_7a6fa6265c": {
+      "same": false,
+      "reason": "Deux événements organisés dans deux villes distinctes (Melun et Fontainebleau).",
+      "at": "2026-10-28"
     },
     "EVT_4762e2cdf5|EVT_55d5b44a0c": {
       "same": false,
@@ -1410,6 +1515,11 @@
       "same": false,
       "reason": "L'une des fiches présente la programmation globale tandis que l'autre cible un spectacle précis.",
       "at": "2026-10-18"
+    },
+    "EVT_4b325d204e|EVT_c6ecc3650f": {
+      "same": false,
+      "reason": "L'une des fiches décrit un programme englobant plusieurs spectacles, tandis que l'autre concerne un spectacle spécifique.",
+      "at": "2026-10-28"
     },
     "EVT_4b4413f55b|EVT_e9f7ecccca": {
       "same": true,
@@ -1640,6 +1750,11 @@
       "same": false,
       "reason": "Ce sont deux spectacles jeune public distincts joués dans deux lieux différents.",
       "at": "2026-10-11"
+    },
+    "EVT_5926ba7941|EVT_c6ecc3650f": {
+      "same": false,
+      "reason": "Ce sont deux spectacles jeune public différents joués à l'Âne Vert Théâtre.",
+      "at": "2026-10-28"
     },
     "EVT_59eddc85af|EVT_6ca6b2449d": {
       "same": true,
@@ -1911,6 +2026,11 @@
       "reason": "Deux événements d'Halloween distincts dans deux communes différentes.",
       "at": "2026-10-24"
     },
+    "EVT_66bddc0508|EVT_a7f2b129eb": {
+      "same": false,
+      "reason": "Les lieux d'observation sont totalement distincts (Massif forestier de Fontainebleau vs RNR des Seiglats à Champagne-sur-Seine).",
+      "at": "2026-10-28"
+    },
     "EVT_67133482f1|EVT_fcf3ac200d": {
       "same": true,
       "reason": "Même jeu d'enquête théâtralisé au château de Blandy-les-Tours.",
@@ -2111,6 +2231,11 @@
       "reason": "Les deux fiches décrivent le même concours équestre militaire organisé au Grand Parquet du 8 au 11 octobre 2026.",
       "at": "2026-10-08"
     },
+    "EVT_7b2a5f2ea8|EVT_9959a69b21": {
+      "same": true,
+      "reason": "Même conférence historique organisée à Avon le 6 décembre 2026.",
+      "at": "2026-10-28"
+    },
     "EVT_7b79741d7e|EVT_93af25d735": {
       "same": false,
       "reason": "L'un est une visite guidée de l'école militaire et l'autre un concours équestre au Grand Parquet.",
@@ -2160,6 +2285,11 @@
       "same": false,
       "reason": "L'une concerne un concert précis de la soirée d'ouverture, l'autre le festival dans son ensemble.",
       "at": "2026-10-27"
+    },
+    "EVT_80eeb78c87|EVT_bc8248bb55": {
+      "same": false,
+      "reason": "Les tarifs (gratuit vs 35 €) et les détails de l'organisation indiquent deux ateliers distincts.",
+      "at": "2026-10-28"
     },
     "EVT_8193908330|EVT_8cd503182f": {
       "same": false,
@@ -2235,6 +2365,11 @@
       "same": false,
       "reason": "L'un est une déambulation musicale au château, l'autre une projection de films au cinéma.",
       "at": "2026-10-15"
+    },
+    "EVT_8218d93a97|EVT_d27898b9bd": {
+      "same": true,
+      "reason": "Même promenade guidée organisée par l'AAFF le même jour aux mêmes horaires.",
+      "at": "2026-10-28"
     },
     "EVT_82e77aacb9|EVT_eae4c86968": {
       "same": true,
@@ -2316,6 +2451,11 @@
       "reason": "Les deux fiches décrivent le même cycle de projections cinéma sur Marie-Antoinette au cinéma Ermitage aux mêmes dates.",
       "at": "2026-10-15"
     },
+    "EVT_8d353c8738|EVT_ca9d64cd79": {
+      "same": true,
+      "reason": "Même sortie naturaliste organisée par l'ANVL le 30 décembre de 10h à 12h.",
+      "at": "2026-10-28"
+    },
     "EVT_8dc9a77df7|EVT_e9b08ae25f": {
       "same": false,
       "reason": "L'une des fiches présente l'ensemble du festival tandis que l'autre est axée sur un concert précis.",
@@ -2356,6 +2496,11 @@
       "reason": "Même chantier d'entretien participatif de l'ENS Carreau Franc organisé par l'ANVL le 3 octobre 2026.",
       "at": "2026-09-24"
     },
+    "EVT_9846b92739|EVT_af3c06b76b": {
+      "same": false,
+      "reason": "Deux événements distincts dans deux villes différentes.",
+      "at": "2026-10-28"
+    },
     "EVT_98e8a4aa40|EVT_b06d886e53": {
       "same": true,
       "reason": "Il s'agit du même chantier nature bénévole d'entretien des pelouses à la Platière de Meun à la même date et heure.",
@@ -2365,6 +2510,11 @@
       "same": true,
       "reason": "C'est la même action d'entretien des pelouses organisée par l'ANVL à Achères-la-Forêt.",
       "at": "2026-10-24"
+    },
+    "EVT_98fdaa2bd6|EVT_a73f557c91": {
+      "same": true,
+      "reason": "Même programme d'animations de Noël pour les familles au Château de Fontainebleau aux mêmes dates.",
+      "at": "2026-10-28"
     },
     "EVT_99b337a3a7|EVT_a5c21898e7": {
       "same": false,
@@ -2576,6 +2726,11 @@
       "reason": "Même promenade guidée par l'AAFF à Clair Bois et au Désert d'Apremont le 22 novembre 2026.",
       "at": "2026-10-12"
     },
+    "EVT_b77684d95c|EVT_c0202c65d6": {
+      "same": false,
+      "reason": "Deux événements distincts se déroulant dans deux communes différentes.",
+      "at": "2026-10-28"
+    },
     "EVT_b8f959b063|EVT_c68f70e99f": {
       "same": true,
       "reason": "Même spectacle d'humour de Pablo Mira au Théâtre Municipal à la même date et heure.",
@@ -2650,6 +2805,11 @@
       "same": false,
       "reason": "Ce sont deux événements distincts du programme : des concerts d'un côté et une visite théâtralisée de l'autre.",
       "at": "2026-09-27"
+    },
+    "EVT_c0d64fb269|EVT_fa36914a89": {
+      "same": true,
+      "reason": "Même jeu de piste d'Halloween au Théâtre Municipal de Fontainebleau le 28 octobre 2026.",
+      "at": "2026-10-28"
     },
     "EVT_c3604d84da|EVT_e6f1988d30": {
       "same": false,

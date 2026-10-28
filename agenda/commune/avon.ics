@@ -11,8 +11,46 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_712a614d77@fontainebleaulive.fr
+DTSTAMP:20261028T000000Z
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261104
+SUMMARY:Découvrir le secteur de l'industrie
+LOCATION:Agence Avon\, Avon
+DESCRIPTION:Vous êtes à la recherche d'une nouvelle opportunité professi
+ onnelle ?\n\nOrganisateur : https://openagenda.com/semaine-industrie-2026/
+ events/decouvrir-le-secteur-de-lindustrie-2296651\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/decouvrir-le-secteur-de-l-industrie-avon-712a61
+ 4d77/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouvrir-le-secteur-de-l-indus
+ trie-avon-712a614d77/
+CATEGORIES:Culture & Ateliers
+GEO:48.41816;2.72937
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_94ccf0a917@fontainebleaulive.fr
+DTSTAMP:20261028T000000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Découvrir le secteur de l'industrie
+LOCATION:Agence Avon\, Avon
+DESCRIPTION:Vous êtes à la recherche d'une nouvelle opportunité professi
+ onnelle ?\n\nOrganisateur : https://openagenda.com/semaine-industrie-2026/
+ events/decouvrir-le-secteur-de-lindustrie-3727265\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/decouvrir-le-secteur-de-l-industrie-avon-94ccf0
+ a917/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouvrir-le-secteur-de-l-indus
+ trie-avon-94ccf0a917/
+CATEGORIES:Culture & Ateliers
+GEO:48.41816;2.72937
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_9be6481b48@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Caféministe
@@ -47,7 +85,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_988de8cc23@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Projection débat : Réinventer l'enfance
@@ -68,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4546bc32d4@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert : A visages découverts en musique
@@ -88,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_011@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël d'Avon
@@ -106,7 +144,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3763ad99a2@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Nuit de l'Orientation
@@ -126,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
@@ -146,7 +184,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fdd2caa4ab@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:La poésie de Claire Médard
@@ -165,20 +203,20 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7b2a5f2ea8@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Les séjours de Louis XIV à Fontainebleau\, les liens avec la popu
  lation du bourg d'Avon (1661 – 1714)
-LOCATION:Avon
-DESCRIPTION:Tarif : Gratuit. Inscription sur la billetterie en ligne.\n\nPr
- ésentation historique consacrée aux résidences de Louis XIV à Fontaine
- bleau et à ses relations avec les habitants d'Avon.\n\nOrganisateur : htt
- ps://www.fontainebleau-tourisme.com/fr/fiche/8022084/les-sejours-de-louis-
- xiv-a-fontainebleau-les-liens-avec-la-population-du-bourg-davon-1661-1714/
- \n\nFiche : https://fontainebleaulive.fr/evenements/les-sejours-de-louis-x
- iv-a-fontainebleau-les-liens-avec-la-p-avon-7b2a5f2ea8/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
+LOCATION:Centre culturel / Patrimoine d'Avon\, Avon
+DESCRIPTION:Horaires : En journée\n\nTarif : Gratuit (sur réservation)\n\
+ nPrésentation historique consacrée aux résidences de Louis XIV à Fonta
+ inebleau et à ses relations avec les habitants d'Avon.\n\nOrganisateur : 
+ https://www.fontainebleau-tourisme.com/fr/fiche/8022084/les-sejours-de-lou
+ is-xiv-a-fontainebleau-les-liens-avec-la-population-du-bourg-davon-1661-17
+ 14/\n\nFiche : https://fontainebleaulive.fr/evenements/les-sejours-de-loui
+ s-xiv-a-fontainebleau-les-liens-avec-la-p-avon-7b2a5f2ea8/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/les-sejours-de-louis-xiv-a-font
  ainebleau-les-liens-avec-la-p-avon-7b2a5f2ea8/
 CATEGORIES:Culture & Ateliers
@@ -190,17 +228,17 @@ UID:EVT_799c34523c@fontainebleaulive.fr
 DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
-SUMMARY:Concert : Du baroque au moderne
-LOCATION:Avon
-DESCRIPTION:Tarif : Plein tarif : 10 €\, Tarif réduit : de 4 à 6 € (T
- arif réduit A (6 €) : Personnes…\n\nConcert proposant une traversée 
- musicale de l'ère baroque à la création moderne à Avon.\n\nOrganisateu
- r : https://www.fontainebleau-tourisme.com/fr/fiche/8022110/concert-du-bar
- oque-au-moderne/\n\nFiche : https://fontainebleaulive.fr/evenements/concer
- t-du-baroque-au-moderne-avon-799c34523c/\n\nInformations collectées autom
- atiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/concert-du-baroque-au-moderne-a
- von-799c34523c/
+SUMMARY:Concert classique : Du baroque au moderne
+LOCATION:Salle de spectacle d'Avon\, Avon
+DESCRIPTION:Horaires : En journée\n\nTarif : Plein tarif : 10 € / Tarif 
+ réduit : 4 € à 6 €\n\nConcert proposant une traversée musicale de l
+ 'ère baroque à la création moderne à Avon.\n\nOrganisateur : https://w
+ ww.fontainebleau-tourisme.com/fr/fiche/8022110/concert-du-baroque-au-moder
+ ne/\n\nFiche : https://fontainebleaulive.fr/evenements/concert-classique-d
+ u-baroque-au-moderne-avon-799c34523c/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-classique-du-baroque-au
+ -moderne-avon-799c34523c/
 CATEGORIES:Scène & Spectacles
 GEO:48.413;2.72893
 TRANSP:TRANSPARENT
