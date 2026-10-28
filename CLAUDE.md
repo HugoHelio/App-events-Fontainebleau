@@ -44,6 +44,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `publier/` | **Généré.** Brouillons de posts pour les groupes Facebook locaux, par commune. Page privée : `noindex`, hors plan du site, jamais liée |
 | `widget/` | **Écrit à la main.** `widget/` = l'encart pour iframe partenaire (lit `data.json`), `widget/integrer/` = la page qui donne le code (§3.Y) |
 | `vendor/` | Leaflet et FullCalendar, copies exactes des fichiers CDN (empreintes SRI dans `index.html`, `-text` dans `.gitattributes`). Ne pas éditer |
+| `mentions-legales/` | **Écrit à la main** (item 93). Mentions légales (LCEN) et confidentialité, liées depuis tous les pieds de page. Chaque phrase doit rester vraie : un nouveau tiers (script, tuiles, formulaire) ou un nouveau programme partenaire s'y ajoute le jour même |
 | `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar. **Écrit à la main, sauf un bloc** : les suggestions sous la carte, entre `<!-- home-picks:start -->` et `<!-- home-picks:end -->`, réécrites par `generate-pages.js` (item 86) — ne pas éditer entre les marqueurs ni les supprimer. Le texte « Fontainebleau et ses environs » (`homeAbout1`/`homeAbout2`) doit rester vrai pour le pipeline |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |

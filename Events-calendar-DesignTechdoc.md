@@ -1639,6 +1639,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-12 | **Item 90 : les agendas des mairies du Châtelet-en-Brie et de Saint-Mammès lus directement** (`sources.json`, lecteur `page`, sans grounding) | Les deux mairies les plus productives du scan villages (4 et 3 trouvailles le 11/10), qui ne publie jamais seul : leurs événements arrivent désormais par une source légitime. `robots.txt` vérifiés (rien d'interdit). Le Châtelet demande 15 s entre deux requêtes, ce que le lecteur ne sait pas faire : on n'y lit qu'une page, qui porte tout. Saint-Mammès : la liste, puis chaque article (7 le 12/10) ; le motif `follow` écarte les rubriques du site, `exclude` les annonces municipales (balayeuse, collecte). Testé sans Gemini (pas de clé en local) : le premier scan dira ce que l'extraction en tire |
 | 2026-10-12 | **Invitations Awin GoWithGuide et Brickzonehub refusées, sans réponse** (section E) ; **suivi GetYourGuide** ajouté pour 83c et 85 (section C) | Aucune des deux ne vend quelque chose dans la zone à un lieu et un prix vérifiables (§3.AA) : guides privés sans offre à Fontainebleau, vitrines pour LEGO. Messages automatiques envoyés en masse. GetYourGuide reste le seul programme qui couvrirait Blandy, Courances et les activités de 85 |
 | 2026-10-28 | **Faux événement publié, puis domaines refusés (item 92)** : « Les Feux de Courances » (17/10), fiche Gemini seule publiée du 12 au 18/10, renvoyait vers `feuxdecourances.com` — billetterie d'un faux festival (domaine créé le 10/07/2026, SIRET factice, contact Gmail, paiement « communiqué par courriel »), démenti par le Domaine via le formulaire le 27/10. Liste `BLOCKED_HOSTS` dans `fetch-events.js` : refus `blocked_host` à la validation (fiches neuves **et** déjà stockées) et après résolution d'une redirection Google dans `verifyUrls()`. Id masqué aussi dans `overrides.json`. Même jour : 4 des 5 fiches Gemini des visites de Courances masquées, `EVT_7248f9339d` gardée (jours et tarifs conformes au site du Domaine) | Un masquage par id n'arrête qu'une fiche ; Gemini peut reproposer la même page sous un autre titre, donc un autre id. Liste dans le code, comme `EXCLUDED_COMMUNES` : une entrée par arnaque avérée, avec sa raison en commentaire. **Ce que la fiche a contourné** : la règle 79b ne signale que les liens vers une page d'accueil ; un faux site dédié à l'événement a l'air plus fiable qu'un vrai site municipal. Piste à décider (92) : âge du domaine (RDAP) pour une fiche Gemini seule |
+| 2026-10-28 | **Mentions légales et confidentialité (item 93)** : page `/mentions-legales/` écrite à la main (éditeur Hugues Ricour, EI Helioso ; hébergeur GitHub Pages), sans aucun script ; lien « © 2026 Fontainebleau Live · Mentions légales » dans tous les pieds de page. Confidentialité : aucun compte, aucune publicité, aucun cookie ; GoatCounter ; formulaire Google ; tiers nommés (GitHub Pages, tuiles OpenStreetMap, partenaires après le clic) ; langue et cache hors ligne restent sur l'appareil. **Pas de CGU** | Obligation LCEN (art. 6-III) pour un éditeur professionnel, renforcée par les revenus d'affiliation. Les tuiles OpenStreetMap transmettent l'IP du visiteur : à dire, même si la décision du 21/09 les garde. Pas de GoatCounter sur la page : rien à y mesurer, et une page de confidentialité sans tiers est plus simple à garder vraie. CGU non obligatoires ; leur seul contenu utile (fiabilité, affiliation) est sur la page |
 
 ---
 
@@ -1685,7 +1686,7 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 |---|---|---|---|
 | 1 | ~~**92. Faux événement signalé par le Domaine de Courances**~~ — traité le 28/10 (§7) ; reste le courriel au Domaine et le signalement PHAROS (chef de projet) | Le Domaine écrit que « Les Feux de Courances » n'existe pas et demande le retrait : c'est la confiance du site, et un tiers qui se plaint | XS |
 | 1b | **92b. Âge du domaine des fiches Gemini seules** | Le trou par lequel la fausse billetterie est passée | S |
-| 2 | **93. Mentions légales et confidentialité** | Obligation légale (LCEN art. 6-III), d'autant plus avec des revenus d'affiliation | S |
+| 2 | ~~**93. Mentions légales et confidentialité**~~ — fait le 28/10 (§7) | Obligation légale (LCEN art. 6-III), d'autant plus avec des revenus d'affiliation | S |
 | 3 | **94. Doublons restants** | Une vingtaine de fiches en 5 familles, dont des dates contradictoires | M |
 | 4 | **95. Événements manquants (comparaison avec fontyblog.fr)** | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
 | 5 | **96. Search Console : relevé** | Mesure de 80 terminée le 26/10 ; 76, 86, 87 et 91 attendent les mêmes chiffres | XS |
@@ -1715,8 +1716,13 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     (RDAP, sans clé ni dépendance) des fiches Gemini seules, et ne pas publier — ou signaler
     « dates à vérifier » — un domaine créé il y a moins de 6 mois (seuil et choix à trancher au
     moment de coder). Une requête par domaine nouveau, mise en cache. **S.**
-- [ ] **93. Page `/mentions-legales/` (mentions légales + confidentialité), liée depuis le pied de
-  page de l'accueil et des pages générées, avec « © 2026 Fontainebleau Live ».** Mentions :
+- [x] **93. Page `/mentions-legales/` — faite le 28/10 (§7).** Écrite à la main, sans script ;
+  liée depuis l'accueil (clé `legalLink`), les pages générées, `404.html` et `/widget/integrer/`.
+  **Reste, chef de projet** : (1) l'adresse de l'éditeur se limite à « 77300 Fontainebleau » — pour
+  un entrepreneur individuel, la LCEN demande une adresse complète (domicile ou domiciliation) ;
+  (2) « conservées le temps de traiter le signalement » engage : purger de temps en temps la
+  feuille de réponses du formulaire. Texte d'origine — Page `/mentions-legales/` (mentions légales + confidentialité), liée depuis le pied de
+  page de l'accueil et des pages générées, avec « © 2026 Fontainebleau Live ». Mentions :
   éditeur (dénomination, forme, siège, SIREN, TVA — à fournir par le chef de projet), directeur
   de la publication, hébergeur (GitHub Inc.). Confidentialité : formulaire de signalement
   (contact facultatif, Google Forms), GoatCounter (sans cookie), liens partenaires (cookies posés
