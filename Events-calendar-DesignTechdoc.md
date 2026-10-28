@@ -1889,6 +1889,14 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
   au rythme du rapport du 27/10, hébergement gratuit) ou dire qu'il compte le temps passé ; un
   simple lien (Ko-fi ou lien de paiement Stripe), sans widget tiers, dans « Comment le site est
   financé » sur `/nos-sources/`. Après 39.
+  - **Correction du 28/10 (chef de projet)** : le coût réel ne se limite pas à Gemini et au domaine.
+    Frais directs : Gemini (~13-15 €/mois, ~25-30 €/mois à partir de janvier, item 39), domaine
+    (GoDaddy), abonnement Claude (développement). Frais partagés avec l'activité d'Helioso :
+    connexion, bureau, ordinateur, licences, électricité, chauffage, charges de l'entreprise — et
+    le temps passé. Les ~500 €/an annoncés sont donc **un minimum**, pas une exagération.
+    Formulation proposée, toujours vraie : « Le site coûte au moins X € par an en frais directs
+    (recherche par IA, nom de domaine, outils de développement), sans compter le temps passé ni le
+    matériel. » Chiffres à fournir par le chef de projet : prix du domaine et de l'abonnement Claude.
 - [ ] **100. Rapport du 27/10 — points de suivi.**
   - « Dans les coulisses du Père Noël » : la fiche Gemini masquée le 12/10 comme « saison
     recopiée » existe bien — DATAtourisme publie 6 dates (19-24/12, fiche de l'office de
