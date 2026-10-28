@@ -83,6 +83,12 @@ const PROMPT_HEADER = [
   'Items:',
 ].join('\n');
 
+// Item 39 (28/10): this call does not search, so it reasons at a low level. Thinking is billed
+// as output, and output was 88 % of October's bill. GEMINI_THINKING_LEVEL=default leaves the
+// model's own level.
+const THINKING = process.env.GEMINI_THINKING_LEVEL || 'low';
+const thinkingConfig = () => (THINKING === 'default' ? {} : { thinkingConfig: { thinkingLevel: THINKING } });
+
 async function callGemini(prompt) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent`;
   const res = await fetch(url, {
@@ -105,6 +111,7 @@ async function callGemini(prompt) {
             required: ['i', 'en'],
           },
         },
+        ...thinkingConfig(),
       },
     }),
     signal: AbortSignal.timeout(CONFIG.timeoutMs),

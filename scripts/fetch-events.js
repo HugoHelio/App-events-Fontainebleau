@@ -79,6 +79,10 @@ const CONFIG = {
   // for this long is counted apart in the report. The proposed rule would unpublish it; the count
   // over two scans decides whether it does more good than harm.
   riskStaleDays: envInt('RISK_STALE_DAYS', 14),
+  // Item 39 (28/10): the villages scan never publishes (confirmOnly) and was ~30 % of a run's
+  // cost. It runs when its last run is this old: every other scan at the ~3-day cadence, so its
+  // reconfirmations stay well inside staleAfterDays. VILLAGES_EVERY_DAYS=0 runs it every time.
+  villagesEveryDays: envInt('VILLAGES_EVERY_DAYS', 5),
   dryRun: process.env.DRY_RUN === '1',
   // A scan question answered without any web search is discarded (03/10). ALLOW_UNGROUNDED=1 lifts that,
   // only for a run where the metadata is known to be missing while the search did happen.
@@ -767,6 +771,12 @@ function buildQuestions(scan, { today, maxDate }) {
   return out;
 }
 
+// Item 39 (28/10): this call does not search, so it reasons at a low level. Thinking is billed
+// as output, and output was 88 % of October's bill. GEMINI_THINKING_LEVEL=default leaves the
+// model's own level (the search step always keeps it: a low level did not make it search, 04/10).
+const THINKING = process.env.GEMINI_THINKING_LEVEL || 'low';
+const thinkingConfig = () => (THINKING === 'default' ? {} : { thinkingConfig: { thinkingLevel: THINKING } });
+
 /** Step 1 — grounded. Exactly the shape the 04/10 diagnostic saw search; keep it bare. */
 function searchRequestBody(question) {
   return {
@@ -781,7 +791,7 @@ function searchRequestBody(question) {
 function formatRequestBody(prompt) {
   return {
     contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: { maxOutputTokens: CONFIG.maxOutputTokens, responseMimeType: 'application/json' },
+    generationConfig: { maxOutputTokens: CONFIG.maxOutputTokens, responseMimeType: 'application/json', ...thinkingConfig() },
   };
 }
 
@@ -1414,7 +1424,8 @@ function renderSummary(stats, ctx) {
   for (const s of stats.scans) {
     const u = s.usage || {};
     const tokens = s.usage ? `${u.promptTokenCount ?? '?'} / ${u.candidatesTokenCount ?? '?'} / ${u.thoughtsTokenCount ?? 0}` : '–';
-    const status = s.error ? `❌ ${String(s.error).slice(0, 80)}`
+    const status = s.skipped ? `⏭️ pas ce run (dernier le ${s.skipped}, item 39)`
+      : s.error ? `❌ ${String(s.error).slice(0, 80)}`
       : s.discarded ? '🚫 écarté : aucune recherche'
       : s.unsearched ? `⚠️ ${s.unsearched}/${s.questions} question(s) sans recherche, écartée(s)`
       : (s.salvaged ? '⚠️ truncated, salvaged' : '✅');
@@ -1901,7 +1912,15 @@ async function main() {
   // 1. Scans ────────────────────────────────────────────────────────────
   const rawNew = [];
   let okScans = 0;
+  const lastVillages = legacyShape ? null : existingPayload.villagesScanAt;
+  let villagesScanAt = isValidIsoDate(lastVillages) ? lastVillages : undefined;
+  const villagesDue = !villagesScanAt || daysBetween(villagesScanAt, today) >= CONFIG.villagesEveryDays;
   for (const [i, scan] of SCANS.entries()) {
+    if (scan.confirmOnly && !villagesDue) {
+      stats.scans.push({ name: scan.name, skipped: villagesScanAt });
+      console.log(`⏭️  Scan "${scan.name}" skipped: last run ${villagesScanAt} (every ${CONFIG.villagesEveryDays} days)`);
+      continue;
+    }
     if (i > 0) await sleep(CONFIG.pauseBetweenScansMs);
     console.log(`🔎 Scan "${scan.name}"…`);
     try {
@@ -1916,6 +1935,7 @@ async function main() {
         continue;
       }
       okScans++;
+      if (scan.confirmOnly) villagesScanAt = today;
       rawNew.push(...(scan.confirmOnly ? events.map((e) => ({ ...e, _confirmOnly: true })) : events));
       stats.scans.push({ name: scan.name, raw: events.length, ...meta });
       console.log(`   → ${events.length} raw events${meta.salvaged ? ' (truncated output, salvaged)' : ''}`);
@@ -2362,7 +2382,7 @@ async function main() {
     : null;
   const keepStamp = !legacyShape && !eventsChanged && previousDate === today;
   const generatedAt = keepStamp ? existingGeneratedAt : new Date().toISOString();
-  const output = JSON.stringify({ schemaVersion: 2, generatedAt, windowEnd: maxDate, events: newEvents }, null, 2) + '\n';
+  const output = JSON.stringify({ schemaVersion: 2, generatedAt, windowEnd: maxDate, villagesScanAt, events: newEvents }, null, 2) + '\n';
   const changed = output !== existingText;
   stats.written = changed && !CONFIG.dryRun;
 

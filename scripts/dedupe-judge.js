@@ -213,6 +213,12 @@ fiche de recherche web est la moins fiable ; la garder en double coûte plus que
 ${pairs.map((p, i) => `PAIRE ${i}\nA : ${JSON.stringify(describe(p.a.event))}\nB : ${JSON.stringify(describe(p.b.event))}`).join('\n\n')}
 `.trim();
 
+// Item 39 (28/10): this call does not search, so it reasons at a low level. Thinking is billed
+// as output, and output was 88 % of October's bill. GEMINI_THINKING_LEVEL=default leaves the
+// model's own level.
+const THINKING = process.env.GEMINI_THINKING_LEVEL || 'low';
+const thinkingConfig = () => (THINKING === 'default' ? {} : { thinkingConfig: { thinkingLevel: THINKING } });
+
 async function callGemini(prompt) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent`;
   let lastErr;
@@ -233,6 +239,7 @@ async function callGemini(prompt) {
                 required: ['i', 'same'],
               },
             },
+            ...thinkingConfig(),
           },
         }),
         signal: AbortSignal.timeout(CONFIG.timeoutMs),

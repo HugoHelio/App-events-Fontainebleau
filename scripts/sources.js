@@ -560,6 +560,12 @@ const EVENT_SCHEMA = {
   },
 };
 
+// Item 39 (28/10): this call does not search, so it reasons at a low level. Thinking is billed
+// as output, and output was 88 % of October's bill. GEMINI_THINKING_LEVEL=default leaves the
+// model's own level.
+const THINKING = process.env.GEMINI_THINKING_LEVEL || 'low';
+const thinkingConfig = () => (THINKING === 'default' ? {} : { thinkingConfig: { thinkingLevel: THINKING } });
+
 async function extractWithGemini(prompt, schema = EVENT_SCHEMA) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent`;
   let lastErr;
@@ -572,7 +578,7 @@ async function extractWithGemini(prompt, schema = EVENT_SCHEMA) {
         // available precisely because the search tool is absent (§3.A).
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: 'application/json', responseSchema: schema },
+          generationConfig: { responseMimeType: 'application/json', responseSchema: schema, ...thinkingConfig() },
         }),
         signal: AbortSignal.timeout(CONFIG.llmTimeoutMs),
       });
