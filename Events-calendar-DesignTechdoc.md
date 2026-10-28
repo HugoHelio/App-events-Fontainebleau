@@ -1706,8 +1706,11 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
   - Répondre au Domaine ? Le formulaire ne donne pas de contact ; `info@domainedecourances.com`
     (le site précise qu'aucun message téléphonique n'est pris). Proposition : fiche retirée,
     domaine bloqué, excuses — et leur signaler que le faux site vend des places en leur nom.
-  - Signaler `feuxdecourances.com` sur [internet-signalement.gouv.fr](https://www.internet-signalement.gouv.fr)
-    (PHAROS) ou à l'hébergeur : il encaisse au nom d'un tiers.
+  - [x] Signaler `feuxdecourances.com` — **fait le 28/10** sur PHAROS
+    (internet-signalement.gouv.fr) et chez Cloudflare (registrar et hébergeur du domaine).
+  - Vérifié au scan forcé du 28/10 : les 7 fiches masquées ont disparu. **Mais une 6ᵉ variante
+    Gemini de Courances est apparue** (`EVT_3ac5e09c43`), masquée le même jour : un masquage par
+    id ne tient pas contre un titre reformulé — c'est la famille 1 de l'item 94.
   - [ ] **92b. Prévention — retenue le 28/10 par le chef de projet** : vérifier l'âge du domaine
     (RDAP, sans clé ni dépendance) des fiches Gemini seules, et ne pas publier — ou signaler
     « dates à vérifier » — un domaine créé il y a moins de 6 mois (seuil et choix à trancher au
