@@ -1638,6 +1638,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-12 | **Item 90, suite : Héricy, Bourron-Marlotte et Milly-la-Forêt lus directement** (`sources.json`). **Héricy par son export iCalendar** : dates exactes sans modèle. Le lecteur `ics` gagne deux choses, seulement pour un flux qui en a besoin : `link` (une ancre par événement sur la page d'agenda quand le flux n'a pas de lien, comme `ccmsl`) et, pour un flux sans catégorie, un texte pour enrich() (titre, heure, lieu, description débarrassée du HTML) ; la description brute d'un tel flux n'est jamais publiée (celle d'Héricy est une affiche en image). Grand Parquet, qui a sa catégorie, est lu comme avant. **Bourron-Marlotte et Milly** : lecteur `page` + `follow` | Les trois mairies suivantes de la liste du scan villages. Exclusions par titre, même règle que `ccmsl` : rendez-vous administratifs (conseil municipal, commémorations, don du sang, café du maire), sorties du service jeunesse hors de la commune (zoo, Nigloland), groupes de parole (cafés des aidants, café poussette) et avis municipaux (travaux, coupures). Relevé du 12/10, sans Gemini : Héricy 11 sorties (4 écartées), Bourron 9 à venir, Milly 14 articles à venir |
 | 2026-10-12 | **Item 90 : les agendas des mairies du Châtelet-en-Brie et de Saint-Mammès lus directement** (`sources.json`, lecteur `page`, sans grounding) | Les deux mairies les plus productives du scan villages (4 et 3 trouvailles le 11/10), qui ne publie jamais seul : leurs événements arrivent désormais par une source légitime. `robots.txt` vérifiés (rien d'interdit). Le Châtelet demande 15 s entre deux requêtes, ce que le lecteur ne sait pas faire : on n'y lit qu'une page, qui porte tout. Saint-Mammès : la liste, puis chaque article (7 le 12/10) ; le motif `follow` écarte les rubriques du site, `exclude` les annonces municipales (balayeuse, collecte). Testé sans Gemini (pas de clé en local) : le premier scan dira ce que l'extraction en tire |
 | 2026-10-12 | **Invitations Awin GoWithGuide et Brickzonehub refusées, sans réponse** (section E) ; **suivi GetYourGuide** ajouté pour 83c et 85 (section C) | Aucune des deux ne vend quelque chose dans la zone à un lieu et un prix vérifiables (§3.AA) : guides privés sans offre à Fontainebleau, vitrines pour LEGO. Messages automatiques envoyés en masse. GetYourGuide reste le seul programme qui couvrirait Blandy, Courances et les activités de 85 |
+| 2026-10-28 | **Faux événement publié, puis domaines refusés (item 92)** : « Les Feux de Courances » (17/10), fiche Gemini seule publiée du 12 au 18/10, renvoyait vers `feuxdecourances.com` — billetterie d'un faux festival (domaine créé le 10/07/2026, SIRET factice, contact Gmail, paiement « communiqué par courriel »), démenti par le Domaine via le formulaire le 27/10. Liste `BLOCKED_HOSTS` dans `fetch-events.js` : refus `blocked_host` à la validation (fiches neuves **et** déjà stockées) et après résolution d'une redirection Google dans `verifyUrls()`. Id masqué aussi dans `overrides.json`. Même jour : 4 des 5 fiches Gemini des visites de Courances masquées, `EVT_7248f9339d` gardée (jours et tarifs conformes au site du Domaine) | Un masquage par id n'arrête qu'une fiche ; Gemini peut reproposer la même page sous un autre titre, donc un autre id. Liste dans le code, comme `EXCLUDED_COMMUNES` : une entrée par arnaque avérée, avec sa raison en commentaire. **Ce que la fiche a contourné** : la règle 79b ne signale que les liens vers une page d'accueil ; un faux site dédié à l'événement a l'air plus fiable qu'un vrai site municipal. Piste à décider (92) : âge du domaine (RDAP) pour une fiche Gemini seule |
 
 ---
 
@@ -1672,6 +1673,102 @@ fermée, fiches indexées par Google. Search Console (22-27/09) : 0 → 35 clics
 moyenne 7, **87 % mobile**, tout le trafic sur les fiches, recherches génériques (« que faire à
 Fontainebleau ») en position 46-87. `/ce-week-end/` est la page la plus vue. Comparatif des
 sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
+
+**Reprise du 28/10 — un sujet à la fois, dans l'ordre ci-dessous (proposé, à confirmer par le
+chef de projet).** État au scan du 27/10 : **424 événements** (sites 236, Gemini 106, Fnac 29,
+OpenAgenda 28, DATAtourisme 25). Workflows tous verts du 12/10 au 28/10. Plus de 1 500 visites
+(GoatCounter, à préciser : total ou par mois). Fait le 28/10, hors liste : le marché hebdomadaire
+de Fontainebleau (`EVT_06db7e9a2c`) et le « Marché Saint-Louis » (`EVT_88a89edac0`), deux fiches
+Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23).
+
+| Ordre | Item | Pourquoi à ce rang | Effort |
+|---|---|---|---|
+| 1 | ~~**92. Faux événement signalé par le Domaine de Courances**~~ — traité le 28/10 (§7) ; reste le courriel au Domaine et le signalement PHAROS (chef de projet) | Le Domaine écrit que « Les Feux de Courances » n'existe pas et demande le retrait : c'est la confiance du site, et un tiers qui se plaint | XS |
+| 1b | **92b. Âge du domaine des fiches Gemini seules** | Le trou par lequel la fausse billetterie est passée | S |
+| 2 | **93. Mentions légales et confidentialité** | Obligation légale (LCEN art. 6-III), d'autant plus avec des revenus d'affiliation | S |
+| 3 | **94. Doublons restants** | Une vingtaine de fiches en 5 familles, dont des dates contradictoires | M |
+| 4 | **95. Événements manquants (comparaison avec fontyblog.fr)** | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
+| 5 | **96. Search Console : relevé** | Mesure de 80 terminée le 26/10 ; 76, 86, 87 et 91 attendent les mêmes chiffres | XS |
+| 6 | **97. GoatCounter : relevé du trafic** | Le seuil de §3.AB (~5 000 visites/mois) décide des revenus hors affiliation | XS |
+| 7 | **39. Coût Google Cloud** (existant, section B) | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
+| 8 | **98. Plus de mesure pour monétiser ?** | Décision, rien à coder si la réponse est non | XS |
+| 9 | **99. Lien de soutien (dons)** | Après 39 : le coût affiché doit être le vrai | XS |
+| 10 | **100. Lecture du rapport du 27/10** | Les points de suivi qui ne rentrent dans aucun item ci-dessus | XS |
+
+- [ ] **92. « Les Feux de Courances – Festival Médiéval Immersif » (`EVT_426d83189b`) — signalé
+  le 27/10 par le formulaire** : « Ce site est frauduleux, aucun événement festif médiéval n'est
+  organisé au Domaine de Courances. Le Domaine décline toute responsabilité et vous invite à
+  supprimer ce faux événement. » **Traité le 28/10 (§7)** : fiche Gemini seule, publiée du 12 au
+  18/10 (sortie seule une fois la date passée), lien vers une fausse billetterie ; id masqué et
+  domaine refusé (`BLOCKED_HOSTS`). Courances : 4 variantes masquées, `EVT_7248f9339d` gardée.
+  Lecteur `courances` en pause depuis le 05/10 : site Wix rendu en JavaScript, il le reste.
+  **Reste, chef de projet** :
+  - Répondre au Domaine ? Le formulaire ne donne pas de contact ; `info@domainedecourances.com`
+    (le site précise qu'aucun message téléphonique n'est pris). Proposition : fiche retirée,
+    domaine bloqué, excuses — et leur signaler que le faux site vend des places en leur nom.
+  - Signaler `feuxdecourances.com` sur [internet-signalement.gouv.fr](https://www.internet-signalement.gouv.fr)
+    (PHAROS) ou à l'hébergeur : il encaisse au nom d'un tiers.
+  - [ ] **92b. Prévention — retenue le 28/10 par le chef de projet** : vérifier l'âge du domaine
+    (RDAP, sans clé ni dépendance) des fiches Gemini seules, et ne pas publier — ou signaler
+    « dates à vérifier » — un domaine créé il y a moins de 6 mois (seuil et choix à trancher au
+    moment de coder). Une requête par domaine nouveau, mise en cache. **S.**
+- [ ] **93. Page `/mentions-legales/` (mentions légales + confidentialité), liée depuis le pied de
+  page de l'accueil et des pages générées, avec « © 2026 Fontainebleau Live ».** Mentions :
+  éditeur (dénomination, forme, siège, SIREN, TVA — à fournir par le chef de projet), directeur
+  de la publication, hébergeur (GitHub Inc.). Confidentialité : formulaire de signalement
+  (contact facultatif, Google Forms), GoatCounter (sans cookie), liens partenaires (cookies posés
+  chez le partenaire), aucun compte, aucune publicité. **Pas de CGU** : non obligatoires, un
+  paragraphe sur la fiabilité des données et l'affiliation suffit. Benchmark du chef de projet le
+  28/10 : les sites comparables affichent tous ces liens en pied de page.
+- [ ] **94. Doublons restants — relevé du 28/10 sur `data.json` du 27/10.** Une fiche par séance
+  est voulue (§3.I) ; ne comptent ici que les paires qui se chevauchent. Cinq familles :
+  1. **Gemini qui se répète** : Courances ×5 (voir 92), concert Tyreek McDole ×3 (Jazz au
+     Théâtre), appartements royaux ×2, initiation à la bryologie ×2, Nocturne du Pays de Nemours
+     ×2, « Les oiseaux en hiver » ×2 (Fontainebleau / Champagne-sur-Seine).
+  2. **Gemini contre un site** : Boudoirs de Marie-Antoinette, expo Christoff Debusschere
+     (Barbizon), visite « Biodiversité » du 22/11.
+  3. **Une fiche « période » qui couvre ses propres séances** : École militaire d'équitation
+     (10/10-19/12 + 4 dates), « Images dirigées » à Melun (20-27/01 + 3 dates), « Les insomnies de
+     Molière » (31/10-01/11 + 01/11).
+  4. **Deux fiches de la même source** : Meeting d'Automne TDA, semaine de réduction des déchets
+     (Moret), illuminations d'Héricy, Halloween de l'agenda CCMSL publié à Montigny **et** à Moret.
+  5. **Dates contradictoires** : marché de Noël de Fontainebleau — office de tourisme 11-13/12,
+     Gemini 12-14/12 (« Grand Marché de Noël de la Cité Impériale ») et 18-20/12.
+  Méthode : d'abord comprendre pourquoi le juge (§3.W2) et `isSameOccurrence()` laissent passer
+  les familles 1 à 3, corriger la règle, et ne masquer à la main que le reste.
+- [ ] **95. Événements manquants — comparer avec fontyblog.fr** (agenda :
+  `https://fontyblog.fr/en/all-events-4/`, centré sur Fontainebleau). Exemple relevé le 28/10 :
+  **« Chasse aux bonbons et concours de déguisements » de l'UCAIF** (union des commerçants), sam.
+  31/10 à 14 h 30, place de la République — absent du site. À faire : relever leurs événements
+  sur 3 semaines, compter ceux qui nous manquent, et pour chacun dire quelle source aurait dû le
+  trouver. Piste probable : beaucoup viennent de l'agenda de la Ville, que notre robot ne lit
+  pas (HTTP 418, 72c). Ne pas lire fontyblog lui-même comme source (contenu d'un tiers, rédigé).
+- [ ] **96. Search Console — relevé à faire par le chef de projet**, avec les e-mails reçus en
+  octobre. Pages à relever : voir la réponse de la session du 28/10 (Performances, Pages,
+  Sitemaps, Améliorations).
+- [ ] **97. GoatCounter — relevé** : visites par mois depuis septembre, pages les plus vues,
+  sources (Google, Facebook, direct), clics `booking-click`, `event-click`, `visit-click`.
+- [ ] **98. Plus de mesure en vue de monétiser ? — recommandation : non.** Les partenaires
+  comptent leurs ventes, GoatCounter compte déjà visites et clics ; Google Analytics ou des pixels
+  publicitaires imposeraient un bandeau de cookies (CNIL) et casseraient la décision du 21/09. À
+  trancher par le chef de projet.
+- [ ] **99. Lien « Soutenir le site »** (idée du chef de projet, 28/10 : coût de maintenance
+  annoncé ~500 €/an). Réserves : la structure est une entreprise, un « don » y est un revenu
+  déclaré, sans reçu fiscal ; **le coût affiché doit être vrai** (domaine ~10 €/an, Gemini ~110 $/an
+  au rythme du rapport du 27/10, hébergement gratuit) ou dire qu'il compte le temps passé ; un
+  simple lien (Ko-fi ou lien de paiement Stripe), sans widget tiers, dans « Comment le site est
+  financé » sur `/nos-sources/`. Après 39.
+- [ ] **100. Rapport du 27/10 — points de suivi.**
+  - « Dans les coulisses du Père Noël » : la fiche Gemini masquée le 12/10 comme « saison
+    recopiée » existe bien — DATAtourisme publie 6 dates (19-24/12, fiche de l'office de
+    tourisme). Le masquage visait un doublon, pas une erreur : corriger la note dans
+    `overrides.json`, et retenir que le contrôle de la Ville (89) ne voit pas tout le Théâtre.
+  - Contrôle du flux de la Ville (89) : dû le 26/10, pas fait.
+  - Sites à 0 fiche : `anvl`, `moret`, `briardises`, `grezarts` — saison vide ou lecteur cassé ?
+  - Fnac : 27 dates, toutes déjà connues, aucune nouvelle (premier scan : 18 nouvelles).
+  - 5 « disparus d'un flux », dont « Festival musical : Jazz au Théâtre » (26/11, vu le 04/10).
+  - Scan villages : 12 non publiés à juger (90).
+  - 28 fiches « dates à vérifier » non revues depuis 14 jours (règle de 89 à décider).
 
 **Ordre de travail décidé le 05/10 — monétisation (A2), un item par session, dans cet ordre.**
 L'ordre du 04/10 (croissance, ci-dessous) est terminé ; il ne reste que des mesures côté chef de

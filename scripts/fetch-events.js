@@ -365,6 +365,21 @@ function cleanUrl(v) {
   }
 }
 
+// Sites never published, whatever the title the model gives the event (item 92). A hidden id in
+// overrides.json only stops one record; the same fake page found again comes back under a new id.
+// feuxdecourances.com (28/10): a fake medieval festival with online "booking", denied by the
+// Domaine de Courances, published by the culture scan from 12/10 to 18/10.
+const BLOCKED_HOSTS = ['feuxdecourances.com'];
+
+function isBlockedHost(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase().replace(/^www\./, '');
+    return BLOCKED_HOSTS.some((h) => host === h || host.endsWith(`.${h}`));
+  } catch {
+    return false;
+  }
+}
+
 function isGroundingRedirect(url) {
   try {
     const u = new URL(url);
@@ -513,6 +528,7 @@ function validateEvent(raw, { today, maxDate }) {
 
   const url = cleanUrl(raw.url);
   if (!url) return fail('invalid_url');
+  if (isBlockedHost(url)) return fail('blocked_host');
 
   const city = canonicalCommune(cleanText(raw.city, 80));
   const locationName = cleanText(raw.locationName, 160);
@@ -1178,6 +1194,8 @@ async function verifyUrls(records, today, dead = { entries: {}, dirty: false }) 
       const finalUrl = res.status === 'ok' ? cleanUrl(res.finalUrl) : null;
       if (finalUrl && !isGroundingRedirect(finalUrl)) e.url = finalUrl;
       else res.status = 'dead';
+      // validateEvent() only saw the redirect link, never the site behind it.
+      if (isBlockedHost(e.url)) { rec.drop = 'blocked_host'; return; }
     }
 
     e.urlCheckedAt = today;
@@ -2225,6 +2243,7 @@ async function main() {
   for (const rec of all) {
     if (rec.drop === 'dead_url') { stats.deadUrls++; continue; }
     if (rec.drop === 'override_hidden') continue;
+    if (rec.drop === 'blocked_host') { bump(stats.rejected, 'blocked_host'); continue; }
     // Applied here, after geocoding: an event is judged on where it actually is, not on the
     // coordinates a source claimed before we resolved them.
     const km = distanceKm(rec.event.lat, rec.event.lng);
