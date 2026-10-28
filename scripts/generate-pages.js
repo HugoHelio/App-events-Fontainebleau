@@ -178,8 +178,8 @@ footer a{color:var(--muted)}
 // strings only (headings, filters, buttons, footer), never the event list. French is what the
 // page serves and what search engines index; LANG_SCRIPT applies the English when the visitor
 // chose it (the home page saves the choice, the FR/EN switch here too) or the address says
-// ?lang=en. Unlike the home page, the browser's language is NOT used: Googlebot renders in
-// English and would index these French pages in English. A data-en value is HTML built from our
+// ?lang=en. The browser's language is NOT used, here as on the home page since 28/10 (item 96):
+// Googlebot renders in English and would index these French pages in English. A data-en value is HTML built from our
 // strings, with any data in it escaped; and data-en elements are never nested (the swap
 // replaces innerHTML).
 const en = (html) => ` data-en="${esc(html)}"`;

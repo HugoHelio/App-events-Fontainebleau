@@ -1951,8 +1951,9 @@
     }
 
     // ── Language switch ─────────────────────────────────────────────────────
-    // Order of preference: ?lang= in the URL (shareable), then the visitor's last choice,
-    // then the browser's own language, then French.
+    // Order of preference: ?lang= in the URL (shareable), then the visitor's last choice, then
+    // French. The browser's language is not read (item 96, 28/10): Googlebot renders in en-US,
+    // and Google was showing the English title for the home page.
     function initialLang() {
       const fromUrl = new URLSearchParams(location.search).get('lang');
       if (fromUrl === 'fr' || fromUrl === 'en') return fromUrl;
@@ -1960,7 +1961,7 @@
         const saved = localStorage.getItem('lang');
         if (saved === 'fr' || saved === 'en') return saved;
       } catch (e) { /* private mode / blocked storage: fall through */ }
-      return String(navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+      return 'fr';
     }
 
     // Item 86: the suggestions under the map are plain HTML written by generate-pages.js, for
@@ -1990,8 +1991,8 @@
 
     function applyLanguage() {
       document.documentElement.lang = lang;
-      // Saved even when it came from the browser: the weekend and theme pages read it, and they
-      // do not look at the browser's language themselves (see "English" in generate-pages.js).
+      // Saved even when it is the default: the weekend and theme pages read it (see "English" in
+      // generate-pages.js).
       try { localStorage.setItem('lang', lang); } catch (e) { /* not fatal */ }
       document.title = t('docTitle');
 

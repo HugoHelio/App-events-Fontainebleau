@@ -363,8 +363,10 @@ write path into published data.
 
 ### L. English interface (item 33, phase 1, September 21, 2026)
 
-A FR/EN switch in the header, `?lang=` in the URL, the choice remembered per visitor, and the
-browser's own language as the initial guess. 48 interface strings in a `STRINGS` dictionary.
+A FR/EN switch in the header, `?lang=` in the URL, the choice remembered per visitor, then
+French. (Until 28/10 the browser's own language was the initial guess: dropped, item 96 —
+Googlebot renders in en-US and Google showed the home page's English title.) 48 interface
+strings in a `STRINGS` dictionary.
 
 **Event data stays French, deliberately.** Titles, descriptions, schedules and prices are shown
 exactly as the organisers publish them. A translated title cannot be matched back to the real
@@ -1642,6 +1644,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-10-28 | **Robot local pour l'agenda de la Ville (item 101, mise en œuvre)** : script Node lancé par une tâche planifiée Windows, clone dédié, copie JSON commitée, repli du lecteur `city-rss` limité à 35 jours. Pas d'agent Claude | Le chef de projet ne veut aucun geste manuel. Lire un flux et pousser un fichier est mécanique : un script sans modèle est gratuit, déterministe et plus sûr qu'un agent. Clone dédié : jamais de conflit avec la copie de travail. 35 jours : deux cycles de 15 jours de marge, pas au-delà, pour ne pas publier des annulations. Tâche quotidienne + garde de 14 jours plutôt qu'un déclencheur tous les 15 jours : un PC éteint le jour J rattrape le lendemain |
 | 2026-10-28 | **Agenda de la Ville lu depuis le poste du chef de projet (item 101)** — décision du chef de projet, qui revient sur « pas de contournement » du 24/09 (§3.Z2) | Mesure de l'item 95 : 16 des 22 événements absents par rapport à fontyblog sont dans le flux de la Ville. Le flux est public et publié pour être repris ; le blocage vise les adresses des hébergeurs, pas les lecteurs. Garde-fous : robot identifié sous son nom, une lecture par mois au plus, lien vers chaque fiche de fontainebleau.fr, demande d'exception maintenue (72c) |
 | 2026-10-28 | **Doublons restants (item 94)** : (A) `fetch-events.js`, après le juge : une fiche — toute source, neuve ou stockée — dont les dates tombent dans une période liée à **la même page** (`pageKey()`), titre en correspondance **stricte**, est rangée dans la période (`enrichFrom`, dates de la période intactes), ligne « 📎 » du rapport. (B) `dedupe-judge.js` : une période et un jour qu'elle contient deviennent une paire candidate. (C) Paire Gemini seul / source vérifiée **dans la même commune** : le prompt dit « dans le doute, true », la fiche vérifiée l'emporte (`preferred()`) et garde ses dates ; les « false » déjà en cache pour ces paires sont redemandés une fois (`v: 2`). À la fusion d'une période et d'un jour de même confiance, la période est gardée (`mergeInto()` aurait recopié la date de fin du jour) | Relevé du 28/10 : ~20 doublons en 5 familles. La règle « Sauvages ! » ne rangeait que les fiches **neuves** des **sites** ; l'École militaire (période dont les horaires listent chaque samedi + 4 samedis) faisait 5 cartes. Correspondance stricte seulement : « Cycle de conférences Marie-Antoinette » partage la page d'une série de visites de 3 mois et y aurait perdu ses dates. Asymétrie voulue par le chef de projet : fusionner à tort ne perd qu'une fiche Gemini, la moins fiable. Même commune exigée : le « Halloween » générique d'un village aurait avalé les soirées d'autres communes. Une fiche vérifiée ne prend jamais les dates de Gemini (règle de §3.Z2 étendue au juge) |
+| 2026-10-28 | **Accueil : la langue du navigateur n'est plus lue (item 96)** : `initialLang()` = `?lang=` → choix enregistré → français. Revient sur la décision du 21/09 | Relevé Search Console du 28/10 : Google affichait le titre anglais de l'accueil (« What's on in Fontainebleau? »), Googlebot rendant la page en en-US — il indexait donc l'accueil en anglais, alors que la requête visée est « que faire à Fontainebleau ». Même règle que les pages générées depuis le 04/10. Le visiteur anglophone (INSEAD) clique une fois sur EN, et son choix est retenu ; le partage en anglais garde `?lang=en`. Décision du chef de projet, préférée à une pastille « Read in English » pour les navigateurs non francophones |
 | 2026-10-28 | **Mentions légales et confidentialité (item 93)** : page `/mentions-legales/` écrite à la main (éditeur Hugues Ricour, EI Helioso ; hébergeur GitHub Pages), sans aucun script ; lien « © 2026 Fontainebleau Live · Mentions légales » dans tous les pieds de page. Confidentialité : aucun compte, aucune publicité, aucun cookie ; GoatCounter ; formulaire Google ; tiers nommés (GitHub Pages, tuiles OpenStreetMap, partenaires après le clic) ; langue et cache hors ligne restent sur l'appareil. **Pas de CGU** | Obligation LCEN (art. 6-III) pour un éditeur professionnel, renforcée par les revenus d'affiliation. Les tuiles OpenStreetMap transmettent l'IP du visiteur : à dire, même si la décision du 21/09 les garde. Pas de GoatCounter sur la page : rien à y mesurer, et une page de confidentialité sans tiers est plus simple à garder vraie. CGU non obligatoires ; leur seul contenu utile (fiabilité, affiliation) est sur la page |
 | 2026-10-28 | **Âge du domaine des liens (item 92b)** : `scripts/domain-age.js`, après la vérification des liens (une redirection Google est alors résolue). Une fiche sans `source` (Gemini seul) dont le domaine enregistrable a moins de 120 jours reçoit `drop = 'young_domain'` : non publiée, listée dans le rapport, publiée d'elle-même quand une autre source la confirme. Dates de création lues par RDAP (fichier d'amorçage IANA → registre du TLD), cache `domain-age-cache.json` à vie, échec retenté après 7 jours, jamais bloquant. **`fontainebleaulive.fr` ajouté à `BLOCKED_HOSTS`** | Le trou de l'item 92 : 79b ne voit que les liens vers une page d'accueil. **Ne pas publier plutôt que signaler** (chef de projet) : une fausse billetterie signalée reste un lien cliquable vers une arnaque. Seuil de 4 mois (chef de projet) : le faux site avait 94 jours. Domaine enregistrable sans la Public Suffix List (zéro dépendance) : liste courte des suffixes de second niveau utiles (`gouv.fr`, `asso.fr`…). L'essai a trouvé une fiche Gemini dont le seul lien était notre accueil : une source qui se cite elle-même n'est pas une preuve, et la règle d'âge cessera de la voir en janvier — d'où le blocage permanent |
 
@@ -1689,11 +1692,11 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
 | 1 | ~~**92. Faux événement signalé par le Domaine de Courances**~~ — traité le 28/10 (§7) ; reste le courriel au Domaine et le signalement PHAROS (chef de projet) | Le Domaine écrit que « Les Feux de Courances » n'existe pas et demande le retrait : c'est la confiance du site, et un tiers qui se plaint | XS |
+| 1a | ~~**96. Search Console : relevé**~~ — fait le 28/10 (§7) : accueil indexé en anglais, corrigé ; reste la comparaison 80 avant/après | Mesure de 80 terminée le 26/10 ; 76, 86, 87 et 91 attendent les mêmes chiffres | XS |
 | 1b | ~~**92b. Âge du domaine des fiches Gemini seules**~~ — fait le 28/10 (§7) | Le trou par lequel la fausse billetterie est passée | S |
 | 2 | ~~**93. Mentions légales et confidentialité**~~ — fait le 28/10 (§7) | Obligation légale (LCEN art. 6-III), d'autant plus avec des revenus d'affiliation | S |
 | 3 | ~~**94. Doublons restants**~~ — fait le 28/10 (§7) ; reste la vérification au prochain scan | Une vingtaine de fiches en 5 familles, dont des dates contradictoires | M |
 | 4 | ~~**95. Événements manquants (comparaison avec fontyblog.fr)**~~ — mesuré le 28/10 : la cause est l'agenda de la Ville (72c) | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
-| 5 | **96. Search Console : relevé** | Mesure de 80 terminée le 26/10 ; 76, 86, 87 et 91 attendent les mêmes chiffres | XS |
 | 6 | **97. GoatCounter : relevé du trafic** | Le seuil de §3.AB (~5 000 visites/mois) décide des revenus hors affiliation | XS |
 | 7 | **39. Coût Google Cloud** (existant, section B) | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
 | 8 | **98. Plus de mesure pour monétiser ?** | Décision, rien à coder si la réponse est non | XS |
@@ -1810,9 +1813,32 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
   - La relance de la mairie (72c, 03/11) reste utile : seule l'exception donne une lecture
     quotidienne. Le jour où `ville-fontainebleau` passe ✅, la copie s'arrête.
   - Mettre à jour la note de `ville-fontainebleau` dans `sources.json` et `/nos-sources/`.
-- [ ] **96. Search Console — relevé à faire par le chef de projet**, avec les e-mails reçus en
-  octobre. Pages à relever : voir la réponse de la session du 28/10 (Performances, Pages,
-  Sitemaps, Améliorations).
+- [ ] **96. Search Console — relevé du 28/10 (§7).** 3 mois : **1 690 clics, 20 100
+  impressions** (CTR 8,4 %) ; 28 derniers jours : 1 580 clics (+1 224 %), 18 600 impressions,
+  France 99 %. Pages : **760 indexées**, 204 non indexées — alternative canonique 83, 404 59
+  (fiches terminées), noindex 9 (anciennes adresses redirigées), **« Découverte, non indexée » 46**
+  (51 le 12/10), « Explorée, non indexée » 7 : toutes voulues sauf les deux dernières. Sitemap lu le
+  27/10, 442 pages. Événements : 57 valides, 0 erreur ; avertissements seulement (`performer` 57,
+  `offers` 44, `organizer` 29, `organizer.url` 28, `availability`/`validFrom` 13, `description`
+  11). Pages qui amènent le trafic : `/sorties/halloween/` 188 clics, `/sorties/brame-du-cerf/` 83,
+  fiche du Championnat CCE 75, `/sorties/vacances-toussaint/` 61, accueil 43. Requêtes : « brame du
+  cerf fontainebleau 2026 » 39/76, « fontainebleau live » 36/68, « halloween fontainebleau »
+  31/197, « marche de noel fontainebleau 2026 » 21/102, **« le bouchon de nemours 2026 » 10/390**
+  (événement passé, piste « événements annuels » de 87).
+  - [x] **Trouvé et corrigé le 28/10 : Google montrait l'accueil en anglais** (« What's on in
+    Fontainebleau? ») — `initialLang()` lisait la langue du navigateur, et Googlebot rend en en-US.
+    Français par défaut, comme les pages générées depuis le 04/10 (§7).
+  - **Décisions tirées du relevé** : 81 marche (Halloween, Toussaint, brame) → Noël est le suivant
+    (`/sorties/marches-de-noel/` existe ; la requête fait déjà 102 impressions). 91 **pas encore** :
+    « Découverte, non indexée » baisse (51 → 46) — revoir fin novembre. Avertissements Événements :
+    rien à faire, ce ne sont pas des erreurs, et inventer un `performer` serait contraire à §5.
+    Mée-sur-Seine (80) : peut partir, la période de mesure est close.
+  - [ ] **Reste, chef de projet** : (1) la comparaison de 80 — Performances → Résultats de
+    recherche, Date → « Comparer » 22/09-04/10 contre 05/10-26/10, filtre « Page » contenant
+    `/evenements/`, clics, impressions, CTR et position ; (2) 76/86/87 : filtre « Requête »
+    contenant « que faire », onglet « Pages » (accueil, `/que-faire/`, `/que-faire/fontainebleau/`)
+    ; (3) dans 2-3 semaines, vérifier que le titre de l'accueil est revenu en français (inspection
+    de l'URL → « Demander une indexation » accélère) ; (4) les e-mails d'octobre, non relevés.
 - [ ] **97. GoatCounter — relevé** : visites par mois depuis septembre, pages les plus vues,
   sources (Google, Facebook, direct), clics `booking-click`, `event-click`, `visit-click`.
 - [ ] **98. Plus de mesure en vue de monétiser ? — recommandation : non.** Les partenaires
