@@ -1833,9 +1833,13 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     « Découverte, non indexée » baisse (51 → 46) — revoir fin novembre. Avertissements Événements :
     rien à faire, ce ne sont pas des erreurs, et inventer un `performer` serait contraire à §5.
     Mée-sur-Seine (80) : peut partir, la période de mesure est close.
-  - [ ] **Reste, chef de projet** : (1) la comparaison de 80 — Performances → Résultats de
-    recherche, Date → « Comparer » 22/09-04/10 contre 05/10-26/10, filtre « Page » contenant
-    `/evenements/`, clics, impressions, CTR et position ; (2) 76/86/87 : filtre « Requête »
+  - [x] **Mesure de 80, relevée le 28/10** (pages contenant `/evenements/`) : 22/09-04/10 (13 j) :
+    333 clics, 6 630 impressions, **CTR 5 %**, position 7,7 ; 05/10-26/10 (22 j) : 956 clics,
+    12 400 impressions, **CTR 7,7 %**, position 6,7. Par jour : 26 → 43 clics. **Les nouveaux
+    titres restent** ; pas de deuxième variable à essayer. Réserve : la position a gagné un rang
+    sur la même période, ce qui explique une part du CTR. Correctif poussé et indexation de
+    l'accueil demandée le 28/10.
+  - [ ] **Reste, chef de projet** : (2) 76/86/87 : filtre « Requête »
     contenant « que faire », onglet « Pages » (accueil, `/que-faire/`, `/que-faire/fontainebleau/`)
     ; (3) dans 2-3 semaines, vérifier que le titre de l'accueil est revenu en français (inspection
     de l'URL → « Demander une indexation » accélère) ; (4) les e-mails d'octobre, non relevés.
