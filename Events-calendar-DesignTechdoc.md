@@ -1928,7 +1928,33 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
   - **Benchmarks, à vérifier avant de décider** : bleau.info (site d'escalade de Fontainebleau, financé par les dons de ses utilisateurs) ; les agendas de ville à newsletter (formule gratuite, puis payante) ; les guides de ville vendus en PDF ou en application ; les cartes de réduction des unions commerciales.
   - **Première recommandation** : distinguer les **organisateurs** (mise en avant, widget premium, §3.AB) des **visiteurs**. Côté visiteurs, dans l'ordre : (1) la sélection par e-mail, gratuite, qui crée l'audience ; (2) les guides PDF ; (3) la carte de réduction avec les commerçants. Le soutien sec de 99 reste une option, une fois une contrepartie en place (« soutenir = recevoir la sélection plus tôt », par exemple).
   - Décision et chiffrage : chef de projet, après 100. Le RGPD et `/mentions-legales/` évoluent avec toute collecte d'e-mails.
-- [ ] **100. Rapport du 27/10 — points de suivi.**
+- [ ] **100. Rapport du 27/10 — points de suivi. Revu le 28/10 ; reste le point 7 (décision) et les
+  points 5-6 au prochain scan (avec 102).** Réponses, dans l'ordre de la liste :
+  1. Père Noël : note déjà corrigée dans `overrides.json` (`EVT_6c87a4e92d`, doublon de
+     `EVT_c6ecc3650f`). ✅
+  2. Contrôle de la Ville : fait le 28/10, et désormais copié tous les 15 jours par le robot
+     local (101). ✅
+  3. Sites à 0 fiche : `briardises` (3-10/10) et `grezarts` (2-4/10) — **saison finie**, normal.
+     `anvl` : le flux RSS ne porte que des articles, limite connue (demander l'export .ics, 72c).
+     **`moret` : la page `/agenda/` charge ses événements en JavaScript** (extension Modern Events
+     Calendar, aucun lien `/events/` dans le HTML), et la commune n'a rien publié depuis le
+     24/09. L'API `wp-json/wp/v2/mec-events` liste les fiches (robots.txt l'autorise) : lecteur
+     possible (S), peu urgent, l'agenda CCMSL couvre Moret.
+  4. Fnac sans nouveauté : rien à faire.
+  5. « Disparus d'un flux » : les 4 fiches OpenAgenda (expositions du Bicentenaire de la
+     photographie, sortie ornithologique) sont **toujours en ligne** sur OpenAgenda, sorties du
+     portail seulement : gardées. Jazz au Théâtre (26-28/11) : une période + des fiches par jour
+     d'OpenAgenda + 3 fiches Gemini par artiste, dont Tyreek McDole le 26 **et** le 28 (le site du
+     festival ne donne pas le jour) — c'est la famille 1 de 94 : vérifier au prochain scan ce que
+     le juge en fait, masquer à la main seulement le reste.
+  6. Villages, 12 non publiés : à relire dans le rapport du prochain scan.
+  7. **Règle de 89 — à trancher.** 24 fiches « dates à vérifier » non revues depuis 14 jours le
+     28/10 : **on y trouve des événements vrais** (Fantasmagloria le 31/12, que la Ville
+     confirme ; Pablo Mira sur la billetterie du Théâtre ; les cross de Nemours). Un retrait
+     automatique les ôterait. Recommandation : **pas de retrait automatique** ; la copie du flux
+     de la Ville (101) reconfirme désormais les fiches de Fontainebleau, et la liste reste à relire
+     à la main tous les 15 jours avec le contrôle de la Ville.
+  Liste d'origine :
   - « Dans les coulisses du Père Noël » : la fiche Gemini masquée le 12/10 comme « saison
     recopiée » existe bien — DATAtourisme publie 6 dates (19-24/12, fiche de l'office de
     tourisme). Le masquage visait un doublon, pas une erreur : corriger la note dans
