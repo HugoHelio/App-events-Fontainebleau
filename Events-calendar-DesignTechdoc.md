@@ -1711,6 +1711,7 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
 | 9 | **99. Lien de soutien (dons)** — préparé le 28/10, inactif : Stripe retenu, à retravailler avec 103 | Après 39 : le coût affiché doit être le vrai | XS |
 | 4b | ~~**101. Agenda de la Ville lu depuis le poste du chef de projet**~~ — fait le 28/10 (§7) ; reste l'installation de la tâche planifiée | Décidé le 28/10 : 16 des 22 absents de l'item 95 sont dans ce flux | S |
 | 9b | **103. Ce que le paiement apporte au visiteur** — idées du 28/10 à travailler | Un soutien sans contrepartie détonne à côté de l'affiliation | S (réflexion) |
+| 9c | **104. Trois guides PDF du chef de projet** — à préparer bientôt | Première contrepartie concrète pour 99/103 ; contenu qu'aucun concurrent n'a | M (écriture) |
 | 10 | **100. Lecture du rapport du 27/10** | Les points de suivi qui ne rentrent dans aucun item ci-dessus | XS |
 
 - [ ] **92. « Les Feux de Courances – Festival Médiéval Immersif » (`EVT_426d83189b`) — signalé
@@ -1932,9 +1933,24 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     avec ce qui manque aux topo-guides : une voix, des choix assumés. À prévoir : carte et
     distances vérifiées, mise à jour annuelle (horaires, travaux, fermetures), et pour les deux
     parcours les plus courus un renvoi vers l'agenda du jour (« ce week-end sur le parcours »).
+  - Suite : **item 104** (les trois guides, à préparer).
   - **Benchmarks, à vérifier avant de décider** : bleau.info (site d'escalade de Fontainebleau, financé par les dons de ses utilisateurs) ; les agendas de ville à newsletter (formule gratuite, puis payante) ; les guides de ville vendus en PDF ou en application ; les cartes de réduction des unions commerciales.
   - **Première recommandation** : distinguer les **organisateurs** (mise en avant, widget premium, §3.AB) des **visiteurs**. Côté visiteurs, dans l'ordre : (1) la sélection par e-mail, gratuite, qui crée l'audience ; (2) les guides PDF ; (3) la carte de réduction avec les commerçants. Le soutien sec de 99 reste une option, une fois une contrepartie en place (« soutenir = recevoir la sélection plus tôt », par exemple).
   - Décision et chiffrage : chef de projet, après 100. Le RGPD et `/mentions-legales/` évoluent avec toute collecte d'e-mails.
+- [ ] **104. Trois guides PDF « mes parcours » — à préparer bientôt (chef de projet, 28/10).**
+  Écrits et parcourus par le chef de projet, en son nom : c'est leur valeur.
+  1. **« 3 heures en ville : mon parcours idéal »** — à pied, dans Fontainebleau.
+  2. **« Mes 3 balades à vélo préférées »** — 1 h, 2 h et 3 h.
+  3. **« En voiture : mon parcours idéal (3 h) »** — autour de la forêt, villages et sites.
+  Pour chacun : une carte (fond OpenStreetMap, attribution), distances et durées mesurées sur
+  place, points d'arrêt avec horaires d'ouverture, où se garer, où manger ; une ligne « vérifié le
+  JJ/MM/AAAA » et une relecture par an. Un lien (QR code) vers la page de la commune ou
+  `/ce-week-end/`, pour l'agenda du jour sur le parcours. Version anglaise : plus tard, pour les
+  visiteurs étrangers (INSEAD, touristes).
+  - **Rôle de Claude** : mise en page (HTML → PDF, sans dépendance), cartes, relecture,
+    traduction ; **jamais d'itinéraire ni d'adresse inventés** (§5).
+  - **Diffusion à trancher** (avec 99/103) : gratuit contre e-mail, vendu (Stripe), ou offert en
+    remerciement d'un soutien. Une page par guide sur le site, indexable, avec un extrait.
 - [ ] **100. Rapport du 27/10 — points de suivi. Revu le 28/10 ; reste le point 7 (décision) et les
   points 5-6 au prochain scan (avec 102).** Réponses, dans l'ordre de la liste :
   1. Père Noël : note déjà corrigée dans `overrides.json` (`EVT_6c87a4e92d`, doublon de
