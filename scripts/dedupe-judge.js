@@ -77,8 +77,17 @@ function distinctive(title, towns) {
 
 const isSpan = (e) => Boolean(e.endDate) && e.endDate > e.startDate;
 const overlaps = (a, b) => a.startDate <= (b.endDate || b.startDate) && b.startDate <= (a.endDate || a.startDate);
+const within = (inner, outer) => isSpan(outer) && outer.startDate <= inner.startDate
+  && (inner.endDate || inner.startDate) <= outer.endDate;
 // Same rule as dedupeFuzzy(): two single days must be the SAME day — two evenings of a show are two events.
-const sameOccasion = (a, b) => a.startDate === b.startDate || (isSpan(a) && isSpan(b) && overlaps(a, b));
+// Item 94 (28/10): a span and a day inside it are asked too. « Concert Tyreek McDole » 26-28/11
+// and 28/11, « La Nocturne du Pays de Nemours » 22-23/01 and 23/01 were never put to the judge.
+// The prompt still answers false for a festival and one of its concerts.
+const sameOccasion = (a, b) => a.startDate === b.startDate || (isSpan(a) && isSpan(b) && overlaps(a, b))
+  || within(a, b) || within(b, a);
+// One side only found by the web search (no `source`), the other confirmed by a source we read,
+// in the same town: a generic « Halloween » of one village must not swallow another town's evening.
+const lopsided = (p) => Boolean(p.a.event.source) !== Boolean(p.b.event.source) && townsCompatible(p.a.event, p.b.event);
 
 function townsCompatible(a, b) {
   const x = norm(a.city), y = norm(b.city);
@@ -171,6 +180,7 @@ const describe = (e) => ({
   tarif: e.price || '',
   description: String(e.description || '').slice(0, 220),
   lien: e.url || '',
+  provenance: e.source ? 'source vérifiée' : 'recherche web seule',
 });
 
 const PROMPT = (pairs) => `
@@ -193,6 +203,10 @@ Deux communes différentes ne suffisent pas à répondre false : une source rang
 
 Une différence de formulation, un titre plus long ou plus court, une année ou un numéro d'édition
 en plus ne sont PAS des différences.
+
+Exception au doute : quand UNE SEULE des deux fiches a la provenance « recherche web seule » et
+que les deux sont dans la même commune, réponds true si elles décrivent vraisemblablement le même événement, même sans certitude. La
+fiche de recherche web est la moins fiable ; la garder en double coûte plus que la fusionner.
 
 "reason" : une courte phrase en français.
 
@@ -245,6 +259,9 @@ const PRECISE_GEO = ['ban', 'manual', 'venue', 'feed'];
 
 /** Which record survives (its id is kept, so overrides.json stays attached). Same order as dedupeFuzzy(). */
 function preferred(a, b) {
+  // Item 94 (28/10): a record a source confirmed beats one only the web search found — its title,
+  // dates and page are the ones to keep, even when the search record is older.
+  if (Boolean(a.event.source) !== Boolean(b.event.source)) return a.event.source ? a : b;
   if (a.isNew !== b.isNew) return a.isNew ? b : a;
   const aOk = a.event.urlStatus === 'ok', bOk = b.event.urlStatus === 'ok';
   if (aOk !== bOk) return aOk ? a : b;
@@ -260,6 +277,15 @@ function preferred(a, b) {
  */
 function absorb(winner, loser, mergeInto, enrichFrom) {
   const title = winner.event.title;
+  // A span and a day inside it (item 94): the merged record keeps the span. mergeInto() copies the
+  // loser's endDate, which would shrink a festival to the one evening it was matched with. Not when
+  // only the winner was confirmed by a source: then its own dates stand, the search never moves them.
+  const trusted = Boolean(winner.event.source) && !loser.event.source;
+  const keep = [winner.event.startDate, winner.event.endDate];
+  const nested = within(loser.event, winner.event) || within(winner.event, loser.event);
+  const start = nested && (winner.event.startDate < loser.event.startDate ? winner.event.startDate : loser.event.startDate);
+  const ends = [winner.event.endDate || winner.event.startDate, loser.event.endDate || loser.event.startDate];
+  const end = nested && (ends[0] > ends[1] ? ends[0] : ends[1]);
   // A record read on the organiser's own site brings its page and address, never its dates
   // (one dated performance must not shorten the record it matched): enrichFrom(), §3.Z2.
   if (enrichFrom && loser.event.source === 'site') enrichFrom(winner.event, loser.event);
@@ -272,6 +298,8 @@ function absorb(winner, loser, mergeInto, enrichFrom) {
   if (!winner.modelCoords && loser.modelCoords) winner.modelCoords = loser.modelCoords;
   if (!w.image && l.image) w.image = l.image;
   if (!w.source && l.source) w.source = l.source;   // confirmed by a legitimate source
+  if (nested && !trusted) { w.startDate = start; w.endDate = end; }
+  else if (trusted) { w.startDate = keep[0]; w.endDate = keep[1]; }
   winner.refreshed = true;
 }
 
@@ -290,7 +318,12 @@ async function run(records, { overrides = {}, eventKey, mergeInto, enrichFrom, t
   stats.candidates = pairs.length;
 
   const cache = loadCache();
-  const unknown = pairs.filter((p) => !cache[pairKey(p.a.event.id, p.b.event.id)]);
+  // A "false" given before 28/10 to a search-vs-source pair was given under the old rule (doubt =
+  // false): asked once more under the new one, then kept (v: 2).
+  const unknown = pairs.filter((p) => {
+    const c = cache[pairKey(p.a.event.id, p.b.event.id)];
+    return !c || (lopsided(p) && c.same === false && c.v !== 2);
+  });
   stats.cached = pairs.length - unknown.length;
   const toAsk = unknown.slice(0, CONFIG.maxPairsPerRun);
   stats.pending = unknown.length - toAsk.length;
@@ -311,7 +344,7 @@ async function run(records, { overrides = {}, eventKey, mergeInto, enrichFrom, t
           for (const it of items) {
             const p = batch[Number(it && it.i)];
             if (!p || typeof it.same !== 'boolean') continue;
-            cache[pairKey(p.a.event.id, p.b.event.id)] = { same: it.same, reason: String(it.reason || '').slice(0, 160), at: today };
+            cache[pairKey(p.a.event.id, p.b.event.id)] = { same: it.same, reason: String(it.reason || '').slice(0, 160), at: today, ...(lopsided(p) ? { v: 2 } : {}) };
             stats.asked++;
           }
         } catch (err) {
@@ -349,4 +382,5 @@ async function run(records, { overrides = {}, eventKey, mergeInto, enrichFrom, t
   return stats;
 }
 
-module.exports = { CONFIG, run, candidatePairs, distinctive, preferred, absorb, pairKey, PROMPT };
+module.exports = {
+  pageKey, CONFIG, run, candidatePairs, distinctive, preferred, absorb, pairKey, PROMPT };

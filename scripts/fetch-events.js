@@ -1494,6 +1494,11 @@ function renderSummary(stats, ctx) {
   if (stats.crossCityDeduped) {
     L.push(`- 🧹 Doublons fusionnés (même titre, même date, ville différente) : **${stats.crossCityDeduped}**`);
   }
+  if (stats.samePageFolded.length) {
+    L.push(`- 📎 Dates rangées dans leur période (même page, item 94) : **${stats.samePageFolded.length}**`);
+    for (const v of stats.samePageFolded.slice(0, 10)) L.push(`  - ${v}`);
+    if (stats.samePageFolded.length > 10) L.push(`  - … et ${stats.samePageFolded.length - 10} autre(s)`);
+  }
   const jd = stats.judged;
   if (jd && !jd.skipped) {
     if (jd.error && !jd.candidates) L.push(`- 🧩 Doublons jugés : ⚠️ ${String(jd.error).slice(0, 160)}`);
@@ -1860,7 +1865,7 @@ async function main() {
     dt: null, dtRejected: {}, dtDeduped: 0, crossCityDeduped: 0, similarSameDay: [],
     oa: null, oaRejected: {}, oaDeduped: 0, tooFar: 0, tooFarCities: {},
     fb: null, fbRejected: {}, fbConfirmed: 0, fbTicketsDropped: 0,
-    sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0,
+    sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0, samePageFolded: [],
     villagesConfirmed: 0, villagesUnconfirmed: 0, villagesUnconfirmedList: [],
     unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], datesAtRiskStale: [], recategorised: 0,
     umbrellas: [],
@@ -2230,6 +2235,31 @@ async function main() {
   } catch (err) {
     stats.judged = { error: err.message, merged: [] };
     console.error(`   ⚠️ dedupe-judge: ${String(err.message).slice(0, 200)} (run continues)`);
+  }
+
+  // Item 94 (28/10): one page, a span and its dates. The tourist office publishes the École
+  // militaire visits as 10/10-19/12 (the schedule lists every Saturday) and again Saturday by
+  // Saturday: five cards. The rule above only folds NEW site records; this one folds any record,
+  // of any source, into a span that links to the SAME page and holds its dates. The span keeps
+  // its dates (enrichFrom never touches them), as for « Sauvages ! ». After the judge and the
+  // feedback merge, so nothing is ever folded into — or out of — a hidden record.
+  const isHidden = (id) => effective[id] && effective[id].hidden === true;
+  for (const [key, rec] of [...records]) {
+    if (!records.has(key) || isHidden(rec.event.id)) continue;
+    const page = dedupeJudge.pageKey(rec.event.url);
+    if (!page) continue;
+    const host = [...records.values()].find((o) => o !== rec && !isHidden(o.event.id)
+      && dedupeJudge.pageKey(o.event.url) === page && contains(o.event, rec.event)
+      // Strict only: « Cycle de conférences Marie-Antoinette » (28/11) shares a page with a
+      // three-month series of visits and would lose its own dates under a merely probable match.
+      && matchLevel(o.event, rec.event) === 'strict');
+    if (!host) continue;
+    enrichFrom(host.event, rec.event);
+    if (!host.event.source && rec.event.source) host.event.source = rec.event.source;
+    if ((rec.event.lastSeen || '') > (host.event.lastSeen || '')) host.event.lastSeen = rec.event.lastSeen;
+    host.refreshed = true;
+    records.delete(key);
+    stats.samePageFolded.push(`${rec.event.title} (${rec.event.startDate}, ${rec.event.id}) → ${host.event.id}`);
   }
 
   applyOverrides(records, effective, stats);
