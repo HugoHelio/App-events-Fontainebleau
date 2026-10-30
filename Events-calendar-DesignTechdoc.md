@@ -1969,6 +1969,13 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     (3) le revenu réel est **B2B** : la série imprimée ou aux couleurs d'un hébergeur (hôtels,
     gîtes, chambres d'hôtes), forfait annuel. Vendre la fiche seule (2-3 €) rapporterait peu et
     lui ôterait le référencement et le partage.
+  - **30/10, chef de projet : v3 française (coquilles et points de vérification corrigés). Tranché :
+    gratuite, avec le bouton « Soutenir » (99) ; le parcours exact (page, téléchargement, soutien)
+    reste à concevoir.** Les illustrations sont des créations retouchées du chef de projet : sujet
+    clos. Crédit OSM : copie de la carte avec la mention incrustée
+    (`Mapscarte_parcours_foot_v2_credit-OSM.jpg`) à remettre dans le Google Doc ; l'original
+    n'est pas modifié. Version anglaise refaite sur la géométrie exacte de la française (carte
+    139,7 mm, colonne 38,4 mm, images à leurs proportions d'origine, jamais recadrées).
 - [ ] **100. Rapport du 27/10 — points de suivi. Revu le 28/10 ; reste le point 7 (décision) et les
   points 5-6 au prochain scan (avec 102).** Réponses, dans l'ordre de la liste :
   1. Père Noël : note déjà corrigée dans `overrides.json` (`EVT_6c87a4e92d`, doublon de
