@@ -1951,6 +1951,24 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     traduction ; **jamais d'itinéraire ni d'adresse inventés** (§5).
   - **Diffusion à trancher** (avec 99/103) : gratuit contre e-mail, vendu (Stripe), ou offert en
     remerciement d'un soutien. Une page par guide sur le site, indexable, avec un extrait.
+  - **30/10 : fiche n°1 « Fontainebleau à pied » faite** par le chef de projet (Google Docs, 2 pages,
+    carte retravaillée sous Krita, 2 illustrations). **Version anglaise** « Fontainebleau on foot »
+    faite par Claude : HTML imprimé en PDF par Edge, même mise en page. Fichiers **hors du dépôt**
+    (le dépôt est publié tel quel par GitHub Pages) : `DesktopHeliosoFontainebleauLiveFiches`
+    (`Fiche_Fontainebleau_a_pied_v2.pdf`, `Fiche_Fontainebleau_a_pied_EN.pdf`, source dans `EN`).
+  - **À corriger avant toute diffusion** : mention « © les contributeurs d'OpenStreetMap » sur la
+    carte française (licence ODbL, ajoutée à l'anglaise) ; droits des illustrations (faites à
+    partir de quelles images ?) ; faits à vérifier — théâtre 1905-1912 et style, hôtel de ville
+    1864, Aigle Noir « ancien hôtel de Retz », WC de la cour d'honneur, marché 7 h-13 h, « rue
+    Grande vers l'ouest » (la carte va vers le château) ; château fermé le mardi (intérieur) et
+    horaires du parc selon la saison, à ajouter.
+  - **Diffusion recommandée (30/10)** : (1) **gratuite, sans e-mail**, une page indexable par
+    fiche (`/balades/…`, texte des étapes en HTML pour Google, PDF en lien, téléchargements
+    comptés) et **le bouton « Soutenir » de 99 sous la fiche** : la contrepartie qui manquait ;
+    (2) quand la lettre d'information existera (103), la fiche devient le cadeau d'inscription ;
+    (3) le revenu réel est **B2B** : la série imprimée ou aux couleurs d'un hébergeur (hôtels,
+    gîtes, chambres d'hôtes), forfait annuel. Vendre la fiche seule (2-3 €) rapporterait peu et
+    lui ôterait le référencement et le partage.
 - [ ] **100. Rapport du 27/10 — points de suivi. Revu le 28/10 ; reste le point 7 (décision) et les
   points 5-6 au prochain scan (avec 102).** Réponses, dans l'ordre de la liste :
   1. Père Noël : note déjà corrigée dans `overrides.json` (`EVT_6c87a4e92d`, doublon de
