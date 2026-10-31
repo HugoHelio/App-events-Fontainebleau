@@ -11,43 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_c6448b6cba@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:Les soirées de l'Esquisse
-LOCATION:Barbizon
-DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
- s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
- on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
- 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
- ements/les-soirees-de-l-esquisse-barbizon-c6448b6cba/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
- zon-c6448b6cba/
-CATEGORIES:Scène & Spectacles
-GEO:48.44575;2.60775
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_cc5f7ab91b@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:Visite contée à la bougie
-LOCATION:Musée départemental des Peintres de Barbizon\, Barbizon
-DESCRIPTION:Horaires : Créneaux spécifiques du musée\n\nTarif : Tarif pl
- ein env. 10 € / réduit 7 €\n\nVisite contée à la lueur des bougies 
- au sein du musée des Peintres de Barbizon.\n\nOrganisateur : https://www.
- musee-peintres-barbizon.fr/\n\nFiche : https://fontainebleaulive.fr/evenem
- ents/visite-contee-a-la-bougie-barbizon-cc5f7ab91b/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-contee-a-la-bougie-barbi
- zon-cc5f7ab91b/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_2f76232e60@fontainebleaulive.fr
 DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261031
