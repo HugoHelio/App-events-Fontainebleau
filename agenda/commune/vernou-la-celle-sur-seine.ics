@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_84e0a9c617@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Soirée orientale
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_651d8d6564@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Concert " les agités du bocage"
@@ -51,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf985349ce@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Espace game : Maison de l'horreur
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up
@@ -89,16 +89,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4cba1cd0d4@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée annuelle de l'Avent
 LOCATION:Vernou-la-Celle-sur-Seine
-DESCRIPTION:Horaires : 20h30\n\nOrganisateur : https://www.ccmsl.fr/actu-et
- -agendas/agenda.html#2026-11-28-soireeannuelledelavent\n\nFiche : https://
- fontainebleaulive.fr/evenements/soiree-annuelle-de-l-avent-vernou-la-celle
- -sur-seine-4cba1cd0d4/\n\nInformations collectées automatiquement : véri
- fiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h30\n\nParticipez à la soirée annuelle de l'Aven
+ t organisée à Vernou-la-Celle-sur-Seine sur réservation.\n\nOrganisateu
+ r : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-soireeannu
+ elledelavent\n\nFiche : https://fontainebleaulive.fr/evenements/soiree-ann
+ uelle-de-l-avent-vernou-la-celle-sur-seine-4cba1cd0d4/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/soiree-annuelle-de-l-avent-vern
  ou-la-celle-sur-seine-4cba1cd0d4/
 CATEGORIES:Culture & Ateliers

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8dee5271f4@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Réunions d'information Transmission
@@ -57,7 +57,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b824409b93@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Les Amplifiés - Black Bomb. A & Monnekyn
@@ -99,7 +99,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7eccfc6a49@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Giorda - Hypn'Ose
@@ -141,6 +141,24 @@ URL:https://fontainebleaulive.fr/evenements/ceremonie-de-cloture-du-projet-
  open-data-de-la-communaute-d-le-mee-sur-seine-16a63f9d68/
 CATEGORIES:Culture & Ateliers
 GEO:48.53858;2.63359
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_0d9ba04dd6@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Les Amplifiés - Tom Frager & Lambz
+LOCATION:Le Chaudron\, Le Mée-sur-Seine
+DESCRIPTION:Tarif : 8 €\n\nOrganisateur : https://www.fnacspectacles.com/
+ eventseries/les-amplifies-tom-frager-lambz-4278107/\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/les-amplifies-tom-frager-et-lambz-le-mee-sur-
+ seine-0d9ba04dd6/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-amplifies-tom-frager-et-lam
+ bz-le-mee-sur-seine-0d9ba04dd6/
+CATEGORIES:Scène & Spectacles
+GEO:48.54257;2.63584
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

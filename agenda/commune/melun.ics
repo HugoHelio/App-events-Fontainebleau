@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c0202c65d6@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
 SUMMARY:Apéro célibataires — Melun
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9846b92739@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Apéro célibataires — Melun
@@ -67,8 +67,27 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_37657cd157@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:Apéro célibataires — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Melun : pet
+ it groupe (8 max)\, ambiance détendue. Inscription gratuite sur RandoDate
+ .\n\nOrganisateur : https://openagenda.com/randodate/events/apero-celibata
+ ires-melun-8438346\n\nFiche : https://fontainebleaulive.fr/evenements/aper
+ o-celibataires-melun-37657cd157/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-melun-37657c
+ d157/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f0502eebfd@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Spectacle de magie « Clément Blouin - Magicien c'est pas un méti
@@ -111,7 +130,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4a4198ac35@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Le Tourbillon de la Fête
@@ -134,7 +153,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6e1e0ff6e3@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Le Radeau de la Méduse par Anne Cangelosi
@@ -158,7 +177,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_27a2f68fb8@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Les Coquettes - Nouveau Spectacle
@@ -182,7 +201,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
@@ -200,7 +219,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_275dc9ff4b@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Le Seigneur des Anneaux & Le Hobbit - En Concert
@@ -224,7 +243,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_52e67e12f3@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:The Music of Hans Zimmer & Others - A Celebration of Film Music
@@ -249,7 +268,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30423f4689@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20270119
 DTEND;VALUE=DATE:20270120
 SUMMARY:The Dark Side of the Moon - En concert
@@ -274,7 +293,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f04cdbf72d@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20270119
 DTEND;VALUE=DATE:20270120
 SUMMARY:The Wall - En concert
@@ -297,63 +316,6 @@ GEO:48.5296;2.66378
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_9a21f7e9f3@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
-DTSTART;VALUE=DATE:20270121
-DTEND;VALUE=DATE:20270122
-SUMMARY:Images dirigées : la photographie de propagande
-LOCATION:Musée d'art et d'histoire de Melun\, Melun
-DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
- eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
- rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
- fr/evenements/images-dirigees-la-photographie-de-propagande-melun-9a21f7e9
- f3/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
- -de-propagande-melun-9a21f7e9f3/
-CATEGORIES:Culture & Ateliers
-GEO:48.5364;2.65882
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_48ff047001@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
-DTSTART;VALUE=DATE:20270122
-DTEND;VALUE=DATE:20270123
-SUMMARY:Images dirigées : la photographie de propagande
-LOCATION:Musée d'art et d'histoire de Melun\, Melun
-DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
- eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
- rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
- fr/evenements/images-dirigees-la-photographie-de-propagande-melun-48ff0470
- 01/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
- -de-propagande-melun-48ff047001/
-CATEGORIES:Culture & Ateliers
-GEO:48.5364;2.65882
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_5d2b8369a3@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
-DTSTART;VALUE=DATE:20270123
-DTEND;VALUE=DATE:20270124
-SUMMARY:Images dirigées : la photographie de propagande
-LOCATION:Musée d'art et d'histoire de Melun\, Melun
-DESCRIPTION:Enquêtes dans les collections du musée de Melun.\n\nOrganisat
- eur : https://openagenda.com/bicentenaire-photographie-fr/events/images-di
- rigees-la-photographie-de-propagande\n\nFiche : https://fontainebleaulive.
- fr/evenements/images-dirigees-la-photographie-de-propagande-melun-5d2b8369
- a3/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/images-dirigees-la-photographie
- -de-propagande-melun-5d2b8369a3/
-CATEGORIES:Culture & Ateliers
-GEO:48.5364;2.65882
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_ef63234ed6@fontainebleaulive.fr
 DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20270123
@@ -369,6 +331,51 @@ DESCRIPTION:Horaires : 9h00–18h00\n\nTarif : Entrée libre\n\n28ᵉ Salon
 URL:https://fontainebleaulive.fr/evenements/salon-du-livre-de-melun-ventes-
  dedicaces-et-marche-du-livre-ef63234ed6/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_26c11ea4a7@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Dirty Dancing - Le Tribute
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : 49 €\n\nPrésenté LDC (V-R-2021-008069/71)\, AS et S
+ ARAH PROD. DIRTY DANCING LE TRIBUTE CONCERT : Un peu d’histoire… L’i
+ ntrigue se déroule à l'été 1963. Baby Houseman (Jennifer Grey) et sa f
+ amille passent des vacances au Kellerman's\, une magnifique station balné
+ aire des Catskills. Intriguée par le professeur de danse de l'équipe\, J
+ ohnny Castle (Patrick Swayze)\, et par le mode de vie très différent des
+  autr…\n\nOrganisateur : https://www.fnacspectacles.com/artist/dirty-dan
+ cing-le-tribute/\n\nFiche : https://fontainebleaulive.fr/evenements/dirty-
+ dancing-le-tribute-melun-26c11ea4a7/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/dirty-dancing-le-tribute-melun-
+ 26c11ea4a7/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_380494cb0f@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Cendrillon
+LOCATION:L'Escale\, Melun
+DESCRIPTION:Tarif : 29 €\n\n& Compagnie Loup de LuneQui connaît vraiment
+  l'histoire de Cendrillon ?Ne vous y trompez pas ! Elle est bien loin d'ê
+ tre une nunuche juste bonne aux tâches ménagères. Notre Cendrillon a du
+  caractère !On serait aussi tenté de penser que son père l'a abandonné
+ e à cette cruelle belle-mère\, mais il n'en est rien. Ses amis sont là 
+ pour la soutenir et l'aider à surmonter les épreuves. Et d'ailleurs\, la
+ …\n\nOrganisateur : https://www.fnacspectacles.com/artist/cendrillon/cen
+ drillon-4121925/\n\nFiche : https://fontainebleaulive.fr/evenements/cendri
+ llon-melun-380494cb0f/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cendrillon-melun-380494cb0f/
+CATEGORIES:Scène & Spectacles
+GEO:48.5296;2.66378
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

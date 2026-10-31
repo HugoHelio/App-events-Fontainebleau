@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c3604d84da@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween " Balade et conte à 2 voix "
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2531e3d080@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Les 12H de la marche – Octobre Rose
@@ -50,8 +50,24 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b68a05db09@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Village Barnum
+LOCATION:place des Bollards\, Saint-Mammès
+DESCRIPTION:Horaires : 10h à 12h\n\nOrganisateur : https://www.saint-mamme
+ s.com/village-barnum/\n\nFiche : https://fontainebleaulive.fr/evenements/v
+ illage-barnum-saint-mammes-b68a05db09/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/village-barnum-saint-mammes-b68
+ a05db09/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5aea2aefcf@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Bric-à-Brac de Saint-Mammès
@@ -67,8 +83,26 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_8f5390305f@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Concert " vents du nord-ouest argentin "
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-11-07-concertventsdunordouestargentin\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/concert-vents-du-nord-ouest-argenti
+ n-saint-mammes-8f5390305f/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-vents-du-nord-ouest-arg
+ entin-saint-mammes-8f5390305f/
+CATEGORIES:Scène & Spectacles
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_be1a35043c@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les rendez-vous de la forme
@@ -88,7 +122,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
@@ -108,7 +142,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_977cb1743f@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:« Un chat botté » – spectacle pour enfants
@@ -133,12 +167,12 @@ DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cérémonie du 11 novembre
 LOCATION:Place de la Bosse\, Saint-Mammès
-DESCRIPTION:Horaires : 14h45\n\nDéfilé accompagné par la fanfare suivi d
- 'un discours et d'un dépôt de gerbe pour le 11 novembre.\n\nOrganisateur
-  : https://www.saint-mammes.com/ceremonie-du-11-novembre/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-mammes-b
- 68a11c7ae/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+DESCRIPTION:Horaires : 11h\n\nDéfilé accompagné par la fanfare suivi d'u
+ n discours et d'un dépôt de gerbe pour le 11 novembre.\n\nOrganisateur :
+  https://www.saint-mammes.com/ceremonie-du-11-novembre/\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-mammes-b68
+ a11c7ae/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-
  mammes-b68a11c7ae/
 CATEGORIES:Culture & Ateliers
@@ -146,7 +180,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cff9bab306@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Jeux d’histoire
@@ -179,6 +213,24 @@ DESCRIPTION:Horaires : 20h30\n\nTarif : Gratuit\n\nPublic : Dès 10 ans\n\n
 URL:https://fontainebleaulive.fr/evenements/portraits-croises-spectacle-fra
  ncais-et-langue-des-signes-saint-mammes-006f529975/
 CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f31186d94c@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Soirée " coucous "
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 19h30 – 22h45\n\nOrganisateur : https://www.ccmsl.
+ fr/actu-et-agendas/agenda.html#2026-11-21-soireecoucous\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/soiree-coucous-saint-mammes-f31186d94c/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-coucous-saint-mammes-f31
+ 186d94c/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

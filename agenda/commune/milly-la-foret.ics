@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_d2df7805de@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261102
 SUMMARY:Grande fête portugaise – 45e anniversaire
@@ -31,47 +31,8 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_9c3a8a48c3@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Samedis Switch – Médiathèque
-LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Horaires : De 10h à 12h\n\nTarif : Accès libre\n\nMoment conv
- ivial autour de la Nintendo Switch seul\, entre amis ou en famille.\n\nOrg
- anisateur : https://www.milly-la-foret.fr/2026/01/30/31-10-26-samedis-swit
- ch-mediatheque/\n\nFiche : https://fontainebleaulive.fr/evenements/samedis
- -switch-mediatheque-milly-la-foret-9c3a8a48c3/\n\nInformations collectées
-  automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/samedis-switch-mediatheque-mill
- y-la-foret-9c3a8a48c3/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_a593951ce6@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Stage chorégraphies mythiques – Claude François – Club Mill
- ’ Danses
-LOCATION:Salle Odile\, Milly-la-Forêt
-DESCRIPTION:Horaires : De 14h30 à 16h30\n\nTarif : 10 € adhérents / 15 
- € non-adhérents\n\nStage de danse pour apprendre les chorégraphies inc
- ontournables de Claude François animé par Adeline.\n\nOrganisateur : htt
- ps://www.milly-la-foret.fr/2026/01/30/01-12-26-stage-choregraphies-mythiqu
- es-claude-francois-club-mill-danses/\n\nFiche : https://fontainebleaulive.
- fr/evenements/stage-choregraphies-mythiques-claude-francois-club-mill-dans
- -milly-la-foret-a593951ce6/\n\nInformations collectées automatiquement : 
- vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/stage-choregraphies-mythiques-c
- laude-francois-club-mill-dans-milly-la-foret-a593951ce6/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_dba14b7e32@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage Piloxing & Zumboxing – Club Mill’ Danses
@@ -108,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_764fb661fa@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -128,7 +89,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8eb8658951@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Stage d’initiation au Heels – Club Mill’ Danses
@@ -147,7 +108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac93a38421@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
@@ -167,7 +128,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -186,7 +147,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
@@ -204,7 +165,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -224,7 +185,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -239,6 +200,27 @@ DESCRIPTION:Horaires : 19h à 23h\n\nTarif : Gratuit\n\nPublic : Dès 15 an
 URL:https://fontainebleaulive.fr/evenements/soiree-chill-15-18-ans-milly-la
  -foret-a7357d514e/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b8821574ed@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
+LOCATION:Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h30 à 12h\n\nTarif : 10 € adhérents / 15 
+ € non-adhérents\n\nStage animé par Sara pour explorer le mouvement\, l
+ a musicalité et l'interprétation entre danse contemporaine et émotions.
+ \n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/28/29-11-26-stage
+ -de-danse-lyrical-contemporary-club-mill-danses/\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/stage-de-danse-lyrical-contemporary-club-mill-da
+ nses-milly-la-foret-b8821574ed/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-de-danse-lyrical-contempo
+ rary-club-mill-danses-milly-la-foret-b8821574ed/
+CATEGORIES:Sport & Outdoor
+GEO:48.4019;2.45349
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -257,6 +239,28 @@ DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Entrée libre\n\nSalon mult
  nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/16-salon-multi-collections-et-b
  ourse-au-profit-du-telethon-milly-la-foret-18062a504e/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c0ecb39c4c@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur
+ e
+LOCATION:Gymnase de Milly-la-Forêt – Rue de l’Hermite\, Milly-la-Forê
+ t
+DESCRIPTION:Horaires : De 10h à 17h\n\nTarif : 10 € par table\n\nBourse 
+ aux jouets et à la puériculture organisée par la Ville de Milly-la-For
+ êt à l'occasion du Téléthon 2026.\n\nOrganisateur : https://www.milly-
+ la-foret.fr/2026/10/30/06-12-26-telethon-inscriptions-bourse-aux-jouets-et
+ -a-la-puericulture/\n\nFiche : https://fontainebleaulive.fr/evenements/tel
+ ethon-inscriptions-bourse-aux-jouets-et-a-la-puericulture-milly-la-foret-c
+ 0ecb39c4c/\n\nInformations collectées automatiquement : vérifiez-les aup
+ rès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/telethon-inscriptions-bourse-au
+ x-jouets-et-a-la-puericulture-milly-la-foret-c0ecb39c4c/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_ecf3ae36dc@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Concours de Pétanque en doublettes
@@ -28,8 +28,27 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_caad5a73ef@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Exposition à l'Atelier Adèle Vahn
+LOCATION:Bourron-Marlotte
+DESCRIPTION:Tarif : Gratuit.\n\nExposition d'art à découvrir à l'Atelier
+  Adèle Vahn à Bourron-Marlotte.\n\nOrganisateur : https://www.fontainebl
+ eau-tourisme.com/fr/fiche/8044075/exposition-a-latelier-adele-vahn/\n\nFic
+ he : https://fontainebleaulive.fr/evenements/exposition-a-l-atelier-adele-
+ vahn-bourron-marlotte-caad5a73ef/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-a-l-atelier-adele-va
+ hn-bourron-marlotte-caad5a73ef/
+CATEGORIES:Culture & Ateliers
+GEO:48.34297;2.70575
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a5c21898e7@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween
@@ -45,8 +64,24 @@ GEO:48.34297;2.70575
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b98131ce7f@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261115
+SUMMARY:Fête du livre jeunesse
+LOCATION:Espace Renoir\, Bourron-Marlotte
+DESCRIPTION:Organisateur : https://bourronmarlotte.fr/agenda/fete-du-livre-
+ jeunesse/\n\nFiche : https://fontainebleaulive.fr/evenements/fete-du-livre
+ -jeunesse-bourron-marlotte-b98131ce7f/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fete-du-livre-jeunesse-bourron-
+ marlotte-b98131ce7f/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_55f0720698@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Exposition de Katia Urbino : "Mamamas"
@@ -65,7 +100,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_41001fff09@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Exposition de Katia Urbino : "Mamamas"
@@ -84,7 +119,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_755854b797@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Spectacle Chanté de Bourron-Marlotte
@@ -103,7 +138,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a0096844bf@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël

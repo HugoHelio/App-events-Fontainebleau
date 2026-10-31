@@ -12,16 +12,16 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_8a87a1de3a@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261102
 SUMMARY:Bourse aux vêtements et aux jouets d'Ury
 LOCATION:Salle des fêtes / Foyer rural\, 77760 Ury\, Ury
-DESCRIPTION:Horaires : 08h00–18h00\n\nTarif : Entrée libre\n\nBourse loc
- ale proposant vêtements et jouets d'occasion.\n\nOrganisateur : https://w
- ww.mybrocante.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bours
- e-aux-vetements-et-aux-jouets-d-ury-8a87a1de3a/\n\nInformations collectée
- s automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 10h00\n\nTarif : Entrée libre\n\nBours
+ e locale proposant vêtements et jouets d'occasion.\n\nOrganisateur : http
+ s://www.mybrocante.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ bourse-aux-vetements-et-aux-jouets-d-ury-8a87a1de3a/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-vetements-et-aux-jou
  ets-d-ury-8a87a1de3a/
 CATEGORIES:Culture & Ateliers
@@ -29,7 +29,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aac3f2bc97@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert de musique baroque
@@ -48,17 +48,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c65bd4ec2e@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël d'Ury
 LOCATION:Centre-ville d'Ury\, Ury
-DESCRIPTION:Horaires : Samedi et dimanche de 10h00 à 18h00\n\nTarif : Grat
- uit\n\nMarché traditionnel festif avec artisans locaux\, gourmandises\, c
- ontes de Noël et visites du Père Noël.\n\nOrganisateur : https://www.fo
- ntainebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/evenemen
- ts/marche-de-noel-d-ury-c65bd4ec2e/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Entrée libre\n\nMarché tr
+ aditionnel festif avec artisans locaux\, gourmandises\, contes de Noël et
+  visites du Père Noël.\n\nOrganisateur : https://www.fontainebleau-touri
+ sme.com/\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel
+ -d-ury-c65bd4ec2e/\n\nInformations collectées automatiquement : vérifiez
+ -les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-ury-c65bd4ec2e
  /
 CATEGORIES:Scène & Spectacles
@@ -66,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d6d343fe1f@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Concert "Au temps de Proust"

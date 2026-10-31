@@ -11,8 +11,27 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_09cac7a93e@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:⚽ GRAND LOTO DU FOOTBALL À SAMOIS-SUR-SEINE !
+LOCATION:LA SAMOISIENNE\, Samois-sur-Seine
+DESCRIPTION:Horaires : 18h30\n\nL’U.S. Avon Football organise un grand lo
+ to du foot à la Samoisienne avec de nombreux lots à gagner et un début 
+ du loto à 20h30.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/
+ %e2%9a%bd-grand-loto-du-football-a-samois-sur-seine/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/grand-loto-du-football-a-samois-sur-seine-09
+ cac7a93e/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/grand-loto-du-football-a-samois
+ -sur-seine-09cac7a93e/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3629202698@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:ANFA Aviron – 6e édition de la régate du Pays de Fontainebleau
@@ -31,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce0fde7d25@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cérémonie du 11 nov 2026
@@ -49,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_05bc7d1947@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Café du Maire et de ses élus
@@ -69,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4056eda6ee@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Festival de la terre au bol
@@ -88,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb26d04362@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:NOUVEAUX HABITANTS\, inscrivez vous !
@@ -107,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -125,16 +144,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_38ded51c56@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Récital : Au salon de Joséphine
 LOCATION:Eglise Sainte-Hilaire\, Samois-sur-Seine
-DESCRIPTION:Horaires : 20h\n\nTarif : Inconnu\n\nOrganisateur : https://sam
- ois-sur-seine.fr/evenement/recital-au-salon-de-josephine/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/recital-au-salon-de-josephine-samois-su
- r-seine-38ded51c56/\n\nInformations collectées automatiquement : vérifie
- z-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h\n\nTarif : Inconnu\n\nRécital sur instruments d
+ ’époque autour de la musique des salons du 1er empire.\n\nOrganisateur 
+ : https://samois-sur-seine.fr/evenement/recital-au-salon-de-josephine/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/recital-au-salon-de-joseph
+ ine-samois-sur-seine-38ded51c56/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/recital-au-salon-de-josephine-s
  amois-sur-seine-38ded51c56/
 CATEGORIES:Scène & Spectacles
@@ -143,7 +163,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b62d5debb@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:LOTO
@@ -160,7 +180,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Village et Marché de Noël de Samois-sur-Seine
@@ -178,18 +198,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
 LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
-DESCRIPTION:Horaires : À partir de 17h30 (enfants)\, départ 5 km à 19h00
- \n\nTarif : 10 € (course adulte)\n\nCourse pédestre festive de fin d'an
- née proposant des parcours de 800 m\, 1\,6 km et 5 km au bord de la Seine
- .\n\nOrganisateur : https://samois-sur-seine.fr/evenement/course-de-noel/\
- n\nFiche : https://fontainebleaulive.fr/evenements/course-de-noel-de-samoi
- s-sur-seine-12-edition-6d9b7e1830/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Courses enfants en début d'après-midi \; 5 km à 1
+ 5h00\n\nTarif : 10 € (course 5 km)\n\nCourse pédestre festive de fin d'
+ année proposant des parcours de 800 m\, 1\,6 km et 5 km au bord de la Sei
+ ne.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/course-de-noel
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/course-de-noel-de-sam
+ ois-sur-seine-12-edition-6d9b7e1830/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-12-edition-6d9b7e1830/
 CATEGORIES:Sport & Outdoor
@@ -197,7 +217,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4762e2cdf5@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Réveillon de la Saint-Sylvestre avec LB SALSA

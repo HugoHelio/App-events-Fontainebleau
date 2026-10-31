@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c8b642e70a@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261102
 SUMMARY:Meeting d'Automne TDA – Compétition de Concours Complet
@@ -53,7 +53,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ecf3ae36dc@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Concours de Pétanque en doublettes
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_10680b2437@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Halloween/ randonnée frisson
@@ -106,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2531e3d080@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:Les 12H de la marche – Octobre Rose
@@ -145,7 +145,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dba14b7e32@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Stage Piloxing & Zumboxing – Club Mill’ Danses
@@ -164,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3f4a266dbe@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Plat Quinté+)
@@ -184,7 +184,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8d7728dd00@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -204,7 +204,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb0950c7bb@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Tournoi des 3 lancers
@@ -241,7 +241,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4c0b05bd77@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Plat Quinté+)
@@ -261,7 +261,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3629202698@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:ANFA Aviron – 6e édition de la régate du Pays de Fontainebleau
@@ -285,12 +285,12 @@ DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cross Duathlon / Tri Cross de Nemours
 LOCATION:Base de loisirs de Nemours\, Nemours
-DESCRIPTION:Horaires : Matinée\n\nTarif : Selon catégorie\n\nPublic : Dè
- s 16 ans\n\nÉpreuve outdoor combinant course à pied et VTT en sous-bois 
- autour de Nemours.\n\nOrganisateur : https://www.nemours.fr/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nemours-
- 97e8e14fe0/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
+DESCRIPTION:Horaires : Épreuves réparties en journée\n\nTarif : Inscript
+ ion payante\n\nPublic : Dès 16 ans\n\nÉpreuve outdoor combinant course 
+ à pied et VTT en sous-bois autour de Nemours.\n\nOrganisateur : https://w
+ ww.nemours.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/cross-du
+ athlon-tri-cross-de-nemours-97e8e14fe0/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cross-duathlon-tri-cross-de-nem
  ours-97e8e14fe0/
 CATEGORIES:Sport & Outdoor
@@ -298,7 +298,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_927bfc536e@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Initiation à l'escalade de bloc en forêt
@@ -317,37 +317,19 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_19dc3f9082@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Randonnée nature guidée (observation faune\, flore et géologie)
-LOCATION:Massif forestier / Arbonne-la-Forêt\, Arbonne-la-Forêt
-DESCRIPTION:Horaires : Départ à 10h30\n\nTarif : 18 € (Adulte)\, 12 €
-  (Enfant 12–14 ans)\n\nRandonnée guidée pour découvrir la faune\, la 
- flore et la géologie du massif forestier.\n\nOrganisateur : https://fonta
- inebleaulive.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/randon
- nee-nature-guidee-observation-faune-flore-et-geologie-arbonne-la-foret-19d
- c3f9082/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/randonnee-nature-guidee-observa
- tion-faune-flore-et-geologie-arbonne-la-foret-19dc3f9082/
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_1ab4fee36f@fontainebleaulive.fr
 DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Découverte du nord-est de la forêt des Trois Pignons
 LOCATION:Forêt des Trois Pignons\, Arbonne-la-Forêt
-DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit\n\nPromenade guidé
- e en forêt à la découverte du secteur nord-est des Trois Pignons.\n\nOr
- ganisateur : https://www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr/
- evenements/decouverte-du-nord-est-de-la-foret-des-trois-pignons-arbonne-la
- -foret-1ab4fee36f/\n\nInformations collectées automatiquement : vérifiez
- -les auprès de l’organisateur.
+DESCRIPTION:Horaires : 13h30 à 17h00\n\nTarif : Gratuit\n\nPromenade guid
+ ée en forêt à la découverte du secteur nord-est des Trois Pignons.\n\n
+ Organisateur : https://www.aaff.fr/agenda/decouverte-du-nord-est-de-la-for
+ et-des-trois-pignons/\n\nFiche : https://fontainebleaulive.fr/evenements/d
+ ecouverte-du-nord-est-de-la-foret-des-trois-pignons-arbonne-la-foret-1ab4f
+ ee36f/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-du-nord-est-de-la-fo
  ret-des-trois-pignons-arbonne-la-foret-1ab4fee36f/
 CATEGORIES:Sport & Outdoor
@@ -373,7 +355,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_78ea14aa48@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -392,8 +374,28 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_695c19270f@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261123
+SUMMARY:COUPE DE FRANCE DE WUSHU (SANDA LIGHT)
+LOCATION:Fontainebleau
+DESCRIPTION:Compétition sportive d'arts martiaux organisée à Fontaineble
+ au par la Fédération Française de Karaté.\n\nOrganisateur : https://ww
+ w.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5
+ 909&cHash=26b0186f77673f13e2555fe476060173\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/coupe-de-france-de-wushu-sanda-light-fontainebleau-695
+ c19270f/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/coupe-de-france-de-wushu-sanda-
+ light-fontainebleau-695c19270f/
+CATEGORIES:Sport & Outdoor
+GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c4dd07f40c@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Stage de yoga " le Corps\, la voix\, le son"
@@ -431,7 +433,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4770c98a9c@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Plat)
@@ -451,7 +453,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -466,6 +468,26 @@ DESCRIPTION:Horaires : De 10h30 à 12h30\n\nTarif : 10 €\n\nDeux heures p
 URL:https://fontainebleaulive.fr/evenements/stage-de-zumba-club-mill-danses
  -milly-la-foret-e009f9aecd/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_368d533a60@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:RENDEZ-VOUS DE LA FORME SPÉCIAL TÉLÉTHON !
+LOCATION:Fontainebleau
+DESCRIPTION:Nouvelle édition gratuite des Rendez-vous de la forme\, une jo
+ urnée consacrée à la pratique du sport pour tous dans le cadre du Tél
+ éthon.\n\nOrganisateur : https://www.fontainebleau.fr/index.php?id=133&no
+ _cache=1&L=0&tx_news_pi1%5Bnews%5D=5838&cHash=6b45acd93924c5226287352833a8
+ e832\n\nFiche : https://fontainebleaulive.fr/evenements/rendez-vous-de-la-
+ forme-special-telethon-fontainebleau-368d533a60/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rendez-vous-de-la-forme-special
+ -telethon-fontainebleau-368d533a60/
+CATEGORIES:Sport & Outdoor
+GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -488,8 +510,49 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_a88ff9e678@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:TÉLÉTHON À FONTAINEBLEAU
+LOCATION:Fontainebleau
+DESCRIPTION:Horaires : 10h à 18h\n\nJournée sportive\, inclusive et solid
+ aire organisée à l'occasion du Téléthon pour soutenir la recherche et 
+ sensibiliser au handicap et au don.\n\nOrganisateur : https://www.fontaine
+ bleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5964&cHash=
+ d17f045233a5efd15815baafda5639db\n\nFiche : https://fontainebleaulive.fr/e
+ venements/telethon-a-fontainebleau-a88ff9e678/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/telethon-a-fontainebleau-a88ff9
+ e678/
+CATEGORIES:Sport & Outdoor
+GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b8821574ed@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
+LOCATION:Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h30 à 12h\n\nTarif : 10 € adhérents / 15 
+ € non-adhérents\n\nStage animé par Sara pour explorer le mouvement\, l
+ a musicalité et l'interprétation entre danse contemporaine et émotions.
+ \n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/28/29-11-26-stage
+ -de-danse-lyrical-contemporary-club-mill-danses/\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/stage-de-danse-lyrical-contemporary-club-mill-da
+ nses-milly-la-foret-b8821574ed/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-de-danse-lyrical-contempo
+ rary-club-mill-danses-milly-la-foret-b8821574ed/
+CATEGORIES:Sport & Outdoor
+GEO:48.4019;2.45349
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b3728f89dd@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -527,7 +590,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_773dc2d1ea@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
 SUMMARY:Les rendez-vous de la Solle – Courses d'obstacle
@@ -552,12 +615,12 @@ DTEND;VALUE=DATE:20261214
 SUMMARY:Randonnée sportive encadrée : Fontainebleau sud — appuis et con
  fiance sur les chemins rocheux
 LOCATION:Secteur sud de la Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : 30 € par personne\n\nRandonnée sportive à la journ
- ée d'environ 17 km sur les chemins rocheux du sud de la forêt.\n\nOrgani
- sateur : https://sportican.fr/\n\nFiche : https://fontainebleaulive.fr/eve
- nements/randonnee-sportive-encadree-fontainebleau-sud-appuis-et-conf-2e5ff
- 108d7/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+DESCRIPTION:Horaires : 9h15 – 17h00\n\nTarif : 30 € / personne\n\nRando
+ nnée sportive à la journée d'environ 17 km sur les chemins rocheux du s
+ ud de la forêt.\n\nOrganisateur : https://sportican.fr/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/randonnee-sportive-encadree-fontaineblea
+ u-sud-appuis-et-conf-2e5ff108d7/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/randonnee-sportive-encadree-fon
  tainebleau-sud-appuis-et-conf-2e5ff108d7/
 CATEGORIES:Sport & Outdoor
@@ -584,18 +647,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
 LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
-DESCRIPTION:Horaires : À partir de 17h30 (enfants)\, départ 5 km à 19h00
- \n\nTarif : 10 € (course adulte)\n\nCourse pédestre festive de fin d'an
- née proposant des parcours de 800 m\, 1\,6 km et 5 km au bord de la Seine
- .\n\nOrganisateur : https://samois-sur-seine.fr/evenement/course-de-noel/\
- n\nFiche : https://fontainebleaulive.fr/evenements/course-de-noel-de-samoi
- s-sur-seine-12-edition-6d9b7e1830/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : Courses enfants en début d'après-midi \; 5 km à 1
+ 5h00\n\nTarif : 10 € (course 5 km)\n\nCourse pédestre festive de fin d'
+ année proposant des parcours de 800 m\, 1\,6 km et 5 km au bord de la Sei
+ ne.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/course-de-noel
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/course-de-noel-de-sam
+ ois-sur-seine-12-edition-6d9b7e1830/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-12-edition-6d9b7e1830/
 CATEGORIES:Sport & Outdoor
@@ -603,41 +666,21 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c6ecc3650f@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Spectacle Jeune Public : Dans les Coulisses du Père Noël
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Horaires : Selon programmation du théâtre\n\nTarif : Tarifs b
- illetterie jeune public\n\n"Dans les coulisses du Père Noël" est un spec
- tacle de Noël jeune public Théâtr’event\, de Laurent Cattaert et Fran
- ck Douaglin\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fi
- che/7947275/dans-les-coulisses-du-pere-noel/\n\nFiche : https://fontainebl
- eaulive.fr/evenements/spectacle-jeune-public-dans-les-coulisses-du-pere-no
- el-fontainebleau-c6ecc3650f/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : En journée\n\nTarif : Plein tarif : Voir tarifs sur
+  anevert.fr.\n\n"Dans les coulisses du Père Noël" est un spectacle de No
+ ël jeune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin
+ \n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947275
+ /dans-les-coulisses-du-pere-noel/\n\nFiche : https://fontainebleaulive.fr/
+ evenements/spectacle-jeune-public-dans-les-coulisses-du-pere-noel-fontaine
+ bleau-c6ecc3650f/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-jeune-public-dans-les
  -coulisses-du-pere-noel-fontainebleau-c6ecc3650f/
-CATEGORIES:Sport & Outdoor
-GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_733349b698@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261220
-DTEND;VALUE=DATE:20261221
-SUMMARY:Dans les coulisses du Père Noël
-LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Horaires : En journée\n\nTarif : Consulter la billetterie\n\n"
- Dans les coulisses du Père Noël" est un spectacle de Noël jeune public 
- Théâtr’event\, de Laurent Cattaert et Franck Douaglin\n\nOrganisateur 
- : https://www.fontainebleau-tourisme.com/fr/fiche/7947275/dans-les-couliss
- es-du-pere-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/dans-l
- es-coulisses-du-pere-noel-fontainebleau-733349b698/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
- -fontainebleau-733349b698/
 CATEGORIES:Sport & Outdoor
 GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
@@ -662,103 +705,42 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_baa4ba8365@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261221
-DTEND;VALUE=DATE:20261222
-SUMMARY:Dans les coulisses du Père Noël
-LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n"Dans les 
- coulisses du Père Noël" est un spectacle de Noël jeune public Théâtr
- ’event\, de Laurent Cattaert et Franck Douaglin\n\nOrganisateur : https:
- //www.fontainebleau-tourisme.com/fr/fiche/7947275/dans-les-coulisses-du-pe
- re-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/dans-les-couli
- sses-du-pere-noel-fontainebleau-baa4ba8365/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
- -fontainebleau-baa4ba8365/
-CATEGORIES:Sport & Outdoor
-GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_84682cbd82@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261222
-DTEND;VALUE=DATE:20261223
-SUMMARY:Dans les coulisses du Père Noël
-LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n"Dans les 
- coulisses du Père Noël" est un spectacle de Noël jeune public Théâtr
- ’event\, de Laurent Cattaert et Franck Douaglin\n\nOrganisateur : https:
- //www.fontainebleau-tourisme.com/fr/fiche/7947275/dans-les-coulisses-du-pe
- re-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/dans-les-couli
- sses-du-pere-noel-fontainebleau-84682cbd82/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
- -fontainebleau-84682cbd82/
-CATEGORIES:Sport & Outdoor
-GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_391c24f317@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261223
-DTEND;VALUE=DATE:20261224
-SUMMARY:Dans les coulisses du Père Noël
-LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n"Dans les 
- coulisses du Père Noël" est un spectacle de Noël jeune public Théâtr
- ’event\, de Laurent Cattaert et Franck Douaglin\n\nOrganisateur : https:
- //www.fontainebleau-tourisme.com/fr/fiche/7947275/dans-les-coulisses-du-pe
- re-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/dans-les-couli
- sses-du-pere-noel-fontainebleau-391c24f317/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
- -fontainebleau-391c24f317/
-CATEGORIES:Sport & Outdoor
-GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_9babe1b007@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261224
-DTEND;VALUE=DATE:20261225
-SUMMARY:Dans les coulisses du Père Noël
-LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\n"Dans les 
- coulisses du Père Noël" est un spectacle de Noël jeune public Théâtr
- ’event\, de Laurent Cattaert et Franck Douaglin\n\nOrganisateur : https:
- //www.fontainebleau-tourisme.com/fr/fiche/7947275/dans-les-coulisses-du-pe
- re-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/dans-les-couli
- sses-du-pere-noel-fontainebleau-9babe1b007/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/dans-les-coulisses-du-pere-noel
- -fontainebleau-9babe1b007/
-CATEGORIES:Sport & Outdoor
-GEO:48.4049;2.69855
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_8feb008365@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20270122
-DTEND;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270123
 SUMMARY:La Nocturne du Pays de Nemours
 LOCATION:Stade Intercommunal (41 Avenue d'Ormesson)\, Saint-Pierre-lès-Nem
  ours
-DESCRIPTION:Horaires : 19h00\n\nTarif : 8 € en ligne / 10 € sur place\n
- \nTrail nocturne de 11 km en forêt et dans le centre historique de Nemour
- s (frontale obligatoire).\n\nOrganisateur : https://athle-nemours-saint-pi
- erre.com/\n\nFiche : https://fontainebleaulive.fr/evenements/la-nocturne-d
- u-pays-de-nemours-saint-pierre-les-nemours-8feb008365/\n\nInformations col
- lectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 19h00\n\nTarif : ~10-12 €\n\nTrail nocturne de 11 
+ km en forêt et dans le centre historique de Nemours (frontale obligatoire
+ ).\n\nOrganisateur : https://athle-nemours-saint-pierre.com/\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-saint
+ -pierre-les-nemours-8feb008365/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-
  saint-pierre-les-nemours-8feb008365/
 CATEGORIES:Sport & Outdoor
 GEO:48.25937;2.68433
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c49cc08ca8@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270125
+SUMMARY:CaniTrophy de Fontainebleau
+LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
+DESCRIPTION:Horaires : Horaires étalés sur les 2 jours\n\nTarif : Variabl
+ e selon l'épreuve (~23 € pour le Canitrail)\n\nConcours et épreuves de
+  canisport incluant Canitrail\, Canicross\, CaniVTT et Canimarche.\n\nOrga
+ nisateur : https://servercourses.ffslc.fr/\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/canitrophy-de-fontainebleau-c49cc08ca8/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/canitrophy-de-fontainebleau-c49
+ cc08ca8/
+CATEGORIES:Sport & Outdoor
+GEO:48.39283;2.67347
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -778,6 +760,26 @@ DESCRIPTION:Horaires : 19h00\n\nTarif : 10 € à 12 €\n\nTrail nocturne
 URL:https://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-
  saint-pierre-les-nemours-974a0b9859/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d042b64d77@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Trail des Carriers (Fontainebleau Outdoor Festival)
+LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
+DESCRIPTION:Horaires : 20 km vers 13h30 / 13h40 \; 15 km en début d'après
+ -midi\n\nTarif : 15 km : environ 17 € \; 20 km : environ 23 €\n\nTrail
+  nature de 15 km et 20 km à travers la forêt\, les Gorges de Franchard e
+ t la Faisanderie.\n\nOrganisateur : https://grandparquetendurance.com/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/trail-des-carriers-fontain
+ ebleau-outdoor-festival-d042b64d77/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/trail-des-carriers-fontaineblea
+ u-outdoor-festival-d042b64d77/
+CATEGORIES:Sport & Outdoor
+GEO:48.39283;2.67347
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

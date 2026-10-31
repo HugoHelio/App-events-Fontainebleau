@@ -10,4 +10,23 @@ X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_fe5d7fd801@fontainebleaulive.fr
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261102
+SUMMARY:Saison automnale du Domaine de Courances
+LOCATION:Domaine de Courances\, Courances
+DESCRIPTION:Horaires : Parc 14h00–18h00 \; Visites guidées du château d
+ e 14h30 à 17h30\n\nTarif : Château + Parc : 14 € / Parc seul : 11 €\
+ n\nDerniers jours de visite guidée du château et de promenade libre dans
+  le parc avant la fermeture hivernale.\n\nOrganisateur : https://courances
+ .net/preparer-ma-visite/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/saison-automnale-du-domaine-de-courances-fe5d7fd801/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/saison-automnale-du-domaine-de-
+ courances-fe5d7fd801/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR
