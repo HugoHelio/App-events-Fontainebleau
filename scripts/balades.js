@@ -135,7 +135,7 @@ const GUIDES = [
       note: 'Accès en forêt : certains secteurs peuvent être fermés (incendies de 2026). Vérifiez avant de partir sur onf.fr.',
     },
     teaser: ['3 h · ≈ 3 à 4 km · en ville', '3 h · ≈ 3–4 km · in town'],
-    thumb: '/public/balades/img/thumb-a-pied.jpg',
+    thumb: '/public/balades/img/thumb-a-pied-carte.jpg',
     en: {
       mode: 'On foot',
       title: 'Fontainebleau on foot',
