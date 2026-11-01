@@ -657,6 +657,71 @@
     .home-about p { line-height: 1.6; }
     .home-about p + p { margin-top: 0.6rem; }
 
+    /* 01/11: the outings links, out of the footer where nobody saw them, as pills under the
+       views; then the project lead's guides, the one block on the home page that is ours to
+       sell (§7, prix libre). Louder than the suggestions on purpose. */
+    .home-explore { margin-bottom: 1.75rem; }
+    .explore-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .explore-links a {
+      padding: 0.45rem 0.95rem;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-pill);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      background: var(--paper);
+    }
+    .explore-links a:hover { background: var(--brand-light); }
+    .explore-links a.is-guides { background: var(--ink); color: #fff; }
+    .home-guides {
+      margin: 0 0 2rem;
+      padding: 1.1rem 1rem 1.2rem;
+      border-radius: var(--r-lg);
+      background: linear-gradient(160deg, #f6f1e4 0%, #efe6cf 100%);
+      border: 1px solid #e3d6b4;
+      color: var(--ink-2);
+      font-size: 0.95rem;
+    }
+    .home-guides h2 {
+      font-size: 1.35rem;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+      margin: 0.1rem 0 0.3rem;
+    }
+    .hg-kicker { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); }
+    .hg-cards { list-style: none; display: grid; gap: 0.6rem; margin-top: 0.8rem; }
+    .hg-cards a {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 10px;
+      background: var(--paper);
+      color: var(--ink-2);
+      text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .hg-cards a:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+    .hg-cards img { flex: none; width: 112px; height: 70px; object-fit: cover; border-radius: 7px; }
+    .hg-txt { display: flex; flex-direction: column; min-width: 0; }
+    .hg-mode { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); }
+    .hg-txt b { color: var(--ink); font-size: 1rem; line-height: 1.3; }
+    .hg-txt small { font-size: 0.8rem; }
+    .hg-all { display: inline-block; margin-top: 0.8rem; font-weight: 700; color: var(--ink); }
+    @media (min-width: 640px) {
+      .hg-cards { grid-template-columns: repeat(3, 1fr); }
+      .hg-cards a { flex-direction: column; align-items: stretch; padding: 0; overflow: hidden; }
+      .hg-cards img { width: 100%; height: auto; aspect-ratio: 8 / 5; border-radius: 0; }
+      .hg-txt { padding: 0.5rem 0.75rem 0.75rem; }
+    }
+    /* Moved into the list of events, after the 4th card (renderUpTo). */
+    #cardsList > .home-guides { margin: 0.25rem 0 1rem; }
+    /* The guides chip in the banner: filled, so it reads as ours, not as a seasonal hub. */
+    .season-chip.is-guides { background: var(--brand-sand); border-color: var(--brand-sand); color: #1d3b29; }
+    .season-chip.is-guides:hover { background: #d8b36f; }
+
     .view-panel {
       display: none;
     }
@@ -1297,6 +1362,31 @@
          never edit it by hand. renderHomePicks() hides what is over and translates the dates.
          The about text is ours and stays true for fetch-events.js (radius); sources and checks are the footer's job. -->
     <div class="home-more">
+      <!-- Plain links, present without JavaScript: the way a crawler finds the static pages (§3.X).
+           In the footer until 01/11, where they went unseen. -->
+      <section class="home-explore" aria-labelledby="homeExploreTitle">
+        <h2 id="homeExploreTitle" data-i18n="homeExploreTitle">Idées de sortie</h2>
+        <p class="explore-links">
+          <a href="/aujourdhui/" data-i18n="todayLink">Que faire aujourd’hui ?</a>
+          <a href="/ce-week-end/" data-i18n="weekendLink">Que faire ce week-end ?</a>
+          <a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
+          <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a>
+          <a href="/balades/" class="is-guides" data-i18n="guidesLink">Balades à pied, à vélo, en voiture</a>
+        </p>
+      </section>
+      <!-- The guides (item 104 bis). Same cards as the generated pages' promotion block; the text
+           is in STRINGS, the guides themselves in scripts/balades.js. -->
+      <section class="home-guides" aria-labelledby="homeGuidesTitle">
+        <p class="hg-kicker" data-i18n="guidesKicker">Fiches gratuites · prix libre</p>
+        <h2 id="homeGuidesTitle" data-i18n="guidesTitle">Les balades d’un Bellifontain</h2>
+        <p data-i18n="guidesText">Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.</p>
+        <ul class="hg-cards">
+          <li><a href="/balades/fontainebleau-a-pied/" data-guide="a-pied"><img src="public/balades/img/thumb-a-pied.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideWalkMode">À pied</span><b data-i18n="guideWalkTitle">Fontainebleau à pied</b><small data-i18n="guideWalkTeaser">3 h · ≈ 3 à 4 km · en ville</small></span></a></li>
+          <li><a href="/balades/fontainebleau-a-velo/" data-guide="a-velo"><img src="public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideBikeMode">À vélo</span><b data-i18n="guideBikeTitle">Fontainebleau à vélo</b><small data-i18n="guideBikeTeaser">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li>
+          <li><a href="/balades/fontainebleau-en-voiture/" data-guide="en-voiture"><img src="public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideCarMode">En voiture</span><b data-i18n="guideCarTitle">Fontainebleau en voiture</b><small data-i18n="guideCarTeaser">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li>
+        </ul>
+        <a class="hg-all" href="/balades/" data-i18n="guidesAll">Toutes les balades →</a>
+      </section>
       <section id="homePicks" class="home-picks" aria-labelledby="homePicksTitle">
         <h2 id="homePicksTitle" data-i18n="homePicksTitle">Suggestions pour les prochains jours</h2>
         <!-- home-picks:start — written by scripts/generate-pages.js, do not edit -->
@@ -1328,12 +1418,6 @@
     <p data-i18n="installHint" class="install-hint"></p>
     <p data-i18n="footerOsm">Fond de carte © contributeurs OpenStreetMap.</p>
     <p data-i18n="footerAffiliate">Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</p>
-    <!-- Plain link, present without JavaScript: the way a crawler finds the static pages (§3.X). -->
-    <p><a href="/aujourdhui/" data-i18n="todayLink">Que faire aujourd’hui ?</a>
-       · <a href="/ce-week-end/" data-i18n="weekendLink">Que faire ce week-end ?</a>
-       · <a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
-       · <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a>
-       · <a href="/balades/" data-i18n="guidesLink">Balades à pied, à vélo, en voiture</a></p>
     <!-- For other websites, not for visitors: set apart from the outings links (04/10). -->
     <div class="partner-box">
       <p class="partner-title" data-i18n="partnerTitle">Vous avez un site web ?</p>
@@ -1472,6 +1556,21 @@
         byCommune: 'Que faire, commune par commune',
         seasonalLink: 'Vacances et sorties de saison',
         guidesLink: 'Balades à pied, à vélo, en voiture',
+        homeExploreTitle: 'Idées de sortie',
+        guidesChip: 'Balades en famille',
+        guidesKicker: 'Fiches gratuites · prix libre',
+        guidesTitle: 'Les balades d’un Bellifontain',
+        guidesText: 'Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.',
+        guidesAll: 'Toutes les balades →',
+        guideWalkMode: 'À pied',
+        guideWalkTitle: 'Fontainebleau à pied',
+        guideWalkTeaser: '3 h · ≈ 3 à 4 km · en ville',
+        guideBikeMode: 'À vélo',
+        guideBikeTitle: 'Fontainebleau à vélo',
+        guideBikeTeaser: '3 balades · 5 à 22 km · 45 min à 3 h',
+        guideCarMode: 'En voiture',
+        guideCarTitle: 'Fontainebleau en voiture',
+        guideCarTeaser: '2 boucles · 30 à 45 km · ½ à 1 journée',
         popupLink: 'Lien',
         ageAll: '👥 Tout public',
         ageFrom: (n) => `👶 Dès ${n} ${n === 1 ? 'an' : 'ans'}`,
@@ -1577,7 +1676,22 @@
         weekendLink: 'This weekend (in French)',
         byCommune: 'What’s on, town by town (in French)',
         seasonalLink: 'Holidays and seasonal outings (in French)',
-        guidesLink: 'Walks, bike rides and drives (in French)',
+        guidesLink: 'Walks, bike rides and drives',
+        homeExploreTitle: 'Outing ideas',
+        guidesChip: 'Family outings',
+        guidesKicker: 'Free guides · pay what you like',
+        guidesTitle: 'A local’s favourite outings',
+        guidesText: 'Walked again and again with the family: every step, the maps, and games for the children.',
+        guidesAll: 'All the guides →',
+        guideWalkMode: 'On foot',
+        guideWalkTitle: 'Fontainebleau on foot',
+        guideWalkTeaser: '3 h · ≈ 3–4 km · in town',
+        guideBikeMode: 'By bike',
+        guideBikeTitle: 'Fontainebleau by bike',
+        guideBikeTeaser: '3 rides · 5–22 km · 45 min to 3 h',
+        guideCarMode: 'By car',
+        guideCarTitle: 'Fontainebleau by car',
+        guideCarTeaser: '2 loops · 30–45 km · half a day to a day',
         popupLink: 'Link',
         ageAll: '👥 All ages',
         ageFrom: (n) => `👶 Ages ${n}+`,
@@ -1883,8 +1997,8 @@
       const row = document.getElementById('seasonRow');
       if (!row) return;
       row.replaceChildren();
-      row.hidden = !seasonItems.length;
-      if (row.hidden) return;
+      // Since 01/11 the row always holds the guides chip (last), so it is never empty.
+      row.hidden = false;
       // No visible label since 04/10: the banner is lighter, and on a site called "Live" the
       // chips speak for themselves. Screen readers still get one.
       row.setAttribute('aria-label', t('seasonNow'));
@@ -1898,7 +2012,18 @@
         a.addEventListener('click', () => track('season-chip', x.href.split('/')[2]));
         row.appendChild(a);
       }
+      const g = document.createElement('a');
+      g.className = 'season-chip is-guides';
+      g.href = '/balades/';
+      g.textContent = t('guidesChip');
+      g.addEventListener('click', () => track('guide-chip'));
+      row.appendChild(g);
     }
+
+    // The guides' cards under the views (01/11): a click counts like the generated pages' block.
+    document.querySelectorAll('.hg-cards a[data-guide]').forEach((a) => {
+      a.addEventListener('click', () => track('guide-promo', a.dataset.guide));
+    });
 
     // ── Feedback ("Signaler une erreur") ──
     function feedbackHref(a) {
@@ -2584,8 +2709,21 @@
     let listShown = 0;    // how many of them have a card
     let showMoreBtn = null;
 
+    // The guides' block (01/11) is moved into the list, after the 4th card, where the visitor
+    // scrolls; below the views, at the bottom of a long list, nobody reached it. It is moved, not
+    // copied, so it never shows twice, and put back before the list is emptied. A list of 4 cards
+    // or fewer leaves it at the bottom.
+    const GUIDES_AFTER = 4;
+    const guidesBlock = document.querySelector('.home-guides');
+    const guidesHome = guidesBlock ? guidesBlock.parentNode : null;
+    const guidesNext = guidesBlock ? guidesBlock.nextSibling : null;
+    function parkGuides() {
+      if (guidesBlock && guidesBlock.parentNode !== guidesHome) guidesHome.insertBefore(guidesBlock, guidesNext);
+    }
+
     function renderCards(activities) {
       const container = document.getElementById('cardsList');
+      parkGuides();
       container.innerHTML = '';
       // Same events as before (a language switch, a filter set back to its value): keep what the
       // visitor had already opened instead of folding the list back to 20.
@@ -2633,7 +2771,10 @@
     function renderUpTo(n) {
       if (!showMoreBtn) return;
       const end = Math.min(n, listItems.length);
-      for (let i = listShown; i < end; i++) showMoreBtn.before(buildCard(listItems[i]));
+      for (let i = listShown; i < end; i++) {
+        showMoreBtn.before(buildCard(listItems[i]));
+        if (i === GUIDES_AFTER - 1 && listItems.length > GUIDES_AFTER && guidesBlock) showMoreBtn.before(guidesBlock);
+      }
       listShown = Math.max(listShown, end);
       const left = listItems.length - listShown;
       showMoreBtn.hidden = left <= 0;

@@ -79,6 +79,20 @@ ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .wk-cur[hidden]{display:none}
 @media (max-width:480px){ul.agenda li{grid-template-columns:1fr;gap:2px}ul.agenda .t:empty{display:none}}
 .visit li{padding:14px 0}.visit .btn{margin-top:8px;padding:8px 14px;font-size:15px}.visit .closed{color:#8a4b00}.visit-aff{font-size:14px;color:var(--muted)}
+.gp{margin:32px 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4}
+.gp-kicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.gp h2{margin:2px 0 4px;font-size:1.35rem}
+.gp>p{margin:0 0 12px}
+.gp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.gp-cards a{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.gp-cards a:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.gp-cards img{flex:none;width:112px;height:70px;object-fit:cover;border-radius:7px}
+.gp-txt{display:flex;flex-direction:column;min-width:0}
+.gp-mode{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.gp-txt b{color:var(--ink);font-size:1.02rem;line-height:1.3}
+.gp-txt small{color:var(--muted);font-size:13px}
+.gp-all{display:inline-block;margin-top:12px;font-weight:700;color:var(--ink)}
+@media (min-width:640px){.gp-cards{grid-template-columns:repeat(3,1fr)}.gp-cards a{flex-direction:column;align-items:stretch;padding:0;overflow:hidden}.gp-cards img{width:100%;height:auto;aspect-ratio:8/5;border-radius:0}.gp-txt{padding:8px 12px 12px}}
 </style>
 </head>
 <body>
@@ -107,6 +121,13 @@ ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 <h2 id="visiter-prochain" data-en="Places to visit this weekend">À visiter ce week-end</h2>
 <ul class="list visit"><li><b>Château de Fontainebleau</b> · Fontainebleau<small data-en="Eight centuries of French monarchs, from Francis I to Napoleon III: state apartments, the Francis I Gallery and the park. Open every day except Tuesday.">Huit siècles de souverains, de François Ier à Napoléon III : grands appartements, galerie François Ier et parc. Ouvert tous les jours sauf le mardi.</small><a class="btn alt" href="https://www.tiqets.com/fr/activites-attractions-fontainebleau-c66966/billets-pour-chateau-de-fontainebleau-billet-coupe-file-p974548/?partner=helioso-190732&amp;tq_campaign=fontainebleaulive-visiter-chateau" rel="sponsored noopener" target="_blank" data-track="visit-click" data-id="tiqets-visiter-chateau-fontainebleau" data-en="🎟️ Skip-the-line ticket on Tiqets · 17 €, same price as at the door">🎟️ Billet coupe-file chez Tiqets · 17 €, même prix que sur place</a></li></ul>
 <p class="visit-aff" data-en="Partner link (Tiqets): Fontainebleau Live earns a commission if you book through it, at no extra cost to you. &lt;a href=&quot;/nos-sources/#financement&quot;&gt;Learn more&lt;/a&gt;">Lien partenaire Tiqets : Fontainebleau Live perçoit une commission si vous réservez par ce lien, sans surcoût pour vous. <a href="/nos-sources/#financement">En savoir plus</a></p></div>
+<aside class="gp" aria-label="Balades">
+<p class="gp-kicker" data-en="Free guides · pay what you like">Fiches gratuites · prix libre</p>
+<h2 data-en="A local’s favourite outings">Les balades d’un Bellifontain</h2>
+<p data-en="Walked again and again with the family: every step, the maps, and games for the children.">Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.</p>
+<ul class="gp-cards"><li><a href="/balades/fontainebleau-a-pied/" data-track="guide-promo" data-id="a-pied"><img src="/public/balades/img/thumb-a-pied.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="On foot">À pied</span><b data-en="Fontainebleau on foot">Fontainebleau à pied</b><small data-en="3 h · ≈ 3–4 km · in town">3 h · ≈ 3 à 4 km · en ville</small></span></a></li><li><a href="/balades/fontainebleau-a-velo/" data-track="guide-promo" data-id="a-velo"><img src="/public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By bike">À vélo</span><b data-en="Fontainebleau by bike">Fontainebleau à vélo</b><small data-en="3 rides · 5–22 km · 45 min to 3 h">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li><li><a href="/balades/fontainebleau-en-voiture/" data-track="guide-promo" data-id="en-voiture"><img src="/public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By car">En voiture</span><b data-en="Fontainebleau by car">Fontainebleau en voiture</b><small data-en="2 loops · 30–45 km · half a day to a day">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li></ul>
+<a class="gp-all" href="/balades/" data-en="All the guides →">Toutes les balades →</a>
+</aside>
 <div class="actions"><a class="btn alt" href="/" data-en="Full agenda on the map">Tout l’agenda sur la carte</a></div>
 <div class="share"><button type="button" id="share" class="share-btn" hidden data-text="14 sorties aujourd’hui autour de Fontainebleau" data-text-en="14 outings today around Fontainebleau"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span data-en="Share this programme">Partager ce programme</span></button></div>
 <p class="note"><span data-en="Seasonal outings:">Sorties de saison :</span> <a href="/sorties/marches-de-noel/" data-en="Christmas markets">Marchés de Noël</a> · <a href="/sorties/noel/" data-en="Christmas">Noël</a> · <a href="/sorties/brame-du-cerf/" data-en="Deer rut">Brame du cerf</a> · <a href="/sorties/champignons/" data-en="Mushrooms">Champignons</a> · <a href="/sorties/halloween/" data-en="Halloween">Halloween</a>.</p>

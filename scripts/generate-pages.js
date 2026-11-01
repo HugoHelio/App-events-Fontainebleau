@@ -643,7 +643,7 @@ function cityPage(c, places = [], near = []) {
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),
     canonical: `${SITE_URL}/${CITIES_DIR}/${c.slug}/`,
     body,
-  }).replace('</style>', `${PARTNER_STYLE}\n${places.length ? `${VISIT_STYLE}\n` : ''}</style>`);
+  }).replace('</style>', `${PARTNER_STYLE}\n${PROMO_STYLE}\n${places.length ? `${VISIT_STYLE}\n` : ''}</style>`);
 }
 
 // Same box as the home page footer (04/10): the widget is an offer to other websites, so it is
@@ -1165,7 +1165,7 @@ ${nowHtml(themesHere, 'Pendant les vacances', 'During the holidays')}
 ${toc.length > 1 ? `<nav class="toc" aria-label="Sommaire">${toc.map((s) => `<a href="#${s.id}"${en(esc(s.navEn))}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${family.length ? `<h2 id="en-famille"${en('Family outing ideas')}>Idées de sorties en famille</h2>\n<ul class="list">${family.map(eventItem).join('')}</ul>` : ''}
 ${n ? LEGEND : ''}
-${sections.map(daySection).join('\n')}${p.over ? '' : visitHtml(placesOpen(places, start, p.to), 'À visiter pendant les vacances', 'Places to visit during the holidays')}
+${sections.map(daySection).join('\n')}${p.over ? '' : visitHtml(placesOpen(places, start, p.to), 'À visiter pendant les vacances', 'Places to visit during the holidays')}${p.over ? '' : guidesPromo()}
 ${faqHtml(h.faq, h.faqEn)}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>
 <script>
 ${FILTER_SCRIPT}
@@ -1177,7 +1177,7 @@ ${FILTER_SCRIPT}
     canonical: `${SITE_URL}/${THEMES_DIR}/${h.slug}/`,
     body,
     titleEn: `${h.titleEn(year)} | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n${VISIT_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n</style>`);
 }
 
 /** /sorties/ — every seasonal hub, holidays first. A plain page of links a crawler can follow. */
@@ -1357,7 +1357,7 @@ ${nextList.length ? `<div class="wk-next" hidden><p class="when"><span class="we
 ${sections.length > 1 ? `<nav class="toc wk-cur" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}"${s.navEn ? en(esc(s.navEn)) : ''}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${n || nextList.length ? LEGEND : ''}
 <div class="wk-cur">${curSections.map(daySection).join('\n')}</div>
-${sections.filter((s) => !curSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}
+${sections.filter((s) => !curSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}${guidesPromo()}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/"${en('Today')}>Aujourd’hui</a> `}<a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText, shareTextEn)}
 <p class="note"><span${en('Seasonal outings:')}>Sorties de saison :</span> ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.nameEn))}>${esc(t.name)}</a>`).join(' · ')}.</p>
@@ -1381,7 +1381,7 @@ ${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fo
     canonical: `${SITE_URL}/${WEEKEND_DIR}/`,
     body,
     titleEn: `What’s on this weekend around Fontainebleau? (${rangeEn}) | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n</style>`);
 }
 
 // ─── /aujourdhui/ (item 78) ───
@@ -1422,7 +1422,7 @@ ${sections.map(daySection).join('\n')}
 <h1>Que faire aujourd’hui autour de Fontainebleau ?</h1>
 <p class="note" id="stale" hidden>Ce programme date du ${esc(dayName(today))} et n’a pas encore été mis à jour : <a href="/">l’agenda complet</a> est à jour.</p>
 ${nowHtml(seasonNow(events, today))}
-${days.map(block).join('\n')}
+${days.map(block).join('\n')}${guidesPromo()}
 <div class="actions"><a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a> <a class="btn alt" href="/">Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText)}
 <p class="note">Agenda collecté automatiquement : vérifiez les informations auprès de l’organisateur avant de vous déplacer.</p>
@@ -1448,7 +1448,7 @@ ${shareScript(`${SITE_URL}/${TODAY_DIR}/`, 'Que faire aujourd’hui autour de Fo
     canonical: `${SITE_URL}/${TODAY_DIR}/`,
     body,
     toTop: true,   // no English on this page, but just as long
-  }).replace('</style>', `${WEEKEND_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${PROMO_STYLE}\n</style>`);
 }
 
 // The hub is the "by town" page, not a second answer to "que faire à Fontainebleau" (11/10): it
@@ -1494,17 +1494,19 @@ ${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`,
 // The project lead's guides, from scripts/balades.js. The whole text of every step is on the page,
 // for search engines (item 106) and for a visitor on a phone; the PDF is the printable sheet,
 // with the same maps and games. Pay what you want, no lock (§7, 01/11): the free download is
-// always there, the Stripe link only shows once filled in PAY. French only for now.
+// always there, the Stripe link only shows once filled in PAY. Bilingual like the weekend pages:
+// French served and indexed, English swapped in by data-en (the guide's `en` block); the PDFs
+// are French only, and the English labels say so.
 
 const BALADES_DIR = 'balades';
-const NOTE_LABEL = { wc: 'WC', option: 'Option longue', astuce: 'Astuce', attention: 'Attention', coeur: 'Coup de cœur' };
+const NOTE_LABEL = { wc: ['WC', 'WC'], option: ['Option longue', 'Long option'], astuce: ['Astuce', 'Tip'], attention: ['Attention', 'Careful'], coeur: ['Coup de cœur', 'Don’t miss'] };
 const GUIDE_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 4px}
 .lead{font-size:1.1rem;font-style:italic;margin:0 0 16px}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
 .facts li{background:#f2ede1;border-radius:8px;padding:6px 12px;font-size:15px}
 .facts b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
 .why{margin:0;padding:12px 16px;border-left:3px solid var(--accent-ink);background:var(--paper);font-style:italic}
-.why footer{all:unset;display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--accent-ink);font-size:15px}
+.why-by{display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--accent-ink);font-size:15px}
 .tbl{overflow-x:auto}
 table.ov{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper)}
 table.ov th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-ink);border-bottom:2px solid var(--accent-ink);padding:6px 8px}
@@ -1518,6 +1520,7 @@ figcaption{font-size:12px;color:var(--muted);margin-top:4px}
 ol.steps{list-style:none;margin:16px 0;padding:0}
 ol.steps>li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
 ol.steps>li>div{flex:1;min-width:0}
+ol.steps figure{max-width:340px}
 ol.steps .k{flex:none;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:15px}
 ol.steps h3{margin:2px 0 0;font-size:1.05rem;color:var(--ink)}
 ol.steps p{margin:0}
@@ -1536,82 +1539,123 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 .pwyw-title{font-weight:700;color:var(--ink);margin:0 0 4px;font-size:1.1rem}
 .pwyw .actions{align-items:center;margin:12px 0 8px}
 .pwyw .free{color:var(--ink);font-size:15px}
-.cards{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
-.cards li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.cards h2{margin:0 0 4px}.cards h2 a{color:var(--ink)}
-.cards p{margin:4px 0}
 .thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}`;
+
+// The promotion card (01/11): on the busiest pages, the guides with a picture each. A plain
+// list of links, so a crawler follows it too; clicks count as guide-promo with the guide's key.
+const PROMO_STYLE = `.gp{margin:32px 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4}
+.gp-kicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.gp h2{margin:2px 0 4px;font-size:1.35rem}
+.gp>p{margin:0 0 12px}
+.gp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.gp-cards a{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.gp-cards a:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.gp-cards img{flex:none;width:112px;height:70px;object-fit:cover;border-radius:7px}
+.gp-txt{display:flex;flex-direction:column;min-width:0}
+.gp-mode{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.gp-txt b{color:var(--ink);font-size:1.02rem;line-height:1.3}
+.gp-txt small{color:var(--muted);font-size:13px}
+.gp-all{display:inline-block;margin-top:12px;font-weight:700;color:var(--ink)}
+@media (min-width:640px){.gp-cards{grid-template-columns:repeat(3,1fr)}.gp-cards a{flex-direction:column;align-items:stretch;padding:0;overflow:hidden}.gp-cards img{width:100%;height:auto;aspect-ratio:8/5;border-radius:0}.gp-txt{padding:8px 12px 12px}}`;
 
 // A guide's own text may set words in **bold**; everything is escaped first.
 const rich = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+// One element in both languages: French content, English in data-en when it differs.
+const bi = (tag, fr, enText, attrs = '') => {
+  const frHtml = rich(fr);
+  const enHtml = enText == null ? null : rich(enText);
+  return `<${tag}${attrs}${enHtml !== null && enHtml !== frHtml ? en(enHtml) : ''}>${frHtml}</${tag}>`;
+};
+const noteHtml = ([kind, text], enText) => {
+  const [fr, enLabel] = NOTE_LABEL[kind] || [kind, kind];
+  return `<p class="box ${esc(kind)}"${enText ? en(`<b>${esc(enLabel)}:</b> ${rich(enText)}`) : ''}><b>${esc(fr)} :</b> ${rich(text)}</p>`;
+};
 
-function payBox(key, pdf, amount, what = 'Cette fiche est gratuite. Si elle vous plaît, payez-la ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.') {
+function payBox(key, pdf, amount, what, whatEn) {
   const pay = safeUrl(PAY[key]);
-  const free = (cls, label) => (pdf ? `<a class="${cls}" href="${esc(pdf)}" download data-track="guide-download" data-id="${esc(key)}">${label}</a>` : '');
-  if (!pay) return pdf ? `<div class="actions">${free('btn', 'Télécharger la fiche (PDF)')}</div>` : '';
+  const free = (cls, fr, enLabel) => (pdf ? bi('a', fr, enLabel, ` class="${cls}" href="${esc(pdf)}" download data-track="guide-download" data-id="${esc(key)}"`) : '');
+  if (!pay) return pdf ? `<div class="actions">${free('btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF, in French)')}</div>` : '';
   return `<div class="pwyw">
-<p class="pwyw-title">Prix libre — ${amount} € conseillés</p>
-<p>${esc(what)}</p>
-<div class="actions"><a class="btn" href="${esc(pay)}" rel="noopener" data-track="guide-pay" data-id="${esc(key)}">Choisir mon prix</a>${free('free', 'Télécharger sans payer')}</div>
-<p class="note">Paiement sécurisé chez Stripe, à partir de 2 €, puis téléchargement immédiat. Fontainebleau Live est édité par une entreprise : pas de reçu fiscal.</p>
+${bi('p', `Prix libre — ${amount} € conseillés`, `Pay what you like — €${amount} suggested`, ' class="pwyw-title"')}
+${bi('p', what || 'Cette fiche est gratuite. Si elle vous plaît, payez-la ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', whatEn || 'This sheet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.')}
+<div class="actions">${bi('a', 'Choisir mon prix', 'Choose my price', ` class="btn" href="${esc(pay)}" rel="noopener" data-track="guide-pay" data-id="${esc(key)}"`)}${free('free', 'Télécharger sans payer', 'Download without paying (PDF, in French)')}</div>
+${bi('p', 'Paiement sécurisé chez Stripe, à partir de 2 €, puis téléchargement immédiat. Fontainebleau Live est édité par une entreprise : pas de reçu fiscal.', 'Secure payment with Stripe, from €2, then instant download. Fontainebleau Live is published by a company: no tax receipt.', ' class="note"')}
 </div>`;
 }
 
-function stepHtml(st) {
-  const notes = (st.notes || []).map(([kind, text]) => `<p class="box ${esc(kind)}"><b>${esc(NOTE_LABEL[kind] || kind)} :</b> ${rich(text)}</p>`).join('');
+function stepHtml(st, se = {}) {
+  const notes = (st.notes || []).map((n, i) => noteHtml(n, (se.notes || [])[i])).join('');
   const img = st.img ? `<figure><img src="${esc(st.img.src)}" width="${st.img.w}" height="${st.img.h}" alt="${esc(st.img.alt)}" loading="lazy"></figure>` : '';
   const body = st.title
-    ? `<h3>${esc(st.title)}</h3>${st.sub ? `<p class="sub">${esc(st.sub)}</p>` : ''}<ul>${st.items.map((i) => `<li>${rich(i)}</li>`).join('')}</ul>`
-    : `<p>${rich(st.text)}</p><p class="sub">${esc([st.dist, st.time].filter(Boolean).join(' · '))}</p>`;
+    ? `${bi('h3', st.title, se.title)}${st.sub ? bi('p', st.sub, se.sub, ' class="sub"') : ''}<ul>${st.items.map((it, i) => bi('li', it, (se.items || [])[i])).join('')}</ul>`
+    : `${bi('p', st.text, se.text)}${bi('p', [st.dist, st.time].filter(Boolean).join(' · '), [se.dist || st.dist, st.time].filter(Boolean).join(' · '), ' class="sub"')}`;
   return `<li><span class="k" aria-hidden="true">${esc(st.k)}</span><div>${body}${notes}${img}</div></li>`;
 }
 
-function gameHtml(g) {
+function gameHtml(g, ge = {}) {
   if (!g) return '';
-  const list = (items) => `<ul class="checks">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
-  return `<div class="game"><h3>${esc(g.title)}</h3>${g.intro ? `<p>${esc(g.intro)}</p>` : ''}${list(g.items)}${g.extra ? `<p class="riddle"><b>${esc(g.extra.title)}</b></p>${list(g.extra.items)}` : ''}${(g.riddles || []).map(([q, hint]) => `<p class="riddle"><b>${esc(q)}</b><span class="sub">${esc(hint)}</span></p>`).join('')}${g.answer ? `<details><summary>Réponses pour les parents</summary><p>${esc(g.answer)}</p></details>` : ''}</div>`;
+  const list = (items, itemsEn = []) => `<ul class="checks">${items.map((it, i) => bi('li', it, itemsEn[i])).join('')}</ul>`;
+  const ex = ge.extra || {};
+  return `<div class="game">${bi('h3', g.title, ge.title)}${g.intro ? bi('p', g.intro, ge.intro) : ''}${list(g.items, ge.items)}${g.extra ? `<p class="riddle">${bi('b', g.extra.title, ex.title)}</p>${list(g.extra.items, ex.items)}` : ''}${(g.riddles || []).map(([q, hint], i) => { const [qe, he] = (ge.riddles || [])[i] || []; return `<p class="riddle">${bi('b', q, qe)}${bi('span', hint, he, ' class="sub"')}</p>`; }).join('')}${g.answer ? `<details>${bi('summary', 'Réponses pour les parents', 'Answers for the grown-ups')}${bi('p', g.answer, ge.answer)}</details>` : ''}</div>`;
 }
 
-function routeHtml(r) {
-  const notes = (r.notes || []).map(([kind, text]) => `<p class="box ${esc(kind)}"><b>${esc(NOTE_LABEL[kind] || kind)} :</b> ${rich(text)}</p>`).join('');
+function routeHtml(r, re = {}) {
+  const notes = (r.notes || []).map((n, i) => noteHtml(n, (re.notes || [])[i])).join('');
   return `<section class="route">
-<h2>${r.num ? `${r.num}. ` : ''}${esc(r.title)}</h2>${r.sub ? `
-<p class="sub">${esc(r.sub)}</p>` : ''}
-<figure><img src="${esc(r.map.src)}" width="${r.map.w}" height="${r.map.h}" alt="${esc(r.map.alt)}" loading="lazy"><figcaption>Carte : ${esc(OSM)}</figcaption></figure>
-<ol class="steps">${r.steps.map(stepHtml).join('')}</ol>${r.total ? `
-<p class="tot">${esc(r.total.join(' · '))}</p>` : ''}${notes}${gameHtml(r.game)}
+${bi('h2', `${r.num ? `${r.num}. ` : ''}${r.title}`, re.title && `${r.num ? `${r.num}. ` : ''}${re.title}`)}${r.sub ? `
+${bi('p', r.sub, re.sub, ' class="sub"')}` : ''}
+<figure><img src="${esc(r.map.src)}" width="${r.map.w}" height="${r.map.h}" alt="${esc(r.map.alt)}" loading="lazy">${bi('figcaption', `Carte : ${OSM}`, 'Map: © OpenStreetMap contributors')}</figure>
+<ol class="steps">${r.steps.map((st, i) => stepHtml(st, (re.steps || [])[i])).join('')}</ol>${r.total ? `
+${bi('p', r.total.join(' · '), re.total && [re.total, ...r.total.slice(1)].join(' · '), ' class="tot"')}` : ''}${notes}${gameHtml(r.game, re.game)}
 </section>`;
 }
 
+/** The promotion card: every guide, or the ones given (a commune's page). */
+function guidesPromo(list = GUIDES, heading = ['Les balades d’un Bellifontain', 'A local’s favourite outings']) {
+  if (!list.length) return '';
+  return `
+<aside class="gp" aria-label="Balades">
+${bi('p', 'Fiches gratuites · prix libre', 'Free guides · pay what you like', ' class="gp-kicker"')}
+${bi('h2', heading[0], heading[1])}
+${bi('p', 'Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.', 'Walked again and again with the family: every step, the maps, and games for the children.')}
+<ul class="gp-cards">${list.map((g) => `<li><a href="/${BALADES_DIR}/${g.slug}/" data-track="guide-promo" data-id="${esc(g.key)}"><img src="${esc(g.thumb)}" width="480" height="300" alt="" loading="lazy"><span class="gp-txt">${bi('span', g.mode, g.en.mode, ' class="gp-mode"')}${bi('b', g.title, g.en.title)}${bi('small', g.teaser[0], g.teaser[1])}</span></a></li>`).join('')}</ul>
+${bi('a', 'Toutes les balades →', 'All the guides →', ` class="gp-all" href="/${BALADES_DIR}/"`)}
+</aside>`;
+}
+
 function guidePage(g, towns = []) {
-  const ov = g.overview;
+  const ge = g.en;
+  const ov = g.overview, ove = ge.overview;
   const others = GUIDES.filter((o) => o !== g);
-  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${BALADES_DIR}/">Balades</a></nav>
-<p class="kicker">Fiche balade · ${esc(g.mode)} · n°${g.num}</p>
-<h1>${esc(g.title)}</h1>
-<p class="lead">${esc(g.subtitle)}</p>
-<ul class="facts">${g.facts.map(([k, v]) => `<li><b>${esc(k)}</b>${esc(v)}</li>`).join('')}</ul>
+  const many = g.routes.length > 1;
+  const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')} › ${bi('a', 'Balades', 'Guides', ` href="/${BALADES_DIR}/"`)}</nav>
+${bi('p', `Fiche balade · ${g.mode} · n°${g.num}`, `Guide · ${ge.mode} · No. ${g.num}`, ' class="kicker"')}
+${bi('h1', g.title, ge.title)}
+${bi('p', g.subtitle, ge.subtitle, ' class="lead"')}
+<ul class="facts">${g.facts.map(([k, v], i) => `<li>${bi('b', k, ge.facts[i][0])}${bi('span', v, ge.facts[i][1])}</li>`).join('')}</ul>
 ${payBox(g.key, g.pdf, SUGGESTED.guide)}
-<h2>Pourquoi ${g.routes.length > 1 ? 'ces balades' : 'ce parcours'} ?</h2>
-<blockquote class="why">${esc(g.why)}<footer>— Hugues, Bellifontain</footer></blockquote>
-<h2>Avant de partir</h2>
-<ul>${g.before.map((b) => `<li>${rich(b)}</li>`).join('')}</ul>
-<h2>En un coup d’œil</h2>
-<div class="tbl"><table class="ov"><thead><tr>${ov.head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${ov.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}${ov.total ? `<tr class="total">${ov.total.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>` : ''}</tbody></table></div>
-${g.routes.map(routeHtml).join('\n')}${g.more ? `
-<h2>${esc(g.more.title)}</h2>
-<ul class="list">${g.more.items.map(([name, text]) => `<li><b>${esc(name)}</b><small>${esc(text)}</small></li>`).join('')}</ul>${g.more.note ? `
-<p class="note">${esc(g.more.note)}</p>` : ''}` : ''}
-<h2>Sur le parcours en ce moment</h2>
-<p>Les sorties à venir, mises à jour chaque jour :</p>
-<div class="actions">${towns.map((c) => `<a class="btn alt" href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a>`).join('')}<a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a></div>
+${bi('h2', `Pourquoi ${many ? 'ces balades' : 'ce parcours'} ?`, `Why ${many ? 'these routes' : 'this walk'}?`)}
+<blockquote class="why">${bi('span', g.why, ge.why)}${bi('span', '— Hugues, Bellifontain', '— Hugues, a Fontainebleau local', ' class="why-by"')}</blockquote>
+${bi('h2', 'Avant de partir', 'Before you go')}
+<ul>${g.before.map((b, i) => bi('li', b, ge.before[i])).join('')}</ul>
+${bi('h2', 'En un coup d’œil', 'At a glance')}
+<div class="tbl"><table class="ov"><thead><tr>${ov.head.map((h, i) => bi('th', h, ove.head[i], ' scope="col"')).join('')}</tr></thead><tbody>${ov.rows.map((r, i) => `<tr>${r.map((c, j) => bi('td', c, ove.rows[i][j])).join('')}</tr>`).join('')}${ov.total ? `<tr class="total">${ov.total.map((c, j) => bi('td', c, (ove.total || [])[j])).join('')}</tr>` : ''}</tbody></table></div>
+${g.routes.map((r, i) => routeHtml(r, ge.routes[i])).join('\n')}${g.more ? `
+${bi('h2', g.more.title, ge.more.title)}
+<ul class="list">${g.more.items.map(([name, text], i) => `<li>${bi('b', name, ge.more.items[i][0])}${bi('small', text, ge.more.items[i][1])}</li>`).join('')}</ul>${g.more.note ? `
+${bi('p', g.more.note, ge.more.note, ' class="note"')}` : ''}` : ''}
+${bi('h2', 'Sur le parcours en ce moment', 'Along the way right now')}
+${bi('p', 'Les sorties à venir, mises à jour chaque jour :', 'Upcoming outings, updated every day (in French):')}
+<div class="actions">${towns.map((c) => `<a class="btn alt" href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a>`).join('')}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
 ${payBox(g.key, g.pdf, SUGGESTED.guide)}
-<p class="note">Le parcours personnel d’un Bellifontain, fait et refait à ${esc(g.mode.toLowerCase())}. Infos indicatives, vérifiées en ${esc(g.checked)} : horaires, travaux et fermetures changent, vérifiez avant de partir. Une erreur sur le parcours ? <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank">Signalez-la</a>.</p>
-<h2>Les autres fiches</h2>
-<ul class="list">${others.map((o) => `<li><a href="/${BALADES_DIR}/${o.slug}/">${esc(o.title)}</a><small>${esc(o.subtitle)}</small></li>`).join('')}</ul>`;
+<p class="note">${bi('span', `Le parcours personnel d’un Bellifontain, fait et refait ${g.mode.toLowerCase()}. Infos indicatives, vérifiées en ${g.checked} : horaires, travaux et fermetures changent, vérifiez avant de partir.`, `A Fontainebleau local’s own route, done again and again ${ge.mode.toLowerCase()}. For guidance only, checked in ${g.checked}: opening hours, roadworks and closures change, check before you set off.`)} <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Report a mistake on the route')}>Une erreur sur le parcours ? Signalez-la</a>.</p>
+${bi('h2', 'Les autres fiches', 'The other guides')}
+<ul class="list">${others.map((o) => `<li>${bi('a', o.title, o.en.title, ` href="/${BALADES_DIR}/${o.slug}/"`)}${bi('small', o.subtitle, o.en.subtitle)}</li>`).join('')}</ul>`;
   const canonical = `${SITE_URL}/${BALADES_DIR}/${g.slug}/`;
+  const lc = (s) => `${s.charAt(0).toLowerCase()}${s.slice(1)}`;
   return layout({
-    title: `${g.title} : ${g.subtitle.charAt(0).toLowerCase()}${g.subtitle.slice(1)} | Fontainebleau Live`,
+    title: `${g.title} : ${lc(g.subtitle)} | Fontainebleau Live`,
+    titleEn: `${ge.title}: ${lc(ge.subtitle)} | Fontainebleau Live`,
     description: truncate(g.description, 155),
     canonical,
     body,
@@ -1625,34 +1669,35 @@ ${payBox(g.key, g.pdf, SUGGESTED.guide)}
       provider: { '@type': 'Organization', name: 'Fontainebleau Live', url: `${SITE_URL}/` },
       itinerary: { '@type': 'ItemList', itemListElement: ov.rows.map((r, i) => ({ '@type': 'ListItem', position: i + 1, name: r[0].replace(/^\d+\.\s*/, '') })) },
     },
-    toTop: true,
   }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
 }
 
 function guidesIndex() {
-  const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
-<h1>Balades à Fontainebleau : à pied, à vélo, en voiture</h1>
-<p>Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.</p>
-<ul class="cards">${GUIDES.map((g) => `<li><p class="kicker">${esc(g.mode)} · n°${g.num}</p><h2><a href="/${BALADES_DIR}/${g.slug}/">${esc(g.title)}</a></h2><p>${esc(g.subtitle)}</p><p class="sub">${esc(g.facts.map(([, v]) => v).slice(0, 3).join(' · '))}</p></li>`).join('')}</ul>
-${payBox('pack', '', SUGGESTED.pack, 'Les trois fiches sont gratuites, chacune sur sa page. Si elles vous plaisent, vous pouvez les payer ensemble, le montant de votre choix : c’est ce qui finance l’agenda, sans publicité.')}
-<p class="note">Infos indicatives : horaires, travaux et fermetures changent, vérifiez avant de partir. Accès à la forêt : certains secteurs peuvent être fermés, voir onf.fr.</p>
-<div class="actions"><a class="btn alt" href="/${WEEKEND_DIR}/">Que faire ce week-end ?</a><a class="btn alt" href="/${CITIES_DIR}/fontainebleau/">Que faire à Fontainebleau ?</a></div>`;
+  const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')}</nav>
+${bi('h1', 'Balades à Fontainebleau : à pied, à vélo, en voiture', 'Fontainebleau outings: on foot, by bike, by car')}
+${bi('p', 'Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.', 'Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet (in French), with its maps and games for the children, can be printed or kept on your phone.')}
+${guidesPromo(GUIDES, ['Les trois fiches', 'The three guides']).replace(/<a class="gp-all"[^]*?<\/a>\n/, '')}
+${payBox('pack', '', SUGGESTED.pack, 'Les trois fiches sont gratuites, chacune sur sa page. Si elles vous plaisent, vous pouvez les payer ensemble, le montant de votre choix : c’est ce qui finance l’agenda, sans publicité.', 'The three guides are free, each on its own page. If you like them, you can pay for them together, whatever amount you choose: that is what funds the agenda, with no advertising.')}
+${bi('p', 'Infos indicatives : horaires, travaux et fermetures changent, vérifiez avant de partir. Accès à la forêt : certains secteurs peuvent être fermés, voir onf.fr.', 'For guidance only: opening hours, roadworks and closures change, check before you set off. Forest access: some areas may be closed, see onf.fr.', ' class="note"')}
+<div class="actions">${bi('a', 'Que faire ce week-end ?', 'What’s on this weekend?', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}${bi('a', 'Que faire à Fontainebleau ?', 'What’s on in Fontainebleau?', ` class="btn alt" href="/${CITIES_DIR}/fontainebleau/"`)}</div>`;
   return layout({
     title: 'Balades à Fontainebleau en famille : à pied, à vélo, en voiture | Fontainebleau Live',
+    titleEn: 'Family outings around Fontainebleau: on foot, by bike, by car | Fontainebleau Live',
     description: 'Trois fiches balades en famille autour de Fontainebleau, écrites et parcourues par un Bellifontain : la ville à pied, la forêt à vélo, Barbizon et la vallée du Loing en voiture. PDF à prix libre.',
     canonical: `${SITE_URL}/${BALADES_DIR}/`,
     body,
-  }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
+    toTop: false,
+  }).replace('</style>', `${GUIDE_STYLE}\n${PROMO_STYLE}\n</style>`);
 }
 
 // Where Stripe sends a visitor after paying (?fiche=<key>). noindex, but counted: the page view
 // is the one place a completed payment shows in GoatCounter. Without JavaScript it lists all
 // three sheets; the script puts the one just paid first.
 function thanksPage() {
-  const body = `<h1>Merci !</h1>
-<p>Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.</p>
-<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}"><b>${esc(g.title)}</b><small>${esc(g.subtitle)}</small><div class="actions"><a class="btn" href="${esc(g.pdf)}" download data-track="guide-download" data-id="${esc(g.key)}">Télécharger la fiche (PDF)</a><a class="btn alt" href="/${BALADES_DIR}/${g.slug}/">Voir la page</a></div></li>`).join('')}</ul>
-<p class="note">Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page <a href="/mentions-legales/">Mentions légales</a>.</p>
+  const body = `${bi('h1', 'Merci !', 'Thank you!')}
+${bi('p', 'Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.', 'Your payment has been received: it funds the agenda, which stays free and without advertising. Stripe will email you the receipt.')}
+<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}">${bi('b', g.title, g.en.title)}${bi('small', g.subtitle, g.en.subtitle)}<div class="actions">${bi('a', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF, in French)', ` class="btn" href="${esc(g.pdf)}" download data-track="guide-download" data-id="${esc(g.key)}"`)}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${BALADES_DIR}/${g.slug}/"`)}</div></li>`).join('')}</ul>
+<p class="note">${bi('span', 'Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page', 'A problem with the payment or the download? Write to us from the page')} <a href="/mentions-legales/"${en('Legal notice')}>Mentions légales</a>.</p>
 <script>
 (function () {
   var k = new URLSearchParams(location.search).get('fiche');
@@ -1662,21 +1707,19 @@ function thanksPage() {
 </script>`;
   return layout({
     title: 'Merci ! | Fontainebleau Live',
+    titleEn: 'Thank you! | Fontainebleau Live',
     description: 'Merci pour votre soutien à Fontainebleau Live.',
     canonical: `${SITE_URL}/${BALADES_DIR}/merci/`,
     body,
     noindex: true,
     count: true,
+    toTop: false,
   }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
 }
 
-/** On a commune page: the guides that pass through it. */
+/** On a commune page: the promotion card, with the guides that pass through it. */
 function guidesHtml(c) {
-  const list = GUIDES.filter((g) => g.towns.includes(c.slug));
-  if (!list.length) return '';
-  return `
-<h2>Balades à ${esc(c.name)} et alentour</h2>
-<ul class="list">${list.map((g) => `<li><a href="/${BALADES_DIR}/${g.slug}/">${esc(g.title)}</a><small>${esc(g.subtitle)}</small></li>`).join('')}</ul>`;
+  return guidesPromo(GUIDES.filter((g) => g.towns.includes(c.slug)), [`Balades à ${c.name} et alentour`, `Outings in and around ${c.name}`]);
 }
 
 // ───────────────────────────── /nos-sources/ (item 79) ─────────────────────────────

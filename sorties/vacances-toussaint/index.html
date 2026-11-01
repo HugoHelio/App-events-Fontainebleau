@@ -80,6 +80,20 @@ ul.agenda .t{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 @media (max-width:480px){ul.agenda li{grid-template-columns:1fr;gap:2px}ul.agenda .t:empty{display:none}}
 h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}
 .visit li{padding:14px 0}.visit .btn{margin-top:8px;padding:8px 14px;font-size:15px}.visit .closed{color:#8a4b00}.visit-aff{font-size:14px;color:var(--muted)}
+.gp{margin:32px 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4}
+.gp-kicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.gp h2{margin:2px 0 4px;font-size:1.35rem}
+.gp>p{margin:0 0 12px}
+.gp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.gp-cards a{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.gp-cards a:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.gp-cards img{flex:none;width:112px;height:70px;object-fit:cover;border-radius:7px}
+.gp-txt{display:flex;flex-direction:column;min-width:0}
+.gp-mode{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.gp-txt b{color:var(--ink);font-size:1.02rem;line-height:1.3}
+.gp-txt small{color:var(--muted);font-size:13px}
+.gp-all{display:inline-block;margin-top:12px;font-weight:700;color:var(--ink)}
+@media (min-width:640px){.gp-cards{grid-template-columns:repeat(3,1fr)}.gp-cards a{flex-direction:column;align-items:stretch;padding:0;overflow:hidden}.gp-cards img{width:100%;height:auto;aspect-ratio:8/5;border-radius:0}.gp-txt{padding:8px 12px 12px}}
 </style>
 </head>
 <body>
@@ -104,6 +118,13 @@ h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}
 <h2 id="visiter" data-en="Places to visit during the holidays">À visiter pendant les vacances</h2>
 <ul class="list visit"><li><b>Château de Fontainebleau</b> · Fontainebleau<small data-en="Eight centuries of French monarchs, from Francis I to Napoleon III: state apartments, the Francis I Gallery and the park. Open every day except Tuesday.">Huit siècles de souverains, de François Ier à Napoléon III : grands appartements, galerie François Ier et parc. Ouvert tous les jours sauf le mardi.</small><a class="btn alt" href="https://www.tiqets.com/fr/activites-attractions-fontainebleau-c66966/billets-pour-chateau-de-fontainebleau-billet-coupe-file-p974548/?partner=helioso-190732&amp;tq_campaign=fontainebleaulive-visiter-chateau" rel="sponsored noopener" target="_blank" data-track="visit-click" data-id="tiqets-visiter-chateau-fontainebleau" data-en="🎟️ Skip-the-line ticket on Tiqets · 17 €, same price as at the door">🎟️ Billet coupe-file chez Tiqets · 17 €, même prix que sur place</a></li><li><b>Château de Vaux-le-Vicomte</b> · Maincy<small data-en="Nicolas Fouquet’s château, the model for Versailles: the château, Le Nôtre’s formal gardens and the Carriage Museum.">Le château de Nicolas Fouquet, qui inspira Versailles : château, jardins à la française de Le Nôtre et musée des Équipages.</small><a class="btn alt" href="https://www.tiqets.com/fr/activites-attractions-maincy-c180111/billets-pour-chateau-de-vaux-le-vicomte-billet-d-entree-p975832/?partner=helioso-190732&amp;tq_campaign=fontainebleaulive-visiter-vaux" rel="sponsored noopener" target="_blank" data-track="visit-click" data-id="tiqets-visiter-vaux-le-vicomte" data-en="🎟️ Entrance ticket on Tiqets · 18 €, same price as at the door">🎟️ Billet d’entrée chez Tiqets · 18 €, même prix que sur place</a></li></ul>
 <p class="visit-aff" data-en="Partner links (Tiqets): Fontainebleau Live earns a commission if you book through them, at no extra cost to you. &lt;a href=&quot;/nos-sources/#financement&quot;&gt;Learn more&lt;/a&gt;">Liens partenaires Tiqets : Fontainebleau Live perçoit une commission si vous réservez par ces liens, sans surcoût pour vous. <a href="/nos-sources/#financement">En savoir plus</a></p>
+<aside class="gp" aria-label="Balades">
+<p class="gp-kicker" data-en="Free guides · pay what you like">Fiches gratuites · prix libre</p>
+<h2 data-en="A local’s favourite outings">Les balades d’un Bellifontain</h2>
+<p data-en="Walked again and again with the family: every step, the maps, and games for the children.">Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.</p>
+<ul class="gp-cards"><li><a href="/balades/fontainebleau-a-pied/" data-track="guide-promo" data-id="a-pied"><img src="/public/balades/img/thumb-a-pied.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="On foot">À pied</span><b data-en="Fontainebleau on foot">Fontainebleau à pied</b><small data-en="3 h · ≈ 3–4 km · in town">3 h · ≈ 3 à 4 km · en ville</small></span></a></li><li><a href="/balades/fontainebleau-a-velo/" data-track="guide-promo" data-id="a-velo"><img src="/public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By bike">À vélo</span><b data-en="Fontainebleau by bike">Fontainebleau à vélo</b><small data-en="3 rides · 5–22 km · 45 min to 3 h">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li><li><a href="/balades/fontainebleau-en-voiture/" data-track="guide-promo" data-id="en-voiture"><img src="/public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By car">En voiture</span><b data-en="Fontainebleau by car">Fontainebleau en voiture</b><small data-en="2 loops · 30–45 km · half a day to a day">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li></ul>
+<a class="gp-all" href="/balades/" data-en="All the guides →">Toutes les balades →</a>
+</aside>
 <h2 data-en="Frequently asked questions">Questions fréquentes</h2>
 <h3 data-en="What to do with children during the Toussaint holidays?">Que faire avec des enfants pendant les vacances de la Toussaint ?</h3>
 <p data-en="Storytelling walks, treasure hunts, shows and the Halloween events at the end of October. In the Forest of Fontainebleau, autumn is the season for guided mushroom outings, and the white and yellow bouldering circuits are made for children.">Les promenades contées, jeux de piste, spectacles et animations d’Halloween de la fin octobre. En forêt de Fontainebleau, l’automne est la saison des sorties champignons guidées, et les circuits d’escalade de bloc blancs et jaunes sont faits pour les enfants.</p>

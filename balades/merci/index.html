@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-title-en="Thank you! | Fontainebleau Live">
 <head>
+<script>try{if((new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang'))==='en')document.documentElement.className='en'}catch(e){}</script>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,13 +50,14 @@ ul.list small{display:block;color:var(--muted)}
 footer{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
 .aff-note{display:block;margin-top:8px;font-size:12px}
 footer a{color:var(--muted)}
-@media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 4px}
+@media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}.lang{display:inline-flex;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}.lang-btn{font:inherit;font-size:13px;font-weight:700;padding:3px 10px;border:0;background:transparent;color:#fff;cursor:pointer}.lang-btn[aria-pressed="true"]{background:#fff;color:var(--ink)}.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 4px}
 .lead{font-size:1.1rem;font-style:italic;margin:0 0 16px}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
 .facts li{background:#f2ede1;border-radius:8px;padding:6px 12px;font-size:15px}
 .facts b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
 .why{margin:0;padding:12px 16px;border-left:3px solid var(--accent-ink);background:var(--paper);font-style:italic}
-.why footer{all:unset;display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--accent-ink);font-size:15px}
+.why-by{display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--accent-ink);font-size:15px}
 .tbl{overflow-x:auto}
 table.ov{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper)}
 table.ov th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-ink);border-bottom:2px solid var(--accent-ink);padding:6px 8px}
@@ -69,6 +71,7 @@ figcaption{font-size:12px;color:var(--muted);margin-top:4px}
 ol.steps{list-style:none;margin:16px 0;padding:0}
 ol.steps>li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
 ol.steps>li>div{flex:1;min-width:0}
+ol.steps figure{max-width:340px}
 ol.steps .k{flex:none;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:15px}
 ol.steps h3{margin:2px 0 0;font-size:1.05rem;color:var(--ink)}
 ol.steps p{margin:0}
@@ -87,20 +90,16 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 .pwyw-title{font-weight:700;color:var(--ink);margin:0 0 4px;font-size:1.1rem}
 .pwyw .actions{align-items:center;margin:12px 0 8px}
 .pwyw .free{color:var(--ink);font-size:15px}
-.cards{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
-.cards li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.cards h2{margin:0 0 4px}.cards h2 a{color:var(--ink)}
-.cards p{margin:4px 0}
 .thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}
 </style>
 </head>
 <body>
-<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a></header>
+<header><a href="/"><img src="/public/assets/img/brand/Icon-FL-pwa-vS.png" alt="" width="32" height="32">Fontainebleau Live</a><span class="lang" role="group" aria-label="Langue / Language"><button type="button" class="lang-btn" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button></span></header>
 <main>
-<h1>Merci !</h1>
-<p>Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.</p>
-<ul class="list thanks"><li data-fiche="a-pied"><b>Fontainebleau à pied</b><small>Balade en famille au cœur de la ville impériale</small><div class="actions"><a class="btn" href="/public/balades/fontainebleau-a-pied.pdf" download data-track="guide-download" data-id="a-pied">Télécharger la fiche (PDF)</a><a class="btn alt" href="/balades/fontainebleau-a-pied/">Voir la page</a></div></li><li data-fiche="a-velo"><b>Fontainebleau à vélo</b><small>3 balades en famille, du parc du château à Barbizon</small><div class="actions"><a class="btn" href="/public/balades/fontainebleau-a-velo.pdf" download data-track="guide-download" data-id="a-velo">Télécharger la fiche (PDF)</a><a class="btn alt" href="/balades/fontainebleau-a-velo/">Voir la page</a></div></li><li data-fiche="en-voiture"><b>Fontainebleau en voiture</b><small>2 boucles en famille : villages de peintres et vallée du Loing</small><div class="actions"><a class="btn" href="/public/balades/fontainebleau-en-voiture.pdf" download data-track="guide-download" data-id="en-voiture">Télécharger la fiche (PDF)</a><a class="btn alt" href="/balades/fontainebleau-en-voiture/">Voir la page</a></div></li></ul>
-<p class="note">Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page <a href="/mentions-legales/">Mentions légales</a>.</p>
+<h1 data-en="Thank you!">Merci !</h1>
+<p data-en="Your payment has been received: it funds the agenda, which stays free and without advertising. Stripe will email you the receipt.">Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.</p>
+<ul class="list thanks"><li data-fiche="a-pied"><b data-en="Fontainebleau on foot">Fontainebleau à pied</b><small data-en="A family walk through the heart of the imperial town">Balade en famille au cœur de la ville impériale</small><div class="actions"><a class="btn" href="/public/balades/fontainebleau-a-pied.pdf" download data-track="guide-download" data-id="a-pied" data-en="Download the sheet (PDF, in French)">Télécharger la fiche (PDF)</a><a class="btn alt" href="/balades/fontainebleau-a-pied/" data-en="See the page">Voir la page</a></div></li><li data-fiche="a-velo"><b data-en="Fontainebleau by bike">Fontainebleau à vélo</b><small data-en="3 family rides, from the château park to Barbizon">3 balades en famille, du parc du château à Barbizon</small><div class="actions"><a class="btn" href="/public/balades/fontainebleau-a-velo.pdf" download data-track="guide-download" data-id="a-velo" data-en="Download the sheet (PDF, in French)">Télécharger la fiche (PDF)</a><a class="btn alt" href="/balades/fontainebleau-a-velo/" data-en="See the page">Voir la page</a></div></li><li data-fiche="en-voiture"><b data-en="Fontainebleau by car">Fontainebleau en voiture</b><small data-en="2 family loops: painters’ villages and the Loing valley">2 boucles en famille : villages de peintres et vallée du Loing</small><div class="actions"><a class="btn" href="/public/balades/fontainebleau-en-voiture.pdf" download data-track="guide-download" data-id="en-voiture" data-en="Download the sheet (PDF, in French)">Télécharger la fiche (PDF)</a><a class="btn alt" href="/balades/fontainebleau-en-voiture/" data-en="See the page">Voir la page</a></div></li></ul>
+<p class="note"><span data-en="A problem with the payment or the download? Write to us from the page">Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page</span> <a href="/mentions-legales/" data-en="Legal notice">Mentions légales</a>.</p>
 <script>
 (function () {
   var k = new URLSearchParams(location.search).get('fiche');
@@ -111,6 +110,32 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 </main>
 <footer><span data-en="Agenda collected automatically. Check the details with the organiser before you go.">Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/que-faire/" data-en="All towns (in French)">Toutes les communes</a> · <a href="/nos-sources/" data-en="Our sources (in French)">Nos sources</a> · <a href="https://helioso.com" rel="noopener" data-en="A Helioso project">Un projet Helioso</a> · © 2026 Fontainebleau Live · <a href="/mentions-legales/" data-en="Legal notice and privacy (in French)">Mentions légales</a>
 <small class="aff-note" data-en="Some links are partner links: we may earn a commission, at no extra cost to you.">Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
+<script>
+(function () {
+  // Swaps our own strings between French and English (see "English" in generate-pages.js).
+  var root = document.documentElement;
+  var titles = { fr: document.title, en: root.getAttribute('data-title-en') || document.title };
+  var each = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+  function apply(l) {
+    each('[data-en]', function (el) {
+      if (el.getAttribute('data-fr') === null) el.setAttribute('data-fr', el.innerHTML);
+      el.innerHTML = el.getAttribute(l === 'en' ? 'data-en' : 'data-fr');
+    });
+    root.lang = l;
+    root.className = l === 'en' ? 'en' : '';
+    document.title = titles[l];
+    each('.lang-btn', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
+  }
+  each('.lang-btn', function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-lang');
+      try { localStorage.setItem('lang', l); } catch (e) { /* not fatal */ }
+      apply(l);
+    });
+  });
+  if (root.className === 'en') apply('en');
+})();
+</script>
 <script data-goatcounter="https://fontainebleaulive.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script>
 (function () {

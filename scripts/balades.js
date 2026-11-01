@@ -2,8 +2,13 @@
 /**
  * The walking, cycling and driving guides (items 104 and 104 bis, 01/11): written and walked by
  * the project lead, in his name — that is their value. Hand-written content, never generated:
- * every route, address and time here comes from his PDF sheets, word for word. Claude does not
- * add a stop or a fact (§5); a correction goes into the PDF and here, the same day.
+ * every route, address and time here comes from his PDF sheets (typography aside). Claude does
+ * not add a stop or a fact (§5); a correction goes into the PDF and here, the same day.
+ *
+ * English (`en`, 01/11): the same shape as the French, field by field, swapped in by the FR/EN
+ * switch like the weekend pages (data-en). Arrays line up by index with the French ones; a field
+ * left out (a step's distance, a total's figures) falls back to the French. The walk reuses the
+ * translation of 30/10; the PDFs exist in French only, and the English pages say so.
  *
  * generate-pages.js renders /balades/ (index, one page per guide, /balades/merci/) from this
  * file. The PDFs and the images live in public/balades/, copied by hand from the project lead's
@@ -126,6 +131,99 @@ const GUIDES = [
       ],
       note: 'Accès en forêt : certains secteurs peuvent être fermés (incendies de 2026). Vérifiez avant de partir sur onf.fr.',
     },
+    teaser: ['3 h · ≈ 3 à 4 km · en ville', '3 h · ≈ 3–4 km · in town'],
+    thumb: '/public/balades/img/thumb-a-pied.jpg',
+    en: {
+      mode: 'On foot',
+      title: 'Fontainebleau on foot',
+      subtitle: 'A family walk through the heart of the imperial town',
+      facts: [['Start', 'Château car park'], ['Duration', '3 h'], ['Distance', '≈ 3–4 km'], ['Level', 'Easy, in town'], ['For', 'All the family']],
+      why: 'I have lived in Fontainebleau for several years, and I love showing our gem to everyone who comes to visit. In 3 hours, this walk takes in the finest monuments of Fontainebleau. The children’s favourite moment is hide-and-seek in the little box-hedge mazes of the French formal garden.',
+      before: [
+        'Château: the courtyards and the park are free to enter.',
+        'Short version (2 h): skip the English garden, cross the parterre in a straight line and cut through the Diane garden.',
+        'Pushchairs: gravel paths in the park.',
+        'Break: a small playground on place de la République.',
+        'The château park’s opening hours change with the season.',
+      ],
+      overview: {
+        head: ['Stop', 'Time'],
+        rows: [
+          ['1. Start: mural & rue de Ferrare', '10 min'],
+          ['2. Château: courtyards & Carp Pond', '30 min'],
+          ['3. Park & Grand Parterre', '40 min'],
+          ['4. Place Napoléon-Bonaparte', '10 min'],
+          ['5. Municipal theatre', '5 min'],
+          ['6. Rue de Ferrare & rue des Sablons', '30 min'],
+          ['7. Place de la République', '20 min'],
+          ['8. Saint-Louis church', '15 min'],
+          ['9. Town hall & ice cream', '20 min'],
+        ],
+        total: ['Approximate total', '3 h'],
+      },
+      routes: [
+        {
+          title: 'The 9 stops, step by step',
+          mapAlt: 'Map of the walk through Fontainebleau, from the château car park to the 9 numbered stops',
+          steps: [
+            { title: 'The start', sub: 'Château car park (Interparking) · 10 min', items: [
+              'From the Château car park, take rue de Ferrare.',
+              'Admire the large mural of Napoleon, then the doorway of the Hôtel du Grand Ferrare.',
+              'Cross place du Général-de-Gaulle to the château’s main entrance.',
+            ] },
+            { title: 'The Château de Fontainebleau', sub: 'Cour d’honneur / White Horse Courtyard · 30 min', items: [
+              'Enter through the main courtyard and admire the famous horseshoe staircase.',
+              'Walk on to the Fountain Courtyard and watch the fish in the Carp Pond (Étang des Carpes).',
+              'Carry on to the English garden (or skip it if you are in a hurry).',
+            ], notes: ['inside the château grounds, main courtyard.'], imgAlt: 'Illustration: a family in front of the Château de Fontainebleau' },
+            { title: 'The château park', sub: 'Grand Parterre · 40 min', items: [
+              'Stroll through the French formal gardens and their parterres designed by André Le Nôtre.',
+              'Leave through the Diane garden (jardin de Diane).',
+            ], notes: ['explore all three gardens (≈ +60 min).', 'hide-and-seek in the little box-hedge mazes.'] },
+            { title: 'Place Napoléon-Bonaparte', sub: 'The carousel · 10 min', items: [
+              'Discover the square and its carousel, a favourite with children.',
+              'Admire the Hôtel de l’Aigle Noir, a 16th-century residence (formerly the Hôtel de Retz), renamed “the Black Eagle” under the Empire.',
+            ], imgAlt: 'Illustration: children in front of the carousel on place Napoléon-Bonaparte' },
+            { title: 'The municipal theatre', sub: '6 rue Dénecourt · 5 min', items: [
+              'Walk on to the municipal theatre: begun in 1905 and opened in 1912, in Louis XIII style, brick and stone.',
+            ] },
+            { title: 'The shopping streets', sub: 'Rue de Ferrare & rue des Sablons · 30 min', items: [
+              'From the theatre, take rue Richelieu up to rue de Ferrare, then turn right into rue des Sablons.',
+              'Wander up it to place de la République, past the Théâtre de l’Âne Vert.',
+              'Admire the shopfronts: butchers, florists, fishmonger…',
+            ] },
+            { title: 'Place de la République', sub: 'Town centre · 20 min', items: [
+              'On Tuesday, Friday and Sunday mornings it is market day (7 am – 1 pm).',
+              'Browse the bookshops on the square: books about the town.',
+              'Pop into the tourist office (entrance on the square).',
+            ], notes: ['a small playground awaits the youngest.'] },
+            { title: 'Saint-Louis church', sub: 'Rue de la Paroisse · 15 min', items: [
+              'Walk down rue de la Paroisse to Saint-Louis church, a 17th-century gem built under Louis XIII.',
+            ], notes: ['2 rue de la Paroisse, between place de la République and the church.'] },
+            { title: 'Town hall & treats', sub: '44 rue Grande · 20 min', items: [
+              'Take rue Grande towards the château and pass the town hall, rebuilt under the Second Empire in 1864.',
+              'Near place de l’Étape, find the secret passage!',
+              'Back to the Château car park along rue de France, then rue de Ferrare.',
+            ], notes: ['a little passage climbs from rue Grande to rue du Conventionnel-Geoffroy and rue des Trois-Maillets… where excellent ice cream awaits.'] },
+          ],
+          game: {
+            title: 'The little explorers’ challenge',
+            intro: 'Tick off each treasure you spot along the way. Found them all? You’ve earned your ice cream!',
+            items: ['Napoleon’s mural', 'The horseshoe staircase', 'A carp in the pond', 'A box-hedge maze', 'The carousel', 'The municipal theatre', 'The Théâtre de l’Âne Vert', 'A market stall', 'A book about the château', 'Saint-Louis’s stained glass', 'The town hall flag', 'The secret passage'],
+            extra: { title: 'Street art: Invader’s mosaics', items: ['Lamp with a lampshade (rue Dénecourt)', 'Napoleon in his bicorne (place de la République)', 'Red alien with a book (rue du Conventionnel-Geoffroy)', 'Blue alien with glasses (rue des Trois-Maillets)'] },
+          },
+        },
+      ],
+      more: {
+        title: 'Fancy the forest? 3 two-hour walks from town',
+        items: [
+          ['Faisanderie & Mont Aigu', 'Start: Faisanderie car park.'],
+          ['Croix du Calvaire & Tour Dénecourt', 'Start: Fontainebleau-Avon station.'],
+          ['Mont Ussy & the Route Tournante on the Hauteurs de la Solle', 'Start: Mont Ussy car park.'],
+        ],
+        note: 'Forest access: some areas may be closed (2026 fires). Check onf.fr before setting off.',
+      },
+    },
   },
   {
     key: 'a-velo',
@@ -218,6 +316,90 @@ const GUIDES = [
         },
       },
     ],
+    teaser: ['3 balades · 5 à 22 km · 45 min à 3 h', '3 rides · 5–22 km · 45 min to 3 h'],
+    thumb: '/public/balades/img/thumb-a-velo.jpg',
+    en: {
+      mode: 'By bike',
+      title: 'Fontainebleau by bike',
+      subtitle: '3 family rides, from the château park to Barbizon',
+      facts: [['Rides', '45 min · 1 h 30 · 3 h'], ['Distances', '≈ 5 · 15 · 22 km'], ['Surface', 'Tracks & tarmac roads'], ['Level', 'Easy to demanding']],
+      why: 'My children learnt to ride a bike in Fontainebleau. What a joy to ride through the forest, wind in your face, through the dead leaves or the puddles. Fun guaranteed!',
+      before: [
+        'Children who can ride on their own.',
+        'Forest access: some areas may be closed (2026 fires). Check onf.fr.',
+        'Château park: opening hours vary with the season.',
+      ],
+      overview: {
+        head: ['Ride', 'Start', 'Distance', 'Time', 'Level'],
+        rows: [
+          ['1. The château park & the Grand Canal', 'Place d’Armes', '≈ 5 km', '45 min', 'Easy'],
+          ['2. The route des Hauteurs de la Solle', 'Route Louis-Philippe', '≈ 15 km', '1 h 30', 'Moderate'],
+          ['3. Fontainebleau – Apremont – Barbizon', 'Route Louis-Philippe', '≈ 22 km', '3 h', 'Demanding'],
+        ],
+      },
+      routes: [
+        {
+          title: 'The château park & the Grand Canal',
+          sub: 'Start: place d’Armes · ≈ 5 km · 45 min · park paths · easy',
+          mapAlt: 'Map of the bike ride through the château park and along the Grand Canal',
+          steps: [
+            { text: 'From place d’Armes, enter the park.' },
+            { text: 'Turn left down the avenue des Cascades.' },
+            { text: 'Cross the Grand Canal and ride along it on the right.' },
+            { text: 'Come back through the woods along the allées d’Avon, de la Mi-Voie and Lenôtre.' },
+            { text: 'Back to place d’Armes.' },
+          ],
+          total: 'Approximate total',
+          notes: ['the diagonal path leads to a children’s playground.', 'muddy after rain; park opening hours vary with the season.'],
+          game: {
+            title: 'Mini-game · Treasures of the canal',
+            items: ['A swan or a duck', 'The cascades', 'The four giraffes', 'The playground'],
+            riddles: [['The Grand Canal was dug under King H _ _ _ _ IV.', 'Clue: the king who wanted “a chicken in every pot”.'], ['The canal is 1.2 km long: is it longer than 10 football pitches?', 'Yes or no?']],
+            answer: 'Henri IV (Henry IV) · yes, about 11 pitches!',
+          },
+        },
+        {
+          title: 'The route des Hauteurs de la Solle',
+          sub: 'Start: route Louis-Philippe car park (behind the cemetery) · ≈ 15 km there and back · 1 h 30 · tarmac · moderate',
+          mapAlt: 'Map of the bike ride from the route Louis-Philippe to the Hauteurs de la Solle',
+          steps: [
+            { text: 'Ride up the route Louis-Philippe: a long climb, help the youngest.' },
+            { text: 'At the top, turn right onto the route du Gros Fouteau, all the way to the end.' },
+            { text: 'Turn right onto the route des Hauteurs de la Solle: the racecourse appears below, on the left.' },
+            { text: 'Carry on to the D606 and turn back.' },
+            { text: 'Back the same way, with the downhill as a reward!' },
+          ],
+          total: 'Approximate total',
+          notes: ['at each viewpoint, look out for horses in training.'],
+          game: {
+            title: 'Mini-game · The sentinels of the Solle',
+            items: ['The racecourse', 'A giant oak', 'A blue mark on a tree', 'A squirrel'],
+            riddles: [['Route du G _ _ _ F _ _ _ _ _ _', 'Read the sign at the top of the climb.'], ['How many bends on the route des Hauteurs?', 'Count them yourselves!']],
+            answer: 'Gros Fouteau',
+          },
+        },
+        {
+          title: 'Fontainebleau – Gorges d’Apremont – Barbizon',
+          sub: 'Start: route Louis-Philippe car park · ≈ 22 km there and back · 3 h with breaks · tarmac · demanding',
+          mapAlt: 'Map of the bike ride from the route Louis-Philippe to the Gorges d’Apremont and Barbizon',
+          steps: [
+            { text: 'Ride up the route Louis-Philippe, then left onto the route Paul to the tunnel under the D607.' },
+            { text: 'After the tunnel, turn right onto the route du Bouquet du Roi to the carrefour des Cépées.' },
+            { text: 'Straight on: routes du Château, de Sully, then de la Gorge aux Néfliers. After the carrefour du Milan, car park on the right and the Apremont viewpoint.' },
+            { text: 'Bear right onto the route Sully: a long descent to the allée des Vaches car park.' },
+            { text: 'Turn left: the allée des Vaches leads to Barbizon. Back the same way.' },
+          ],
+          total: 'Bike total (without breaks)',
+          notes: ['walk to the caverne des Brigands, starting near the chalet (snacks and drinks in season).', 'on the way back, the long descent becomes a long climb!'],
+          game: {
+            title: 'Mini-game · The brigands’ trail',
+            items: ['The tunnel under the road', 'An animal-shaped rock', 'A fern', 'The Sully oak', 'The view over the gorges', 'A painter’s studio in Barbizon'],
+            riddles: [['Carrefour des C _ _ _ _ s', 'After the tunnel (B).'], ['Carrefour du M _ _ _ _', 'Before the gorges (C).'], ['Route du B _ _ _ _ _ _ du Roi', 'Just after the tunnel.']],
+            answer: 'Cépées · Milan · Bouquet',
+          },
+        },
+      ],
+    },
   },
   {
     key: 'en-voiture',
@@ -297,6 +479,76 @@ const GUIDES = [
         ['Au nord : le château de Vaux-le-Vicomte', 'Plus loin, comptez une demi-journée de visite.'],
         ['Au sud : Larchant et sa forêt', 'Comptez une demi-journée pour vous promener en forêt.'],
       ],
+    },
+    teaser: ['2 boucles · 30 à 45 km · ½ à 1 journée', '2 loops · 30–45 km · half a day to a day'],
+    thumb: '/public/balades/img/thumb-en-voiture.jpg',
+    en: {
+      mode: 'By car',
+      title: 'Fontainebleau by car',
+      subtitle: '2 family loops: painters’ villages and the Loing valley',
+      facts: [['Loops', 'North-west · South'], ['Distances', '≈ 30–45 km'], ['Time', 'Half a day to a day'], ['On the way', 'Easy walks'], ['For', 'All the family']],
+      why: 'To get away from Fontainebleau, here are my two favourite drives. A beautiful loop to the north through Barbizon, and a breath of fresh air to the south, along the Loing, for a picnic by the water. Nature and culture all the way.',
+      before: [
+        'Opening hours: check the châteaux’ opening days (Courances: April to early November, afternoons).',
+        'In the boot: a picnic for the banks of the Loing.',
+        'Forest: some areas may be closed (2026 fires), check onf.fr.',
+      ],
+      overview: {
+        head: ['Loop', 'Distance', 'Driving', 'With visits'],
+        rows: [
+          ['1. North-west loop: Arbonne, Courances & Barbizon', '≈ 30 km (45 km with Courances)', '45 min', 'Half a day'],
+          ['2. South loop: the Loing valley, from Moret to Grez', '≈ 45 km', '1 h 15', '1 day'],
+        ],
+      },
+      routes: [
+        {
+          title: 'North-west loop: Arbonne, Courances & Barbizon',
+          sub: 'Start: Fontainebleau · ≈ 30 km (≈ 45 km with Courances) · half a day · painters’ villages and châteaux',
+          mapAlt: 'Map of the drive from Fontainebleau to Arbonne-la-Forêt, Courances and Barbizon',
+          steps: [
+            { text: 'From Fontainebleau, take the D409 through the forest to Arbonne-la-Forêt.' },
+            { text: 'Recommended detour: from the centre of Arbonne, the little forest road to Courances leads to the Château de Courances.', dist: '+ 15 km there and back' },
+            { text: 'From Arbonne, head for Macherin, then Barbizon. Park on place Marc-Jacquet.' },
+            { text: 'On foot, walk up the Grande Rue to the forest: painters’ houses, studios, galleries.', dist: 'on foot' },
+            { text: 'From the car park, back to Fontainebleau along the D607 (avenue de Fontainebleau).' },
+          ],
+          total: 'Driving total (without detour)',
+          notes: ['the Château de Courances, its park and its water mirrors. Allow 2 h with the visit.', 'at the end of the Grande Rue, look for the medallion of Millet and Rousseau; walk on to the Elephant rock (45 min on foot).'],
+          game: {
+            title: 'Mini-game · The painting hunter',
+            items: ['An “Arbonne-la-Forêt” sign', 'A water mirror at Courances', 'A mosaic of a painting on a wall', 'An old inn sign', 'The two painters’ medallion', 'The elephant-shaped rock'],
+            riddles: [['The medallion honours Jean-François M _ _ _ _ _ and Théodore R _ _ _ _ _ _ _.', 'At the end of the Grande Rue.'], ['Who painted “The Angelus”? Find the mosaic!', 'Clue: the same as above.']],
+            answer: 'Millet · Rousseau · Millet (The Angelus)',
+          },
+        },
+        {
+          title: 'South loop: the Loing valley, from Moret to Grez',
+          sub: 'Start: Obélisque roundabout · ≈ 45 km · 1 day · medieval towns, canal and riverbanks',
+          mapAlt: 'Map of the drive from Fontainebleau to Moret-sur-Loing, Episy, La Genevraye and Grez-sur-Loing',
+          steps: [
+            { text: 'From the Obélisque roundabout, the D606 leads to Moret-sur-Loing. Park near the porte de Samois.' },
+            { text: 'On foot: the rue Grande, the so-called house of François I (town hall courtyard), the porte de Bourgogne, the bridge and the riverbanks; picnic on the pré Margaron (left bank, via rue de la Pêcherie).', dist: 'on foot' },
+            { text: 'Back in the car: the D104 towards Montigny, right onto the route de Sorques, across the Loing canal to Episy.' },
+            { text: 'The D40 leads to La Genevraye (Romanesque church of Saint-Martin on the left), then Moncourt-Fromonville; at the roundabout, right towards Grez-sur-Loing.' },
+            { text: 'Park after the campsite (chemin des Prés). On foot: old bridge, tour de Ganne, Saint-Laurent church, wash house. Back along the D104, then the N7 due north.' },
+          ],
+          total: 'Driving total',
+          notes: ['in Moret, don’t miss the Renaissance gallery of the maison Chabouillé, then cross the bridge and follow the banks along the chemin des Impressionnistes.', 'in Episy, a 30 to 40 min walk along the canal or through the marshes.'],
+          game: {
+            title: 'Mini-game · Secrets of the Loing',
+            items: ['Moret’s two fortified gates', 'A carved Renaissance façade', 'A mill by the water', 'A lock on the canal', 'A barge', 'A Romanesque bell tower', 'A ruined tower', 'A wash house'],
+            riddles: [['The painter Alfred S _ _ _ _ _ _ painted Moret hundreds of times.', 'An English Impressionist.'], ['Moret has two gates: the porte de Samois and the porte de B _ _ _ _ _ _ _ _.', 'You walk through it.']],
+            answer: 'Sisley · Bourgogne',
+          },
+        },
+      ],
+      more: {
+        title: 'If you have time…',
+        items: [
+          ['To the north: the Château de Vaux-le-Vicomte', 'Further away; allow half a day for the visit.'],
+          ['To the south: Larchant and its forest', 'Allow half a day for a walk in the forest.'],
+        ],
+      },
     },
   },
 ];
