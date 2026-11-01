@@ -11,6 +11,8 @@
  *   /aujourdhui/                 today (and tomorrow, for the hours before the morning run)
  *   /sorties/<theme>/            seasonal pages (marchés de Noël, brame du cerf…), never removed
  *   /nos-sources/                how the agenda is collected and checked (item 79)
+ *   /balades/                    the project lead's walking, cycling and driving guides (item 104 bis),
+ *                                content in scripts/balades.js, PDFs and images in public/balades/
  *   /sitemap.xml                 every URL above, plus the home page and its English variant
  *
  * Rules that are not obvious from the code:
@@ -32,6 +34,7 @@
 const fs = require('fs');
 const path = require('path');
 const { loadPlaces, placesOpen } = require('./affiliates');
+const { GUIDES, PAY, SUGGESTED, OSM } = require('./balades');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -264,7 +267,7 @@ const analyticsTags = () => (ANALYTICS_CODE
   ? `<script data-goatcounter="https://${ANALYTICS_CODE}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>\n<script>\n${TRACK_SCRIPT}\n</script>\n`
   : '');
 
-function layout({ title, description, canonical, body, ld, noindex, refresh, titleEn, toTop = Boolean(titleEn) }) {
+function layout({ title, description, canonical, body, ld, noindex, refresh, titleEn, toTop = Boolean(titleEn), count = !noindex }) {
   return `<!doctype html>
 <html lang="fr"${titleEn ? ` data-title-en="${esc(titleEn)}"` : ''}>
 <head>
@@ -296,7 +299,7 @@ ${body}
 </main>
 <footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a> · © 2026 Fontainebleau Live · <a href="/mentions-legales/"${en('Legal notice and privacy (in French)')}>Mentions légales</a>
 <small class="aff-note"${en('Some links are partner links: we may earn a commission, at no extra cost to you.')}>Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
-${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}${noindex ? '' : analyticsTags()}</body>
+${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}${count ? analyticsTags() : ''}</body>
 </html>
 `;
 }
@@ -628,7 +631,7 @@ function cityPage(c, places = [], near = []) {
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
 <div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${about ? `
 <h2>${esc(c.name)} en quelques mots</h2>
-<p>${esc(about)}</p>` : ''}${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
+<p>${esc(about)}</p>` : ''}${guidesHtml(c)}${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
@@ -1482,9 +1485,198 @@ function sitemap(cities, events, homeLastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${home}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
+}
+
+// ───────────────────────────── /balades/ (item 104 bis, 01/11) ─────────────────────────────
+// The project lead's guides, from scripts/balades.js. The whole text of every step is on the page,
+// for search engines (item 106) and for a visitor on a phone; the PDF is the printable sheet,
+// with the same maps and games. Pay what you want, no lock (§7, 01/11): the free download is
+// always there, the Stripe link only shows once filled in PAY. French only for now.
+
+const BALADES_DIR = 'balades';
+const NOTE_LABEL = { wc: 'WC', option: 'Option longue', astuce: 'Astuce', attention: 'Attention', coeur: 'Coup de cœur' };
+const GUIDE_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 4px}
+.lead{font-size:1.1rem;font-style:italic;margin:0 0 16px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
+.facts li{background:#f2ede1;border-radius:8px;padding:6px 12px;font-size:15px}
+.facts b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.why{margin:0;padding:12px 16px;border-left:3px solid var(--accent-ink);background:var(--paper);font-style:italic}
+.why footer{all:unset;display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--accent-ink);font-size:15px}
+.tbl{overflow-x:auto}
+table.ov{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper)}
+table.ov th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-ink);border-bottom:2px solid var(--accent-ink);padding:6px 8px}
+table.ov td{border-bottom:1px solid var(--line);padding:8px;vertical-align:top}
+table.ov tr.total td{font-weight:700;border-bottom:0}
+.route{margin-top:40px}
+.route h2{margin-top:0;padding-top:8px;border-top:3px solid var(--ink)}
+figure{margin:16px 0}
+figure img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+figcaption{font-size:12px;color:var(--muted);margin-top:4px}
+ol.steps{list-style:none;margin:16px 0;padding:0}
+ol.steps>li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+ol.steps>li>div{flex:1;min-width:0}
+ol.steps .k{flex:none;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:15px}
+ol.steps h3{margin:2px 0 0;font-size:1.05rem;color:var(--ink)}
+ol.steps p{margin:0}
+ol.steps ul{margin:6px 0 0;padding-left:18px}
+.sub{font-size:14px;color:var(--muted)}
+.tot{font-weight:700;margin:8px 0 0}
+.box{border-radius:8px;padding:8px 12px;margin:10px 0 0;font-size:15px;background:#fbf3e2}
+.box.wc{background:#e6eef7}.box.option,.box.coeur{background:#e8f0e3}.box.attention{background:#f9e3df}
+.game{background:#f2ede1;border-radius:10px;padding:12px 16px;margin:20px 0 0}
+.game h3{margin:0 0 6px;font-size:1.05rem;color:var(--ink)}
+.checks{list-style:none;padding:0;margin:8px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px 16px}
+.checks li::before{content:"";display:inline-block;width:13px;height:13px;margin-right:8px;border:1.5px solid var(--accent-ink);border-radius:3px;vertical-align:-1px}
+.riddle{margin:8px 0 0}.riddle b{display:block;color:var(--ink)}
+.game details{margin-top:8px;font-size:15px}.game summary{cursor:pointer;color:var(--accent-ink)}
+.pwyw{background:var(--paper);border:1.5px solid var(--accent-ink);border-radius:12px;padding:14px 16px;margin:24px 0}
+.pwyw-title{font-weight:700;color:var(--ink);margin:0 0 4px;font-size:1.1rem}
+.pwyw .actions{align-items:center;margin:12px 0 8px}
+.pwyw .free{color:var(--ink);font-size:15px}
+.cards{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
+.cards li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.cards h2{margin:0 0 4px}.cards h2 a{color:var(--ink)}
+.cards p{margin:4px 0}
+.thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}`;
+
+// A guide's own text may set words in **bold**; everything is escaped first.
+const rich = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+
+function payBox(key, pdf, amount, what = 'Cette fiche est gratuite. Si elle vous plaît, payez-la ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.') {
+  const pay = safeUrl(PAY[key]);
+  const free = (cls, label) => (pdf ? `<a class="${cls}" href="${esc(pdf)}" download data-track="guide-download" data-id="${esc(key)}">${label}</a>` : '');
+  if (!pay) return pdf ? `<div class="actions">${free('btn', 'Télécharger la fiche (PDF)')}</div>` : '';
+  return `<div class="pwyw">
+<p class="pwyw-title">Prix libre — ${amount} € conseillés</p>
+<p>${esc(what)}</p>
+<div class="actions"><a class="btn" href="${esc(pay)}" rel="noopener" data-track="guide-pay" data-id="${esc(key)}">Choisir mon prix</a>${free('free', 'Télécharger sans payer')}</div>
+<p class="note">Paiement sécurisé chez Stripe, à partir de 2 €, puis téléchargement immédiat. Fontainebleau Live est édité par une entreprise : pas de reçu fiscal.</p>
+</div>`;
+}
+
+function stepHtml(st) {
+  const notes = (st.notes || []).map(([kind, text]) => `<p class="box ${esc(kind)}"><b>${esc(NOTE_LABEL[kind] || kind)} :</b> ${rich(text)}</p>`).join('');
+  const img = st.img ? `<figure><img src="${esc(st.img.src)}" width="${st.img.w}" height="${st.img.h}" alt="${esc(st.img.alt)}" loading="lazy"></figure>` : '';
+  const body = st.title
+    ? `<h3>${esc(st.title)}</h3>${st.sub ? `<p class="sub">${esc(st.sub)}</p>` : ''}<ul>${st.items.map((i) => `<li>${rich(i)}</li>`).join('')}</ul>`
+    : `<p>${rich(st.text)}</p><p class="sub">${esc([st.dist, st.time].filter(Boolean).join(' · '))}</p>`;
+  return `<li><span class="k" aria-hidden="true">${esc(st.k)}</span><div>${body}${notes}${img}</div></li>`;
+}
+
+function gameHtml(g) {
+  if (!g) return '';
+  const list = (items) => `<ul class="checks">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
+  return `<div class="game"><h3>${esc(g.title)}</h3>${g.intro ? `<p>${esc(g.intro)}</p>` : ''}${list(g.items)}${g.extra ? `<p class="riddle"><b>${esc(g.extra.title)}</b></p>${list(g.extra.items)}` : ''}${(g.riddles || []).map(([q, hint]) => `<p class="riddle"><b>${esc(q)}</b><span class="sub">${esc(hint)}</span></p>`).join('')}${g.answer ? `<details><summary>Réponses pour les parents</summary><p>${esc(g.answer)}</p></details>` : ''}</div>`;
+}
+
+function routeHtml(r) {
+  const notes = (r.notes || []).map(([kind, text]) => `<p class="box ${esc(kind)}"><b>${esc(NOTE_LABEL[kind] || kind)} :</b> ${rich(text)}</p>`).join('');
+  return `<section class="route">
+<h2>${r.num ? `${r.num}. ` : ''}${esc(r.title)}</h2>${r.sub ? `
+<p class="sub">${esc(r.sub)}</p>` : ''}
+<figure><img src="${esc(r.map.src)}" width="${r.map.w}" height="${r.map.h}" alt="${esc(r.map.alt)}" loading="lazy"><figcaption>Carte : ${esc(OSM)}</figcaption></figure>
+<ol class="steps">${r.steps.map(stepHtml).join('')}</ol>${r.total ? `
+<p class="tot">${esc(r.total.join(' · '))}</p>` : ''}${notes}${gameHtml(r.game)}
+</section>`;
+}
+
+function guidePage(g, towns = []) {
+  const ov = g.overview;
+  const others = GUIDES.filter((o) => o !== g);
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › <a href="/${BALADES_DIR}/">Balades</a></nav>
+<p class="kicker">Fiche balade · ${esc(g.mode)} · n°${g.num}</p>
+<h1>${esc(g.title)}</h1>
+<p class="lead">${esc(g.subtitle)}</p>
+<ul class="facts">${g.facts.map(([k, v]) => `<li><b>${esc(k)}</b>${esc(v)}</li>`).join('')}</ul>
+${payBox(g.key, g.pdf, SUGGESTED.guide)}
+<h2>Pourquoi ${g.routes.length > 1 ? 'ces balades' : 'ce parcours'} ?</h2>
+<blockquote class="why">${esc(g.why)}<footer>— Hugues, Bellifontain</footer></blockquote>
+<h2>Avant de partir</h2>
+<ul>${g.before.map((b) => `<li>${rich(b)}</li>`).join('')}</ul>
+<h2>En un coup d’œil</h2>
+<div class="tbl"><table class="ov"><thead><tr>${ov.head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${ov.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}${ov.total ? `<tr class="total">${ov.total.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>` : ''}</tbody></table></div>
+${g.routes.map(routeHtml).join('\n')}${g.more ? `
+<h2>${esc(g.more.title)}</h2>
+<ul class="list">${g.more.items.map(([name, text]) => `<li><b>${esc(name)}</b><small>${esc(text)}</small></li>`).join('')}</ul>${g.more.note ? `
+<p class="note">${esc(g.more.note)}</p>` : ''}` : ''}
+<h2>Sur le parcours en ce moment</h2>
+<p>Les sorties à venir, mises à jour chaque jour :</p>
+<div class="actions">${towns.map((c) => `<a class="btn alt" href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a>`).join('')}<a class="btn alt" href="/${WEEKEND_DIR}/">Ce week-end</a></div>
+${payBox(g.key, g.pdf, SUGGESTED.guide)}
+<p class="note">Le parcours personnel d’un Bellifontain, fait et refait à ${esc(g.mode.toLowerCase())}. Infos indicatives, vérifiées en ${esc(g.checked)} : horaires, travaux et fermetures changent, vérifiez avant de partir. Une erreur sur le parcours ? <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank">Signalez-la</a>.</p>
+<h2>Les autres fiches</h2>
+<ul class="list">${others.map((o) => `<li><a href="/${BALADES_DIR}/${o.slug}/">${esc(o.title)}</a><small>${esc(o.subtitle)}</small></li>`).join('')}</ul>`;
+  const canonical = `${SITE_URL}/${BALADES_DIR}/${g.slug}/`;
+  return layout({
+    title: `${g.title} : ${g.subtitle.charAt(0).toLowerCase()}${g.subtitle.slice(1)} | Fontainebleau Live`,
+    description: truncate(g.description, 155),
+    canonical,
+    body,
+    ld: {
+      '@context': 'https://schema.org',
+      '@type': 'TouristTrip',
+      name: g.title,
+      description: g.description,
+      url: canonical,
+      touristType: 'Familles',
+      provider: { '@type': 'Organization', name: 'Fontainebleau Live', url: `${SITE_URL}/` },
+      itinerary: { '@type': 'ItemList', itemListElement: ov.rows.map((r, i) => ({ '@type': 'ListItem', position: i + 1, name: r[0].replace(/^\d+\.\s*/, '') })) },
+    },
+    toTop: true,
+  }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
+}
+
+function guidesIndex() {
+  const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
+<h1>Balades à Fontainebleau : à pied, à vélo, en voiture</h1>
+<p>Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.</p>
+<ul class="cards">${GUIDES.map((g) => `<li><p class="kicker">${esc(g.mode)} · n°${g.num}</p><h2><a href="/${BALADES_DIR}/${g.slug}/">${esc(g.title)}</a></h2><p>${esc(g.subtitle)}</p><p class="sub">${esc(g.facts.map(([, v]) => v).slice(0, 3).join(' · '))}</p></li>`).join('')}</ul>
+${payBox('pack', '', SUGGESTED.pack, 'Les trois fiches sont gratuites, chacune sur sa page. Si elles vous plaisent, vous pouvez les payer ensemble, le montant de votre choix : c’est ce qui finance l’agenda, sans publicité.')}
+<p class="note">Infos indicatives : horaires, travaux et fermetures changent, vérifiez avant de partir. Accès à la forêt : certains secteurs peuvent être fermés, voir onf.fr.</p>
+<div class="actions"><a class="btn alt" href="/${WEEKEND_DIR}/">Que faire ce week-end ?</a><a class="btn alt" href="/${CITIES_DIR}/fontainebleau/">Que faire à Fontainebleau ?</a></div>`;
+  return layout({
+    title: 'Balades à Fontainebleau en famille : à pied, à vélo, en voiture | Fontainebleau Live',
+    description: 'Trois fiches balades en famille autour de Fontainebleau, écrites et parcourues par un Bellifontain : la ville à pied, la forêt à vélo, Barbizon et la vallée du Loing en voiture. PDF à prix libre.',
+    canonical: `${SITE_URL}/${BALADES_DIR}/`,
+    body,
+  }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
+}
+
+// Where Stripe sends a visitor after paying (?fiche=<key>). noindex, but counted: the page view
+// is the one place a completed payment shows in GoatCounter. Without JavaScript it lists all
+// three sheets; the script puts the one just paid first.
+function thanksPage() {
+  const body = `<h1>Merci !</h1>
+<p>Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.</p>
+<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}"><b>${esc(g.title)}</b><small>${esc(g.subtitle)}</small><div class="actions"><a class="btn" href="${esc(g.pdf)}" download data-track="guide-download" data-id="${esc(g.key)}">Télécharger la fiche (PDF)</a><a class="btn alt" href="/${BALADES_DIR}/${g.slug}/">Voir la page</a></div></li>`).join('')}</ul>
+<p class="note">Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page <a href="/mentions-legales/">Mentions légales</a>.</p>
+<script>
+(function () {
+  var k = new URLSearchParams(location.search).get('fiche');
+  var li = k && document.querySelector('.thanks li[data-fiche="' + k.replace(/[^a-z-]/g, '') + '"]');
+  if (li) { li.classList.add('is-yours'); li.parentNode.insertBefore(li, li.parentNode.firstChild); }
+})();
+</script>`;
+  return layout({
+    title: 'Merci ! | Fontainebleau Live',
+    description: 'Merci pour votre soutien à Fontainebleau Live.',
+    canonical: `${SITE_URL}/${BALADES_DIR}/merci/`,
+    body,
+    noindex: true,
+    count: true,
+  }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
+}
+
+/** On a commune page: the guides that pass through it. */
+function guidesHtml(c) {
+  const list = GUIDES.filter((g) => g.towns.includes(c.slug));
+  if (!list.length) return '';
+  return `
+<h2>Balades à ${esc(c.name)} et alentour</h2>
+<ul class="list">${list.map((g) => `<li><a href="/${BALADES_DIR}/${g.slug}/">${esc(g.title)}</a><small>${esc(g.subtitle)}</small></li>`).join('')}</ul>`;
 }
 
 // ───────────────────────────── /nos-sources/ (item 79) ─────────────────────────────
@@ -1494,11 +1686,14 @@ ${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`,
 
 const SOURCES_DIR = 'nos-sources';
 const FEEDBACK_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform';
-// Item 99: the support link, under « Comment le site est financé ». Hidden while `url` is empty.
-// The cost is a floor that stays true (28/10): Gemini (~250-350 €/year from 2027, item 39), the
-// domain (~12 €) and the Claude subscription (240 €), without the time or the equipment shared
-// with Helioso. The day the link goes live, the provider is named in /mentions-legales/ too.
-const SUPPORT = { url: '', provider: 'Stripe', minCostPerYear: 400 };
+// Item 99: how a visitor supports the site, under « Comment le site est financé ». Since 01/11
+// (§7) it is the pay-what-you-want guides, not a bare support button: the paragraph shows once a
+// Stripe link is filled in scripts/balades.js (PAY). The cost is a floor that stays true (28/10):
+// Gemini (~250-350 €/year from 2027, item 39), the domain (~12 €) and the Claude subscription
+// (240 €), without the time or the equipment shared with Helioso. The day a link goes live, the
+// provider is named in /mentions-legales/ too.
+const SUPPORT = { provider: 'Stripe', minCostPerYear: 400 };
+const guidesPaid = () => Object.values(PAY).some((u) => safeUrl(u));
 
 function sourcesPage(events, generatedAt, registry, places = [], today = '') {
   const n = events.length;
@@ -1538,11 +1733,11 @@ function sourcesPage(events, generatedAt, registry, places = [], today = '') {
 <li><b>Le lieu</b><small>L’adresse est placée sur la carte grâce à la Base Adresse Nationale ; une sortie hors de cette zone est écartée.</small></li>
 </ul>
 
-${partners.length || SUPPORT.url ? `<h2 id="financement">Comment le site est financé</h2>
+${partners.length || guidesPaid() ? `<h2 id="financement">Comment le site est financé</h2>
 ${booked ? `<p>Certaines fiches proposent, à côté du lien vers l’organisateur, un bouton de réservation chez un partenaire (aujourd’hui : ${esc(partners.join(', '))}, sur ${pl(booked, 'fiche', 'fiches')}). Si vous réservez par ce lien, Fontainebleau Live perçoit une commission. Ce bouton est marqué « lien partenaire ». Il n’apparaît que sur une sortie confirmée par une source lue directement, jamais sur une fiche issue de la seule recherche web. Le partenaire ne choisit ni les sorties publiées ni leur ordre.${count('francebillet') ? ' Fnac Spectacles est aussi une source : les spectacles qu’elle vend dans la zone sont publiés comme ceux des autres sources, sans être mis en avant.' : ''}</p>` : ''}${visits.length ? `
-<p>Les encarts « À visiter » proposent le billet d’entrée ${esc(visits.map((p) => `du ${p.name.replace(/^Château de /, 'château de ')}`).join(', ').replace(/, ([^,]*)$/, ' et $1'))} chez un partenaire, avec la même commission. Ils ne dépendent d’aucune sortie de l’agenda et n’apparaissent que les jours d’ouverture.</p>` : ''}${SUPPORT.url ? `
-<p>Le site coûte au moins ${SUPPORT.minCostPerYear} € par an en frais directs (recherche par IA, nom de domaine, outils de développement), sans compter le temps passé ni le matériel. Il n’affiche aucune publicité. Si l’agenda vous est utile, vous pouvez le soutenir. Le paiement se fait chez ${esc(SUPPORT.provider)} ; Fontainebleau Live étant édité par une entreprise, ce soutien n’ouvre pas droit à un reçu fiscal.</p>
-<div class="actions"><a class="btn" href="${esc(SUPPORT.url)}" rel="noopener" target="_blank" data-track="support-click">Soutenir Fontainebleau Live</a></div>` : ''}
+<p>Les encarts « À visiter » proposent le billet d’entrée ${esc(visits.map((p) => `du ${p.name.replace(/^Château de /, 'château de ')}`).join(', ').replace(/, ([^,]*)$/, ' et $1'))} chez un partenaire, avec la même commission. Ils ne dépendent d’aucune sortie de l’agenda et n’apparaissent que les jours d’ouverture.</p>` : ''}${guidesPaid() ? `
+<p>Le site coûte au moins ${SUPPORT.minCostPerYear} € par an en frais directs (recherche par IA, nom de domaine, outils de développement), sans compter le temps passé ni le matériel. Il n’affiche aucune publicité. Si l’agenda vous est utile, vous pouvez le soutenir avec nos fiches balades, à prix libre : les télécharger est gratuit, les payer le montant de votre choix finance l’agenda. Le paiement se fait chez ${esc(SUPPORT.provider)} ; Fontainebleau Live étant édité par une entreprise, ce paiement n’ouvre pas droit à un reçu fiscal.</p>
+<div class="actions"><a class="btn" href="/${BALADES_DIR}/">Les fiches balades</a></div>` : ''}
 
 ` : ''}<h2>Ce que nous ne vérifions pas</h2>
 <p>Nous n’appelons pas les organisateurs : une annulation de dernière minute peut nous échapper. Avant un long trajet, un coup d’œil au site de l’organisateur reste prudent.</p>
@@ -1753,6 +1948,9 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, nameEn, k }) => ({ href, name, nameEn, count: k })), null, 2) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry, places, today));
+  files.set(`${BALADES_DIR}/index.html`, guidesIndex());
+  for (const g of GUIDES) files.set(`${BALADES_DIR}/${g.slug}/index.html`, guidePage(g, cities.filter((c) => g.towns.includes(c.slug))));
+  files.set(`${BALADES_DIR}/merci/index.html`, thanksPage());
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
@@ -1832,5 +2030,5 @@ module.exports = {
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
   THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf, TODAY_DIR,
-  homePicks, homePickDate, withHomePicks,
+  homePicks, homePickDate, withHomePicks, BALADES_DIR,
 };
