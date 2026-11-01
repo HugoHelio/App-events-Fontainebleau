@@ -90,12 +90,14 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 .pwyw .actions{align-items:center;margin:12px 0 8px}
 .pwyw .free{color:var(--ink);font-size:15px}
 .thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}
+html.en .fr-only,html:not(.en) .en-only{display:none}
 .gp{margin:32px 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4}
 .gp-kicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
 .gp h2{margin:2px 0 4px;font-size:1.35rem}
 .gp>p{margin:0 0 12px}
 .gp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.gp-cards a{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.gp-cards li{display:flex}
+.gp-cards a{flex:1;min-height:86px;display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .gp-cards a:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .gp-cards img{flex:none;width:112px;height:70px;object-fit:cover;border-radius:7px}
 .gp-txt{display:flex;flex-direction:column;min-width:0}
@@ -111,12 +113,12 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 <main>
 <nav class="crumbs"><a href="/" data-en="Home">Accueil</a></nav>
 <h1 data-en="Fontainebleau outings: on foot, by bike, by car">Balades à Fontainebleau : à pied, à vélo, en voiture</h1>
-<p data-en="Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet (in French), with its maps and games for the children, can be printed or kept on your phone.">Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.</p>
+<p data-en="Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet, with its maps and games for the children, can be printed or kept on your phone.">Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.</p>
 
 <aside class="gp" aria-label="Balades">
 <p class="gp-kicker" data-en="Free guides · pay what you like">Fiches gratuites · prix libre</p>
 <h2 data-en="The three guides">Les trois fiches</h2>
-<p data-en="Walked again and again with the family: every step, the maps, and games for the children.">Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.</p>
+<p data-en="Steps, maps, games for the children.">Étapes, cartes, jeux pour les enfants.</p>
 <ul class="gp-cards"><li><a href="/balades/fontainebleau-a-pied/" data-track="guide-promo" data-id="a-pied"><img src="/public/balades/img/thumb-a-pied.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="On foot">À pied</span><b data-en="Fontainebleau on foot">Fontainebleau à pied</b><small data-en="3 h · ≈ 3–4 km · in town">3 h · ≈ 3 à 4 km · en ville</small></span></a></li><li><a href="/balades/fontainebleau-a-velo/" data-track="guide-promo" data-id="a-velo"><img src="/public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By bike">À vélo</span><b data-en="Fontainebleau by bike">Fontainebleau à vélo</b><small data-en="3 rides · 5–22 km · 45 min to 3 h">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li><li><a href="/balades/fontainebleau-en-voiture/" data-track="guide-promo" data-id="en-voiture"><img src="/public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By car">En voiture</span><b data-en="Fontainebleau by car">Fontainebleau en voiture</b><small data-en="2 loops · 30–45 km · half a day to a day">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li></ul>
 </aside>
 

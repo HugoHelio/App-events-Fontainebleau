@@ -54,7 +54,8 @@ footer a{color:var(--muted)}
 .gp h2{margin:2px 0 4px;font-size:1.35rem}
 .gp>p{margin:0 0 12px}
 .gp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.gp-cards a{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.gp-cards li{display:flex}
+.gp-cards a{flex:1;min-height:86px;display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .gp-cards a:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .gp-cards img{flex:none;width:112px;height:70px;object-fit:cover;border-radius:7px}
 .gp-txt{display:flex;flex-direction:column;min-width:0}
@@ -77,7 +78,7 @@ footer a{color:var(--muted)}
 <aside class="gp" aria-label="Balades">
 <p class="gp-kicker" data-en="Free guides · pay what you like">Fiches gratuites · prix libre</p>
 <h2 data-en="Outings in and around Fontainebleau">Balades à Fontainebleau et alentour</h2>
-<p data-en="Walked again and again with the family: every step, the maps, and games for the children.">Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.</p>
+<p data-en="Steps, maps, games for the children.">Étapes, cartes, jeux pour les enfants.</p>
 <ul class="gp-cards"><li><a href="/balades/fontainebleau-a-pied/" data-track="guide-promo" data-id="a-pied"><img src="/public/balades/img/thumb-a-pied.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="On foot">À pied</span><b data-en="Fontainebleau on foot">Fontainebleau à pied</b><small data-en="3 h · ≈ 3–4 km · in town">3 h · ≈ 3 à 4 km · en ville</small></span></a></li><li><a href="/balades/fontainebleau-a-velo/" data-track="guide-promo" data-id="a-velo"><img src="/public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By bike">À vélo</span><b data-en="Fontainebleau by bike">Fontainebleau à vélo</b><small data-en="3 rides · 5–22 km · 45 min to 3 h">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li><li><a href="/balades/fontainebleau-en-voiture/" data-track="guide-promo" data-id="en-voiture"><img src="/public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By car">En voiture</span><b data-en="Fontainebleau by car">Fontainebleau en voiture</b><small data-en="2 loops · 30–45 km · half a day to a day">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li></ul>
 <a class="gp-all" href="/balades/" data-en="All the guides →">Toutes les balades →</a>
 </aside>

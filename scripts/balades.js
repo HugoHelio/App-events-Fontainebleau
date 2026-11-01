@@ -7,8 +7,9 @@
  *
  * English (`en`, 01/11): the same shape as the French, field by field, swapped in by the FR/EN
  * switch like the weekend pages (data-en). Arrays line up by index with the French ones; a field
- * left out (a step's distance, a total's figures) falls back to the French. The walk reuses the
- * translation of 30/10; the PDFs exist in French only, and the English pages say so.
+ * left out (a step's distance, a total's figures) falls back to the French. Translated from the
+ * latest French sheets (01/11). The English PDFs are drawn from this text by scripts/guides-pdf.js:
+ * after any change here, run it and commit the PDFs.
  *
  * generate-pages.js renders /balades/ (index, one page per guide, /balades/merci/) from this
  * file. The PDFs and the images live in public/balades/, copied by hand from the project lead's
@@ -40,8 +41,10 @@ const GUIDES = [
     mode: 'À pied',
     title: 'Fontainebleau à pied',
     subtitle: 'Balade en famille au cœur de la ville impériale',
+    subtitle2: 'Les 9 étapes, pas à pas',
     description: 'Une balade de 3 h dans Fontainebleau, en famille : le château, le parc, la place Napoléon, les rues commerçantes, le marché et le défi des petits explorateurs. Le parcours personnel d’un Bellifontain, fiche PDF à prix libre.',
     pdf: '/public/balades/fontainebleau-a-pied.pdf',
+    pdfEn: '/public/balades/fontainebleau-a-pied-en.pdf',
     checked: 'oct. 2026',
     towns: ['fontainebleau'],
     facts: [['Départ', 'Parking du château'], ['Durée', '3 h'], ['Distance', '≈ 3 à 4 km'], ['Niveau', 'Facile, en ville'], ['Pour qui', 'Toute la famille']],
@@ -137,6 +140,7 @@ const GUIDES = [
       mode: 'On foot',
       title: 'Fontainebleau on foot',
       subtitle: 'A family walk through the heart of the imperial town',
+      subtitle2: 'The 9 stops, step by step',
       facts: [['Start', 'Château car park'], ['Duration', '3 h'], ['Distance', '≈ 3–4 km'], ['Level', 'Easy, in town'], ['For', 'All the family']],
       why: 'I have lived in Fontainebleau for several years, and I love showing our gem to everyone who comes to visit. In 3 hours, this walk takes in the finest monuments of Fontainebleau. The children’s favourite moment is hide-and-seek in the little box-hedge mazes of the French formal garden.',
       before: [
@@ -232,8 +236,10 @@ const GUIDES = [
     mode: 'À vélo',
     title: 'Fontainebleau à vélo',
     subtitle: '3 balades en famille, du parc du château à Barbizon',
+    subtitle2: 'Les balades en forêt, section par section',
     description: 'Trois balades à vélo en famille autour de Fontainebleau : le parc du château et le Grand Canal (5 km), la route des Hauteurs de la Solle (15 km), les gorges d’Apremont jusqu’à Barbizon (22 km). Fiche PDF à prix libre.',
     pdf: '/public/balades/fontainebleau-a-velo.pdf',
+    pdfEn: '/public/balades/fontainebleau-a-velo-en.pdf',
     checked: 'oct. 2026',
     towns: ['fontainebleau', 'avon', 'barbizon'],
     facts: [['Balades', '45 min · 1 h 30 · 3 h'], ['Distances', '≈ 5 · 15 · 22 km'], ['Revêtement', 'Chemins & routes goudronnées'], ['Niveau', 'Facile à soutenu']],
@@ -322,6 +328,7 @@ const GUIDES = [
       mode: 'By bike',
       title: 'Fontainebleau by bike',
       subtitle: '3 family rides, from the château park to Barbizon',
+      subtitle2: 'The forest rides, section by section',
       facts: [['Rides', '45 min · 1 h 30 · 3 h'], ['Distances', '≈ 5 · 15 · 22 km'], ['Surface', 'Tracks & tarmac roads'], ['Level', 'Easy to demanding']],
       why: 'My children learnt to ride a bike in Fontainebleau. What a joy to ride through the forest, wind in your face, through the dead leaves or the puddles. Fun guaranteed!',
       before: [
@@ -408,8 +415,10 @@ const GUIDES = [
     mode: 'En voiture',
     title: 'Fontainebleau en voiture',
     subtitle: '2 boucles en famille : villages de peintres et vallée du Loing',
+    subtitle2: 'La vallée du Loing, étape par étape',
     description: 'Deux boucles en voiture autour de Fontainebleau : Arbonne, Courances et Barbizon au nord-ouest ; Moret, Episy et Grez-sur-Loing au sud, le long du Loing. Balades à pied sur place, mini-jeux pour les enfants. Fiche PDF à prix libre.',
     pdf: '/public/balades/fontainebleau-en-voiture.pdf',
+    pdfEn: '/public/balades/fontainebleau-en-voiture-en.pdf',
     checked: 'nov. 2026',
     towns: ['fontainebleau', 'arbonne-la-foret', 'courances', 'barbizon', 'moret-loing-et-orvanne', 'montigny-sur-loing', 'la-genevraye', 'grez-sur-loing'],
     facts: [['Boucles', 'Nord-Ouest · Sud'], ['Distances', '≈ 30 à 45 km'], ['Durée', '½ journée à 1 journée'], ['Sur place', 'Balades à pied faciles'], ['Pour qui', 'Toute la famille']],
@@ -486,6 +495,7 @@ const GUIDES = [
       mode: 'By car',
       title: 'Fontainebleau by car',
       subtitle: '2 family loops: painters’ villages and the Loing valley',
+      subtitle2: 'The Loing valley, step by step',
       facts: [['Loops', 'North-west · South'], ['Distances', '≈ 30–45 km'], ['Time', 'Half a day to a day'], ['On the way', 'Easy walks'], ['For', 'All the family']],
       why: 'To get away from Fontainebleau, here are my two favourite drives. A beautiful loop to the north through Barbizon, and a breath of fresh air to the south, along the Loing, for a picnic by the water. Nature and culture all the way.',
       before: [
@@ -507,7 +517,7 @@ const GUIDES = [
           mapAlt: 'Map of the drive from Fontainebleau to Arbonne-la-Forêt, Courances and Barbizon',
           steps: [
             { text: 'From Fontainebleau, take the D409 through the forest to Arbonne-la-Forêt.' },
-            { text: 'Recommended detour: from the centre of Arbonne, the little forest road to Courances leads to the Château de Courances.', dist: '+ 15 km there and back' },
+            { text: 'Recommended detour: from the centre of Arbonne, the little forest road to Courances leads to the Château de Courances.', dist: '+ 15 km return' },
             { text: 'From Arbonne, head for Macherin, then Barbizon. Park on place Marc-Jacquet.' },
             { text: 'On foot, walk up the Grande Rue to the forest: painters’ houses, studios, galleries.', dist: 'on foot' },
             { text: 'From the car park, back to Fontainebleau along the D607 (avenue de Fontainebleau).' },

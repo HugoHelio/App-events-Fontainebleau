@@ -692,7 +692,11 @@
     }
     .hg-kicker { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); }
     .hg-cards { list-style: none; display: grid; gap: 0.6rem; margin-top: 0.8rem; }
+    /* Equal heights (01/11): the cards stretch to the tallest one. */
+    .hg-cards li { display: flex; }
     .hg-cards a {
+      flex: 1;
+      min-height: 86px;
       display: flex;
       gap: 0.75rem;
       align-items: center;
@@ -1379,7 +1383,7 @@
       <section class="home-guides" aria-labelledby="homeGuidesTitle">
         <p class="hg-kicker" data-i18n="guidesKicker">Fiches gratuites · prix libre</p>
         <h2 id="homeGuidesTitle" data-i18n="guidesTitle">Les balades d’un Bellifontain</h2>
-        <p data-i18n="guidesText">Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.</p>
+        <p data-i18n="guidesText">Étapes, cartes, jeux pour les enfants.</p>
         <ul class="hg-cards">
           <li><a href="/balades/fontainebleau-a-pied/" data-guide="a-pied"><img src="public/balades/img/thumb-a-pied.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideWalkMode">À pied</span><b data-i18n="guideWalkTitle">Fontainebleau à pied</b><small data-i18n="guideWalkTeaser">3 h · ≈ 3 à 4 km · en ville</small></span></a></li>
           <li><a href="/balades/fontainebleau-a-velo/" data-guide="a-velo"><img src="public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideBikeMode">À vélo</span><b data-i18n="guideBikeTitle">Fontainebleau à vélo</b><small data-i18n="guideBikeTeaser">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li>
@@ -1560,7 +1564,7 @@
         guidesChip: 'Balades en famille',
         guidesKicker: 'Fiches gratuites · prix libre',
         guidesTitle: 'Les balades d’un Bellifontain',
-        guidesText: 'Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.',
+        guidesText: 'Étapes, cartes, jeux pour les enfants.',
         guidesAll: 'Toutes les balades →',
         guideWalkMode: 'À pied',
         guideWalkTitle: 'Fontainebleau à pied',
@@ -1681,7 +1685,7 @@
         guidesChip: 'Family outings',
         guidesKicker: 'Free guides · pay what you like',
         guidesTitle: 'A local’s favourite outings',
-        guidesText: 'Walked again and again with the family: every step, the maps, and games for the children.',
+        guidesText: 'Steps, maps, games for the children.',
         guidesAll: 'All the guides →',
         guideWalkMode: 'On foot',
         guideWalkTitle: 'Fontainebleau on foot',

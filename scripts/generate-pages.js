@@ -1496,7 +1496,7 @@ ${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`,
 // with the same maps and games. Pay what you want, no lock (§7, 01/11): the free download is
 // always there, the Stripe link only shows once filled in PAY. Bilingual like the weekend pages:
 // French served and indexed, English swapped in by data-en (the guide's `en` block); the PDFs
-// are French only, and the English labels say so.
+// exist in both languages (the English ones drawn by scripts/guides-pdf.js).
 
 const BALADES_DIR = 'balades';
 const NOTE_LABEL = { wc: ['WC', 'WC'], option: ['Option longue', 'Long option'], astuce: ['Astuce', 'Tip'], attention: ['Attention', 'Careful'], coeur: ['Coup de cœur', 'Don’t miss'] };
@@ -1539,7 +1539,8 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 .pwyw-title{font-weight:700;color:var(--ink);margin:0 0 4px;font-size:1.1rem}
 .pwyw .actions{align-items:center;margin:12px 0 8px}
 .pwyw .free{color:var(--ink);font-size:15px}
-.thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}`;
+.thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}
+html.en .fr-only,html:not(.en) .en-only{display:none}`;
 
 // The promotion card (01/11): on the busiest pages, the guides with a picture each. A plain
 // list of links, so a crawler follows it too; clicks count as guide-promo with the guide's key.
@@ -1548,7 +1549,8 @@ const PROMO_STYLE = `.gp{margin:32px 0;padding:16px;border-radius:14px;backgroun
 .gp h2{margin:2px 0 4px;font-size:1.35rem}
 .gp>p{margin:0 0 12px}
 .gp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.gp-cards a{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.gp-cards li{display:flex}
+.gp-cards a{flex:1;min-height:86px;display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:10px;padding:8px;text-decoration:none;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .gp-cards a:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .gp-cards img{flex:none;width:112px;height:70px;object-fit:cover;border-radius:7px}
 .gp-txt{display:flex;flex-direction:column;min-width:0}
@@ -1560,6 +1562,8 @@ const PROMO_STYLE = `.gp{margin:32px 0;padding:16px;border-radius:14px;backgroun
 
 // A guide's own text may set words in **bold**; everything is escaped first.
 const rich = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+// French decimals in a figure (« 0,2 km ») read as English ones.
+const enNum = (t) => String(t ?? '').replace(/(\d),(\d)/g, '$1.$2');
 // One element in both languages: French content, English in data-en when it differs.
 const bi = (tag, fr, enText, attrs = '') => {
   const frHtml = rich(fr);
@@ -1571,14 +1575,20 @@ const noteHtml = ([kind, text], enText) => {
   return `<p class="box ${esc(kind)}"${enText ? en(`<b>${esc(enLabel)}:</b> ${rich(enText)}`) : ''}><b>${esc(fr)} :</b> ${rich(text)}</p>`;
 };
 
-function payBox(key, pdf, amount, what, whatEn) {
+// The download links come in pairs: the French PDF, and the English one shown instead when the
+// page is read in English (html.en, set by the FR/EN switch).
+const pdfLinks = (key, pdf, pdfEn, cls, fr, enLabel) => (pdf
+  ? `<a class="${cls} fr-only" href="${esc(pdf)}" download data-track="guide-download" data-id="${esc(key)}">${esc(fr)}</a>${pdfEn ? `<a class="${cls} en-only" href="${esc(pdfEn)}" download data-track="guide-download" data-id="${esc(key)}-en">${esc(enLabel)}</a>` : ''}`
+  : '');
+
+function payBox(key, pdf, amount, what, whatEn, pdfEn) {
   const pay = safeUrl(PAY[key]);
-  const free = (cls, fr, enLabel) => (pdf ? bi('a', fr, enLabel, ` class="${cls}" href="${esc(pdf)}" download data-track="guide-download" data-id="${esc(key)}"`) : '');
-  if (!pay) return pdf ? `<div class="actions">${free('btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF, in French)')}</div>` : '';
+  const free = (cls, fr, enLabel) => pdfLinks(key, pdf, pdfEn, cls, fr, enLabel);
+  if (!pay) return pdf ? `<div class="actions">${free('btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF)')}</div>` : '';
   return `<div class="pwyw">
 ${bi('p', `Prix libre — ${amount} € conseillés`, `Pay what you like — €${amount} suggested`, ' class="pwyw-title"')}
 ${bi('p', what || 'Cette fiche est gratuite. Si elle vous plaît, payez-la ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', whatEn || 'This sheet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.')}
-<div class="actions">${bi('a', 'Choisir mon prix', 'Choose my price', ` class="btn" href="${esc(pay)}" rel="noopener" data-track="guide-pay" data-id="${esc(key)}"`)}${free('free', 'Télécharger sans payer', 'Download without paying (PDF, in French)')}</div>
+<div class="actions">${bi('a', 'Choisir mon prix', 'Choose my price', ` class="btn" href="${esc(pay)}" rel="noopener" data-track="guide-pay" data-id="${esc(key)}"`)}${free('free', 'Télécharger sans payer', 'Download without paying')}</div>
 ${bi('p', 'Paiement sécurisé chez Stripe, à partir de 2 €, puis téléchargement immédiat. Fontainebleau Live est édité par une entreprise : pas de reçu fiscal.', 'Secure payment with Stripe, from €2, then instant download. Fontainebleau Live is published by a company: no tax receipt.', ' class="note"')}
 </div>`;
 }
@@ -1588,7 +1598,7 @@ function stepHtml(st, se = {}) {
   const img = st.img ? `<figure><img src="${esc(st.img.src)}" width="${st.img.w}" height="${st.img.h}" alt="${esc(st.img.alt)}" loading="lazy"></figure>` : '';
   const body = st.title
     ? `${bi('h3', st.title, se.title)}${st.sub ? bi('p', st.sub, se.sub, ' class="sub"') : ''}<ul>${st.items.map((it, i) => bi('li', it, (se.items || [])[i])).join('')}</ul>`
-    : `${bi('p', st.text, se.text)}${bi('p', [st.dist, st.time].filter(Boolean).join(' · '), [se.dist || st.dist, st.time].filter(Boolean).join(' · '), ' class="sub"')}`;
+    : `${bi('p', st.text, se.text)}${bi('p', [st.dist, st.time].filter(Boolean).join(' · '), enNum([se.dist || st.dist, st.time].filter(Boolean).join(' · ')), ' class="sub"')}`;
   return `<li><span class="k" aria-hidden="true">${esc(st.k)}</span><div>${body}${notes}${img}</div></li>`;
 }
 
@@ -1606,7 +1616,7 @@ ${bi('h2', `${r.num ? `${r.num}. ` : ''}${r.title}`, re.title && `${r.num ? `${r
 ${bi('p', r.sub, re.sub, ' class="sub"')}` : ''}
 <figure><img src="${esc(r.map.src)}" width="${r.map.w}" height="${r.map.h}" alt="${esc(r.map.alt)}" loading="lazy">${bi('figcaption', `Carte : ${OSM}`, 'Map: © OpenStreetMap contributors')}</figure>
 <ol class="steps">${r.steps.map((st, i) => stepHtml(st, (re.steps || [])[i])).join('')}</ol>${r.total ? `
-${bi('p', r.total.join(' · '), re.total && [re.total, ...r.total.slice(1)].join(' · '), ' class="tot"')}` : ''}${notes}${gameHtml(r.game, re.game)}
+${bi('p', r.total.join(' · '), re.total && enNum([re.total, ...r.total.slice(1)].join(' · ')), ' class="tot"')}` : ''}${notes}${gameHtml(r.game, re.game)}
 </section>`;
 }
 
@@ -1617,7 +1627,7 @@ function guidesPromo(list = GUIDES, heading = ['Les balades d’un Bellifontain'
 <aside class="gp" aria-label="Balades">
 ${bi('p', 'Fiches gratuites · prix libre', 'Free guides · pay what you like', ' class="gp-kicker"')}
 ${bi('h2', heading[0], heading[1])}
-${bi('p', 'Faites et refaites en famille : chaque étape, les cartes, et des jeux pour les enfants.', 'Walked again and again with the family: every step, the maps, and games for the children.')}
+${bi('p', 'Étapes, cartes, jeux pour les enfants.', 'Steps, maps, games for the children.')}
 <ul class="gp-cards">${list.map((g) => `<li><a href="/${BALADES_DIR}/${g.slug}/" data-track="guide-promo" data-id="${esc(g.key)}"><img src="${esc(g.thumb)}" width="480" height="300" alt="" loading="lazy"><span class="gp-txt">${bi('span', g.mode, g.en.mode, ' class="gp-mode"')}${bi('b', g.title, g.en.title)}${bi('small', g.teaser[0], g.teaser[1])}</span></a></li>`).join('')}</ul>
 ${bi('a', 'Toutes les balades →', 'All the guides →', ` class="gp-all" href="/${BALADES_DIR}/"`)}
 </aside>`;
@@ -1633,7 +1643,7 @@ ${bi('p', `Fiche balade · ${g.mode} · n°${g.num}`, `Guide · ${ge.mode} · No
 ${bi('h1', g.title, ge.title)}
 ${bi('p', g.subtitle, ge.subtitle, ' class="lead"')}
 <ul class="facts">${g.facts.map(([k, v], i) => `<li>${bi('b', k, ge.facts[i][0])}${bi('span', v, ge.facts[i][1])}</li>`).join('')}</ul>
-${payBox(g.key, g.pdf, SUGGESTED.guide)}
+${payBox(g.key, g.pdf, SUGGESTED.guide, '', '', g.pdfEn)}
 ${bi('h2', `Pourquoi ${many ? 'ces balades' : 'ce parcours'} ?`, `Why ${many ? 'these routes' : 'this walk'}?`)}
 <blockquote class="why">${bi('span', g.why, ge.why)}${bi('span', '— Hugues, Bellifontain', '— Hugues, a Fontainebleau local', ' class="why-by"')}</blockquote>
 ${bi('h2', 'Avant de partir', 'Before you go')}
@@ -1647,7 +1657,7 @@ ${bi('p', g.more.note, ge.more.note, ' class="note"')}` : ''}` : ''}
 ${bi('h2', 'Sur le parcours en ce moment', 'Along the way right now')}
 ${bi('p', 'Les sorties à venir, mises à jour chaque jour :', 'Upcoming outings, updated every day (in French):')}
 <div class="actions">${towns.map((c) => `<a class="btn alt" href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a>`).join('')}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
-${payBox(g.key, g.pdf, SUGGESTED.guide)}
+${payBox(g.key, g.pdf, SUGGESTED.guide, '', '', g.pdfEn)}
 <p class="note">${bi('span', `Le parcours personnel d’un Bellifontain, fait et refait ${g.mode.toLowerCase()}. Infos indicatives, vérifiées en ${g.checked} : horaires, travaux et fermetures changent, vérifiez avant de partir.`, `A Fontainebleau local’s own route, done again and again ${ge.mode.toLowerCase()}. For guidance only, checked in ${g.checked}: opening hours, roadworks and closures change, check before you set off.`)} <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Report a mistake on the route')}>Une erreur sur le parcours ? Signalez-la</a>.</p>
 ${bi('h2', 'Les autres fiches', 'The other guides')}
 <ul class="list">${others.map((o) => `<li>${bi('a', o.title, o.en.title, ` href="/${BALADES_DIR}/${o.slug}/"`)}${bi('small', o.subtitle, o.en.subtitle)}</li>`).join('')}</ul>`;
@@ -1675,7 +1685,7 @@ ${bi('h2', 'Les autres fiches', 'The other guides')}
 function guidesIndex() {
   const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')}</nav>
 ${bi('h1', 'Balades à Fontainebleau : à pied, à vélo, en voiture', 'Fontainebleau outings: on foot, by bike, by car')}
-${bi('p', 'Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.', 'Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet (in French), with its maps and games for the children, can be printed or kept on your phone.')}
+${bi('p', 'Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.', 'Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet, with its maps and games for the children, can be printed or kept on your phone.')}
 ${guidesPromo(GUIDES, ['Les trois fiches', 'The three guides']).replace(/<a class="gp-all"[^]*?<\/a>\n/, '')}
 ${payBox('pack', '', SUGGESTED.pack, 'Les trois fiches sont gratuites, chacune sur sa page. Si elles vous plaisent, vous pouvez les payer ensemble, le montant de votre choix : c’est ce qui finance l’agenda, sans publicité.', 'The three guides are free, each on its own page. If you like them, you can pay for them together, whatever amount you choose: that is what funds the agenda, with no advertising.')}
 ${bi('p', 'Infos indicatives : horaires, travaux et fermetures changent, vérifiez avant de partir. Accès à la forêt : certains secteurs peuvent être fermés, voir onf.fr.', 'For guidance only: opening hours, roadworks and closures change, check before you set off. Forest access: some areas may be closed, see onf.fr.', ' class="note"')}
@@ -1696,7 +1706,7 @@ ${bi('p', 'Infos indicatives : horaires, travaux et fermetures changent, vérifi
 function thanksPage() {
   const body = `${bi('h1', 'Merci !', 'Thank you!')}
 ${bi('p', 'Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.', 'Your payment has been received: it funds the agenda, which stays free and without advertising. Stripe will email you the receipt.')}
-<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}">${bi('b', g.title, g.en.title)}${bi('small', g.subtitle, g.en.subtitle)}<div class="actions">${bi('a', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF, in French)', ` class="btn" href="${esc(g.pdf)}" download data-track="guide-download" data-id="${esc(g.key)}"`)}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${BALADES_DIR}/${g.slug}/"`)}</div></li>`).join('')}</ul>
+<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}">${bi('b', g.title, g.en.title)}${bi('small', g.subtitle, g.en.subtitle)}<div class="actions">${pdfLinks(g.key, g.pdf, g.pdfEn, 'btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF)')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${BALADES_DIR}/${g.slug}/"`)}</div></li>`).join('')}</ul>
 <p class="note">${bi('span', 'Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page', 'A problem with the payment or the download? Write to us from the page')} <a href="/mentions-legales/"${en('Legal notice')}>Mentions légales</a>.</p>
 <script>
 (function () {
