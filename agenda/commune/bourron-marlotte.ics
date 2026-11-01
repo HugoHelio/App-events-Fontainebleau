@@ -11,59 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_ecf3ae36dc@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Concours de Pétanque en doublettes
-LOCATION:Terrains municipaux de pétanque\, Bourron-Marlotte
-DESCRIPTION:Horaires : 13h00\n\nOrganisateur : https://bourronmarlotte.fr/a
- genda/concours-de-petanque-en-doublettes/\n\nFiche : https://fontainebleau
- live.fr/evenements/concours-de-petanque-en-doublettes-bourron-marlotte-ecf
- 3ae36dc/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/concours-de-petanque-en-doublet
- tes-bourron-marlotte-ecf3ae36dc/
-CATEGORIES:Sport & Outdoor
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_caad5a73ef@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Exposition à l'Atelier Adèle Vahn
-LOCATION:Bourron-Marlotte
-DESCRIPTION:Tarif : Gratuit.\n\nExposition d'art à découvrir à l'Atelier
-  Adèle Vahn à Bourron-Marlotte.\n\nOrganisateur : https://www.fontainebl
- eau-tourisme.com/fr/fiche/8044075/exposition-a-latelier-adele-vahn/\n\nFic
- he : https://fontainebleaulive.fr/evenements/exposition-a-l-atelier-adele-
- vahn-bourron-marlotte-caad5a73ef/\n\nInformations collectées automatiquem
- ent : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/exposition-a-l-atelier-adele-va
- hn-bourron-marlotte-caad5a73ef/
-CATEGORIES:Culture & Ateliers
-GEO:48.34297;2.70575
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_a5c21898e7@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Halloween
-LOCATION:Mairie\, Bourron-Marlotte
-DESCRIPTION:Horaires : de 17h30 à 20h00\n\nOrganisateur : https://bourronm
- arlotte.fr/agenda/halloween/\n\nFiche : https://fontainebleaulive.fr/evene
- ments/halloween-bourron-marlotte-a5c21898e7/\n\nInformations collectées a
- utomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/halloween-bourron-marlotte-a5c2
- 1898e7/
-CATEGORIES:Culture & Ateliers
-GEO:48.34297;2.70575
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_b98131ce7f@fontainebleaulive.fr
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261113

@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_2f76232e60@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Visite-promenade « Du musée au village »
-LOCATION:Musée départemental des Peintres de Barbizon\, Barbizon
-DESCRIPTION:Horaires : Créneaux spécifiques du musée\n\nTarif : Tarif pl
- ein env. 10 € / réduit 7 €\n\nPromenade guidée du musée jusqu'aux r
- uelles du village des peintres.\n\nOrganisateur : https://www.musee-peintr
- es-barbizon.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-
- promenade-du-musee-au-village-barbizon-2f76232e60/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-promenade-du-musee-au-vi
- llage-barbizon-2f76232e60/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_9131407f25@fontainebleaulive.fr
 DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261105

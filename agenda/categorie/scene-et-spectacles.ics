@@ -11,45 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_8fe09a350c@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261101
-SUMMARY:HALLOWEEN : FONTAINEBLEAU HANTÉE !
-LOCATION:Fontainebleau
-DESCRIPTION:Horaires : 15h30 à 19h30 \; 18h\n\nProgrammation d'Halloween a
- vec un jeu de piste indoor au Théâtre municipal et une soirée jeux de s
- ociété à la Médiathèque.\n\nOrganisateur : https://www.fontainebleau.
- fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5891&cHash=5fbfae
- 778c5a2dcdf668b3edaba535c2\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/halloween-fontainebleau-hantee-8fe09a350c/\n\nInformations collectées
-  automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/halloween-fontainebleau-hantee-
- 8fe09a350c/
-CATEGORIES:Scène & Spectacles
-GEO:48.40781;2.70278
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_6616954f1d@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:cinemomes halloween
-LOCATION:Bois-le-Roi
-DESCRIPTION:Tarif : Gratuit.\n\nSéance de cinéma spéciale Halloween prop
- osée aux enfants dans la commune de Bois-le-Roi.\n\nOrganisateur : https:
- //www.fontainebleau-tourisme.com/fr/fiche/8036997/cinemomes-halloween/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/cinemomes-halloween-bois-l
- e-roi-6616954f1d/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/cinemomes-halloween-bois-le-roi
- -6616954f1d/
-CATEGORIES:Scène & Spectacles
-GEO:48.47294;2.69243
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_d2df7805de@fontainebleaulive.fr
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
@@ -67,25 +28,6 @@ DESCRIPTION:Horaires : Samedi dès 20h\, Dimanche dès 11h\n\nTarif : Samed
 URL:https://fontainebleaulive.fr/evenements/grande-fete-portugaise-45e-anni
  versaire-milly-la-foret-d2df7805de/
 CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_c3604d84da@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Halloween " Balade et conte à 2 voix "
-LOCATION:Place de la Bosse\, Saint-Mammès
-DESCRIPTION:Horaires : 17h30\n\nBalade déguisée et conte à 2 voix avec d
- istribution de bonbons\, crêpes et boissons chaudes.\n\nOrganisateur : ht
- tps://www.saint-mammes.com/balade-dhalloween/\n\nFiche : https://fontaineb
- leaulive.fr/evenements/halloween-balade-et-conte-a-2-voix-saint-mammes-c36
- 04d84da/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/halloween-balade-et-conte-a-2-v
- oix-saint-mammes-c3604d84da/
-CATEGORIES:Scène & Spectacles
-GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
