@@ -2103,6 +2103,15 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     **Paiement en anglais** : un seul lien Stripe pour les deux langues ; la page Stripe se met
     dans la langue du navigateur, mais le nom du produit est celui saisi dans Stripe : à rendre
     bilingue par le chef de projet (voir la réponse du 02/11).
+  - [x] **02/11 : le jeu mis en avant** (chef de projet : « comment le découvrir depuis l'accueil ? »).
+    Accueil : pastille dorée « 🦌 Jeu des animaux » dans le bandeau, après « Balades en famille »
+    (clic `forest-chip`) ; carte « Pour les enfants · 6-11 ans — Le jeu des animaux de la forêt »
+    (fond vert foncé, les icônes du chef de projet, bouton doré « Jouer → », clic `forest-promo`)
+    dans le bloc des balades, donc aussi déplacée après le 4ᵉ événement ; lien « Jeu des animaux
+    pour les enfants » dans « Idées de sortie ». Pages générées : la même carte (`kidsPromo()`,
+    `KIDS_STYLE`) dans l'encart des balades — `/ce-week-end/`, `/aujourdhui/`, vacances, communes
+    traversées, `/balades/` (à la place du lien texte) — et sur chaque fiche balade, avant « Les
+    autres fiches ». Mesure : comparer `forest-chip` et `forest-promo` fin novembre.
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.

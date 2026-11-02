@@ -94,6 +94,16 @@ ol.steps ul{margin:6px 0 0;padding-left:18px}
 .pwyw .free{color:var(--ink);font-size:15px}
 .thanks li.is-yours{border:2px solid var(--accent-ink);border-radius:10px;padding:12px}
 html.en .fr-only,html:not(.en) .en-only{display:none}
+.kids{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:12px 0 0;padding:12px 14px;border-radius:12px;background:#1d3b29;color:#fff;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.kids:hover{background:#244a33}
+.kids-icons{display:flex;gap:4px;background:#fff;border-radius:10px;padding:4px 6px}
+.kids-icons img{display:block;width:40px;height:40px}
+.kids-txt{flex:1 1 180px;display:flex;flex-direction:column;min-width:0}
+.kids-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#e3c178}
+.kids-txt b{font-size:1.08rem;color:#fff;line-height:1.25}
+.kids-txt small{font-size:13px;color:#dfe8e1}
+.kids-go{flex:none;background:#e3c178;color:#1d3b29;font-weight:700;border-radius:999px;padding:10px 18px;font-size:15px}
+@media (max-width:420px){.kids-go{flex:1 1 100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -147,6 +157,7 @@ html.en .fr-only,html:not(.en) .en-only{display:none}
 <p class="note" data-en="Secure payment with Stripe, from €2, then instant download. Fontainebleau Live is published by a company: no tax receipt.">Paiement sécurisé chez Stripe, à partir de 2 €, puis téléchargement immédiat. Fontainebleau Live est édité par une entreprise : pas de reçu fiscal.</p>
 </div>
 <p class="note"><span data-en="A Fontainebleau local’s own route, done again and again by bike. For guidance only, checked in oct. 2026: opening hours, roadworks and closures change, check before you set off.">Le parcours personnel d’un Bellifontain, fait et refait à vélo. Infos indicatives, vérifiées en oct. 2026 : horaires, travaux et fermetures changent, vérifiez avant de partir.</span> <a href="https://docs.google.com/forms/d/e/1FAIpQLScRjLM5_R4K_d-0UUJk7lT1hvP8UBKyBMtniKskJviaG8ZRgw/viewform" rel="noopener" target="_blank" data-en="Report a mistake on the route">Une erreur sur le parcours ? Signalez-la</a>.</p>
+<a class="kids" href="/foret/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true"><img src="/public/foret/img/icones/sanglier.png" width="40" height="40" alt="" loading="lazy"><img src="/public/foret/img/icones/chevreuil.png" width="40" height="40" alt="" loading="lazy"><img src="/public/foret/img/icones/geai.png" width="40" height="40" alt="" loading="lazy"><img src="/public/foret/img/icones/lucane.png" width="40" height="40" alt="" loading="lazy"></span><span class="kids-txt"><span class="kids-kicker" data-en="For the children · ages 6-11">Pour les enfants · 6-11 ans</span><b data-en="The forest animals game">Le jeu des animaux de la forêt</b><small data-en="10 riddles on your phone, and a booklet to print">10 devinettes sur le téléphone, et un carnet à imprimer</small></span><span class="kids-go" data-en="Play →">Jouer →</span></a>
 <h2 data-en="The other guides">Les autres fiches</h2>
 <ul class="list"><li><a href="/balades/fontainebleau-a-pied/" data-en="Fontainebleau on foot">Fontainebleau à pied</a><small data-en="A family walk through the heart of the imperial town">Balade en famille au cœur de la ville impériale</small></li><li><a href="/balades/fontainebleau-en-voiture/" data-en="Fontainebleau by car">Fontainebleau en voiture</a><small data-en="2 family loops: painters’ villages and the Loing valley">2 boucles en famille : villages de peintres et vallée du Loing</small></li></ul>
 </main>

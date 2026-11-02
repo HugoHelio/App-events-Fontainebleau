@@ -1548,6 +1548,20 @@ html.en .fr-only,html:not(.en) .en-only{display:none}`;
 
 // The promotion card (01/11): on the busiest pages, the guides with a picture each. A plain
 // list of links, so a crawler follows it too; clicks count as guide-promo with the guide's key.
+// The children's card (02/11): the forest game and its booklet, on every page that shows the
+// guides (home page too, written by hand in index.html with the same look). Dark, with the
+// project lead's animal icons and a « Jouer » button: it must read as something to tap.
+const KIDS_STYLE = `.kids{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:12px 0 0;padding:12px 14px;border-radius:12px;background:#1d3b29;color:#fff;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.kids:hover{background:#244a33}
+.kids-icons{display:flex;gap:4px;background:#fff;border-radius:10px;padding:4px 6px}
+.kids-icons img{display:block;width:40px;height:40px}
+.kids-txt{flex:1 1 180px;display:flex;flex-direction:column;min-width:0}
+.kids-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#e3c178}
+.kids-txt b{font-size:1.08rem;color:#fff;line-height:1.25}
+.kids-txt small{font-size:13px;color:#dfe8e1}
+.kids-go{flex:none;background:#e3c178;color:#1d3b29;font-weight:700;border-radius:999px;padding:10px 18px;font-size:15px}
+@media (max-width:420px){.kids-go{flex:1 1 100%;text-align:center}}`;
+
 const PROMO_STYLE = `.gp{margin:32px 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4}
 .gp-kicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
 .gp h2{margin:2px 0 4px;font-size:1.35rem}
@@ -1562,7 +1576,8 @@ const PROMO_STYLE = `.gp{margin:32px 0;padding:16px;border-radius:14px;backgroun
 .gp-txt b{color:var(--ink);font-size:1.02rem;line-height:1.3}
 .gp-txt small{color:var(--muted);font-size:13px}
 .gp-all{display:inline-block;margin-top:12px;font-weight:700;color:var(--ink)}
-@media (min-width:640px){.gp-cards{grid-template-columns:repeat(3,1fr)}.gp-cards a{flex-direction:column;align-items:stretch;padding:0;overflow:hidden}.gp-cards img{width:100%;height:auto;aspect-ratio:8/5;border-radius:0}.gp-txt{padding:8px 12px 12px}}`;
+@media (min-width:640px){.gp-cards{grid-template-columns:repeat(3,1fr)}.gp-cards a{flex-direction:column;align-items:stretch;padding:0;overflow:hidden}.gp-cards img{width:100%;height:auto;aspect-ratio:8/5;border-radius:0}.gp-txt{padding:8px 12px 12px}}
+${KIDS_STYLE}`;
 
 // A guide's own text may set words in **bold**; everything is escaped first.
 const rich = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
@@ -1624,6 +1639,12 @@ ${bi('p', r.total.join(' · '), re.total && enNum([re.total, ...r.total.slice(1)
 </section>`;
 }
 
+/** The children's card: the forest game, with the animals that have an icon. */
+function kidsPromo() {
+  const icons = ANIMALS.filter((a) => a.icon).slice(0, 4);
+  return `<a class="kids" href="/${FORET_DIR}/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true">${icons.map((a) => `<img src="${esc(a.icon)}" width="40" height="40" alt="" loading="lazy">`).join('')}</span><span class="kids-txt">${bi('span', 'Pour les enfants · 6-11 ans', 'For the children · ages 6-11', ' class="kids-kicker"')}${bi('b', 'Le jeu des animaux de la forêt', 'The forest animals game')}${bi('small', '10 devinettes sur le téléphone, et un carnet à imprimer', '10 riddles on your phone, and a booklet to print')}</span>${bi('span', 'Jouer →', 'Play →', ' class="kids-go"')}</a>`;
+}
+
 /** The promotion card: every guide, or the ones given (a commune's page). */
 function guidesPromo(list = GUIDES, heading = ['Les balades d’un Bellifontain', 'A local’s favourite outings']) {
   if (!list.length) return '';
@@ -1633,6 +1654,7 @@ ${bi('p', 'Fiches gratuites · prix libre', 'Free guides · pay what you like', 
 ${bi('h2', heading[0], heading[1])}
 ${bi('p', 'Étapes, cartes, jeux pour les enfants.', 'Steps, maps, games for the children.')}
 <ul class="gp-cards">${list.map((g) => `<li><a href="/${BALADES_DIR}/${g.slug}/" data-track="guide-promo" data-id="${esc(g.key)}"><img src="${esc(g.thumb)}" width="480" height="300" alt="" loading="lazy"><span class="gp-txt">${bi('span', g.mode, g.en.mode, ' class="gp-mode"')}${bi('b', g.title, g.en.title)}${bi('small', g.teaser[0], g.teaser[1])}</span></a></li>`).join('')}</ul>
+${kidsPromo()}
 ${bi('a', 'Toutes les balades →', 'All the guides →', ` class="gp-all" href="/${BALADES_DIR}/"`)}
 </aside>`;
 }
@@ -1663,6 +1685,7 @@ ${bi('p', 'Les sorties à venir, mises à jour chaque jour :', 'Upcoming outings
 <div class="actions">${towns.map((c) => `<a class="btn alt" href="/${CITIES_DIR}/${c.slug}/">${esc(c.name)}</a>`).join('')}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
 ${payBox(g.key, g.pdf, SUGGESTED.guide, '', '', g.pdfEn)}
 <p class="note">${bi('span', `Le parcours personnel d’un Bellifontain, fait et refait ${g.mode.toLowerCase()}. Infos indicatives, vérifiées en ${g.checked} : horaires, travaux et fermetures changent, vérifiez avant de partir.`, `A Fontainebleau local’s own route, done again and again ${ge.mode.toLowerCase()}. For guidance only, checked in ${g.checked}: opening hours, roadworks and closures change, check before you set off.`)} <a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Report a mistake on the route')}>Une erreur sur le parcours ? Signalez-la</a>.</p>
+${kidsPromo()}
 ${bi('h2', 'Les autres fiches', 'The other guides')}
 <ul class="list">${others.map((o) => `<li>${bi('a', o.title, o.en.title, ` href="/${BALADES_DIR}/${o.slug}/"`)}${bi('small', o.subtitle, o.en.subtitle)}</li>`).join('')}</ul>`;
   const canonical = `${SITE_URL}/${BALADES_DIR}/${g.slug}/`;
@@ -1683,7 +1706,7 @@ ${bi('h2', 'Les autres fiches', 'The other guides')}
       provider: { '@type': 'Organization', name: 'Fontainebleau Live', url: `${SITE_URL}/` },
       itinerary: { '@type': 'ItemList', itemListElement: ov.rows.map((r, i) => ({ '@type': 'ListItem', position: i + 1, name: r[0].replace(/^\d+\.\s*/, '') })) },
     },
-  }).replace('</style>', `${GUIDE_STYLE}\n</style>`);
+  }).replace('</style>', `${GUIDE_STYLE}\n${KIDS_STYLE}\n</style>`);
 }
 
 function guidesIndex() {
@@ -1692,7 +1715,6 @@ ${bi('h1', 'Balades à Fontainebleau : à pied, à vélo, en voiture', 'Fontaine
 ${bi('p', 'Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.', 'Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet, with its maps and games for the children, can be printed or kept on your phone.')}
 ${guidesPromo(GUIDES, ['Les trois fiches', 'The three guides']).replace(/<a class="gp-all"[^]*?<\/a>\n/, '')}
 ${payBox('pack', '', SUGGESTED.pack, 'Les trois fiches sont gratuites, chacune sur sa page. Si elles vous plaisent, vous pouvez les payer ensemble, le montant de votre choix : c’est ce qui finance l’agenda, sans publicité.', 'The three guides are free, each on its own page. If you like them, you can pay for them together, whatever amount you choose: that is what funds the agenda, with no advertising.')}
-<p${en(`For the children: <a href="/${FORET_DIR}/">the forest animals game</a>, 10 riddles to play on a phone.`)}>Pour les enfants : <a href="/${FORET_DIR}/">le jeu des animaux de la forêt</a>, 10 devinettes à faire sur le téléphone.</p>
 ${bi('p', 'Infos indicatives : horaires, travaux et fermetures changent, vérifiez avant de partir. Accès à la forêt : certains secteurs peuvent être fermés, voir onf.fr.', 'For guidance only: opening hours, roadworks and closures change, check before you set off. Forest access: some areas may be closed, see onf.fr.', ' class="note"')}
 <div class="actions">${bi('a', 'Que faire ce week-end ?', 'What’s on this weekend?', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}${bi('a', 'Que faire à Fontainebleau ?', 'What’s on in Fontainebleau?', ` class="btn alt" href="/${CITIES_DIR}/fontainebleau/"`)}</div>`;
   return layout({

@@ -725,6 +725,18 @@
     /* The guides chip in the banner: filled, so it reads as ours, not as a seasonal hub. */
     .season-chip.is-guides { background: var(--brand-sand); border-color: var(--brand-sand); color: #1d3b29; }
     .season-chip.is-guides:hover { background: #d8b36f; }
+    /* The children's card (02/11): the forest game and its booklet, inside the guides block.
+       Same look as KIDS_STYLE in scripts/generate-pages.js. */
+    .kids { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin-top: 0.8rem; padding: 0.75rem 0.9rem; border-radius: 12px; background: #1d3b29; color: #fff; text-decoration: none; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }
+    .kids:hover { background: #244a33; }
+    .kids-icons { display: flex; gap: 4px; background: #fff; border-radius: 10px; padding: 4px 6px; }
+    .kids-icons img { display: block; width: 40px; height: 40px; }
+    .kids-txt { flex: 1 1 180px; display: flex; flex-direction: column; min-width: 0; }
+    .kids-kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e3c178; }
+    .kids-txt b { font-size: 1.05rem; color: #fff; line-height: 1.25; }
+    .kids-txt small { font-size: 0.8rem; color: #dfe8e1; }
+    .kids-go { flex: none; background: #e3c178; color: #1d3b29; font-weight: 700; border-radius: 999px; padding: 0.6rem 1.1rem; font-size: 0.92rem; }
+    @media (max-width: 420px) { .kids-go { flex: 1 1 100%; text-align: center; } }
 
     .view-panel {
       display: none;
@@ -1376,6 +1388,7 @@
           <a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
           <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a>
           <a href="/balades/" class="is-guides" data-i18n="guidesLink">Balades à pied, à vélo, en voiture</a>
+          <a href="/foret/" class="is-guides" data-i18n="kidsLink">Jeu des animaux pour les enfants</a>
         </p>
       </section>
       <!-- The guides (item 104 bis). Same cards as the generated pages' promotion block; the text
@@ -1389,6 +1402,7 @@
           <li><a href="/balades/fontainebleau-a-velo/" data-guide="a-velo"><img src="public/balades/img/thumb-a-velo.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideBikeMode">À vélo</span><b data-i18n="guideBikeTitle">Fontainebleau à vélo</b><small data-i18n="guideBikeTeaser">3 balades · 5 à 22 km · 45 min à 3 h</small></span></a></li>
           <li><a href="/balades/fontainebleau-en-voiture/" data-guide="en-voiture"><img src="public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="hg-txt"><span class="hg-mode" data-i18n="guideCarMode">En voiture</span><b data-i18n="guideCarTitle">Fontainebleau en voiture</b><small data-i18n="guideCarTeaser">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li>
         </ul>
+        <a class="kids" href="/foret/"><span class="kids-icons" aria-hidden="true"><img src="public/foret/img/icones/sanglier.png" width="40" height="40" alt="" loading="lazy"><img src="public/foret/img/icones/chevreuil.png" width="40" height="40" alt="" loading="lazy"><img src="public/foret/img/icones/geai.png" width="40" height="40" alt="" loading="lazy"><img src="public/foret/img/icones/lucane.png" width="40" height="40" alt="" loading="lazy"></span><span class="kids-txt"><span class="kids-kicker" data-i18n="kidsKicker">Pour les enfants · 6-11 ans</span><b data-i18n="kidsTitle">Le jeu des animaux de la forêt</b><small data-i18n="kidsText">10 devinettes sur le téléphone, et un carnet à imprimer</small></span><span class="kids-go" data-i18n="kidsGo">Jouer →</span></a>
         <a class="hg-all" href="/balades/" data-i18n="guidesAll">Toutes les balades →</a>
       </section>
       <section id="homePicks" class="home-picks" aria-labelledby="homePicksTitle">
@@ -1562,6 +1576,12 @@
         guidesLink: 'Balades à pied, à vélo, en voiture',
         homeExploreTitle: 'Idées de sortie',
         guidesChip: 'Balades en famille',
+        kidsChip: '🦌 Jeu des animaux',
+        kidsLink: 'Jeu des animaux pour les enfants',
+        kidsKicker: 'Pour les enfants · 6-11 ans',
+        kidsTitle: 'Le jeu des animaux de la forêt',
+        kidsText: '10 devinettes sur le téléphone, et un carnet à imprimer',
+        kidsGo: 'Jouer →',
         guidesKicker: 'Fiches gratuites · prix libre',
         guidesTitle: 'Les balades d’un Bellifontain',
         guidesText: 'Étapes, cartes, jeux pour les enfants.',
@@ -1683,6 +1703,12 @@
         guidesLink: 'Walks, bike rides and drives',
         homeExploreTitle: 'Outing ideas',
         guidesChip: 'Family outings',
+        kidsChip: '🦌 Animal game',
+        kidsLink: 'Forest animals game for children',
+        kidsKicker: 'For the children · ages 6-11',
+        kidsTitle: 'The forest animals game',
+        kidsText: '10 riddles on your phone, and a booklet to print',
+        kidsGo: 'Play →',
         guidesKicker: 'Free guides · pay what you like',
         guidesTitle: 'A local’s favourite outings',
         guidesText: 'Steps, maps, games for the children.',
@@ -2022,9 +2048,16 @@
       g.textContent = t('guidesChip');
       g.addEventListener('click', () => track('guide-chip'));
       row.appendChild(g);
+      const k = document.createElement('a');
+      k.className = 'season-chip is-guides';
+      k.href = '/foret/';
+      k.textContent = t('kidsChip');
+      k.addEventListener('click', () => track('forest-chip'));
+      row.appendChild(k);
     }
 
     // The guides' cards under the views (01/11): a click counts like the generated pages' block.
+    document.querySelectorAll('.kids').forEach((a) => a.addEventListener('click', () => track('forest-promo')));
     document.querySelectorAll('.hg-cards a[data-guide]').forEach((a) => {
       a.addEventListener('click', () => track('guide-promo', a.dataset.guide));
     });
