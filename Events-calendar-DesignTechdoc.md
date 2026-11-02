@@ -2104,8 +2104,9 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     dans la langue du navigateur, mais le nom du produit est celui saisi dans Stripe : à rendre
     bilingue par le chef de projet (voir la réponse du 02/11).
   - [x] **02/11 : le jeu mis en avant** (chef de projet : « comment le découvrir depuis l'accueil ? »).
-    Accueil : pastille dorée « 🦌 Jeu des animaux » dans le bandeau, après « Balades en famille »
-    (clic `forest-chip`) ; carte « Pour les enfants · 6-11 ans — Le jeu des animaux de la forêt »
+    Accueil : pastille dorée « Jeu enfants » (« Animal game ») dans le bandeau, après « Balades en
+    famille » (clic `forest-chip`) — sans emoji (cerf brun sur fond doré, illisible) et courte pour
+    tenir sur la même ligne à 360 px (vérifié à 340, 360 et 390 px, FR et EN) ; carte « Pour les enfants · 6-11 ans — Le jeu des animaux de la forêt »
     (fond vert foncé, les icônes du chef de projet, bouton doré « Jouer → », clic `forest-promo`)
     dans le bloc des balades, donc aussi déplacée après le 4ᵉ événement ; lien « Jeu des animaux
     pour les enfants » dans « Idées de sortie ». Pages générées : la même carte (`kidsPromo()`,
