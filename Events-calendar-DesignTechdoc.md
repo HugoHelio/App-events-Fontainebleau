@@ -2077,7 +2077,9 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.
-  - **Reste** : (1) Payment Link Stripe « carnet » (4 € conseillés), à coller dans
+  - [x] **Lien Stripe du carnet collé le 02/11** (`PAY['carnet-foret']`, créé par le chef de projet,
+    retour `/balades/merci/?fiche=carnet-foret`) : l'encart de `/foret/` est passé au prix libre.
+  - **Reste** : (1) ~~Payment Link Stripe « carnet » (4 € conseillés)~~ fait le 02/11, à coller dans
     `PAY['carnet-foret']` de `scripts/balades.js` — l'encart passe alors au prix libre ; la page
     `/balades/merci/` ne connaît que les trois fiches : y ajouter le carnet le même jour ;
     (2) version anglaise du carnet, plus tard ; (3) une gravure d'oiseau (chouette) si une
