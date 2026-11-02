@@ -11,6 +11,7 @@
  * Pictures (item 107c, 02/11): `icon` is the picture supplied by the project lead (192 px PNG in
  * public/foret/img/icones/, the 512 px originals in public/foret/icones/); an animal without one
  * keeps its emoji. `iconBy`: author and page of a Flaticon icon (free licence, attribution due:
+ * an empty page means our own drawing;
  * credited on /foret/ and in /mentions-legales/, the same day as any new icon).
  *
  * Each animal: a riddle (« Qui suis-je ? »), three choices (the answer and two other keys of this
@@ -149,6 +150,9 @@ const ANIMALS = [
   {
     key: 'lucane',
     emoji: '🪲',
+    icon: '/public/foret/img/icones/lucane.png',
+    // Drawn by the project lead in Krita (02/11): our own picture, no attribution.
+    iconBy: ['Fontainebleau Live', ''],
     name: 'Le lucane cerf-volant',
     riddle: 'Je suis un insecte, mais j’ai des « bois » sur la tête, comme le cerf !',
     choices: ['lucane', 'cerf', 'blaireau'],

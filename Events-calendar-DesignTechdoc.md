@@ -2082,8 +2082,10 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     Icons, chevreuil par kerismaker, geai par Park Jisun ; champ `iconBy` dans `scripts/foret.js`,
     cités sous le jeu et dans la nouvelle section « Crédits des images » de `/mentions-legales/`
     (avec les gravures du carnet et les cartes OSM). **Décision du chef de projet : les 7 autres
-    animaux gardent leur emoji.** **Reste** : le lucane (icône retouchée par le chef de projet) et
-    le chevreuil (retouche : ses bois ramifiés ressemblent à ceux du cerf).
+    animaux gardent leur emoji.** Fait le 02/11 : le chevreuil retouché par le chef de projet (bois
+    courts, miroir blanc ; crédit kerismaker gardé), et **le lucane, dessiné par le chef de projet
+    sous Krita** (JPG à fond blanc rendu transparent ; crédité « Fontainebleau Live », `iconBy`
+    sans lien). Item 107c terminé, sauf nouvelle icône.
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.
