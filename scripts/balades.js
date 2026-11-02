@@ -16,7 +16,7 @@
  * folder (maps reduced to 1 200 px wide for phones).
  *
  * Payment (§7, 01/11): pay what you want, no lock. The PDF is always downloadable for free; a
- * Stripe Payment Link (« the customer chooses the amount », 3 € pre-filled, 2 € minimum) sits
+ * Stripe Payment Link (« the customer chooses the amount », 4 € pre-filled, 2 € minimum) sits
  * next to it. A link stays empty until the project lead has created it: an empty link = the
  * page shows the free download only, and says nothing about payment.
  */
@@ -24,12 +24,13 @@
 // Stripe Payment Links, one per guide plus the pack. After payment, Stripe redirects to
 // https://fontainebleaulive.fr/balades/merci/?fiche=<key> (key = the guide's `key`, or `pack`).
 const PAY = {
-  'a-pied': '',
-  'a-velo': '',
-  'en-voiture': '',
-  pack: '',
+  'a-pied': 'https://buy.stripe.com/5kQ8wPbJ3ffb3Ce0bt5gc01',
+  'a-velo': 'https://buy.stripe.com/8x25kDaEZd738Wy8HZ5gc02',
+  'en-voiture': 'https://buy.stripe.com/9B6cN5cN77MJegScYf5gc03',
+  pack: 'https://buy.stripe.com/dRmaEX9AV4Ax2ya2jB5gc00',
 };
-const SUGGESTED = { guide: 3, pack: 6 };
+// Must match the pre-filled amount set on each Stripe link (02/11: 4 €, pack 8 €).
+const SUGGESTED = { guide: 4, pack: 8 };
 
 const OSM = '© les contributeurs d’OpenStreetMap';
 
