@@ -1659,6 +1659,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-11-01 | **Les fiches balades mises en avant, et en anglais** (chef de projet : « les liens en bas de page sont trop discrets, il faut les marketer »). Accueil : pastille dorée « Balades en famille » toujours présente dans le bandeau (après les pastilles de saison) ; les liens « Que faire » quittent le pied de page pour une section « Idées de sortie » en pastilles sous les vues ; bloc « Les balades d’un Bellifontain » (trois vignettes) **déplacé dans la liste après le 4ᵉ événement** (resté en bas si la liste est plus courte). Pages générées : le même encart (`guidesPromo()`) sur `/ce-week-end/`, `/aujourdhui/`, les pages de vacances et les communes traversées. Fiches bilingues FR/EN comme `/ce-week-end/` (bloc `en` dans `scripts/balades.js`, traduction de la fiche à pied du 30/10 reprise) ; PDF en français seulement, dit en anglais. Clics : `guide-promo`, `guide-chip` | Sous les vues, après une liste de plusieurs écrans, personne n’atteignait le bloc : le visiteur fait défiler la liste, c’est là qu’il faut être. Le bloc est déplacé, jamais copié, pour ne pas paraître deux fois. Il ne précède pas la carte : la décision du 08/10 (rien ne concurrence la carte) tient. Les fiches sont notre contenu, pas une donnée de l’agenda : la règle « seule la description est traduite » ne les concerne pas |
 | 2026-11-01 | **Passer devant fontyblog.fr dans Google : nouvel item 106** | fontyblog est encore classé devant nous sur les requêtes génériques (« que faire à Fontainebleau », position 46-87 fin septembre). C'est le concurrent direct, et le référencement est la source de l'audience que la monétisation suppose |
 | 2026-11-02 | **Paiement des fiches balades en ligne (items 99, 104 bis)** : quatre Stripe Payment Links réels (une fiche chacune, plus le pack) dans `PAY`, sur un **compte Stripe distinct « Fontainebleau Live »** de l'entreprise Helioso. Montant suggéré **4 €** (pack : **8 €**, au lieu de 3 € et 6 €), minimum 2 €, maximum 60 €. Stripe Tax et Managed Payments (3,5 %) désactivés ; rien de collecté hors e-mail ; bouton « Payer », jamais « Faire un don ». Stripe nommé le même jour dans `/mentions-legales/` (services tiers, et section « Fiches balades à prix libre ») | Un compte par marque : la page de paiement et le relevé bancaire disent « Fontainebleau Live », pas « Helioso », et les paiements ne se mêlent pas à ceux des autres applications d'Helioso ; même entreprise, mêmes recettes. 4 € plutôt que 3 € (chef de projet) : le montant suggéré est celui que retiennent la plupart des payeurs, la part des frais Stripe baisse (~8 % au lieu de ~10 %), le pack garde un tiers de remise, et le paiement reste facultatif. `SUGGESTED` doit rester égal au montant prérempli de chaque lien |
+| 2026-11-02 | **Ordre du 02/11 : contenu et liens entrants avant toute vente** (chef de projet). Idée A retenue : « Carnet d'explorateur de la forêt » (PDF de 8 à 12 pages, prix libre) et mini-jeu en ligne `/foret/` (item 107). Campagne de contacts : petites mairies pour le widget, hébergeurs, public anglophone (108). Calendrier 2027 (109) et jeu de piste (110) gardés, non planifiés. Seuil de la démarche commerciale : **5 000 visites/mois stables sur 3 mois** | Octobre est à 3 589 visites/mois (97) : l'item 105 disait le seuil franchi, à tort (corrigé). Le benchmark du 02/11 ne trouve aucun livret enfant sur la forêt de Fontainebleau ; un jeu gratuit sur la page attire les liens (écoles, parents) et mène au carnet. Le widget se propage plus vite par les petites communes, dont l'agenda en ligne est souvent vide |
 
 ---
 
@@ -1694,32 +1695,29 @@ moyenne 7, **87 % mobile**, tout le trafic sur les fiches, recherches génériqu
 Fontainebleau ») en position 46-87. `/ce-week-end/` est la page la plus vue. Comparatif des
 sources légitimes : **69 %** (seuil de sortie du grounding : 90 %).
 
-**Reprise du 28/10 — un sujet à la fois, dans l'ordre ci-dessous (proposé, à confirmer par le
-chef de projet).** État au scan du 27/10 : **424 événements** (sites 236, Gemini 106, Fnac 29,
-OpenAgenda 28, DATAtourisme 25). Workflows tous verts du 12/10 au 28/10. Plus de 1 500 visites
-(GoatCounter, à préciser : total ou par mois). Fait le 28/10, hors liste : le marché hebdomadaire
-de Fontainebleau (`EVT_06db7e9a2c`) et le « Marché Saint-Louis » (`EVT_88a89edac0`), deux fiches
-Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23).
+**Ordre du 02/11 — un sujet à la fois (chef de projet : « priorise le backlog et on attaque »).**
+Remplace l'ordre du 28/10, dont les lignes faites sont au journal (§7 : 92, 92b, 93, 94, 95, 96,
+97, 98, 99, 101, 104 bis). État au scan du 27/10 : **424 événements** (sites 236, Gemini 106,
+Fnac 29, OpenAgenda 28, DATAtourisme 25). Trafic : **3 589 visites/mois** (97, 28/10). **Seuil de
+la démarche commerciale précisé le 02/11 : 5 000 visites/mois, stables sur 3 mois** (au plus tôt
+fin janvier 2027) ; d'ici là, des points d'entrée et des liens entrants, rien à vendre aux
+organisateurs.
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 1 | ~~**92. Faux événement signalé par le Domaine de Courances**~~ — traité le 28/10 (§7) ; reste le courriel au Domaine et le signalement PHAROS (chef de projet) | Le Domaine écrit que « Les Feux de Courances » n'existe pas et demande le retrait : c'est la confiance du site, et un tiers qui se plaint | XS |
-| 1a | ~~**96. Search Console : relevé**~~ — fait le 28/10 (§7) : accueil indexé en anglais, corrigé ; reste la comparaison 80 avant/après | Mesure de 80 terminée le 26/10 ; 76, 86, 87 et 91 attendent les mêmes chiffres | XS |
-| 1b | ~~**92b. Âge du domaine des fiches Gemini seules**~~ — fait le 28/10 (§7) | Le trou par lequel la fausse billetterie est passée | S |
-| 2 | ~~**93. Mentions légales et confidentialité**~~ — fait le 28/10 (§7) | Obligation légale (LCEN art. 6-III), d'autant plus avec des revenus d'affiliation | S |
-| 3 | ~~**94. Doublons restants**~~ — fait le 28/10 (§7) ; reste la vérification au prochain scan | Une vingtaine de fiches en 5 familles, dont des dates contradictoires | M |
-| 4 | ~~**95. Événements manquants (comparaison avec fontyblog.fr)**~~ — mesuré le 28/10 : la cause est l'agenda de la Ville (72c) | Un visiteur qui connaît un événement absent doute du reste | S (mesure) |
-| 6 | ~~**97. GoatCounter : relevé du trafic**~~ — fait le 28/10 : 3 589 visites/mois, seuil pas atteint, revoir fin novembre | Le seuil de §3.AB (~5 000 visites/mois) décide des revenus hors affiliation | XS |
-| 7 | **39. Coût Google Cloud** (existant, section B) — facture relevée le 28/10 : 13,19 € en octobre, ~1,1 €/scan ; reste le détail par étape et le choix du modèle avant le 15/12 | Deux débits de 5 € en octobre ; le rapport estime ~9 $/mois | XS |
-| 8 | ~~**98. Plus de mesure pour monétiser ?**~~ — tranché le 28/10 : plus tard, après 5 000 visites/mois | Décision, rien à coder si la réponse est non | XS |
-| 8b | **102. Revue des économies de l'item 39 au prochain scan** | Réflexion basse sur le juge des doublons et la mise en forme : le chef de projet s'en inquiète | XS |
-| 9 | **99. Lien de soutien (dons)** — fait le 02/11 sous forme de prix libre sur les fiches balades (104 bis), Stripe en réel | Après 39 : le coût affiché doit être le vrai | XS |
-| 4b | ~~**101. Agenda de la Ville lu depuis le poste du chef de projet**~~ — fait le 28/10 (§7) ; reste l'installation de la tâche planifiée | Décidé le 28/10 : 16 des 22 absents de l'item 95 sont dans ce flux | S |
-| 9b | **103. Ce que le paiement apporte au visiteur** — idées du 28/10 à travailler | Un soutien sans contrepartie détonne à côté de l'affiliation | S (réflexion) |
-| 9c | **104. Trois guides PDF du chef de projet** — à préparer bientôt | Première contrepartie concrète pour 99/103 ; contenu qu'aucun concurrent n'a | M (écriture) |
-| 9d | **105. Monétisation ouverte (01/11)** — paiement des fiches (99/104) en premier, puis mise en avant (§3.AB) et mesure avec cookies (98) | 5 000 visites/mois dépassées en octobre | S |
-| 9e | **106. Passer devant fontyblog.fr dans Google** | Concurrent direct encore classé devant nous ; l'audience conditionne tout le reste | M |
-| 10 | **100. Lecture du rapport du 27/10** | Les points de suivi qui ne rentrent dans aucun item ci-dessus | XS |
+| 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en cours (02/11) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
+| 2 | **108. Campagne de contacts** (petites mairies + widget, hébergeurs, public anglophone) — listes par Claude, envois par le chef de projet | Les liens entrants sont l'écart principal avec fontyblog (106) ; le widget doit se propager | M |
+| 3 | **72c. Relance de la mairie de Fontainebleau — mardi 03/11** (chef de projet, brouillon prêt en section C) | Date fixée par le chef de projet | XS |
+| 4 | **39 + 102. Coût Google Cloud et économies** — avant le 15/12 | 13,19 € en octobre ; choix du modèle avant la facture de décembre | XS |
+| 5 | **106. Passer devant fontyblog.fr** — étape 1 (mesure Search Console), puis maillage vers `/foret/` et `/balades/` | L'audience conditionne tout le reste ; 107 et 108 l'alimentent | M |
+| 6 | **100. Rapport du 27/10** — point 7 (décision), points 5-6 au prochain scan | Suivi | XS |
+| 7 | **97 bis. Relevé du trafic fin novembre** (GoatCounter + Search Console) | Premier des trois mois du seuil | XS |
+| 8 | **105, étape 2. Mise en avant payante** — **bloquée** jusqu'au seuil ci-dessus | Rien à vendre avant | S |
+| — | **109. Calendrier 2027 illustré** — gardé, non planifié ; s'il est fait, en vente avant mi-décembre | Idée B du 02/11 | M |
+| — | **110. Jeu de piste en ville pour les anniversaires** — plus tard | Idée C du 02/11 | M |
+
+Restes du chef de projet, hors ordre : courriel au Domaine de Courances (92) ; installer la tâche
+planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'Helioso (104 bis).
 
 - [ ] **92. « Les Feux de Courances – Festival Médiéval Immersif » (`EVT_426d83189b`) — signalé
   le 27/10 par le formulaire** : « Ce site est frauduleux, aucun événement festif médiéval n'est
@@ -1984,7 +1982,7 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
     (`Mapscarte_parcours_foot_v2_credit-OSM.jpg`) à remettre dans le Google Doc ; l'original
     n'est pas modifié. Version anglaise refaite sur la géométrie exacte de la française (carte
     139,7 mm, colonne 38,4 mm, images à leurs proportions d'origine, jamais recadrées).
-- [ ] **105. Monétisation ouverte — décision du chef de projet, 01/11 (§7).** Octobre au-delà de 5 000 visites. Dans l'ordre :
+- [ ] **105. Monétisation ouverte — décision du chef de projet, 01/11 (§7).** ~~Octobre au-delà de 5 000 visites.~~ **Corrigé le 02/11** : le relevé de 97 donne 3 589 visites/mois ; seuil précisé par le chef de projet, **5 000 visites/mois stables sur 3 mois**. Le paiement des fiches (étape 1) reste en place ; les étapes 2 et 3 attendent le seuil. Dans l'ordre :
   1. **Paiement des fiches PDF (99 + 104)** : les trois fiches sont prêtes (à pied n°1, à vélo n°2, en voiture n°3) ; compte Stripe ouvert. Benchmark et formule proposée le 01/11 (prix libre), **à trancher par le chef de projet** — voir 104.
   2. **Mise en avant payante** (§3.AB, option 1) : premier emplacement offert à un organisateur pour mesurer les clics, puis tarif.
   3. **Mesure avec bandeau de cookies** (98) seulement si une offre en a besoin ; `/mentions-legales/` le même jour.
@@ -1995,6 +1993,72 @@ Gemini seules, masqués dans `overrides.json` (hors périmètre, §9 E, item 23)
   3. **Contenu durable** : les pages des fiches balades (104) sont du texte rédigé, permanent, que l'agenda n'a pas ; les relier depuis `/que-faire/fontainebleau/` et l'accueil. Revoir le texte de `/que-faire/` pour la requête visée.
   4. **Technique** : données structurées `Event` (déjà présentes, à valider dans le test des résultats enrichis), vitesse mobile, maillage interne vers `/ce-week-end/`.
   5. Ne pas copier ni lire fontyblog (contenu d'un tiers, item 95).
+- [ ] **107. « Carnet d'explorateur de la forêt » et son mini-jeu — idée A, retenue le 02/11 (chef de projet). En cours.**
+  Pour les 6-11 ans, autour des animaux de la forêt de Fontainebleau. **Benchmark du 02/11** :
+  les coloriages « forêt / animaux » se vendent en PDF de 0 à 4 $, souvent à prix libre
+  (Gumroad, Payhip), mais ils sont génériques : la valeur doit venir du lieu. L'office de
+  tourisme propose une balade guidée « animaux de la forêt », à date fixe, sans support à
+  emporter ; Paris Region Aventures offre un jeu de piste gratuit en forêt (sur application).
+  Aucun livret enfant sur la forêt de Fontainebleau trouvé en téléchargement.
+  1. **Mini-jeu en ligne, `/foret/`** : gratuit, pensé pour le téléphone (87 % du trafic), FR/EN,
+     sans dépendance ni appel réseau. « Qui suis-je ? » : une devinette par animal, trois
+     réponses au choix, une carte « Le savais-tu ? » après chaque réponse, un score à partager
+     (partage natif du téléphone, sinon copie du lien), puis le carnet. Le texte de toutes les
+     cartes est dans la page : indexable, et lisible sans JavaScript. Contenu écrit à la main
+     dans `scripts/foret.js`, rendu par `generate-pages.js` comme `/balades/`. Clics comptés :
+     `forest-play`, `forest-share`, `forest-download`, `forest-pay`.
+  2. **Livret PDF, 8 à 12 pages A4**, imprimable à la maison (traits noirs, peu d'aplats) :
+     couverture à colorier avec le prénom de l'explorateur ; les règles de la forêt ; 4 à 6
+     coloriages d'animaux avec leur « Le savais-tu ? » ; bingo de la balade (à cocher) ; qui a
+     laissé cette trace ? ; les feuilles des arbres et un frottage ; mots mêlés et labyrinthe ;
+     diplôme d'explorateur ; réponses. Mise en page HTML → PDF par Edge, comme
+     `scripts/guides-pdf.js` ; mots mêlés et labyrinthe générés par le script.
+  3. **Prix libre, 4 € conseillés**, même encart que les fiches balades ; un Payment Link Stripe
+     de plus dans `PAY` (retour `/balades/merci/?fiche=carnet-foret` ou page de remerciement du
+     carnet) ; `/mentions-legales/` à compléter le jour de la mise en ligne.
+  - **Règles.** Les faits naturalistes sont rédigés par Claude (connaissances générales,
+    vérifiables) et **relus par le chef de projet avant publication**, contre les fiches de
+    l'ONF et de l'INPN : à la différence des balades (104), il ne s'agit pas d'un parcours vécu,
+    mais rien n'est publié sans relecture. Seulement des espèces présentes dans la forêt, aucune
+    consigne de sécurité inventée. Dessins : ceux du chef de projet, ou du domaine public avec
+    leur crédit — **à trancher** ; pas d'image générée présentée comme une observation.
+  - **Reste, chef de projet** : relire les faits du jeu ; choisir la source des dessins
+    (coloriages, empreintes, feuilles) ; créer le lien Stripe.
+- [ ] **108. Campagne de contacts — points d'entrée et liens entrants (chef de projet, 02/11).**
+  Pas de démarche commerciale avant le seuil (ordre du 02/11) : on fait connaître le site et le
+  widget gratuit. **Claude dresse les listes et rédige les courriels ; le chef de projet les
+  envoie à la main**, depuis son adresse, un courriel par contact, une seule relance. Trois
+  cibles, dans l'ordre :
+  1. **Petites mairies de la zone, pour le widget** (§3.Y). Les sites des villages ont souvent un
+     agenda vide ou périmé ; le widget, filtré sur leur commune, le remplit gratuitement, et une
+     petite mairie répond plus vite qu'une grande (72c). Liste : les communes de `COMMUNE_TABLE`,
+     avec l'état de leur agenda en ligne (vide, dernier événement de plus d'un mois, à jour) et
+     l'adresse publique de la mairie ; on écrit d'abord aux agendas vides ou périmés.
+  2. **Hébergeurs** : gîtes, chambres d'hôtes, campings, meublés. Ils écrivent tous un livret
+     d'accueil ; un lien vers `/ce-week-end/` et vers `/balades/` leur fait gagner du temps. Même
+     cible que l'affichette QR A5 « Que faire cette semaine ? » (à générer par commune) et que le
+     B2B prévu à l'item 104. Seulement des adresses professionnelles publiées (site de
+     l'établissement, annuaires de l'office de tourisme) ; **jamais par la messagerie d'Airbnb**,
+     dont les conditions interdisent la prospection.
+  3. **Public anglophone** : INSEAD (groupes et associations des conjoints, lettres internes),
+     Reddit (r/paris, r/france : lire les règles d'autopromotion avant de poster), recherches
+     « day trip from Paris ». L'interface anglaise n'a pas d'équivalent local. Publication à la
+     main, comme 70-bis.
+  - **Suivi** : un tableau (contact, date d'envoi, réponse, widget installé, lien obtenu) **hors
+    du dépôt**, qui est public. Mesure : sites référents dans GoatCounter, « Liens » dans la
+    Search Console (106).
+  - **RGPD** : prospection par courriel vers des adresses professionnelles, en lien avec leur
+    activité, avec un moyen simple de ne plus être contacté ; aucune adresse de particulier.
+- [ ] **109. Calendrier 2027 illustré à imprimer — idée B du 02/11, gardée, non planifiée.**
+  Douze mois, une illustration par mois (dessins du chef de projet), vacances scolaires de la
+  zone C et rendez-vous annuels confirmés (brame, marchés de Noël, journées du patrimoine), aucune
+  date issue de Gemini seul (§3.AB). Prix libre, 5 € conseillés, à offrir. Sans intérêt s'il
+  n'est pas en ligne avant mi-décembre.
+- [ ] **110. Jeu de piste en ville pour les anniversaires — idée C du 02/11, plus tard.**
+  Énigmes le long de la fiche à pied (qui a déjà ses mini-jeux), livret de l'organisateur,
+  invitations, diplôme ; 8 à 12 € conseillés (benchmark : kits livrés ou sur application de 59 à
+  80 €). Paris Region Aventures couvre déjà la forêt, gratuitement : rester en ville. À tester sur
+  place avec des enfants avant toute publication.
 - [ ] **104 bis. Fiches balades en ligne — tranché le 01/11 (§7) : prix libre sans verrou, texte complet en HTML.**
   - **Reste, chef de projet** : (1) ~~PDF définitifs~~ fournis le 01/11 et commités avec les pages (à pied v3, coquilles de la fiche vélo et durées de la fiche voiture corrigées) ; (2) ~~quatre Payment Links Stripe~~ fait le 02/11 (ci-dessous) ; (3) soutien déclaré comme recette d'Helioso.
   - [x] **Fait le 01/11 (Claude)** : contenu dans `scripts/balades.js` (texte des PDF, sans ajout), rendu par `generate-pages.js` : `/balades/` (index), une page par fiche (étapes, cartes, mini-jeux, réponses repliées, JSON-LD `TouristTrip`, liens vers les communes du parcours et `/ce-week-end/`), `/balades/merci/` (noindex, compté). PDF et cartes (1 200 px) dans `public/balades/`. Encart « Prix libre — 3 € conseillés » (pack : 6 €) avec « Choisir mon prix » (Stripe) et « Télécharger sans payer » ; tant qu'un lien de `PAY` est vide, seul le bouton de téléchargement paraît. Clics comptés : `guide-download`, `guide-pay`. Rubrique « Balades » sur les pages des communes traversées, lien dans le pied de l'accueil, sitemap. Sur `/nos-sources/`, le bouton « Soutenir » sec de 99 est remplacé par un renvoi aux fiches, affiché dès qu'un lien est rempli. Un seul bouton de paiement (et non 3 €/5 €/autre) : un Payment Link ne reçoit pas le montant par l'adresse, le montant se choisit chez Stripe.
