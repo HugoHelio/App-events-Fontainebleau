@@ -11,22 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_b68a05db09@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Village Barnum
-LOCATION:place des Bollards\, Saint-Mammès
-DESCRIPTION:Horaires : 10h à 12h\n\nOrganisateur : https://www.saint-mamme
- s.com/village-barnum/\n\nFiche : https://fontainebleaulive.fr/evenements/v
- illage-barnum-saint-mammes-b68a05db09/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/village-barnum-saint-mammes-b68
- a05db09/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_5aea2aefcf@fontainebleaulive.fr
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261107

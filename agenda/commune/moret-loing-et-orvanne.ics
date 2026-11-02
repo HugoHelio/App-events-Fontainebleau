@@ -11,25 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_c06fc473e5@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261102
-SUMMARY:La boutique fantastique
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h à 19h\n\nÉvénement fantastique comprenant une
-  exposition\, une boutique\, des ateliers et des contes.\n\nOrganisateur :
-  https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-10-31-laboutiquefan
- tastique\n\nFiche : https://fontainebleaulive.fr/evenements/la-boutique-fa
- ntastique-moret-loing-et-orvanne-c06fc473e5/\n\nInformations collectées a
- utomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/la-boutique-fantastique-moret-l
- oing-et-orvanne-c06fc473e5/
-CATEGORIES:Scène & Spectacles
-GEO:48.35661;2.82107
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_4a5ab1d458@fontainebleaulive.fr
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261104

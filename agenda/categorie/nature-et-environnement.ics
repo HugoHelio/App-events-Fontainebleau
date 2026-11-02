@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_4e17d55bf9@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Mes premiers pas avec les champignons
-LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Sur inscription\n\nAtelier 
- et balade d'initiation accessible aux débutants pour découvrir le monde 
- fongique.\n\nOrganisateur : https://anvl.fr/grand-public/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/mes-premiers-pas-avec-les-champignons-f
- ontainebleau-4e17d55bf9/\n\nInformations collectées automatiquement : vé
- rifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/mes-premiers-pas-avec-les-champ
- ignons-fontainebleau-4e17d55bf9/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_b77684d95c@fontainebleaulive.fr
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261103
