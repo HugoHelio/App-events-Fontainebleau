@@ -1711,7 +1711,8 @@ ${bi('p', 'Infos indicatives : horaires, travaux et fermetures changent, vérifi
 function thanksPage() {
   const body = `${bi('h1', 'Merci !', 'Thank you!')}
 ${bi('p', 'Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.', 'Your payment has been received: it funds the agenda, which stays free and without advertising. Stripe will email you the receipt.')}
-<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}">${bi('b', g.title, g.en.title)}${bi('small', g.subtitle, g.en.subtitle)}<div class="actions">${pdfLinks(g.key, g.pdf, g.pdfEn, 'btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF)')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${BALADES_DIR}/${g.slug}/"`)}</div></li>`).join('')}</ul>
+<ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}">${bi('b', g.title, g.en.title)}${bi('small', g.subtitle, g.en.subtitle)}<div class="actions">${pdfLinks(g.key, g.pdf, g.pdfEn, 'btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF)')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${BALADES_DIR}/${g.slug}/"`)}</div></li>`).join('')}
+<li data-fiche="carnet-foret">${bi('b', 'Carnet d’explorateur de la forêt', 'The forest explorer’s booklet')}${bi('small', 'Coloriages, traces, jeux et diplôme · 6-11 ans', 'Colouring, tracks, games and a diploma · ages 6-11 (in French)')}<div class="actions">${pdfLinks('carnet-foret', CARNET.pdf, '', 'btn', 'Télécharger le carnet (PDF)', '')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${FORET_DIR}/"`)}</div></li></ul>
 <p class="note">${bi('span', 'Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page', 'A problem with the payment or the download? Write to us from the page')} <a href="/mentions-legales/"${en('Legal notice')}>Mentions légales</a>.</p>
 <script>
 (function () {
@@ -1754,7 +1755,7 @@ const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em
 .q-bar i{display:block;height:100%;background:var(--ink);transition:width .3s}
 .q-big{font-size:56px;line-height:1.2;text-align:center;margin:0}
 .q-who{text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:4px 0}
-.q-riddle{font-size:1.15rem;text-align:center;color:var(--ink);margin:0 0 16px}
+.q-riddle{font-size:1.15rem;text-align:center;color:var(--ink);margin:0 0 16px;min-height:5.6em}
 .q-choices{display:grid;gap:10px}
 .q-choices button{font:inherit;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 14px;border:2px solid var(--line);border-radius:12px;background:#f7f5ef;color:var(--ink);cursor:pointer;text-align:left}
 .q-choices button .e{font-size:1.6rem;line-height:1}
@@ -1762,7 +1763,11 @@ const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em
 .q-choices button.is-wrong{border-color:#c0492f;background:#f9e3df}
 .q-choices button:disabled{cursor:default}
 .q-choices button:focus-visible,.q-go:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
-.q-fact{margin-top:14px;padding:12px 14px;border-radius:10px;background:#f2ede1}
+.q-fact{margin-top:14px;padding:12px 14px;border-radius:10px;background:#f2ede1;min-height:12.5em}
+.q-fact.is-wait{background:transparent;border:2px dashed var(--line);color:var(--muted)}
+.q-fact.is-wait b{color:var(--muted)}
+.q-go:disabled{opacity:.35;cursor:default}
+@media (min-width:560px){.q-fact{min-height:7.5em}.q-riddle{min-height:3.6em}}
 .q-fact b{display:block;font-size:1.1rem;color:var(--ink);margin-bottom:4px}
 .q-fact p{margin:0}
 .q-go{display:block;font:inherit;font-size:1.05rem;font-weight:700;margin-top:12px;width:100%;min-height:48px;border:2px solid var(--ink);border-radius:12px;background:var(--ink);color:#fff;cursor:pointer}
@@ -1800,6 +1805,7 @@ const FORET_STRINGS = {
     share: 'Partager mon score', copied: 'Lien copié : colle-le dans un message !', again: 'Rejouer',
     shareText: 'J’ai reconnu {n} animaux sur 10 de la forêt de Fontainebleau. Et toi ?',
     carnet: '📥 Le carnet d’explorateur à imprimer : coloriages, traces, bingo →',
+    answer: 'Réponse', wait: 'Choisis un animal ci-dessus : la réponse et une anecdote s’afficheront ici.',
   },
   en: {
     intro: '10 riddles to recognise the animals of the forest. Ready, little explorer?',
@@ -1809,6 +1815,7 @@ const FORET_STRINGS = {
     share: 'Share my score', copied: 'Link copied: paste it into a message!', again: 'Play again',
     shareText: 'I recognised {n} out of 10 animals of the Forest of Fontainebleau. Can you beat me?',
     carnet: '📥 The printable explorer’s booklet (in French): colouring, tracks, bingo →',
+    answer: 'Answer', wait: 'Pick an animal above: the answer and a fun fact will show here.',
   },
 };
 
@@ -1914,7 +1921,14 @@ const FORET_SCRIPT = `(function () {
         });
       }
     });
+    var last = at === order.length - 1;
+    // Before the answer, the answer box and the button are already there, empty: the page below
+    // the game never moves between a question and its answer (02/11, project lead).
     if (!picked) {
+      var wait = el('div', 'q-fact is-wait', null, box);
+      el('b', null, s('answer'), wait);
+      el('p', null, s('wait'), wait);
+      button('q-go', last ? s('last') : s('next'), box, function () {}).disabled = true;
       if (focus && at > 0) { who.setAttribute('tabindex', '-1'); who.focus(); }
       return;
     }
@@ -1922,7 +1936,6 @@ const FORET_SCRIPT = `(function () {
     fact.setAttribute('role', 'status');
     el('b', null, picked === a.key ? s('right') + ' ' + f(a, 'name') + '.' : s('wrong') + ' ' + f(a, 'name').replace(/^(Le |La |L’|The )/, function (m) { return m.toLowerCase(); }) + '.', fact);
     el('p', null, s('know') + ' ' + f(a, 'fact'), fact);
-    var last = at === order.length - 1;
     var go = button('q-go', last ? s('last') : s('next'), box, function () {
       if (last) { state = 'end'; count('forest-end/' + score); render(true); } else { at++; ask(); }
     });

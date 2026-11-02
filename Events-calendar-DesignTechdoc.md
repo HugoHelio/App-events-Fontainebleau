@@ -1705,7 +1705,8 @@ organisateurs.
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en cours (02/11) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
+| 0 | **107c. Une icône par animal dans le jeu `/foret/`** — priorité haute (02/11, chef de projet : « on est déjà live ») | Le cerf et le chevreuil partagent le même emoji ; le pic noir, le geai et le lucane sont approximatifs | S |
+| 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en ligne le 02/11 ; reste le lien Stripe (107) et les itérations du chef de projet (107d) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
 | 2 | **108. Campagne de contacts** (petites mairies + widget, hébergeurs, public anglophone) — listes par Claude, envois par le chef de projet | Les liens entrants sont l'écart principal avec fontyblog (106) ; le widget doit se propager | M |
 | 3 | **72c. Relance de la mairie de Fontainebleau — mardi 03/11** (chef de projet, brouillon prêt en section C) | Date fixée par le chef de projet | XS |
 | 4 | **39 + 102. Coût Google Cloud et économies** — avant le 15/12 | 13,19 € en octobre ; choix du modèle avant la facture de décembre | XS |
@@ -2056,6 +2057,26 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     de session (bibliothèque `docx`), pas par le dépôt (zéro dépendance) : **si le chef de projet
     la retouche, c'est elle qui devient la source**, et son export PDF remplace celui du script,
     comme pour les fiches balades.
+  - [x] **02/11, retour du chef de projet sur le jeu** : la zone « Réponse » n'était pas vue, et
+    l'encart du carnet montait et descendait à chaque question. Corrigé : avant la réponse, un
+    cadre pointillé « Réponse — Choisis un animal ci-dessus… » et le bouton « Question suivante »
+    grisé occupent déjà leur place ; hauteurs minimales sur la devinette et l'anecdote, plus
+    grandes sous 560 px. L'encart ne bouge plus entre une question et sa réponse (vérifié dans
+    Edge). `/balades/merci/` propose aussi le carnet (`?fiche=carnet-foret`), et
+    `/mentions-legales/` nomme le carnet dans la section du prix libre.
+  - [ ] **107c. Icônes des animaux — priorité haute (02/11).** Les emojis servent d'images : cerf et
+    chevreuil partagent 🦌, le pic noir est un oiseau générique, le geai une plume, le lucane un
+    scarabée. Le chef de projet fournit **10 images**, une par animal (`cerf`, `sanglier`,
+    `chevreuil`, `ecureuil`, `renard`, `blaireau`, `pic`, `hulotte`, `geai`, `lucane`), plus
+    facultativement une image d'accueil du jeu. Format : carré, fond blanc ou transparent, au
+    moins 256 × 256 px, JPG ou PNG, **déposées dans `public/foret/img/icones/`** sous ces noms
+    (une image collée dans la conversation se voit mais ne peut pas être enregistrée par Claude).
+    Ensuite (Claude) : réduites à 160 px, champ `icon` dans `scripts/foret.js`, `<img>` à la
+    place de l'emoji dans les boutons et la grande image, l'emoji gardé en secours ; droits à
+    noter dans les crédits.
+  - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
+    quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
+    reprend ensuite le PDF ou la page.
   - **Reste** : (1) Payment Link Stripe « carnet » (4 € conseillés), à coller dans
     `PAY['carnet-foret']` de `scripts/balades.js` — l'encart passe alors au prix libre ; la page
     `/balades/merci/` ne connaît que les trois fiches : y ajouter le carnet le même jour ;
