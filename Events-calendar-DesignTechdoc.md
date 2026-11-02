@@ -2086,6 +2086,23 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     courts, miroir blanc ; crédit kerismaker gardé), et **le lucane, dessiné par le chef de projet
     sous Krita** (JPG à fond blanc rendu transparent ; crédité « Fontainebleau Live », `iconBy`
     sans lien). Item 107c terminé, sauf nouvelle icône.
+  - [x] **02/11, soir : carnet retravaillé par le chef de projet, et version anglaise.** Le chef de
+    projet a repris le carnet dans Google Docs (couverture, règle n° 4 « On garde ce carnet et un
+    crayon prêts à l'emploi pendant la balade », brame à la première personne sur la page du cerf,
+    notes de la page des traces, crédits en paragraphes) : **son export PDF remplace celui de
+    `scripts/carnet-pdf.js`** dans `public/foret/carnet-explorateur-foret.pdf`, comme décidé
+    (la version retouchée devient la source ; le script reste pour les grilles et le labyrinthe).
+    **Anglais** (`carnet-explorateur-foret-en.pdf`, 12 pages vérifiées dans Word) : traduit de sa
+    version par Claude, construit en Word par le script de session et exporté par Word ; les
+    textes viennent du bloc `en` de `scripts/foret.js` ; mots mêlés refaits sur les noms anglais
+    (DEER, BOAR, ROEDEER, SQUIRREL, FOX, BADGER, OWL, JAY, BEETLE, WOODPECKER). Le Word anglais
+    est rangé avec les fiches (`Fiches\CarnetExplorateur-Jeux\Carnet_explorateur_foret_EN.docx`).
+    Sur le site, le bouton, l'encart de paiement et `/balades/merci/` donnent le PDF anglais
+    quand la page est lue en anglais (`CARNET.pdfEn`). **Lucane** : redessiné d'après l'emoji
+    Fluent de Microsoft (licence MIT), source citée sous le jeu et dans les mentions légales.
+    **Paiement en anglais** : un seul lien Stripe pour les deux langues ; la page Stripe se met
+    dans la langue du navigateur, mais le nom du produit est celui saisi dans Stripe : à rendre
+    bilingue par le chef de projet (voir la réponse du 02/11).
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.

@@ -151,8 +151,9 @@ const ANIMALS = [
     key: 'lucane',
     emoji: '🪲',
     icon: '/public/foret/img/icones/lucane.png',
-    // Drawn by the project lead in Krita (02/11): our own picture, no attribution.
-    iconBy: ['Fontainebleau Live', ''],
+    // Redrawn by the project lead in Krita (02/11) from Microsoft's Fluent Emoji beetle (MIT
+    // licence, seen on Windows): our drawing, its source named.
+    iconBy: ['Fontainebleau Live', '', 'd’après Fluent Emoji (Microsoft, licence MIT)', 'after Microsoft Fluent Emoji (MIT licence)'],
     name: 'Le lucane cerf-volant',
     riddle: 'Je suis un insecte, mais j’ai des « bois » sur la tête, comme le cerf !',
     choices: ['lucane', 'cerf', 'blaireau'],
@@ -178,7 +179,10 @@ const RULES = [
 // scenes are cropped and lightened for colouring, the tracks cropped as they are, by hand, into
 // public/foret/img/ (the project lead may retouch them in Krita: same file names).
 const CARNET = {
+  // French: the project lead's reworked booklet (Google Docs export, 02/11). English: translated
+  // from it by Claude, built as a Word file and exported by Word (both kept outside the repo too).
   pdf: '/public/foret/carnet-explorateur-foret.pdf',
+  pdfEn: '/public/foret/carnet-explorateur-foret-en.pdf',
   url: 'fontainebleaulive.fr/foret',
   // Coloured pages, in order: the first takes a whole page, the others two per page.
   colouring: ['cerf', 'sanglier', 'chevreuil', 'renard', 'blaireau'],

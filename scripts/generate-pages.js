@@ -1712,7 +1712,7 @@ function thanksPage() {
   const body = `${bi('h1', 'Merci !', 'Thank you!')}
 ${bi('p', 'Votre paiement est bien reçu : il finance l’agenda, qui reste gratuit et sans publicité. Stripe vous envoie le reçu par e-mail.', 'Your payment has been received: it funds the agenda, which stays free and without advertising. Stripe will email you the receipt.')}
 <ul class="list thanks">${GUIDES.map((g) => `<li data-fiche="${esc(g.key)}">${bi('b', g.title, g.en.title)}${bi('small', g.subtitle, g.en.subtitle)}<div class="actions">${pdfLinks(g.key, g.pdf, g.pdfEn, 'btn', 'Télécharger la fiche (PDF)', 'Download the sheet (PDF)')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${BALADES_DIR}/${g.slug}/"`)}</div></li>`).join('')}
-<li data-fiche="carnet-foret">${bi('b', 'Carnet d’explorateur de la forêt', 'The forest explorer’s booklet')}${bi('small', 'Coloriages, traces, jeux et diplôme · 6-11 ans', 'Colouring, tracks, games and a diploma · ages 6-11 (in French)')}<div class="actions">${pdfLinks('carnet-foret', CARNET.pdf, '', 'btn', 'Télécharger le carnet (PDF)', '')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${FORET_DIR}/"`)}</div></li></ul>
+<li data-fiche="carnet-foret">${bi('b', 'Carnet d’explorateur de la forêt', 'The forest explorer’s booklet')}${bi('small', 'Coloriages, traces, jeux et diplôme · 6-11 ans', 'Colouring, tracks, games and a diploma · ages 6-11')}<div class="actions">${pdfLinks('carnet-foret', CARNET.pdf, CARNET.pdfEn, 'btn', 'Télécharger le carnet (PDF)', 'Download the booklet (PDF)')}${bi('a', 'Voir la page', 'See the page', ` class="btn alt" href="/${FORET_DIR}/"`)}</div></li></ul>
 <p class="note">${bi('span', 'Un souci de paiement ou de téléchargement ? Écrivez-nous depuis la page', 'A problem with the payment or the download? Write to us from the page')} <a href="/mentions-legales/"${en('Legal notice')}>Mentions légales</a>.</p>
 <script>
 (function () {
@@ -1817,7 +1817,7 @@ const FORET_STRINGS = {
     best: 'Forest expert! 🏆', good: 'Great explorer! 🌳', try: 'Apprentice explorer: play again to find them all! 🌱',
     share: 'Share my score', copied: 'Link copied: paste it into a message!', again: 'Play again',
     shareText: 'I recognised {n} out of 10 animals of the Forest of Fontainebleau. Can you beat me?',
-    carnet: '📥 The printable explorer’s booklet (in French): colouring, tracks, bingo →',
+    carnet: '📥 The printable explorer’s booklet: colouring, tracks, bingo →',
     answer: 'Answer', wait: 'Pick an animal above: the answer and a fun fact will show here.',
   },
 };
@@ -1963,7 +1963,7 @@ const FORET_SCRIPT = `(function () {
 // as the guides.
 function carnetBox() {
   const key = 'carnet-foret';
-  const download = `<div class="actions">${bi('a', 'Télécharger le carnet (PDF, 12 pages)', 'Download the booklet (PDF, 12 pages, in French)', ` class="btn" href="${esc(CARNET.pdf)}" download data-track="forest-download" data-id="${key}"`)}</div>`;
+  const download = `<div class="actions">${pdfLinks(key, CARNET.pdf, CARNET.pdfEn, 'btn', 'Télécharger le carnet (PDF, 12 pages)', 'Download the booklet (PDF, 12 pages)')}</div>`;
   return `<aside class="carnet" id="carnet" aria-label="Carnet">
 <img src="/public/foret/img/carnet-vignette.jpg" width="300" height="424" alt="" loading="lazy">
 <div>${bi('p', 'À imprimer · gratuit', 'To print · free', ' class="kicker"')}
@@ -1973,7 +1973,7 @@ ${bi('h2', 'Le carnet d’explorateur de la forêt', 'The forest explorer’s bo
     ['Qui a laissé cette trace ? Le bingo de la balade, le frottage de feuilles', 'Whose tracks are these? The walk’s bingo, leaf rubbing'],
     ['Mots mêlés, labyrinthe, devinettes et diplôme d’explorateur', 'Word search, maze, riddles and an explorer’s diploma'],
   ].map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
-${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.carnet, 'Ce carnet est gratuit. S’il vous a plu, payez-le ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', 'This booklet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.') : download}</div>
+${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.carnet, 'Ce carnet est gratuit. S’il vous a plu, payez-le ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', 'This booklet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.', CARNET.pdfEn) : download}</div>
 </aside>`;
 }
 
@@ -2001,7 +2001,7 @@ ${bi('h2', 'Et maintenant, en vrai ?', 'Now, for real?')}
 ${bi('p', 'Les balades d’un Bellifontain, avec des mini-jeux pour les enfants à chaque étape, et les sorties nature du moment :', 'A local’s favourite outings, with mini-games for the children at every step, and what’s on in nature right now:')}
 <div class="actions">${bi('a', 'La forêt à vélo', 'The forest by bike', ` class="btn" href="/${BALADES_DIR}/fontainebleau-a-velo/"`)}${bi('a', 'Toutes les balades', 'All the guides', ` class="btn alt" href="/${BALADES_DIR}/"`)}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
 <p class="note"><a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Spotted a mistake? Tell us')}>Une erreur dans le jeu ? Signalez-la</a>.</p>
-<p class="note"${en(`Icons: ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.en.name.replace(/^The /, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> by ${esc(a.iconBy[0])} (Flaticon)` : `${n}: ${esc(a.iconBy[0])}`; }).join(', ')}; the other animals are emojis. Booklet engravings: J. E. Ridinger, Rijksmuseum (CC0).`)}>Icônes : ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.name.replace(/^(Le |La |L’)/, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> par ${esc(a.iconBy[0])} (Flaticon)` : `${n} : ${esc(a.iconBy[0])}`; }).join(', ')} ; les autres animaux sont des emojis. Gravures du carnet : J. E. Ridinger, Rijksmuseum (CC0).</p>
+<p class="note"${en(`Icons: ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.en.name.replace(/^The /, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> by ${esc(a.iconBy[0])} (Flaticon)` : `${n}: ${esc(a.iconBy[0])}${a.iconBy[3] ? `, ${esc(a.iconBy[3])}` : ''}`; }).join(', ')}; the other animals are emojis. Booklet engravings: J. E. Ridinger, Rijksmuseum (CC0).`)}>Icônes : ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.name.replace(/^(Le |La |L’)/, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> par ${esc(a.iconBy[0])} (Flaticon)` : `${n} : ${esc(a.iconBy[0])}${a.iconBy[2] ? `, ${esc(a.iconBy[2])}` : ''}`; }).join(', ')} ; les autres animaux sont des emojis. Gravures du carnet : J. E. Ridinger, Rijksmuseum (CC0).</p>
 <script>
 ${FORET_SCRIPT}
 </script>`;
