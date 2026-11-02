@@ -2031,6 +2031,36 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     avec partage natif ou copie du lien), dans le sitemap, liée depuis `/balades/`. Images : des
     emojis, en attendant les dessins du carnet. Essayée dans Edge en largeur mobile, FR et EN.
     En ligne le 02/11.
+  - [x] **Étape 2 faite le 02/11 (Claude) : le carnet, 12 pages A4.** Dessins (choix du chef de
+    projet) : **gravures du domaine public**. Retenues : la série de Johann Elias Ridinger
+    « Spuhren und Fahrten der Tiere » (eaux-fortes, Augsbourg, vers 1740-1750), Rijksmuseum,
+    **CC0** sur Wikimedia Commons, 2 500 px : chaque planche montre un animal **et ses
+    empreintes**, d'où la page « Qui a laissé cette trace ? ». Écartées : les dessins de De Sève
+    pour Buffon (lavis gris, s'impriment mal), les planches Gallica de Buffon (520 px, et
+    conditions de réutilisation commerciale de la BnF), l'édition Furne (photographie CC BY-SA,
+    pas du domaine public). Pas de gravure exploitable trouvée pour les oiseaux et le lucane :
+    ils restent dans les devinettes et les mots mêlés. Scènes recadrées et éclaircies (traits
+    gris à ~35 %) pour que les couleurs ressortent, empreintes recadrées telles quelles, dans
+    `public/foret/img/` (mêmes noms de fichiers si le chef de projet les retouche sous Krita).
+    Pages : couverture, « Mon expédition », cerf en pleine page, sanglier et chevreuil, renard et
+    blaireau, traces à relier, bingo de la balade (16 cases), frottage de feuilles, mots mêlés
+    (12 × 12, sans mot à l'envers), labyrinthe et « Qui suis-je ? » (hulotte, pic noir, geai,
+    lucane), diplôme, réponses et crédits. `scripts/carnet-pdf.js` (sans dépendance, Edge en
+    local, comme `guides-pdf.js`) ; mots mêlés et labyrinthe tirés d'une graine fixe, les
+    réponses suivent toujours. PDF : `public/foret/carnet-explorateur-foret.pdf` (4,8 Mo).
+    Sur `/foret/` : encart « Le carnet d’explorateur de la forêt » avec la couverture, et lien
+    vers lui sur l'écran de score (clic `forest-download`).
+  - **Version modifiable** : `Carnet_explorateur_foret.docx`, mêmes pages, mêmes images, grilles
+    en tableaux, **hors du dépôt** avec les fiches balades (`Desktop\Helioso\FontainebleauLive\Fiches`),
+    ouvrable dans Word ou Google Docs (12 pages vérifiées dans Word). Elle est faite par un script
+    de session (bibliothèque `docx`), pas par le dépôt (zéro dépendance) : **si le chef de projet
+    la retouche, c'est elle qui devient la source**, et son export PDF remplace celui du script,
+    comme pour les fiches balades.
+  - **Reste** : (1) Payment Link Stripe « carnet » (4 € conseillés), à coller dans
+    `PAY['carnet-foret']` de `scripts/balades.js` — l'encart passe alors au prix libre ; la page
+    `/balades/merci/` ne connaît que les trois fiches : y ajouter le carnet le même jour ;
+    (2) version anglaise du carnet, plus tard ; (3) une gravure d'oiseau (chouette) si une
+    planche CC0 de bonne taille apparaît.
 - [ ] **108. Campagne de contacts — points d'entrée et liens entrants (chef de projet, 02/11).**
   Pas de démarche commerciale avant le seuil (ordre du 02/11) : on fait connaître le site et le
   widget gratuit. **Claude dresse les listes et rédige les courriels ; le chef de projet les

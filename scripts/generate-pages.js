@@ -37,7 +37,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadPlaces, placesOpen } = require('./affiliates');
 const { GUIDES, PAY, SUGGESTED, OSM } = require('./balades');
-const { ANIMALS, RULES } = require('./foret');
+const { ANIMALS, RULES, CARNET } = require('./foret');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -1777,6 +1777,16 @@ const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em
 .animals h3{margin:0;font-size:1.05rem;color:var(--ink)}
 .animals p{margin:4px 0 0}
 details.answers summary{cursor:pointer;font-weight:700;color:var(--ink)}
+.q-carnet{display:block;margin-top:12px;font-weight:700;color:var(--ink)}
+.carnet{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4;border-radius:14px;padding:16px;margin:24px 0}
+.carnet img{flex:none;width:80px;height:auto;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+@media (min-width:480px){.carnet img{width:110px}}
+.carnet h2{margin:0 0 4px;font-size:1.3rem}
+.carnet ul{margin:6px 0 10px;padding-left:18px;font-size:15px}
+.pwyw{background:var(--paper);border:1.5px solid var(--accent-ink);border-radius:12px;padding:14px 16px;margin:12px 0 0}
+.pwyw-title{font-weight:700;color:var(--ink);margin:0 0 4px;font-size:1.1rem}
+.pwyw .actions{align-items:center;margin:12px 0 8px}
+.pwyw .free{color:var(--ink);font-size:15px}
 @media (min-width:560px){.q-choices{grid-template-columns:repeat(3,1fr)}.q-choices button{flex-direction:column;justify-content:center;text-align:center}}
 html.en .fr-only,html:not(.en) .en-only{display:none}`;
 
@@ -1789,6 +1799,7 @@ const FORET_STRINGS = {
     best: 'Expert de la forêt ! 🏆', good: 'Bel explorateur ! 🌳', try: 'Apprenti explorateur : rejoue pour tout trouver ! 🌱',
     share: 'Partager mon score', copied: 'Lien copié : colle-le dans un message !', again: 'Rejouer',
     shareText: 'J’ai reconnu {n} animaux sur 10 de la forêt de Fontainebleau. Et toi ?',
+    carnet: '📥 Le carnet d’explorateur à imprimer : coloriages, traces, bingo →',
   },
   en: {
     intro: '10 riddles to recognise the animals of the forest. Ready, little explorer?',
@@ -1797,6 +1808,7 @@ const FORET_STRINGS = {
     best: 'Forest expert! 🏆', good: 'Great explorer! 🌳', try: 'Apprentice explorer: play again to find them all! 🌱',
     share: 'Share my score', copied: 'Link copied: paste it into a message!', again: 'Play again',
     shareText: 'I recognised {n} out of 10 animals of the Forest of Fontainebleau. Can you beat me?',
+    carnet: '📥 The printable explorer’s booklet (in French): colouring, tracks, bingo →',
   },
 };
 
@@ -1870,6 +1882,7 @@ const FORET_SCRIPT = `(function () {
       if (navigator.share || navigator.clipboard) button('q-go', s('share'), end, share);
       button('q-go alt', s('again'), end, begin);
       el('p', 'q-note', note, end).setAttribute('role', 'status');
+      el('a', 'q-carnet', s('carnet'), end).href = '#carnet';
       if (focus) { total.setAttribute('tabindex', '-1'); total.focus(); }
       return;
     }
@@ -1920,6 +1933,25 @@ const FORET_SCRIPT = `(function () {
   render();
 })();`;
 
+// The printable booklet (item 107, step 2, scripts/carnet-pdf.js): free download, and once a
+// Stripe link is set in PAY['carnet-foret'] (scripts/balades.js), the same pay-what-you-want box
+// as the guides.
+function carnetBox() {
+  const key = 'carnet-foret';
+  const download = `<div class="actions">${bi('a', 'Télécharger le carnet (PDF, 12 pages)', 'Download the booklet (PDF, 12 pages, in French)', ` class="btn" href="${esc(CARNET.pdf)}" download data-track="forest-download" data-id="${key}"`)}</div>`;
+  return `<aside class="carnet" id="carnet" aria-label="Carnet">
+<img src="/public/foret/img/carnet-vignette.jpg" width="300" height="424" alt="" loading="lazy">
+<div>${bi('p', 'À imprimer · gratuit', 'To print · free', ' class="kicker"')}
+${bi('h2', 'Le carnet d’explorateur de la forêt', 'The forest explorer’s booklet')}
+<ul>${[
+    ['Cinq gravures anciennes à colorier : cerf, sanglier, chevreuil, renard, blaireau', 'Five old engravings to colour: red deer, wild boar, roe deer, fox, badger'],
+    ['Qui a laissé cette trace ? Le bingo de la balade, le frottage de feuilles', 'Whose tracks are these? The walk’s bingo, leaf rubbing'],
+    ['Mots mêlés, labyrinthe, devinettes et diplôme d’explorateur', 'Word search, maze, riddles and an explorer’s diploma'],
+  ].map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
+${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.guide, 'Ce carnet est gratuit. S’il vous a plu, payez-le ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', 'This booklet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.') : download}</div>
+</aside>`;
+}
+
 function foretPage() {
   const data = {
     animals: ANIMALS.map(({ key, emoji, name, riddle, choices, fact, en: e }) => ({ key, emoji, name, riddle, choices, fact, en: { name: e.name, riddle: e.riddle, fact: e.fact } })),
@@ -1933,6 +1965,7 @@ ${bi('p', 'Cerf, sanglier, écureuil, chouette… Dix devinettes pour apprendre 
 <noscript>${bi('p', 'Le jeu a besoin de JavaScript. Les dix animaux et leurs anecdotes sont plus bas.', 'The game needs JavaScript. The ten animals and their fun facts are below.')}</noscript>
 </section>
 <script type="application/json" id="quiz-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
+${carnetBox()}
 ${bi('h2', 'En forêt, les bons gestes', 'Good manners in the forest')}
 <ul>${RULES.map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
 <details class="answers">

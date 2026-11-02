@@ -157,4 +157,37 @@ const RULES = [
   ['On reste sur les chemins et on remporte ses déchets.', 'Stay on the paths and take your litter home.'],
 ];
 
-module.exports = { ANIMALS, RULES };
+// The printable booklet (item 107, step 2): 12 A4 pages drawn by scripts/carnet-pdf.js. The
+// engravings are J. E. Ridinger's « Spuhren und Fahrten der Tiere » (1740s-1750s), Rijksmuseum
+// prints released as CC0 on Wikimedia Commons: each plate shows an animal and its tracks. The
+// scenes are cropped and lightened for colouring, the tracks cropped as they are, by hand, into
+// public/foret/img/ (the project lead may retouch them in Krita: same file names).
+const CARNET = {
+  pdf: '/public/foret/carnet-explorateur-foret.pdf',
+  url: 'fontainebleaulive.fr/foret',
+  // Coloured pages, in order: the first takes a whole page, the others two per page.
+  colouring: ['cerf', 'sanglier', 'chevreuil', 'renard', 'blaireau'],
+  // « Qui a laissé cette trace ? »: the names are listed in this other order, to be linked.
+  tracks: ['cerf', 'sanglier', 'renard', 'blaireau', 'ecureuil'],
+  trackNames: ['renard', 'ecureuil', 'cerf', 'blaireau', 'sanglier'],
+  // « Qui suis-je ? »: the animals that have no colouring page.
+  riddles: ['hulotte', 'pic', 'geai', 'lucane'],
+  bingo: [
+    'Un gland', 'Une feuille de chêne', 'Une pomme de pin', 'Une plume',
+    'De la mousse', 'Une fougère', 'De la bruyère', 'Du sable',
+    'Un champignon (on regarde, on ne touche pas !)', 'Un gros rocher', 'Un rocher qui ressemble à un animal', 'Un trou dans un tronc',
+    'Une toile d’araignée', 'Un oiseau qui chante', 'Une empreinte dans la boue', 'Un arbre plus large que tes bras',
+  ],
+  // Word search: capitals without accents, as children write them in a grid.
+  words: ['CERF', 'SANGLIER', 'CHEVREUIL', 'ECUREUIL', 'RENARD', 'BLAIREAU', 'HULOTTE', 'GEAI', 'LUCANE', 'PIC'],
+  credits: {
+    cerf: { plate: 'Hert met spoor', id: 'RP-P-OB-53.706' },
+    sanglier: { plate: 'Wild zwijn met spoor', id: 'RP-P-OB-53.704' },
+    chevreuil: { plate: 'Reebok met spoor', id: 'RP-P-OB-53.701' },
+    renard: { plate: 'Vos met spoor', id: 'RP-P-OB-53.696' },
+    blaireau: { plate: 'Das met spoor', id: 'RP-P-OB-53.695' },
+    ecureuil: { plate: 'Bunzing en eekhoorn met hun sporen', id: 'RP-P-OB-53.692' },
+  },
+};
+
+module.exports = { ANIMALS, RULES, CARNET };

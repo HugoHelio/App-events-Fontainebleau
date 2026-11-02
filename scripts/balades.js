@@ -28,6 +28,8 @@ const PAY = {
   'a-velo': 'https://buy.stripe.com/8x25kDaEZd738Wy8HZ5gc02',
   'en-voiture': 'https://buy.stripe.com/9B6cN5cN77MJegScYf5gc03',
   pack: 'https://buy.stripe.com/dRmaEX9AV4Ax2ya2jB5gc00',
+  // The forest explorer's booklet (item 107, scripts/foret.js): empty until its link exists.
+  'carnet-foret': '',
 };
 // Must match the pre-filled amount set on each Stripe link (02/11: 4 €, pack 8 €).
 const SUGGESTED = { guide: 4, pack: 8 };
