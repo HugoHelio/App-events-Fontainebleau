@@ -1,0 +1,160 @@
+'use strict';
+/**
+ * « Les animaux de la forêt » (item 107, 02/11): the free mini-game at /foret/ and, later, the
+ * printable explorer's booklet it leads to. Hand-written content, never generated.
+ *
+ * Unlike the guides (scripts/balades.js), these are not the project lead's own route: the facts
+ * are general natural history written by Claude, and NOTHING here is published before the
+ * project lead has checked it against the ONF and INPN species pages (§9, item 107). Only
+ * species living in the Forest of Fontainebleau; no safety advice beyond the plain rules below.
+ *
+ * Each animal: a riddle (« Qui suis-je ? »), three choices (the answer and two other keys of this
+ * list), and a « Le savais-tu ? » card shown after the answer. The cards are also written into
+ * the page itself, so search engines read them and the page works without JavaScript. English
+ * (`en`) mirrors the French field by field, swapped in by the FR/EN switch.
+ *
+ * generate-pages.js renders /foret/ from this file.
+ */
+
+const ANIMALS = [
+  {
+    key: 'cerf',
+    emoji: '🦌',
+    name: 'Le cerf',
+    riddle: 'Je suis le plus grand animal sauvage de la forêt. Chaque automne, je pousse un cri très puissant qu’on appelle le brame.',
+    choices: ['cerf', 'chevreuil', 'sanglier'],
+    fact: 'Les bois du cerf tombent à la fin de l’hiver et repoussent chaque année. Le brame s’entend de mi-septembre à mi-octobre, surtout à la tombée du jour.',
+    en: {
+      name: 'The red deer',
+      riddle: 'I am the largest wild animal in the forest. Every autumn I let out a very loud call, known as the rut bellow.',
+      fact: 'A stag’s antlers fall off at the end of winter and grow back every year. The bellowing can be heard from mid-September to mid-October, mostly at dusk.',
+    },
+  },
+  {
+    key: 'sanglier',
+    emoji: '🐗',
+    name: 'Le sanglier',
+    riddle: 'J’ai un groin pour fouiller la terre, et mes petits portent un pyjama rayé.',
+    choices: ['blaireau', 'sanglier', 'renard'],
+    fact: 'Les petits du sanglier s’appellent les marcassins. Leurs rayures claires les cachent dans les feuilles mortes ; elles disparaissent au bout de quelques mois.',
+    en: {
+      name: 'The wild boar',
+      riddle: 'I have a snout to dig up the ground, and my babies wear striped pyjamas.',
+      fact: 'Baby wild boars are called piglets (marcassins in French). Their pale stripes hide them among dead leaves; the stripes fade after a few months.',
+    },
+  },
+  {
+    key: 'chevreuil',
+    emoji: '🦌',
+    name: 'Le chevreuil',
+    riddle: 'Je ressemble à un petit cerf, j’ai une tache blanche sur les fesses et, quand j’ai peur, j’aboie !',
+    choices: ['renard', 'cerf', 'chevreuil'],
+    fact: 'Le chevreuil pousse un cri qui ressemble à un aboiement. La tache blanche de ses fesses s’appelle le miroir : on la voit de loin quand il s’enfuit.',
+    en: {
+      name: 'The roe deer',
+      riddle: 'I look like a small red deer, I have a white patch on my bottom and, when I am scared, I bark!',
+      fact: 'The roe deer gives a call that sounds like a dog’s bark. The white patch on its rump is called the mirror: you can see it from far away when it runs off.',
+    },
+  },
+  {
+    key: 'ecureuil',
+    emoji: '🐿️',
+    name: 'L’écureuil roux',
+    riddle: 'Je cache des graines et des noisettes pour l’hiver… mais j’oublie souvent où je les ai mises !',
+    choices: ['ecureuil', 'geai', 'blaireau'],
+    fact: 'Les graines oubliées par l’écureuil peuvent germer : sans le savoir, il plante des arbres. Sa longue queue l’aide à garder l’équilibre quand il saute de branche en branche.',
+    en: {
+      name: 'The red squirrel',
+      riddle: 'I hide seeds and nuts for the winter… but I often forget where I put them!',
+      fact: 'The seeds a squirrel forgets can sprout: without knowing it, it plants trees. Its long tail helps it keep its balance as it leaps from branch to branch.',
+    },
+  },
+  {
+    key: 'renard',
+    emoji: '🦊',
+    name: 'Le renard roux',
+    riddle: 'Je suis roux, j’ai une grande queue touffue, et je chasse les mulots en faisant des bonds.',
+    choices: ['chevreuil', 'renard', 'ecureuil'],
+    fact: 'Le renard entend un mulot bouger sous les feuilles. Il saute en l’air et retombe dessus, pattes en avant : on appelle cela le mulotage.',
+    en: {
+      name: 'The red fox',
+      riddle: 'I am reddish, I have a big bushy tail, and I hunt mice by pouncing.',
+      fact: 'A fox can hear a mouse moving under the leaves. It leaps into the air and lands on it front paws first: this is called mousing.',
+    },
+  },
+  {
+    key: 'blaireau',
+    emoji: '🦡',
+    name: 'Le blaireau',
+    riddle: 'Je porte un masque noir et blanc et je creuse des terriers avec plusieurs entrées.',
+    choices: ['sanglier', 'hulotte', 'blaireau'],
+    fact: 'Le terrier du blaireau s’appelle une blaireautière. Il sort surtout la nuit, et la même blaireautière peut servir pendant des années, agrandie peu à peu.',
+    en: {
+      name: 'The badger',
+      riddle: 'I wear a black and white mask and I dig burrows with several entrances.',
+      fact: 'A badger’s burrow is called a sett. Badgers come out mostly at night, and the same sett can be used for years, made bigger little by little.',
+    },
+  },
+  {
+    key: 'pic',
+    // The black bird (2022); an older phone shows a bird and a black square, still readable.
+    emoji: '🐦‍⬛',
+    name: 'Le pic noir',
+    riddle: 'Je tambourine sur les troncs avec mon bec. Je suis le plus grand pic d’Europe.',
+    choices: ['geai', 'pic', 'hulotte'],
+    fact: 'Le pic noir est tout noir avec une calotte rouge. Il creuse son nid dans les grands arbres ; ses anciens trous servent ensuite de maison à d’autres oiseaux.',
+    en: {
+      name: 'The black woodpecker',
+      riddle: 'I drum on tree trunks with my beak. I am the largest woodpecker in Europe.',
+      fact: 'The black woodpecker is all black with a red cap. It digs its nest in big trees; its old holes then become homes for other birds.',
+    },
+  },
+  {
+    key: 'hulotte',
+    emoji: '🦉',
+    name: 'La chouette hulotte',
+    riddle: 'Je chasse la nuit sans faire de bruit, et on m’entend faire « hou-hou ».',
+    choices: ['hulotte', 'pic', 'geai'],
+    fact: 'Le bord des plumes de la chouette hulotte est tout doux : il étouffe le bruit de son vol. On l’entend souvent la nuit, surtout en automne et en hiver.',
+    en: {
+      name: 'The tawny owl',
+      riddle: 'I hunt at night without making a sound, and you can hear me go “hoo-hoo”.',
+      fact: 'The edges of the tawny owl’s feathers are very soft: they muffle the sound of its flight. It is often heard at night, especially in autumn and winter.',
+    },
+  },
+  {
+    key: 'geai',
+    emoji: '🪶',
+    name: 'Le geai des chênes',
+    riddle: 'Je suis un oiseau avec des plumes bleues sur les ailes, et je plante des chênes sans le vouloir.',
+    choices: ['pic', 'ecureuil', 'geai'],
+    fact: 'En automne, le geai enterre des glands pour l’hiver. Ceux qu’il ne retrouve pas deviennent des chênes : il aide la forêt à pousser. Il sait aussi imiter le cri d’autres oiseaux.',
+    en: {
+      name: 'The jay',
+      riddle: 'I am a bird with blue feathers on my wings, and I plant oak trees without meaning to.',
+      fact: 'In autumn, the jay buries acorns for the winter. The ones it never finds grow into oaks: it helps the forest grow. It can also copy the calls of other birds.',
+    },
+  },
+  {
+    key: 'lucane',
+    emoji: '🪲',
+    name: 'Le lucane cerf-volant',
+    riddle: 'Je suis un insecte, mais j’ai des « bois » sur la tête, comme le cerf !',
+    choices: ['lucane', 'cerf', 'blaireau'],
+    fact: 'Le lucane est le plus grand coléoptère d’Europe. Sa larve vit plusieurs années dans le bois mort : c’est une des raisons pour lesquelles on laisse des arbres morts dans certaines parties de la forêt.',
+    en: {
+      name: 'The stag beetle',
+      riddle: 'I am an insect, but I have “antlers” on my head, just like a stag!',
+      fact: 'The stag beetle is the largest beetle in Europe. Its larva lives for several years in dead wood: that is one reason why dead trees are left standing in some parts of the forest.',
+    },
+  },
+];
+
+// The rules shown under the game: plain good manners in a forest, nothing site-specific.
+const RULES = [
+  ['On observe de loin et en silence : les animaux sont chez eux.', 'Watch from a distance and quietly: the animals are at home.'],
+  ['On ne nourrit pas les animaux sauvages.', 'Never feed wild animals.'],
+  ['On reste sur les chemins et on remporte ses déchets.', 'Stay on the paths and take your litter home.'],
+];
+
+module.exports = { ANIMALS, RULES };

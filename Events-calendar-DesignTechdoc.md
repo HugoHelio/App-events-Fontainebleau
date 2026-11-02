@@ -2024,6 +2024,13 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     leur crédit — **à trancher** ; pas d'image générée présentée comme une observation.
   - **Reste, chef de projet** : relire les faits du jeu ; choisir la source des dessins
     (coloriages, empreintes, feuilles) ; créer le lien Stripe.
+  - [x] **Étape 1 faite le 02/11 (Claude), textes relus et validés par le chef de projet le 02/11** : `scripts/foret.js` (10 animaux :
+    cerf, sanglier, chevreuil, écureuil roux, renard roux, blaireau, pic noir, chouette hulotte,
+    geai des chênes, lucane cerf-volant ; trois règles de conduite), page `/foret/` rendue par
+    `generate-pages.js` (questions et choix mélangés à chaque partie, barre de progression, score
+    avec partage natif ou copie du lien), dans le sitemap, liée depuis `/balades/`. Images : des
+    emojis, en attendant les dessins du carnet. Essayée dans Edge en largeur mobile, FR et EN.
+    En ligne le 02/11.
 - [ ] **108. Campagne de contacts — points d'entrée et liens entrants (chef de projet, 02/11).**
   Pas de démarche commerciale avant le seuil (ordre du 02/11) : on fait connaître le site et le
   widget gratuit. **Claude dresse les listes et rédige les courriels ; le chef de projet les

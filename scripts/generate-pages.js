@@ -13,6 +13,8 @@
  *   /nos-sources/                how the agenda is collected and checked (item 79)
  *   /balades/                    the project lead's walking, cycling and driving guides (item 104 bis),
  *                                content in scripts/balades.js, PDFs and images in public/balades/
+ *   /foret/                      the forest animals mini-game for children (item 107), content in
+ *                                scripts/foret.js
  *   /sitemap.xml                 every URL above, plus the home page and its English variant
  *
  * Rules that are not obvious from the code:
@@ -35,6 +37,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadPlaces, placesOpen } = require('./affiliates');
 const { GUIDES, PAY, SUGGESTED, OSM } = require('./balades');
+const { ANIMALS, RULES } = require('./foret');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -1486,7 +1489,7 @@ function sitemap(cities, events, homeLastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${home}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -1689,6 +1692,7 @@ ${bi('h1', 'Balades à Fontainebleau : à pied, à vélo, en voiture', 'Fontaine
 ${bi('p', 'Trois fiches écrites et parcourues par un Bellifontain, pour découvrir Fontainebleau et ses environs en famille : la ville impériale à pied, la forêt à vélo, les villages de peintres et la vallée du Loing en voiture. Chaque étape est sur la page ; la fiche PDF, avec ses cartes et ses jeux pour les enfants, s’imprime ou se garde sur le téléphone.', 'Three guides written and tried out by a Fontainebleau local, to discover Fontainebleau and around with the family: the imperial town on foot, the forest by bike, the painters’ villages and the Loing valley by car. Every step is on the page; the PDF sheet, with its maps and games for the children, can be printed or kept on your phone.')}
 ${guidesPromo(GUIDES, ['Les trois fiches', 'The three guides']).replace(/<a class="gp-all"[^]*?<\/a>\n/, '')}
 ${payBox('pack', '', SUGGESTED.pack, 'Les trois fiches sont gratuites, chacune sur sa page. Si elles vous plaisent, vous pouvez les payer ensemble, le montant de votre choix : c’est ce qui finance l’agenda, sans publicité.', 'The three guides are free, each on its own page. If you like them, you can pay for them together, whatever amount you choose: that is what funds the agenda, with no advertising.')}
+<p${en(`For the children: <a href="/${FORET_DIR}/">the forest animals game</a>, 10 riddles to play on a phone.`)}>Pour les enfants : <a href="/${FORET_DIR}/">le jeu des animaux de la forêt</a>, 10 devinettes à faire sur le téléphone.</p>
 ${bi('p', 'Infos indicatives : horaires, travaux et fermetures changent, vérifiez avant de partir. Accès à la forêt : certains secteurs peuvent être fermés, voir onf.fr.', 'For guidance only: opening hours, roadworks and closures change, check before you set off. Forest access: some areas may be closed, see onf.fr.', ' class="note"')}
 <div class="actions">${bi('a', 'Que faire ce week-end ?', 'What’s on this weekend?', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}${bi('a', 'Que faire à Fontainebleau ?', 'What’s on in Fontainebleau?', ` class="btn alt" href="/${CITIES_DIR}/fontainebleau/"`)}</div>`;
   return layout({
@@ -1731,6 +1735,225 @@ ${bi('p', 'Votre paiement est bien reçu : il finance l’agenda, qui reste grat
 /** On a commune page: the promotion card, with the guides that pass through it. */
 function guidesHtml(c) {
   return guidesPromo(GUIDES.filter((g) => g.towns.includes(c.slug)), [`Balades à ${c.name} et alentour`, `Outings in and around ${c.name}`]);
+}
+
+// ───────────────────────────── /foret/ (item 107, 02/11) ─────────────────────────────
+// The forest animals game for children, from scripts/foret.js: one riddle per animal, three
+// choices, a « Le savais-tu ? » card after each answer, a score to share. Free, phone first, no
+// dependency and no network call. The script builds the game with textContent only; every card
+// is also written into the page (in a <details>, since they are the answers), for search engines
+// and for a browser without JavaScript. Bilingual like /balades/: the static text by data-en, the
+// game by its own strings, redrawn when the FR/EN switch changes the root's class.
+
+const FORET_DIR = 'foret';
+const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 4px}
+.lead{font-size:1.1rem;margin:0 0 8px}
+.quiz{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 24px;min-height:300px}
+.q-top{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:var(--muted)}
+.q-bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 12px}
+.q-bar i{display:block;height:100%;background:var(--ink);transition:width .3s}
+.q-big{font-size:56px;line-height:1.2;text-align:center;margin:0}
+.q-who{text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:4px 0}
+.q-riddle{font-size:1.15rem;text-align:center;color:var(--ink);margin:0 0 16px}
+.q-choices{display:grid;gap:10px}
+.q-choices button{font:inherit;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 14px;border:2px solid var(--line);border-radius:12px;background:#f7f5ef;color:var(--ink);cursor:pointer;text-align:left}
+.q-choices button .e{font-size:1.6rem;line-height:1}
+.q-choices button.is-right{border-color:#3d8b40;background:#e6f2e3}
+.q-choices button.is-wrong{border-color:#c0492f;background:#f9e3df}
+.q-choices button:disabled{cursor:default}
+.q-choices button:focus-visible,.q-go:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+.q-fact{margin-top:14px;padding:12px 14px;border-radius:10px;background:#f2ede1}
+.q-fact b{display:block;font-size:1.1rem;color:var(--ink);margin-bottom:4px}
+.q-fact p{margin:0}
+.q-go{display:block;font:inherit;font-size:1.05rem;font-weight:700;margin-top:12px;width:100%;min-height:48px;border:2px solid var(--ink);border-radius:12px;background:var(--ink);color:#fff;cursor:pointer}
+.q-go.alt{background:transparent;color:var(--ink)}
+.q-start,.q-end{text-align:center}
+.q-score:focus,.q-who:focus{outline:none}
+.q-score{font-size:3rem;font-weight:700;color:var(--ink);margin:0;line-height:1.1}
+.q-msg{font-size:1.15rem;margin:4px 0 8px}
+.q-note{font-size:14px;color:var(--muted);min-height:1.4em;margin:8px 0 0}
+.animals{list-style:none;margin:12px 0 0;padding:0}
+.animals li{padding:10px 0;border-bottom:1px solid var(--line)}
+.animals h3{margin:0;font-size:1.05rem;color:var(--ink)}
+.animals p{margin:4px 0 0}
+details.answers summary{cursor:pointer;font-weight:700;color:var(--ink)}
+@media (min-width:560px){.q-choices{grid-template-columns:repeat(3,1fr)}.q-choices button{flex-direction:column;justify-content:center;text-align:center}}
+html.en .fr-only,html:not(.en) .en-only{display:none}`;
+
+// The game's own strings (the static page uses data-en).
+const FORET_STRINGS = {
+  fr: {
+    intro: '10 devinettes pour reconnaître les animaux de la forêt. Prêt, petit explorateur ?',
+    start: 'Jouer', q: 'Question', score: 'Score', who: 'Qui suis-je ?', right: 'Bravo !', wrong: 'Raté ! C’était',
+    know: 'Le savais-tu ?', next: 'Question suivante', last: 'Voir mon score', yours: 'Ton score',
+    best: 'Expert de la forêt ! 🏆', good: 'Bel explorateur ! 🌳', try: 'Apprenti explorateur : rejoue pour tout trouver ! 🌱',
+    share: 'Partager mon score', copied: 'Lien copié : colle-le dans un message !', again: 'Rejouer',
+    shareText: 'J’ai reconnu {n} animaux sur 10 de la forêt de Fontainebleau. Et toi ?',
+  },
+  en: {
+    intro: '10 riddles to recognise the animals of the forest. Ready, little explorer?',
+    start: 'Play', q: 'Question', score: 'Score', who: 'Who am I?', right: 'Well done!', wrong: 'Not quite! It was',
+    know: 'Did you know?', next: 'Next question', last: 'See my score', yours: 'Your score',
+    best: 'Forest expert! 🏆', good: 'Great explorer! 🌳', try: 'Apprentice explorer: play again to find them all! 🌱',
+    share: 'Share my score', copied: 'Link copied: paste it into a message!', again: 'Play again',
+    shareText: 'I recognised {n} out of 10 animals of the Forest of Fontainebleau. Can you beat me?',
+  },
+};
+
+const FORET_SCRIPT = `(function () {
+  var box = document.getElementById('quiz');
+  var data = JSON.parse(document.getElementById('quiz-data').textContent);
+  var root = document.documentElement;
+  var byKey = {};
+  data.animals.forEach(function (a) { byKey[a.key] = a; });
+  var lang = function () { return root.className === 'en' ? 'en' : 'fr'; };
+  var s = function (k) { return data.t[lang()][k]; };
+  var f = function (a, k) { return lang() === 'en' ? a.en[k] : a[k]; };
+  var order = [], at = 0, score = 0, picked = null, choices = [], state = 'start', note = '';
+
+  function shuffle(x) {
+    x = x.slice();
+    for (var j = x.length - 1; j > 0; j--) { var r = Math.floor(Math.random() * (j + 1)); var t = x[j]; x[j] = x[r]; x[r] = t; }
+    return x;
+  }
+  function count(name) {
+    try { if (window.goatcounter && typeof window.goatcounter.count === 'function') window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) { /* never worth an error */ }
+  }
+  function el(tag, cls, text, parent) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function button(cls, text, parent, fn) {
+    var b = el('button', cls, text, parent);
+    b.type = 'button';
+    b.addEventListener('click', fn);
+    return b;
+  }
+  function begin() {
+    order = shuffle(data.animals.map(function (a) { return a.key; }));
+    at = 0; score = 0; note = '';
+    ask();
+  }
+  function ask() {
+    picked = null;
+    choices = shuffle(byKey[order[at]].choices);
+    state = 'question';
+    render(true);
+  }
+  function share() {
+    var text = s('shareText').replace('{n}', score);
+    var url = location.origin + location.pathname;
+    count('forest-share');
+    if (navigator.share) {
+      navigator.share({ title: document.title, text: text, url: url }).catch(function () { /* closed */ });
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(text + ' ' + url).then(function () { note = s('copied'); render(); }, function () { /* refused */ });
+    }
+  }
+  function render(focus) {
+    box.textContent = '';
+    if (state === 'start') {
+      var st = el('div', 'q-start', null, box);
+      el('p', 'q-big', '🌳🦌🦉', st);
+      el('p', 'q-msg', s('intro'), st);
+      button('q-go', s('start'), st, function () { count('forest-play'); begin(); });
+      return;
+    }
+    if (state === 'end') {
+      var end = el('div', 'q-end', null, box);
+      el('p', 'q-who', s('yours'), end);
+      var total = el('p', 'q-score', score + ' / ' + order.length, end);
+      el('p', 'q-msg', score >= 9 ? s('best') : score >= 6 ? s('good') : s('try'), end);
+      if (navigator.share || navigator.clipboard) button('q-go', s('share'), end, share);
+      button('q-go alt', s('again'), end, begin);
+      el('p', 'q-note', note, end).setAttribute('role', 'status');
+      if (focus) { total.setAttribute('tabindex', '-1'); total.focus(); }
+      return;
+    }
+    var a = byKey[order[at]];
+    var top = el('div', 'q-top', null, box);
+    el('span', null, s('q') + ' ' + (at + 1) + ' / ' + order.length, top);
+    el('span', null, s('score') + ' : ' + score, top);
+    var bar = el('div', 'q-bar', null, box);
+    el('i', null, null, bar).style.width = ((at + (picked ? 1 : 0)) / order.length * 100) + '%';
+    el('p', 'q-big', picked ? a.emoji : '❓', box);
+    var who = el('p', 'q-who', s('who'), box);
+    el('p', 'q-riddle', f(a, 'riddle'), box);
+    var list = el('div', 'q-choices', null, box);
+    choices.forEach(function (k) {
+      var c = byKey[k];
+      var b = el('button', null, null, list);
+      b.type = 'button';
+      el('span', 'e', c.emoji, b).setAttribute('aria-hidden', 'true');
+      el('span', null, f(c, 'name'), b);
+      if (picked) {
+        b.disabled = true;
+        if (k === a.key) b.className = 'is-right';
+        else if (k === picked) b.className = 'is-wrong';
+      } else {
+        b.addEventListener('click', function () {
+          picked = k;
+          if (k === a.key) score++;
+          render(true);
+        });
+      }
+    });
+    if (!picked) {
+      if (focus && at > 0) { who.setAttribute('tabindex', '-1'); who.focus(); }
+      return;
+    }
+    var fact = el('div', 'q-fact', null, box);
+    fact.setAttribute('role', 'status');
+    el('b', null, picked === a.key ? s('right') + ' ' + f(a, 'name') + '.' : s('wrong') + ' ' + f(a, 'name').replace(/^(Le |La |L’|The )/, function (m) { return m.toLowerCase(); }) + '.', fact);
+    el('p', null, s('know') + ' ' + f(a, 'fact'), fact);
+    var last = at === order.length - 1;
+    var go = button('q-go', last ? s('last') : s('next'), box, function () {
+      if (last) { state = 'end'; count('forest-end/' + score); render(true); } else { at++; ask(); }
+    });
+    if (focus) go.focus({ preventScroll: true });
+  }
+  // The FR/EN switch sets the root's class: redraw the current screen in the new language.
+  new MutationObserver(function () { render(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
+  render();
+})();`;
+
+function foretPage() {
+  const data = {
+    animals: ANIMALS.map(({ key, emoji, name, riddle, choices, fact, en: e }) => ({ key, emoji, name, riddle, choices, fact, en: { name: e.name, riddle: e.riddle, fact: e.fact } })),
+    t: FORET_STRINGS,
+  };
+  const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')} › ${bi('a', 'Balades', 'Guides', ` href="/${BALADES_DIR}/"`)}</nav>
+${bi('p', 'Jeu gratuit · 6-11 ans', 'Free game · ages 6-11', ' class="kicker"')}
+${bi('h1', 'Les animaux de la forêt de Fontainebleau : le jeu des petits explorateurs', 'The animals of the Forest of Fontainebleau: a game for little explorers')}
+${bi('p', 'Cerf, sanglier, écureuil, chouette… Dix devinettes pour apprendre à reconnaître les animaux qui vivent dans la forêt, avant ou après une balade. Une anecdote après chaque réponse.', 'Red deer, wild boar, squirrel, owl… Ten riddles to learn the animals that live in the forest, before or after a walk. A fun fact after every answer.', ' class="lead"')}
+<section class="quiz" id="quiz">
+<noscript>${bi('p', 'Le jeu a besoin de JavaScript. Les dix animaux et leurs anecdotes sont plus bas.', 'The game needs JavaScript. The ten animals and their fun facts are below.')}</noscript>
+</section>
+<script type="application/json" id="quiz-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
+${bi('h2', 'En forêt, les bons gestes', 'Good manners in the forest')}
+<ul>${RULES.map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
+<details class="answers">
+${bi('summary', 'Les 10 animaux du jeu (attention, ce sont les réponses !)', 'The 10 animals of the game (careful, these are the answers!)')}
+<ul class="animals">${ANIMALS.map((a) => `<li>${bi('h3', `${a.emoji} ${a.name}`, `${a.emoji} ${a.en.name}`)}${bi('p', a.riddle, a.en.riddle)}${bi('p', `Le savais-tu ? ${a.fact}`, `Did you know? ${a.en.fact}`)}</li>`).join('')}</ul>
+</details>
+${bi('h2', 'Et maintenant, en vrai ?', 'Now, for real?')}
+${bi('p', 'Les balades d’un Bellifontain, avec des mini-jeux pour les enfants à chaque étape, et les sorties nature du moment :', 'A local’s favourite outings, with mini-games for the children at every step, and what’s on in nature right now:')}
+<div class="actions">${bi('a', 'La forêt à vélo', 'The forest by bike', ` class="btn" href="/${BALADES_DIR}/fontainebleau-a-velo/"`)}${bi('a', 'Toutes les balades', 'All the guides', ` class="btn alt" href="/${BALADES_DIR}/"`)}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
+<p class="note"><a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Spotted a mistake? Tell us')}>Une erreur dans le jeu ? Signalez-la</a>.</p>
+<script>
+${FORET_SCRIPT}
+</script>`;
+  return layout({
+    title: 'Jeu : les animaux de la forêt de Fontainebleau pour les enfants | Fontainebleau Live',
+    titleEn: 'Game: the animals of the Forest of Fontainebleau for children | Fontainebleau Live',
+    description: 'Un jeu gratuit pour les enfants de 6 à 11 ans : dix devinettes pour reconnaître le cerf, le sanglier, l’écureuil, la chouette et les autres animaux de la forêt de Fontainebleau.',
+    canonical: `${SITE_URL}/${FORET_DIR}/`,
+    body,
+    toTop: false,
+  }).replace('</style>', `${FORET_STYLE}\n</style>`);
 }
 
 // ───────────────────────────── /nos-sources/ (item 79) ─────────────────────────────
@@ -2005,6 +2228,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${BALADES_DIR}/index.html`, guidesIndex());
   for (const g of GUIDES) files.set(`${BALADES_DIR}/${g.slug}/index.html`, guidePage(g, cities.filter((c) => g.towns.includes(c.slug))));
   files.set(`${BALADES_DIR}/merci/index.html`, thanksPage());
+  files.set(`${FORET_DIR}/index.html`, foretPage());
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
