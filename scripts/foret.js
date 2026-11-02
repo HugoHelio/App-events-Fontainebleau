@@ -10,7 +10,8 @@
  *
  * Pictures (item 107c, 02/11): `icon` is the picture supplied by the project lead (192 px PNG in
  * public/foret/img/icones/, the 512 px originals in public/foret/icones/); an animal without one
- * keeps its emoji.
+ * keeps its emoji. `iconBy`: author and page of a Flaticon icon (free licence, attribution due:
+ * credited on /foret/ and in /mentions-legales/, the same day as any new icon).
  *
  * Each animal: a riddle (« Qui suis-je ? »), three choices (the answer and two other keys of this
  * list), and a « Le savais-tu ? » card shown after the answer. The cards are also written into
@@ -38,6 +39,7 @@ const ANIMALS = [
     key: 'sanglier',
     emoji: '🐗',
     icon: '/public/foret/img/icones/sanglier.png',
+    iconBy: ['Flat Icons', 'https://www.flaticon.com/free-icons/boar'],
     name: 'Le sanglier',
     riddle: 'J’ai un groin pour fouiller la terre, et mes petits portent un pyjama rayé.',
     choices: ['blaireau', 'sanglier', 'renard'],
@@ -52,6 +54,7 @@ const ANIMALS = [
     key: 'chevreuil',
     emoji: '🦌',
     icon: '/public/foret/img/icones/chevreuil.png',
+    iconBy: ['kerismaker', 'https://www.flaticon.com/free-icons/deer'],
     name: 'Le chevreuil',
     riddle: 'Je ressemble à un petit cerf, j’ai une tache blanche sur les fesses et, quand j’ai peur, j’aboie !',
     choices: ['renard', 'cerf', 'chevreuil'],
@@ -132,6 +135,7 @@ const ANIMALS = [
     key: 'geai',
     emoji: '🪶',
     icon: '/public/foret/img/icones/geai.png',
+    iconBy: ['Park Jisun', 'https://www.flaticon.com/free-icons/mockingjay'],
     name: 'Le geai des chênes',
     riddle: 'Je suis un oiseau avec des plumes bleues sur les ailes, et je plante des chênes sans le vouloir.',
     choices: ['pic', 'ecureuil', 'geai'],

@@ -2078,9 +2078,12 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     déposés dans `public/foret/icones/`) : réduites à 192 px dans `public/foret/img/icones/<clé>.png`,
     champ `icon` dans `scripts/foret.js`, affichées dans les boutons (34 px), en grand après la
     réponse (72 px) et dans la liste des réponses ; un animal sans `icon` garde son emoji.
-    **Reste** : les 7 autres (cerf, écureuil, renard, blaireau, pic, hulotte, lucane), et
-    **la source et la licence des icônes** pour les crédits (`/mentions-legales/` le jour même
-    si une attribution est due).
+    **Crédits (02/11)** : icônes Flaticon, licence gratuite avec attribution — sanglier par Flat
+    Icons, chevreuil par kerismaker, geai par Park Jisun ; champ `iconBy` dans `scripts/foret.js`,
+    cités sous le jeu et dans la nouvelle section « Crédits des images » de `/mentions-legales/`
+    (avec les gravures du carnet et les cartes OSM). **Décision du chef de projet : les 7 autres
+    animaux gardent leur emoji.** **Reste** : le lucane (icône retouchée par le chef de projet) et
+    le chevreuil (retouche : ses bois ramifiés ressemblent à ceux du cerf).
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.
