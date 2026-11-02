@@ -1961,7 +1961,7 @@ ${bi('h2', 'Le carnet d’explorateur de la forêt', 'The forest explorer’s bo
     ['Qui a laissé cette trace ? Le bingo de la balade, le frottage de feuilles', 'Whose tracks are these? The walk’s bingo, leaf rubbing'],
     ['Mots mêlés, labyrinthe, devinettes et diplôme d’explorateur', 'Word search, maze, riddles and an explorer’s diploma'],
   ].map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
-${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.guide, 'Ce carnet est gratuit. S’il vous a plu, payez-le ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', 'This booklet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.') : download}</div>
+${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.carnet, 'Ce carnet est gratuit. S’il vous a plu, payez-le ce que vous voulez : c’est ce qui finance l’agenda, sans publicité.', 'This booklet is free. If you like it, pay what you want for it: that is what funds the agenda, with no advertising.') : download}</div>
 </aside>`;
 }
 

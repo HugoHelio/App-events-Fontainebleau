@@ -31,8 +31,8 @@ const PAY = {
   // The forest explorer's booklet (item 107, scripts/foret.js), 02/11.
   'carnet-foret': 'https://buy.stripe.com/dRm8wP4gB9UR5Km8HZ5gc04',
 };
-// Must match the pre-filled amount set on each Stripe link (02/11: 4 €, pack 8 €).
-const SUGGESTED = { guide: 4, pack: 8 };
+// Must match the pre-filled amount set on each Stripe link (02/11: 4 €, pack 8 €, booklet 6 €).
+const SUGGESTED = { guide: 4, pack: 8, carnet: 6 };
 
 const OSM = '© les contributeurs d’OpenStreetMap';
 

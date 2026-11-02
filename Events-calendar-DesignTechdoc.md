@@ -2079,6 +2079,7 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     reprend ensuite le PDF ou la page.
   - [x] **Lien Stripe du carnet collé le 02/11** (`PAY['carnet-foret']`, créé par le chef de projet,
     retour `/balades/merci/?fiche=carnet-foret`) : l'encart de `/foret/` est passé au prix libre.
+    **6 € conseillés** (montant prérempli choisi par le chef de projet, `SUGGESTED.carnet`).
   - **Reste** : (1) ~~Payment Link Stripe « carnet » (4 € conseillés)~~ fait le 02/11, à coller dans
     `PAY['carnet-foret']` de `scripts/balades.js` — l'encart passe alors au prix libre ; la page
     `/balades/merci/` ne connaît que les trois fiches : y ajouter le carnet le même jour ;
