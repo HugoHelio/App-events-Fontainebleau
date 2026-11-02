@@ -8,6 +8,10 @@
  * project lead has checked it against the ONF and INPN species pages (§9, item 107). Only
  * species living in the Forest of Fontainebleau; no safety advice beyond the plain rules below.
  *
+ * Pictures (item 107c, 02/11): `icon` is the picture supplied by the project lead (192 px PNG in
+ * public/foret/img/icones/, the 512 px originals in public/foret/icones/); an animal without one
+ * keeps its emoji.
+ *
  * Each animal: a riddle (« Qui suis-je ? »), three choices (the answer and two other keys of this
  * list), and a « Le savais-tu ? » card shown after the answer. The cards are also written into
  * the page itself, so search engines read them and the page works without JavaScript. English
@@ -33,6 +37,7 @@ const ANIMALS = [
   {
     key: 'sanglier',
     emoji: '🐗',
+    icon: '/public/foret/img/icones/sanglier.png',
     name: 'Le sanglier',
     riddle: 'J’ai un groin pour fouiller la terre, et mes petits portent un pyjama rayé.',
     choices: ['blaireau', 'sanglier', 'renard'],
@@ -46,6 +51,7 @@ const ANIMALS = [
   {
     key: 'chevreuil',
     emoji: '🦌',
+    icon: '/public/foret/img/icones/chevreuil.png',
     name: 'Le chevreuil',
     riddle: 'Je ressemble à un petit cerf, j’ai une tache blanche sur les fesses et, quand j’ai peur, j’aboie !',
     choices: ['renard', 'cerf', 'chevreuil'],
@@ -125,6 +131,7 @@ const ANIMALS = [
   {
     key: 'geai',
     emoji: '🪶',
+    icon: '/public/foret/img/icones/geai.png',
     name: 'Le geai des chênes',
     riddle: 'Je suis un oiseau avec des plumes bleues sur les ailes, et je plante des chênes sans le vouloir.',
     choices: ['pic', 'ecureuil', 'geai'],

@@ -1759,6 +1759,9 @@ const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em
 .q-choices{display:grid;gap:10px}
 .q-choices button{font:inherit;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 14px;border:2px solid var(--line);border-radius:12px;background:#f7f5ef;color:var(--ink);cursor:pointer;text-align:left}
 .q-choices button .e{font-size:1.6rem;line-height:1}
+.q-choices button .e img{display:block;width:34px;height:34px}
+.q-big img{display:block;width:72px;height:72px;margin:0 auto}
+.animals h3 img{width:28px;height:28px;vertical-align:-6px;margin-right:4px}
 .q-choices button.is-right{border-color:#3d8b40;background:#e6f2e3}
 .q-choices button.is-wrong{border-color:#c0492f;background:#f9e3df}
 .q-choices button:disabled{cursor:default}
@@ -1845,6 +1848,12 @@ const FORET_SCRIPT = `(function () {
     if (parent) parent.appendChild(n);
     return n;
   }
+  // The animal's picture when it has one (item 107c), its emoji otherwise.
+  function picture(a, parent) {
+    if (!a.icon) { parent.textContent = a.emoji; return; }
+    var im = el('img', null, null, parent);
+    im.src = a.icon; im.alt = ''; im.width = 72; im.height = 72;
+  }
   function button(cls, text, parent, fn) {
     var b = el('button', cls, text, parent);
     b.type = 'button';
@@ -1899,7 +1908,8 @@ const FORET_SCRIPT = `(function () {
     el('span', null, s('score') + ' : ' + score, top);
     var bar = el('div', 'q-bar', null, box);
     el('i', null, null, bar).style.width = ((at + (picked ? 1 : 0)) / order.length * 100) + '%';
-    el('p', 'q-big', picked ? a.emoji : '❓', box);
+    var big = el('p', 'q-big', null, box);
+    if (picked) picture(a, big); else big.textContent = '❓';
     var who = el('p', 'q-who', s('who'), box);
     el('p', 'q-riddle', f(a, 'riddle'), box);
     var list = el('div', 'q-choices', null, box);
@@ -1907,7 +1917,9 @@ const FORET_SCRIPT = `(function () {
       var c = byKey[k];
       var b = el('button', null, null, list);
       b.type = 'button';
-      el('span', 'e', c.emoji, b).setAttribute('aria-hidden', 'true');
+      var e = el('span', 'e', null, b);
+      e.setAttribute('aria-hidden', 'true');
+      picture(c, e);
       el('span', null, f(c, 'name'), b);
       if (picked) {
         b.disabled = true;
@@ -1967,7 +1979,7 @@ ${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.carnet, 'Ce carnet est g
 
 function foretPage() {
   const data = {
-    animals: ANIMALS.map(({ key, emoji, name, riddle, choices, fact, en: e }) => ({ key, emoji, name, riddle, choices, fact, en: { name: e.name, riddle: e.riddle, fact: e.fact } })),
+    animals: ANIMALS.map(({ key, emoji, icon, name, riddle, choices, fact, en: e }) => ({ key, emoji, icon, name, riddle, choices, fact, en: { name: e.name, riddle: e.riddle, fact: e.fact } })),
     t: FORET_STRINGS,
   };
   const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')} › ${bi('a', 'Balades', 'Guides', ` href="/${BALADES_DIR}/"`)}</nav>
@@ -1983,7 +1995,7 @@ ${bi('h2', 'En forêt, les bons gestes', 'Good manners in the forest')}
 <ul>${RULES.map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
 <details class="answers">
 ${bi('summary', 'Les 10 animaux du jeu (attention, ce sont les réponses !)', 'The 10 animals of the game (careful, these are the answers!)')}
-<ul class="animals">${ANIMALS.map((a) => `<li>${bi('h3', `${a.emoji} ${a.name}`, `${a.emoji} ${a.en.name}`)}${bi('p', a.riddle, a.en.riddle)}${bi('p', `Le savais-tu ? ${a.fact}`, `Did you know? ${a.en.fact}`)}</li>`).join('')}</ul>
+<ul class="animals">${ANIMALS.map((a) => `<li>${a.icon ? `<h3${en(`<img src="${esc(a.icon)}" alt="" width="28" height="28">${esc(a.en.name)}`)}><img src="${esc(a.icon)}" alt="" width="28" height="28" loading="lazy">${esc(a.name)}</h3>` : bi('h3', `${a.emoji} ${a.name}`, `${a.emoji} ${a.en.name}`)}${bi('p', a.riddle, a.en.riddle)}${bi('p', `Le savais-tu ? ${a.fact}`, `Did you know? ${a.en.fact}`)}</li>`).join('')}</ul>
 </details>
 ${bi('h2', 'Et maintenant, en vrai ?', 'Now, for real?')}
 ${bi('p', 'Les balades d’un Bellifontain, avec des mini-jeux pour les enfants à chaque étape, et les sorties nature du moment :', 'A local’s favourite outings, with mini-games for the children at every step, and what’s on in nature right now:')}

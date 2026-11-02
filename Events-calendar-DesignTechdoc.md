@@ -2074,6 +2074,13 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
     Ensuite (Claude) : réduites à 160 px, champ `icon` dans `scripts/foret.js`, `<img>` à la
     place de l'emoji dans les boutons et la grande image, l'emoji gardé en secours ; droits à
     noter dans les crédits.
+    **02/11, essai avec 3 icônes** (sanglier, chevreuil, geai ; PNG 512 px à fond transparent,
+    déposés dans `public/foret/icones/`) : réduites à 192 px dans `public/foret/img/icones/<clé>.png`,
+    champ `icon` dans `scripts/foret.js`, affichées dans les boutons (34 px), en grand après la
+    réponse (72 px) et dans la liste des réponses ; un animal sans `icon` garde son emoji.
+    **Reste** : les 7 autres (cerf, écureuil, renard, blaireau, pic, hulotte, lucane), et
+    **la source et la licence des icônes** pour les crédits (`/mentions-legales/` le jour même
+    si une attribution est due).
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.
