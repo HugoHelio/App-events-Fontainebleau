@@ -166,6 +166,58 @@ const ANIMALS = [
   },
 ];
 
+// « Quel arbre ? » (03/11, project lead): one leaf question in each game, at a random place, the
+// tree drawn at random; three choices (the answer and two other trees). Also a page of the
+// booklet (« Quelle est cette feuille ? »), where the four leaves are to be linked to their
+// names, listed in `names` order. Drawings: our own SVGs in public/foret/img/feuilles/ (green
+// for the game; the booklet prints the same outlines, white, to colour). Same review rule as
+// the animals: nothing published before the project lead has checked the facts.
+const LEAVES = {
+  riddle: 'Regarde bien sa forme et ses bords : de quel arbre vient cette feuille ?',
+  riddleEn: 'Look closely at its shape and its edges: which tree does this leaf come from?',
+  // The booklet page: leaves in this order, names in the other.
+  order: ['chataignier', 'chene', 'pin', 'hetre'],
+  names: ['chene', 'hetre', 'chataignier', 'pin'],
+  trees: [
+    {
+      key: 'chene',
+      name: 'Le chêne',
+      fact: 'La feuille du chêne a des bords qui font des vagues arrondies. Son fruit est le gland, que mangent le geai, l’écureuil et le sanglier. C’est l’arbre le plus répandu de la forêt de Fontainebleau.',
+      en: {
+        name: 'The oak',
+        fact: 'The oak leaf has rounded, wavy edges. Its fruit is the acorn, eaten by jays, squirrels and wild boars. It is the most common tree in the Forest of Fontainebleau.',
+      },
+    },
+    {
+      key: 'hetre',
+      name: 'Le hêtre',
+      fact: 'La feuille du hêtre est ovale, avec des nervures bien droites et un bord presque lisse. Son fruit s’appelle la faîne. Son tronc est lisse et gris, comme la peau d’un éléphant.',
+      en: {
+        name: 'The beech',
+        fact: 'The beech leaf is oval, with very straight veins and an almost smooth edge. Its fruit is called beechnut. Its trunk is smooth and grey, like an elephant’s skin.',
+      },
+    },
+    {
+      key: 'chataignier',
+      name: 'Le châtaignier',
+      fact: 'La feuille du châtaignier est longue, avec une dent pointue au bout de chaque nervure. Son fruit, la châtaigne, se cache dans une bogue couverte de piquants.',
+      en: {
+        name: 'The sweet chestnut',
+        fact: 'The sweet chestnut leaf is long, with a sharp tooth at the end of every vein. Its fruit, the chestnut, hides in a husk covered in prickles.',
+      },
+    },
+    {
+      key: 'pin',
+      name: 'Le pin sylvestre',
+      fact: 'Le pin sylvestre a des aiguilles à la place des feuilles, toujours par deux, et il les garde en hiver. Son fruit est la pomme de pin. On le reconnaît de loin : en bas, son écorce est grise et crevassée ; en haut du tronc et sur les branches, elle devient orange.',
+      en: {
+        name: 'The Scots pine',
+        fact: 'The Scots pine has needles instead of leaves, always in pairs, and keeps them in winter. Its fruit is the pine cone. You can spot it from afar: low down, its bark is grey and cracked; higher up the trunk and on the branches, it turns orange.',
+      },
+    },
+  ].map((t) => ({ ...t, emoji: '🌳', leaf: `/public/foret/img/feuilles/${t.key}.svg` })),
+};
+
 // The rules shown under the game: plain good manners in a forest, nothing site-specific.
 const RULES = [
   ['On observe de loin et en silence : les animaux sont chez eux.', 'Watch from a distance and quietly: the animals are at home.'],
@@ -179,8 +231,9 @@ const RULES = [
 // scenes are cropped and lightened for colouring, the tracks cropped as they are, by hand, into
 // public/foret/img/ (the project lead may retouch them in Krita: same file names).
 const CARNET = {
-  // French: the project lead's reworked booklet (Google Docs export, 02/11). English: translated
-  // from it by Claude, built as a Word file and exported by Word (both kept outside the repo too).
+  // Both languages: exports of the project lead's two Word files (03/11, kept outside the repo,
+  // Fiches\CarnetExplorateur-Jeux\Derniere-version-2026-11-03), his reworked booklet of 02/11
+  // with the leaf page. They are the source now, not scripts/carnet-pdf.js.
   pdf: '/public/foret/carnet-explorateur-foret.pdf',
   pdfEn: '/public/foret/carnet-explorateur-foret-en.pdf',
   url: 'fontainebleaulive.fr/foret',
@@ -209,4 +262,4 @@ const CARNET = {
   },
 };
 
-module.exports = { ANIMALS, RULES, CARNET };
+module.exports = { ANIMALS, LEAVES, RULES, CARNET };

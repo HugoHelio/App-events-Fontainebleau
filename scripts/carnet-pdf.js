@@ -1,16 +1,20 @@
 #!/usr/bin/env node
 'use strict';
 /**
- * The forest explorer's booklet (item 107, step 2): 12 A4 pages for children aged 6-11, built
+ * The forest explorer's booklet (item 107, step 2): 13 A4 pages for children aged 6-11, built
  * from scripts/foret.js and printed to public/foret/carnet-explorateur-foret.pdf.
  *
  * Cover, « Mon expédition », five engravings to colour (Ridinger, CC0), whose tracks? , the walk's
- * bingo, leaf rubbing, word search, maze and riddles, diploma, answers and credits. The word
+ * bingo, leaf rubbing, which leaf? (03/11), word search, maze and riddles, diploma, answers and credits. The word
  * search and the maze are computed here from a fixed seed: the same booklet every run, and the
  * answers page always matches. Black lines on white, little ink: it prints at home.
  *
  *   node scripts/carnet-pdf.js            writes the print page and prints it with Edge
  *   node scripts/carnet-pdf.js --html     writes the print page only (to check it in a browser)
+ *   node scripts/carnet-pdf.js --feuilles  prints only « Quelle est cette feuille ? », in French and
+ *                                         in English, footer without page number: since 02/11 the
+ *                                         published PDFs are the project lead's (Google Docs, Word),
+ *                                         and this page is inserted into them, not rebuilt
  *
  * Like scripts/guides-pdf.js, a tool for the project lead's PC, never run by a workflow (Edge or
  * Chrome in headless mode, found at its usual place or in BROWSER=…). Zero dependencies.
@@ -21,12 +25,51 @@ const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { pathToFileURL } = require('url');
-const { ANIMALS, RULES, CARNET } = require('./foret');
+const { ANIMALS, LEAVES, RULES, CARNET } = require('./foret');
 
 const ROOT = path.join(__dirname, '..');
 const OUT_HTML = path.join(os.tmpdir(), 'fontainebleaulive-carnet');
 const LOGO = 'public/assets/img/brand/Icon-FL-pwa-vS.png';
 const byKey = Object.fromEntries(ANIMALS.map((a) => [a.key, a]));
+const byTree = Object.fromEntries(LEAVES.trees.map((t) => [t.key, t]));
+
+// « Quelle est cette feuille ? » in both languages: the English booklet takes the same page.
+const LEAF_TEXT = {
+  fr: {
+    kicker: 'Atelier nature', title: 'Quelle est cette feuille ?',
+    intro: 'Relie chaque feuille au nom de son arbre, puis colorie-la. Indice : regarde bien les bords — des vagues arrondies, des dents pointues, un bord presque lisse… ou des aiguilles !',
+    fact: '<b>Le savais-tu ?</b> Chaque arbre a son fruit : le chêne donne le gland, le hêtre la faîne, le châtaignier la châtaigne et le pin des pommes de pin. Cherche-les par terre pendant la balade !',
+    draw: 'Dessine une feuille trouvée pendant la balade · son arbre : ……………',
+    footer: '<b>Carnet d’explorateur de la forêt</b> · Fontainebleau Live',
+    name: (t) => t.name,
+  },
+  en: {
+    kicker: 'Nature workshop', title: 'Which leaf is this?',
+    intro: 'Link each leaf to the name of its tree, then colour it in. Clue: look closely at the edges — rounded waves, sharp teeth, an almost smooth edge… or needles!',
+    fact: '<b>Did you know?</b> Every tree has its fruit: the oak gives acorns, the beech beechnuts, the sweet chestnut chestnuts and the pine pine cones. Look for them on the ground during your walk!',
+    draw: 'Draw a leaf you found on your walk · its tree: ……………',
+    footer: '<b>Forest explorer’s booklet</b> · Fontainebleau Live',
+    name: (t) => t.en.name,
+  },
+};
+
+// The game's green leaf, white to colour: our own drawing (public/foret/img/feuilles/).
+function leafSvg(key) {
+  return fs.readFileSync(path.join(ROOT, byTree[key].leaf.replace(/^\//, '')), 'utf8')
+    .replace(/ width="200" height="320"/, '')
+    .replace(/fill="#[0-9a-f]{6}"/gi, 'fill="#fff"');
+}
+
+function leafPage(lang) {
+  const t = LEAF_TEXT[lang];
+  return `<div class="kicker">${t.kicker}</div>
+<h2>${t.title}</h2>
+<p>${t.intro}</p>
+<div class="leaves">${LEAVES.order.map((k, i) => `<div><span class="num">${i + 1}</span>${leafSvg(k)}<div class="dot">●</div></div>`).join('')}</div>
+<div class="leaves names">${LEAVES.names.map((k) => `<div><div class="dot">●</div>${esc(t.name(byTree[k]))}</div>`).join('')}</div>
+<p class="fact">${t.fact}</p>
+<div class="frame leaf-draw">${t.draw}</div>`;
+}
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const src = (rel) => pathToFileURL(path.join(ROOT, rel.replace(/^\//, ''))).href;
@@ -191,6 +234,13 @@ table.bingo td::after { content: ''; position: absolute; left: 50%; bottom: 4mm;
 .frame { border: .5mm dashed var(--green); border-radius: 3mm; height: 92mm; padding: 3mm; font-size: 10pt; color: #555; }
 .frame.wide { grid-column: 1 / 3; height: 82mm; }
 ol.steps { margin: 0 0 2mm; padding-left: 6mm; font-size: 11.5pt; }
+/* which leaf? */
+.leaves { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 6mm; text-align: center; }
+.leaves svg { display: block; height: 72mm; width: auto; margin: 2mm auto 0; }
+.leaves .num { font: bold 16pt Georgia, serif; color: var(--gold); }
+.leaves .dot { font-size: 18pt; color: var(--green); }
+.leaf-draw { height: 52mm; margin-top: 5mm; }
+.leaves.names { margin: 30mm 0 8mm; font-size: 14pt; font-weight: bold; color: var(--green); }
 /* word search */
 table.ws { border-collapse: collapse; margin: 3mm auto 5mm; }
 table.ws td { width: 12.5mm; height: 12.5mm; border: .3mm solid #aaa; text-align: center; vertical-align: middle; font: bold 17pt Arial, sans-serif; color: #222; }
@@ -291,14 +341,17 @@ ${rest.slice(i, i + 2).map((k) => `<div class="colour-half"><h3>${esc(byKey[k].n
 <div class="frames"><div class="frame">Feuille n° 1 · son arbre : ……………</div><div class="frame">Feuille n° 2 · son arbre : ……………</div><div class="frame wide">Colle ici ta plus belle feuille (ou dessine-la)</div></div>
 <p style="margin-top:3mm;font-size:10pt;color:#555">Dans la forêt de Fontainebleau, tu trouveras surtout des feuilles de chêne et de hêtre, et des aiguilles de pin.</p>`);
 
-  // 9. Word search
+  // 9. Which leaf?
+  page(leafPage('fr'));
+
+  // 10. Word search
   page(`<div class="kicker">Jeu</div>
 <h2>Les mots mêlés de la forêt</h2>
 <p>Retrouve les dix animaux. Les mots se lisent de gauche à droite, de haut en bas ou en diagonale.</p>
 <table class="ws">${ws.grid.map((row) => `<tr>${row.map((ch) => `<td>${ch}</td>`).join('')}</tr>`).join('')}</table>
 <div class="wordlist">${CARNET.words.map((w) => `<span>${w}</span>`).join('')}</div>`);
 
-  // 10. Maze and riddles
+  // 11. Maze and riddles
   page(`<div class="kicker">Jeux</div>
 <h2>Le labyrinthe de l’écureuil</h2>
 <p>Aide l’écureuil (en haut à gauche) à retrouver la noisette qu’il a cachée (en bas à droite).</p>
@@ -308,7 +361,7 @@ ${rest.slice(i, i + 2).map((k) => `<div class="colour-half"><h3>${esc(byKey[k].n
 <h3 style="margin-top:4mm">Qui suis-je ?</h3>
 <div class="riddles">${CARNET.riddles.map((k) => `<div class="riddle">${esc(byKey[k].riddle)}<br><span class="fill"></span></div>`).join('')}</div>`);
 
-  // 11. Diploma
+  // 12. Diploma
   page(`<div class="diploma">
 <div class="kicker">Fontainebleau Live</div>
 <h1>Diplôme</h1>
@@ -321,18 +374,19 @@ ${rest.slice(i, i + 2).map((k) => `<div class="colour-half"><h3>${esc(byKey[k].n
 <div class="sign"><span>Signature de l’explorateur</span><span>Signature du chef d’expédition</span></div>
 </div>`);
 
-  // 12. Answers and credits
+  // 13. Answers and credits
   const hits = new Set(ws.placed.flatMap((p) => p.cells.map(([r, c]) => `${r}-${c}`)));
   page(`<div class="kicker">Pour les parents</div>
 <h2>Les réponses</h2>
 <div class="answers">
 <div><h3>Qui a laissé cette trace ?</h3><p>${CARNET.tracks.map((k, i) => `${i + 1} : ${esc(byKey[k].name.toLowerCase())}`).join(' · ')}.</p>
 <h3>Qui suis-je ?</h3><p>${CARNET.riddles.map((k) => esc(byKey[k].name)).join(' · ')}.</p>
+<h3>Quelle est cette feuille ?</h3><p>${LEAVES.order.map((k, i) => `${i + 1} : ${esc(byTree[k].name.toLowerCase())}`).join(' · ')}.</p>
 <h3>Le labyrinthe</h3><div class="maze">${mazeSvg(mz, { solution: true, stroke: 1.2 })}</div></div>
 <div><h3>Les mots mêlés</h3><table class="ws small">${ws.grid.map((row, r) => `<tr>${row.map((ch, c) => `<td${hits.has(`${r}-${c}`) ? ' class="hit"' : ''}>${ch}</td>`).join('')}</tr>`).join('')}</table>
 <h3>Encore plus de jeux</h3><p>Le jeu « Qui suis-je ? » des animaux de la forêt, sur le téléphone : <b>${esc(CARNET.url)}</b>. Et les balades en famille : <b>fontainebleaulive.fr/balades</b>.</p></div>
 </div>
-<div class="credits"><b>Images.</b> Gravures de Johann Elias Ridinger, série « Spuhren und Fahrten der Tiere » (Augsbourg, vers 1740-1750), Rijksmuseum Amsterdam (${Object.values(CARNET.credits).map((c) => c.id).join(', ')}), domaine public (CC0), via Wikimedia Commons ; recadrées et éclaircies pour le coloriage. <b>Textes</b> : Fontainebleau Live. Carnet gratuit à imprimer pour un usage personnel ou en classe  ; s’il vous a plu, vous pouvez le payer le prix de votre choix sur ${esc(CARNET.url)}.</div>`);
+<div class="credits"><b>Images.</b> Gravures de Johann Elias Ridinger, série « Spuhren und Fahrten der Tiere » (Augsbourg, vers 1740-1750), Rijksmuseum Amsterdam (${Object.values(CARNET.credits).map((c) => c.id).join(', ')}), domaine public (CC0), via Wikimedia Commons ; recadrées et éclaircies pour le coloriage. <b>Textes et dessins des feuilles</b> : Fontainebleau Live. Carnet gratuit à imprimer pour un usage personnel ou en classe  ; s’il vous a plu, vous pouvez le payer le prix de votre choix sur ${esc(CARNET.url)}.</div>`);
   return out;
 }
 
@@ -371,14 +425,9 @@ function waitForFile(file, ms) {
   }
 }
 
-function main() {
-  fs.mkdirSync(OUT_HTML, { recursive: true });
-  const page = path.join(OUT_HTML, 'carnet.html');
-  fs.writeFileSync(page, html());
-  if (process.argv.includes('--html')) { console.log(`page : ${page}`); return; }
+function printPdf(page, pdf) {
   const browser = findBrowser();
   if (!browser) throw new Error('Edge ou Chrome introuvable (BROWSER=… pour l’indiquer)');
-  const pdf = path.join(ROOT, CARNET.pdf.replace(/^\//, ''));
   fs.mkdirSync(path.dirname(pdf), { recursive: true });
   fs.rmSync(pdf, { force: true });
   // msedge.exe may return before its child process has written the PDF (see guides-pdf.js).
@@ -388,7 +437,23 @@ function main() {
     waitForFile(pdf, 30000);
   }
   if (!fs.existsSync(pdf)) throw new Error(`impression ratée (${res.status}) ${(res.error && res.error.message) || String(res.stderr || '').slice(-300)}`);
-  console.log(`PDF : ${path.relative(ROOT, pdf)} (${Math.round(fs.statSync(pdf).size / 1024)} Ko)`);
+  console.log(`PDF : ${pdf} (${Math.round(fs.statSync(pdf).size / 1024)} Ko)`);
+}
+
+function main() {
+  fs.mkdirSync(OUT_HTML, { recursive: true });
+  if (process.argv.includes('--feuilles')) {
+    for (const lang of ['fr', 'en']) {
+      const page = path.join(OUT_HTML, `feuilles-${lang}.html`);
+      fs.writeFileSync(page, `<!doctype html>\n<html lang="${lang}">\n<head>\n<meta charset="utf-8">\n<style>${CSS}</style>\n</head>\n<body>\n<section class="page">${leafPage(lang)}<footer><span>${LEAF_TEXT[lang].footer} · ${esc(CARNET.url)}</span></footer></section>\n</body>\n</html>\n`);
+      printPdf(page, path.join(OUT_HTML, `feuilles-${lang}.pdf`));
+    }
+    return;
+  }
+  const page = path.join(OUT_HTML, 'carnet.html');
+  fs.writeFileSync(page, html());
+  if (process.argv.includes('--html')) { console.log(`page : ${page}`); return; }
+  printPdf(page, path.join(ROOT, CARNET.pdf.replace(/^\//, '')));
 }
 
 if (require.main === module) {
@@ -398,4 +463,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { wordSearch, maze, mazeSvg, pages };
+module.exports = { wordSearch, maze, mazeSvg, pages, leafPage };
