@@ -2083,7 +2083,7 @@ function sourcesPage(events, generatedAt, registry, places = [], today = '') {
 </ul>
 
 <h2>Ce que nous vérifions, à chaque collecte</h2>
-<p>La collecte a lieu tous les trois jours environ.</p>
+<p>La collecte a lieu tous les trois jours environ ; la recherche web, une fois par semaine.</p>
 <ul class="list">
 <li><b>Les liens</b><small>Chaque lien est ouvert. Une page introuvable retire la fiche ; un site qui refuse les robots garde la fiche, sans la mention « vérifié ». Aujourd’hui : ${linksOk} lien${linksOk > 1 ? 's' : ''} vérifié${linksOk > 1 ? 's' : ''} sur ${n}.</small></li>
 <li><b>Les dates</b><small>Une date passée, hors de la fenêtre des trois prochains mois, ou qui contredit le jour annoncé (un « samedi » qui tombe un mardi) écarte la fiche.</small></li>

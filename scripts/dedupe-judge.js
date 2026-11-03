@@ -36,7 +36,7 @@ const envInt = (name, dflt) => {
 const CONFIG = {
   enabled: process.env.DEDUPE_JUDGE !== '0',
   cachePath: path.resolve(process.env.DEDUPE_CACHE_PATH || 'dedupe-cache.json'),
-  model: process.env.DEDUPE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
+  model: process.env.DEDUPE_MODEL || process.env.GEMINI_LITE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   maxPairsPerRun: envInt('DEDUPE_MAX_PAIRS', 120),
   batchSize: envInt('DEDUPE_BATCH_SIZE', 15),
   timeoutMs: envInt('DEDUPE_TIMEOUT_MS', 120_000),

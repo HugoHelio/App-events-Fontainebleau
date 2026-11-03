@@ -43,7 +43,8 @@ const CONFIG = {
   timeoutMs: envInt('SOURCES_TIMEOUT_MS', 25_000),
   maxFichePages: envInt('SOURCES_MAX_FICHES', 250),
   maxTextChars: envInt('SOURCES_MAX_TEXT_CHARS', 90_000),
-  model: process.env.SOURCES_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
+  // GEMINI_LITE_MODEL: the model of every call without search (item 39, 03/11).
+  model: process.env.SOURCES_MODEL || process.env.GEMINI_LITE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   llmTimeoutMs: envInt('SOURCES_LLM_TIMEOUT_MS', 180_000),
 };
 
@@ -642,12 +643,23 @@ async function readPage(src, ctx) {
   // Share the budget between the pages so a long feed cannot crowd out the agenda page.
   const per = Math.floor(CONFIG.maxTextChars / pages.length);
   for (const p of pages) p.text = p.text.slice(0, per);
-  const { items, usage } = await extractWithGemini(EXTRACT_PROMPT(ctx, src, pages));
+  // Item 39 (03/11): a page unchanged since a recent reading is not sent to the model again. The
+  // hash covers the prompt without its dates, so a new wording of the prompt also asks again.
+  const h = crypto.createHash('sha1').update(EXTRACT_PROMPT({ today: '', maxDate: '' }, src, pages)).digest('hex').slice(0, 12);
+  const pageCache = cacheFile().pages;
+  const hit = pageCache[src.id];
+  const cached = Boolean(hit && hit.h === h && (Date.parse(ctx.today) - Date.parse(hit.at)) / 86400000 < PAGE_CACHE_DAYS);
+  let items = cached ? hit.items : null;
+  let usage = null;
+  if (!cached) {
+    ({ items, usage } = await extractWithGemini(EXTRACT_PROMPT(ctx, src, pages)));
+    pageCache[src.id] = { h, at: ctx.today, items };
+  }
   const events = items
     .filter((e) => e && typeof e.title === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(e.startDate || ''))
     .map((e) => ({ ...e, endDate: /^\d{4}-\d{2}-\d{2}$/.test(e.endDate || '') ? e.endDate : e.startDate, city: e.city || src.city || '' }))
     .filter((e) => inWindow(e, ctx));
-  return { fetched: pages.length, events, usage };
+  return { fetched: pages.length, events, usage, cached };
 }
 
 const READERS = { ics: readIcs, 'apidae-ot': readApidaeOt, 'city-rss': readCityRss, ccmsl: readCcmsl, page: readPage };
@@ -679,7 +691,7 @@ async function load(ctx, { only } = {}) {
       // A site-wide default fills what the reader cannot know (an .ics has no category).
       const events = kept.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
       return {
-        ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, ms: Date.now() - t0, events,
+        ...base, status: r.skipped ? 'skipped' : 'ok', skipped: r.skipped, fetched: r.fetched, usage: r.usage, cached: Boolean(r.cached), ms: Date.now() - t0, events,
         snapshot: r.snapshot || null,
         excluded: r.events.length - kept.length, invalid: r.invalid || 0,
       };
@@ -698,6 +710,21 @@ const crypto = require('crypto');
 const CATEGORIES = ['Sport & Outdoor', 'Nature & Environnement', 'Scène & Spectacles', 'Culture & Ateliers'];
 const ENRICH_CACHE = path.resolve(process.env.SOURCES_CACHE_PATH || 'sources-cache.json');
 const ENRICH_CACHE_DAYS = envInt('SOURCES_CACHE_DAYS', 150);
+// The `page` readers' extractions (item 39, 03/11), in the same file under `pages`, by source id.
+// Reused PAGE_CACHE_DAYS at most even if the page has not changed: the prompt asks for the window
+// of its day, so a week-old reading misses at most the last week of a three-month window.
+const PAGE_CACHE_DAYS = envInt('SOURCES_PAGE_CACHE_DAYS', 7);
+
+/** sources-cache.json, read once per run: the readers and enrich() share it, enrich() writes it. */
+let cacheDoc = null;
+function cacheFile() {
+  if (!cacheDoc) {
+    try { cacheDoc = JSON.parse(fs.readFileSync(ENRICH_CACHE, 'utf8')) || {}; } catch { cacheDoc = {}; }
+    cacheDoc.entries = cacheDoc.entries || {};
+    cacheDoc.pages = cacheDoc.pages || {};
+  }
+  return cacheDoc;
+}
 
 const ENRICH_PROMPT = (items) => `
 Voici des fiches d'événements d'un office de tourisme, d'une commune ou d'une intercommunalité autour de Fontainebleau (texte brut).
@@ -735,8 +762,7 @@ const ENRICH_SCHEMA = {
  */
 async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
   const stats = { cached: 0, asked: 0, failed: 0, tokensIn: 0, tokensOut: 0, error: null };
-  let cache = {};
-  try { cache = JSON.parse(fs.readFileSync(ENRICH_CACHE, 'utf8')).entries || {}; } catch { cache = {}; }
+  const cache = cacheFile().entries;
   const todo = [];
   for (const e of events) {
     if (!e.detail) continue;
@@ -784,7 +810,10 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
     const cutoff = new Date(Date.parse(today) - ENRICH_CACHE_DAYS * 86400000).toISOString().slice(0, 10);
     const kept = {};
     for (const k of Object.keys(cache).sort()) if ((cache[k].at || today) >= cutoff) kept[k] = cache[k];
-    try { fs.writeFileSync(ENRICH_CACHE, JSON.stringify({ version: 1, entries: kept }, null, 2) + '\n'); } catch (err) { stats.error = stats.error || err.message; }
+    const pageCutoff = new Date(Date.parse(today) - PAGE_CACHE_DAYS * 86400000).toISOString().slice(0, 10);
+    const pages = {};
+    for (const [k, v] of Object.entries(cacheFile().pages).sort()) if (v.at > pageCutoff) pages[k] = v;
+    try { fs.writeFileSync(ENRICH_CACHE, JSON.stringify({ version: 1, entries: kept, pages }, null, 2) + '\n'); } catch (err) { stats.error = stats.error || err.message; }
   }
   return stats;
 }

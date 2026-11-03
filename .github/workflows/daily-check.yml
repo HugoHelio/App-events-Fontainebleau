@@ -4,10 +4,19 @@ name: Check Quotidien & Mise à jour Data Gemini
 # donnees ont plus de MIN_RUN_INTERVAL_HOURS (60 h) : soit environ un scan tous les 3 jours.
 # Un jour saute ou echoue est ainsi retente des le lendemain, sans attendre 3 jours de plus.
 # Un declenchement manuel force toujours le scan.
+# Depuis le 03/11 (item 39), les questions a Gemini (scans sport, nature, culture, famille,
+# villages) ne tournent qu'une fois par semaine (GEMINI_EVERY_DAYS) ; les autres sources gardent
+# le rythme de 3 jours. Un declenchement manuel ne les force pas : cocher "gemini" pour cela
+# (environ 0,50 EUR de plus).
 on:
   schedule:
     - cron: '0 6 * * *'   # 06:00 UTC = 07:00/08:00 in Paris
   workflow_dispatch:
+    inputs:
+      gemini:
+        description: "Relancer aussi les questions à Gemini (scans facturés, ~0,50 €)"
+        type: boolean
+        default: false
 
 # Least privilege: the job only needs to push data.json / geocode-cache.json to main.
 permissions:
@@ -43,6 +52,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+          GEMINI_FORCE: ${{ inputs.gemini && '1' || '0' }}
           # URL CSV de la feuille de réponses du formulaire. En secret, pas en clair :
           # une réponse peut contenir le contact facultatif du visiteur, et le dépôt est public.
           # Secret absent = lecture du formulaire simplement désactivée, le scan continue.

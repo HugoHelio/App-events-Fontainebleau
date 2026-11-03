@@ -47,6 +47,9 @@ const envInt = (name, dflt) => {
 
 const CONFIG = {
   model: process.env.GEMINI_MODEL || 'gemini-3.6-flash',
+  // Item 39 (03/11): the calls without search (formatting of the scans, sites, judge,
+  // translation) can use a cheaper model; each module also keeps its own override.
+  formatModel: process.env.FORMAT_MODEL || process.env.GEMINI_LITE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   maxOutputTokens: envInt('GEMINI_MAX_OUTPUT_TOKENS', 16384),
   maxEventsPerScan: envInt('MAX_EVENTS_PER_SCAN', 20),
   windowMonths: envInt('WINDOW_MONTHS', 3),
@@ -72,17 +75,22 @@ const CONFIG = {
   // filter, but it is a rectangle: it reached 30 km into Sénart and Corbeil to the north-west
   // while cutting closer in other directions. A radius says what the project actually means.
   maxRadiusKm: envInt('MAX_RADIUS_KM', 20),
-  // Days without any source confirming an event before it is reported for review. Three scans
-  // at the ~3-day cadence, so one missed mention is never enough to raise it.
-  staleAfterDays: envInt('STALE_EVENT_DAYS', 10),
+  // Days without any source confirming an event before it is reported for review. Since 03/11 the
+  // Gemini scans run weekly: 15 days is three of them, so one missed mention never raises it.
+  staleAfterDays: envInt('STALE_EVENT_DAYS', 15),
   // Item 89, observation only: a 79b record (Gemini alone, home-page link) that no scan has seen
-  // for this long is counted apart in the report. The proposed rule would unpublish it; the count
-  // over two scans decides whether it does more good than harm.
-  riskStaleDays: envInt('RISK_STALE_DAYS', 14),
+  // for this long is listed apart for the 15-day manual review. 15 days: two weekly Gemini scans
+  // missed, not one.
+  riskStaleDays: envInt('RISK_STALE_DAYS', 15),
   // Item 39 (28/10): the villages scan never publishes (confirmOnly) and was ~30 % of a run's
   // cost. It runs when its last run is this old: every other scan at the ~3-day cadence, so its
   // reconfirmations stay well inside staleAfterDays. VILLAGES_EVERY_DAYS=0 runs it every time.
   villagesEveryDays: envInt('VILLAGES_EVERY_DAYS', 5),
+  // Item 39 (03/11): the Gemini scans (the searched questions, 57 % of a run's cost) run once a
+  // week; the other sources keep the ~3-day cadence. A manual run does not force them:
+  // GEMINI_FORCE=1 does (workflow input "gemini"). GEMINI_EVERY_DAYS=0 runs them every time.
+  geminiEveryDays: envInt('GEMINI_EVERY_DAYS', 7),
+  geminiForce: process.env.GEMINI_FORCE === '1',
   dryRun: process.env.DRY_RUN === '1',
   // A scan question answered without any web search is discarded (03/10). ALLOW_UNGROUNDED=1 lifts that,
   // only for a run where the metadata is known to be missing while the search did happen.
@@ -946,11 +954,11 @@ function extractJsonArray(text) {
 }
 
 /** One Gemini call with retries; `parse` runs inside the loop, so a garbled answer is retried too. */
-async function withRetry(label, requestBody, meta, parse = (info) => info) {
+async function withRetry(label, requestBody, meta, parse = (info) => info, model = CONFIG.model) {
   let lastError;
   for (let attempt = 1; attempt <= CONFIG.maxAttempts; attempt++) {
     try {
-      const result = parse(extractText(await callGemini(requestBody)));
+      const result = parse(extractText(await callGemini(requestBody, model)));
       meta.attempts = Math.max(meta.attempts, attempt);
       return result;
     } catch (err) {
@@ -993,8 +1001,9 @@ async function runScan(scan, ctx) {
   const { events, salvaged, finishReason, usage } = await withRetry(`${scan.name} · mise en forme`, formatRequestBody(prompt), meta,
     (info) => (/^\s*\[\s*\]\s*$/.test(info.text)
       ? { events: [], salvaged: false, finishReason: info.finishReason, usage: info.usage }
-      : { ...extractJsonArray(info.text), finishReason: info.finishReason, usage: info.usage }));
+      : { ...extractJsonArray(info.text), finishReason: info.finishReason, usage: info.usage }), CONFIG.formatModel);
   addUsage(meta.usage, usage);
+  meta.formatUsage = usage || null;   // priced apart: it may run on the cheaper model
   return { events, meta: { ...meta, salvaged, finishReason } };
 }
 
@@ -1377,15 +1386,21 @@ function writeStepSummary(text) {
 
 // ───────────────────────────── Cost estimate (item 39) ─────────────────────────────
 //
-// Prices of gemini-3.6-flash, paid tier, read on the pricing page on 20/09 (§3.G). Thinking is
-// billed as output. They double on 1 January 2027: the report shows both, to choose the model
-// before the rise. Another GEMINI_MODEL makes the estimate wrong, and the report says so.
+// Paid-tier prices per million tokens, read on the pricing page (3.6 Flash on 20/09, §3.G; the
+// others on 03/11). Thinking is billed as output. The Flash prices double on 1 January 2027: the
+// report shows both. A model missing here makes the estimate wrong, and the report says so.
+// The 03/11 bill confirmed both the token prices and the free searches ("search query gemini 3 free").
+const FLASH_PERIODS = [
+  { until: '2026-12-31', inPerM: 0.75, outPerM: 3.75 },
+  { until: '9999-12-31', inPerM: 1.5, outPerM: 7.5 },
+];
 const PRICING = {
-  model: 'gemini-3.6-flash',
-  periods: [
-    { until: '2026-12-31', inPerM: 0.75, outPerM: 3.75 },
-    { until: '9999-12-31', inPerM: 1.5, outPerM: 7.5 },
-  ],
+  models: {
+    'gemini-3.6-flash': FLASH_PERIODS,
+    'gemini-3.8-flash': FLASH_PERIODS,
+    'gemini-3.5-flash-lite': [{ until: '9999-12-31', inPerM: 0.3, outPerM: 2.5 }],
+    'gemini-3.1-flash-lite': [{ until: '9999-12-31', inPerM: 0.25, outPerM: 1.5 }],
+  },
   freeSearchesPerMonth: 5000,
   searchPer1000: 14,
 };
@@ -1393,25 +1408,44 @@ const PRICING = {
 /** Tokens and searches of every Gemini call of the run, by step, and their price in dollars. */
 function runCost(stats, today) {
   const steps = [];
-  const add = (name, tin, tout) => { if (tin || tout) steps.push({ name, tin, tout }); };
+  const add = (name, tin, tout, model, gemini = false) => { if (tin || tout) steps.push({ name, tin, tout, model, gemini }); };
+  const out = (u) => (u.candidatesTokenCount || 0) + (u.thoughtsTokenCount || 0);
   let searches = 0;
   for (const s of stats.scans) {
     const u = s.usage || {};
-    add(`scan ${s.name}`, u.promptTokenCount || 0, (u.candidatesTokenCount || 0) + (u.thoughtsTokenCount || 0));
+    const f = s.formatUsage || {};
+    // The scan's searched questions, then its formatting (no search), each at its own model.
+    add(`scan ${s.name}`, (u.promptTokenCount || 0) - (f.promptTokenCount || 0), out(u) - out(f), CONFIG.model, true);
+    add(`scan ${s.name} (mise en forme)`, f.promptTokenCount || 0, out(f), CONFIG.formatModel, true);
     searches += s.searchQueries || 0;
   }
   const st = stats.sites || {};
-  add('sites (lecture)', st.tokensIn || 0, st.tokensOut || 0);
-  add('sites (fiches complétées)', (st.enrich && st.enrich.tokensIn) || 0, (st.enrich && st.enrich.tokensOut) || 0);
-  add('doublons (juge)', (stats.judged && stats.judged.tokensIn) || 0, (stats.judged && stats.judged.tokensOut) || 0);
-  add('traduction', (stats.translation && stats.translation.tokensIn) || 0, (stats.translation && stats.translation.tokensOut) || 0);
-  const tin = steps.reduce((a, s) => a + s.tin, 0);
-  const tout = steps.reduce((a, s) => a + s.tout, 0);
-  const now = PRICING.periods.find((p) => today <= p.until);
-  const last = PRICING.periods[PRICING.periods.length - 1];
-  const at = (p) => (i, o) => (i * p.inPerM + o * p.outPerM) / 1e6;
-  return { steps, tin, tout, searches, price: at(now), usd: at(now)(tin, tout), usdLater: now === last ? null : at(last)(tin, tout) };
+  add('sites (lecture)', st.tokensIn || 0, st.tokensOut || 0, sites.CONFIG.model);
+  add('sites (fiches complétées)', (st.enrich && st.enrich.tokensIn) || 0, (st.enrich && st.enrich.tokensOut) || 0, sites.CONFIG.model);
+  add('doublons (juge)', (stats.judged && stats.judged.tokensIn) || 0, (stats.judged && stats.judged.tokensOut) || 0, dedupeJudge.CONFIG.model);
+  add('traduction', (stats.translation && stats.translation.tokensIn) || 0, (stats.translation && stats.translation.tokensOut) || 0, translate.CONFIG.model);
+  // A model missing from the table is priced as 3.6 Flash, and the report names it.
+  const unknown = [...new Set(steps.map((s) => s.model).filter((m) => !PRICING.models[m]))];
+  const cost = (s, day) => {
+    const p = (PRICING.models[s.model] || FLASH_PERIODS).find((x) => day <= x.until);
+    return (s.tin * p.inPerM + s.tout * p.outPerM) / 1e6;
+  };
+  for (const s of steps) { s.usd = cost(s, today); s.usdLater = cost(s, '2027-01-01'); }
+  const sum = (k, pick = () => true) => steps.filter(pick).reduce((a, s) => a + s[k], 0);
+  const usdNow = sum('usd');
+  const usdLater = sum('usdLater');
+  return {
+    steps, searches, unknown, tin: sum('tin'), tout: sum('tout'),
+    usd: usdNow, usdLater: Math.abs(usdLater - usdNow) < 1e-9 ? null : usdLater,
+    // Per month: the Gemini scans (searched questions and their formatting) once a week, the
+    // rest at every run of the ~3-day cadence.
+    month: (k) => sum(k, (s) => s.gemini) * GEMINI_RUNS_PER_MONTH + sum(k, (s) => !s.gemini) * RUNS_PER_MONTH,
+    geminiRan: steps.some((s) => s.gemini),
+  };
 }
+
+const RUNS_PER_MONTH = 10;   // one run every ~3 days: 60 h minimum, then the next daily trigger
+const GEMINI_RUNS_PER_MONTH = CONFIG.geminiEveryDays > 0 ? Math.min(RUNS_PER_MONTH, Math.round(30 / CONFIG.geminiEveryDays)) : RUNS_PER_MONTH;
 
 const usd = (n) => `${n.toFixed(n < 1 ? 3 : 2).replace('.', ',')} $`;
 
@@ -1439,10 +1473,12 @@ function renderSummary(stats, ctx) {
   }
   const cost = runCost(stats, ctx.today);
   if (cost.steps.length) {
-    const runsPerMonth = 10;   // one scan every ~3 days: 60 h minimum, then the next daily trigger
-    L.push(`- 💶 **Coût Gemini estimé du run : ${usd(cost.usd)}** (~${usd(cost.usd * runsPerMonth)} par mois)${cost.usdLater === null ? '' : ` · **${usd(cost.usdLater)} au tarif du 1er janvier 2027** (~${usd(cost.usdLater * runsPerMonth)} par mois)`} — ${cost.tin} tokens en entrée, ${cost.tout} en sortie (réflexion comprise)${CONFIG.model === PRICING.model ? '' : ` · ⚠️ tarif de \`${PRICING.model}\`, pas de \`${CONFIG.model}\` : estimation fausse`}`);
-    L.push(`  - par étape : ${cost.steps.map((s) => `${s.name} ${usd(cost.price(s.tin, s.tout))}`).join(' · ')}`);
-    L.push(`  - recherches Google : ${cost.searches} ce run, soit ~${cost.searches * runsPerMonth} par mois à ~${runsPerMonth} scans (gratuites jusqu’à ${PRICING.freeSearchesPerMonth}, puis ${PRICING.searchPer1000} $ les 1 000)`);
+    const monthNote = cost.geminiRan ? '' : ', hors questions Gemini sautées ce run';
+    const unknown = cost.unknown.length ? ` · ⚠️ tarif inconnu pour ${cost.unknown.map((m) => `\`${m}\``).join(', ')} (compté comme 3.6 Flash) : estimation fausse` : '';
+    L.push(`- 💶 **Coût Gemini estimé du run : ${usd(cost.usd)}** (~${usd(cost.month('usd'))} par mois${monthNote})${cost.usdLater === null ? '' : ` · **${usd(cost.usdLater)} au tarif du 1er janvier 2027** (~${usd(cost.month('usdLater'))} par mois)`} — ${cost.tin} tokens en entrée, ${cost.tout} en sortie (réflexion comprise)${unknown}`);
+    L.push(`  - par étape : ${cost.steps.map((s) => `${s.name} ${usd(s.usd)}${s.model === CONFIG.model ? '' : ` (\`${s.model}\`)`}`).join(' · ')}`);
+    L.push(`  - par mois : questions Gemini ~${GEMINI_RUNS_PER_MONTH} fois (tous les ${CONFIG.geminiEveryDays} jours), le reste ~${RUNS_PER_MONTH} fois`);
+    if (cost.searches) L.push(`  - recherches Google : ${cost.searches} ce run, soit ~${cost.searches * GEMINI_RUNS_PER_MONTH} par mois (gratuites jusqu’à ${PRICING.freeSearchesPerMonth}, puis ${PRICING.searchPer1000} $ les 1 000)`);
     L.push('');
   }
   if (stats.dt) {
@@ -1474,7 +1510,7 @@ function renderSummary(stats, ctx) {
       L.push(`- 🏛️ Sites des organisateurs : ❌ ${String(st.error).slice(0, 160)} (les autres sources sont conservées)`);
     } else {
       const ok = st.perSource.filter((r) => r.status === 'ok');
-      L.push(`- 🏛️ Sites des organisateurs (sans grounding) : ${ok.length} lu(s) → **${st.records}** fiche(s) · **${stats.siteConfirmed}** événement(s) confirmé(s) et enrichi(s) · ${st.long} offre(s) permanente(s) jamais ajoutée(s)${stats.siteInsideSpan ? ` · ${stats.siteInsideSpan} date(s) d'un événement déjà publié sur plusieurs jours` : ''}`);
+      L.push(`- 🏛️ Sites des organisateurs (sans grounding) : ${ok.length} lu(s)${ok.some((r) => r.cached) ? ` (dont ${ok.filter((r) => r.cached).length} page(s) inchangée(s), relues depuis le cache sans appel Gemini)` : ''} → **${st.records}** fiche(s) · **${stats.siteConfirmed}** événement(s) confirmé(s) et enrichi(s) · ${st.long} offre(s) permanente(s) jamais ajoutée(s)${stats.siteInsideSpan ? ` · ${stats.siteInsideSpan} date(s) d'un événement déjà publié sur plusieurs jours` : ''}`);
       L.push(`  - ${st.perSource.map((r) => `${r.id} ${r.status === 'ok' ? r.events : r.status === 'disabled' ? '⏸' : '❌'}${r.snapshot ? ` (copie du ${r.snapshot.slice(8, 10)}/${r.snapshot.slice(5, 7)}, item 101)` : ''}`).join(' · ')}`);
       for (const r of st.perSource.filter((x) => x.status === 'error' || x.status === 'robots')) L.push(`  - ⚠️ ${r.id} : ${String(r.error).slice(0, 140)}`);
       const siteRej = Object.entries(stats.siteRejected);
@@ -1590,7 +1626,7 @@ function renderSummary(stats, ctx) {
     if (stats.datesAtRisk.length > 10) L.push(`  - … et ${stats.datesAtRisk.length - 10} autre(s)`);
     L.push(`  La fiche le dit déjà au visiteur. Si les dates sont fausses : overrides.json (dates ou masquage).`);
     const stale = stats.datesAtRiskStale;
-    L.push(`  - 🧪 **Dont non revues par aucun scan depuis ${CONFIG.riskStaleDays} jours ou plus : ${stale.length}** (item 89, observation : la règle à l’étude les retirerait du site, jusqu’à ce qu’un scan les retrouve)`);
+    L.push(`  - 🧪 **Dont non revues par aucun scan depuis ${CONFIG.riskStaleDays} jours ou plus : ${stale.length}** (item 89 : à relire à la main tous les 15 jours, avec le contrôle de la Ville ; jamais retirées automatiquement)`);
     for (const v of stale.slice(0, 10)) L.push(`    - ${v}`);
     if (stale.length > 10) L.push(`    - … et ${stale.length - 10} autre(s)`);
   }
@@ -1915,7 +1951,16 @@ async function main() {
   const lastVillages = legacyShape ? null : existingPayload.villagesScanAt;
   let villagesScanAt = isValidIsoDate(lastVillages) ? lastVillages : undefined;
   const villagesDue = !villagesScanAt || daysBetween(villagesScanAt, today) >= CONFIG.villagesEveryDays;
+  // Before 03/11 every scan ran Gemini: a payload without the field had its scans on generatedAt.
+  const lastGemini = legacyShape ? null : (existingPayload.geminiScanAt || String(existingGeneratedAt || '').slice(0, 10));
+  let geminiScanAt = isValidIsoDate(lastGemini) ? lastGemini : undefined;
+  const geminiDue = CONFIG.geminiForce || !geminiScanAt || daysBetween(geminiScanAt, today) >= CONFIG.geminiEveryDays;
   for (const [i, scan] of SCANS.entries()) {
+    if (!geminiDue) {
+      stats.scans.push({ name: scan.name, skipped: geminiScanAt });
+      console.log(`⏭️  Scan "${scan.name}" skipped: Gemini scans last ran ${geminiScanAt} (every ${CONFIG.geminiEveryDays} days)`);
+      continue;
+    }
     if (scan.confirmOnly && !villagesDue) {
       stats.scans.push({ name: scan.name, skipped: villagesScanAt });
       console.log(`⏭️  Scan "${scan.name}" skipped: last run ${villagesScanAt} (every ${CONFIG.villagesEveryDays} days)`);
@@ -1936,6 +1981,7 @@ async function main() {
       }
       okScans++;
       if (scan.confirmOnly) villagesScanAt = today;
+      else geminiScanAt = today;
       rawNew.push(...(scan.confirmOnly ? events.map((e) => ({ ...e, _confirmOnly: true })) : events));
       stats.scans.push({ name: scan.name, raw: events.length, ...meta });
       console.log(`   → ${events.length} raw events${meta.salvaged ? ' (truncated output, salvaged)' : ''}`);
@@ -2001,7 +2047,7 @@ async function main() {
       const enriched = await sites.enrich(read, { dryRun: CONFIG.dryRun, today });
       siteRaw = sites.toPipelineEvents(read, ctx);
       stats.sites = {
-        perSource: results.map((r) => ({ id: r.id, status: r.status, events: r.events.length, error: r.error || r.skipped || r.note || '', snapshot: r.snapshot || null })),
+        perSource: results.map((r) => ({ id: r.id, status: r.status, events: r.events.length, cached: r.cached, error: r.error || r.skipped || r.note || '', snapshot: r.snapshot || null })),
         records: siteRaw.length,
         long: siteRaw.filter((e) => e.long).length,
         enrich: enriched,
@@ -2382,7 +2428,7 @@ async function main() {
     : null;
   const keepStamp = !legacyShape && !eventsChanged && previousDate === today;
   const generatedAt = keepStamp ? existingGeneratedAt : new Date().toISOString();
-  const output = JSON.stringify({ schemaVersion: 2, generatedAt, windowEnd: maxDate, villagesScanAt, events: newEvents }, null, 2) + '\n';
+  const output = JSON.stringify({ schemaVersion: 2, generatedAt, windowEnd: maxDate, villagesScanAt, geminiScanAt, events: newEvents }, null, 2) + '\n';
   const changed = output !== existingText;
   stats.written = changed && !CONFIG.dryRun;
 

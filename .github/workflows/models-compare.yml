@@ -1,0 +1,50 @@
+name: Comparatif des modeles (sans recherche)
+
+# Item 39 (03/11) : les appels SANS recherche (mise en forme des scans, lecture des sites, fiches
+# de l'office) peuvent-ils passer sur un modele moins cher ? Memes entrees, deux modeles, les
+# evenements compares -- les dates d'abord. Lecture seule : rien n'est ecrit ni publie.
+# Un clic sur "Run workflow" dans l'onglet Actions. Cout : environ 0,25 $, une dizaine de minutes.
+# Le resume s'ecrit au fur et a mesure ; le rapport complet est aussi en artefact.
+on:
+  workflow_dispatch:
+    inputs:
+      candidat:
+        description: "Modele candidat (B)"
+        type: string
+        default: "gemini-3.1-flash-lite"
+      scans:
+        description: "Scans dont la mise en forme est comparee"
+        type: string
+        default: "culture,famille"
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Comparer
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CANDIDAT: ${{ inputs.candidat }}
+          SCANS: ${{ inputs.scans }}
+        run: node scripts/compare-models.js --b "$CANDIDAT" --scans "$SCANS"
+
+      - name: Rapport en artefact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: models-comparison
+          path: reports/models-comparison.md
+          if-no-files-found: ignore

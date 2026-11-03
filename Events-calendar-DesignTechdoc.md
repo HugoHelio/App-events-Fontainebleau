@@ -1406,7 +1406,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 - **Local dry run** (writes nothing): `GEMINI_API_KEY=… DRY_RUN=1 node scripts/fetch-events.js`
 - **Force a scan despite the cadence:** `GEMINI_API_KEY=… FORCE_RUN=1 node scripts/fetch-events.js` (a manual *Run workflow* does this automatically)
 - **DATAtourisme coverage probe:** Actions → *Couverture DATAtourisme (observation)* → *Run workflow*, or locally `node scripts/datatourisme-coverage.js`. It downloads ~9 MB, writes only `reports/`, and never touches `data.json`. Use `DT_CSV_PATH=…` to run against a local copy.
-- **Environment variables (pipeline):** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `MIN_RUN_INTERVAL_HOURS` (60), `FORCE_RUN`, `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`, `DATATOURISME` (set `0` to collect from Gemini only), `DT_SHORT_EVENT_MAX_DAYS` (14), `DT_MAX_PERIODS` (12, caps dates per event), `DT_CSV_PATH` (local CSV, skips the download), `VILLAGES_EVERY_DAYS` (5; `0` = every scan), `GEMINI_THINKING_LEVEL` (`low` on every call without the search tool; `default` = the model's own level).
+- **Environment variables (pipeline):** `GEMINI_MODEL`, `GEMINI_MAX_OUTPUT_TOKENS` (16384), `MAX_EVENTS_PER_SCAN` (20), `WINDOW_MONTHS` (3), `MIN_RUN_INTERVAL_HOURS` (60), `FORCE_RUN`, `DATA_PATH`, `GEOCODE_CACHE_PATH`, `WEEKDAY_CHECK` (set `0` to disable), `DRY_RUN`, `DATATOURISME` (set `0` to collect from Gemini only), `DT_SHORT_EVENT_MAX_DAYS` (14), `DT_MAX_PERIODS` (12, caps dates per event), `DT_CSV_PATH` (local CSV, skips the download), `VILLAGES_EVERY_DAYS` (5; `0` = every scan), `GEMINI_EVERY_DAYS` (7: the Gemini scans run once a week, the other sources every run; `0` = every run), `GEMINI_FORCE` (`1` = run the Gemini scans now; workflow input « gemini »), `GEMINI_LITE_MODEL` (model of every call without search; per step `FORMAT_MODEL`, `SOURCES_MODEL`, `DEDUPE_MODEL`, `TRANSLATE_MODEL`), `SOURCES_PAGE_CACHE_DAYS` (7: an unchanged organiser page is not sent to the model again within this delay), `GEMINI_THINKING_LEVEL` (`low` on every call without the search tool; `default` = the model's own level).
 - **Environment variables (coverage probe):** `WINDOW_MONTHS` (3), `DT_SHORT_EVENT_MAX_DAYS` (14), `DT_MAX_EXAMPLES` (20), `DT_REPORT_DIR` (`reports`), `DT_CSV_PATH`, `DATA_PATH`.
 - **Cadence:** the workflow triggers daily but the script only scans when `data.json` is older than `MIN_RUN_INTERVAL_HOURS`. A skipped day exits 0, calls nothing and writes nothing; the job summary says so. A failed or skipped day is retried the next morning rather than three days later.
 - **Feedback links (frontend):** in `index.html`, fill the `FEEDBACK` block. `formUrl` = a pre-filled form link where `{id}`, `{title}`, `{url}` mark the values to inject (for Google Forms: *⋮ → Get pre-filled link*, type `{id}`, `{title}`, `{url}` in the three pre-filled fields, *Get link*, paste it as `formUrl`; Google writes the braces as `%7B…%7D` and both forms are handled). Suggested form fields: event ID, title and link (short-answer fields, pre-filled by the link), type of problem (date / place / price / dead link / cancelled / other), details, optional contact. `email` = simplest option, but the address is visible in the page source. Leave both empty to hide the links.
@@ -1660,6 +1660,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-11-01 | **Passer devant fontyblog.fr dans Google : nouvel item 106** | fontyblog est encore classé devant nous sur les requêtes génériques (« que faire à Fontainebleau », position 46-87 fin septembre). C'est le concurrent direct, et le référencement est la source de l'audience que la monétisation suppose |
 | 2026-11-02 | **Paiement des fiches balades en ligne (items 99, 104 bis)** : quatre Stripe Payment Links réels (une fiche chacune, plus le pack) dans `PAY`, sur un **compte Stripe distinct « Fontainebleau Live »** de l'entreprise Helioso. Montant suggéré **4 €** (pack : **8 €**, au lieu de 3 € et 6 €), minimum 2 €, maximum 60 €. Stripe Tax et Managed Payments (3,5 %) désactivés ; rien de collecté hors e-mail ; bouton « Payer », jamais « Faire un don ». Stripe nommé le même jour dans `/mentions-legales/` (services tiers, et section « Fiches balades à prix libre ») | Un compte par marque : la page de paiement et le relevé bancaire disent « Fontainebleau Live », pas « Helioso », et les paiements ne se mêlent pas à ceux des autres applications d'Helioso ; même entreprise, mêmes recettes. 4 € plutôt que 3 € (chef de projet) : le montant suggéré est celui que retiennent la plupart des payeurs, la part des frais Stripe baisse (~8 % au lieu de ~10 %), le pack garde un tiers de remise, et le paiement reste facultatif. `SUGGESTED` doit rester égal au montant prérempli de chaque lien |
 | 2026-11-03 | **Jeu et carnet de la forêt : « Quel arbre ? »** (chef de projet). Feuilles retenues : chêne, hêtre, châtaignier, et **pin sylvestre** en quatrième (proposé par Claude : avec le chêne, c'est l'arbre le plus présent du massif, et la page du frottage le nommait déjà). **Jeu** : une question de plus par partie (11), un arbre tiré au hasard, placée au hasard, la feuille montrée à la place du « ❓ », trois choix (la réponse et deux autres arbres) ; score et partage sur 11 (`{t}`). **Carnet** : page 9 « Quelle est cette feuille ? » (quatre feuilles à relier à leur nom, à colorier, cadre pour dessiner la sienne), réponse ajoutée à droite du labyrinthe sur la page des réponses ; 13 pages. Dessins : **nos propres SVG** (`public/foret/img/feuilles/`, verts dans le jeu, blancs à colorier dans le carnet), crédités sous le jeu et dans `/mentions-legales/`. Textes dans `LEAVES` de `scripts/foret.js`. **Le soir même, la question est retirée du jeu web** (chef de projet) : le titre disait encore « 10 devinettes » et les trois choix portaient le même 🌳 ; dix devinettes, toutes sur des animaux, c'est plus simple. Elle reste dans le carnet | Les PDF publiés sont ceux du chef de projet (Google Docs en français, Word en anglais) : les refaire par `carnet-pdf.js` aurait effacé ses retouches. La page est donc imprimée seule (`carnet-pdf.js --feuilles`, FR et EN, pied de page de sa version) et **insérée** dans ses PDF par un script de session (PyMuPDF, hors dépôt : zéro dépendance), comme le Word anglais. Pas d'image tierce à créditer ni à licencier. Le pin a des aiguilles, pas des feuilles : c'est l'indice donné aux enfants, et la question la plus facile des quatre |
+| 2026-11-03 | **Coût Gemini (item 39) : cache de la lecture des sites, scans Gemini une fois par semaine, modèle moins cher à l'essai pour les appels sans recherche** (chef de projet : « il faut optimiser »). (1) Lecteurs `page` : une page inchangée (empreinte du texte et du prompt sans ses dates) n'est pas renvoyée au modèle pendant 7 jours (`SOURCES_PAGE_CACHE_DAYS`) ; extraction gardée dans `sources-cache.json` (`pages`). (2) Les cinq scans Gemini ne tournent que si les derniers ont 7 jours (`GEMINI_EVERY_DAYS`, `geminiScanAt` dans `data.json`) ; les autres sources gardent le rythme de 3 jours ; **un lancement manuel ne relance plus Gemini**, sauf la case « gemini » du workflow. Seuils de rapport « 🕰️ » et « 🧪 » portés à 15 jours (deux scans Gemini manqués, pas un). `/nos-sources/` : « la recherche web, une fois par semaine ». (3) `GEMINI_LITE_MODEL` pour la mise en forme des scans, les sites et les fiches complétées, **inchangé tant que le workflow « Comparatif des modèles » (`scripts/compare-models.js`, lecture seule) n'a pas montré des dates identiques** ; le juge des doublons et la traduction restent sur Flash. Estimation du rapport : tarif par modèle et par étape, projection mensuelle à deux cadences | Facture Google Cloud du 02/10 au 03/11 : 14,85 € de Gemini API (+382 %), estimation de Google 13,26 €. Détail par SKU (03/11) : sortie 1,50 € pour 453 k tokens, entrée 0,22 € pour 327 k, **recherches gratuites** (« search query gemini 3 free », 120). Le prix des tokens est exactement celui de `PRICING` ; le pic du 31/10 (~1,60 €) était **deux runs** (le scan et un lancement manuel), pas une erreur d'estimation. Scan du 03/11 : 0,54 $ estimés, dont scans Gemini 0,31 $ (57 %) et lecture des sites 0,14 $ (26 %). Estimé ~5,4 $/mois → ~3,6 $ avec (2), moins avec (1) ; avec `gemini-3.1-flash-lite` (0,25 $ / 1,50 $, sans hausse annoncée, contre 0,75 $ / 3,75 $ puis 1,50 $ / 7,50 $ au 1er janvier pour 3.6 Flash) ~1,8 $ (~2,6 $ en 2027). Un scan par semaine **pour tout** a été écarté : les sources gratuites (Ville, office, OpenAgenda, Fnac) font la fraîcheur de `/ce-week-end/`, la page la plus vue |
+| 2026-11-03 | **Copie du flux de la Ville (101) : pas de tâche planifiée** (chef de projet : « je ne veux pas vraiment de robot »). Claude lance `node scripts/snapshot-city-feed.js` et `check-city-feed.js` dans une séance sur le poste du chef de projet, tous les 15 jours (prochaine le 11/11) | Revient sur le « sans geste manuel » du 28/10. La copie sert 35 jours : un oubli d'une séance ne coupe rien ; celle du 28/10 expire vers le 02/12 |
 | 2026-11-02 | **Ordre du 02/11 : contenu et liens entrants avant toute vente** (chef de projet). Idée A retenue : « Carnet d'explorateur de la forêt » (PDF de 8 à 12 pages, prix libre) et mini-jeu en ligne `/foret/` (item 107). Campagne de contacts : petites mairies pour le widget, hébergeurs, public anglophone (108). Calendrier 2027 (109) et jeu de piste (110) gardés, non planifiés. Seuil de la démarche commerciale : **5 000 visites/mois stables sur 3 mois** | Octobre est à 3 589 visites/mois (97) : l'item 105 disait le seuil franchi, à tort (corrigé). Le benchmark du 02/11 ne trouve aucun livret enfant sur la forêt de Fontainebleau ; un jeu gratuit sur la page attire les liens (écoles, parents) et mène au carnet. Le widget se propage plus vite par les petites communes, dont l'agenda en ligne est souvent vide |
 
 ---
@@ -1709,8 +1711,8 @@ organisateurs.
 | 0 | **107c. Une icône par animal dans le jeu `/foret/`** — priorité haute (02/11, chef de projet : « on est déjà live ») | Le cerf et le chevreuil partagent le même emoji ; le pic noir, le geai et le lucane sont approximatifs | S |
 | 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en ligne le 02/11 ; reste le lien Stripe (107) et les itérations du chef de projet (107d) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
 | 2 | **108. Campagne de contacts** (petites mairies + widget, hébergeurs, public anglophone) — listes par Claude, envois par le chef de projet | Les liens entrants sont l'écart principal avec fontyblog (106) ; le widget doit se propager | M |
-| 3 | **72c. Relance de la mairie de Fontainebleau — mardi 03/11** (chef de projet, brouillon prêt en section C) | Date fixée par le chef de projet | XS |
-| 4 | **39 + 102. Coût Google Cloud et économies** — avant le 15/12 | 13,19 € en octobre ; choix du modèle avant la facture de décembre | XS |
+| 3 | **72c. Mairie de Fontainebleau — courriel de relance envoyé le 03/11 ; appel téléphonique le mercredi 11/11** (chef de projet) | Seule l'exception rend inutile la copie du flux tous les 15 jours (101) | XS |
+| 4 | **39. Coûts — fait le 03/11 : cache des sites, scans Gemini une fois par semaine. Reste : lancer le workflow « Comparatif des modèles » et décider du modèle des appels sans recherche** — avant le 15/12 | 14,85 € de Gemini du 02/10 au 03/11 ; 102 clos le 03/11 | XS |
 | 5 | **106. Passer devant fontyblog.fr** — étape 1 (mesure Search Console), puis maillage vers `/foret/` et `/balades/` | L'audience conditionne tout le reste ; 107 et 108 l'alimentent | M |
 | 6 | **100. Rapport du 27/10** — point 7 (décision), points 5-6 au prochain scan | Suivi | XS |
 | 7 | **97 bis. Relevé du trafic fin novembre** (GoatCounter + Search Console) | Premier des trois mois du seuil | XS |
@@ -1718,10 +1720,13 @@ organisateurs.
 | — | **109. Calendrier 2027 illustré** — gardé, non planifié ; s'il est fait, en vente avant mi-décembre | Idée B du 02/11 | M |
 | — | **110. Jeu de piste en ville pour les anniversaires** — plus tard | Idée C du 02/11 | M |
 
-Restes du chef de projet, hors ordre : courriel au Domaine de Courances (92) ; installer la tâche
-planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'Helioso (104 bis).
+Restes du chef de projet, hors ordre : déclarer les paiements des fiches comme recettes d'Helioso
+(104 bis) — plus tard, aucun paiement reçu au 03/11. La copie du flux de la Ville (101) se fait en
+séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifiée.
 
-- [ ] **92. « Les Feux de Courances – Festival Médiéval Immersif » (`EVT_426d83189b`) — signalé
+- [x] **92. Clos le 03/11** : le chef de projet a écrit au Domaine de Courances, qui a répondu et
+  remercié. Historique ci-dessous.
+- **92. « Les Feux de Courances – Festival Médiéval Immersif » (`EVT_426d83189b`) — signalé
   le 27/10 par le formulaire** : « Ce site est frauduleux, aucun événement festif médiéval n'est
   organisé au Domaine de Courances. Le Domaine décline toute responsabilité et vous invite à
   supprimer ce faux événement. » **Traité le 28/10 (§7)** : fiche Gemini seule, publiée du 12 au
@@ -1805,7 +1810,7 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
   sur 3 semaines, compter ceux qui nous manquent, et pour chacun dire quelle source aurait dû le
   trouver. Piste probable : beaucoup viennent de l'agenda de la Ville, que notre robot ne lit
   pas (HTTP 418, 72c). Ne pas lire fontyblog lui-même comme source (contenu d'un tiers, rédigé).
-- [ ] **101. Fait le 28/10 (§7), tous les 15 jours (chef de projet), sans geste manuel.**
+- [ ] **101. Fait le 28/10 (§7). Depuis le 03/11, sans tâche planifiée : Claude lance la copie en séance sur le poste du chef de projet tous les 15 jours, avec le contrôle de l'item 89 (prochaine le 11/11 ; `node scripts/snapshot-city-feed.js`, qui copie si la dernière a 14 jours, `--force` sinon).** Texte du 28/10 :
   `scripts/snapshot-city-feed.js` (robot local) : tâche planifiée Windows quotidienne, travail
   seulement si la copie a 14 jours ou plus (un jour PC éteint se rattrape) ; clone réservé, commit
   « 🤖 Agenda de la Ville : copie du … », push (rebase et nouvel essai si le bot GitHub a poussé
@@ -1879,7 +1884,12 @@ planifiée du robot (101) ; déclarer les paiements des fiches comme recettes d'
   mesure qu'exige la monétisation sera ajoutée **avec un bandeau de cookies** (CNIL), ce qui
   revient sur la décision du 21/09 « aucun cookie » : mettre à jour `/mentions-legales/` le jour
   même. D'ici là, GoatCounter (sans cookie) et les rapports des partenaires suffisent.
-- [ ] **102. Revue des économies de l'item 39 — au premier scan après le 28/10, puis au suivant
+- [x] **102. Clos le 03/11** (rapports du 31/10 et du 03/11) : pas de recul visible avec la réflexion
+  basse. Scan du 03/11 : 0,54 $ estimés (0,93 $ le 28/10) ; 463 fiches ; juge : 31 fusions, les 20
+  relues sont justes (Ganne garde ses deux dates, 14-15/11) ; sites : 383 fiches sur 17 sites lus,
+  aucun nouveau tombé à 0 hors saison finie ; villages sauté comme prévu (lancé le 31/10, le champ
+  n'existant pas le 28/10). Les économies suivantes sont à l'item 39 (§7 du 03/11). Texte d'origine —
+  **102. Revue des économies de l'item 39 — au premier scan après le 28/10, puis au suivant
   (chef de projet inquiet pour le juge des doublons et la mise en forme ; la traduction, non).**
   Comparer au rapport du 28/10 (dernier scan avec la réflexion par défaut) :
   - **Coût** : ligne « 💶 », par étape. Le scan villages doit être « ⏭️ » au premier scan et
@@ -2526,7 +2536,14 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
     basse (`thinkingLevel: low`) sur tous les appels sans recherche. **Au prochain scan** : coût
     de la ligne 💶 et qualité (fiches des sites, verdicts du juge, traductions) ; un recul se
     défait par `GEMINI_THINKING_LEVEL=default` dans le workflow.
-  - Reste : la décision du modèle avant le 15/12 (point 2 ci-dessus).
+  - [x] **Fait le 03/11 (§7)** : facture relue par SKU (recherches gratuites, prix des tokens exacts ;
+    le pic du 31/10 = deux runs), cache de la lecture des sites, scans Gemini une fois par semaine,
+    lancement manuel sans Gemini par défaut, estimation par modèle.
+  - Reste : la décision du modèle **des appels sans recherche** avant le 15/12 — lancer le workflow
+    « Comparatif des modèles » (Actions, un clic, ~0,25 $), lire « dates différentes » ; si B ne se
+    trompe sur aucune date, `GEMINI_LITE_MODEL: gemini-3.1-flash-lite` dans `daily-check.yml`. Les
+    questions cherchées restent sur 3.6 Flash (3.8 Flash : même prix ; un changement se teste avec
+    le diagnostic de la recherche). Au prochain scan : ligne « relues depuis le cache » des sites.
 - [ ] **72. Comparatif des sources légitimes** (§3.Z) — **69,1 %** le 28/09 (181 + 5 probables sur
   269), il en manque 57 pour 90 %. Manqués : fontainebleau.fr 15 (HTTP 418, voir 72c),
   fontainebleau-tourisme.com 14, sites en JavaScript (AAFF, Vaux, Melun) 8, longue traîne ~20.
@@ -2615,8 +2632,8 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   profil personnel ont pris. Pas depuis une page professionnelle de conseil.
 - [ ] **72c / 74 (5). Liens entrants et partenariats** — mairie de Fontainebleau contactée le 29/09
   (exception pare-feu pour son flux RSS + widget) : surveiller la ligne `ville-fontainebleau`
-  (❌ 418 → ✅ ; toujours 418 au scan du 11/10). **Relance le mardi 03/11, après les vacances de la
-  Toussaint** (choix du chef de projet). Brouillon :
+  (❌ 418 → ✅ ; toujours 418 au scan du 11/10). **Relance envoyée le 03/11** (texte ci-dessous mis à jour le jour même : 4 fiches liées à l'accueil
+  au lieu de 14, et la copie tous les 15 jours mentionnée) ; **appel téléphonique le 11/11**. Brouillon :
   > Objet : Agenda de Fontainebleau Live — accès au flux RSS de l'agenda municipal
   >
   > Bonjour,

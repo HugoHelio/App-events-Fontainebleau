@@ -35,7 +35,7 @@ const envInt = (name, dflt) => {
 
 const CONFIG = {
   enabled: process.env.TRANSLATE !== '0',
-  model: process.env.TRANSLATE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
+  model: process.env.TRANSLATE_MODEL || process.env.GEMINI_LITE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   cachePath: path.resolve(process.env.TRANSLATE_CACHE_PATH || 'translate-cache.json'),
   batchSize: envInt('TRANSLATE_BATCH_SIZE', 20),
   timeoutMs: envInt('TRANSLATE_TIMEOUT_MS', 120_000),
