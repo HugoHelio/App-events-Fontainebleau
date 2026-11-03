@@ -37,7 +37,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadPlaces, placesOpen } = require('./affiliates');
 const { GUIDES, PAY, SUGGESTED, OSM } = require('./balades');
-const { ANIMALS, LEAVES, RULES, CARNET } = require('./foret');
+const { ANIMALS, RULES, CARNET } = require('./foret');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -1642,7 +1642,7 @@ ${bi('p', r.total.join(' · '), re.total && enNum([re.total, ...r.total.slice(1)
 /** The children's card: the forest game, with the animals that have an icon. */
 function kidsPromo() {
   const icons = ANIMALS.filter((a) => a.icon).slice(0, 4);
-  return `<a class="kids" href="/${FORET_DIR}/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true">${icons.map((a) => `<img src="${esc(a.icon)}" width="40" height="40" alt="" loading="lazy">`).join('')}</span><span class="kids-txt">${bi('span', 'Pour les enfants · 6-11 ans', 'For the children · ages 6-11', ' class="kids-kicker"')}${bi('b', 'Le jeu des animaux de la forêt', 'The forest animals game')}${bi('small', 'Animaux et feuilles à deviner, et un carnet à imprimer', 'Animals and leaves to guess, and a booklet to print')}</span>${bi('span', 'Jouer →', 'Play →', ' class="kids-go"')}</a>`;
+  return `<a class="kids" href="/${FORET_DIR}/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true">${icons.map((a) => `<img src="${esc(a.icon)}" width="40" height="40" alt="" loading="lazy">`).join('')}</span><span class="kids-txt">${bi('span', 'Pour les enfants · 6-11 ans', 'For the children · ages 6-11', ' class="kids-kicker"')}${bi('b', 'Le jeu des animaux de la forêt', 'The forest animals game')}${bi('small', '10 devinettes sur le téléphone, et un carnet à imprimer', '10 riddles on your phone, and a booklet to print')}</span>${bi('span', 'Jouer →', 'Play →', ' class="kids-go"')}</a>`;
 }
 
 /** The promotion card: every guide, or the ones given (a commune's page). */
@@ -1783,8 +1783,6 @@ const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em
 .q-choices button .e{font-size:1.6rem;line-height:1}
 .q-choices button .e img{display:block;width:34px;height:34px}
 .q-big img{display:block;width:72px;height:72px;margin:0 auto}
-.q-big img.leaf{width:auto;height:120px}
-.animals h3 img.leaf{width:auto;height:28px}
 .animals h3 img{width:28px;height:28px;vertical-align:-6px;margin-right:4px}
 .q-choices button.is-right{border-color:#3d8b40;background:#e6f2e3}
 .q-choices button.is-wrong{border-color:#c0492f;background:#f9e3df}
@@ -1825,24 +1823,24 @@ html.en .fr-only,html:not(.en) .en-only{display:none}`;
 // The game's own strings (the static page uses data-en).
 const FORET_STRINGS = {
   fr: {
-    intro: '10 devinettes pour reconnaître les animaux de la forêt, et une feuille à retrouver. Prêt, petit explorateur ?',
-    start: 'Jouer', q: 'Question', score: 'Score', who: 'Qui suis-je ?', tree: 'Quel arbre ?', right: 'Bravo !', wrong: 'Raté ! C’était',
+    intro: '10 devinettes pour reconnaître les animaux de la forêt. Prêt, petit explorateur ?',
+    start: 'Jouer', q: 'Question', score: 'Score', who: 'Qui suis-je ?', right: 'Bravo !', wrong: 'Raté ! C’était',
     know: 'Le savais-tu ?', next: 'Question suivante', last: 'Voir mon score', yours: 'Ton score',
     best: 'Expert de la forêt ! 🏆', good: 'Bel explorateur ! 🌳', try: 'Apprenti explorateur : rejoue pour tout trouver ! 🌱',
     share: 'Partager mon score', copied: 'Lien copié : colle-le dans un message !', again: 'Rejouer',
-    shareText: 'J’ai eu {n} bonnes réponses sur {t} au jeu de la forêt de Fontainebleau. Et toi ?',
+    shareText: 'J’ai reconnu {n} animaux sur 10 de la forêt de Fontainebleau. Et toi ?',
     carnet: '📥 Le carnet d’explorateur à imprimer : coloriages, traces, bingo →',
-    answer: 'Réponse', wait: 'Choisis une réponse ci-dessus : la réponse et une anecdote s’afficheront ici.',
+    answer: 'Réponse', wait: 'Choisis un animal ci-dessus : la réponse et une anecdote s’afficheront ici.',
   },
   en: {
-    intro: '10 riddles to recognise the animals of the forest, and a leaf to identify. Ready, little explorer?',
-    start: 'Play', q: 'Question', score: 'Score', who: 'Who am I?', tree: 'Which tree?', right: 'Well done!', wrong: 'Not quite! It was',
+    intro: '10 riddles to recognise the animals of the forest. Ready, little explorer?',
+    start: 'Play', q: 'Question', score: 'Score', who: 'Who am I?', right: 'Well done!', wrong: 'Not quite! It was',
     know: 'Did you know?', next: 'Next question', last: 'See my score', yours: 'Your score',
     best: 'Forest expert! 🏆', good: 'Great explorer! 🌳', try: 'Apprentice explorer: play again to find them all! 🌱',
     share: 'Share my score', copied: 'Link copied: paste it into a message!', again: 'Play again',
-    shareText: 'I got {n} out of {t} in the Forest of Fontainebleau game. Can you beat me?',
+    shareText: 'I recognised {n} out of 10 animals of the Forest of Fontainebleau. Can you beat me?',
     carnet: '📥 The printable explorer’s booklet: colouring, tracks, bingo →',
-    answer: 'Answer', wait: 'Pick an answer above: the answer and a fun fact will show here.',
+    answer: 'Answer', wait: 'Pick an animal above: the answer and a fun fact will show here.',
   },
 };
 
@@ -1851,13 +1849,10 @@ const FORET_SCRIPT = `(function () {
   var data = JSON.parse(document.getElementById('quiz-data').textContent);
   var root = document.documentElement;
   var byKey = {};
-  data.animals.concat(data.trees).forEach(function (a) { byKey[a.key] = a; });
+  data.animals.forEach(function (a) { byKey[a.key] = a; });
   var lang = function () { return root.className === 'en' ? 'en' : 'fr'; };
   var s = function (k) { return data.t[lang()][k]; };
-  var f = function (a, k) {
-    if (k === 'riddle' && a.leaf) return lang() === 'en' ? data.leafRiddleEn : data.leafRiddle;
-    return lang() === 'en' ? a.en[k] : a[k];
-  };
+  var f = function (a, k) { return lang() === 'en' ? a.en[k] : a[k]; };
   var order = [], at = 0, score = 0, picked = null, choices = [], state = 'start', note = '';
 
   function shuffle(x) {
@@ -1881,11 +1876,6 @@ const FORET_SCRIPT = `(function () {
     var im = el('img', null, null, parent);
     im.src = a.icon; im.alt = ''; im.width = 72; im.height = 72;
   }
-  // The leaf of the « Quel arbre ? » question, shown before the answer: it is the question.
-  function leaf(a, parent) {
-    var im = el('img', 'leaf', null, parent);
-    im.src = a.leaf; im.alt = ''; im.width = 75; im.height = 120;
-  }
   function button(cls, text, parent, fn) {
     var b = el('button', cls, text, parent);
     b.type = 'button';
@@ -1894,21 +1884,17 @@ const FORET_SCRIPT = `(function () {
   }
   function begin() {
     order = shuffle(data.animals.map(function (a) { return a.key; }));
-    // One leaf question, a tree drawn at random, at a random place.
-    order.splice(Math.floor(Math.random() * (order.length + 1)), 0, shuffle(data.trees)[0].key);
     at = 0; score = 0; note = '';
     ask();
   }
   function ask() {
     picked = null;
-    var a = byKey[order[at]];
-    var others = shuffle(data.trees.filter(function (t) { return t.key !== a.key; })).slice(0, 2).map(function (t) { return t.key; });
-    choices = shuffle(a.leaf ? [a.key].concat(others) : a.choices);
+    choices = shuffle(byKey[order[at]].choices);
     state = 'question';
     render(true);
   }
   function share() {
-    var text = s('shareText').replace('{n}', score).replace('{t}', order.length);
+    var text = s('shareText').replace('{n}', score);
     var url = location.origin + location.pathname;
     count('forest-share');
     if (navigator.share) {
@@ -1930,7 +1916,7 @@ const FORET_SCRIPT = `(function () {
       var end = el('div', 'q-end', null, box);
       el('p', 'q-who', s('yours'), end);
       var total = el('p', 'q-score', score + ' / ' + order.length, end);
-      el('p', 'q-msg', score >= order.length - 1 ? s('best') : score >= 6 ? s('good') : s('try'), end);
+      el('p', 'q-msg', score >= 9 ? s('best') : score >= 6 ? s('good') : s('try'), end);
       if (navigator.share || navigator.clipboard) button('q-go', s('share'), end, share);
       button('q-go alt', s('again'), end, begin);
       el('p', 'q-note', note, end).setAttribute('role', 'status');
@@ -1945,8 +1931,8 @@ const FORET_SCRIPT = `(function () {
     var bar = el('div', 'q-bar', null, box);
     el('i', null, null, bar).style.width = ((at + (picked ? 1 : 0)) / order.length * 100) + '%';
     var big = el('p', 'q-big', null, box);
-    if (a.leaf) leaf(a, big); else if (picked) picture(a, big); else big.textContent = '❓';
-    var who = el('p', 'q-who', s(a.leaf ? 'tree' : 'who'), box);
+    if (picked) picture(a, big); else big.textContent = '❓';
+    var who = el('p', 'q-who', s('who'), box);
     el('p', 'q-riddle', f(a, 'riddle'), box);
     var list = el('div', 'q-choices', null, box);
     choices.forEach(function (k) {
@@ -2017,32 +2003,28 @@ ${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.carnet, 'Ce carnet est g
 function foretPage() {
   const data = {
     animals: ANIMALS.map(({ key, emoji, icon, name, riddle, choices, fact, en: e }) => ({ key, emoji, icon, name, riddle, choices, fact, en: { name: e.name, riddle: e.riddle, fact: e.fact } })),
-    trees: LEAVES.trees.map(({ key, emoji, leaf, name, fact, en: e }) => ({ key, emoji, leaf, name, fact, en: { name: e.name, fact: e.fact } })),
-    leafRiddle: LEAVES.riddle,
-    leafRiddleEn: LEAVES.riddleEn,
     t: FORET_STRINGS,
   };
   const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')} › ${bi('a', 'Balades', 'Guides', ` href="/${BALADES_DIR}/"`)}</nav>
 ${bi('p', 'Jeu gratuit · 6-11 ans', 'Free game · ages 6-11', ' class="kicker"')}
 ${bi('h1', 'Les animaux de la forêt de Fontainebleau : le jeu des petits explorateurs', 'The animals of the Forest of Fontainebleau: a game for little explorers')}
-${bi('p', 'Cerf, sanglier, écureuil, chouette… Dix devinettes pour apprendre à reconnaître les animaux qui vivent dans la forêt, avant ou après une balade, et une feuille d’arbre à retrouver. Une anecdote après chaque réponse.', 'Red deer, wild boar, squirrel, owl… Ten riddles to learn the animals that live in the forest, before or after a walk, and a tree leaf to identify. A fun fact after every answer.', ' class="lead"')}
+${bi('p', 'Cerf, sanglier, écureuil, chouette… Dix devinettes pour apprendre à reconnaître les animaux qui vivent dans la forêt, avant ou après une balade. Une anecdote après chaque réponse.', 'Red deer, wild boar, squirrel, owl… Ten riddles to learn the animals that live in the forest, before or after a walk. A fun fact after every answer.', ' class="lead"')}
 <section class="quiz" id="quiz">
-<noscript>${bi('p', 'Le jeu a besoin de JavaScript. Les dix animaux, les arbres et leurs anecdotes sont plus bas.', 'The game needs JavaScript. The ten animals, the trees and their fun facts are below.')}</noscript>
+<noscript>${bi('p', 'Le jeu a besoin de JavaScript. Les dix animaux et leurs anecdotes sont plus bas.', 'The game needs JavaScript. The ten animals and their fun facts are below.')}</noscript>
 </section>
 <script type="application/json" id="quiz-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
 ${carnetBox()}
 ${bi('h2', 'En forêt, les bons gestes', 'Good manners in the forest')}
 <ul>${RULES.map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
 <details class="answers">
-${bi('summary', 'Les 10 animaux et les 4 arbres du jeu (attention, ce sont les réponses !)', 'The 10 animals and 4 trees of the game (careful, these are the answers!)')}
+${bi('summary', 'Les 10 animaux du jeu (attention, ce sont les réponses !)', 'The 10 animals of the game (careful, these are the answers!)')}
 <ul class="animals">${ANIMALS.map((a) => `<li>${a.icon ? `<h3${en(`<img src="${esc(a.icon)}" alt="" width="28" height="28">${esc(a.en.name)}`)}><img src="${esc(a.icon)}" alt="" width="28" height="28" loading="lazy">${esc(a.name)}</h3>` : bi('h3', `${a.emoji} ${a.name}`, `${a.emoji} ${a.en.name}`)}${bi('p', a.riddle, a.en.riddle)}${bi('p', `Le savais-tu ? ${a.fact}`, `Did you know? ${a.en.fact}`)}</li>`).join('')}</ul>
-<ul class="animals">${LEAVES.trees.map((t) => `<li><h3${en(`<img class="leaf" src="${esc(t.leaf)}" alt="" width="18" height="28">${esc(t.en.name)}`)}><img class="leaf" src="${esc(t.leaf)}" alt="" width="18" height="28" loading="lazy">${esc(t.name)}</h3>${bi('p', `Le savais-tu ? ${t.fact}`, `Did you know? ${t.en.fact}`)}</li>`).join('')}</ul>
 </details>
 ${bi('h2', 'Et maintenant, en vrai ?', 'Now, for real?')}
 ${bi('p', 'Les balades d’un Bellifontain, avec des mini-jeux pour les enfants à chaque étape, et les sorties nature du moment :', 'A local’s favourite outings, with mini-games for the children at every step, and what’s on in nature right now:')}
 <div class="actions">${bi('a', 'La forêt à vélo', 'The forest by bike', ` class="btn" href="/${BALADES_DIR}/fontainebleau-a-velo/"`)}${bi('a', 'Toutes les balades', 'All the guides', ` class="btn alt" href="/${BALADES_DIR}/"`)}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
 <p class="note"><a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Spotted a mistake? Tell us')}>Une erreur dans le jeu ? Signalez-la</a>.</p>
-<p class="note"${en(`Icons: ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.en.name.replace(/^The /, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> by ${esc(a.iconBy[0])} (Flaticon)` : `${n}: ${esc(a.iconBy[0])}${a.iconBy[3] ? `, ${esc(a.iconBy[3])}` : ''}`; }).join(', ')}; the other animals are emojis. Leaves: our own drawings. Booklet engravings: J. E. Ridinger, Rijksmuseum (CC0).`)}>Icônes : ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.name.replace(/^(Le |La |L’)/, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> par ${esc(a.iconBy[0])} (Flaticon)` : `${n} : ${esc(a.iconBy[0])}${a.iconBy[2] ? `, ${esc(a.iconBy[2])}` : ''}`; }).join(', ')} ; les autres animaux sont des emojis. Feuilles : nos dessins. Gravures du carnet : J. E. Ridinger, Rijksmuseum (CC0).</p>
+<p class="note"${en(`Icons: ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.en.name.replace(/^The /, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> by ${esc(a.iconBy[0])} (Flaticon)` : `${n}: ${esc(a.iconBy[0])}${a.iconBy[3] ? `, ${esc(a.iconBy[3])}` : ''}`; }).join(', ')}; the other animals are emojis. Booklet engravings: J. E. Ridinger, Rijksmuseum (CC0).`)}>Icônes : ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.name.replace(/^(Le |La |L’)/, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> par ${esc(a.iconBy[0])} (Flaticon)` : `${n} : ${esc(a.iconBy[0])}${a.iconBy[2] ? `, ${esc(a.iconBy[2])}` : ''}`; }).join(', ')} ; les autres animaux sont des emojis. Gravures du carnet : J. E. Ridinger, Rijksmuseum (CC0).</p>
 <script>
 ${FORET_SCRIPT}
 </script>`;

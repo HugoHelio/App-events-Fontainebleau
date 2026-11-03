@@ -166,15 +166,12 @@ const ANIMALS = [
   },
 ];
 
-// « Quel arbre ? » (03/11, project lead): one leaf question in each game, at a random place, the
-// tree drawn at random; three choices (the answer and two other trees). Also a page of the
-// booklet (« Quelle est cette feuille ? »), where the four leaves are to be linked to their
-// names, listed in `names` order. Drawings: our own SVGs in public/foret/img/feuilles/ (green
-// for the game; the booklet prints the same outlines, white, to colour). Same review rule as
-// the animals: nothing published before the project lead has checked the facts.
+// « Quelle est cette feuille ? » (03/11, project lead): a page of the booklet only, where the four
+// leaves are to be linked to their names, listed in `names` order. Not in the web game: it was
+// one question for a while on 03/11, then removed (ten animal riddles are simpler). Drawings: our
+// own SVGs in public/foret/img/feuilles/, printed white, to colour. The facts (checked by the
+// project lead) are not shown anywhere for now.
 const LEAVES = {
-  riddle: 'Regarde bien sa forme et ses bords : de quel arbre vient cette feuille ?',
-  riddleEn: 'Look closely at its shape and its edges: which tree does this leaf come from?',
   // The booklet page: leaves in this order, names in the other.
   order: ['chataignier', 'chene', 'pin', 'hetre'],
   names: ['chene', 'hetre', 'chataignier', 'pin'],
@@ -215,7 +212,7 @@ const LEAVES = {
         fact: 'The Scots pine has needles instead of leaves, always in pairs, and keeps them in winter. Its fruit is the pine cone. You can spot it from afar: low down, its bark is grey and cracked; higher up the trunk and on the branches, it turns orange.',
       },
     },
-  ].map((t) => ({ ...t, emoji: '🌳', leaf: `/public/foret/img/feuilles/${t.key}.svg` })),
+  ].map((t) => ({ ...t, leaf: `/public/foret/img/feuilles/${t.key}.svg` })),
 };
 
 // The rules shown under the game: plain good manners in a forest, nothing site-specific.
