@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_2219b8be7b@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Conférence " Moïse\, figure du héros : 2000 ans d'histoire de l'
@@ -31,8 +31,44 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_e07e672e8f@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Grande bourse aux jouets
+LOCATION:Villemer
+DESCRIPTION:Horaires : 9h – 18h\n\nOrganisateur : https://www.ccmsl.fr/ac
+ tu-et-agendas/agenda.html#2026-11-14-grandebourseauxjouets\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/grande-bourse-aux-jouets-villemer-e07e
+ 672e8f/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/grande-bourse-aux-jouets-villem
+ er-e07e672e8f/
+CATEGORIES:Culture & Ateliers
+GEO:48.30364;2.82292
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9099f3e746@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Soirée tartiflette
+LOCATION:Villemer
+DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-11-20-soireetartiflette\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/soiree-tartiflette-villemer-9099f3e746/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/soiree-tartiflette-villemer-909
+ 9f3e746/
+CATEGORIES:Culture & Ateliers
+GEO:48.30364;2.82292
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_761f3d6577@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Atelier bien-être duo

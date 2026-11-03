@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4a5ab1d458@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
 SUMMARY:Atelier Bonhomme de neige
@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b02568c7f0@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Atelier Fabrication de Jeu
@@ -51,8 +51,25 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_001e7aec79@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261108
+SUMMARY:Laissez-moi tranquille
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nSpectacle au Thalie Théâtre.\n\nOrganisat
+ eur : https://www.thalietheatre.com/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/laissez-moi-tranquille-moret-loing-et-orvanne-001e7aec79/\n\
+ nInformations collectées automatiquement : vérifiez-les auprès de l’o
+ rganisateur.
+URL:https://fontainebleaulive.fr/evenements/laissez-moi-tranquille-moret-lo
+ ing-et-orvanne-001e7aec79/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_74f0a437ec@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Théâtre " Cendrillon "
@@ -70,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ad31b20d9e@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Ce qui reste des amours de nos mères
@@ -89,8 +106,25 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_cb305ad4d4@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Martha Fields en concert
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nTarif : 18 € – 23 €\n\nConcert de Mar
+ tha Fields au Thalie Théâtre.\n\nOrganisateur : https://www.thalietheatr
+ e.com/\n\nFiche : https://fontainebleaulive.fr/evenements/martha-fields-en
+ -concert-moret-loing-et-orvanne-cb305ad4d4/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/martha-fields-en-concert-moret-
+ loing-et-orvanne-cb305ad4d4/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_986fce51ba@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Association Tricot
@@ -108,8 +142,25 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_74a9dbd6c1@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Marc Tourneboeuf - L'Impatient
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nSeul en scène d'humour avec Marc Tourneboe
+ uf.\n\nOrganisateur : https://www.thalietheatre.com/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/marc-tourneboeuf-l-impatient-moret-loing-et-
+ orvanne-74a9dbd6c1/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marc-tourneboeuf-l-impatient-mo
+ ret-loing-et-orvanne-74a9dbd6c1/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_ccb96ec604@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Puces couture
@@ -127,7 +178,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d57e1b24a8@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:P'tit bonhomme de chemin
@@ -146,7 +197,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d8e88b46db@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Soirée Beaujolais
@@ -164,7 +215,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_58ecda5bfa@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Vide-atelier d'artistes
@@ -182,7 +233,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3fca71a44@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261129
 SUMMARY:Exposition Recyrculaire
@@ -202,7 +253,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5e08c56d66@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:En attendant l'ortho\, je fais quoi ?
@@ -222,7 +273,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_01417d9f53@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Table ronde "L'Envers des fripes"
@@ -238,6 +289,23 @@ URL:https://fontainebleaulive.fr/evenements/table-ronde-l-envers-des-fripes
  -moret-loing-et-orvanne-01417d9f53/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6f0027c3a9@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261129
+SUMMARY:Vacances obligatoires
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nComédie théâtrale au Thalie Théâtre.\n
+ \nOrganisateur : https://www.thalietheatre.com/\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/vacances-obligatoires-moret-loing-et-orvanne-6f00
+ 27c3a9/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vacances-obligatoires-moret-loi
+ ng-et-orvanne-6f0027c3a9/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -261,7 +329,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89d02118e2@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Bourse aux jouets
@@ -278,8 +346,59 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_537e2ea697@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+SUMMARY:Sandra Colombo - Que faire des cons ?
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nSpectacle d'humour de Sandra Colombo.\n\nOr
+ ganisateur : https://www.thalietheatre.com/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/sandra-colombo-que-faire-des-cons-moret-loing-et-orva
+ nne-537e2ea697/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sandra-colombo-que-faire-des-co
+ ns-moret-loing-et-orvanne-537e2ea697/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3191ccfec8@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261206
+SUMMARY:Tu t'laisses aller !
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nSpectacle au Thalie Théâtre.\n\nOrganisat
+ eur : https://www.thalietheatre.com/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/tu-t-laisses-aller-moret-loing-et-orvanne-3191ccfec8/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/tu-t-laisses-aller-moret-loing-
+ et-orvanne-3191ccfec8/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_30be07276a@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
+ #2026-12-05-marchedenoel\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/marche-de-noel-moret-loing-et-orvanne-30be07276a/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-o
+ rvanne-30be07276a/
+CATEGORIES:Culture & Ateliers
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3d7dd3ebee@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Noël des enfants
@@ -293,6 +412,23 @@ URL:https://fontainebleaulive.fr/evenements/noel-des-enfants-moret-loing-et
  -orvanne-3d7dd3ebee/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_abd3909726@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261220
+SUMMARY:Les Vice Versa - Imagine
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 21h00\n\nSpectacle d'humour et visuel par Les Vice V
+ ersa.\n\nOrganisateur : https://www.thalietheatre.com/\n\nFiche : https://
+ fontainebleaulive.fr/evenements/les-vice-versa-imagine-moret-loing-et-orva
+ nne-abd3909726/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-vice-versa-imagine-moret-lo
+ ing-et-orvanne-abd3909726/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -312,6 +448,23 @@ URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
  et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
 CATEGORIES:Culture & Ateliers
 GEO:48.37226;2.81721
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_9010a6c514@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Paisible Retraite (Spectacle de la Saint-Sylvestre)
+LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : À partir de 17h30\n\nSpectacle spécial réveillon 
+ de la Saint-Sylvestre.\n\nOrganisateur : https://www.thalietheatre.com/\n\
+ nFiche : https://fontainebleaulive.fr/evenements/paisible-retraite-spectac
+ le-de-la-saint-sylvestre-moret-loing-et-orvanne-9010a6c514/\n\nInformation
+ s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/paisible-retraite-spectacle-de-
+ la-saint-sylvestre-moret-loing-et-orvanne-9010a6c514/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

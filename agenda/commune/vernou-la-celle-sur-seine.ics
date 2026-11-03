@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_84e0a9c617@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Soirée orientale
@@ -30,8 +30,25 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_61ac4f3429@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Vide ta chambre
+LOCATION:Vernou-la-Celle-sur-Seine
+DESCRIPTION:Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
+ #2026-11-08-videtachambre\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/vide-ta-chambre-vernou-la-celle-sur-seine-61ac4f3429/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vide-ta-chambre-vernou-la-celle
+ -sur-seine-61ac4f3429/
+CATEGORIES:Culture & Ateliers
+GEO:48.39184;2.84915
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_651d8d6564@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Concert " les agités du bocage"
@@ -51,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf985349ce@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Espace game : Maison de l'horreur
@@ -70,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9aafb3ca79@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Table Mash-Up
@@ -88,8 +105,26 @@ GEO:48.39184;2.84915
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_9b09daa3e1@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:Soirée beaujolais nouveau
+LOCATION:Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 19h30 – 22h30\n\nOrganisateur : https://www.ccmsl.
+ fr/actu-et-agendas/agenda.html#2026-11-19-soireebeaujolaisnouveau\n\nFiche
+  : https://fontainebleaulive.fr/evenements/soiree-beaujolais-nouveau-verno
+ u-la-celle-sur-seine-9b09daa3e1/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-beaujolais-nouveau-verno
+ u-la-celle-sur-seine-9b09daa3e1/
+CATEGORIES:Culture & Ateliers
+GEO:48.39184;2.84915
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4cba1cd0d4@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée annuelle de l'Avent

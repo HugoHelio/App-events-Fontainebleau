@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Le Vaudoué · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_5e7de7b59c@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Lancement de l'ABC du Vaudoué (Animation et sensibilisation à la 
+ faune/mammalogie locale)
+LOCATION:Mairie du Vaudoué\, Le Vaudoué
+DESCRIPTION:Horaires : 17h00 – 19h00\n\nTarif : Gratuit\n\nLancement de l
+ 'Atlas de la Biodiversité Communale du Vaudoué avec animations sur la fa
+ une locale.\n\nOrganisateur : https://anvl.fr/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/lancement-de-l-abc-du-vaudoue-animation-et-sensibi
+ lisation-a-le-vaudoue-5e7de7b59c/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/lancement-de-l-abc-du-vaudoue-a
+ nimation-et-sensibilisation-a-le-vaudoue-5e7de7b59c/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

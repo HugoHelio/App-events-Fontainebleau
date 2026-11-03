@@ -66,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8ddede138b@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Visite d'entreprise
@@ -85,7 +85,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_567e428004@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
@@ -144,7 +144,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d4de9594c9@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Conférence de Sébastien Ronsseray
@@ -185,7 +185,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d149ee44b@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite flash de l'exposition Ça en jette !
@@ -206,20 +206,40 @@ GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_72c2d4de6f@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Spectacle jeunesse : La Princesse au petit pois
+LOCATION:Espace culturel du château\, Nemours
+DESCRIPTION:Horaires : 16h00\n\nTarif : 5 € à 10 €\n\nSpectacle jeunes
+ se adapté du célèbe conte La Princesse au petit pois.\n\nOrganisateur :
+  https://www.oazis.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ spectacle-jeunesse-la-princesse-au-petit-pois-nemours-72c2d4de6f/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-jeunesse-la-princesse
+ -au-petit-pois-nemours-72c2d4de6f/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_22291ce511@fontainebleaulive.fr
 DTSTAMP:20261028T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
-SUMMARY:Co-Nuit ANSA
+SUMMARY:Co-Nuit ANSA (Course d'Orientation Nocturne & Chasse au Trésor Té
+ léthon)
 LOCATION:Ville de Nemours\, Nemours
-DESCRIPTION:Tarif : Don solidaire (Téléthon)\n\nCourse d'orientation soli
- daire de jour et de nuit au profit du Téléthon.\n\nOrganisateur : https:
- //gotrail.run/fr/calendrier-trails/france/seine-et-marne/fontainebleau\n\n
- Fiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-nemours-22291
- ce511/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/co-nuit-ansa-nemours-22291ce511
- /
+DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : 6 € minimum par participa
+ nt (gratuit pour les enfants)\n\nCourse d'orientation solidaire de jour et
+  de nuit au profit du Téléthon.\n\nOrganisateur : http://site.ansa.free.
+ fr/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-course
+ -d-orientation-nocturne-et-chasse-au-tres-nemours-22291ce511/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
+URL:https://fontainebleaulive.fr/evenements/co-nuit-ansa-course-d-orientati
+ on-nocturne-et-chasse-au-tres-nemours-22291ce511/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT

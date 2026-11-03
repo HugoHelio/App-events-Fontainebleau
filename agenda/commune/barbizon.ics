@@ -32,22 +32,42 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3a5fba756f@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
-SUMMARY:Atelier « Sur la trace de La Couseuse »
+SUMMARY:Atelier textile « Sur la trace de La Couseuse »
 LOCATION:Musée départemental des Peintres de Barbizon\, Barbizon
-DESCRIPTION:Horaires : Créneaux spécifiques du musée\n\nTarif : Tarif pl
- ein env. 10 € / réduit 7 €\n\nUn parcours culturel à Barbizon sur le
- s traces du célèbre tableau La Couseuse.\n\nOrganisateur : https://www.f
- ontainebleau-tourisme.com/fr/fiche/7957896/sur-la-trace-de-la-couseuse/\n\
- nFiche : https://fontainebleaulive.fr/evenements/atelier-sur-la-trace-de-l
- a-couseuse-barbizon-3a5fba756f/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/atelier-sur-la-trace-de-la-cous
- euse-barbizon-3a5fba756f/
+DESCRIPTION:Horaires : En après-midi\n\nTarif : Sur réservation\n\nUn par
+ cours culturel à Barbizon sur les traces du célèbre tableau La Couseuse
+ .\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/795789
+ 6/sur-la-trace-de-la-couseuse/\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/atelier-textile-sur-la-trace-de-la-couseuse-barbizon-3a5fba756f/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-textile-sur-la-trace-de
+ -la-couseuse-barbizon-3a5fba756f/
 CATEGORIES:Culture & Ateliers
 GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_857bc77ec5@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Visite guidée : La forêt de Fontainebleau\, un atelier grandeur n
+ ature
+LOCATION:Musée des peintres de Barbizon & parcours forêt\, Barbizon
+DESCRIPTION:Horaires : En après-midi\n\nTarif : Billet d'entrée du musée
+ \n\nVisite guidée thématique explorant la forêt de Fontainebleau comme 
+ atelier d'artistes.\n\nOrganisateur : https://www.musee-peintres-barbizon.
+ fr/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-la-fo
+ ret-de-fontainebleau-un-atelier-grandeur-barbizon-857bc77ec5/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-la-foret-de-fonta
+ inebleau-un-atelier-grandeur-barbizon-857bc77ec5/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -71,7 +91,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -90,45 +110,25 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0c5d619702@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
 SUMMARY:Visite musicale dans l'auberge Ganne
 LOCATION:Auberge Ganne\, Barbizon\, Barbizon
-DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Sur réservation au…\n\nVisite guidée rythmée par des interm
- èdes musicaux au sein de l'Auberge Ganne.\n\nOrganisateur : https://www.f
- ontainebleau-tourisme.com/fr/fiche/7957876/visite-musicale-dans-lauberge-g
- anne/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-musicale-d
- ans-l-auberge-ganne-barbizon-0c5d619702/\n\nInformations collectées autom
- atiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Tarif : Billet d'entrée du musée\n\nVisite guidée rythmée p
+ ar des intermèdes musicaux au sein de l'Auberge Ganne.\n\nOrganisateur : 
+ https://www.fontainebleau-tourisme.com/fr/fiche/7957876/visite-musicale-da
+ ns-lauberge-ganne/\n\nFiche : https://fontainebleaulive.fr/evenements/visi
+ te-musicale-dans-l-auberge-ganne-barbizon-0c5d619702/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-musicale-dans-l-auberge-
  ganne-barbizon-0c5d619702/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_c45baf6087@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
-DTSTART;VALUE=DATE:20261115
-DTEND;VALUE=DATE:20261116
-SUMMARY:Visite musicale dans l'auberge Ganne
-LOCATION:Auberge Ganne\, Barbizon\, Barbizon
-DESCRIPTION:Tarif : Plein tarif : 13 € (réduction et gratuité sur justi
- ficatif). Sur réservation au…\n\nVisite guidée rythmée par des interm
- èdes musicaux au sein de l'Auberge Ganne.\n\nOrganisateur : https://www.f
- ontainebleau-tourisme.com/fr/fiche/7957876/visite-musicale-dans-lauberge-g
- anne/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-musicale-d
- ans-l-auberge-ganne-barbizon-c45baf6087/\n\nInformations collectées autom
- atiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-musicale-dans-l-auberge-
- ganne-barbizon-c45baf6087/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Les soirées de l'Esquisse
@@ -147,7 +147,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_70b3109999@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:"Nouveau regard sur le monde paysan par Jean-François Millet"
@@ -168,7 +168,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f6487ee90d@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Visites guidées du musée
@@ -188,7 +188,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les soirées de l'Esquisse
@@ -227,7 +227,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a10ea2f638@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite contée « Les Contes du chat perché »
@@ -247,7 +247,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_edd27034e8@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Visites guidées du musée
@@ -285,7 +285,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Les soirées de l'Esquisse
@@ -304,7 +304,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fe92208886@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Visite thématique « Les artistes étrangers à Barbizon »
@@ -325,7 +325,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23a8889b67@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Atelier aquarelle botanique "carte de Noël"
@@ -345,7 +345,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_573a44c82a@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Visites guidées du musée
@@ -365,7 +365,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e42881c006@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Visite contée "Les Contes du chat perché"
@@ -384,7 +384,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -403,7 +403,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a9e057d74b@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle théâtral "Un voyage inattendu"
@@ -424,7 +424,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_17edeb2692@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Visites guidées du musée
@@ -444,7 +444,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_996e031f1d@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Atelier "couronne-arbre de Noël"
@@ -463,7 +463,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse
@@ -481,8 +481,28 @@ GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_af815ef7af@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Atelier "Lutins de la forêt"
+LOCATION:Barbizon
+DESCRIPTION:Tarif : Plein tarif : 10 € (réduction et gratuité sur justi
+ ficatif). Gratuit pour les m…\n\nAtelier « Lutins de la forêt » propo
+ sé à Barbizon.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/
+ fr/fiche/8037972/atelier-lutins-de-la-foret/\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/atelier-lutins-de-la-foret-barbizon-af815ef7af/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-lutins-de-la-foret-barb
+ izon-af815ef7af/
+CATEGORIES:Culture & Ateliers
+GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_7fb1b701f9@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Visites guidées du musée
@@ -501,8 +521,48 @@ GEO:48.44575;2.60775
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_15c67f23c5@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261223
+DTEND;VALUE=DATE:20261224
+SUMMARY:Atelier "Carte de vœux brodée"
+LOCATION:Barbizon
+DESCRIPTION:Tarif : Plein tarif : 10 € (réduction et gratuité sur justi
+ ficatif). Gratuit pour les m…\n\nAtelier créatif dédié à la confecti
+ on d'une carte de vœux brodée à Barbizon.\n\nOrganisateur : https://www
+ .fontainebleau-tourisme.com/fr/fiche/8037975/atelier-carte-de-voeux-brodee
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/atelier-carte-de-voeu
+ x-brodee-barbizon-15c67f23c5/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-carte-de-voeux-brodee-b
+ arbizon-15c67f23c5/
+CATEGORIES:Culture & Ateliers
+GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_73de22621f@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20261230
+DTEND;VALUE=DATE:20261231
+SUMMARY:Atelier aquarelle botanique "Au gui l'an neuf"
+LOCATION:Barbizon
+DESCRIPTION:Tarif : Plein tarif : 10 € (réduction et gratuité sur justi
+ ficatif).\n\nAtelier créatif d'aquarelle botanique intitulé « Au gui l'
+ an neuf » à Barbizon.\n\nOrganisateur : https://www.fontainebleau-touris
+ me.com/fr/fiche/8037977/atelier-aquarelle-botanique-au-gui-lan-neuf/\n\nFi
+ che : https://fontainebleaulive.fr/evenements/atelier-aquarelle-botanique-
+ au-gui-l-an-neuf-barbizon-73de22621f/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-aquarelle-botanique-au-
+ gui-l-an-neuf-barbizon-73de22621f/
+CATEGORIES:Culture & Ateliers
+GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5978341773@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:Visites guidées du musée

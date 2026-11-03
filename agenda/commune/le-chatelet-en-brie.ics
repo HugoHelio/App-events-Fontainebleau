@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_7305643afb@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Théâtre musical - Lennon & McCartney
@@ -31,18 +31,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6f02416d94@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Commémoration du 11 novembre 1918
 LOCATION:Cimetière du Châtelet-en-Brie\, Le Châtelet-en-Brie
-DESCRIPTION:Horaires : 11h\n\nCérémonie de commémoration de l'Armistice 
- du 11 novembre 1918 suivie d'un vin d'honneur.\n\nOrganisateur : https://w
- ww.chatelet-en-brie.fr/index.php/Agenda?idpage=9&idmetacontenu=2931&iddoss
- iercontenu=42&positioncontenu=A1\n\nFiche : https://fontainebleaulive.fr/e
- venements/commemoration-du-11-novembre-1918-le-chatelet-en-brie-6f02416d94
- /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
- ’organisateur.
+DESCRIPTION:Horaires : 11h\n\nTarif : Gratuit\n\nCérémonie de commémorat
+ ion de l'Armistice du 11 novembre 1918 suivie d'un vin d'honneur.\n\nOrgan
+ isateur : https://www.chatelet-en-brie.fr/index.php/Agenda?idpage=9&idmeta
+ contenu=2931&iddossiercontenu=42&positioncontenu=A1\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/commemoration-du-11-novembre-1918-le-chatelet
+ -en-brie-6f02416d94/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/commemoration-du-11-novembre-19
  18-le-chatelet-en-brie-6f02416d94/
 CATEGORIES:Culture & Ateliers
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1e23e80759@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Documentaire "Ce qui reste des amours de nos mères"
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f39087e9f8@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Concert "Danny Buckton"
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8f3af5ae31@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Spectacle - La princesse au petit pois
@@ -107,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f71a214d6e@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261221
 DTEND;VALUE=DATE:20261222
 SUMMARY:Ciné jeunesse "La mission de chien Noël"

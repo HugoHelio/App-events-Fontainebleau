@@ -11,25 +11,27 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_5aea2aefcf@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+UID:EVT_36f12afffb@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
-SUMMARY:Bric-à-Brac de Saint-Mammès
-LOCATION:Salle MLC\, Saint-Mammès
-DESCRIPTION:Horaires : 9h à 17h30\n\nTarif : Entrée libre\n\nGrand bric-
- à-brac et vide-greniers d'automne.\n\nOrganisateur : https://www.alentoor
- .fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bric-a-brac-de-sai
- nt-mammes-5aea2aefcf/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/bric-a-brac-de-saint-mammes-5ae
- a2aefcf/
+SUMMARY:Bric-à-Brac d’automne
+LOCATION:MLC\, Saint-Mammès
+DESCRIPTION:Horaires : En journée\n\nTarif : Entrée libre\n\nLe rendez-vo
+ us des chineurs d'automne proposé par l’association Saint-Mammès C’e
+ st Vous. Buvette et restauration sur place.\n\nOrganisateur : https://www.
+ alentoor.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bric-a-bra
+ c-d-automne-saint-mammes-36f12afffb/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/bric-a-brac-d-automne-saint-mam
+ mes-36f12afffb/
 CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8f5390305f@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Concert " vents du nord-ouest argentin "
@@ -47,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be1a35043c@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les rendez-vous de la forme
@@ -67,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
@@ -87,7 +89,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_977cb1743f@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:« Un chat botté » – spectacle pour enfants
@@ -107,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b68a11c7ae@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cérémonie du 11 novembre
@@ -125,7 +127,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cff9bab306@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Jeux d’histoire
@@ -162,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f31186d94c@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Soirée " coucous "
@@ -180,20 +182,40 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3994dd502@fontainebleaulive.fr
-DTSTAMP:20261011T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël de Saint-Mammès
 LOCATION:Quai de Seine\, 77670 Saint-Mammès\, Saint-Mammès
 DESCRIPTION:Horaires : 10h00–18h00\n\nTarif : Gratuit\n\nMarché de Noël
-  artisanal au bord du Quai de Seine.\n\nOrganisateur : https://www.fontain
- ebleau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/evenements/ma
- rche-de-noel-de-saint-mammes-a3994dd502/\n\nInformations collectées autom
- atiquement : vérifiez-les auprès de l’organisateur.
+  artisanal au bord du Quai de Seine.\n\nOrganisateur : https://www.ccmsl.f
+ r/actu-et-agendas/agenda.html#2026-12-13-marchedenoel\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/marche-de-noel-de-saint-mammes-a3994dd502/\
+ n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-saint-mammes-
  a3994dd502/
 CATEGORIES:Culture & Ateliers
 GEO:48.38775;2.80549
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_0b1c62a4b4@fontainebleaulive.fr
+DTSTAMP:20261103T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Balade ornithologique à l'ENS du marais du Lutin
+LOCATION:Espace Naturel Sensible du Marais du Lutin (Rendez-vous au pied de
+  la passerelle de Saint-Mammès)\, Saint-Mammès
+DESCRIPTION:Horaires : 09h30 – 12h00\n\nTarif : Gratuit\n\nBalade d'obser
+ vation ornithologique organisée dans le cadre de la Journée Mondiale des
+  Zones Humides.\n\nOrganisateur : https://anvl.fr/\n\nFiche : https://font
+ ainebleaulive.fr/evenements/balade-ornithologique-a-l-ens-du-marais-du-lut
+ in-saint-mammes-0b1c62a4b4/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-ornithologique-a-l-ens-d
+ u-marais-du-lutin-saint-mammes-0b1c62a4b4/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

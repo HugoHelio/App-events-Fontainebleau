@@ -106,6 +106,11 @@
       "lng": 2.63415,
       "source": "city"
     },
+    "city:le vaudoue": {
+      "lat": 48.35256,
+      "lng": 2.52085,
+      "source": "city"
+    },
     "city:lorrez le bocage preaux": {
       "lat": 48.23788,
       "lng": 2.89771,
@@ -466,6 +471,11 @@
       "lng": 2.70104,
       "source": "ban"
     },
+    "venue:massif de fontainebleau fontainebleau": {
+      "lat": 48.40699,
+      "lng": 2.7747,
+      "source": "ban"
+    },
     "venue:massif de la dame jouanne larchant": {
       "lat": 48.28729,
       "lng": 2.59674,
@@ -504,6 +514,11 @@
     "venue:mlc 49 rue victor hugo saint mammes": {
       "lat": 48.38404,
       "lng": 2.8141,
+      "source": "ban"
+    },
+    "venue:mlc saint mammes": {
+      "lat": 48.38915,
+      "lng": 2.80788,
       "source": "ban"
     },
     "venue:montigny sur loing": {
@@ -589,6 +604,11 @@
     "venue:recloses": {
       "lat": 48.34711,
       "lng": 2.64528,
+      "source": "ban"
+    },
+    "venue:remauville": {
+      "lat": 48.21932,
+      "lng": 2.80432,
       "source": "ban"
     },
     "venue:rocher de la dame jouane larchant": {
