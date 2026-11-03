@@ -60,6 +60,9 @@ jobs:
           # Flux produit Awin de Fnac Spectacles (item 83e). L'URL contient la clé personnelle
           # du compte éditeur : jamais en clair. Secret absent = source Fnac simplement sautée.
           AWIN_FEED_URL: ${{ secrets.AWIN_FEED_URL }}
+          # Item 39 (03/11) : les fiches de l'office (sans date a lire) passent sur le modele leger,
+          # apres le comparatif. Les dates (scans, sites) restent sur gemini-3.6-flash.
+          ENRICH_MODEL: gemini-3.1-flash-lite
         run: node scripts/fetch-events.js
 
       # Pages statiques indexables (§3.X). Tourne aussi les jours sans scan : c'est ici que les

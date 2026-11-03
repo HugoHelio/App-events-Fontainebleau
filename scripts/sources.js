@@ -45,6 +45,9 @@ const CONFIG = {
   maxTextChars: envInt('SOURCES_MAX_TEXT_CHARS', 90_000),
   // GEMINI_LITE_MODEL: the model of every call without search (item 39, 03/11).
   model: process.env.SOURCES_MODEL || process.env.GEMINI_LITE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
+  // The tourist-office cards (enrich): no date is read there. ENRICH_MODEL is set to the light model
+  // in the workflow since 03/11, after the comparison (item 39): 1 category apart in 24 cards.
+  enrichModel: process.env.ENRICH_MODEL || process.env.SOURCES_MODEL || process.env.GEMINI_LITE_MODEL || process.env.GEMINI_MODEL || 'gemini-3.6-flash',
   llmTimeoutMs: envInt('SOURCES_LLM_TIMEOUT_MS', 180_000),
 };
 
@@ -567,8 +570,8 @@ const EVENT_SCHEMA = {
 const THINKING = process.env.GEMINI_THINKING_LEVEL || 'low';
 const thinkingConfig = () => (THINKING === 'default' ? {} : { thinkingConfig: { thinkingLevel: THINKING } });
 
-async function extractWithGemini(prompt, schema = EVENT_SCHEMA) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent`;
+async function extractWithGemini(prompt, schema = EVENT_SCHEMA, model = CONFIG.model) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
   let lastErr;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
@@ -777,7 +780,7 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
     // Three batches in flight: a batch is one model call of ~20 s, done one by one it was minutes.
     await mapLimit(batches, 3, async (batch) => {
       try {
-        const { items, usage } = await extractWithGemini(ENRICH_PROMPT(batch.map((b) => b.e)), ENRICH_SCHEMA);
+        const { items, usage } = await extractWithGemini(ENRICH_PROMPT(batch.map((b) => b.e)), ENRICH_SCHEMA, CONFIG.enrichModel);
         // Thinking is billed as output (§3.G): counted with it, for the run's cost estimate (item 39).
         if (usage) { stats.tokensIn += usage.promptTokenCount || 0; stats.tokensOut += (usage.candidatesTokenCount || 0) + (usage.thoughtsTokenCount || 0); }
         for (const it of items) {

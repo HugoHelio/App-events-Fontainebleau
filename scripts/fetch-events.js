@@ -1421,7 +1421,7 @@ function runCost(stats, today) {
   }
   const st = stats.sites || {};
   add('sites (lecture)', st.tokensIn || 0, st.tokensOut || 0, sites.CONFIG.model);
-  add('sites (fiches complétées)', (st.enrich && st.enrich.tokensIn) || 0, (st.enrich && st.enrich.tokensOut) || 0, sites.CONFIG.model);
+  add('sites (fiches complétées)', (st.enrich && st.enrich.tokensIn) || 0, (st.enrich && st.enrich.tokensOut) || 0, sites.CONFIG.enrichModel);
   add('doublons (juge)', (stats.judged && stats.judged.tokensIn) || 0, (stats.judged && stats.judged.tokensOut) || 0, dedupeJudge.CONFIG.model);
   add('traduction', (stats.translation && stats.translation.tokensIn) || 0, (stats.translation && stats.translation.tokensOut) || 0, translate.CONFIG.model);
   // A model missing from the table is priced as 3.6 Flash, and the report names it.

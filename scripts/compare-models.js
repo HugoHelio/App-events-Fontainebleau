@@ -159,7 +159,7 @@ async function enrichment(ctx) {
   if (!sample.length) { say('- aucune fiche lue'); return; }
   const res = {};
   for (const model of [MODEL_A, MODEL_B]) {
-    sources.CONFIG.model = model;
+    sources.CONFIG.enrichModel = model;
     // The URL keys the enrichment cache, kept in memory for the run: one key per model, or the
     // second model would be served the first one's answers.
     const copies = sample.map((e) => ({ ...e, url: `${e.url}#${model}` }));
