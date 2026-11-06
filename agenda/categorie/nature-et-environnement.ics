@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_af3c06b76b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9846b92739@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Apéro célibataires — Melun
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e32e6a2856@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les champignons et la forêt de Fontainebleau en automne
@@ -109,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be6223a033@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -128,7 +128,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_37657cd157@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Apéro célibataires — Melun
@@ -147,7 +147,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_143c0edcd2@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -166,7 +166,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c1d8f7211a@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro célibataires — Melun
@@ -244,7 +244,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf6cb2716e@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Initiation à la bryologie et lichénologie
@@ -261,8 +261,46 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_e920dd0a7d@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Apéro célibataires — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Fontaineble
+ au : petit groupe (8 max)\, ambiance détendue. Inscription gratuite sur R
+ andoDate.\n\nOrganisateur : https://openagenda.com/randodate/events/apero-
+ celibataires-fontainebleau-8959235\n\nFiche : https://fontainebleaulive.fr
+ /evenements/apero-celibataires-fontainebleau-e920dd0a7d/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-fontaineblea
+ u-e920dd0a7d/
+CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a416d471aa@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Apéro célibataires — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Melun : pet
+ it groupe (8 max)\, ambiance détendue. Inscription gratuite sur RandoDate
+ .\n\nOrganisateur : https://openagenda.com/randodate/events/apero-celibata
+ ires-melun-7274216\n\nFiche : https://fontainebleaulive.fr/evenements/aper
+ o-celibataires-melun-a416d471aa/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-melun-a416d4
+ 71aa/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f8910fb196@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Animation nature en famille « Le Trésor de Praline »
@@ -280,7 +318,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ed8d3db12@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:CAFÉ DES TRANSITIONS "CONSOMMATION ET DECHETS !" [FONTAINEBLEAU (E
@@ -302,7 +340,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -315,6 +353,25 @@ DESCRIPTION:Horaires : 10h\n\nTarif : Gratuit\n\nRencontre conviviale organ
  iez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/echange-de-plantes-samois-sur-s
  eine-e782c3d872/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e369a0da4e@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Journée de l'Arbre
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 17h\n\nUne journée consacrée à la découve
+ rte et à l'écoute des arbres.\n\nOrganisateur : https://www.ccmsl.fr/act
+ u-et-agendas/agenda.html#2026-11-21-journeedelarbre\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/journee-de-l-arbre-montigny-sur-loing-e369a0d
+ a4e/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/journee-de-l-arbre-montigny-sur
+ -loing-e369a0da4e/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -437,21 +494,40 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_8efa6ff955@fontainebleaulive.fr
-DTSTAMP:20261012T000000Z
+UID:EVT_924fcbdae5@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
-SUMMARY:Chantier nature bénévole d'entretien des pelouses de la Platière
-  de Meun
-LOCATION:Platière de Meun\, Achères-la-Forêt
-DESCRIPTION:Horaires : 09h00 – 16h00\n\nTarif : Gratuit\n\nChantier natur
- e bénévole pour la préservation et l'entretien des pelouses de la Plati
- ère de Meun.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : htt
- ps://fontainebleaulive.fr/evenements/chantier-nature-benevole-d-entretien-
- des-pelouses-de-la-plat-acheres-la-foret-8efa6ff955/\n\nInformations colle
- ctées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/chantier-nature-benevole-d-entr
- etien-des-pelouses-de-la-plat-acheres-la-foret-8efa6ff955/
+SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
+LOCATION:Achères-la-Forêt\, Achères-la-Forêt
+DESCRIPTION:Horaires : 09h00 – 16h00\n\nTarif : Gratuit\n\nCe chantier a 
+ pour objectif d'entretenir des zones de pelouses pour favoriser la biodive
+ rsité et les espèces patrimoniales du site de la platière de Meun.\n\nO
+ rganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleau
+ live.fr/evenements/chantier-d-entretien-des-pelouses-a-la-platiere-de-meun
+ -acheres-la-foret-924fcbdae5/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/chantier-d-entretien-des-pelous
+ es-a-la-platiere-de-meun-acheres-la-foret-924fcbdae5/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_59081e6304@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Troc aux plantes
+LOCATION:Maison des Loisirs et de la Culture\, 49 rue Victor Hugo\, Saint-M
+ ammès\, Saint-Mammès
+DESCRIPTION:Horaires : 15h à 17h30\n\nÉchange convivial de plantes entre 
+ particuliers\, organisé par le Collectif 1000 Sabords.\n\nOrganisateur : 
+ https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-trocauxplantes
+ \n\nFiche : https://fontainebleaulive.fr/evenements/troc-aux-plantes-saint
+ -mammes-59081e6304/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/troc-aux-plantes-saint-mammes-5
+ 9081e6304/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -704,14 +780,15 @@ DTEND;VALUE=DATE:20270124
 SUMMARY:Visite guidée « Sur la trace des animaux en forêt de Fontaineble
  au »
 LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : À partir de 14h00\n\nTarif : 16 € (adulte) / 9 
- € (enfant de 8 à 12 ans)\n\nApprenez à repérer et interpréter les em
- preintes et indices laissés par la faune sauvage en forêt de Fontaineble
- au.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/5643
- 672/visite-sur-la-trace-des-animaux-en-foret-de-fontainebleau/\n\nFiche : 
- https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-ani
- maux-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/\n\nInformations colle
- ctées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 14h00\n\nTarif : Adulte : 16 €\, Enfa
+ nt (8-12 ans) : 9 €. Visite soumise à un nombre minimum de p…\n\nAppr
+ enez à repérer et interpréter les empreintes et indices laissés par la
+  faune sauvage en forêt de Fontainebleau.\n\nOrganisateur : https://www.f
+ ontainebleau-tourisme.com/fr/fiche/5643672/visite-sur-la-trace-des-animaux
+ -en-foret-de-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/visite-guidee-sur-la-trace-des-animaux-en-foret-de-fontaineb-fontaine
+ bleau-1e3bc5d7d9/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-
  animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/
 CATEGORIES:Nature & Environnement
@@ -739,7 +816,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e010cd1c81@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
 SUMMARY:Visites guidées thématiques en forêt de Fontainebleau

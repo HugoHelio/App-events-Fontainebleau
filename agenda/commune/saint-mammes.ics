@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_36f12afffb@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Bric-à-Brac d’automne
@@ -20,9 +20,9 @@ LOCATION:MLC\, Saint-Mammès
 DESCRIPTION:Horaires : En journée\n\nTarif : Entrée libre\n\nLe rendez-vo
  us des chineurs d'automne proposé par l’association Saint-Mammès C’e
  st Vous. Buvette et restauration sur place.\n\nOrganisateur : https://www.
- alentoor.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/bric-a-bra
- c-d-automne-saint-mammes-36f12afffb/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+ saint-mammes.com/bric-a-brac/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/bric-a-brac-d-automne-saint-mammes-36f12afffb/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bric-a-brac-d-automne-saint-mam
  mes-36f12afffb/
 CATEGORIES:Culture & Ateliers
@@ -31,12 +31,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8f5390305f@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Concert " vents du nord-ouest argentin "
-LOCATION:Saint-Mammès
-DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+LOCATION:La dragonnière\, 42 rue Alfred Pierrard à Saint-Mammès\, Saint-
+ Mammès
+DESCRIPTION:Horaires : 20h\n\nReprésentation musicale autour des sonorité
+ s du nord-ouest argentin.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
  gendas/agenda.html#2026-11-07-concertventsdunordouestargentin\n\nFiche : h
  ttps://fontainebleaulive.fr/evenements/concert-vents-du-nord-ouest-argenti
  n-saint-mammes-8f5390305f/\n\nInformations collectées automatiquement : v
@@ -49,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be1a35043c@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Les rendez-vous de la forme
@@ -69,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5258aab0a6@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Forum des artisants et des entrepreneurs
@@ -89,7 +91,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_977cb1743f@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:« Un chat botté » – spectacle pour enfants
@@ -109,7 +111,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b68a11c7ae@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Cérémonie du 11 novembre
@@ -127,11 +129,12 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cff9bab306@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Jeux d’histoire
-LOCATION:Salle du conseil\, Saint-Mammès
+LOCATION:Salle du Conseil (annexe de la Mairie)\, 2 rue Grande à Saint-Mam
+ mès\, Saint-Mammès
 DESCRIPTION:Horaires : 15h30 à 18h\n\nDécouverte ludique de jeux de soci
  été sur la thématique de la Première Guerre mondiale.\n\nOrganisateur 
  : https://www.saint-mammes.com/jeux-dhistoire/\n\nFiche : https://fontaine
@@ -144,8 +147,26 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_71b1f20c96@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Soirée d’accueil des nouveaux habitants
+LOCATION:Saint-Mammès
+DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.saint-mammes.com/s
+ oiree-daccueil-des-nouveux-habitants/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/soiree-d-accueil-des-nouveaux-habitants-saint-mammes-71b1f2
+ 0c96/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-d-accueil-des-nouveaux-h
+ abitants-saint-mammes-71b1f20c96/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_006f529975@fontainebleaulive.fr
-DTSTAMP:20261018T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Portraits croisés : spectacle français & langue des signes
@@ -163,17 +184,36 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b2c20eee7d@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261120
+SUMMARY:Atelier logement et santé
+LOCATION:Saint-Mammès
+DESCRIPTION:Organisateur : https://www.saint-mammes.com/atelier-logement-et
+ -sante/\n\nFiche : https://fontainebleaulive.fr/evenements/atelier-logemen
+ t-et-sante-saint-mammes-b2c20eee7d/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-logement-et-sante-saint
+ -mammes-b2c20eee7d/
+CATEGORIES:Culture & Ateliers
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f31186d94c@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Soirée " coucous "
-LOCATION:Saint-Mammès
-DESCRIPTION:Horaires : 19h30 – 22h45\n\nOrganisateur : https://www.ccmsl.
- fr/actu-et-agendas/agenda.html#2026-11-21-soireecoucous\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/soiree-coucous-saint-mammes-f31186d94c/\n
- \nInformations collectées automatiquement : vérifiez-les auprès de l’
- organisateur.
+LOCATION:Maison des Loisirs et de la Culture\, 49 rue Victor Hugo\, Saint-M
+ ammès\, Saint-Mammès
+DESCRIPTION:Horaires : 19h30 – 22h45\n\nUne soirée festive comprenant un
+  repas couscous et une animation dansante.\n\nOrganisateur : https://www.c
+ cmsl.fr/actu-et-agendas/agenda.html#2026-11-21-soireecoucous\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/soiree-coucous-saint-mammes-f31186d9
+ 4c/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/soiree-coucous-saint-mammes-f31
  186d94c/
 CATEGORIES:Culture & Ateliers
@@ -181,8 +221,66 @@ GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_db9d848336@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Documentaire " Qu'est-ce qu'on attend ? "
+LOCATION:Maison des Loisirs et de la Culture\, 49 rue Victor Hugo\, Saint-M
+ ammès\, Saint-Mammès
+DESCRIPTION:Horaires : 20h30\n\nProjection du film de Marie-Monique Robin s
+ ur la transition écologique exemplaire du village d'Ungersheim.\n\nOrgani
+ sateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-27-docum
+ entairequestcequonattend\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/documentaire-qu-est-ce-qu-on-attend-saint-mammes-db9d848336/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/documentaire-qu-est-ce-qu-on-at
+ tend-saint-mammes-db9d848336/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_be3f148623@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Concert " Domkiris expérience "
+LOCATION:Maison des Loisirs et de la Culture\, 49 rue Victor Hugo\, Saint-M
+ ammès\, Saint-Mammès
+DESCRIPTION:Horaires : 20h30\n\nConcert du groupe Domkiris Expérience orga
+ nisé par le Collectif 1000 Sabords.\n\nOrganisateur : https://www.ccmsl.f
+ r/actu-et-agendas/agenda.html#2026-11-28-concertdomkirisexperience\n\nFich
+ e : https://fontainebleaulive.fr/evenements/concert-domkiris-experience-sa
+ int-mammes-be3f148623/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-domkiris-experience-sai
+ nt-mammes-be3f148623/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_59081e6304@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Troc aux plantes
+LOCATION:Maison des Loisirs et de la Culture\, 49 rue Victor Hugo\, Saint-M
+ ammès\, Saint-Mammès
+DESCRIPTION:Horaires : 15h à 17h30\n\nÉchange convivial de plantes entre 
+ particuliers\, organisé par le Collectif 1000 Sabords.\n\nOrganisateur : 
+ https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-trocauxplantes
+ \n\nFiche : https://fontainebleaulive.fr/evenements/troc-aux-plantes-saint
+ -mammes-59081e6304/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/troc-aux-plantes-saint-mammes-5
+ 9081e6304/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a3994dd502@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël de Saint-Mammès

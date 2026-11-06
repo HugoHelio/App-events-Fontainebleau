@@ -66,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8ddede138b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Visite d'entreprise
@@ -85,7 +85,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_567e428004@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
@@ -126,20 +126,24 @@ GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_c5e54a3261@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+UID:EVT_8869a16df0@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
-SUMMARY:Conférence : Découvertes de la Butte Saint-Louis
-LOCATION:Musée départemental de Préhistoire d'Île-de-France\, Nemours
-DESCRIPTION:Conférence historique et archéologique animée par Sébastien
-  Ronsseray.\n\nOrganisateur : https://www.musee-prehistoire-idf.fr/\n\nFic
- he : https://fontainebleaulive.fr/evenements/conference-decouvertes-de-la-
- butte-saint-louis-nemours-c5e54a3261/\n\nInformations collectées automati
- quement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/conference-decouvertes-de-la-bu
- tte-saint-louis-nemours-c5e54a3261/
+SUMMARY:Conférence : L'ermitage de la Butte St-Louis à Fontainebleau
+LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
+ le de France\, Nemours
+DESCRIPTION:Sébastien Ronsseray présente les découvertes de sept campagn
+ es de fouilles à la Butte Saint-Louis\, retraçant sept siècles d’hist
+ oire\, du XIe au XVIIIe siècle.\n\nOrganisateur : https://www.musee-prehi
+ stoire-idf.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/conferen
+ ce-l-ermitage-de-la-butte-st-louis-a-fontainebleau-nemours-8869a16df0/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-l-ermitage-de-la-but
+ te-st-louis-a-fontainebleau-nemours-8869a16df0/
 CATEGORIES:Culture & Ateliers
+GEO:48.26045;2.71392
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -185,7 +189,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d149ee44b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite flash de l'exposition Ça en jette !

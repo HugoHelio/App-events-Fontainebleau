@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_b02568c7f0@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Atelier Fabrication de Jeu
@@ -49,16 +49,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_74f0a437ec@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Théâtre " Cendrillon "
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 19h – 21h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-11-06-theatrecendrillon\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/theatre-cendrillon-moret-loing-et-orvanne
- -74f0a437ec/\n\nInformations collectées automatiquement : vérifiez-les a
- uprès de l’organisateur.
+LOCATION:Salle Marquis de Roys\, 18 bis route de Saint-Mammès\, Moret-sur-
+ Loing\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 19h – 21h\n\nReprésentation théâtrale traitant 
+ de la thématique des maltraitances faites aux enfants.\n\nOrganisateur : 
+ https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-06-theatrecendril
+ lon\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-cendrillon-
+ moret-loing-et-orvanne-74f0a437ec/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/theatre-cendrillon-moret-loing-
  et-orvanne-74f0a437ec/
 CATEGORIES:Scène & Spectacles
@@ -66,8 +68,28 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_eac5e2d39a@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Boutique solidaire " Croix rouge "
+LOCATION:Croix-rouge Française\, 2 rue du Clos Blanchet à Moret-sur-Loing
+ \, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 9h à 17h\n\nVente solidaire d'objets divers incluan
+ t vêtements\, vaisselle\, livres et jouets par la Croix-Rouge.\n\nOrganis
+ ateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-07-boutiq
+ uesolidairecroixrouge\n\nFiche : https://fontainebleaulive.fr/evenements/b
+ outique-solidaire-croix-rouge-moret-loing-et-orvanne-eac5e2d39a/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/boutique-solidaire-croix-rouge-
+ moret-loing-et-orvanne-eac5e2d39a/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_ad31b20d9e@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Ce qui reste des amours de nos mères
@@ -104,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_986fce51ba@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Association Tricot
@@ -140,16 +162,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ccb96ec604@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Puces couture
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h – 17h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-11-15-pucescouture\n\nFiche : https://font
- ainebleaulive.fr/evenements/puces-couture-moret-loing-et-orvanne-ccb96ec60
- 4/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
- l’organisateur.
+LOCATION:Salle polyvalente Bernard Ridoux\, face au 35 chemin du Port (Vene
+ ux-Les Sablons) à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h – 17h\n\nBourse spécialisée dans les article
+ s et accessoires de couture.\n\nOrganisateur : https://www.ccmsl.fr/actu-e
+ t-agendas/agenda.html#2026-11-15-pucescouture\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/puces-couture-moret-loing-et-orvanne-ccb96ec604/\n\
+ nInformations collectées automatiquement : vérifiez-les auprès de l’o
+ rganisateur.
 URL:https://fontainebleaulive.fr/evenements/puces-couture-moret-loing-et-or
  vanne-ccb96ec604/
 CATEGORIES:Culture & Ateliers
@@ -158,7 +182,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d57e1b24a8@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:P'tit bonhomme de chemin
@@ -177,16 +201,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d8e88b46db@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Soirée Beaujolais
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 19h – 23h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-11-20-soireebeaujolais\n\nFiche : https://
- fontainebleaulive.fr/evenements/soiree-beaujolais-moret-loing-et-orvanne-d
- 8e88b46db/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+LOCATION:Salle Marquis de Roys\, 18 bis route de Saint-Mammès (Moret-sur-L
+ oing) à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 19h – 23h\n\nSoirée dégustation avec ambiance mu
+ sicale organisée par l'APE des Columières.\n\nOrganisateur : https://www
+ .ccmsl.fr/actu-et-agendas/agenda.html#2026-11-20-soireebeaujolais\n\nFiche
+  : https://fontainebleaulive.fr/evenements/soiree-beaujolais-moret-loing-e
+ t-orvanne-d8e88b46db/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/soiree-beaujolais-moret-loing-e
  t-orvanne-d8e88b46db/
 CATEGORIES:Culture & Ateliers
@@ -194,17 +220,76 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2bffef387b@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Boutique solidaire " vente de jouets"
+LOCATION:Croix-rouge Française\, 2 rue du Clos Blanchet\, Moret-sur-Loing\
+ , Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 9h à 17h\n\nLa Croix-Rouge organise une vente solid
+ aire de jouets ouverte au public.\n\nOrganisateur : https://www.ccmsl.fr/a
+ ctu-et-agendas/agenda.html#2026-11-21-boutiquesolidaireventedejouets\n\nFi
+ che : https://fontainebleaulive.fr/evenements/boutique-solidaire-vente-de-
+ jouets-moret-loing-et-orvanne-2bffef387b/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/boutique-solidaire-vente-de-jou
+ ets-moret-loing-et-orvanne-2bffef387b/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5781df7ad9@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Sens Dessus Dessous
+LOCATION:Médiathèque Marina Tsvetaeva\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h30\n\nPublic : Dès 4 ans\n\nUn ciné-concert ani
+ mé par Jean-Carl Feldis\, adapté pour les enfants dès 4 ans.\n\nOrganis
+ ateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-21-sensde
+ ssusdessous\n\nFiche : https://fontainebleaulive.fr/evenements/sens-dessus
+ -dessous-moret-loing-et-orvanne-5781df7ad9/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sens-dessus-dessous-moret-loing
+ -et-orvanne-5781df7ad9/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_19d186692f@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Soirée musicale au profit du Secours populaire
+LOCATION:Salle Roland Dagnaud\, route de Saint-Mammès\, Moret-sur-Loing\, 
+ Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 18h\n\nConcert musical organisé au profit du Secour
+ s populaire.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda
+ .html#2026-11-21-soireemusicaleauprofitdusecourspopulaire\n\nFiche : https
+ ://fontainebleaulive.fr/evenements/soiree-musicale-au-profit-du-secours-po
+ pulaire-moret-loing-et-orvanne-19d186692f/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-musicale-au-profit-du-se
+ cours-populaire-moret-loing-et-orvanne-19d186692f/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_58ecda5bfa@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Vide-atelier d'artistes
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
- #2026-11-21-videatelierdartistes\n\nFiche : https://fontainebleaulive.fr/e
- venements/vide-atelier-d-artistes-moret-loing-et-orvanne-58ecda5bfa/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
+LOCATION:Maison Lesage\, 28 rue Grande\, Moret-sur-Loing\, Moret-Loing-et-O
+ rvanne
+DESCRIPTION:Horaires : 10h à 18h\n\nDécouvrez une vente d'œuvres variée
+ s (peintures\, sculptures\, photos\, céramiques\, bijoux et textile) lors
+  de ce vide-atelier d'artistes.\n\nOrganisateur : https://www.ccmsl.fr/act
+ u-et-agendas/agenda.html#2026-11-21-videatelierdartistes\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/vide-atelier-d-artistes-moret-loing-et-o
+ rvanne-58ecda5bfa/\n\nInformations collectées automatiquement : vérifiez
+ -les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/vide-atelier-d-artistes-moret-l
  oing-et-orvanne-58ecda5bfa/
 CATEGORIES:Culture & Ateliers
@@ -213,7 +298,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3fca71a44@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261129
 SUMMARY:Exposition Recyrculaire
@@ -233,7 +318,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5e08c56d66@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:En attendant l'ortho\, je fais quoi ?
@@ -253,7 +338,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_01417d9f53@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Table ronde "L'Envers des fripes"
@@ -309,16 +394,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89d02118e2@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Bourse aux jouets
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h – 17h30\n\nOrganisateur : https://www.ccmsl.fr
- /actu-et-agendas/agenda.html#2026-11-29-bourseauxjouets\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/bourse-aux-jouets-moret-loing-et-orvanne-
- 89d02118e2/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
+LOCATION:Salle Jean Mermoz\, 11 rue Georges Villette ( Ecuelles ) à Moret-
+ Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h – 17h30\n\nVente de jouets d'occasion pour dé
+ nicher des petits trésors.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-11-29-bourseauxjouets\n\nFiche : https://fontain
+ ebleaulive.fr/evenements/bourse-aux-jouets-moret-loing-et-orvanne-89d02118
+ e2/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-jouets-moret-loing-e
  t-orvanne-89d02118e2/
 CATEGORIES:Culture & Ateliers
@@ -361,15 +448,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30be07276a@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html
- #2026-12-05-marchedenoel\n\nFiche : https://fontainebleaulive.fr/evenement
- s/marche-de-noel-moret-loing-et-orvanne-30be07276a/\n\nInformations collec
- tées automatiquement : vérifiez-les auprès de l’organisateur.
+LOCATION:Maison des Associations\, 25 Ter rue du Port ( Veneux-Les Sablons)
+  à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h à 18h30\n\nMarché festif pour préparer les f
+ êtes de fin d'année.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agen
+ das/agenda.html#2026-12-05-marchedenoel\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/marche-de-noel-moret-loing-et-orvanne-30be07276a/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-o
  rvanne-30be07276a/
 CATEGORIES:Culture & Ateliers
@@ -378,16 +468,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3d7dd3ebee@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Noël des enfants
-LOCATION:Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 14h – 17h\n\nOrganisateur : https://www.ccmsl.fr/a
- ctu-et-agendas/agenda.html#2026-12-12-noeldesenfants\n\nFiche : https://fo
- ntainebleaulive.fr/evenements/noel-des-enfants-moret-loing-et-orvanne-3d7d
- d3ebee/\n\nInformations collectées automatiquement : vérifiez-les auprè
- s de l’organisateur.
+LOCATION:Maison des Associations\, 25 Ter rue du Port ( Veneux-Les Sablons)
+  à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 14h – 17h\n\nÉvénement festif spécialement déd
+ ié aux enfants de 3 à 8 ans.\n\nOrganisateur : https://www.ccmsl.fr/actu
+ -et-agendas/agenda.html#2026-12-12-noeldesenfants\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/noel-des-enfants-moret-loing-et-orvanne-3d7dd3e
+ bee/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/noel-des-enfants-moret-loing-et
  -orvanne-3d7dd3ebee/
 CATEGORIES:Culture & Ateliers

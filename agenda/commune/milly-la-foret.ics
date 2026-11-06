@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_764fb661fa@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8eb8658951@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Stage d’initiation au Heels – Club Mill’ Danses
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_952e111bbe@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Projection/débat – Ciné-Lines : « Premières Lunes »
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac93a38421@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
@@ -107,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -126,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
@@ -144,7 +144,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -164,7 +164,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -183,7 +183,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b8821574ed@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
@@ -222,6 +222,23 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1bf4d4afed@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Run & Bike de Milly-la-Forêt 2026
+LOCATION:Milly-la-Forêt
+DESCRIPTION:Organisateur : https://milly-triathlon-81.webself.net/run--bike
+ -2026\n\nFiche : https://fontainebleaulive.fr/evenements/run-et-bike-de-mi
+ lly-la-foret-2026-1bf4d4afed/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-2
+ 026-1bf4d4afed/
+CATEGORIES:Sport & Outdoor
+GEO:48.4017;2.45828
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c0ecb39c4c@fontainebleaulive.fr
 DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261206
@@ -230,14 +247,14 @@ SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur
  e
 LOCATION:Gymnase de Milly-la-Forêt – Rue de l’Hermite\, Milly-la-Forê
  t
-DESCRIPTION:Horaires : De 10h à 17h\n\nTarif : 10 € par table\n\nBourse 
- aux jouets et à la puériculture organisée par la Ville de Milly-la-For
- êt à l'occasion du Téléthon 2026.\n\nOrganisateur : https://www.milly-
- la-foret.fr/2026/10/30/06-12-26-telethon-inscriptions-bourse-aux-jouets-et
- -a-la-puericulture/\n\nFiche : https://fontainebleaulive.fr/evenements/tel
- ethon-inscriptions-bourse-aux-jouets-et-a-la-puericulture-milly-la-foret-c
- 0ecb39c4c/\n\nInformations collectées automatiquement : vérifiez-les aup
- rès de l’organisateur.
+DESCRIPTION:Horaires : 10h à 17h\n\nTarif : 10 € par table\n\nBourse aux
+  jouets et à la puériculture organisée par la Ville de Milly-la-Forêt 
+ à l'occasion du Téléthon 2026.\n\nOrganisateur : https://www.milly-la-f
+ oret.fr/2026/10/30/06-12-26-telethon-inscriptions-bourse-aux-jouets-et-a-l
+ a-puericulture/\n\nFiche : https://fontainebleaulive.fr/evenements/teletho
+ n-inscriptions-bourse-aux-jouets-et-a-la-puericulture-milly-la-foret-c0ecb
+ 39c4c/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/telethon-inscriptions-bourse-au
  x-jouets-et-a-la-puericulture-milly-la-foret-c0ecb39c4c/
 CATEGORIES:Culture & Ateliers
@@ -263,7 +280,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8772659a96@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261216
 DTEND;VALUE=DATE:20261217
 SUMMARY:Atelier lanternes – Médiathèque

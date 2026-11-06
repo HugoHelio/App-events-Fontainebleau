@@ -11,8 +11,27 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_280018f863@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Les soirées de l'Esquisse
+LOCATION:Barbizon
+DESCRIPTION:Horaires : 21h30 - 23h30\n\nTarif : Plein tarif : 10 €.\n\nDe
+ s soirées animées et conviviales sont proposées à l'Esquisse à Barbiz
+ on.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7286
+ 423/les-soirees-de-lesquisse/\n\nFiche : https://fontainebleaulive.fr/even
+ ements/les-soirees-de-l-esquisse-barbizon-280018f863/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-soirees-de-l-esquisse-barbi
+ zon-280018f863/
+CATEGORIES:Scène & Spectacles
+GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3a5fba756f@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Atelier textile « Sur la trace de La Couseuse »
@@ -28,6 +47,46 @@ URL:https://fontainebleaulive.fr/evenements/atelier-textile-sur-la-trace-de
  -la-couseuse-barbizon-3a5fba756f/
 CATEGORIES:Culture & Ateliers
 GEO:48.44575;2.60775
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4e305f9610@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Conférence\, exposition et promenade de Bernard Bosque : "Les Souv
+ enirs de Fontainebleau ou l'éloge du genévrier"
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Une immersion artistique et historique centrée sur le genévri
+ er dans la forêt.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/8054945/conference-exposition-et-promenade-de-bernard-bosque-le
+ s-souvenirs-de-fontainebleau-ou-leloge-du-genevrier/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/conference-exposition-et-promenade-de-bernar
+ d-bosque-les-sou-barbizon-4e305f9610/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-exposition-et-promen
+ ade-de-bernard-bosque-les-sou-barbizon-4e305f9610/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6a82809187@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Conférence\, exposition et promenade de Bernard Bosque : "Les Souv
+ enirs de Fontainebleau ou l'éloge du genévrier"
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Une immersion artistique et historique centrée sur le genévri
+ er dans la forêt.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/8054945/conference-exposition-et-promenade-de-bernard-bosque-le
+ s-souvenirs-de-fontainebleau-ou-leloge-du-genevrier/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/conference-exposition-et-promenade-de-bernar
+ d-bosque-les-sou-barbizon-6a82809187/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-exposition-et-promen
+ ade-de-bernard-bosque-les-sou-barbizon-6a82809187/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -71,7 +130,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03f89bb024@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro piano au coin du feu
@@ -89,8 +148,28 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_924a9444da@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Conférence\, exposition et promenade de Bernard Bosque : "Les Souv
+ enirs de Fontainebleau ou l'éloge du genévrier"
+LOCATION:Barbizon\, Barbizon
+DESCRIPTION:Une immersion artistique et historique centrée sur le genévri
+ er dans la forêt.\n\nOrganisateur : https://www.fontainebleau-tourisme.co
+ m/fr/fiche/8054945/conference-exposition-et-promenade-de-bernard-bosque-le
+ s-souvenirs-de-fontainebleau-ou-leloge-du-genevrier/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/conference-exposition-et-promenade-de-bernar
+ d-bosque-les-sou-barbizon-924a9444da/\n\nInformations collectées automati
+ quement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-exposition-et-promen
+ ade-de-bernard-bosque-les-sou-barbizon-924a9444da/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_0c5d619702@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Visite musicale dans l'auberge Ganne
@@ -108,7 +187,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3be21f4cf@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Les soirées de l'Esquisse
@@ -127,7 +206,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_70b3109999@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:"Nouveau regard sur le monde paysan par Jean-François Millet"
@@ -148,7 +227,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f6487ee90d@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Visites guidées du musée
@@ -168,7 +247,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d757249270@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les soirées de l'Esquisse
@@ -207,7 +286,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a10ea2f638@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite contée « Les Contes du chat perché »
@@ -227,7 +306,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_edd27034e8@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Visites guidées du musée
@@ -265,7 +344,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3803e727d8@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Les soirées de l'Esquisse
@@ -284,7 +363,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fe92208886@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Visite thématique « Les artistes étrangers à Barbizon »
@@ -305,7 +384,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23a8889b67@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Atelier aquarelle botanique "carte de Noël"
@@ -325,7 +404,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_573a44c82a@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Visites guidées du musée
@@ -345,7 +424,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e42881c006@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Visite contée "Les Contes du chat perché"
@@ -364,7 +443,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -383,7 +462,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a9e057d74b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle théâtral "Un voyage inattendu"
@@ -404,7 +483,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_17edeb2692@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Visites guidées du musée
@@ -424,7 +503,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_996e031f1d@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Atelier "couronne-arbre de Noël"
@@ -443,7 +522,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7ad3231533@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Les soirées de l'Esquisse
@@ -462,7 +541,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_af815ef7af@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Atelier "Lutins de la forêt"
@@ -482,7 +561,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7fb1b701f9@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Visites guidées du musée
@@ -542,7 +621,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5978341773@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:Visites guidées du musée

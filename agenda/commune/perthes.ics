@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Perthes · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_71efa745d9@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261116
+SUMMARY:Exposition : "Mémoires Incarnées"
+LOCATION:Perthes\, Perthes
+DESCRIPTION:Tarif : Gratuit.\n\nUne exposition artistique explorant le conc
+ ept de mémoire à travers diverses œuvres.\n\nOrganisateur : https://www
+ .fontainebleau-tourisme.com/fr/fiche/8053778/exposition-memoires-incarnees
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/exposition-memoires-i
+ ncarnees-perthes-71efa745d9/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-memoires-incarnees-p
+ erthes-71efa745d9/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_87dbfdfda2@fontainebleaulive.fr
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261123
+SUMMARY:Exposition : "Mémoires Incarnées"
+LOCATION:Perthes\, Perthes
+DESCRIPTION:Tarif : Gratuit.\n\nUne exposition artistique explorant le conc
+ ept de mémoire à travers diverses œuvres.\n\nOrganisateur : https://www
+ .fontainebleau-tourisme.com/fr/fiche/8053778/exposition-memoires-incarnees
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/exposition-memoires-i
+ ncarnees-perthes-87dbfdfda2/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-memoires-incarnees-p
+ erthes-87dbfdfda2/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

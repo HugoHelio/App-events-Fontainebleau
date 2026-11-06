@@ -1226,6 +1226,12 @@
       "reason": "Les horaires indiqués diffèrent fortement (09h00 le matin contre 17h30), ce qui laisse un doute sur la concordance.",
       "at": "2026-10-24"
     },
+    "EVT_2005ad3717|EVT_25ae1e91a6": {
+      "same": true,
+      "reason": "Même spectacle de Saint-Sylvestre au Théâtre municipal de Fontainebleau.",
+      "at": "2026-11-06",
+      "v": 2
+    },
     "EVT_2005ad3717|EVT_55d5b44a0c": {
       "same": false,
       "reason": "Deux événements du réveillon distincts se déroulant dans des lieux et communes différents.",
@@ -1502,6 +1508,11 @@
       "reason": "Même promenade guidée ANVL aux mêmes horaires et lieu.",
       "at": "2026-10-31"
     },
+    "EVT_30be07276a|EVT_5bdbb38d9b": {
+      "same": false,
+      "reason": "Marchés de Noël dans deux communes différentes.",
+      "at": "2026-11-06"
+    },
     "EVT_3219b927d1|EVT_bac6c34a35": {
       "same": true,
       "reason": "Même randonnée guidée organisée par l'AAFF dans les Trois-Pignons le 25 octobre 2026.",
@@ -1536,6 +1547,11 @@
       "same": true,
       "reason": "Il s'agit de la même régate d'aviron organisée par le club ANFA le 11 novembre à Samois-sur-Seine.",
       "at": "2026-10-11"
+    },
+    "EVT_368c0c19dd|EVT_5258aab0a6": {
+      "same": true,
+      "reason": "Même forum des artisans et entrepreneurs à Saint-Mammès le même jour.",
+      "at": "2026-11-06"
     },
     "EVT_368d533a60|EVT_a88ff9e678": {
       "same": false,
@@ -1931,6 +1947,11 @@
       "same": true,
       "reason": "Il s'agit exactement du même événement de Noël au Château de Fontainebleau aux mêmes dates.",
       "at": "2026-10-12"
+    },
+    "EVT_4ad1ee39f0|EVT_89d02118e2": {
+      "same": false,
+      "reason": "Deux bourses aux jouets dans deux lieux et communes différents.",
+      "at": "2026-11-06"
     },
     "EVT_4ad1ee39f0|EVT_e47909ba3c": {
       "same": true,
@@ -3054,6 +3075,12 @@
       "at": "2026-10-31",
       "v": 2
     },
+    "EVT_8869a16df0|EVT_c5e54a3261": {
+      "same": true,
+      "reason": "Même conférence animée par Sébastien Ronsseray au Musée de Préhistoire de Nemours.",
+      "at": "2026-11-06",
+      "v": 2
+    },
     "EVT_8880075d20|EVT_cc63a6aec8": {
       "same": false,
       "reason": "L'un est le festival global, l'autre une séance précise au CinéParadis.",
@@ -3143,6 +3170,12 @@
       "same": true,
       "reason": "Il s'agit de la même représentation de la pièce Le Legs au Théâtre Municipal de Fontainebleau.",
       "at": "2026-10-24"
+    },
+    "EVT_8efa6ff955|EVT_924fcbdae5": {
+      "same": true,
+      "reason": "Même événement de chantier nature à la Platière de Meun à la même date et heure.",
+      "at": "2026-11-06",
+      "v": 2
     },
     "EVT_8fe09a350c|EVT_99b337a3a7": {
       "same": false,
@@ -3292,6 +3325,11 @@
       "reason": "Même sortie d'observation ornithologique au Carreau Franc le même matin.",
       "at": "2026-09-24"
     },
+    "EVT_a416d471aa|EVT_e920dd0a7d": {
+      "same": false,
+      "reason": "Événements dans deux communes distinctes (Fontainebleau vs Melun).",
+      "at": "2026-11-06"
+    },
     "EVT_a4dc576686|EVT_bbc6f7ef5e": {
       "same": false,
       "reason": "Atelier BD en médiathèque distinct des expositions du Château de Fontainebleau.",
@@ -3352,6 +3390,11 @@
       "same": true,
       "reason": "Il s'agit de la même manifestation familiale de Noël organisée au Château de Fontainebleau aux mêmes dates.",
       "at": "2026-10-11"
+    },
+    "EVT_a73f557c91|EVT_ded0ad2c0d": {
+      "same": false,
+      "reason": "Salles, dates de fin et détails des représentations différents au sein du château.",
+      "at": "2026-11-06"
     },
     "EVT_a8b3f471d4|EVT_fcf3ac200d": {
       "same": true,
