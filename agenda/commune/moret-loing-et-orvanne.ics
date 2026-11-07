@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_b02568c7f0@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
-DTSTART;VALUE=DATE:20261106
-DTEND;VALUE=DATE:20261107
-SUMMARY:Atelier Fabrication de Jeu
-LOCATION:Médiathèque Sarah Bernhardt\, 5 rue Claude Bernard\, Veneux\, 77
- 250 Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 17h\n\nParticipez à la confection d'un jeu de morpi
- on personnalisé en modelant les pions et leur pochette de rangement.\n\nO
- rganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-06-
- atelierfabricationdejeu\n\nFiche : https://fontainebleaulive.fr/evenements
- /atelier-fabrication-de-jeu-moret-loing-et-orvanne-b02568c7f0/\n\nInformat
- ions collectées automatiquement : vérifiez-les auprès de l’organisate
- ur.
-URL:https://fontainebleaulive.fr/evenements/atelier-fabrication-de-jeu-more
- t-loing-et-orvanne-b02568c7f0/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_001e7aec79@fontainebleaulive.fr
 DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261106
@@ -45,26 +25,6 @@ DESCRIPTION:Horaires : 21h00\n\nSpectacle au Thalie Théâtre.\n\nOrganisat
 URL:https://fontainebleaulive.fr/evenements/laissez-moi-tranquille-moret-lo
  ing-et-orvanne-001e7aec79/
 CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_74f0a437ec@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
-DTSTART;VALUE=DATE:20261106
-DTEND;VALUE=DATE:20261107
-SUMMARY:Théâtre " Cendrillon "
-LOCATION:Salle Marquis de Roys\, 18 bis route de Saint-Mammès\, Moret-sur-
- Loing\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 19h – 21h\n\nReprésentation théâtrale traitant 
- de la thématique des maltraitances faites aux enfants.\n\nOrganisateur : 
- https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-06-theatrecendril
- lon\n\nFiche : https://fontainebleaulive.fr/evenements/theatre-cendrillon-
- moret-loing-et-orvanne-74f0a437ec/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/theatre-cendrillon-moret-loing-
- et-orvanne-74f0a437ec/
-CATEGORIES:Scène & Spectacles
-GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
