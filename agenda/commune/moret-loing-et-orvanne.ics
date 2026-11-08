@@ -11,43 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_001e7aec79@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
-DTSTART;VALUE=DATE:20261106
-DTEND;VALUE=DATE:20261108
-SUMMARY:Laissez-moi tranquille
-LOCATION:Thalie Théâtre\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 21h00\n\nSpectacle au Thalie Théâtre.\n\nOrganisat
- eur : https://www.thalietheatre.com/\n\nFiche : https://fontainebleaulive.
- fr/evenements/laissez-moi-tranquille-moret-loing-et-orvanne-001e7aec79/\n\
- nInformations collectées automatiquement : vérifiez-les auprès de l’o
- rganisateur.
-URL:https://fontainebleaulive.fr/evenements/laissez-moi-tranquille-moret-lo
- ing-et-orvanne-001e7aec79/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_eac5e2d39a@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
-DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261108
-SUMMARY:Boutique solidaire " Croix rouge "
-LOCATION:Croix-rouge Française\, 2 rue du Clos Blanchet à Moret-sur-Loing
- \, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 9h à 17h\n\nVente solidaire d'objets divers incluan
- t vêtements\, vaisselle\, livres et jouets par la Croix-Rouge.\n\nOrganis
- ateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-07-boutiq
- uesolidairecroixrouge\n\nFiche : https://fontainebleaulive.fr/evenements/b
- outique-solidaire-croix-rouge-moret-loing-et-orvanne-eac5e2d39a/\n\nInform
- ations collectées automatiquement : vérifiez-les auprès de l’organisa
- teur.
-URL:https://fontainebleaulive.fr/evenements/boutique-solidaire-croix-rouge-
- moret-loing-et-orvanne-eac5e2d39a/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_ad31b20d9e@fontainebleaulive.fr
 DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261113
