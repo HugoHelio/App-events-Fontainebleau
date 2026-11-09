@@ -11,8 +11,28 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_7dccea7e46@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:OCTOBRE ROSE – SOIREE DANSANTE DE CLOTURE
+LOCATION:Salle des fêtes\, Milly-la-Forêt
+DESCRIPTION:Horaires : 20h à minuit\n\nTarif : 10 €\n\nPour achever cett
+ e édition d’Octobre Rose\, rendez-vous pour une grande soirée dansante
+  solidaire sous le signe de la convivialité avec un dress code rose.\n\nO
+ rganisateur : https://www.milly-la-foret.fr/2026/09/23/13-11-26-octobre-ro
+ se-soiree-dansante-de-cloture/\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/octobre-rose-soiree-dansante-de-cloture-milly-la-foret-7dccea7e46/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/octobre-rose-soiree-dansante-de
+ -cloture-milly-la-foret-7dccea7e46/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_8eb8658951@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Stage d’initiation au Heels – Club Mill’ Danses
@@ -30,18 +50,40 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1210135ebe@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Conférence – Les risques cardiovasculaires chez la femme
+LOCATION:Salle des fêtes – 11 boulevard du Maréchal Lyautey\, Milly-la-
+ Forêt
+DESCRIPTION:Horaires : 20h à 21h30\n\nTarif : Gratuit\n\nConférence consa
+ crée aux risques cardiovasculaires chez la femme\, animée par le Dr Bala
+ dier\, cardiologue.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/1
+ 1/06/17-11-26-conference-les-risques-cardiovasculaires-chez-la-femme/\n\nF
+ iche : https://fontainebleaulive.fr/evenements/conference-les-risques-card
+ iovasculaires-chez-la-femme-milly-la-foret-1210135ebe/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-les-risques-cardiova
+ sculaires-chez-la-femme-milly-la-foret-1210135ebe/
+CATEGORIES:Culture & Ateliers
+GEO:48.40453;2.46756
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_952e111bbe@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Projection/débat – Ciné-Lines : « Premières Lunes »
 LOCATION:Ciné-Lines\, Milly-la-Forêt
-DESCRIPTION:Horaires : 20h\n\nProjection du documentaire « Premières Lune
- s » suivie d'un temps d'échange et de discussion.\n\nOrganisateur : http
- s://www.milly-la-foret.fr/2026/01/28/17-11-26-projection-debat-cine-lines/
- \n\nFiche : https://fontainebleaulive.fr/evenements/projection-debat-cine-
- lines-premieres-lunes-milly-la-foret-952e111bbe/\n\nInformations collecté
- es automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 20h\n\nTarif : Gratuit\n\nProjection du documentaire
+  « Premières Lunes » suivie d'un temps d'échange et de discussion.\n\n
+ Organisateur : https://www.milly-la-foret.fr/2026/01/28/17-11-26-projectio
+ n-debat-cine-lines/\n\nFiche : https://fontainebleaulive.fr/evenements/pro
+ jection-debat-cine-lines-premieres-lunes-milly-la-foret-952e111bbe/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
 URL:https://fontainebleaulive.fr/evenements/projection-debat-cine-lines-pre
  mieres-lunes-milly-la-foret-952e111bbe/
 CATEGORIES:Scène & Spectacles
@@ -49,7 +91,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac93a38421@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
@@ -69,7 +111,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -87,18 +129,58 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_110ee3c26e@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:Rencontre santé – Atelier « cœur de femmes »
+LOCATION:Maison des associations – Rue Colonel Arnaud Beltrame\, Milly-la
+ -Forêt
+DESCRIPTION:Horaires : 10h à 12h\n\nTarif : Gratuit\n\nAtelier consacré 
+ à l'alimentation et aux besoins essentiels du corps humain dans le cadre 
+ du programme Cœur de femmes.\n\nOrganisateur : https://www.milly-la-foret
+ .fr/2026/11/06/25-11-26-rencontre-sante-atelier-coeur-de-femmes/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/rencontre-sante-atelier-coeur-de
+ -femmes-milly-la-foret-110ee3c26e/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rencontre-sante-atelier-coeur-d
+ e-femmes-milly-la-foret-110ee3c26e/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_36f7cc1646@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Marché de Noël & portes ouvertes à la MARPA
+LOCATION:MARPA Les Jardins de Saint-Laurent – 8 chemin Saint-Laurent\, Mi
+ lly-la-Forêt
+DESCRIPTION:Horaires : 9h30 à 18h\n\nTarif : Gratuit\n\nMarché de Noël a
+ vec exposants\, ateliers\, chorale et restauration\, ainsi que portes ouve
+ rtes de la résidence.\n\nOrganisateur : https://www.milly-la-foret.fr/202
+ 6/11/06/28-11-26-marche-de-noel-portes-ouvertes-a-la-marpa/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/marche-de-noel-et-portes-ouvertes-a-l
+ a-marpa-milly-la-foret-36f7cc1646/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-et-portes-ouvert
+ es-a-la-marpa-milly-la-foret-36f7cc1646/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
 LOCATION:Médiathèque du Moustier\, Milly-la-Forêt
-DESCRIPTION:Horaires : 10h à 15h\n\nRencontre avec Dominique Jallon autour
-  de ses deux ouvrages et séance de dédicaces.\n\nOrganisateur : https://
- www.milly-la-foret.fr/2026/01/28/28-11-26-rencontre-dedicaces-mediatheque/
- \n\nFiche : https://fontainebleaulive.fr/evenements/rencontre-et-dedicaces
- -mediatheque-milly-la-foret-f44838703b/\n\nInformations collectées automa
- tiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h à 15h\n\nTarif : Gratuit\n\nRencontre avec Domi
+ nique Jallon autour de ses deux ouvrages et séance de dédicaces.\n\nOrga
+ nisateur : https://www.milly-la-foret.fr/2026/01/28/28-11-26-rencontre-ded
+ icaces-mediatheque/\n\nFiche : https://fontainebleaulive.fr/evenements/ren
+ contre-et-dedicaces-mediatheque-milly-la-foret-f44838703b/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/rencontre-et-dedicaces-mediathe
  que-milly-la-foret-f44838703b/
 CATEGORIES:Culture & Ateliers
@@ -106,7 +188,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -126,7 +208,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -145,7 +227,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b8821574ed@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
@@ -162,6 +244,26 @@ URL:https://fontainebleaulive.fr/evenements/stage-de-danse-lyrical-contempo
  rary-club-mill-danses-milly-la-foret-b8821574ed/
 CATEGORIES:Sport & Outdoor
 GEO:48.4019;2.45349
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_208a256050@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Rencontre santé – Atelier « cœur de femmes »
+LOCATION:Maison des associations – Rue Colonel Arnaud Beltrame\, Milly-la
+ -Forêt
+DESCRIPTION:Horaires : 10h à 12h\n\nTarif : Gratuit\n\nAtelier sur l'activ
+ ité physique dans le cadre du programme de sensibilisation « Cœur de fe
+ mmes ».\n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/06/02-12-
+ 26-rencontre-sante-atelier-coeur-de-femmes/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/rencontre-sante-atelier-coeur-de-femmes-milly-la-fore
+ t-208a256050/\n\nInformations collectées automatiquement : vérifiez-les 
+ auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rencontre-sante-atelier-coeur-d
+ e-femmes-milly-la-foret-208a256050/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -185,15 +287,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1bf4d4afed@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Run & Bike de Milly-la-Forêt 2026
-LOCATION:Milly-la-Forêt
-DESCRIPTION:Organisateur : https://milly-triathlon-81.webself.net/run--bike
- -2026\n\nFiche : https://fontainebleaulive.fr/evenements/run-et-bike-de-mi
- lly-la-foret-2026-1bf4d4afed/\n\nInformations collectées automatiquement 
- : vérifiez-les auprès de l’organisateur.
+LOCATION:Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Tarif : Gratuit\n\nÉpreuve de 16 km en duo alternant course à
+  pied et VTT\, avec une course enfants au profit du Téléthon.\n\nOrganis
+ ateur : https://milly-triathlon-81.webself.net/run--bike-2026\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-2026-
+ 1bf4d4afed/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-2
  026-1bf4d4afed/
 CATEGORIES:Sport & Outdoor
@@ -202,7 +306,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c0ecb39c4c@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur

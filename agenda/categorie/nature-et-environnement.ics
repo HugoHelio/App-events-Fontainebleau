@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be6223a033@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_37657cd157@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Apéro célibataires — Melun
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_143c0edcd2@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c1d8f7211a@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro célibataires — Melun
@@ -184,7 +184,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e920dd0a7d@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -203,7 +203,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a416d471aa@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Apéro célibataires — Melun
@@ -222,7 +222,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f8910fb196@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Animation nature en famille « Le Trésor de Praline »
@@ -239,8 +239,46 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_45618e3e0d@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Apéro célibataires — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Fontaineble
+ au : petit groupe (8 max)\, ambiance détendue. Inscription gratuite sur R
+ andoDate.\n\nOrganisateur : https://openagenda.com/randodate/events/apero-
+ celibataires-fontainebleau-3734391\n\nFiche : https://fontainebleaulive.fr
+ /evenements/apero-celibataires-fontainebleau-45618e3e0d/\n\nInformations c
+ ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-fontaineblea
+ u-45618e3e0d/
+CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ff1280618b@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Apéro célibataires — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Melun : pet
+ it groupe (8 max)\, ambiance détendue. Inscription gratuite sur RandoDate
+ .\n\nOrganisateur : https://openagenda.com/randodate/events/apero-celibata
+ ires-melun-2745350\n\nFiche : https://fontainebleaulive.fr/evenements/aper
+ o-celibataires-melun-ff1280618b/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-melun-ff1280
+ 618b/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_1ed8d3db12@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:CAFÉ DES TRANSITIONS "CONSOMMATION ET DECHETS !" [FONTAINEBLEAU (E
@@ -262,7 +300,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -280,7 +318,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e369a0da4e@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Journée de l'Arbre
@@ -294,6 +332,25 @@ DESCRIPTION:Horaires : 10h à 17h\n\nUne journée consacrée à la découve
  e l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/journee-de-l-arbre-montigny-sur
  -loing-e369a0da4e/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f238bc3741@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Troc aux Plantes
+LOCATION:salle polyvalente Bernard Ridoux\, face au 35 chemin du Port\, Mor
+ et-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 9h30 à 12h30\n\nÉvénement convivial d'échange de
+  végétaux et de plantes.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-
+ agendas/agenda.html#2026-11-21-trocauxplantes\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/troc-aux-plantes-moret-loing-et-orvanne-f238bc3741/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/troc-aux-plantes-moret-loing-et
+ -orvanne-f238bc3741/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -417,7 +474,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -435,8 +492,28 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
+LOCATION:Espace Naturel Sensible le tuf de la celle\, chemin des carrières
+  à Vernou-la Celle sur Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 10h à 11h30\n\nPublic : Dès 7 ans\n\nDécouverte c
+ ommentée de la biodiversité locale.\n\nOrganisateur : https://www.ccmsl.
+ fr/actu-et-agendas/agenda.html#2026-11-28-sortienaturelabiodiversitedhiere
+ tdaujour\n\nFiche : https://fontainebleaulive.fr/evenements/sortie-nature-
+ la-biodiversite-d-hier-et-d-aujourd-hui-vernou-la-celle-sur-seine-2ca2fbc3
+ e4/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-nature-la-biodiversite-d
+ -hier-et-d-aujourd-hui-vernou-la-celle-sur-seine-2ca2fbc3e4/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -471,6 +548,25 @@ DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Gratuit\n\nPublic : Dès 10
 URL:https://fontainebleaulive.fr/evenements/excursion-bryologique-et-decouv
  erte-de-la-nature-en-foret-de-fontainebleau-297d87a4d1/
 CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_2b3ef3d23c@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Sortie bryologique au mont Andart
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 09h00 à 17h00\n\nTarif : Gratuit\n\nSortie bryologi
+ que en Forêt de Fontainebleau.\n\nOrganisateur : https://www.jagispourlan
+ ature.org/activite/sortie-bryologique-au-mont-andart\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/sortie-bryologique-au-mont-andart-fontainebl
+ eau-2b3ef3d23c/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-bryologique-au-mont-anda
+ rt-fontainebleau-2b3ef3d23c/
+CATEGORIES:Nature & Environnement
+GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -738,7 +834,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e010cd1c81@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
 SUMMARY:Visites guidées thématiques en forêt de Fontainebleau

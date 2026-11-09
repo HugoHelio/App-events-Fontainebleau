@@ -3,11 +3,47 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:nonville · Fontainebleau Live
+X-WR-CALNAME:Nonville · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_c9a143cd8b@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261115
+SUMMARY:Bourse aux jouets
+LOCATION:salle polyvalente\, 3 impasse des Prés\, Nonville\, Nonville
+DESCRIPTION:Horaires : 9h à 19h et de 9h à 17h\n\nVente d'occasion permet
+ tant d'acheter ou d'échanger des jouets.\n\nOrganisateur : https://www.cc
+ msl.fr/actu-et-agendas/agenda.html#2026-11-13-bourseauxjouets\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/bourse-aux-jouets-nonville-c9a143cd
+ 8b/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/bourse-aux-jouets-nonville-c9a1
+ 43cd8b/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_0584ea0652@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Marché de l'Avent
+LOCATION:Salle polyvalente\, 3 impasse des Prés à Nonville\, Nonville
+DESCRIPTION:Horaires : 9h à 16h30\n\nUn marché convivial pour préparer l
+ es fêtes de fin d'année.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-
+ agendas/agenda.html#2026-11-22-marchedelavent\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/marche-de-l-avent-nonville-0584ea0652/\n\nInformati
+ ons collectées automatiquement : vérifiez-les auprès de l’organisateu
+ r.
+URL:https://fontainebleaulive.fr/evenements/marche-de-l-avent-nonville-0584
+ ea0652/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

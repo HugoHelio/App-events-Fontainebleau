@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_95fadb5ed9@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Patchaoké\, un micro\, des paroles et ta voix
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1f349c4013@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Zonky's -Concert Ska/jazz
@@ -45,6 +45,25 @@ DESCRIPTION:Profitez d'un concert dynamique de ska et de jazz proposé en p
 URL:https://fontainebleaulive.fr/evenements/zonky-s-concert-ska-jazz-la-gen
  evraye-1f349c4013/
 CATEGORIES:Scène & Spectacles
+GEO:48.32069;2.74838
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e7691b00b4@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Soirée tartiflette
+LOCATION:La Genevraye
+DESCRIPTION:Horaires : en soirée\n\nUn moment convivial autour d'une dégu
+ station de tartiflette.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-age
+ ndas/agenda.html#2026-11-21-soireetartiflette\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/soiree-tartiflette-la-genevraye-e7691b00b4/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-tartiflette-la-genevraye
+ -e7691b00b4/
+CATEGORIES:Culture & Ateliers
 GEO:48.32069;2.74838
 TRANSP:TRANSPARENT
 END:VEVENT

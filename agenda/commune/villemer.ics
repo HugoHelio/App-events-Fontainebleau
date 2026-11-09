@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_e07e672e8f@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Grande bourse aux jouets
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9099f3e746@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Soirée tartiflette
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_761f3d6577@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Atelier bien-être duo
@@ -65,6 +65,24 @@ URL:https://fontainebleaulive.fr/evenements/atelier-bien-etre-duo-villemer-
  761f3d6577/
 CATEGORIES:Culture & Ateliers
 GEO:48.30364;2.82292
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_31c178404b@fontainebleaulive.fr
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Repair Café MSL !
+LOCATION:Espace des Habitants\, Rue des Marronniers\, Villemer\, Villemer
+DESCRIPTION:Horaires : 14h à 18h\n\nAtelier participatif pour apprendre à
+  réparer vos objets cassés avec des bénévoles.\n\nOrganisateur : https
+ ://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-repaircafemsl\n\nFi
+ che : https://fontainebleaulive.fr/evenements/repair-cafe-msl-villemer-31c
+ 178404b/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/repair-cafe-msl-villemer-31c178
+ 404b/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

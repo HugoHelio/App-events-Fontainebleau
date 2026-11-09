@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_b73078ac9b@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Marché de Noël
@@ -30,11 +30,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce6a19556a@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
+DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Marché de Noël
-LOCATION:Chailly-en-Bière
+LOCATION:Chailly-en-Bière\, Chailly-en-Bière
 DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Chailly-en-Bi
  ère.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/79
  11971/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/m

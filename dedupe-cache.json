@@ -894,6 +894,11 @@
       "reason": "Événements distincts se déroulant dans des communes différentes avec des dates et contenus spécifiques.",
       "at": "2026-10-31"
     },
+    "EVT_1232ccbee7|EVT_7dccea7e46": {
+      "same": false,
+      "reason": "La fiche A est le programme général d'Octobre Rose tandis que la fiche B est un événement spécifique (soirée dansante de clôture).",
+      "at": "2026-11-09"
+    },
     "EVT_13b2cb72ac|EVT_28f83599a6": {
       "same": false,
       "reason": "Deux événements différents dans deux lieux distincts (le Château vs le Jardin des Arts).",
@@ -1841,6 +1846,11 @@
       "same": true,
       "reason": "Même événement musical cuivré du week-end au Théâtre municipal de Fontainebleau.",
       "at": "2026-10-18"
+    },
+    "EVT_45618e3e0d|EVT_ff1280618b": {
+      "same": false,
+      "reason": "Les deux apéros se déroulent dans des villes différentes (Fontainebleau et Melun).",
+      "at": "2026-11-09"
     },
     "EVT_4653132b27|EVT_5cb728f120": {
       "same": false,
@@ -3673,6 +3683,11 @@
       "same": true,
       "reason": "Il s'agit du même concours équestre Jump Bost organisé au Grand Parquet aux mêmes dates.",
       "at": "2026-09-27"
+    },
+    "EVT_c9a143cd8b|EVT_e07e672e8f": {
+      "same": false,
+      "reason": "Les événements ont lieu dans deux communes et salles polyvalentes différentes (Villemer et Nonville).",
+      "at": "2026-11-09"
     },
     "EVT_cacbb59c55|EVT_d2a655a909": {
       "same": true,
