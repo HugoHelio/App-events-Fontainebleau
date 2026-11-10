@@ -11,25 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_bc7bc2a26d@fontainebleaulive.fr
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261110
-SUMMARY:25ème Salon du Champignon
-LOCATION:Pays de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00 – 18h00\n\nTarif : Gratuit\n\nExposition myc
- ologique annuelle présentant la diversité des espèces fraîches récolt
- ées dans la région.\n\nOrganisateur : https://anvl.fr/grand-public/\n\nF
- iche : https://fontainebleaulive.fr/evenements/25eme-salon-du-champignon-f
- ontainebleau-bc7bc2a26d/\n\nInformations collectées automatiquement : vé
- rifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/25eme-salon-du-champignon-fonta
- inebleau-bc7bc2a26d/
-CATEGORIES:Nature & Environnement
-GEO:48.41089;2.7265
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_be6223a033@fontainebleaulive.fr
 DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261110
