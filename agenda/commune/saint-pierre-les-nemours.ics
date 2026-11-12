@@ -11,18 +11,59 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_19f257050d@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite des sites de l'entreprise VANDEPUTTE
+LOCATION:VANDEPUTTE\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Visite de l'entreprise VANDEPUTTE par des BTS\n\nOrganisateur :
+  https://openagenda.com/semaine-industrie-2026/events/visite-des-sites-de-
+ lentreprise-vandeputte\n\nFiche : https://fontainebleaulive.fr/evenements/
+ visite-des-sites-de-l-entreprise-vandeputte-saint-pierre-les-nemours-19f25
+ 7050d/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-des-sites-de-l-entrepris
+ e-vandeputte-saint-pierre-les-nemours-19f257050d/
+CATEGORIES:Culture & Ateliers
+GEO:48.28253;2.68509
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8375fab3e7@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Visite de l'entreprise SAINT GOBAIN ADVANCED CERAMIC COMPOSITES
+LOCATION:SAINT GOBAIN ADVANCES CERAMIC COMPOSITES\, Saint-Pierre-lès-Nemou
+ rs
+DESCRIPTION:Visite de l'entreprise SAINT GOBAIN ADVANCED CERAMIC COMPOSITES
+  par des collégiens\n\nOrganisateur : https://openagenda.com/semaine-indu
+ strie-2026/events/visite-de-lentreprise-saint-gobain-advanced-ceramic-comp
+ osites\n\nFiche : https://fontainebleaulive.fr/evenements/visite-de-l-entr
+ eprise-saint-gobain-advanced-ceramic-composi-saint-pierre-les-nemours-8375
+ fab3e7/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-saint-go
+ bain-advanced-ceramic-composi-saint-pierre-les-nemours-8375fab3e7/
+CATEGORIES:Culture & Ateliers
+GEO:48.28267;2.68636
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_08cc124fed@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Cross de Nemours
 LOCATION:Stade Jacques Moulin\, Saint-Pierre-lès-Nemours
-DESCRIPTION:Horaires : 09h00\n\nTarif : Payant\n\nPublic : Dès 6 ans\n\nÉ
- preuve officielle de cross-country organisée sous l'égide du Comité Dé
- partemental d'Athlétisme de Seine-et-Marne.\n\nOrganisateur : https://ath
- le-nemours-saint-pierre.com/\n\nFiche : https://fontainebleaulive.fr/evene
- ments/cross-de-nemours-saint-pierre-les-nemours-08cc124fed/\n\nInformation
- s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 09h30\n\nTarif : Inscriptions via clubs
+  (gratuit pour scolaires)\n\nPublic : Dès 6 ans\n\nÉpreuve officielle de
+  cross-country organisée sous l'égide du Comité Départemental d'Athlé
+ tisme de Seine-et-Marne.\n\nOrganisateur : https://athle-nemours-saint-pie
+ rre.com/\n\nFiche : https://fontainebleaulive.fr/evenements/cross-de-nemou
+ rs-saint-pierre-les-nemours-08cc124fed/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cross-de-nemours-saint-pierre-l
  es-nemours-08cc124fed/
 CATEGORIES:Sport & Outdoor
@@ -33,19 +74,37 @@ UID:EVT_39a65cd1ec@fontainebleaulive.fr
 DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261214
-SUMMARY:Village & Marché de Noël
+SUMMARY:Village & Marché de Noël de Saint-Pierre-lès-Nemours
 LOCATION:Maison des Arts\, Saint-Pierre-lès-Nemours\, Saint-Pierre-lès-Ne
  mours
-DESCRIPTION:Horaires : 2026-12-12 : 10h00–21h00 \; 2026-12-13 : 10h00–1
- 8h30\n\nTarif : Gratuit\n\nVillage de Noël réunissant soixante exposants
- \, expositions artistiques et animations féériques pour toute la famille
- .\n\nOrganisateur : https://www.saintpierrelesnemours.fr/\n\nFiche : https
- ://fontainebleaulive.fr/evenements/village-et-marche-de-noel-saint-pierre-
- les-nemours-39a65cd1ec/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-saint
- -pierre-les-nemours-39a65cd1ec/
+DESCRIPTION:Horaires : 2026-12-12 : 10h00-21h00 \; 2026-12-13 : 10h00-18h30
+ \n\nTarif : Gratuit\n\nVillage de Noël réunissant soixante exposants\, e
+ xpositions artistiques et animations féériques pour toute la famille.\n\
+ nOrganisateur : https://www.saintpierrelesnemours.fr/\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/village-et-marche-de-noel-de-saint-pierre-l
+ es-nemours-39a65cd1ec/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/village-et-marche-de-noel-de-sa
+ int-pierre-les-nemours-39a65cd1ec/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_87b3976e7c@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Run and Bike Souvenir John Hochart
+LOCATION:Stade Jacques Moulin\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Horaires : À partir de 09h30\n\nTarif : Payant selon la distan
+ ce\n\nCourse en binôme VTT/course à pied sur 5 km\, 10 km et 15 km au pr
+ ofit de la Ligue contre le cancer.\n\nOrganisateur : https://protiming.fr/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/run-and-bike-souvenir-
+ john-hochart-saint-pierre-les-nemours-87b3976e7c/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/run-and-bike-souvenir-john-hoch
+ art-saint-pierre-les-nemours-87b3976e7c/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -76,12 +135,12 @@ DTEND;VALUE=DATE:20270124
 SUMMARY:La Nocturne du Pays de Nemours
 LOCATION:Stade Intercommunal de Saint-Pierre-lès-Nemours\, Saint-Pierre-l
  ès-Nemours
-DESCRIPTION:Horaires : À partir de 19h00\n\nTarif : ~10 € à 15 € selo
- n les modalités d'inscription\n\nTrail nocturne semi-urbain et nature de 
- 11 km traversant la Forêt du Gréau et Nemours.\n\nOrganisateur : https:/
- /cdr77.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/la-nocturne-
- du-pays-de-nemours-saint-pierre-les-nemours-974a0b9859/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 19h00\n\nTarif : Sur inscription en ligne\n\nTrail n
+ octurne semi-urbain et nature de 11 km traversant la Forêt du Gréau et N
+ emours.\n\nOrganisateur : https://cdr77.fr/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/la-nocturne-du-pays-de-nemours-saint-pierre-les-nemou
+ rs-974a0b9859/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-
  saint-pierre-les-nemours-974a0b9859/
 CATEGORIES:Sport & Outdoor

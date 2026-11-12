@@ -1,0 +1,86 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:La Grande-Paroisse · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_86f3c8e4e0@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite de l'entreprise AREMI
+LOCATION:AREMI\, La Grande-Paroisse
+DESCRIPTION:Visite de l'entreprise par une classe de lycéen\n\nOrganisateu
+ r : https://openagenda.com/semaine-industrie-2026/events/visite-de-lentrep
+ rise-aremi\n\nFiche : https://fontainebleaulive.fr/evenements/visite-de-l-
+ entreprise-aremi-la-grande-paroisse-86f3c8e4e0/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-aremi-la
+ -grande-paroisse-86f3c8e4e0/
+CATEGORIES:Culture & Ateliers
+GEO:48.38582;2.92435
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c8ed07cbb2@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite de l'entreprise CIRCET PYLONE
+LOCATION:CIRCET PYLONE\, La Grande-Paroisse
+DESCRIPTION:Visite de l'entreprise par une classe de lycéen\n\nOrganisateu
+ r : https://openagenda.com/semaine-industrie-2026/events/visite-de-lentrep
+ rise-circet-pylone\n\nFiche : https://fontainebleaulive.fr/evenements/visi
+ te-de-l-entreprise-circet-pylone-la-grande-paroisse-c8ed07cbb2/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-circet-p
+ ylone-la-grande-paroisse-c8ed07cbb2/
+CATEGORIES:Culture & Ateliers
+GEO:48.38557;2.92504
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7cd1962634@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite de l'entreprise SAUR
+LOCATION:Station d’épuration de la SAUR\, La Grande-Paroisse
+DESCRIPTION:Visite de la station d'épuration de la SAUR\n\nOrganisateur : 
+ https://openagenda.com/semaine-industrie-2026/events/visite-de-lentreprise
+ -saur\n\nFiche : https://fontainebleaulive.fr/evenements/visite-de-l-entre
+ prise-saur-la-grande-paroisse-7cd1962634/\n\nInformations collectées auto
+ matiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-saur-la-
+ grande-paroisse-7cd1962634/
+CATEGORIES:Culture & Ateliers
+GEO:48.38423;2.90357
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_210366a24b@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:Visite de l'entreprise SAUR
+LOCATION:Station d’épuration de la SAUR\, La Grande-Paroisse
+DESCRIPTION:Visite de la station d'épuration de la SAUR\n\nOrganisateur : 
+ https://openagenda.com/semaine-industrie-2026/events/visite-de-lentreprise
+ -saur-8579485\n\nFiche : https://fontainebleaulive.fr/evenements/visite-de
+ -l-entreprise-saur-la-grande-paroisse-210366a24b/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-saur-la-
+ grande-paroisse-210366a24b/
+CATEGORIES:Culture & Ateliers
+GEO:48.38423;2.90357
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

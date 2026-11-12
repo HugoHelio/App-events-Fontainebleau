@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8ddede138b@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Visite d'entreprise
@@ -48,8 +48,65 @@ GEO:48.27611;2.70229
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1bd3a571a5@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite des sites de l'entreprise DESLIS CHOCOLAT
+LOCATION:DESLIS CHOCOLAT\, Nemours
+DESCRIPTION:Visite de l'entreprise DESLIS CHOCOLAT par des collégiens\n\nO
+ rganisateur : https://openagenda.com/semaine-industrie-2026/events/visite-
+ des-sites-de-lentreprise-deslis-chocolat\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/visite-des-sites-de-l-entreprise-deslis-chocolat-nemours
+ -1bd3a571a5/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-des-sites-de-l-entrepris
+ e-deslis-chocolat-nemours-1bd3a571a5/
+CATEGORIES:Culture & Ateliers
+GEO:48.27579;2.70459
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_d001d807b8@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Visite des sites de l'entreprise SAUR
+LOCATION:SAUR NEMOURS\, Nemours
+DESCRIPTION:Visite de la station d'épuration et de la station de traitemen
+ t de l'eau de la SAUR par des collégiens\n\nOrganisateur : https://openag
+ enda.com/semaine-industrie-2026/events/visite-des-sites-de-lentreprise-sau
+ r-8070814\n\nFiche : https://fontainebleaulive.fr/evenements/visite-des-si
+ tes-de-l-entreprise-saur-nemours-d001d807b8/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-des-sites-de-l-entrepris
+ e-saur-nemours-d001d807b8/
+CATEGORIES:Culture & Ateliers
+GEO:48.27437;2.70733
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4886857376@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:Visite des sites de l'entreprise LEWIS INDUSTRIE
+LOCATION:LEWIS INDUSTRIE\, Nemours
+DESCRIPTION:Visite de l'entreprise LEWIS INDUSTRIE par des lycéens\n\nOrga
+ nisateur : https://openagenda.com/semaine-industrie-2026/events/visite-des
+ -sites-de-lentreprise-lewis-industrie\n\nFiche : https://fontainebleaulive
+ .fr/evenements/visite-des-sites-de-l-entreprise-lewis-industrie-nemours-48
+ 86857376/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-des-sites-de-l-entrepris
+ e-lewis-industrie-nemours-4886857376/
+CATEGORIES:Culture & Ateliers
+GEO:48.25751;2.71811
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_567e428004@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Intérim - Agent de contrôle qualité polyvalent (H.F) : Rejoignez
@@ -67,6 +124,25 @@ URL:https://fontainebleaulive.fr/evenements/interim-agent-de-controle-quali
  te-polyvalent-h-f-rejoignez-u-nemours-567e428004/
 CATEGORIES:Culture & Ateliers
 GEO:48.26374;2.7001
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6313234bf2@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:Visite des sites de la station d'épuration de la SAUR
+LOCATION:SAUR NEMOURS\, Nemours
+DESCRIPTION:Visite de la station dépuration de la SAUR par des demandeurs 
+ d'emploi\n\nOrganisateur : https://openagenda.com/semaine-industrie-2026/e
+ vents/visite-des-sites-de-la-station-depuration-de-la-saur\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/visite-des-sites-de-la-station-d-epura
+ tion-de-la-saur-nemours-6313234bf2/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-des-sites-de-la-station-
+ d-epuration-de-la-saur-nemours-6313234bf2/
+CATEGORIES:Culture & Ateliers
+GEO:48.27437;2.70733
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -91,7 +167,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8869a16df0@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Conférence : L'ermitage de la Butte St-Louis à Fontainebleau
@@ -153,7 +229,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d149ee44b@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Visite flash de l'exposition Ça en jette !
@@ -199,13 +275,13 @@ DTEND;VALUE=DATE:20261206
 SUMMARY:Co-Nuit ANSA (Course d'Orientation Nocturne & Chasse au Trésor Té
  léthon)
 LOCATION:Ville de Nemours\, Nemours
-DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : 6 € minimum par participa
- nt (gratuit pour les enfants)\n\nCourse d'orientation solidaire de jour et
-  de nuit au profit du Téléthon.\n\nOrganisateur : http://site.ansa.free.
- fr/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-course
- -d-orientation-nocturne-et-chasse-au-tres-nemours-22291ce511/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
+DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : Don solidaire à partir de 
+ 6 € (gratuit pour les enfants)\n\nCourse d'orientation solidaire de jour
+  et de nuit au profit du Téléthon.\n\nOrganisateur : http://site.ansa.fr
+ ee.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-cou
+ rse-d-orientation-nocturne-et-chasse-au-tres-nemours-22291ce511/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/co-nuit-ansa-course-d-orientati
  on-nocturne-et-chasse-au-tres-nemours-22291ce511/
 CATEGORIES:Sport & Outdoor

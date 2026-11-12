@@ -51,6 +51,11 @@
       "lng": 2.80035,
       "source": "city"
     },
+    "city:champeaux": {
+      "lat": 48.58505,
+      "lng": 2.80969,
+      "source": "city"
+    },
     "city:chartrettes": {
       "lat": 48.48805,
       "lng": 2.71241,
@@ -179,6 +184,11 @@
     "city:perthes": {
       "lat": 48.4839,
       "lng": 2.53388,
+      "source": "city"
+    },
+    "city:recloses": {
+      "lat": 48.34711,
+      "lng": 2.64528,
       "source": "city"
     },
     "city:remauville": {
@@ -411,6 +421,11 @@
       "lng": 2.70086,
       "source": "ban"
     },
+    "venue:gymnase de milly la foret milly la foret": {
+      "lat": 48.4019,
+      "lng": 2.45349,
+      "source": "ban"
+    },
     "venue:halle de milly la foret milly la foret": {
       "lat": 48.4019,
       "lng": 2.45349,
@@ -429,6 +444,11 @@
     "venue:jardin des noues veneux les sablons": {
       "lat": 48.37483,
       "lng": 2.8074,
+      "source": "ban"
+    },
+    "venue:l escale avenue de la 7 division blindee americaine melun": {
+      "lat": 48.52933,
+      "lng": 2.66248,
       "source": "ban"
     },
     "venue:la caravane des arts moret loing et orvanne": {
@@ -586,6 +606,11 @@
       "lng": 2.74946,
       "source": "ban"
     },
+    "venue:place grammont milly la foret": {
+      "lat": 48.40274,
+      "lng": 2.46628,
+      "source": "ban"
+    },
     "venue:place mouton livry sur seine": {
       "lat": 48.51241,
       "lng": 2.69174,
@@ -679,6 +704,11 @@
     "venue:thomery": {
       "lat": 48.40233,
       "lng": 2.78149,
+      "source": "ban"
+    },
+    "venue:tour denecourt fontainebleau": {
+      "lat": 48.42133,
+      "lng": 2.72922,
       "source": "ban"
     },
     "venue:ury": {

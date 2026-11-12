@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_927bfc536e@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Initiation à l'escalade de bloc en forêt
@@ -37,13 +37,13 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Découverte du nord-est de la forêt des Trois Pignons
 LOCATION:Forêt des Trois Pignons\, Arbonne-la-Forêt
-DESCRIPTION:Horaires : 13h30 – 17h00\n\nTarif : Gratuit\n\nPromenade guid
- ée en forêt à la découverte du secteur nord-est des Trois Pignons.\n\n
- Organisateur : https://www.aaff.fr/agenda/decouverte-du-nord-est-de-la-for
- et-des-trois-pignons/\n\nFiche : https://fontainebleaulive.fr/evenements/d
- ecouverte-du-nord-est-de-la-foret-des-trois-pignons-arbonne-la-foret-1ab4f
- ee36f/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit ou adhésion\n\nPro
+ menade guidée en forêt à la découverte du secteur nord-est des Trois P
+ ignons.\n\nOrganisateur : https://www.aaff.fr/agenda/decouverte-du-nord-es
+ t-de-la-foret-des-trois-pignons/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/decouverte-du-nord-est-de-la-foret-des-trois-pignons-arbonne-la-
+ foret-1ab4fee36f/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-du-nord-est-de-la-fo
  ret-des-trois-pignons-arbonne-la-foret-1ab4fee36f/
 CATEGORIES:Sport & Outdoor
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_78ea14aa48@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -88,8 +88,28 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_d6ca9cefc7@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Après-midi activités jeunesse
+LOCATION:Gymnase de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : 14h à 18h\n\nTarif : Gratuit\n\nPublic : 11–17 an
+ s\n\nAprès-midi dédiée aux jeunes avec activités sportives\, créative
+ s\, ludiques et initiations encadrées.\n\nOrganisateur : https://www.mill
+ y-la-foret.fr/2026/11/10/21-11-26-apres-midi-activites-jeunesse/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/apres-midi-activites-jeunesse-mi
+ lly-la-foret-d6ca9cefc7/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apres-midi-activites-jeunesse-m
+ illy-la-foret-d6ca9cefc7/
+CATEGORIES:Sport & Outdoor
+GEO:48.4019;2.45349
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_695c19270f@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:COUPE DE FRANCE DE WUSHU (SANDA LIGHT)
@@ -128,7 +148,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b079698e6c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Stage Body karaté / Krav maga
@@ -147,7 +167,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c4dd07f40c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Stage de yoga " le Corps\, la voix\, le son"
@@ -167,17 +187,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_08cc124fed@fontainebleaulive.fr
-DTSTAMP:20261003T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Cross de Nemours
 LOCATION:Stade Jacques Moulin\, Saint-Pierre-lès-Nemours
-DESCRIPTION:Horaires : 09h00\n\nTarif : Payant\n\nPublic : Dès 6 ans\n\nÉ
- preuve officielle de cross-country organisée sous l'égide du Comité Dé
- partemental d'Athlétisme de Seine-et-Marne.\n\nOrganisateur : https://ath
- le-nemours-saint-pierre.com/\n\nFiche : https://fontainebleaulive.fr/evene
- ments/cross-de-nemours-saint-pierre-les-nemours-08cc124fed/\n\nInformation
- s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 09h30\n\nTarif : Inscriptions via clubs
+  (gratuit pour scolaires)\n\nPublic : Dès 6 ans\n\nÉpreuve officielle de
+  cross-country organisée sous l'égide du Comité Départemental d'Athlé
+ tisme de Seine-et-Marne.\n\nOrganisateur : https://athle-nemours-saint-pie
+ rre.com/\n\nFiche : https://fontainebleaulive.fr/evenements/cross-de-nemou
+ rs-saint-pierre-les-nemours-08cc124fed/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cross-de-nemours-saint-pierre-l
  es-nemours-08cc124fed/
 CATEGORIES:Sport & Outdoor
@@ -185,7 +206,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4770c98a9c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Plat)
@@ -205,7 +226,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -223,8 +244,50 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_92c9614b81@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Visite guidée thématique en forêt : Tour Denecourt
+LOCATION:Tour Denecourt\, Fontainebleau
+DESCRIPTION:Horaires : 14h00\n\nTarif : Payant sur réservation\n\nBalade g
+ uidée thématique autour du Chemin des fontaines\, de la Tour Denecourt e
+ t du Bouquet de la Reine Amélie.\n\nOrganisateur : https://www.fontainebl
+ eau-tourisme.com/\n\nFiche : https://fontainebleaulive.fr/evenements/visit
+ e-guidee-thematique-en-foret-tour-denecourt-fontainebleau-92c9614b81/\n\nI
+ nformations collectées automatiquement : vérifiez-les auprès de l’org
+ anisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-for
+ et-tour-denecourt-fontainebleau-92c9614b81/
+CATEGORIES:Sport & Outdoor
+GEO:48.42133;2.72922
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3a721eb904@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Randonnée Nature : La Traversée des plus beaux sentiers de la For
+ êt de Fontainebleau
+LOCATION:Massif de Fontainebleau (rendez-vous à Arbonne)\, Arbonne-la-For
+ êt
+DESCRIPTION:Horaires : 11h30\n\nTarif : 18 € (adulte) / 12 € (enfant de
+  12 à 14 ans)\n\nRandonnée guidée de 15 km et 180 m D+ par un accompagn
+ ateur en montagne.\n\nOrganisateur : https://www.eco-nature.org/experience
+ /randonnee-nature-sur-les-plus-beaux-sentiers-de-la-foret-de-fontainebleau
+ -307\n\nFiche : https://fontainebleaulive.fr/evenements/randonnee-nature-l
+ a-traversee-des-plus-beaux-sentiers-de-la-arbonne-la-foret-3a721eb904/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-nature-la-traversee-d
+ es-plus-beaux-sentiers-de-la-arbonne-la-foret-3a721eb904/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_368d533a60@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:RENDEZ-VOUS DE LA FORME SPÉCIAL TÉLÉTHON !
@@ -263,7 +326,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a88ff9e678@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:TÉLÉTHON À FONTAINEBLEAU
@@ -283,7 +346,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b8821574ed@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
@@ -304,7 +367,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b3728f89dd@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -330,15 +393,33 @@ DTEND;VALUE=DATE:20261206
 SUMMARY:Co-Nuit ANSA (Course d'Orientation Nocturne & Chasse au Trésor Té
  léthon)
 LOCATION:Ville de Nemours\, Nemours
-DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : 6 € minimum par participa
- nt (gratuit pour les enfants)\n\nCourse d'orientation solidaire de jour et
-  de nuit au profit du Téléthon.\n\nOrganisateur : http://site.ansa.free.
- fr/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-course
- -d-orientation-nocturne-et-chasse-au-tres-nemours-22291ce511/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
+DESCRIPTION:Horaires : 14h00–18h00\n\nTarif : Don solidaire à partir de 
+ 6 € (gratuit pour les enfants)\n\nCourse d'orientation solidaire de jour
+  et de nuit au profit du Téléthon.\n\nOrganisateur : http://site.ansa.fr
+ ee.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/co-nuit-ansa-cou
+ rse-d-orientation-nocturne-et-chasse-au-tres-nemours-22291ce511/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/co-nuit-ansa-course-d-orientati
  on-nocturne-et-chasse-au-tres-nemours-22291ce511/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_a098d2064f@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Course et Marche Intergénérationnelle du Téléthon
+LOCATION:Centre-bourg de Vulaines-sur-Seine\, Vulaines-sur-Seine
+DESCRIPTION:Horaires : Matinée\n\nTarif : Participation/don Téléthon\n\n
+ Épreuve conviviale de 5 km sur route/chemins dédiée à la collecte du T
+ éléthon.\n\nOrganisateur : https://running.life/\n\nFiche : https://font
+ ainebleaulive.fr/evenements/course-et-marche-intergenerationnelle-du-telet
+ hon-vulaines-sur-seine-a098d2064f/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/course-et-marche-intergeneratio
+ nnelle-du-telethon-vulaines-sur-seine-a098d2064f/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -347,23 +428,24 @@ UID:EVT_1bf4d4afed@fontainebleaulive.fr
 DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
-SUMMARY:Run & Bike de Milly-la-Forêt 2026
+SUMMARY:Run & Bike de Milly-la-Forêt (Téléthon)
 LOCATION:Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Tarif : Gratuit\n\nÉpreuve de 16 km en duo alternant course à
-  pied et VTT\, avec une course enfants au profit du Téléthon.\n\nOrganis
- ateur : https://milly-triathlon-81.webself.net/run--bike-2026\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-2026-
- 1bf4d4afed/\n\nInformations collectées automatiquement : vérifiez-les au
- près de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-2
- 026-1bf4d4afed/
+DESCRIPTION:Horaires : 08h00–12h00\n\nTarif : Inscription payante au prof
+ it du Téléthon\n\nÉpreuve de 16 km en duo alternant course à pied et V
+ TT\, avec une course enfants au profit du Téléthon.\n\nOrganisateur : ht
+ tps://milly-triathlon-81.webself.net/run--bike-2026\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-telethon-1bf4d4
+ afed/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-t
+ elethon-1bf4d4afed/
 CATEGORIES:Sport & Outdoor
 GEO:48.4017;2.45828
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_773dc2d1ea@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
 SUMMARY:Les rendez-vous de la Solle – Courses d'obstacle
@@ -377,6 +459,24 @@ DESCRIPTION:Horaires : En journée\n\nTarif : 4\,50 €\n\nJournées et év
  ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-solle-cou
  rses-d-obstacle-fontainebleau-773dc2d1ea/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_850e46b6a6@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+SUMMARY:Sortie Pédestre AAFF : Balade à la Mare aux Fées
+LOCATION:Mare aux Fées\, Fontainebleau
+DESCRIPTION:Horaires : 14h30–16h00\n\nTarif : Gratuit ou adhésion\n\nBal
+ ade naturaliste guidée jusqu'à la Mare aux Fées.\n\nOrganisateur : http
+ s://www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/sortie
+ -pedestre-aaff-balade-a-la-mare-aux-fees-fontainebleau-850e46b6a6/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-pedestre-aaff-balade-a-l
+ a-mare-aux-fees-fontainebleau-850e46b6a6/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -396,6 +496,24 @@ DESCRIPTION:Horaires : 9h15 – 17h00\n\nTarif : 30 € / personne\n\nRando
  nt : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/randonnee-sportive-encadree-fon
  tainebleau-sud-appuis-et-conf-2e5ff108d7/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_87b3976e7c@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Run and Bike Souvenir John Hochart
+LOCATION:Stade Jacques Moulin\, Saint-Pierre-lès-Nemours
+DESCRIPTION:Horaires : À partir de 09h30\n\nTarif : Payant selon la distan
+ ce\n\nCourse en binôme VTT/course à pied sur 5 km\, 10 km et 15 km au pr
+ ofit de la Ligue contre le cancer.\n\nOrganisateur : https://protiming.fr/
+ \n\nFiche : https://fontainebleaulive.fr/evenements/run-and-bike-souvenir-
+ john-hochart-saint-pierre-les-nemours-87b3976e7c/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/run-and-bike-souvenir-john-hoch
+ art-saint-pierre-les-nemours-87b3976e7c/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -420,38 +538,56 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
 LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
-DESCRIPTION:Horaires : 16h45–19h00\n\nTarif : 10 € pour le parcours de 
- 5 km\n\nCourse pédestre festive de fin d'année proposant des parcours de
-  800 m\, 1\,6 km et 5 km au bord de la Seine.\n\nOrganisateur : https://sa
- mois-sur-seine.fr/evenement/course-de-noel/\n\nFiche : https://fontaineble
- aulive.fr/evenements/course-de-noel-de-samois-sur-seine-12-edition-6d9b7e1
- 830/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
+DESCRIPTION:Horaires : À partir de 18h00\n\nTarif : Payant pour 5 km / gra
+ tuit ou modique pour enfants\n\nCourse pédestre festive de fin d'année p
+ roposant des parcours de 800 m\, 1\,6 km et 5 km au bord de la Seine.\n\nO
+ rganisateur : https://samois-sur-seine.fr/evenement/course-de-noel/\n\nFic
+ he : https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-
+ seine-12-edition-6d9b7e1830/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-12-edition-6d9b7e1830/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_704bbcdbde@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Sortie Pédestre AAFF : Découverte de la forêt de La Commanderie
+LOCATION:Forêt de La Commanderie\, Fontainebleau
+DESCRIPTION:Horaires : 13h30–17h30\n\nTarif : Gratuit ou adhésion\n\nRan
+ donnée thématique à la découverte de la forêt de La Commanderie.\n\nO
+ rganisateur : https://www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/sortie-pedestre-aaff-decouverte-de-la-foret-de-la-commanderi-f
+ ontainebleau-704bbcdbde/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-pedestre-aaff-decouverte
+ -de-la-foret-de-la-commanderi-fontainebleau-704bbcdbde/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c6ecc3650f@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Spectacle Jeune Public : Dans les Coulisses du Père Noël
 LOCATION:6 rue des Sablons Âne Vert Théâtre\, Fontainebleau
-DESCRIPTION:Horaires : En journée\n\nTarif : Plein tarif : Voir tarifs sur
-  anevert.fr.\n\n"Dans les coulisses du Père Noël" est un spectacle de No
- ël jeune public Théâtr’event\, de Laurent Cattaert et Franck Douaglin
- \n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/7947275
- /dans-les-coulisses-du-pere-noel/\n\nFiche : https://fontainebleaulive.fr/
- evenements/spectacle-jeune-public-dans-les-coulisses-du-pere-noel-fontaine
- bleau-c6ecc3650f/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
+DESCRIPTION:Horaires : 16h00\n\nTarif : 8 € (enfant)\, 14 € (adhérent 
+ / jeune)\, 21 € (tarif plein)\n\n"Dans les coulisses du Père Noël" est
+  un spectacle de Noël jeune public Théâtr’event\, de Laurent Cattaert
+  et Franck Douaglin\n\nOrganisateur : https://www.fontainebleau-tourisme.c
+ om/fr/fiche/7947275/dans-les-coulisses-du-pere-noel/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/spectacle-jeune-public-dans-les-coulisses-du
+ -pere-noel-fontainebleau-c6ecc3650f/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/spectacle-jeune-public-dans-les
  -coulisses-du-pere-noel-fontainebleau-c6ecc3650f/
 CATEGORIES:Sport & Outdoor
@@ -538,6 +674,25 @@ GEO:48.39283;2.67347
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_b12bb08232@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:La Journée du Complet & Derby Cross Indoor 2027
+LOCATION:Stade Équestre Le Grand Parquet\, Fontainebleau
+DESCRIPTION:Horaires : Journée\n\nTarif : Gratuit pour spectateurs\n\nConc
+ ours équestre comprenant épreuves de complet et derby cross indoor.\n\nO
+ rganisateur : https://www.francecomplet.fr/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/la-journee-du-complet-et-derby-cross-indoor-2027-font
+ ainebleau-b12bb08232/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/la-journee-du-complet-et-derby-
+ cross-indoor-2027-fontainebleau-b12bb08232/
+CATEGORIES:Sport & Outdoor
+GEO:48.39283;2.67347
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_974a0b9859@fontainebleaulive.fr
 DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20270123
@@ -545,12 +700,12 @@ DTEND;VALUE=DATE:20270124
 SUMMARY:La Nocturne du Pays de Nemours
 LOCATION:Stade Intercommunal de Saint-Pierre-lès-Nemours\, Saint-Pierre-l
  ès-Nemours
-DESCRIPTION:Horaires : À partir de 19h00\n\nTarif : ~10 € à 15 € selo
- n les modalités d'inscription\n\nTrail nocturne semi-urbain et nature de 
- 11 km traversant la Forêt du Gréau et Nemours.\n\nOrganisateur : https:/
- /cdr77.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/la-nocturne-
- du-pays-de-nemours-saint-pierre-les-nemours-974a0b9859/\n\nInformations co
- llectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 19h00\n\nTarif : Sur inscription en ligne\n\nTrail n
+ octurne semi-urbain et nature de 11 km traversant la Forêt du Gréau et N
+ emours.\n\nOrganisateur : https://cdr77.fr/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/la-nocturne-du-pays-de-nemours-saint-pierre-les-nemou
+ rs-974a0b9859/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/la-nocturne-du-pays-de-nemours-
  saint-pierre-les-nemours-974a0b9859/
 CATEGORIES:Sport & Outdoor
@@ -560,19 +715,42 @@ BEGIN:VEVENT
 UID:EVT_d042b64d77@fontainebleaulive.fr
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20270130
-DTEND;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
 SUMMARY:Trail des Carriers (Fontainebleau Outdoor Festival)
 LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
-DESCRIPTION:Horaires : 13h30–14h30\n\nTarif : Environ 17 € (TdC15) / 23
-  € (TdC20)\n\nTrail nature de 15 km et 20 km à travers la forêt\, les 
- Gorges de Franchard et la Faisanderie.\n\nOrganisateur : https://grandparq
- uetendurance.com/\n\nFiche : https://fontainebleaulive.fr/evenements/trail
- -des-carriers-fontainebleau-outdoor-festival-d042b64d77/\n\nInformations c
- ollectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : sam. 30 : Canicross le matin\, Trail dès 14h00 \; d
+ im. 31 : Canicross le matin\n\nTarif : Canicross : ~23 € \; Trail : vari
+ able selon le format\n\nTrail nature de 15 km et 20 km à travers la forê
+ t\, les Gorges de Franchard et la Faisanderie.\n\nOrganisateur : https://g
+ randparquetendurance.com/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/trail-des-carriers-fontainebleau-outdoor-festival-d042b64d77/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/trail-des-carriers-fontaineblea
  u-outdoor-festival-d042b64d77/
 CATEGORIES:Sport & Outdoor
 GEO:48.39283;2.67347
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_1200785f27@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Visite guidée thématique en forêt : Biodiversité – sentiers d
+ es peintres de Barbizon
+LOCATION:Sentier des peintres de Barbizon\, Forêt de Fontainebleau\, Barbi
+ zon
+DESCRIPTION:Horaires : 14h00\n\nTarif : Payant\, réservation obligatoire\n
+ \nVisite guidée thématique de 2h sur la biodiversité le long des sentie
+ rs des peintres.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/
+ fr/fiche/5672288/visites-guidees-thematiques-en-foret/\n\nFiche : https://
+ fontainebleaulive.fr/evenements/visite-guidee-thematique-en-foret-biodiver
+ site-sentiers-des-barbizon-1200785f27/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-for
+ et-biodiversite-sentiers-des-barbizon-1200785f27/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

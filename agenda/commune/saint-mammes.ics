@@ -12,16 +12,16 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_71b1f20c96@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Soirée d’accueil des nouveaux habitants
 LOCATION:MLC (Maison des Loisirs et de la Culture)\, Saint-Mammès
-DESCRIPTION:Horaires : 20h\n\nOrganisateur : https://www.saint-mammes.com/s
- oiree-daccueil-des-nouveux-habitants/\n\nFiche : https://fontainebleaulive
- .fr/evenements/soiree-d-accueil-des-nouveaux-habitants-saint-mammes-71b1f2
- 0c96/\n\nInformations collectées automatiquement : vérifiez-les auprès 
- de l’organisateur.
+DESCRIPTION:Horaires : 20h\n\nTarif : Gratuit\n\nOrganisateur : https://www
+ .saint-mammes.com/soiree-daccueil-des-nouveux-habitants/\n\nFiche : https:
+ //fontainebleaulive.fr/evenements/soiree-d-accueil-des-nouveaux-habitants-
+ saint-mammes-71b1f20c96/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/soiree-d-accueil-des-nouveaux-h
  abitants-saint-mammes-71b1f20c96/
 CATEGORIES:Culture & Ateliers
@@ -84,7 +84,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f31186d94c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Soirée " coucous "
@@ -104,7 +104,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_db9d848336@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Documentaire " Qu'est-ce qu'on attend ? "
@@ -124,7 +124,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be3f148623@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert " Domkiris expérience "
@@ -143,7 +143,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -162,7 +162,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3994dd502@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël de Saint-Mammès

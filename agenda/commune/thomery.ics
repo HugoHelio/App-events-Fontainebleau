@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_a973967465@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261115
 SUMMARY:Manga'thèque
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_16929e8526@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Atelier créatif déco de Noël
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c4dd07f40c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Stage de yoga " le Corps\, la voix\, le son"
@@ -69,19 +69,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
-SUMMARY:Vide-dressing
+SUMMARY:Vide-Dressing Ados / Adultes de Thomery
 LOCATION:Salle de la Plage\, 1 chemin des Prés à Thomery\, Thomery
-DESCRIPTION:Horaires : 9h à 17h\n\nUn vide-dressing réservé aux vêtemen
- ts ados et adultes est proposé à Thomery.\n\nOrganisateur : https://www.
- ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-videdressing\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/vide-dressing-thomery-4d6759674c/\n\
- nInformations collectées automatiquement : vérifiez-les auprès de l’o
- rganisateur.
-URL:https://fontainebleaulive.fr/evenements/vide-dressing-thomery-4d6759674
- c/
+DESCRIPTION:Horaires : À partir de 9h00\n\nTarif : Entrée libre\n\nUn vid
+ e-dressing réservé aux vêtements ados et adultes est proposé à Thomer
+ y.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026
+ -11-28-videdressing\n\nFiche : https://fontainebleaulive.fr/evenements/vid
+ e-dressing-ados-adultes-de-thomery-4d6759674c/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/vide-dressing-ados-adultes-de-t
+ homery-4d6759674c/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -106,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa55d203f8@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270122
 SUMMARY:Rayss Bek

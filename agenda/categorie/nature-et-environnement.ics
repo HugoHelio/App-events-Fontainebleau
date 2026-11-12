@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_143c0edcd2@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c1d8f7211a@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Apéro célibataires — Melun
@@ -55,35 +55,56 @@ DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Promenade guidée : « À la Découverte des Grands Genièvres »
 LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h00 – 12h00\n\nTarif : Gratuit\n\nBalade botaniq
- ue à la découverte des grands genièvres.\n\nOrganisateur : https://www.
- aaff.fr/agenda/a-la-decouverte-des-grands-genievres/\n\nFiche : https://fo
- ntainebleaulive.fr/evenements/promenade-guidee-a-la-decouverte-des-grands-
- genievres-fontainebleau-3061e81356/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 09h00–12h00\n\nTarif : Gratuit ou adhésion\n\nBal
+ ade botanique à la découverte des grands genièvres.\n\nOrganisateur : h
+ ttps://www.aaff.fr/agenda/a-la-decouverte-des-grands-genievres/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/promenade-guidee-a-la-decouverte-
+ des-grands-genievres-fontainebleau-3061e81356/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-guidee-a-la-decouvert
  e-des-grands-genievres-fontainebleau-3061e81356/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_08e101e9e6@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+UID:EVT_cc09ab7e23@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
-SUMMARY:Randonnée nature sur les plus beaux sentiers de la forêt de Fonta
- inebleau
+SUMMARY:Rando célibataires — Sur les platières autour d'Arbonne
+LOCATION:Départ du parcours « Sur les platières autour d'Arbonne »\, Ar
+ bonne-la-Forêt
+DESCRIPTION:Randonnée en petit groupe entre célibataires qui aiment march
+ er : 18\,2 km\, 173 m de dénivelé positif\, niveau moyen. Inscription gr
+ atuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randodate/e
+ vents/rando-celibataires-sur-les-platieres-autour-darbonne\n\nFiche : http
+ s://fontainebleaulive.fr/evenements/rando-celibataires-sur-les-platieres-a
+ utour-d-arbonne-arbonne-la-foret-cc09ab7e23/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-celibataires-sur-les-plat
+ ieres-autour-d-arbonne-arbonne-la-foret-cc09ab7e23/
+CATEGORIES:Nature & Environnement
+GEO:48.41409;2.56495
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_08e101e9e6@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Randonnée Nature : La Traversée des plus beaux sentiers de la For
+ êt de Fontainebleau
 LOCATION:Forêt de Fontainebleau\, Arbonne-la-Forêt
-DESCRIPTION:Horaires : Départ à 10h30\n\nTarif : Adulte : 18 € | Enfant
-  (12–14 ans) : 12 €\n\nPublic : Dès 12 ans\n\nRandonnée guidée d'ob
- servation faune\, flore et géologie en forêt.\n\nOrganisateur : https://
- openagenda.com/econature/events/randonnee-nature-sur-les-plus-beaux-sentie
- rs-de-la-foret-de-fontainebleau-6903141\n\nFiche : https://fontainebleauli
- ve.fr/evenements/randonnee-nature-sur-les-plus-beaux-sentiers-de-la-foret-
- de-arbonne-la-foret-08e101e9e6/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/randonnee-nature-sur-les-plus-b
- eaux-sentiers-de-la-foret-de-arbonne-la-foret-08e101e9e6/
+DESCRIPTION:Horaires : 11h30\n\nTarif : 18 € (adulte) / 12 € (enfant de
+  12 à 14 ans)\n\nPublic : Dès 12 ans\n\nRandonnée guidée d'observation
+  faune\, flore et géologie en forêt.\n\nOrganisateur : https://openagend
+ a.com/econature/events/randonnee-nature-sur-les-plus-beaux-sentiers-de-la-
+ foret-de-fontainebleau-6903141\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/randonnee-nature-la-traversee-des-plus-beaux-sentiers-de-la-arbonn
+ e-la-foret-08e101e9e6/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-nature-la-traversee-d
+ es-plus-beaux-sentiers-de-la-arbonne-la-foret-08e101e9e6/
 CATEGORIES:Nature & Environnement
 GEO:48.42412;2.57251
 TRANSP:TRANSPARENT
@@ -127,7 +148,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e920dd0a7d@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -146,7 +167,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a416d471aa@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Apéro célibataires — Melun
@@ -165,7 +186,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f8910fb196@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Animation nature en famille « Le Trésor de Praline »
@@ -183,7 +204,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_45618e3e0d@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Apéro célibataires — Fontainebleau
@@ -202,7 +223,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ff1280618b@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Apéro célibataires — Melun
@@ -221,7 +242,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ed8d3db12@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:CAFÉ DES TRANSITIONS "CONSOMMATION ET DECHETS !" [FONTAINEBLEAU (E
@@ -243,7 +264,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -261,12 +282,12 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e369a0da4e@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Journée de l'Arbre
-LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
- ing\, Montigny-sur-Loing
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
+ oing\, Montigny-sur-Loing
 DESCRIPTION:Horaires : 10h à 17h\n\nUne journée consacrée à la découve
  rte et à l'écoute des arbres.\n\nOrganisateur : https://www.ccmsl.fr/act
  u-et-agendas/agenda.html#2026-11-21-journeedelarbre\n\nFiche : https://fon
@@ -280,7 +301,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f238bc3741@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Troc aux Plantes
@@ -324,16 +345,18 @@ UID:EVT_2224d547db@fontainebleaulive.fr
 DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
-SUMMARY:Pourquoi les dalles de grès sont plus épaisses à Larchant
+SUMMARY:Pourquoi les dalles de grès les plus épaisses du Massif sont-elle
+ s dans le Golfe de Larchant ?
 LOCATION:Massif de Larchant / Dame Jouanne\, Larchant
-DESCRIPTION:Horaires : 09h45 – 16h00\n\nTarif : Gratuit\n\nSortie géolog
- ie et paysage pour comprendre la géomorphologie des dalles de grès.\n\nO
- rganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleau
- live.fr/evenements/pourquoi-les-dalles-de-gres-sont-plus-epaisses-a-larcha
- nt-2224d547db/\n\nInformations collectées automatiquement : vérifiez-les
-  auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/pourquoi-les-dalles-de-gres-son
- t-plus-epaisses-a-larchant-2224d547db/
+DESCRIPTION:Horaires : 9h00 – 16h00\n\nTarif : Gratuit ou coût réduit d
+ e transfert autocar (5 € adhérents)\n\nSortie géologie et paysage pour
+  comprendre la géomorphologie des dalles de grès.\n\nOrganisateur : http
+ s://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /pourquoi-les-dalles-de-gres-les-plus-epaisses-du-massif-sont-larchant-222
+ 4d547db/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/pourquoi-les-dalles-de-gres-les
+ -plus-epaisses-du-massif-sont-larchant-2224d547db/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -346,12 +369,12 @@ SUMMARY:Promenade découverte guidée « Clair Bois et Désert d'Apremont
  »
 LOCATION:Forêt de Fontainebleau (Secteur Clair Bois & Gorges d'Apremont)\,
   Fontainebleau
-DESCRIPTION:Horaires : 13h30 – 17h00\n\nTarif : Gratuit\n\nPromenade guid
- ée nature à travers Clair Bois et les paysages des Gorges d'Apremont.\n\
- nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://fontaineble
- aulive.fr/evenements/promenade-decouverte-guidee-clair-bois-et-desert-d-ap
- remont-fontainebleau-d27898b9bd/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit ou adhésion\n\nPro
+ menade guidée nature à travers Clair Bois et les paysages des Gorges d'A
+ premont.\n\nOrganisateur : https://www.aaff.fr/agenda/\n\nFiche : https://
+ fontainebleaulive.fr/evenements/promenade-decouverte-guidee-clair-bois-et-
+ desert-d-apremont-fontainebleau-d27898b9bd/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-decouverte-guidee-cla
  ir-bois-et-desert-d-apremont-fontainebleau-d27898b9bd/
 CATEGORIES:Nature & Environnement
@@ -398,37 +421,57 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_253b922c23@fontainebleaulive.fr
-DTSTAMP:20260923T000000Z
-DTSTART;VALUE=DATE:20261123
-DTEND;VALUE=DATE:20261124
-SUMMARY:Ciné-débat : Arutam\, gardiens de l'Amazonie
-LOCATION:Cinéma l'Ermitage\, Fontainebleau
-DESCRIPTION:Horaires : 20h\n\nTarif : Tarif cinéma\n\nProjection du film A
- rutam suivie d'un débat avec des leaders Shuars sur la protection des for
- êts tropicales.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : 
- https://fontainebleaulive.fr/evenements/cine-debat-arutam-gardiens-de-l-am
- azonie-fontainebleau-253b922c23/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/cine-debat-arutam-gardiens-de-l
- -amazonie-fontainebleau-253b922c23/
+UID:EVT_b490cc3394@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:Apéro célibataires — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Fontaineble
+ au : petit groupe (8 max)\, ambiance détendue. Inscription gratuite sur R
+ andoDate.\n\nOrganisateur : https://openagenda.com/randodate/events/apero-
+ celibataires-fontainebleau-142194\n\nFiche : https://fontainebleaulive.fr/
+ evenements/apero-celibataires-fontainebleau-b490cc3394/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-fontaineblea
+ u-b490cc3394/
 CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b4a4708858@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:Apéro célibataires — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro convivial entre célibataires randonneurs à Melun : pet
+ it groupe (8 max)\, ambiance détendue. Inscription gratuite sur RandoDate
+ .\n\nOrganisateur : https://openagenda.com/randodate/events/apero-celibata
+ ires-melun-1376269\n\nFiche : https://fontainebleaulive.fr/evenements/aper
+ o-celibataires-melun-b4a4708858/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-celibataires-melun-b4a470
+ 8858/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
 LOCATION:Achères-la-Forêt\, Achères-la-Forêt
-DESCRIPTION:Horaires : 09h00 – 16h00\n\nTarif : Gratuit\n\nCe chantier a 
- pour objectif d'entretenir des zones de pelouses pour favoriser la biodive
- rsité et les espèces patrimoniales du site de la platière de Meun.\n\nO
- rganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleau
- live.fr/evenements/chantier-d-entretien-des-pelouses-a-la-platiere-de-meun
- -acheres-la-foret-924fcbdae5/\n\nInformations collectées automatiquement 
- : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 9h00 – 16h00\n\nTarif : Gratuit\n\nCe chantier a p
+ our objectif d'entretenir des zones de pelouses pour favoriser la biodiver
+ sité et les espèces patrimoniales du site de la platière de Meun.\n\nOr
+ ganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/chantier-d-entretien-des-pelouses-a-la-platiere-de-meun-
+ acheres-la-foret-924fcbdae5/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/chantier-d-entretien-des-pelous
  es-a-la-platiere-de-meun-acheres-la-foret-924fcbdae5/
 CATEGORIES:Nature & Environnement
@@ -436,7 +479,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -456,7 +499,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -474,33 +517,13 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_297d87a4d1@fontainebleaulive.fr
-DTSTAMP:20260930T000000Z
-DTSTART;VALUE=DATE:20261129
-DTEND;VALUE=DATE:20261130
-SUMMARY:Excursion Bryologique et Découverte de la Nature en Forêt de Font
- ainebleau
-LOCATION:Mont Andart\, Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h00–17h00\n\nTarif : Gratuit\n\nPublic : Dès 10
-  ans\n\nJournée d'étude sur le terrain dédiée à l'observation des mou
- sses\, lichens et de la biodiversité hivernale du Mont Andart.\n\nOrganis
- ateur : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.f
- r/evenements/excursion-bryologique-et-decouverte-de-la-nature-en-foret-de-
- fontainebleau-297d87a4d1/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/excursion-bryologique-et-decouv
- erte-de-la-nature-en-foret-de-fontainebleau-297d87a4d1/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_2b3ef3d23c@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Sortie bryologique au mont Andart
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 09h00 à 17h00\n\nTarif : Gratuit\n\nSortie bryologi
+DESCRIPTION:Horaires : 9h00 – 17h00\n\nTarif : Gratuit\n\nSortie bryologi
  que en Forêt de Fontainebleau.\n\nOrganisateur : https://www.jagispourlan
  ature.org/activite/sortie-bryologique-au-mont-andart\n\nFiche : https://fo
  ntainebleaulive.fr/evenements/sortie-bryologique-au-mont-andart-fontainebl
@@ -550,17 +573,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2cd1d56d7c@fontainebleaulive.fr
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Promenade guidée « Hêtre ou ne plus hêtre »
 LOCATION:Parking de l'hippodrome de la Solle\, Fontainebleau
-DESCRIPTION:Horaires : 13h30 – 17h00\n\nTarif : Gratuit\n\nPromenade guid
- ée de 6 km axée sur la reconnaissance du hêtre et son adaptation au cha
- ngement climatique.\n\nOrganisateur : https://www.aaff.fr/agenda/hetre-ou-
- ne-plus-hetre/\n\nFiche : https://fontainebleaulive.fr/evenements/promenad
- e-guidee-hetre-ou-ne-plus-hetre-fontainebleau-2cd1d56d7c/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit ou adhésion\n\nPro
+ menade guidée de 6 km axée sur la reconnaissance du hêtre et son adapta
+ tion au changement climatique.\n\nOrganisateur : https://www.aaff.fr/agend
+ a/hetre-ou-ne-plus-hetre/\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/promenade-guidee-hetre-ou-ne-plus-hetre-fontainebleau-2cd1d56d7c/\n\nIn
+ formations collectées automatiquement : vérifiez-les auprès de l’orga
+ nisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-guidee-hetre-ou-ne-pl
  us-hetre-fontainebleau-2cd1d56d7c/
 CATEGORIES:Nature & Environnement
@@ -587,7 +611,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
@@ -604,19 +628,40 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_3484645f8a@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+SUMMARY:Balade à la Mare aux Fées et ses environs
+LOCATION:Site naturel de la Mare aux Fées\, forêt de Fontainebleau\, Bour
+ ron-Marlotte
+DESCRIPTION:Horaires : 14h30 – 16h00\n\nTarif : Gratuit\n\nBalade découv
+ erte botanique et artistique sur les traces des peintres de Barbizon et Ma
+ rlotte.\n\nOrganisateur : https://www.aaff.fr/event/balade-a-la-mare-aux-f
+ ees-et-ses-environs/\n\nFiche : https://fontainebleaulive.fr/evenements/ba
+ lade-a-la-mare-aux-fees-et-ses-environs-bourron-marlotte-3484645f8a/\n\nIn
+ formations collectées automatiquement : vérifiez-les auprès de l’orga
+ nisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-a-la-mare-aux-fees-et-se
+ s-environs-bourron-marlotte-3484645f8a/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_66bddc0508@fontainebleaulive.fr
 DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
-SUMMARY:Les oiseaux en hiver
+SUMMARY:Sortie observation « Les oiseaux en hiver »
 LOCATION:Massif forestier de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00–12h00\n\nTarif : Gratuit\n\nSortie d'observa
- tion des oiseaux hivernants dans le massif forestier.\n\nOrganisateur : ht
- tps://anvl.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/les-oise
- aux-en-hiver-fontainebleau-66bddc0508/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/les-oiseaux-en-hiver-fontainebl
- eau-66bddc0508/
+DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nSortie d'obser
+ vation des oiseaux hivernants dans le massif forestier.\n\nOrganisateur : 
+ https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/sortie-observation-les-oiseaux-en-hiver-fontainebleau-66bddc0508/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-observation-les-oiseaux-
+ en-hiver-fontainebleau-66bddc0508/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -667,12 +712,12 @@ DTEND;VALUE=DATE:20261231
 SUMMARY:Animation & balade nature « L'arbre à vœux »
 LOCATION:Lisière de la forêt / centre-ville de Fontainebleau\, Fontainebl
  eau
-DESCRIPTION:Horaires : 10h00 à 12h00\n\nTarif : Gratuit\n\nAnimation natur
- e de fin d'année autour de l'arbre à vœux.\n\nOrganisateur : https://an
- vl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/anima
- tion-et-balade-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\nInforma
- tions collectées automatiquement : vérifiez-les auprès de l’organisat
- eur.
+DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation natu
+ re de fin d'année autour de l'arbre à vœux.\n\nOrganisateur : https://a
+ nvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements/anim
+ ation-et-balade-nature-l-arbre-a-voeux-fontainebleau-39d27c9c8d/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/animation-et-balade-nature-l-ar
  bre-a-voeux-fontainebleau-39d27c9c8d/
 CATEGORIES:Nature & Environnement
@@ -735,21 +780,21 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1e3bc5d7d9@fontainebleaulive.fr
-DTSTAMP:20261028T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20270123
 DTEND;VALUE=DATE:20270124
 SUMMARY:Visite guidée « Sur la trace des animaux en forêt de Fontaineble
  au »
 LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : À partir de 14h00\n\nTarif : Adulte : 16 €\, Enfa
- nt (8-12 ans) : 9 €. Visite soumise à un nombre minimum de p…\n\nAppr
- enez à repérer et interpréter les empreintes et indices laissés par la
-  faune sauvage en forêt de Fontainebleau.\n\nOrganisateur : https://www.f
- ontainebleau-tourisme.com/fr/fiche/5643672/visite-sur-la-trace-des-animaux
- -en-foret-de-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenem
- ents/visite-guidee-sur-la-trace-des-animaux-en-foret-de-fontaineb-fontaine
- bleau-1e3bc5d7d9/\n\nInformations collectées automatiquement : vérifiez-
- les auprès de l’organisateur.
+DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 €\, Enfant (8-12 ans)
+  : 9 €. Visite soumise à un nombre minimum de p…\n\nApprenez à repé
+ rer et interpréter les empreintes et indices laissés par la faune sauvag
+ e en forêt de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-
+ tourisme.com/fr/fiche/5643672/visite-sur-la-trace-des-animaux-en-foret-de-
+ fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-g
+ uidee-sur-la-trace-des-animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d
+ 7d9/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-
  animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/
 CATEGORIES:Nature & Environnement
@@ -777,21 +822,21 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e010cd1c81@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
-SUMMARY:Visites guidées thématiques en forêt de Fontainebleau
+SUMMARY:Visite guidée thématique en forêt de Fontainebleau
 LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : À partir de 14h00\n\nTarif : De 12 € à 16 € pa
- r personne\n\nPartez à la découverte de la faune et de la flore locales 
- au cours d'une visite guidée thématique en forêt de Fontainebleau.\n\nO
- rganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/4971254/visi
- tes-guidees-thematiques-en-foret/\n\nFiche : https://fontainebleaulive.fr/
- evenements/visites-guidees-thematiques-en-foret-de-fontainebleau-e010cd1c8
- 1/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
- l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-
- foret-de-fontainebleau-e010cd1c81/
+DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
+ s) : 9 € | Gratuit pour les moins de 6 ans\n\nPartez à la découverte d
+ e la faune et de la flore locales au cours d'une visite guidée thématiqu
+ e en forêt de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-
+ tourisme.com/fr/fiche/4971254/visites-guidees-thematiques-en-foret/\n\nFic
+ he : https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-f
+ oret-de-fontainebleau-e010cd1c81/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-for
+ et-de-fontainebleau-e010cd1c81/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT

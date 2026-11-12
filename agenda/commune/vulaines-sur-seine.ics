@@ -3,11 +3,29 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:vulaines-sur-seine · Fontainebleau Live
+X-WR-CALNAME:Vulaines-sur-Seine · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_a098d2064f@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Course et Marche Intergénérationnelle du Téléthon
+LOCATION:Centre-bourg de Vulaines-sur-Seine\, Vulaines-sur-Seine
+DESCRIPTION:Horaires : Matinée\n\nTarif : Participation/don Téléthon\n\n
+ Épreuve conviviale de 5 km sur route/chemins dédiée à la collecte du T
+ éléthon.\n\nOrganisateur : https://running.life/\n\nFiche : https://font
+ ainebleaulive.fr/evenements/course-et-marche-intergenerationnelle-du-telet
+ hon-vulaines-sur-seine-a098d2064f/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/course-et-marche-intergeneratio
+ nnelle-du-telethon-vulaines-sur-seine-a098d2064f/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

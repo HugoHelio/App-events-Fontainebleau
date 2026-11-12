@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Cannes-Écluse · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_5a196f9bba@fontainebleaulive.fr
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:Visite de l'entreprise SOLETANCHE
+LOCATION:SOLETANCHE\, Cannes-Écluse
+DESCRIPTION:Visite de l'entreprise SOLETANCHE par des jeunes de l'Ecole de 
+ la Seconde Chance et de la Mission Locale\n\nOrganisateur : https://openag
+ enda.com/semaine-industrie-2026/events/visite-de-lentreprise-soletanche\n\
+ nFiche : https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-so
+ letanche-cannes-ecluse-5a196f9bba/\n\nInformations collectées automatique
+ ment : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-soletanc
+ he-cannes-ecluse-5a196f9bba/
+CATEGORIES:Culture & Ateliers
+GEO:48.38277;2.96367
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
