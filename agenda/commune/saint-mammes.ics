@@ -11,43 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_b68a11c7ae@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
-SUMMARY:Cérémonie du 11 novembre
-LOCATION:Place de la Bosse\, Saint-Mammès
-DESCRIPTION:Horaires : 11h\n\nDéfilé accompagné par la fanfare suivi d'u
- n discours et d'un dépôt de gerbe pour le 11 novembre.\n\nOrganisateur :
-  https://www.saint-mammes.com/ceremonie-du-11-novembre/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-mammes-b68
- a11c7ae/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/ceremonie-du-11-novembre-saint-
- mammes-b68a11c7ae/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_cff9bab306@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
-SUMMARY:Jeux d’histoire
-LOCATION:Salle du Conseil (annexe de la Mairie)\, 2 rue Grande à Saint-Mam
- mès\, Saint-Mammès
-DESCRIPTION:Horaires : 15h30 à 18h\n\nDécouverte ludique de jeux de soci
- été sur la thématique de la Première Guerre mondiale.\n\nOrganisateur 
- : https://www.saint-mammes.com/jeux-dhistoire/\n\nFiche : https://fontaine
- bleaulive.fr/evenements/jeux-d-histoire-saint-mammes-cff9bab306/\n\nInform
- ations collectées automatiquement : vérifiez-les auprès de l’organisa
- teur.
-URL:https://fontainebleaulive.fr/evenements/jeux-d-histoire-saint-mammes-cf
- f9bab306/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_71b1f20c96@fontainebleaulive.fr
 DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261113
