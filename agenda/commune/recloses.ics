@@ -3,29 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Recloses · Fontainebleau Live
+X-WR-CALNAME:recloses · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_62151b3917@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:Concert "Laissez durer la nuit"
-LOCATION:Recloses\, Recloses
-DESCRIPTION:Tarif : Adulte : 10 €. Moins de 18 ans : 5 euros.\n\nUn conce
- rt proposé par l'office de tourisme de Fontainebleau.\n\nOrganisateur : h
- ttps://www.fontainebleau-tourisme.com/fr/fiche/8060934/concert-laissez-dur
- er-la-nuit/\n\nFiche : https://fontainebleaulive.fr/evenements/concert-lai
- ssez-durer-la-nuit-recloses-62151b3917/\n\nInformations collectées automa
- tiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/concert-laissez-durer-la-nuit-r
- ecloses-62151b3917/
-CATEGORIES:Scène & Spectacles
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

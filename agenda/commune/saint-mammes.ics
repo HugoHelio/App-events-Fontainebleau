@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_71b1f20c96@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:Soirée d’accueil des nouveaux habitants
-LOCATION:MLC (Maison des Loisirs et de la Culture)\, Saint-Mammès
-DESCRIPTION:Horaires : 20h\n\nTarif : Gratuit\n\nOrganisateur : https://www
- .saint-mammes.com/soiree-daccueil-des-nouveux-habitants/\n\nFiche : https:
- //fontainebleaulive.fr/evenements/soiree-d-accueil-des-nouveaux-habitants-
- saint-mammes-71b1f20c96/\n\nInformations collectées automatiquement : vé
- rifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/soiree-d-accueil-des-nouveaux-h
- abitants-saint-mammes-71b1f20c96/
-CATEGORIES:Culture & Ateliers
-GEO:48.38915;2.80788
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_006f529975@fontainebleaulive.fr
 DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261114
