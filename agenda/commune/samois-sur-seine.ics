@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_05bc7d1947@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Café du Maire et de ses élus
-LOCATION:Place de la République\, Samois-sur-Seine
-DESCRIPTION:Horaires : 09h30 à 11h30\n\nTarif : Gratuit\n\nMoment d'échan
- ge convivial entre habitants\, le Maire et les élus autour d'un café et 
- viennoiseries.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/caf
- e-du-maire-et-de-ses-elus/\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/cafe-du-maire-et-de-ses-elus-samois-sur-seine-05bc7d1947/\n\nInformati
- ons collectées automatiquement : vérifiez-les auprès de l’organisateu
- r.
-URL:https://fontainebleaulive.fr/evenements/cafe-du-maire-et-de-ses-elus-sa
- mois-sur-seine-05bc7d1947/
-CATEGORIES:Culture & Ateliers
-GEO:48.45134;2.74946
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_4056eda6ee@fontainebleaulive.fr
 DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261114

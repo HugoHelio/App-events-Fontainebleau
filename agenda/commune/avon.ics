@@ -11,23 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_9be6481b48@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Caféministe
-LOCATION:Avon
-DESCRIPTION:Tarif : Gratuit.\n\nUn moment d'échange convivial consacré au
- x thématiques féministes à Avon.\n\nOrganisateur : https://www.fontaine
- bleau-tourisme.com/fr/fiche/7942637/cafeministe/\n\nFiche : https://fontai
- nebleaulive.fr/evenements/cafeministe-avon-9be6481b48/\n\nInformations col
- lectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/cafeministe-avon-9be6481b48/
-CATEGORIES:Culture & Ateliers
-GEO:48.413;2.72893
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_3d77072128@fontainebleaulive.fr
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261115
