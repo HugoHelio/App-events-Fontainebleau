@@ -1779,6 +1779,11 @@
       "reason": "Même marché et village de Noël se déroulant à la Maison des Arts de Saint-Pierre-lès-Nemours.",
       "at": "2026-10-12"
     },
+    "EVT_39ec6d856b|EVT_cdf020a3aa": {
+      "same": true,
+      "reason": "Même événement (même fiche source), correspondant à une journée du marché de Noël.",
+      "at": "2026-11-15"
+    },
     "EVT_3b06405641|EVT_ba96acfe80": {
       "same": true,
       "reason": "Il s'agit de la même sortie d'inventaire mycologique organisée par l'ANVL le 4 novembre.",
@@ -2017,6 +2022,11 @@
       "same": false,
       "reason": "Les deux apéros se déroulent dans des villes différentes (Fontainebleau et Melun).",
       "at": "2026-11-09"
+    },
+    "EVT_45aa1d573e|EVT_adc776fb62": {
+      "same": false,
+      "reason": "Ces événements ont lieu dans deux villes différentes (Melun et Fontainebleau).",
+      "at": "2026-11-15"
     },
     "EVT_4653132b27|EVT_5cb728f120": {
       "same": false,
@@ -3298,6 +3308,11 @@
       "reason": "L'un est une déambulation musicale au château, l'autre une projection de films au cinéma.",
       "at": "2026-10-15"
     },
+    "EVT_81aa6de377|EVT_bc6f0f0888": {
+      "same": true,
+      "reason": "Même concert de la Sainte-Cécile par le Conservatoire au Théâtre municipal de Fontainebleau la même date.",
+      "at": "2026-11-15"
+    },
     "EVT_81e2786817|EVT_884dee207e": {
       "same": true,
       "reason": "Même concert d'automne d'orgue à Fontainebleau à la même date.",
@@ -3917,6 +3932,11 @@
       "same": true,
       "reason": "Même sortie découverte proposée par l'AAFF dans le massif des Trois-Pignons.",
       "at": "2026-10-12"
+    },
+    "EVT_bafd89b344|EVT_cdf020a3aa": {
+      "same": true,
+      "reason": "Même événement (même fiche source et même lieu/thème), l'un est la fiche globale du marché de Noël et l'autre couvre une date de cette période.",
+      "at": "2026-11-15"
     },
     "EVT_bb14826b3a|EVT_c3604d84da": {
       "same": false,

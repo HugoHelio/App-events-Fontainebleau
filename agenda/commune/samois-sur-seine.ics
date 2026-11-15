@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4056eda6ee@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261116
 SUMMARY:Festival de la terre au bol
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cb26d04362@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:NOUVEAUX HABITANTS\, inscrivez vous !
@@ -50,18 +50,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_489f459414@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Atelier danse « petit bout d’histoire dansée »
 LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 09h30 à 12h00\n\nPublic : 3–9 ans\n\nAtelier de d
- anse pour enfants : de 9h30 à 10h15 pour les 3/5 ans et de 10h30 à 12h p
- our les 6/9 ans.\n\nOrganisateur : https://samois-sur-seine.fr/evenement/a
- telier-danse-petit-bout-dhistoire-dansee/\n\nFiche : https://fontainebleau
- live.fr/evenements/atelier-danse-petit-bout-d-histoire-dansee-samois-sur-s
- eine-489f459414/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
+DESCRIPTION:Horaires : 09h30 à 12h00\n\nTarif : gratuit\n\nPublic : 3–9 
+ ans\n\nAtelier de danse pour enfants : de 9h30 à 10h15 pour les 3/5 ans e
+ t de 10h30 à 12h pour les 6/9 ans.\n\nOrganisateur : https://samois-sur-s
+ eine.fr/evenement/atelier-danse-petit-bout-dhistoire-dansee/\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/atelier-danse-petit-bout-d-histoire-
+ dansee-samois-sur-seine-489f459414/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-danse-petit-bout-d-hist
  oire-dansee-samois-sur-seine-489f459414/
 CATEGORIES:Culture & Ateliers
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -87,17 +87,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_09f6d3d02a@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Exposition Samois’art
 LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 10h/13 et 14h30/17h\n\nLes peintures de l’atelier 
- : venez découvrir le travail d’une année des élèves de Maryse au RDC
-  du foyer Django Reinhardt.\n\nOrganisateur : https://samois-sur-seine.fr/
- evenement/exposition-samoisart/\n\nFiche : https://fontainebleaulive.fr/ev
- enements/exposition-samois-art-samois-sur-seine-09f6d3d02a/\n\nInformation
- s collectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h/13 et 14h30/17h\n\nTarif : gratuit\n\nLes peintu
+ res de l’atelier : venez découvrir le travail d’une année des élèv
+ es de Maryse au RDC du foyer Django Reinhardt.\n\nOrganisateur : https://s
+ amois-sur-seine.fr/evenement/exposition-samoisart/\n\nFiche : https://font
+ ainebleaulive.fr/evenements/exposition-samois-art-samois-sur-seine-09f6d3d
+ 02a/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/exposition-samois-art-samois-su
  r-seine-09f6d3d02a/
 CATEGORIES:Culture & Ateliers
@@ -105,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_38ded51c56@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Récital : Au salon de Joséphine
@@ -124,7 +125,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b62d5debb@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:LOTO
@@ -141,7 +142,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa9c61a161@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Atelier danse pour adultes
@@ -159,7 +160,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_574bc03521@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert Intime Nougaro
@@ -178,7 +179,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99be6b818d@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Salsa-bachata-kizomba « les sosies »
@@ -196,7 +197,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Village et Marché de Noël de Samois-sur-Seine
@@ -213,8 +214,25 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_a5d59b0896@fontainebleaulive.fr
+DTSTAMP:20261115T000000Z
+DTSTART;VALUE=DATE:20261217
+DTEND;VALUE=DATE:20261218
+SUMMARY:Le Noêl des aînés
+LOCATION:salle des mariages en Mairie\, Samois-sur-Seine
+DESCRIPTION:Horaires : 14h à 17h\n\nTarif : gratuit\n\nOrganisateur : http
+ s://samois-sur-seine.fr/evenement/le-noel-des-aines/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/le-noel-des-aines-samois-sur-seine-a5d59b089
+ 6/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-noel-des-aines-samois-sur-se
+ ine-a5d59b0896/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
@@ -233,7 +251,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4762e2cdf5@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Réveillon de la Saint-Sylvestre avec LB SALSA

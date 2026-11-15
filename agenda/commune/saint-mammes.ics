@@ -11,16 +11,40 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_cbd1c4e4d5@fontainebleaulive.fr
+DTSTAMP:20261115T000000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Atelier créatif décoration de Noël
+LOCATION:48 rue des Palottes\, Saint-Mammès
+DESCRIPTION:Horaires : 10h30 à 12h00 ou 14h00 à 15h30\n\nTarif : 10€ (l
+ imité à 3 créations) / 20€ (sans limite)\n\nL’association Les Explo
+ rateurs du Lien vous propose un atelier créatif pour créer vos propres d
+ écorations et objets sur le thème de l’hiver et de Noël.\n\nOrganisat
+ eur : https://www.saint-mammes.com/ateliers-creatifs/\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/atelier-creatif-decoration-de-noel-saint-ma
+ mmes-cbd1c4e4d5/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-creatif-decoration-de-n
+ oel-saint-mammes-cbd1c4e4d5/
+CATEGORIES:Culture & Ateliers
+GEO:48.3828;2.8102
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b2c20eee7d@fontainebleaulive.fr
 DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261120
 SUMMARY:Atelier logement et santé
-LOCATION:Saint-Mammès
-DESCRIPTION:Organisateur : https://www.saint-mammes.com/atelier-logement-et
- -sante/\n\nFiche : https://fontainebleaulive.fr/evenements/atelier-logemen
- t-et-sante-saint-mammes-b2c20eee7d/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+LOCATION:La Grange des Graillons à Moret-Loing-et-Orvanne / L’Arche à C
+ hampagne-sur-Seine\, Saint-Mammès
+DESCRIPTION:Une semaine dédiée à la santé dans le logement avec des ate
+ liers ludiques\, des conseils de professionnels et des animations.\n\nOrga
+ nisateur : https://www.saint-mammes.com/atelier-logement-et-sante/\n\nFich
+ e : https://fontainebleaulive.fr/evenements/atelier-logement-et-sante-sain
+ t-mammes-b2c20eee7d/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/atelier-logement-et-sante-saint
  -mammes-b2c20eee7d/
 CATEGORIES:Culture & Ateliers
@@ -29,17 +53,20 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30160f3ac4@fontainebleaulive.fr
-DTSTAMP:20261109T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Expo photo (Marathon des Journées du Patrimoine)
-LOCATION:Salle du conseil (annexe de la mairie)\, Saint-Mammès
+LOCATION:Salle du conseil (annexe de la mairie – 2 rue Grande)\, Saint-Ma
+ mmès
 DESCRIPTION:Horaires : Samedi de 14h à 17h\, Dimanche de 9h30 à 12h / de 
- 14h à 17h\n\nTarif : Entrée libre\n\nOrganisateur : https://www.saint-ma
- mmes.com/expo-photo-marathon-des-journees-du-patrimoine/\n\nFiche : https:
- //fontainebleaulive.fr/evenements/expo-photo-marathon-des-journees-du-patr
- imoine-saint-mammes-30160f3ac4/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
+ 14h à 17h\n\nTarif : Entrée libre\n\nDécouvrez les photographies récom
+ pensées suite au Marathon photo organisé lors des Journées du Patrimoin
+ e.\n\nOrganisateur : https://www.saint-mammes.com/expo-photo-marathon-des-
+ journees-du-patrimoine/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /expo-photo-marathon-des-journees-du-patrimoine-saint-mammes-30160f3ac4/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
 URL:https://fontainebleaulive.fr/evenements/expo-photo-marathon-des-journee
  s-du-patrimoine-saint-mammes-30160f3ac4/
 CATEGORIES:Culture & Ateliers
@@ -47,7 +74,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f31186d94c@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Soirée " coucous "
@@ -66,8 +93,27 @@ GEO:48.38915;2.80788
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1207b7ac1d@fontainebleaulive.fr
+DTSTAMP:20261115T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Soirée dansante & couscous
+LOCATION:MLC (49 rue Victor Hugo)\, Saint-Mammès
+DESCRIPTION:Horaires : à partir de 19h30\n\nTarif : 26€\n\nSoirée dansa
+ nte avec DJ Matt et repas couscous.\n\nOrganisateur : https://www.saint-ma
+ mmes.com/soiree-dansante-couscous/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/soiree-dansante-et-couscous-saint-mammes-1207b7ac1d/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/soiree-dansante-et-couscous-sai
+ nt-mammes-1207b7ac1d/
+CATEGORIES:Scène & Spectacles
+GEO:48.38404;2.8141
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_db9d848336@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Documentaire " Qu'est-ce qu'on attend ? "
@@ -86,8 +132,27 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_257ae87cb3@fontainebleaulive.fr
+DTSTAMP:20261115T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261130
+SUMMARY:Weekend de la transition
+LOCATION:MLC / Place de la Mairie\, Saint-Mammès
+DESCRIPTION:Horaires : Vendredi à partir de 20h\, Samedi à partir de 15h\
+ , Dimanche à partir de 14h\n\nUn weekend pour la transition écologique p
+ roposant projection\, troc\, ateliers\, expositions\, concert et balade bi
+ odiversité.\n\nOrganisateur : https://www.saint-mammes.com/fete-de-la-tra
+ nsition/\n\nFiche : https://fontainebleaulive.fr/evenements/weekend-de-la-
+ transition-saint-mammes-257ae87cb3/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/weekend-de-la-transition-saint-
+ mammes-257ae87cb3/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_be3f148623@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert " Domkiris expérience "
@@ -106,7 +171,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -125,7 +190,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3994dd502@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël de Saint-Mammès
