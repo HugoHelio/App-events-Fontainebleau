@@ -11,43 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_96b469d92f@fontainebleaulive.fr
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261116
-SUMMARY:Stage Champignons en forêt de Fontainebleau
-LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h–17h\n\nTarif : 225 €\n\nPublic : Dès 12 ans
- \n\nStage de deux jours en immersion pour apprendre à reconnaître\, cuei
- llir et étudier les champignons comestibles et toxiques.\n\nOrganisateur 
- : https://www.lechemindelanature.com/balades-et-stages/\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/stage-champignons-en-foret-de-fontaineble
- au-96b469d92f/\n\nInformations collectées automatiquement : vérifiez-les
-  auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/stage-champignons-en-foret-de-f
- ontainebleau-96b469d92f/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_cf6cb2716e@fontainebleaulive.fr
-DTSTAMP:20261106T000000Z
-DTSTART;VALUE=DATE:20261115
-DTEND;VALUE=DATE:20261116
-SUMMARY:Initiation à la bryologie et lichénologie
-LOCATION:Forêt de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h10 à 16h45\n\nTarif : Gratuit\n\nJournée de for
- mation terrain consacrée à l'observation des mousses et des lichens du m
- assif bellifontain.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche
-  : https://fontainebleaulive.fr/evenements/initiation-a-la-bryologie-et-li
- chenologie-fontainebleau-cf6cb2716e/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/initiation-a-la-bryologie-et-li
- chenologie-fontainebleau-cf6cb2716e/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_e920dd0a7d@fontainebleaulive.fr
 DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20261117

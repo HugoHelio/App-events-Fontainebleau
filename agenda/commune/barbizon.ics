@@ -11,24 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_0c5d619702@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261116
-SUMMARY:Visite musicale dans l'auberge Ganne
-LOCATION:Auberge Ganne\, Barbizon\, Barbizon
-DESCRIPTION:Tarif : Billet d'entrée du musée\n\nVisite guidée rythmée p
- ar des intermèdes musicaux au sein de l'Auberge Ganne.\n\nOrganisateur : 
- https://www.fontainebleau-tourisme.com/fr/fiche/7957876/visite-musicale-da
- ns-lauberge-ganne/\n\nFiche : https://fontainebleaulive.fr/evenements/visi
- te-musicale-dans-l-auberge-ganne-barbizon-0c5d619702/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-musicale-dans-l-auberge-
- ganne-barbizon-0c5d619702/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_70b3109999@fontainebleaulive.fr
 DTSTAMP:20261112T000000Z
 DTSTART;VALUE=DATE:20261121
