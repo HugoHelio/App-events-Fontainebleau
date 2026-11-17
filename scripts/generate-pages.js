@@ -886,6 +886,31 @@ const HOLIDAYS = [
       ['Le programme est-il à jour ?', 'La page est reconstruite chaque jour à partir des annonces des communes, de l’office de tourisme, d’OpenAgenda et des sites des organisateurs. Pour les horaires et les réservations, le lien de l’organisateur est sur la page de chaque sortie.'],
     ],
   },
+  {
+    // Added 17/11 (item 81). Dates by DATE, not title: it does not repeat /sorties/noel/, which
+    // gathers what says "Noël" whenever it happens; this one is everything on during the holidays.
+    slug: 'vacances-noel',
+    name: 'Vacances de Noël',
+    // Same dates for every zone at Christmas: from Saturday 19/12/2026, back to school 04/01/2027.
+    periods: [{ from: '2026-12-19', to: '2027-01-04' }],
+    title: (y) => `Que faire pendant les vacances de Noël ${y} autour de Fontainebleau ?`,
+    intro: 'Marchés de Noël, spectacles et concerts des fêtes, visites des châteaux, balades en forêt et animations pour les enfants : toutes les sorties des vacances à Fontainebleau et dans les communes voisines, jour par jour.',
+    off: (y) => `Les vacances de Noël ${y} sont terminées. Le programme des prochaines vacances de Noël apparaîtra ici dès l’automne.`,
+    nameEn: 'Christmas school holidays',
+    titleEn: (y) => `What to do during the Christmas school holidays ${y} around Fontainebleau?`,
+    introEn: 'Christmas markets, festive shows and concerts, château visits, forest walks and activities for children: every outing of the holidays in Fontainebleau and the neighbouring towns, day by day.',
+    offEn: (y) => `The Christmas school holidays ${y} are over. The programme for next year’s Christmas holidays will appear here from the autumn.`,
+    faqEn: [
+      ['What to do with children during the Christmas holidays?', 'Shows, workshops and storytelling sessions, the Christmas markets and the events at the châteaux. The family ideas below are picked from the programme of the holidays.'],
+      ['What is open on 25 December and 1 January?', 'Little: the Château de Fontainebleau is closed on those two days, as it is every Tuesday. Check each outing’s dates on its page before you go.'],
+      ['Is the programme up to date?', 'The page is rebuilt every day from the announcements of the towns, the tourist office, OpenAgenda and the organisers’ websites. For times and bookings, the organiser’s link is on each outing’s page.'],
+    ],
+    faq: [
+      ['Que faire avec des enfants pendant les vacances de Noël ?', 'Les spectacles, ateliers et contes, les marchés de Noël et les animations des châteaux. Les idées de sorties en famille ci-dessous sont choisies dans le programme des vacances.'],
+      ['Qu’est-ce qui est ouvert le 25 décembre et le 1er janvier ?', 'Peu de choses : le château de Fontainebleau est fermé ces deux jours-là, comme chaque mardi. Vérifiez les dates de chaque sortie sur sa page avant de vous déplacer.'],
+      ['Le programme est-il à jour ?', 'La page est reconstruite chaque jour à partir des annonces des communes, de l’office de tourisme, d’OpenAgenda et des sites des organisateurs. Pour les horaires et les réservations, le lien de l’organisateur est sur la page de chaque sortie.'],
+    ],
+  },
 ];
 
 /** The period on show: the first one not over yet, else the last one (and `over` is true). */
@@ -1083,6 +1108,22 @@ function seasonNow(events, today) {
   return [...holidays, ...themes];
 }
 
+/**
+ * Every seasonal hub, those with something still to come first (17/11: Halloween and the Toussaint
+ * holidays were still listed first in November). The pages stay, they are never deleted; the short
+ * link lists show only the live ones, /sorties/ shows all of them in this order.
+ */
+function seasonalHubs(events, today) {
+  const hubs = [
+    ...HOLIDAYS.map((h) => {
+      const p = holidayPeriod(h, today);
+      return { slug: h.slug, name: h.name, nameEn: h.nameEn, live: !p.over };
+    }),
+    ...THEMES.map((t) => ({ slug: t.slug, name: t.name, nameEn: t.nameEn, live: events.some((e) => t.match.test(themeKey(e.title)) && endOf(e) >= today) })),
+  ];
+  return [...hubs.filter((x) => x.live), ...hubs.filter((x) => !x.live)];
+}
+
 // No visible label by default since 04/10, as on the home page: on a site called "Live" the chips
 // speak for themselves. Screen readers still get one.
 const nowHtml = (now, label = '', labelEn = '') => (now.length
@@ -1186,7 +1227,10 @@ ${FILTER_SCRIPT}
 
 /** /sorties/ — every seasonal hub, holidays first. A plain page of links a crawler can follow. */
 function seasonIndex(events, today) {
-  const holidays = HOLIDAYS.map((h) => {
+  // Live hubs first (see seasonalHubs): the holidays to come, then the themes with dates.
+  const order = seasonalHubs(events, today);
+  const rank = (slug) => order.findIndex((x) => x.slug === slug);
+  const holidays = [...HOLIDAYS].sort((a, b) => rank(a.slug) - rank(b.slug)).map((h) => {
     const p = holidayPeriod(h, today);
     const k = holidayEvents(p, events, today).short.length;
     const when = first(`du ${shortDate(p.from).replace(/^\S+ /, '')} au ${shortDate(p.to).replace(/^\S+ /, '')} ${p.to.slice(0, 4)}`);
@@ -1194,7 +1238,7 @@ function seasonIndex(events, today) {
     const y = esc(p.from.slice(0, 4));
     return `<li><a href="/${THEMES_DIR}/${h.slug}/"${en(`${esc(h.nameEn)} ${y}`)}>${esc(h.name)} ${y}</a><small${en(p.over ? 'Over' : `${esc(whenEn)}${k ? ` · ${enPl(k, 'outing')}` : ''}`)}>${p.over ? 'Terminées' : `${esc(when)}${k ? ` · ${k} sortie${k > 1 ? 's' : ''}` : ''}`}</small></li>`;
   });
-  const themes = THEMES.map((t) => {
+  const themes = [...THEMES].sort((a, b) => rank(a.slug) - rank(b.slug)).map((t) => {
     const list = events.filter((e) => t.match.test(themeKey(e.title)));
     const year = (list[0] ? list[0].startDate : today).slice(0, 4);
     return `<li><a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</a><small${en(list.length ? `${enPl(list.length, 'upcoming date')}` : 'No date announced yet')}>${list.length ? `${list.length} date${list.length > 1 ? 's' : ''} à venir` : 'Pas encore de date annoncée'}</small></li>`;
@@ -1208,11 +1252,12 @@ function seasonIndex(events, today) {
 <ul class="list">${themes.join('')}</ul>
 <div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
   return layout({
-    title: 'Sorties de saison autour de Fontainebleau : vacances, Halloween, Noël, brame du cerf | Fontainebleau Live',
-    description: 'Vacances de la Toussaint, Halloween, marchés de Noël, brame du cerf, champignons : les sorties de saison autour de Fontainebleau, mises à jour chaque jour.',
+    // Named after the live hubs, so the title follows the season (no "Halloween" in November).
+    title: `Sorties de saison autour de Fontainebleau : ${order.slice(0, 3).map((x) => x.name).join(', ')}… | Fontainebleau Live`,
+    description: `${order.slice(0, 5).map((x) => x.name).join(', ')} : les sorties de saison autour de Fontainebleau, mises à jour chaque jour.`,
     canonical: `${SITE_URL}/${THEMES_DIR}/`,
     body,
-    titleEn: 'Seasonal outings around Fontainebleau: holidays, Halloween, Christmas, deer rut | Fontainebleau Live',
+    titleEn: `Seasonal outings around Fontainebleau: ${order.slice(0, 3).map((x) => x.nameEn).join(', ')}… | Fontainebleau Live`,
   });
 }
 
@@ -1364,7 +1409,7 @@ ${n || nextList.length ? LEGEND : ''}
 ${sections.filter((s) => !curSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}${guidesPromo()}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/"${en('Today')}>Aujourd’hui</a> `}<a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText, shareTextEn)}
-<p class="note"><span${en('Seasonal outings:')}>Sorties de saison :</span> ${THEMES.map((t) => `<a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.nameEn))}>${esc(t.name)}</a>`).join(' · ')}.</p>
+<p class="note"><a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a>${seasonalHubs(events, today).filter((x) => x.live).map((x) => ` · <a href="/${THEMES_DIR}/${x.slug}/"${en(esc(x.nameEn))}>${esc(x.name)}</a>`).join('')}.</p>
 <script>
 ${FILTER_SCRIPT}${nextList.length ? `
 (function () {
@@ -1461,8 +1506,9 @@ ${shareScript(`${SITE_URL}/${TODAY_DIR}/`, 'Que faire aujourd’hui autour de Fo
 // have a page, so the title does not change with every scan.
 const HUB_TOWNS = [['barbizon', 'Barbizon'], ['samois-sur-seine', 'Samois'], ['moret-loing-et-orvanne', 'Moret'], ['thomery', 'Thomery'], ['nemours', 'Nemours']];
 
-function citiesIndex(cities) {
-  const seasonal = [...HOLIDAYS, ...THEMES].map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ');
+function citiesIndex(cities, events, today) {
+  // Only the hubs with something to come; the past ones stay reachable from /sorties/.
+  const seasonal = seasonalHubs(events, today).filter((x) => x.live).map((t) => `<a href="/${THEMES_DIR}/${t.slug}/">${esc(t.name)}</a>`).join(' · ') || `<a href="/${THEMES_DIR}/">Toutes les sorties de saison</a>`;
   const towns = HUB_TOWNS.filter(([slug]) => cities.some((c) => c.slug === slug)).slice(0, 3).map(([, name]) => name);
   const body = `<nav class="crumbs"><a href="/">Accueil</a></nav>
 <h1>Les sorties commune par commune autour de Fontainebleau</h1>
@@ -2295,7 +2341,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   }
   // A commune page lists what is coming: a monument shows there if it opens in the next 30 days.
   for (const c of cities) files.set(`${CITIES_DIR}/${c.slug}/index.html`, cityPage(c, placesOpen(places, today, addDays(today, 30), c.name), nearbyTowns(c, cities)));
-  files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities));
+  files.set(`${CITIES_DIR}/index.html`, citiesIndex(cities, events, today));
   files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today, places));
   files.set(`${TODAY_DIR}/index.html`, todayPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
