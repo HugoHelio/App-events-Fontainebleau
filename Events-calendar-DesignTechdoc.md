@@ -1717,7 +1717,7 @@ organisateurs.
 | 4 | **39. Coûts — fait le 03/11 : cache des sites, scans Gemini une fois par semaine. Comparatif du 03/11 : Flash-Lite 3.1 refusé pour les dates, adopté pour les fiches de l'office. Reste : essai de `gemini-3.5-flash-lite` le 11/11** — avant le 15/12 | 14,85 € de Gemini du 02/10 au 03/11 ; 102 clos le 03/11 | XS |
 | 5 | **106. Passer devant fontyblog.fr** — étape 1 (mesure Search Console), puis maillage vers `/foret/` et `/balades/` | L'audience conditionne tout le reste ; 107 et 108 l'alimentent | M |
 | 6 | **100. Rapport du 27/10** — point 7 (décision), points 5-6 au prochain scan | Suivi | XS |
-| 7 | **97 bis. Relevé du trafic fin novembre** (GoatCounter + Search Console) | Premier des trois mois du seuil | XS |
+| 7 | **97 bis. Relevé du trafic fin novembre** (GoatCounter + Search Console) — relevé intermédiaire fait le 17/11 (item 106) : 4 815 visites sur 30 jours, novembre probablement sous le seuil | Premier des trois mois du seuil | XS |
 | 8 | **105, étape 2. Mise en avant payante** — **bloquée** jusqu'au seuil ci-dessus | Rien à vendre avant | S |
 | — | **109. Calendrier 2027 illustré** — gardé, non planifié ; s'il est fait, en vente avant mi-décembre | Idée B du 02/11 | M |
 | — | **110. Jeu de piste en ville pour les anniversaires** — plus tard | Idée C du 02/11 | M |
@@ -2007,6 +2007,43 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   3. **Contenu durable** : les pages des fiches balades (104) sont du texte rédigé, permanent, que l'agenda n'a pas ; les relier depuis `/que-faire/fontainebleau/` et l'accueil. Revoir le texte de `/que-faire/` pour la requête visée.
   4. **Technique** : données structurées `Event` (déjà présentes, à valider dans le test des résultats enrichis), vitesse mobile, maillage interne vers `/ce-week-end/`.
   5. Ne pas copier ni lire fontyblog (contenu d'un tiers, item 95).
+  - **Relevé du 17/11 (étape 1, chef de projet + Claude).** Search Console, 23/09 → 15/11 :
+    **2 738 clics, 33 050 impressions**, position moyenne 5 à 7. Octobre : 2 042 clics (66/jour,
+    pic de 195 le 31/10) ; du 1er au 15/11 : 522 (35/jour) — la chute d'après Halloween.
+    - **Les pages de saison portent le site** : `/sorties/halloween/` 479 clics (18 % du total,
+      position 3,7, taux de clic 20 %), brame 93, Toussaint 69, champignons 52. Requêtes en tête :
+      « halloween fontainebleau » (127 clics, position 3), « marche de noel fontainebleau 2026 »
+      (46, position 2,6), « brame du cerf fontainebleau 2026 » (41), et la marque « fontainebleau
+      live » (47). **Noël ne prend pas encore** : `/sorties/marches-de-noel/` 7 clics (position
+      8,6), `/sorties/noel/` 3 (10,3) ; c'est la fiche du marché de Fontainebleau qui sort
+      (1 001 impressions, 3,8 %).
+    - **Les requêtes génériques restent hors de portée** : « que faire à fontainebleau » position
+      76, « agenda fontainebleau » 65, « événements fontainebleau » 59, « que faire à fontainebleau
+      ce week-end » 48 ; l'accueil 12,5 et `/ce-week-end/` 12,2 en moyenne.
+    - **Impressions sans clic, position 8-10** : « fête du brie melun 2026 » (836 impressions,
+      0,6 %), « balade du goût 2026 » (603), « bouchon de nemours 2026 » (498) — titres et
+      descriptions des fiches à revoir pour ces événements à forte demande.
+    - Requêtes conversationnelles (« et dans les villages alentours ? », « c'est quand les
+      dates ? ») : le site est cité dans les réponses générées de Google.
+    - **Une même fiche sous plusieurs adresses** : nouvel item 111.
+  - **GoatCounter, 30 jours (18/10 → 17/11)** : **4 815 visites**. Référents : Google 1 567
+    (33 %), inconnu 467, **chatgpt.com 398 (8 %)**, DuckDuckGo 38, Bing 14. iOS 42 %, Android
+    40 %, Windows 12 % ; anglais 6 % (299). Pages : Halloween 458, accueil 302, Toussaint 216,
+    `/ce-week-end/` 198. **Le jeu de la forêt n'apparaît pas dans les 100 premières lignes**
+    (seuil : 7) : `forest-chip`, `forest-promo`, `forest-play` et `/foret/` font moins de
+    7 visites ou clics chacun en 30 jours, quand `/balades/fontainebleau-a-velo/` en fait 9.
+    **Seuil de 5 000 visites/mois** : le mois glissant est à 4 815 et la Search Console a divisé
+    ses clics par deux après Halloween : novembre sera probablement sous le seuil. Le compter
+    comme le premier mois des trois serait faux ; la règle du 02/11 (stable sur 3 mois) tient.
+- [ ] **111. Une fiche, une adresse (relevé du 17/11).** L'adresse d'une fiche est faite du titre
+  et de l'id ; quand un scan reformule le titre, l'adresse change, l'ancienne renvoie 404 et la
+  Search Console répartit clics et impressions entre les deux. Exemples (3 mois) : championnat
+  CCE `08a39f58ca` (77 + 34 clics), randonnée solidaire `65bb236269`, Brass et Bleau
+  `453c9d0696`, le Legs de Marivaux `f6b357bd56`, le Petit train (5 adresses). Une vingtaine
+  d'adresses `/?event=EVT_…` ont aussi des impressions. Pistes : garder le premier slug publié
+  d'un id (table commitée, comme les caches), ou, pour un slug abandonné, une page de
+  redirection (`meta refresh` + `canonical`, GitHub Pages n'a pas de redirections serveur) ;
+  vérifier la balise `canonical` des liens `/?event=`. À décider avant de coder.
 - [ ] **107. « Carnet d'explorateur de la forêt » et son mini-jeu — idée A, retenue le 02/11 (chef de projet). En cours.**
   Pour les 6-11 ans, autour des animaux de la forêt de Fontainebleau. **Benchmark du 02/11** :
   les coloriages « forêt / animaux » se vendent en PDF de 0 à 4 $, souvent à prix libre
