@@ -2036,14 +2036,16 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     ses clics par deux après Halloween : novembre sera probablement sous le seuil. Le compter
     comme le premier mois des trois serait faux ; la règle du 02/11 (stable sur 3 mois) tient.
 - [ ] **111. Une fiche, une adresse (relevé du 17/11).** L'adresse d'une fiche est faite du titre
-  et de l'id ; quand un scan reformule le titre, l'adresse change, l'ancienne renvoie 404 et la
-  Search Console répartit clics et impressions entre les deux. Exemples (3 mois) : championnat
-  CCE `08a39f58ca` (77 + 34 clics), randonnée solidaire `65bb236269`, Brass et Bleau
-  `453c9d0696`, le Legs de Marivaux `f6b357bd56`, le Petit train (5 adresses). Une vingtaine
-  d'adresses `/?event=EVT_…` ont aussi des impressions. Pistes : garder le premier slug publié
-  d'un id (table commitée, comme les caches), ou, pour un slug abandonné, une page de
-  redirection (`meta refresh` + `canonical`, GitHub Pages n'a pas de redirections serveur) ;
-  vérifier la balise `canonical` des liens `/?event=`. À décider avant de coder.
+  et de l'id ; quand un scan reformule le titre, l'adresse change. **L'ancienne ne casse pas** :
+  depuis le 24/09 (item 68), `build()` y écrit une page de redirection (`meta refresh`,
+  `canonical` vers la nouvelle, `noindex`) tant que l'événement vit — 54 au 17/11, pour 394
+  fiches. Mais la Search Console compte encore les deux adresses le temps que Google suive la
+  redirection : championnat CCE `08a39f58ca` (77 + 34 clics), randonnée solidaire `65bb236269`,
+  Brass et Bleau `453c9d0696`, le Legs de Marivaux `f6b357bd56`, le Petit train (5 adresses).
+  Piste restante : garder le premier slug publié d'un id (table commitée, comme les caches),
+  pour que l'adresse ne change plus du tout. Une vingtaine d'adresses `/?event=EVT_…` ont aussi
+  des impressions (l'accueil déclare `/` comme `canonical`, c'est voulu). Gain modeste : à
+  faire après 106, pas avant.
 - [ ] **107. « Carnet d'explorateur de la forêt » et son mini-jeu — idée A, retenue le 02/11 (chef de projet). En cours.**
   Pour les 6-11 ans, autour des animaux de la forêt de Fontainebleau. **Benchmark du 02/11** :
   les coloriages « forêt / animaux » se vendent en PDF de 0 à 4 $, souvent à prix libre
