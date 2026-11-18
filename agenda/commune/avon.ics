@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_988de8cc23@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Projection débat : Réinventer l'enfance
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4546bc32d4@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Concert : A visages découverts en musique
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ACT_011@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël d'Avon
@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3763ad99a2@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Nuit de l'Orientation
@@ -108,7 +108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
@@ -128,7 +128,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fdd2caa4ab@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:La poésie de Claire Médard
@@ -147,7 +147,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7b2a5f2ea8@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Les séjours de Louis XIV à Fontainebleau\, les liens avec la popu
@@ -195,15 +195,34 @@ DTSTART;VALUE=DATE:20270122
 DTEND;VALUE=DATE:20270123
 SUMMARY:Bébé Bouquine - Nuit de la lecture
 LOCATION:Médiathèque Les Sources Vives\, Avon
-DESCRIPTION:Horaires : 10h30–11h15\n\nTarif : Gratuit\n\nPublic : Jusqu
- ’à 4 ans\n\nLectures\, comptines et jeux de doigts pour les 0-4 ans.\n\
- nOrganisateur : https://www.avon77.com/evenements/bebe-bouquine-26-27/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/bebe-bouquine-nuit-de-la-l
- ecture-avon-23ecf23f63/\n\nInformations collectées automatiquement : vér
- ifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h30–11h15\n\nTarif : Gratuit. Sur réservation.\
+ n\nPublic : Jusqu’à 4 ans\n\nLectures\, comptines et jeux de doigts pou
+ r les 0-4 ans.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr
+ /fiche/7616012/la-nuit-de-la-lecture/\n\nFiche : https://fontainebleaulive
+ .fr/evenements/bebe-bouquine-nuit-de-la-lecture-avon-23ecf23f63/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
 URL:https://fontainebleaulive.fr/evenements/bebe-bouquine-nuit-de-la-lectur
  e-avon-23ecf23f63/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8b46a32606@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:A Simple Space
+LOCATION:Avon
+DESCRIPTION:Tarif : Plein tarif : 25 €\, Tarif réduit : de 13 à 17 € 
+ (Tarif réduit 1 (17 €) : Person…\n\nUn spectacle de scène intitulé 
+ A Simple Space.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/f
+ r/fiche/8037357/a-simple-space/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/a-simple-space-avon-8b46a32606/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/a-simple-space-avon-8b46a32606/
+CATEGORIES:Scène & Spectacles
+GEO:48.413;2.72893
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

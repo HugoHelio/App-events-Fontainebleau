@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_f8910fb196@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:Animation nature en famille « Le Trésor de Praline »
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ed8d3db12@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:CAFÉ DES TRANSITIONS "CONSOMMATION ET DECHETS !" [FONTAINEBLEAU (E
@@ -90,7 +90,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -108,12 +108,12 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e369a0da4e@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Journée de l'Arbre
-LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
- oing\, Montigny-sur-Loing
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
 DESCRIPTION:Horaires : 10h à 17h\n\nUne journée consacrée à la découve
  rte et à l'écoute des arbres.\n\nOrganisateur : https://www.ccmsl.fr/act
  u-et-agendas/agenda.html#2026-11-21-journeedelarbre\n\nFiche : https://fon
@@ -127,7 +127,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f238bc3741@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Troc aux Plantes
@@ -324,7 +324,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_257ae87cb3@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261130
 SUMMARY:Weekend de la transition
@@ -343,7 +343,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -362,7 +362,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -382,7 +382,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -401,7 +401,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b3ef3d23c@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Sortie bryologique au mont Andart
@@ -433,24 +433,6 @@ DESCRIPTION:Horaires : 09h–17h\n\nTarif : Gratuit\n\nJournée d'observati
  érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-bryolo
  gie-en-foret-de-fontainebleau-ce99e04c3b/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_86b190a8b7@fontainebleaulive.fr
-DTSTAMP:20261027T000000Z
-DTSTART;VALUE=DATE:20261205
-DTEND;VALUE=DATE:20261207
-SUMMARY:Initiation à la bryologie en forêt de Fontainebleau
-LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : sam. 05/12 : 09h00–12h00 \; dim. 06/12 : 10h00–1
- 6h00\n\nTarif : Gratuit\n\nSortie botanique d'initiation à l'étude des m
- ousses en forêt domaniale.\n\nOrganisateur : https://anvl.fr/grand-public
- /\n\nFiche : https://fontainebleaulive.fr/evenements/initiation-a-la-bryol
- ogie-en-foret-de-fontainebleau-86b190a8b7/\n\nInformations collectées aut
- omatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/initiation-a-la-bryologie-en-fo
- ret-de-fontainebleau-86b190a8b7/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -494,17 +476,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 10h00 – 16h00\n\nTarif : Gratuit\n\nJournée de d
- écouverte botanique axée sur l'observation des mousses.\n\nOrganisateur 
- : https://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/even
- ements/sortie-d-initiation-a-la-bryologie-en-foret-de-fontainebleau-734a43
- c14d/\n\nInformations collectées automatiquement : vérifiez-les auprès 
- de l’organisateur.
+DESCRIPTION:Horaires : sam. 05/12 : 09h00–12h00 \; dim. 06/12 : 10h00–1
+ 6h00\n\nTarif : Gratuit\n\nJournée de découverte botanique axée sur l'o
+ bservation des mousses.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nF
+ iche : https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-br
+ yologie-en-foret-de-fontainebleau-734a43c14d/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-bryolo
  gie-en-foret-de-fontainebleau-734a43c14d/
 CATEGORIES:Nature & Environnement
@@ -685,7 +667,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f94adfc30b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Ciné-Débat « Le vivant qui se défend » et exposition photos d'
@@ -694,10 +676,11 @@ LOCATION:Salle « La Ruche de Candy » (Mairie d'Achères-la-Forêt)\, Ach
  ères-la-Forêt
 DESCRIPTION:Horaires : 17h30\n\nTarif : Gratuit\n\nExposition photos de fau
  ne sauvage suivie d'une projection et d'un débat animé par des naturalis
- tes.\n\nOrganisateur : https://animonsensemble.fr/\n\nFiche : https://font
- ainebleaulive.fr/evenements/cine-debat-le-vivant-qui-se-defend-et-expositi
- on-photos-d-ar-acheres-la-foret-f94adfc30b/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
+ tes.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/805
+ 1048/cine-debat-le-vivant-qui-se-defend/\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/cine-debat-le-vivant-qui-se-defend-et-exposition-photos-
+ d-ar-acheres-la-foret-f94adfc30b/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cine-debat-le-vivant-qui-se-def
  end-et-exposition-photos-d-ar-acheres-la-foret-f94adfc30b/
 CATEGORIES:Nature & Environnement
@@ -710,14 +693,14 @@ DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
 SUMMARY:Visite guidée thématique en forêt de Fontainebleau
 LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
- s) : 9 € | Gratuit pour les moins de 6 ans\n\nPartez à la découverte d
- e la faune et de la flore locales au cours d'une visite guidée thématiqu
- e en forêt de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-
- tourisme.com/fr/fiche/4971254/visites-guidees-thematiques-en-foret/\n\nFic
- he : https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-f
- oret-de-fontainebleau-e010cd1c81/\n\nInformations collectées automatiquem
- ent : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 €\, Enfant (6-12 ans)
+  : 9 €. Gratuit pour les moins de 6 ans. Réserv…\n\nPartez à la déc
+ ouverte de la faune et de la flore locales au cours d'une visite guidée t
+ hématique en forêt de Fontainebleau.\n\nOrganisateur : https://www.fonta
+ inebleau-tourisme.com/fr/fiche/4971254/visites-guidees-thematiques-en-fore
+ t/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-guidee-themat
+ ique-en-foret-de-fontainebleau-e010cd1c81/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-for
  et-de-fontainebleau-e010cd1c81/
 CATEGORIES:Nature & Environnement

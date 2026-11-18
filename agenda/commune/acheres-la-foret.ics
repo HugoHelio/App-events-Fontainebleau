@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f94adfc30b@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Ciné-Débat « Le vivant qui se défend » et exposition photos d'
@@ -40,10 +40,11 @@ LOCATION:Salle « La Ruche de Candy » (Mairie d'Achères-la-Forêt)\, Ach
  ères-la-Forêt
 DESCRIPTION:Horaires : 17h30\n\nTarif : Gratuit\n\nExposition photos de fau
  ne sauvage suivie d'une projection et d'un débat animé par des naturalis
- tes.\n\nOrganisateur : https://animonsensemble.fr/\n\nFiche : https://font
- ainebleaulive.fr/evenements/cine-debat-le-vivant-qui-se-defend-et-expositi
- on-photos-d-ar-acheres-la-foret-f94adfc30b/\n\nInformations collectées au
- tomatiquement : vérifiez-les auprès de l’organisateur.
+ tes.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/805
+ 1048/cine-debat-le-vivant-qui-se-defend/\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/cine-debat-le-vivant-qui-se-defend-et-exposition-photos-
+ d-ar-acheres-la-foret-f94adfc30b/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cine-debat-le-vivant-qui-se-def
  end-et-exposition-photos-d-ar-acheres-la-foret-f94adfc30b/
 CATEGORIES:Nature & Environnement

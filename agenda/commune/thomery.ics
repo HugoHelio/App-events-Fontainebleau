@@ -11,8 +11,26 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_deab947713@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Ciné-eire " Le vent se lève "
+LOCATION:38 rue Rosa Bonheur à Thomery\, Thomery
+DESCRIPTION:Horaires : 20h\n\nProjection cinématographique à Thomery.\n\n
+ Organisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-21
+ -cineeireleventseleve\n\nFiche : https://fontainebleaulive.fr/evenements/c
+ ine-eire-le-vent-se-leve-thomery-deab947713/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cine-eire-le-vent-se-leve-thome
+ ry-deab947713/
+CATEGORIES:Scène & Spectacles
+GEO:48.39434;2.78497
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c4dd07f40c@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Stage de yoga " le Corps\, la voix\, le son"
@@ -31,8 +49,45 @@ GEO:48.40233;2.78149
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_923567d599@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:Initiation au théâtre ( 7-10 ans )
+LOCATION:Médiathèque Fernand Gregh\, le vieux logis - Passage Greffülhe 
+ à Thomery\, Thomery
+DESCRIPTION:Horaires : 14h30 à 16h\n\nPublic : 7–10 ans\n\nAtelier d'ini
+ tiation théâtrale pour les enfants de 7 à 10 ans.\n\nOrganisateur : htt
+ ps://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-25-initiationautheat
+ re710ans\n\nFiche : https://fontainebleaulive.fr/evenements/initiation-au-
+ theatre-7-10-ans-thomery-923567d599/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/initiation-au-theatre-7-10-ans-
+ thomery-923567d599/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e6c3c4a3c1@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261130
+SUMMARY:Marché de Noël
+LOCATION:11 rue de la République à Thomery\, Thomery
+DESCRIPTION:Horaires : 10h à 18h\n\nMarché de Noël convivial à Thomery.
+ \n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-1
+ 1-28-marchedenoel\n\nFiche : https://fontainebleaulive.fr/evenements/march
+ e-de-noel-thomery-e6c3c4a3c1/\n\nInformations collectées automatiquement 
+ : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-thomery-e6c3c4a3
+ c1/
+CATEGORIES:Culture & Ateliers
+GEO:48.40923;2.78455
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-Dressing Ados / Adultes de Thomery
@@ -45,6 +100,78 @@ DESCRIPTION:Horaires : À partir de 9h00\n\nTarif : Entrée libre\n\nUn vid
   automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/vide-dressing-ados-adultes-de-t
  homery-4d6759674c/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b02215f09b@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Atelier Qi Gong
+LOCATION:Salle du Lavoir\, 27 rue de Bellevue à Thomery\, Thomery
+DESCRIPTION:Horaires : 14h30 à 17h\n\nAtelier de pratique du Qi Gong à la
+  salle du Lavoir.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/a
+ genda.html#2026-11-29-atelierqigong\n\nFiche : https://fontainebleaulive.f
+ r/evenements/atelier-qi-gong-thomery-b02215f09b/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-qi-gong-thomery-b02215f
+ 09b/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5a4ad82fe4@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Théâtre " Tout tourneboulé "
+LOCATION:38 rue Rosa Bonheur à Thomery\, Thomery
+DESCRIPTION:Horaires : 16h30\n\nPublic : Dès 4 ans\n\nSpectacle de théât
+ re jeune public accessible à partir de 4 ans.\n\nOrganisateur : https://w
+ ww.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-29-theatretouttourneboule\
+ n\nFiche : https://fontainebleaulive.fr/evenements/theatre-tout-tourneboul
+ e-thomery-5a4ad82fe4/\n\nInformations collectées automatiquement : vérif
+ iez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/theatre-tout-tourneboule-thomer
+ y-5a4ad82fe4/
+CATEGORIES:Scène & Spectacles
+GEO:48.39434;2.78497
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_eae639ede3@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Conférence " Lire " le livre dans tous ses états
+LOCATION:Salle de la Plage\, 1 chemin des Prés à Thomery\, Thomery
+DESCRIPTION:Horaires : 16h\n\nConférence consacrée à la découverte du l
+ ivre sous toutes ses formes.\n\nOrganisateur : https://www.ccmsl.fr/actu-e
+ t-agendas/agenda.html#2026-12-06-conferencelirelelivredanstoussesetats\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/conference-lire-le-livre-d
+ ans-tous-ses-etats-thomery-eae639ede3/\n\nInformations collectées automat
+ iquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-lire-le-livre-dans-t
+ ous-ses-etats-thomery-eae639ede3/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_765d7fa7b9@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Marché de Noël
+LOCATION:Salle de la Plage\, 1 chemin des Prés à Thomery\, Thomery
+DESCRIPTION:Horaires : Samedi : 10h à 19h\, dimanche : 10h à 18h\n\nMarch
+ é de Noël convivial installé à la salle de la Plage pour les fêtes de
+  fin d'année.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agen
+ da.html#2026-12-12-marchedenoel\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/marche-de-noel-thomery-765d7fa7b9/\n\nInformations collectées au
+ tomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-thomery-765d7fa7
+ b9/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -69,7 +196,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa55d203f8@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270122
 SUMMARY:Rayss Bek

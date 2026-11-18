@@ -32,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac93a38421@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
@@ -52,7 +52,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -71,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_110ee3c26e@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -91,7 +91,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_36f7cc1646@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël & portes ouvertes à la MARPA
@@ -111,7 +111,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
@@ -129,7 +129,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -149,7 +149,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -167,8 +167,28 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_3aac72b4c4@fontainebleaulive.fr
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Stage d’expression scénique – Club Mill’ Danses
+LOCATION:Milly-la-Forêt
+DESCRIPTION:Horaires : Prenez votre place sur scène ! Un stage pour gagner
+  en confiance\, apprendre à s’exprimer librement et transmettre ses é
+ …\n\nTarif : 15 € à 20 €\n\nOrganisateur : https://www.milly-la-for
+ et.fr/2026/11/17/29-11-26-stage-dexpression-scenique-club-mill-danses/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/stage-d-expression-sceniqu
+ e-club-mill-danses-milly-la-foret-3aac72b4c4/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-d-expression-scenique-clu
+ b-mill-danses-milly-la-foret-3aac72b4c4/
+CATEGORIES:Scène & Spectacles
+GEO:48.4017;2.45828
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b8821574ed@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
@@ -189,7 +209,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_208a256050@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -209,17 +229,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf57824562@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon
 LOCATION:Milly-la-Forêt
-DESCRIPTION:Mobilisation des associations milliacoises avec plusieurs anima
- tions pour soutenir la recherche contre les maladies rares.\n\nOrganisateu
- r : https://www.milly-la-foret.fr/2025/10/31/telethon/\n\nFiche : https://
- fontainebleaulive.fr/evenements/telethon-milly-la-foret-cf57824562/\n\nInf
- ormations collectées automatiquement : vérifiez-les auprès de l’organ
- isateur.
+DESCRIPTION:Horaires : Téléthon 2026 : les associations milliacoises se m
+ obilisent ! Le Téléthon revient à Milly-la-Forêt le week-end du 6 & 7
+ …\n\nTarif : gratuit\n\nMobilisation des associations milliacoises avec 
+ plusieurs animations pour soutenir la recherche contre les maladies rares.
+ \n\nOrganisateur : https://www.milly-la-foret.fr/2025/10/31/telethon/\n\nF
+ iche : https://fontainebleaulive.fr/evenements/telethon-milly-la-foret-cf5
+ 7824562/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/telethon-milly-la-foret-cf57824
  562/
 CATEGORIES:Culture & Ateliers
@@ -228,16 +250,16 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b30114cd44@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël Solidaire
 LOCATION:Sous la Halle – Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Horaires : 9h à 17h\n\nOrganisateur : https://www.milly-la-for
- et.fr/2026/11/13/05-12-26-marche-de-noel-solidaire/\n\nFiche : https://fon
- tainebleaulive.fr/evenements/marche-de-noel-solidaire-milly-la-foret-b3011
- 4cd44/\n\nInformations collectées automatiquement : vérifiez-les auprès
-  de l’organisateur.
+DESCRIPTION:Horaires : 9h à 17h\n\nTarif : gratuit\n\nOrganisateur : https
+ ://www.milly-la-foret.fr/2026/11/13/05-12-26-marche-de-noel-solidaire/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/marche-de-noel-solidaire-m
+ illy-la-foret-b30114cd44/\n\nInformations collectées automatiquement : v
+ érifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-solidaire-milly-
  la-foret-b30114cd44/
 CATEGORIES:Culture & Ateliers
@@ -284,7 +306,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c0ecb39c4c@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur
@@ -343,17 +365,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b657dcc25@fontainebleaulive.fr
-DTSTAMP:20261115T000000Z
+DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Participez au défilé de traîneaux de Noël !
 LOCATION:Place Grammont\, Milly-la-Forêt
-DESCRIPTION:Horaires : 16H30\n\nGrande parade festive de traîneaux fabriqu
- és et décorés par les participants dans les rues de Milly-la-Forêt.\n\
- nOrganisateur : https://www.milly-la-foret.fr/2026/01/29/07-10-12-11-26-oc
- tobre-rose/\n\nFiche : https://fontainebleaulive.fr/evenements/participez-
- au-defile-de-traineaux-de-noel-milly-la-foret-2b657dcc25/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 16H30\n\nTarif : gratuit\n\nGrande parade festive de
+  traîneaux fabriqués et décorés par les participants dans les rues de 
+ Milly-la-Forêt.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/2
+ 9/07-10-12-11-26-octobre-rose/\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/participez-au-defile-de-traineaux-de-noel-milly-la-foret-2b657dcc2
+ 5/\n\nInformations collectées automatiquement : vérifiez-les auprès de 
+ l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/participez-au-defile-de-trainea
  ux-de-noel-milly-la-foret-2b657dcc25/
 CATEGORIES:Culture & Ateliers

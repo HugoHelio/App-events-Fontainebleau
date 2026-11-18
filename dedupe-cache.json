@@ -626,6 +626,16 @@
       "reason": "Même randonnée nature guidée organisée par EcoNature aux mêmes date et heure.",
       "at": "2026-10-21"
     },
+    "EVT_0902198100|EVT_2bd9584934": {
+      "same": false,
+      "reason": "Événements se déroulant dans deux communes différentes (Melun vs Fontainebleau).",
+      "at": "2026-11-18"
+    },
+    "EVT_0902198100|EVT_b4a4708858": {
+      "same": true,
+      "reason": "Les deux fiches ont le même lien OpenAgenda, la même date, le même lieu et le même nombre de participants pour un apéro RandoDate.",
+      "at": "2026-11-18"
+    },
     "EVT_090407a470|EVT_964a968e35": {
       "same": true,
       "reason": "Même événement traditionnel célébrant la Saint-Hubert le 24 octobre 2026 à Fontainebleau.",
@@ -825,6 +835,11 @@
       "same": true,
       "reason": "Il s'agit de la même brocante mensuelle d'antiquités à Fontainebleau.",
       "at": "2026-10-18"
+    },
+    "EVT_0fed51746d|EVT_30be07276a": {
+      "same": false,
+      "reason": "Deux activités complètement différentes (marché de Noël vs atelier créatif).",
+      "at": "2026-11-18"
     },
     "EVT_10680b2437|EVT_279a3ca0f3": {
       "same": false,
@@ -1542,6 +1557,11 @@
       "reason": "Il s'agit de la même exposition d'art de Wawapod à la Galerie Artfontainebleau.",
       "at": "2026-10-04"
     },
+    "EVT_2bd9584934|EVT_b490cc3394": {
+      "same": true,
+      "reason": "Même événement issu de la même URL RandoDate avec un titre légèrement réformulé.",
+      "at": "2026-11-18"
+    },
     "EVT_2c2b1a967a|EVT_70ec30ef01": {
       "same": true,
       "reason": "Même visite guidée thématique des appartements royaux et boudoirs au Château de Fontainebleau.",
@@ -1581,6 +1601,31 @@
       "same": true,
       "reason": "Même activité de découverte de l'église et carnet de dessin le 17 octobre 2026 à Larchant.",
       "at": "2026-09-24"
+    },
+    "EVT_2e29fba647|EVT_dbc33c397a": {
+      "same": true,
+      "reason": "Même concert de Noël, l'une des fiches listant une date spécifique de la série.",
+      "at": "2026-11-18"
+    },
+    "EVT_2e29fba647|EVT_dd606e9d7c": {
+      "same": true,
+      "reason": "Même concert de Noël, l'une des fiches listant une date spécifique de la série.",
+      "at": "2026-11-18"
+    },
+    "EVT_2e29fba647|EVT_e8769c4d38": {
+      "same": true,
+      "reason": "Même concert de Noël, l'une des fiches listant une date spécifique de la série.",
+      "at": "2026-11-18"
+    },
+    "EVT_2eaf901571|EVT_5ae5210c88": {
+      "same": false,
+      "reason": "Événements se déroulant dans deux communes différentes (Fontainebleau vs Melun).",
+      "at": "2026-11-18"
+    },
+    "EVT_2eaf901571|EVT_ff1280618b": {
+      "same": true,
+      "reason": "Même événement issu de la même URL RandoDate avec un titre légèrement réformulé.",
+      "at": "2026-11-18"
     },
     "EVT_2eb93535c8|EVT_bbc6f7ef5e": {
       "same": false,
@@ -1784,6 +1829,11 @@
       "reason": "Même événement (même fiche source), correspondant à une journée du marché de Noël.",
       "at": "2026-11-15"
     },
+    "EVT_3aac72b4c4|EVT_b8821574ed": {
+      "same": false,
+      "reason": "Deux stages différents organisés par le même club (danse vs expression scénique).",
+      "at": "2026-11-18"
+    },
     "EVT_3b06405641|EVT_ba96acfe80": {
       "same": true,
       "reason": "Il s'agit de la même sortie d'inventaire mycologique organisée par l'ANVL le 4 novembre.",
@@ -1829,6 +1879,11 @@
       "same": true,
       "reason": "Même brocante mensuelle du 15 novembre à Fontainebleau.",
       "at": "2026-10-15"
+    },
+    "EVT_3d7dd3ebee|EVT_765d7fa7b9": {
+      "same": false,
+      "reason": "Deux événements différents dans deux communes différentes.",
+      "at": "2026-11-18"
     },
     "EVT_3d99c552ab|EVT_8da6688fd3": {
       "same": false,
@@ -2013,15 +2068,35 @@
       "reason": "Les deux fiches décrivent la même exposition historique à la Salle Les Prés de la Forge à Villecerf.",
       "at": "2026-10-18"
     },
+    "EVT_4518e73039|EVT_5421db97a1": {
+      "same": false,
+      "reason": "Événements se déroulant dans deux communes différentes (Melun vs Fontainebleau).",
+      "at": "2026-11-18"
+    },
+    "EVT_4518e73039|EVT_adc776fb62": {
+      "same": true,
+      "reason": "Même lien d'événement OpenAgenda, même date, même lieu et même description d'activité RandoDate.",
+      "at": "2026-11-18"
+    },
     "EVT_453c9d0696|EVT_c79e0d2b70": {
       "same": true,
       "reason": "Même événement musical cuivré du week-end au Théâtre municipal de Fontainebleau.",
       "at": "2026-10-18"
     },
+    "EVT_45618e3e0d|EVT_5ae5210c88": {
+      "same": true,
+      "reason": "Même événement issu de la même URL RandoDate avec un titre légèrement réformulé.",
+      "at": "2026-11-18"
+    },
     "EVT_45618e3e0d|EVT_ff1280618b": {
       "same": false,
       "reason": "Les deux apéros se déroulent dans des villes différentes (Fontainebleau et Melun).",
       "at": "2026-11-09"
+    },
+    "EVT_45aa1d573e|EVT_5421db97a1": {
+      "same": true,
+      "reason": "Identique en tout point avec le même identifiant d'événement dans le lien OpenAgenda.",
+      "at": "2026-11-18"
     },
     "EVT_45aa1d573e|EVT_adc776fb62": {
       "same": false,
@@ -2418,6 +2493,11 @@
       "reason": "Marchés/villages de Noël dans deux communes distinctes (Barbizon vs Fontainebleau).",
       "at": "2026-11-03"
     },
+    "EVT_588dba5fca|EVT_d6d343fe1f": {
+      "same": true,
+      "reason": "Même concert sur le thème de Marcel Proust, à Ury le même jour, avec un identifiant de fiche tourisme quasi-identique.",
+      "at": "2026-11-18"
+    },
     "EVT_590bd76c68|EVT_defdd72273": {
       "same": true,
       "reason": "Il s'agit du même jeu d'enquête théâtral/murder party nocturne organisé au Château de Blandy aux mêmes dates.",
@@ -2725,6 +2805,11 @@
       "same": false,
       "reason": "Les communes indiquées sont différentes (Champagne-sur-Seine vs Vernou-la-Celle-sur-Seine).",
       "at": "2026-11-03"
+    },
+    "EVT_61dc186754|EVT_c8c81ad9b9": {
+      "same": true,
+      "reason": "Même concert du Conservatoire au Théâtre de Fontainebleau la même date.",
+      "at": "2026-11-18"
     },
     "EVT_62043149f9|EVT_a73f557c91": {
       "same": true,
@@ -3055,9 +3140,10 @@
       "at": "2026-10-31"
     },
     "EVT_734a43c14d|EVT_86b190a8b7": {
-      "same": false,
-      "reason": "L'une est la session du 6 décembre, l'autre un week-end complet ou une fiche globale.",
-      "at": "2026-10-31"
+      "same": true,
+      "reason": "Même sortie d'initiation à la bryologie par l'ANVL avec fiche issue de recherche web.",
+      "at": "2026-11-18",
+      "v": 2
     },
     "EVT_734a43c14d|EVT_89ce37272f": {
       "same": true,
@@ -3535,6 +3621,11 @@
       "same": true,
       "reason": "Les deux fiches désignent la même compétition hippique organisée par l'École Militaire d'Équitation.",
       "at": "2026-09-24"
+    },
+    "EVT_94d212633d|EVT_e6c3c4a3c1": {
+      "same": false,
+      "reason": "Événements distincts dans des communes différentes.",
+      "at": "2026-11-18"
     },
     "EVT_964a968e35|EVT_db2c47850c": {
       "same": true,
