@@ -2195,8 +2195,9 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     **19/11 : site fait** (§7 du 19/11) : les images du chef de projet (créées avec une IA,
     `public/foret/img/icones/Final/`) remplacent tout, réduites à 192 px dans `<clé>.png` ; crédits
     mis à jour. Le même jour : le pic noir ajouté, et le carnet mis à jour (Word et PDF FR/EN dans
-    `Derniere-version-2026-11-19\`, la nouvelle source ; à réimporter dans le Google Drive du chef
-    de projet). **Item 107e terminé.**
+    `Derniere-version-2026-11-19\`). **Item 107e terminé.** Sauvegarde : **les deux Word sont
+    commités dans `public/foret/word/`** (choix du chef de projet, 19/11, plutôt que Google Drive) :
+    publics comme tout le dépôt, jamais liés depuis le site ; les PDF du site sont leurs exports.
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.
