@@ -39,6 +39,7 @@ const path = require('path');
 const { loadPlaces, placesOpen } = require('./affiliates');
 const { GUIDES, PAY, SUGGESTED, OSM } = require('./balades');
 const { ANIMALS, RULES, CARNET } = require('./foret');
+const { DAYS, DECOR: AVENT_DECOR, LAYOUT: AVENT_LAYOUT } = require('./avent');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -197,6 +198,13 @@ const enDM = (iso) => enDate(iso, { day: 'numeric', month: 'long' });           
 const enDMY = (iso) => enDate(iso, { day: 'numeric', month: 'long', year: 'numeric' });   // "10 October 2026"
 const enPl = (k, word) => `${k} ${word}${k > 1 ? 's' : ''}`;
 
+// Seasonal decoration (19/11), as on the home page: data-season on <html> from the visitor's date,
+// a holly sprig after the name and a few static snow dots in the header (Christmas, 1 December to
+// 6 January). Another season = one more range in SEASON_HEAD and one more .deco-<season> element.
+const SEASON_HEAD = "<script>(function(){var d=new Date(),m=d.getMonth()+1,j=d.getDate();if(m===12||(m===1&&j<=6))document.documentElement.setAttribute('data-season','noel')})()</script>";
+const SEASON_DECO = '<span class="deco deco-noel" aria-hidden="true"><svg viewBox="0 0 40 40" width="40" height="40"><path d="M20 21c-3-6-9-8-15-6 3 1 3 4 2 6 3-1 5 1 5 3 3-2 6-3 8-3z" fill="#3f9a52"/><path d="M20 21c3-6 9-8 15-6-3 1-3 4-2 6-3-1-5 1-5 3-3-2-6-3-8-3z" fill="#2f7a3e"/><circle cx="17" cy="24" r="3.2" fill="#e0303f"/><circle cx="23" cy="24" r="3.2" fill="#e0303f"/><circle cx="20" cy="28.5" r="3.2" fill="#c8202f"/></svg></span>';
+const SEASON_STYLE = '.deco{display:none}[data-season="noel"] .deco-noel{display:inline-block;width:20px;height:20px;margin-left:2px}[data-season="noel"] .deco-noel svg{display:block;width:100%;height:100%}[data-season="noel"] header{position:relative;background-image:radial-gradient(circle,rgba(255,255,255,.22) 1.4px,transparent 1.6px),radial-gradient(circle,rgba(255,255,255,.22) 1px,transparent 1.2px),linear-gradient(155deg,#2d543c 0%,var(--ink) 55%,#142a1d 100%);background-size:90px 70px,53px 47px,auto}';
+
 const LANG_HEAD = '<script>try{if((new URLSearchParams(location.search).get(\'lang\')||localStorage.getItem(\'lang\'))===\'en\')document.documentElement.className=\'en\'}catch(e){}</script>';
 const LANG_SWITCH = '<span class="lang" role="group" aria-label="Langue / Language"><button type="button" class="lang-btn" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button></span>';
 const LANG_STYLE = 'header{display:flex;align-items:center;justify-content:space-between;gap:12px}.lang{display:inline-flex;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}.lang-btn{font:inherit;font-size:13px;font-weight:700;padding:3px 10px;border:0;background:transparent;color:#fff;cursor:pointer}.lang-btn[aria-pressed="true"]{background:#fff;color:var(--ink)}';
@@ -276,6 +284,7 @@ function layout({ title, description, canonical, body, ld, noindex, refresh, hea
   return `<!doctype html>
 <html lang="fr"${titleEn ? ` data-title-en="${esc(titleEn)}"` : ''}>
 <head>
+${SEASON_HEAD}
 ${titleEn ? `${LANG_HEAD}\n` : ''}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -296,10 +305,11 @@ ${head ? `${head}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-${ld ? `<script type="application/ld+json">${jsonLd(ld)}</script>\n` : ''}<style>${STYLE}${titleEn ? `\n${LANG_STYLE}` : ''}${toTop ? `\n${TOP_STYLE}` : ''}</style>
+${ld ? `<script type="application/ld+json">${jsonLd(ld)}</script>\n` : ''}<style>${STYLE}
+${SEASON_STYLE}${titleEn ? `\n${LANG_STYLE}` : ''}${toTop ? `\n${TOP_STYLE}` : ''}</style>
 </head>
 <body>
-<header${toTop ? ' id="top"' : ''}><a href="/"><img src="${ICON}" alt="" width="32" height="32">Fontainebleau Live</a>${titleEn ? LANG_SWITCH : ''}</header>
+<header${toTop ? ' id="top"' : ''}><a href="/"><img src="${ICON}" alt="" width="32" height="32">Fontainebleau Live${SEASON_DECO}</a>${titleEn ? LANG_SWITCH : ''}</header>
 <main>
 ${body}
 </main>
@@ -1052,7 +1062,8 @@ function themePage(t, events, today) {
 ${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
 ${hereList(t, events)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
 ${also ? `<p><a href="/${THEMES_DIR}/${also.slug}/"${en(esc(also.h1En(year).endsWith('?') ? `${also.h1En(year)} All dates` : `${also.h1En(year)}: all dates`))}>${esc(allDates(also.h1(year)))}</a></p>\n` : ''}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
-${t.promo ? `${guidesPromo(GUIDES, t.promo)}
+${t.promo ? `<p class="av-link"><a href="/${AVENT_DIR}/"${en(`🎄 The forest Advent calendar ${year}: one door a day for the children`)}>🎄 Le calendrier de l’Avent ${year} de la forêt : une case par jour pour les enfants</a></p>
+${guidesPromo(GUIDES, t.promo)}
 ` : ''}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
   return layout({
     title: `${t.title(year)} | Fontainebleau Live`,
@@ -1453,7 +1464,12 @@ function homeSeasons(events, today) {
     // Hidden by index.html once the last of them is over, if the page is not regenerated first.
     const y = open[0].startDate.slice(0, 4);
     return { href: `/${THEMES_DIR}/${t.slug}/`, fr: t.h1(y), en: t.h1En(y), end: open.map(endOf).sort().pop() };
-  }).filter(Boolean);
+  }).filter(Boolean).concat(aventSeason(today) ? [{
+    href: `/${AVENT_DIR}/`,
+    fr: `Calendrier de l’Avent ${aventYear(today)} de la forêt`,
+    en: `Forest Advent calendar ${aventYear(today)}`,
+    end: `${aventYear(today) + 1}-01-06`,
+  }] : []);
 }
 
 /** The block between the markers, indented like index.html around it. */
@@ -1663,7 +1679,7 @@ function sitemap(cities, events, homeLastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${home}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -2178,7 +2194,7 @@ ${safeUrl(PAY[key]) ? payBox(key, CARNET.pdf, SUGGESTED.carnet, 'Ce carnet est g
 </aside>`;
 }
 
-function foretPage() {
+function foretPage(today) {
   const data = {
     animals: ANIMALS.map(({ key, emoji, icon, name, riddle, choices, fact, en: e }) => ({ key, emoji, icon, name, riddle, choices, fact, en: { name: e.name, riddle: e.riddle, fact: e.fact } })),
     t: FORET_STRINGS,
@@ -2192,7 +2208,8 @@ ${bi('p', 'Cerf, sanglier, écureuil, chouette… Dix devinettes pour apprendre 
 </section>
 <script type="application/json" id="quiz-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
 ${carnetBox()}
-${bi('h2', 'En forêt, les bons gestes', 'Good manners in the forest')}
+${aventSeason(today) ? `<p class="av-link"><a href="/${AVENT_DIR}/"${en(`🎄 The forest Advent calendar ${aventYear(today)}: one animal a day until Christmas`)}>🎄 Le calendrier de l’Avent ${aventYear(today)} de la forêt : un animal par jour jusqu’à Noël</a></p>
+` : ''}${bi('h2', 'En forêt, les bons gestes', 'Good manners in the forest')}
 <ul>${RULES.map(([fr, enText]) => bi('li', fr, enText)).join('')}</ul>
 <details class="answers">
 ${bi('summary', 'Les 10 animaux du jeu (attention, ce sont les réponses !)', 'The 10 animals of the game (careful, these are the answers!)')}
@@ -2214,6 +2231,223 @@ ${FORET_SCRIPT}
     body,
     toTop: false,
   }).replace('</style>', `${FORET_STYLE}\n</style>`);
+}
+
+// ───────────────────────────── /calendrier-de-l-avent/ (19/11) ─────────────────────────────
+// The forest Advent calendar, from scripts/avent.js: 24 doors, one a day from 1 December (the
+// visitor's date, Europe/Paris), each with one of the twelve animals and, below, the Christmas
+// outings of that day from the agenda. Without JavaScript every day is readable in the page; with
+// it, a day shows only once its door is opened, and a door opens only on or after its date. What
+// a visitor opened is kept in localStorage (a convenience: lost, the doors just close again).
+// ?apercu=AAAA-MM-JJ plays the page as if it were that day, to check it before December.
+
+const AVENT_DIR = 'calendrier-de-l-avent';
+const AVENT_OUTINGS = 2;
+
+/** The Advent on show: this year's, or last year's in January. */
+/** Linked from the home page and /foret/ from 15 November to Epiphany only. */
+const aventSeason = (today) => today.slice(5) >= '11-15' || today.slice(5) <= '01-06';
+const aventYear = (today) => Number(today.slice(0, 4)) - (today.slice(5, 7) === '01' ? 1 : 0);
+
+/** Christmas outings of one day, for its door: the « Noël » theme, short events only. */
+function aventOutings(events, iso) {
+  const noel = THEMES.find((t) => t.slug === 'noel');
+  // One per town: the same evening is sometimes announced twice under two names.
+  const seen = new Set();
+  return picksOf(events.filter((e) => noel.match.test(themeKey(e.title)) && e.startDate <= iso && endOf(e) >= iso), 20)
+    .filter((e) => !seen.has(e.citySlug) && seen.add(e.citySlug))
+    .slice(0, AVENT_OUTINGS);
+}
+
+const AVENT_FAQ = [
+  ['Le calendrier de l’Avent est-il gratuit ?', 'Oui, entièrement : pas d’inscription, pas de publicité dans les cases. Il suffit de revenir sur cette page chaque jour, du 1er au 24 décembre.'],
+  ['Pour quel âge ?', 'Les devinettes sont écrites pour les enfants de 6 à 11 ans, à lire seuls ou avec un adulte. Les plus grands apprendront aussi des choses sur les animaux de la forêt en hiver.'],
+  ['Peut-on ouvrir les cases en avance ?', 'Non : chaque case s’ouvre le jour venu. Une case oubliée reste ouverte les jours suivants, et tout le calendrier est ouvert après Noël.'],
+];
+const AVENT_FAQ_EN = [
+  ['Is the Advent calendar free?', 'Yes, completely: no sign-up, no ads in the doors. Just come back to this page every day, from 1 to 24 December.'],
+  ['What age is it for?', 'The riddles are written for children aged 6 to 11, to read alone or with an adult. Older ones will learn about the forest animals in winter too.'],
+  ['Can you open the doors early?', 'No: each door opens on its own day. A door you missed stays open on the days after, and the whole calendar is open after Christmas.'],
+];
+
+function aventDay(d, year, events) {
+  const iso = `${year}-12-${String(d.day).padStart(2, '0')}`;
+  const img = `<img src="${esc(d.icon)}" alt="" width="56" height="56" loading="lazy">`;
+  const head = d.kind === 'riddle'
+    ? [`${d.day} décembre · Qui suis-je ?`, `${d.day} December · Who am I?`]
+    : [`${d.day} décembre · ${d.name} en hiver`, `${d.day} December · ${d.en.name} in winter`];
+  const body = d.kind === 'riddle'
+    ? `${bi('p', d.riddle, d.en.riddle, ' class="av-riddle"')}
+<details>${bi('summary', 'Voir la réponse', 'See the answer')}${bi('p', `**${d.name}** ! ${d.fact}`, `**${d.en.name}**! ${d.en.fact}`)}</details>`
+    : bi('p', d.winter, d.en.winter);
+  const out = aventOutings(events, iso);
+  const outHtml = out.length
+    ? `<p class="av-out"><span${en('Christmas outing that day:')}>Sortie de Noël ce jour-là :</span> ${out.map((e) => `<a href="${esc(e.pagePath)}">${esc(e.title)}</a> (${esc(e.city)})`).join(' · ')}</p>`
+    : '';
+  return `<section class="av-day" id="j${d.day}" data-day="${d.day}">
+<div class="av-head">${img}<h3 tabindex="-1"${en(esc(head[1]))}>${esc(head[0])}</h3></div>
+${body}
+${outHtml}</section>`;
+}
+
+const AVENT_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a51a27;margin:0 0 4px}
+.lead{font-size:1.1rem;margin:0 0 8px}
+.av-board{margin:16px -4px 8px;padding:14px 10px;border-radius:16px;background:radial-gradient(circle at 20% 10%,#2d6a43 0%,#1d3b29 55%,#142a1d 100%);box-shadow:inset 0 0 0 3px #c99a2e}
+.av-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (min-width:560px){.av-grid{grid-template-columns:repeat(6,1fr)}}
+.av-door{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1;border-radius:10px;background:#f6f1e4;border:2px solid #e3d6b4;text-decoration:none;color:var(--ink);overflow:hidden;transition:transform .15s}
+.av-door:nth-child(3n){background:#fbeaea;border-color:#efc9c9}
+.av-door:nth-child(4n+1){background:#e8f1e3;border-color:#c8dcbf}
+.av-door svg{width:58%;height:58%}
+.av-n{position:absolute;top:3px;left:6px;font-weight:800;font-size:15px;color:#a51a27}
+.av-door .av-pic{display:none;width:82%;height:82%;object-fit:contain}
+.av-door.is-open{background:#fffdf7}
+.av-door.is-open svg{display:none}
+.av-door.is-open .av-pic{display:block}
+.av-door.is-locked{opacity:.9}
+.av-door.is-locked::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(0,0,0,.03) 10px 20px)}
+.av-door.is-today{box-shadow:0 0 0 3px #e9b949,0 0 14px #e9b949;animation:av-glow 1.6s ease-in-out infinite alternate}
+@keyframes av-glow{from{box-shadow:0 0 0 3px #e9b949,0 0 6px #e9b949}to{box-shadow:0 0 0 3px #e9b949,0 0 18px #e9b949}}
+.av-door.is-shake{animation:av-shake .4s}
+@keyframes av-shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.av-door:focus-visible{outline:3px solid #e9b949;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.av-door.is-today,.av-door.is-shake{animation:none}}
+.av-status{min-height:1.6em;margin:10px 4px 0;color:#fff;font-weight:600;text-align:center}
+.av-days{margin-top:8px}
+.av-day{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+.av-day.is-new{border-color:#e9b949;box-shadow:0 0 0 3px #f5e3b0}
+.av-head{display:flex;align-items:center;gap:12px}
+.av-head img{flex:none;width:56px;height:56px}
+.av-head h3{margin:0;font-size:1.1rem;color:var(--ink)}
+.av-head h3:focus{outline:none}
+.av-riddle{font-size:1.1rem;color:var(--ink)}
+.av-day details summary{cursor:pointer;font-weight:700;color:#a51a27}
+.av-out{font-size:15px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-bottom:0}
+.av-empty{color:var(--muted)}
+h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}`;
+
+const AVENT_SCRIPT = `(function () {
+  var root = document.getElementById('avent');
+  if (!root) return;
+  var Y = root.getAttribute('data-year');
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var today;
+  try { today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); } catch (e) { today = new Date().toISOString().slice(0, 10); }
+  var preview = new URLSearchParams(location.search).get('apercu');
+  if (preview && /^\\d{4}-\\d{2}-\\d{2}$/.test(preview)) today = preview;
+  var key = 'avent-' + Y;
+  var opened = {};
+  try { opened = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) { opened = {}; }
+  var save = function () { try { localStorage.setItem(key, JSON.stringify(opened)); } catch (e) { /* not fatal */ } };
+  var isEn = function () { return document.documentElement.className === 'en'; };
+  var dayOf = function (d) { return Y + '-12-' + pad(d); };
+  var status = document.getElementById('av-status');
+  var empty = document.getElementById('av-empty');
+  var doors = Array.prototype.slice.call(root.querySelectorAll('.av-door'));
+  var sections = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.av-day'), function (s) { sections[s.getAttribute('data-day')] = s; });
+  function say(fr, en) { if (status) status.textContent = isEn() ? en : fr; }
+  function refresh() {
+    var any = false;
+    doors.forEach(function (door) {
+      var d = Number(door.getAttribute('data-day'));
+      var open = today >= dayOf(d);
+      var done = open && opened[d];
+      door.classList.toggle('is-locked', !open);
+      door.classList.toggle('is-open', Boolean(done));
+      door.classList.toggle('is-today', today === dayOf(d) && !done);
+      if (sections[d]) sections[d].hidden = !done;
+      if (done) any = true;
+    });
+    if (empty) empty.hidden = any;
+  }
+  function intro() {
+    var first = dayOf(1);
+    if (today < first) {
+      var n = Math.round((Date.parse(first) - Date.parse(today)) / 86400000);
+      say('Le calendrier s’ouvre le 1er décembre : encore ' + n + ' jour' + (n > 1 ? 's' : '') + ' de patience !', 'The calendar opens on 1 December: ' + n + ' more day' + (n > 1 ? 's' : '') + ' to wait!');
+    } else if (today <= dayOf(24)) {
+      var d = Number(today.slice(8, 10));
+      say(opened[d] ? 'Case du jour ouverte. À demain !' : 'Aujourd’hui, ouvre la case n°' + d + ' !', opened[d] ? 'Today’s door is open. See you tomorrow!' : 'Today, open door number ' + d + '!');
+    } else {
+      say('Joyeux Noël ! Toutes les cases sont ouvertes.', 'Merry Christmas! Every door is open.');
+    }
+  }
+  doors.forEach(function (door) {
+    door.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var d = Number(door.getAttribute('data-day'));
+      if (today < dayOf(d)) {
+        door.classList.remove('is-shake');
+        void door.offsetWidth;
+        door.classList.add('is-shake');
+        say('Patience ! Cette case s’ouvre le ' + d + (d === 1 ? 'er' : '') + ' décembre.', 'Patience! This door opens on ' + d + ' December.');
+        return;
+      }
+      opened[d] = 1;
+      save();
+      refresh();
+      intro();
+      var s = sections[d];
+      if (!s) return;
+      Array.prototype.forEach.call(document.querySelectorAll('.av-day.is-new'), function (x) { x.classList.remove('is-new'); });
+      s.classList.add('is-new');
+      s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var h = s.querySelector('h3');
+      if (h) h.focus({ preventScroll: true });
+    });
+  });
+  refresh();
+  intro();
+})();`;
+
+function aventPage(events, today) {
+  const year = aventYear(today);
+  const days = DAYS.map((d) => aventDay(d, year, events));
+  const marches = THEMES.find((t) => t.slug === 'marches-de-noel');
+  const noel = THEMES.find((t) => t.slug === 'noel');
+  const doors = AVENT_LAYOUT.map((n) => {
+    const d = DAYS[n - 1];
+    return `<a class="av-door" href="#j${n}" data-day="${n}" aria-label="${n} décembre"><span class="av-n" aria-hidden="true">${n}</span><svg viewBox="0 0 40 40" aria-hidden="true">${AVENT_DECOR[d.decor]}</svg><img class="av-pic" src="${esc(d.icon)}" alt="" width="96" height="96" loading="lazy"></a>`;
+  }).join('');
+  const body = `<nav class="crumbs">${bi('a', 'Accueil', 'Home', ' href="/"')} › ${bi('a', 'Sorties de saison', 'Seasonal outings', ` href="/${THEMES_DIR}/"`)}</nav>
+${bi('p', 'Gratuit · en famille · du 1er au 24 décembre', 'Free · for families · 1 to 24 December', ' class="kicker"')}
+${bi('h1', `Calendrier de l’Avent ${year} de la forêt de Fontainebleau`, `The ${year} Forest of Fontainebleau Advent calendar`)}
+${bi('p', 'Une case par jour jusqu’à Noël : douze animaux de la forêt, une devinette ou un secret d’hiver, et une sortie de Noël autour de Fontainebleau. Gratuit, sur le téléphone, sans inscription.', 'One door a day until Christmas: twelve forest animals, a riddle or a winter secret, and a Christmas outing around Fontainebleau. Free, on your phone, no sign-up.', ' class="lead"')}
+<div class="av-board" id="avent" data-year="${year}">
+<div class="av-grid">${doors}</div>
+<p class="av-status" id="av-status" aria-live="polite"></p>
+</div>
+${bi('h2', 'Les cases ouvertes', 'The open doors')}
+${bi('p', 'Ouvre une case du calendrier : elle s’affichera ici.', 'Open a door of the calendar: it will show here.', ' class="av-empty" id="av-empty" hidden')}
+<div class="av-days">
+${days.join('\n')}
+</div>
+${bi('h2', 'Pour Noël autour de Fontainebleau', 'Christmas around Fontainebleau')}
+<ul>
+<li><a href="/${THEMES_DIR}/${marches.slug}/"${en(esc(marches.h1En(year)))}>${esc(marches.h1(year))}</a></li>
+<li><a href="/${THEMES_DIR}/${noel.slug}/"${en(esc(noel.h1En(year)))}>${esc(noel.h1(year))}</a></li>
+<li><a href="/${THEMES_DIR}/vacances-noel/"${en('Christmas school holidays: all outings')}>Vacances de Noël : toutes les sorties</a></li>
+</ul>
+${kidsPromo()}
+${faqHtml(AVENT_FAQ, AVENT_FAQ_EN)}<p class="note"><a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Spotted a mistake? Tell us')}>Une erreur dans le calendrier ? Signalez-la</a>.</p>
+<p class="note"${en('Animal pictures: Fontainebleau Live, made with an AI.')}>Images des animaux : Fontainebleau Live, créées avec une IA.</p>
+<script>
+${AVENT_SCRIPT}
+</script>`;
+  return layout({
+    title: `Calendrier de l’Avent ${year} à Fontainebleau : 24 surprises de la forêt pour Noël | Fontainebleau Live`,
+    titleEn: `Advent calendar ${year} in Fontainebleau: 24 forest surprises for Christmas | Fontainebleau Live`,
+    description: `Un calendrier de l’Avent gratuit pour les enfants : chaque jour de décembre, un animal de la forêt de Fontainebleau, une devinette et une sortie de Noël près de chez vous.`,
+    canonical: `${SITE_URL}/${AVENT_DIR}/`,
+    body,
+    toTop: false,
+    ld: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: AVENT_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
+  }).replace('</style>', `${AVENT_STYLE}\n${PROMO_STYLE}\n</style>`);
 }
 
 // ───────────────────────────── /nos-sources/ (item 79) ─────────────────────────────
@@ -2488,7 +2722,8 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${BALADES_DIR}/index.html`, guidesIndex());
   for (const g of GUIDES) files.set(`${BALADES_DIR}/${g.slug}/index.html`, guidePage(g, cities.filter((c) => g.towns.includes(c.slug))));
   files.set(`${BALADES_DIR}/merci/index.html`, thanksPage());
-  files.set(`${FORET_DIR}/index.html`, foretPage());
+  files.set(`${FORET_DIR}/index.html`, foretPage(today));
+  files.set(`${AVENT_DIR}/index.html`, aventPage(events, today));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
