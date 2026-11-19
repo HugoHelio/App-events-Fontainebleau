@@ -8,11 +8,12 @@
  * project lead has checked it against the ONF and INPN species pages (§9, item 107). Only
  * species living in the Forest of Fontainebleau; no safety advice beyond the plain rules below.
  *
- * Pictures (item 107c, 02/11): `icon` is the picture supplied by the project lead (192 px PNG in
- * public/foret/img/icones/, the 512 px originals in public/foret/icones/); an animal without one
- * keeps its emoji. `iconBy`: author and page of a Flaticon icon (free licence, attribution due:
- * an empty page means our own drawing;
- * credited on /foret/ and in /mentions-legales/, the same day as any new icon).
+ * Pictures (item 107e, 19/11): `icon` is one of the project lead's pictures, one style for all
+ * the animals (made with an AI, credited « Fontainebleau Live »). The 512 px originals are in
+ * public/foret/img/icones/Final/ (animal-<name>.png; the roe deer is « biche »); the site uses
+ * <key>.png, cropped to the drawing and reduced to 192 px. `emoji` stays as a fallback for an
+ * animal without `icon`: the black woodpecker, until its picture comes (the one supplied is a
+ * green woodpecker).
  *
  * Each animal: a riddle (« Qui suis-je ? »), three choices (the answer and two other keys of this
  * list), and a « Le savais-tu ? » card shown after the answer. The cards are also written into
@@ -26,6 +27,7 @@ const ANIMALS = [
   {
     key: 'cerf',
     emoji: '🦌',
+    icon: '/public/foret/img/icones/cerf.png',
     name: 'Le cerf',
     riddle: 'Je suis le plus grand animal sauvage de la forêt. Chaque automne, je pousse un cri très puissant qu’on appelle le brame.',
     choices: ['cerf', 'chevreuil', 'sanglier'],
@@ -40,7 +42,6 @@ const ANIMALS = [
     key: 'sanglier',
     emoji: '🐗',
     icon: '/public/foret/img/icones/sanglier.png',
-    iconBy: ['Flat Icons', 'https://www.flaticon.com/free-icons/boar'],
     name: 'Le sanglier',
     riddle: 'J’ai un groin pour fouiller la terre, et mes petits portent un pyjama rayé.',
     choices: ['blaireau', 'sanglier', 'renard'],
@@ -55,7 +56,6 @@ const ANIMALS = [
     key: 'chevreuil',
     emoji: '🦌',
     icon: '/public/foret/img/icones/chevreuil.png',
-    iconBy: ['kerismaker', 'https://www.flaticon.com/free-icons/deer'],
     name: 'Le chevreuil',
     riddle: 'Je ressemble à un petit cerf, j’ai une tache blanche sur les fesses et, quand j’ai peur, j’aboie !',
     choices: ['renard', 'cerf', 'chevreuil'],
@@ -69,6 +69,7 @@ const ANIMALS = [
   {
     key: 'ecureuil',
     emoji: '🐿️',
+    icon: '/public/foret/img/icones/ecureuil.png',
     name: 'L’écureuil roux',
     riddle: 'Je cache des graines et des noisettes pour l’hiver… mais j’oublie souvent où je les ai mises !',
     choices: ['ecureuil', 'geai', 'blaireau'],
@@ -82,6 +83,7 @@ const ANIMALS = [
   {
     key: 'renard',
     emoji: '🦊',
+    icon: '/public/foret/img/icones/renard.png',
     name: 'Le renard roux',
     riddle: 'Je suis roux, j’ai une grande queue touffue, et je chasse les mulots en faisant des bonds.',
     choices: ['chevreuil', 'renard', 'ecureuil'],
@@ -95,6 +97,7 @@ const ANIMALS = [
   {
     key: 'blaireau',
     emoji: '🦡',
+    icon: '/public/foret/img/icones/blaireau.png',
     name: 'Le blaireau',
     riddle: 'Je porte un masque noir et blanc et je creuse des terriers avec plusieurs entrées.',
     choices: ['sanglier', 'hulotte', 'blaireau'],
@@ -122,6 +125,7 @@ const ANIMALS = [
   {
     key: 'hulotte',
     emoji: '🦉',
+    icon: '/public/foret/img/icones/hulotte.png',
     name: 'La chouette hulotte',
     riddle: 'Je chasse la nuit sans faire de bruit, et on m’entend faire « hou-hou ».',
     choices: ['hulotte', 'pic', 'geai'],
@@ -136,7 +140,6 @@ const ANIMALS = [
     key: 'geai',
     emoji: '🪶',
     icon: '/public/foret/img/icones/geai.png',
-    iconBy: ['Park Jisun', 'https://www.flaticon.com/free-icons/mockingjay'],
     name: 'Le geai des chênes',
     riddle: 'Je suis un oiseau avec des plumes bleues sur les ailes, et je plante des chênes sans le vouloir.',
     choices: ['pic', 'ecureuil', 'geai'],
@@ -151,9 +154,6 @@ const ANIMALS = [
     key: 'lucane',
     emoji: '🪲',
     icon: '/public/foret/img/icones/lucane.png',
-    // Redrawn by the project lead in Krita (02/11) from Microsoft's Fluent Emoji beetle (MIT
-    // licence, seen on Windows): our drawing, its source named.
-    iconBy: ['Fontainebleau Live', '', 'd’après Fluent Emoji (Microsoft, licence MIT)', 'after Microsoft Fluent Emoji (MIT licence)'],
     name: 'Le lucane cerf-volant',
     riddle: 'Je suis un insecte, mais j’ai des « bois » sur la tête, comme le cerf !',
     choices: ['lucane', 'cerf', 'blaireau'],

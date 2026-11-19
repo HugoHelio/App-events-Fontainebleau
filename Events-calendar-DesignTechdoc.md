@@ -1667,6 +1667,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 
 ---
 | 2026-11-17 | **Pages de saison passées : gardées, mais plus mises en avant ; page des vacances de Noël** (chef de projet : « il y a encore Halloween et des références à d'anciens événements »). `seasonalHubs()` dans `generate-pages.js` : une page de saison est « vivante » si ses vacances ne sont pas finies ou si un événement à venir correspond à son thème. Les listes courtes (`/ce-week-end/`, `/que-faire/`) ne montrent plus que les pages vivantes ; `/sorties/` les montre toutes, vivantes d'abord, et son titre nomme les trois premières (plus de « Halloween » en novembre). **Nouvelle page `/sorties/vacances-noel/`** (item 81) : du sam. 19/12/2026 au lun. 04/01/2027, mêmes dates pour toutes les zones ; 35 sorties le jour de sa création | Les pages restent (une adresse indexée ne se supprime pas, et elles reviennent chaque année) ; seule la mise en avant suit la saison. La page des vacances est choisie par dates, `/sorties/noel/` par titre : elles ne se répètent pas. Vacances de février et de printemps (zone C) : à ajouter à `HOLIDAYS` en janvier |
+| 2026-11-19 | **Icônes des animaux du jeu : les images du chef de projet, un seul style** (item 107e). Dix PNG 512 px à fond transparent, créés par le chef de projet avec une IA, déposés dans `public/foret/img/icones/Final/` ; le site sert `<clé>.png`, rognés au dessin et réduits à 192 px (27 à 49 Ko). Remplacent les 3 Flaticon, le lucane redessiné et les 6 emojis, sur `/foret/` (boutons, grande image, liste des réponses, écran d'accueil du jeu : cerf, renard, hulotte), dans la carte « Pour les enfants » de l'accueil et des pages générées (cerf, sanglier, renard, hulotte). Les dessins au trait SVG faits par Claude le 17/11, jamais publiés, sont abandonnés. **Pic noir : l'image fournie est un pic vert**, il garde son emoji jusqu'à la nouvelle image (choix du chef de projet). La « biche » sert pour le chevreuil (tête sans bois). Crédits : « Fontainebleau Live, créées avec une IA » sous le jeu et dans `/mentions-legales/` ; plus aucun crédit Flaticon | Un seul style pour les dix animaux, ce que demandait le chef de projet le 17/11 (« elles sont vraiment moches »). L'usage d'une IA est dit, comme l'auteur l'était pour Flaticon. Garder le pic noir du jeu plutôt que passer au pic vert : la devinette et l'anecdote ont été relues (ONF, INPN), une réécriture devrait l'être aussi |
 
 ## 8. Risks & Open Questions
 
@@ -1710,7 +1711,7 @@ organisateurs.
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **107e. Retravailler les icônes des animaux, sur le site et dans le carnet** — nouveau le 17/11 (chef de projet : « elles sont vraiment moches ») | 107c a laissé un mélange : 4 images de styles différents (3 Flaticon, 1 dessin) et 6 emojis ; le jeu et le carnet sont en ligne | M |
+| 0 | **107e. Retravailler les icônes des animaux, sur le site et dans le carnet** — nouveau le 17/11 ; **site fait le 19/11** (images du chef de projet), restent le pic noir et le carnet | 107c a laissé un mélange : 4 images de styles différents (3 Flaticon, 1 dessin) et 6 emojis ; le jeu et le carnet sont en ligne | M |
 | 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en ligne le 02/11 ; reste le lien Stripe (107) et les itérations du chef de projet (107d) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
 | 2 | **108. Campagne de contacts** (petites mairies + widget, hébergeurs, public anglophone) — listes par Claude, envois par le chef de projet | Les liens entrants sont l'écart principal avec fontyblog (106) ; le widget doit se propager | M |
 | 3 | **72c. Mairie de Fontainebleau — courriel de relance envoyé le 03/11 ; appel téléphonique le mercredi 11/11** (chef de projet) | Seule l'exception rend inutile la copie du flux tous les 15 jours (101) | XS |
@@ -2191,6 +2192,12 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     fichiers dans `public/foret/img/icones/`, plus aucun emoji, crédits mis à jour sur `/foret/` et
     dans `/mentions-legales/` le même jour ; pour le carnet, nouvelles images dans les deux Word du
     chef de projet (source du PDF depuis le 03/11) et réexport FR et EN.
+    **19/11 : site fait** (§7 du 19/11) : les images du chef de projet (créées avec une IA,
+    `public/foret/img/icones/Final/`) remplacent tout, réduites à 192 px dans `<clé>.png` ; crédits
+    mis à jour. **Reste** : (1) une image du **pic noir** dans le même style (celle fournie est un
+    pic vert) — `animal-pic-noir.png` dans `Final/`, puis Claude ajoute `icon` dans
+    `scripts/foret.js` ; (2) le carnet : ces images dans les deux Word et réexport FR et EN (chef de
+    projet, ou Claude en séance).
   - [ ] **107d. Itérations du carnet — chef de projet, à son rythme (02/11).** « Il est bien tel
     quel pour le moment. » Retouches dans la version Word et/ou les images sous Krita ; Claude
     reprend ensuite le PDF ou la page.

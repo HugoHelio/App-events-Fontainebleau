@@ -1685,9 +1685,10 @@ ${bi('p', r.total.join(' · '), re.total && enNum([re.total, ...r.total.slice(1)
 </section>`;
 }
 
-/** The children's card: the forest game, with the animals that have an icon. */
+/** The children's card: the forest game, with four of its drawings (the same as on the home page). */
+const KIDS_ICONS = ['cerf', 'sanglier', 'renard', 'hulotte'];
 function kidsPromo() {
-  const icons = ANIMALS.filter((a) => a.icon).slice(0, 4);
+  const icons = KIDS_ICONS.map((k) => ANIMALS.find((x) => x.key === k)).filter((x) => x && x.icon);
   return `<a class="kids" href="/${FORET_DIR}/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true">${icons.map((a) => `<img src="${esc(a.icon)}" width="40" height="40" alt="" loading="lazy">`).join('')}</span><span class="kids-txt">${bi('span', 'Pour les enfants · 6-11 ans', 'For the children · ages 6-11', ' class="kids-kicker"')}${bi('b', 'Le jeu des animaux de la forêt', 'The forest animals game')}${bi('small', '10 devinettes sur le téléphone, et un carnet à imprimer', '10 riddles on your phone, and a booklet to print')}</span>${bi('span', 'Jouer →', 'Play →', ' class="kids-go"')}</a>`;
 }
 
@@ -1829,6 +1830,7 @@ const FORET_STYLE = `.kicker{font-size:13px;font-weight:700;letter-spacing:.06em
 .q-choices button .e{font-size:1.6rem;line-height:1}
 .q-choices button .e img{display:block;width:34px;height:34px}
 .q-big img{display:block;width:72px;height:72px;margin:0 auto}
+.q-trio{display:flex;justify-content:center;gap:12px}.q-trio img{margin:0}
 .animals h3 img{width:28px;height:28px;vertical-align:-6px;margin-right:4px}
 .q-choices button.is-right{border-color:#3d8b40;background:#e6f2e3}
 .q-choices button.is-wrong{border-color:#c0492f;background:#f9e3df}
@@ -1953,7 +1955,9 @@ const FORET_SCRIPT = `(function () {
     box.textContent = '';
     if (state === 'start') {
       var st = el('div', 'q-start', null, box);
-      el('p', 'q-big', '🌳🦌🦉', st);
+      // Three of the drawings (item 107e), each falling back to its emoji.
+      var trio = el('p', 'q-big q-trio', null, st);
+      ['cerf', 'renard', 'hulotte'].forEach(function (k) { if (byKey[k]) picture(byKey[k], el('span', null, null, trio)); });
       el('p', 'q-msg', s('intro'), st);
       button('q-go', s('start'), st, function () { count('forest-play'); begin(); });
       return;
@@ -2070,7 +2074,7 @@ ${bi('h2', 'Et maintenant, en vrai ?', 'Now, for real?')}
 ${bi('p', 'Les balades d’un Bellifontain, avec des mini-jeux pour les enfants à chaque étape, et les sorties nature du moment :', 'A local’s favourite outings, with mini-games for the children at every step, and what’s on in nature right now:')}
 <div class="actions">${bi('a', 'La forêt à vélo', 'The forest by bike', ` class="btn" href="/${BALADES_DIR}/fontainebleau-a-velo/"`)}${bi('a', 'Toutes les balades', 'All the guides', ` class="btn alt" href="/${BALADES_DIR}/"`)}${bi('a', 'Ce week-end', 'This weekend', ` class="btn alt" href="/${WEEKEND_DIR}/"`)}</div>
 <p class="note"><a href="${FEEDBACK_FORM}" rel="noopener" target="_blank"${en('Spotted a mistake? Tell us')}>Une erreur dans le jeu ? Signalez-la</a>.</p>
-<p class="note"${en(`Icons: ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.en.name.replace(/^The /, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> by ${esc(a.iconBy[0])} (Flaticon)` : `${n}: ${esc(a.iconBy[0])}${a.iconBy[3] ? `, ${esc(a.iconBy[3])}` : ''}`; }).join(', ')}; the other animals are emojis. Booklet engravings: J. E. Ridinger, Rijksmuseum (CC0).`)}>Icônes : ${ANIMALS.filter((a) => a.iconBy).map((a) => { const n = esc(a.name.replace(/^(Le |La |L’)/, '').toLowerCase()); return a.iconBy[1] ? `<a href="${esc(a.iconBy[1])}" rel="noopener">${n}</a> par ${esc(a.iconBy[0])} (Flaticon)` : `${n} : ${esc(a.iconBy[0])}${a.iconBy[2] ? `, ${esc(a.iconBy[2])}` : ''}`; }).join(', ')} ; les autres animaux sont des emojis. Gravures du carnet : J. E. Ridinger, Rijksmuseum (CC0).</p>
+<p class="note"${en('Animal pictures: Fontainebleau Live, made with an AI. Booklet engravings: J. E. Ridinger, Rijksmuseum (CC0).')}>Images des animaux : Fontainebleau Live, créées avec une IA. Gravures du carnet : J. E. Ridinger, Rijksmuseum (CC0).</p>
 <script>
 ${FORET_SCRIPT}
 </script>`;
