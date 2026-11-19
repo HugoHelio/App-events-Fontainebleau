@@ -1711,7 +1711,6 @@ organisateurs.
 
 | Ordre | Item | Pourquoi à ce rang | Effort |
 |---|---|---|---|
-| 0 | **107e. Retravailler les icônes des animaux, sur le site et dans le carnet** — **fait le 19/11** (images du chef de projet, site et carnet) | 107c a laissé un mélange : 4 images de styles différents (3 Flaticon, 1 dessin) et 6 emojis ; le jeu et le carnet sont en ligne | M |
 | 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en ligne le 02/11 ; reste le lien Stripe (107) et les itérations du chef de projet (107d) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
 | 2 | **108. Campagne de contacts** (petites mairies + widget, hébergeurs, public anglophone) — listes par Claude, envois par le chef de projet | Les liens entrants sont l'écart principal avec fontyblog (106) ; le widget doit se propager | M |
 | 3 | **72c. Mairie de Fontainebleau — courriel de relance envoyé le 03/11 ; appel téléphonique le mercredi 11/11** (chef de projet) | Seule l'exception rend inutile la copie du flux tous les 15 jours (101) | XS |
