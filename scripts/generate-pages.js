@@ -680,6 +680,20 @@ const CITY_ABOUT = {
   'avon': 'Avon touche Fontainebleau : la gare de Fontainebleau-Avon s’y trouve, et la commune borde le parc du château et la forêt. Son église Saint-Pierre compte parmi les plus anciennes du secteur.',
 };
 
+/**
+ * Item 106 (19/11): a commune with a Christmas market links to the seasonal pages that list it.
+ * The commune page ranks for "marché de noël <ville>"; the theme page is the one to win.
+ */
+function cityThemesHtml(c) {
+  const links = THEMES.map((t) => {
+    const e = c.events.find((x) => t.match.test(themeKey(x.title)));
+    return e ? `<li><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></li>` : '';
+  }).filter(Boolean);
+  return links.length ? `
+<h2>Sorties de saison</h2>
+<ul>${links.join('')}</ul>` : '';
+}
+
 function cityPage(c, places = [], near = []) {
   const n = c.events.length;
   const about = CITY_ABOUT[c.slug];
@@ -689,7 +703,7 @@ function cityPage(c, places = [], near = []) {
 <ul class="list">${c.events.map(eventItem).join('')}</ul>
 <div class="actions"><a class="btn alt" href="/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Voir sur la carte</a></div>${about ? `
 <h2>${esc(c.name)} en quelques mots</h2>
-<p>${esc(about)}</p>` : ''}${guidesHtml(c)}${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
+<p>${esc(about)}</p>` : ''}${cityThemesHtml(c)}${guidesHtml(c)}${nearbyHtml(c, near)}${visitHtml(places, `À visiter à ${c.name}`)}
 <h2>Recevoir le programme de ${esc(c.name)} dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
@@ -842,6 +856,7 @@ const THEMES = [
     offEn: 'Christmas markets are usually announced from October: the dates will appear here as soon as they are published.',
     related: 'vacances-noel',
     also: 'noel',
+    promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
     faq: [
       ['Quand ont lieu les marchés de Noël autour de Fontainebleau ?', 'Surtout les week-ends de la fin novembre et de décembre, souvent du vendredi soir au dimanche ; quelques-uns durent plusieurs semaines. Les dates de chaque marché sont dans la liste ci-dessus, de la plus proche à la plus lointaine.'],
       ['Faut-il payer pour entrer ?', 'L’entrée des marchés de Noël des villes et des villages est en général libre. Les grands Noëls des châteaux sont souvent payants : le tarif est indiqué sur la page de chaque sortie quand l’organisateur le publie.'],
@@ -867,6 +882,7 @@ const THEMES = [
     offEn: 'The festive programme is announced in the autumn: it will appear here as soon as it is published.',
     related: 'vacances-noel',
     also: 'marches-de-noel',
+    promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
     faq: [
       ['Que faire avec des enfants à Noël autour de Fontainebleau ?', 'Les spectacles jeune public, les contes, les ateliers et les animations des châteaux sont les sorties les plus adaptées aux enfants. Vérifiez l’âge conseillé sur la page de chaque sortie.'],
       ['Quand ont lieu les animations de Noël ?', 'De la fin novembre au début janvier, surtout les week-ends de décembre et pendant les vacances scolaires de Noël : d’autres idées de sorties sont sur la page des vacances.'],
@@ -1036,15 +1052,15 @@ function themePage(t, events, today) {
 ${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
 ${hereList(t, events)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
 ${also ? `<p><a href="/${THEMES_DIR}/${also.slug}/"${en(esc(also.h1En(year).endsWith('?') ? `${also.h1En(year)} All dates` : `${also.h1En(year)}: all dates`))}>${esc(allDates(also.h1(year)))}</a></p>\n` : ''}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
-<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
+${t.promo ? `${guidesPromo(GUIDES, t.promo)}
+` : ''}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
   return layout({
     title: `${t.title(year)} | Fontainebleau Live`,
     description: truncate(n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro, 155),
     canonical: `${SITE_URL}/${THEMES_DIR}/${t.slug}/`,
     body,
     titleEn: `${t.titleEn(year)} | Fontainebleau Live`,
-  }).replace('</style>', t.faq ? `${FAQ_STYLE}
-</style>` : '</style>');
+  }).replace('</style>', `${t.faq ? `${FAQ_STYLE}\n` : ''}${t.promo ? `${PROMO_STYLE}\n` : ''}</style>`);
 }
 
 // ───────────────────────────── This weekend (item 74.3) ─────────────────────────────
@@ -1423,22 +1439,41 @@ function homePicks(events, today) {
     .sort((a, b) => a.startDate.localeCompare(b.startDate) || a.title.localeCompare(b.title, 'fr'));
 }
 
+/**
+ * Item 106 (19/11): the seasonal pages with something in the next 30 days, as plain links in the
+ * home page's HTML. The chips in the banner come from en-ce-moment.json, drawn by JavaScript, so a
+ * crawler may not follow them; and they leave "Noël" out until December. Here it is kept: « que
+ * faire à Noël » is searched from November. Named by their h1, the words people type.
+ */
+function homeSeasons(events, today) {
+  const soon = addDays(today, 30);
+  return THEMES.map((t) => {
+    const open = events.filter((x) => t.match.test(themeKey(x.title)) && x.startDate <= soon && endOf(x) >= today);
+    if (!open.length) return null;
+    // Hidden by index.html once the last of them is over, if the page is not regenerated first.
+    const y = open[0].startDate.slice(0, 4);
+    return { href: `/${THEMES_DIR}/${t.slug}/`, fr: t.h1(y), en: t.h1En(y), end: open.map(endOf).sort().pop() };
+  }).filter(Boolean);
+}
+
 /** The block between the markers, indented like index.html around it. */
-function homePicksHtml(picks) {
+function homePicksHtml(picks, seasons = []) {
   const items = picks.map((e) => {
     const end = endOf(e);
     return `          <li data-start="${esc(e.startDate)}" data-end="${esc(end)}"><span class="pk-dot" data-cat="${HOME_CAT[e.category] || 'other'}" aria-hidden="true"></span>`
       + `<time datetime="${esc(e.startDate)}">${esc(homePickDate(e.startDate, end))}</time> `
       + `<a href="${esc(e.pagePath)}">${esc(e.title)}</a> <span class="pk-city">${esc(e.city)}</span></li>`;
   });
-  return ['', '        <ul class="home-picks-list">', ...items, '        </ul>', '        '].join('\n');
+  const links = seasons.map((s) => `          <li data-start="${esc(s.end)}" data-end="${esc(s.end)}"><a href="${esc(s.href)}" data-fr="${esc(s.fr)}" data-en="${esc(s.en)}">${esc(s.fr)}</a></li>`);
+  return ['', '        <ul class="home-picks-list">', ...items, '        </ul>',
+    ...(links.length ? ['        <ul class="home-seasons">', ...links, '        </ul>'] : []), '        '].join('\n');
 }
 
 /** index.html with a new block, or null when the markers are missing (a hand edit removed them). */
-function withHomePicks(indexHtml, picks) {
+function withHomePicks(indexHtml, picks, seasons = []) {
   if (!HOME_PICKS_RE.test(indexHtml)) return null;
   const eol = indexHtml.includes('\r\n') ? '\r\n' : '\n';
-  const block = homePicksHtml(picks).replace(/\n/g, eol);
+  const block = homePicksHtml(picks, seasons).replace(/\n/g, eol);
   return indexHtml.replace(HOME_PICKS_RE, (m, open, close) => `${open}${block}${close}`);
 }
 
@@ -2473,7 +2508,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
     else remove.push(`${EVENTS_DIR}/${dir}`);
   }
 
-  return { files, remove, homePicks: homePicks(events, today), stats: { events: events.length, cities: cities.length, absorbed, ...feeds.stats } };
+  return { files, remove, homePicks: homePicks(events, today), homeSeasons: homeSeasons(events, today), stats: { events: events.length, cities: cities.length, absorbed, ...feeds.stats } };
 }
 
 function readSitePage(rel) {
@@ -2502,11 +2537,11 @@ function main() {
     const dir = path.join(ROOT, AGENDA_DIR, d);
     return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.ics')).map((f) => `${AGENDA_DIR}/${d}/${f}`) : [];
   });
-  const { files, remove, homePicks: picks, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces() });
+  const { files, remove, homePicks: picks, homeSeasons: seasons, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces() });
 
   // The one hand-written file the generator touches, and only between its markers (item 86).
   const indexFile = path.join(ROOT, 'index.html');
-  const home = fs.existsSync(indexFile) ? withHomePicks(fs.readFileSync(indexFile, 'utf8'), picks) : null;
+  const home = fs.existsSync(indexFile) ? withHomePicks(fs.readFileSync(indexFile, 'utf8'), picks, seasons) : null;
   if (home) files.set('index.html', home);
   else console.warn('generate-pages: marqueurs home-picks absents de index.html, suggestions de l’accueil non écrites');
 

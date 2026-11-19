@@ -647,6 +647,22 @@
     .home-picks-list a:hover,
     .home-picks-list a:focus-visible { text-decoration: underline; }
 
+    /* Item 106: the seasonal pages, written by generate-pages.js under the suggestions. */
+    .home-seasons { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+    .home-seasons li[hidden] { display: none; }
+    .home-seasons a {
+      display: inline-block;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .home-seasons a:hover,
+    .home-seasons a:focus-visible { text-decoration: underline; }
+
     .pk-city {
       margin-left: 0.25rem;
       color: var(--ink-3);
@@ -1416,6 +1432,10 @@
           <li data-start="2026-11-28" data-end="2026-11-28"><span class="pk-dot" data-cat="scene" aria-hidden="true"></span><time datetime="2026-11-28">sam. 28 nov.</time> <a href="/evenements/marche-de-noel-d-avon-act011/">Marché de Noël d&#39;Avon</a> <span class="pk-city">Avon</span></li>
           <li data-start="2026-11-29" data-end="2026-11-29"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-11-29">dim. 29 nov.</time> <a href="/evenements/illuminations-des-vitrines-de-noel-champagne-sur-seine-94d212633d/">Illuminations des vitrines de Noël</a> <span class="pk-city">Champagne-sur-Seine</span></li>
         </ul>
+        <ul class="home-seasons">
+          <li data-start="2026-12-27" data-end="2026-12-27"><a href="/sorties/marches-de-noel/" data-fr="Marchés de Noël 2026 à Fontainebleau et alentour" data-en="Christmas markets 2026 in and around Fontainebleau">Marchés de Noël 2026 à Fontainebleau et alentour</a></li>
+          <li data-start="2027-01-03" data-end="2027-01-03"><a href="/sorties/noel/" data-fr="Que faire pour Noël 2026 autour de Fontainebleau ?" data-en="What to do for Christmas 2026 around Fontainebleau?">Que faire pour Noël 2026 autour de Fontainebleau ?</a></li>
+        </ul>
         <!-- home-picks:end -->
       </section>
       <section class="home-about" aria-labelledby="homeAboutTitle">
@@ -2144,6 +2164,9 @@
         li.hidden = end < today;
         if (li.hidden) return;
         shown++;
+        // Seasonal links (item 106): both names are in the generated HTML, written as text.
+        const season = li.querySelector('a[data-fr]');
+        if (season) season.textContent = lang === 'en' && season.dataset.en ? season.dataset.en : season.dataset.fr;
         const time = li.querySelector('time');
         if (!time) return;
         const sameMonth = start.slice(0, 7) === end.slice(0, 7);
