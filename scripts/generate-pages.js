@@ -828,29 +828,53 @@ const THEMES = [
     slug: 'marches-de-noel',
     match: /\b(marches? de noel|village (et |& )?marche de noel|village de noel|noel (au |du )?marche)\b/,
     name: 'Marchés de Noël',
-    title: (y) => `Marchés de Noël ${y} autour de Fontainebleau : dates et lieux`,
-    h1: (y) => `Marchés de Noël ${y} autour de Fontainebleau`,
+    // Item 106 (19/11): "marché de noël fontainebleau 2026" is the Christmas search that clicks
+    // (position 2.6 on the event page, 8.6 here). The town's own markets come first, by data.
+    title: (y) => `Marchés de Noël ${y} à Fontainebleau et alentour : dates et horaires`,
+    h1: (y) => `Marchés de Noël ${y} à Fontainebleau et alentour`,
+    here: 'fontainebleau',
     intro: 'Les marchés de Noël de Fontainebleau, d’Avon et des villages alentour : dates, horaires et lieux, mis à jour chaque jour à partir des annonces des communes, de l’office de tourisme et des organisateurs.',
     off: 'Les marchés de Noël sont annoncés en général à partir d’octobre : les dates apparaîtront ici dès leur publication.',
     nameEn: 'Christmas markets',
-    titleEn: (y) => `Christmas markets ${y} around Fontainebleau: dates and places`,
-    h1En: (y) => `Christmas markets ${y} around Fontainebleau`,
+    titleEn: (y) => `Christmas markets ${y} in and around Fontainebleau: dates and times`,
+    h1En: (y) => `Christmas markets ${y} in and around Fontainebleau`,
     introEn: 'The Christmas markets of Fontainebleau, Avon and the surrounding villages: dates, times and places, updated every day from the announcements of the towns, the tourist office and the organisers.',
     offEn: 'Christmas markets are usually announced from October: the dates will appear here as soon as they are published.',
+    related: 'vacances-noel',
+    also: 'noel',
+    faq: [
+      ['Quand ont lieu les marchés de Noël autour de Fontainebleau ?', 'Surtout les week-ends de la fin novembre et de décembre, souvent du vendredi soir au dimanche ; quelques-uns durent plusieurs semaines. Les dates de chaque marché sont dans la liste ci-dessus, de la plus proche à la plus lointaine.'],
+      ['Faut-il payer pour entrer ?', 'L’entrée des marchés de Noël des villes et des villages est en général libre. Les grands Noëls des châteaux sont souvent payants : le tarif est indiqué sur la page de chaque sortie quand l’organisateur le publie.'],
+    ],
+    faqEn: [
+      ['When are the Christmas markets around Fontainebleau?', 'Mostly on the weekends of late November and December, often from Friday evening to Sunday; a few last several weeks. The dates of each market are in the list above, soonest first.'],
+      ['Do you have to pay to get in?', 'Entry to the town and village Christmas markets is usually free. The big Christmas events at the châteaux often charge: the price is on each outing’s page when the organiser publishes it.'],
+    ],
   },
   {
     slug: 'noel',
     match: /\bnoel\b/,
     name: 'Noël',
-    title: (y) => `Noël ${y} autour de Fontainebleau : marchés, spectacles et animations`,
-    h1: (y) => `Noël ${y} autour de Fontainebleau`,
+    // Worded as the search is typed, like Halloween (item 106, 19/11).
+    title: (y) => `Que faire à Fontainebleau pour Noël ${y} ? Marchés, spectacles et animations`,
+    h1: (y) => `Que faire pour Noël ${y} autour de Fontainebleau ?`,
     intro: 'Marchés, spectacles, concerts, animations des châteaux et sorties en famille pour les fêtes, à Fontainebleau et dans les communes voisines.',
     off: 'Le programme des fêtes est annoncé à l’automne : il apparaîtra ici dès sa publication.',
     nameEn: 'Christmas',
-    titleEn: (y) => `Christmas ${y} around Fontainebleau: markets, shows and events`,
-    h1En: (y) => `Christmas ${y} around Fontainebleau`,
+    titleEn: (y) => `What to do in Fontainebleau for Christmas ${y}? Markets, shows and events`,
+    h1En: (y) => `What to do for Christmas ${y} around Fontainebleau?`,
     introEn: 'Markets, shows, concerts, events at the châteaux and family outings for the festive season, in Fontainebleau and the neighbouring towns.',
     offEn: 'The festive programme is announced in the autumn: it will appear here as soon as it is published.',
+    related: 'vacances-noel',
+    also: 'marches-de-noel',
+    faq: [
+      ['Que faire avec des enfants à Noël autour de Fontainebleau ?', 'Les spectacles jeune public, les contes, les ateliers et les animations des châteaux sont les sorties les plus adaptées aux enfants. Vérifiez l’âge conseillé sur la page de chaque sortie.'],
+      ['Quand ont lieu les animations de Noël ?', 'De la fin novembre au début janvier, surtout les week-ends de décembre et pendant les vacances scolaires de Noël : d’autres idées de sorties sont sur la page des vacances.'],
+    ],
+    faqEn: [
+      ['What to do with children at Christmas around Fontainebleau?', 'Children’s shows, storytelling, workshops and the events at the châteaux suit children best. Check the recommended age on each outing’s page.'],
+      ['When do the Christmas events take place?', 'From late November to early January, mostly on the weekends of December and during the Christmas school holidays: more ideas are on the holidays page.'],
+    ],
   },
   {
     slug: 'brame-du-cerf',
@@ -985,18 +1009,33 @@ const faqHtml = (faq, faqEn = []) => (faq && faq.length
   }).join('\n')}\n`
   : '');
 
+/**
+ * The list of a theme page. With `here` (a commune slug), that town's own dates come first under
+ * their own heading: someone typing « marché de noël fontainebleau » wants Fontainebleau's
+ * market, then the others. Computed from the events, so it is never out of date.
+ */
+function hereList(t, events) {
+  const list = (xs) => `<ul class="list">${xs.map(eventItem).join('')}</ul>`;
+  const town = t.here && events.find((e) => e.citySlug === t.here);
+  if (!town) return list(events);
+  const mine = events.filter((e) => e.citySlug === t.here);
+  const rest = events.filter((e) => e.citySlug !== t.here);
+  return `<h2${en(`In ${esc(town.city)}`)}>À ${esc(town.city)}</h2>\n${list(mine)}${rest.length ? `\n<h2${en(`Around ${esc(town.city)}`)}>Autour de ${esc(town.city)}</h2>\n${list(rest)}` : ''}`;
+}
+
 function themePage(t, events, today) {
   // The year of the season on show: the first event's, or this year when there is none yet.
   const year = (events[0] ? events[0].startDate : today).slice(0, 4);
   const n = events.length;
   const related = t.related && HOLIDAYS.find((h) => h.slug === t.related);
   const relYear = related ? holidayPeriod(related, today).from.slice(0, 4) : '';
+  const also = t.also && THEMES.find((x) => x.slug === t.also);
   const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a></nav>
 <h1${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</h1>
 <p${en(esc(t.introEn))}>${esc(t.intro)}</p>
 ${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
-<ul class="list">${events.map(eventItem).join('')}</ul>` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
-${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
+${hereList(t, events)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
+${also ? `<p><a href="/${THEMES_DIR}/${also.slug}/"${en(esc(also.h1En(year).endsWith('?') ? `${also.h1En(year)} All dates` : `${also.h1En(year)}: all dates`))}>${esc(allDates(also.h1(year)))}</a></p>\n` : ''}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
 <div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
   return layout({
     title: `${t.title(year)} | Fontainebleau Live`,
