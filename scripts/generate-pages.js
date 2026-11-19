@@ -24,7 +24,8 @@
  *     is kept even when an override changes the title). If the readable part changes, the old
  *     folder becomes a noindex redirect to the new one instead of a 404.
  *   - Pages of events that are over, or gone from data.json, are deleted. 404.html (hand-written)
- *     catches a visitor who arrives from an old search result.
+ *     catches a visitor who arrives from an old search result. Except (item 106, 19/11) an event
+ *     folded into another one that is still live: its page redirects there (absorbedBy()).
  *   - schema.org Event markup is only emitted when the event link was verified: a rich result
  *     with a wrong date is worse than no rich result.
  *   - Output is deterministic and a file is only rewritten when its content changes, so a run
@@ -271,7 +272,7 @@ const analyticsTags = () => (ANALYTICS_CODE
   ? `<script data-goatcounter="https://${ANALYTICS_CODE}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>\n<script>\n${TRACK_SCRIPT}\n</script>\n`
   : '');
 
-function layout({ title, description, canonical, body, ld, noindex, refresh, titleEn, toTop = Boolean(titleEn), count = !noindex }) {
+function layout({ title, description, canonical, body, ld, noindex, refresh, head = '', titleEn, toTop = Boolean(titleEn), count = !noindex }) {
   return `<!doctype html>
 <html lang="fr"${titleEn ? ` data-title-en="${esc(titleEn)}"` : ''}>
 <head>
@@ -281,7 +282,8 @@ ${titleEn ? `${LANG_HEAD}\n` : ''}
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
-${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta http-equiv="refresh" content="0; url=${esc(refresh)}">\n` : ''}<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+${head ? `${head}
+` : ''}${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta http-equiv="refresh" content="0; url=${esc(refresh)}">\n` : ''}<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="${ICON}">
 <meta name="theme-color" content="#1d3b29">
 <meta property="og:type" content="website">
@@ -551,7 +553,58 @@ ${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(sugges
     body,
     // No rich result for dates nothing confirms (79b): Google would show them in its own box.
     ld: e.urlStatus === 'ok' && !datesUnconfirmed(e) ? eventLd(e, canonical) : null,
+    head: factsMeta(e),
   }).replace('</style>', `${PROV_STYLE}\n</style>`);
+}
+
+/**
+ * Item 106 (19/11): an event folded into another — a duplicate the judge merged, a date inside
+ * a span, a correction in overrides.json — used to lose its page: a 404 on an address Google
+ * already held. Each event page now carries its own facts, and when its id disappears, build()
+ * reads them back and redirects to the live event that took it over: same town, overlapping
+ * dates, and the same organiser's page or shared title words. A redirect names its target, so
+ * it survives the next runs for as long as that event lives. An event that is over still goes
+ * (404.html), as before.
+ */
+const FACTS_META = 'fl-event';
+const TARGET_META = 'fl-redirect';
+const ABSORB_MIN_WORDS = 2;
+
+function factsMeta(e) {
+  const facts = { s: e.startDate, e: isIsoDate(e.endDate) ? e.endDate : e.startDate, c: e.citySlug, u: e.url || '', t: e.title };
+  return `<meta name="${FACTS_META}" content="${esc(JSON.stringify(facts))}">`;
+}
+
+const unescapeAttr = (s) => String(s).replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+const metaContent = (html, name) => {
+  const m = new RegExp(`<meta name="${name}" content="([^"]*)">`).exec(html);
+  return m ? unescapeAttr(m[1]) : null;
+};
+const samePage = (a, b) => {
+  const k = (u) => { try { const x = new URL(u); return (x.hostname.replace(/^www\./, '') + x.pathname.replace(/\/+$/, '')).toLowerCase(); } catch { return ''; } };
+  return Boolean(k(a)) && k(a) === k(b) && !/^[^/]+$/.test(k(a));
+};
+const titleTokens = (s) => new Set(slugify(s, 200).split('-').filter((w) => w.length >= 4));
+
+/** The live event an old page was folded into, or null. `html` is the old page itself. */
+function absorbedBy(html, events, byToken, today) {
+  const target = metaContent(html, TARGET_META);
+  if (target) return byToken.get(target) || null;
+  let f;
+  try { f = JSON.parse(metaContent(html, FACTS_META) || 'null'); } catch { return null; }
+  if (!f || !f.s || !f.e || f.e < today) return null;
+  const mine = titleTokens(f.t);
+  let best = null;
+  for (const x of events) {
+    const end = isIsoDate(x.endDate) ? x.endDate : x.startDate;
+    if (x.citySlug !== f.c || x.startDate > f.e || end < f.s) continue;
+    const page = samePage(f.u, x.url);
+    const shared = [...titleTokens(x.title)].filter((w) => mine.has(w)).length;
+    if (!page && shared < Math.min(ABSORB_MIN_WORDS, mine.size)) continue;
+    const score = (page ? 100 : 0) + shared;
+    if (!best || score > best.score) best = { x, score };
+  }
+  return best ? best.x : null;
 }
 
 function redirectPage(e) {
@@ -562,6 +615,7 @@ function redirectPage(e) {
     canonical: target,
     noindex: true,
     refresh: e.pagePath,
+    head: `<meta name="${TARGET_META}" content="${esc(idToken(e))}">`,
     body: `<h1>Cette page a changé d’adresse</h1>\n<p><a href="${esc(e.pagePath)}">${esc(e.title)}</a></p>`,
   });
 }
@@ -2314,7 +2368,7 @@ function subscribeLinks(feedPath) {
 <a class="btn alt" href="${esc(webcal)}">Apple / Outlook</a>`;
 }
 
-function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [], places = [] }) {
+function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [], places = [], readPage = readSitePage }) {
   const list = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.events) ? payload.events : null);
   if (!list) throw new Error('data.json: no event list');
   const generatedAt = !Array.isArray(payload) && payload.generatedAt;
@@ -2368,14 +2422,23 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   // An old folder whose id token still belongs to a live event: its title changed. Redirect rather
   // than break a link Google already holds. Anything else is over or withdrawn: removed.
   const remove = [];
+  let absorbed = 0;
   for (const dir of existingEventDirs) {
     if (liveDirs.has(dir)) continue;
-    const live = byToken.get(tokenOfDir(dir));
+    let live = byToken.get(tokenOfDir(dir));
+    if (!live) {
+      live = absorbedBy(readPage(`${EVENTS_DIR}/${dir}/index.html`), events, byToken, today);
+      if (live) absorbed++;
+    }
     if (live) files.set(`${EVENTS_DIR}/${dir}/index.html`, redirectPage(live));
     else remove.push(`${EVENTS_DIR}/${dir}`);
   }
 
-  return { files, remove, homePicks: homePicks(events, today), stats: { events: events.length, cities: cities.length, ...feeds.stats } };
+  return { files, remove, homePicks: homePicks(events, today), stats: { events: events.length, cities: cities.length, absorbed, ...feeds.stats } };
+}
+
+function readSitePage(rel) {
+  try { return fs.readFileSync(path.join(ROOT, rel), 'utf8'); } catch { return ''; }
 }
 
 function listDirs(rel) {
@@ -2422,7 +2485,7 @@ function main() {
   }
   for (const rel of remove) fs.rmSync(path.join(ROOT, rel), { recursive: true, force: true });
 
-  const line = `generate-pages: ${stats.events} événement(s), ${stats.cities} commune(s), ${picks.length} suggestion(s) sur l’accueil · agendas : ${stats.feedEvents} événement(s), ${stats.longLeftOut} de plus de ${FEED_MAX_DAYS} jours écarté(s) · ${written} fichier(s) écrit(s), ${remove.length} dossier(s) supprimé(s)`;
+  const line = `generate-pages: ${stats.events} événement(s), ${stats.cities} commune(s), ${picks.length} suggestion(s) sur l’accueil · agendas : ${stats.feedEvents} événement(s), ${stats.longLeftOut} de plus de ${FEED_MAX_DAYS} jours écarté(s) · ${written} fichier(s) écrit(s), ${remove.length} dossier(s) supprimé(s)${stats.absorbed ? `, ${stats.absorbed} redirigé(s) vers la fiche qui les a reprises` : ''}`;
   console.log(line);
   if (process.env.GITHUB_STEP_SUMMARY) {
     try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n### 📄 Pages statiques\n\n${line}\n`); } catch { /* non-fatal */ }
