@@ -690,7 +690,10 @@ async function load(ctx, { only } = {}) {
       // `exclude` (sources.json): titles that are not outings — an agenda shared by a whole
       // administration also announces job forums and office hours.
       const exclude = src.exclude ? new RegExp(src.exclude, 'i') : null;
-      const kept = exclude ? r.events.filter((e) => !exclude.test(e.title)) : r.events;
+      // `keep` (19/11): the reverse, for a site where only one kind of date is an outing — a
+      // parish publishes every Sunday mass, and only the Christmas ones belong in the agenda.
+      const keep = src.keep ? new RegExp(src.keep, 'i') : null;
+      const kept = r.events.filter((e) => (!exclude || !exclude.test(e.title)) && (!keep || keep.test(e.title)));
       // A site-wide default fills what the reader cannot know (an .ics has no category).
       const events = kept.map((e) => ({ ...e, sourceId: src.id, category: e.category || src.category, city: e.city || src.city || '' }));
       return {

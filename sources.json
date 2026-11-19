@@ -234,6 +234,21 @@
         "https://www.david-nature.com/le-calendrier"
       ],
       "note": "robots.txt: Disallow / for every robot. Respected, never read."
+    },
+    {
+      "id": "pole-fontainebleau",
+      "name": "Pôle missionnaire catholique de Fontainebleau",
+      "type": "page",
+      "urls": [
+        "https://polefontainebleau.fr/horaires-des-messes/",
+        "https://polefontainebleau.fr/"
+      ],
+      "city": "Fontainebleau",
+      "category": "Culture & Ateliers",
+      "follow": "^/actualites/[^/]*no[eë]l",
+      "maxFollow": 4,
+      "keep": "no[eë]l|nativit[eé]|veill[eé]e|minuit",
+      "note": "Added 19/11 (project lead: Christmas without the Christmas Eve mass times is a pity). The parishes of Fontainebleau, Avon and the villages around publish their Christmas masses here in December (page « horaires des messes » and Christmas news articles). Only Christmas dates are kept (`keep`): the weekly masses are recurring, not outings (decision of 20/09). robots.txt allows everything (Crawl-delay 10; at most 6 pages read per run). Messes.info has the same times but is not ours to copy."
     }
   ]
 }
