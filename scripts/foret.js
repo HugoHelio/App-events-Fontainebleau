@@ -11,9 +11,9 @@
  * Pictures (item 107e, 19/11): `icon` is one of the project lead's pictures, one style for all
  * the animals (made with an AI, credited « Fontainebleau Live »). The 512 px originals are in
  * public/foret/img/icones/Final/ (animal-<name>.png; the roe deer is « biche »); the site uses
- * <key>.png, cropped to the drawing and reduced to 192 px. `emoji` stays as a fallback for an
- * animal without `icon`: the black woodpecker, until its picture comes (the one supplied is a
- * green woodpecker).
+ * <key>.png, cropped to the drawing and reduced to 192 px (the black woodpecker is
+ * animal-pic-noir.png; animal-pic-vert.png is unused). `emoji` stays as a fallback for an
+ * animal without `icon`.
  *
  * Each animal: a riddle (« Qui suis-je ? »), three choices (the answer and two other keys of this
  * list), and a « Le savais-tu ? » card shown after the answer. The cards are also written into
@@ -112,6 +112,7 @@ const ANIMALS = [
     key: 'pic',
     // The black bird (2022); an older phone shows a bird and a black square, still readable.
     emoji: '🐦‍⬛',
+    icon: '/public/foret/img/icones/pic.png',
     name: 'Le pic noir',
     riddle: 'Je tambourine sur les troncs avec mon bec. Je suis le plus grand pic d’Europe.',
     choices: ['geai', 'pic', 'hulotte'],
