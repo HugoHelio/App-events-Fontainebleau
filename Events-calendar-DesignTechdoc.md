@@ -1342,7 +1342,10 @@ a date. The organisers' section says that being listed is free and will stay so 
 **Carousel engine (item 115).** `scripts/carousel.js`, local like `guides-pdf.js`: reads
 `data.json`, writes the coming weekend's slides as HTML and prints them as PNG with headless Edge
 (`--screenshot`), 1080×1350 (feed) or 1080×1920 (`--story`), into `reports/carrousel/<saturday>/`
-(never committed), with `legende.txt`: the caption to paste and one alt text per slide.
+(never committed), with `legende-facebook.txt` and `legende-instagram.txt`: the caption to paste
+and one alt text per slide. Two captions since 20/11: Instagram never makes a caption link
+clickable, so its caption says « lien en bio » (the bio link is `/ce-week-end/`); Facebook keeps
+the link.
 - Cover, up to 5 event slides, closing slide with the link to `/ce-week-end/`.
 - Selection: events of the weekend **confirmed by a source we read** (never Gemini alone) with a
   verified link, or a Fnac date; at most 4 days long; **nearest first** (project lead, 20/11:

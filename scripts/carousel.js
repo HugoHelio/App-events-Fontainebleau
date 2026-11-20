@@ -14,7 +14,8 @@
  *                                                   the confirmed-source rule still applies)
  *
  * Output (never committed, reports/ is ignored): reports/carrousel/<saturday>[-story]/
- *   slide-1.png … slide-N.png, legende.txt (caption to paste + alt text of each slide).
+ *   slide-1.png … slide-N.png, legende-facebook.txt and legende-instagram.txt (caption to paste +
+ *   alt text of each slide; Instagram's points to the bio link, as caption links never work there).
  *
  * Rules that are not obvious from the code:
  *   - Only events confirmed by a source we read (never Gemini alone), with a verified link —
@@ -181,14 +182,18 @@ ${e.description ? `<p class="desc">${esc(e.description)}</p>` : ''}
 
 const HASHTAG = (s) => `#${s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''))}`;
 
-function caption(sel) {
+// Instagram never makes a caption link clickable (20/11): there the line points to the bio link,
+// which the project lead sets to /ce-week-end/. Facebook keeps the plain link.
+function caption(sel, platform = 'facebook') {
   const { sat, sun, picks, total } = sel;
   const lines = [`Ce week-end autour de Fontainebleau : ${rangeLabel(sat, sun)} 🌿`, ''];
   picks.forEach((e, i) => {
     const price = priceOf(e);
     lines.push(`${i + 1}. ${e.title} — ${whenOf(e, sat, sun).toLowerCase()}, ${G.place(e)}${price ? ` · ${price}` : ''}`);
   });
-  lines.push('', `Les ${total} sorties du week-end, sur la carte : https://${SITE}/ce-week-end/`,
+  lines.push('', platform === 'instagram'
+    ? `Les ${total} sorties du week-end, sur la carte : lien en bio 👆 (${SITE}/ce-week-end)`
+    : `Les ${total} sorties du week-end, sur la carte : https://${SITE}/ce-week-end/`,
     'Agenda vérifié, mais les programmes changent : confirmez auprès de l’organisateur avant de partir.', '');
   const towns = [...new Set(picks.map((e) => e.city).filter(Boolean))].filter((t) => t !== 'Fontainebleau');
   lines.push(['#Fontainebleau', ...towns.map(HASHTAG), '#SeineEtMarne', '#ForetDeFontainebleau', '#SortiesEnFamille', '#CeWeekEnd'].join(' '));
@@ -256,8 +261,11 @@ function main() {
   for (const f of fs.readdirSync(dir)) if (f.startsWith('.profile-')) fs.rmSync(path.join(dir, f), { recursive: true, force: true });
 
   const alts = list.map((s, i) => `Image ${i + 1} : ${s.alt}`).join('\n');
-  const text = caption(sel);
-  fs.writeFileSync(path.join(dir, 'legende.txt'), `${text}\n\n--- Texte alternatif (à coller dans « Paramètres avancés ») ---\n${alts}\n`);
+  const text = caption(sel, 'instagram');
+  const altBlock = `\n\n--- Texte alternatif (Instagram : « Accessibilité » ; Facebook : « Modifier tout », puis chaque image) ---\n${alts}\n`;
+  fs.writeFileSync(path.join(dir, 'legende-facebook.txt'), caption(sel, 'facebook') + altBlock);
+  fs.writeFileSync(path.join(dir, 'legende-instagram.txt'), text + altBlock);
+  fs.rmSync(path.join(dir, 'legende.txt'), { force: true });
   const preview = path.join(dir, 'apercu.html');
   fs.writeFileSync(preview, previewPage(sel, list.length, text, { w, h, htmlOnly, pick }));
   console.log(`${list.length} images, week-end du ${sel.sat} (${sel.picks.length} sorties sur ${sel.total}) → ${path.relative(ROOT, dir)}`);
