@@ -1724,6 +1724,8 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-11-20 | **Liens de saison de l'accueil : des tuiles sous le bandeau, plus sous les suggestions** (chef de projet : « on voit pas très bien le cadre qui est juste un cadre gris ») | Sur téléphone (87 % des visites), la liste des événements s'affiche en entier sous la carte : les pastilles grises des pages de saison arrivaient tout en bas, invisibles. Elles deviennent des tuiles blanches à liseré rouge ou doré (la boule du calendrier), avec icône, nom court et compteur (« Marchés de Noël · 29 dates », « Idées de cadeaux · 25 spectacles à offrir », « Calendrier de l'Avent · une case par jour », « Que faire à Noël ? · 57 dates »), deux par ligne sur téléphone, quatre sur ordinateur, **avant les filtres et la carte**. Bloc généré à part (`home-seasons`), retiré du bloc des suggestions. Le reste de l'année, les autres pages de saison y passent à leur tour (brame, champignons, Halloween, avec leur icône) ; quand aucune n'a de date dans les 30 jours, la bande disparaît. Mesure : clics `season-tile` dans GoatCounter, à relever avec l'item 113 début janvier |
 | 2026-11-20 | **Pas de pastille du bandeau pour une page qui a sa tuile ; boule de Noël dès le 15 novembre** (chef de projet) | « Marchés de Noël 29 » était deux fois en haut de l'accueil. `renderSeasonRow()` saute toute page dont la tuile est visible juste dessous (même adresse, `data-end` pas encore passé) ; « Vacances de Noël », sans tuile, reste. La boule rouge après le nom (`data-season="noel"`, `index.html` et `SEASON_HEAD` des pages générées) commence le 15/11 au lieu du 01/12, en même temps que les liens vers le calendrier de l'Avent ; fin inchangée, le 06/01 |
 | 2026-11-20 | **Monétisation : vendre des outils et des expériences, pas de l'information** (étude avec le chef de projet ; items 114, 115, 116) | 0 paiement en 18 jours de prix libre : le visiteur ne paie pas une information qu'il trouve ailleurs. À 5 000 visites par mois, l'audience sert de vitrine et de preuve ; ce qui peut se vendre sans démarcher : un outil aux communes (« agenda autopilote » : encart, affiche du mois, texte du bulletin — benchmarks : illiwap dès 125 € HT par an, IntraMuros 8 000 communes ; leur problème est la saisie, que le pipeline supprime), un kit de vitrine aux commerçants, un guide de séjour aux hébergeurs (Touch Stay 8,25 $ par logement et par mois, sans agenda local), des jeux de piste (familles, séminaires à 30-50 € HT par personne sur Funbooker, institutions sur le modèle Tèrra Aventura). Décidé : (1) **tester la demande avant de construire** — `/professionnels/`, liens par courriel comptés (114, §3.AC) ; le chef de projet s'attend à devoir démarcher en 2027 ; (2) **moteur de carrousels** pour un post chaque jeudi, sur les seules fiches confirmées (115, §3.AC) — devenir un compte local suivi ; (3) **jeux de piste**, le domaine du chef de projet, backlog en phases (116). Écartés : appli d'escalade (Boolder, gratuit et excellent), revente de données (§3.G), audioguide sur une plateforme tierce |
+| 2026-11-20 | **Du jeu de piste à Bleau Quest, jeu de collection géolocalisé** (item 116, chef de projet : « les escape games, c'est relou… moi je fais des jeux vidéo ») | Un jeu de piste se joue une fois et il y en a déjà cinq à Fontainebleau. Un jeu de **collection** permanent, solo, toute l'année, n'existe pas ici : lieux réels à débloquer (cartes sourcées, séries, rareté), XP et niveaux (leçon de Dragon Quest Walk : la marche fait progresser), quêtes en couches dont **les événements de l'agenda le jour J** (ce que personne d'autre n'a) et « 5 Must Climb » pour les grimpeurs. Validation généreuse (GPS, question ou honneur). Web d'abord, Android plus tard (TWA). Style graphique à essayer ; commerçants partenaires plus tard. GDD : `Bleau-Quest-GDD.md` ; maquette M0 : `scripts/bleau-quest-mock.js` (locale, textes provisoires) |
+| 2026-11-21 | **Bleau Quest : les événements au centre, grimpe en famille, pas de compte pour jouer** (item 116, retours du chef de projet sur la maquette) | Les événements de l'agenda sont la force du site : ils deviennent la mécanique la plus visible (carrés « LIVE », onglet En direct, événement du jour à XP doublée) et la plus payante en XP. « 5 Must Climb » devient cinq **sites** à visiter en famille, pas cinq blocs durs : le jeu doit rester très accessible. Couches à cocher comme sur une application de cartes. Compte : aucun pour jouer (chaque inscription perd des joueurs et oblige à garder des données personnelles) ; un compte facultatif viendra avec les équipes ou les achats. Ce qui s'achète ne donne jamais d'XP, de lieu ni d'événement ; premier revenu réaliste : la session d'équipe (séminaires, INSEAD, hôtels). Style : celui du site. GDD v0.2 |
 
 ## 8. Risks & Open Questions
 
@@ -1777,11 +1779,11 @@ organisateurs.
 | 8 | **105, étape 2. Mise en avant payante** — **bloquée** jusqu'au seuil ci-dessus | Rien à vendre avant | S |
 | 1 bis | **112. Calendrier de l'Avent de la forêt** (`/calendrier-de-l-avent/`) — page faite le 19/11 ; **en ligne seulement après relecture des 14 nouveaux textes** par le chef de projet, au plus tard le 30/11 | Revient chaque jour de décembre : trafic, recherche « calendrier de l'avent fontainebleau » | S |
 | — | ~~**109. Calendrier 2027 illustré**~~ — **abandonné le 20/11** (§7) : 0 paiement sur les fiches et le carnet ; plus tard, éventuellement en version imprimée | — | M |
-| 1 quinquies | **116. Jeux de piste géolocalisés** — décision du 20/11 : le sujet du chef de projet (jeu vidéo), à travailler dans les semaines qui viennent ; backlog ci-dessous, phase 0 d'abord | Les visiteurs paient une expérience, pas une information (0 paiement en prix libre) ; trois clients possibles : familles, séminaires, institutions | L |
+| 1 quinquies | **116. Bleau Quest** (jeu de collection géolocalisé, [GDD](Bleau-Quest-GDD.md)) — maquette faite le 20/11 ; M1 prototype jouable en 4 à 6 semaines, après les décisions 116b | Le sujet du chef de projet (jeu vidéo) ; une expérience, pas une information ; l'agenda en direct comme avantage unique | L |
 | 1 sexies | **115. Carrousel du jeudi** (`scripts/carousel.js`) — fait le 20/11 ; publier chaque jeudi, puis le faire évoluer (contenu personnel, vidéo) | Devenir un compte local suivi : la visibilité que les ventes futures demandent | XS / semaine |
 | — | **114. Test de demande des professionnels** (`/professionnels/`) — en ligne le 20/11 ; relevé des `pro-contact` et `pro-promo` mi-janvier | Mesurer qui demande quoi avant de construire ; démarchage direct en 2027 si personne ne se manifeste | XS |
 | 1 quater | **113. Spectacles à offrir pour Noël** (`/sorties/offrir-un-spectacle/`) — en ligne le 20/11 ; relevé des clics `booking-click` début janvier | Affiliation sur ce que les visiteurs font déjà ; recherche « idée cadeau » de décembre | S |
-| — | ~~**110. Jeu de piste en ville pour les anniversaires**~~ — fondu dans 116 le 20/11 (une déclinaison possible, 116q) | Idée C du 02/11 | — |
+| — | ~~**110. Jeu de piste en ville pour les anniversaires**~~ — fondu dans 116 le 20/11, puis remplacé par Bleau Quest | Idée C du 02/11 | — |
 
 Restes du chef de projet, hors ordre : déclarer les paiements des fiches comme recettes d'Helioso
 (104 bis) — plus tard, aucun paiement reçu au 20/11. La copie du flux de la Ville (101) se fait en
@@ -2350,113 +2352,83 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   (`/publier/`), une vidéo verticale (script + plans à filmer), une voix ou une mascotte (un
   animal du bestiaire), du contenu plus personnel (coup de cœur de la semaine, photo prise sur
   place) ; (d) jamais de publication automatique : le compte est le canal (item 70).
-- [ ] **116. Jeux de piste géolocalisés — décidé le 20/11 (chef de projet : « c'est mon domaine et
-  celui à creuser, je viens du jeu vidéo »).** Nom de travail : « Bestiaire de Bleau ». Absorbe
-  l'item 110 (idée C du 02/11). Benchmarks du 20/11 (§7) : Explor Games 10-15 € par joueur ;
-  Escape Hunt Urban Quest 60 € par équipe ; team building à Fontainebleau sur Funbooker 30-50 € HT
-  par personne (enquête culturelle, chasse au trésor au château) ; Tèrra Aventura (CRT
-  Nouvelle-Aquitaine, gratuit pour le joueur, financé par les offices de tourisme) : ~240 000
-  joueurs par an dans la seule Vienne ; Baludik (parcours d'offices de tourisme, appli gratuite) ;
-  Paris Region Aventures gratuit en forêt. Règles reprises du site : **aucun itinéraire ni fait
-  inventé par l'IA** (tout est parcouru et vérifié sur place, comme les balades) ; faits
-  naturalistes relus contre l'ONF et l'INPN (comme `foret.js`) ; pas de photo dont on n'a pas les
-  droits. Cible : prototype jouable mi-décembre, test sur place pendant les vacances de Noël,
-  lancement aux vacances d'hiver 2027 (zone C), séminaires au printemps.
-  - **Décisions du chef de projet, 20/11** : **public** — séminaires, étudiants de l'INSEAD, jeunes
-    adultes en week-end à Fontainebleau, hôtels (pas d'abord les familles) ; **univers** — enquête
-    historique ; **validation d'une étape** — GPS **ou** réponse lue sur place, au cas par cas,
-    « soyons généreux, ne bloquons pas les joueurs » (repli toujours possible, indices jusqu'à la
-    solution) ; **modèle économique** — à étudier sur benchmarks (116d).
-  - **Concurrents à Fontainebleau, relevé du 20/11** (à jouer sur place, 116e) :
-    - **myCityHunt** : jeu de piste, chasse au trésor, escape game outdoor (agent secret, château
-      puis centre-ville), aventure de Noël ; application, sans créneau ; **dès 12,99 € par personne** ;
-      générique (même produit dans des centaines de villes).
-    - **Urban Quest** : jeu de piste dans le navigateur, lien reçu par courriel, départ place
-      Decamps, défis sur l'histoire de la ville ; prix à relever.
-    - **Forest Mystery** (the-escapers) : escape game en forêt depuis 2021, scénarios « Disparition »
-      et « Le Cavalier noir », dès 6 personnes, maître du jeu joignable par radio, ~1 h 40,
-      **30-36 € par personne**.
-    - **Paris Region Aventures** (région, gratuit) : énigmes en forêt, jardins du château, rues.
-    - **Funbooker, team building** : enquête culturelle (vol de la couronne, autour du château,
-      **30 € HT par personne** pour 3 à 10), jeu de piste au château (10 à 500 personnes, 2-3 h),
-      chasse au trésor en bateau (50 € HT), rallyes — animés par des agences.
-    - **Château, « Enquête au château »** : visite-jeu familiale, dimanches 15 h hors vacances
-      (2023-2024), 7 ans et plus.
-    - Hors terrain : « Guilty : Fontainebleau 1543 » (jeu de société d'enquête à la cour), les
-      Impériales de Fontainebleau (murder party napoléonienne, événement).
-    - **L'angle libre** : une enquête historique **écrite par un local**, juste sur les faits,
-      bilingue (aucun concurrent anglais local relevé ; INSEAD), pensée pour des adultes et des
-      équipes, sans animateur mais avec un mode « plusieurs équipes en même temps » — myCityHunt est
-      générique, Forest Mystery est en forêt et animé, les agences Funbooker sont animées et chères.
-  - **Repères de modèle économique (20/11)** : par personne (myCityHunt 12,99 €, City Hunt 15 £) ;
-    par équipe (Escape Hunt Urban Quest 60 € pour 2-5, Hunter Games 31 $ l'équipe) ; **par téléphone
-    pour les groupes** (Questo : 6 à 40 téléphones en un paiement, sans devis, dès ~5 € le
-    téléphone) ; passes (Questo, 35 £ pour tous les jeux d'une ville) ; kit imprimé (Treasure Trails,
-    10 £ pour 4-5 personnes) ; séminaires animés 30-50 € HT par personne.
-  - **Phase 0 — cadrage (chef de projet, avec Claude). S. À trancher avant d'écrire du code :**
-    - [ ] **116a. Pitch d'une page** : public prioritaire (familles 6-11 ans, ados et adultes,
-      séminaires), promesse, durée (repère : 1 h à 1 h 30 pour ~2 km), lieu du premier parcours.
-      Recommandation : **la ville, sur le parcours à pied déjà vérifié** (`balades.js`) — pas
-      d'autorisation à demander sur la voie publique, réseau correct, et Paris Region Aventures
-      occupe déjà la forêt.
-    - [ ] **116b. Univers et récit** : bestiaire de la forêt (dessins du chef de projet, gravures
-      de Ridinger CC0, cohérent avec `/foret/` et l'Avent) ou enquête historique (château,
-      Napoléon, peintres de Barbizon). Un fil conducteur, un personnage guide, une fin.
-    - [ ] **116c. Boucle de jeu** : déclencheur d'étape (géorepérage GPS, ou réponse lue sur place —
-      plaque, date gravée, statue —, ou les deux ; **aucun objet posé ni QR collé** sans
-      autorisation) ; familles d'énigmes (observation, déduction, mini-jeux tactiles, photo) ;
-      indices gradués ; score, temps, collection de cartes d'animaux ; écran de fin et diplôme.
-      Repli quand le GPS est faux en ville (« je suis arrivé »).
-    - [ ] **116d. Modèle économique** : premier parcours gratuit en bêta (mesurer la complétion),
-      payant ensuite ou pour les versions suivantes (repère 12-15 € par équipe) ; offre séminaires
-      à part (25-50 € HT par personne) ; offre aux institutions en 2027, chiffres en main.
-    - [ ] **116e. Jouer deux concurrents sur place** (un Baludik ou un Explor Games, et Paris
-      Region Aventures) et noter ce qui marche, ce qui agace, ce qui manque.
-  - **Phase 1 — prototype technique (Claude). M.**
-    - [ ] **116f. Moteur de jeu en page statique** : `/jeux/<parcours>/` généré par
-      `generate-pages.js`, contenu dans un fichier écrit à la main (`scripts/jeux.js`, comme
-      `foret.js`), construit en `textContent` (sécurité du frontend), sans dépendance ; progression
-      dans `localStorage` (try/catch, la page marche sans) ; carte de l'étape suivante avec Leaflet
-      (`vendor/`) ; jouable sans réseau une fois ouvert — **à vérifier contre `sw.js`, réseau
-      d'abord** : prévoir la mise en cache des fichiers du parcours au démarrage.
-    - [ ] **116g. Géolocalisation** : `navigator.geolocation`, permission demandée au moment du jeu
-      seulement, position gardée sur le téléphone (jamais envoyée) — à dire dans
-      `/mentions-legales/` le jour de la mise en ligne.
-    - [ ] **116h. Mesure** : `game-start`, `game-step/<n>`, `game-hint/<n>`, `game-end` dans
-      GoatCounter (abandons par étape, indices par énigme), rien qui identifie le joueur.
-    - [ ] **116i. Paiement et codes de partie** (seulement si 116d le décide) : Stripe Payment Link
-      → page de retour qui donne un code ; un code vérifiable sans qu'il soit lisible dans le dépôt
-      public demande un petit serveur (Cloudflare Worker, gratuit à ce volume) — **première entorse
-      au tout statique, décision du chef de projet**, comme une CGV de vente (paiement obligatoire,
-      donc plus un soutien : TVA d'Helioso, droit de rétractation à traiter).
-    - [ ] **116j. Plus tard, IA générative** (même serveur) : indices reformulés selon l'âge à partir
-      d'indices **écrits et vérifiés** ; reconnaissance d'une feuille ou d'une empreinte en photo
-      (le carnet a déjà « Quelle est cette feuille ? ») ; diplôme personnalisé. L'IA ne produit jamais
-      un fait ni une étape.
-  - **Phase 2 — contenu et test sur place (chef de projet ; Claude relit, propose des variantes,
-    traduit). M à L.**
-    - [ ] **116k. Repérage** : étapes, réponses observables qui ne changent pas (pas d'affiche, pas de
-      vitrine), durées chronométrées, sécurité (aucune énigme au bord d'une route, traversées
-      signalées), accès poussette et fauteuil, toilettes (reprendre les notes de la fiche à pied).
-    - [ ] **116l. Écriture** : scénario, énigmes, indices, textes de fin ; faits vérifiés avec leur
-      source ; illustrations et droits.
-    - [ ] **116m. Tests de jeu** : au moins trois groupes (famille avec enfants de 6 à 11 ans, adultes,
-      un groupe anglophone) ; grille d'observation (temps par étape, indices pris, abandons, moments
-      forts) ; itérer avant toute publication.
-    - [ ] **116n. Version anglaise** (INSEAD, touristes ; 6 % des visites en anglais).
-  - **Phase 3 — lancement et ventes. S chacun.**
-    - [ ] **116o. Mise en ligne** : page indexable, FAQ, liens depuis l'accueil, `/balades/`, les
-      communes traversées, `/ce-week-end/`, les pages de vacances (`HOLIDAYS`) ; carrousel dédié (115).
-    - [ ] **116p. Séminaires** : version équipes (plusieurs équipes en même temps, classement — demande
-      le serveur de 116i), devis type, annonce sur **Funbooker** (place de marché où les entreprises
-      cherchent elles-mêmes ; conditions et commission à lire avant), contact des hôtels de séminaire.
-    - [ ] **116q. Déclinaisons** : anniversaires (idée C du 02/11 : livret de l'organisateur,
-      invitations, diplôme), Barbizon (peintres), forêt — **en forêt domaniale, vérifier auprès de
-      l'ONF si une activité commerciale demande une convention**, et respecter zones de quiétude et
-      période du brame ; parc du château : autorisation de l'établissement public à vérifier.
-    - [ ] **116r. Institutions (2027)** : dossier pour l'office de tourisme ou la CA du Pays de
-      Fontainebleau sur le modèle Tèrra Aventura (parcours gratuits pour le joueur, payés par le
-      territoire), avec les chiffres de 116h et 116m.
+- [ ] **116. Bleau Quest — jeu de collection géolocalisé. Décidé le 20/11 (chef de projet, « je
+  viens du jeu vidéo »), GDD : [Bleau-Quest-GDD.md](Bleau-Quest-GDD.md).** Remplace le jeu de piste
+  envisagé le même jour (« les escape games, c'est relou ») et l'item 110. Le territoire comme un
+  monde de jeu, **solo**, toute l'année : lieux réels à débloquer (cartes sourcées, séries, rareté),
+  XP, niveaux, titres, quêtes **en couches** — dont **la couche événements** (les fiches confirmées
+  deviennent des étapes le jour J : l'avantage que personne n'a) et **« 5 Must Climb »** pour les
+  grimpeurs. Publics : INSEAD, jeunes adultes en week-end, hôtels et séminaires, grimpeurs.
+  Validation généreuse (GPS **ou** question **ou** sur l'honneur). **Web d'abord** sur le site,
+  application Android plus tard (compte développeur existant, TWA). Style graphique à essayer
+  (pixel art pas acquis). Commerçants partenaires : plus tard. Benchmark (GDD §5) : Pokémon GO,
+  Dragon Quest Walk, FlashInvaders, Tèrra Aventura, Fog of World, Pikmin Bloom, Monster Hunter Now,
+  Boolder, et les jeux de piste locaux (concurrents relevés le 20/11 : myCityHunt dès 12,99 € par
+  personne, Urban Quest, Forest Mystery 30-36 €, Paris Region Aventures gratuit, agences Funbooker
+  30-50 € HT, « Enquête au château »).
+  - [x] **116a. M0 — maquette cliquable, faite le 20/11** : `node scripts/bleau-quest-mock.js`
+    écrit `reports/bleau-quest/maquette.html` (jamais commité) : carte avec les lieux et les
+    événements du week-end (vraies données, fiches confirmées), fiche de lieu et ses trois
+    validations, collection par séries, profil (niveau, XP, quêtes dont « 5 Must Climb »).
+    Positions des lieux : OpenStreetMap ; **textes des cartes provisoires**, à écrire et sourcer.
+  - [x] **116a bis. M0 v2, faite le 21/11, après les retours du chef de projet** : la maquette est
+    servie sur `http://localhost:8517/` par le script (OSM refuse les tuiles à une page ouverte
+    en `file://`, sans Referer : « Access blocked »), `--file` pour l'écrire seulement.
+    Ajouts : **parcours d'entrée** en six écrans (GDD §6.1), **panneau de couches** façon
+    application de cartes (Plan/Doux/Nuit ; Lieux, En direct, Quêtes, Grimpe, Noël, Brouillard),
+    **événements mis en avant** (carrés aux couleurs des catégories, « LIVE » qui pulse, bandeau,
+    onglet En direct, événement du jour à XP doublée, « J'y vais », quête « Toutes les scènes »),
+    couche **Noël** (rendez-vous de Noël des 40 jours, bonus de saison), quêtes de saison
+    (Avent, brame, champignons, éco-geste), **« 5 Must Climb, en famille »** (cinq sites à
+    visiter, plus cinq blocs durs), **compte et boutique** dans le profil (rien de vendu).
+    Style : celui du site, retenu. Reste : plusieurs propositions d'interface à comparer.
+  - **M1 — prototype jouable (4 à 6 semaines)**, dans l'ordre :
+    - [ ] **116b. Décisions du chef de projet** (GDD §16) : sujet de l'enquête, nom, liste des
+      35 lieux (30 en ville et au château, à partir du parcours à pied vérifié ; 5 en forêt :
+      tour Denecourt, gorges de Franchard, gorges d'Apremont, mont Ussy, rocher Cassepot — à
+      confirmer), séries du M1.
+    - [ ] **116c. Essais de direction artistique** : une même carte de lieu et un même bout de
+      carte en 3 ou 4 styles (pixel art, gravure, peinture de l'École de Barbizon, carte de parc),
+      comparés sur téléphone dehors.
+    - [ ] **116d. Contenu** : `scripts/bleau-quest.js` écrit à la main — lieux (position relevée
+      sur place ou dans OSM, rayon, type, série, rareté), textes FR/EN **sourcés** (source affichée),
+      question d'observation de secours par lieu, premier chapitre de l'enquête. Relu par le chef de
+      projet ; jamais de fait écrit par l'IA sans source.
+    - [ ] **116e. Moteur** : page générée par `generate-pages.js` (`/bleau-quest/` ou `/jeu/`),
+      `textContent` partout, `localStorage` sous try/catch, code d'export de la progression,
+      Leaflet de `vendor/`, géolocalisation demandée au moment du jeu et jamais envoyée ;
+      couche événements lue dans `data.json` (règle du carrousel : sources lues seulement) ;
+      XP, niveaux, titres, badges, séries ; hors ligne une fois ouvert (à régler avec `sw.js`,
+      réseau d'abord).
+    - [ ] **116f. Mesure** : événements GoatCounter du GDD §14.
+    - [ ] **116g. Mentions légales** : géolocalisation (sur l'appareil seulement), `localStorage`.
+    - [ ] **116h. ONF** : présenter le projet avant de publier les lieux en forêt (sentiers
+      existants, zones de quiétude, brame ; convention éventuelle). Parc du château : établissement
+      public.
+  - **M2-M3 — test et lancement**
+    - [ ] **116i. Test sur place** : amis, puis un groupe d'étudiants de l'INSEAD ; grille
+      d'observation (temps, méthode de validation, abandons, moments forts).
+    - [ ] **116j. Lancement** : page indexable, liens (accueil, `/balades/`, communes,
+      `/ce-week-end/`), carrousel dédié, quête de la semaine dans le carrousel du jeudi.
+  - **M4-M5 — 2027**
+    - [ ] **116k. « 5 Must Climb, en famille »** (revu le 21/11 : très accessible) : cinq **sites**
+      de bloc à visiter en famille, pas cinq blocs durs. Proposition : Bas Cuvier, Rocher Canon,
+      Canche aux Merciers, Cul de Chien, l'Éléphant (Larchant) ; à valider avec des grimpeurs
+      (circuit enfants, parking, fréquentation) et l'ONF. On valide la visite (GPS, question,
+      honneur), renvoi vers Boolder, avertissement de sécurité, aucune cotation écrite par nous.
+    - [ ] **116l. Couches suivantes** : brouillard des sentiers, quêtes de saison, éco-geste,
+      enquête complète, Barbizon et villages.
+    - [ ] **116m. Social et serveur** : classements (INSEAD par promotion), synchronisation,
+      mode équipes pour les séminaires — décision du Cloudflare Worker.
+    - [ ] **116n. Application Android** (TWA), si l'usage le justifie.
+    - [ ] **116o. Compte et revenus** (GDD §12, pensés le 21/11) : **pas de compte pour jouer**
+      (progression sur le téléphone, code de sauvegarde) ; compte facultatif par courriel sans mot
+      de passe le jour où arrivent les équipes, les achats ou le multi-appareil (serveur de 116m).
+      Ce qui s'achète ne donne jamais d'XP, de lieu ni d'événement : session d'équipe (séminaires,
+      INSEAD, hôtels, sur devis), enquête complète (chapitre 1 gratuit), coffret souvenir imprimé,
+      autre style de cartes, soutien à prix libre ; saison financée par un territoire ; commerçants
+      plus tard. Stripe sur le web, facturation Google Play pour un contenu numérique dans l'appli.
+      Première offre à choisir (GDD §16).
 - [ ] **104 bis. Fiches balades en ligne — tranché le 01/11 (§7) : prix libre sans verrou, texte complet en HTML.**
   - **Reste, chef de projet** : (1) ~~PDF définitifs~~ fournis le 01/11 et commités avec les pages (à pied v3, coquilles de la fiche vélo et durées de la fiche voiture corrigées) ; (2) ~~quatre Payment Links Stripe~~ fait le 02/11 (ci-dessous) ; (3) soutien déclaré comme recette d'Helioso.
   - [x] **Fait le 01/11 (Claude)** : contenu dans `scripts/balades.js` (texte des PDF, sans ajout), rendu par `generate-pages.js` : `/balades/` (index), une page par fiche (étapes, cartes, mini-jeux, réponses repliées, JSON-LD `TouristTrip`, liens vers les communes du parcours et `/ce-week-end/`), `/balades/merci/` (noindex, compté). PDF et cartes (1 200 px) dans `public/balades/`. Encart « Prix libre — 3 € conseillés » (pack : 6 €) avec « Choisir mon prix » (Stripe) et « Télécharger sans payer » ; tant qu'un lien de `PAY` est vide, seul le bouton de téléchargement paraît. Clics comptés : `guide-download`, `guide-pay`. Rubrique « Balades » sur les pages des communes traversées, lien dans le pied de l'accueil, sitemap. Sur `/nos-sources/`, le bouton « Soutenir » sec de 99 est remplacé par un renvoi aux fiches, affiché dès qu'un lien est rempli. Un seul bouton de paiement (et non 3 €/5 €/autre) : un Payment Link ne reçoit pas le montant par l'adresse, le montant se choisit chez Stripe.
