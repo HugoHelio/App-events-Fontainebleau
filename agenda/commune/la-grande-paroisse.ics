@@ -3,29 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:La Grande-Paroisse · Fontainebleau Live
+X-WR-CALNAME:la-grande-paroisse · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_210366a24b@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
-DTSTART;VALUE=DATE:20261119
-DTEND;VALUE=DATE:20261120
-SUMMARY:Visite de l'entreprise SAUR
-LOCATION:Station d’épuration de la SAUR\, La Grande-Paroisse
-DESCRIPTION:Visite de la station d'épuration de la SAUR\n\nOrganisateur : 
- https://openagenda.com/semaine-industrie-2026/events/visite-de-lentreprise
- -saur-8579485\n\nFiche : https://fontainebleaulive.fr/evenements/visite-de
- -l-entreprise-saur-la-grande-paroisse-210366a24b/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/visite-de-l-entreprise-saur-la-
- grande-paroisse-210366a24b/
-CATEGORIES:Culture & Ateliers
-GEO:48.38423;2.90357
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR
