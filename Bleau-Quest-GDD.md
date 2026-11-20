@@ -22,6 +22,11 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
 - **Lien avec le carrousel du jeudi** (item 115) : la quête de la semaine pourra y être annoncée ;
   la règle de sélection des cartes vit désormais dans `generate-pages.js` (`carouselPool`) et
   servira aussi à la couche événements (§11).
+- **Réseaux sociaux, en cours de création** : page Facebook « Fontainebleau Live » à l'adresse
+  **facebook.com/fontainebleaulive**, et compte Instagram professionnel du même nom. Une fois
+  tout créé, on reprend le backlog : deux ou trois jeudis publiés à la main, puis le jeton Meta
+  (secret GitHub, aucun mot de passe partagé) et le workflow semi-automatique (aperçu le
+  mercredi, publication en un clic le jeudi, item 115 (d)).
 
 ---
 

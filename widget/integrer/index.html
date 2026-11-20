@@ -34,6 +34,7 @@ a{color:var(--ink)}
 :focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
 footer{max-width:960px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
+.social{display:flex;gap:16px;margin-top:10px}.social a{display:inline-flex;align-items:center;gap:6px;font-weight:600;text-decoration:none}.social a:hover{text-decoration:underline}.social svg{flex:none}
 </style>
 </head>
 <body>
@@ -80,7 +81,8 @@ activités de votre commune. Un encart à copier-coller, qui se met à jour tout
   </div>
 </div>
 </main>
-<footer><a href="/">Fontainebleau Live</a> · <a href="/que-faire/">Toutes les communes</a> · <a href="/mentions-legales/">Mentions légales</a></footer>
+<footer><a href="/">Fontainebleau Live</a> · <a href="/que-faire/">Toutes les communes</a> · <a href="/mentions-legales/">Mentions légales</a>
+<span class="social"><a href="https://www.facebook.com/fontainebleaulive" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>Facebook</a><a href="https://www.instagram.com/fontainebleaulive/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg>Instagram</a></span></footer>
 <script>
 (function () {
   var SITE = 'https://fontainebleaulive.fr';

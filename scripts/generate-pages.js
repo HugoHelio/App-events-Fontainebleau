@@ -47,6 +47,13 @@ const EVENTS_DIR = 'evenements';
 const CITIES_DIR = 'que-faire';
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 const ICON = '/public/assets/img/brand/Icon-FL-pwa-vS.png';
+// Our accounts (20/11): plain links with inline icons, so no Meta script, button or image is
+// ever loaded. Counted as social/facebook, social/instagram (data-track).
+const FACEBOOK_URL = 'https://www.facebook.com/fontainebleaulive';
+const INSTAGRAM_URL = 'https://www.instagram.com/fontainebleaulive/';
+const FACEBOOK_SVG = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>';
+const INSTAGRAM_SVG = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg>';
+const SOCIAL_LINKS = `<span class="social"><a href="${FACEBOOK_URL}" target="_blank" rel="noopener" data-track="social" data-id="facebook">${FACEBOOK_SVG}Facebook</a><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" data-track="social" data-id="instagram">${INSTAGRAM_SVG}Instagram</a></span>`;
 
 // ───────────────────────────── Helpers ─────────────────────────────
 
@@ -179,6 +186,7 @@ ul.list small{display:block;color:var(--muted)}
 footer{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:14px;color:var(--muted)}
 .aff-note{display:block;margin-top:8px;font-size:12px}
 footer a{color:var(--muted)}
+.social{display:flex;gap:16px;margin-top:10px}.social a{display:inline-flex;align-items:center;gap:6px;font-weight:600;text-decoration:none}.social a:hover{text-decoration:underline}.social svg{flex:none}
 @media (max-width:480px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
 `.trim();
 
@@ -314,6 +322,7 @@ ${SEASON_STYLE}${titleEn ? `\n${LANG_STYLE}` : ''}${toTop ? `\n${TOP_STYLE}` : '
 ${body}
 </main>
 <footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="/${PRO_DIR}/"${en('For businesses (in French)')}>Professionnels</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a> · © 2026 Fontainebleau Live · <a href="/mentions-legales/"${en('Legal notice and privacy (in French)')}>Mentions légales</a>
+${SOCIAL_LINKS}
 <small class="aff-note"${en('Some links are partner links: we may earn a commission, at no extra cost to you.')}>Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
 ${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}${count ? analyticsTags() : ''}</body>
 </html>
