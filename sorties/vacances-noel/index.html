@@ -108,6 +108,25 @@ h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}
 .kids-txt small{font-size:13px;color:#dfe8e1}
 .kids-go{flex:none;background:#e3c178;color:#1d3b29;font-weight:700;border-radius:999px;padding:10px 18px;font-size:15px}
 @media (max-width:420px){.kids-go{flex:1 1 100%;text-align:center}}
+.crsl{margin:18px 0 8px}
+.crsl-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.crsl-head h2{margin:0}
+.crsl-nav button{font:inherit;font-size:22px;line-height:1;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;margin-left:6px}
+.crsl-nav button:disabled{opacity:.35;cursor:default}
+.crsl-track{list-style:none;margin:10px 0 0;padding:2px 2px 10px;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.crsl-card{flex:0 0 78%;max-width:290px;scroll-snap-align:start;margin:0}
+.crsl-card a{position:relative;display:flex;flex-direction:column;gap:6px;height:100%;min-height:210px;padding:14px 14px 14px 20px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--text);text-decoration:none;overflow:hidden}
+.crsl-card a:hover{border-color:var(--ink)}
+.crsl-card a:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+.crsl-band{position:absolute;left:0;top:0;bottom:0;width:6px}
+.crsl-chip{align-self:flex-start;padding:2px 10px;border-radius:999px;color:#fff;font-size:12px;font-weight:700}
+.crsl-t{font-size:1.08rem;line-height:1.25;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
+.crsl-w{font-weight:700;font-size:14px;color:var(--ink);margin-top:auto}
+.crsl-p{font-size:14px;color:var(--muted)}
+.crsl-b{display:flex;flex-wrap:wrap;gap:6px}
+.crsl-badge{padding:1px 8px;border-radius:8px;border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--ink)}
+.crsl-badge.crsl-free{background:#ecf3e0;border-color:#ecf3e0;color:#3d5d1d}
+@media (min-width:700px){.crsl-card{flex-basis:31%}}
 </style>
 </head>
 <body>
@@ -118,8 +137,9 @@ h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}
 <p class="when" data-en="From 19 December to 4 January 2027">Du samedi 19 décembre au lundi 4 janvier 2027</p>
 <p data-en="Christmas markets, festive shows and concerts, château visits, forest walks and activities for children: every outing of the holidays in Fontainebleau and the neighbouring towns, day by day.">Marchés de Noël, spectacles et concerts des fêtes, visites des châteaux, balades en forêt et animations pour les enfants : toutes les sorties des vacances à Fontainebleau et dans les communes voisines, jour par jour.</p>
 <p data-en="36 outings and 27 exhibitions or visits during the holidays, in Fontainebleau and the neighbouring towns. Updated every day.">36 sorties et 27 expositions ou visites pendant les vacances, à Fontainebleau et dans les communes voisines. Mis à jour chaque jour.</p>
-<p class="now"><span data-en="During the holidays:">Pendant les vacances :</span> <a class="chip" href="/sorties/marches-de-noel/" data-en="Christmas markets &lt;b&gt;8&lt;/b&gt;">Marchés de Noël <b>8</b></a></p>
-<nav class="toc" aria-label="Sommaire"><a href="#en-famille" data-en="Family">En famille</a><a href="#j-2026-12-19" data-en="19–25 Dec">19-25 déc.</a><a href="#j-2026-12-26" data-en="26 Dec – 1 Jan">26 déc.-1er janv.</a><a href="#j-2027-01-02" data-en="2–4 Jan">2-4 janv.</a><a href="#expositions" data-en="Exhibitions">Expositions</a></nav>
+<section class="crsl" id="a-ne-pas-manquer" aria-label="À ne pas manquer pendant les vacances"><div class="crsl-head"><h2 data-en="Don’t miss during the holidays">À ne pas manquer pendant les vacances</h2><span class="crsl-nav" hidden><button type="button" data-d="-1" aria-label="Précédent">‹</button><button type="button" data-d="1" aria-label="Suivant">›</button></span></div>
+<ol class="crsl-track"><li class="crsl-card"><a href="/evenements/salon-de-noel-des-jeux-de-dames-au-theatre-municipal-de-font-fontainebleau-9be8c9c639/" data-track="carousel" data-id="vacances-noel"><span class="crsl-band" style="background:#4a5bb8"></span><span class="crsl-chip" style="background:#4a5bb8" data-en="Show">Spectacle</span><b class="crsl-t">Salon de Noël des Jeux de Dames au Théâtre Municipal de Fontainebleau</b><span class="crsl-w">18–20 déc. · 10h–20h</span><span class="crsl-p">Théâtre municipal de Fontainebleau, 9 rue Denecourt</span><span class="crsl-b"><span class="crsl-badge crsl-free">Gratuit</span></span></a></li><li class="crsl-card"><a href="/evenements/course-de-noel-de-samois-sur-seine-12-edition-6d9b7e1830/" data-track="carousel" data-id="vacances-noel"><span class="crsl-band" style="background:#0f8f9e"></span><span class="crsl-chip" style="background:#0f8f9e" data-en="Sport">Sport</span><b class="crsl-t">Course de Noël de Samois-sur-Seine (12ᵉ édition)</b><span class="crsl-w">sam. 19 déc. · 18h</span><span class="crsl-p">Bords de Seine et centre-ville, Samois-sur-Seine</span><span class="crsl-b"></span></a></li><li class="crsl-card"><a href="/evenements/marche-de-noel-bourron-marlotte-c17ffc4411/" data-track="carousel" data-id="vacances-noel"><span class="crsl-band" style="background:#9247a0"></span><span class="crsl-chip" style="background:#9247a0" data-en="Culture">Culture</span><b class="crsl-t">Marché de Noël</b><span class="crsl-w">sam. 19 déc.</span><span class="crsl-p">Bourron-Marlotte</span><span class="crsl-b"><span class="crsl-badge crsl-free">Gratuit</span></span></a></li><li class="crsl-card"><a href="/evenements/atelier-carte-de-voeux-brodee-barbizon-15c67f23c5/" data-track="carousel" data-id="vacances-noel"><span class="crsl-band" style="background:#9247a0"></span><span class="crsl-chip" style="background:#9247a0" data-en="Culture">Culture</span><b class="crsl-t">Atelier &quot;Carte de vœux brodée&quot;</b><span class="crsl-w">mer. 23 déc.</span><span class="crsl-p">Barbizon</span><span class="crsl-b"></span></a></li><li class="crsl-card"><a href="/evenements/j-ai-mange-ma-fourchette-fontainebleau-35fe507f15/" data-track="carousel" data-id="vacances-noel"><span class="crsl-band" style="background:#4a5bb8"></span><span class="crsl-chip" style="background:#4a5bb8" data-en="Show">Spectacle</span><b class="crsl-t">J&#39;ai mangé ma fourchette</b><span class="crsl-w">mer. 30 déc.</span><span class="crsl-p">6 rue des Sablons Âne Vert Théâtre, Fontainebleau</span><span class="crsl-b"></span></a></li></ol></section><p class="now"><span data-en="During the holidays:">Pendant les vacances :</span> <a class="chip" href="/sorties/marches-de-noel/" data-en="Christmas markets &lt;b&gt;8&lt;/b&gt;">Marchés de Noël <b>8</b></a></p>
+<nav class="toc" aria-label="Sommaire"><a href="#a-ne-pas-manquer" data-en="Don’t miss">À ne pas manquer</a><a href="#en-famille" data-en="Family">En famille</a><a href="#j-2026-12-19" data-en="19–25 Dec">19-25 déc.</a><a href="#j-2026-12-26" data-en="26 Dec – 1 Jan">26 déc.-1er janv.</a><a href="#j-2027-01-02" data-en="2–4 Jan">2-4 janv.</a><a href="#expositions" data-en="Exhibitions">Expositions</a></nav>
 <h2 id="en-famille" data-en="Family outing ideas">Idées de sorties en famille</h2>
 <ul class="list"><li><a href="/evenements/spectacle-jeune-public-dans-les-coulisses-du-pere-noel-fontainebleau-c6ecc3650f/">Spectacle Jeune Public : Dans les Coulisses du Père Noël</a><small>Du samedi 19 décembre 2026 au jeudi 24 décembre 2026 · 6 rue des Sablons Âne Vert Théâtre</small></li><li><a href="/evenements/spectacle-jeune-public-le-noel-de-zoe-et-zozotto-fontainebleau-5926ba7941/">Spectacle Jeune Public : Le Noël de Zoé et Zozotto</a><small>Du samedi 19 décembre 2026 au jeudi 24 décembre 2026 · L&#39;Âne Vert Théâtre, 6 rue des Sablons, 77300 Fontainebleau</small></li><li><a href="/evenements/spectacle-jeune-public-noel-cabaret-grimm-nemours-b0d295aaa3/">Spectacle Jeune Public / Noël : Cabaret Grimm</a><small>Le samedi 19 décembre 2026 · La Scène du Loing</small></li><li><a href="/evenements/spectacles-jeune-public-a-l-ane-vert-theatre-fontainebleau-4b325d204e/">Spectacles Jeune Public à l&#39;Âne Vert Théâtre</a><small>Du samedi 19 décembre 2026 au jeudi 24 décembre 2026 · L&#39;Âne Vert Théâtre, 6 rue des Sablons</small></li></ul>
 <div class="legend" role="group" aria-label="Filtrer par type"><button type="button" class="f" data-cat="" aria-pressed="true" data-en="All">Tous</button><button type="button" class="f" data-cat="c-sport" aria-pressed="false" data-en="&lt;span class=&quot;dot c-sport&quot;&gt;&lt;/span&gt;Sport"><span class="dot c-sport"></span>Sport</button><button type="button" class="f" data-cat="c-nature" aria-pressed="false" data-en="&lt;span class=&quot;dot c-nature&quot;&gt;&lt;/span&gt;Nature"><span class="dot c-nature"></span>Nature</button><button type="button" class="f" data-cat="c-scene" aria-pressed="false" data-en="&lt;span class=&quot;dot c-scene&quot;&gt;&lt;/span&gt;Shows"><span class="dot c-scene"></span>Spectacles</button><button type="button" class="f" data-cat="c-culture" aria-pressed="false" data-en="&lt;span class=&quot;dot c-culture&quot;&gt;&lt;/span&gt;Culture"><span class="dot c-culture"></span>Culture</button><button type="button" class="f f-free" aria-pressed="false" data-en="Free">Gratuit</button></div>
@@ -195,6 +215,23 @@ h3{font-size:1.05rem;margin:20px 0 4px;color:var(--ink)}
       free = !free;
       Array.prototype.forEach.call(frees, function (x) { x.setAttribute('aria-pressed', String(free)); });
       apply();
+    });
+  });
+})();
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll('.crsl'), function (s) {
+    var t = s.querySelector('.crsl-track'), nav = s.querySelector('.crsl-nav');
+    if (!t || !nav || !window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
+    var b = nav.querySelectorAll('button');
+    function upd() { b[0].disabled = t.scrollLeft < 4; b[1].disabled = t.scrollLeft + t.clientWidth > t.scrollWidth - 4; }
+    if (t.scrollWidth <= t.clientWidth + 4) return;
+    nav.hidden = false; upd();
+    t.addEventListener('scroll', upd, { passive: true });
+    Array.prototype.forEach.call(b, function (x) {
+      x.addEventListener('click', function () {
+        var c = t.querySelector('.crsl-card');
+        t.scrollBy({ left: Number(x.getAttribute('data-d')) * (c ? c.getBoundingClientRect().width + 12 : 280), behavior: 'smooth' });
+      });
     });
   });
 })();

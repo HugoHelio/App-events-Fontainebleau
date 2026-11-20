@@ -1360,6 +1360,24 @@ a date. The organisers' section says that being listed is free and will stay so 
   who follows the link finds the same number.
 - No event picture (item 67, rights); typography and the four category colours. No price when
   the field says nothing (« Inconnu », « Non communiqué »…).
+
+**The same cards on the site (item 115 bis, November 21, 2026).** The project lead expected the
+carousel on the site's lasting pages too. The selection rule moved into `generate-pages.js`
+(`carouselPool`, `carouselPicks`, `carouselHtml`); `carousel.js` imports it, so the post and the
+pages can never disagree. A strip of cards (plain links in an `<ol>`, swiped on a phone with CSS
+scroll-snap, arrows only for a mouse and only when it overflows, `data-track="carousel"` with the
+page as id) opens:
+- `/ce-week-end/`: the post's picks for the weekend on show; it **replaces** the « À ne pas
+  manquer » list (same anchor, same TOC link), inside the `wk-cur` block hidden on Monday;
+- each holiday page (`/sorties/vacances-…/`): up to 6 picks within the holidays, same rules;
+- each seasonal page (`/sorties/<theme>/`): up to 6 picks in the next 42 days, **every category and
+  standing offers allowed** (every Christmas market is « Culture », and a market held each weekend
+  is the point of the page).
+
+Fewer than 3 cards: no strip, the page stays as it was. Cards in date order; dates short
+(« 18–20 déc. ») because a card is narrow. Event texts stay in French (no `data-en` on events).
+Fixed the same day: the standing-offer test read `/^d{4}-…/` (escapes lost), so no series was ever
+found standing; the petit train was only kept out by `NOT_NEWS`.
 - Posting stays by hand from the project lead's accounts (as `/publier/`, item 70): no API, no bot.
 
 ## 4. Data Schema (`data.json`, v2.1)
@@ -1724,6 +1742,7 @@ Since v2.1 the file is an object (v1/v2 wrote a bare array; both are read by the
 | 2026-11-20 | **Liens de saison de l'accueil : des tuiles sous le bandeau, plus sous les suggestions** (chef de projet : « on voit pas très bien le cadre qui est juste un cadre gris ») | Sur téléphone (87 % des visites), la liste des événements s'affiche en entier sous la carte : les pastilles grises des pages de saison arrivaient tout en bas, invisibles. Elles deviennent des tuiles blanches à liseré rouge ou doré (la boule du calendrier), avec icône, nom court et compteur (« Marchés de Noël · 29 dates », « Idées de cadeaux · 25 spectacles à offrir », « Calendrier de l'Avent · une case par jour », « Que faire à Noël ? · 57 dates »), deux par ligne sur téléphone, quatre sur ordinateur, **avant les filtres et la carte**. Bloc généré à part (`home-seasons`), retiré du bloc des suggestions. Le reste de l'année, les autres pages de saison y passent à leur tour (brame, champignons, Halloween, avec leur icône) ; quand aucune n'a de date dans les 30 jours, la bande disparaît. Mesure : clics `season-tile` dans GoatCounter, à relever avec l'item 113 début janvier |
 | 2026-11-20 | **Pas de pastille du bandeau pour une page qui a sa tuile ; boule de Noël dès le 15 novembre** (chef de projet) | « Marchés de Noël 29 » était deux fois en haut de l'accueil. `renderSeasonRow()` saute toute page dont la tuile est visible juste dessous (même adresse, `data-end` pas encore passé) ; « Vacances de Noël », sans tuile, reste. La boule rouge après le nom (`data-season="noel"`, `index.html` et `SEASON_HEAD` des pages générées) commence le 15/11 au lieu du 01/12, en même temps que les liens vers le calendrier de l'Avent ; fin inchangée, le 06/01 |
 | 2026-11-20 | **Monétisation : vendre des outils et des expériences, pas de l'information** (étude avec le chef de projet ; items 114, 115, 116) | 0 paiement en 18 jours de prix libre : le visiteur ne paie pas une information qu'il trouve ailleurs. À 5 000 visites par mois, l'audience sert de vitrine et de preuve ; ce qui peut se vendre sans démarcher : un outil aux communes (« agenda autopilote » : encart, affiche du mois, texte du bulletin — benchmarks : illiwap dès 125 € HT par an, IntraMuros 8 000 communes ; leur problème est la saisie, que le pipeline supprime), un kit de vitrine aux commerçants, un guide de séjour aux hébergeurs (Touch Stay 8,25 $ par logement et par mois, sans agenda local), des jeux de piste (familles, séminaires à 30-50 € HT par personne sur Funbooker, institutions sur le modèle Tèrra Aventura). Décidé : (1) **tester la demande avant de construire** — `/professionnels/`, liens par courriel comptés (114, §3.AC) ; le chef de projet s'attend à devoir démarcher en 2027 ; (2) **moteur de carrousels** pour un post chaque jeudi, sur les seules fiches confirmées (115, §3.AC) — devenir un compte local suivi ; (3) **jeux de piste**, le domaine du chef de projet, backlog en phases (116). Écartés : appli d'escalade (Boolder, gratuit et excellent), revente de données (§3.G), audioguide sur une plateforme tierce |
+| 2026-11-21 | **Le carrousel aussi sur le site, publication semi-automatique ensuite** (item 115 bis, chef de projet) | Le chef de projet attendait le carrousel sur les pages durables (« que faire ce week-end », vacances de Noël). Une seule règle de sélection, dans `generate-pages.js`, pour le post et les pages : le visiteur qui suit le post retrouve les mêmes cartes. Sur `/ce-week-end/`, le bandeau remplace la liste « À ne pas manquer » (deux sélections différentes se contrediraient). Réseaux : le chef de projet crée la page Facebook et le compte Instagram ; publication par l'API officielle avec un jeton dans les secrets GitHub (aucun mot de passe partagé), d'abord sur un clic après aperçu — un post de marque faux se voit plus qu'une date fausse |
 | 2026-11-20 | **Du jeu de piste à Bleau Quest, jeu de collection géolocalisé** (item 116, chef de projet : « les escape games, c'est relou… moi je fais des jeux vidéo ») | Un jeu de piste se joue une fois et il y en a déjà cinq à Fontainebleau. Un jeu de **collection** permanent, solo, toute l'année, n'existe pas ici : lieux réels à débloquer (cartes sourcées, séries, rareté), XP et niveaux (leçon de Dragon Quest Walk : la marche fait progresser), quêtes en couches dont **les événements de l'agenda le jour J** (ce que personne d'autre n'a) et « 5 Must Climb » pour les grimpeurs. Validation généreuse (GPS, question ou honneur). Web d'abord, Android plus tard (TWA). Style graphique à essayer ; commerçants partenaires plus tard. GDD : `Bleau-Quest-GDD.md` ; maquette M0 : `scripts/bleau-quest-mock.js` (locale, textes provisoires) |
 | 2026-11-21 | **Bleau Quest : les événements au centre, grimpe en famille, pas de compte pour jouer** (item 116, retours du chef de projet sur la maquette) | Les événements de l'agenda sont la force du site : ils deviennent la mécanique la plus visible (carrés « LIVE », onglet En direct, événement du jour à XP doublée) et la plus payante en XP. « 5 Must Climb » devient cinq **sites** à visiter en famille, pas cinq blocs durs : le jeu doit rester très accessible. Couches à cocher comme sur une application de cartes. Compte : aucun pour jouer (chaque inscription perd des joueurs et oblige à garder des données personnelles) ; un compte facultatif viendra avec les équipes ou les achats. Ce qui s'achète ne donne jamais d'XP, de lieu ni d'événement ; premier revenu réaliste : la session d'équipe (séminaires, INSEAD, hôtels). Style : celui du site. GDD v0.2 |
 
@@ -2351,7 +2370,15 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   selon le chef de projet : une story « aujourd'hui », un visuel par commune pour les groupes
   (`/publier/`), une vidéo verticale (script + plans à filmer), une voix ou une mascotte (un
   animal du bestiaire), du contenu plus personnel (coup de cœur de la semaine, photo prise sur
-  place) ; (d) jamais de publication automatique : le compte est le canal (item 70).
+  place) ; (d) **publication semi-automatique** (21/11, chef de projet : créer une page Facebook et
+  un compte Instagram professionnel « Fontainebleau Live ») : quelques jeudis publiés à la main
+  d'abord, puis un workflow qui fabrique le carrousel le mercredi, envoie l'aperçu, et publie le
+  jeudi **sur un clic** (API Instagram Graph : app Meta en mode développement, jeton longue durée
+  dans un secret GitHub, jamais de mot de passe ; images servies par le site). Le tout automatique
+  seulement après plusieurs semaines sans correction.
+  - [x] **115 bis. Les mêmes cartes sur le site, fait le 21/11 (§3.AC)** : bandeau à faire défiler
+    sur `/ce-week-end/` (remplace la liste « À ne pas manquer »), les pages de vacances et de
+    saison ; règle de sélection déplacée dans `generate-pages.js`, partagée avec `carousel.js`.
 - [ ] **116. Bleau Quest — jeu de collection géolocalisé. Décidé le 20/11 (chef de projet, « je
   viens du jeu vidéo »), GDD : [Bleau-Quest-GDD.md](Bleau-Quest-GDD.md).** Remplace le jeu de piste
   envisagé le même jour (« les escape games, c'est relou ») et l'item 110. Le territoire comme un

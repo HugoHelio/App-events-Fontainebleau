@@ -1194,6 +1194,8 @@ function hereList(t, events) {
 }
 
 // `allEvents`: the whole agenda, for the link to the gift page (giftShows), not the theme's list.
+const THEME_CAROUSEL_DAYS = 42;
+
 function themePage(t, events, today, allEvents = []) {
   // The year of the season on show: the first event's, or this year when there is none yet.
   const year = (events[0] ? events[0].startDate : today).slice(0, 4);
@@ -1201,22 +1203,23 @@ function themePage(t, events, today, allEvents = []) {
   const related = t.related && HOLIDAYS.find((h) => h.slug === t.related);
   const relYear = related ? holidayPeriod(related, today).from.slice(0, 4) : '';
   const also = [].concat(t.also || []).map((s) => THEMES.find((x) => x.slug === s)).filter(Boolean);
+  const strip = carouselHtml(carouselPicks(events.filter((e) => e.startDate <= addDays(today, THEME_CAROUSEL_DAYS)), null, { max: 6, perCat: Infinity }), { id: 'a-ne-pas-manquer', h: 'À ne pas manquer', hEn: 'Don’t miss', track: t.slug });
   const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a></nav>
 <h1${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</h1>
 <p${en(esc(t.introEn))}>${esc(t.intro)}</p>
-${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
+${strip}${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
 ${hereList(t, events)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
 ${t.gift && giftSeason(today) && giftShows(allEvents, today).length ? `<p><a href="/${THEMES_DIR}/${GIFT_SLUG}/"${en(`🎁 Christmas gift ideas ${giftYear(today)}: shows to give`)}>🎁 Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir</a></p>\n` : ''}${also.map((a) => `<p><a href="/${THEMES_DIR}/${a.slug}/"${en(esc(a.h1En(year).endsWith('?') ? `${a.h1En(year)} All dates` : `${a.h1En(year)}: all dates`))}>${esc(allDates(a.h1(year)))}</a></p>\n`).join('')}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
 ${t.promo ? `<p class="av-link"><a href="/${AVENT_DIR}/"${en(`🎄 The forest Advent calendar ${year}: one door a day for the children`)}>🎄 Le calendrier de l’Avent ${year} de la forêt : une case par jour pour les enfants</a></p>
 ${guidesPromo(GUIDES, t.promo)}
-` : ''}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
+` : ''}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>${strip ? `\n<script>\n${CAROUSEL_SCRIPT}\n</script>` : ''}`;
   return layout({
     title: `${t.title(year)} | Fontainebleau Live`,
     description: truncate(n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro, 155),
     canonical: `${SITE_URL}/${THEMES_DIR}/${t.slug}/`,
     body,
     titleEn: `${t.titleEn(year)} | Fontainebleau Live`,
-  }).replace('</style>', `${t.faq ? `${FAQ_STYLE}\n` : ''}${t.promo ? `${PROMO_STYLE}\n` : ''}</style>`);
+  }).replace('</style>', `${t.faq ? `${FAQ_STYLE}\n` : ''}${t.promo ? `${PROMO_STYLE}\n` : ''}${strip ? `${CAROUSEL_STYLE}\n` : ''}</style>`);
 }
 
 // ───────────────────────────── This weekend (item 74.3) ─────────────────────────────
@@ -1454,6 +1457,8 @@ function holidayPage(h, events, today, places = []) {
   // A title that says "enfants" or "Halloween" is not enough when the organiser set an age floor.
   const family = short.filter((e) => FAMILY.test(themeKey(e.title)) && !(Number(e.ageMin) >= 12)).slice(0, FAMILY_MAX);
   if (family.length) toc.unshift({ id: 'en-famille', nav: 'En famille', navEn: 'Family' });
+  const strip = p.over ? '' : carouselHtml(carouselPicks(short, events, { max: 6 }), { id: 'a-ne-pas-manquer', h: 'À ne pas manquer pendant les vacances', hEn: 'Don’t miss during the holidays', track: h.slug });
+  if (strip) toc.unshift({ id: 'a-ne-pas-manquer', nav: 'À ne pas manquer', navEn: 'Don’t miss' });
 
   const n = short.length;
   const themesHere = THEMES.filter((t) => t.slug !== 'noel')
@@ -1471,14 +1476,14 @@ function holidayPage(h, events, today, places = []) {
 <p class="when"${en(esc(`From ${enDM(p.from)} to ${enDMY(p.to)}`))}>${esc(first(`Du ${frDate(p.from).replace(/ \d{4}$/, '')} au ${frDate(p.to)}`))}</p>
 <p${en(esc(h.introEn))}>${esc(h.intro)}</p>
 <p${en(esc(leadEn))}>${esc(lead)}</p>
-${nowHtml(themesHere, 'Pendant les vacances', 'During the holidays')}
+${strip}${nowHtml(themesHere, 'Pendant les vacances', 'During the holidays')}
 ${toc.length > 1 ? `<nav class="toc" aria-label="Sommaire">${toc.map((s) => `<a href="#${s.id}"${en(esc(s.navEn))}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${family.length ? `<h2 id="en-famille"${en('Family outing ideas')}>Idées de sorties en famille</h2>\n<ul class="list">${family.map(eventItem).join('')}</ul>` : ''}
 ${n ? LEGEND : ''}
 ${sections.map(daySection).join('\n')}${p.over ? '' : visitHtml(placesOpen(places, start, p.to), 'À visiter pendant les vacances', 'Places to visit during the holidays')}${p.over ? '' : guidesPromo()}
 ${faqHtml(h.faq, h.faqEn)}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>
 <script>
-${FILTER_SCRIPT}
+${FILTER_SCRIPT}${strip ? `\n${CAROUSEL_SCRIPT}` : ''}
 </script>`;
 
   return layout({
@@ -1487,7 +1492,7 @@ ${FILTER_SCRIPT}
     canonical: `${SITE_URL}/${THEMES_DIR}/${h.slug}/`,
     body,
     titleEn: `${h.titleEn(year)} | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${FAQ_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}${strip ? `\n${CAROUSEL_STYLE}` : ''}\n</style>`);
 }
 
 /** /sorties/ — every seasonal hub, holidays first. A plain page of links a crawler can follow. */
@@ -1656,6 +1661,173 @@ function picksOf(list, max = PICKS_MAX) {
     .map(({ e }) => e);
 }
 
+// ─── Carousel: the Thursday post's picks, on the site (item 115 bis, 21/11) ───
+//
+// One rule for the Instagram/Facebook post (scripts/carousel.js) and for the strip that opens the
+// weekend, holiday and seasonal pages, so a visitor who follows the post finds the same cards.
+// Stricter than picksOf: a source we read (Fnac dates count, their link is the ticket page), four
+// days at most, no standing offer, the nearest first, varied by category and by town.
+const CAROUSEL_MAX = 5;
+const CAROUSEL_MIN = 3;
+const CAROUSEL_PER_CATEGORY = 2;
+const CAROUSEL_PER_TOWN = 1;
+const CAROUSEL_CENTRE_TOWN = 'Fontainebleau';
+const CAROUSEL_PER_TOWN_CENTRE = 3;
+const CAROUSEL_SOURCES = new Set(['site', 'datatourisme', 'openagenda', 'francebillet']);
+const STANDING_WEEKENDS = 4;
+// Titles never worth a card, whatever the data says this week (project lead, 20/11), and titles
+// that say themselves they recur (« tous les 1er et 3e samedis du mois », « chaque dimanche »).
+const NOT_NEWS = [
+  /petit train/i,
+  /\b(tous les|chaque)\s+(\d\S*\s+(et\s+\d\S*\s+)?)?(lundis?|mardis?|mercredis?|jeudis?|vendredis?|samedis?|dimanches?|week-ends?|semaines?|mois)\b/i,
+];
+// Distance from the town centre (place Napoléon-Bonaparte). An event without a position counts in
+// the outer ring: it is never preferred over one we can place.
+const TOWN_CENTRE = { lat: 48.4045, lng: 2.7016 };
+const RINGS_KM = [3, 8, 15]; // Fontainebleau and Avon; the forest's edge villages; the first circle
+function kmFromCentre(e) {
+  if (!Number.isFinite(e.lat) || !Number.isFinite(e.lng)) return Infinity;
+  const r = Math.PI / 180, x = (e.lng - TOWN_CENTRE.lng) * r * Math.cos(((e.lat + TOWN_CENTRE.lat) / 2) * r), y = (e.lat - TOWN_CENTRE.lat) * r;
+  return Math.sqrt(x * x + y * y) * 6371;
+}
+const ringOf = (e) => { const k = kmFromCentre(e); const i = RINGS_KM.findIndex((m) => k <= m); return i < 0 ? RINGS_KM.length : i; };
+
+// Same outing, same town: one series, whatever its dates.
+const seriesKey = (e) => `${slugify(e.title)}|${e.city}`;
+/** Series met on STANDING_WEEKENDS distinct weekends or more, across the whole data: a standing offer. */
+function standingKeys(events) {
+  const weekends = new Map();
+  for (const e of events) {
+    if (!e || !e.title || !isIsoDate(e.startDate)) continue;
+    const set = weekends.get(seriesKey(e)) || new Set();
+    // Saturdays of every weekend the record overlaps (capped: a season-long record is one series).
+    for (let d = e.startDate, n = 0; d <= endOf(e) && n < 400; d = addDays(d, 1), n++) {
+      const dow = new Date(`${d}T00:00:00Z`).getUTCDay();
+      if (dow === 6 || dow === 0) set.add(weekendOf(d).sat);
+    }
+    weekends.set(seriesKey(e), set);
+  }
+  return new Set([...weekends].filter(([, set]) => set.size >= STANDING_WEEKENDS).map(([k]) => k));
+}
+
+/** What may go on a card, among `open` (already cut to the dates); `all` finds standing offers. */
+function carouselPool(open, all) {
+  const standing = all ? standingKeys(all) : new Set();
+  return open.filter((e) => !standing.has(seriesKey(e)) && !NOT_NEWS.some((re) => re.test(e.title))
+    && CAROUSEL_SOURCES.has(e.source) && (e.urlStatus === 'ok' || e.source === 'francebillet') && spanDays(e) <= 4);
+}
+
+/**
+ * The cards, in pick order. picksOf keeps verified links only; Fnac dates follow in the same order
+ * after them. Then the nearest first (project lead, 20/11): the ring decides, the « À ne pas
+ * manquer » order breaks ties inside a ring (a sort is stable). `perCat: Infinity` on a seasonal
+ * page, where every market is « Culture ».
+ */
+function carouselPicks(open, all, { max = CAROUSEL_MAX, maxKm = Infinity, perCat = CAROUSEL_PER_CATEGORY } = {}) {
+  const on = carouselPool(open, all);
+  const ranked = [...picksOf(on, on.length), ...on.filter((e) => e.source === 'francebillet' && e.urlStatus !== 'ok')]
+    .filter((e) => kmFromCentre(e) <= maxKm)
+    .sort((a, b) => ringOf(a) - ringOf(b));
+  const out = [], byCat = {}, byTown = {};
+  for (const e of ranked) {
+    if (out.length >= max) break;
+    const townCap = e.city === CAROUSEL_CENTRE_TOWN ? CAROUSEL_PER_TOWN_CENTRE : CAROUSEL_PER_TOWN;
+    if ((byCat[e.category] || 0) >= perCat || (byTown[e.city] || 0) >= townCap) continue;
+    if (out.some((o) => slugify(o.title) === slugify(e.title))) continue;
+    out.push(e);
+    byCat[e.category] = (byCat[e.category] || 0) + 1;
+    byTown[e.city] = (byTown[e.city] || 0) + 1;
+  }
+  return out;
+}
+
+const CAROUSEL_CAT = {
+  'Sport & Outdoor': { label: 'Sport', labelEn: 'Sport', color: '#0f8f9e' },
+  'Nature & Environnement': { label: 'Nature', labelEn: 'Nature', color: '#5f8f2f' },
+  'Scène & Spectacles': { label: 'Spectacle', labelEn: 'Show', color: '#4a5bb8' },
+  'Culture & Ateliers': { label: 'Culture', labelEn: 'Culture', color: '#9247a0' },
+};
+const carouselCat = (e) => CAROUSEL_CAT[e.category] || { label: 'Sortie', labelEn: 'Outing', color: '#1d3b29' };
+
+// A price worth printing on a card: short, and not a way of saying « we don't know ».
+const NO_PRICE = /^(inconnu|non (communiqu|pr[ée]cis|renseign)|n.?s?c.?$|nc$|voir |sur r[ée]servation$|-$)/i;
+function carouselPrice(e) {
+  if (isFree(e)) return 'Gratuit';
+  const p = String(e.price || '').trim();
+  return p && p.length <= 28 && !NO_PRICE.test(p) ? p : '';
+}
+
+/** « Samedi · 20h » on a weekend; « sam. 19 déc. · 20h » or « 18–20 déc. » elsewhere (a card is narrow). */
+function carouselWhen(e, weekend) {
+  const t = timeOf(e.schedule);
+  let d;
+  if (weekend) {
+    const s = e.startDate <= weekend.sat && endOf(e) >= weekend.sat, u = e.startDate <= weekend.sun && endOf(e) >= weekend.sun;
+    d = s && u ? 'Samedi et dimanche' : s ? 'Samedi' : 'Dimanche';
+  } else d = homePickDate(e.startDate, endOf(e));
+  return t ? `${d} · ${t}` : d;
+}
+const isFamily = (e) => FAMILY.test(themeKey(e.title)) && !(Number(e.ageMin) >= 12);
+
+/**
+ * The strip: plain links in a list, so it reads without CSS or JavaScript; swiped on a phone
+ * (scroll-snap), arrows on a computer. Event texts stay in French (no data-en on events).
+ */
+function carouselHtml(picks, { id, h, hEn, track, weekend }) {
+  if (picks.length < CAROUSEL_MIN) return '';
+  // In date order, then by time: picked by rank, read as a programme (the post does the same).
+  const cards = picks.slice().sort((a, b) => a.startDate.localeCompare(b.startDate) || timeKey(a) - timeKey(b)).map((e) => {
+    const c = carouselCat(e), price = carouselPrice(e);
+    return `<li class="crsl-card"><a href="${esc(e.pagePath)}" data-track="carousel" data-id="${esc(track)}"><span class="crsl-band" style="background:${c.color}"></span>`
+      + `<span class="crsl-chip" style="background:${c.color}"${en(esc(c.labelEn))}>${esc(c.label)}</span>`
+      + `<b class="crsl-t">${esc(e.title)}</b><span class="crsl-w">${esc(carouselWhen(e, weekend))}</span><span class="crsl-p">${esc(place(e))}</span>`
+      + `<span class="crsl-b">${price ? `<span class="crsl-badge${price === 'Gratuit' ? ' crsl-free' : ''}">${esc(price)}</span>` : ''}${isFamily(e) ? `<span class="crsl-badge"${en('Family')}>En famille</span>` : ''}</span></a></li>`;
+  }).join('');
+  return `<section class="crsl" id="${id}" aria-label="${esc(h)}"><div class="crsl-head"><h2${en(esc(hEn))}>${esc(h)}</h2><span class="crsl-nav" hidden><button type="button" data-d="-1" aria-label="Précédent">‹</button><button type="button" data-d="1" aria-label="Suivant">›</button></span></div>
+<ol class="crsl-track">${cards}</ol></section>`;
+}
+
+const CAROUSEL_STYLE = `
+.crsl{margin:18px 0 8px}
+.crsl-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.crsl-head h2{margin:0}
+.crsl-nav button{font:inherit;font-size:22px;line-height:1;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;margin-left:6px}
+.crsl-nav button:disabled{opacity:.35;cursor:default}
+.crsl-track{list-style:none;margin:10px 0 0;padding:2px 2px 10px;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.crsl-card{flex:0 0 78%;max-width:290px;scroll-snap-align:start;margin:0}
+.crsl-card a{position:relative;display:flex;flex-direction:column;gap:6px;height:100%;min-height:210px;padding:14px 14px 14px 20px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--text);text-decoration:none;overflow:hidden}
+.crsl-card a:hover{border-color:var(--ink)}
+.crsl-card a:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+.crsl-band{position:absolute;left:0;top:0;bottom:0;width:6px}
+.crsl-chip{align-self:flex-start;padding:2px 10px;border-radius:999px;color:#fff;font-size:12px;font-weight:700}
+.crsl-t{font-size:1.08rem;line-height:1.25;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
+.crsl-w{font-weight:700;font-size:14px;color:var(--ink);margin-top:auto}
+.crsl-p{font-size:14px;color:var(--muted)}
+.crsl-b{display:flex;flex-wrap:wrap;gap:6px}
+.crsl-badge{padding:1px 8px;border-radius:8px;border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--ink)}
+.crsl-badge.crsl-free{background:#ecf3e0;border-color:#ecf3e0;color:#3d5d1d}
+@media (min-width:700px){.crsl-card{flex-basis:31%}}
+`.trim();
+
+// Arrows only where a mouse needs them, and only when the strip overflows.
+const CAROUSEL_SCRIPT = `(function () {
+  Array.prototype.forEach.call(document.querySelectorAll('.crsl'), function (s) {
+    var t = s.querySelector('.crsl-track'), nav = s.querySelector('.crsl-nav');
+    if (!t || !nav || !window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
+    var b = nav.querySelectorAll('button');
+    function upd() { b[0].disabled = t.scrollLeft < 4; b[1].disabled = t.scrollLeft + t.clientWidth > t.scrollWidth - 4; }
+    if (t.scrollWidth <= t.clientWidth + 4) return;
+    nav.hidden = false; upd();
+    t.addEventListener('scroll', upd, { passive: true });
+    Array.prototype.forEach.call(b, function (x) {
+      x.addEventListener('click', function () {
+        var c = t.querySelector('.crsl-card');
+        t.scrollBy({ left: Number(x.getAttribute('data-d')) * (c ? c.getBoundingClientRect().width + 12 : 280), behavior: 'smooth' });
+      });
+    });
+  });
+})();`;
+
 /**
  * Home page suggestions (item 86): the "À ne pas manquer" rule over the next two weeks, written
  * into index.html as plain HTML. Everything else on the home page is drawn by JavaScript, so
@@ -1779,6 +1951,8 @@ function weekendPage(events, today, places = []) {
   const satLabel = dayName(sat), sunLabel = dayName(sun);
   const dayWord = (e) => (today === sun ? '' : on(sat)(e) && on(sun)(e) ? 'samedi et dimanche' : on(sat)(e) ? 'samedi' : 'dimanche');
   const picks = picksOf(today === sun ? sunOnly : short);
+  // The Thursday post's cards (item 115 bis): when there are enough, they replace the list.
+  const strip = carouselHtml(carouselPicks(short, events), { id: 'a-ne-pas-manquer', h: 'À ne pas manquer', hEn: 'Don’t miss', track: WEEKEND_DIR, weekend: { sat, sun } });
 
   // On Sunday the page shows the day itself: the next weekend follows, so the page still has
   // something to offer on Sunday evening.
@@ -1795,7 +1969,8 @@ function weekendPage(events, today, places = []) {
     { id: 'dimanche', nav: today === sun ? 'Aujourd’hui' : 'Dimanche', navEn: today === sun ? 'Today' : 'Sunday', h: today === sun ? `Aujourd’hui, ${sunLabel}` : cap(sunLabel), hEn: today === sun ? `Today, ${enDay(sun)}` : enDay(sun), list: sunOnly },
   ].filter((s) => s.list.length);
   if (long.length) sections.push({ id: 'expositions', nav: 'Expositions', navEn: 'Exhibitions', h: 'Expositions et visites en cours', hEn: 'Exhibitions and visits on now', list: long, long: true });
-  const curSections = sections.slice();
+  const curSections = sections.filter((s) => !(strip && s.id === 'a-ne-pas-manquer'));
+  const tocSections = sections.slice();
   if (nextList.length) {
     const sameMonth = next.sat.slice(5, 7) === next.sun.slice(5, 7);
     sections.push({ id: 'week-end-prochain', nav: 'Week-end prochain', navEn: 'Next weekend', h: `Le week-end prochain : ${sameMonth ? dayName(next.sat).replace(/ \S+$/, '') : dayName(next.sat)} et ${dayName(next.sun)}`, hEn: `Next weekend: ${sameMonth ? enDate(next.sat, { weekday: 'long', day: 'numeric' }) : enDay(next.sat)} and ${enDay(next.sun)}`, list: nextList, note: nextWord });
@@ -1816,16 +1991,16 @@ function weekendPage(events, today, places = []) {
 <p${en(n ? `${enPl(n, 'outing')} ${today === sun ? 'today' : 'this weekend'} in Fontainebleau and the neighbouring towns: sport, nature, shows, culture and family outings. Updated every day.` : 'Nothing announced for this weekend yet: come back in a few days, the programme is updated every day.')}>${n ? `${n} sortie${n > 1 ? 's' : ''} ${today === sun ? 'aujourd’hui' : 'ce week-end'} à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.` : 'Rien d’annoncé pour l’instant ce week-end : revenez dans quelques jours, le programme se met à jour chaque jour.'}</p></div>
 ${nextList.length ? `<div class="wk-next" hidden><p class="when"><span class="we"><img src="/public/assets/img/brand/calendrier-sam-dim.svg" alt="" width="46" height="36"><span${en('Weekend')}>Week-end</span></span> <span${en(`of ${esc(weRangeEn(next.sat, next.sun))}`)}>du ${esc(weRange(next.sat, next.sun))}</span></p>
 <p${en(`${enPl(nextList.length, 'outing')} this weekend in Fontainebleau and the neighbouring towns: sport, nature, shows, culture and family outings. Updated every day.`)}>${nextList.length} sortie${nextList.length > 1 ? 's' : ''} ce week-end à Fontainebleau et dans les communes voisines : sport, nature, spectacles, culture et sorties en famille. Mis à jour chaque jour.</p></div>\n` : ''}${nowHtml(now)}
-${sections.length > 1 ? `<nav class="toc wk-cur" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}"${s.navEn ? en(esc(s.navEn)) : ''}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
+${strip ? `<div class="wk-cur">${strip}</div>\n` : ''}${sections.length > 1 ? `<nav class="toc wk-cur" aria-label="Sommaire">${sections.map((s) => `<a href="#${s.id}"${s.navEn ? en(esc(s.navEn)) : ''}>${esc(s.nav)}</a>`).join('')}</nav>` : ''}
 ${n || nextList.length ? LEGEND : ''}
 <div class="wk-cur">${curSections.map(daySection).join('\n')}</div>
-${sections.filter((s) => !curSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}${guidesPromo()}
+${sections.filter((s) => !tocSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}${guidesPromo()}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/"${en('Today')}>Aujourd’hui</a> `}<a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText, shareTextEn)}
 ${proBox('week-end', 'Commerçant, hébergeur : ce programme pourrait s’afficher dans votre vitrine ou dans le guide de vos voyageurs. Nous le préparons, dites-nous ce qui vous servirait.', '#commercants', 'Shops and B&Bs: this programme could hang in your window or go into your guests’ guide. We are preparing it: tell us what would help.')}
 <p class="note"><a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a>${seasonalHubs(events, today).filter((x) => x.live).map((x) => ` · <a href="/${THEMES_DIR}/${x.slug}/"${en(esc(x.nameEn))}>${esc(x.name)}</a>`).join('')}.</p>
 <script>
-${FILTER_SCRIPT}${nextList.length ? `
+${FILTER_SCRIPT}${strip ? `\n${CAROUSEL_SCRIPT}` : ''}${nextList.length ? `
 (function () {
   // Built on Sunday, the page is read on Monday morning too, before the night rebuild lands
   // (GitHub starts scheduled runs hours late): past that Sunday, the next weekend takes over.
@@ -1844,7 +2019,7 @@ ${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fo
     canonical: `${SITE_URL}/${WEEKEND_DIR}/`,
     body,
     titleEn: `What’s on this weekend around Fontainebleau? (${rangeEn}) | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n${PARTNER_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n${PARTNER_STYLE}${strip ? `\n${CAROUSEL_STYLE}` : ''}\n</style>`);
 }
 
 // ─── /aujourdhui/ (item 78) ───
@@ -3099,6 +3274,8 @@ if (require.main === module) {
 }
 
 module.exports = {
+  carouselPool, carouselPicks, carouselCat, carouselPrice, carouselWhen, isFamily, kmFromCentre, standingKeys, seriesKey,
+  CAROUSEL_MAX, CAROUSEL_MIN, NOT_NEWS,
   build, pagePath, slugify, idToken, tokenOfDir, offers, ageLabel, dateLabel, esc, safeUrl,
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
   THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf, TODAY_DIR,

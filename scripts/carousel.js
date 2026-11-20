@@ -44,28 +44,10 @@ const G = require('./generate-pages');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'fontainebleaulive.fr';
-const MAX_SLIDES = 5;
-const MIN_SLIDES = 3;
-const PER_CATEGORY = 2;
-const PER_TOWN = 1;
-const CENTRE_TOWN = 'Fontainebleau';
-const PER_TOWN_CENTRE = 3;
-const STANDING_WEEKENDS = 4;
-// Titles never worth a slide, whatever the data says this week (project lead, 20/11), and titles
-// that say themselves they recur (« tous les 1er et 3e samedis du mois », « chaque dimanche »).
-const NOT_NEWS = [
-  /petit train/i,
-  /\b(tous les|chaque)\s+(\d\S*\s+(et\s+\d\S*\s+)?)?(lundis?|mardis?|mercredis?|jeudis?|vendredis?|samedis?|dimanches?|week-ends?|semaines?|mois)\b/i,
-];
-const CONFIRMED = new Set(['site', 'datatourisme', 'openagenda', 'francebillet']);
-
-const CAT = {
-  'Sport & Outdoor': { label: 'Sport', color: '#0f8f9e' },
-  'Nature & Environnement': { label: 'Nature', color: '#5f8f2f' },
-  'Scène & Spectacles': { label: 'Spectacle', color: '#4a5bb8' },
-  'Culture & Ateliers': { label: 'Culture', color: '#9247a0' },
-};
-const catOf = (e) => CAT[e.category] || { label: 'Sortie', color: '#1d3b29' };
+// The rule lives in generate-pages.js (item 115 bis): the site's strips show the same cards.
+const MAX_SLIDES = G.CAROUSEL_MAX;
+const MIN_SLIDES = G.CAROUSEL_MIN;
+const catOf = G.carouselCat;
 const esc = G.esc;
 
 function loadEvents() {
@@ -75,36 +57,8 @@ function loadEvents() {
 
 const endOf = (e) => (/^\d{4}-\d{2}-\d{2}$/.test(String(e.endDate || '')) ? e.endDate : e.startDate);
 
-/** The slides' events: confirmed, on the weekend, ranked like the weekend page, then varied. */
-// Distance from the town centre (place Napoléon-Bonaparte). An event without a position counts
-// in the outer ring: it is never preferred over one we can place.
-const CENTRE = { lat: 48.4045, lng: 2.7016 };
-const RINGS_KM = [3, 8, 15]; // Fontainebleau and Avon; the forest's edge villages; the first circle
-function kmFrom(e) {
-  if (!Number.isFinite(e.lat) || !Number.isFinite(e.lng)) return Infinity;
-  const r = Math.PI / 180, x = (e.lng - CENTRE.lng) * r * Math.cos(((e.lat + CENTRE.lat) / 2) * r), y = (e.lat - CENTRE.lat) * r;
-  return Math.sqrt(x * x + y * y) * 6371;
-}
+const kmFrom = G.kmFromCentre;
 const byKm = (list) => list.slice().sort((a, b) => kmFrom(a) - kmFrom(b));
-const ringOf = (e) => { const k = kmFrom(e); const i = RINGS_KM.findIndex((m) => k <= m); return i < 0 ? RINGS_KM.length : i; };
-
-// Same outing, same town: one series, whatever its dates.
-const seriesKey = (e) => `${G.slugify(e.title)}|${e.city}`;
-/** Series met on STANDING_WEEKENDS distinct weekends or more, across the whole data: a standing offer. */
-function standingKeys(events) {
-  const weekends = new Map();
-  for (const e of events) {
-    if (!e || !e.title || !/^d{4}-d{2}-d{2}$/.test(String(e.startDate || ''))) continue;
-    const set = weekends.get(seriesKey(e)) || new Set();
-    // Saturdays of every weekend the record overlaps (capped: a season-long record is one series).
-    for (let d = e.startDate, n = 0; d <= endOf(e) && n < 400; d = G.addDays(d, 1), n++) {
-      const dow = new Date(`${d}T00:00:00Z`).getUTCDay();
-      if (dow === 6 || dow === 0) set.add(G.weekendOf(d).sat);
-    }
-    weekends.set(seriesKey(e), set);
-  }
-  return new Set([...weekends].filter(([, set]) => set.size >= STANDING_WEEKENDS).map(([k]) => k));
-}
 
 function select(events, today, pick = [], maxKm = Infinity) {
   const { sat, sun } = G.weekendOf(today);
@@ -113,50 +67,22 @@ function select(events, today, pick = [], maxKm = Infinity) {
   // The count the post announces is the weekend page's own (outings of up to a week, every source):
   // the visitor who follows the link must find that number there.
   const total = open.filter((e) => G.spanDays(e) <= G.FEED_MAX_DAYS).length;
-  const standing = standingKeys(events);
-  const on = open.filter((e) => !standing.has(seriesKey(e)) && !NOT_NEWS.some((re) => re.test(e.title)) && CONFIRMED.has(e.source) && (e.urlStatus === 'ok' || e.source === 'francebillet')
-    && G.spanDays(e) <= 4);
+  const on = G.carouselPool(open, events);
   if (pick.length) {
     const chosen = pick.map((id) => on.find((e) => e.id === id) || id);
     const refused = chosen.filter((x) => typeof x === 'string');
     if (refused.length) throw new Error(`PICK : ${refused.join(', ')} absent(s) du week-end, non confirmé(s) par une source lue ou de plus de 4 jours`);
     return { sat, sun, picks: chosen.slice(0, MAX_SLIDES), total, candidates: byKm(on) };
   }
-  // picksOf keeps verified links only; Fnac dates follow in the same order after them. Then the
-  // nearest first (project lead, 20/11: Fontainebleau or close to it): the ring decides, the
-  // « À ne pas manquer » order breaks ties inside a ring. A sort is stable, so that order stays.
-  const ranked = [...G.picksOf(on, on.length), ...on.filter((e) => e.source === 'francebillet' && e.urlStatus !== 'ok')]
-    .filter((e) => kmFrom(e) <= maxKm)
-    .sort((a, b) => ringOf(a) - ringOf(b));
-  const out = [], perCat = {}, perTown = {};
-  for (const e of ranked) {
-    if (out.length >= MAX_SLIDES) break;
-    const townCap = e.city === CENTRE_TOWN ? PER_TOWN_CENTRE : PER_TOWN;
-    if ((perCat[e.category] || 0) >= PER_CATEGORY || (perTown[e.city] || 0) >= townCap) continue;
-    if (out.some((o) => G.slugify(o.title) === G.slugify(e.title))) continue;
-    out.push(e);
-    perCat[e.category] = (perCat[e.category] || 0) + 1;
-    perTown[e.city] = (perTown[e.city] || 0) + 1;
-  }
+  const out = G.carouselPicks(open, events, { maxKm });
   // Slides follow the weekend: Saturday first, then by time.
   const day = (e) => (e.startDate > sat ? e.startDate : sat);
   out.sort((a, b) => day(a).localeCompare(day(b)) || G.timeKey(a) - G.timeKey(b));
   return { sat, sun, picks: out, total, candidates: byKm(on) };
 }
 
-function whenOf(e, sat, sun) {
-  const s = e.startDate <= sat && endOf(e) >= sat, d = e.startDate <= sun && endOf(e) >= sun;
-  const days = s && d ? 'Samedi et dimanche' : s ? 'Samedi' : 'Dimanche';
-  const t = G.timeOf(e.schedule);
-  return t ? `${days} · ${t}` : days;
-}
-
-const NO_PRICE = /^(inconnu|non (communiqu|pr[ée]cis|renseign)|n.?s?c.?$|nc$|voir |sur r[ée]servation$|-$)/i;
-function priceOf(e) {
-  if (G.isFree(e)) return 'Gratuit';
-  const p = String(e.price || '').trim();
-  return p && p.length <= 28 && !NO_PRICE.test(p) ? p : '';
-}
+const whenOf = (e, sat, sun) => G.carouselWhen(e, { sat, sun });
+const priceOf = G.carouselPrice;
 
 function rangeLabel(sat, sun) {
   const a = G.dayName(sat), b = G.dayName(sun); // « samedi 21 novembre »
