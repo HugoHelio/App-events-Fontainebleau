@@ -852,6 +852,7 @@ const THEMES = [
     slug: 'marches-de-noel',
     match: /\b(marches? de noel|village (et |& )?marche de noel|village de noel|noel (au |du )?marche)\b/,
     name: 'Marchés de Noël',
+    icon: '🎄',
     // Item 106 (19/11): "marché de noël fontainebleau 2026" is the Christmas search that clicks
     // (position 2.6 on the event page, 8.6 here). The town's own markets come first, by data.
     title: (y) => `Marchés de Noël ${y} à Fontainebleau et alentour : dates et horaires`,
@@ -881,6 +882,7 @@ const THEMES = [
     slug: 'noel',
     match: /\bnoel\b/,
     name: 'Noël',
+    icon: '⭐', short: 'Que faire à Noël ?', shortEn: 'Christmas outings',
     // Worded as the search is typed, like Halloween (item 106, 19/11).
     title: (y) => `Que faire à Fontainebleau pour Noël ${y} ? Marchés, spectacles et animations`,
     h1: (y) => `Que faire pour Noël ${y} autour de Fontainebleau ?`,
@@ -911,6 +913,7 @@ const THEMES = [
     slug: 'messes-de-noel',
     match: /\b(messes? (de (la )?(nuit de )?noel|de minuit|de la nativite|du jour de noel)|veillees? (et messes? )?de noel)\b/,
     name: 'Messes de Noël',
+    icon: '🕯️',
     title: (y) => `Messes de Noël ${y} à Fontainebleau et alentour : horaires des veillées`,
     h1: (y) => `Messes de Noël ${y} à Fontainebleau et alentour`,
     intro: 'Les horaires des veillées et des messes de Noël à Fontainebleau, Avon et dans les villages voisins, d’après les annonces des paroisses.',
@@ -933,6 +936,7 @@ const THEMES = [
     slug: 'brame-du-cerf',
     match: /\bbrame\b/,
     name: 'Brame du cerf',
+    icon: '🦌',
     title: (y) => `Brame du cerf ${y} en forêt de Fontainebleau : sorties guidées`,
     h1: (y) => `Brame du cerf ${y} en forêt de Fontainebleau`,
     intro: 'Le brame du cerf s’écoute en forêt de Fontainebleau de la mi-septembre à la mi-octobre, surtout au crépuscule. Les sorties guidées ci-dessous permettent de l’écouter sans déranger les animaux : restez sur les chemins, en silence, sans lampe puissante.',
@@ -947,6 +951,7 @@ const THEMES = [
     slug: 'champignons',
     match: /\b(champignons?|mycolog\w*)\b/,
     name: 'Champignons',
+    icon: '🍄', short: 'Sorties champignons', shortEn: 'Mushroom outings',
     title: (y) => `Sorties champignons ${y} en forêt de Fontainebleau`,
     h1: (y) => `Sorties champignons et mycologie ${y} autour de Fontainebleau`,
     intro: 'Sorties d’initiation, stages et expositions mycologiques en forêt de Fontainebleau et alentour. Ne consommez jamais un champignon sans l’avoir fait identifier par un pharmacien ou une société mycologique.',
@@ -961,6 +966,7 @@ const THEMES = [
     slug: 'halloween',
     match: /\bhalloween\b/,
     name: 'Halloween',
+    icon: '🎃',
     // Worded as the search is typed (item 81): "que faire à fontainebleau pour halloween".
     title: (y) => `Que faire à Fontainebleau pour Halloween ${y} ? Sorties et animations`,
     h1: (y) => `Que faire pour Halloween ${y} autour de Fontainebleau ?`,
@@ -1580,39 +1586,69 @@ function homeSeasons(events, today) {
     if (!open.length) return null;
     // Hidden by index.html once the last of them is over, if the page is not regenerated first.
     const y = open[0].startDate.slice(0, 4);
-    return { href: `/${THEMES_DIR}/${t.slug}/`, fr: t.h1(y), en: t.h1En(y), end: open.map(endOf).sort().pop() };
+    const k = open.length;
+    return {
+      key: t.slug, href: `/${THEMES_DIR}/${t.slug}/`, fr: t.h1(y), en: t.h1En(y), end: open.map(endOf).sort().pop(),
+      icon: t.icon || '', short: t.short || t.name, shortEn: t.shortEn || t.nameEn,
+      sub: `${k} date${k > 1 ? 's' : ''}`, subEn: enPl(k, 'date'),
+    };
   }).filter(Boolean).concat(aventSeason(today) ? [{
+    key: 'avent',
     href: `/${AVENT_DIR}/`,
     fr: `Calendrier de l’Avent ${aventYear(today)} de la forêt`,
     en: `Forest Advent calendar ${aventYear(today)}`,
     end: `${aventYear(today) + 1}-01-06`,
+    icon: '🌟', short: 'Calendrier de l’Avent', shortEn: 'Advent calendar', sub: 'Une case par jour', subEn: 'One door a day',
   }] : []).concat(giftSeason(today) && giftShows(events, today).length ? [{
+    key: 'cadeaux',
     href: `/${THEMES_DIR}/${GIFT_SLUG}/`,
     fr: `Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir`,
     en: `Christmas gift ideas ${giftYear(today)}: shows to give`,
     end: `${giftYear(today)}-${GIFT_UNTIL}`,
-  }] : []);
+    icon: '🎁', short: 'Idées de cadeaux', shortEn: 'Gift ideas',
+    sub: `${giftShows(events, today).length} spectacles à offrir`, subEn: `${giftShows(events, today).length} shows to give`,
+  }] : []).sort((a, b) => (HOME_SEASON_RANK[a.key] ?? 9) - (HOME_SEASON_RANK[b.key] ?? 9));
 }
+// The order of the tiles (20/11, project lead: markets, gifts, Advent first); the rest after.
+const HOME_SEASON_RANK = { 'marches-de-noel': 0, cadeaux: 1, avent: 2, noel: 3 };
+
+/**
+ * The seasonal tiles at the top of the home page (20/11): under the banner, before the filters and
+ * the map. Under the suggestions they came after the whole list of events on a phone, where nobody
+ * saw them. Short names on the tile, the page's h1 as its title; index.html swaps the languages
+ * (data-fr / data-en, text only) and hides a tile once its `data-end` is past.
+ */
+function homeSeasonsHtml(seasons) {
+  const items = seasons.map((s) => `      <li data-start="${esc(s.end)}" data-end="${esc(s.end)}" data-key="${esc(s.key)}"><a href="${esc(s.href)}" title="${esc(s.fr)}">`
+    + `${s.icon ? `<span class="hs-ico" aria-hidden="true">${esc(s.icon)}</span>` : ''}`
+    + `<span class="hs-txt"><b data-fr="${esc(s.short)}" data-en="${esc(s.shortEn)}">${esc(s.short)}</b>`
+    + `${s.sub ? `<small data-fr="${esc(s.sub)}" data-en="${esc(s.subEn)}">${esc(s.sub)}</small>` : ''}</span></a></li>`);
+  return items.length ? ['', '      <ul class="hs-list">', ...items, '      </ul>', '      '].join('\n') : '\n      ';
+}
+const HOME_SEASONS_RE = /(<!-- home-seasons:start[^>]*-->)[\s\S]*?(<!-- home-seasons:end -->)/;
 
 /** The block between the markers, indented like index.html around it. */
-function homePicksHtml(picks, seasons = []) {
+function homePicksHtml(picks) {
   const items = picks.map((e) => {
     const end = endOf(e);
     return `          <li data-start="${esc(e.startDate)}" data-end="${esc(end)}"><span class="pk-dot" data-cat="${HOME_CAT[e.category] || 'other'}" aria-hidden="true"></span>`
       + `<time datetime="${esc(e.startDate)}">${esc(homePickDate(e.startDate, end))}</time> `
       + `<a href="${esc(e.pagePath)}">${esc(e.title)}</a> <span class="pk-city">${esc(e.city)}</span></li>`;
   });
-  const links = seasons.map((s) => `          <li data-start="${esc(s.end)}" data-end="${esc(s.end)}"><a href="${esc(s.href)}" data-fr="${esc(s.fr)}" data-en="${esc(s.en)}">${esc(s.fr)}</a></li>`);
-  return ['', '        <ul class="home-picks-list">', ...items, '        </ul>',
-    ...(links.length ? ['        <ul class="home-seasons">', ...links, '        </ul>'] : []), '        '].join('\n');
+  return ['', '        <ul class="home-picks-list">', ...items, '        </ul>', '        '].join('\n');
 }
 
-/** index.html with a new block, or null when the markers are missing (a hand edit removed them). */
+/**
+ * index.html with new blocks, or null when the home-picks markers are missing (a hand edit removed
+ * them). The seasonal tiles have markers of their own; missing, they are simply not written.
+ */
 function withHomePicks(indexHtml, picks, seasons = []) {
   if (!HOME_PICKS_RE.test(indexHtml)) return null;
   const eol = indexHtml.includes('\r\n') ? '\r\n' : '\n';
-  const block = homePicksHtml(picks, seasons).replace(/\n/g, eol);
-  return indexHtml.replace(HOME_PICKS_RE, (m, open, close) => `${open}${block}${close}`);
+  const block = homePicksHtml(picks).replace(/\n/g, eol);
+  const tiles = homeSeasonsHtml(seasons).replace(/\n/g, eol);
+  return indexHtml.replace(HOME_PICKS_RE, (m, open, close) => `${open}${block}${close}`)
+    .replace(HOME_SEASONS_RE, (m, open, close) => `${open}${tiles}${close}`);
 }
 
 function weekendPage(events, today, places = []) {

@@ -653,21 +653,44 @@
     .home-picks-list a:hover,
     .home-picks-list a:focus-visible { text-decoration: underline; }
 
-    /* Item 106: the seasonal pages, written by generate-pages.js under the suggestions. */
-    .home-seasons { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
-    .home-seasons li[hidden] { display: none; }
-    .home-seasons a {
-      display: inline-block;
-      padding: 0.35rem 0.8rem;
+    /* Seasonal tiles (item 106, moved 20/11): written by generate-pages.js between the
+       home-seasons markers, right under the banner. Under the suggestions they came after the
+       whole list of events on a phone. White cards with the Christmas bauble's red on top; the
+       strip disappears when no tile is left (renderHomeSeasons). */
+    .home-seasons { max-width: 1200px; margin: 1rem auto 0; padding: 0 1rem; }
+    .home-seasons[hidden], .home-seasons li[hidden] { display: none; }
+    .hs-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.6rem; }
+    .hs-list li { min-width: 0; }
+    .hs-list a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      height: 100%;
+      padding: 0.7rem 0.85rem;
+      background: var(--card-bg);
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-top: 4px solid #d42a38;
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-md);
       color: var(--ink);
-      font-weight: 600;
-      font-size: 0.9rem;
       text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .home-seasons a:hover,
-    .home-seasons a:focus-visible { text-decoration: underline; }
+    .hs-list li[data-key="cadeaux"] a,
+    .hs-list li[data-key="avent"] a { border-top-color: #c9a059; }
+    .hs-list a:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .hs-list a:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+    .hs-ico { flex: none; font-size: 1.7rem; line-height: 1; }
+    .hs-txt { display: flex; flex-direction: column; min-width: 0; }
+    .hs-txt b { font-size: 1rem; line-height: 1.25; }
+    .hs-txt small { font-size: 0.8rem; color: #a3202b; font-weight: 600; }
+    @media (max-width: 560px) {
+      .hs-list { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .hs-list a { padding: 0.6rem 0.65rem; gap: 0.45rem; }
+      .hs-ico { font-size: 1.4rem; }
+      .hs-txt b { font-size: 0.9rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hs-list a { transition: none; } .hs-list a:hover { transform: none; } }
 
     .pk-city {
       margin-left: 0.25rem;
@@ -1305,6 +1328,19 @@
     </svg>
   </header>
 
+  <!-- Seasonal tiles (20/11): plain links, present without JavaScript. The list between the
+       markers is rewritten by scripts/generate-pages.js on every run: never edit it by hand. -->
+  <nav id="homeSeasons" class="home-seasons" aria-label="En ce moment">
+    <!-- home-seasons:start — written by scripts/generate-pages.js, do not edit -->
+      <ul class="hs-list">
+      <li data-start="2026-12-27" data-end="2026-12-27" data-key="marches-de-noel"><a href="/sorties/marches-de-noel/" title="Marchés de Noël 2026 à Fontainebleau et alentour"><span class="hs-ico" aria-hidden="true">🎄</span><span class="hs-txt"><b data-fr="Marchés de Noël" data-en="Christmas markets">Marchés de Noël</b><small data-fr="29 dates" data-en="29 dates">29 dates</small></span></a></li>
+      <li data-start="2026-12-24" data-end="2026-12-24" data-key="cadeaux"><a href="/sorties/offrir-un-spectacle/" title="Idées de cadeaux de Noël 2026 : des spectacles à offrir"><span class="hs-ico" aria-hidden="true">🎁</span><span class="hs-txt"><b data-fr="Idées de cadeaux" data-en="Gift ideas">Idées de cadeaux</b><small data-fr="25 spectacles à offrir" data-en="25 shows to give">25 spectacles à offrir</small></span></a></li>
+      <li data-start="2027-01-06" data-end="2027-01-06" data-key="avent"><a href="/calendrier-de-l-avent/" title="Calendrier de l’Avent 2026 de la forêt"><span class="hs-ico" aria-hidden="true">🌟</span><span class="hs-txt"><b data-fr="Calendrier de l’Avent" data-en="Advent calendar">Calendrier de l’Avent</b><small data-fr="Une case par jour" data-en="One door a day">Une case par jour</small></span></a></li>
+      <li data-start="2027-01-03" data-end="2027-01-03" data-key="noel"><a href="/sorties/noel/" title="Que faire pour Noël 2026 autour de Fontainebleau ?"><span class="hs-ico" aria-hidden="true">⭐</span><span class="hs-txt"><b data-fr="Que faire à Noël ?" data-en="Christmas outings">Que faire à Noël ?</b><small data-fr="57 dates" data-en="57 dates">57 dates</small></span></a></li>
+      </ul>
+      <!-- home-seasons:end -->
+  </nav>
+
   <!-- Filtres -->
   <div class="filters-container" role="group" aria-label="Filtres / Filters">
     <!-- Le filtre « Public cible » a été retiré le 23/09 : 147 événements sur 197 sont tout
@@ -1437,12 +1473,6 @@
           <li data-start="2026-11-28" data-end="2026-11-28"><span class="pk-dot" data-cat="scene" aria-hidden="true"></span><time datetime="2026-11-28">sam. 28 nov.</time> <a href="/evenements/marche-de-noel-et-portes-ouvertes-a-la-marpa-milly-la-foret-36f7cc1646/">Marché de Noël &amp; portes ouvertes à la MARPA</a> <span class="pk-city">Milly-la-Forêt</span></li>
           <li data-start="2026-11-28" data-end="2026-11-28"><span class="pk-dot" data-cat="scene" aria-hidden="true"></span><time datetime="2026-11-28">sam. 28 nov.</time> <a href="/evenements/marche-de-noel-d-avon-act011/">Marché de Noël d&#39;Avon</a> <span class="pk-city">Avon</span></li>
           <li data-start="2026-11-29" data-end="2026-11-29"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-11-29">dim. 29 nov.</time> <a href="/evenements/illuminations-des-vitrines-de-noel-champagne-sur-seine-94d212633d/">Illuminations des vitrines de Noël</a> <span class="pk-city">Champagne-sur-Seine</span></li>
-        </ul>
-        <ul class="home-seasons">
-          <li data-start="2026-12-27" data-end="2026-12-27"><a href="/sorties/marches-de-noel/" data-fr="Marchés de Noël 2026 à Fontainebleau et alentour" data-en="Christmas markets 2026 in and around Fontainebleau">Marchés de Noël 2026 à Fontainebleau et alentour</a></li>
-          <li data-start="2027-01-03" data-end="2027-01-03"><a href="/sorties/noel/" data-fr="Que faire pour Noël 2026 autour de Fontainebleau ?" data-en="What to do for Christmas 2026 around Fontainebleau?">Que faire pour Noël 2026 autour de Fontainebleau ?</a></li>
-          <li data-start="2027-01-06" data-end="2027-01-06"><a href="/calendrier-de-l-avent/" data-fr="Calendrier de l’Avent 2026 de la forêt" data-en="Forest Advent calendar 2026">Calendrier de l’Avent 2026 de la forêt</a></li>
-          <li data-start="2026-12-24" data-end="2026-12-24"><a href="/sorties/offrir-un-spectacle/" data-fr="Idées de cadeaux de Noël 2026 : des spectacles à offrir" data-en="Christmas gift ideas 2026: shows to give">Idées de cadeaux de Noël 2026 : des spectacles à offrir</a></li>
         </ul>
         <!-- home-picks:end -->
       </section>
@@ -2172,9 +2202,6 @@
         li.hidden = end < today;
         if (li.hidden) return;
         shown++;
-        // Seasonal links (item 106): both names are in the generated HTML, written as text.
-        const season = li.querySelector('a[data-fr]');
-        if (season) season.textContent = lang === 'en' && season.dataset.en ? season.dataset.en : season.dataset.fr;
         const time = li.querySelector('time');
         if (!time) return;
         const sameMonth = start.slice(0, 7) === end.slice(0, 7);
@@ -2183,6 +2210,31 @@
           : `${f(start, sameMonth ? { day: 'numeric' } : { day: 'numeric', month: 'short' })}–${f(end, { day: 'numeric', month: 'short' })}`;
       });
       section.hidden = !shown;
+    }
+
+    // The seasonal tiles under the banner (20/11), generated like the suggestions: hide a tile
+    // once its last date is past, the strip when none is left; both names are in the generated
+    // HTML (data-fr / data-en), written as text.
+    function renderHomeSeasons() {
+      const nav = document.getElementById('homeSeasons');
+      if (!nav) return;
+      const today = todayStr();
+      let shown = 0;
+      nav.setAttribute('aria-label', t('seasonNow'));
+      nav.querySelectorAll('li[data-end]').forEach((li) => {
+        li.hidden = li.dataset.end < today;
+        if (!li.hidden) shown++;
+      });
+      nav.querySelectorAll('[data-fr]').forEach((el) => {
+        el.textContent = lang === 'en' && el.dataset.en ? el.dataset.en : el.dataset.fr;
+      });
+      nav.querySelectorAll('li[data-key] a').forEach((a) => {
+        if (!a.dataset.tracked) {
+          a.dataset.tracked = '1';
+          a.addEventListener('click', () => track('season-tile', a.parentElement.dataset.key));
+        }
+      });
+      nav.hidden = !shown;
     }
 
     function applyLanguage() {
@@ -2216,6 +2268,7 @@
       renderFeedbackFooter();
       renderEventCount();
       renderHomePicks();
+      renderHomeSeasons();
       populateCityFilter();   // the sector headings are translated
       if (calendar) calendar.setOption('locale', lang);
     }
