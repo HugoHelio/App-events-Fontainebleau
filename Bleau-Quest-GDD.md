@@ -22,11 +22,17 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
 - **Lien avec le carrousel du jeudi** (item 115) : la quête de la semaine pourra y être annoncée ;
   la règle de sélection des cartes vit désormais dans `generate-pages.js` (`carouselPool`) et
   servira aussi à la couche événements (§11).
-- **Réseaux sociaux, en cours de création** : page Facebook « Fontainebleau Live » à l'adresse
-  **facebook.com/fontainebleaulive**, et compte Instagram professionnel du même nom. Une fois
-  tout créé, on reprend le backlog : deux ou trois jeudis publiés à la main, puis le jeton Meta
-  (secret GitHub, aucun mot de passe partagé) et le workflow semi-automatique (aperçu le
-  mercredi, publication en un clic le jeudi, item 115 (d)).
+- **Réseaux sociaux, en ligne depuis le 20/11** : page Facebook **facebook.com/fontainebleaulive**
+  et compte Instagram **instagram.com/fontainebleaulive** (lien de la bio : `/ce-week-end/`),
+  liés en pied de toutes les pages du site (logos en SVG dans la page, rien de chargé chez Meta ;
+  clics `social/…`). **Premier carrousel publié à la main** le 20/11, pour le week-end du 21-22/11 :
+  post sur la page Facebook, partagé dans un groupe local, et sur Instagram. Deux légendes depuis
+  (`legende-facebook.txt`, `legende-instagram.txt`) : Instagram ne rend jamais un lien de légende
+  cliquable, d'où « lien en bio ».
+- **Suite** : encore un ou deux jeudis publiés à la main (`node scripts/carousel.js` le mercredi
+  ou le jeudi), puis le jeton Meta (secret GitHub, aucun mot de passe partagé) et le workflow
+  semi-automatique (aperçu le mercredi, publication en un clic le jeudi, item 115 (d)). Le
+  carrousel pourra un jour annoncer la quête de la semaine du jeu.
 
 ---
 
