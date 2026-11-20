@@ -313,7 +313,7 @@ ${SEASON_STYLE}${titleEn ? `\n${LANG_STYLE}` : ''}${toTop ? `\n${TOP_STYLE}` : '
 <main>
 ${body}
 </main>
-<footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a> · © 2026 Fontainebleau Live · <a href="/mentions-legales/"${en('Legal notice and privacy (in French)')}>Mentions légales</a>
+<footer><span${en('Agenda collected automatically. Check the details with the organiser before you go.')}>Agenda collecté automatiquement. Vérifiez les informations auprès de l’organisateur avant de vous déplacer.</span> · <a href="/${CITIES_DIR}/"${en('All towns (in French)')}>Toutes les communes</a> · <a href="/${SOURCES_DIR}/"${en('Our sources (in French)')}>Nos sources</a> · <a href="/${PRO_DIR}/"${en('For businesses (in French)')}>Professionnels</a> · <a href="https://helioso.com" rel="noopener"${en('A Helioso project')}>Un projet Helioso</a> · © 2026 Fontainebleau Live · <a href="/mentions-legales/"${en('Legal notice and privacy (in French)')}>Mentions légales</a>
 <small class="aff-note"${en('Some links are partner links: we may earn a commission, at no extra cost to you.')}>Certains liens sont des liens partenaires : nous pouvons percevoir une commission, sans surcoût pour vous.</small></footer>
 ${toTop ? `${TOP_LINK}\n` : ''}${titleEn || toTop ? `<script>\n${titleEn ? `${LANG_SCRIPT}\n` : ''}${toTop ? `${TOP_SCRIPT}\n` : ''}</script>\n` : ''}${count ? analyticsTags() : ''}</body>
 </html>
@@ -554,7 +554,8 @@ ${themesOf(e).map((t) => `<p><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(
 ${link ? `<a class="btn" href="${esc(link)}" rel="nofollow noopener" target="_blank" data-track="event-click" data-id="${esc(e.id)}">Site de l’organisateur</a>\n` : ''}${booking ? `<a class="btn alt" href="${esc(booking.url)}" rel="sponsored noopener" target="_blank" data-track="booking-click" data-id="${esc(e.id)}">🎟️ ${esc(booking.label)}</a>\n` : ''}<a class="btn alt" href="/?event=${encodeURIComponent(e.id)}" rel="nofollow">Voir sur la carte</a>
 </div>
 ${booking ? `<p class="aff">Lien partenaire${booking.provider ? ` ${esc(booking.provider)}` : ''}${booking.samePrice ? ', au même prix que sur place' : ''} : Fontainebleau Live perçoit une commission si vous réservez par ce lien. <a href="/${SOURCES_DIR}/#financement">En savoir plus</a></p>\n` : ''}${provenanceHtml(e, link)}
-${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>`;
+${others.length ? `<h2>À faire aussi</h2>\n<ul class="list">${others.map(suggestionItem).join('')}</ul>\n` : ''}<p><a href="/${CITIES_DIR}/${e.citySlug}/">Tout ce qui se passe à ${esc(e.city)}</a></p>
+<p class="note">Vous organisez cet événement ? <a href="/${PRO_DIR}/#organisateurs" data-track="pro-promo" data-id="evenement">Ce que nous préparons pour les organisateurs</a>.</p>`;
 
   return layout({
     title: eventTitle(e),
@@ -719,7 +720,8 @@ function cityPage(c, places = [], near = []) {
 <div class="actions">${subscribeLinks(`/${AGENDA_DIR}/commune/${c.slug}.ics`)}</div>
 <div class="partner-box"><p class="partner-title">Vous avez un site web ?</p>
 <p>Mairie, office de tourisme, club, hôtel : affichez gratuitement les prochaines sorties de ${esc(c.name)} sur votre site.</p>
-<a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Intégrer l’agenda de ${esc(c.name)} →</a></div>`;
+<a href="/widget/integrer/?ville=${encodeURIComponent(c.name)}" rel="nofollow">Intégrer l’agenda de ${esc(c.name)} →</a></div>
+${proBox('commune', `Mairie, commerce, hébergement ou association à ${c.name} : l’affiche des sorties du mois, la vitrine de la semaine, un guide pour vos voyageurs. Dites-nous ce qui vous servirait.`)}`;
   return layout({
     title: `Que faire à ${c.name} ? Agenda des activités | Fontainebleau Live`,
     description: truncate(`${n} activité${n > 1 ? 's' : ''} à venir à ${c.name}, autour de Fontainebleau : sport, nature, culture, sorties en famille.`, 155),
@@ -731,6 +733,115 @@ function cityPage(c, places = [], near = []) {
 // Same box as the home page footer (04/10): the widget is an offer to other websites, so it is
 // set apart from the visitor's content instead of a grey line under it.
 const PARTNER_STYLE = '.partner-box{margin:32px 0 8px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:10px}.partner-box p{margin:0 0 6px}.partner-title{font-weight:700;color:var(--ink)}.partner-box a{color:var(--ink);font-weight:700}';
+
+// ───────────────────────────── /professionnels/ (20/11, §3.AC) ─────────────────────────────
+// A demand test before anything is built for professionals: one page saying what is free today
+// (widget, calendar feeds, weekend page) and what is being prepared, per kind of buyer, with an
+// « ça m'intéresse » e-mail link counted as pro-contact/<segment>. The boxes that lead here are
+// counted as pro-promo/<where>. Every sentence must stay true: « en préparation » means not sold,
+// no price is shown, and being listed in the agenda is free — the agenda's worth is that it does
+// not depend on who pays (§9, item 103). An e-mail link, not a form: no new third party, nothing
+// stored but the message itself (/mentions-legales/, « Contact des professionnels »).
+
+const PRO_DIR = 'professionnels';
+const PRO_EMAIL = 'heliosoconsulting@gmail.com';
+const PRO_STYLE = '.pro{margin:28px 0;padding:18px 18px 8px;background:var(--paper);border:1px solid var(--line);border-radius:12px}.pro h2{margin:0 0 6px}.pro h3{font-size:1rem;margin:14px 0 4px;color:var(--ink)}.pro ul{margin:0 0 8px;padding-left:20px}.pro .soon{color:var(--accent-ink)}.pro-jump{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.pro-jump a{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font-weight:600;text-decoration:none}';
+
+// A function, not a constant: the directory names it uses are declared further down the file.
+const proSegments = () => [
+  {
+    id: 'mairies', track: 'mairie', name: 'Mairies et intercommunalités',
+    lead: 'L’agenda de votre commune tenu à jour sans saisie : nous lisons déjà les sites des organisateurs, l’office de tourisme, OpenAgenda et DATAtourisme.',
+    free: [
+      ['L’agenda de votre commune sur votre site', '/widget/integrer/', 'un encart à copier-coller, mis à jour tout seul'],
+      ['La page « Que faire à… » de chaque commune, avec son abonnement agenda', `/${CITIES_DIR}/`, 'les sorties s’ajoutent toutes seules aux agendas des élus et des services'],
+    ],
+    soon: [
+      'L’affiche mensuelle des sorties, prête à imprimer pour le panneau d’affichage',
+      'Le texte « sorties du mois » prêt pour le bulletin municipal ou l’application de la commune',
+      'L’encart agenda aux couleurs de la commune, sans mention de Fontainebleau Live',
+      'Vos événements saisis une fois, diffusés partout (site, encart, agendas, réseaux)',
+    ],
+  },
+  {
+    id: 'commercants', track: 'commerce', name: 'Commerçants et restaurateurs',
+    lead: 'Savoir ce qui se passe près de chez vous, et le dire à vos clients.',
+    free: [
+      ['Le programme du week-end, à partager', `/${WEEKEND_DIR}/`, 'reconstruit chaque jour'],
+      ['Aujourd’hui et demain', `/${TODAY_DIR}/`, null],
+    ],
+    soon: [
+      'L’affiche de vitrine de la semaine : les sorties à deux pas de votre boutique, avec un QR code',
+      'Des publications prêtes pour vos réseaux, qui associent votre offre aux événements proches',
+      'Une alerte les semaines de forte affluence (concours du Grand Parquet, marchés de Noël, festivals)',
+    ],
+  },
+  {
+    id: 'hebergeurs', track: 'hebergement', name: 'Hôtels, gîtes et chambres d’hôtes',
+    lead: 'Répondre à « Qu’est-ce qu’on fait ce week-end ? » avant même que vos voyageurs la posent.',
+    free: [
+      ['L’agenda des environs sur votre site', '/widget/integrer/', null],
+      ['Les balades d’un Bellifontain, à pied, à vélo, en voiture', `/${BALADES_DIR}/`, null],
+    ],
+    soon: [
+      'Un guide de séjour par QR code, propre à votre logement : agenda autour de chez vous, balades, monuments et vos informations pratiques',
+      'Le même guide en anglais pour vos voyageurs étrangers',
+    ],
+  },
+  {
+    id: 'organisateurs', track: 'organisateur', name: 'Organisateurs d’événements',
+    lead: 'Votre événement est repris de ce que vous publiez déjà : votre site, OpenAgenda, l’office de tourisme, votre billetterie. Y figurer est gratuit et le restera : l’agenda ne dépend pas de qui paie.',
+    free: [
+      ['Signaler une erreur ou une annulation', FEEDBACK_FORM, 'chaque signalement est relu'],
+      ['Comment nous collectons et vérifions', `/${SOURCES_DIR}/`, null],
+    ],
+    soon: [
+      'Le nombre de vues et de clics de votre fiche',
+      'Une mise en avant signalée comme telle, jamais mêlée à la sélection de la rédaction',
+    ],
+  },
+];
+
+function proMailto(s) {
+  const subject = `Fontainebleau Live — ${s.name}`;
+  const body = 'Bonjour,\n\nStructure :\nCommune :\nCe qui m’intéresserait :\n\n';
+  return `mailto:${PRO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function proPage(events, cities) {
+  const segments = proSegments();
+  const item = ([label, href, note]) => `<li><a href="${esc(href)}"${/^https?:/.test(href) ? ' rel="noopener" target="_blank"' : ''}>${esc(label)}</a>${note ? ` — ${esc(note)}` : ''}</li>`;
+  const section = (s) => `<section class="pro" id="${s.id}">
+<h2>${esc(s.name)}</h2>
+<p>${esc(s.lead)}</p>
+<h3>Gratuit, dès aujourd’hui</h3>
+<ul>${s.free.map(item).join('')}</ul>
+<h3 class="soon">En préparation</h3>
+<ul>${s.soon.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+<p>Rien de cela n’est encore vendu : dites-nous ce qui vous servirait, nous construisons d’abord ce qui est demandé.</p>
+<div class="actions"><a class="btn" href="${esc(proMailto(s))}" data-track="pro-contact" data-id="${s.track}">Ça m’intéresse : nous écrire</a></div>
+</section>`;
+  const body = `<nav class="crumbs"><a href="/">Accueil</a> › Professionnels</nav>
+<h1>Fontainebleau Live pour les professionnels</h1>
+<p>${events.length} sorties dans ${cities.length} communes autour de Fontainebleau, collectées et vérifiées automatiquement tous les trois jours, sans que personne ait à les saisir. Ce qui existe est gratuit ; la suite se construit avec ceux qui s’en servent.</p>
+<nav class="pro-jump" aria-label="Vous êtes">${segments.map((s) => `<a href="#${s.id}">${esc(s.name)}</a>`).join('')}</nav>
+${segments.map(section).join('\n')}
+<p class="note">Un message à ${esc(PRO_EMAIL)} sert seulement à vous répondre : ni lettre d’information, ni cession (<a href="/mentions-legales/#confidentialite">données personnelles</a>).</p>`;
+  return layout({
+    title: 'Professionnels : l’agenda de Fontainebleau pour votre commune, commerce ou hébergement | Fontainebleau Live',
+    description: 'Mairies, commerçants, hébergeurs, organisateurs : l’agenda des sorties autour de Fontainebleau, gratuit sur votre site, et ce que nous préparons pour vous.',
+    canonical: `${SITE_URL}/${PRO_DIR}/`,
+    body,
+  }).replace('</style>', `${PRO_STYLE}\n</style>`);
+}
+
+/** The small box that leads to /professionnels/ from a visitor page; `where` names it in GoatCounter. */
+function proBox(where, text, anchor = '', textEn = '') {
+  const e2 = (s) => (textEn ? en(s) : '');
+  return `<div class="partner-box"><p class="partner-title"${e2('Are you a local business?')}>Vous êtes un professionnel ?</p>
+<p${e2(esc(textEn))}>${esc(text)}</p>
+<a href="/${PRO_DIR}/${anchor}" data-track="pro-promo" data-id="${esc(where)}"${e2('What Fontainebleau Live can do for you (in French) →')}>Ce que Fontainebleau Live peut faire pour vous →</a></div>`;
+}
 
 // ─── « Visiter » (item 83c) ───
 // A monument's entrance ticket at a partner, independent of any event (affiliates.json, "places").
@@ -1711,6 +1822,7 @@ ${n || nextList.length ? LEGEND : ''}
 ${sections.filter((s) => !curSections.includes(s)).map(daySection).join('\n')}<div class="wk-cur">${visitHtml(placesOpen(places, today > sat ? today : sat, sun), 'À visiter ce week-end', 'Places to visit this weekend')}</div>${next ? `<div class="wk-next" hidden>${visitHtml(placesOpen(places, next.sat, next.sun), 'À visiter ce week-end', 'Places to visit this weekend').replace('id="visiter"', 'id="visiter-prochain"')}</div>` : ''}${guidesPromo()}
 <div class="actions">${today === sun ? '' : `<a class="btn alt" href="/${TODAY_DIR}/"${en('Today')}>Aujourd’hui</a> `}<a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a></div>
 ${shareHtml(shareText, shareTextEn)}
+${proBox('week-end', 'Commerçant, hébergeur : ce programme pourrait s’afficher dans votre vitrine ou dans le guide de vos voyageurs. Nous le préparons, dites-nous ce qui vous servirait.', '#commercants', 'Shops and B&Bs: this programme could hang in your window or go into your guests’ guide. We are preparing it: tell us what would help.')}
 <p class="note"><a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a>${seasonalHubs(events, today).filter((x) => x.live).map((x) => ` · <a href="/${THEMES_DIR}/${x.slug}/"${en(esc(x.nameEn))}>${esc(x.name)}</a>`).join('')}.</p>
 <script>
 ${FILTER_SCRIPT}${nextList.length ? `
@@ -1732,7 +1844,7 @@ ${shareScript(`${SITE_URL}/${WEEKEND_DIR}/`, 'Que faire ce week-end autour de Fo
     canonical: `${SITE_URL}/${WEEKEND_DIR}/`,
     body,
     titleEn: `What’s on this weekend around Fontainebleau? (${rangeEn}) | Fontainebleau Live`,
-  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n</style>`);
+  }).replace('</style>', `${WEEKEND_STYLE}\n${VISIT_STYLE}\n${PROMO_STYLE}\n${PARTNER_STYLE}\n</style>`);
 }
 
 // ─── /aujourdhui/ (item 78) ───
@@ -1837,7 +1949,7 @@ function sitemap(cities, events, homeLastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${home}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), `/${THEMES_DIR}/${GIFT_SLUG}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${PRO_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), `/${THEMES_DIR}/${GIFT_SLUG}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -2896,6 +3008,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, nameEn, k }) => ({ href, name, nameEn, count: k })), null, 2) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry, places, today));
+  files.set(`${PRO_DIR}/index.html`, proPage(events, cities));
   files.set(`${BALADES_DIR}/index.html`, guidesIndex());
   for (const g of GUIDES) files.set(`${BALADES_DIR}/${g.slug}/index.html`, guidePage(g, cities.filter((c) => g.towns.includes(c.slug))));
   files.set(`${BALADES_DIR}/merci/index.html`, thanksPage());
@@ -2990,4 +3103,6 @@ module.exports = {
   icsText, icsFold, icsCalendar, inFeed, shareable, EVENTS_DIR, CITIES_DIR, AGENDA_DIR, SHARE_DIR, FEED_MAX_DAYS,
   THEMES, THEMES_DIR, themesOf, HOLIDAYS, holidayPeriod, FAMILY, eventTitle, eventDescription, WEEKEND_DIR, weekendOf, TODAY_DIR,
   homePicks, homePickDate, withHomePicks, BALADES_DIR,
+  // Used by scripts/carousel.js (social posts, 20/11): same selection and wording as /ce-week-end/.
+  picksOf, isFree, timeOf, timeKey, dayName, place, spanDays, frDate, parisToday, addDays, PRO_DIR,
 };
