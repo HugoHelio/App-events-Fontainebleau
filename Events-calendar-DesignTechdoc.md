@@ -1345,9 +1345,17 @@ a date. The organisers' section says that being listed is free and will stay so 
 (never committed), with `legende.txt`: the caption to paste and one alt text per slide.
 - Cover, up to 5 event slides, closing slide with the link to `/ce-week-end/`.
 - Selection: events of the weekend **confirmed by a source we read** (never Gemini alone) with a
-  verified link, or a Fnac date; at most 4 days long; ranked like « À ne pas manquer » (`picksOf`),
-  then at most 2 per category and 2 per commune, sorted by day and time. `PICK=id,id` replaces
-  the choice (the confirmed-source rule still applies). Fewer than 3: no carousel.
+  verified link, or a Fnac date; at most 4 days long; **nearest first** (project lead, 20/11:
+  rings of 3, 8 and 15 km around the town centre; `RAYON=km` drops the rest), ranked like « À ne
+  pas manquer » (`picksOf`) inside a ring, then at most 2 per category, **up to 3 in Fontainebleau
+  and 1 per other commune** (project lead, 20/11), sorted by day and time. **Standing offers are
+  left out** (20/11, the petit train): a series (same title, same town) met on 4 weekends or more
+  in the data, a title that says it recurs (« tous les… samedis », « chaque dimanche »), or
+  `NOT_NEWS` (hand list) — they stay on `/ce-week-end/`, not in the post. `PICK=id,id` replaces the choice (the confirmed-source
+  rule still applies). Fewer than 3: no carousel.
+- **Preview before posting**: `apercu.html` in the output folder, opened at the end (`--no-open`
+  to skip): the post on a phone frame (swipe, caption as Instagram shows it), every slide side by
+  side, and the weekend's other confirmed outings with their id and distance, to build a `PICK`.
 - The count announced is the weekend page's own (every source, up to 7 days), so the visitor
   who follows the link finds the same number.
 - No event picture (item 67, rights); typography and the four category colours. No price when
@@ -2332,7 +2340,9 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   payant ne contient de donnée Gemini seule » (§3.AB) et « Outreach gate » (Milestones) ;
   (d) ce que la page annonce « en préparation » ne se vend qu'une fois construit.
 - [ ] **115. Carrousel du jeudi — moteur fait le 20/11 (§3.AC).** `node scripts/carousel.js`
-  (`--story`, `PICK=…`, `TODAY=…`), images et légende dans `reports/carrousel/`. **Reste** :
+  (`--story`, `PICK=…`, `RAYON=…`, `TODAY=…`), images, légende et `apercu.html` (le post sur un
+  téléphone, à regarder avant de publier) dans `reports/carrousel/`. 20/11 : les sorties les plus
+  proches de Fontainebleau d'abord (chef de projet). **Reste** :
   (a) chef de projet : publier chaque jeudi (Instagram, page Facebook), relire la sélection avant
   (une fiche douteuse se retire avec `PICK`) ; (b) mesurer : référents `instagram.com` /
   `facebook.com` et vues de `/ce-week-end/` le vendredi dans GoatCounter, abonnés ; (c) évolutions,
@@ -2352,6 +2362,37 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   naturalistes relus contre l'ONF et l'INPN (comme `foret.js`) ; pas de photo dont on n'a pas les
   droits. Cible : prototype jouable mi-décembre, test sur place pendant les vacances de Noël,
   lancement aux vacances d'hiver 2027 (zone C), séminaires au printemps.
+  - **Décisions du chef de projet, 20/11** : **public** — séminaires, étudiants de l'INSEAD, jeunes
+    adultes en week-end à Fontainebleau, hôtels (pas d'abord les familles) ; **univers** — enquête
+    historique ; **validation d'une étape** — GPS **ou** réponse lue sur place, au cas par cas,
+    « soyons généreux, ne bloquons pas les joueurs » (repli toujours possible, indices jusqu'à la
+    solution) ; **modèle économique** — à étudier sur benchmarks (116d).
+  - **Concurrents à Fontainebleau, relevé du 20/11** (à jouer sur place, 116e) :
+    - **myCityHunt** : jeu de piste, chasse au trésor, escape game outdoor (agent secret, château
+      puis centre-ville), aventure de Noël ; application, sans créneau ; **dès 12,99 € par personne** ;
+      générique (même produit dans des centaines de villes).
+    - **Urban Quest** : jeu de piste dans le navigateur, lien reçu par courriel, départ place
+      Decamps, défis sur l'histoire de la ville ; prix à relever.
+    - **Forest Mystery** (the-escapers) : escape game en forêt depuis 2021, scénarios « Disparition »
+      et « Le Cavalier noir », dès 6 personnes, maître du jeu joignable par radio, ~1 h 40,
+      **30-36 € par personne**.
+    - **Paris Region Aventures** (région, gratuit) : énigmes en forêt, jardins du château, rues.
+    - **Funbooker, team building** : enquête culturelle (vol de la couronne, autour du château,
+      **30 € HT par personne** pour 3 à 10), jeu de piste au château (10 à 500 personnes, 2-3 h),
+      chasse au trésor en bateau (50 € HT), rallyes — animés par des agences.
+    - **Château, « Enquête au château »** : visite-jeu familiale, dimanches 15 h hors vacances
+      (2023-2024), 7 ans et plus.
+    - Hors terrain : « Guilty : Fontainebleau 1543 » (jeu de société d'enquête à la cour), les
+      Impériales de Fontainebleau (murder party napoléonienne, événement).
+    - **L'angle libre** : une enquête historique **écrite par un local**, juste sur les faits,
+      bilingue (aucun concurrent anglais local relevé ; INSEAD), pensée pour des adultes et des
+      équipes, sans animateur mais avec un mode « plusieurs équipes en même temps » — myCityHunt est
+      générique, Forest Mystery est en forêt et animé, les agences Funbooker sont animées et chères.
+  - **Repères de modèle économique (20/11)** : par personne (myCityHunt 12,99 €, City Hunt 15 £) ;
+    par équipe (Escape Hunt Urban Quest 60 € pour 2-5, Hunter Games 31 $ l'équipe) ; **par téléphone
+    pour les groupes** (Questo : 6 à 40 téléphones en un paiement, sans devis, dès ~5 € le
+    téléphone) ; passes (Questo, 35 £ pour tous les jeux d'une ville) ; kit imprimé (Treasure Trails,
+    10 £ pour 4-5 personnes) ; séminaires animés 30-50 € HT par personne.
   - **Phase 0 — cadrage (chef de projet, avec Claude). S. À trancher avant d'écrire du code :**
     - [ ] **116a. Pitch d'une page** : public prioritaire (familles 6-11 ans, ados et adultes,
       séminaires), promesse, durée (repère : 1 h à 1 h 30 pour ~2 km), lieu du premier parcours.
