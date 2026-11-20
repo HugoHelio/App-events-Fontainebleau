@@ -199,9 +199,9 @@ const enDMY = (iso) => enDate(iso, { day: 'numeric', month: 'long', year: 'numer
 const enPl = (k, word) => `${k} ${word}${k > 1 ? 's' : ''}`;
 
 // Seasonal decoration (19/11), as on the home page: data-season on <html> from the visitor's date,
-// a red bauble after the name, nothing else (Christmas, 1 December to 6 January; 19/11: snow
+// a red bauble after the name, nothing else (Christmas, 15 November to 6 January since 20/11; 19/11: snow
 // dots made a visible pattern, holly was green on green). Another season = one more range in SEASON_HEAD and one more .deco-<season> element.
-const SEASON_HEAD = "<script>(function(){var d=new Date(),p=/[?&]apercu=([0-9]{4})-([0-9]{2})-([0-9]{2})/.exec(location.search),m=p?+p[2]:d.getMonth()+1,j=p?+p[3]:d.getDate();if(m===12||(m===1&&j<=6))document.documentElement.setAttribute('data-season','noel')})()</script>";
+const SEASON_HEAD = "<script>(function(){var d=new Date(),p=/[?&]apercu=([0-9]{4})-([0-9]{2})-([0-9]{2})/.exec(location.search),m=p?+p[2]:d.getMonth()+1,j=p?+p[3]:d.getDate();if((m===11&&j>=15)||m===12||(m===1&&j<=6))document.documentElement.setAttribute('data-season','noel')})()</script>";
 const SEASON_DECO = '<span class="deco deco-noel" aria-hidden="true"><svg viewBox="0 0 40 40" width="40" height="40"><path d="M20 1v5" stroke="#e9b949" stroke-width="1.5"/><rect x="16.5" y="5" width="7" height="5" rx="1" fill="#e9b949"/><circle cx="20" cy="23" r="13" fill="#d42a38"/><path d="M8 21c8 3 16 3 24 0" stroke="#e9b949" stroke-width="2.5" fill="none"/><circle cx="15" cy="17" r="3" fill="#fff" opacity=".4"/></svg></span>';
 const SEASON_STYLE = '.deco{display:none}[data-season="noel"] .deco-noel{display:inline-block;width:20px;height:20px;margin-left:2px}[data-season="noel"] .deco-noel svg{display:block;width:100%;height:100%}';
 
