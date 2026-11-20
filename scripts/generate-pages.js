@@ -866,6 +866,7 @@ const THEMES = [
     offEn: 'Christmas markets are usually announced from October: the dates will appear here as soon as they are published.',
     related: 'vacances-noel',
     also: 'noel',
+    gift: true,
     promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
     faq: [
       ['Quand ont lieu les marchés de Noël autour de Fontainebleau ?', 'Surtout les week-ends de la fin novembre et de décembre, souvent du vendredi soir au dimanche ; quelques-uns durent plusieurs semaines. Les dates de chaque marché sont dans la liste ci-dessus, de la plus proche à la plus lointaine.'],
@@ -892,6 +893,7 @@ const THEMES = [
     offEn: 'The festive programme is announced in the autumn: it will appear here as soon as it is published.',
     related: 'vacances-noel',
     also: ['marches-de-noel', 'messes-de-noel'],
+    gift: true,
     promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
     faq: [
       ['Que faire avec des enfants à Noël autour de Fontainebleau ?', 'Les spectacles jeune public, les contes, les ateliers et les animations des châteaux sont les sorties les plus adaptées aux enfants. Vérifiez l’âge conseillé sur la page de chaque sortie.'],
@@ -1074,7 +1076,8 @@ function hereList(t, events) {
   return `<h2${en(`In ${esc(town.city)}`)}>À ${esc(town.city)}</h2>\n${list(mine)}${rest.length ? `\n<h2${en(`Around ${esc(town.city)}`)}>Autour de ${esc(town.city)}</h2>\n${list(rest)}` : ''}`;
 }
 
-function themePage(t, events, today) {
+// `allEvents`: the whole agenda, for the link to the gift page (giftShows), not the theme's list.
+function themePage(t, events, today, allEvents = []) {
   // The year of the season on show: the first event's, or this year when there is none yet.
   const year = (events[0] ? events[0].startDate : today).slice(0, 4);
   const n = events.length;
@@ -1086,7 +1089,7 @@ function themePage(t, events, today) {
 <p${en(esc(t.introEn))}>${esc(t.intro)}</p>
 ${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
 ${hereList(t, events)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
-${also.map((a) => `<p><a href="/${THEMES_DIR}/${a.slug}/"${en(esc(a.h1En(year).endsWith('?') ? `${a.h1En(year)} All dates` : `${a.h1En(year)}: all dates`))}>${esc(allDates(a.h1(year)))}</a></p>\n`).join('')}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
+${t.gift && giftSeason(today) && giftShows(allEvents, today).length ? `<p><a href="/${THEMES_DIR}/${GIFT_SLUG}/"${en(`🎁 Christmas gift ideas ${giftYear(today)}: shows to give`)}>🎁 Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir</a></p>\n` : ''}${also.map((a) => `<p><a href="/${THEMES_DIR}/${a.slug}/"${en(esc(a.h1En(year).endsWith('?') ? `${a.h1En(year)} All dates` : `${a.h1En(year)}: all dates`))}>${esc(allDates(a.h1(year)))}</a></p>\n`).join('')}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
 ${t.promo ? `<p class="av-link"><a href="/${AVENT_DIR}/"${en(`🎄 The forest Advent calendar ${year}: one door a day for the children`)}>🎄 Le calendrier de l’Avent ${year} de la forêt : une case par jour pour les enfants</a></p>
 ${guidesPromo(GUIDES, t.promo)}
 ` : ''}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
@@ -1388,13 +1391,16 @@ function seasonIndex(events, today) {
     const year = (list[0] ? list[0].startDate : today).slice(0, 4);
     return `<li><a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</a><small${en(list.length ? `${enPl(list.length, 'upcoming date')}` : 'No date announced yet')}>${list.length ? `${list.length} date${list.length > 1 ? 's' : ''} à venir` : 'Pas encore de date annoncée'}</small></li>`;
   });
+  const gy = giftYear(today);
+  const gk = giftShows(events, today).length;
+  const giftLi = `<li><a href="/${THEMES_DIR}/${GIFT_SLUG}/"${en(`Christmas gift ideas ${gy}: shows to give`)}>Idées de cadeaux de Noël ${gy} : des spectacles à offrir</a><small${en(gk ? enPl(gk, 'show') : 'No show announced yet')}>${gk ? `${gk} spectacle${gk > 1 ? 's' : ''}` : 'Pas encore de spectacle annoncé'}</small></li>`;
   const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${CITIES_DIR}/"${en('Towns')}>Communes</a></nav>
 <h1${en('Seasonal outings around Fontainebleau')}>Sorties de saison autour de Fontainebleau</h1>
 <p${en('School holidays, festivals and the great moments of nature: the pages that come back every year, updated every day.')}>Vacances scolaires, fêtes et rendez-vous de la nature : les pages qui reviennent chaque année, mises à jour chaque jour.</p>
 <h2${en('School holidays')}>Vacances scolaires</h2>
 <ul class="list">${holidays.join('')}</ul>
 <h2${en('Festivals and seasons')}>Fêtes et saisons</h2>
-<ul class="list">${themes.join('')}</ul>
+<ul class="list">${themes.join('')}${giftLi}</ul>
 <div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
   return layout({
     // Named after the live hubs, so the title follows the season (no "Halloween" in November).
@@ -1404,6 +1410,92 @@ function seasonIndex(events, today) {
     body,
     titleEn: `Seasonal outings around Fontainebleau: ${order.slice(0, 3).map((x) => x.nameEn).join(', ')}… | Fontainebleau Live`,
   });
+}
+
+// ─── Shows to give for Christmas (20/11, project lead) ───
+// « idée cadeau fontainebleau » is searched in December. A show after Christmas is a present that
+// takes a minute to buy, and the agenda already holds them. The rule is the agenda's, not the
+// partner's: every confirmed show (never Gemini alone, §3.AB), paid, after the 25th, by date. The
+// "Billets" button shows where a partner link exists (Fnac), so the partner chooses neither the
+// list nor its order, as /nos-sources/ says. Like the themes, the address is kept all year: out
+// of season the page says when to come back.
+const GIFT_SLUG = 'offrir-un-spectacle';
+const GIFT_FROM = '11-01';
+const GIFT_UNTIL = '12-24';
+
+/** The Christmas the page is about: this year's until the 25th, then next year's. */
+const giftYear = (today) => Number(today.slice(0, 4)) + (today.slice(5) > '12-25' ? 1 : 0);
+// A New Year's Eve dinner-dance is filed under « Scène » but is not a show to give.
+const NOT_A_GIFT = /\breveillons?\b/;
+/**
+ * Shows that make a present: confirmed, a few days at most, after Christmas Day, and something to
+ * buy — a price stated (and not "free") or a ticket link. No price at all is often a free reading.
+ */
+function giftShows(events, today) {
+  const after = `${giftYear(today)}-12-26`;
+  const from = today > after ? today : after;
+  return events.filter((e) => e.source && e.category === 'Scène & Spectacles'
+    && (bookingOf(e) || (String(e.price || '').trim() && !isFree(e)))
+    && !NOT_A_GIFT.test(themeKey(e.title))
+    && e.startDate >= from && spanDays(e) <= FEED_MAX_DAYS);
+}
+/** In the links of the home page and the Christmas pages: from November to Christmas Eve. */
+const giftSeason = (today) => today.slice(5) >= GIFT_FROM && today.slice(5) <= GIFT_UNTIL;
+
+const GIFT_STYLE = '.gift li .tk{display:inline-block;margin-top:6px;padding:4px 12px;font-size:14px}.aff{font-size:14px;color:var(--muted)}';
+
+function giftPage(events, today) {
+  const y = giftYear(today);
+  const list = giftShows(events, today);
+  const n = list.length;
+  const months = new Map();
+  for (const e of list) {
+    const m = e.startDate.slice(0, 7);
+    if (!months.has(m)) months.set(m, []);
+    months.get(m).push(e);
+  }
+  const monthName = (m) => new Intl.DateTimeFormat('fr-FR', { timeZone: 'UTC', month: 'long', year: 'numeric' }).format(new Date(`${m}-15T12:00:00Z`));
+  const monthEn = (m) => new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', month: 'long', year: 'numeric' }).format(new Date(`${m}-15T12:00:00Z`));
+  const item = (e) => {
+    const b = bookingOf(e);
+    const meta = [dateLabel(e), place(e), e.price].filter(Boolean).join(' · ');
+    return `<li><a href="${esc(e.pagePath)}">${esc(e.title)}</a><small>${esc(meta)}</small>${b ? `<a class="btn alt tk" href="${esc(b.url)}" rel="sponsored noopener" target="_blank" data-track="booking-click" data-id="${esc(e.id)}">🎟️ ${esc(b.label)}</a>` : ''}</li>`;
+  };
+  const family = list.filter((e) => FAMILY.test(themeKey(e.title)) && !(Number(e.ageMin) >= 12));
+  const booked = list.some((e) => bookingOf(e));
+  const providers = [...new Set(list.map((e) => (bookingOf(e) || {}).provider).filter(Boolean))];
+  const h1 = `Idées de cadeaux de Noël ${y} : des spectacles à offrir autour de Fontainebleau`;
+  const h1En = `Christmas gift ideas ${y}: shows to give around Fontainebleau`;
+  const intro = 'Une place de théâtre, de concert ou d’humour, c’est un cadeau qui s’achète en une minute et se vit après les fêtes. Voici les spectacles annoncés après Noël à Fontainebleau et dans les salles des communes voisines, classés par date.';
+  const introEn = 'A theatre, concert or comedy ticket is a present bought in a minute and enjoyed after the holidays. Here are the shows announced after Christmas in Fontainebleau and the venues of the neighbouring towns, by date.';
+  const off = `Les idées de spectacles à offrir pour Noël ${y} apparaîtront ici en novembre, avec la programmation des salles.`;
+  const offEn = `Ideas of shows to give for Christmas ${y} will appear here in November, with the venues’ programmes.`;
+  const noel = THEMES.find((t) => t.slug === 'noel');
+  const faq = [
+    ['Comment offrir une place de spectacle ?', 'Achetez la place sur la billetterie de la salle ou par le lien « Billets » quand il y en a un, puis imprimez le billet ou glissez-le dans une carte. Choisissez une date où la personne est libre, ou offrez-en deux pour y aller ensemble.'],
+    ['Un billet de spectacle est-il échangeable ?', 'Le plus souvent non : un billet pour une date précise n’est en général ni échangé ni remboursé. Lisez les conditions de vente de la billetterie avant d’acheter.'],
+    ['Pourquoi seulement des spectacles après Noël ?', 'Pour que le cadeau puisse servir. L’agenda couvre les prochains mois ; les spectacles plus lointains apparaissent ici au fil des annonces des salles.'],
+  ];
+  const faqEn = [
+    ['How do I give a show ticket?', 'Buy the ticket from the venue’s box office, or through the “Billets” link when there is one, then print it or slip it into a card. Pick a date when the person is free, or give two tickets and go together.'],
+    ['Can a show ticket be exchanged?', 'Usually not: a ticket for a given date is generally neither exchanged nor refunded. Read the box office’s terms of sale before you buy.'],
+    ['Why only shows after Christmas?', 'So that the present can be used. The agenda covers the coming months; later shows appear here as the venues announce them.'],
+  ];
+  const sections = [...months.entries()].map(([m, xs]) => `<h2${en(esc(monthEn(m)))}>${esc(monthName(m).replace(/^./, (c) => c.toUpperCase()))}</h2>\n<ul class="list gift">${xs.map(item).join('')}</ul>`).join('\n');
+  const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a></nav>
+<h1${en(esc(h1En))}>${esc(h1)}</h1>
+<p${en(esc(introEn))}>${esc(intro)}</p>
+${n ? `<p class="note"${en(`${enPl(n, 'show')} announced, soonest first. Only dates confirmed by the venue, the organiser or the box office. Updated every day.`)}>${n} spectacle${n > 1 ? 's' : ''} annoncé${n > 1 ? 's' : ''}, du plus proche au plus lointain. Seulement des dates confirmées par la salle, l’organisateur ou la billetterie. Mis à jour chaque jour.</p>
+${family.length ? `<h2${en('For children')}>Pour les enfants</h2>\n<ul class="list gift">${family.map(item).join('')}</ul>\n` : ''}${sections}
+${booked ? `<p class="aff"${en(`The “Billets” buttons are partner links${providers.length ? ` (${esc(providers.join(', '))})` : ''}: Fontainebleau Live earns a commission if you buy through them, at no extra cost to you. They play no part in the choice or the order of the shows.`)}>Les boutons « Billets » sont des liens partenaires${providers.length ? ` (${esc(providers.join(', '))})` : ''} : Fontainebleau Live perçoit une commission si vous achetez par ce lien, sans surcoût pour vous. Ils ne jouent aucun rôle dans le choix ni dans l’ordre des spectacles. <a href="/${SOURCES_DIR}/#financement"${en('Learn more')}>En savoir plus</a></p>` : ''}` : `<p${en(esc(offEn))}>${esc(off)}</p>`}
+${noel ? `<p><a href="/${THEMES_DIR}/${noel.slug}/"${en(esc(noel.h1En(String(y))))}>${esc(noel.h1(String(y)))}</a></p>\n` : ''}${faqHtml(faq, faqEn)}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>`;
+  return layout({
+    title: `Idées de cadeaux de Noël ${y} à Fontainebleau : des spectacles à offrir | Fontainebleau Live`,
+    description: truncate(n ? `${n} spectacles après Noël à offrir, à Fontainebleau et alentour : théâtre, concerts, humour, spectacles pour enfants. Dates confirmées, mises à jour chaque jour.` : off, 155),
+    canonical: `${SITE_URL}/${THEMES_DIR}/${GIFT_SLUG}/`,
+    body,
+    titleEn: `Christmas gift ideas ${y} in Fontainebleau: shows to give | Fontainebleau Live`,
+  }).replace('</style>', `${FAQ_STYLE}\n${GIFT_STYLE}\n</style>`);
 }
 
 // Share button of the weekend and today pages. Our own strings only: no data reaches the script.
@@ -1494,6 +1586,11 @@ function homeSeasons(events, today) {
     fr: `Calendrier de l’Avent ${aventYear(today)} de la forêt`,
     en: `Forest Advent calendar ${aventYear(today)}`,
     end: `${aventYear(today) + 1}-01-06`,
+  }] : []).concat(giftSeason(today) && giftShows(events, today).length ? [{
+    href: `/${THEMES_DIR}/${GIFT_SLUG}/`,
+    fr: `Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir`,
+    en: `Christmas gift ideas ${giftYear(today)}: shows to give`,
+    end: `${giftYear(today)}-${GIFT_UNTIL}`,
   }] : []);
 }
 
@@ -1704,7 +1801,7 @@ function sitemap(cities, events, homeLastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${home}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), `/${THEMES_DIR}/${GIFT_SLUG}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -2754,8 +2851,9 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today, places));
   files.set(`${TODAY_DIR}/index.html`, todayPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
-  for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today));
+  for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today, events));
   for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today, places));
+  files.set(`${THEMES_DIR}/${GIFT_SLUG}/index.html`, giftPage(events, today));
   files.set(`${THEMES_DIR}/index.html`, seasonIndex(events, today));
   // The home page's "En ce moment" row reads this: the same picks and counts as the weekend page,
   // and index.html never re-implements the theme matching.
