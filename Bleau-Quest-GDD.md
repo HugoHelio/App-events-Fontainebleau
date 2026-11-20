@@ -1,11 +1,27 @@
 # Bleau Quest — Game Design Document
 
-**Version** 0.2, 21 novembre 2026 (0.1 du 20/11) · **Auteurs** : le chef de projet (game design, direction artistique),
+**Version** 0.3, 21 novembre 2026 (0.1 et 0.2 des 20 et 21/11) · **Auteurs** : le chef de projet (game design, direction artistique),
 Claude (rédaction, technique) · **Statut** : maquette faite, prototype à construire.
 Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignTechdoc.md) (§9).
 
 > Ce document décrit le jeu. Le document de conception du site fait toujours autorité pour la
 > technique, les données et les règles de confiance ; en cas de doute, c'est lui qui tranche.
+
+## Où on en est (21/11/2026, à lire en reprenant)
+- **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
+  servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
+  commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
+- **En attente** : le chef de projet a **beaucoup de retours sur la maquette**, à recueillir à la
+  prochaine séance avant toute nouvelle version. Il veut aussi **plusieurs propositions
+  d'interface** (contenu) à comparer, dans le style du site.
+- **Décisions à prendre** (§16) : sujet de l'enquête, nom, les 35 lieux du M1, styles graphiques à
+  essayer, les cinq sites de grimpe en famille, quand parler à l'ONF, la première offre payante.
+- **Acquis du 21/11** : événements au centre du jeu (§7.2), grimpe en famille (§7.4), couches à
+  cocher (§7.6), parcours d'entrée (§6.1), pas de compte pour jouer et ce qui pourra s'acheter
+  (§12), style du site.
+- **Lien avec le carrousel du jeudi** (item 115) : la quête de la semaine pourra y être annoncée ;
+  la règle de sélection des cartes vit désormais dans `generate-pages.js` (`carouselPool`) et
+  servira aussi à la couche événements (§11).
 
 ---
 
@@ -201,7 +217,12 @@ La maquette reprend le style du site (21/11 : « reprendre le style du site est 
 - Progression dans `localStorage` (avec un code d'export pour changer de téléphone). **La position
   ne quitte jamais le téléphone.** Carte Leaflet (`vendor/`), tuiles OpenStreetMap (pas de
   téléchargement en masse pour le hors ligne : les règles d'OSM l'interdisent).
-- La couche événements lit `data.json`.
+- La couche événements lit `data.json`, avec la règle du carrousel du jeudi : `carouselPool()` de
+  `generate-pages.js` (sources lues seulement, quatre jours au plus, pas d'offre permanente ni de
+  petit train), pour que le jeu, le post et `/ce-week-end/` montrent les mêmes sorties.
+- **La maquette** est servie par un petit serveur local (`127.0.0.1`) : OpenStreetMap refuse les
+  tuiles à une page ouverte depuis le disque (`file://`, sans Referer). En ligne, la question ne
+  se pose pas.
 - **Application Android plus tard** (compte développeur Google existant) : une *Trusted Web
   Activity* emballe la PWA pour le Play Store sans la réécrire. iOS ensuite.
 - Un serveur (Cloudflare Worker) seulement pour ce qui l'exige : classements, synchronisation
