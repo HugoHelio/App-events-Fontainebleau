@@ -338,6 +338,7 @@ const CLIENT = String.raw`
   var XP = { 'commun': 15, 'peu commun': 20, 'rare': 30, 'légendaire': 60 };
   var EVENT_XP = 20, FEATURED_XP = 40, SEASON_BONUS = 5, SET_XP = 40, ALL_CATS_XP = 50, FIRST_STEP_XP = 5, ECO_XP = 10;
   function half(x) { return Math.round(x / 2); }
+  var SET_MIN_PLACES = 3; // 21/11: the mock's one-place sets gave +40 with the first answer
   var RADIUS = { ville: 100, foret: 150, event: 200 };
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
   var RCOL = { 'commun': 'var(--commun)', 'peu commun': 'var(--peu-commun)', 'rare': 'var(--rare)', 'légendaire': 'var(--legendaire)' };
@@ -398,7 +399,9 @@ const CLIENT = String.raw`
     $('xptxt').textContent = n >= MAX_LEVEL ? st.xp + ' XP · niveau maximum' : st.xp + ' XP · niveau ' + (n + 1) + ' à ' + b;
     var tc = $('teamchip'); tc.textContent = st.team ? '👥 ' + st.team : ''; tc.classList.toggle('on', !!st.team);
   }
-  function toast(t) { var x = $('toast'); x.textContent = t; x.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { x.classList.remove('on'); }, 2000); }
+  // 21/11: gains that come together are listed together (a hidden "+40 série complète" made a
+  // "+15 XP" answer look like a level-up bug).
+  function toast(t) { var x = $('toast'); x.style.whiteSpace = 'pre-line'; x.textContent = x.classList.contains('on') ? x.textContent + String.fromCharCode(10) + t : t; x.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { x.classList.remove('on'); }, 2500); }
   function gain(xp, why) {
     var before = levelOf(st.xp); st.xp += xp; save(); hud(); toast('+' + xp + ' XP · ' + why);
     var after = levelOf(st.xp);
@@ -418,6 +421,7 @@ const CLIENT = String.raw`
   function checkSets() {
     Object.keys(SETS).forEach(function (s) {
       var all = SPOTS.filter(function (p) { return p.set === s; });
+      if (all.length < SET_MIN_PLACES) return; // a one- or two-place set is no achievement
       if (!st.sets[s] && all.every(function (p) { return st.spots[p.id]; })) { st.sets[s] = true; gain(SET_XP, 'série complète : ' + SETS[s]); }
     });
     var cats = {}; Object.keys(st.events).forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });

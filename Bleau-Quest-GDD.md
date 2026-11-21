@@ -26,7 +26,7 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   brouillons sourcés pour quatre lieux (cour des Adieux, jardin de Diane, obélisque, théâtre,
   §9), relus par le chef de projet (« vraiment top »), à vérifier sur place. Cinquième série
   (21/11) : couleurs des fiches et des cartes reprises de la palette du site (en-tête en teinte
-  claire, icône en couleur, plus de marron) ; barème d'XP divisé par trois environ (§8).
+  claire, icône en couleur, plus de marron) ; barème d'XP divisé par trois environ (§8). Retour suivant : couleurs « un peu mieux » ; icônes du château et de la fontaine « pas super », à retravailler (ou d'autres propositions) ; un niveau 2 inattendu venait du bonus d'une série d'un seul lieu (§8, corrigé).
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -265,7 +265,9 @@ Brouillard.
   20, rare 30, légendaire 60 ; **événement 20, événement du jour 40**, bonus de saison 5 ;
   « Quatre genres de sorties » 50 ; mosaïque d'Invader 15 ; série complète 40 ; éco-geste 10 ;
   premier pas 5 ; validation sur l'honneur à la moitié (arrondie). **Aucun gain ne vaut plus d'un
-  niveau.**
+  niveau.** Le bonus de série ne vaut que pour une série d'**au moins trois lieux** (21/11 : la série
+  « Napoléon » de la maquette, un seul lieu, ajoutait 40 XP à la première réponse, d'où un niveau 2
+  inattendu après « +15 XP ») ; des gains simultanés s'affichent ensemble.
 - **Niveaux** 1 à 30 : le niveau n commence à 30·n·(n−1) XP (60, 180, 360, 600, 900…).
   **Niveau 2 après trois ou quatre actions**, puis six à huit pour le niveau 3, et de plus en plus.
   Historique du 21/11 : le premier barème (événement 150, niveau 3 à 150 XP) faisait passer du
