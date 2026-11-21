@@ -127,7 +127,7 @@ regard sur ce qui est autour ; sans position, une clairière sur le centre-ville
 et Noël restent à un geste, dans le panneau des couches, et « Touchez un lieu près de vous pour commencer ». **Rien ne s'affiche par-dessus
 la carte à son arrivée** (21/11 : le « niveau 2 » immédiat la cachait) : 20 XP « premier pas » au
 premier lieu ou événement touché, sous le seuil du niveau 2 ; le premier passage de niveau vient
-avec la première vraie validation.
+après un ou deux événements (§8).
 
 **Lisibilité de la carte (21/11)** : rien ne doit faire « guirlande de Noël ». Événements en petits
 carrés (24 px) aux couleurs de catégorie adoucies ; un événement en cours pulse lentement dans le
@@ -222,11 +222,13 @@ Brouillard.
   légendaire 200 ; **événement 60, événement du jour 120**, bonus de saison 20 ; « Toutes les
   scènes » 150 ; série complète 200 ; éco-geste 30 ; premier pas 20 (au premier lieu ou événement
   touché, jamais de niveau tout de suite) ; validation sur l'honneur à la moitié.
-- **Niveaux** 1 à 30 : le niveau n commence à 50·(n−1)² XP (50, 200, 450, 800, 1 250…). Niveau 2
-  à la première vraie validation, puis quelques actions par niveau. 21/11 : l'ancien barème
-  (événement 150 pour un niveau 3 à 150 XP) faisait passer du niveau 1 au niveau 6 en deux
-  événements, avec un seul écran. Désormais **un écran par niveau franchi**, l'un après l'autre ;
-  « Nouveau titre » seulement quand le titre change, sinon le prochain titre à viser.
+- **Niveaux** 1 à 30 : le niveau n commence à 20·(n−1)·(2n+1) XP (100, 280, 540, 880, 1 300…).
+  **Niveau 2 après un ou deux événements** (60 XP chacun, plus les 20 du premier pas), jamais à la
+  première action ; puis trois à quatre actions par niveau au début, un peu plus ensuite. Historique
+  du 21/11 : le premier barème (événement 150, niveau 3 à 150 XP) faisait passer du niveau 1 au
+  niveau 6 en deux événements ; le deuxième (niveau 2 à 50 XP) montait encore dès le premier
+  événement. **Un écran par niveau franchi**, l'un après l'autre ; « Nouveau titre » seulement quand
+  le titre change, sinon le prochain titre à viser.
 - **Titres** : Promeneur, Flâneur, Bellifontain, Peintre de Barbizon, Bleausard, … Denecourt.
 - **Badges** : séries, saisons, éco-geste, premier événement, « 5 Must Climb ».
 - **Collection** : pourcentage par série et global, la galerie des cartes.

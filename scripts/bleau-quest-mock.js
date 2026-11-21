@@ -285,7 +285,7 @@ const CLIENT = String.raw`
   var CATS = { 'Scène & Spectacles': ['🎭', '#b8707d', 'Scène'], 'Culture & Ateliers': ['🎨', '#9282b5', 'Culture'],
     'Nature & Environnement': ['🌿', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['🏃', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
-  var KEY = 'bleau-quest-mock-v3'; // v3: new XP scale, older saves start over
+  var KEY = 'bleau-quest-mock-v4'; // v4: new XP scale, older saves start over
   var st = load();
   function fresh() { return { xp: 0, spots: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY)); return s && s.spots ? s : fresh(); } catch (e) { return fresh(); } }
@@ -305,10 +305,10 @@ const CLIENT = String.raw`
   var featured = liveNow.slice().sort(function (a, b) { return hash(a.id + TODAY) - hash(b.id + TODAY); })[0] || null;
   function xpOf(e) { return (featured && e.id === featured.id ? FEATURED_XP : EVENT_XP) + (e.season ? SEASON_BONUS : 0); }
 
-  // Level n starts at 50·(n−1)² XP: 50, 200, 450, 800, 1250… up to level 30 (GDD §8).
-  // The first real validation (40 XP + 20 "first step") reaches level 2; then a few actions per level.
+  // Level n starts at 20·(n−1)·(2n+1) XP: 100, 280, 540, 880, 1300… up to level 30 (GDD §8).
+  // 21/11 feedback: level 2 after one or two events (60 XP each, + 20 "first step"), never at once.
   var MAX_LEVEL = 30;
-  function floorOf(n) { return 50 * (n - 1) * (n - 1); }
+  function floorOf(n) { return 20 * (n - 1) * (2 * n + 1); }
   function levelOf(xp) { var n = 1; while (n < MAX_LEVEL && floorOf(n + 1) <= xp) n++; return n; }
   function titleOf(n) { var t = TITLES[0][1]; TITLES.forEach(function (x) { if (n >= x[0]) t = x[1]; }); return t; }
 
