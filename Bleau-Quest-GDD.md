@@ -18,8 +18,10 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   (§7.1 bis), profil en haut et boutique en bas (§7.7). **La boutique sera revue en séance dédiée**
   (les offres de la v2 ne correspondent pas à l'idée du chef de projet, §12.2). Troisième série (21/11) :
   portée de 12 km autour du joueur, qui le suit (§7.2) ; les Invaders du centre-ville sur la
-  carte (§7.1 bis) ; **icônes dessinées** à la place des emojis ; **une deuxième direction
-  artistique, le pixel art**, à comparer (§10). Prochaine étape : les fiches en détail.
+  carte (§7.1 bis) ; **icônes dessinées** à la place des emojis, adoptées (« bien mieux ») ;
+  essai de **pixel art écarté**, on garde **le style du site** (§10). En attente : les
+  emplacements des Invaders, que le chef de projet va relever dans les rues (§7.1 bis).
+  Prochaine étape : les fiches en détail.
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -279,27 +281,20 @@ Brouillard.
   que les validations GPS.
 
 ## 10. Direction artistique
-**À explorer, plusieurs essais** (décision du 20/11 : le pixel art n'est pas acquis). Pistes :
-- pixel art (rétro, culture Invader) ;
-- gravure (les gravures de Ridinger, CC0, déjà sur `/foret/`) ;
-- **aquarelle ou huile façon École de Barbizon** : le style vient du lieu lui-même ;
-- carte illustrée façon parc d'attractions.
+**Décision du 21/11 : le style du site** (« reprendre le style du site est bien »), avec les
+icônes dessinées ci-dessous.
 
-Même lieu, même carte, dans chaque style : on compare sur téléphone, au soleil, avant de choisir.
-La maquette reprend le style du site (21/11 : « reprendre le style du site est bien »), sans direction artistique propre.
+**Pixel art, essayé et écarté le 21/11** (« ça ne va pas ») : mêmes écrans avec police à chasse
+fixe, angles droits, bordures épaisses, carte OpenStreetMap en gros pixels. Retiré de la maquette.
 
-**Premier essai comparé, le 21/11 : le pixel art** (bouton « Style » de la maquette, à côté
-du site ou dans le profil). Mêmes écrans ; police à chasse fixe, angles droits, bordures épaisses
-et ombres pleines, palette réduite ; carte OpenStreetMap en gros pixels (les tuiles d'un niveau
-de zoom plus bas, affichées deux fois plus grandes sans lissage, couleurs réduites par un filtre,
-sans aucune requête de plus) ; brouillard en gros pixels ; lieux en « ronds » crénelés. Il fait
-écho aux mosaïques d'Invader.
+Pistes encore possibles, pour **les illustrations des cartes de lieux** seulement (pas
+l'interface) : gravure (Ridinger, CC0, déjà sur `/foret/`), aquarelle ou huile façon École de
+Barbizon. Même lieu, même carte, comparés sur téléphone avant de choisir.
 
-**Icônes (21/11)** : les emojis (rendus différemment selon le téléphone, « pas top ») sont
-remplacés par un jeu d'icônes dessiné pour le projet (`scripts/bleau-quest-icons.js`), chacune
-en deux versions : trait (style du site) et pixels 12×12 (style pixel art). Les lieux verrouillés
-montrent leur icône grisée plutôt qu'un « ? ». Restent en emoji : parcours d'entrée, badges,
-titres des quêtes.
+**Icônes (21/11, « bien mieux »)** : les emojis (rendus différemment selon le téléphone, « pas
+top ») sont remplacés par un jeu d'icônes au trait dessiné pour le projet
+(`scripts/bleau-quest-icons.js`). Les lieux verrouillés montrent leur icône grisée plutôt qu'un
+« ? ». Restent en emoji : parcours d'entrée, badges, titres des quêtes (à reprendre).
 
 ## 11. Plateforme et technique
 - **Web d'abord**, sur fontainebleaulive.fr (`/jeu/` ou `/bleau-quest/`), en PWA installable.
@@ -347,7 +342,7 @@ hasard payant, pas d'énergie à recharger.
 | **Session d'équipe** (code, classement, récapitulatif pour l'organisateur) | séminaires, INSEAD, écoles, hôtels | sur devis, par groupe | le serveur (classement). Le premier revenu réaliste à 5 000 visites par mois |
 | **L'enquête complète** (chapitre 1 gratuit, 2 à 5 payants) | joueurs conquis | 4,99 € une fois | l'enquête écrite ; un déblocage |
 | **Coffret souvenir** (cartes d'une série imprimées, pin's) | visiteurs, cadeau | ~12 € | un imprimeur, l'envoi. Un objet, donc hors des règles des magasins d'applications |
-| **Autre style de cartes** (gravure, aquarelle, pixel) | collectionneurs | 1,99 € | les essais de 116c servent deux fois |
+| **Autre style de cartes** (gravure, aquarelle) | collectionneurs | 1,99 € | les essais de 116c servent deux fois |
 | **Soutien à prix libre** | habitués | libre | le lien Stripe existe déjà (balades) |
 | Saison financée par l'office de tourisme ou l'interco (modèle Tèrra Aventura) | institutions | convention | des chiffres d'usage (M2) |
 | Commerçants partenaires, signalés comme tels | commerces | plus tard (décision du 20/11) | — |

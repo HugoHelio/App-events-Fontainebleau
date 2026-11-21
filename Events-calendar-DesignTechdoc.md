@@ -2457,17 +2457,21 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     haut, boutique dans celle du bas. **Boutique à revoir en séance dédiée.** Troisième série
     (21/11) : sorties à 12 km **autour du joueur**, la portée le suit (GDD §7.2) ; les quatre
     Invaders du parcours à pied du centre-ville sur la carte, à la rue (positions du chef de
-    projet, nos données ; GDD §7.1 bis) ; icônes dessinées en trait et en pixels
-    (`scripts/bleau-quest-icons.js`) ; **essai de direction artistique pixel art**, bouton
-    « Style » (GDD §10). Suite : les fiches en détail.
+    projet, nos données ; GDD §7.1 bis) ; icônes dessinées au trait
+    (`scripts/bleau-quest-icons.js`, adoptées) ; essai pixel art **écarté**, style du site gardé
+    (GDD §10). Suite : les fiches en détail.
+  - [ ] **116p. Emplacements des Invaders (chef de projet, sur le terrain)** : il a vu la plupart
+    des 46 mosaïques en se promenant et va les relever dans les rues (rue, description, encore là
+    ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la
+    rue (GDD §7.1 bis). Les 4 du parcours à pied du centre-ville y sont déjà.
   - **M1 — prototype jouable (4 à 6 semaines)**, dans l'ordre :
     - [ ] **116b. Décisions du chef de projet** (GDD §16) : sujet de l'enquête, nom, liste des
       35 lieux (30 en ville et au château, à partir du parcours à pied vérifié ; 5 en forêt :
       tour Denecourt, gorges de Franchard, gorges d'Apremont, mont Ussy, rocher Cassepot — à
       confirmer), séries du M1.
-    - [ ] **116c. Essais de direction artistique** : une même carte de lieu et un même bout de
-      carte en 3 ou 4 styles (pixel art, gravure, peinture de l'École de Barbizon, carte de parc),
-      comparés sur téléphone dehors.
+    - [ ] **116c. Illustrations des cartes de lieux** : l'interface garde le style du site
+      (21/11, pixel art essayé et écarté) ; reste à choisir le style des illustrations (gravure,
+      peinture de l'École de Barbizon), une même carte comparée sur téléphone dehors.
     - [ ] **116d. Contenu** : `scripts/bleau-quest.js` écrit à la main — lieux (position relevée
       sur place ou dans OSM, rayon, type, série, rareté), textes FR/EN **sourcés** (source affichée),
       question d'observation de secours par lieu, premier chapitre de l'enquête. Relu par le chef de

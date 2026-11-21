@@ -243,43 +243,6 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .onb input{font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px;width:100%;margin:4px 0 8px}
 .firstq{background:#fff;border:2px solid var(--gold);border-radius:18px;padding:16px;text-align:center}
 .firstq .big{font-size:52px}.firstq b{display:block;font-size:18px;color:var(--ink);margin:6px 0 2px}
-/* ── Pixel-art proposal (21/11): same screens, another art direction ── */
-.phone[data-style=pixel]{--ink:#1b2a4a;--accent:#7cf03c;--bg:#efe6cf;--line:#1b2a4a;--muted:#4a5470;--live:#ff2e4d;--gold:#ffb400;
---commun:#7d8597;--peu-commun:#1f9e5a;--rare:#2b6de0;--legendaire:#e08a00;font-family:Consolas,"Lucida Console","Courier New",monospace}
-.phone[data-style=pixel] *:not(.leaflet-container):not(.leaflet-pane):not(.leaflet-tile){border-radius:0!important}
-.phone[data-style=pixel] button,.phone[data-style=pixel] input{font-family:inherit}
-.phone[data-style=pixel] .ico svg{shape-rendering:crispEdges}
-.phone[data-style=pixel] .leaflet-tile{image-rendering:pixelated}
-.phone[data-style=pixel] #map .leaflet-tile-pane{filter:url(#px-poster) saturate(1.25)}
-.phone[data-style=pixel] #map.doux .leaflet-tile-pane{filter:url(#px-poster) saturate(.5) sepia(.3)}
-.phone[data-style=pixel] #map.nuit .leaflet-tile-pane{filter:url(#px-poster) invert(1) hue-rotate(180deg) brightness(.85)}
-.phone[data-style=pixel] .leaflet-fog-pane canvas{image-rendering:pixelated}
-.phone[data-style=pixel] .set,.phone[data-style=pixel] .quest,.phone[data-style=pixel] .stat,.phone[data-style=pixel] .badge,.phone[data-style=pixel] .choice,.phone[data-style=pixel] .offer{border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
-.phone[data-style=pixel] .quest.hot{border-color:var(--live);box-shadow:4px 4px 0 var(--live)}
-.phone[data-style=pixel] .btn{border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);text-transform:uppercase;letter-spacing:.03em;font-size:13px}
-.phone[data-style=pixel] .btn:active{transform:translate(3px,3px);box-shadow:none}
-.phone[data-style=pixel] .btn.live{border-color:#7a0016}
-.phone[data-style=pixel] .card{border:3px solid var(--ink)}
-.phone[data-style=pixel] .pin{border:0;box-shadow:inset 0 0 0 3px #fff;clip-path:polygon(0 30%,10% 30%,10% 10%,30% 10%,30% 0,70% 0,70% 10%,90% 10%,90% 30%,100% 30%,100% 70%,90% 70%,90% 90%,70% 90%,70% 100%,30% 100%,30% 90%,10% 90%,10% 70%,0 70%)}
-.phone[data-style=pixel] .pin.got{box-shadow:inset 0 0 0 3px var(--accent)}
-.phone[data-style=pixel] .evt{border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
-.phone[data-style=pixel] .evt i{border:1px solid var(--ink);box-shadow:none}
-.phone[data-style=pixel] .top{border-bottom:3px solid #000}
-.phone[data-style=pixel] .lvl{border:3px solid #fff;font-size:18px}
-.phone[data-style=pixel] .bar{height:10px;border:2px solid #fff;background:transparent}
-.phone[data-style=pixel] .bar i{background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 7px)}
-.phone[data-style=pixel] .tabs{border-top:3px solid var(--ink)}
-.phone[data-style=pixel] .tabs button[aria-selected="true"]{background:var(--accent);color:var(--ink)}
-.phone[data-style=pixel] .pad h2,.phone[data-style=pixel] .body h2,.phone[data-style=pixel] .day{text-transform:uppercase;letter-spacing:.04em}
-.phone[data-style=pixel] .pad h2,.phone[data-style=pixel] .body h2{font-size:16px}
-.phone[data-style=pixel] .livebar,.phone[data-style=pixel] .lbtn,.phone[data-style=pixel] .lpanel,.phone[data-style=pixel] .toast{border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
-.phone[data-style=pixel] .sheet{border-top:4px solid var(--ink);box-shadow:none}
-.phone[data-style=pixel] .art::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 2px,transparent 2px 4px)}
-.phone[data-style=pixel] .art .ico{font-size:84px}
-.phone[data-style=pixel] .tag,.phone[data-style=pixel] .xpchip,.phone[data-style=pixel] .livechip{border:2px solid var(--ink)}
-.phone[data-style=pixel] .levelup{background:rgba(27,42,74,.95)}.phone[data-style=pixel] .levelup .n{text-shadow:6px 6px 0 #000}
-.phone[data-style=pixel] .onb .hero{background:var(--ink);box-shadow:inset 0 0 0 4px var(--accent)}
-.phone[data-style=pixel] .ev-row .ic{border:2px solid var(--ink)}
 </style></head><body>
 <div class="stage">
 <div class="notes">
@@ -287,12 +250,10 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <p><b>Ce qui est réel</b> : les positions des lieux (OpenStreetMap) ; la couche <b>Événements</b>, ${week.length} sorties de la semaine du ${G.frDate(today)} dans la zone de l’agenda, montrées à moins de ${EVENT_KM} km <b>du joueur</b> (la portée le suit) ; la couche <b>Saison</b>, ${season.length} rendez-vous de Noël des ${SEASON_DAYS} prochains jours. Toutes confirmées par une source lue, tirées de <code>data.json</code>.</p>
 <p><b>Ce qui ne l’est pas</b> : textes, questions, barème d’XP, boutique (rien n’est vendu), style graphique. Les 5 sites de grimpe sont une proposition à valider avec des grimpeurs.</p>
 <p><b>Essayer</b> : le parcours d’entrée s’ouvre au premier lancement. Puis le bouton des couches (en haut à droite), le bandeau « en direct », un événement, un lieu ; « Simuler ma position » puis touchez la carte pour essayer le GPS.</p>
-<p><b>Style</b> (proposition à comparer) : <button type="button" data-style-btn="site" aria-pressed="true">Le site</button><button type="button" data-style-btn="pixel" aria-pressed="false">Pixel art</button></p>
 <p><button type="button" id="replay">Revoir l’accueil</button><button type="button" id="reset">Tout remettre à zéro</button></p>
 <p>Fenêtre étroite (moins de 520 px) : la maquette prend tout l’écran, comme sur un téléphone.</p>
 </div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="px-poster" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="discrete" tableValues="0 .3 .55 .8 1"/><feFuncG type="discrete" tableValues="0 .3 .55 .8 1"/><feFuncB type="discrete" tableValues="0 .3 .55 .8 1"/></feComponentTransfer></filter></svg>
-<div class="phone" id="phone" data-style="site">
+<div class="phone" id="phone">
 <div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title">Promeneur</b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><span class="teamchip" id="teamchip"></span><button type="button" class="mebtn" id="mebtn" aria-label="Profil"><span data-ico="user"></span></button></div>
 <section class="screen on" id="s-map"><div id="map"></div>
 <button type="button" class="livebar" id="livebar"><span class="dot"></span><span id="livetxt"></span></button>
@@ -359,16 +320,10 @@ const CLIENT = String.raw`
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function $(id) { return document.getElementById(id); }
-  // Icons (scripts/bleau-quest-icons.js): line icons for the site's style, pixel bitmaps for the
-  // pixel-art proposal. Fixed markup from that file, never from the data.
-  var STYLE_KEY = 'fl-collection-style', STYLE = 'site';
-  try { STYLE = localStorage.getItem(STYLE_KEY) === 'pixel' ? 'pixel' : 'site'; } catch (e) {}
-  var QS = /[?&]style=(site|pixel)/.exec(location.search); if (QS) STYLE = QS[1]; // ?style=pixel for screenshots
+  // Icons (scripts/bleau-quest-icons.js), drawn for the project. Fixed markup, never from the data.
   function ico(name) {
     var d = ICONS[name] || ICONS.star, sp = document.createElement('span'); sp.className = 'ico';
-    sp.innerHTML = STYLE === 'pixel'
-      ? '<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="' + d.p + '"/></svg>'
-      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d.l + '"/></svg>';
+    sp.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d.l + '"/></svg>';
     return sp;
   }
   function chrome() {
@@ -437,21 +392,7 @@ const CLIENT = String.raw`
 
   // ── Map and layers ──
   var map = L.map('map', { zoomControl: false }).setView([48.408, 2.69], 13);
-  // Pixel style: the same OSM tiles, one zoom level down and shown at twice their size, unsmoothed
-  // (and posterised by an SVG filter): the map turns to big pixels with no extra tile request.
-  var tiles = null;
-  function setTiles() {
-    if (tiles) map.removeLayer(tiles);
-    var o = { maxZoom: 19, attribution: '© OpenStreetMap' };
-    if (STYLE === 'pixel') { o.tileSize = 512; o.zoomOffset = -1; }
-    tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', o).addTo(map);
-  }
-  setTiles();
-  function applyStyle(v) {
-    STYLE = v; try { localStorage.setItem(STYLE_KEY, v); } catch (e) {}
-    $('phone').setAttribute('data-style', v); setTiles(); chrome(); panel(); draw(); renderAll(); closeSheet();
-    Array.prototype.forEach.call(document.querySelectorAll('[data-style-btn]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-style-btn') === v); });
-  }
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
   var FogLayer = L.Layer.extend({
     initialize: function () { this._holes = []; },
     onAdd: function (m) {
@@ -467,7 +408,7 @@ const CLIENT = String.raw`
       var m = this._map, c = this._c; if (!m || !c) return;
       // Half a screen of margin on each side, so a pan does not reveal unfogged edges
       var sz = m.getSize(), px = Math.round(sz.x / 2), py = Math.round(sz.y / 2), w = sz.x + 2 * px, h = sz.y + 2 * py;
-      var r = STYLE === 'pixel' ? 1 / 6 : window.devicePixelRatio || 1; // pixel style: a coarse canvas, enlarged unsmoothed
+      var r = window.devicePixelRatio || 1;
       c.width = Math.ceil(w * r); c.height = Math.ceil(h * r); c.style.width = w + 'px'; c.style.height = h + 'px';
       L.DomUtil.setPosition(c, m.containerPointToLayerPoint([-px, -py]));
       var g = c.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0);
@@ -832,10 +773,6 @@ const CLIENT = String.raw`
   // ── Profile: account and (future) shop ──
   function renderMe() {
     var root = $('me'); root.textContent = '';
-    var sw = el('div', 'set'); sw.appendChild(el('b', null, 'Style (maquette, pour comparer)'));
-    var row = el('div', 'acts');
-    [['site', 'Le site'], ['pixel', 'Pixel art']].forEach(function (x) { var b = el('button', 'btn ' + (STYLE === x[0] ? '' : 'alt'), x[1]); b.type = 'button'; b.onclick = function () { applyStyle(x[0]); tab('me'); }; row.appendChild(b); });
-    sw.appendChild(row); root.appendChild(sw);
     var n = levelOf(st.xp);
     root.appendChild(el('h2', null, titleOf(n) + ' · niveau ' + n));
     var stats = el('div', 'stats');
@@ -936,9 +873,6 @@ const CLIENT = String.raw`
   $('mebtn').onclick = function () { tab('me'); };
   $('reset').onclick = function () { st = fresh(); save(); if (meMarker) { map.removeLayer(meMarker); meMarker = null; me = null; } refreshRange(); liveBar(); draw(); renderAll(); closeSheet(); openOnb(); };
 
-  Array.prototype.forEach.call(document.querySelectorAll('[data-style-btn]'), function (b) { b.onclick = function () { applyStyle(b.getAttribute('data-style-btn')); }; });
-  $('phone').setAttribute('data-style', STYLE);
-  Array.prototype.forEach.call(document.querySelectorAll('[data-style-btn]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-style-btn') === STYLE); });
   chrome(); panel(); liveBar(); draw(); renderAll();
   if (!st.onboarded && location.hash !== '#carte') openOnb();
   var QT = /[?&]onglet=([a-z]+)/.exec(location.search); if (QT) tab(QT[1]); // ?onglet=dex for screenshots // #carte: straight to the map (screenshots)
