@@ -1073,6 +1073,11 @@
       "reason": "Même représentation théâtrale de la pièce Le Legs au Théâtre Municipal.",
       "at": "2026-10-12"
     },
+    "EVT_1557fc9209|EVT_7b73c182c1": {
+      "same": true,
+      "reason": "Même événement, la fiche B correspondant au dernier jour du marché.",
+      "at": "2026-11-21"
+    },
     "EVT_1578b698ff|EVT_d391e6e25c": {
       "same": false,
       "reason": "Les dates d'événement ne concordent pas (9 au 11 octobre vs 10 au 11 octobre).",
@@ -1435,6 +1440,11 @@
       "same": true,
       "reason": "Même pièce de théâtre programmée le 14 novembre 2026 au Théâtre municipal de Fontainebleau.",
       "at": "2026-10-12"
+    },
+    "EVT_20c093fdbc|EVT_377b8dffb1": {
+      "same": true,
+      "reason": "Même événement (même identifiant de fiche), dont une date est une journée incluse dans le marché de Noël.",
+      "at": "2026-11-21"
     },
     "EVT_2108dbd3a3|EVT_2799da914c": {
       "same": false,
@@ -1898,6 +1908,11 @@
       "same": true,
       "reason": "Il s'agit du même concours hippique d'obstacles organisé par l'École Militaire d'Équitation aux mêmes dates.",
       "at": "2026-09-24"
+    },
+    "EVT_377b8dffb1|EVT_fa67e35f12": {
+      "same": true,
+      "reason": "Même événement (même identifiant de fiche), décliné sur l'une de ses journées.",
+      "at": "2026-11-21"
     },
     "EVT_390214907d|EVT_bbc6f7ef5e": {
       "same": false,
@@ -2384,6 +2399,11 @@
       "same": false,
       "reason": "L'une des fiches concerne un week-end spécifique tandis que l'autre couvre une période plus large.",
       "at": "2026-10-27"
+    },
+    "EVT_4bbbb04596|EVT_7b73c182c1": {
+      "same": true,
+      "reason": "Même événement (même lien de fiche), décliné à la journée.",
+      "at": "2026-11-21"
     },
     "EVT_4c1645a44c|EVT_734a43c14d": {
       "same": true,
@@ -3391,6 +3411,11 @@
       "at": "2026-10-31",
       "v": 2
     },
+    "EVT_793e0046c7|EVT_7b73c182c1": {
+      "same": true,
+      "reason": "Même événement avec la même fiche source, sur un jour de la période globale.",
+      "at": "2026-11-21"
+    },
     "EVT_7a320e9813|EVT_ac2d1fc43b": {
       "same": true,
       "reason": "Même spectacle au Théâtre Municipal le 12 décembre à 17h30 (dont une fiche issue de recherche web seule).",
@@ -3401,6 +3426,16 @@
       "same": true,
       "reason": "Même conférence historique organisée à Avon le 6 décembre 2026.",
       "at": "2026-10-28"
+    },
+    "EVT_7b73c182c1|EVT_c17ffc4411": {
+      "same": true,
+      "reason": "Même événement (même lien de fiche), représenté sur la période globale et l'un de ses jours.",
+      "at": "2026-11-21"
+    },
+    "EVT_7b73c182c1|EVT_e1ccd9e17e": {
+      "same": true,
+      "reason": "Même événement avec le même identifiant de fiche.",
+      "at": "2026-11-21"
     },
     "EVT_7b79741d7e|EVT_93af25d735": {
       "same": false,

@@ -1526,12 +1526,12 @@
       "at": "2026-11-21"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-21-journeedelarbre": {
-      "h": "2d995410084c",
+      "h": "4226eaea1f17",
       "f": {
         "category": "Nature & Environnement",
-        "description": "Une journée dédiée aux arbres avec pour thématique \"L'arbre qu'on écoute\".",
+        "description": "Une journée dédiée à la sensibilisation et à la célébration de la nature autour de l'arbre à Montigny-sur-Loing.",
         "schedule": "10h à 17h",
-        "locationName": "Bibliothèque municipale, 2 rue du Loing",
+        "locationName": "Salle Georges Barrois, 24 rue des Hautes Bornes, Montigny-sur-Loing",
         "organizer": "",
         "ageMin": 0,
         "ageMax": 99
@@ -1578,13 +1578,13 @@
       "at": "2026-11-21"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-21-soireebeaujolaisnouveau": {
-      "h": "8367939d011a",
+      "h": "2ecf7848a437",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Venez partager un moment convivial lors de cette soirée dédiée à la dégustation du Beaujolais nouveau.",
-        "schedule": "19h30",
-        "locationName": "Salle du Long Rocher, 3 rue Renée Montgermont à Montigny sur Loing",
-        "organizer": "",
+        "description": "Une soirée conviviale pour célébrer l'arrivée du beaujolais nouveau proposée par le Foyer de l'amitié.",
+        "schedule": "18h",
+        "locationName": "Salle polyvalente, 1 rue du Hongre, Remauville",
+        "organizer": "Foyer de l'amitié",
         "ageMin": 0,
         "ageMax": 99
       },
@@ -2137,13 +2137,13 @@
       "at": "2026-11-21"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-marchedenoel": {
-      "h": "85720dc4e091",
+      "h": "f36b2515cb0c",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Venez profiter du marché de Noël traditionnel avec son feu d'artifice en fin de journée.",
-        "schedule": "10h à 18h / 18h30",
-        "locationName": "salle des Fêtes et sur la place du village à Flagy",
-        "organizer": "",
+        "description": "Venez découvrir les créations d'artisans et producteurs locaux lors du marché de Noël organisé par le comité des fêtes.",
+        "schedule": "10h à 17h30",
+        "locationName": "Salle des Fêtes de Ville-Saint-Jacques",
+        "organizer": "Comité des Fêtes de Ville-Saint-Jacques",
         "ageMin": 0,
         "ageMax": 99
       },
@@ -2176,12 +2176,12 @@
       "at": "2026-10-05"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-marchedenoel": {
-      "h": "16daf22fe532",
+      "h": "74d70ae6f588",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Un rendez-vous festif de fin d'année pour découvrir des exposants et célébrer l'esprit de Noël.",
-        "schedule": "10h à 18h",
-        "locationName": "Salle polyvalente, 11 rue de la Mairie à Villemaréchal",
+        "description": "Un marché traditionnel de Noël pour faire vos emplettes de fin d'année au bord de l'eau.",
+        "schedule": "10h à 19h et 10h à 18h",
+        "locationName": "Salle de la Plage, 1 chemin des Prés, Thomery",
         "organizer": "",
         "ageMin": 0,
         "ageMax": 99
@@ -7733,7 +7733,7 @@
       ]
     },
     "samois": {
-      "h": "f3808927a97a",
+      "h": "5dffdd48e2c4",
       "at": "2026-11-21",
       "items": [
         {
@@ -7742,11 +7742,10 @@
           "endDate": "2026-11-22",
           "url": "https://samois-sur-seine.fr/evenement/exposition-philippe-mothe-gravure-2/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Exposition de gravures par Philippe MOTHE.",
-          "locationName": "La Passerelle des Arts"
+          "locationName": "La Passerelle des Arts",
+          "price": "gratuit",
+          "schedule": "samedi 7 novembre 2026 - dimanche 22 novembre 2026"
         },
         {
           "title": "Échange de plantes",
@@ -7754,12 +7753,9 @@
           "endDate": "2026-11-21",
           "url": "https://samois-sur-seine.fr/evenement/echange-de-plantes-2/",
           "category": "Nature & Environnement",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Venez avec vos sacs, cageots et plantes pour partager un moment convivial autour du jardin !",
           "locationName": "Foyer Django REINHARDT",
-          "organizer": "Comité de fleurissement",
+          "price": "gratuit",
           "schedule": "10h"
         },
         {
@@ -7768,11 +7764,9 @@
           "endDate": "2026-11-21",
           "url": "https://samois-sur-seine.fr/evenement/recital-au-salon-de-josephine/",
           "category": "Scène & Spectacles",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Musique des Salons du 1er empire, récital sur instruments d’époque.",
           "locationName": "Eglise Sainte-Hilaire",
+          "price": "gratuit",
           "schedule": "20h"
         },
         {
@@ -7781,11 +7775,9 @@
           "endDate": "2026-11-22",
           "url": "https://samois-sur-seine.fr/evenement/exposition-samoisart/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Les peintures de l’atelier : venez découvrir le travail d’une année des élèves de Maryse au RDC du foyer Django Reinhardt.",
           "locationName": "Foyer Django REINHARDT",
+          "price": "gratuit",
           "schedule": "10h/13 et 14h30/17h"
         },
         {
@@ -7794,11 +7786,9 @@
           "endDate": "2026-11-21",
           "url": "https://samois-sur-seine.fr/evenement/atelier-danse-petit-bout-dhistoire-dansee/",
           "category": "Culture & Ateliers",
-          "ageMax": 9,
           "ageMin": 3,
-          "city": "Samois-sur-Seine",
-          "description": "Atelier de danse de 9h30 à 10h15 pour les 3/5 ans et de 10h30 à 12h pour les 6/9 ans.",
           "locationName": "Foyer Django REINHARDT",
+          "price": "gratuit",
           "schedule": "09h30 à 12h00"
         },
         {
@@ -7807,11 +7797,9 @@
           "endDate": "2026-11-22",
           "url": "https://samois-sur-seine.fr/evenement/loto/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Grand loto avec de nombreux lots à gagner, tombola, buvette et gâteaux.",
           "locationName": "LA SAMOISIENNE",
+          "price": "gratuit",
           "schedule": "14h"
         },
         {
@@ -7820,10 +7808,7 @@
           "endDate": "2026-11-28",
           "url": "https://samois-sur-seine.fr/evenement/atelier-danse-pour-adultes/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Atelier de Danse Jazz pour laisser parler le corps.",
           "locationName": "Foyer Django REINHARDT",
           "price": "30 €",
           "schedule": "10h à 12h"
@@ -7834,12 +7819,8 @@
           "endDate": "2026-11-28",
           "url": "https://samois-sur-seine.fr/evenement/concert-intime-nougaro/",
           "category": "Scène & Spectacles",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Un duo qui revisite avec sensibilité l’univers du grand Nougaro.",
           "locationName": "Foyer Django REINHARDT",
-          "organizer": "Sing Sing Song Production",
           "price": "10 euros",
           "schedule": "20h45"
         },
@@ -7849,10 +7830,7 @@
           "endDate": "2026-11-28",
           "url": "https://samois-sur-seine.fr/evenement/soiree-salsa-bachata-kizomba-les-sosies/",
           "category": "Scène & Spectacles",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Soirée dansante Salsa-bachata-kizomba avec softs à volonté et buffet dessert.",
           "locationName": "LA SAMOISIENNE",
           "price": "12€",
           "schedule": "21H à 02H"
@@ -7863,11 +7841,10 @@
           "endDate": "2026-12-13",
           "url": "https://samois-sur-seine.fr/evenement/exposition-jeanne-papa-aquarelle/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Exposition d'aquarelles par Jeanne PAPA.",
-          "locationName": "La Passerelle des Arts"
+          "locationName": "La Passerelle des Arts",
+          "price": "gratuit",
+          "schedule": "dimanche 29 novembre 2026 - dimanche 13 décembre 2026"
         },
         {
           "title": "Marché de Noël",
@@ -7875,12 +7852,9 @@
           "endDate": "2026-12-05",
           "url": "https://samois-sur-seine.fr/evenement/marche-de-noel-2/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Journée féerique avec marché de Noël, animations, fête des lumières et contes.",
           "locationName": "Foyer Django REINHARDT",
-          "organizer": "Le comité des fêtes, l’association du Foyer Django Reinhardt et la municipalité",
+          "price": "gratuit",
           "schedule": "10 h à 20 h"
         },
         {
@@ -7889,12 +7863,9 @@
           "endDate": "2026-12-17",
           "url": "https://samois-sur-seine.fr/evenement/le-noel-des-aines/",
           "category": "Culture & Ateliers",
-          "ageMax": 99,
           "ageMin": 70,
-          "city": "Samois-sur-Seine",
-          "description": "Retrait des bons cadeaux pour les aînés autour d’un goûter convivial.",
           "locationName": "salle des mariages en Mairie",
-          "organizer": "CCAS de Samois-sur-Seine",
+          "price": "gratuit",
           "schedule": "14h à 17h"
         },
         {
@@ -7903,10 +7874,9 @@
           "endDate": "2026-12-19",
           "url": "https://samois-sur-seine.fr/evenement/course-de-noel/",
           "category": "Sport & Outdoor",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Course adultes de 5km labellisée FFA et courses jeunes à partir de 16h00.",
+          "locationName": "Samois-sur-Seine",
+          "price": "gratuit",
           "schedule": "18h"
         },
         {
@@ -7915,13 +7885,10 @@
           "endDate": "2026-12-31",
           "url": "https://samois-sur-seine.fr/evenement/reveillon-de-la-saint-sylvestre/",
           "category": "Scène & Spectacles",
-          "ageMax": 99,
           "ageMin": 0,
-          "city": "Samois-sur-Seine",
-          "description": "Soirée festive et dansante avec playlist variée, buffet festif et coupe de champagne offerte.",
           "locationName": "LA SAMOISIENNE",
           "price": "40 €",
-          "schedule": "dès 22h"
+          "schedule": "22h"
         }
       ]
     }
