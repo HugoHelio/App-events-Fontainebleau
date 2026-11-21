@@ -25,13 +25,15 @@ const http = require('http');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const G = require('./generate-pages');
+const { ICONS } = require('./bleau-quest-icons');
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'reports', 'bleau-quest');
 const PORT = Number(process.env.PORT) || 8517;
 const CONFIRMED = new Set(['site', 'datatourisme', 'openagenda', 'francebillet']);
 const CENTRE = { lat: 48.4045, lng: 2.7016 };
-const EVENT_KM = 12;     // beyond, the map is too full to read on a phone
+const EVENT_KM = 12;     // around the player (21/11: it follows them); beyond, the map is too full to read
+const ZONE_KM = 35;      // what the page embeds: the agenda's whole zone (20 km) plus a margin
 const EVENT_DAYS = 7;
 const SEASON_KM = 15;
 const SEASON_DAYS = 40;
@@ -39,26 +41,26 @@ const SEASON_RE = /no[eë]l|avent|saint[- ]nicolas|illumination/i;
 
 // Positions: OpenStreetMap (Nominatim, 20-21/11/2026), theatre from venues.json. Texts: placeholders.
 const SPOTS = [
-  { id: 'cour-des-adieux', name: 'Cour des Adieux', set: 'napoleon', type: 'Monument', rarity: 'commun', lat: 48.40204, lng: 2.69810, icon: '🏰' },
-  { id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', lat: 48.40295, lng: 2.69973, icon: '⛲' },
-  { id: 'theatre', name: 'Théâtre municipal', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40335, lng: 2.69762, icon: '🎭' },
-  { id: 'obelisque', name: 'Obélisque de Marie-Antoinette', set: 'chateau', type: 'Monument', rarity: 'commun', lat: 48.39705, lng: 2.69227, icon: '🗿' },
-  { id: 'mont-ussy', name: 'Mont Ussy', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42699, lng: 2.69645, icon: '🌳' },
-  { id: 'tour-denecourt', name: 'Tour Denecourt', set: 'denecourt', type: 'Belvédère', rarity: 'rare', lat: 48.43382, lng: 2.72621, icon: '🗼' },
-  { id: 'rocher-cassepot', name: 'Rocher Cassepot', set: 'denecourt', type: 'Rocher nommé', rarity: 'peu commun', lat: 48.43503, lng: 2.73366, icon: '🪨' },
-  { id: 'caverne-augas', name: 'Caverne d’Augas', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42516, lng: 2.71003, icon: '🕳️' },
-  { id: 'grotte-serment', name: 'Grotte du Serment', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'rare', lat: 48.40225, lng: 2.66493, icon: '⛰️' },
-  { id: 'grand-veneur', name: 'Croix du Grand Veneur', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', lat: 48.43041, lng: 2.66126, icon: '✝️' },
-  { id: 'franchard', name: 'Gorges de Franchard', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.40812, lng: 2.62024, icon: '⛰️' },
-  { id: 'apremont', name: 'Gorges d’Apremont', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.43601, lng: 2.62568, icon: '⛰️' },
-  { id: 'musee-barbizon', name: 'Musée de l’École de Barbizon', set: 'peintres', type: 'Maison de peintres', rarity: 'peu commun', lat: 48.44619, lng: 2.60261, icon: '🎨' },
+  { id: 'cour-des-adieux', name: 'Cour des Adieux', set: 'napoleon', type: 'Monument', rarity: 'commun', lat: 48.40204, lng: 2.69810, icon: 'castle' },
+  { id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', lat: 48.40295, lng: 2.69973, icon: 'fountain' },
+  { id: 'theatre', name: 'Théâtre municipal', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40335, lng: 2.69762, icon: 'mask' },
+  { id: 'obelisque', name: 'Obélisque de Marie-Antoinette', set: 'chateau', type: 'Monument', rarity: 'commun', lat: 48.39705, lng: 2.69227, icon: 'obelisk' },
+  { id: 'mont-ussy', name: 'Mont Ussy', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42699, lng: 2.69645, icon: 'tree' },
+  { id: 'tour-denecourt', name: 'Tour Denecourt', set: 'denecourt', type: 'Belvédère', rarity: 'rare', lat: 48.43382, lng: 2.72621, icon: 'tower' },
+  { id: 'rocher-cassepot', name: 'Rocher Cassepot', set: 'denecourt', type: 'Rocher nommé', rarity: 'peu commun', lat: 48.43503, lng: 2.73366, icon: 'rock' },
+  { id: 'caverne-augas', name: 'Caverne d’Augas', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42516, lng: 2.71003, icon: 'cave' },
+  { id: 'grotte-serment', name: 'Grotte du Serment', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'rare', lat: 48.40225, lng: 2.66493, icon: 'cave' },
+  { id: 'grand-veneur', name: 'Croix du Grand Veneur', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', lat: 48.43041, lng: 2.66126, icon: 'cross' },
+  { id: 'franchard', name: 'Gorges de Franchard', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.40812, lng: 2.62024, icon: 'mountain' },
+  { id: 'apremont', name: 'Gorges d’Apremont', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.43601, lng: 2.62568, icon: 'mountain' },
+  { id: 'musee-barbizon', name: 'Musée de l’École de Barbizon', set: 'peintres', type: 'Maison de peintres', rarity: 'peu commun', lat: 48.44619, lng: 2.60261, icon: 'palette' },
   // « 5 Must Climb » in its family version (21/11): five places to visit and try, not five hard
   // problems. A proposal, to be checked with climbers (116k).
-  { id: 'bas-cuvier', name: 'Bas Cuvier', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.44617, lng: 2.63734, icon: '🧗' },
-  { id: 'rocher-canon', name: 'Rocher Canon', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.46308, lng: 2.66281, icon: '🧗' },
-  { id: 'canche-aux-merciers', name: 'Canche aux Merciers', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.39102, lng: 2.54895, icon: '🧗' },
-  { id: 'cul-de-chien', name: 'Cul de Chien', set: 'grimpe', type: 'Site de bloc et sable', rarity: 'rare', lat: 48.37685, lng: 2.52281, icon: '🏖️' },
-  { id: 'elephant', name: 'L’Éléphant (Larchant)', set: 'grimpe', type: 'Rocher nommé', rarity: 'rare', lat: 48.29379, lng: 2.59458, icon: '🐘' },
+  { id: 'bas-cuvier', name: 'Bas Cuvier', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.44617, lng: 2.63734, icon: 'climb' },
+  { id: 'rocher-canon', name: 'Rocher Canon', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.46308, lng: 2.66281, icon: 'climb' },
+  { id: 'canche-aux-merciers', name: 'Canche aux Merciers', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.39102, lng: 2.54895, icon: 'climb' },
+  { id: 'cul-de-chien', name: 'Cul de Chien', set: 'grimpe', type: 'Site de bloc et sable', rarity: 'rare', lat: 48.37685, lng: 2.52281, icon: 'climb' },
+  { id: 'elephant', name: 'L’Éléphant (Larchant)', set: 'grimpe', type: 'Rocher nommé', rarity: 'rare', lat: 48.29379, lng: 2.59458, icon: 'rock' },
 ];
 
 const SETS = {
@@ -71,16 +73,17 @@ const SETS = {
   grimpe: '5 Must Climb, en famille',
 };
 
-// Space Invader mosaics of the Pays de Fontainebleau (FTBL_01-46, 2023). Source: the text of
-// pixel-hunting.com (read 21/11/2026, map updated 25/07/2026): identifiers, wave dates, a few
-// names and points. Positions are only on that site's map (no commercial reuse allowed) and OSM has
-// none: no pin on the map. No photo either (the works are Invader's). Unlocked on one's honour.
-const INVADER_WAVES = [['28/02/2023', 1, 4], ['08/03/2023', 5, 8], ['15/03/2023', 9, 12], ['04/04/2023', 13, 13],
-  ['18/05/2023', 14, 15], ['31/05/2023', 16, 18], ['05-10/08/2023', 19, 46]];
-const INVADER_NOTES = { 7: { pts: 40 }, 9: { pts: 50, name: '8bit Cyclop', note: 'Un cyclope 8 bits au milieu d’une forêt, clin d’œil au jeu Berzerk et au Cyclop de Tinguely, à Milly-la-Forêt.' },
-  12: { pts: 50 }, 15: { pts: 50, gone: true }, 16: { pts: 50, name: 'Robinvader, the painter of Barbizon' } };
-const INVADERS = [];
-INVADER_WAVES.forEach(([date, a, b]) => { for (let n = a; n <= b; n++) INVADERS.push(Object.assign({ id: 'FTBL_' + String(n).padStart(2, '0'), date }, INVADER_NOTES[n] || {})); });
+// Space Invader mosaics (asked for on 21/11). 46 were put up around Fontainebleau in 2023
+// (pixel-hunting.com, text read 21/11/2026). The project lead knows where most are; the four of
+// the town-centre walk sheet (scripts/balades.js, their own survey) are placed here at the
+// **street** (BAN), not the wall: one still looks for them. No photo: the works are Invader's.
+const INVADER_TOTAL = 46;
+const INVADERS = [
+  { id: 'inv-lampe', name: 'Lampe abat-jour', street: 'rue Dénecourt', lat: 48.404255, lng: 2.70013 },
+  { id: 'inv-napoleon', name: 'Napoléon et son bicorne', street: 'place de la République', lat: 48.406339, lng: 2.701041 },
+  { id: 'inv-alien-rouge', name: 'Alien rouge et son livre', street: 'rue du Conventionnel-Geoffroy', lat: 48.405359, lng: 2.700052 },
+  { id: 'inv-alien-bleu', name: 'Alien bleu à lunettes', street: 'rue des Trois-Maillets', lat: 48.404694, lng: 2.699368 },
+];
 
 function km(a, b) {
   const r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos(((a.lat + b.lat) / 2) * r), y = (b.lat - a.lat) * r;
@@ -97,14 +100,15 @@ const slim = (e) => ({ id: e.id, title: e.title, cat: e.category || '', city: e.
   lat: e.lat, lng: e.lng, start: e.startDate, end: endOf(e), when: G.dateLabel(e), schedule: e.schedule || '',
   page: e.pageUrl || '', season: SEASON_RE.test(e.title) });
 
-// This week's events near the centre, and the season's (Christmas now) a little further and longer.
+// This week's events and the season's (Christmas now), over the whole zone: the page keeps those
+// within EVENT_KM (SEASON_KM) of the player, or of the town centre without a position.
 function layers(today) {
   const all = confirmedEvents();
   const week = all.filter((e) => e.startDate <= G.addDays(today, EVENT_DAYS - 1) && endOf(e) >= today
-    && G.spanDays(e) <= 4 && km(CENTRE, e) <= EVENT_KM).map(slim);
+    && G.spanDays(e) <= 4 && km(CENTRE, e) <= ZONE_KM).map(slim);
   const seen = new Set(week.map((e) => e.id));
   const season = all.filter((e) => !seen.has(e.id) && SEASON_RE.test(e.title) && endOf(e) >= today
-    && e.startDate <= G.addDays(today, SEASON_DAYS) && G.spanDays(e) <= SEASON_DAYS && km(CENTRE, e) <= SEASON_KM).map(slim);
+    && e.startDate <= G.addDays(today, SEASON_DAYS) && G.spanDays(e) <= SEASON_DAYS && km(CENTRE, e) <= ZONE_KM).map(slim);
   return { week, season };
 }
 
@@ -132,6 +136,10 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .xp{font-size:12px;opacity:.85}.teamchip{font-size:11px;font-weight:700;background:rgba(255,255,255,.15);padding:3px 8px;border-radius:999px;display:none}.teamchip.on{display:inline-block}
 .mebtn{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.15);font-size:18px;cursor:pointer;flex:none}
 .cards.mini{grid-template-columns:repeat(6,1fr);gap:6px}.cards.mini .card{aspect-ratio:1;font-size:16px}.cards.mini .card small{font-size:8px;padding:2px}
+.ico{display:inline-flex;width:1em;height:1em;vertical-align:-.15em}.ico svg{width:100%;height:100%;display:block}
+.pin,.evt,.art,.ev-row .ic{color:#fff}.pin .ico{font-size:16px}.evt .ico{font-size:13px}.evt.star .ico{font-size:16px}.art .ico{font-size:64px}.ev-row .ic .ico{font-size:20px}
+.card .ico{font-size:30px;margin-bottom:4px}.lgrid .ico{font-size:20px;display:block;margin:0 auto 2px}.lbtn .ico{font-size:22px;color:var(--ink)}.mebtn .ico{font-size:20px;color:#fff}
+.pin.inv{width:26px;height:26px;background:#2b2d42;font-size:14px}.pin.inv .ico{font-size:14px}
 .screen{flex:1;position:relative;overflow:auto;display:none}.screen.on{display:block}
 #map{position:absolute;inset:0;background:#e8e4da;z-index:0}
 .leaflet-fog-pane canvas{position:absolute;left:0;top:0;pointer-events:none}
@@ -153,7 +161,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 #map .leaflet-control-attribution a{color:#6b716d}
 .tabs{display:flex;background:#fff;border-top:1px solid var(--line)}
 .tabs button{flex:1;font:inherit;font-size:12px;border:0;background:none;padding:8px 0 10px;color:var(--muted);cursor:pointer;position:relative}
-.tabs button span{display:block;font-size:20px}.tabs button[aria-selected="true"]{color:var(--ink);font-weight:700}
+.tabs button span{display:flex;justify-content:center;font-size:22px;margin-bottom:2px}.tabs button[aria-selected="true"]{color:var(--ink);font-weight:700}
 .tabs .nb{position:absolute;top:4px;left:56%;background:var(--live);color:#fff;font-size:10px;font-weight:800;border-radius:999px;padding:0 5px}
 .pin{width:30px;height:30px;border-radius:50%;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 5px rgba(0,0,0,.4);position:relative}
 .pin.locked{filter:grayscale(1);opacity:.8}
@@ -197,7 +205,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .card{aspect-ratio:3/4;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:26px;color:#fff;cursor:pointer;border:0;font-family:inherit}
 .card small{font-size:10px;line-height:1.1;text-align:center;padding:4px;color:#fff}
-.card.locked{background:#cfd3cc!important;color:#8a8f8b}.card.locked small{color:#6e746f}
+.card.locked{background:#cfd3cc!important;color:#8a8f8b}.card.locked .ico{opacity:.55}.card.locked small{color:#6e746f}
 .ev-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;background:#fff;border:0;border-bottom:1px solid var(--line);padding:10px 2px;cursor:pointer}
 .ev-row .ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
 .ev-row .tx{flex:1;min-width:0}.ev-row .tx b{display:block;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ev-row .tx span{font-size:12px;color:var(--muted)}
@@ -235,21 +243,60 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .onb input{font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px;width:100%;margin:4px 0 8px}
 .firstq{background:#fff;border:2px solid var(--gold);border-radius:18px;padding:16px;text-align:center}
 .firstq .big{font-size:52px}.firstq b{display:block;font-size:18px;color:var(--ink);margin:6px 0 2px}
+/* ── Pixel-art proposal (21/11): same screens, another art direction ── */
+.phone[data-style=pixel]{--ink:#1b2a4a;--accent:#7cf03c;--bg:#efe6cf;--line:#1b2a4a;--muted:#4a5470;--live:#ff2e4d;--gold:#ffb400;
+--commun:#7d8597;--peu-commun:#1f9e5a;--rare:#2b6de0;--legendaire:#e08a00;font-family:Consolas,"Lucida Console","Courier New",monospace}
+.phone[data-style=pixel] *:not(.leaflet-container):not(.leaflet-pane):not(.leaflet-tile){border-radius:0!important}
+.phone[data-style=pixel] button,.phone[data-style=pixel] input{font-family:inherit}
+.phone[data-style=pixel] .ico svg{shape-rendering:crispEdges}
+.phone[data-style=pixel] .leaflet-tile{image-rendering:pixelated}
+.phone[data-style=pixel] #map .leaflet-tile-pane{filter:url(#px-poster) saturate(1.25)}
+.phone[data-style=pixel] #map.doux .leaflet-tile-pane{filter:url(#px-poster) saturate(.5) sepia(.3)}
+.phone[data-style=pixel] #map.nuit .leaflet-tile-pane{filter:url(#px-poster) invert(1) hue-rotate(180deg) brightness(.85)}
+.phone[data-style=pixel] .leaflet-fog-pane canvas{image-rendering:pixelated}
+.phone[data-style=pixel] .set,.phone[data-style=pixel] .quest,.phone[data-style=pixel] .stat,.phone[data-style=pixel] .badge,.phone[data-style=pixel] .choice,.phone[data-style=pixel] .offer{border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.phone[data-style=pixel] .quest.hot{border-color:var(--live);box-shadow:4px 4px 0 var(--live)}
+.phone[data-style=pixel] .btn{border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);text-transform:uppercase;letter-spacing:.03em;font-size:13px}
+.phone[data-style=pixel] .btn:active{transform:translate(3px,3px);box-shadow:none}
+.phone[data-style=pixel] .btn.live{border-color:#7a0016}
+.phone[data-style=pixel] .card{border:3px solid var(--ink)}
+.phone[data-style=pixel] .pin{border:0;box-shadow:inset 0 0 0 3px #fff;clip-path:polygon(0 30%,10% 30%,10% 10%,30% 10%,30% 0,70% 0,70% 10%,90% 10%,90% 30%,100% 30%,100% 70%,90% 70%,90% 90%,70% 90%,70% 100%,30% 100%,30% 90%,10% 90%,10% 70%,0 70%)}
+.phone[data-style=pixel] .pin.got{box-shadow:inset 0 0 0 3px var(--accent)}
+.phone[data-style=pixel] .evt{border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.phone[data-style=pixel] .evt i{border:1px solid var(--ink);box-shadow:none}
+.phone[data-style=pixel] .top{border-bottom:3px solid #000}
+.phone[data-style=pixel] .lvl{border:3px solid #fff;font-size:18px}
+.phone[data-style=pixel] .bar{height:10px;border:2px solid #fff;background:transparent}
+.phone[data-style=pixel] .bar i{background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 7px)}
+.phone[data-style=pixel] .tabs{border-top:3px solid var(--ink)}
+.phone[data-style=pixel] .tabs button[aria-selected="true"]{background:var(--accent);color:var(--ink)}
+.phone[data-style=pixel] .pad h2,.phone[data-style=pixel] .body h2,.phone[data-style=pixel] .day{text-transform:uppercase;letter-spacing:.04em}
+.phone[data-style=pixel] .pad h2,.phone[data-style=pixel] .body h2{font-size:16px}
+.phone[data-style=pixel] .livebar,.phone[data-style=pixel] .lbtn,.phone[data-style=pixel] .lpanel,.phone[data-style=pixel] .toast{border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.phone[data-style=pixel] .sheet{border-top:4px solid var(--ink);box-shadow:none}
+.phone[data-style=pixel] .art::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 2px,transparent 2px 4px)}
+.phone[data-style=pixel] .art .ico{font-size:84px}
+.phone[data-style=pixel] .tag,.phone[data-style=pixel] .xpchip,.phone[data-style=pixel] .livechip{border:2px solid var(--ink)}
+.phone[data-style=pixel] .levelup{background:rgba(27,42,74,.95)}.phone[data-style=pixel] .levelup .n{text-shadow:6px 6px 0 #000}
+.phone[data-style=pixel] .onb .hero{background:var(--ink);box-shadow:inset 0 0 0 4px var(--accent)}
+.phone[data-style=pixel] .ev-row .ic{border:2px solid var(--ink)}
 </style></head><body>
 <div class="stage">
 <div class="notes">
 <h1>Fontainebleau Live Collection — maquette M0 (v3)</h1>
-<p><b>Ce qui est réel</b> : les positions des lieux (OpenStreetMap) ; la couche <b>Événements</b>, ${week.length} sorties de la semaine du ${G.frDate(today)} à moins de ${EVENT_KM} km ; la couche <b>Saison</b>, ${season.length} rendez-vous de Noël des ${SEASON_DAYS} prochains jours. Toutes confirmées par une source lue, tirées de <code>data.json</code>.</p>
+<p><b>Ce qui est réel</b> : les positions des lieux (OpenStreetMap) ; la couche <b>Événements</b>, ${week.length} sorties de la semaine du ${G.frDate(today)} dans la zone de l’agenda, montrées à moins de ${EVENT_KM} km <b>du joueur</b> (la portée le suit) ; la couche <b>Saison</b>, ${season.length} rendez-vous de Noël des ${SEASON_DAYS} prochains jours. Toutes confirmées par une source lue, tirées de <code>data.json</code>.</p>
 <p><b>Ce qui ne l’est pas</b> : textes, questions, barème d’XP, boutique (rien n’est vendu), style graphique. Les 5 sites de grimpe sont une proposition à valider avec des grimpeurs.</p>
 <p><b>Essayer</b> : le parcours d’entrée s’ouvre au premier lancement. Puis le bouton des couches (en haut à droite), le bandeau « en direct », un événement, un lieu ; « Simuler ma position » puis touchez la carte pour essayer le GPS.</p>
+<p><b>Style</b> (proposition à comparer) : <button type="button" data-style-btn="site" aria-pressed="true">Le site</button><button type="button" data-style-btn="pixel" aria-pressed="false">Pixel art</button></p>
 <p><button type="button" id="replay">Revoir l’accueil</button><button type="button" id="reset">Tout remettre à zéro</button></p>
 <p>Fenêtre étroite (moins de 520 px) : la maquette prend tout l’écran, comme sur un téléphone.</p>
 </div>
-<div class="phone" id="phone">
-<div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title">Promeneur</b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><span class="teamchip" id="teamchip"></span><button type="button" class="mebtn" id="mebtn" aria-label="Profil">👤</button></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="px-poster" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="discrete" tableValues="0 .3 .55 .8 1"/><feFuncG type="discrete" tableValues="0 .3 .55 .8 1"/><feFuncB type="discrete" tableValues="0 .3 .55 .8 1"/></feComponentTransfer></filter></svg>
+<div class="phone" id="phone" data-style="site">
+<div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title">Promeneur</b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><span class="teamchip" id="teamchip"></span><button type="button" class="mebtn" id="mebtn" aria-label="Profil"><span data-ico="user"></span></button></div>
 <section class="screen on" id="s-map"><div id="map"></div>
 <button type="button" class="livebar" id="livebar"><span class="dot"></span><span id="livetxt"></span></button>
-<button type="button" class="lbtn" id="lbtn" aria-label="Couches" aria-expanded="false">🗂️</button>
+<button type="button" class="lbtn" id="lbtn" aria-label="Couches" aria-expanded="false"><span data-ico="layers"></span></button>
 <div class="lpanel" id="lpanel">
 <h4>Type de carte</h4>
 <div class="lgrid" id="bases"></div>
@@ -267,11 +314,11 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <div class="toast" id="toast"></div>
 <div class="levelup" id="levelup"><div>Niveau</div><div class="n" id="lu-n"></div><div id="lu-t" style="font-size:20px;font-weight:700"></div><p id="lu-p"></p><button type="button" class="btn alt" id="lu-ok">Continuer</button></div>
 <nav class="tabs" role="tablist">
-<button type="button" role="tab" aria-selected="true" data-tab="map"><span>🗺️</span>Carte</button>
-<button type="button" role="tab" aria-selected="false" data-tab="live"><span>🔴</span>En direct<em class="nb" id="nb"></em></button>
-<button type="button" role="tab" aria-selected="false" data-tab="dex"><span>🃏</span>Collection</button>
-<button type="button" role="tab" aria-selected="false" data-tab="quests"><span>📜</span>Quêtes</button>
-<button type="button" role="tab" aria-selected="false" data-tab="shop"><span>🛍️</span>Boutique</button>
+<button type="button" role="tab" aria-selected="true" data-tab="map"><span data-ico="map"></span>Carte</button>
+<button type="button" role="tab" aria-selected="false" data-tab="live"><span data-ico="live"></span>En direct<em class="nb" id="nb"></em></button>
+<button type="button" role="tab" aria-selected="false" data-tab="dex"><span data-ico="cards"></span>Collection</button>
+<button type="button" role="tab" aria-selected="false" data-tab="quests"><span data-ico="flag"></span>Quêtes</button>
+<button type="button" role="tab" aria-selected="false" data-tab="shop"><span data-ico="bag"></span>Boutique</button>
 </nav>
 </div>
 </div>
@@ -280,8 +327,11 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 var SPOTS = ${inline(SPOTS)};
 var SETS = ${inline(SETS)};
 var INVADERS = ${inline(INVADERS)};
-var EVENTS = ${inline(week)};
-var SEASON = ${inline(season)};
+var INVADER_TOTAL = ${INVADER_TOTAL};
+var EVENTS_ALL = ${inline(week)};
+var SEASON_ALL = ${inline(season)};
+var RANGE = ${inline({ events: EVENT_KM * 1000, season: SEASON_KM * 1000, centre: CENTRE })};
+var ICONS = ${inline(ICONS)};
 var TODAY = ${inline(today)};
 ${CLIENT}
 </script>
@@ -299,8 +349,8 @@ const CLIENT = String.raw`
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
   var RCOL = { 'commun': 'var(--commun)', 'peu commun': 'var(--peu-commun)', 'rare': 'var(--rare)', 'légendaire': 'var(--legendaire)' };
   var SETCOL = { napoleon: '#7a3b2e', chateau: '#8f6a25', ville: '#4a5bb8', denecourt: '#2f6f8f', foret: '#3d6b2a', peintres: '#9a5a2a', grimpe: '#6b4a8f' };
-  var CATS = { 'Scène & Spectacles': ['🎭', '#b8707d', 'Scène'], 'Culture & Ateliers': ['🎨', '#9282b5', 'Culture'],
-    'Nature & Environnement': ['🌿', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['🏃', '#6d8bb5', 'Sport'] };
+  var CATS = { 'Scène & Spectacles': ['mask', '#b8707d', 'Scène'], 'Culture & Ateliers': ['palette', '#9282b5', 'Culture'],
+    'Nature & Environnement': ['leaf', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['run', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
   var KEY = 'bleau-quest-mock-v4'; // v4: new XP scale, older saves start over
   var st = load();
@@ -309,8 +359,23 @@ const CLIENT = String.raw`
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function $(id) { return document.getElementById(id); }
-  function cat(e) { return CATS[e.cat] || ['★', '#555', 'Sortie']; }
-  function byId(id) { return EVENTS.concat(SEASON).filter(function (x) { return x.id === id; })[0]; }
+  // Icons (scripts/bleau-quest-icons.js): line icons for the site's style, pixel bitmaps for the
+  // pixel-art proposal. Fixed markup from that file, never from the data.
+  var STYLE_KEY = 'fl-collection-style', STYLE = 'site';
+  try { STYLE = localStorage.getItem(STYLE_KEY) === 'pixel' ? 'pixel' : 'site'; } catch (e) {}
+  var QS = /[?&]style=(site|pixel)/.exec(location.search); if (QS) STYLE = QS[1]; // ?style=pixel for screenshots
+  function ico(name) {
+    var d = ICONS[name] || ICONS.star, sp = document.createElement('span'); sp.className = 'ico';
+    sp.innerHTML = STYLE === 'pixel'
+      ? '<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="' + d.p + '"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d.l + '"/></svg>';
+    return sp;
+  }
+  function chrome() {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ico]'), function (n) { n.textContent = ''; n.appendChild(ico(n.getAttribute('data-ico'))); });
+  }
+  function cat(e) { return CATS[e.cat] || ['star', '#555', 'Sortie']; }
+  function byId(id) { return EVENTS_ALL.concat(SEASON_ALL).filter(function (x) { return x.id === id; })[0]; }
   function dayShort(d) { return new Date(d + 'T12:00:00').toLocaleDateString('fr-FR', { weekday: 'short' }).replace('.', ''); }
   function dayLong(d) { return d === TODAY ? 'Aujourd’hui' : new Date(d + 'T12:00:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }); }
   function isLive(e) { return e.start <= TODAY && e.end >= TODAY; }
@@ -318,8 +383,16 @@ const CLIENT = String.raw`
 
   // Event of the day: one of today's events, the same for everyone that day (a stable hash).
   function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return h >>> 0; }
-  var liveNow = EVENTS.filter(isLive);
-  var featured = liveNow.slice().sort(function (a, b) { return hash(a.id + TODAY) - hash(b.id + TODAY); })[0] || null;
+  // 21/11: the 12 km range follows the player (the town centre without a position).
+  var EVENTS = [], SEASON = [], liveNow = [], featured = null;
+  function refreshRange() {
+    var c = me || RANGE.centre;
+    EVENTS = EVENTS_ALL.filter(function (e) { return dist(c, e) <= RANGE.events; });
+    SEASON = SEASON_ALL.filter(function (e) { return dist(c, e) <= RANGE.season; });
+    liveNow = EVENTS.filter(isLive);
+    featured = liveNow.slice().sort(function (a, b) { return hash(a.id + TODAY) - hash(b.id + TODAY); })[0] || null;
+  }
+  refreshRange();
   function xpOf(e) { return (featured && e.id === featured.id ? FEATURED_XP : EVENT_XP) + (e.season ? SEASON_BONUS : 0); }
 
   // Level n starts at 20·(n−1)·(2n+1) XP: 100, 280, 540, 880, 1300… up to level 30 (GDD §8).
@@ -364,7 +437,21 @@ const CLIENT = String.raw`
 
   // ── Map and layers ──
   var map = L.map('map', { zoomControl: false }).setView([48.408, 2.69], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+  // Pixel style: the same OSM tiles, one zoom level down and shown at twice their size, unsmoothed
+  // (and posterised by an SVG filter): the map turns to big pixels with no extra tile request.
+  var tiles = null;
+  function setTiles() {
+    if (tiles) map.removeLayer(tiles);
+    var o = { maxZoom: 19, attribution: '© OpenStreetMap' };
+    if (STYLE === 'pixel') { o.tileSize = 512; o.zoomOffset = -1; }
+    tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', o).addTo(map);
+  }
+  setTiles();
+  function applyStyle(v) {
+    STYLE = v; try { localStorage.setItem(STYLE_KEY, v); } catch (e) {}
+    $('phone').setAttribute('data-style', v); setTiles(); chrome(); panel(); draw(); renderAll(); closeSheet();
+    Array.prototype.forEach.call(document.querySelectorAll('[data-style-btn]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-style-btn') === v); });
+  }
   var FogLayer = L.Layer.extend({
     initialize: function () { this._holes = []; },
     onAdd: function (m) {
@@ -379,8 +466,9 @@ const CLIENT = String.raw`
     _redraw: function () {
       var m = this._map, c = this._c; if (!m || !c) return;
       // Half a screen of margin on each side, so a pan does not reveal unfogged edges
-      var sz = m.getSize(), px = Math.round(sz.x / 2), py = Math.round(sz.y / 2), w = sz.x + 2 * px, h = sz.y + 2 * py, r = window.devicePixelRatio || 1;
-      c.width = w * r; c.height = h * r; c.style.width = w + 'px'; c.style.height = h + 'px';
+      var sz = m.getSize(), px = Math.round(sz.x / 2), py = Math.round(sz.y / 2), w = sz.x + 2 * px, h = sz.y + 2 * py;
+      var r = STYLE === 'pixel' ? 1 / 6 : window.devicePixelRatio || 1; // pixel style: a coarse canvas, enlarged unsmoothed
+      c.width = Math.ceil(w * r); c.height = Math.ceil(h * r); c.style.width = w + 'px'; c.style.height = h + 'px';
       L.DomUtil.setPosition(c, m.containerPointToLayerPoint([-px, -py]));
       var g = c.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0);
       g.globalCompositeOperation = 'source-over'; g.fillStyle = 'rgba(36,48,42,.55)'; g.fillRect(0, 0, w, h);
@@ -395,13 +483,14 @@ const CLIENT = String.raw`
     }
   });
   var LAYERS = {
-    spots: { icon: '📍', label: 'Lieux', on: true, g: L.layerGroup() },
-    events: { icon: '🔴', label: 'En direct', on: true, g: L.layerGroup() },
+    spots: { icon: 'pin', label: 'Lieux', on: true, g: L.layerGroup() },
+    events: { icon: 'live', label: 'En direct', on: true, g: L.layerGroup() },
+    invaders: { icon: 'invader', label: 'Invaders', on: true, g: L.layerGroup() }, // asked for on the map (21/11)
     // 21/11 feedback: the map opens light (places and live events); the other layers are one tap away
-    quests: { icon: '📜', label: 'Quêtes', on: false, g: L.layerGroup() },
-    climb: { icon: '🧗', label: 'Grimpe', on: false, g: L.layerGroup() },
-    season: { icon: '🎄', label: 'Noël', on: false, g: L.layerGroup() },
-    fog: { icon: '🌫️', label: 'Brouillard', on: true, g: new FogLayer() }, // on by default (21/11): it focuses on what is around
+    quests: { icon: 'flag', label: 'Quêtes', on: false, g: L.layerGroup() },
+    climb: { icon: 'climb', label: 'Grimpe', on: false, g: L.layerGroup() },
+    season: { icon: 'xmas', label: 'Noël', on: false, g: L.layerGroup() },
+    fog: { icon: 'fog', label: 'Brouillard', on: true, g: new FogLayer() }, // on by default (21/11): it focuses on what is around
   };
   var BASES = [['plan', 'Plan', '#e9e5dc'], ['doux', 'Doux', '#ece3cf'], ['nuit', 'Nuit', '#2b3540']];
   var base = 'plan';
@@ -417,7 +506,7 @@ const CLIENT = String.raw`
     var ov = $('overlays'); ov.textContent = '';
     Object.keys(LAYERS).forEach(function (k) {
       var L0 = LAYERS[k], x = el('button'); x.type = 'button'; x.setAttribute('aria-pressed', L0.on);
-      x.appendChild(el('span', null, L0.icon)); x.appendChild(document.createTextNode(L0.label));
+      x.appendChild(ico(L0.icon)); x.appendChild(document.createTextNode(L0.label));
       x.onclick = function () { L0.on = !L0.on; if (L0.on) L0.g.addTo(map); else map.removeLayer(L0.g); panel(); };
       ov.appendChild(x);
     });
@@ -428,7 +517,7 @@ const CLIENT = String.raw`
   function pinMarker(p, layer) {
     var got = !!st.spots[p.id];
     var m = L.marker([p.lat, p.lng], { icon: L.divIcon({ html: '<div class="pin' + (got ? ' got' : ' locked') + '" style="background:' + RCOL[p.rarity] + '"></div>', className: '', iconSize: [30, 30], iconAnchor: [15, 15] }) });
-    m.on('add', function () { m.getElement().querySelector('.pin').textContent = p.icon; });
+    m.on('add', function () { m.getElement().querySelector('.pin').appendChild(ico(p.icon)); });
     m.on('click', function () { if (!arming) openSpot(p); });
     layer.addLayer(m);
   }
@@ -440,7 +529,7 @@ const CLIENT = String.raw`
       icon: L.divIcon({ html: '<div class="' + cls + '"><b></b><i></i></div>', className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2] }) });
     m.on('add', function () {
       var d = m.getElement().querySelector('.evt'); d.style.background = cat(e)[1];
-      d.querySelector('b').textContent = e.season ? '🎄' : cat(e)[0];
+      d.querySelector('b').appendChild(ico(e.season ? 'xmas' : cat(e)[0]));
       d.querySelector('i').textContent = live ? 'LIVE' : dayShort(firstDay(e));
     });
     m.on('click', function () { if (!arming) openEvent(e); });
@@ -451,6 +540,12 @@ const CLIENT = String.raw`
     SPOTS.forEach(function (p) { pinMarker(p, p.set === 'grimpe' ? LAYERS.climb.g : LAYERS.spots.g); });
     EVENTS.forEach(function (e) { evtMarker(e, e.season ? LAYERS.season.g : LAYERS.events.g); });
     SEASON.forEach(function (e) { evtMarker(e, LAYERS.season.g); });
+    INVADERS.forEach(function (v) {
+      var on = invGot(v), mk = L.marker([v.lat, v.lng], { icon: L.divIcon({ html: '<div class="pin inv' + (on ? ' got' : '') + '"></div>', className: '', iconSize: [26, 26], iconAnchor: [13, 13] }) });
+      mk.on('add', function () { mk.getElement().querySelector('.pin').appendChild(ico('invader')); });
+      mk.on('click', function () { if (!arming) openInvader(v); });
+      LAYERS.invaders.g.addLayer(mk);
+    });
     CHAPTER.forEach(function (id, i) {
       var p = SPOTS.filter(function (x) { return x.id === id; })[0]; if (!p || st.spots[id]) return;
       var m = L.marker([p.lat, p.lng], { interactive: false, zIndexOffset: 800, icon: L.divIcon({ html: '<div class="qnum">' + (i + 1) + '</div>', className: '', iconSize: [20, 20], iconAnchor: [26, 26] }) });
@@ -464,6 +559,7 @@ const CLIENT = String.raw`
     var holes = [];
     SPOTS.forEach(function (p) { if (st.spots[p.id]) holes.push(ring(p, 700)); });
     Object.keys(st.events).forEach(function (id) { var e = byId(id); if (e) holes.push(ring(e, 500)); });
+    INVADERS.forEach(function (v) { if (invGot(v)) holes.push(ring(v, 250)); });
     // Without a position yet, a clearing on the town centre, so the map never opens all dark
     holes.push(me ? ring(me, 400) : ring({ lat: 48.404, lng: 2.698 }, 600));
     LAYERS.fog.g.setHoles(holes);
@@ -474,7 +570,7 @@ const CLIENT = String.raw`
     me = { lat: lat, lng: lng };
     if (meMarker) map.removeLayer(meMarker);
     meMarker = L.marker([lat, lng], { icon: L.divIcon({ html: '<div class="me"></div>', className: '', iconSize: [18, 18], iconAnchor: [9, 9] }), interactive: false }).addTo(map);
-    LAYERS.fog.g.clearLayers(); drawFog();
+    refreshRange(); draw(); liveBar(); renderAll();
   }
   function dist(a, b) {
     var r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos((a.lat + b.lat) / 2 * r), y = (b.lat - a.lat) * r;
@@ -487,7 +583,7 @@ const CLIENT = String.raw`
     var n = liveNow.length;
     $('livetxt').textContent = '';
     var b = el('b', null, n + ' en direct'); $('livetxt').appendChild(b);
-    $('livetxt').appendChild(document.createTextNode(' aujourd’hui · ' + EVENTS.length + ' cette semaine · jusqu’à +' + FEATURED_XP + ' XP'));
+    $('livetxt').appendChild(document.createTextNode(' aujourd’hui · ' + EVENTS.length + ' cette semaine à 12 km · jusqu’à +' + FEATURED_XP + ' XP'));
     $('nb').textContent = n ? String(n) : '';
   }
   $('livebar').onclick = function () { tab('live'); };
@@ -496,7 +592,7 @@ const CLIENT = String.raw`
   var sheet = $('sheet');
   function closeSheet() { sheet.classList.remove('on'); }
   function header(bg, icon, chip, chipCol) {
-    var art = el('div', 'art'); art.style.background = bg; art.appendChild(document.createTextNode(icon));
+    var art = el('div', 'art'); art.style.background = bg; art.appendChild(ico(icon));
     if (chip) { var r = el('span', 'r', chip); r.style.background = chipCol; art.appendChild(r); }
     var x = el('button', 'x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Fermer'); x.onclick = closeSheet; art.appendChild(x);
     return art;
@@ -546,7 +642,7 @@ const CLIENT = String.raw`
     firstStep();
     sheet.textContent = '';
     var c = cat(e), live = isLive(e), star = featured && e.id === featured.id, xp = xpOf(e);
-    sheet.appendChild(header(c[1], e.season ? '🎄' : c[0], star ? '★ événement du jour' : live ? 'en direct' : c[2], star ? 'var(--gold)' : live ? 'var(--live)' : 'rgba(0,0,0,.35)'));
+    sheet.appendChild(header(c[1], e.season ? 'xmas' : c[0], star ? '★ événement du jour' : live ? 'en direct' : c[2], star ? 'var(--gold)' : live ? 'var(--live)' : 'rgba(0,0,0,.35)'));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, e.title));
     b.appendChild(el('p', 'meta', e.when + ' · ' + e.place + (e.schedule ? ' · ' + e.schedule : '') + (me ? ' · à ' + fmtDist(dist(me, e)) : '')));
@@ -586,7 +682,7 @@ const CLIENT = String.raw`
   // ── En direct: the site's strength, its own tab ──
   function evRow(root, e) {
     var c = cat(e), r = el('button', 'ev-row'); r.type = 'button';
-    var ic = el('span', 'ic', e.season ? '🎄' : c[0]); ic.style.background = c[1]; r.appendChild(ic);
+    var ic = el('span', 'ic'); ic.appendChild(ico(e.season ? 'xmas' : c[0])); ic.style.background = c[1]; r.appendChild(ic);
     var tx = el('span', 'tx'); tx.appendChild(el('b', null, e.title)); tx.appendChild(el('span', null, e.place + (e.schedule ? ' · ' + e.schedule : '')));
     r.appendChild(tx);
     if (st.events[e.id]) r.appendChild(el('span', 'xpchip', '✓'));
@@ -624,7 +720,7 @@ const CLIENT = String.raw`
     if (!ev.length) box.appendChild(el('p', 'meta', 'Allez à une sortie de l’agenda, le jour même : vous gagnez sa carte souvenir, avec la date. Une fois l’événement passé, cette carte ne se gagne plus.'));
     else {
       var g = el('div', 'cards');
-      ev.forEach(function (id) { var e = byId(id); if (!e) return; var c = el('div', 'card'); c.style.background = cat(e)[1]; c.appendChild(document.createTextNode(e.season ? '🎄' : cat(e)[0])); c.appendChild(el('small', null, e.title)); g.appendChild(c); });
+      ev.forEach(function (id) { var e = byId(id); if (!e) return; var c = el('div', 'card'); c.style.background = cat(e)[1]; c.appendChild(ico(e.season ? 'xmas' : cat(e)[0])); c.appendChild(el('small', null, e.title)); g.appendChild(c); });
       box.appendChild(g);
     }
     root.appendChild(box);
@@ -636,7 +732,7 @@ const CLIENT = String.raw`
       var grid = el('div', 'cards');
       all.forEach(function (p) {
         var c = el('button', 'card' + (st.spots[p.id] ? '' : ' locked')); c.type = 'button'; c.style.background = SETCOL[s];
-        c.appendChild(document.createTextNode(st.spots[p.id] ? p.icon : '?')); c.appendChild(el('small', null, p.name));
+        c.appendChild(ico(p.icon)); /* locked: the same icon, greyed (21/11) */ c.appendChild(el('small', null, p.name));
         c.onclick = function () { tab('map'); map.setView([p.lat, p.lng], 15); openSpot(p); };
         grid.appendChild(c);
       });
@@ -645,38 +741,49 @@ const CLIENT = String.raw`
     invaderBox(root);
   }
 
-  // ── Invader mosaics: a series without pins, on one's honour ──
+  // ── Invader mosaics: on the map at street level, found by GPS or on one's honour ──
+  var INV_XP = 40, INV_RADIUS = 100;
+  function invGot(m) { return st.invaders && st.invaders[m.id] && st.invaders[m.id].how; }
   function invaderBox(root) {
-    var got = INVADERS.filter(function (m) { return st.invaders && st.invaders[m.id]; }).length;
-    var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, '👾 Les Space Invaders (2023)')); h.appendChild(el('span', null, got + '/' + INVADERS.length));
+    var got = INVADERS.filter(invGot).length;
+    var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, 'Les Space Invaders')); h.appendChild(el('span', null, got + '/' + INVADER_TOTAL));
     bx.appendChild(h);
-    bx.appendChild(el('p', 'meta', '46 mosaïques posées par Invader en 2023, à Fontainebleau et dans 23 communes autour. À chercher soi-même : le jeu ne donne pas leur emplacement.'));
-    var grid = el('div', 'cards mini');
+    bx.appendChild(el('p', 'meta', INVADER_TOTAL + ' mosaïques posées par Invader en 2023 autour de Fontainebleau. La carte montre la rue, pas le mur : à vous de lever les yeux.'));
+    var grid = el('div', 'cards');
     INVADERS.forEach(function (m) {
-      var on = st.invaders && st.invaders[m.id];
-      var c = el('button', 'card' + (on ? '' : ' locked')); c.type = 'button'; c.style.background = '#2b2d42';
-      c.appendChild(document.createTextNode(on ? '👾' : '?')); c.appendChild(el('small', null, m.id.slice(5)));
-      c.onclick = function () { openInvader(m); }; grid.appendChild(c);
+      var on = invGot(m), c = el('button', 'card' + (on ? '' : ' locked')); c.type = 'button'; c.style.background = '#2b2d42';
+      c.appendChild(on ? ico('invader') : document.createTextNode('?')); c.appendChild(el('small', null, on ? m.name : m.street));
+      c.onclick = function () { tab('map'); map.setView([m.lat, m.lng], 17); openInvader(m); }; grid.appendChild(c);
     });
-    bx.appendChild(grid); root.appendChild(bx);
+    var more = el('div', 'card locked'); more.appendChild(document.createTextNode('+' + (INVADER_TOTAL - INVADERS.length))); more.appendChild(el('small', null, 'à relever'));
+    grid.appendChild(more); bx.appendChild(grid);
+    bx.appendChild(el('div', 'todo', 'Maquette : les 4 mosaïques du parcours à pied du centre-ville. Les autres viendront du relevé du chef de projet (rue et description), et l’état de chacune (détruite ou non) se vérifie sur place.'));
+    root.appendChild(bx);
   }
   function openInvader(m) {
+    firstStep();
     sheet.textContent = '';
-    var on = st.invaders && st.invaders[m.id];
-    sheet.appendChild(header(on ? '#2b2d42' : '#cfd3cc', '👾', m.gone ? 'détruite' : null, '#8a8f8b'));
+    var on = invGot(m);
+    sheet.appendChild(header(on ? '#2b2d42' : '#cfd3cc', 'invader', 'street art', '#2b2d42'));
     var b = el('div', 'body');
-    b.appendChild(el('h2', null, m.id + (m.name ? ' · ' + m.name : '')));
-    b.appendChild(el('p', 'meta', 'Posée le ' + m.date + (m.pts ? ' · ' + m.pts + ' points dans FlashInvaders' : '')));
-    if (m.note) b.appendChild(el('p', null, m.note));
-    if (m.gone) b.appendChild(el('p', null, 'Détruite l’été suivant sa pose, jamais réactivée.'));
-    b.appendChild(el('div', 'todo', 'Pas de photo (l’œuvre est d’Invader) ni de position (la seule carte publique, pixel-hunting.com, n’autorise pas la réutilisation). Source du texte : pixel-hunting.com, lu le 21/11/2026.'));
-    if (on) b.appendChild(el('div', 'got-banner', '✓ Dans votre collection'));
-    else if (!m.gone) {
-      var ok = el('button', 'btn', 'Je l’ai trouvée (sur l’honneur, +20 XP)'); ok.type = 'button';
-      ok.onclick = function () { st.invaders = st.invaders || {}; st.invaders[m.id] = TODAY; save(); gain(20, 'mosaïque ' + m.id); renderAll(); openInvader(m); };
-      b.appendChild(ok);
+    b.appendChild(el('h2', null, on ? m.name : 'Une mosaïque d’Invader'));
+    b.appendChild(el('p', 'meta', m.street + ' · ' + INV_XP + ' XP' + (me ? ' · à ' + fmtDist(dist(me, m)) : '')));
+    if (!on) b.appendChild(el('p', null, 'Quelque part ' + (/^place/.test(m.street) ? 'sur la ' : 'dans la ') + m.street + ', en hauteur. Trouvez-la pour découvrir son nom.'));
+    b.appendChild(el('div', 'todo', 'Pas de photo : l’œuvre est à Invader. Position de la rue (BAN), d’après le parcours à pied du centre-ville.'));
+    if (on) b.appendChild(el('div', 'got-banner', '✓ Dans votre collection — ' + (on === 'gps' ? 'trouvée sur place (GPS)' : 'sur l’honneur')));
+    else {
+      var acts = el('div', 'acts');
+      var gps = el('button', 'btn', 'Je l’ai trouvée (GPS, ' + INV_RADIUS + ' m)'); gps.type = 'button';
+      gps.onclick = function () { if (!me || dist(me, m) > INV_RADIUS) setMe(m.lat, m.lng); claimInvader(m, 'gps'); };
+      var hon = el('button', 'btn alt', 'Je l’ai vue (sur l’honneur, +' + INV_XP / 2 + ' XP)'); hon.type = 'button';
+      hon.onclick = function () { claimInvader(m, 'honneur'); };
+      acts.appendChild(gps); acts.appendChild(hon); b.appendChild(acts);
     }
     sheet.appendChild(b); sheet.classList.add('on');
+  }
+  function claimInvader(m, how) {
+    st.invaders = st.invaders || {}; st.invaders[m.id] = { d: TODAY, how: how }; save();
+    gain(how === 'honneur' ? INV_XP / 2 : INV_XP, 'mosaïque trouvée'); draw(); renderAll(); openInvader(m);
   }
 
   // ── Quests ──
@@ -725,6 +832,10 @@ const CLIENT = String.raw`
   // ── Profile: account and (future) shop ──
   function renderMe() {
     var root = $('me'); root.textContent = '';
+    var sw = el('div', 'set'); sw.appendChild(el('b', null, 'Style (maquette, pour comparer)'));
+    var row = el('div', 'acts');
+    [['site', 'Le site'], ['pixel', 'Pixel art']].forEach(function (x) { var b = el('button', 'btn ' + (STYLE === x[0] ? '' : 'alt'), x[1]); b.type = 'button'; b.onclick = function () { applyStyle(x[0]); tab('me'); }; row.appendChild(b); });
+    sw.appendChild(row); root.appendChild(sw);
     var n = levelOf(st.xp);
     root.appendChild(el('h2', null, titleOf(n) + ' · niveau ' + n));
     var stats = el('div', 'stats');
@@ -823,10 +934,14 @@ const CLIENT = String.raw`
   }
   Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.onclick = function () { tab(b.getAttribute('data-tab')); }; });
   $('mebtn').onclick = function () { tab('me'); };
-  $('reset').onclick = function () { st = fresh(); save(); if (meMarker) { map.removeLayer(meMarker); meMarker = null; me = null; } draw(); renderAll(); closeSheet(); openOnb(); };
+  $('reset').onclick = function () { st = fresh(); save(); if (meMarker) { map.removeLayer(meMarker); meMarker = null; me = null; } refreshRange(); liveBar(); draw(); renderAll(); closeSheet(); openOnb(); };
 
-  panel(); liveBar(); draw(); renderAll();
-  if (!st.onboarded && location.hash !== '#carte') openOnb(); // #carte: straight to the map (screenshots)
+  Array.prototype.forEach.call(document.querySelectorAll('[data-style-btn]'), function (b) { b.onclick = function () { applyStyle(b.getAttribute('data-style-btn')); }; });
+  $('phone').setAttribute('data-style', STYLE);
+  Array.prototype.forEach.call(document.querySelectorAll('[data-style-btn]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-style-btn') === STYLE); });
+  chrome(); panel(); liveBar(); draw(); renderAll();
+  if (!st.onboarded && location.hash !== '#carte') openOnb();
+  var QT = /[?&]onglet=([a-z]+)/.exec(location.search); if (QT) tab(QT[1]); // ?onglet=dex for screenshots // #carte: straight to the map (screenshots)
 })();
 `;
 

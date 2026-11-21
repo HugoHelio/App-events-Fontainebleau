@@ -2454,8 +2454,12 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     « Toutes les scènes » ; « Toujours là » et les sentiers bleus remontés, cinq lieux ; série des
     46 Space Invaders, sans position ni photo, sur l'honneur (GDD §7.1 bis : droits d'Invader, la
     carte de pixel-hunting.com n'est pas réutilisable, aucune dans OSM) ; profil dans la barre du
-    haut, boutique dans celle du bas. **Boutique à revoir en séance dédiée.** Ouvert : sorties
-    autour du joueur plutôt qu'autour de Fontainebleau (GDD §7.2).
+    haut, boutique dans celle du bas. **Boutique à revoir en séance dédiée.** Troisième série
+    (21/11) : sorties à 12 km **autour du joueur**, la portée le suit (GDD §7.2) ; les quatre
+    Invaders du parcours à pied du centre-ville sur la carte, à la rue (positions du chef de
+    projet, nos données ; GDD §7.1 bis) ; icônes dessinées en trait et en pixels
+    (`scripts/bleau-quest-icons.js`) ; **essai de direction artistique pixel art**, bouton
+    « Style » (GDD §10). Suite : les fiches en détail.
   - **M1 — prototype jouable (4 à 6 semaines)**, dans l'ordre :
     - [ ] **116b. Décisions du chef de projet** (GDD §16) : sujet de l'enquête, nom, liste des
       35 lieux (30 en ville et au château, à partir du parcours à pied vérifié ; 5 en forêt :

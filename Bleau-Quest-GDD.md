@@ -16,8 +16,10 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   « bien ») : En direct limité à aujourd'hui et demain, phrases de la collection et des quêtes
   réécrites, « Toujours là » et les sentiers bleus remontés (cinq lieux), série des Space Invaders
   (§7.1 bis), profil en haut et boutique en bas (§7.7). **La boutique sera revue en séance dédiée**
-  (les offres de la v2 ne correspondent pas à l'idée du chef de projet, §12.2). Question ouverte :
-  les événements autour du joueur plutôt qu'autour de Fontainebleau (§7.2).
+  (les offres de la v2 ne correspondent pas à l'idée du chef de projet, §12.2). Troisième série (21/11) :
+  portée de 12 km autour du joueur, qui le suit (§7.2) ; les Invaders du centre-ville sur la
+  carte (§7.1 bis) ; **icônes dessinées** à la place des emojis ; **une deuxième direction
+  artistique, le pixel art**, à comparer (§10). Prochaine étape : les fiches en détail.
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -162,16 +164,18 @@ de sauvegarde » de l'accueil part avec lui, dans le profil.
   écrire et sourcer). La quête remonte en tête des quêtes permanentes, juste après l'enquête.
 
 ### 7.1 bis Les Space Invaders (série, demandée le 21/11)
-- 46 mosaïques d'Invader posées en 2023 (FTBL_01 à FTBL_46), à Fontainebleau et dans 23
-  communes autour ; au 25/07/2026, 32 encore « flashables », 14 détruites (pixel-hunting.com).
-- **Ni position ni photo** : l'œuvre et ses images sont à Invader ; la seule carte publique
-  (pixel-hunting.com) interdit la réutilisation commerciale ; OpenStreetMap n'en recense aucune
-  (vérifié le 21/11). Le jeu ne dit donc pas où elles sont : c'est la chasse, comme dans
-  FlashInvaders. La carte de la collection donne l'identifiant, la date de pose et ce qui est
-  publié (nom, points), avec la source.
-- Débloquée **sur l'honneur** (« Je l'ai trouvée », 20 XP), pas de pastille sur la carte.
-- À trancher : relever nous-mêmes les positions sur place (nos propres données), demander
-  l'accord de pixel-hunting.com, ou en rester à la chasse sans position.
+- 46 mosaïques d'Invader posées en 2023, à Fontainebleau et dans 23 communes autour ; au
+  25/07/2026, 32 encore « flashables », 14 détruites (pixel-hunting.com, dont la carte n'est pas
+  réutilisable : mentions légales ; OpenStreetMap n'en recense aucune, vérifié le 21/11).
+- **Les positions viennent du chef de projet**, qui a vu la plupart des mosaïques en se promenant :
+  ce sont nos propres données. Les quatre du parcours à pied du centre-ville (`scripts/balades.js` :
+  lampe abat-jour rue Dénecourt, Napoléon place de la République, alien rouge rue du
+  Conventionnel-Geoffroy, alien bleu rue des Trois-Maillets) sont dans la maquette, **placées à la
+  rue** (BAN), pas au mur : on cherche encore. Les autres : relevé du chef de projet (rue et
+  description) ; l'état de chacune (détruite depuis ?) se vérifie sur place.
+- Couche « Invaders » sur la carte, active par défaut. Validation : GPS (100 m) ou sur l'honneur,
+  40 XP (20 sur l'honneur). Le nom se découvre en la trouvant.
+- **Pas de photo** : l'œuvre est à Invader.
 
 ### 7.2 Les événements (en direct) — la force du jeu
 **Décision du 21/11 : les événements de l'agenda sont ce que les autres jeux n'ont pas.** Ils sont
@@ -181,10 +185,10 @@ identifiables au premier coup d'œil et rapportent le plus d'XP.
   (« 8 en direct aujourd'hui · 56 cette semaine ») ; un onglet **En direct** avec un compteur,
   la liste **d'aujourd'hui et de demain seulement** (21/11 : quatre jours et plus, c'était trop
   long à faire défiler), l'XP de chaque sortie ; le reste de la semaine et Noël sont sur la carte.
-- **Portée** : la maquette montre les sorties à moins de 12 km du centre de Fontainebleau, un
-  cercle fixe, qui ne suit pas le joueur (21/11 : la portée courte plaît). Proposition pour le
-  M1 : le même rayon **autour du joueur** (ou du centre-ville sans position), dans la zone de
-  l'agenda (20 km au plus) ; à Melun, on verrait les sorties de Melun.
+- **Portée, décidée le 21/11** : les sorties à **12 km autour du joueur** (du centre-ville sans
+  position), et la portée **le suit** quand il bouge ; la carte reste lisible. La page embarque
+  toute la zone de l'agenda (20 km) et filtre sur le téléphone : la position n'est envoyée nulle
+  part. L'événement du jour est le même pour tous ceux d'un même secteur.
 - **L'événement du jour** : un des événements du jour, le même pour tous, **XP doublée** (300),
   étoile dorée sur la carte. C'est la raison d'ouvrir le jeu chaque jour.
 - **« J'y vais »** sur une sortie à venir : un rappel le jour J (sans XP, l'XP se gagne sur place).
@@ -283,6 +287,19 @@ Brouillard.
 
 Même lieu, même carte, dans chaque style : on compare sur téléphone, au soleil, avant de choisir.
 La maquette reprend le style du site (21/11 : « reprendre le style du site est bien »), sans direction artistique propre.
+
+**Premier essai comparé, le 21/11 : le pixel art** (bouton « Style » de la maquette, à côté
+du site ou dans le profil). Mêmes écrans ; police à chasse fixe, angles droits, bordures épaisses
+et ombres pleines, palette réduite ; carte OpenStreetMap en gros pixels (les tuiles d'un niveau
+de zoom plus bas, affichées deux fois plus grandes sans lissage, couleurs réduites par un filtre,
+sans aucune requête de plus) ; brouillard en gros pixels ; lieux en « ronds » crénelés. Il fait
+écho aux mosaïques d'Invader.
+
+**Icônes (21/11)** : les emojis (rendus différemment selon le téléphone, « pas top ») sont
+remplacés par un jeu d'icônes dessiné pour le projet (`scripts/bleau-quest-icons.js`), chacune
+en deux versions : trait (style du site) et pixels 12×12 (style pixel art). Les lieux verrouillés
+montrent leur icône grisée plutôt qu'un « ? ». Restent en emoji : parcours d'entrée, badges,
+titres des quêtes.
 
 ## 11. Plateforme et technique
 - **Web d'abord**, sur fontainebleaulive.fr (`/jeu/` ou `/bleau-quest/`), en PWA installable.
