@@ -132,8 +132,9 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .lgrid button span{display:block;font-size:22px;margin-bottom:2px}
 .lgrid button[aria-pressed="true"]{border-color:var(--ink);background:#eef7dc;font-weight:700}
 .lgrid .thumb{height:34px;border-radius:8px;margin-bottom:4px}
-.sim{position:absolute;z-index:500;bottom:12px;left:10px;right:10px;font:inherit;font-size:13px;font-weight:600;padding:8px;background:#fffbe6;border:1px dashed #c28a14;border-radius:12px;text-align:center;cursor:pointer}
-.sim.armed{background:#c28a14;color:#fff}
+/* 21/11 feedback: small, discreet OpenStreetMap credit */
+#map .leaflet-control-attribution{font-size:9px;line-height:1.3;padding:0 4px;background:rgba(255,255,255,.55);color:#6b716d}
+#map .leaflet-control-attribution a{color:#6b716d}
 .tabs{display:flex;background:#fff;border-top:1px solid var(--line)}
 .tabs button{flex:1;font:inherit;font-size:12px;border:0;background:none;padding:8px 0 10px;color:var(--muted);cursor:pointer;position:relative}
 .tabs button span{display:block;font-size:20px}.tabs button[aria-selected="true"]{color:var(--ink);font-weight:700}
@@ -142,15 +143,15 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .pin.locked{filter:grayscale(1);opacity:.8}
 .pin.got::after{content:"✓";position:absolute;right:-6px;top:-6px;width:16px;height:16px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .qnum{width:20px;height:20px;border-radius:50%;background:var(--gold);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)}
-.evt{position:relative;width:30px;height:30px;border-radius:8px;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+.evt{position:relative;width:24px;height:24px;border-radius:7px;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,.3);opacity:.9}
 .evt i{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-style:normal;font-size:10px;font-weight:800;background:#fff;color:var(--ink);border-radius:6px;padding:0 4px;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.3)}
-.evt.live{border-color:var(--live);box-shadow:0 0 0 0 rgba(224,38,47,.7);animation:pulse 1.8s infinite}
+.evt.live{opacity:1;box-shadow:0 0 0 0 rgba(175,225,79,.8);animation:pulse 2.6s infinite}
 .evt.live i{background:var(--live);color:#fff}
-.evt.star{width:38px;height:38px;font-size:19px;border:3px solid var(--gold)}
+.evt.star{width:30px;height:30px;font-size:15px;border:2px solid var(--gold);opacity:1}
 .evt.star::before{content:"★";position:absolute;top:-10px;right:-10px;font-size:15px;color:var(--gold);text-shadow:0 0 2px #fff,0 0 2px #fff}
 .evt.got{filter:grayscale(.7);opacity:.7}
 .evt.season{border-color:#1d7a43}
-@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(224,38,47,0)}100%{box-shadow:0 0 0 0 rgba(224,38,47,0)}}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(175,225,79,0)}100%{box-shadow:0 0 0 0 rgba(175,225,79,0)}}
 .me{width:18px;height:18px;border-radius:50%;background:#2f7cf6;border:3px solid #fff;box-shadow:0 0 0 6px rgba(47,124,246,.25)}
 .sheet{position:absolute;z-index:900;left:0;right:0;bottom:0;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.25);transform:translateY(105%);transition:transform .3s;max-height:88%;overflow:auto}
 .sheet.on{transform:none}
@@ -239,7 +240,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <h4>Couches</h4>
 <div class="lgrid" id="overlays"></div>
 </div>
-<button type="button" class="sim" id="sim">🎯 Simuler ma position (touchez la carte ensuite)</button></section>
+</section>
 <section class="screen" id="s-live"><div class="pad" id="live"></div></section>
 <section class="screen" id="s-dex"><div class="pad" id="dex"></div></section>
 <section class="screen" id="s-quests"><div class="pad" id="quests"></div></section>
@@ -280,8 +281,8 @@ const CLIENT = String.raw`
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
   var RCOL = { 'commun': 'var(--commun)', 'peu commun': 'var(--peu-commun)', 'rare': 'var(--rare)', 'légendaire': 'var(--legendaire)' };
   var SETCOL = { napoleon: '#7a3b2e', chateau: '#8f6a25', ville: '#4a5bb8', denecourt: '#2f6f8f', foret: '#3d6b2a', peintres: '#9a5a2a', grimpe: '#6b4a8f' };
-  var CATS = { 'Scène & Spectacles': ['🎭', '#c2334d', 'Scène'], 'Culture & Ateliers': ['🎨', '#7b4fb0', 'Culture'],
-    'Nature & Environnement': ['🌿', '#2f8f5b', 'Nature'], 'Sport & Outdoor': ['🏃', '#2f63b8', 'Sport'] };
+  var CATS = { 'Scène & Spectacles': ['🎭', '#b8707d', 'Scène'], 'Culture & Ateliers': ['🎨', '#9282b5', 'Culture'],
+    'Nature & Environnement': ['🌿', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['🏃', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
   var KEY = 'bleau-quest-mock-v2';
   var st = load();
@@ -376,7 +377,7 @@ const CLIENT = String.raw`
   function evtMarker(e, layer) {
     var live = isLive(e), star = featured && e.id === featured.id, got = !!st.events[e.id];
     var cls = 'evt' + (live ? ' live' : '') + (star ? ' star' : '') + (got ? ' got' : '') + (e.season ? ' season' : '');
-    var size = star ? 38 : 30;
+    var size = star ? 30 : 24;
     var m = L.marker([e.lat, e.lng], { zIndexOffset: star ? 1000 : live ? 500 : 0,
       icon: L.divIcon({ html: '<div class="' + cls + '"><b></b><i></i></div>', className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2] }) });
     m.on('add', function () {
@@ -411,11 +412,6 @@ const CLIENT = String.raw`
   }
 
   var me = null, meMarker = null, arming = false;
-  $('sim').onclick = function () { arming = !arming; this.classList.toggle('armed', arming); this.textContent = arming ? '🎯 Touchez la carte là où vous êtes' : '🎯 Simuler ma position (touchez la carte ensuite)'; };
-  map.on('click', function (ev) {
-    if (!arming) return;
-    setMe(ev.latlng.lat, ev.latlng.lng); arming = false; $('sim').classList.remove('armed'); $('sim').textContent = '🎯 Position simulée — touchez un lieu ou un événement';
-  });
   function setMe(lat, lng) {
     me = { lat: lat, lng: lng };
     if (meMarker) map.removeLayer(meMarker);
@@ -466,9 +462,9 @@ const CLIENT = String.raw`
       var acts = el('div', 'acts');
       var gps = el('button', 'btn', '📍 Je suis ici (GPS, rayon ' + radiusOf(p) + ' m)'); gps.type = 'button';
       gps.onclick = function () {
-        if (!me) { toast('Simulez d’abord votre position'); return; }
-        var dd = dist(me, p);
-        if (dd <= radiusOf(p)) unlock(p, 'gps'); else toast('Encore ' + fmtDist(dd - radiusOf(p)) + '… ou la question');
+        // Mock: the player is put on site (on a phone, the real position decides)
+        if (!me || dist(me, p) > radiusOf(p)) setMe(p.lat, p.lng);
+        unlock(p, 'gps');
       };
       var qb = el('button', 'btn alt', '🔎 Répondre à la question d’observation'); qb.type = 'button';
       var q = el('div', 'q'); var inp = el('input'); inp.placeholder = 'Question à écrire sur place (116d)'; var ok = el('button', 'btn', 'OK'); ok.type = 'button';
@@ -506,8 +502,8 @@ const CLIENT = String.raw`
       if (live) {
         var go = el('button', 'btn live', '📍 J’y suis (GPS, ' + RADIUS.event + ' m)'); go.type = 'button';
         go.onclick = function () {
-          if (!me) { toast('Simulez d’abord votre position'); return; }
-          var dd = dist(me, e); if (dd <= RADIUS.event) claimEvent(e, 'gps'); else toast('Encore ' + fmtDist(dd - RADIUS.event));
+          if (!me || dist(me, e) > RADIUS.event) setMe(e.lat, e.lng);
+          claimEvent(e, 'gps');
         };
         var hon = el('button', 'btn soft', '🤝 Sur l’honneur (' + xp / 2 + ' XP)'); hon.type = 'button'; hon.onclick = function () { claimEvent(e, 'honneur'); };
         acts.appendChild(go); acts.appendChild(hon);

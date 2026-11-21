@@ -129,6 +129,11 @@ la carte à son arrivée** (21/11 : le « niveau 2 » immédiat la cachait) : 20
 premier lieu ou événement touché, sous le seuil du niveau 2 ; le premier passage de niveau vient
 avec la première vraie validation.
 
+**Lisibilité de la carte (21/11)** : rien ne doit faire « guirlande de Noël ». Événements en petits
+carrés (24 px) aux couleurs de catégorie adoucies ; un événement en cours pulse lentement dans le
+vert du site, seule l'étiquette « LIVE » reste rouge ; les lieux restent en ronds ; crédit
+OpenStreetMap discret.
+
 Retirés le 21/11 : **la première quête imposée** (hors contexte : elle ne tenait pas compte de
 l'endroit où l'on est, « trop violent »), **« Ce qui vous attire »** (le jeu propose tout à tout le monde : balades,
 histoire, événements ; un écran de trop) et **« Un compte ? Pas besoin. »** (on joue sans compte,
