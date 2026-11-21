@@ -63,6 +63,34 @@ const SPOTS = [
   { id: 'elephant', name: 'L’Éléphant (Larchant)', set: 'grimpe', type: 'Rocher nommé', rarity: 'rare', lat: 48.29379, lng: 2.59458, icon: 'rock' },
 ];
 
+// Card texts and observation questions: DRAFTS of 21/11 (asked: "il faut qu'on arrive à écrire
+// le texte. Des questions."), monuments first. Each fact comes from the source shown; each
+// question asks for something one sees on the spot. To be reviewed by the project lead and the
+// question checked on site before anything is published (116d). Three choices, as in foret.js.
+const CARDS = {
+  'cour-des-adieux': {
+    text: 'Le 20 avril 1814, avant de partir pour l’île d’Elbe, Napoléon descend l’escalier de cette cour et fait ses adieux à sa Vieille Garde. La cour du Cheval Blanc devient alors la cour des Adieux. L’escalier lui-même est plus ancien : il date de Louis XIII (1632-1634).',
+    source: 'Fondation Napoléon, « Les adieux de Fontainebleau à la Vieille Garde » (napoleon.org) ; château de Fontainebleau',
+    q: 'Regardez le grand escalier de la façade : quelle forme a-t-il ?', choices: ['En fer à cheval', 'En colimaçon', 'Tout droit'], answer: 0,
+  },
+  'jardin-de-diane': {
+    text: 'Au centre de l’ancien jardin de la Reine, Diane chasseresse. Ce bronze est une fonte des frères Keller (1684), copie d’une statue antique aujourd’hui au Louvre ; il vient du château de Marly. Les chiens et les têtes de cerf du socle sont de Pierre Biard, au début du XVIIᵉ siècle.',
+    source: 'Metropolitan Museum of Art (Diane de Barthélemy Prieur, notice) ; musée du Louvre ; à recouper avec le château',
+    q: 'Combien de chiens entourent le socle de la fontaine ?', choices: ['Deux', 'Quatre', 'Six'], answer: 1,
+  },
+  'obelisque': {
+    text: 'Haut de 21 mètres, l’obélisque est élevé en 1785-1786 en l’honneur de Marie-Antoinette et de ses enfants, au carrefour où se croisent les grandes routes de la forêt. Des bornes y indiquent les directions ; leurs fleurs de lys sont ôtées en 1793.',
+    source: 'Base Mérimée, ministère de la Culture (PA00086970, quatre bornes indicatrices) ; Musée du Patrimoine',
+    q: 'Autour de l’obélisque, combien de bornes indiquent les routes ?', choices: ['Deux', 'Quatre', 'Huit'], answer: 1,
+  },
+  'theatre': {
+    text: 'Un concours d’architecture en 1905, un chantier de 1910 à 1912, une inauguration le 9 mars 1912 : le théâtre de Fernand Lucas et Paul Marion est l’un des rares théâtres à l’italienne d’Île-de-France hors de Paris. Il est protégé au titre des monuments historiques.',
+    source: 'Inventaire général du patrimoine culturel, Région Île-de-France ; base Mérimée (PA00087345)',
+    q: 'De quoi est faite la façade du théâtre ?', choices: ['De brique et de pierre', 'De béton', 'De bois'], answer: 0,
+  },
+};
+SPOTS.forEach(function (p) { if (CARDS[p.id]) Object.assign(p, CARDS[p.id]); });
+
 const SETS = {
   napoleon: 'Napoléon à Fontainebleau',
   chateau: 'Le château et ses jardins',
@@ -196,7 +224,9 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .xpchip{display:inline-block;font-size:12px;font-weight:800;background:var(--accent);color:var(--ink);border-radius:999px;padding:2px 8px;white-space:nowrap}
 .xpchip.gold{background:var(--gold);color:#fff}
 .livechip{display:inline-block;font-size:11px;font-weight:800;background:var(--live);color:#fff;border-radius:999px;padding:2px 8px;text-transform:uppercase}
-.q{display:none;gap:6px;margin-top:6px}.q.on{display:flex}.q input{flex:1;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}
+.q{display:none;gap:6px;margin-top:6px;flex-wrap:wrap}.q.on{display:flex}.q .qtext{flex-basis:100%;margin:0 0 2px;font-weight:600}.q .btn[disabled]{opacity:.45}
+.src{font-size:12px;color:var(--muted);font-style:italic;margin:-4px 0 8px}
+.sheet-link{font-size:13px}.q input{flex:1;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}
 .pad{padding:14px 14px 24px}
 .pad h2{font-size:18px;color:var(--ink);margin:6px 0 10px}
 .set{background:#fff;border-radius:14px;padding:12px;margin-bottom:12px;border:1px solid var(--line)}
@@ -550,8 +580,14 @@ const CLIENT = String.raw`
     if (p.set === 'grimpe') b.appendChild(el('div', 'todo', 'Grimper en famille : on vient voir, on essaie les premiers blocs du circuit enfants, à son niveau. Crash-pad, parade, jamais sur rocher mouillé. Le topo est chez Boolder. Proposition de site à valider avec des grimpeurs (116k).'));
     if (got) {
       b.appendChild(el('div', 'got-banner', '✓ Dans votre collection — ' + ({ gps: 'validé sur place (GPS)', question: 'validé par la question', honneur: 'validé sur l’honneur' })[got]));
-      b.appendChild(el('p', null, 'Ici, la carte raconte le lieu : son histoire, une anecdote, la source.'));
-      b.appendChild(el('div', 'todo', 'Texte provisoire — le vrai texte sera écrit et sourcé par le chef de projet (116d). Aucun fait n’est inventé dans le jeu.'));
+      if (p.text) {
+        b.appendChild(el('p', null, p.text));
+        b.appendChild(el('p', 'src', 'Source : ' + p.source));
+        b.appendChild(el('div', 'todo', 'Brouillon du 21/11, à relire par le chef de projet ; question à vérifier sur place (116d).'));
+      } else {
+        b.appendChild(el('p', null, 'Ici, la carte raconte le lieu : son histoire, une anecdote, la source.'));
+        b.appendChild(el('div', 'todo', 'Texte à écrire et sourcer (116d). Aucun fait n’est inventé dans le jeu.'));
+      }
     } else {
       b.appendChild(el('p', null, 'Rendez-vous sur place pour débloquer la carte de ce lieu et son histoire.'));
       var acts = el('div', 'acts');
@@ -562,16 +598,26 @@ const CLIENT = String.raw`
         unlock(p, 'gps');
       };
       var qb = el('button', 'btn alt', '🔎 Répondre à la question d’observation'); qb.type = 'button';
-      var q = el('div', 'q'); var inp = el('input'); inp.placeholder = 'Question à écrire sur place (116d)'; var ok = el('button', 'btn', 'OK'); ok.type = 'button';
-      ok.onclick = function () { if (inp.value.trim()) unlock(p, 'question'); else toast('Une réponse, n’importe laquelle (maquette)'); };
-      q.appendChild(inp); q.appendChild(ok);
-      qb.onclick = function () { q.classList.toggle('on'); inp.focus(); };
+      var q = el('div', 'q');
+      if (p.q) {
+        q.appendChild(el('p', 'qtext', p.q));
+        p.choices.forEach(function (c, i) {
+          var cb = el('button', 'btn alt', c); cb.type = 'button';
+          cb.onclick = function () { if (i === p.answer) unlock(p, 'question'); else { cb.disabled = true; toast('Pas tout à fait : regardez encore'); } };
+          q.appendChild(cb);
+        });
+      } else {
+        var inp = el('input'); inp.placeholder = 'Question à écrire (116d)'; var ok = el('button', 'btn', 'OK'); ok.type = 'button';
+        ok.onclick = function () { if (inp.value.trim()) unlock(p, 'question'); else toast('Une réponse, n’importe laquelle (maquette)'); };
+        q.appendChild(inp); q.appendChild(ok);
+      }
+      qb.onclick = function () { q.classList.toggle('on'); };
       var hb = el('button', 'btn soft', '🤝 Sur l’honneur (' + XP[p.rarity] / 2 + ' XP)'); hb.type = 'button';
       hb.onclick = function () { unlock(p, 'honneur'); };
       acts.appendChild(gps); acts.appendChild(qb); acts.appendChild(q); acts.appendChild(hb);
       b.appendChild(acts);
     }
-    if (p.set === 'grimpe') { var a = el('a', null, 'Topo sur Boolder →'); a.href = 'https://www.boolder.com/fr'; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p'); pp.appendChild(a); b.appendChild(pp); }
+    if (p.set === 'grimpe') { var a = el('a', null, 'Topo sur Boolder'); a.href = 'https://www.boolder.com/fr'; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p', 'sheet-link'); pp.appendChild(a); b.appendChild(pp); }
     sheet.appendChild(b); sheet.classList.add('on');
   }
   function unlock(p, how) {
@@ -611,7 +657,7 @@ const CLIENT = String.raw`
       var sim = el('button', 'btn soft', 'Maquette : simuler le jour J sur place'); sim.type = 'button'; sim.onclick = function () { claimEvent(e, 'gps'); };
       acts.appendChild(sim); b.appendChild(acts);
     }
-    if (e.page) { var a = el('a', null, 'Voir la fiche sur Fontainebleau Live →'); a.href = 'https://fontainebleaulive.fr' + e.page; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p'); pp.appendChild(a); b.appendChild(pp); }
+    if (e.page) { var a = el('a', null, 'Voir la fiche sur Fontainebleau Live'); a.href = 'https://fontainebleaulive.fr' + e.page; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p', 'sheet-link'); pp.appendChild(a); b.appendChild(pp); }
     sheet.appendChild(b); sheet.classList.add('on');
   }
   function claimEvent(e, how) {

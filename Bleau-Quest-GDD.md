@@ -21,7 +21,10 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   carte (§7.1 bis) ; **icônes dessinées** à la place des emojis, adoptées (« bien mieux ») ;
   essai de **pixel art écarté**, on garde **le style du site** (§10). En attente : les
   emplacements des Invaders, que le chef de projet va relever dans les rues (§7.1 bis).
-  Prochaine étape : les fiches en détail.
+  Quatrième série (21/11), les fiches : « bien » ; lien vers Fontainebleau Live plus petit, sans
+  flèche. Suite demandée : **écrire les textes et les questions**, les monuments d'abord. Premiers
+  brouillons sourcés pour quatre lieux (cour des Adieux, jardin de Diane, obélisque, théâtre,
+  §9), à relire par le chef de projet et à vérifier sur place.
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -276,6 +279,14 @@ Brouillard.
 2. **Ou une question d'observation** sur place (une date gravée, un détail de statue), quand le GPS
    décroche ou qu'on refuse la géolocalisation.
 3. **Ou sur l'honneur**, à demi-XP. Jamais d'impasse.
+- **Forme de la question (21/11)** : trois choix, comme le jeu de la forêt ; elle porte sur ce
+  qu'on **voit sur place** (forme d'un escalier, nombre de chiens d'une fontaine, matériau d'une
+  façade), pas sur une date à connaître. Une mauvaise réponse grise ce choix (« regardez encore »),
+  sans pénalité. Le texte de la carte (trois phrases, la source affichée dessous) ne s'ouvre
+  qu'une fois le lieu collecté. Brouillons du 21/11 dans la maquette (`CARDS`) : chaque fait vient
+  de la source citée, **rien n'est publié avant la relecture du chef de projet et une
+  vérification de la question sur place** ; la source du jardin de Diane est à recouper avec le
+  château.
 - Des indices jusqu'à la solution. Des jokers (reprendre l'idée de Tèrra Aventura).
 - Triche : sans importance tant que le jeu est solo. Les classements, plus tard, ne compteront
   que les validations GPS.

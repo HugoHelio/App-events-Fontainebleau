@@ -2459,7 +2459,10 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     Invaders du parcours à pied du centre-ville sur la carte, à la rue (positions du chef de
     projet, nos données ; GDD §7.1 bis) ; icônes dessinées au trait
     (`scripts/bleau-quest-icons.js`, adoptées) ; essai pixel art **écarté**, style du site gardé
-    (GDD §10). Suite : les fiches en détail.
+    (GDD §10). Quatrième série (21/11), les fiches : lien vers le site plus petit, sans flèche ;
+    question d'observation en **trois choix** sur ce qu'on voit sur place, texte sourcé de trois
+    phrases (GDD §9). Premiers brouillons pour quatre monuments (cour des Adieux, jardin de Diane,
+    obélisque, théâtre) dans la maquette (`CARDS`), à relire et à vérifier sur place (116d).
   - [ ] **116p. Emplacements des Invaders (chef de projet, sur le terrain)** : il a vu la plupart
     des 46 mosaïques en se promenant et va les relever dans les rues (rue, description, encore là
     ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la
