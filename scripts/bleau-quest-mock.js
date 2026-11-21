@@ -342,7 +342,7 @@ const CLIENT = String.raw`
     quests: { icon: '📜', label: 'Quêtes', on: false, g: L.layerGroup() },
     climb: { icon: '🧗', label: 'Grimpe', on: false, g: L.layerGroup() },
     season: { icon: '🎄', label: 'Noël', on: false, g: L.layerGroup() },
-    fog: { icon: '🌫️', label: 'Brouillard', on: false, g: L.layerGroup() },
+    fog: { icon: '🌫️', label: 'Brouillard', on: true, g: L.layerGroup() }, // on by default (21/11): it focuses on what is around
   };
   var BASES = [['plan', 'Plan', '#e9e5dc'], ['doux', 'Doux', '#ece3cf'], ['nuit', 'Nuit', '#2b3540']];
   var base = 'plan';
@@ -405,7 +405,8 @@ const CLIENT = String.raw`
     var holes = [];
     SPOTS.forEach(function (p) { if (st.spots[p.id]) holes.push(ring(p, 700)); });
     Object.keys(st.events).forEach(function (id) { var e = byId(id); if (e) holes.push(ring(e, 500)); });
-    if (me) holes.push(ring(me, 400));
+    // Without a position yet, a clearing on the town centre, so the map never opens all dark
+    holes.push(me ? ring(me, 400) : ring({ lat: 48.404, lng: 2.698 }, 600));
     LAYERS.fog.g.addLayer(L.polygon([[[49.2, 1.6], [49.2, 3.8], [47.6, 3.8], [47.6, 1.6]]].concat(holes), { stroke: false, fillColor: '#24302a', fillOpacity: .55, interactive: false }));
   }
 

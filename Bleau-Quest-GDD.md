@@ -122,8 +122,9 @@ Trois écrans, moins d'une minute, « Passer » à chaque étape :
    elle on joue quand même (question ou honneur).
 
 Puis **la carte**, centrée sur le joueur (ou le centre-ville), **allégée** : seulement les lieux
-et les événements en direct ; quêtes, grimpe, Noël et brouillard restent à un geste, dans le
-panneau des couches, et « Touchez un lieu près de vous pour commencer ». **Rien ne s'affiche par-dessus
+et les événements en direct, **sous le brouillard** (activé par défaut le 21/11 : il concentre le
+regard sur ce qui est autour ; sans position, une clairière sur le centre-ville) ; quêtes, grimpe
+et Noël restent à un geste, dans le panneau des couches, et « Touchez un lieu près de vous pour commencer ». **Rien ne s'affiche par-dessus
 la carte à son arrivée** (21/11 : le « niveau 2 » immédiat la cachait) : 20 XP « premier pas » au
 premier lieu ou événement touché, sous le seuil du niveau 2 ; le premier passage de niveau vient
 avec la première vraie validation.
