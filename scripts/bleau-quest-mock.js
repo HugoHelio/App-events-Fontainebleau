@@ -275,7 +275,7 @@ ${CLIENT}
 const CLIENT = String.raw`
 (function () {
   var XP = { 'commun': 50, 'peu commun': 100, 'rare': 200, 'légendaire': 500 };
-  var EVENT_XP = 150, FEATURED_XP = 300, SEASON_BONUS = 50, SET_XP = 500, ALL_CATS_XP = 300, WELCOME_XP = 50;
+  var EVENT_XP = 150, FEATURED_XP = 300, SEASON_BONUS = 50, SET_XP = 500, ALL_CATS_XP = 300, FIRST_STEP_XP = 20;
   var RADIUS = { ville: 100, foret: 150, event: 200 };
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
   var RCOL = { 'commun': 'var(--commun)', 'peu commun': 'var(--peu-commun)', 'rare': 'var(--rare)', 'légendaire': 'var(--legendaire)' };
@@ -446,7 +446,9 @@ const CLIENT = String.raw`
     var x = el('button', 'x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Fermer'); x.onclick = closeSheet; art.appendChild(x);
     return art;
   }
+  function firstStep() { if (st.onboarded && !st.firstStep) { st.firstStep = true; gain(FIRST_STEP_XP, 'premier pas'); } }
   function openSpot(p) {
+    firstStep();
     sheet.textContent = '';
     var got = st.spots[p.id];
     sheet.appendChild(header(got ? SETCOL[p.set] : '#cfd3cc', p.icon, p.rarity, RCOL[p.rarity]));
@@ -486,6 +488,7 @@ const CLIENT = String.raw`
     draw(); renderAll(); openSpot(p); checkSets();
   }
   function openEvent(e) {
+    firstStep();
     sheet.textContent = '';
     var c = cat(e), live = isLive(e), star = featured && e.id === featured.id, xp = xpOf(e);
     sheet.appendChild(header(c[1], e.season ? '🎄' : c[0], star ? '★ événement du jour' : live ? 'en direct' : c[2], star ? 'var(--gold)' : live ? 'var(--live)' : 'rgba(0,0,0,.35)'));
@@ -716,8 +719,9 @@ const CLIENT = String.raw`
     st.onboarded = true; st.profile = draft.profile || 'tout'; st.likes = []; st.team = draft.profile === 'groupe' ? draft.team : ''; st.geo = draft.geo || '';
     save(); onb.classList.remove('on'); tab('map'); renderAll();
     if (me) map.setView([me.lat, me.lng], 15); else map.setView([48.404, 2.698], 14);
-    gain(WELCOME_XP, 'bienvenue');
-    setTimeout(function () { toast(me ? 'Touchez un lieu près de vous pour commencer' : 'Touchez un lieu pour commencer'); }, 2300);
+    // 21/11 feedback: no XP and no level-up when the map appears (it hid the map); a small bonus at
+    // the first tap on a place or an event instead, below the level 2 threshold (50 XP).
+    setTimeout(function () { toast(me ? 'Touchez un lieu près de vous pour commencer' : 'Touchez un lieu pour commencer'); }, 1200);
   }
   function openOnb() { step = 0; draft = { profile: '', team: '', geo: '' }; renderOnb(); onb.classList.add('on'); }
   $('replay').onclick = openOnb;

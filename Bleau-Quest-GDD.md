@@ -123,7 +123,10 @@ Trois écrans, moins d'une minute, « Passer » à chaque étape :
 
 Puis **la carte**, centrée sur le joueur (ou le centre-ville), **allégée** : seulement les lieux
 et les événements en direct ; quêtes, grimpe, Noël et brouillard restent à un geste, dans le
-panneau des couches. 50 XP de bienvenue, et « Touchez un lieu près de vous pour commencer ».
+panneau des couches, et « Touchez un lieu près de vous pour commencer ». **Rien ne s'affiche par-dessus
+la carte à son arrivée** (21/11 : le « niveau 2 » immédiat la cachait) : 20 XP « premier pas » au
+premier lieu ou événement touché, sous le seuil du niveau 2 ; le premier passage de niveau vient
+avec la première vraie validation.
 
 Retirés le 21/11 : **la première quête imposée** (hors contexte : elle ne tenait pas compte de
 l'endroit où l'on est, « trop violent »), **« Ce qui vous attire »** (le jeu propose tout à tout le monde : balades,
@@ -209,7 +212,7 @@ Brouillard.
 ## 8. Progression
 - **XP** (barème provisoire, à régler en test) : lieu commun 50, peu commun 100, rare 200,
   légendaire 500 ; **événement 150, événement du jour 300**, bonus de saison 50 ; « Toutes les
-  scènes » 300 ; chapitre d'enquête 300 ; série complète 500 ; bienvenue 50 ; validation sur
+  scènes » 300 ; chapitre d'enquête 300 ; série complète 500 ; premier pas 20 (au premier lieu ou événement touché, jamais de niveau tout de suite) ; validation sur
   l'honneur à la moitié.
 - **Niveaux** 1 à 30, courbe douce au début (niveau 2 dès le premier lieu).
 - **Titres** : Promeneur, Flâneur, Bellifontain, Peintre de Barbizon, Bleausard, … Denecourt.
