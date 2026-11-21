@@ -706,7 +706,7 @@ const CITY_ABOUT = {
  */
 function cityThemesHtml(c) {
   const links = THEMES.map((t) => {
-    const e = c.events.find((x) => t.match.test(themeKey(x.title)));
+    const e = c.events.find((x) => inTheme(t, x));
     return e ? `<li><a href="/${THEMES_DIR}/${t.slug}/">${esc(allDates(t.h1(e.startDate.slice(0, 4))))}</a></li>` : '';
   }).filter(Boolean);
   return links.length ? `
@@ -1018,7 +1018,7 @@ const THEMES = [
     introEn: 'Markets, shows, concerts, events at the châteaux and family outings for the festive season, in Fontainebleau and the neighbouring towns.',
     offEn: 'The festive programme is announced in the autumn: it will appear here as soon as it is published.',
     related: 'vacances-noel',
-    also: ['marches-de-noel', 'messes-de-noel'],
+    also: ['marches-de-noel', 'noel-dans-les-chateaux', 'messes-de-noel'],
     gift: true,
     promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
     faq: [
@@ -1054,6 +1054,57 @@ const THEMES = [
     ],
     faqEn: [
       ['Where can I find the Christmas mass times?', 'The parishes announce them in early December. Those published are in the list above; a time can change at the last minute: check with the parish before you go.'],
+    ],
+  },
+  {
+    // 21/11 (project lead): one page for Christmas at the three châteaux of the area. Picked by
+    // venue and title (`sections`, inTheme()); each château keeps its heading, even when its
+    // programme is not out yet. The section texts are ours and hold no event data.
+    slug: 'noel-dans-les-chateaux',
+    match: /\b(noel|feeri\w*|fetes? de fin d.annee|reveillon)\b/,
+    sections: [
+      {
+        key: 'fontainebleau', city: 'fontainebleau', at: /chateau de fontainebleau/,
+        name: 'Château de Fontainebleau', nameEn: 'Château de Fontainebleau',
+        text: 'La demeure des souverains de France pendant huit siècles. Le château est fermé le mardi, le 25 décembre et le 1er janvier.',
+        textEn: 'Home to the sovereigns of France for eight centuries. The château is closed on Tuesdays, on 25 December and on 1 January.',
+      },
+      {
+        key: 'vaux', at: /vaux.le.vicomte/,
+        name: 'Château de Vaux-le-Vicomte', nameEn: 'Château de Vaux-le-Vicomte',
+        text: 'Le château de Nicolas Fouquet, à Maincy, près de Melun, à une vingtaine de kilomètres de Fontainebleau.',
+        textEn: 'Nicolas Fouquet’s château, in Maincy near Melun, about twenty kilometres from Fontainebleau.',
+      },
+      {
+        key: 'blandy', at: /blandy/,
+        name: 'Château de Blandy-les-Tours', nameEn: 'Château de Blandy-les-Tours',
+        text: 'Un château fort médiéval, propriété du Département de Seine-et-Marne, à Blandy-les-Tours.',
+        textEn: 'A medieval fortified castle owned by the Seine-et-Marne département, in Blandy-les-Tours.',
+      },
+    ],
+    name: 'Noël dans les châteaux',
+    icon: '🏰', short: 'Noël dans les châteaux', shortEn: 'Christmas at the châteaux',
+    title: (y) => `Noël ${y} dans les châteaux : Fontainebleau, Vaux-le-Vicomte et Blandy`,
+    h1: (y) => `Noël ${y} dans les châteaux autour de Fontainebleau`,
+    desc: (y) => `Noël ${y} au château de Fontainebleau, à Vaux-le-Vicomte et à Blandy-les-Tours : spectacles, concerts et décors, avec dates, horaires et tarifs.`,
+    intro: 'Spectacles, concerts, décors et illuminations de Noël au château de Fontainebleau, à Vaux-le-Vicomte et au château de Blandy-les-Tours : dates, horaires et tarifs, mis à jour chaque jour à partir des sites des châteaux et de l’office de tourisme.',
+    off: 'Les châteaux annoncent leur programme de Noël à l’automne : il apparaîtra ici dès sa publication.',
+    nameEn: 'Christmas at the châteaux',
+    titleEn: (y) => `Christmas ${y} at the châteaux: Fontainebleau, Vaux-le-Vicomte and Blandy`,
+    h1En: (y) => `Christmas ${y} at the châteaux around Fontainebleau`,
+    introEn: 'Christmas shows, concerts, decorations and illuminations at the Château de Fontainebleau, Vaux-le-Vicomte and the Château de Blandy-les-Tours: dates, times and prices, updated every day from the châteaux’ websites and the tourist office.',
+    offEn: 'The châteaux announce their Christmas programme in the autumn: it will appear here as soon as it is published.',
+    related: 'vacances-noel',
+    also: ['noel', 'marches-de-noel'],
+    gift: true,
+    promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
+    faq: [
+      ['Faut-il réserver ?', 'Pour les spectacles et les grands Noëls des châteaux, souvent oui, et les séances des vacances partent vite. Le lien de l’organisateur est sur la page de chaque sortie.'],
+      ['Les Noëls des châteaux sont-ils adaptés aux enfants ?', 'La plupart sont pensés pour les familles. L’âge conseillé et la durée sont indiqués sur la page de chaque sortie quand le château les publie.'],
+    ],
+    faqEn: [
+      ['Do I need to book?', 'For the shows and the big Christmas events at the châteaux, often yes, and holiday sessions sell out quickly. The organiser’s link is on each outing’s page.'],
+      ['Are the châteaux’ Christmas events suitable for children?', 'Most are designed for families. The recommended age and the length are on each outing’s page when the château publishes them.'],
     ],
   },
   {
@@ -1181,7 +1232,11 @@ function holidayPeriod(h, today) {
 }
 
 const themeKey = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-const themesOf = (e) => THEMES.filter((t) => t.match.test(themeKey(e.title)));
+// A theme picks its events by title (`match`), or, when it has `sections`, by venue AND title:
+// « Noël dans les châteaux » is a Christmas title at one of the three châteaux.
+const sectionOf = (t, e) => (t.sections || []).find((s) => s.at.test(themeKey(`${e.locationName || ''} ${e.title}`)) && (!s.city || s.city === e.citySlug));
+const inTheme = (t, e) => t.match.test(themeKey(e.title)) && (!t.sections || Boolean(sectionOf(t, e)));
+const themesOf = (e) => THEMES.filter((t) => inTheme(t, e));
 
 // Our own questions and answers, no event data in them: durable text, so a hub with two events
 // in it is not a thin page.
@@ -1213,6 +1268,16 @@ function hereList(t, events, today) {
     : t.weekends ? `\n<h2${en(`Around ${esc(town.city)}, weekend by weekend`)}>Autour de ${esc(town.city)}, week-end par week-end</h2>\n${weekendList(rest, today)}`
       : `\n<h2${en(`Around ${esc(town.city)}`)}>Autour de ${esc(town.city)}</h2>\n${list(rest)}`;
   return `<h2${en(`In ${esc(town.city)}`)}>À ${esc(town.city)}</h2>\n${head}${around}`;
+}
+
+/** One heading per section (château), always shown: an empty one says its programme is not out. */
+function sectionList(t, events) {
+  return t.sections.map((s) => {
+    const mine = events.filter((e) => sectionOf(t, e) === s);
+    return `<h2${en(esc(s.nameEn))}>${esc(s.name)}</h2>
+<p class="note"${en(esc(s.textEn))}>${esc(s.text)}</p>
+${mine.length ? `<div class="sheet lead">${mine.map((e) => groupHtml({ e, start: e.startDate, end: e.endDate || e.startDate, schedule: e.schedule || '', price: e.price || '' }).replace('<span' + en('Entry:') + '>Entrée :</span>', `<span${en('Price:')}>Tarif :</span>`)).join('\n')}</div>` : `<p${en('Its Christmas programme is not published yet: it will appear here as soon as it is announced.')}>Son programme de Noël n’est pas encore publié : il apparaîtra ici dès son annonce.</p>`}`;
+  }).join('\n');
 }
 
 // ─── Item 106 (21/11): the answer to « marché de noël fontainebleau 2026 » goes first ───
@@ -1249,7 +1314,8 @@ function spanFr(s, e, short = false) {
   const y = e.slice(0, 4);
   const day = (p) => (short ? p.d : `${p.wd} ${p.d}`);
   if (s === e) return `le ${day(a)} ${a.m} ${y}`;
-  return a.m === b.m && s.slice(0, 4) === y ? `du ${day(a)} au ${day(b)} ${b.m} ${y}` : `du ${day(a)} ${a.m} au ${day(b)} ${b.m} ${y}`;
+  if (s.slice(0, 4) !== y) return `du ${day(a)} ${a.m} ${s.slice(0, 4)} au ${day(b)} ${b.m} ${y}`;
+  return a.m === b.m ? `du ${day(a)} au ${day(b)} ${b.m} ${y}` : `du ${day(a)} ${a.m} au ${day(b)} ${b.m} ${y}`;
 }
 const spanEn = (s, e) => (s === e ? `on ${enDay(s)} ${e.slice(0, 4)}` : `from ${enDay(s)} to ${enDay(e)} ${e.slice(0, 4)}`);
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -1379,12 +1445,12 @@ function themePage(t, events, today, allEvents = []) {
   const others = main ? new Set(events.filter((e) => e.citySlug !== t.here).map((e) => e.citySlug)).size : 0;
   const description = main
     ? `${main.e.title} ${spanFr(main.start, main.end, true)}. ${others ? `Et des ${t.leadOthers} dans ${others} autre${others > 1 ? 's' : ''} commune${others > 1 ? 's' : ''}, week-end par week-end.` : 'Dates, horaires et lieux.'}`
-    : (n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro);
+    : t.desc && n ? t.desc(year) : (n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro);
   const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a></nav>
 <h1${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</h1>
 <p${en(esc(t.introEn))}>${esc(t.intro)}</p>
 ${strip}${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
-${hereList(t, events, today)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
+${t.sections ? sectionList(t, events) : hereList(t, events, today)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
 ${t.gift && giftSeason(today) && giftShows(allEvents, today).length ? `<p><a href="/${THEMES_DIR}/${GIFT_SLUG}/"${en(`🎁 Christmas gift ideas ${giftYear(today)}: shows to give`)}>🎁 Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir</a></p>\n` : ''}${also.map((a) => `<p><a href="/${THEMES_DIR}/${a.slug}/"${en(esc(a.h1En(year).endsWith('?') ? `${a.h1En(year)} All dates` : `${a.h1En(year)}: all dates`))}>${esc(allDates(a.h1(year)))}</a></p>\n`).join('')}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml([...lead.fr, ...(t.faq || [])], [...lead.en, ...(t.faqEn || [])])}
 ${t.promo ? `<p class="av-link"><a href="/${AVENT_DIR}/"${en(`🎄 The forest Advent calendar ${year}: one door a day for the children`)}>🎄 Le calendrier de l’Avent ${year} de la forêt : une case par jour pour les enfants</a></p>
 ${guidesPromo(GUIDES, t.promo)}
@@ -1547,7 +1613,7 @@ function seasonNow(events, today) {
     return k ? { href: `/${THEMES_DIR}/${h.slug}/`, name: h.name, nameEn: h.nameEn, k } : null;
   }).filter(Boolean);
   const themes = THEMES.filter((t) => t.slug !== 'noel')
-    .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, nameEn: t.nameEn, k: events.filter((e) => t.match.test(themeKey(e.title)) && e.startDate <= soon && endOf(e) >= today).length }))
+    .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, nameEn: t.nameEn, k: events.filter((e) => inTheme(t, e) && e.startDate <= soon && endOf(e) >= today).length }))
     .filter((x) => x.k);
   return [...holidays, ...themes];
 }
@@ -1563,7 +1629,7 @@ function seasonalHubs(events, today) {
       const p = holidayPeriod(h, today);
       return { slug: h.slug, name: h.name, nameEn: h.nameEn, live: !p.over };
     }),
-    ...THEMES.map((t) => ({ slug: t.slug, name: t.name, nameEn: t.nameEn, live: events.some((e) => t.match.test(themeKey(e.title)) && endOf(e) >= today) })),
+    ...THEMES.map((t) => ({ slug: t.slug, name: t.name, nameEn: t.nameEn, live: events.some((e) => inTheme(t, e) && endOf(e) >= today) })),
   ];
   return [...hubs.filter((x) => x.live), ...hubs.filter((x) => !x.live)];
 }
@@ -1638,7 +1704,7 @@ function holidayPage(h, events, today, places = []) {
 
   const n = short.length;
   const themesHere = THEMES.filter((t) => t.slug !== 'noel')
-    .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, nameEn: t.nameEn, k: [...short, ...long].filter((e) => t.match.test(themeKey(e.title))).length }))
+    .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, nameEn: t.nameEn, k: [...short, ...long].filter((e) => inTheme(t, e)).length }))
     .filter((x) => x.k);
   const lead = p.over ? h.off(year)
     : n ? `${n} sortie${n > 1 ? 's' : ''}${long.length ? ` et ${long.length} exposition${long.length > 1 ? 's' : ''} ou visite${long.length > 1 ? 's' : ''}` : ''} ${p.from > today ? 'pendant les vacances' : 'd’ici la fin des vacances'}, à Fontainebleau et dans les communes voisines. Mis à jour chaque jour.`
@@ -1685,7 +1751,7 @@ function seasonIndex(events, today) {
     return `<li><a href="/${THEMES_DIR}/${h.slug}/"${en(`${esc(h.nameEn)} ${y}`)}>${esc(h.name)} ${y}</a><small${en(p.over ? 'Over' : `${esc(whenEn)}${k ? ` · ${enPl(k, 'outing')}` : ''}`)}>${p.over ? 'Terminées' : `${esc(when)}${k ? ` · ${k} sortie${k > 1 ? 's' : ''}` : ''}`}</small></li>`;
   });
   const themes = [...THEMES].sort((a, b) => rank(a.slug) - rank(b.slug)).map((t) => {
-    const list = events.filter((e) => t.match.test(themeKey(e.title)));
+    const list = events.filter((e) => inTheme(t, e));
     const year = (list[0] ? list[0].startDate : today).slice(0, 4);
     return `<li><a href="/${THEMES_DIR}/${t.slug}/"${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</a><small${en(list.length ? `${enPl(list.length, 'upcoming date')}` : 'No date announced yet')}>${list.length ? `${list.length} date${list.length > 1 ? 's' : ''} à venir` : 'Pas encore de date annoncée'}</small></li>`;
   });
@@ -2041,7 +2107,7 @@ function homePicks(events, today) {
 function homeSeasons(events, today) {
   const soon = addDays(today, 30);
   return THEMES.map((t) => {
-    const open = events.filter((x) => t.match.test(themeKey(x.title)) && x.startDate <= soon && endOf(x) >= today);
+    const open = events.filter((x) => inTheme(t, x) && x.startDate <= soon && endOf(x) >= today);
     if (!open.length) return null;
     // Hidden by index.html once the last of them is over, if the page is not regenerated first.
     const y = open[0].startDate.slice(0, 4);
@@ -3350,7 +3416,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${WEEKEND_DIR}/index.html`, weekendPage(events, today, places));
   files.set(`${TODAY_DIR}/index.html`, todayPage(events, today));
   // Always written, even empty: the address is the point (see THEMES).
-  for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => t.match.test(themeKey(e.title))), today, events));
+  for (const t of THEMES) files.set(`${THEMES_DIR}/${t.slug}/index.html`, themePage(t, events.filter((e) => inTheme(t, e)), today, events));
   for (const h of HOLIDAYS) files.set(`${THEMES_DIR}/${h.slug}/index.html`, holidayPage(h, events, today, places));
   files.set(`${THEMES_DIR}/${GIFT_SLUG}/index.html`, giftPage(events, today));
   files.set(`${THEMES_DIR}/index.html`, seasonIndex(events, today));
