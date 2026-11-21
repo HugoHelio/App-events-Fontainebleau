@@ -2147,7 +2147,14 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       demande du 21/11 sur la fiche a échoué, et c'est normal : avant le scan, cette adresse est
       une redirection `noindex` ; « pas sur Google » est attendu pour une adresse nouvelle, seul le
       test en direct compte. Si le scan du 22/11 ne passe pas non plus, regarder le journal du
-      workflow « Daily Check » dans Actions ; (f) une page « Noël dans les châteaux » (Fontainebleau, Vaux, Blandy), à décider ;
+      workflow « Daily Check » dans Actions ;
+    - [x] (f) **Page « Noël dans les châteaux » faite le 21/11** (`/sorties/noel-dans-les-chateaux/`, §7) :
+      code et corrections poussés ; la page part avec le prochain scan (sinon elle listerait les
+      doublons masqués et l'ancien tarif de Vaux).
+    - [ ] (f2) **Après ce scan** : vérifier la page en séance (3 châteaux, 5 sorties, Vaux à
+      25,90 €), puis, chef de projet, Search Console → « Inspection de l'URL » → « Tester l'URL en
+      direct » → « Demander l'indexation » sur `https://fontainebleaulive.fr/sorties/noel-dans-les-chateaux/`
+      (avec les deux adresses de (e)) ;
     (g) les illuminations sur `/sorties/noel/`, moins prioritaire.
 - [ ] **111. Une fiche, une adresse (relevé du 17/11).** L'adresse d'une fiche est faite du titre
   et de l'id ; quand un scan reformule le titre, l'adresse change. **L'ancienne ne casse pas** :
