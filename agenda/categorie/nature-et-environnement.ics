@@ -12,20 +12,19 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1ed8d3db12@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:CAFÉ DES TRANSITIONS "CONSOMMATION ET DECHETS !" [FONTAINEBLEAU (E
  N) TRANSITION]
-LOCATION:Fontainebleau
-DESCRIPTION:Horaires : 10h\n\nAtelier-débat et temps d'échange sur les co
- nséquences de notre consommation et de nos déchets sur l'environnement\,
-  avec présentation de solutions durables. Café offert.\n\nOrganisateur :
-  https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%
- 5Bnews%5D=5938&cHash=e87fc4bd8ad1fe76404f1109c7f7b148\n\nFiche : https://f
- ontainebleaulive.fr/evenements/cafe-des-transitions-consommation-et-dechet
- s-fontainebleau-e-1ed8d3db12/\n\nInformations collectées automatiquement 
- : vérifiez-les auprès de l’organisateur.
+LOCATION:Lieu communiqué lors de l'inscription\, Fontainebleau
+DESCRIPTION:Horaires : 10h00\n\nTarif : Gratuit\n\nAtelier-débat et temps 
+ d'échange sur les conséquences de notre consommation et de nos déchets 
+ sur l'environnement\, avec présentation de solutions durables. Café offe
+ rt.\n\nOrganisateur : https://fontyblog.fr/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/cafe-des-transitions-consommation-et-dechets-fontaine
+ bleau-e-1ed8d3db12/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/cafe-des-transitions-consommati
  on-et-dechets-fontainebleau-e-1ed8d3db12/
 CATEGORIES:Nature & Environnement
@@ -34,7 +33,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -52,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e369a0da4e@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Journée de l'Arbre
@@ -71,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f238bc3741@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Troc aux Plantes
@@ -111,6 +110,27 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_c914f94d5f@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Les champignons et la forêt de Fontainebleau en automne
+LOCATION:Forêt domaniale de Fontainebleau (secteur Tour Dénecourt / Roche
+ rs)\, Fontainebleau
+DESCRIPTION:Horaires : 10h00 à 16h00\n\nTarif : Adulte : 18 € / Enfant (
+ 8-12 ans) : 12 €\n\nPublic : Dès 8 ans\n\nSortie découverte dédiée 
+ à l'observation et la connaissance des champignons en forêt de Fontaineb
+ leau.\n\nOrganisateur : https://www.eco-nature.org/experience/les-champign
+ ons-et-la-foret-de-fontainebleau-en-automne-87\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/les-champignons-et-la-foret-de-fontainebleau-en-au
+ tomne-c914f94d5f/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-champignons-et-la-foret-de-
+ fontainebleau-en-automne-c914f94d5f/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_2224d547db@fontainebleaulive.fr
 DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261122
@@ -118,13 +138,12 @@ DTEND;VALUE=DATE:20261123
 SUMMARY:Pourquoi les dalles de grès les plus épaisses du Massif sont-elle
  s dans le Golfe de Larchant ?
 LOCATION:Massif de Larchant / Dame Jouanne\, Larchant
-DESCRIPTION:Horaires : 9h00 – 16h00\n\nTarif : Gratuit ou coût réduit d
- e transfert autocar (5 € adhérents)\n\nSortie géologie et paysage pour
-  comprendre la géomorphologie des dalles de grès.\n\nOrganisateur : http
- s://anvl.fr/calendrier/\n\nFiche : https://fontainebleaulive.fr/evenements
- /pourquoi-les-dalles-de-gres-les-plus-epaisses-du-massif-sont-larchant-222
- 4d547db/\n\nInformations collectées automatiquement : vérifiez-les aupr
- ès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 9h45\n\nTarif : Gratuit\n\nSortie géol
+ ogie et paysage pour comprendre la géomorphologie des dalles de grès.\n\
+ nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontaineble
+ aulive.fr/evenements/pourquoi-les-dalles-de-gres-les-plus-epaisses-du-mass
+ if-sont-larchant-2224d547db/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/pourquoi-les-dalles-de-gres-les
  -plus-epaisses-du-massif-sont-larchant-2224d547db/
 CATEGORIES:Nature & Environnement
@@ -268,7 +287,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_257ae87cb3@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261130
 SUMMARY:Weekend de la transition
@@ -287,7 +306,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -305,8 +324,28 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_bdb9194a09@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Les Cafés de la transition : comment améliorer le confort de son 
+ logement ?
+LOCATION:mairie déléguée de Montarlot\, Montarlot
+DESCRIPTION:Horaires : 10h\n\nTarif : Gratuit\n\nRencontre citoyenne consac
+ rée au confort thermique de l’habitat et aux solutions de rénovation 
+ énergétique.\n\nOrganisateur : https://moretloingetorvanne.fr/events/caf
+ es-transition-montarlot-novembre-2026/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/les-cafes-de-la-transition-comment-ameliorer-le-confort-de
+ -s-montarlot-bdb9194a09/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-cafes-de-la-transition-comm
+ ent-ameliorer-le-confort-de-s-montarlot-bdb9194a09/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -326,7 +365,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -345,7 +384,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b3ef3d23c@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Sortie bryologique au mont Andart
@@ -378,6 +417,45 @@ DESCRIPTION:Horaires : 09h–17h\n\nTarif : Gratuit\n\nJournée d'observati
 URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-bryolo
  gie-en-foret-de-fontainebleau-ce99e04c3b/
 CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_423a5d632f@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Apéro des randonneurs — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro entre randonneurs à Fontainebleau pour préparer une vr
+ aie sortie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). In
+ scription gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com
+ /randodate/events/apero-des-randonneurs-fontainebleau\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/apero-des-randonneurs-fontainebleau-423a5d6
+ 32f/\n\nInformations collectées automatiquement : vérifiez-les auprès d
+ e l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontaineb
+ leau-423a5d632f/
+CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_758d2639a7@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Apéro des randonneurs — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro entre randonneurs à Melun pour préparer une vraie sort
+ ie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). Inscriptio
+ n gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randoda
+ te/events/apero-des-randonneurs-melun\n\nFiche : https://fontainebleaulive
+ .fr/evenements/apero-des-randonneurs-melun-758d2639a7/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-melun-758
+ d2639a7/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -420,7 +498,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
@@ -595,15 +673,14 @@ DTEND;VALUE=DATE:20270124
 SUMMARY:Visite guidée « Sur la trace des animaux en forêt de Fontaineble
  au »
 LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 €\, Enfant (8-12 ans)
-  : 9 €. Visite soumise à un nombre minimum de p…\n\nApprenez à repé
- rer et interpréter les empreintes et indices laissés par la faune sauvag
- e en forêt de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-
- tourisme.com/fr/fiche/5643672/visite-sur-la-trace-des-animaux-en-foret-de-
- fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-g
- uidee-sur-la-trace-des-animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d
- 7d9/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
+DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (8–12 an
+ s) : 9 €\n\nApprenez à repérer et interpréter les empreintes et indic
+ es laissés par la faune sauvage en forêt de Fontainebleau.\n\nOrganisate
+ ur : https://www.fontainebleau-tourisme.com/fr/fiche/5643672/visite-sur-la
+ -trace-des-animaux-en-foret-de-fontainebleau/\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/visite-guidee-sur-la-trace-des-animaux-en-foret-de-
+ fontaineb-fontainebleau-1e3bc5d7d9/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-
  animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/
 CATEGORIES:Nature & Environnement

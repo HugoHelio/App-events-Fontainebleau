@@ -3,11 +3,32 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:noisy-sur-ecole · Fontainebleau Live
+X-WR-CALNAME:Noisy-sur-École · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_372ffd2fd9@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Sortie naturaliste : Randonnée à la découverte de la flore et de
+ s paysages
+LOCATION:Réserve biologique & massif forestier\, Noisy-sur-École
+DESCRIPTION:Horaires : 10h00 à 13h00\n\nTarif : Adulte : 22 € / Enfant (
+ < 16 ans) : 10 €\n\nRandonnée botanique de 3 heures à la découverte d
+ e la flore et des paysages en réserve biologique.\n\nOrganisateur : https
+ ://www.eco-nature.org/experience/sortie-naturaliste-en-foret-de-fontainebl
+ eau-510\n\nFiche : https://fontainebleaulive.fr/evenements/sortie-naturali
+ ste-randonnee-a-la-decouverte-de-la-flore-et-noisy-sur-ecole-372ffd2fd9/\n
+ \nInformations collectées automatiquement : vérifiez-les auprès de l’
+ organisateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-naturaliste-randonnee-a-
+ la-decouverte-de-la-flore-et-noisy-sur-ecole-372ffd2fd9/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

@@ -3,11 +3,50 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:veneux-les-sablons · Fontainebleau Live
+X-WR-CALNAME:Veneux-les-Sablons · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_a63157f320@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261127
+SUMMARY:Portes ouvertes de la restauration scolaire de Veneux-les-Sablons
+LOCATION:restaurant scolaire de Veneux-les-Sablons\, Veneux-les-Sablons
+DESCRIPTION:Horaires : 17h à 19h30\n\nTarif : Gratuit\n\nDécouverte des c
+ oulisses de la cantine\, visites de la cuisine\, dégustations\, rencontre
+ s avec des producteurs et animations.\n\nOrganisateur : https://moretloing
+ etorvanne.fr/events/portes-ouvertes-restauration-scolaire-veneux-2026/\n\n
+ Fiche : https://fontainebleaulive.fr/evenements/portes-ouvertes-de-la-rest
+ auration-scolaire-de-veneux-les-sa-veneux-les-sablons-a63157f320/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/portes-ouvertes-de-la-restaurat
+ ion-scolaire-de-veneux-les-sa-veneux-les-sablons-a63157f320/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_bcb0afa4a8@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Grand loto de l’USMVS Patinage à Veneux-les-Sablons
+LOCATION:Maison des Associations\, Veneux-les-Sablons
+DESCRIPTION:Horaires : Ouverture des portes à 19h\, début à 20h\n\nTarif
+  : Payant\n\nGrand loto avec de nombreux lots high-tech\, loisirs et maiso
+ n à gagner.\n\nOrganisateur : https://moretloingetorvanne.fr/events/grand
+ -loto-de-lusmvs-patinage-a-veneux-les-sablons/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/grand-loto-de-l-usmvs-patinage-a-veneux-les-sablon
+ s-bcb0afa4a8/\n\nInformations collectées automatiquement : vérifiez-les 
+ auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/grand-loto-de-l-usmvs-patinage-
+ a-veneux-les-sablons-bcb0afa4a8/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

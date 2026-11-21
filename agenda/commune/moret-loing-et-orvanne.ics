@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_2bffef387b@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Boutique solidaire " vente de jouets"
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5781df7ad9@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Sens Dessus Dessous
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_19d186692f@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Soirée musicale au profit du Secours populaire
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f238bc3741@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Troc aux Plantes
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_58ecda5bfa@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Vide-atelier d'artistes
@@ -107,8 +107,29 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1b711d8ba8@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261130
+SUMMARY:Exposition Les Recycl’arts : quand les matériaux récupérés de
+ viennent des œuvres d’art
+LOCATION:Maison Lesage\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 14h à 18h (14h à 16h30 le 29 novembre)\n\nTarif : 
+ Gratuit\n\nExposition collective réunissant six artistes autour du recycl
+ age artistique et de la transformation de matériaux.\n\nOrganisateur : ht
+ tps://moretloingetorvanne.fr/events/exposition-les-recyclarts-quand-les-ma
+ teriaux-recuperes-deviennent-des-oeuvres-dart/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/exposition-les-recycl-arts-quand-les-materiaux-rec
+ uperes-dev-moret-loing-et-orvanne-1b711d8ba8/\n\nInformations collectées 
+ automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-les-recycl-arts-quan
+ d-les-materiaux-recuperes-dev-moret-loing-et-orvanne-1b711d8ba8/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_d3fca71a44@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261129
 SUMMARY:Exposition Recyrculaire
@@ -128,7 +149,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5e08c56d66@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:En attendant l'ortho\, je fais quoi ?
@@ -148,7 +169,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_01417d9f53@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Table ronde "L'Envers des fripes"
@@ -185,17 +206,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_46cf3b77c1@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Festival des Brasseurs et Vignerons
 LOCATION:Fontaine de DY à Moret Loing et Orvanne\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 11h à 22h\n\nFestival mettant à l'honneur les bras
- seurs et vignerons locaux.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-
- agendas/agenda.html#2026-11-28-festivaldesbrasseursetvignerons\n\nFiche : 
- https://fontainebleaulive.fr/evenements/festival-des-brasseurs-et-vigneron
- s-moret-loing-et-orvanne-46cf3b77c1/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 11h à 22h\n\nTarif : 14 € en prévente\n\nFestiva
+ l mettant à l'honneur les brasseurs et vignerons locaux.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-festivaldesb
+ rasseursetvignerons\n\nFiche : https://fontainebleaulive.fr/evenements/fes
+ tival-des-brasseurs-et-vignerons-moret-loing-et-orvanne-46cf3b77c1/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
 URL:https://fontainebleaulive.fr/evenements/festival-des-brasseurs-et-vigne
  rons-moret-loing-et-orvanne-46cf3b77c1/
 CATEGORIES:Scène & Spectacles
@@ -222,18 +244,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89d02118e2@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Bourse aux jouets
 LOCATION:Salle Jean Mermoz\, 11 rue Georges Villette ( Ecuelles ) à Moret-
  Loing-et-Orvanne\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h – 17h30\n\nVente de jouets d'occasion pour dé
- nicher des petits trésors.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
- -agendas/agenda.html#2026-11-29-bourseauxjouets\n\nFiche : https://fontain
- ebleaulive.fr/evenements/bourse-aux-jouets-moret-loing-et-orvanne-89d02118
- e2/\n\nInformations collectées automatiquement : vérifiez-les auprès de
-  l’organisateur.
+DESCRIPTION:Horaires : 10h – 17h30\n\nTarif : Entrée libre\n\nVente de j
+ ouets d'occasion pour dénicher des petits trésors.\n\nOrganisateur : htt
+ ps://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-29-bourseauxjouets\n
+ \nFiche : https://fontainebleaulive.fr/evenements/bourse-aux-jouets-moret-
+ loing-et-orvanne-89d02118e2/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/bourse-aux-jouets-moret-loing-e
  t-orvanne-89d02118e2/
 CATEGORIES:Culture & Ateliers
@@ -276,27 +298,27 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30be07276a@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
-SUMMARY:Marché de Noël
+SUMMARY:Marché de Noël du CMPA
 LOCATION:Maison des Associations\, 25 Ter rue du Port ( Veneux-Les Sablons)
   à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
-DESCRIPTION:Horaires : 10h à 18h30\n\nMarché festif pour préparer les f
- êtes de fin d'année.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agen
- das/agenda.html#2026-12-05-marchedenoel\n\nFiche : https://fontainebleauli
- ve.fr/evenements/marche-de-noel-moret-loing-et-orvanne-30be07276a/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-o
- rvanne-30be07276a/
+DESCRIPTION:Horaires : 10h00–18h30 (animations de 14h à 17h30)\n\nTarif 
+ : Entrée libre\n\nMarché festif pour préparer les fêtes de fin d'anné
+ e.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026
+ -12-05-marchedenoel\n\nFiche : https://fontainebleaulive.fr/evenements/mar
+ che-de-noel-du-cmpa-moret-loing-et-orvanne-30be07276a/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-du-cmpa-moret-lo
+ ing-et-orvanne-30be07276a/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0fed51746d@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Atelier créatif de cartes de Noël et de bonne année
@@ -317,7 +339,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3d7dd3ebee@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Noël des enfants

@@ -11,28 +11,8 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_d6ca9cefc7@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:Après-midi activités jeunesse
-LOCATION:Gymnase de Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Horaires : 14h à 18h\n\nTarif : Gratuit\n\nPublic : 11–17 an
- s\n\nAprès-midi dédiée aux jeunes avec activités sportives\, créative
- s\, ludiques et initiations encadrées.\n\nOrganisateur : https://www.mill
- y-la-foret.fr/2026/11/10/21-11-26-apres-midi-activites-jeunesse/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/apres-midi-activites-jeunesse-mi
- lly-la-foret-d6ca9cefc7/\n\nInformations collectées automatiquement : vé
- rifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/apres-midi-activites-jeunesse-m
- illy-la-foret-d6ca9cefc7/
-CATEGORIES:Sport & Outdoor
-GEO:48.4019;2.45349
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_ac93a38421@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de danse K-Pop – Club Mill’ Danses
@@ -52,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e009f9aecd@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -71,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_110ee3c26e@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -91,7 +71,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_36f7cc1646@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël & portes ouvertes à la MARPA
@@ -111,7 +91,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
@@ -129,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -149,7 +129,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -168,18 +148,20 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3aac72b4c4@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
-LOCATION:Milly-la-Forêt
+LOCATION:Salle Odile\, Milly-la-Forêt
 DESCRIPTION:Horaires : Prenez votre place sur scène ! Un stage pour gagner
   en confiance\, apprendre à s’exprimer librement et transmettre ses é
- …\n\nTarif : 15 € à 20 €\n\nOrganisateur : https://www.milly-la-for
- et.fr/2026/11/17/29-11-26-stage-dexpression-scenique-club-mill-danses/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/stage-d-expression-sceniqu
- e-club-mill-danses-milly-la-foret-3aac72b4c4/\n\nInformations collectées 
- automatiquement : vérifiez-les auprès de l’organisateur.
+ …\n\nTarif : 15 € à 20 €\n\nUn stage pour gagner en confiance\, app
+ rendre à s'exprimer librement et transmettre ses émotions sur scène.\n\
+ nOrganisateur : https://www.milly-la-foret.fr/2026/11/17/29-11-26-stage-de
+ xpression-scenique-club-mill-danses/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/stage-d-expression-scenique-club-mill-danses-milly-la-foret-
+ 3aac72b4c4/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/stage-d-expression-scenique-clu
  b-mill-danses-milly-la-foret-3aac72b4c4/
 CATEGORIES:Scène & Spectacles
@@ -188,7 +170,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b8821574ed@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
@@ -209,7 +191,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_208a256050@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -229,11 +211,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf57824562@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon
-LOCATION:Milly-la-Forêt
+LOCATION:Milly-la-Forêt\, Milly-la-Forêt
 DESCRIPTION:Horaires : Téléthon 2026 : les associations milliacoises se m
  obilisent ! Le Téléthon revient à Milly-la-Forêt le week-end du 6 & 7
  …\n\nTarif : gratuit\n\nMobilisation des associations milliacoises avec 
@@ -249,17 +231,37 @@ GEO:48.4017;2.45828
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_63cfe6ce64@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Le latin retrouvé – Médiathèque
+LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h à 12h\n\nAtelier de découverte et lecture d
+ e textes latins autour du thème : Virgile\, Énéide 3 – Déesses et di
+ eux protecteurs.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/2
+ 0/05-12-26-le-latin-retrouve-mediatheque/\n\nFiche : https://fontainebleau
+ live.fr/evenements/le-latin-retrouve-mediatheque-milly-la-foret-63cfe6ce64
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-latin-retrouve-mediatheque-m
+ illy-la-foret-63cfe6ce64/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_b30114cd44@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël Solidaire
 LOCATION:Sous la Halle – Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Horaires : 9h à 17h\n\nTarif : gratuit\n\nOrganisateur : https
- ://www.milly-la-foret.fr/2026/11/13/05-12-26-marche-de-noel-solidaire/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/marche-de-noel-solidaire-m
- illy-la-foret-b30114cd44/\n\nInformations collectées automatiquement : v
- érifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 9h à 17h\n\nTarif : gratuit\n\nMarché de Noël org
+ anisé par les associations caritatives sous la Halle de Milly-la-Forêt.\
+ n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/13/05-12-26-marche
+ -de-noel-solidaire/\n\nFiche : https://fontainebleaulive.fr/evenements/mar
+ che-de-noel-solidaire-milly-la-foret-b30114cd44/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-solidaire-milly-
  la-foret-b30114cd44/
 CATEGORIES:Culture & Ateliers
@@ -285,6 +287,26 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_42fa5cdce0@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Inauguration Exposition photographique : Pour une forêt vivante
+LOCATION:Espace culturel Paul Bédu\, Milly-la-Forêt
+DESCRIPTION:Horaires : à 11h\n\nTarif : Entrée libre\n\nVernissage de l'e
+ xposition photographique consacrée à la faune sauvage de la forêt de Fo
+ ntainebleau.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/10/06
+ -12-26-inauguration-exposition-photographique-pour-une-foret-vivante-espac
+ e-culturel-paul-bedu-05-20-12-26/\n\nFiche : https://fontainebleaulive.fr/
+ evenements/inauguration-exposition-photographique-pour-une-foret-vivant-mi
+ lly-la-foret-42fa5cdce0/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/inauguration-exposition-photogr
+ aphique-pour-une-foret-vivant-milly-la-foret-42fa5cdce0/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_1bf4d4afed@fontainebleaulive.fr
 DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261206
@@ -305,8 +327,26 @@ GEO:48.4017;2.45828
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_599cf733fe@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Stage de Zumba – Club Mill’ Danses
+LOCATION:Salle Odile\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h30 à 12h30\n\nTarif : 10 €\n\nStage de Zumb
+ a spécial Téléthon animé par Oriane pour se dépenser en musique.\n\nO
+ rganisateur : https://www.milly-la-foret.fr/2026/11/17/06-12-26-stage-de-z
+ umba-club-mill-danses/\n\nFiche : https://fontainebleaulive.fr/evenements/
+ stage-de-zumba-club-mill-danses-milly-la-foret-599cf733fe/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-de-zumba-club-mill-danses
+ -milly-la-foret-599cf733fe/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c0ecb39c4c@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur
@@ -364,8 +404,27 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_9235a96d0e@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Le latin retrouvé – Médiathèque
+LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h à 12h\n\nAtelier de découverte et lecture d
+ e textes latins autour du thème : Virgile\, Énéide 4 – Les tourments 
+ de trois grandes déesses.\n\nOrganisateur : https://www.milly-la-foret.fr
+ /2026/11/20/05-12-26-le-latin-retrouve-mediatheque/\n\nFiche : https://fon
+ tainebleaulive.fr/evenements/le-latin-retrouve-mediatheque-milly-la-foret-
+ 9235a96d0e/\n\nInformations collectées automatiquement : vérifiez-les au
+ près de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/le-latin-retrouve-mediatheque-m
+ illy-la-foret-9235a96d0e/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_2b657dcc25@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Participez au défilé de traîneaux de Noël !
@@ -381,6 +440,44 @@ URL:https://fontainebleaulive.fr/evenements/participez-au-defile-de-trainea
  ux-de-noel-milly-la-foret-2b657dcc25/
 CATEGORIES:Culture & Ateliers
 GEO:48.40274;2.46628
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_e5b13a67b8@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:Le latin retrouvé – Médiathèque
+LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h à 12h\n\nAtelier de découverte et lecture d
+ e textes latins autour du thème : Tacite\, Annales 1 – D’Auguste à T
+ ibère.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/20/05-12-2
+ 6-le-latin-retrouve-mediatheque/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/le-latin-retrouve-mediatheque-milly-la-foret-e5b13a67b8/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/le-latin-retrouve-mediatheque-m
+ illy-la-foret-e5b13a67b8/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_240c082ac1@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Le latin retrouvé – Médiathèque
+LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
+DESCRIPTION:Horaires : De 10h à 12h\n\nAtelier de découverte et lecture d
+ e textes latins autour du thème : Tacite\, Annales 2 – Fin de Livie et 
+ de Tibère.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/20/05-
+ 12-26-le-latin-retrouve-mediatheque/\n\nFiche : https://fontainebleaulive.
+ fr/evenements/le-latin-retrouve-mediatheque-milly-la-foret-240c082ac1/\n\n
+ Informations collectées automatiquement : vérifiez-les auprès de l’or
+ ganisateur.
+URL:https://fontainebleaulive.fr/evenements/le-latin-retrouve-mediatheque-m
+ illy-la-foret-240c082ac1/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

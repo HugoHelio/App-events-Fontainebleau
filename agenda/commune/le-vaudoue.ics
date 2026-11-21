@@ -11,6 +11,24 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_3fab7261fc@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Marché de Noël du 29 novembre
+LOCATION:Le Vaudoué\, Le Vaudoué
+DESCRIPTION:Tarif : Accès libre.\n\nMarché festif local pour célébrer l
+ es traditions de fin d'année.\n\nOrganisateur : https://www.fontainebleau
+ -tourisme.com/fr/fiche/8062827/marche-de-noel-du-29-novembre/\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/marche-de-noel-du-29-novembre-le-va
+ udoue-3fab7261fc/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-du-29-novembre-l
+ e-vaudoue-3fab7261fc/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5e7de7b59c@fontainebleaulive.fr
 DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20270201

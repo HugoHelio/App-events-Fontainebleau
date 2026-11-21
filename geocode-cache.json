@@ -171,6 +171,11 @@
       "lng": 2.70305,
       "source": "city"
     },
+    "city:noisy sur ecole": {
+      "lat": 48.38382,
+      "lng": 2.50285,
+      "source": "city"
+    },
     "city:nonville": {
       "lat": 48.29064,
       "lng": 2.78208,
@@ -276,6 +281,11 @@
       "lng": 2.81435,
       "source": "ban"
     },
+    "venue:3 rue beranger fontainebleau": {
+      "lat": 48.40727,
+      "lng": 2.69925,
+      "source": "ban"
+    },
     "venue:38 rue rosa bonheur a thomery thomery": {
       "lat": 48.39434,
       "lng": 2.78497,
@@ -289,6 +299,11 @@
     "venue:48 rue des palottes saint mammes": {
       "lat": 48.3828,
       "lng": 2.8102,
+      "source": "ban"
+    },
+    "venue:6 7 rue de la gare saint mammes": {
+      "lat": 48.38205,
+      "lng": 2.81657,
       "source": "ban"
     },
     "venue:72 rue du general de gaulle bourron marlotte bourron marlotte": {
@@ -506,6 +521,11 @@
       "lng": 2.7265,
       "source": "ban"
     },
+    "venue:maison de la mission fontainebleau": {
+      "lat": 48.43136,
+      "lng": 2.68698,
+      "source": "ban"
+    },
     "venue:maison jean cocteau milly la foret": {
       "lat": 48.40196,
       "lng": 2.46941,
@@ -666,9 +686,19 @@
       "lng": 2.59927,
       "source": "ban"
     },
+    "venue:rue de la paroisse fontainebleau": {
+      "lat": 48.40744,
+      "lng": 2.69858,
+      "source": "ban"
+    },
     "venue:rue denis papin mormant mormant": {
       "lat": 48.6136,
       "lng": 2.88478,
+      "source": "ban"
+    },
+    "venue:rue du vieux cimetiere cannes ecluse": {
+      "lat": 48.36539,
+      "lng": 2.98434,
       "source": "ban"
     },
     "venue:saint mammes": {
@@ -707,6 +737,11 @@
       "source": "ban"
     },
     "venue:site de la faisanderie l empreinte fontainebleau": {
+      "lat": 48.40844,
+      "lng": 2.68988,
+      "source": "ban"
+    },
+    "venue:stade de la faisanderie fontainebleau": {
       "lat": 48.40844,
       "lng": 2.68988,
       "source": "ban"

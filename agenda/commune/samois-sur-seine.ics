@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_489f459414@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Atelier danse « petit bout d’histoire dansée »
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Échange de plantes
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_09f6d3d02a@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261123
 SUMMARY:Exposition Samois’art
@@ -68,7 +68,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_38ded51c56@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Récital : Au salon de Joséphine
@@ -87,7 +87,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b62d5debb@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:LOTO
@@ -104,7 +104,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa9c61a161@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Atelier danse pour adultes
@@ -122,7 +122,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_574bc03521@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert Intime Nougaro
@@ -141,7 +141,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_99be6b818d@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Salsa-bachata-kizomba « les sosies »
@@ -158,8 +158,26 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_402fd94b3d@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Marché de Noël du 5 décembre
+LOCATION:Samois-sur-Seine\, Samois-sur-Seine
+DESCRIPTION:Tarif : Gratuit.\n\nMarché artisanal et festif marquant le dé
+ but des festivités de Noël.\n\nOrganisateur : https://www.fontainebleau-
+ tourisme.com/fr/fiche/7573860/marche-de-noel-du-5-decembre/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/marche-de-noel-du-5-decembre-samois-s
+ ur-seine-402fd94b3d/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-du-5-decembre-sa
+ mois-sur-seine-402fd94b3d/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_cbb7493942@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Village et Marché de Noël de Samois-sur-Seine
@@ -177,7 +195,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a5d59b0896@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261217
 DTEND;VALUE=DATE:20261218
 SUMMARY:Le Noêl des aînés
@@ -195,18 +213,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
 LOCATION:Bords de Seine et centre-ville\, Samois-sur-Seine
-DESCRIPTION:Horaires : À partir de 18h00\n\nTarif : Payant pour 5 km / gra
- tuit ou modique pour enfants\n\nCourse pédestre festive de fin d'année p
- roposant des parcours de 800 m\, 1\,6 km et 5 km au bord de la Seine.\n\nO
- rganisateur : https://samois-sur-seine.fr/evenement/course-de-noel/\n\nFic
- he : https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-
- seine-12-edition-6d9b7e1830/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : À partir de 18h00\n\nTarif : 1 € à 10 €\n\nCou
+ rse pédestre festive de fin d'année proposant des parcours de 800 m\, 1\
+ ,6 km et 5 km au bord de la Seine.\n\nOrganisateur : https://samois-sur-se
+ ine.fr/evenement/course-de-noel/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/course-de-noel-de-samois-sur-seine-12-edition-6d9b7e1830/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
 URL:https://fontainebleaulive.fr/evenements/course-de-noel-de-samois-sur-se
  ine-12-edition-6d9b7e1830/
 CATEGORIES:Sport & Outdoor
@@ -214,7 +232,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4762e2cdf5@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Réveillon de la Saint-Sylvestre avec LB SALSA

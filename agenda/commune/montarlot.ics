@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Montarlot · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_bdb9194a09@fontainebleaulive.fr
+DTSTAMP:20261121T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Les Cafés de la transition : comment améliorer le confort de son 
+ logement ?
+LOCATION:mairie déléguée de Montarlot\, Montarlot
+DESCRIPTION:Horaires : 10h\n\nTarif : Gratuit\n\nRencontre citoyenne consac
+ rée au confort thermique de l’habitat et aux solutions de rénovation 
+ énergétique.\n\nOrganisateur : https://moretloingetorvanne.fr/events/caf
+ es-transition-montarlot-novembre-2026/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/les-cafes-de-la-transition-comment-ameliorer-le-confort-de
+ -s-montarlot-bdb9194a09/\n\nInformations collectées automatiquement : vé
+ rifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/les-cafes-de-la-transition-comm
+ ent-ameliorer-le-confort-de-s-montarlot-bdb9194a09/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
