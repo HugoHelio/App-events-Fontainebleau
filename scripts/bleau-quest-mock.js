@@ -46,6 +46,8 @@ const SPOTS = [
   { id: 'mont-ussy', name: 'Mont Ussy', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42699, lng: 2.69645, icon: '🌳' },
   { id: 'tour-denecourt', name: 'Tour Denecourt', set: 'denecourt', type: 'Belvédère', rarity: 'rare', lat: 48.43382, lng: 2.72621, icon: '🗼' },
   { id: 'rocher-cassepot', name: 'Rocher Cassepot', set: 'denecourt', type: 'Rocher nommé', rarity: 'peu commun', lat: 48.43503, lng: 2.73366, icon: '🪨' },
+  { id: 'caverne-augas', name: 'Caverne d’Augas', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42516, lng: 2.71003, icon: '🕳️' },
+  { id: 'grotte-serment', name: 'Grotte du Serment', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'rare', lat: 48.40225, lng: 2.66493, icon: '⛰️' },
   { id: 'grand-veneur', name: 'Croix du Grand Veneur', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', lat: 48.43041, lng: 2.66126, icon: '✝️' },
   { id: 'franchard', name: 'Gorges de Franchard', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.40812, lng: 2.62024, icon: '⛰️' },
   { id: 'apremont', name: 'Gorges d’Apremont', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.43601, lng: 2.62568, icon: '⛰️' },
@@ -68,6 +70,17 @@ const SETS = {
   peintres: 'Les peintres de Barbizon',
   grimpe: '5 Must Climb, en famille',
 };
+
+// Space Invader mosaics of the Pays de Fontainebleau (FTBL_01-46, 2023). Source: the text of
+// pixel-hunting.com (read 21/11/2026, map updated 25/07/2026): identifiers, wave dates, a few
+// names and points. Positions are only on that site's map (no commercial reuse allowed) and OSM has
+// none: no pin on the map. No photo either (the works are Invader's). Unlocked on one's honour.
+const INVADER_WAVES = [['28/02/2023', 1, 4], ['08/03/2023', 5, 8], ['15/03/2023', 9, 12], ['04/04/2023', 13, 13],
+  ['18/05/2023', 14, 15], ['31/05/2023', 16, 18], ['05-10/08/2023', 19, 46]];
+const INVADER_NOTES = { 7: { pts: 40 }, 9: { pts: 50, name: '8bit Cyclop', note: 'Un cyclope 8 bits au milieu d’une forêt, clin d’œil au jeu Berzerk et au Cyclop de Tinguely, à Milly-la-Forêt.' },
+  12: { pts: 50 }, 15: { pts: 50, gone: true }, 16: { pts: 50, name: 'Robinvader, the painter of Barbizon' } };
+const INVADERS = [];
+INVADER_WAVES.forEach(([date, a, b]) => { for (let n = a; n <= b; n++) INVADERS.push(Object.assign({ id: 'FTBL_' + String(n).padStart(2, '0'), date }, INVADER_NOTES[n] || {})); });
 
 function km(a, b) {
   const r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos(((a.lat + b.lat) / 2) * r), y = (b.lat - a.lat) * r;
@@ -117,6 +130,8 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .lvl{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--ink);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
 .who{flex:1;min-width:0}.who b{display:block;font-size:14px}.bar{height:7px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .6s}
 .xp{font-size:12px;opacity:.85}.teamchip{font-size:11px;font-weight:700;background:rgba(255,255,255,.15);padding:3px 8px;border-radius:999px;display:none}.teamchip.on{display:inline-block}
+.mebtn{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.15);font-size:18px;cursor:pointer;flex:none}
+.cards.mini{grid-template-columns:repeat(6,1fr);gap:6px}.cards.mini .card{aspect-ratio:1;font-size:16px}.cards.mini .card small{font-size:8px;padding:2px}
 .screen{flex:1;position:relative;overflow:auto;display:none}.screen.on{display:block}
 #map{position:absolute;inset:0;background:#e8e4da;z-index:0}
 .leaflet-fog-pane canvas{position:absolute;left:0;top:0;pointer-events:none}
@@ -231,7 +246,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <p>Fenêtre étroite (moins de 520 px) : la maquette prend tout l’écran, comme sur un téléphone.</p>
 </div>
 <div class="phone" id="phone">
-<div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title">Promeneur</b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><span class="teamchip" id="teamchip"></span></div>
+<div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title">Promeneur</b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><span class="teamchip" id="teamchip"></span><button type="button" class="mebtn" id="mebtn" aria-label="Profil">👤</button></div>
 <section class="screen on" id="s-map"><div id="map"></div>
 <button type="button" class="livebar" id="livebar"><span class="dot"></span><span id="livetxt"></span></button>
 <button type="button" class="lbtn" id="lbtn" aria-label="Couches" aria-expanded="false">🗂️</button>
@@ -246,6 +261,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <section class="screen" id="s-dex"><div class="pad" id="dex"></div></section>
 <section class="screen" id="s-quests"><div class="pad" id="quests"></div></section>
 <section class="screen" id="s-me"><div class="pad" id="me"></div></section>
+<section class="screen" id="s-shop"><div class="pad" id="shop"></div></section>
 <div class="sheet" id="sheet"></div>
 <div class="onb" id="onb"></div>
 <div class="toast" id="toast"></div>
@@ -255,7 +271,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <button type="button" role="tab" aria-selected="false" data-tab="live"><span>🔴</span>En direct<em class="nb" id="nb"></em></button>
 <button type="button" role="tab" aria-selected="false" data-tab="dex"><span>🃏</span>Collection</button>
 <button type="button" role="tab" aria-selected="false" data-tab="quests"><span>📜</span>Quêtes</button>
-<button type="button" role="tab" aria-selected="false" data-tab="me"><span>👤</span>Profil</button>
+<button type="button" role="tab" aria-selected="false" data-tab="shop"><span>🛍️</span>Boutique</button>
 </nav>
 </div>
 </div>
@@ -263,6 +279,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <script>
 var SPOTS = ${inline(SPOTS)};
 var SETS = ${inline(SETS)};
+var INVADERS = ${inline(INVADERS)};
 var EVENTS = ${inline(week)};
 var SEASON = ${inline(season)};
 var TODAY = ${inline(today)};
@@ -342,7 +359,7 @@ const CLIENT = String.raw`
       if (!st.sets[s] && all.every(function (p) { return st.spots[p.id]; })) { st.sets[s] = true; gain(SET_XP, 'série complète : ' + SETS[s]); }
     });
     var cats = {}; Object.keys(st.events).forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
-    if (!st.sets.cats && Object.keys(CATS).every(function (c) { return cats[c]; })) { st.sets.cats = true; gain(ALL_CATS_XP, 'toutes les scènes'); }
+    if (!st.sets.cats && Object.keys(CATS).every(function (c) { return cats[c]; })) { st.sets.cats = true; gain(ALL_CATS_XP, 'quatre genres de sorties'); }
   }
 
   // ── Map and layers ──
@@ -579,7 +596,7 @@ const CLIENT = String.raw`
   }
   function renderLive() {
     var root = $('live'); root.textContent = '';
-    root.appendChild(el('h2', null, 'En direct cette semaine'));
+    root.appendChild(el('h2', null, 'En direct aujourd’hui et demain'));
     root.appendChild(el('p', 'meta', 'Les sorties de l’agenda deviennent des étapes le jour J : passez-y, gagnez une carte souvenir et de l’XP.'));
     if (featured) {
       var q = el('div', 'quest hot'); q.appendChild(el('span', 'livechip', '★ Événement du jour'));
@@ -588,14 +605,13 @@ const CLIENT = String.raw`
     }
     var days = {};
     EVENTS.forEach(function (e) { var d = firstDay(e); (days[d] = days[d] || []).push(e); });
-    Object.keys(days).sort().forEach(function (d) {
+    var tomorrow = new Date(TODAY + 'T12:00:00Z'); tomorrow.setUTCDate(tomorrow.getUTCDate() + 1); tomorrow = tomorrow.toISOString().slice(0, 10);
+    Object.keys(days).sort().filter(function (d) { return d <= tomorrow; }).forEach(function (d) {
       root.appendChild(el('div', 'day', dayLong(d) + ' · ' + days[d].length));
       days[d].forEach(function (e) { if (!(d === TODAY && featured && e.id === featured.id)) evRow(root, e); });
     });
-    if (SEASON.length) {
-      root.appendChild(el('div', 'day', '🎄 Noël, les semaines suivantes · ' + SEASON.length));
-      SEASON.forEach(function (e) { evRow(root, e); });
-    }
+    var later = EVENTS.filter(function (e) { return firstDay(e) > tomorrow; }).length;
+    if (later || SEASON.length) root.appendChild(el('p', 'meta', 'Plus tard : ' + later + ' sorties cette semaine, sur la carte' + (SEASON.length ? ', et ' + SEASON.length + ' rendez-vous de Noël (couche Noël).' : '.')));
   }
 
   // ── Collection ──
@@ -605,7 +621,7 @@ const CLIENT = String.raw`
     root.appendChild(el('h2', null, 'Collection · ' + n + ' / ' + SPOTS.length + ' lieux'));
     var ev = Object.keys(st.events);
     var box = el('div', 'set'); var h0 = el('h3'); h0.appendChild(el('span', null, '★ Cartes souvenirs')); h0.appendChild(el('span', null, String(ev.length))); box.appendChild(h0);
-    if (!ev.length) box.appendChild(el('p', 'meta', 'Passez à un événement de l’agenda le jour J : chaque carte est datée, on ne la retrouvera jamais.'));
+    if (!ev.length) box.appendChild(el('p', 'meta', 'Allez à une sortie de l’agenda, le jour même : vous gagnez sa carte souvenir, avec la date. Une fois l’événement passé, cette carte ne se gagne plus.'));
     else {
       var g = el('div', 'cards');
       ev.forEach(function (id) { var e = byId(id); if (!e) return; var c = el('div', 'card'); c.style.background = cat(e)[1]; c.appendChild(document.createTextNode(e.season ? '🎄' : cat(e)[0])); c.appendChild(el('small', null, e.title)); g.appendChild(c); });
@@ -626,6 +642,41 @@ const CLIENT = String.raw`
       });
       bx.appendChild(grid); root.appendChild(bx);
     });
+    invaderBox(root);
+  }
+
+  // ── Invader mosaics: a series without pins, on one's honour ──
+  function invaderBox(root) {
+    var got = INVADERS.filter(function (m) { return st.invaders && st.invaders[m.id]; }).length;
+    var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, '👾 Les Space Invaders (2023)')); h.appendChild(el('span', null, got + '/' + INVADERS.length));
+    bx.appendChild(h);
+    bx.appendChild(el('p', 'meta', '46 mosaïques posées par Invader en 2023, à Fontainebleau et dans 23 communes autour. À chercher soi-même : le jeu ne donne pas leur emplacement.'));
+    var grid = el('div', 'cards mini');
+    INVADERS.forEach(function (m) {
+      var on = st.invaders && st.invaders[m.id];
+      var c = el('button', 'card' + (on ? '' : ' locked')); c.type = 'button'; c.style.background = '#2b2d42';
+      c.appendChild(document.createTextNode(on ? '👾' : '?')); c.appendChild(el('small', null, m.id.slice(5)));
+      c.onclick = function () { openInvader(m); }; grid.appendChild(c);
+    });
+    bx.appendChild(grid); root.appendChild(bx);
+  }
+  function openInvader(m) {
+    sheet.textContent = '';
+    var on = st.invaders && st.invaders[m.id];
+    sheet.appendChild(header(on ? '#2b2d42' : '#cfd3cc', '👾', m.gone ? 'détruite' : null, '#8a8f8b'));
+    var b = el('div', 'body');
+    b.appendChild(el('h2', null, m.id + (m.name ? ' · ' + m.name : '')));
+    b.appendChild(el('p', 'meta', 'Posée le ' + m.date + (m.pts ? ' · ' + m.pts + ' points dans FlashInvaders' : '')));
+    if (m.note) b.appendChild(el('p', null, m.note));
+    if (m.gone) b.appendChild(el('p', null, 'Détruite l’été suivant sa pose, jamais réactivée.'));
+    b.appendChild(el('div', 'todo', 'Pas de photo (l’œuvre est d’Invader) ni de position (la seule carte publique, pixel-hunting.com, n’autorise pas la réutilisation). Source du texte : pixel-hunting.com, lu le 21/11/2026.'));
+    if (on) b.appendChild(el('div', 'got-banner', '✓ Dans votre collection'));
+    else if (!m.gone) {
+      var ok = el('button', 'btn', 'Je l’ai trouvée (sur l’honneur, +20 XP)'); ok.type = 'button';
+      ok.onclick = function () { st.invaders = st.invaders || {}; st.invaders[m.id] = TODAY; save(); gain(20, 'mosaïque ' + m.id); renderAll(); openInvader(m); };
+      b.appendChild(ok);
+    }
+    sheet.appendChild(b); sheet.classList.add('on');
   }
 
   // ── Quests ──
@@ -654,7 +705,12 @@ const CLIENT = String.raw`
     if (featured) { fx = el('button', 'btn live', 'Voir l’événement du jour'); fx.type = 'button'; fx.onclick = function () { tab('map'); map.setView([featured.lat, featured.lng], 15); openEvent(featured); }; }
     quest(root, '★ L’événement du jour', ['+' + FEATURED_XP + ' XP', 'Change chaque jour'], featured ? featured.title + ' — ' + featured.place : 'Pas d’événement aujourd’hui à moins de 12 km.', featured && st.events[featured.id] ? 1 : 0, 1, fx, true);
     quest(root, '📅 La quête de la semaine', ['Annoncée le jeudi', '+200 XP'], 'Passez à deux sorties de l’agenda d’ici dimanche (' + EVENTS.length + ' sur la carte).', evN, 2);
-    quest(root, '🎭 Toutes les scènes', ['+' + ALL_CATS_XP + ' XP', 'Badge'], 'Un spectacle, un atelier, une sortie nature, du sport : une carte souvenir de chaque.', Object.keys(cats).length, 4);
+    quest(root, '🎭 Quatre genres de sorties', ['+' + ALL_CATS_XP + ' XP', 'Badge'], 'Allez à quatre sorties de l’agenda, une de chaque genre : un spectacle, un atelier ou une expo, une sortie nature, une activité sportive.', Object.keys(cats).length, 4);
+    root.appendChild(el('h2', null, '📜 Toujours là'));
+    quest(root, '📜 L’enquête — chapitre 1', ['Quête principale', '+300 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
+    quest(root, '🔵 Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(SPOTS.filter(function (p) { return p.set === 'denecourt'; }).map(function (p) { return p.id; })), 5);
+    var cl = el('div'); SPOTS.filter(function (p) { return p.set === 'grimpe'; }).forEach(function (p) { cl.appendChild(el('p', 'meta', (st.spots[p.id] ? '✓ ' : '○ ') + p.name)); });
+    quest(root, '🧗 5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+500 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(SPOTS.filter(function (p) { return p.set === 'grimpe'; }).map(function (p) { return p.id; })), 5, cl);
     root.appendChild(el('h2', null, '🎄 De saison'));
     quest(root, '🎄 Les marchés de Noël', ['Saison', 'Nov.-déc.', '+50 XP bonus'], 'Deux marchés ou rendez-vous de Noël (' + SEASON.length + ' sur la carte, couche Noël).', Object.keys(st.events).filter(function (id) { var e = byId(id); return e && e.season; }).length, 2);
     var adv = el('a', null, 'Le calendrier de l’Avent du site →'); adv.href = 'https://fontainebleaulive.fr/calendrier-de-l-avent/'; adv.target = '_blank'; adv.rel = 'noopener';
@@ -664,11 +720,6 @@ const CLIENT = String.raw`
     quest(root, '🌱 Éco-geste', ['Badge', 'Sur l’honneur', 'Toute l’année'], 'Ramasser un déchet en forêt et le rapporter (idée reprise de Tèrra Aventura).', st.eco ? 1 : 0, 1, eco);
     quest(root, '🦌 Le brame', ['Revient en septembre'], 'Écouter le brame depuis un point d’écoute autorisé, en silence. Quête de saison.', 0, 0);
     quest(root, '🍄 Les champignons', ['Revient en octobre'], 'Une sortie mycologique de l’agenda. Jamais de cueillette conseillée par le jeu.', 0, 0);
-    root.appendChild(el('h2', null, '📜 Toujours là'));
-    quest(root, '📜 L’enquête — chapitre 1', ['Quête principale', '+300 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
-    var cl = el('div'); SPOTS.filter(function (p) { return p.set === 'grimpe'; }).forEach(function (p) { cl.appendChild(el('p', 'meta', (st.spots[p.id] ? '✓ ' : '○ ') + p.name)); });
-    quest(root, '🧗 5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+500 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(SPOTS.filter(function (p) { return p.set === 'grimpe'; }).map(function (p) { return p.id; })), 5, cl);
-    quest(root, '🔵 Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(['mont-ussy', 'tour-denecourt', 'rocher-cassepot']), 3);
   }
 
   // ── Profile: account and (future) shop ──
@@ -682,7 +733,7 @@ const CLIENT = String.raw`
     root.appendChild(el('h2', null, 'Badges'));
     var bs = el('div', 'badges');
     [['🏰', 'Napoléon', st.sets.napoleon], ['🔵', 'Sentiers bleus', st.sets.denecourt], ['🎨', 'Peintres', st.sets.peintres], ['★', '1er souvenir', Object.keys(st.events).length > 0],
-      ['🎭', 'Toutes les scènes', st.sets.cats], ['🌱', 'Éco-geste', st.eco], ['🧗', '5 Must Climb', st.sets.grimpe], ['🎄', 'Noël', false]]
+      ['🎭', '4 genres', st.sets.cats], ['🌱', 'Éco-geste', st.eco], ['🧗', '5 Must Climb', st.sets.grimpe], ['🎄', 'Noël', false]]
       .forEach(function (x) { var b = el('div', 'badge' + (x[2] ? '' : ' off')); b.appendChild(document.createTextNode(x[0])); b.appendChild(el('small', null, x[1])); bs.appendChild(b); });
     root.appendChild(bs);
     root.appendChild(el('h2', null, 'Titres'));
@@ -696,14 +747,13 @@ const CLIENT = String.raw`
     acc.appendChild(el('p', 'meta', 'Plus tard, un compte facultatif (e-mail, sans mot de passe) : changer de téléphone, jouer en équipe, retrouver ses achats.'));
     root.appendChild(acc);
 
-    root.appendChild(el('h2', null, 'Boutique (plus tard)'));
-    root.appendChild(el('div', 'todo', 'Maquette : rien n’est vendu. Ce qui s’achète un jour ne donne jamais d’XP, de lieu ni d’événement.'));
-    [['📜', 'L’enquête complète', 'Le chapitre 1 reste gratuit ; les chapitres 2 à 5 en un achat.', '4,99 €'],
-      ['👥', 'Session d’équipe', 'Séminaires, écoles, hôtels : un code, un classement, un récapitulatif pour l’organisateur.', 'sur devis'],
-      ['🎁', 'Le coffret souvenir', 'Vos cartes d’une série complète, imprimées, ou le pin’s de la série.', '12 €'],
-      ['🎨', 'Un autre style de cartes', 'Gravure, aquarelle de Barbizon, pixel : le même jeu, un autre regard.', '1,99 €'],
-      ['💚', 'Soutenir le projet', 'Prix libre, comme les fiches balades.', 'libre']]
-      .forEach(function (o) { var x = el('div', 'offer'); x.appendChild(el('span', 'ic', o[0])); var t = el('div'); t.appendChild(el('b', null, o[1])); t.appendChild(el('p', null, o[2])); x.appendChild(t); x.appendChild(el('span', 'price', o[3])); root.appendChild(x); });
+  }
+
+  // ── Shop: in the bottom bar (21/11); what it sells is for a dedicated session ──
+  function renderShop() {
+    var root = $('shop'); root.textContent = '';
+    root.appendChild(el('h2', null, '🛍️ Boutique'));
+    root.appendChild(el('div', 'todo', 'Contenu à définir avec le chef de projet, en séance dédiée (21/11 : les offres de la v2 ne correspondaient pas à son idée). Règle gardée : ce qui s’achète ne donne jamais d’XP, de lieu ni d’événement.'));
   }
 
   // ── Entry flow (onboarding) ──
@@ -764,7 +814,7 @@ const CLIENT = String.raw`
   function openOnb() { step = 0; draft = { profile: '', team: '', geo: '' }; renderOnb(); onb.classList.add('on'); }
   $('replay').onclick = openOnb;
 
-  function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); hud(); }
+  function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); renderShop(); hud(); }
   function tab(name) {
     Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.setAttribute('aria-selected', b.getAttribute('data-tab') === name); });
     Array.prototype.forEach.call(document.querySelectorAll('.screen'), function (s) { s.classList.toggle('on', s.id === 's-' + name); });
@@ -772,6 +822,7 @@ const CLIENT = String.raw`
     if (name === 'map') setTimeout(function () { map.invalidateSize(); }, 50);
   }
   Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.onclick = function () { tab(b.getAttribute('data-tab')); }; });
+  $('mebtn').onclick = function () { tab('me'); };
   $('reset').onclick = function () { st = fresh(); save(); if (meMarker) { map.removeLayer(meMarker); meMarker = null; me = null; } draw(); renderAll(); closeSheet(); openOnb(); };
 
   panel(); liveBar(); draw(); renderAll();

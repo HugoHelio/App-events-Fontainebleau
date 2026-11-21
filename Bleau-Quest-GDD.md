@@ -12,8 +12,12 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   « Bleau Quest » est abandonné : beaucoup de gens ne savent pas ce qu'est « Bleau ». Les noms de
   fichiers (`Bleau-Quest-GDD.md`, `scripts/bleau-quest-mock.js`) seront renommés plus tard.
 - **Retours sur la maquette, en cours (21/11)** : le parcours d'entrée est revu (§6.1, trois écrans
-  au lieu de six, puis la carte allégée, maquette v3). La suite des retours (carte, fiches, collection, profil) viendra
-  écran par écran.
+  au lieu de six, puis la carte allégée, maquette v3). Deuxième série du 21/11 (carte et style :
+  « bien ») : En direct limité à aujourd'hui et demain, phrases de la collection et des quêtes
+  réécrites, « Toujours là » et les sentiers bleus remontés (cinq lieux), série des Space Invaders
+  (§7.1 bis), profil en haut et boutique en bas (§7.7). **La boutique sera revue en séance dédiée**
+  (les offres de la v2 ne correspondent pas à l'idée du chef de projet, §12.2). Question ouverte :
+  les événements autour du joueur plutôt qu'autour de Fontainebleau (§7.2).
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -153,6 +157,21 @@ de sauvegarde » de l'accueil part avec lui, dans le profil.
 - **Rareté** selon l'effort ou la saison, jamais selon le hasard : commun (en ville),
   peu commun (lisière), rare (au cœur d'un massif), légendaire (une saison, une heure,
   une série complète).
+- **Les sentiers bleus** (série de Denecourt) : cinq lieux dans la maquette du 21/11, mont Ussy,
+  tour Denecourt, rocher Cassepot, caverne d'Augas, grotte du Serment (positions OSM ; textes à
+  écrire et sourcer). La quête remonte en tête des quêtes permanentes, juste après l'enquête.
+
+### 7.1 bis Les Space Invaders (série, demandée le 21/11)
+- 46 mosaïques d'Invader posées en 2023 (FTBL_01 à FTBL_46), à Fontainebleau et dans 23
+  communes autour ; au 25/07/2026, 32 encore « flashables », 14 détruites (pixel-hunting.com).
+- **Ni position ni photo** : l'œuvre et ses images sont à Invader ; la seule carte publique
+  (pixel-hunting.com) interdit la réutilisation commerciale ; OpenStreetMap n'en recense aucune
+  (vérifié le 21/11). Le jeu ne dit donc pas où elles sont : c'est la chasse, comme dans
+  FlashInvaders. La carte de la collection donne l'identifiant, la date de pose et ce qui est
+  publié (nom, points), avec la source.
+- Débloquée **sur l'honneur** (« Je l'ai trouvée », 20 XP), pas de pastille sur la carte.
+- À trancher : relever nous-mêmes les positions sur place (nos propres données), demander
+  l'accord de pixel-hunting.com, ou en rester à la chasse sans position.
 
 ### 7.2 Les événements (en direct) — la force du jeu
 **Décision du 21/11 : les événements de l'agenda sont ce que les autres jeux n'ont pas.** Ils sont
@@ -160,12 +179,18 @@ identifiables au premier coup d'œil et rapportent le plus d'XP.
 - **Repérables** : sur la carte, un carré (les lieux sont des ronds) à la couleur de la catégorie,
   avec le jour (« sam ») ou **« LIVE »** qui pulse le jour même ; un bandeau en haut de la carte
   (« 8 en direct aujourd'hui · 56 cette semaine ») ; un onglet **En direct** avec un compteur,
-  la liste jour par jour et l'XP de chaque sortie.
+  la liste **d'aujourd'hui et de demain seulement** (21/11 : quatre jours et plus, c'était trop
+  long à faire défiler), l'XP de chaque sortie ; le reste de la semaine et Noël sont sur la carte.
+- **Portée** : la maquette montre les sorties à moins de 12 km du centre de Fontainebleau, un
+  cercle fixe, qui ne suit pas le joueur (21/11 : la portée courte plaît). Proposition pour le
+  M1 : le même rayon **autour du joueur** (ou du centre-ville sans position), dans la zone de
+  l'agenda (20 km au plus) ; à Melun, on verrait les sorties de Melun.
 - **L'événement du jour** : un des événements du jour, le même pour tous, **XP doublée** (300),
   étoile dorée sur la carte. C'est la raison d'ouvrir le jeu chaque jour.
 - **« J'y vais »** sur une sortie à venir : un rappel le jour J (sans XP, l'XP se gagne sur place).
-- **Quêtes d'événements** : la quête de la semaine (deux sorties d'ici dimanche), « Toutes les
-  scènes » (une carte souvenir de chaque catégorie : spectacle, atelier, nature, sport).
+- **Quêtes d'événements** : la quête de la semaine (deux sorties d'ici dimanche), « Quatre genres
+  de sorties » (une sortie de chaque genre : spectacle, atelier ou expo, nature, sport ; nommée
+  « Toutes les scènes » jusqu'au 21/11, pas compris).
 - Les fiches de l'agenda **confirmées par une source lue** (jamais Gemini seul, la règle du
   carrousel) deviennent des étapes éphémères **le jour J**, à leur adresse.
 - Y passer donne une **carte souvenir datée** (« Marché de Noël de Fontainebleau, 2026 ») et de
@@ -217,10 +242,17 @@ tuiles OpenStreetMap, filtrées, aucun fournisseur tiers) et **couches** à coch
 En direct, Quêtes (étapes numérotées de l'enquête), Grimpe, Saison (Noël en ce moment),
 Brouillard.
 
+### 7.7 Navigation (21/11)
+- **Barre du haut** : niveau, titre, barre d'XP et le bouton **Profil** (badges, titres,
+  sauvegarde).
+- **Barre du bas** : Carte, En direct, Collection, Quêtes, **Boutique**.
+- Ordre des quêtes : cette semaine (événements), puis **toujours là** (enquête, sentiers bleus,
+  5 Must Climb), puis de saison.
+
 ## 8. Progression
 - **XP** (barème revu le 21/11, à régler en test) : lieu commun 40, peu commun 60, rare 100,
-  légendaire 200 ; **événement 60, événement du jour 120**, bonus de saison 20 ; « Toutes les
-  scènes » 150 ; série complète 200 ; éco-geste 30 ; premier pas 20 (au premier lieu ou événement
+  légendaire 200 ; **événement 60, événement du jour 120**, bonus de saison 20 ; « Quatre genres
+  de sorties » 150 ; mosaïque d'Invader 20 (sur l'honneur) ; série complète 200 ; éco-geste 30 ; premier pas 20 (au premier lieu ou événement
   touché, jamais de niveau tout de suite) ; validation sur l'honneur à la moitié.
 - **Niveaux** 1 à 30 : le niveau n commence à 20·(n−1)·(2n+1) XP (100, 280, 540, 880, 1 300…).
   **Niveau 2 après un ou deux événements** (60 XP chacun, plus les 20 du premier pas), jamais à la
@@ -287,6 +319,9 @@ La maquette reprend le style du site (21/11 : « reprendre le style du site est 
   moins nécessaire.
 
 ### 12.2 Ce qui pourra s'acheter
+> **À revoir en séance dédiée** (21/11) : ces offres ne correspondent pas à ce que le chef de
+> projet a en tête. La boutique a son onglet dans la barre du bas, vide en attendant.
+
 Règle : **ce qui s'achète ne donne jamais d'XP, de lieu ni d'événement.** Pas de publicité, pas de
 hasard payant, pas d'énergie à recharger.
 
