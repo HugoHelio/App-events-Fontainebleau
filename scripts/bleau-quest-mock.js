@@ -208,7 +208,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .onb .in{flex:1;overflow:auto;padding:18px 22px 10px;display:flex;flex-direction:column}
 .onb h1{font-size:26px;color:var(--ink);margin:10px 0 6px;line-height:1.15}.onb .lead{color:var(--muted);margin:0 0 16px}
 .onb .hero{height:210px;border-radius:22px;background:linear-gradient(160deg,#1d3b29,#2f6b44 60%,#afe14f);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:64px;margin-top:8px}
-.onb .hero b{font-size:30px;letter-spacing:.02em;margin-top:6px}.onb .hero small{font-size:14px;opacity:.9}
+.onb .hero b{font-size:30px;letter-spacing:.02em;margin-top:6px;text-align:center;line-height:1.15;padding:0 16px}.onb .hero small{font-size:14px;opacity:.9}
 .onb .feat{display:flex;gap:12px;align-items:center;margin:8px 0}.onb .feat span{font-size:24px;width:40px;height:40px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;border:1px solid var(--line)}
 .choice{display:flex;gap:12px;align-items:center;width:100%;text-align:left;font:inherit;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;cursor:pointer}
 .choice span{font-size:26px}.choice b{display:block;color:var(--ink)}.choice small{color:var(--muted)}
@@ -338,9 +338,10 @@ const CLIENT = String.raw`
   var LAYERS = {
     spots: { icon: '📍', label: 'Lieux', on: true, g: L.layerGroup() },
     events: { icon: '🔴', label: 'En direct', on: true, g: L.layerGroup() },
-    quests: { icon: '📜', label: 'Quêtes', on: true, g: L.layerGroup() },
-    climb: { icon: '🧗', label: 'Grimpe', on: true, g: L.layerGroup() },
-    season: { icon: '🎄', label: 'Noël', on: true, g: L.layerGroup() },
+    // 21/11 feedback: the map opens light (places and live events); the other layers are one tap away
+    quests: { icon: '📜', label: 'Quêtes', on: false, g: L.layerGroup() },
+    climb: { icon: '🧗', label: 'Grimpe', on: false, g: L.layerGroup() },
+    season: { icon: '🎄', label: 'Noël', on: false, g: L.layerGroup() },
     fog: { icon: '🌫️', label: 'Brouillard', on: false, g: L.layerGroup() },
   };
   var BASES = [['plan', 'Plan', '#e9e5dc'], ['doux', 'Doux', '#ece3cf'], ['nuit', 'Nuit', '#2b3540']];
@@ -666,21 +667,13 @@ const CLIENT = String.raw`
 
   // ── Entry flow (onboarding) ──
   // 21/11 feedback: no "what attracts you" screen (everything is offered to everyone), no account
-  // screen (play without one; the save code lives in the profile), and an "a bit of everything" choice.
+  // screen (play without one; the save code lives in the profile), an "a bit of everything" choice,
+  // and no imposed first quest (out of context): the flow ends on the map, around the player.
   var onb = $('onb'), step = 0, draft = null;
-  var STEPS = ['welcome', 'profile', 'geo', 'quest'];
+  var STEPS = ['welcome', 'profile', 'geo'];
   var PROFILES = [['weekend', '🧳', 'Je viens pour un week-end', 'Le meilleur en deux jours'], ['local', '🏡', 'J’habite dans le coin', 'Tout collectionner, à son rythme'],
     ['etudiant', '🎓', 'J’étudie ici', 'INSEAD, écoles, campus'], ['groupe', '👥', 'Je viens en groupe', 'Séminaire, hôtel, classe : avec un code'],
     ['tout', '✨', 'Un peu de tout', 'Plusieurs à la fois, ou je préfère ne pas répondre']];
-  // First quest by profile: today's event when there is one (locals, students, "a bit of everything"),
-  // otherwise the château for visitors and groups, the Tour Denecourt for locals.
-  function firstQuest() {
-    var pr = draft.profile || 'tout';
-    if (featured && (pr === 'local' || pr === 'etudiant' || pr === 'tout')) return { icon: '★', title: featured.title, text: 'L’événement du jour, à ' + featured.place + '. XP doublée aujourd’hui.', xp: FEATURED_XP, go: function () { map.setView([featured.lat, featured.lng], 15); openEvent(featured); } };
-    var pick = pr === 'local' ? 'tour-denecourt' : 'cour-des-adieux';
-    var p = SPOTS.filter(function (x) { return x.id === pick; })[0];
-    return { icon: p.icon, title: p.name, text: 'Votre première carte. ' + SETS[p.set] + '.', xp: XP[p.rarity], go: function () { map.setView([p.lat, p.lng], 15); openSpot(p); } };
-  }
   function choice(icon, title, sub, pressed, onclick, disabled) {
     var c = el('button', 'choice'); c.type = 'button'; c.setAttribute('aria-pressed', !!pressed); c.disabled = !!disabled;
     c.appendChild(el('span', null, icon)); var t = el('div'); t.appendChild(el('b', null, title)); if (sub) t.appendChild(el('small', null, sub)); c.appendChild(t);
@@ -698,7 +691,7 @@ const CLIENT = String.raw`
       var hero = el('div', 'hero', '🗺️'); hero.appendChild(el('b', null, 'Fontainebleau Live Collection')); hero.appendChild(el('small', null, 'Fontainebleau se collectionne')); inn.appendChild(hero);
       [['📍', 'Explorez le château, la ville et la forêt'], ['🃏', 'Collectionnez les lieux, leurs histoires, leurs séries'], ['🔴', 'Vivez les événements du jour : ils rapportent le plus']]
         .forEach(function (f) { var r = el('div', 'feat'); r.appendChild(el('span', null, f[0])); r.appendChild(el('div', null, f[1])); inn.appendChild(r); });
-      inn.appendChild(el('p', 'meta', 'Gratuit, sans compte, sans publicité.'));
+      inn.appendChild(el('p', 'meta', 'Gratuit.'));
       next('Commencer');
     } else if (s === 'profile') {
       inn.appendChild(el('h1', null, 'Vous venez…'));
@@ -714,20 +707,17 @@ const CLIENT = String.raw`
       inn.appendChild(el('h1', null, 'Votre position reste sur ce téléphone'));
       inn.appendChild(el('p', 'lead', 'Elle sert seulement à vérifier que vous êtes devant un lieu. Elle n’est jamais envoyée ni enregistrée ailleurs.'));
       inn.appendChild(el('p', 'meta', 'Sans elle, on joue quand même : une question d’observation sur place, ou sur l’honneur.'));
-      next('Autoriser la position', true, function () { draft.geo = 'oui'; setMe(48.40195, 2.69905); step++; renderOnb(); });
-      var later = el('button', 'btn soft', 'Plus tard'); later.type = 'button'; later.onclick = function () { draft.geo = 'non'; step++; renderOnb(); }; foot.appendChild(later);
-    } else {
-      var fq = firstQuest();
-      inn.appendChild(el('h1', null, 'Votre première quête'));
-      var box = el('div', 'firstq'); box.appendChild(el('div', 'big', fq.icon)); box.appendChild(el('b', null, fq.title)); box.appendChild(el('p', 'meta', fq.text));
-      box.appendChild(el('span', 'xpchip gold', '+' + fq.xp + ' XP')); inn.appendChild(box);
-      inn.appendChild(el('p', 'meta', 'Et ' + WELCOME_XP + ' XP de bienvenue, tout de suite.'));
-      next('Voir la carte', true, function () {
-        st.onboarded = true; st.profile = draft.profile || 'tout'; st.likes = []; st.team = draft.profile === 'groupe' ? draft.team : ''; st.geo = draft.geo || '';
-        save(); onb.classList.remove('on'); tab('map'); renderAll(); gain(WELCOME_XP, 'bienvenue'); fq.go();
-      });
+      next('Autoriser la position', true, function () { draft.geo = 'oui'; setMe(48.40195, 2.69905); finishOnb(); });
+      var later = el('button', 'btn soft', 'Plus tard'); later.type = 'button'; later.onclick = function () { draft.geo = 'non'; finishOnb(); }; foot.appendChild(later);
     }
     onb.appendChild(inn); onb.appendChild(foot);
+  }
+  function finishOnb() {
+    st.onboarded = true; st.profile = draft.profile || 'tout'; st.likes = []; st.team = draft.profile === 'groupe' ? draft.team : ''; st.geo = draft.geo || '';
+    save(); onb.classList.remove('on'); tab('map'); renderAll();
+    if (me) map.setView([me.lat, me.lng], 15); else map.setView([48.404, 2.698], 14);
+    gain(WELCOME_XP, 'bienvenue');
+    setTimeout(function () { toast(me ? 'Touchez un lieu près de vous pour commencer' : 'Touchez un lieu pour commencer'); }, 2300);
   }
   function openOnb() { step = 0; draft = { profile: '', team: '', geo: '' }; renderOnb(); onb.classList.add('on'); }
   $('replay').onclick = openOnb;

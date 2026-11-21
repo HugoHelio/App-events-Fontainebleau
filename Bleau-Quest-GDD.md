@@ -11,8 +11,8 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
 - **Nom, décidé le 21/11** : **« Fontainebleau Live Collection »**, sous la marque du site.
   « Bleau Quest » est abandonné : beaucoup de gens ne savent pas ce qu'est « Bleau ». Les noms de
   fichiers (`Bleau-Quest-GDD.md`, `scripts/bleau-quest-mock.js`) seront renommés plus tard.
-- **Retours sur la maquette, en cours (21/11)** : le parcours d'entrée est revu (§6.1, quatre écrans
-  au lieu de six, maquette v3). La suite des retours (carte, fiches, collection, profil) viendra
+- **Retours sur la maquette, en cours (21/11)** : le parcours d'entrée est revu (§6.1, trois écrans
+  au lieu de six, puis la carte allégée, maquette v3). La suite des retours (carte, fiches, collection, profil) viendra
   écran par écran.
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
@@ -110,20 +110,23 @@ Les familles ne sont pas le public prioritaire : `/foret/` et le calendrier de l
   chapitres de l'enquête, les quêtes de saison.
 
 ### 6.1 Le parcours d'entrée (revu le 21/11 après les retours du chef de projet)
-Quatre écrans, moins d'une minute, « Passer » à chaque étape :
-1. **Accueil** : le nom, trois promesses (explorer, collectionner, vivre les événements du jour),
-   « Gratuit, sans compte, sans publicité ».
+Trois écrans, moins d'une minute, « Passer » à chaque étape :
+1. **Accueil** : le nom (centré), trois promesses (explorer, collectionner, vivre les événements du
+   jour), « Gratuit. » — ni « sans compte » (un compte viendra, facultatif) ni « sans publicité »
+   (rien n'est exclu).
 2. **Vous venez…** : pour un week-end, j'habite dans le coin, j'étudie ici, en groupe (avec le
    code donné par l'organisateur, facultatif), et **« Un peu de tout »** (plusieurs à la fois, ou
    je préfère ne pas répondre). L'explication (« sert seulement à choisir votre première quête »)
    est en bas de l'écran, au-dessus du bouton.
 3. **La position** expliquée *avant* la demande du navigateur : elle reste sur le téléphone ; sans
    elle on joue quand même (question ou honneur).
-4. **La première quête**, choisie d'après le profil (l'événement du jour pour « J'habite dans le
-   coin », « J'étudie » et « Un peu de tout » ; sinon la cour des Adieux, ou la tour Denecourt pour
-   qui habite le coin), et 50 XP de bienvenue tout de suite : niveau 2 au premier lieu.
 
-Retirés le 21/11 : **« Ce qui vous attire »** (le jeu propose tout à tout le monde : balades,
+Puis **la carte**, centrée sur le joueur (ou le centre-ville), **allégée** : seulement les lieux
+et les événements en direct ; quêtes, grimpe, Noël et brouillard restent à un geste, dans le
+panneau des couches. 50 XP de bienvenue, et « Touchez un lieu près de vous pour commencer ».
+
+Retirés le 21/11 : **la première quête imposée** (hors contexte : elle ne tenait pas compte de
+l'endroit où l'on est, « trop violent »), **« Ce qui vous attire »** (le jeu propose tout à tout le monde : balades,
 histoire, événements ; un écran de trop) et **« Un compte ? Pas besoin. »** (on joue sans compte,
 point ; le code de sauvegarde et le futur compte sont dans le profil, §12). Le bouton « J'ai un code
 de sauvegarde » de l'accueil part avec lui, dans le profil.

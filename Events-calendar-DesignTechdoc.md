@@ -2448,8 +2448,8 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     Style : celui du site, retenu. Reste : plusieurs propositions d'interface à comparer.
   - [ ] **116a ter. M0 v3, retours du chef de projet écran par écran (commencé le 21/11)** : nom
     décidé, **« Fontainebleau Live Collection »** (« Bleau » n'est pas compris de tous) ; parcours
-    d'entrée ramené à quatre écrans (retirés : « Ce qui vous attire » et l'écran du compte ; ajouté :
-    « Un peu de tout »), GDD §6.1. Suite : carte, fiches, collection, profil.
+    d'entrée ramené à trois écrans, puis la carte allégée (retirés : « Ce qui vous attire », l'écran
+    du compte et la première quête imposée ; ajouté : « Un peu de tout »), GDD §6.1. Suite : carte, fiches, collection, profil.
   - **M1 — prototype jouable (4 à 6 semaines)**, dans l'ordre :
     - [ ] **116b. Décisions du chef de projet** (GDD §16) : sujet de l'enquête, nom, liste des
       35 lieux (30 en ville et au château, à partir du parcours à pied vérifié ; 5 en forêt :
