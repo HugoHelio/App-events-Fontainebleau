@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Bleau Quest — clickable mock-up (item 116a, GDD: Bleau-Quest-GDD.md).
+ * Fontainebleau Live Collection (ex-Bleau Quest) — clickable mock-up (item 116a, GDD: Bleau-Quest-GDD.md).
  *
  *   node scripts/bleau-quest-mock.js            writes reports/bleau-quest/maquette.html, serves it on
  *                                               http://localhost:8517/ and opens it (Ctrl+C to stop)
@@ -101,7 +101,7 @@ const inline = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
 function page(today, week, season) {
   return `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bleau Quest — maquette</title>
+<title>Fontainebleau Live Collection — maquette</title>
 <link rel="stylesheet" href="../../vendor/leaflet-1.9.4/leaflet.css">
 <style>
 :root{--ink:#1d3b29;--accent:#afe14f;--paper:#fff;--bg:#f4f3ef;--line:#e6e2da;--muted:#5b645e;--live:#e0262f;--gold:#e3a51a;
@@ -214,14 +214,14 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .choice span{font-size:26px}.choice b{display:block;color:var(--ink)}.choice small{color:var(--muted)}
 .choice[aria-pressed="true"]{border-color:var(--ink);background:#eef7dc}
 .choice:disabled{opacity:.55;cursor:default}
-.onb .foot{padding:10px 22px 22px;display:grid;gap:8px}
+.onb .foot{padding:10px 22px 22px;display:grid;gap:8px}.onb .foot .why{margin:0 0 4px;text-align:center}
 .onb input{font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px;width:100%;margin:4px 0 8px}
 .firstq{background:#fff;border:2px solid var(--gold);border-radius:18px;padding:16px;text-align:center}
 .firstq .big{font-size:52px}.firstq b{display:block;font-size:18px;color:var(--ink);margin:6px 0 2px}
 </style></head><body>
 <div class="stage">
 <div class="notes">
-<h1>Bleau Quest — maquette M0 (v2)</h1>
+<h1>Fontainebleau Live Collection — maquette M0 (v3)</h1>
 <p><b>Ce qui est réel</b> : les positions des lieux (OpenStreetMap) ; la couche <b>Événements</b>, ${week.length} sorties de la semaine du ${G.frDate(today)} à moins de ${EVENT_KM} km ; la couche <b>Saison</b>, ${season.length} rendez-vous de Noël des ${SEASON_DAYS} prochains jours. Toutes confirmées par une source lue, tirées de <code>data.json</code>.</p>
 <p><b>Ce qui ne l’est pas</b> : textes, questions, barème d’XP, boutique (rien n’est vendu), style graphique. Les 5 sites de grimpe sont une proposition à valider avec des grimpeurs.</p>
 <p><b>Essayer</b> : le parcours d’entrée s’ouvre au premier lancement. Puis le bouton des couches (en haut à droite), le bandeau « en direct », un événement, un lieu ; « Simuler ma position » puis touchez la carte pour essayer le GPS.</p>
@@ -665,14 +665,19 @@ const CLIENT = String.raw`
   }
 
   // ── Entry flow (onboarding) ──
+  // 21/11 feedback: no "what attracts you" screen (everything is offered to everyone), no account
+  // screen (play without one; the save code lives in the profile), and an "a bit of everything" choice.
   var onb = $('onb'), step = 0, draft = null;
+  var STEPS = ['welcome', 'profile', 'geo', 'quest'];
   var PROFILES = [['weekend', '🧳', 'Je viens pour un week-end', 'Le meilleur en deux jours'], ['local', '🏡', 'J’habite dans le coin', 'Tout collectionner, à son rythme'],
-    ['etudiant', '🎓', 'J’étudie ici', 'INSEAD, écoles, campus'], ['groupe', '👥', 'Je viens en groupe', 'Séminaire, hôtel, classe : avec un code']];
-  var LIKES = [['histoire', '🏰', 'Histoire et château'], ['foret', '🌳', 'Forêt et balades'], ['grimpe', '🧗', 'Grimpe'], ['sorties', '★', 'Sorties et événements'], ['peintres', '🎨', 'Peintres et villages']];
+    ['etudiant', '🎓', 'J’étudie ici', 'INSEAD, écoles, campus'], ['groupe', '👥', 'Je viens en groupe', 'Séminaire, hôtel, classe : avec un code'],
+    ['tout', '✨', 'Un peu de tout', 'Plusieurs à la fois, ou je préfère ne pas répondre']];
+  // First quest by profile: today's event when there is one (locals, students, "a bit of everything"),
+  // otherwise the château for visitors and groups, the Tour Denecourt for locals.
   function firstQuest() {
-    var L0 = draft.likes;
-    if (L0.indexOf('sorties') >= 0 && featured) return { icon: '★', title: featured.title, text: 'L’événement du jour, à ' + featured.place + '. XP doublée aujourd’hui.', xp: FEATURED_XP, go: function () { map.setView([featured.lat, featured.lng], 15); openEvent(featured); } };
-    var pick = L0.indexOf('histoire') >= 0 ? 'cour-des-adieux' : L0.indexOf('grimpe') >= 0 ? 'bas-cuvier' : L0.indexOf('foret') >= 0 ? 'tour-denecourt' : L0.indexOf('peintres') >= 0 ? 'musee-barbizon' : 'cour-des-adieux';
+    var pr = draft.profile || 'tout';
+    if (featured && (pr === 'local' || pr === 'etudiant' || pr === 'tout')) return { icon: '★', title: featured.title, text: 'L’événement du jour, à ' + featured.place + '. XP doublée aujourd’hui.', xp: FEATURED_XP, go: function () { map.setView([featured.lat, featured.lng], 15); openEvent(featured); } };
+    var pick = pr === 'local' ? 'tour-denecourt' : 'cour-des-adieux';
     var p = SPOTS.filter(function (x) { return x.id === pick; })[0];
     return { icon: p.icon, title: p.name, text: 'Votre première carte. ' + SETS[p.set] + '.', xp: XP[p.rarity], go: function () { map.setView([p.lat, p.lng], 15); openSpot(p); } };
   }
@@ -683,43 +688,34 @@ const CLIENT = String.raw`
   }
   function renderOnb() {
     onb.textContent = '';
-    var N = 6, dots = el('div', 'dots'); for (var i = 0; i < N; i++) dots.appendChild(el('i', i === step ? 'on' : ''));
+    var N = STEPS.length, last = N - 1, s = STEPS[step], dots = el('div', 'dots');
+    for (var i = 0; i < N; i++) dots.appendChild(el('i', i === step ? 'on' : ''));
     onb.appendChild(dots);
-    if (step > 0 && step < 5) { var sk = el('button', 'skip', 'Passer'); sk.type = 'button'; sk.onclick = function () { step = 5; renderOnb(); }; onb.appendChild(sk); }
+    if (step > 0 && step < last) { var sk = el('button', 'skip', 'Passer'); sk.type = 'button'; sk.onclick = function () { step = last; renderOnb(); }; onb.appendChild(sk); }
     var inn = el('div', 'in'), foot = el('div', 'foot');
     function next(label, enabled, fn) { var b = el('button', 'btn', label); b.type = 'button'; b.disabled = enabled === false; b.onclick = fn || function () { step++; renderOnb(); }; foot.appendChild(b); return b; }
-    if (step === 0) {
-      var hero = el('div', 'hero', '🗺️'); hero.appendChild(el('b', null, 'Bleau Quest')); hero.appendChild(el('small', null, 'Fontainebleau se collectionne')); inn.appendChild(hero);
+    if (s === 'welcome') {
+      var hero = el('div', 'hero', '🗺️'); hero.appendChild(el('b', null, 'Fontainebleau Live Collection')); hero.appendChild(el('small', null, 'Fontainebleau se collectionne')); inn.appendChild(hero);
       [['📍', 'Explorez le château, la ville et la forêt'], ['🃏', 'Collectionnez les lieux, leurs histoires, leurs séries'], ['🔴', 'Vivez les événements du jour : ils rapportent le plus']]
         .forEach(function (f) { var r = el('div', 'feat'); r.appendChild(el('span', null, f[0])); r.appendChild(el('div', null, f[1])); inn.appendChild(r); });
       inn.appendChild(el('p', 'meta', 'Gratuit, sans compte, sans publicité.'));
       next('Commencer');
-      var c2 = el('button', 'btn soft', 'J’ai un code de sauvegarde'); c2.type = 'button'; c2.onclick = function () { toast('Maquette : reprendre une partie depuis un autre téléphone'); }; foot.appendChild(c2);
-    } else if (step === 1) {
-      inn.appendChild(el('h1', null, 'Vous venez…')); inn.appendChild(el('p', 'lead', 'Pour vous proposer la bonne première quête.'));
+    } else if (s === 'profile') {
+      inn.appendChild(el('h1', null, 'Vous venez…'));
       PROFILES.forEach(function (p) { inn.appendChild(choice(p[1], p[2], p[3], draft.profile === p[0], function () { draft.profile = p[0]; renderOnb(); })); });
       if (draft.profile === 'groupe') {
         inn.appendChild(el('p', 'meta', 'Code donné par l’organisateur (facultatif) :'));
         var inp = el('input'); inp.placeholder = 'ex. SEMINAIRE-24'; inp.value = draft.team; inp.oninput = function () { draft.team = inp.value.trim().slice(0, 20).toUpperCase(); }; inn.appendChild(inp);
       }
+      foot.appendChild(el('p', 'meta why', 'Votre réponse sert seulement à choisir votre première quête. Tout le jeu reste ouvert.'));
       next('Continuer', !!draft.profile);
-    } else if (step === 2) {
-      inn.appendChild(el('h1', null, 'Ce qui vous attire')); inn.appendChild(el('p', 'lead', 'Plusieurs choix possibles. Tout reste ouvert ensuite.'));
-      LIKES.forEach(function (l) { var on = draft.likes.indexOf(l[0]) >= 0; inn.appendChild(choice(l[1], l[2], '', on, function () { if (on) draft.likes.splice(draft.likes.indexOf(l[0]), 1); else draft.likes.push(l[0]); renderOnb(); })); });
-      next('Continuer', draft.likes.length > 0);
-    } else if (step === 3) {
+    } else if (s === 'geo') {
       inn.appendChild(el('div', 'hero', '📍'));
       inn.appendChild(el('h1', null, 'Votre position reste sur ce téléphone'));
       inn.appendChild(el('p', 'lead', 'Elle sert seulement à vérifier que vous êtes devant un lieu. Elle n’est jamais envoyée ni enregistrée ailleurs.'));
       inn.appendChild(el('p', 'meta', 'Sans elle, on joue quand même : une question d’observation sur place, ou sur l’honneur.'));
       next('Autoriser la position', true, function () { draft.geo = 'oui'; setMe(48.40195, 2.69905); step++; renderOnb(); });
       var later = el('button', 'btn soft', 'Plus tard'); later.type = 'button'; later.onclick = function () { draft.geo = 'non'; step++; renderOnb(); }; foot.appendChild(later);
-    } else if (step === 4) {
-      inn.appendChild(el('h1', null, 'Un compte ? Pas besoin.'));
-      inn.appendChild(el('p', 'lead', 'Vous jouez tout de suite. Un code de sauvegarde, dans le profil, suffit pour changer de téléphone.'));
-      inn.appendChild(choice('▶️', 'Jouer sans compte', 'Recommandé · rien à remplir', true, function () {}));
-      inn.appendChild(choice('✉️', 'Créer un compte (plus tard)', 'E-mail sans mot de passe : plusieurs appareils, équipes, achats retrouvés', false, null, true));
-      next('Continuer');
     } else {
       var fq = firstQuest();
       inn.appendChild(el('h1', null, 'Votre première quête'));
@@ -727,13 +723,13 @@ const CLIENT = String.raw`
       box.appendChild(el('span', 'xpchip gold', '+' + fq.xp + ' XP')); inn.appendChild(box);
       inn.appendChild(el('p', 'meta', 'Et ' + WELCOME_XP + ' XP de bienvenue, tout de suite.'));
       next('Voir la carte', true, function () {
-        st.onboarded = true; st.profile = draft.profile || 'weekend'; st.likes = draft.likes; st.team = draft.profile === 'groupe' ? draft.team : ''; st.geo = draft.geo || '';
+        st.onboarded = true; st.profile = draft.profile || 'tout'; st.likes = []; st.team = draft.profile === 'groupe' ? draft.team : ''; st.geo = draft.geo || '';
         save(); onb.classList.remove('on'); tab('map'); renderAll(); gain(WELCOME_XP, 'bienvenue'); fq.go();
       });
     }
     onb.appendChild(inn); onb.appendChild(foot);
   }
-  function openOnb() { step = 0; draft = { profile: '', likes: [], team: '', geo: '' }; renderOnb(); onb.classList.add('on'); }
+  function openOnb() { step = 0; draft = { profile: '', team: '', geo: '' }; renderOnb(); onb.classList.add('on'); }
   $('replay').onclick = openOnb;
 
   function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); hud(); }

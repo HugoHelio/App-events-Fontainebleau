@@ -2446,6 +2446,10 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     (Avent, brame, champignons, éco-geste), **« 5 Must Climb, en famille »** (cinq sites à
     visiter, plus cinq blocs durs), **compte et boutique** dans le profil (rien de vendu).
     Style : celui du site, retenu. Reste : plusieurs propositions d'interface à comparer.
+  - [ ] **116a ter. M0 v3, retours du chef de projet écran par écran (commencé le 21/11)** : nom
+    décidé, **« Fontainebleau Live Collection »** (« Bleau » n'est pas compris de tous) ; parcours
+    d'entrée ramené à quatre écrans (retirés : « Ce qui vous attire » et l'écran du compte ; ajouté :
+    « Un peu de tout »), GDD §6.1. Suite : carte, fiches, collection, profil.
   - **M1 — prototype jouable (4 à 6 semaines)**, dans l'ordre :
     - [ ] **116b. Décisions du chef de projet** (GDD §16) : sujet de l'enquête, nom, liste des
       35 lieux (30 en ville et au château, à partir du parcours à pied vérifié ; 5 en forêt :

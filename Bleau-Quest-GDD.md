@@ -8,6 +8,12 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
 > technique, les données et les règles de confiance ; en cas de doute, c'est lui qui tranche.
 
 ## Où on en est (21/11/2026, à lire en reprenant)
+- **Nom, décidé le 21/11** : **« Fontainebleau Live Collection »**, sous la marque du site.
+  « Bleau Quest » est abandonné : beaucoup de gens ne savent pas ce qu'est « Bleau ». Les noms de
+  fichiers (`Bleau-Quest-GDD.md`, `scripts/bleau-quest-mock.js`) seront renommés plus tard.
+- **Retours sur la maquette, en cours (21/11)** : le parcours d'entrée est revu (§6.1, quatre écrans
+  au lieu de six, maquette v3). La suite des retours (carte, fiches, collection, profil) viendra
+  écran par écran.
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -103,19 +109,24 @@ Les familles ne sont pas le public prioritaire : `/foret/` et le calendrier de l
 - **Sur des semaines** : compléter des séries, monter de niveau, gagner des titres, finir les
   chapitres de l'enquête, les quêtes de saison.
 
-### 6.1 Le parcours d'entrée (maquette du 21/11)
-Six écrans, moins d'une minute, « Passer » à chaque étape :
+### 6.1 Le parcours d'entrée (revu le 21/11 après les retours du chef de projet)
+Quatre écrans, moins d'une minute, « Passer » à chaque étape :
 1. **Accueil** : le nom, trois promesses (explorer, collectionner, vivre les événements du jour),
-   « Gratuit, sans compte, sans publicité ». Second bouton : « J'ai un code de sauvegarde ».
+   « Gratuit, sans compte, sans publicité ».
 2. **Vous venez…** : pour un week-end, j'habite dans le coin, j'étudie ici, en groupe (avec le
-   code donné par l'organisateur, facultatif). Sert seulement à choisir la première quête.
-3. **Ce qui vous attire** (plusieurs choix) : histoire et château, forêt, grimpe, sorties et
-   événements, peintres et villages.
-4. **La position** expliquée *avant* la demande du navigateur : elle reste sur le téléphone ; sans
+   code donné par l'organisateur, facultatif), et **« Un peu de tout »** (plusieurs à la fois, ou
+   je préfère ne pas répondre). L'explication (« sert seulement à choisir votre première quête »)
+   est en bas de l'écran, au-dessus du bouton.
+3. **La position** expliquée *avant* la demande du navigateur : elle reste sur le téléphone ; sans
    elle on joue quand même (question ou honneur).
-5. **Un compte ? Pas besoin.** « Jouer sans compte » est le choix par défaut (§12).
-6. **La première quête**, choisie d'après les réponses (l'événement du jour si « sorties », sinon un
-   lieu lié au goût choisi), et 50 XP de bienvenue tout de suite : niveau 2 au premier lieu.
+4. **La première quête**, choisie d'après le profil (l'événement du jour pour « J'habite dans le
+   coin », « J'étudie » et « Un peu de tout » ; sinon la cour des Adieux, ou la tour Denecourt pour
+   qui habite le coin), et 50 XP de bienvenue tout de suite : niveau 2 au premier lieu.
+
+Retirés le 21/11 : **« Ce qui vous attire »** (le jeu propose tout à tout le monde : balades,
+histoire, événements ; un écran de trop) et **« Un compte ? Pas besoin. »** (on joue sans compte,
+point ; le code de sauvegarde et le futur compte sont dans le profil, §12). Le bouton « J'ai un code
+de sauvegarde » de l'accueil part avec lui, dans le profil.
 
 ## 7. Les couches du monde
 
@@ -306,7 +317,7 @@ GoatCounter, sans rien qui identifie le joueur : `quest-start`, `spot-unlock/<id
 ## 16. Questions ouvertes
 1. **Le sujet de l'enquête** : la cour (Renaissance), Napoléon, les peintres, Denecourt ?
 2. **La direction artistique** : quels styles essayer en premier ?
-3. **Le nom** : « Bleau Quest » est provisoire (il parle aux grimpeurs et aux anglophones).
+3. ~~**Le nom**~~ : décidé le 21/11, « Fontainebleau Live Collection » (« Bleau » n'est pas compris de tous).
 4. **Les 35 lieux du M1** : la liste, avec le chef de projet, à partir du parcours à pied vérifié.
 5. **Les « 5 Must Climb, en famille »** : valider les cinq sites proposés (circuit enfants, parking,
    fréquentation) avec des grimpeurs, et avec l'ONF.
