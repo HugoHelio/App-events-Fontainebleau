@@ -1794,7 +1794,7 @@ organisateurs.
 |---|---|---|---|
 | 1 | **107. Carnet d'explorateur de la forêt + mini-jeu** — en ligne le 02/11 ; reste le lien Stripe (107) et les itérations du chef de projet (107d) | Idée retenue par le chef de projet : contenu payant à prix libre, page indexable, ressource que les écoles et blogs de parents lient | M |
 | 2 | **108. Campagne de contacts** (petites mairies + widget, hébergeurs, public anglophone) — listes par Claude, envois par le chef de projet | Les liens entrants sont l'écart principal avec fontyblog (106) ; le widget doit se propager | M |
-| 3 | **72c. Mairie de Fontainebleau — courriel de relance envoyé le 03/11 ; appel téléphonique le mercredi 11/11** (chef de projet) | Seule l'exception rend inutile la copie du flux tous les 15 jours (101) | XS |
+| 3 | **72c. Mairie de Fontainebleau — courriel de relance envoyé le 03/11 ; appel téléphonique le mercredi 11/11 ; au 21/11, aucune réponse** (chef de projet) | Seule l'exception rend inutile la copie du flux tous les 15 jours (101) | XS |
 | 4 | **39. Coûts — fait le 03/11 : cache des sites, scans Gemini une fois par semaine. Comparatif du 03/11 : Flash-Lite 3.1 refusé pour les dates, adopté pour les fiches de l'office. 19/11 : comparatif relancé avec le candidat par défaut du workflow (3.1) — même refus : 95 dates identiques, 5 différentes, dont les expositions du château ramenées à la date du jour (« Marie-Antoinette et Louis XVI » donnée du 20/12 au 02/01) et un « Noël au Château » sans source. 19/11 : `gemini-3.5-flash-lite` refusé aussi (perd 6 fiches sur 12 du château, débuts au jour même, deux week-ends réduits à un jour). Fin des comparatifs : la hausse du 15/12 est acceptée** | 14,85 € de Gemini du 02/10 au 03/11 ; 102 clos le 03/11 | XS |
 | 5 | **106. Passer devant fontyblog.fr** — étape 1 (mesure Search Console), puis maillage vers `/foret/` et `/balades/` | L'audience conditionne tout le reste ; 107 et 108 l'alimentent | M |
 | 6 | **100. Rapport du 27/10** — point 7 (décision), points 5-6 au prochain scan | Suivi | XS |
@@ -2128,6 +2128,10 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     Noël sur le modèle d'Halloween~~ fait le 19/11 (§7) ; (c2) ~~liens vers ces pages depuis
     l'accueil et les communes, encart des balades~~ fait le 19/11 (§7) ; (d) relevé Search Console mi-décembre
     sur « marché de noël fontainebleau 2026 » et `/sorties/noel/`.
+    **21/11** : la fiche du marché de Fontainebleau (`EVT_cdf020a3aa`, notre meilleure requête de
+    Noël) affichait « Vendredi et samedi à 19h30, dimanche à 15h », un horaire venu d'ailleurs ;
+    corrigé dans `overrides.json` d'après les « Périodes d'ouverture » de l'office (10h-20h, 10h-21h,
+    10h-18h), appliqué au prochain scan avec la fusion (a).
 - [ ] **111. Une fiche, une adresse (relevé du 17/11).** L'adresse d'une fiche est faite du titre
   et de l'id ; quand un scan reformule le titre, l'adresse change. **L'ancienne ne casse pas** :
   depuis le 24/09 (item 68), `build()` y écrit une page de redirection (`meta refresh`,
