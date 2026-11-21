@@ -234,8 +234,8 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .prog{height:6px;background:#e9ece6;border-radius:9px;overflow:hidden;margin-bottom:6px}.prog i{display:block;height:100%;background:var(--peu-commun)}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .card{aspect-ratio:3/4;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:26px;color:#fff;cursor:pointer;border:0;font-family:inherit}
-.card small{font-size:10px;line-height:1.1;text-align:center;padding:4px;color:#fff}
-.card.locked{background:#cfd3cc!important;color:#8a8f8b}.card.locked .ico{opacity:.55}.card.locked small{color:#6e746f}
+.card small{font-size:10px;line-height:1.1;text-align:center;padding:4px;color:var(--ink);font-weight:600}
+.card.locked{background:#eeeae3!important;color:#8a8f8b!important}.card.locked .ico{opacity:.55}.card.locked small{color:#6e746f}
 .ev-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;background:#fff;border:0;border-bottom:1px solid var(--line);padding:10px 2px;cursor:pointer}
 .ev-row .ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
 .ev-row .tx{flex:1;min-width:0}.ev-row .tx b{display:block;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ev-row .tx span{font-size:12px;color:var(--muted)}
@@ -334,16 +334,20 @@ ${CLIENT}
 // innerHTML only ever receives fixed markup written here.
 const CLIENT = String.raw`
 (function () {
-  var XP = { 'commun': 40, 'peu commun': 60, 'rare': 100, 'légendaire': 200 };
-  var EVENT_XP = 60, FEATURED_XP = 120, SEASON_BONUS = 20, SET_XP = 200, ALL_CATS_XP = 150, FIRST_STEP_XP = 20, ECO_XP = 30;
+  // 21/11 (4th round): a much smaller scale; no single gain may be worth more than one level.
+  var XP = { 'commun': 15, 'peu commun': 20, 'rare': 30, 'légendaire': 60 };
+  var EVENT_XP = 20, FEATURED_XP = 40, SEASON_BONUS = 5, SET_XP = 40, ALL_CATS_XP = 50, FIRST_STEP_XP = 5, ECO_XP = 10;
+  function half(x) { return Math.round(x / 2); }
   var RADIUS = { ville: 100, foret: 150, event: 200 };
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
   var RCOL = { 'commun': 'var(--commun)', 'peu commun': 'var(--peu-commun)', 'rare': 'var(--rare)', 'légendaire': 'var(--legendaire)' };
-  var SETCOL = { napoleon: '#7a3b2e', chateau: '#8f6a25', ville: '#4a5bb8', denecourt: '#2f6f8f', foret: '#3d6b2a', peintres: '#9a5a2a', grimpe: '#6b4a8f' };
+  // 21/11: the site's palette (index.html categories and brand), no more browns
+  var SETCOL = { napoleon: '#4a5bb8', chateau: '#0f8f9e', ville: '#9247a0', denecourt: '#27503a', foret: '#5f8f2f', peintres: '#b8707d', grimpe: '#6b6257' };
+  function tint(c) { return 'color-mix(in srgb, ' + c + ' 14%, #fff)'; }
   var CATS = { 'Scène & Spectacles': ['mask', '#b8707d', 'Scène'], 'Culture & Ateliers': ['palette', '#9282b5', 'Culture'],
     'Nature & Environnement': ['leaf', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['run', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
-  var KEY = 'bleau-quest-mock-v4'; // v4: new XP scale, older saves start over
+  var KEY = 'bleau-quest-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
   var st = load();
   function fresh() { return { xp: 0, spots: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY)); return s && s.spots ? s : fresh(); } catch (e) { return fresh(); } }
@@ -380,10 +384,10 @@ const CLIENT = String.raw`
   refreshRange();
   function xpOf(e) { return (featured && e.id === featured.id ? FEATURED_XP : EVENT_XP) + (e.season ? SEASON_BONUS : 0); }
 
-  // Level n starts at 20·(n−1)·(2n+1) XP: 100, 280, 540, 880, 1300… up to level 30 (GDD §8).
-  // 21/11 feedback: level 2 after one or two events (60 XP each, + 20 "first step"), never at once.
+  // Level n starts at 30·n·(n−1) XP: 60, 180, 360, 600, 900… up to level 30 (GDD §8). Level 2
+  // after three or four actions, then each level takes longer (21/11, 4th round: it rose too fast).
   var MAX_LEVEL = 30;
-  function floorOf(n) { return 20 * (n - 1) * (2 * n + 1); }
+  function floorOf(n) { return 30 * n * (n - 1); }
   function levelOf(xp) { var n = 1; while (n < MAX_LEVEL && floorOf(n + 1) <= xp) n++; return n; }
   function titleOf(n) { var t = TITLES[0][1]; TITLES.forEach(function (x) { if (n >= x[0]) t = x[1]; }); return t; }
 
@@ -563,7 +567,7 @@ const CLIENT = String.raw`
   var sheet = $('sheet');
   function closeSheet() { sheet.classList.remove('on'); }
   function header(bg, icon, chip, chipCol) {
-    var art = el('div', 'art'); art.style.background = bg; art.appendChild(ico(icon));
+    var art = el('div', 'art'); art.style.background = tint(bg); art.style.color = bg; art.appendChild(ico(icon));
     if (chip) { var r = el('span', 'r', chip); r.style.background = chipCol; art.appendChild(r); }
     var x = el('button', 'x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Fermer'); x.onclick = closeSheet; art.appendChild(x);
     return art;
@@ -573,7 +577,7 @@ const CLIENT = String.raw`
     firstStep();
     sheet.textContent = '';
     var got = st.spots[p.id];
-    sheet.appendChild(header(got ? SETCOL[p.set] : '#cfd3cc', p.icon, p.rarity, RCOL[p.rarity]));
+    sheet.appendChild(header(got ? SETCOL[p.set] : '#8a8f8b', p.icon, p.rarity, RCOL[p.rarity]));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, p.name));
     b.appendChild(el('p', 'meta', p.type + ' · ' + SETS[p.set] + ' · ' + XP[p.rarity] + ' XP' + (me ? ' · à ' + fmtDist(dist(me, p)) : '')));
@@ -612,7 +616,7 @@ const CLIENT = String.raw`
         q.appendChild(inp); q.appendChild(ok);
       }
       qb.onclick = function () { q.classList.toggle('on'); };
-      var hb = el('button', 'btn soft', '🤝 Sur l’honneur (' + XP[p.rarity] / 2 + ' XP)'); hb.type = 'button';
+      var hb = el('button', 'btn soft', '🤝 Sur l’honneur (' + half(XP[p.rarity]) + ' XP)'); hb.type = 'button';
       hb.onclick = function () { unlock(p, 'honneur'); };
       acts.appendChild(gps); acts.appendChild(qb); acts.appendChild(q); acts.appendChild(hb);
       b.appendChild(acts);
@@ -622,14 +626,14 @@ const CLIENT = String.raw`
   }
   function unlock(p, how) {
     st.spots[p.id] = how; save();
-    gain(how === 'honneur' ? XP[p.rarity] / 2 : XP[p.rarity], p.name);
+    gain(how === 'honneur' ? half(XP[p.rarity]) : XP[p.rarity], p.name);
     draw(); renderAll(); openSpot(p); checkSets();
   }
   function openEvent(e) {
     firstStep();
     sheet.textContent = '';
     var c = cat(e), live = isLive(e), star = featured && e.id === featured.id, xp = xpOf(e);
-    sheet.appendChild(header(c[1], e.season ? 'xmas' : c[0], star ? '★ événement du jour' : live ? 'en direct' : c[2], star ? 'var(--gold)' : live ? 'var(--live)' : 'rgba(0,0,0,.35)'));
+    sheet.appendChild(header(c[1], e.season ? 'xmas' : c[0], star ? '★ événement du jour' : live ? 'en direct' : c[2], star ? 'var(--gold)' : live ? 'var(--live)' : 'rgba(29,59,41,.55)'));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, e.title));
     b.appendChild(el('p', 'meta', e.when + ' · ' + e.place + (e.schedule ? ' · ' + e.schedule : '') + (me ? ' · à ' + fmtDist(dist(me, e)) : '')));
@@ -646,7 +650,7 @@ const CLIENT = String.raw`
           if (!me || dist(me, e) > RADIUS.event) setMe(e.lat, e.lng);
           claimEvent(e, 'gps');
         };
-        var hon = el('button', 'btn soft', '🤝 Sur l’honneur (' + xp / 2 + ' XP)'); hon.type = 'button'; hon.onclick = function () { claimEvent(e, 'honneur'); };
+        var hon = el('button', 'btn soft', '🤝 Sur l’honneur (' + half(xp) + ' XP)'); hon.type = 'button'; hon.onclick = function () { claimEvent(e, 'honneur'); };
         acts.appendChild(go); acts.appendChild(hon);
       } else {
         var plan = el('button', 'btn alt', st.plans[e.id] ? '🔔 Prévu — rappel le jour J' : '🔔 J’y vais (rappel le jour J)'); plan.type = 'button';
@@ -661,7 +665,7 @@ const CLIENT = String.raw`
     sheet.appendChild(b); sheet.classList.add('on');
   }
   function claimEvent(e, how) {
-    var xp = how === 'honneur' ? xpOf(e) / 2 : xpOf(e);
+    var xp = how === 'honneur' ? half(xpOf(e)) : xpOf(e);
     st.events[e.id] = { d: TODAY, how: how, cat: e.cat }; delete st.plans[e.id]; save();
     gain(xp, 'carte souvenir'); draw(); renderAll(); openEvent(e); checkSets();
   }
@@ -718,7 +722,7 @@ const CLIENT = String.raw`
       var pr = el('div', 'prog'), pi = el('i'); pi.style.width = Math.round(100 * got / all.length) + '%'; pr.appendChild(pi); bx.appendChild(pr);
       var grid = el('div', 'cards');
       all.forEach(function (p) {
-        var c = el('button', 'card' + (st.spots[p.id] ? '' : ' locked')); c.type = 'button'; c.style.background = SETCOL[s];
+        var c = el('button', 'card' + (st.spots[p.id] ? '' : ' locked')); c.type = 'button'; c.style.background = tint(SETCOL[s]); c.style.color = SETCOL[s];
         c.appendChild(ico(p.icon)); /* locked: the same icon, greyed (21/11) */ c.appendChild(el('small', null, p.name));
         c.onclick = function () { tab('map'); map.setView([p.lat, p.lng], 15); openSpot(p); };
         grid.appendChild(c);
@@ -729,7 +733,7 @@ const CLIENT = String.raw`
   }
 
   // ── Invader mosaics: on the map at street level, found by GPS or on one's honour ──
-  var INV_XP = 40, INV_RADIUS = 100;
+  var INV_XP = 15, INV_RADIUS = 100;
   function invGot(m) { return st.invaders && st.invaders[m.id] && st.invaders[m.id].how; }
   function invaderBox(root) {
     var got = INVADERS.filter(invGot).length;
@@ -751,7 +755,7 @@ const CLIENT = String.raw`
     firstStep();
     sheet.textContent = '';
     var on = invGot(m);
-    sheet.appendChild(header(on ? '#2b2d42' : '#cfd3cc', 'invader', 'street art', '#2b2d42'));
+    sheet.appendChild(header(on ? '#2b2d42' : '#8a8f8b', 'invader', 'street art', '#2b2d42'));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, on ? m.name : 'Une mosaïque d’Invader'));
     b.appendChild(el('p', 'meta', m.street + ' · ' + INV_XP + ' XP' + (me ? ' · à ' + fmtDist(dist(me, m)) : '')));
@@ -762,7 +766,7 @@ const CLIENT = String.raw`
       var acts = el('div', 'acts');
       var gps = el('button', 'btn', 'Je l’ai trouvée (GPS, ' + INV_RADIUS + ' m)'); gps.type = 'button';
       gps.onclick = function () { if (!me || dist(me, m) > INV_RADIUS) setMe(m.lat, m.lng); claimInvader(m, 'gps'); };
-      var hon = el('button', 'btn alt', 'Je l’ai vue (sur l’honneur, +' + INV_XP / 2 + ' XP)'); hon.type = 'button';
+      var hon = el('button', 'btn alt', 'Je l’ai vue (sur l’honneur, +' + half(INV_XP) + ' XP)'); hon.type = 'button';
       hon.onclick = function () { claimInvader(m, 'honneur'); };
       acts.appendChild(gps); acts.appendChild(hon); b.appendChild(acts);
     }
@@ -770,7 +774,7 @@ const CLIENT = String.raw`
   }
   function claimInvader(m, how) {
     st.invaders = st.invaders || {}; st.invaders[m.id] = { d: TODAY, how: how }; save();
-    gain(how === 'honneur' ? INV_XP / 2 : INV_XP, 'mosaïque trouvée'); draw(); renderAll(); openInvader(m);
+    gain(how === 'honneur' ? half(INV_XP) : INV_XP, 'mosaïque trouvée'); draw(); renderAll(); openInvader(m);
   }
 
   // ── Quests ──
@@ -798,15 +802,15 @@ const CLIENT = String.raw`
     var fx = null;
     if (featured) { fx = el('button', 'btn live', 'Voir l’événement du jour'); fx.type = 'button'; fx.onclick = function () { tab('map'); map.setView([featured.lat, featured.lng], 15); openEvent(featured); }; }
     quest(root, '★ L’événement du jour', ['+' + FEATURED_XP + ' XP', 'Change chaque jour'], featured ? featured.title + ' — ' + featured.place : 'Pas d’événement aujourd’hui à moins de 12 km.', featured && st.events[featured.id] ? 1 : 0, 1, fx, true);
-    quest(root, '📅 La quête de la semaine', ['Annoncée le jeudi', '+200 XP'], 'Passez à deux sorties de l’agenda d’ici dimanche (' + EVENTS.length + ' sur la carte).', evN, 2);
+    quest(root, '📅 La quête de la semaine', ['Annoncée le jeudi', '+40 XP'], 'Passez à deux sorties de l’agenda d’ici dimanche (' + EVENTS.length + ' sur la carte).', evN, 2);
     quest(root, '🎭 Quatre genres de sorties', ['+' + ALL_CATS_XP + ' XP', 'Badge'], 'Allez à quatre sorties de l’agenda, une de chaque genre : un spectacle, un atelier ou une expo, une sortie nature, une activité sportive.', Object.keys(cats).length, 4);
     root.appendChild(el('h2', null, '📜 Toujours là'));
-    quest(root, '📜 L’enquête — chapitre 1', ['Quête principale', '+300 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
+    quest(root, '📜 L’enquête — chapitre 1', ['Quête principale', '+60 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
     quest(root, '🔵 Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(SPOTS.filter(function (p) { return p.set === 'denecourt'; }).map(function (p) { return p.id; })), 5);
     var cl = el('div'); SPOTS.filter(function (p) { return p.set === 'grimpe'; }).forEach(function (p) { cl.appendChild(el('p', 'meta', (st.spots[p.id] ? '✓ ' : '○ ') + p.name)); });
-    quest(root, '🧗 5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+500 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(SPOTS.filter(function (p) { return p.set === 'grimpe'; }).map(function (p) { return p.id; })), 5, cl);
+    quest(root, '🧗 5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+60 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(SPOTS.filter(function (p) { return p.set === 'grimpe'; }).map(function (p) { return p.id; })), 5, cl);
     root.appendChild(el('h2', null, '🎄 De saison'));
-    quest(root, '🎄 Les marchés de Noël', ['Saison', 'Nov.-déc.', '+50 XP bonus'], 'Deux marchés ou rendez-vous de Noël (' + SEASON.length + ' sur la carte, couche Noël).', Object.keys(st.events).filter(function (id) { var e = byId(id); return e && e.season; }).length, 2);
+    quest(root, '🎄 Les marchés de Noël', ['Saison', 'Nov.-déc.', '+5 XP par sortie'], 'Deux marchés ou rendez-vous de Noël (' + SEASON.length + ' sur la carte, couche Noël).', Object.keys(st.events).filter(function (id) { var e = byId(id); return e && e.season; }).length, 2);
     var adv = el('a', null, 'Le calendrier de l’Avent du site →'); adv.href = 'https://fontainebleaulive.fr/calendrier-de-l-avent/'; adv.target = '_blank'; adv.rel = 'noopener';
     quest(root, '🦉 Une case par jour', ['Décembre'], 'Le calendrier de l’Avent devient une quête : chaque case ouverte rapporte un peu d’XP.', 0, 0, adv);
     var eco = el('button', 'btn soft', st.eco ? '✓ Fait' : 'J’ai ramassé un déchet'); eco.type = 'button'; eco.disabled = st.eco;
@@ -902,7 +906,7 @@ const CLIENT = String.raw`
     save(); onb.classList.remove('on'); tab('map'); renderAll();
     if (me) map.setView([me.lat, me.lng], 15); else map.setView([48.404, 2.698], 14);
     // 21/11 feedback: no XP and no level-up when the map appears (it hid the map); a small bonus at
-    // the first tap on a place or an event instead, below the level 2 threshold (50 XP).
+    // the first tap on a place or an event instead, below the level 2 threshold (60 XP).
     setTimeout(function () { toast(me ? 'Touchez un lieu près de vous pour commencer' : 'Touchez un lieu pour commencer'); }, 1200);
   }
   function openOnb() { step = 0; draft = { profile: '', team: '', geo: '' }; renderOnb(); onb.classList.add('on'); }

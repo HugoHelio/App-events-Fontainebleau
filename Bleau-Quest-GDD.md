@@ -24,7 +24,9 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   Quatrième série (21/11), les fiches : « bien » ; lien vers Fontainebleau Live plus petit, sans
   flèche. Suite demandée : **écrire les textes et les questions**, les monuments d'abord. Premiers
   brouillons sourcés pour quatre lieux (cour des Adieux, jardin de Diane, obélisque, théâtre,
-  §9), à relire par le chef de projet et à vérifier sur place.
+  §9), relus par le chef de projet (« vraiment top »), à vérifier sur place. Cinquième série
+  (21/11) : couleurs des fiches et des cartes reprises de la palette du site (en-tête en teinte
+  claire, icône en couleur, plus de marron) ; barème d'XP divisé par trois environ (§8).
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -136,9 +138,9 @@ Puis **la carte**, centrée sur le joueur (ou le centre-ville), **allégée** : 
 et les événements en direct, **sous le brouillard** (activé par défaut le 21/11 : il concentre le
 regard sur ce qui est autour ; sans position, une clairière sur le centre-ville) ; quêtes, grimpe
 et Noël restent à un geste, dans le panneau des couches, et « Touchez un lieu près de vous pour commencer ». **Rien ne s'affiche par-dessus
-la carte à son arrivée** (21/11 : le « niveau 2 » immédiat la cachait) : 20 XP « premier pas » au
+la carte à son arrivée** (21/11 : le « niveau 2 » immédiat la cachait) : 5 XP « premier pas » au
 premier lieu ou événement touché, sous le seuil du niveau 2 ; le premier passage de niveau vient
-après un ou deux événements (§8).
+après trois ou quatre actions (§8).
 
 **Lisibilité de la carte (21/11)** : rien ne doit faire « guirlande de Noël ». Événements en petits
 carrés (24 px) aux couleurs de catégorie adoucies ; un événement en cours pulse lentement dans le
@@ -179,7 +181,7 @@ de sauvegarde » de l'accueil part avec lui, dans le profil.
   rue** (BAN), pas au mur : on cherche encore. Les autres : relevé du chef de projet (rue et
   description) ; l'état de chacune (détruite depuis ?) se vérifie sur place.
 - Couche « Invaders » sur la carte, active par défaut. Validation : GPS (100 m) ou sur l'honneur,
-  40 XP (20 sur l'honneur). Le nom se découvre en la trouvant.
+  15 XP (8 sur l'honneur). Le nom se découvre en la trouvant.
 - **Pas de photo** : l'œuvre est à Invader.
 
 ### 7.2 Les événements (en direct) — la force du jeu
@@ -194,7 +196,7 @@ identifiables au premier coup d'œil et rapportent le plus d'XP.
   position), et la portée **le suit** quand il bouge ; la carte reste lisible. La page embarque
   toute la zone de l'agenda (20 km) et filtre sur le téléphone : la position n'est envoyée nulle
   part. L'événement du jour est le même pour tous ceux d'un même secteur.
-- **L'événement du jour** : un des événements du jour, le même pour tous, **XP doublée** (300),
+- **L'événement du jour** : un des événements du jour, le même pour tous, **XP doublée** (40),
   étoile dorée sur la carte. C'est la raison d'ouvrir le jeu chaque jour.
 - **« J'y vais »** sur une sortie à venir : un rappel le jour J (sans XP, l'XP se gagne sur place).
 - **Quêtes d'événements** : la quête de la semaine (deux sorties d'ici dimanche), « Quatre genres
@@ -215,7 +217,7 @@ identifiables au premier coup d'œil et rapportent le plus d'XP.
 - **Défis thématiques** : « Napoléon à Fontainebleau », « Les peintres de Barbizon », « Les sentiers
   bleus », **« 5 Must Climb »** (ci-dessous).
 - **Quêtes de saison** (retenues le 21/11) : Noël (marchés de Noël de l'agenda, couche « Noël » sur
-  la carte, bonus de 50 XP ; le calendrier de l'Avent du site devient une quête), le brame
+  la carte, bonus de 5 XP par sortie ; le calendrier de l'Avent du site devient une quête), le brame
   (septembre-octobre, depuis un point d'écoute autorisé), les champignons (une sortie de l'agenda,
   jamais de cueillette conseillée), le printemps du bloc.
 - **Quête de la semaine**, annoncée par le carrousel du jeudi (item 115).
@@ -259,16 +261,18 @@ Brouillard.
   5 Must Climb), puis de saison.
 
 ## 8. Progression
-- **XP** (barème revu le 21/11, à régler en test) : lieu commun 40, peu commun 60, rare 100,
-  légendaire 200 ; **événement 60, événement du jour 120**, bonus de saison 20 ; « Quatre genres
-  de sorties » 150 ; mosaïque d'Invader 20 (sur l'honneur) ; série complète 200 ; éco-geste 30 ; premier pas 20 (au premier lieu ou événement
-  touché, jamais de niveau tout de suite) ; validation sur l'honneur à la moitié.
-- **Niveaux** 1 à 30 : le niveau n commence à 20·(n−1)·(2n+1) XP (100, 280, 540, 880, 1 300…).
-  **Niveau 2 après un ou deux événements** (60 XP chacun, plus les 20 du premier pas), jamais à la
-  première action ; puis trois à quatre actions par niveau au début, un peu plus ensuite. Historique
-  du 21/11 : le premier barème (événement 150, niveau 3 à 150 XP) faisait passer du niveau 1 au
-  niveau 6 en deux événements ; le deuxième (niveau 2 à 50 XP) montait encore dès le premier
-  événement. **Un écran par niveau franchi**, l'un après l'autre ; « Nouveau titre » seulement quand
+- **XP** (barème revu une troisième fois le 21/11, à régler en test) : lieu commun 15, peu commun
+  20, rare 30, légendaire 60 ; **événement 20, événement du jour 40**, bonus de saison 5 ;
+  « Quatre genres de sorties » 50 ; mosaïque d'Invader 15 ; série complète 40 ; éco-geste 10 ;
+  premier pas 5 ; validation sur l'honneur à la moitié (arrondie). **Aucun gain ne vaut plus d'un
+  niveau.**
+- **Niveaux** 1 à 30 : le niveau n commence à 30·n·(n−1) XP (60, 180, 360, 600, 900…).
+  **Niveau 2 après trois ou quatre actions**, puis six à huit pour le niveau 3, et de plus en plus.
+  Historique du 21/11 : le premier barème (événement 150, niveau 3 à 150 XP) faisait passer du
+  niveau 1 au niveau 6 en deux événements ; le deuxième (niveau 2 à 50 XP) montait dès le premier
+  événement ; le troisième (lieu 40, série complète 200, niveau 2 à 100) faisait encore monter de
+  deux ou trois niveaux en une ou deux questions, la série « Napoléon » de la maquette n'ayant
+  qu'un lieu (« ça monte trop vite, laisse-moi du temps »). **Un écran par niveau franchi**, l'un après l'autre ; « Nouveau titre » seulement quand
   le titre change, sinon le prochain titre à viser.
 - **Titres** : Promeneur, Flâneur, Bellifontain, Peintre de Barbizon, Bleausard, … Denecourt.
 - **Badges** : séries, saisons, éco-geste, premier événement, « 5 Must Climb ».

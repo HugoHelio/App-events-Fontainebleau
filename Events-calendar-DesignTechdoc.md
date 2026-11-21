@@ -2462,7 +2462,10 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     (GDD §10). Quatrième série (21/11), les fiches : lien vers le site plus petit, sans flèche ;
     question d'observation en **trois choix** sur ce qu'on voit sur place, texte sourcé de trois
     phrases (GDD §9). Premiers brouillons pour quatre monuments (cour des Adieux, jardin de Diane,
-    obélisque, théâtre) dans la maquette (`CARDS`), à relire et à vérifier sur place (116d).
+    obélisque, théâtre) dans la maquette (`CARDS`), relus et approuvés, à vérifier sur place (116d).
+    Cinquième série : couleurs des cartes et des fiches reprises de la palette du site (teinte claire,
+    icône en couleur) ; XP divisée par trois environ, niveau n à 30·n·(n−1) XP, aucun gain ne vaut
+    plus d'un niveau (GDD §8).
   - [ ] **116p. Emplacements des Invaders (chef de projet, sur le terrain)** : il a vu la plupart
     des 46 mosaïques en se promenant et va les relever dans les rues (rue, description, encore là
     ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la
