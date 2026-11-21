@@ -289,7 +289,10 @@ Brouillard.
   qu'on **voit sur place** (forme d'un escalier, nombre de chiens d'une fontaine, matériau d'une
   façade), pas sur une date à connaître. Une mauvaise réponse grise ce choix (« regardez encore »),
   sans pénalité. Le texte de la carte (trois phrases, la source affichée dessous) ne s'ouvre
-  qu'une fois le lieu collecté. Brouillons du 21/11 dans la maquette (`CARDS`) : chaque fait vient
+  qu'une fois le lieu collecté **et la question résolue** : validé par le GPS ou sur l'honneur, le
+  joueur a encore la question, qui ouvre l'histoire et rapporte 5 XP (21/11 : « je peux très bien
+  dire j'y suis, mais je veux quand même la question »). Sans GPS, la question valide à la fois
+  la visite et l'histoire. Brouillons du 21/11 dans la maquette (`CARDS`) : chaque fait vient
   de la source citée, **rien n'est publié avant la relecture du chef de projet et une
   vérification de la question sur place** ; la source du jardin de Diane est à recouper avec le
   château.

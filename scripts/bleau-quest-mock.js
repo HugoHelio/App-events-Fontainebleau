@@ -338,6 +338,7 @@ const CLIENT = String.raw`
   var XP = { 'commun': 15, 'peu commun': 20, 'rare': 30, 'légendaire': 60 };
   var EVENT_XP = 20, FEATURED_XP = 40, SEASON_BONUS = 5, SET_XP = 40, ALL_CATS_XP = 50, FIRST_STEP_XP = 5, ECO_XP = 10;
   function half(x) { return Math.round(x / 2); }
+  var QUESTION_XP = 5; // 21/11: the question opens the story, even after a GPS check-in
   var SET_MIN_PLACES = 3; // 21/11: the mock's one-place sets gave +40 with the first answer
   var RADIUS = { ville: 100, foret: 150, event: 200 };
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
@@ -349,7 +350,7 @@ const CLIENT = String.raw`
     'Nature & Environnement': ['leaf', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['run', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
   var KEY = 'bleau-quest-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
-  var st = load();
+  var st = load(); st.answered = st.answered || {};
   function fresh() { return { xp: 0, spots: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY)); return s && s.spots ? s : fresh(); } catch (e) { return fresh(); } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
@@ -588,7 +589,13 @@ const CLIENT = String.raw`
     if (p.set === 'grimpe') b.appendChild(el('div', 'todo', 'Grimper en famille : on vient voir, on essaie les premiers blocs du circuit enfants, à son niveau. Crash-pad, parade, jamais sur rocher mouillé. Le topo est chez Boolder. Proposition de site à valider avec des grimpeurs (116k).'));
     if (got) {
       b.appendChild(el('div', 'got-banner', '✓ Dans votre collection — ' + ({ gps: 'validé sur place (GPS)', question: 'validé par la question', honneur: 'validé sur l’honneur' })[got]));
-      if (p.text) {
+      // 21/11: "je peux très bien dire j'y suis, mais je veux quand même la question". Being there
+      // collects the card; the question, answered on the spot, opens its story (+ a small bonus).
+      if (p.q && !st.answered[p.id]) {
+        b.appendChild(el('p', null, 'Une question pour découvrir l’histoire du lieu :'));
+        var q2 = questionBlock(p, function () { st.answered[p.id] = 1; save(); gain(QUESTION_XP, 'bonne observation'); renderAll(); openSpot(p); });
+        q2.classList.add('on'); b.appendChild(q2);
+      } else if (p.text) {
         b.appendChild(el('p', null, p.text));
         b.appendChild(el('p', 'src', 'Source : ' + p.source));
         b.appendChild(el('div', 'todo', 'Brouillon du 21/11, à relire par le chef de projet ; question à vérifier sur place (116d).'));
@@ -605,20 +612,8 @@ const CLIENT = String.raw`
         if (!me || dist(me, p) > radiusOf(p)) setMe(p.lat, p.lng);
         unlock(p, 'gps');
       };
-      var qb = el('button', 'btn alt', '🔎 Répondre à la question d’observation'); qb.type = 'button';
-      var q = el('div', 'q');
-      if (p.q) {
-        q.appendChild(el('p', 'qtext', p.q));
-        p.choices.forEach(function (c, i) {
-          var cb = el('button', 'btn alt', c); cb.type = 'button';
-          cb.onclick = function () { if (i === p.answer) unlock(p, 'question'); else { cb.disabled = true; toast('Pas tout à fait : regardez encore'); } };
-          q.appendChild(cb);
-        });
-      } else {
-        var inp = el('input'); inp.placeholder = 'Question à écrire (116d)'; var ok = el('button', 'btn', 'OK'); ok.type = 'button';
-        ok.onclick = function () { if (inp.value.trim()) unlock(p, 'question'); else toast('Une réponse, n’importe laquelle (maquette)'); };
-        q.appendChild(inp); q.appendChild(ok);
-      }
+      var qb = el('button', 'btn alt', '🔎 Pas de GPS ? Répondre à la question'); qb.type = 'button';
+      var q = questionBlock(p, function () { st.answered[p.id] = 1; unlock(p, 'question'); });
       qb.onclick = function () { q.classList.toggle('on'); };
       var hb = el('button', 'btn soft', '🤝 Sur l’honneur (' + half(XP[p.rarity]) + ' XP)'); hb.type = 'button';
       hb.onclick = function () { unlock(p, 'honneur'); };
@@ -627,6 +622,22 @@ const CLIENT = String.raw`
     }
     if (p.set === 'grimpe') { var a = el('a', null, 'Topo sur Boolder'); a.href = 'https://www.boolder.com/fr'; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p', 'sheet-link'); pp.appendChild(a); b.appendChild(pp); }
     sheet.appendChild(b); sheet.classList.add('on');
+  }
+  function questionBlock(p, onRight) {
+    var q = el('div', 'q');
+    if (p.q) {
+      q.appendChild(el('p', 'qtext', p.q));
+      p.choices.forEach(function (c, i) {
+        var cb = el('button', 'btn alt', c); cb.type = 'button';
+        cb.onclick = function () { if (i === p.answer) onRight(); else { cb.disabled = true; toast('Pas tout à fait : regardez encore'); } };
+        q.appendChild(cb);
+      });
+    } else {
+      var inp = el('input'); inp.placeholder = 'Question à écrire (116d)'; var ok = el('button', 'btn', 'OK'); ok.type = 'button';
+      ok.onclick = function () { if (inp.value.trim()) onRight(); else toast('Une réponse, n’importe laquelle (maquette)'); };
+      q.appendChild(inp); q.appendChild(ok);
+    }
+    return q;
   }
   function unlock(p, how) {
     st.spots[p.id] = how; save();
