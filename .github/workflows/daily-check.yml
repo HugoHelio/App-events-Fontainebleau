@@ -95,9 +95,18 @@ jobs:
           # dossiers seulement, pour publier aussi les suppressions (événements terminés).
           # Le seul bloc généré de index.html : les suggestions de l'accueil, entre deux marqueurs (item 86).
           git add sitemap.xml index.html
-          for d in evenements que-faire sorties ce-week-end aujourdhui agenda publier nos-sources; do
+          # 21/11 : balades, foret, calendrier-de-l-avent et professionnels manquaient. Le calendrier
+          # de l'Avent lit l'agenda : au premier scan apres sa creation, sa page modifiee mais non
+          # ajoutee a fait refuser le `git pull --rebase` trois fois, et le run a echoue.
+          for d in evenements que-faire sorties ce-week-end aujourdhui agenda publier nos-sources balades foret calendrier-de-l-avent professionnels; do
             if [ -e "$d" ] || git ls-files --error-unmatch "$d" >/dev/null 2>&1; then git add -A -- "$d"; fi
           done
+          # Filet : un fichier suivi modifie mais oublie dans la liste ci-dessus ne bloque plus la
+          # publication (--autostash plus bas) ; il est signale ici pour etre ajoute a la liste.
+          leftover=$(git diff --name-only)
+          if [ -n "$leftover" ]; then
+            echo "::warning::Fichiers modifiés non publiés (à ajouter à la liste du workflow) : $(echo $leftover | tr '\n' ' ')"
+          fi
           if git diff --staged --quiet; then
             echo "Aucun changement dans les données — rien à publier."
             exit 0
@@ -107,7 +116,7 @@ jobs:
 
           # Retry with rebase in case main moved during the run (e.g. a manual push).
           for attempt in 1 2 3; do
-            if git pull --rebase origin main && git push origin HEAD:main; then
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
               echo "Publié sur main (tentative $attempt)."
               exit 0
             fi
