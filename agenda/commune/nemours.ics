@@ -11,26 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_da74796de2@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:Conférence de Sébastien Ronsseray
-LOCATION:48 avenue Etienne Dailly Musée départemental de Préhistoire d'I
- le de France\, Nemours
-DESCRIPTION:Sébastien Ronsseray présente les découvertes de sept campagn
- es de fouilles à la Butte Saint-Louis\, retraçant sept siècles d’hist
- oire\, du XIe au XVIIIe siècle.\n\nOrganisateur : https://www.musee-prehi
- stoire-idf.fr/fr\n\nFiche : https://fontainebleaulive.fr/evenements/confer
- ence-de-sebastien-ronsseray-nemours-da74796de2/\n\nInformations collectée
- s automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/conference-de-sebastien-ronsser
- ay-nemours-da74796de2/
-CATEGORIES:Culture & Ateliers
-GEO:48.26045;2.71392
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_8869a16df0@fontainebleaulive.fr
 DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121

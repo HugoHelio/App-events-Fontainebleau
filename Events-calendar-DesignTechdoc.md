@@ -1800,7 +1800,7 @@ organisateurs.
 | 6 | **100. Rapport du 27/10** — point 7 (décision), points 5-6 au prochain scan | Suivi | XS |
 | 7 | **97 bis. Relevé du trafic fin novembre** (GoatCounter + Search Console) — relevé intermédiaire fait le 17/11 (item 106) : 4 815 visites sur 30 jours, novembre probablement sous le seuil | Premier des trois mois du seuil | XS |
 | 8 | **105, étape 2. Mise en avant payante** — **bloquée** jusqu'au seuil ci-dessus | Rien à vendre avant | S |
-| 1 bis | **112. Calendrier de l'Avent de la forêt** (`/calendrier-de-l-avent/`) — page faite le 19/11 ; **en ligne seulement après relecture des 14 nouveaux textes** par le chef de projet, au plus tard le 30/11 | Revient chaque jour de décembre : trafic, recherche « calendrier de l'avent fontainebleau » | S |
+| 1 bis | **112. Calendrier de l'Avent de la forêt** (`/calendrier-de-l-avent/`) — page faite le 19/11 ; **14 nouveaux textes relus le 21/11** (4 corrigés), cases ouvertes à partir du 1er décembre | Revient chaque jour de décembre : trafic, recherche « calendrier de l'avent fontainebleau » | S |
 | — | ~~**109. Calendrier 2027 illustré**~~ — **abandonné le 20/11** (§7) : 0 paiement sur les fiches et le carnet ; plus tard, éventuellement en version imprimée | — | M |
 | 1 quinquies | **116. Bleau Quest** (jeu de collection géolocalisé, [GDD](Bleau-Quest-GDD.md)) — maquette faite le 20/11 ; M1 prototype jouable en 4 à 6 semaines, après les décisions 116b | Le sujet du chef de projet (jeu vidéo) ; une expérience, pas une information ; l'agenda en direct comme avantage unique | L |
 | 1 sexies | **115. Carrousel du jeudi** (`scripts/carousel.js`) — fait le 20/11 ; publier chaque jeudi, puis le faire évoluer (contenu personnel, vidéo) | Devenir un compte local suivi : la visibilité que les ventes futures demandent | XS / semaine |
@@ -1898,7 +1898,7 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   sur 3 semaines, compter ceux qui nous manquent, et pour chacun dire quelle source aurait dû le
   trouver. Piste probable : beaucoup viennent de l'agenda de la Ville, que notre robot ne lit
   pas (HTTP 418, 72c). Ne pas lire fontyblog lui-même comme source (contenu d'un tiers, rédigé).
-- [ ] **101. Fait le 28/10 (§7). Depuis le 03/11, sans tâche planifiée : Claude lance la copie en séance sur le poste du chef de projet tous les 15 jours, avec le contrôle de l'item 89 (prochaine le 11/11 ; `node scripts/snapshot-city-feed.js`, qui copie si la dernière a 14 jours, `--force` sinon).** Texte du 28/10 :
+- [ ] **101. Fait le 28/10 (§7). Depuis le 03/11, sans tâche planifiée : Claude lance la copie en séance sur le poste du chef de projet tous les 15 jours, avec le contrôle de l'item 89 (copies du 11/11 et du 21/11, prochaine le 05/12 ; `node scripts/snapshot-city-feed.js`, qui copie si la dernière a 14 jours, `--force` sinon).** Texte du 28/10 :
   `scripts/snapshot-city-feed.js` (robot local) : tâche planifiée Windows quotidienne, travail
   seulement si la copie a 14 jours ou plus (un jour PC éteint se rattrape) ; clone réservé, commit
   « 🤖 Agenda de la Ville : copie du … », push (rebase et nouvel essai si le bot GitHub a poussé
@@ -2337,8 +2337,12 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
   s'ouvre le jour venu (date du visiteur, Europe/Paris), les cases ouvertes sont gardées dans le
   navigateur ; sans JavaScript tout est lisible ; `?apercu=AAAA-MM-JJ` pour essayer. Lié depuis
   l'accueil (bloc `home-picks`) et `/foret/` du 15/11 au 06/01, et depuis les pages de Noël.
-  **Reste** : relecture par le chef de projet des 14 textes nouveaux (12 « en hiver », devinettes
-  du pic vert et du lièvre) contre l'ONF et l'INPN, puis mise en ligne, au plus tard le 30/11.
+  **Relu le 21/11** par le chef de projet, sur une fiche de relecture préparée par Claude : 14
+  textes, 10 gardés tels quels, 4 corrigés (hulotte : « en automne et en hiver » au lieu de
+  « c'est en hiver qu'on l'entend le plus » ; chevreuil : seul le brocard porte des bois ; pic
+  noir : ce qu'il fait en décembre avant le tambour de fin d'hiver ; pic vert : « on dit qu'il
+  rit » au lieu d'un surnom « pic rieur » non établi). Reste : les cases s'ouvrent seules à
+  partir du 1er décembre.
 - [ ] **109. Calendrier 2027 illustré à imprimer — idée B du 02/11, décidé le 19/11 avec les 12 animaux.**
   Douze mois, une illustration par mois (dessins du chef de projet), vacances scolaires de la
   zone C et rendez-vous annuels confirmés (brame, marchés de Noël, journées du patrimoine), aucune
@@ -2847,7 +2851,7 @@ Le socle est posé pour le trafic à venir, pas pour couvrir les coûts tout de 
   Fantasmagloria —, Schubert in Love) : **la saison précédente, recopiée par Gemini**. Masqués
   dans `overrides.json` (choix du chef de projet). Le contrôle relève une 11ᵉ fiche du même genre,
   « Dans les coulisses du Père Noël » (19-24/12), masquée aussi le 12/10.
-  - [ ] **Récurrent, tous les 15 jours — fait le 28/10 (2 masquages : « Le dernier Cèdre du Liban » du 17/01, la Ville dit 16/01 ; « L'épopée impériale » du 22/11 ; « La Dictée » et la mini-conférence des Impériales gardées, à tort signalées). **Fait le 19/11 (en retard ; copie du flux du 11/11) : 0 masquage** — 28 fiches comparées ; « La Dictée » et la mini-conférence de nouveau signalées à tort (programme des Impériales) ; Café des Sciences du 08/01/2027 juste (2ᵉ vendredi du mois, confirmé par l'office). **Revue 🧪 du même jour** (scan du 18/11, 39 fiches, sites des organisateurs lus un par un) : **3 masquées** — Salon Impérial Chocolat (le site n'annonce que 2025), Nocturne du Pays de Nemours du 22/01 (doublon, le CDR 77 dit 23/01), CaniTrophy 2027 (GPE n'annonce que 2026) ; 16 confirmées (Thalie ×6, Âne Vert, ANSA, Sportican, IEP, jeûne, Vaseux, Saint-Pierre, Trail des Carriers, Vaux, FLC) ; le reste (sites en JavaScript : ANVL, Barbizon, Nemours, Milly, château) gardé, la fiche le dit déjà au visiteur. Prochain : copie et contrôle le 25/11. Avec l'item 101, les fiches de la Ville entrent au scan comme source : ce contrôle ne sert plus qu'à repérer les fiches Gemini du Théâtre recopiées d'une autre saison** : `node scripts/check-city-feed.js`
+  - [ ] **Récurrent, tous les 15 jours — fait le 28/10 (2 masquages : « Le dernier Cèdre du Liban » du 17/01, la Ville dit 16/01 ; « L'épopée impériale » du 22/11 ; « La Dictée » et la mini-conférence des Impériales gardées, à tort signalées). **Fait le 19/11 (en retard ; copie du flux du 11/11) : 0 masquage** — 28 fiches comparées ; « La Dictée » et la mini-conférence de nouveau signalées à tort (programme des Impériales) ; Café des Sciences du 08/01/2027 juste (2ᵉ vendredi du mois, confirmé par l'office). **Revue 🧪 du même jour** (scan du 18/11, 39 fiches, sites des organisateurs lus un par un) : **3 masquées** — Salon Impérial Chocolat (le site n'annonce que 2025), Nocturne du Pays de Nemours du 22/01 (doublon, le CDR 77 dit 23/01), CaniTrophy 2027 (GPE n'annonce que 2026) ; 16 confirmées (Thalie ×6, Âne Vert, ANSA, Sportican, IEP, jeûne, Vaseux, Saint-Pierre, Trail des Carriers, Vaux, FLC) ; le reste (sites en JavaScript : ANVL, Barbizon, Nemours, Milly, château) gardé, la fiche le dit déjà au visiteur. **Fait le 21/11** (avancé à la demande du chef de projet ; copie du jour, 112 événements) : **0 masquage** — « La Dictée » et la mini-conférence encore signalées à tort ; Café des Sciences : la Ville donne le 11/12, la fiche le 08/01, deux séances mensuelles ; Salon Impérial Chocolat et CaniTrophy encore listés parce que leur masquage du 19/11 attend le prochain scan. Prochain : copie et contrôle le 05/12. Avec l'item 101, les fiches de la Ville entrent au scan comme source : ce contrôle ne sert plus qu'à repérer les fiches Gemini du Théâtre recopiées d'une autre saison** : `node scripts/check-city-feed.js`
     depuis le poste du chef de projet ou une session Claude Code locale, puis masquer dans
     `overrides.json` ce que le script marque « à masquer probablement » et ce qu'il dit
     « autre spectacle ce soir-là ». **Leçon du 28/10** : deux masquages du 12/10 étaient faux.

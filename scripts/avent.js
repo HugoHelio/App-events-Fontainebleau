@@ -25,11 +25,11 @@ const EXTRA = [
     icon: '/public/foret/img/icones/pic-vert.png',
     name: 'Le pic vert',
     riddle: 'Je suis vert avec une calotte rouge sur la tête. Je cherche ma nourriture surtout par terre, et ma longue langue collante attrape les fourmis.',
-    fact: 'Le cri du pic vert ressemble à un grand éclat de rire : on l’appelle parfois le « pic rieur ».',
+    fact: 'Le cri du pic vert ressemble à un grand éclat de rire : on dit qu’il « rit ».',
     en: {
       name: 'The green woodpecker',
       riddle: 'I am green with a red cap on my head. I look for food mostly on the ground, and my long sticky tongue catches ants.',
-      fact: 'The green woodpecker’s call sounds like a loud laugh: in French it is sometimes called the « laughing woodpecker ».',
+      fact: 'The green woodpecker’s call sounds like a loud burst of laughter: people say it « laughs ».',
     },
   },
   {
@@ -46,7 +46,8 @@ const EXTRA = [
   },
 ];
 
-// « En hiver »: one per animal. To be checked by the project lead before publication.
+// « En hiver »: one per animal. Checked by the project lead on 21/11 (hulotte, chevreuil, pic noir
+// rewritten; green woodpecker fact softened). Any new text is checked again before publication.
 const WINTER = {
   cerf: {
     fr: 'En hiver, les cerfs vivent entre mâles, en petits groupes, et les biches avec leurs faons de leur côté. Quand l’herbe manque, ils mangent des ronces, des bourgeons et même de l’écorce.',
@@ -57,8 +58,8 @@ const WINTER = {
     en: 'The wild boar does not sleep through the winter: it turns the soil over with its snout to find roots, acorns and worms. Piglets are mostly born in spring.',
   },
   chevreuil: {
-    fr: 'Le chevreuil perd ses bois en automne ou au début de l’hiver. Ils repoussent tout de suite, couverts d’une peau douce qu’on appelle le « velours ». En hiver, son pelage devient gris-brun.',
-    en: 'The roe deer sheds its antlers in autumn or early winter. They grow back straight away, covered with a soft skin called « velvet ». In winter its coat turns greyish brown.',
+    fr: 'Seul le mâle, le brocard, porte des bois : il les perd en automne ou au début de l’hiver. Ils repoussent tout de suite, couverts d’une peau douce qu’on appelle le « velours ». En hiver, le pelage du chevreuil devient gris-brun.',
+    en: 'Only the male, the buck, has antlers: he sheds them in autumn or early winter. They grow back straight away, covered with a soft skin called « velvet ». In winter the roe deer’s coat turns greyish brown.',
   },
   ecureuil: {
     fr: 'L’écureuil n’hiberne pas. Quand il fait très froid, il reste blotti dans son nid, une boule de brindilles et de mousse en haut d’un arbre. En hiver, ses oreilles portent de jolis pinceaux de poils.',
@@ -73,8 +74,8 @@ const WINTER = {
     en: 'The badger does not really hibernate, but when it freezes it can stay for days in its warm burrow, lined with dry leaves and grass. It then lives on the fat it put on in autumn.',
   },
   hulotte: {
-    fr: 'C’est en hiver qu’on entend le plus la chouette hulotte : le mâle chante « hou-hou-hou » pour défendre son territoire et appeler sa femelle. Elle pond souvent dès la fin de l’hiver, dans un trou d’arbre.',
-    en: 'Winter is when the tawny owl is heard the most: the male hoots « hoo-hoo-hoo » to defend his territory and call his mate. She often lays her eggs at the end of winter, in a hole in a tree.',
+    fr: 'En automne et en hiver, on entend souvent la chouette hulotte la nuit : le mâle chante « hou-hou-hou » pour défendre son territoire et appeler sa femelle. Elle pond dès la fin de l’hiver, dans un trou d’arbre.',
+    en: 'In autumn and winter, the tawny owl is often heard at night: the male hoots « hoo-hoo-hoo » to defend his territory and call his mate. She lays her eggs from the end of winter, in a hole in a tree.',
   },
   geai: {
     fr: 'En hiver, le geai va rechercher les glands qu’il a enterrés à l’automne, même sous la neige. Pour les retrouver, il se souvient des repères autour de chaque cachette : un arbre, une pierre.',
@@ -85,8 +86,8 @@ const WINTER = {
     en: 'No stag beetles in winter: the larva, a big white grub, grows hidden in an old stump for several years. The adult only comes out at the start of summer, for a few weeks.',
   },
   pic: {
-    fr: 'Dès la fin de l’hiver, le pic noir tambourine très vite sur les troncs avec son bec. Ce roulement s’entend de très loin et veut dire : « ici, c’est chez moi ».',
-    en: 'From the end of winter, the black woodpecker drums very fast on tree trunks with its beak. The drumming can be heard from far away and means: « this is my home ».',
+    fr: 'En décembre, le pic noir est discret : il cherche des fourmis et des larves sous l’écorce des vieux arbres. Dès la fin de l’hiver, il tambourine très vite sur les troncs avec son bec. Ce roulement s’entend de très loin et veut dire : « ici, c’est chez moi ».',
+    en: 'In December, the black woodpecker keeps a low profile: it looks for ants and grubs under the bark of old trees. From the end of winter, it drums very fast on tree trunks with its beak. The drumming can be heard from far away and means: « this is my home ».',
   },
   'pic-vert': {
     fr: 'Quand la neige recouvre le sol, le pic vert creuse des trous dans la neige pour atteindre les fourmilières. Sa langue, très longue, peut sortir de plusieurs centimètres hors de son bec.',

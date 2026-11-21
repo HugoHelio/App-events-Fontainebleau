@@ -3,29 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Moret-sur-Loing · Fontainebleau Live
+X-WR-CALNAME:moret-sur-loing · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_3bacb1526a@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:Loto de la PALM
-LOCATION:Grande salle des fêtes de Moret-sur-Loing\, Moret-sur-Loing
-DESCRIPTION:Horaires : à partir de 19h30\n\nLe club de plongée La PALM or
- ganise son traditionnel loto avec de nombreux lots à gagner.\n\nOrganisat
- eur : https://www.saint-mammes.com/loto-de-la-palm/\n\nFiche : https://fon
- tainebleaulive.fr/evenements/loto-de-la-palm-moret-sur-loing-3bacb1526a/\n
- \nInformations collectées automatiquement : vérifiez-les auprès de l’
- organisateur.
-URL:https://fontainebleaulive.fr/evenements/loto-de-la-palm-moret-sur-loing
- -3bacb1526a/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

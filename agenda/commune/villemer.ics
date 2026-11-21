@@ -11,25 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_9099f3e746@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:Soirée tartiflette
-LOCATION:Salle polyvalente Albert Dormier\, rue des Marronniers à Villemer
- \, Villemer
-DESCRIPTION:Horaires : 20h\n\nRepas convivial autour d'une tartiflette orga
- nisé par le CSLV.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/
- agenda.html#2026-11-20-soireetartiflette\n\nFiche : https://fontainebleaul
- ive.fr/evenements/soiree-tartiflette-villemer-9099f3e746/\n\nInformations 
- collectées automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/soiree-tartiflette-villemer-909
- 9f3e746/
-CATEGORIES:Culture & Ateliers
-GEO:48.30364;2.82292
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_761f3d6577@fontainebleaulive.fr
 DTSTAMP:20261118T000000Z
 DTSTART;VALUE=DATE:20261121
