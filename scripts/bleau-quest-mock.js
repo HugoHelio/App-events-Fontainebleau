@@ -118,7 +118,8 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .who{flex:1;min-width:0}.who b{display:block;font-size:14px}.bar{height:7px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .6s}
 .xp{font-size:12px;opacity:.85}.teamchip{font-size:11px;font-weight:700;background:rgba(255,255,255,.15);padding:3px 8px;border-radius:999px;display:none}.teamchip.on{display:inline-block}
 .screen{flex:1;position:relative;overflow:auto;display:none}.screen.on{display:block}
-#map{position:absolute;inset:0;background:#e8e4da}
+#map{position:absolute;inset:0;background:#e8e4da;z-index:0}
+.leaflet-fog-pane canvas{position:absolute;left:0;top:0;pointer-events:none}
 #map.doux .leaflet-tile-pane{filter:saturate(.4) sepia(.25) brightness(1.05)}
 #map.nuit .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9)}
 .livebar{position:absolute;z-index:500;top:10px;left:10px;right:62px;display:flex;align-items:center;gap:8px;background:#fff;border:0;border-radius:14px;padding:8px 12px;box-shadow:0 1px 6px rgba(0,0,0,.25);font:inherit;font-size:13px;text-align:left;cursor:pointer}
@@ -248,7 +249,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <div class="sheet" id="sheet"></div>
 <div class="onb" id="onb"></div>
 <div class="toast" id="toast"></div>
-<div class="levelup" id="levelup"><div>Niveau</div><div class="n" id="lu-n"></div><div id="lu-t" style="font-size:20px;font-weight:700"></div><p>Nouveau titre débloqué</p><button type="button" class="btn alt" id="lu-ok">Continuer</button></div>
+<div class="levelup" id="levelup"><div>Niveau</div><div class="n" id="lu-n"></div><div id="lu-t" style="font-size:20px;font-weight:700"></div><p id="lu-p"></p><button type="button" class="btn alt" id="lu-ok">Continuer</button></div>
 <nav class="tabs" role="tablist">
 <button type="button" role="tab" aria-selected="true" data-tab="map"><span>🗺️</span>Carte</button>
 <button type="button" role="tab" aria-selected="false" data-tab="live"><span>🔴</span>En direct<em class="nb" id="nb"></em></button>
@@ -275,8 +276,8 @@ ${CLIENT}
 // innerHTML only ever receives fixed markup written here.
 const CLIENT = String.raw`
 (function () {
-  var XP = { 'commun': 50, 'peu commun': 100, 'rare': 200, 'légendaire': 500 };
-  var EVENT_XP = 150, FEATURED_XP = 300, SEASON_BONUS = 50, SET_XP = 500, ALL_CATS_XP = 300, FIRST_STEP_XP = 20;
+  var XP = { 'commun': 40, 'peu commun': 60, 'rare': 100, 'légendaire': 200 };
+  var EVENT_XP = 60, FEATURED_XP = 120, SEASON_BONUS = 20, SET_XP = 200, ALL_CATS_XP = 150, FIRST_STEP_XP = 20, ECO_XP = 30;
   var RADIUS = { ville: 100, foret: 150, event: 200 };
   var TITLES = [[1, 'Promeneur'], [3, 'Flâneur'], [5, 'Bellifontain'], [8, 'Bleausard'], [12, 'Peintre de Barbizon'], [20, 'Denecourt']];
   var RCOL = { 'commun': 'var(--commun)', 'peu commun': 'var(--peu-commun)', 'rare': 'var(--rare)', 'légendaire': 'var(--legendaire)' };
@@ -284,7 +285,7 @@ const CLIENT = String.raw`
   var CATS = { 'Scène & Spectacles': ['🎭', '#b8707d', 'Scène'], 'Culture & Ateliers': ['🎨', '#9282b5', 'Culture'],
     'Nature & Environnement': ['🌿', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['🏃', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
-  var KEY = 'bleau-quest-mock-v2';
+  var KEY = 'bleau-quest-mock-v3'; // v3: new XP scale, older saves start over
   var st = load();
   function fresh() { return { xp: 0, spots: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY)); return s && s.spots ? s : fresh(); } catch (e) { return fresh(); } }
@@ -304,25 +305,36 @@ const CLIENT = String.raw`
   var featured = liveNow.slice().sort(function (a, b) { return hash(a.id + TODAY) - hash(b.id + TODAY); })[0] || null;
   function xpOf(e) { return (featured && e.id === featured.id ? FEATURED_XP : EVENT_XP) + (e.season ? SEASON_BONUS : 0); }
 
-  // Level n needs 50·n·(n−1)/2 XP: 50, 150, 300, 500… (gentle start, GDD §8)
-  function levelOf(xp) { var n = 1; while (50 * (n + 1) * n / 2 <= xp) n++; return n; }
-  function floorOf(n) { return 50 * n * (n - 1) / 2; }
+  // Level n starts at 50·(n−1)² XP: 50, 200, 450, 800, 1250… up to level 30 (GDD §8).
+  // The first real validation (40 XP + 20 "first step") reaches level 2; then a few actions per level.
+  var MAX_LEVEL = 30;
+  function floorOf(n) { return 50 * (n - 1) * (n - 1); }
+  function levelOf(xp) { var n = 1; while (n < MAX_LEVEL && floorOf(n + 1) <= xp) n++; return n; }
   function titleOf(n) { var t = TITLES[0][1]; TITLES.forEach(function (x) { if (n >= x[0]) t = x[1]; }); return t; }
 
   function hud() {
     var n = levelOf(st.xp), a = floorOf(n), b = floorOf(n + 1);
     $('lvl').textContent = n; $('title').textContent = titleOf(n);
     $('xpbar').style.width = Math.round(100 * (st.xp - a) / (b - a)) + '%';
-    $('xptxt').textContent = st.xp + ' XP · niveau ' + (n + 1) + ' à ' + b;
+    $('xptxt').textContent = n >= MAX_LEVEL ? st.xp + ' XP · niveau maximum' : st.xp + ' XP · niveau ' + (n + 1) + ' à ' + b;
     var tc = $('teamchip'); tc.textContent = st.team ? '👥 ' + st.team : ''; tc.classList.toggle('on', !!st.team);
   }
   function toast(t) { var x = $('toast'); x.textContent = t; x.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { x.classList.remove('on'); }, 2000); }
   function gain(xp, why) {
     var before = levelOf(st.xp); st.xp += xp; save(); hud(); toast('+' + xp + ' XP · ' + why);
     var after = levelOf(st.xp);
-    if (after > before) { $('lu-n').textContent = after; $('lu-t').textContent = titleOf(after); setTimeout(function () { $('levelup').classList.add('on'); }, 900); }
+    for (var n = before + 1; n <= after; n++) luQueue.push(n);
+    if (luQueue.length && !luShowing && !luTimer) luTimer = setTimeout(nextLevelUp, 900);
   }
-  $('lu-ok').onclick = function () { $('levelup').classList.remove('on'); };
+  var luQueue = [], luShowing = false, luTimer = 0;
+  function nextLevelUp() {
+    luTimer = 0; var n = luQueue.shift(); if (!n) return;
+    var t = titleOf(n), isNew = titleOf(n - 1) !== t, nx = TITLES.filter(function (x) { return x[0] > n; })[0];
+    $('lu-n').textContent = n; $('lu-t').textContent = isNew ? t : '';
+    $('lu-p').textContent = isNew ? 'Nouveau titre débloqué' : nx ? 'Prochain titre au niveau ' + nx[0] + ' : ' + nx[1] : '';
+    luShowing = true; $('levelup').classList.add('on');
+  }
+  $('lu-ok').onclick = function () { $('levelup').classList.remove('on'); luShowing = false; if (luQueue.length) luTimer = setTimeout(nextLevelUp, 300); };
 
   function checkSets() {
     Object.keys(SETS).forEach(function (s) {
@@ -336,6 +348,35 @@ const CLIENT = String.raw`
   // ── Map and layers ──
   var map = L.map('map', { zoomControl: false }).setView([48.408, 2.69], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+  var FogLayer = L.Layer.extend({
+    initialize: function () { this._holes = []; },
+    onAdd: function (m) {
+      if (!m.getPane('fog')) { m.createPane('fog').style.zIndex = 350; }
+      this._c = L.DomUtil.create('canvas', '', m.getPane('fog'));
+      m.on('moveend zoomend resize viewreset', this._redraw, this); m.on('zoomstart', this._hide, this); this._redraw();
+    },
+    onRemove: function (m) { L.DomUtil.remove(this._c); m.off('moveend zoomend resize viewreset', this._redraw, this); m.off('zoomstart', this._hide, this); },
+    clearLayers: function () { this._holes = []; return this; },
+    setHoles: function (h) { this._holes = h; if (this._map) this._redraw(); },
+    _hide: function () { if (this._c) this._c.style.opacity = 0; },
+    _redraw: function () {
+      var m = this._map, c = this._c; if (!m || !c) return;
+      // Half a screen of margin on each side, so a pan does not reveal unfogged edges
+      var sz = m.getSize(), px = Math.round(sz.x / 2), py = Math.round(sz.y / 2), w = sz.x + 2 * px, h = sz.y + 2 * py, r = window.devicePixelRatio || 1;
+      c.width = w * r; c.height = h * r; c.style.width = w + 'px'; c.style.height = h + 'px';
+      L.DomUtil.setPosition(c, m.containerPointToLayerPoint([-px, -py]));
+      var g = c.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0);
+      g.globalCompositeOperation = 'source-over'; g.fillStyle = 'rgba(36,48,42,.55)'; g.fillRect(0, 0, w, h);
+      g.globalCompositeOperation = 'destination-out';
+      this._holes.forEach(function (o) {
+        var p = m.latLngToContainerPoint([o.lat, o.lng]), q = m.latLngToContainerPoint([o.lat + o.r / 111320, o.lng]);
+        var x = p.x + px, y = p.y + py, rad = Math.max(4, Math.abs(p.y - q.y));
+        var grd = g.createRadialGradient(x, y, rad * .65, x, y, rad); grd.addColorStop(0, 'rgba(0,0,0,1)'); grd.addColorStop(1, 'rgba(0,0,0,0)');
+        g.fillStyle = grd; g.beginPath(); g.arc(x, y, rad, 0, 2 * Math.PI); g.fill();
+      });
+      g.globalCompositeOperation = 'source-over'; c.style.opacity = 1;
+    }
+  });
   var LAYERS = {
     spots: { icon: '📍', label: 'Lieux', on: true, g: L.layerGroup() },
     events: { icon: '🔴', label: 'En direct', on: true, g: L.layerGroup() },
@@ -343,7 +384,7 @@ const CLIENT = String.raw`
     quests: { icon: '📜', label: 'Quêtes', on: false, g: L.layerGroup() },
     climb: { icon: '🧗', label: 'Grimpe', on: false, g: L.layerGroup() },
     season: { icon: '🎄', label: 'Noël', on: false, g: L.layerGroup() },
-    fog: { icon: '🌫️', label: 'Brouillard', on: true, g: L.layerGroup() }, // on by default (21/11): it focuses on what is around
+    fog: { icon: '🌫️', label: 'Brouillard', on: true, g: new FogLayer() }, // on by default (21/11): it focuses on what is around
   };
   var BASES = [['plan', 'Plan', '#e9e5dc'], ['doux', 'Doux', '#ece3cf'], ['nuit', 'Nuit', '#2b3540']];
   var base = 'plan';
@@ -401,14 +442,14 @@ const CLIENT = String.raw`
     drawFog();
   }
   // Fog of exploration: the world darkened, with a clearing around what the player has seen.
-  function ring(c, r) { var pts = []; for (var i = 0; i < 28; i++) { var a = i / 28 * 2 * Math.PI; pts.push([c.lat + r / 111320 * Math.sin(a), c.lng + r / (111320 * Math.cos(c.lat * Math.PI / 180)) * Math.cos(a)]); } return pts; }
+  function ring(c, r) { return { lat: c.lat, lng: c.lng, r: r }; }
   function drawFog() {
     var holes = [];
     SPOTS.forEach(function (p) { if (st.spots[p.id]) holes.push(ring(p, 700)); });
     Object.keys(st.events).forEach(function (id) { var e = byId(id); if (e) holes.push(ring(e, 500)); });
     // Without a position yet, a clearing on the town centre, so the map never opens all dark
     holes.push(me ? ring(me, 400) : ring({ lat: 48.404, lng: 2.698 }, 600));
-    LAYERS.fog.g.addLayer(L.polygon([[[49.2, 1.6], [49.2, 3.8], [47.6, 3.8], [47.6, 1.6]]].concat(holes), { stroke: false, fillColor: '#24302a', fillOpacity: .55, interactive: false }));
+    LAYERS.fog.g.setHoles(holes);
   }
 
   var me = null, meMarker = null, arming = false;
@@ -619,7 +660,7 @@ const CLIENT = String.raw`
     var adv = el('a', null, 'Le calendrier de l’Avent du site →'); adv.href = 'https://fontainebleaulive.fr/calendrier-de-l-avent/'; adv.target = '_blank'; adv.rel = 'noopener';
     quest(root, '🦉 Une case par jour', ['Décembre'], 'Le calendrier de l’Avent devient une quête : chaque case ouverte rapporte un peu d’XP.', 0, 0, adv);
     var eco = el('button', 'btn soft', st.eco ? '✓ Fait' : 'J’ai ramassé un déchet'); eco.type = 'button'; eco.disabled = st.eco;
-    eco.onclick = function () { st.eco = true; save(); gain(50, 'éco-geste'); renderAll(); };
+    eco.onclick = function () { st.eco = true; save(); gain(ECO_XP, 'éco-geste'); renderAll(); };
     quest(root, '🌱 Éco-geste', ['Badge', 'Sur l’honneur', 'Toute l’année'], 'Ramasser un déchet en forêt et le rapporter (idée reprise de Tèrra Aventura).', st.eco ? 1 : 0, 1, eco);
     quest(root, '🦌 Le brame', ['Revient en septembre'], 'Écouter le brame depuis un point d’écoute autorisé, en silence. Quête de saison.', 0, 0);
     quest(root, '🍄 Les champignons', ['Revient en octobre'], 'Une sortie mycologique de l’agenda. Jamais de cueillette conseillée par le jeu.', 0, 0);

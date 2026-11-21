@@ -207,7 +207,9 @@ niveau. Aucune cotation exigée.
 ### 7.5 L'exploration (couche « Brouillard »)
 - Le brouillard des sentiers balisés (près de 300 km dans le Pays de Fontainebleau) : un
   pourcentage de forêt explorée, des badges par massif. Le tracé reste sur le téléphone. La
-  maquette montre l'idée : la carte assombrie, éclaircie autour de ce qu'on a vu.
+  maquette montre l'idée : la carte assombrie, éclaircie autour de ce qu'on a vu. Dessiné sur un
+  canevas (21/11) : les clairières qui se chevauchent se fondent, bords adoucis ; le premier essai
+  en polygone troué rassombrissait les chevauchements.
 
 ### 7.6 Les couches, comme sur une application de cartes
 Un bouton en haut à droite ouvre un panneau : **type de carte** (Plan, Doux, Nuit : les mêmes
@@ -216,11 +218,15 @@ En direct, Quêtes (étapes numérotées de l'enquête), Grimpe, Saison (Noël e
 Brouillard.
 
 ## 8. Progression
-- **XP** (barème provisoire, à régler en test) : lieu commun 50, peu commun 100, rare 200,
-  légendaire 500 ; **événement 150, événement du jour 300**, bonus de saison 50 ; « Toutes les
-  scènes » 300 ; chapitre d'enquête 300 ; série complète 500 ; premier pas 20 (au premier lieu ou événement touché, jamais de niveau tout de suite) ; validation sur
-  l'honneur à la moitié.
-- **Niveaux** 1 à 30, courbe douce au début (niveau 2 dès le premier lieu).
+- **XP** (barème revu le 21/11, à régler en test) : lieu commun 40, peu commun 60, rare 100,
+  légendaire 200 ; **événement 60, événement du jour 120**, bonus de saison 20 ; « Toutes les
+  scènes » 150 ; série complète 200 ; éco-geste 30 ; premier pas 20 (au premier lieu ou événement
+  touché, jamais de niveau tout de suite) ; validation sur l'honneur à la moitié.
+- **Niveaux** 1 à 30 : le niveau n commence à 50·(n−1)² XP (50, 200, 450, 800, 1 250…). Niveau 2
+  à la première vraie validation, puis quelques actions par niveau. 21/11 : l'ancien barème
+  (événement 150 pour un niveau 3 à 150 XP) faisait passer du niveau 1 au niveau 6 en deux
+  événements, avec un seul écran. Désormais **un écran par niveau franchi**, l'un après l'autre ;
+  « Nouveau titre » seulement quand le titre change, sinon le prochain titre à viser.
 - **Titres** : Promeneur, Flâneur, Bellifontain, Peintre de Barbizon, Bleausard, … Denecourt.
 - **Badges** : séries, saisons, éco-geste, premier événement, « 5 Must Climb ».
 - **Collection** : pourcentage par série et global, la galerie des cartes.
