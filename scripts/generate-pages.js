@@ -978,6 +978,10 @@ const THEMES = [
     title: (y) => `Marchés de Noël ${y} à Fontainebleau et alentour : dates et horaires`,
     h1: (y) => `Marchés de Noël ${y} à Fontainebleau et alentour`,
     here: 'fontainebleau',
+    // 21/11: the town's market answered first (encart + FAQ + description), the rest by weekend.
+    lead: /\bmarches? de noel\b/,
+    leadOthers: 'marchés',
+    weekends: true,
     intro: 'Les marchés de Noël de Fontainebleau, d’Avon et des villages alentour : dates, horaires et lieux, mis à jour chaque jour à partir des annonces des communes, de l’office de tourisme et des organisateurs.',
     off: 'Les marchés de Noël sont annoncés en général à partir d’octobre : les dates apparaîtront ici dès leur publication.',
     nameEn: 'Christmas markets',
@@ -990,11 +994,11 @@ const THEMES = [
     gift: true,
     promo: ['Pour les vacances de Noël', 'For the Christmas holidays'],
     faq: [
-      ['Quand ont lieu les marchés de Noël autour de Fontainebleau ?', 'Surtout les week-ends de la fin novembre et de décembre, souvent du vendredi soir au dimanche ; quelques-uns durent plusieurs semaines. Les dates de chaque marché sont dans la liste ci-dessus, de la plus proche à la plus lointaine.'],
+      ['Quand ont lieu les marchés de Noël autour de Fontainebleau ?', 'Surtout les week-ends de la fin novembre et de décembre, souvent du vendredi soir au dimanche ; quelques-uns durent plusieurs semaines. Les dates de chaque marché sont dans la liste ci-dessus, week-end par week-end.'],
       ['Faut-il payer pour entrer ?', 'L’entrée des marchés de Noël des villes et des villages est en général libre. Les grands Noëls des châteaux sont souvent payants : le tarif est indiqué sur la page de chaque sortie quand l’organisateur le publie.'],
     ],
     faqEn: [
-      ['When are the Christmas markets around Fontainebleau?', 'Mostly on the weekends of late November and December, often from Friday evening to Sunday; a few last several weeks. The dates of each market are in the list above, soonest first.'],
+      ['When are the Christmas markets around Fontainebleau?', 'Mostly on the weekends of late November and December, often from Friday evening to Sunday; a few last several weeks. The dates of each market are in the list above, weekend by weekend.'],
       ['Do you have to pay to get in?', 'Entry to the town and village Christmas markets is usually free. The big Christmas events at the châteaux often charge: the price is on each outing’s page when the organiser publishes it.'],
     ],
   },
@@ -1193,13 +1197,169 @@ const faqHtml = (faq, faqEn = []) => (faq && faq.length
  * their own heading: someone typing « marché de noël fontainebleau » wants Fontainebleau's
  * market, then the others. Computed from the events, so it is never out of date.
  */
-function hereList(t, events) {
+function hereList(t, events, today) {
   const list = (xs) => `<ul class="list">${xs.map(eventItem).join('')}</ul>`;
   const town = t.here && events.find((e) => e.citySlug === t.here);
   if (!town) return list(events);
   const mine = events.filter((e) => e.citySlug === t.here);
   const rest = events.filter((e) => e.citySlug !== t.here);
-  return `<h2${en(`In ${esc(town.city)}`)}>À ${esc(town.city)}</h2>\n${list(mine)}${rest.length ? `\n<h2${en(`Around ${esc(town.city)}`)}>Autour de ${esc(town.city)}</h2>\n${list(rest)}` : ''}`;
+  const groups = t.lead ? townGroups(t, events) : [];
+  const grouped = new Set(groups.flatMap((g) => g.events));
+  const loose = mine.filter((e) => !grouped.has(e));
+  const head = groups.length
+    ? `<div class="sheet lead">${groups.map(groupHtml).join('\n')}</div>\n${loose.length ? list(loose) : ''}`
+    : list(mine);
+  const around = !rest.length ? ''
+    : t.weekends ? `\n<h2${en(`Around ${esc(town.city)}, weekend by weekend`)}>Autour de ${esc(town.city)}, week-end par week-end</h2>\n${weekendList(rest, today)}`
+      : `\n<h2${en(`Around ${esc(town.city)}`)}>Autour de ${esc(town.city)}</h2>\n${list(rest)}`;
+  return `<h2${en(`In ${esc(town.city)}`)}>À ${esc(town.city)}</h2>\n${head}${around}`;
+}
+
+// ─── Item 106 (21/11): the answer to « marché de noël fontainebleau 2026 » goes first ───
+// The search asks one thing: when and where is the town's market. Built from CONFIRMED fiches only
+// (a source read — never Gemini alone), grouped by organiser link, so the office's one page for
+// the 11, 12 and 13 reads as one market even before the scan folds the three fiches. No confirmed
+// fiche: the page keeps its plain list, nothing is said that the data does not hold.
+function townGroups(t, events) {
+  const byKey = new Map();
+  for (const e of events) {
+    if (e.citySlug !== t.here || !e.source) continue;
+    const key = safeUrl(e.url) || e.id;
+    if (!byKey.has(key)) byKey.set(key, []);
+    byKey.get(key).push(e);
+  }
+  return [...byKey.values()].map((xs) => {
+    xs.sort((a, b) => a.startDate.localeCompare(b.startDate));
+    return {
+      e: xs[0],
+      events: xs,
+      start: xs[0].startDate,
+      end: xs.map((x) => x.endDate || x.startDate).sort().pop(),
+      schedule: (xs.find((x) => x.schedule) || {}).schedule || '',
+      price: (xs.find((x) => x.price) || {}).price || '',
+    };
+  }).sort((a, b) => a.start.localeCompare(b.start));
+}
+
+// "du vendredi 11 au dimanche 13 décembre 2026"; `short` drops the weekdays (meta description).
+function spanFr(s, e, short = false) {
+  const parts = (iso) => { const [wd, d, m] = dayName(iso).split(' '); return { wd, d, m }; };
+  const a = parts(s);
+  const b = parts(e);
+  const y = e.slice(0, 4);
+  const day = (p) => (short ? p.d : `${p.wd} ${p.d}`);
+  if (s === e) return `le ${day(a)} ${a.m} ${y}`;
+  return a.m === b.m && s.slice(0, 4) === y ? `du ${day(a)} au ${day(b)} ${b.m} ${y}` : `du ${day(a)} ${a.m} au ${day(b)} ${b.m} ${y}`;
+}
+const spanEn = (s, e) => (s === e ? `on ${enDay(s)} ${e.slice(0, 4)}` : `from ${enDay(s)} to ${enDay(e)} ${e.slice(0, 4)}`);
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+function groupHtml(g) {
+  const where = place(g.e);
+  return `<p><b><a href="${esc(g.e.pagePath)}">${esc(g.e.title)}</a></b><br>
+<span${en(esc(cap(spanEn(g.start, g.end))))}>${esc(cap(spanFr(g.start, g.end)))}</span> · ${esc(where)}${g.schedule ? `<br><span${en('Opening hours:')}>Horaires :</span> ${esc(g.schedule)}` : ''}${g.price ? `<br><span${en('Entry:')}>Entrée :</span> ${esc(g.price)}` : ''}</p>`;
+}
+
+/**
+ * The weekends an event is on: the Saturday of each Friday-to-Sunday it touches. Most markets
+ * are a weekend thing, and « marché de noël ce week-end » is how they are searched. An event on
+ * weekdays only goes under « En semaine »; one of more than three weeks once, under « Tout le mois ».
+ */
+const LONG_DAYS = 21;
+function weekendsOf(e) {
+  const end = e.endDate || e.startDate;
+  if ((Date.parse(end) - Date.parse(e.startDate)) / 86400000 > LONG_DAYS) return ['long'];
+  const out = new Set();
+  for (let d = e.startDate; d <= end; d = addDays(d, 1)) {
+    const dow = new Date(`${d}T00:00:00Z`).getUTCDay();
+    if (dow === 5) out.add(addDays(d, 1));
+    else if (dow === 6) out.add(d);
+    else if (dow === 0) out.add(addDays(d, -1));
+  }
+  return out.size ? [...out] : ['week'];
+}
+
+function weekendLabel(sat) {
+  const sun = addDays(sat, 1);
+  const day = (iso) => (Number(iso.slice(8)) === 1 ? '1er' : String(Number(iso.slice(8))));
+  const month = (iso) => frDate(iso).split(' ')[2];   // "samedi 5 décembre 2026" → "décembre"
+  const same = sat.slice(5, 7) === sun.slice(5, 7);
+  const fr = same ? `${day(sat)}-${day(sun)} ${month(sun)}` : `${day(sat)} ${month(sat)} au ${day(sun)} ${month(sun)}`;
+  const enTxt = same ? `${Number(sat.slice(8))}-${enDM(sun)}` : `${enDM(sat)} to ${enDM(sun)}`;
+  return { fr: `Week-end du ${fr}`, en: `Weekend of ${enTxt}` };
+}
+
+/** Buckets in date order, weekends already over left out. */
+function weekendBuckets(events, today) {
+  const { sat: thisSat } = weekendOf(today);
+  const buckets = new Map();
+  for (const e of events) {
+    for (const k of weekendsOf(e)) {
+      if (k !== 'long' && k !== 'week' && k < thisSat) continue;
+      if (!buckets.has(k)) buckets.set(k, []);
+      buckets.get(k).push(e);
+    }
+  }
+  const order = (k) => (k === 'long' ? '0' : k === 'week' ? '~' : k);
+  return [...buckets.entries()].sort((a, b) => (order(a[0]) < order(b[0]) ? -1 : order(a[0]) > order(b[0]) ? 1 : 0))
+    .map(([k, xs]) => [k, xs.sort((a, b) => a.startDate.localeCompare(b.startDate) || a.city.localeCompare(b.city, 'fr'))]);
+}
+
+function weekendList(events, today) {
+  const { sat: thisSat } = weekendOf(today);
+  return weekendBuckets(events, today).map(([k, xs]) => {
+    let h;
+    if (k === 'long') h = { fr: 'Pendant plusieurs semaines', en: 'For several weeks' };
+    else if (k === 'week') h = { fr: 'En semaine', en: 'On weekdays' };
+    else {
+      h = weekendLabel(k);
+      if (k === thisSat) h = { fr: `${h.fr} (ce week-end)`, en: `${h.en} (this weekend)` };
+    }
+    return `<h3${en(esc(h.en))}>${esc(h.fr)}</h3>\n<ul class="list">${xs.map(eventItem).join('')}</ul>`;
+  }).join('\n');
+}
+
+/** Names joined the French way: « Avon, Thomery et Ury ». */
+const andFr = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} et ${xs[xs.length - 1]}`);
+const andEn = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+
+/**
+ * Two questions answered from the data, put before the theme's own (item 106, 21/11): the date of
+ * the town's market (confirmed fiches only, as above) and the markets of the next weekend that has
+ * some. Rebuilt every day like the rest of the page, so the answer is never last week's.
+ */
+function leadFaq(t, events, today) {
+  const fr = [];
+  const enQ = [];
+  const town = events.find((e) => e.citySlug === t.here);
+  const groups = townGroups(t, events);
+  const main = groups.find((g) => t.lead.test(themeKey(g.e.title)));
+  if (town && main) {
+    const y = main.end.slice(0, 4);
+    const more = groups.filter((g) => g !== main);
+    const bits = [`${cap(spanFr(main.start, main.end))}, ${place(main.e)}.`];
+    const bitsEn = [`${cap(spanEn(main.start, main.end))}, ${place(main.e)}.`];
+    if (main.schedule) { bits.push(`Horaires : ${main.schedule}.`); bitsEn.push(`Opening hours (in French): ${main.schedule}.`); }
+    if (main.price) { bits.push(`Entrée : ${main.price.replace(/\.$/, '').replace(/^\p{Lu}/u, (c) => c.toLowerCase())}.`); bitsEn.push(`Entry (in French): ${main.price.replace(/\.$/, '')}.`); }
+    for (const g of more) {
+      bits.push(`À voir aussi à ${town.city} : ${g.e.title}, ${spanFr(g.start, g.end)}.`);
+      bitsEn.push(`Also in ${town.city}: ${g.e.title}, ${spanEn(g.start, g.end)}.`);
+    }
+    fr.push([`Quand a lieu le marché de Noël de ${town.city} en ${y} ?`, bits.join(' ')]);
+    enQ.push([`When is the ${town.city} Christmas market in ${y}?`, bitsEn.join(' ')]);
+  }
+  const next = weekendBuckets(events, today).find(([k]) => k !== 'long' && k !== 'week');
+  if (next) {
+    const [sat, xs] = next;
+    const cities = [...new Set(xs.map((e) => e.city))];
+    const { sat: thisSat } = weekendOf(today);
+    const label = weekendLabel(sat);
+    const when = sat === thisSat ? `Ce week-end (${label.fr.replace(/^Week-end du /, '')})` : `Le prochain week-end de marchés, le ${label.fr.replace(/^Week-end du /, '')}`;
+    const whenEn = sat === thisSat ? `This weekend (${label.en.replace(/^Weekend of /, '')})` : `The next weekend with markets, ${label.en.replace(/^Weekend of /, '')}`;
+    fr.push([`Quels marchés de Noël ce week-end autour de ${town ? town.city : 'Fontainebleau'} ?`, `${when} : ${andFr(cities)}. Les autres week-ends sont dans la liste ci-dessus.`]);
+    enQ.push([`Which Christmas markets are on this weekend around ${town ? town.city : 'Fontainebleau'}?`, `${whenEn}: ${andEn(cities)}. The other weekends are in the list above.`]);
+  }
+  return { fr, en: enQ };
 }
 
 // `allEvents`: the whole agenda, for the link to the gift page (giftShows), not the theme's list.
@@ -1213,18 +1373,25 @@ function themePage(t, events, today, allEvents = []) {
   const relYear = related ? holidayPeriod(related, today).from.slice(0, 4) : '';
   const also = [].concat(t.also || []).map((s) => THEMES.find((x) => x.slug === s)).filter(Boolean);
   const strip = carouselHtml(carouselPicks(events.filter((e) => e.startDate <= addDays(today, THEME_CAROUSEL_DAYS)), null, { max: 6, perCat: Infinity }), { id: 'a-ne-pas-manquer', h: 'À ne pas manquer', hEn: 'Don’t miss', track: t.slug });
+  const lead = t.lead && n ? leadFaq(t, events, today) : { fr: [], en: [] };
+  // The snippet Google shows under the title: the town's market first, when a fiche confirms it.
+  const main = t.lead && n ? townGroups(t, events).find((g) => t.lead.test(themeKey(g.e.title))) : null;
+  const others = main ? new Set(events.filter((e) => e.citySlug !== t.here).map((e) => e.citySlug)).size : 0;
+  const description = main
+    ? `${main.e.title} ${spanFr(main.start, main.end, true)}. ${others ? `Et des ${t.leadOthers} dans ${others} autre${others > 1 ? 's' : ''} commune${others > 1 ? 's' : ''}, week-end par week-end.` : 'Dates, horaires et lieux.'}`
+    : (n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro);
   const body = `<nav class="crumbs"><a href="/"${en('Home')}>Accueil</a> › <a href="/${THEMES_DIR}/"${en('Seasonal outings')}>Sorties de saison</a></nav>
 <h1${en(esc(t.h1En(year)))}>${esc(t.h1(year))}</h1>
 <p${en(esc(t.introEn))}>${esc(t.intro)}</p>
 ${strip}${n ? `<p class="note"${en(`${enPl(n, 'upcoming date')}, soonest first.`)}>${n} date${n > 1 ? 's' : ''} à venir, de la plus proche à la plus lointaine.</p>
-${hereList(t, events)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
-${t.gift && giftSeason(today) && giftShows(allEvents, today).length ? `<p><a href="/${THEMES_DIR}/${GIFT_SLUG}/"${en(`🎁 Christmas gift ideas ${giftYear(today)}: shows to give`)}>🎁 Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir</a></p>\n` : ''}${also.map((a) => `<p><a href="/${THEMES_DIR}/${a.slug}/"${en(esc(a.h1En(year).endsWith('?') ? `${a.h1En(year)} All dates` : `${a.h1En(year)}: all dates`))}>${esc(allDates(a.h1(year)))}</a></p>\n`).join('')}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml(t.faq, t.faqEn)}
+${hereList(t, events, today)}` : `<p${en(esc(t.offEn))}>${esc(t.off)}</p>`}
+${t.gift && giftSeason(today) && giftShows(allEvents, today).length ? `<p><a href="/${THEMES_DIR}/${GIFT_SLUG}/"${en(`🎁 Christmas gift ideas ${giftYear(today)}: shows to give`)}>🎁 Idées de cadeaux de Noël ${giftYear(today)} : des spectacles à offrir</a></p>\n` : ''}${also.map((a) => `<p><a href="/${THEMES_DIR}/${a.slug}/"${en(esc(a.h1En(year).endsWith('?') ? `${a.h1En(year)} All dates` : `${a.h1En(year)}: all dates`))}>${esc(allDates(a.h1(year)))}</a></p>\n`).join('')}${related ? `<p><a href="/${THEMES_DIR}/${related.slug}/"${en(`${esc(related.nameEn)} ${relYear}: all outings`)}>${esc(related.name)} ${relYear} : toutes les sorties</a></p>\n` : ''}${faqHtml([...lead.fr, ...(t.faq || [])], [...lead.en, ...(t.faqEn || [])])}
 ${t.promo ? `<p class="av-link"><a href="/${AVENT_DIR}/"${en(`🎄 The forest Advent calendar ${year}: one door a day for the children`)}>🎄 Le calendrier de l’Avent ${year} de la forêt : une case par jour pour les enfants</a></p>
 ${guidesPromo(GUIDES, t.promo)}
 ` : ''}<div class="actions"><a class="btn alt" href="/"${en('Full agenda on the map')}>Tout l’agenda sur la carte</a> <a class="btn alt" href="/${WEEKEND_DIR}/"${en('This weekend')}>Ce week-end</a></div>${strip ? `\n<script>\n${CAROUSEL_SCRIPT}\n</script>` : ''}`;
   return layout({
     title: `${t.title(year)} | Fontainebleau Live`,
-    description: truncate(n ? `${n} date${n > 1 ? 's' : ''} à venir. ${t.intro}` : t.intro, 155),
+    description: truncate(description, 155),
     canonical: `${SITE_URL}/${THEMES_DIR}/${t.slug}/`,
     body,
     titleEn: `${t.titleEn(year)} | Fontainebleau Live`,
