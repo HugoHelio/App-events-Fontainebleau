@@ -254,7 +254,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .who{flex:1;min-width:0}.who b{display:block;font-size:14px}.bar{height:7px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .6s}
 .xp{font-size:12px;opacity:.85}.teamchip{font-size:11px;font-weight:700;background:rgba(255,255,255,.15);padding:3px 8px;border-radius:999px;display:none}.teamchip.on{display:inline-block}
 .mebtn{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.15);font-size:18px;cursor:pointer;flex:none}
-.cards.mini{grid-template-columns:repeat(6,1fr);gap:6px}.cards.mini .card{aspect-ratio:1;font-size:16px}.cards.mini .card small{font-size:8px;padding:2px}
+.cards.mini{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.cards.mini .card{aspect-ratio:1;font-size:16px}.cards.mini .card small{font-size:8px;padding:2px}
 .ico{display:inline-flex;width:1em;height:1em;vertical-align:-.15em}.ico svg{width:100%;height:100%;display:block}
 .pin,.evt,.art,.ev-row .ic{color:#fff}.pin .ico{font-size:16px}.evt .ico{font-size:13px}.evt.star .ico{font-size:16px}.art .ico{font-size:64px}.ev-row .ic .ico{font-size:20px}
 .card .ico{font-size:30px;margin-bottom:4px}.lgrid .ico{font-size:20px;display:block;margin:0 auto 2px}.lbtn .ico{font-size:22px;color:var(--ink)}.mebtn .ico{font-size:20px;color:#fff}
@@ -323,9 +323,17 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .set{background:#fff;border-radius:14px;padding:12px;margin-bottom:12px;border:1px solid var(--line)}
 .set h3{margin:0 0 6px;font-size:15px;display:flex;justify-content:space-between;gap:8px}
 .prog{height:6px;background:#e9ece6;border-radius:9px;overflow:hidden;margin-bottom:6px}.prog i{display:block;height:100%;background:var(--peu-commun)}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .card{aspect-ratio:3/4;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:26px;color:#fff;cursor:pointer;border:0;font-family:inherit}
-.card small{font-size:10px;line-height:1.1;text-align:center;padding:4px;color:var(--ink);font-weight:600}
+.card{min-width:0;overflow:hidden}.card small{font-size:10px;line-height:1.1;text-align:center;padding:4px;color:var(--ink);font-weight:600;max-width:100%;overflow-wrap:anywhere;hyphens:auto}
+.view-sw{display:flex;gap:4px;background:#eceae4;border-radius:999px;padding:3px;margin:0 0 12px;width:max-content}.view-sw button{border:0;background:none;font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--muted,#5b625d)}.view-sw button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.cards.medals{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 6px}
+.mtile{min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;padding:0;font:inherit;cursor:pointer;color:inherit}
+.mtile .medal{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid currentColor;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ring,transparent),0 2px 6px rgba(0,0,0,.18);position:relative}
+.mtile .medal::after{content:'';position:absolute;inset:4px;border-radius:50%;border:1px dashed currentColor;opacity:.35}
+.mtile small{font-size:10.5px;line-height:1.15;text-align:center;font-weight:600;color:var(--ink);max-width:100%;overflow-wrap:anywhere;hyphens:auto;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mtile.locked .medal{background:#f1efea!important;color:#a3a7a2!important;border-style:dashed;box-shadow:none}.mtile.locked .medal .ico{opacity:.5}.mtile.locked .medal::after{display:none}.mtile.locked small{color:#7b807b;font-weight:500}
+.mtile.dark .medal{background:#2b2d42!important;color:#fff!important;border-color:#8b8fb0}
 .card.locked{background:#eeeae3!important;color:#8a8f8b!important}.card.locked .ico{opacity:.55}.card.locked small{color:#6e746f}
 .ev-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;background:#fff;border:0;border-bottom:1px solid var(--line);padding:10px 2px;cursor:pointer}
 .ev-row .ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
@@ -816,16 +824,39 @@ const CLIENT = String.raw`
   }
 
   // ── Collection ──
+  // Collection look: « cartes » (21/11) or « badges » (22/11 alternative). A per-viewer convenience.
+  var DEX_VIEW_KEY = 'flc-mock-dex-view';
+  function dexView() { try { return localStorage.getItem(DEX_VIEW_KEY) === 'badges' ? 'badges' : 'cartes'; } catch (e) { return 'cartes'; } }
+  var RING = { 'peu commun': '#b9bec4', rare: '#d4a72c', 'légendaire': '#d4a72c' };
+  function tile(o) {
+    // o: { bg, fg, icon (node), label, locked, rarity, dark, tag }
+    var badge = dexView() === 'badges', c = el(o.tag || 'button', (badge ? 'mtile' : 'card') + (o.locked ? ' locked' : '') + (o.dark ? ' dark' : ''));
+    if (c.tagName === 'BUTTON') c.type = 'button';
+    if (badge) {
+      var m = el('span', 'medal'); m.style.background = o.bg; m.style.color = o.fg; if (!o.locked && RING[o.rarity]) m.style.setProperty('--ring', RING[o.rarity]);
+      m.appendChild(o.icon); c.appendChild(m);
+    } else { c.style.background = o.bg; c.style.color = o.fg; c.appendChild(o.icon); }
+    c.appendChild(el('small', null, o.label));
+    return c;
+  }
+  function gridEl() { return el('div', 'cards' + (dexView() === 'badges' ? ' medals' : '')); }
   function renderDex() {
     var root = $('dex'); root.textContent = '';
     var n = Object.keys(st.spots).length;
     root.appendChild(el('h2', null, 'Collection · ' + n + ' / ' + SPOTS.length + ' lieux'));
+    var sw = el('div', 'view-sw');
+    ['cartes', 'badges'].forEach(function (v) {
+      var bt = el('button', null, v === 'cartes' ? 'Cartes' : 'Badges'); bt.type = 'button'; bt.setAttribute('aria-pressed', dexView() === v);
+      bt.onclick = function () { try { localStorage.setItem(DEX_VIEW_KEY, v); } catch (e) {} renderDex(); };
+      sw.appendChild(bt);
+    });
+    root.appendChild(sw);
     var ev = Object.keys(st.events);
     var box = el('div', 'set'); var h0 = el('h3'); h0.appendChild(el('span', null, '★ Cartes souvenirs')); h0.appendChild(el('span', null, String(ev.length))); box.appendChild(h0);
     if (!ev.length) box.appendChild(el('p', 'meta', 'Allez à une sortie de l’agenda, le jour même : vous gagnez sa carte souvenir, avec la date. Une fois l’événement passé, cette carte ne se gagne plus.'));
     else {
-      var g = el('div', 'cards');
-      ev.forEach(function (id) { var e = byId(id); if (!e) return; var c = el('div', 'card'); c.style.background = cat(e)[1]; c.appendChild(ico(e.season ? 'xmas' : cat(e)[0])); c.appendChild(el('small', null, e.title)); g.appendChild(c); });
+      var g = gridEl();
+      ev.forEach(function (id) { var e = byId(id); if (!e) return; g.appendChild(tile({ tag: 'div', bg: cat(e)[1], fg: '#fff', icon: ico(e.season ? 'xmas' : cat(e)[0]), label: e.title })); });
       box.appendChild(g);
     }
     root.appendChild(box);
@@ -834,10 +865,10 @@ const CLIENT = String.raw`
       var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, SETS[s])); h.appendChild(el('span', null, got + '/' + all.length));
       bx.appendChild(h);
       var pr = el('div', 'prog'), pi = el('i'); pi.style.width = Math.round(100 * got / all.length) + '%'; pr.appendChild(pi); bx.appendChild(pr);
-      var grid = el('div', 'cards');
+      var grid = gridEl();
       all.forEach(function (p) {
-        var c = el('button', 'card' + (st.spots[p.id] ? '' : ' locked')); c.type = 'button'; c.style.background = tint(SETCOL[s]); c.style.color = SETCOL[s];
-        c.appendChild(ico(p.icon)); /* locked: the same icon, greyed (21/11) */ c.appendChild(el('small', null, p.name));
+        /* locked: the same icon, greyed (21/11) */
+        var c = tile({ bg: tint(SETCOL[s]), fg: SETCOL[s], icon: ico(p.icon), label: p.name, locked: !st.spots[p.id], rarity: p.rarity });
         c.onclick = function () { tab('map'); map.setView([p.lat, p.lng], 15); openSpot(p); };
         grid.appendChild(c);
       });
@@ -854,13 +885,13 @@ const CLIENT = String.raw`
     var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, 'Les Space Invaders')); h.appendChild(el('span', null, got + '/' + INVADER_TOTAL));
     bx.appendChild(h);
     bx.appendChild(el('p', 'meta', INVADER_TOTAL + ' mosaïques posées par Invader en 2023 autour de Fontainebleau. La carte montre la rue, pas le mur : à vous de lever les yeux.'));
-    var grid = el('div', 'cards');
+    var grid = gridEl();
     INVADERS.forEach(function (m) {
-      var on = invGot(m), c = el('button', 'card' + (on ? '' : ' locked')); c.type = 'button'; c.style.background = '#2b2d42';
-      c.appendChild(on ? ico('invader') : document.createTextNode('?')); c.appendChild(el('small', null, on ? m.name : m.street));
+      var on = invGot(m), q = el('span', null, '?');
+      var c = tile({ bg: '#2b2d42', fg: '#fff', icon: on ? ico('invader') : q, label: on ? m.name : m.street, locked: !on, dark: on });
       c.onclick = function () { tab('map'); map.setView([m.lat, m.lng], 17); openInvader(m); }; grid.appendChild(c);
     });
-    var more = el('div', 'card locked'); more.appendChild(document.createTextNode('+' + (INVADER_TOTAL - INVADERS.length))); more.appendChild(el('small', null, 'à relever'));
+    var more = tile({ tag: 'div', bg: '#eeeae3', fg: '#8a8f8b', icon: el('span', null, '+' + (INVADER_TOTAL - INVADERS.length)), label: 'à relever', locked: true });
     grid.appendChild(more); bx.appendChild(grid);
     bx.appendChild(el('div', 'todo', 'Maquette : les 4 mosaïques du parcours à pied du centre-ville. Les autres viendront du relevé du chef de projet (rue et description), et l’état de chacune (détruite ou non) se vérifie sur place.'));
     root.appendChild(bx);
