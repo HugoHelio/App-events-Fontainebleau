@@ -772,8 +772,8 @@ const CLIENT = String.raw`
         acts.appendChild(plan);
         acts.appendChild(el('p', 'meta', 'La carte souvenir se gagne le ' + dayLong(firstDay(e)) + '.'));
       }
-      var sim = el('button', 'btn soft', 'Maquette : simuler le jour J sur place'); sim.type = 'button'; sim.onclick = function () { claimEvent(e, 'gps'); };
-      acts.appendChild(sim); b.appendChild(acts);
+      // 22/11: the mock's « simuler le jour J » shortcut removed (the project lead: what is it for?).
+      b.appendChild(acts);
     }
     if (e.page) { var a = el('a', null, 'Voir la fiche sur Fontainebleau Live'); a.href = 'https://fontainebleaulive.fr' + e.page; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p', 'sheet-link'); pp.appendChild(a); b.appendChild(pp); }
     sheet.appendChild(b); sheet.classList.add('on');
