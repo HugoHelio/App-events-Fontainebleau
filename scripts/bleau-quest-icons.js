@@ -32,9 +32,46 @@ const SET = {
   layers: { l: 'M12 3l9 5-9 5-9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5' },
   fog: { l: 'M3 9h12M6 13h15M3 17h13M18 9h3' },
   pin: { l: 'M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zM10 9a2 2 0 1 0 4 0a2 2 0 1 0-4 0' },
+  // Added 22/11 with the town and forest places of the walk sheets.
+  church: { l: 'M3 21h18M8 21V10l4-4 4 4v11M12 6V2M10.5 3.5h3M8 13l-4 2v6M16 13l4 2v6M10.5 21v-3a1.5 1.5 0 0 1 3 0v3M11 11h2' },
+  townhall: { l: 'M3 21h18M5 21V11h14v10M4 11l8-4.5 8 4.5M12 6.5V2.5l3 1-3 1M9 21v-4h6v4M10.5 13.5a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0' },
+  prison: { l: 'M3 21h18M4 21V6l2-2h12l2 2v15M8 9h8v7H8zM10.7 9v7M13.3 9v7M10 21v-2h4v2' },
+  fresco: { l: 'M3 4h18v16H3zM6 16h12M6 16c1.6-.6 2.2-5 6-5s4.4 4.4 6 5M13.5 13h.01' },
+  mansion: { l: 'M3 21h18M5 21V10h14v11M4 10l3-4h10l3 4M10 21v-4a2 2 0 0 1 4 0v4M7.5 13h1M15.5 13h1M12 6V4' },
+  door: { l: 'M3 21h18M5 21V10a7 7 0 0 1 14 0v11M12 3v18M8.5 21V11a3.5 3.5 0 0 1 7 0v10M10.5 14h.01M13.5 14h.01' },
+  park: { l: 'M8 3a4 4 0 0 0-4 4c0 2.2 1.8 4 4 4s4-1.8 4-4-1.8-4-4-4zM8 11v10M13 16h8M14 16v5M20 16v5M13 19h8M4 21h5' },
+  view: { l: 'M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12zM9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0' },
+  pond: { l: 'M3 16c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0M3 20c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0M7 12V4M10 12V7M7 6.5c-1.2.8-2 2.3-2 4M17 12a2 2 0 1 0 0-.01' },
+  // Monument proposals of 22/11 (the castle and fountain were judged "pas super"). Shown side by
+  // side on reports/bleau-quest/icones.html; the chosen ones replace castle and fountain.
+  castleA: { l: 'M2 21h20M4 21V11h16v10M9 11V7.5l3-3 3 3V11M8 21c0-3 1.8-5 4-5s4 2 4 5M10.5 21c0-1.4.6-2.3 1.5-2.3s1.5.9 1.5 2.3M6.5 14h.01M17.5 14h.01' },
+  castleB: { l: 'M2 21h20M3.5 21v-8l2.5-3.5 2.5 3.5v8M15.5 21v-8l2.5-3.5 2.5 3.5v8M8.5 21v-6.5h7V21M10.5 21v-2.5a1.5 1.5 0 0 1 3 0V21M6 9.5V7M18 9.5V7M10.5 17h.01M13.5 17h.01' },
+  castleC: { l: 'M2 21h20M4 21V11h5V7.5l3-3 3 3V11h5v10M7 11V8M17 11V8M8.5 21c0-2.6 1.6-4.5 3.5-4.5s3.5 1.9 3.5 4.5M6.5 14h.01M17.5 14h.01M12 11v.01' },
+  bicorne: { l: 'M2 17h20M2 17c2.8-1 3.6-8 10-8s7.2 7 10 8M14.5 12.5a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0' },
+  fountainA: { l: 'M3 15h18M4 15c.5 3.5 3.5 6 8 6s7.5-2.5 8-6M12 15V6M12 6c-3 0-5 3-5.5 7M12 6c3 0 5 3 5.5 7M12 3v.01' },
+  fountainB: { l: 'M3 21h18M5 21c.4-2 1.2-3 2-3h10c.8 0 1.6 1 2 3M9 18v-3h6v3M12 15V9.5M11 6.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0M12 11l-3-2M15.5 6v8M15.5 6c1.5 1.5 1.5 6.5 0 8M12 11h3.5' },
+  stag: { l: 'M9 13l3 7 3-7M9 13c0-1.6 1.3-2.7 3-2.7s3 1.1 3 2.7M9.5 10.8C7.3 9.5 6 7.3 6 4M6 7.3L3.8 6.2M7.6 9.3l-2.6.4M14.5 10.8c2.2-1.3 3.5-3.5 3.5-6.8M18 7.3l2.2-1.1M16.4 9.3l2.6.4' },
+  theatreB: { l: 'M3 3h18M3 21h18M4 3v18M20 3v18M4 3.5c3.5 2 6 5.5 6 9.5 0 .9-.4 1.6-1 2L4 20M20 3.5c-3.5 2-6 5.5-6 9.5 0 .9.4 1.6 1 2l5 5' },
+  churchB: { l: 'M3 21h18M6 21V9l6-5 6 5v12M12 4V1.5M10.8 2.7h2.4M10 13a2 2 0 1 0 4 0a2 2 0 1 0-4 0M10 21v-3.5a2 2 0 0 1 4 0V21' },
 };
+
+// The comparison page (node scripts/bleau-quest-mock.js writes reports/bleau-quest/icones.html).
+const PROPOSALS = [
+  { place: 'Cour des Adieux (Napoléon)', icons: [['castle', 'Actuelle'], ['castleA', 'A. Façade et fer à cheval'], ['castleB', 'B. Pavillons à hauts toits'], ['castleC', 'C. Façade, cheminées et fer à cheval'], ['bicorne', 'D. Le bicorne']] },
+  { place: 'Jardin de Diane', icons: [['fountain', 'Actuelle'], ['fountainA', 'A. Vasque et jets'], ['fountainB', 'B. Diane et son arc'], ['stag', 'C. Le cerf']] },
+  { place: 'Théâtre municipal', icons: [['mask', 'Actuelle (masque)'], ['theatreB', 'B. Le rideau']] },
+  { place: 'Église Saint-Louis', icons: [['church', 'A. Nef et clocher'], ['churchB', 'B. Façade et rosace']] },
+  { place: 'Hôtel de ville', icons: [['townhall', 'Fronton, horloge et drapeau']] },
+  { place: 'Ancienne prison', icons: [['prison', 'Mur et barreaux']] },
+  { place: 'Fresque de Napoléon', icons: [['fresco', 'Cadre et bicorne']] },
+  { place: 'Porte du Grand Ferrare', icons: [['door', 'Porte cochère']] },
+  { place: 'Hôtel de l’Aigle Noir', icons: [['mansion', 'Demeure']] },
+  { place: 'Obélisque', icons: [['obelisk', 'Actuelle']] },
+  { place: 'Parc de Bel-Ébat (Avon)', icons: [['park', 'Arbre et banc']] },
+  { place: 'Points de vue, mares', icons: [['view', 'Point de vue'], ['pond', 'Mare']] },
+];
 
 const ICONS = {};
 for (const [k, v] of Object.entries(SET)) ICONS[k] = { l: v.l };
 
-module.exports = { ICONS };
+module.exports = { ICONS, PROPOSALS };

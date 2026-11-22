@@ -2467,6 +2467,11 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     Cinquième série : couleurs des cartes et des fiches reprises de la palette du site (teinte claire,
     icône en couleur) ; XP divisée par trois environ, niveau n à 30·n·(n−1) XP, aucun gain ne vaut
     plus d'un niveau (GDD §8).
+    Sixième série (22/11) : 31 lieux ; textes de la forêt et de Barbizon ; croix d'Augas à la place de
+    la caverne (effondrée en 1986) ; points à collecter sans texte quand on n'a pas de source ; étapes
+    de la fiche à pied, ancienne maison d'arrêt, parc de Bel-Ébat (Avon) ; plus de mention « brouillon »
+    sur les fiches (tout est provisoire, passe complète en 116d) ; icônes des monuments à choisir
+    (`reports/bleau-quest/icones.html`).
   - [ ] **116p. Emplacements des Invaders (chef de projet, sur le terrain)** : il a vu la plupart
     des 46 mosaïques en se promenant et va les relever dans les rues (rue, description, encore là
     ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la
