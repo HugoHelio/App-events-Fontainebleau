@@ -315,7 +315,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .xpchip{display:inline-block;font-size:12px;font-weight:800;background:var(--accent);color:var(--ink);border-radius:999px;padding:2px 8px;white-space:nowrap}
 .xpchip.gold{background:var(--gold);color:#fff}
 .livechip{display:inline-block;font-size:11px;font-weight:800;background:var(--live);color:#fff;border-radius:999px;padding:2px 8px;text-transform:uppercase}
-.q{display:none;gap:6px;margin-top:6px;flex-wrap:wrap}.q.on{display:flex}.q .qtext{flex-basis:100%;margin:0 0 2px;font-weight:600}.q .btn[disabled]{opacity:.45}.q .btn.right{background:#e3f1e8;border-color:#3d8b5a;color:#1f5f38;font-weight:600}.qlead{margin:10px 0 0;font-size:14px;color:#5b625d}
+.q{display:none;gap:6px;margin-top:6px;flex-wrap:wrap}.q.on{display:flex}.q .qtext{flex-basis:100%;margin:0 0 2px;font-weight:600}.q .btn[disabled]{opacity:.45}.q .btn.right{background:#e3f1e8;border-color:#3d8b5a;color:#1f5f38;font-weight:600}.q .btn.wrong{background:#fbe9e7;border-color:#c0392b;color:#a02a1e;opacity:1}.qmsg{flex-basis:100%;margin:4px 0 0;font-weight:700;font-size:15px;min-height:0}.qmsg:empty{display:none}.qmsg.ok{color:#1f7a3f}.qmsg.ko{color:#b3261e}.qlead{margin:10px 0 0;font-size:14px;color:#5b625d}
 .src{font-size:12px;color:var(--muted);font-style:italic;margin:-4px 0 8px}
 .sheet-link{font-size:13px}.q input{flex:1;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}
 .pad{padding:14px 14px 24px}
@@ -441,8 +441,10 @@ const CLIENT = String.raw`
     'Nature & Environnement': ['leaf', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['run', '#6d8bb5', 'Sport'] };
   var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
   var KEY = 'bleau-quest-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
-  var st = load(); st.answered = st.answered || {};
-  function fresh() { return { xp: 0, spots: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
+  var st = load(); st.answered = st.answered || {}; st.invaders = st.invaders || {};
+  // Every field the game reads: after « Tout remettre à zéro » (22/11) a missing one made each
+  // question throw, silently.
+  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY)); return s && s.spots ? s : fresh(); } catch (e) { return fresh(); } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
@@ -721,9 +723,19 @@ const CLIENT = String.raw`
     p.choices.forEach(function (c, i) {
       var cb = el('button', 'btn alt' + (done && i === p.answer ? ' right' : ''), (done && i === p.answer ? '✓ ' : '') + c); cb.type = 'button';
       if (done) cb.disabled = i !== p.answer;
-      else cb.onclick = function () { if (i === p.answer) onRight(); else { cb.disabled = true; toast('Pas tout à fait : regardez encore'); } };
+      else cb.onclick = function () {
+        if (i === p.answer) {
+          cb.classList.add('right'); cb.textContent = '✓ ' + c; msg.className = 'qmsg ok'; msg.textContent = 'Bonne réponse !';
+          Array.prototype.forEach.call(q.querySelectorAll('button'), function (x) { x.onclick = null; });
+          setTimeout(function () { onRight(); sheet.scrollTop = 0; }, 700);
+        } else {
+          cb.disabled = true; cb.classList.add('wrong'); cb.textContent = '✗ ' + c;
+          msg.className = 'qmsg ko'; msg.textContent = 'Pas tout à fait : regardez encore autour de vous.';
+        }
+      };
       q.appendChild(cb);
     });
+    var msg = el('p', 'qmsg'); q.appendChild(msg);
     return q;
   }
   function unlock(p, how) {
