@@ -2106,7 +2106,10 @@ function homePicks(events, today) {
  */
 function homeSeasons(events, today) {
   const soon = addDays(today, 30);
-  return THEMES.map((t) => {
+  // 22/11, project lead: in the Christmas season the band is a Christmas band; a stray tile
+  // (« Sorties champignons, 1 date ») has nothing to do there.
+  const xmas = aventSeason(today);
+  return THEMES.filter((t) => !xmas || /noel/.test(t.slug)).map((t) => {
     const open = events.filter((x) => inTheme(t, x) && x.startDate <= soon && endOf(x) >= today);
     if (!open.length) return null;
     // Hidden by index.html once the last of them is over, if the page is not regenerated first.

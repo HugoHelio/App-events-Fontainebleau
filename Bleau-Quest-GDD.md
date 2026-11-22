@@ -7,7 +7,7 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
 > Ce document décrit le jeu. Le document de conception du site fait toujours autorité pour la
 > technique, les données et les règles de confiance ; en cas de doute, c'est lui qui tranche.
 
-## Où on en est (21/11/2026, à lire en reprenant)
+## Où on en est (22/11/2026, à lire en reprenant)
 - **Nom, décidé le 21/11** : **« Fontainebleau Live Collection »**, sous la marque du site.
   « Bleau Quest » est abandonné : beaucoup de gens ne savent pas ce qu'est « Bleau ». Les noms de
   fichiers (`Bleau-Quest-GDD.md`, `scripts/bleau-quest-mock.js`) seront renommés plus tard.
