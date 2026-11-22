@@ -2477,6 +2477,9 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     visible, avant comme après la visite (GDD §9).
     Collection en badges (médailles rondes, rareté en anneau) ; profil : badges avec leur cible,
     titres à cadenas dans un cercle, e-mail et compte facultatifs dans « Ma sauvegarde » (GDD §12.1).
+    Quêtes en médailles au trait ; **l'enquête remplacée par cinq « fils de l'histoire »** (rois,
+    Napoléon, Denecourt, peintres, un cinquième à choisir) : des lieux à collecter avec leur question,
+    pas de récit ; l'enquête payante est écartée (GDD §7.3, §12.2).
   - [ ] **116p. Emplacements des Invaders (chef de projet, sur le terrain)** : il a vu la plupart
     des 46 mosaïques en se promenant et va les relever dans les rues (rue, description, encore là
     ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la

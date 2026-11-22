@@ -342,7 +342,8 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .day{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 2px}
 .quest{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;border:1px solid var(--line)}
 .quest b{color:var(--ink)}.quest p{margin:4px 0 8px;font-size:13px;color:var(--muted)}
-.quest{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;align-items:start}.qmedal{width:44px;height:44px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:22px}.qbody{min-width:0}.qextra{grid-column:1 / -1;margin-top:6px}.quest.hot{border:2px solid #d4a72c;background:#fffaf0}.btn.gold{display:block;margin:4px auto 0;background:#fff;color:#7a5a00;border:1.5px solid #d4a72c}
+.quest{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;align-items:start}.qmedal{width:44px;height:44px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:22px}.qbody{min-width:0}.qextra{grid-column:1 / -1;margin-top:6px}.fils-head p{margin:0 0 8px;font-size:13px;color:var(--muted)}.fsteps{display:flex;flex-direction:column;gap:6px}.fstep{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;background:#f7f6f2;border:1px solid var(--line);border-radius:10px;padding:6px 8px;cursor:pointer}.fdot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;background:#eceae4;color:#8a8f8b;flex:none}.fstep.half .fdot{background:#fff4d6;color:#9a6b00}.fstep.done .fdot{background:#2e7d4f;color:#fff}.ftx{min-width:0}.ftx b{display:block;font-size:13px;color:var(--ink)}.ftx small{font-size:11.5px;color:var(--muted)}.ftodo{margin:4px 0 0;font-size:12px;color:#7a5a00;font-style:italic}
+.quest.hot{border:2px solid #d4a72c;background:#fffaf0}.btn.gold{display:block;margin:4px auto 0;background:#fff;color:#7a5a00;border:1.5px solid #d4a72c}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#eef0ec;color:var(--ink);margin-right:4px}
 .badges{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .badge{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center;font-size:24px}
@@ -448,7 +449,33 @@ const CLIENT = String.raw`
   function tint(c) { return 'color-mix(in srgb, ' + c + ' 14%, #fff)'; }
   var CATS = { 'Scène & Spectacles': ['mask', '#b8707d', 'Scène'], 'Culture & Ateliers': ['palette', '#9282b5', 'Culture'],
     'Nature & Environnement': ['leaf', '#6f9e80', 'Nature'], 'Sport & Outdoor': ['run', '#6d8bb5', 'Sport'] };
-  var CHAPTER = ['cour-des-adieux', 'jardin-de-diane', 'theatre'];
+  // 22/11, project lead: no investigation ("ça fait un peu jeu de rôle"), no content for sale.
+  // Instead five threads of history, in the order of history: each links real places; a step is
+  // done when the place is collected AND its question answered. Any order; a thread completed:
+  // +FIL_XP and its badge. First draft: only places and facts already on the cards; a missing step
+  // is said, never made up.
+  var FIL_XP = 60;
+  var FILS = [
+    { id: 'rois', name: 'Les rois à Fontainebleau', icon: 'castle', color: '#0f8f9e',
+      intro: 'De Saint Louis à Louis XVI : les traces des rois dans la ville, au château et dans la forêt de leurs chasses.',
+      steps: ['saint-louis', 'cour-des-adieux', 'jardin-de-diane', 'grand-veneur', 'obelisque'],
+      todo: 'François Ier : une étape à ajouter (la porte Dorée, la galerie François Ier ?).' },
+    { id: 'napoleon', name: 'Les Napoléon', icon: 'fresco', color: '#4a5bb8',
+      intro: 'Napoléon Ier, qui fait ses adieux à sa Vieille Garde en 1814, et Napoléon III, qui inaugure le Fort l’Empereur en 1853.',
+      steps: ['cour-des-adieux', 'fresque-napoleon', 'aigle-noir', 'tour-denecourt'] },
+    { id: 'denecourt', name: 'Denecourt, le Sylvain', icon: 'tree', color: '#27503a',
+      intro: 'L’homme qui a tracé les sentiers bleus, creusé des grottes et fait bâtir une tour, au XIXᵉ siècle.',
+      steps: ['mont-ussy', 'grotte-serment', 'tour-denecourt', 'rocher-cassepot', 'croix-d-augas'] },
+    { id: 'peintres', name: 'Les peintres de Barbizon', icon: 'palette', color: '#b8707d',
+      intro: 'Théodore Rousseau et les peintres venus peindre la forêt, qui ont obtenu sa protection en 1853.',
+      steps: ['musee-barbizon', 'apremont'],
+      todo: 'Deux ou trois étapes à ajouter (Barbizon, le Bas-Bréau, Chailly ?).' },
+    { id: 'cinquieme', name: 'Cinquième fil, à choisir', icon: 'star', color: '#8a8f8b',
+      intro: 'Pistes : le grès et les carriers (les pavés de Paris), la forêt des chasses royales, l’histoire du bloc.',
+      steps: [] },
+  ];
+  var CHAPTER = FILS[0].steps; // numbered gold steps on the map (« Quêtes » layer): the first thread
+  function filStep(id) { var p = SPOTS.filter(function (x) { return x.id === id; })[0]; return p && st.spots[id] && (!p.q || st.answered[id]); }
   var KEY = 'bleau-quest-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
   var st = load(); st.answered = st.answered || {}; st.invaders = st.invaders || {};
   // Every field the game reads: after « Tout remettre à zéro » (22/11) a missing one made each
@@ -526,6 +553,9 @@ const CLIENT = String.raw`
       var all = SPOTS.filter(function (p) { return p.set === s; });
       if (all.length < SET_MIN_PLACES) return; // a one- or two-place set is no achievement
       if (!st.sets[s] && all.every(function (p) { return st.spots[p.id]; })) { st.sets[s] = true; gain(SET_XP, 'série complète : ' + SETS[s]); }
+    });
+    FILS.forEach(function (fl) {
+      if (fl.steps.length && !st.sets['fil-' + fl.id] && fl.steps.every(filStep)) { st.sets['fil-' + fl.id] = true; gain(FIL_XP, 'fil complet : ' + fl.name); }
     });
     var cats = {}; Object.keys(st.events).forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
     if (!st.sets.cats && Object.keys(CATS).every(function (c) { return cats[c]; })) { st.sets.cats = true; gain(ALL_CATS_XP, 'quatre genres de sorties'); }
@@ -696,7 +726,7 @@ const CLIENT = String.raw`
       // answer opens the story (+ a small bonus); a place without a question shows its story.
       if (p.q) {
         var done = !!st.answered[p.id];
-        var q2 = questionBlock(p, function () { st.answered[p.id] = 1; save(); gain(QUESTION_XP, 'bonne observation'); renderAll(); openSpot(p); }, done);
+        var q2 = questionBlock(p, function () { st.answered[p.id] = 1; save(); gain(QUESTION_XP, 'bonne observation'); checkSets(); renderAll(); openSpot(p); }, done);
         q2.classList.add('on'); b.appendChild(q2);
       }
       if (p.text && (!p.q || st.answered[p.id])) {
@@ -937,7 +967,29 @@ const CLIENT = String.raw`
     quest(root, ['calendar', '#4a5bb8'], 'La quête de la semaine', ['Annoncée le jeudi', '+40 XP'], 'Passez à deux sorties de l’agenda d’ici dimanche (' + EVENTS.length + ' sur la carte).', evN, 2);
     quest(root, ['mask', '#b8707d'], 'Quatre genres de sorties', ['+' + ALL_CATS_XP + ' XP', 'Badge'], 'Allez à quatre sorties de l’agenda, une de chaque genre : un spectacle, un atelier ou une expo, une sortie nature, une activité sportive.', Object.keys(cats).length, 4);
     root.appendChild(el('h2', null, 'Toujours là'));
-    quest(root, ['book', SETCOL.napoleon], 'L’enquête — chapitre 1', ['Quête principale', '+60 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
+    var filsDone = FILS.filter(function (fl) { return st.sets['fil-' + fl.id]; }).length;
+    var head = el('div', 'fils-head');
+    head.appendChild(el('p', null, 'Cinq fils, dans l’ordre de l’histoire. Chaque fil relie des lieux : collectez-les et répondez à leur question, dans l’ordre que vous voulez. Un fil complet rapporte +' + FIL_XP + ' XP et son badge.'));
+    var hp = el('div', 'prog'), hi = el('i'); hi.style.width = Math.round(100 * filsDone / FILS.length) + '%'; hp.appendChild(hi); head.appendChild(hp);
+    head.appendChild(el('span', 'meta', filsDone + ' / ' + FILS.length + ' fils complets'));
+    quest(root, ['book', SETCOL.napoleon], 'Les fils de l’histoire', ['Quête principale', '5 fils'], '', 0, 0, head);
+    FILS.forEach(function (fl, k) {
+      var list = el('div', 'fsteps');
+      fl.steps.forEach(function (id) {
+        var p = SPOTS.filter(function (x) { return x.id === id; })[0]; if (!p) return;
+        var got = st.spots[id], done = filStep(id);
+        var row = el('button', 'fstep' + (done ? ' done' : got ? ' half' : '')); row.type = 'button';
+        var c = el('span', 'fdot'); c.appendChild(ico(done ? 'check' : p.icon)); row.appendChild(c);
+        var tx = el('span', 'ftx'); tx.appendChild(el('b', null, p.name));
+        tx.appendChild(el('small', null, done ? 'collecté, question résolue' : got ? 'collecté : reste la question' : (p.q ? 'à collecter, avec sa question' : 'à collecter')));
+        row.appendChild(tx);
+        row.onclick = function () { tab('map'); map.setView([p.lat, p.lng], 15); openSpot(p); };
+        list.appendChild(row);
+      });
+      if (fl.todo) list.appendChild(el('p', 'ftodo', fl.todo));
+      var n = fl.steps.filter(filStep).length;
+      quest(root, [fl.icon, fl.color], (k + 1) + '. ' + fl.name, fl.steps.length ? [fl.steps.length + ' étapes', '+' + FIL_XP + ' XP'] : ['À écrire'], fl.intro, n, fl.steps.length, list);
+    });
     quest(root, ['tree', SETCOL.denecourt], 'Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(ofSet('denecourt')), ofSet('denecourt').length);
     var cl = el('div'); SPOTS.filter(function (p) { return p.set === 'grimpe'; }).forEach(function (p) { cl.appendChild(el('p', 'meta', (st.spots[p.id] ? '✓ ' : '○ ') + p.name)); });
     quest(root, ['climb', SETCOL.grimpe], '5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+60 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(ofSet('grimpe')), 5, cl);
