@@ -342,7 +342,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .day{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 2px}
 .quest{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;border:1px solid var(--line)}
 .quest b{color:var(--ink)}.quest p{margin:4px 0 8px;font-size:13px;color:var(--muted)}
-.quest.hot{border:2px solid var(--live)}
+.quest{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;align-items:start}.qmedal{width:44px;height:44px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:22px}.qbody{min-width:0}.qextra{grid-column:1 / -1;margin-top:6px}.quest.hot{border:2px solid #d4a72c;background:#fffaf0}.btn.gold{display:block;margin:4px auto 0;background:#fff;color:#7a5a00;border:1.5px solid #d4a72c}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#eef0ec;color:var(--ink);margin-right:4px}
 .badges{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .badge{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center;font-size:24px}
@@ -916,47 +916,54 @@ const CLIENT = String.raw`
   }
 
   // ── Quests ──
-  function quest(root, title, tags, text, done, total, extra, hot) {
-    var q = el('div', 'quest' + (hot ? ' hot' : '')); q.appendChild(el('b', null, title)); q.appendChild(el('br'));
-    tags.forEach(function (t) { q.appendChild(el('span', 'tag', t)); });
-    q.appendChild(el('p', null, text));
-    if (total) { var pr = el('div', 'prog'), pi = el('i'); pi.style.width = Math.round(100 * Math.min(done, total) / total) + '%'; pr.appendChild(pi); q.appendChild(pr); q.appendChild(el('span', 'meta', Math.min(done, total) + ' / ' + total)); }
-    if (extra) q.appendChild(extra);
-    root.appendChild(q);
-  }
+  // 22/11: each quest has a medal (the line icon in a tinted circle, like the collection and the
+  // profile) instead of an emoji; the event of the day in gold, not the live red ("trop flashy").
   function renderQuests() {
     var root = $('quests'); root.textContent = '';
     var has = function (ids) { return ids.filter(function (i) { return st.spots[i]; }).length; };
+    var ofSet = function (s) { return SPOTS.filter(function (p) { return p.set === s; }).map(function (p) { return p.id; }); };
     var evN = Object.keys(st.events).length;
     var cats = {}; Object.keys(st.events).forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
     if (st.team) {
-      root.appendChild(el('h2', null, '👥 Équipe ' + st.team));
-      var t = el('div', 'quest hot'); t.appendChild(el('b', null, 'Classement de la session (maquette)'));
-      [['Vous', st.xp], ['Équipe B', 640], ['Équipe C', 410]].sort(function (a, b) { return b[1] - a[1]; }).forEach(function (r, i) { t.appendChild(el('p', null, (i + 1) + '. ' + r[0] + ' — ' + r[1] + ' XP')); });
+      root.appendChild(el('h2', null, 'Équipe ' + st.team));
+      var t = el('div'); [['Vous', st.xp], ['Équipe B', 640], ['Équipe C', 410]].sort(function (a, b) { return b[1] - a[1]; }).forEach(function (r, i) { t.appendChild(el('p', 'meta', (i + 1) + '. ' + r[0] + ' — ' + r[1] + ' XP')); });
       t.appendChild(el('div', 'todo', 'Le mode équipe demande un serveur (classement partagé) : M3, produit vendu aux séminaires, écoles et hôtels.'));
-      root.appendChild(t);
+      quest(root, ['team', '#4a5bb8'], 'Classement de la session (maquette)', [], '', 0, 0, t);
     }
-    root.appendChild(el('h2', null, '🔴 Cette semaine'));
+    root.appendChild(el('h2', null, 'Cette semaine'));
     var fx = null;
-    if (featured) { fx = el('button', 'btn live', 'Voir l’événement du jour'); fx.type = 'button'; fx.onclick = function () { tab('map'); map.setView([featured.lat, featured.lng], 15); openEvent(featured); }; }
-    quest(root, '★ L’événement du jour', ['+' + FEATURED_XP + ' XP', 'Change chaque jour'], featured ? featured.title + ' — ' + featured.place : 'Pas d’événement aujourd’hui à moins de 12 km.', featured && st.events[featured.id] ? 1 : 0, 1, fx, true);
-    quest(root, '📅 La quête de la semaine', ['Annoncée le jeudi', '+40 XP'], 'Passez à deux sorties de l’agenda d’ici dimanche (' + EVENTS.length + ' sur la carte).', evN, 2);
-    quest(root, '🎭 Quatre genres de sorties', ['+' + ALL_CATS_XP + ' XP', 'Badge'], 'Allez à quatre sorties de l’agenda, une de chaque genre : un spectacle, un atelier ou une expo, une sortie nature, une activité sportive.', Object.keys(cats).length, 4);
-    root.appendChild(el('h2', null, '📜 Toujours là'));
-    quest(root, '📜 L’enquête — chapitre 1', ['Quête principale', '+60 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
-    quest(root, '🔵 Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(SPOTS.filter(function (p) { return p.set === 'denecourt'; }).map(function (p) { return p.id; })), 5);
+    if (featured) { fx = el('button', 'btn gold', 'Voir l’événement du jour'); fx.type = 'button'; fx.onclick = function () { tab('map'); map.setView([featured.lat, featured.lng], 15); openEvent(featured); }; }
+    quest(root, ['star', '#b8860b'], 'L’événement du jour', ['+' + FEATURED_XP + ' XP', 'Change chaque jour'], featured ? featured.title + ' — ' + featured.place : 'Pas d’événement aujourd’hui à moins de 12 km.', featured && st.events[featured.id] ? 1 : 0, 1, fx, true);
+    quest(root, ['calendar', '#4a5bb8'], 'La quête de la semaine', ['Annoncée le jeudi', '+40 XP'], 'Passez à deux sorties de l’agenda d’ici dimanche (' + EVENTS.length + ' sur la carte).', evN, 2);
+    quest(root, ['mask', '#b8707d'], 'Quatre genres de sorties', ['+' + ALL_CATS_XP + ' XP', 'Badge'], 'Allez à quatre sorties de l’agenda, une de chaque genre : un spectacle, un atelier ou une expo, une sortie nature, une activité sportive.', Object.keys(cats).length, 4);
+    root.appendChild(el('h2', null, 'Toujours là'));
+    quest(root, ['book', SETCOL.napoleon], 'L’enquête — chapitre 1', ['Quête principale', '+60 XP'], 'Le fil rouge historique, en chapitres répartis sur les lieux (numéros dorés sur la carte). Sujet à choisir (GDD §16).', has(CHAPTER), 3);
+    quest(root, ['tree', SETCOL.denecourt], 'Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(ofSet('denecourt')), ofSet('denecourt').length);
     var cl = el('div'); SPOTS.filter(function (p) { return p.set === 'grimpe'; }).forEach(function (p) { cl.appendChild(el('p', 'meta', (st.spots[p.id] ? '✓ ' : '○ ') + p.name)); });
-    quest(root, '🧗 5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+60 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(SPOTS.filter(function (p) { return p.set === 'grimpe'; }).map(function (p) { return p.id; })), 5, cl);
-    root.appendChild(el('h2', null, '🎄 De saison'));
-    quest(root, '🎄 Les marchés de Noël', ['Saison', 'Nov.-déc.', '+5 XP par sortie'], 'Deux marchés ou rendez-vous de Noël (' + SEASON.length + ' sur la carte, couche Noël).', Object.keys(st.events).filter(function (id) { var e = byId(id); return e && e.season; }).length, 2);
-    var adv = el('a', null, 'Le calendrier de l’Avent du site →'); adv.href = 'https://fontainebleaulive.fr/calendrier-de-l-avent/'; adv.target = '_blank'; adv.rel = 'noopener';
-    quest(root, '🦉 Une case par jour', ['Décembre'], 'Le calendrier de l’Avent devient une quête : chaque case ouverte rapporte un peu d’XP.', 0, 0, adv);
+    quest(root, ['climb', SETCOL.grimpe], '5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+60 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(ofSet('grimpe')), 5, cl);
+    root.appendChild(el('h2', null, 'De saison'));
+    quest(root, ['xmas', '#b3261e'], 'Les marchés de Noël', ['Saison', 'Nov.-déc.', '+5 XP par sortie'], 'Deux marchés ou rendez-vous de Noël (' + SEASON.length + ' sur la carte, couche Noël).', Object.keys(st.events).filter(function (id) { var e = byId(id); return e && e.season; }).length, 2);
+    var adv = el('a', null, 'Le calendrier de l’Avent du site'); adv.href = 'https://fontainebleaulive.fr/calendrier-de-l-avent/'; adv.target = '_blank'; adv.rel = 'noopener';
+    quest(root, ['gift', '#b8860b'], 'Une case par jour', ['Décembre'], 'Le calendrier de l’Avent devient une quête : chaque case ouverte rapporte un peu d’XP.', 0, 0, adv);
     var eco = el('button', 'btn soft', st.eco ? '✓ Fait' : 'J’ai ramassé un déchet'); eco.type = 'button'; eco.disabled = st.eco;
     eco.onclick = function () { st.eco = true; save(); gain(ECO_XP, 'éco-geste'); renderAll(); };
-    quest(root, '🌱 Éco-geste', ['Badge', 'Sur l’honneur', 'Toute l’année'], 'Ramasser un déchet en forêt et le rapporter (idée reprise de Tèrra Aventura).', st.eco ? 1 : 0, 1, eco);
-    quest(root, '🦌 Le brame', ['Revient en septembre'], 'Écouter le brame depuis un point d’écoute autorisé, en silence. Quête de saison.', 0, 0);
-    quest(root, '🍄 Les champignons', ['Revient en octobre'], 'Une sortie mycologique de l’agenda. Jamais de cueillette conseillée par le jeu.', 0, 0);
+    quest(root, ['leaf', SETCOL.foret], 'Éco-geste', ['Badge', 'Sur l’honneur', 'Toute l’année'], 'Ramasser un déchet en forêt et le rapporter (idée reprise de Tèrra Aventura).', st.eco ? 1 : 0, 1, eco);
+    quest(root, ['stag', SETCOL.chateau], 'Le brame', ['Revient en septembre'], 'Écouter le brame depuis un point d’écoute autorisé, en silence. Quête de saison.', 0, 0);
+    quest(root, ['mushroom', '#b8707d'], 'Les champignons', ['Revient en octobre'], 'Une sortie mycologique de l’agenda. Jamais de cueillette conseillée par le jeu.', 0, 0);
   }
+  function quest(root, icon, title, tags, text, done, total, extra, hot) {
+    var q = el('div', 'quest' + (hot ? ' hot' : ''));
+    var m = el('span', 'qmedal'); m.style.background = tint(icon[1]); m.style.color = icon[1]; m.style.borderColor = icon[1]; m.appendChild(ico(icon[0])); q.appendChild(m);
+    var bx = el('div', 'qbody'); bx.appendChild(el('b', null, title)); if (tags.length) bx.appendChild(el('br'));
+    tags.forEach(function (t) { bx.appendChild(el('span', 'tag', t)); });
+    if (text) bx.appendChild(el('p', null, text));
+    if (total) { var pr = el('div', 'prog'), pi = el('i'); pi.style.width = Math.round(100 * Math.min(done, total) / total) + '%'; pr.appendChild(pi); bx.appendChild(pr); bx.appendChild(el('span', 'meta', Math.min(done, total) + ' / ' + total)); }
+    q.appendChild(bx);
+    if (extra) { var ex = el('div', 'qextra'); ex.appendChild(extra); q.appendChild(ex); }
+    root.appendChild(q);
+  }
+
+
 
   // ── Profile: account and (future) shop ──
   function renderMe() {
