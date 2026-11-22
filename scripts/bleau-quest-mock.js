@@ -26,6 +26,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const G = require('./generate-pages');
 const { ICONS, PROPOSALS } = require('./bleau-quest-icons');
+const { AVATAR_ART, FRAME_ART } = require('./bleau-quest-avatars');
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'reports', 'bleau-quest');
@@ -288,11 +289,11 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .lvl{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--ink);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
 .who{flex:1;min-width:0}.who b{display:block;font-size:14px}.bar{height:7px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .6s}
 .xp{font-size:12px;opacity:.85}.teamchip{font-size:11px;font-weight:700;background:rgba(255,255,255,.15);padding:3px 8px;border-radius:999px;display:none}.teamchip.on{display:inline-block}
-.mebtn{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.15);font-size:18px;cursor:pointer;flex:none}
+.mebtn{width:38px;height:38px;border-radius:50%;border:0;background:none;padding:0;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center}
 .cards.mini{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.cards.mini .card{aspect-ratio:1;font-size:16px}.cards.mini .card small{font-size:8px;padding:2px}
 .ico{display:inline-flex;width:1em;height:1em;vertical-align:-.15em}.ico svg{width:100%;height:100%;display:block}
 .pin,.evt,.art,.ev-row .ic{color:#fff}.pin .ico{font-size:16px}.evt .ico{font-size:13px}.evt.star .ico{font-size:16px}.art .ico{font-size:64px}.ev-row .ic .ico{font-size:20px}
-.card .ico{font-size:30px;margin-bottom:4px}.lgrid .ico{font-size:20px;display:block;margin:0 auto 2px}.lbtn .ico{font-size:22px;color:var(--ink)}.mebtn .ico{font-size:20px;color:#fff}
+.card .ico{font-size:30px;margin-bottom:4px}.lgrid .ico{font-size:20px;display:block;margin:0 auto 2px}.lbtn .ico{font-size:22px;color:var(--ink)}.mebtn .av-in .ico{font-size:18px;color:var(--ink)}
 .pin.inv{width:26px;height:26px;background:#2b2d42;font-size:14px}.pin.inv .ico{font-size:14px}
 .screen{flex:1;position:relative;overflow:auto;display:none}.screen.on{display:block}
 #map{position:absolute;inset:0;background:#e8e4da;z-index:0}
@@ -385,9 +386,23 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .badge small{display:block;font-size:10px;color:var(--muted)}.badge.off{filter:grayscale(1);opacity:.4}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .stat{background:#fff;border-radius:12px;padding:10px;text-align:center;border:1px solid var(--line)}.stat b{display:block;font-size:20px;color:var(--ink)}
+.mehead{display:flex;align-items:center;gap:16px;margin:4px 0 12px}.mehead h2{margin:0 0 4px}.tag.mec{background:#f6e6ea;color:#8f4a58}
+.av{position:relative;width:42px;height:42px;display:inline-flex;flex:none;font-size:22px;margin:7px}.av.big{width:76px;height:76px;font-size:40px;margin:14px}.av.top{width:32px;height:32px;font-size:18px;margin:0}.av-in{position:absolute;inset:0;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#eef0ec;color:var(--ink)}.av-in svg{width:100%;height:100%;display:block}.av-fr{position:absolute;inset:-22%;pointer-events:none}.av-fr svg{width:100%;height:100%;display:block;overflow:visible}
+.av.fr-simple .av-in{box-shadow:0 0 0 2px #fff,0 0 0 4px #1f2622}
+.pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 4px;margin:6px 0 10px}.pick button{background:none;border:0;padding:8px 0 4px;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;border-radius:12px}.pick button small{font-size:10.5px;color:var(--ink)}.pick button[aria-pressed=true]{background:#fff4d6}.pick button[aria-pressed=true] small{font-weight:800}.pick button.locked .av{opacity:.5}.pick .lk{position:absolute;top:2px;right:6px;width:18px;height:18px;border-radius:50%;background:#fff;color:#7b807b;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.btn.wide{display:block;width:100%;margin-top:8px}.linkbtn{display:block;margin:8px auto 0;background:none;border:0;font:inherit;font-size:13px;color:var(--muted,#5b625d);text-decoration:underline;cursor:pointer}
+.shop-rule{font-size:13px;color:var(--muted,#5b625d);margin:-2px 0 12px}
+.sblock{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}.shead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;padding:12px;font:inherit;color:inherit;text-align:left;cursor:pointer}.stx{flex:1;min-width:0}.stx b{display:block;font-size:15.5px}.stx small{display:block;font-size:12.5px;color:var(--muted,#5b625d)}.chip{flex:none;font-weight:800;font-size:13px;background:#fff4d6;color:#7a5a00;border-radius:999px;padding:3px 10px}.chev{flex:none;font-size:20px;color:#7b807b;transition:transform .2s;display:flex}.sblock.open .chev{transform:rotate(180deg)}.sbody{padding:0 12px 12px;border-top:1px solid var(--line)}.sbody>.sh4:first-child,.sbody>.strip:first-child,.sbody>.lead2:first-child,.sbody>.meta:first-child{margin-top:12px}.qmedal.sm{width:34px;height:34px;font-size:18px;flex:none}.soon{margin-left:auto;font-size:11px;font-weight:700;background:#eceae4;color:#5b625d;border-radius:999px;padding:2px 8px}.lead2{margin:0 0 10px;font-size:13.5px;color:var(--muted,#5b625d)}.sh4{margin:10px 0 6px;font-size:13px}
+.gq{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;width:100%;text-align:left;font:inherit;background:#f7f6f2;border:1.5px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;cursor:pointer;color:inherit}.gq .qmedal{width:40px;height:40px;font-size:20px}.gq[aria-pressed=true]{background:#fff;border-color:#1f2622}.gqb{min-width:0}.gqb b{display:block;font-size:14px}.gqb small{display:block;font-size:12px;color:var(--muted,#5b625d)}.gpt{display:block;font-size:12.5px;color:var(--ink);padding-left:12px;position:relative;margin-top:2px}.gpt::before{content:'•';position:absolute;left:2px}
+.gsteps{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.gsteps span{font-size:11px;background:#eceae4;border-radius:999px;padding:2px 7px}.gsteps span.ok{background:#e3f1e8;color:#1f7a3f}
+.lb{display:flex;flex-direction:column;gap:6px}.lbrow{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 10px;border-radius:10px;background:#f7f6f2;border:1px solid var(--line)}.lbrow.mine{background:#fffaf0;border-color:#d4a72c}.lbrow .rk{font-weight:800;text-align:center}.lbrow b{display:block;font-size:14px}.lbrow small{font-size:11.5px;color:var(--muted,#5b625d)}.lbrow .pts{font-weight:800}.lbrow.bump{animation:bump 1.4s}@keyframes bump{0%{background:#cfe9d8}100%{background:#f7f6f2}}
+.cmp h4{margin:10px 0 4px;font-size:12.5px}.cbar{display:grid;grid-template-columns:96px minmax(0,1fr) 38px;gap:6px;align-items:center;font-size:12px;margin:3px 0}.cbar>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cbar .tr{height:8px;background:#eceae4;border-radius:9px;overflow:hidden}.cbar .tr i{display:block;height:100%;border-radius:9px;transition:width .6s}.cbar .cv{text-align:right;color:var(--muted,#5b625d)}
+.recap{border:1px dashed #b9b3a6;border-radius:12px;padding:12px;background:#fdfcf9;font-size:13px;margin-top:8px}.recap h4{margin:0 0 2px;font-size:15px}.recap ol{margin:4px 0 8px;padding-left:20px}.recap p{margin:6px 0}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tier{font:inherit;background:#fff;border:1.5px solid #1f2622;border-radius:12px;padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink)}.tier small{font-size:12px;color:var(--muted,#5b625d)}.tier b{font-size:20px}.smedal{width:48px;height:48px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:24px;color:#b8707d;background:color-mix(in srgb,#b8707d 14%,#fff);border:2.5px solid #b8707d}.smedal.off{color:#a3a7a2;background:#f1efea;border:2.5px dashed #c9c5bc}.srow{display:flex;align-items:center;gap:14px}.srow p{margin:0;font-size:13.5px}.okline{color:#1f7a3f;font-weight:700;margin:10px 0 0}
+.strip{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 10px}.strip .av{width:38px;height:38px;font-size:20px;margin:8px}.fw{display:flex;flex-direction:column;align-items:center;gap:6px}.fw small{font-size:10.5px}
 .offer{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px}
 .offer .ic{font-size:24px}.offer b{color:var(--ink)}.offer p{margin:2px 0 0;font-size:13px;color:var(--muted)}.offer .price{margin-left:auto;font-weight:800;color:var(--ink);white-space:nowrap}
-.toast{position:absolute;z-index:1200;left:50%;top:70px;transform:translate(-50%,-20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
+.toast{position:absolute;z-index:1200;left:50%;top:70px;transform:translate(-50%,-20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:14px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;width:max-content;max-width:calc(100% - 32px);text-align:center;line-height:1.35}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .levelup{position:absolute;inset:0;z-index:1100;background:rgba(29,59,41,.92);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
 .levelup.on{display:flex}.levelup .n{font-size:72px;font-weight:900;color:var(--accent)}
@@ -414,7 +429,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <div class="notes">
 <h1>Fontainebleau Live Collection — maquette M0 (v3)</h1>
 <p><b>Ce qui est réel</b> : les positions des lieux (OpenStreetMap) ; la couche <b>Événements</b>, ${week.length} sorties de la semaine du ${G.frDate(today)} dans la zone de l’agenda, montrées à moins de ${EVENT_KM} km <b>du joueur</b> (la portée le suit) ; la couche <b>Saison</b>, ${season.length} rendez-vous de Noël des ${SEASON_DAYS} prochains jours. Toutes confirmées par une source lue, tirées de <code>data.json</code>.</p>
-<p><b>Ce qui ne l’est pas</b> : textes, questions, barème d’XP, boutique (rien n’est vendu), style graphique. Les 5 sites de grimpe sont une proposition à valider avec des grimpeurs.</p>
+<p><b>Ce qui ne l’est pas</b> : textes, questions, barème d’XP, boutique (rien n’est payé : un geste débloque ; les équipes du classement sont fictives), style graphique. Les 5 sites de grimpe sont une proposition à valider avec des grimpeurs.</p>
 <p><b>Essayer</b> : le parcours d’entrée s’ouvre au premier lancement. Puis le bouton des couches (en haut à droite), le bandeau « en direct », un événement, un lieu ; « Simuler ma position » puis touchez la carte pour essayer le GPS.</p>
 <p><button type="button" id="replay">Revoir l’accueil</button><button type="button" id="reset">Tout remettre à zéro</button></p>
 <p>Fenêtre étroite (moins de 520 px) : la maquette prend tout l’écran, comme sur un téléphone.</p>
@@ -459,6 +474,7 @@ var EVENTS_ALL = ${inline(week)};
 var SEASON_ALL = ${inline(season)};
 var RANGE = ${inline({ events: EVENT_KM * 1000, season: SEASON_KM * 1000, centre: CENTRE })};
 var ICONS = ${inline(ICONS)};
+var AVATAR_ART = ${inline(AVATAR_ART)}, FRAME_ART = ${inline(FRAME_ART)};
 var TODAY = ${inline(today)};
 ${CLIENT}
 </script>
@@ -509,11 +525,39 @@ const CLIENT = String.raw`
   ];
   var CHAPTER = FILS[0].steps; // numbered gold steps on the map (« Quêtes » layer): the first thread
   function filStep(id) { var p = SPOTS.filter(function (x) { return x.id === id; })[0]; return p && st.spots[id] && (!p.q || st.answered[id]); }
+  // 22/11, shop session with the project lead: services for groups and cosmetics, never content.
+  // Three ready-made group quests: the town centre (the « Fontainebleau à pied » walk sheet), the
+  // forest north of the town, Barbizon (the bike sheet's « piste des brigands » side). Loops still
+  // to be walked and measured; the distance shown is between steps, as the crow flies.
+  // 22/11 feedback: a short card per quest (time, distance, two bullets), never the list of steps:
+  // the steps are what the group buys. Loops to walk and measure, the forest one to show the ONF.
+  var GROUP_QUESTS = [
+    { id: 'ville', name: 'Le centre-ville, à pied', icon: 'castle', color: '#9247a0', dur: '2 h 30',
+      pts: ['7 étapes de la fiche « Fontainebleau à pied »', '4 mosaïques d’Invader en bonus'],
+      steps: ['cour-des-adieux', 'aigle-noir', 'theatre', 'fresque-napoleon', 'grand-ferrare', 'saint-louis', 'hotel-de-ville'] },
+    { id: 'foret', name: 'La forêt, hauteurs de la Solle', icon: 'tower', color: '#27503a', dur: '3 h',
+      pts: ['5 étapes sur les sentiers bleus de Denecourt', 'Au nord de la ville'],
+      steps: ['mont-ussy', 'croix-d-augas', 'croix-du-calvaire', 'tour-denecourt', 'rocher-cassepot'] },
+    { id: 'barbizon', name: 'Barbizon et ses peintres', icon: 'palette', color: '#b8707d', dur: '2 h 30',
+      pts: ['5 étapes, du musée aux gorges d’Apremont', 'Sur les pas des peintres'],
+      steps: ['musee-barbizon', 'medaillon-millet-rousseau', 'bas-breau', 'caverne-des-brigands', 'apremont'] },
+  ];
+  // Demo teams for the live leaderboard (made up, they move on their own while the shop is open)
+  var DEMO_TEAMS = [{ name: 'Les Cerfs', found: 4, correct: 4, ago: 3 }, { name: 'Les Chouettes', found: 3, correct: 3, ago: 6 }, { name: 'Les Sangliers', found: 2, correct: 1, ago: 1 }];
+  var DEMO_CODE = 'DEMO-SEMINAIRE';
+  // Collector pack (one purchase): avatars and profile frames, nothing else. [id, label, in pack]
+  // 22/11 feedback (« plus vivant, de vrais dessins ») : the pack avatars are coloured drawings
+  // (scripts/bleau-quest-avatars.js); the three free ones stay line icons.
+  var AVATARS = [['user', 'Promeneur', 0], ['tree', 'Arbre', 0], ['leaf', 'Feuille', 0], ['renard', 'Renard', 1], ['chouette', 'Chouette', 1],
+    ['ecureuil', 'Écureuil', 1], ['cepe', 'Cèpe', 1], ['bicorne', 'Napoléon', 1], ['bloc', 'Bloc', 1]];
+  var FRAMES = [['none', 'Sans', 0], ['simple', 'Simple', 0], ['or', 'Or', 1], ['feuillage', 'Feuillage', 1], ['gravure', 'Gravure', 1], ['gres', 'Grès', 1]];
+  var PACK_PRICE = '2,99 €'; // indicative
   var KEY = 'bleau-quest-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
   var st = load(); st.answered = st.answered || {}; st.invaders = st.invaders || {};
+  st.avatar = st.avatar || 'user'; st.frame = st.frame || 'none'; st.gq = st.gq || 'ville';
   // Every field the game reads: after « Tout remettre à zéro » (22/11) a missing one made each
   // question throw, silently.
-  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '' }; }
+  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, eco: false, onboarded: false, profile: '', likes: [], team: '', geo: '', mecene: false, pack: false, avatar: 'user', frame: 'none', gq: 'ville' }; }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY)); return s && s.spots ? s : fresh(); } catch (e) { return fresh(); } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
@@ -561,6 +605,18 @@ const CLIENT = String.raw`
     $('xpbar').style.width = Math.round(100 * (st.xp - a) / (b - a)) + '%';
     $('xptxt').textContent = n >= MAX_LEVEL ? st.xp + ' XP · niveau maximum' : st.xp + ' XP · niveau ' + (n + 1) + ' à ' + b;
     var tc = $('teamchip'); tc.textContent = st.team ? '👥 ' + st.team : ''; tc.classList.toggle('on', !!st.team);
+    // 22/11: the profile button shows the player's avatar and frame (collector pack)
+    var mb = $('mebtn'); mb.textContent = ''; mb.appendChild(avEl(st.avatar, st.frame, 'top'));
+  }
+  // An avatar: a round clip with a line icon (free) or a drawing (pack), and its frame drawn around.
+  // Fixed markup only (scripts/bleau-quest-avatars.js), never from the data.
+  function avEl(id, frame, size) {
+    var a = el('span', 'av' + (size ? ' ' + size : '')), inn = el('span', 'av-in'), art = AVATAR_ART[id];
+    if (art) { inn.style.background = art.bg; inn.innerHTML = '<svg viewBox="0 0 64 64" aria-hidden="true">' + art.svg + '</svg>'; } else inn.appendChild(ico(id));
+    a.appendChild(inn);
+    if (frame === 'simple') a.classList.add('fr-simple');
+    else if (FRAME_ART[frame]) { var f = el('span', 'av-fr'); f.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true">' + FRAME_ART[frame] + '</svg>'; a.appendChild(f); }
+    return a;
   }
   // 21/11: gains that come together are listed together (a hidden "+40 série complète" made a
   // "+15 XP" answer look like a level-up bug).
@@ -1053,7 +1109,10 @@ const CLIENT = String.raw`
   function renderMe() {
     var root = $('me'); root.textContent = '';
     var n = levelOf(st.xp);
-    root.appendChild(el('h2', null, titleOf(n) + ' · niveau ' + n));
+    var head = el('div', 'mehead'); head.appendChild(avEl(st.avatar, st.frame, 'big'));
+    var hx = el('div'); hx.appendChild(el('h2', null, titleOf(n) + ' · niveau ' + n));
+    if (st.mecene) hx.appendChild(el('span', 'tag mec', 'Mécène'));
+    head.appendChild(hx); root.appendChild(head);
     var stats = el('div', 'stats');
     [[Object.keys(st.spots).length, 'lieux'], [Object.keys(st.events).length, 'souvenirs'], [st.xp, 'XP']].forEach(function (x) { var s = el('div', 'stat'); s.appendChild(el('b', null, String(x[0]))); s.appendChild(document.createTextNode(x[1])); stats.appendChild(s); });
     root.appendChild(stats);
@@ -1074,6 +1133,8 @@ const CLIENT = String.raw`
       ['leaf', 'Éco-geste', [st.eco ? 1 : 0, 1], SETCOL.foret],
       ['climb', '5 Must Climb', inSet('grimpe'), SETCOL.grimpe],
       ['xmas', 'Noël', [Math.min(noel, 2), 2], '#b3261e']]
+      // 22/11: the « Mécène » badge (shop, free price) shows once held, never as a locked target
+      .concat(st.mecene ? [['heart', 'Mécène', [1, 1], '#b8707d']] : [])
       .forEach(function (x) {
         var got = x[2][0], need = x[2][1], done = got >= need, c = el('div', 'mtile pmedal' + (done ? '' : ' locked'));
         var ring = el('span', 'pring'); ring.style.background = 'conic-gradient(' + x[3] + ' ' + Math.round(360 * got / need) + 'deg, #e4e1da 0)';
@@ -1092,6 +1153,24 @@ const CLIENT = String.raw`
       tl.appendChild(row);
     });
     root.appendChild(tl);
+
+    // 22/11: avatar and frame. Three avatars and one frame are free; the rest is the collector pack.
+    root.appendChild(el('h2', null, 'Mon avatar'));
+    function picker(list, cur, mk, set) {
+      var g = el('div', 'pick');
+      list.forEach(function (x) {
+        var locked = x[2] && !st.pack, b = el('button', locked ? 'locked' : ''); b.type = 'button'; b.setAttribute('aria-pressed', cur === x[0]);
+        b.appendChild(mk(x[0])); b.appendChild(el('small', null, x[1]));
+        if (locked) { var lk = el('span', 'lk'); lk.appendChild(ico('lock')); b.appendChild(lk); }
+        b.onclick = function () { if (locked) { openPack(); return; } set(x[0]); save(); hud(); renderMe(); };
+        g.appendChild(b);
+      });
+      return g;
+    }
+    root.appendChild(picker(AVATARS, st.avatar, function (id) { return avEl(id, st.frame); }, function (id) { st.avatar = id; }));
+    root.appendChild(el('h3', 'acc-h', 'Cadre'));
+    root.appendChild(picker(FRAMES, st.frame, function (id) { return avEl(st.avatar, id); }, function (id) { st.frame = id; }));
+    if (!st.pack) { var gp = el('button', 'btn soft wide', 'Plus d’avatars et de cadres : le pack collectionneur'); gp.type = 'button'; gp.onclick = openPack; root.appendChild(gp); }
 
     root.appendChild(el('h2', null, 'Ma sauvegarde'));
     var acc = el('div', 'set');
@@ -1114,11 +1193,173 @@ const CLIENT = String.raw`
 
   }
 
-  // ── Shop: in the bottom bar (21/11); what it sells is for a dedicated session ──
+  // ── Shop (22/11, dedicated session): services for groups and cosmetics, never content ──
+  // Order: groups, support (Mécène), collector pack, printed cards (later). Rule kept: what is
+  // bought never gives XP, a place or an event. Mock: nothing is paid, a tap unlocks.
+  function gqOf() { return GROUP_QUESTS.filter(function (q) { return q.id === st.gq; })[0] || GROUP_QUESTS[0]; }
+  function spotName(id) { var p = SPOTS.filter(function (x) { return x.id === id; })[0]; return p ? p.name : id; }
+  function crowKm(q) {
+    var pts = q.steps.map(function (id) { return SPOTS.filter(function (x) { return x.id === id; })[0]; }).filter(Boolean), m = 0;
+    for (var i = 1; i < pts.length; i++) m += dist(pts[i - 1], pts[i]);
+    return Math.max(1, Math.round(m / 1000)); // whole km on the card (22/11: « 1 km »)
+  }
+  // 22/11 feedback: the products fold (« une petite flèche qui permette d'ouvrir le produit ») so
+  // the shop shows them all at once; each closed card says what it is and its price.
+  var SHOP_OPEN = {};
+  // 22/11: from the profile, a locked avatar opens the shop with the pack unfolded
+  function openPack() { SHOP_OPEN.pack = true; renderShop(); tab('shop'); $('s-shop').scrollTop = 0; }
+  function sblock(root, key, icon, color, title, sub, chip) {
+    var b = el('div', 'sblock' + (SHOP_OPEN[key] ? ' open' : '')), h = el('button', 'shead'), m = el('span', 'qmedal sm');
+    h.type = 'button'; h.setAttribute('aria-expanded', !!SHOP_OPEN[key]);
+    m.style.background = tint(color); m.style.color = color; m.style.borderColor = color; m.appendChild(ico(icon)); h.appendChild(m);
+    var tx = el('span', 'stx'); tx.appendChild(el('b', null, title)); tx.appendChild(el('small', null, sub)); h.appendChild(tx);
+    if (chip) h.appendChild(el('span', 'chip', chip));
+    var chev = el('span', 'chev'); chev.appendChild(ico('chevron')); h.appendChild(chev);
+    h.onclick = function () { SHOP_OPEN[key] = !SHOP_OPEN[key]; renderShop(); };
+    b.appendChild(h); root.appendChild(b);
+    var body = el('div', 'sbody'); if (SHOP_OPEN[key]) b.appendChild(body);
+    return body;
+  }
+  // Teams of the group session: the player's own team from the real progress, demo teams around it.
+  // XP of a session: 15 per place, 5 per question solved (provisional, like the whole scale).
+  function teams() {
+    var q = gqOf(), n = q.steps.length;
+    var mine = { name: st.team, me: true, found: q.steps.filter(function (id) { return st.spots[id]; }).length, correct: q.steps.filter(function (id) { return st.answered[id]; }).length, ago: null };
+    var all = DEMO_TEAMS.map(function (t) { return { name: t.name, found: Math.min(t.found, n), correct: Math.min(t.correct, t.found, n), ago: t.ago }; }).concat([mine]);
+    all.forEach(function (t) { t.xp = 15 * t.found + 5 * t.correct; });
+    return all.sort(function (a, b) { return b.xp - a.xp || b.found - a.found; });
+  }
+  var lbBox = null, lbBump = '';
+  function renderLb() {
+    if (!lbBox) return;
+    lbBox.textContent = '';
+    var q = gqOf(), n = q.steps.length, ts = teams();
+    lbBox.appendChild(el('h4', 'sh4', 'Classement en direct · ' + q.name));
+    var lb = el('div', 'lb');
+    ts.forEach(function (t, i) {
+      var r = el('div', 'lbrow' + (t.me ? ' mine' : '') + (t.name === lbBump ? ' bump' : ''));
+      r.appendChild(el('span', 'rk', String(i + 1)));
+      var tx = el('div'); tx.appendChild(el('b', null, t.me ? t.name + ' (vous)' : t.name));
+      tx.appendChild(el('small', null, t.found + ' / ' + n + ' lieux · ' + t.correct + (t.correct > 1 ? ' questions' : ' question') + (t.ago == null ? '' : ' · dernier lieu il y a ' + t.ago + ' min')));
+      r.appendChild(tx); r.appendChild(el('span', 'pts', t.xp + ' XP')); lb.appendChild(r);
+    });
+    lbBox.appendChild(lb);
+    // Comparisons between teams (22/11: « des comparatifs entre équipes »)
+    var cmp = el('div', 'cmp');
+    [['Lieux trouvés', 'found', '#2e7d4f'], ['Questions résolues', 'correct', '#4a5bb8']].forEach(function (k) {
+      cmp.appendChild(el('h4', null, k[0]));
+      ts.forEach(function (t) {
+        var row = el('div', 'cbar'), tr = el('span', 'tr'), bar = el('i');
+        bar.style.width = Math.round(100 * t[k[1]] / n) + '%'; bar.style.background = t.me ? '#d4a72c' : k[2]; tr.appendChild(bar);
+        row.appendChild(el('span', null, t.name)); row.appendChild(tr); row.appendChild(el('span', 'cv', t[k[1]] + ' / ' + n)); cmp.appendChild(row);
+      });
+    });
+    lbBox.appendChild(cmp);
+    lbBump = '';
+  }
+  // The demo teams move on their own while the shop is open, as if live
+  setInterval(function () {
+    if (!st.team || !$('s-shop').classList.contains('on')) return;
+    var n = gqOf().steps.length, open = DEMO_TEAMS.filter(function (t) { return t.found < n; });
+    DEMO_TEAMS.forEach(function (t) { t.ago++; });
+    if (!open.length) return;
+    var t = open[Math.floor(Math.random() * open.length)];
+    t.found++; if (Math.random() < 0.8) t.correct++; t.ago = 0; lbBump = t.name; renderLb();
+  }, 6000);
+  function recap() {
+    var q = gqOf(), n = q.steps.length, ts = teams(), r = el('div', 'recap');
+    r.appendChild(el('h4', null, 'Récapitulatif · ' + st.team));
+    var d = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    r.appendChild(el('p', 'meta', d + ' · ' + q.name + ' · ' + ts.length + ' équipes, 17 joueurs · 2 h 12 de jeu'));
+    r.appendChild(el('b', null, 'Podium'));
+    var ol = el('ol'); ts.slice(0, 3).forEach(function (t) { ol.appendChild(el('li', null, t.name + ' : ' + t.xp + ' XP, ' + t.found + ' / ' + n + ' lieux')); }); r.appendChild(ol);
+    r.appendChild(el('p', null, 'Étape trouvée la plus vite : ' + spotName(q.steps[0]) + '. Question la plus difficile : ' + spotName(q.steps[n - 1]) + '.'));
+    r.appendChild(el('p', null, 'Chaque équipe : ses lieux, ses questions, son temps. Une carte du parcours, les histoires des lieux à relire.'));
+    r.appendChild(el('p', 'meta', 'Envoyé à l’organisateur par e-mail, en PDF, le soir même. Seulement les équipes : ni nom de joueur, ni position. Chiffres de démonstration.'));
+    return r;
+  }
+  var recapOpen = false;
   function renderShop() {
-    var root = $('shop'); root.textContent = '';
-    root.appendChild(el('h2', null, '🛍️ Boutique'));
-    root.appendChild(el('div', 'todo', 'Contenu à définir avec le chef de projet, en séance dédiée (21/11 : les offres de la v2 ne correspondaient pas à son idée). Règle gardée : ce qui s’achète ne donne jamais d’XP, de lieu ni d’événement.'));
+    var root = $('shop'); root.textContent = ''; lbBox = null;
+    root.appendChild(el('h2', null, 'Boutique'));
+
+    // 1. Collector pack first (22/11: the group offer took the whole screen, not inviting as the
+    // first product for a solo player)
+    var p = sblock(root, 'pack', 'user', '#b8860b', 'Pack collectionneur', 'Six avatars et quatre cadres de profil', st.pack ? '✓' : PACK_PRICE);
+    var strip = el('div', 'strip');
+    AVATARS.filter(function (x) { return x[2]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl(x[0])); w.appendChild(el('small', null, x[1])); strip.appendChild(w); });
+    p.appendChild(strip);
+    var strip2 = el('div', 'strip');
+    var shown = AVATAR_ART[st.avatar] ? st.avatar : 'renard';
+    FRAMES.filter(function (x) { return x[2]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl(shown, x[0])); w.appendChild(el('small', null, x[1])); strip2.appendChild(w); });
+    p.appendChild(strip2);
+    if (st.pack) {
+      p.appendChild(el('p', 'okline', '✓ Pack débloqué : choisissez dans votre profil.'));
+      var op = el('button', 'btn soft wide', 'Ouvrir mon profil'); op.type = 'button'; op.onclick = function () { tab('me'); }; p.appendChild(op);
+    } else {
+      var pb = el('button', 'btn wide', 'Débloquer le pack · ' + PACK_PRICE); pb.type = 'button';
+      pb.onclick = function () { toast('Maquette : paiement Stripe (Google Play dans l’application Android)'); st.pack = true; save(); renderMe(); renderShop(); };
+      p.appendChild(pb);
+    }
+
+    // 2. Groups. 22/11: a price is for ONE outing on ONE quest (« si je paye 29 € pour 10 joueurs,
+    // c'est pour une quête ») : choose the quest, then the size.
+    var g = sblock(root, 'groupe', 'team', '#4a5bb8', 'Jouer en groupe', 'Une quête en équipes, classement en direct', 'dès 29 €');
+    g.appendChild(el('h4', 'sh4', '1. Choisissez votre quête'));
+    GROUP_QUESTS.forEach(function (q) {
+      var b = el('button', 'gq'); b.type = 'button'; b.setAttribute('aria-pressed', st.gq === q.id);
+      var m = el('span', 'qmedal'); m.style.background = tint(q.color); m.style.color = q.color; m.style.borderColor = q.color; m.appendChild(ico(q.icon)); b.appendChild(m);
+      var bx = el('span', 'gqb'); bx.appendChild(el('b', null, q.name));
+      bx.appendChild(el('small', null, q.dur + ' · ' + crowKm(q) + ' km'));
+      q.pts.forEach(function (t) { bx.appendChild(el('span', 'gpt', t)); });
+      b.appendChild(bx);
+      b.onclick = function () { st.gq = q.id; save(); renderShop(); };
+      g.appendChild(b);
+    });
+    var gq = gqOf();
+    g.appendChild(el('h4', 'sh4', '2. Une sortie « ' + gq.name + ' »'));
+    var tiers = el('div', 'tiers');
+    [['Jusqu’à 10 joueurs', '29 €'], ['Jusqu’à 30 joueurs', '59 €']].forEach(function (x) {
+      var b = el('button', 'tier'); b.type = 'button'; b.appendChild(el('small', null, x[0])); b.appendChild(el('b', null, x[1]));
+      b.onclick = function () { toast('Maquette : paiement Stripe, puis le code du groupe arrive par e-mail'); };
+      tiers.appendChild(b);
+    });
+    g.appendChild(tiers);
+    var ct = el('button', 'linkbtn', 'Plus de 30 joueurs ? Nous contacter'); ct.type = 'button';
+    ct.onclick = function () { toast('Maquette : un e-mail avec la date et le nombre de joueurs'); };
+    g.appendChild(ct);
+    if (!st.team) {
+      var demo = el('button', 'btn alt wide', 'Voir la démo du classement'); demo.type = 'button';
+      demo.onclick = function () { st.team = DEMO_CODE; save(); hud(); renderShop(); };
+      g.appendChild(demo);
+    } else {
+      lbBox = el('div'); g.appendChild(lbBox); renderLb();
+      var rb = el('button', 'btn soft wide', recapOpen ? 'Masquer le récapitulatif' : 'Voir le récapitulatif de l’organisateur'); rb.type = 'button';
+      rb.onclick = function () { recapOpen = !recapOpen; renderShop(); };
+      g.appendChild(rb); if (recapOpen) g.appendChild(recap());
+      var quit = el('button', 'linkbtn', 'Quitter le groupe ' + st.team); quit.type = 'button';
+      quit.onclick = function () { st.team = ''; recapOpen = false; save(); hud(); renderShop(); };
+      g.appendChild(quit);
+    }
+
+    // 3. Support at a free price: the « Mécène » badge
+    var s = sblock(root, 'soutien', 'heart', '#b8707d', 'Soutenir le jeu', 'Le badge Mécène en remerciement', st.mecene ? '✓' : 'Prix libre');
+    s.appendChild(el('p', 'lead2', 'Pour aider à ajouter des lieux et leurs histoires, soutenez-le au prix que vous voulez.'));
+    var sr = el('div', 'srow'), md = el('span', 'smedal' + (st.mecene ? '' : ' off'));
+    md.appendChild(ico('heart')); sr.appendChild(md);
+    sr.appendChild(el('p', null, 'En remerciement, le badge Mécène sur votre profil et un badge à collectionner.'));
+    s.appendChild(sr);
+    if (st.mecene) s.appendChild(el('p', 'okline', '✓ Merci ! Votre badge Mécène est sur votre profil.'));
+    var sb = el('button', st.mecene ? 'btn soft wide' : 'btn wide', st.mecene ? 'Soutenir encore' : 'Soutenir à prix libre'); sb.type = 'button';
+    sb.onclick = function () {
+      toast('Maquette : paiement Stripe à prix libre, puis retour au jeu');
+      if (!st.mecene) { st.mecene = true; save(); renderMe(); renderShop(); toast('Badge Mécène obtenu'); }
+    };
+    s.appendChild(sb);
+
+    // 4. Printed cards (later)
+    var c = sblock(root, 'cartes', 'cards', '#0f8f9e', 'Vos cartes imprimées', 'Les lieux collectés, avec la date', 'Bientôt');
+    c.appendChild(el('p', 'meta', 'Un PDF prêt à imprimer, ou un tirage chez un imprimeur partenaire : en réflexion.'));
   }
 
   // ── Entry flow (onboarding) ──
@@ -1188,6 +1429,8 @@ const CLIENT = String.raw`
   }
   Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.onclick = function () { tab(b.getAttribute('data-tab')); }; });
   $('mebtn').onclick = function () { tab('me'); };
+  $('teamchip').onclick = function () { tab('shop'); }; // 22/11: the team chip opens the group's leaderboard
+  $('teamchip').style.cursor = 'pointer';
   $('reset').onclick = function () { st = fresh(); save(); if (meMarker) { map.removeLayer(meMarker); meMarker = null; me = null; } refreshRange(); liveBar(); draw(); renderAll(); closeSheet(); openOnb(); };
 
   chrome(); panel(); liveBar(); draw(); renderAll();

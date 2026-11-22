@@ -15,8 +15,8 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   au lieu de six, puis la carte allégée, maquette v3). Deuxième série du 21/11 (carte et style :
   « bien ») : En direct limité à aujourd'hui et demain, phrases de la collection et des quêtes
   réécrites, « Toujours là » et les sentiers bleus remontés (cinq lieux), série des Space Invaders
-  (§7.1 bis), profil en haut et boutique en bas (§7.7). **La boutique sera revue en séance dédiée**
-  (les offres de la v2 ne correspondent pas à l'idée du chef de projet, §12.2). Troisième série (21/11) :
+  (§7.1 bis), profil en haut et boutique en bas (§7.7). Boutique revue en séance dédiée le 22/11
+  (§12.2). Troisième série (21/11) :
   portée de 12 km autour du joueur, qui le suit (§7.2) ; les Invaders du centre-ville sur la
   carte (§7.1 bis) ; **icônes dessinées** à la place des emojis, adoptées (« bien mieux ») ;
   essai de **pixel art écarté**, on garde **le style du site** (§10). En attente : les
@@ -28,6 +28,11 @@ Suivi des tâches : item 116 du [document de conception](Events-calendar-DesignT
   (21/11) : couleurs des fiches et des cartes reprises de la palette du site (en-tête en teinte
   claire, icône en couleur, plus de marron) ; barème d'XP divisé par trois environ (§8). Retour suivant : couleurs « un peu mieux » ; icônes du château et de la fontaine « pas super », à retravailler (ou d'autres propositions) ; un niveau 2 inattendu venait du bonus d'une série d'un seul lieu (§8, corrigé).
   Sixième série (22/11), les lieux : 31 dans la maquette. Textes et questions pour la forêt et Barbizon (tour Denecourt, grotte du Serment, mont Ussy, Grand Veneur, Franchard, Apremont, musée de Barbizon) ; la **caverne d'Augas**, ensablée en 1972 et effondrée en 1986, est remplacée par la **croix d'Augas** ; le rocher Cassepot devient un simple point de vue. Des **points à collecter sans texte ni question** quand on n'a pas de source (croix du Calvaire, croix de Toulouse, antre des Druides, caverne des Brigands, mares aux Évées et aux Fées) : c'est voulu, un lieu peut n'être qu'un point. En ville, les étapes de la fiche à pied (fresque de Napoléon, porte du Grand Ferrare, place Napoléon-Bonaparte et l'Aigle Noir, Saint-Louis, hôtel de ville), l'ancienne maison d'arrêt et, à Avon, le parc de Bel-Ébat. Les 5 sites de grimpe sont gardés tels quels (le chef de projet les connaît). Les fiches n'affichent plus de mention « brouillon » ni de phrase d'introduction à la question : **tout le texte de la maquette est provisoire, une passe complète est prévue au développement** (116d), la moitié est déjà relue. Sources à recouper à ce moment : Grand Veneur (Wikipédia), grotte du Serment, croix d'Augas (blog local, AAFF), dates de la maison d'arrêt, Bel-Ébat (ville d'Avon), date de la mort de Denecourt (mars ou mai 1875). Icônes choisies le 22/11 : château en façade avec cheminées et escalier en fer à cheval, **jardin de Diane dessiné en cerf**, théâtre gardé en masque, église en nef et clocher ; les autres acceptées telles quelles (toutes sur `reports/bleau-quest/icones.html`). Collection (22/11) : les cartes débordaient de leur encart (un nom long élargissait sa colonne), corrigé ; les petites cartes plaisent (« sympas »). **Alternative demandée : des badges** — médailles rondes à la couleur de la série, un second anneau pour la rareté (argent : peu commun, or : rare), le nom dessous, anneau en pointillé gris tant que le lieu n'est pas collecté. Les deux vues sont dans la maquette (sélecteur « Cartes / Badges » en haut de la collection) ; **badges retenus le 22/11** (« on garde les badges »), le sélecteur est retiré. Profil (22/11 : « bonne page, c'est cool ») : les badges de réussite deviennent des médailles comme la collection, chacune avec sa **cible** (« 2 / 4 ») et un anneau de progression ; un badge de série compte tous les lieux de la série, sans le minimum de trois du bonus d'XP (Napoléon a deux lieux, les peintres un) ; les titres ont leur cadenas (ou leur coche) dans un cercle ; e-mail et compte facultatifs dans « Ma sauvegarde » (§12.1). Quêtes (22/11) : chaque quête a sa médaille (icône au trait dans un cercle teinté) au lieu d'un emoji, titres de section sans emoji ; l'événement du jour passe du rouge « en direct » au doré (« trop flashy »), son bouton est centré. **L'enquête est remplacée par les fils de l'histoire** (§7.3), premier jet dans la maquette.
+  **Boutique (22/11, séance dédiée)** : des services et des cosmétiques, pas de contenu (§12.2).
+  Retenus : la session de groupe (priorité haute), le badge Mécène du soutien à prix libre (haute),
+  le pack collectionneur, avatars et cadres de profil (moyenne), les cartes imprimées (basse, à
+  réfléchir). Les quatre sont dans l'onglet Boutique de la maquette (rien n'y est payé) ; l'avatar
+  et le cadre se choisissent dans le profil.
 - **Fait** : benchmark (§5), ce document, la maquette M0 v2 (`node scripts/bleau-quest-mock.js`,
   servie sur `http://localhost:8517/` ; `PORT=…` si le port est pris ; Ctrl+C pour l'arrêter),
   commitée le 21/11 (`de9f5b22`). Verdict du chef de projet : « très bien pour un premier mock-up ».
@@ -275,6 +280,8 @@ Brouillard.
 - **Barre du haut** : niveau, titre, barre d'XP et le bouton **Profil** (badges, titres,
   sauvegarde).
 - **Barre du bas** : Carte, En direct, Collection, Quêtes, **Boutique**.
+- **En groupe** (22/11) : la pastille de l'équipe, à côté du profil, ouvre le classement (§12.2).
+  Le bouton Profil montre l'avatar et le cadre du joueur.
 - Ordre des quêtes : cette semaine (événements), puis **toujours là** (enquête, sentiers bleus,
   5 Must Climb), puis de saison.
 
@@ -383,22 +390,72 @@ top ») sont remplacés par un jeu d'icônes au trait dessiné pour le projet
 - Sur l'application Android, Google Play retrouve lui-même les achats : le compte y est encore
   moins nécessaire.
 
-### 12.2 Ce qui pourra s'acheter
-> **À revoir en séance dédiée** (21/11) : ces offres ne correspondent pas à ce que le chef de
-> projet a en tête. La boutique a son onglet dans la barre du bas, vide en attendant.
+### 12.2 Ce qui pourra s'acheter (décidé le 22/11, séance dédiée)
+**Pas de contenu vendu** (chef de projet) : comme les cosmétiques d'un jeu vidéo, et surtout du
+**service**. Règle : **ce qui s'achète ne donne jamais d'XP, de lieu ni d'événement.** Pas de
+publicité, pas de hasard payant, pas d'énergie à recharger.
 
-Règle : **ce qui s'achète ne donne jamais d'XP, de lieu ni d'événement.** Pas de publicité, pas de
-hasard payant, pas d'énergie à recharger.
+**Benchmark (22/11)** :
+- **Pokémon GO** vend des tenues d'avatar, mais l'essentiel vient des passes de raid et des tickets : la pression sur le jeu, ce qu'on refuse.
+- **Pikmin Bloom** (100 M$ en quatre ans) vend du décor. On ne reprend pas son pass d'événement à récompenses ni ses boîtes surprises.
+- **Geocaching** : Premium à 39,99 $/an, et une boutique d'objets à collectionner (géocoins).
+- **AllTrails Plus** (35,99 $/an : hors ligne, alertes) et **Wandrer** (30 à 40 $/an : couches et statistiques d'exploration) vendent du service.
+- **Komoot** a provoqué un tollé en 2025 en remplaçant ses régions achetées une fois par un abonnement. Leçon : **ne jamais changer les règles après coup**.
+- **Zombies, Run!** vend des missions, donc du contenu : écarté.
 
-| Offre | Pour qui | Prix indicatif | Ce qu'il faut construire |
-|---|---|---|---|
-| **Session d'équipe** (code, classement, récapitulatif pour l'organisateur) | séminaires, INSEAD, écoles, hôtels | sur devis, par groupe | le serveur (classement). Le premier revenu réaliste à 5 000 visites par mois |
-| ~~**L'enquête complète**~~ (chapitre 1 gratuit, 2 à 5 payants) | — | — | **Écartée le 22/11** : plus d'enquête (§7.3), et le chef de projet doute qu'on vende du contenu. Les fils de l'histoire sont gratuits |
-| **Coffret souvenir** (cartes d'une série imprimées, pin's) | visiteurs, cadeau | ~12 € | un imprimeur, l'envoi. Un objet, donc hors des règles des magasins d'applications |
-| **Autre style de cartes** (gravure, aquarelle) | collectionneurs | 1,99 € | les essais de 116c servent deux fois |
-| **Soutien à prix libre** | habitués | libre | le lien Stripe existe déjà (balades) |
-| Saison financée par l'office de tourisme ou l'interco (modèle Tèrra Aventura) | institutions | convention | des chiffres d'usage (M2) |
-| Commerçants partenaires, signalés comme tels | commerces | plus tard (décision du 20/11) | — |
+| Priorité | Offre | Pour qui | Prix indicatif | Ce qu'il faut construire |
+|---|---|---|---|---|
+| **Haute** | **Session de groupe** : un code, des équipes, un **classement en direct**, des **comparatifs entre équipes** (lieux trouvés, questions résolues, dernier lieu), un **récapitulatif pour l'organisateur** (podium, étape la plus rapide, question la plus difficile, par e-mail en PDF le soir même ; ni nom de joueur ni position). **Trois quêtes prêtes** : le **centre-ville**, sur les étapes de la fiche « Fontainebleau à pied » et ses Invaders (le Grand Parterre, étape 3, n'est pas encore un lieu) ; la **forêt, hauteurs de la Solle** (mont Ussy, croix d'Augas, croix du Calvaire, tour Denecourt, rocher Cassepot) ; **Barbizon** (musée, médaillon, Bas-Bréau, caverne des Brigands, gorges d'Apremont) | séminaires, hôtels, INSEAD, anniversaires | **une sortie sur une quête : 29 € jusqu'à 10 joueurs, 59 € jusqu'à 30** (pas les trois quêtes ; on choisit la quête, puis la taille du groupe) ; au-delà, « nous contacter ». Pas de devis ni de quête sur mesure (22/11 : un prix affiché rassure et se paie sans échange de mails ; repère : 13 à 36 € par personne chez les jeux de piste) | le serveur (classement, §11) ; les boucles à marcher et à mesurer ; la quête en forêt à présenter à l'ONF |
+| **Haute** | **Soutien à prix libre**, remercié par le **badge « Mécène »**, collectionnable, sur le profil. Il n'apparaît qu'une fois obtenu, jamais comme une cible verrouillée (ne pas pousser à payer) | habitués | libre | le lien Stripe des balades ; la page de retour pose le badge (sans serveur, contournable : accepté) |
+| **Moyenne** | **Pack collectionneur**, achat unique : six avatars **dessinés en couleur** (renard, chouette, écureuil, cèpe, Napoléon, bloc et grimpeur) et quatre cadres ornés (laurier doré, feuillage, gravure, grès), dans `scripts/bleau-quest-avatars.js`. Gratuits : trois avatars au trait (promeneur, arbre, feuille) et le cadre simple. L'avatar remplace l'icône du bouton Profil | collectionneurs | 2,99 € | un code de déblocage (web), la facturation Google Play dans l'application |
+| **Basse** | **Vos cartes imprimées** : les cartes des lieux collectés, avec la date. Un PDF prêt à imprimer, ou un imprimeur partenaire (type Photoweb) : **à réfléchir** | visiteurs, cadeau | à définir | selon la voie choisie |
+| Plus tard | Saison financée par l'office de tourisme ou l'interco (modèle Tèrra Aventura) ; commerçants partenaires signalés comme tels (décision du 20/11) | institutions, commerces | convention | des chiffres d'usage (M2) |
+
+**Écartés le 22/11** : l'enquête complète (plus d'enquête, §7.3) ; vendre la sauvegarde ou la
+synchronisation (la progression en otage) ; des indices ou des jokers (ce serait vendre le jeu) ;
+le hasard payant et le pass d'événement à récompenses ; l'autre style de cartes, remplacé par le
+pack d'avatars et de cadres.
+
+**Dans la maquette (22/11)** : onglet Boutique, dans cet ordre : **pack, groupes, soutien, cartes
+imprimées**. Chaque produit est **replié** : une ligne (icône, nom, ce que c'est, prix ou « Prix libre »,
+« Bientôt »), une flèche pour l'ouvrir et le refermer. « Essayer avec le code DEMO-SEMINAIRE » ouvre le classement : trois équipes
+fictives qui avancent seules, et l'équipe du joueur calculée sur sa vraie progression (15 XP par
+lieu, 5 par question, provisoire). La pastille de l'équipe, en haut, ouvre ce classement. Rien n'y
+est payé : un geste débloque.
+
+**Retours du chef de projet (22/11)** : **faire court**, sinon trop de texte à lire. Plus de phrase
+d'introduction en tête de la boutique (« ça, tout le monde s'en fout ») ; « Jouer en groupe » en une
+ligne (« Une quête pour votre groupe, en équipes, avec classement en direct et récapitulatif »), sans
+la liste des publics. **Les quêtes ne montrent pas leurs étapes** : les afficher, ce serait donner
+ce que le groupe achète. Chaque quête en un encart : nom, durée, distance (km entiers, entre les
+étapes à vol d'oiseau, à mesurer sur le terrain), deux puces (centre-ville : « 7 étapes de la fiche
+Fontainebleau à pied », « 4 mosaïques d'Invader en bonus »). Les réserves internes (Grand
+Parterre pas encore lieu, boucles à mesurer, ONF) restent dans ce document, pas sur l'écran.
+Deuxième série (22/11) : **des tarifs, pas de devis** (29 € et 59 €, au-delà « nous contacter », pas
+de quête sur mesure) ; soutien en une phrase (« Pour aider à ajouter des lieux et leurs histoires,
+soutenez-le au prix que vous voulez » ; « En remerciement, le badge Mécène sur votre profil et un
+badge à collectionner »), médaille plus petite (elle chevauchait le texte) ; **le message après
+un achat** passe en rectangle à coins arrondis, sur plusieurs lignes (la pastille ronde coupait le
+texte) ; les cosmétiques du pack « pas top » : **de vrais dessins**, plus vivants, à la place des
+icônes au trait. **Pas de texte inutile** (« pas d'abonnement », « le jeu reste le même pour tout le
+monde » retirés) : ce qui doit être précisé ira dans des conditions de vente, pas sur l'écran.
+Troisième série (22/11) : **un prix vaut une sortie sur une quête**, pas les trois (« c'est une
+sortie ») : « 1. Choisissez votre quête », puis « 2. Une sortie « … » » avec les deux tarifs, l'encart
+annonce « dès 29 € ». Le groupe prenait toute la hauteur du téléphone, peu engageant comme premier
+produit pour un joueur seul : **le pack passe en premier** et **les produits se replient**, pour voir
+toute la boutique d'un coup. Dessins : fond bleu ciel pour le renard (le crème cachait ses joues
+blanches), plus de lune derrière la chouette (elle se mêlait à son aigrette), **un cerf à la place
+du sanglier** (« moche ») ; l'écureuil est gardé. Le cerf au trait quitte les avatars gratuits
+(remplacé par la feuille), pour ne pas avoir deux cerfs.
+Quatrième série (22/11) : les quatre produits sur une page, repliés, « on comprend mieux ce qui se
+passe ». Renard, chouette, écureuil, cèpe gardés ; **Napoléon** retouché (visage symétrique,
+cheveux aux tempes et mèche sur le front), **cerf** redessiné (tête plus ronde, bois épais et
+courbes, gorge blanche), **bloc** avec un grimpeur sur la paroi au-dessus du crash-pad. Le bouton
+Profil montrait une icône gratuite en blanc sur gris (une ancienne règle de style), corrigé.
+Quête en forêt renommée « La forêt, hauteurs de la Solle » (tient sur une ligne).
+Cinquième série (22/11) : **le cerf quitte le pack** (« vraiment moche »), six avatars ; Napoléon et
+le bloc gardés. Dans le profil, toucher un avatar ou un cadre à cadenas **ouvre la boutique sur le
+pack**, au lieu d'un message.
 
 - **Paiement** : sur le web, Stripe (déjà utilisé pour les balades), sans commission de magasin.
   Sur Android, un contenu numérique vendu dans l'application passe par la facturation Google Play
@@ -444,5 +501,5 @@ GoatCounter, sans rien qui identifie le joueur : `quest-start`, `spot-unlock/<id
 6. **Quand parler à l'ONF** : avant M1 pour les 5 lieux en forêt ?
 7. **Propositions d'interface** : plusieurs maquettes de contenu à comparer, dans le style du site
    (21/11 : reprendre le style de Fontainebleau Live est bien).
-8. **La première offre payante** : la session d'équipe (B2B, serveur nécessaire) ou l'enquête
-   complète (B2C, sans serveur) ?
+8. ~~**La première offre payante**~~ : décidé le 22/11, la session de groupe (avec le badge Mécène
+   du soutien à prix libre), §12.2. Reste ouvert : la voie des cartes imprimées (PDF ou imprimeur).

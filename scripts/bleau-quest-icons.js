@@ -57,6 +57,9 @@ const SET = {
   pond: { l: 'M3 16c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0M3 20c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0M7 12V4M10 12V7M7 6.5c-1.2.8-2 2.3-2 4M17 12a2 2 0 1 0 0-.01' },
   // 22/11: the Jardin de Diane is drawn as a stag (Diana's hunt), chosen over three fountains.
   stag: { l: 'M9 13l3 7 3-7M9 13c0-1.6 1.3-2.7 3-2.7s3 1.1 3 2.7M9.5 10.8C7.3 9.5 6 7.3 6 4M6 7.3L3.8 6.2M7.6 9.3l-2.6.4M14.5 10.8c2.2-1.3 3.5-3.5 3.5-6.8M18 7.3l2.2-1.1M16.4 9.3l2.6.4' },
+  // 22/11: the « Mécène » badge (support at a free price, shop)
+  chevron: { l: 'M6 9l6 6 6-6' }, // 22/11: folding shop products
+  heart: { l: 'M12 20s-7.5-4.6-9.2-9.4A4.9 4.9 0 0 1 12 7.3a4.9 4.9 0 0 1 9.2 3.3C19.5 15.4 12 20 12 20z' },
 };
 
 // The place icons on one page (reports/bleau-quest/icones.html), chosen on 22/11 by the project lead.
