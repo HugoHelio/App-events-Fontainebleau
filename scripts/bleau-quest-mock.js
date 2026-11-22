@@ -42,7 +42,7 @@ const SEASON_RE = /no[eë]l|avent|saint[- ]nicolas|illumination/i;
 // Positions: OpenStreetMap (Nominatim, 20-21/11/2026), theatre from venues.json. Texts: placeholders.
 const SPOTS = [
   { id: 'cour-des-adieux', name: 'Cour des Adieux', set: 'napoleon', type: 'Monument', rarity: 'commun', lat: 48.40204, lng: 2.69810, icon: 'castle' },
-  { id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', lat: 48.40295, lng: 2.69973, icon: 'fountain' },
+  { id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', lat: 48.40295, lng: 2.69973, icon: 'stag' },
   { id: 'theatre', name: 'Théâtre municipal', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40335, lng: 2.69762, icon: 'mask' },
   { id: 'obelisque', name: 'Obélisque de Marie-Antoinette', set: 'chateau', type: 'Monument', rarity: 'commun', lat: 48.39705, lng: 2.69227, icon: 'obelisk' },
   { id: 'mont-ussy', name: 'Mont Ussy', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42699, lng: 2.69645, icon: 'tree' },
@@ -1071,7 +1071,7 @@ function iconPage() {
     '.trio{display:flex;align-items:center;justify-content:space-between}figcaption{font-size:13px;margin-top:8px}' +
     '.pin{display:inline-flex;width:30px;height:30px;border-radius:50%;color:#fff;align-items:center;justify-content:center}.pin svg{width:17px;height:17px}' +
     '.card{display:inline-flex;width:44px;height:44px;border-radius:10px;align-items:center;justify-content:center}.card svg{width:30px;height:30px}' +
-    '.big svg{width:56px;height:56px;color:#1f2a24}</style></head><body><h1>Icônes des lieux : propositions</h1>' +
+    '.big svg{width:56px;height:56px;color:#1f2a24}</style></head><body><h1>Icônes des lieux</h1>' +
     '<p>Pour chaque icône, de gauche à droite : l’épingle de la carte, la vignette de la collection, l’en-tête de la fiche.</p>' + rows + '</body></html>';
 }
 
