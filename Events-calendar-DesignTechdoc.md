@@ -2475,6 +2475,8 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     (château avec escalier en fer à cheval, cerf pour le jardin de Diane, masque, église).
     Fiches (22/11) : plus de « sur l'honneur » sur un lieu (GPS ou question) ; la question toujours
     visible, avant comme après la visite (GDD §9).
+    Collection en badges (médailles rondes, rareté en anneau) ; profil : badges avec leur cible,
+    titres à cadenas dans un cercle, e-mail et compte facultatifs dans « Ma sauvegarde » (GDD §12.1).
   - [ ] **116p. Emplacements des Invaders (chef de projet, sur le terrain)** : il a vu la plupart
     des 46 mosaïques en se promenant et va les relever dans les rues (rue, description, encore là
     ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la

@@ -333,6 +333,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .mtile .medal::after{content:'';position:absolute;inset:4px;border-radius:50%;border:1px dashed currentColor;opacity:.35}
 .mtile small{font-size:10.5px;line-height:1.15;text-align:center;font-weight:600;color:var(--ink);max-width:100%;overflow-wrap:anywhere;hyphens:auto;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .mtile.locked .medal{background:#f1efea!important;color:#a3a7a2!important;border-style:dashed;box-shadow:none}.mtile.locked .medal .ico{opacity:.5}.mtile.locked .medal::after{display:none}.mtile.locked small{color:#7b807b;font-weight:500}
+.pmedal .pring{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center}.pmedal .medal{width:58px;height:58px;box-shadow:0 0 0 2px #fff}.pmedal .medal::after{display:none}.pmedal.locked .medal{border-style:solid;border-color:#d6d2ca}.target{font-size:11px;font-weight:700;color:var(--muted,#5b625d);background:#eceae4;border-radius:999px;padding:1px 8px}.target.done{background:#e3f1e8;color:#1f7a3f}.titles{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.trow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px}.tcirc{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;background:#eceae4;color:#8a8f8b;flex:none}.trow.on .tcirc{background:#2e7d4f;color:#fff}.ttx b{display:block;font-size:14px;color:var(--ink)}.ttx small{font-size:12px;color:var(--muted,#5b625d)}.trow:not(.on) .ttx b{color:#7b807b}.acc-h{font-size:14px;margin:14px 0 6px}.acc-mail{width:100%;box-sizing:border-box;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}.acc-acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.acc-acts .btn{flex:1}
 .mtile.dark .medal{background:#2b2d42!important;color:#fff!important;border-color:#8b8fb0}
 .card.locked{background:#eeeae3!important;color:#8a8f8b!important}.card.locked .ico{opacity:.55}.card.locked small{color:#6e746f}
 .ev-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;background:#fff;border:0;border-bottom:1px solid var(--line);padding:10px 2px;cursor:pointer}
@@ -965,21 +966,59 @@ const CLIENT = String.raw`
     var stats = el('div', 'stats');
     [[Object.keys(st.spots).length, 'lieux'], [Object.keys(st.events).length, 'souvenirs'], [st.xp, 'XP']].forEach(function (x) { var s = el('div', 'stat'); s.appendChild(el('b', null, String(x[0]))); s.appendChild(document.createTextNode(x[1])); stats.appendChild(s); });
     root.appendChild(stats);
+    // 22/11: the achievements as medals, like the collection, each with its target (« 1/2 ») and a
+    // progress ring. A set badge counts the set's places directly (Napoléon has two, the painters
+    // one: below the set bonus's three, still a badge).
     root.appendChild(el('h2', null, 'Badges'));
-    var bs = el('div', 'badges');
-    [['🏰', 'Napoléon', st.sets.napoleon], ['🔵', 'Sentiers bleus', st.sets.denecourt], ['🎨', 'Peintres', st.sets.peintres], ['★', '1er souvenir', Object.keys(st.events).length > 0],
-      ['🎭', '4 genres', st.sets.cats], ['🌱', 'Éco-geste', st.eco], ['🧗', '5 Must Climb', st.sets.grimpe], ['🎄', 'Noël', false]]
-      .forEach(function (x) { var b = el('div', 'badge' + (x[2] ? '' : ' off')); b.appendChild(document.createTextNode(x[0])); b.appendChild(el('small', null, x[1])); bs.appendChild(b); });
+    var bs = el('div', 'cards medals');
+    function inSet(s) { var all = SPOTS.filter(function (p) { return p.set === s; }); return [all.filter(function (p) { return st.spots[p.id]; }).length, all.length]; }
+    var evIds = Object.keys(st.events), cats = {};
+    evIds.forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
+    var noel = evIds.filter(function (id) { var e = byId(id); return e && e.season; }).length;
+    [['castle', 'Napoléon', inSet('napoleon'), SETCOL.napoleon],
+      ['tree', 'Sentiers bleus', inSet('denecourt'), SETCOL.denecourt],
+      ['palette', 'Peintres', inSet('peintres'), SETCOL.peintres],
+      ['star', '1er souvenir', [Math.min(evIds.length, 1), 1], '#b8860b'],
+      ['mask', '4 genres', [Object.keys(cats).length, 4], '#b8707d'],
+      ['leaf', 'Éco-geste', [st.eco ? 1 : 0, 1], SETCOL.foret],
+      ['climb', '5 Must Climb', inSet('grimpe'), SETCOL.grimpe],
+      ['xmas', 'Noël', [Math.min(noel, 2), 2], '#b3261e']]
+      .forEach(function (x) {
+        var got = x[2][0], need = x[2][1], done = got >= need, c = el('div', 'mtile pmedal' + (done ? '' : ' locked'));
+        var ring = el('span', 'pring'); ring.style.background = 'conic-gradient(' + x[3] + ' ' + Math.round(360 * got / need) + 'deg, #e4e1da 0)';
+        var m = el('span', 'medal'); m.style.background = tint(x[3]); m.style.color = x[3]; m.appendChild(ico(x[0])); ring.appendChild(m); c.appendChild(ring);
+        c.appendChild(el('small', null, x[1]));
+        c.appendChild(el('span', 'target' + (done ? ' done' : ''), done ? '✓ obtenu' : got + ' / ' + need));
+        bs.appendChild(c);
+      });
     root.appendChild(bs);
     root.appendChild(el('h2', null, 'Titres'));
-    TITLES.forEach(function (t) { root.appendChild(el('p', n >= t[0] ? null : 'meta', (n >= t[0] ? '✓ ' : '🔒 ') + t[1] + ' — niveau ' + t[0])); });
+    var tl = el('div', 'titles');
+    TITLES.forEach(function (t) {
+      var on = n >= t[0], row = el('div', 'trow' + (on ? ' on' : '')), circ = el('span', 'tcirc');
+      circ.appendChild(ico(on ? 'check' : 'lock')); row.appendChild(circ);
+      var tx = el('span', 'ttx'); tx.appendChild(el('b', null, t[1])); tx.appendChild(el('small', null, 'niveau ' + t[0])); row.appendChild(tx);
+      tl.appendChild(row);
+    });
+    root.appendChild(tl);
 
     root.appendChild(el('h2', null, 'Ma sauvegarde'));
     var acc = el('div', 'set');
     acc.appendChild(el('p', null, 'Sans compte : tout reste sur ce téléphone, votre position aussi.'));
     var code = el('button', 'btn soft', '🔑 Copier mon code de sauvegarde'); code.type = 'button'; code.onclick = function () { toast('Maquette : un code ou un QR à scanner sur le nouveau téléphone'); };
     acc.appendChild(code);
-    acc.appendChild(el('p', 'meta', 'Plus tard, un compte facultatif (e-mail, sans mot de passe) : changer de téléphone, jouer en équipe, retrouver ses achats.'));
+    // 22/11: the e-mail and the account, offered here, both optional. Mock: nothing is sent or
+    // stored, the address stays in the field.
+    acc.appendChild(el('h3', 'acc-h', 'Votre e-mail (facultatif)'));
+    var mail = el('input', 'acc-mail'); mail.type = 'email'; mail.placeholder = 'prenom@exemple.fr'; mail.autocomplete = 'email'; acc.appendChild(mail);
+    var okMail = function () { var v = mail.value.trim(); if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { toast('Une adresse e-mail, par exemple prenom@exemple.fr'); mail.focus(); return ''; } return v; };
+    var arow = el('div', 'acc-acts');
+    var send = el('button', 'btn alt', '✉️ M’envoyer mon code'); send.type = 'button';
+    send.onclick = function () { if (okMail()) toast('Maquette : votre code de sauvegarde partirait à cette adresse'); };
+    var create = el('button', 'btn', 'Créer mon compte'); create.type = 'button';
+    create.onclick = function () { if (okMail()) toast('Maquette : un lien de connexion partirait à cette adresse, sans mot de passe'); };
+    arow.appendChild(send); arow.appendChild(create); acc.appendChild(arow);
+    acc.appendChild(el('p', 'meta', 'Le compte sert à changer de téléphone, jouer en équipe, retrouver ses achats. Sans mot de passe : un lien arrive par e-mail. Votre adresse n’est jamais revendue ni partagée.'));
     root.appendChild(acc);
 
   }

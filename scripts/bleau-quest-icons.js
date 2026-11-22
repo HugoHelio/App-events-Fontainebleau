@@ -30,6 +30,8 @@ const SET = {
   user: { l: 'M8 8a4 4 0 1 0 8 0a4 4 0 1 0-8 0M4 21c.8-4 4-6.5 8-6.5s7.2 2.5 8 6.5' },
   layers: { l: 'M12 3l9 5-9 5-9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5' },
   fog: { l: 'M3 9h12M6 13h15M3 17h13M18 9h3' },
+  lock: { l: 'M6 11h12v10H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3M12 15v2' },
+  check: { l: 'M5 12.5l4.5 4.5L19 7.5' },
   pin: { l: 'M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zM10 9a2 2 0 1 0 4 0a2 2 0 1 0-4 0' },
   // Added 22/11 with the town and forest places of the walk sheets.
   church: { l: 'M3 21h18M8 21V10l4-4 4 4v11M12 6V2M10.5 3.5h3M8 13l-4 2v6M16 13l4 2v6M10.5 21v-3a1.5 1.5 0 0 1 3 0v3M11 11h2' },
