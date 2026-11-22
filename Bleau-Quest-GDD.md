@@ -285,18 +285,23 @@ Brouillard.
 1. **GPS** : rayon de 100 m en ville, 150 m en forêt (précision moindre sous les arbres).
 2. **Ou une question d'observation** sur place (une date gravée, un détail de statue), quand le GPS
    décroche ou qu'on refuse la géolocalisation.
-3. **Ou sur l'honneur**, à demi-XP. Jamais d'impasse.
+3. ~~Ou sur l'honneur~~ : **retiré des lieux le 22/11** (chef de projet : « on a déjà Pas de GPS, c'est
+   la même chose »). Un lieu se collecte par le GPS ou par sa question ; un simple point à collecter,
+   sans question, seulement par le GPS. Le « sur l'honneur » reste pour les Space Invaders, qui n'ont
+   pas de position (§7.1 bis), et les événements.
 - **Forme de la question (21/11)** : trois choix, comme le jeu de la forêt ; elle porte sur ce
   qu'on **voit sur place** (forme d'un escalier, nombre de chiens d'une fontaine, matériau d'une
   façade), pas sur une date à connaître. Une mauvaise réponse grise ce choix (« regardez encore »),
   sans pénalité. Le texte de la carte (trois phrases, la source affichée dessous) ne s'ouvre
-  qu'une fois le lieu collecté **et la question résolue** : validé par le GPS ou sur l'honneur, le
+  qu'une fois le lieu collecté **et la question résolue** : validé par le GPS, le
   joueur a encore la question, qui ouvre l'histoire et rapporte 5 XP (21/11 : « je peux très bien
-  dire j'y suis, mais je veux quand même la question »). Sans GPS, la question valide à la fois
-  la visite et l'histoire. Brouillons du 21/11 dans la maquette (`CARDS`) : chaque fait vient
-  de la source citée, **rien n'est publié avant la relecture du chef de projet et une
-  vérification de la question sur place** ; la source du jardin de Diane est à recouper avec le
-  château.
+  dire j'y suis, mais je veux quand même la question »). **La question est toujours visible sur la
+  fiche** (22/11 : « on doit toujours voir la question ») : avant la visite, directement sous le
+  bouton GPS (« Pas de GPS ? Répondez à la question »), sans bouton à ouvrir ; une fois résolue, elle
+  reste affichée, la bonne réponse cochée, au-dessus de l'histoire. Sans GPS, la question valide à la fois
+  la visite et l'histoire. Textes provisoires dans la maquette (`CARDS`) : chaque fait vient
+  de la source citée ; passe complète au développement (116d), avec la vérification des questions
+  sur place ; la source du jardin de Diane est à recouper avec le château.
 - Des indices jusqu'à la solution. Des jokers (reprendre l'idée de Tèrra Aventura).
 - Triche : sans importance tant que le jeu est solo. Les classements, plus tard, ne compteront
   que les validations GPS.

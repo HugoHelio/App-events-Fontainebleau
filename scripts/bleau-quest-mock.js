@@ -315,7 +315,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .xpchip{display:inline-block;font-size:12px;font-weight:800;background:var(--accent);color:var(--ink);border-radius:999px;padding:2px 8px;white-space:nowrap}
 .xpchip.gold{background:var(--gold);color:#fff}
 .livechip{display:inline-block;font-size:11px;font-weight:800;background:var(--live);color:#fff;border-radius:999px;padding:2px 8px;text-transform:uppercase}
-.q{display:none;gap:6px;margin-top:6px;flex-wrap:wrap}.q.on{display:flex}.q .qtext{flex-basis:100%;margin:0 0 2px;font-weight:600}.q .btn[disabled]{opacity:.45}
+.q{display:none;gap:6px;margin-top:6px;flex-wrap:wrap}.q.on{display:flex}.q .qtext{flex-basis:100%;margin:0 0 2px;font-weight:600}.q .btn[disabled]{opacity:.45}.q .btn.right{background:#e3f1e8;border-color:#3d8b5a;color:#1f5f38;font-weight:600}.qlead{margin:10px 0 0;font-size:14px;color:#5b625d}
 .src{font-size:12px;color:var(--muted);font-style:italic;margin:-4px 0 8px}
 .sheet-link{font-size:13px}.q input{flex:1;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}
 .pad{padding:14px 14px 24px}
@@ -680,12 +680,15 @@ const CLIENT = String.raw`
     if (p.set === 'grimpe') b.appendChild(el('div', 'todo', 'Grimper en famille : on vient voir, on essaie les premiers blocs du circuit enfants, à son niveau. Crash-pad, parade, jamais sur rocher mouillé. Le topo est chez Boolder.'));
     if (got) {
       b.appendChild(el('div', 'got-banner', '✓ Dans votre collection — ' + ({ gps: 'validé sur place (GPS)', question: 'validé par la question', honneur: 'validé sur l’honneur' })[got]));
-      // 21/11: "je peux très bien dire j'y suis, mais je veux quand même la question". Being there
-      // collects the card; the question, answered on the spot, opens its story (+ a small bonus).
-      if (p.q && !st.answered[p.id]) {
-        var q2 = questionBlock(p, function () { st.answered[p.id] = 1; save(); gain(QUESTION_XP, 'bonne observation'); renderAll(); openSpot(p); });
+      // 21/11: "je peux très bien dire j'y suis, mais je veux quand même la question". 22/11: "on
+      // doit toujours voir la question" — once answered it stays, the right answer marked. The
+      // answer opens the story (+ a small bonus); a place without a question shows its story.
+      if (p.q) {
+        var done = !!st.answered[p.id];
+        var q2 = questionBlock(p, function () { st.answered[p.id] = 1; save(); gain(QUESTION_XP, 'bonne observation'); renderAll(); openSpot(p); }, done);
         q2.classList.add('on'); b.appendChild(q2);
-      } else if (p.text) {
+      }
+      if (p.text && (!p.q || st.answered[p.id])) {
         b.appendChild(el('p', null, p.text));
         b.appendChild(el('p', 'src', 'Source : ' + p.source));
       }
@@ -698,31 +701,29 @@ const CLIENT = String.raw`
         if (!me || dist(me, p) > radiusOf(p)) setMe(p.lat, p.lng);
         unlock(p, 'gps');
       };
-      var qb = el('button', 'btn alt', '🔎 Pas de GPS ? Répondre à la question'); qb.type = 'button';
-      var q = questionBlock(p, function () { st.answered[p.id] = 1; unlock(p, 'question'); });
-      qb.onclick = function () { q.classList.toggle('on'); };
-      var hb = el('button', 'btn soft', '🤝 Sur l’honneur (' + half(XP[p.rarity]) + ' XP)'); hb.type = 'button';
-      hb.onclick = function () { unlock(p, 'honneur'); };
-      acts.appendChild(gps); acts.appendChild(qb); acts.appendChild(q); acts.appendChild(hb);
+      acts.appendChild(gps);
+      // 22/11: no "sur l'honneur" on a place ("on a déjà Pas de GPS, c'est la même chose"). The
+      // question is always on view: answered on the spot, it collects the card without GPS.
+      if (p.q) {
+        acts.appendChild(el('p', 'qlead', 'Pas de GPS ? Répondez à la question :'));
+        var q = questionBlock(p, function () { st.answered[p.id] = 1; unlock(p, 'question'); });
+        q.classList.add('on'); acts.appendChild(q);
+      }
       b.appendChild(acts);
     }
     if (p.set === 'grimpe') { var a = el('a', null, 'Topo sur Boolder'); a.href = 'https://www.boolder.com/fr'; a.target = '_blank'; a.rel = 'noopener'; var pp = el('p', 'sheet-link'); pp.appendChild(a); b.appendChild(pp); }
     sheet.appendChild(b); sheet.classList.add('on');
   }
-  function questionBlock(p, onRight) {
+  // done: already answered — the question stays on view, the right answer marked.
+  function questionBlock(p, onRight, done) {
     var q = el('div', 'q');
-    if (p.q) {
-      q.appendChild(el('p', 'qtext', p.q));
-      p.choices.forEach(function (c, i) {
-        var cb = el('button', 'btn alt', c); cb.type = 'button';
-        cb.onclick = function () { if (i === p.answer) onRight(); else { cb.disabled = true; toast('Pas tout à fait : regardez encore'); } };
-        q.appendChild(cb);
-      });
-    } else {
-      var inp = el('input'); inp.placeholder = 'Question à écrire (116d)'; var ok = el('button', 'btn', 'OK'); ok.type = 'button';
-      ok.onclick = function () { if (inp.value.trim()) onRight(); else toast('Une réponse, n’importe laquelle (maquette)'); };
-      q.appendChild(inp); q.appendChild(ok);
-    }
+    q.appendChild(el('p', 'qtext', p.q));
+    p.choices.forEach(function (c, i) {
+      var cb = el('button', 'btn alt' + (done && i === p.answer ? ' right' : ''), (done && i === p.answer ? '✓ ' : '') + c); cb.type = 'button';
+      if (done) cb.disabled = i !== p.answer;
+      else cb.onclick = function () { if (i === p.answer) onRight(); else { cb.disabled = true; toast('Pas tout à fait : regardez encore'); } };
+      q.appendChild(cb);
+    });
     return q;
   }
   function unlock(p, how) {
@@ -1026,7 +1027,9 @@ const CLIENT = String.raw`
 
   chrome(); panel(); liveBar(); draw(); renderAll();
   if (!st.onboarded && location.hash !== '#carte') openOnb();
-  var QT = /[?&]onglet=([a-z]+)/.exec(location.search); if (QT) tab(QT[1]); // ?onglet=dex for screenshots // #carte: straight to the map (screenshots)
+  var QT = /[?&]onglet=([a-z]+)/.exec(location.search); if (QT) tab(QT[1]); // ?onglet=dex for screenshots ; ?lieu=<id> opens a sheet, &gps=1 collects it first (screenshots)
+  var QL = /[?&]lieu=([a-z-]+)/.exec(location.search), QP = QL && SPOTS.filter(function (x) { return x.id === QL[1]; })[0];
+  if (QP) { if (/[?&]gps=1/.test(location.search)) { setMe(QP.lat, QP.lng); unlock(QP, 'gps'); } else openSpot(QP); } // #carte: straight to the map (screenshots)
 })();
 `;
 
