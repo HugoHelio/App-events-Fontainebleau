@@ -378,7 +378,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 .quest{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;border:1px solid var(--line)}
 .quest b{color:var(--ink)}.quest p{margin:4px 0 8px;font-size:13px;color:var(--muted)}
 .quest{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;align-items:start}.qmedal{width:44px;height:44px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:22px}.qbody{min-width:0}.qextra{grid-column:1 / -1;margin-top:6px}.fils-head p{margin:0 0 8px;font-size:13px;color:var(--muted)}.fsteps{display:flex;flex-direction:column;gap:6px}.fstep{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;background:#f7f6f2;border:1px solid var(--line);border-radius:10px;padding:6px 8px;cursor:pointer}.fdot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;background:#eceae4;color:#8a8f8b;flex:none}.fstep.half .fdot{background:#fff4d6;color:#9a6b00}.fstep.done .fdot{background:#2e7d4f;color:#fff}.ftx{min-width:0}.ftx b{display:block;font-size:13px;color:var(--ink)}.ftx small{font-size:11.5px;color:var(--muted)}.ftodo{margin:4px 0 0;font-size:12px;color:#7a5a00;font-style:italic}
-.quest.hot{border:2px solid #d4a72c;background:#fffaf0}.btn.gold{display:block;margin:4px auto 0;background:#fff;color:#7a5a00;border:1.5px solid #d4a72c}
+.quest.plain{display:block}.livechip.gold{background:#b8860b}.quest.hot{border:2px solid #d4a72c;background:#fffaf0}.btn.gold{display:block;margin:4px auto 0;background:#fff;color:#7a5a00;border:1.5px solid #d4a72c}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#eef0ec;color:var(--ink);margin-right:4px}
 .badges{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .badge{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center;font-size:24px}
@@ -872,7 +872,7 @@ const CLIENT = String.raw`
     root.appendChild(el('h2', null, 'En direct aujourd’hui et demain'));
     root.appendChild(el('p', 'meta', 'Les sorties de l’agenda deviennent des étapes le jour J : passez-y, gagnez une carte souvenir et de l’XP.'));
     if (featured) {
-      var q = el('div', 'quest hot'); q.appendChild(el('span', 'livechip', '★ Événement du jour'));
+      var q = el('div', 'quest hot plain'); q.appendChild(el('span', 'livechip gold', '★ Événement du jour')); // plain: not the quests' medal grid (22/11)
       q.appendChild(el('p', null, 'XP doublée aujourd’hui, pour tout le monde.'));
       evRow(q, featured); root.appendChild(q);
     }
