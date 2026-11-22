@@ -501,7 +501,7 @@ const CLIENT = String.raw`
       intro: 'L’homme qui a tracé les sentiers bleus, creusé des grottes et fait bâtir une tour, au XIXᵉ siècle.',
       steps: ['mont-ussy', 'grotte-serment', 'tour-denecourt', 'rocher-cassepot', 'croix-d-augas'] },
     { id: 'peintres', name: 'Les peintres de Barbizon', icon: 'palette', color: '#b8707d',
-      intro: 'Théodore Rousseau et les peintres venus peindre la forêt, qui ont obtenu sa protection en 1853.',
+      intro: 'Camille Corot découvre Barbizon en 1827 et ouvre la voie : Théodore Rousseau, Jean-François Millet et les autres viennent peindre la forêt, et obtiennent sa protection en 1853.', // Corot 1827: Office de tourisme, « The Artists Trail »
       steps: ['musee-barbizon', 'medaillon-millet-rousseau', 'bas-breau', 'apremont', 'chailly'] },
     { id: 'carriers', name: 'Le grès et les carriers', icon: 'pick', color: '#6b6257',
       intro: 'Pendant des siècles et jusqu’en 1907, on a taillé le grès de la forêt : des pavés pour les routes et pour Paris, des pierres pour le château. Fronts de taille, routes pavées et abris de carriers sont encore là.',
