@@ -288,7 +288,8 @@ Brouillard.
 3. ~~Ou sur l'honneur~~ : **retiré des lieux le 22/11** (chef de projet : « on a déjà Pas de GPS, c'est
    la même chose »). Un lieu se collecte par le GPS ou par sa question ; un simple point à collecter,
    sans question, seulement par le GPS. Le « sur l'honneur » reste pour les Space Invaders, qui n'ont
-   pas de position (§7.1 bis), et les événements.
+   pas de position (§7.1 bis), et les événements : « sur l'honneur » pour ce qui n'a pas de position
+   GPS (22/11, « on verra »).
 - **Forme de la question (21/11)** : trois choix, comme le jeu de la forêt ; elle porte sur ce
   qu'on **voit sur place** (forme d'un escalier, nombre de chiens d'une fontaine, matériau d'une
   façade), pas sur une date à connaître. Une mauvaise réponse grise ce choix (« regardez encore »),
@@ -298,7 +299,11 @@ Brouillard.
   dire j'y suis, mais je veux quand même la question »). **La question est toujours visible sur la
   fiche** (22/11 : « on doit toujours voir la question ») : avant la visite, directement sous le
   bouton GPS (« Pas de GPS ? Répondez à la question »), sans bouton à ouvrir ; une fois résolue, elle
-  reste affichée, la bonne réponse cochée, au-dessus de l'histoire. Sans GPS, la question valide à la fois
+  reste affichée, la bonne réponse cochée, au-dessus de l'histoire. **Retour de réponse sur le bouton
+  lui-même** (22/11 : la bulle verte « Pas tout à fait » était trop discrète et faisait croire à une
+  bonne réponse) : croix et fond rouge sur une mauvaise réponse, « Pas tout à fait : regardez encore
+  autour de vous » en rouge sous la question ; coche et fond vert sur la bonne, « Bonne réponse ! »,
+  puis la fiche remonte sur la carte collectée et son histoire. Sans GPS, la question valide à la fois
   la visite et l'histoire. Textes provisoires dans la maquette (`CARDS`) : chaque fait vient
   de la source citée ; passe complète au développement (116d), avec la vérification des questions
   sur place ; la source du jardin de Diane est à recouper avec le château.
