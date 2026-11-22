@@ -824,9 +824,8 @@ const CLIENT = String.raw`
   }
 
   // ── Collection ──
-  // Collection look: « cartes » (21/11) or « badges » (22/11 alternative). A per-viewer convenience.
-  var DEX_VIEW_KEY = 'flc-mock-dex-view';
-  function dexView() { try { return localStorage.getItem(DEX_VIEW_KEY) === 'badges' ? 'badges' : 'cartes'; } catch (e) { return 'cartes'; } }
+  // Collection look: badges, chosen on 22/11 over the cards of 21/11 (kept in tile() for now).
+  function dexView() { return 'badges'; }
   var RING = { 'peu commun': '#b9bec4', rare: '#d4a72c', 'légendaire': '#d4a72c' };
   function tile(o) {
     // o: { bg, fg, icon (node), label, locked, rarity, dark, tag }
@@ -844,13 +843,6 @@ const CLIENT = String.raw`
     var root = $('dex'); root.textContent = '';
     var n = Object.keys(st.spots).length;
     root.appendChild(el('h2', null, 'Collection · ' + n + ' / ' + SPOTS.length + ' lieux'));
-    var sw = el('div', 'view-sw');
-    ['cartes', 'badges'].forEach(function (v) {
-      var bt = el('button', null, v === 'cartes' ? 'Cartes' : 'Badges'); bt.type = 'button'; bt.setAttribute('aria-pressed', dexView() === v);
-      bt.onclick = function () { try { localStorage.setItem(DEX_VIEW_KEY, v); } catch (e) {} renderDex(); };
-      sw.appendChild(bt);
-    });
-    root.appendChild(sw);
     var ev = Object.keys(st.events);
     var box = el('div', 'set'); var h0 = el('h3'); h0.appendChild(el('span', null, '★ Cartes souvenirs')); h0.appendChild(el('span', null, String(ev.length))); box.appendChild(h0);
     if (!ev.length) box.appendChild(el('p', 'meta', 'Allez à une sortie de l’agenda, le jour même : vous gagnez sa carte souvenir, avec la date. Une fois l’événement passé, cette carte ne se gagne plus.'));
