@@ -216,14 +216,21 @@ identifiables au premier coup d'œil et rapportent le plus d'XP.
   c'est assez compliqué, ça fait un peu jeu de rôle ; c'est peut-être plus simple d'empiler des
   collectibles, avec des questions »). **Cinq fils, dans l'ordre de l'histoire** : (1) les rois à
   Fontainebleau (François Ier, le château, Saint-Louis), (2) les Napoléon, (3) Denecourt, (4) les
-  peintres de Barbizon, (5) **à choisir** (pistes : le grès et les carriers, la forêt des chasses
-  royales, l'histoire du bloc). Chaque fil relie des lieux réels ; une étape est faite quand le
+  peintres de Barbizon, (5) **le grès et les carriers** (choisi le 22/11). Chaque fil relie des lieux réels ; une étape est faite quand le
   lieu est collecté **et** sa question résolue ; dans l'ordre qu'on veut ; un fil complet rapporte
   60 XP et son badge. Pas de récit à suivre, pas de personnage : une phrase d'introduction par fil,
   et les fiches des lieux. Un lieu peut servir à deux fils (la cour des Adieux : les rois et
-  Napoléon). Premier jet dans la maquette (`FILS`), avec les seuls lieux déjà sourcés ; il manque
-  François Ier (porte Dorée, galerie ?) et deux ou trois étapes des peintres (Barbizon, le
-  Bas-Bréau, Chailly ?). L'écran montre la progression : fils complets sur cinq, et pour chaque
+  Napoléon). Premier jet dans la maquette (`FILS`), chaque fait sourcé sur la fiche du lieu.
+  Complété le 22/11 avec le chef de projet : **les rois** (7 étapes) : le donjon de la cour Ovale
+  (la plus vieille partie du château, attesté en 1137), la galerie François Ier (Rosso, 1533-1539),
+  le jardin de Diane, Saint-Louis, la cour des Adieux, le Grand Veneur, l'obélisque ; **les
+  peintres** (5) : le musée, le médaillon de Millet et Rousseau (Chapu, 1884), le Bas-Bréau (les
+  chênes de Corot), Apremont, Chailly-en-Bière (les tombes de Millet et Rousseau, l'auberge du
+  Cheval Blanc) ; **les carriers** (5) : le mont Ussy et la croix d'Augas (carrières du grès du
+  château), Franchard, les gorges du Houx (un « village » d'abris de carriers), Apremont (le seul
+  secteur épargné de 1866 à 1907). Source des carriers : AAFF, « Les carriers ». Le lien de Corot
+  avec Chailly n'a pas été trouvé dans les sources (Corot est relié à Barbizon et au Bas-Bréau).
+  La quête « Les sentiers bleus » est retirée : le fil Denecourt la reprend. L'écran montre la progression : fils complets sur cinq, et pour chaque
   fil ses étapes (collectée, question résolue ou non).
 - **Défis thématiques** : « Napoléon à Fontainebleau », « Les peintres de Barbizon », « Les sentiers
   bleus », **« 5 Must Climb »** (ci-dessous).
@@ -428,7 +435,7 @@ GoatCounter, sans rien qui identifie le joueur : `quest-start`, `spot-unlock/<id
 | **M5 Application Android** | TWA sur le Play Store, si l'usage le justifie | 2027 |
 
 ## 16. Questions ouvertes
-1. ~~**Le sujet de l'enquête**~~ : remplacée le 22/11 par cinq fils de l'histoire (§7.3). Reste à choisir **le cinquième fil**.
+1. ~~**Le sujet de l'enquête**~~ : remplacée le 22/11 par cinq fils de l'histoire (§7.3), le cinquième étant le grès et les carriers.
 2. **La direction artistique** : quels styles essayer en premier ?
 3. ~~**Le nom**~~ : décidé le 21/11, « Fontainebleau Live Collection » (« Bleau » n'est pas compris de tous).
 4. **Les 35 lieux du M1** : la liste, avec le chef de projet, à partir du parcours à pied vérifié.

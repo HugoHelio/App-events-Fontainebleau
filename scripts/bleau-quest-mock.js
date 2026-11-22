@@ -70,6 +70,15 @@ const SPOTS = [
   { id: 'hotel-de-ville', name: 'Hôtel de ville', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40474, lng: 2.70104, icon: 'townhall' },
   { id: 'ancienne-prison', name: 'Ancienne maison d’arrêt', set: 'ville', type: 'Monument historique', rarity: 'peu commun', lat: 48.40981, lng: 2.70368, icon: 'prison' },
   { id: 'bel-ebat', name: 'Parc de Bel-Ébat (Avon)', set: 'ville', type: 'Parc', rarity: 'commun', lat: 48.41200, lng: 2.73277, icon: 'park' },
+  // 22/11, the threads of history (project lead): the château's oldest and François Ier's parts,
+  // the painters' places, the quarrymen. Gallery: inside the château (paid visit), placed on the
+  // wing; medallion: OSM « Monument Millet-Rousseau », at the end of the Grande Rue (walk sheet by car).
+  { id: 'donjon', name: 'Le donjon (cour Ovale)', set: 'chateau', type: 'Monument', rarity: 'peu commun', lat: 48.40222, lng: 2.70104, icon: 'keep' },
+  { id: 'galerie-francois-1er', name: 'Galerie François Ier', set: 'chateau', type: 'Monument', rarity: 'rare', lat: 48.40255, lng: 2.69905, icon: 'gallery' },
+  { id: 'medaillon-millet-rousseau', name: 'Médaillon de Millet et Rousseau', set: 'peintres', type: 'Monument', rarity: 'peu commun', lat: 48.44161, lng: 2.61211, icon: 'medallion' },
+  { id: 'bas-breau', name: 'Le Bas-Bréau', set: 'peintres', type: 'Futaie', rarity: 'peu commun', lat: 48.44099, lng: 2.62430, icon: 'tree' },
+  { id: 'chailly', name: 'Chailly-en-Bière, le village des peintres', set: 'peintres', type: 'Village', rarity: 'peu commun', lat: 48.47127, lng: 2.60807, icon: 'church' },
+  { id: 'gorges-du-houx', name: 'Gorges du Houx, les abris de carriers', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.40800, lng: 2.64271, icon: 'hut' },
   { id: 'musee-barbizon', name: 'Musée de l’École de Barbizon', set: 'peintres', type: 'Maison de peintres', rarity: 'peu commun', lat: 48.44619, lng: 2.60261, icon: 'palette' },
   // « 5 Must Climb » in its family version (21/11): five places to visit and try, not five hard
   // problems. A proposal, to be checked with climbers (116k).
@@ -121,6 +130,32 @@ const CARDS = {
     text: 'Le premier sentier bleu de Denecourt serpente ici entre les rochers, les grottes et les arbres remarquables. Denecourt y baptise encore des rochers en 1874, comme la Chaise à Marie. L’année suivante, le jour de sa mort, il faisait encore dégager la grotte des Montussiennes.',
     source: 'Association des Amis de la forêt de Fontainebleau (comptes rendus de promenade au mont Ussy, 2022-2023)',
     q: 'De quelle couleur sont les marques peintes du sentier Denecourt ?', choices: ['Bleu', 'Rouge', 'Jaune'], answer: 0,
+  },
+  'donjon': {
+    text: 'Au cœur de la cour Ovale se dresse la grosse tour carrée du donjon, la partie la plus ancienne du château : une charte de Louis VII l’atteste dès 1137. En 1528, François Ier fait abattre presque tout le château médiéval et reconstruire sur ses fondations, mais il garde le donjon.',
+    source: 'Château de Fontainebleau, « Le palais médiéval » (chateaudefontainebleau.fr) ; Encyclopædia Universalis',
+    q: 'Quelle forme a la vieille tour du donjon ?', choices: ['Carrée', 'Ronde', 'Octogonale'], answer: 0,
+  },
+  'galerie-francois-1er': {
+    text: 'Commencée vers 1528 pour relier les appartements de François Ier à la chapelle, la galerie mesure environ 61 mètres sur 6. Le peintre florentin Rosso Fiorentino et son atelier la décorent de 1533 à 1539 : fresques et stucs mêlés, une première en France.',
+    source: 'Vassar College, catalogue Rosso Fiorentino (E. Carroll), « The Gallery of Francis I » ; château de Fontainebleau',
+  },
+  'medaillon-millet-rousseau': {
+    text: 'Au bout de la Grande Rue de Barbizon, un médaillon de bronze du sculpteur Henri Chapu est scellé dans un rocher. Il honore Jean-François Millet et Théodore Rousseau ; les peintres de Barbizon l’ont payé par souscription, et il est inauguré en avril 1884.',
+    source: 'Wikimedia Commons, « Rousseau and Millet by Henri Chapu » ; Office de tourisme (sentier des peintres) ; fiche « Fontainebleau en voiture », Fontainebleau Live',
+    q: 'Quels peintres honore le médaillon ?', choices: ['Millet et Rousseau', 'Corot et Daubigny', 'Monet et Renoir'], answer: 0,
+  },
+  'bas-breau': {
+    text: 'Un canton de la forêt célèbre pour ses chênes immenses, peints par Corot vers 1832-1833 et par bien d’autres. En 1853, le Bas-Bréau fait partie des 624 hectares de vieilles futaies et de rochers que l’on soustrait aux coupes, à la demande des peintres.',
+    source: 'Metropolitan Museum of Art (Corot, « Le Bas-Bréau », étude) ; Wikipédia, « Forêt de Fontainebleau »',
+  },
+  'chailly': {
+    text: 'Jean-François Millet et Théodore Rousseau reposent au cimetière de Chailly-en-Bière, avec d’autres peintres de Barbizon. Au village, l’auberge du Cheval Blanc, où venaient les peintres, est protégée depuis 1984 : ses façades et la salle du restaurant avec son décor.',
+    source: 'Office de tourisme du Pays de Fontainebleau (« Chailly-en-Bière, village de caractère ») ; base Mérimée (PA00086849)',
+  },
+  'gorges-du-houx': {
+    text: 'Le long des gorges du Houx, les carriers ont laissé un vrai « village » d’abris : de petites cabanes en pierres sèches, souvent montées contre un rocher, où ils rangeaient leurs habits, leur repas et leurs outils. Il en reste des centaines dans la forêt.',
+    source: 'Association des Amis de la forêt de Fontainebleau, « Les carriers »',
   },
   'croix-d-augas': {
     text: 'Déjà sur le plan de la forêt de 1624, sous le nom de « Croix Dogast », la croix se dresse au point le plus haut de la forêt, à 146 mètres. Brisée à la Révolution, refaite en pierre en 1827, abattue par une tempête en 1899, elle a été remise à neuf en 2016. Tout près s’ouvrait la caverne d’Augas, la plus vaste grotte de la forêt selon Denecourt ; ensablée en 1972, elle s’effondre en 1986.',
@@ -457,9 +492,8 @@ const CLIENT = String.raw`
   var FIL_XP = 60;
   var FILS = [
     { id: 'rois', name: 'Les rois à Fontainebleau', icon: 'castle', color: '#0f8f9e',
-      intro: 'De Saint Louis à Louis XVI : les traces des rois dans la ville, au château et dans la forêt de leurs chasses.',
-      steps: ['saint-louis', 'cour-des-adieux', 'jardin-de-diane', 'grand-veneur', 'obelisque'],
-      todo: 'François Ier : une étape à ajouter (la porte Dorée, la galerie François Ier ?).' },
+      intro: 'Du donjon du XIIᵉ siècle à l’obélisque de Marie-Antoinette : François Ier et les rois après lui, au château, en ville et dans la forêt de leurs chasses.',
+      steps: ['donjon', 'galerie-francois-1er', 'jardin-de-diane', 'saint-louis', 'cour-des-adieux', 'grand-veneur', 'obelisque'] },
     { id: 'napoleon', name: 'Les Napoléon', icon: 'fresco', color: '#4a5bb8',
       intro: 'Napoléon Ier, qui fait ses adieux à sa Vieille Garde en 1814, et Napoléon III, qui inaugure le Fort l’Empereur en 1853.',
       steps: ['cour-des-adieux', 'fresque-napoleon', 'aigle-noir', 'tour-denecourt'] },
@@ -468,11 +502,10 @@ const CLIENT = String.raw`
       steps: ['mont-ussy', 'grotte-serment', 'tour-denecourt', 'rocher-cassepot', 'croix-d-augas'] },
     { id: 'peintres', name: 'Les peintres de Barbizon', icon: 'palette', color: '#b8707d',
       intro: 'Théodore Rousseau et les peintres venus peindre la forêt, qui ont obtenu sa protection en 1853.',
-      steps: ['musee-barbizon', 'apremont'],
-      todo: 'Deux ou trois étapes à ajouter (Barbizon, le Bas-Bréau, Chailly ?).' },
-    { id: 'cinquieme', name: 'Cinquième fil, à choisir', icon: 'star', color: '#8a8f8b',
-      intro: 'Pistes : le grès et les carriers (les pavés de Paris), la forêt des chasses royales, l’histoire du bloc.',
-      steps: [] },
+      steps: ['musee-barbizon', 'medaillon-millet-rousseau', 'bas-breau', 'apremont', 'chailly'] },
+    { id: 'carriers', name: 'Le grès et les carriers', icon: 'pick', color: '#6b6257',
+      intro: 'Pendant des siècles et jusqu’en 1907, on a taillé le grès de la forêt : des pavés pour les routes et pour Paris, des pierres pour le château. Fronts de taille, routes pavées et abris de carriers sont encore là.',
+      steps: ['mont-ussy', 'croix-d-augas', 'franchard', 'gorges-du-houx', 'apremont'] },
   ];
   var CHAPTER = FILS[0].steps; // numbered gold steps on the map (« Quêtes » layer): the first thread
   function filStep(id) { var p = SPOTS.filter(function (x) { return x.id === id; })[0]; return p && st.spots[id] && (!p.q || st.answered[id]); }
@@ -990,7 +1023,6 @@ const CLIENT = String.raw`
       var n = fl.steps.filter(filStep).length;
       quest(root, [fl.icon, fl.color], (k + 1) + '. ' + fl.name, fl.steps.length ? [fl.steps.length + ' étapes', '+' + FIL_XP + ' XP'] : ['À écrire'], fl.intro, n, fl.steps.length, list);
     });
-    quest(root, ['tree', SETCOL.denecourt], 'Les sentiers bleus', ['Série', 'Forêt'], 'Sur les pas de Claude-François Denecourt, qui balisa la forêt au XIXᵉ siècle.', has(ofSet('denecourt')), ofSet('denecourt').length);
     var cl = el('div'); SPOTS.filter(function (p) { return p.set === 'grimpe'; }).forEach(function (p) { cl.appendChild(el('p', 'meta', (st.spots[p.id] ? '✓ ' : '○ ') + p.name)); });
     quest(root, ['climb', SETCOL.grimpe], '5 Must Climb, en famille', ['Défi', 'Tous niveaux', '+60 XP la série'], 'Cinq sites de bloc à découvrir en famille : venir, essayer les premiers blocs, à son niveau. Aucune cotation exigée.', has(ofSet('grimpe')), 5, cl);
     root.appendChild(el('h2', null, 'De saison'));

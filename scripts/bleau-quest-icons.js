@@ -38,6 +38,12 @@ const SET = {
   gift: { l: 'M4 11h16v10H4zM3 7.5h18V11H3zM12 7.5V21M12 7.5c-1-3-5.5-3.5-5.5-1S12 7.5 12 7.5zM12 7.5c1-3 5.5-3.5 5.5-1S12 7.5 12 7.5' },
   mushroom: { l: 'M3 12.5C3 7.5 7 4 12 4s9 3.5 9 8.5zM9.5 12.5V18a2.5 2.5 0 0 0 5 0v-5.5M8 8.5h.01M15.5 8h.01M12 6.5h.01' },
   team: { l: 'M6 8a3 3 0 1 0 6 0a3 3 0 1 0-6 0M2.5 20c.5-3.5 3-5.5 6.5-5.5s6 2 6.5 5.5M15 5.2a3 3 0 0 1 0 5.6M17 14.8c2.3.6 3.8 2.4 4.2 5.2' },
+  // 22/11: the threads of history.
+  keep: { l: 'M4 21h16M6 21V7h12v14M6 7V4h2.5v2h2V4h3v2h2V4H18v3M10 21v-3a2 2 0 0 1 4 0v3M9.5 11h.01M14.5 11h.01' },
+  gallery: { l: 'M2 20h20M3 20V10h18v10M3 10l2-3h14l2 3M6 17v-3a1 1 0 0 1 2 0v3M11 17v-3a1 1 0 0 1 2 0v3M16 17v-3a1 1 0 0 1 2 0v3' },
+  medallion: { l: 'M2 21l2.5-6 4-3.5h7l4 3.5L22 21zM9 6.5a3 3 0 1 0 6 0a3 3 0 1 0-6 0M10.5 15.5h3' },
+  hut: { l: 'M3 20h18M4.5 20c0-6 3.3-10 7.5-10s7.5 4 7.5 10M10 20v-3.5a2 2 0 0 1 4 0V20M7 15.5h2M15 14h2M10.5 12.5h3' },
+  pick: { l: 'M12.5 3.5l3-3 8 8-3 3zM14 9.9L3.5 20.5M2.5 21.5l1-1' },
   pin: { l: 'M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zM10 9a2 2 0 1 0 4 0a2 2 0 1 0-4 0' },
   // Added 22/11 with the town and forest places of the walk sheets.
   church: { l: 'M3 21h18M8 21V10l4-4 4 4v11M12 6V2M10.5 3.5h3M8 13l-4 2v6M16 13l4 2v6M10.5 21v-3a1.5 1.5 0 0 1 3 0v3M11 11h2' },
@@ -55,8 +61,8 @@ const SET = {
 
 // The place icons on one page (reports/bleau-quest/icones.html), chosen on 22/11 by the project lead.
 const PROPOSALS = [
-  { place: 'Monuments et ville', icons: [['castle', 'Château (Cour des Adieux)'], ['stag', 'Jardin de Diane'], ['mask', 'Théâtre'], ['obelisk', 'Obélisque'], ['church', 'Église Saint-Louis'], ['townhall', 'Hôtel de ville'], ['prison', 'Ancienne prison'], ['fresco', 'Fresque de Napoléon'], ['door', 'Porte du Grand Ferrare'], ['mansion', 'Aigle Noir'], ['park', 'Parc']] },
-  { place: 'Forêt', icons: [['tower', 'Belvédère'], ['view', 'Point de vue'], ['tree', 'Site'], ['rock', 'Rocher'], ['cave', 'Grotte'], ['cross', 'Croix'], ['mountain', 'Gorges'], ['pond', 'Mare'], ['climb', 'Bloc'], ['palette', 'Peintres']] },
+  { place: 'Monuments et ville', icons: [['castle', 'Château (Cour des Adieux)'], ['keep', 'Donjon'], ['gallery', 'Galerie François Ier'], ['medallion', 'Médaillon'], ['stag', 'Jardin de Diane'], ['mask', 'Théâtre'], ['obelisk', 'Obélisque'], ['church', 'Église Saint-Louis'], ['townhall', 'Hôtel de ville'], ['prison', 'Ancienne prison'], ['fresco', 'Fresque de Napoléon'], ['door', 'Porte du Grand Ferrare'], ['mansion', 'Aigle Noir'], ['park', 'Parc']] },
+  { place: 'Forêt', icons: [['tower', 'Belvédère'], ['view', 'Point de vue'], ['tree', 'Site'], ['rock', 'Rocher'], ['cave', 'Grotte'], ['cross', 'Croix'], ['mountain', 'Gorges'], ['pond', 'Mare'], ['hut', 'Abri de carrier'], ['pick', 'Les carriers (fil) : la masse'], ['climb', 'Bloc'], ['palette', 'Peintres']] },
 ];
 
 const ICONS = {};
