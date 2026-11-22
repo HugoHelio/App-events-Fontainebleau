@@ -11,43 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_489f459414@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:Atelier danse « petit bout d’histoire dansée »
-LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 09h30 à 12h00\n\nTarif : gratuit\n\nPublic : 3–9 
- ans\n\nAtelier de danse pour enfants : de 9h30 à 10h15 pour les 3/5 ans e
- t de 10h30 à 12h pour les 6/9 ans.\n\nOrganisateur : https://samois-sur-s
- eine.fr/evenement/atelier-danse-petit-bout-dhistoire-dansee/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/atelier-danse-petit-bout-d-histoire-
- dansee-samois-sur-seine-489f459414/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/atelier-danse-petit-bout-d-hist
- oire-dansee-samois-sur-seine-489f459414/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_e782c3d872@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:Échange de plantes
-LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 10h\n\nTarif : Gratuit\n\nRencontre conviviale organ
- isée avec le Comité de fleurissement pour échanger des plantes.\n\nOrga
- nisateur : https://samois-sur-seine.fr/evenement/echange-de-plantes-2/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/echange-de-plantes-samois-
- sur-seine-e782c3d872/\n\nInformations collectées automatiquement : vérif
- iez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/echange-de-plantes-samois-sur-s
- eine-e782c3d872/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_09f6d3d02a@fontainebleaulive.fr
 DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261121
@@ -64,25 +27,6 @@ DESCRIPTION:Horaires : 10h/13 et 14h30/17h\n\nTarif : gratuit\n\nLes peintu
 URL:https://fontainebleaulive.fr/evenements/exposition-samois-art-samois-su
  r-seine-09f6d3d02a/
 CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_38ded51c56@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:Récital : Au salon de Joséphine
-LOCATION:Eglise Sainte-Hilaire\, Samois-sur-Seine
-DESCRIPTION:Horaires : 20h\n\nTarif : Inconnu\n\nRécital sur instruments d
- ’époque autour de la musique des salons du 1er empire.\n\nOrganisateur 
- : https://samois-sur-seine.fr/evenement/recital-au-salon-de-josephine/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/recital-au-salon-de-joseph
- ine-samois-sur-seine-38ded51c56/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/recital-au-salon-de-josephine-s
- amois-sur-seine-38ded51c56/
-CATEGORIES:Scène & Spectacles
-GEO:48.45169;2.75084
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

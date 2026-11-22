@@ -3,30 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:La Genevraye · Fontainebleau Live
+X-WR-CALNAME:la-genevraye · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_e7691b00b4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:Soirée tartiflette
-LOCATION:La Genevraye
-DESCRIPTION:Horaires : en soirée\n\nUn moment convivial autour d'une dégu
- station de tartiflette.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-age
- ndas/agenda.html#2026-11-21-soireetartiflette\n\nFiche : https://fontaineb
- leaulive.fr/evenements/soiree-tartiflette-la-genevraye-e7691b00b4/\n\nInfo
- rmations collectées automatiquement : vérifiez-les auprès de l’organi
- sateur.
-URL:https://fontainebleaulive.fr/evenements/soiree-tartiflette-la-genevraye
- -e7691b00b4/
-CATEGORIES:Culture & Ateliers
-GEO:48.32069;2.74838
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR
