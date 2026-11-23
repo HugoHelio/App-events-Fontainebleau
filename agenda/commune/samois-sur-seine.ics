@@ -11,42 +11,6 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_09f6d3d02a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261123
-SUMMARY:Exposition Samois’art
-LOCATION:Foyer Django REINHARDT\, Samois-sur-Seine
-DESCRIPTION:Horaires : 10h/13 et 14h30/17h\n\nTarif : gratuit\n\nLes peintu
- res de l’atelier : venez découvrir le travail d’une année des élèv
- es de Maryse au RDC du foyer Django Reinhardt.\n\nOrganisateur : https://s
- amois-sur-seine.fr/evenement/exposition-samoisart/\n\nFiche : https://font
- ainebleaulive.fr/evenements/exposition-samois-art-samois-sur-seine-09f6d3d
- 02a/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/exposition-samois-art-samois-su
- r-seine-09f6d3d02a/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_8b62d5debb@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261122
-DTEND;VALUE=DATE:20261123
-SUMMARY:LOTO
-LOCATION:LA SAMOISIENNE\, Samois-sur-Seine
-DESCRIPTION:Horaires : 14h\n\nTarif : Payant\n\nGrand loto avec de nombreux
-  lots à gagner\, tombola\, buvette et gâteaux.\n\nOrganisateur : https:/
- /samois-sur-seine.fr/evenement/loto/\n\nFiche : https://fontainebleaulive.
- fr/evenements/loto-samois-sur-seine-8b62d5debb/\n\nInformations collectée
- s automatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/loto-samois-sur-seine-8b62d5deb
- b/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_fa9c61a161@fontainebleaulive.fr
 DTSTAMP:20261121T000000Z
 DTSTART;VALUE=DATE:20261128

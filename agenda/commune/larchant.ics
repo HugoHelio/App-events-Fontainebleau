@@ -3,30 +3,11 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Larchant · Fontainebleau Live
+X-WR-CALNAME:larchant · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-BEGIN:VEVENT
-UID:EVT_2224d547db@fontainebleaulive.fr
-DTSTAMP:20261021T000000Z
-DTSTART;VALUE=DATE:20261122
-DTEND;VALUE=DATE:20261123
-SUMMARY:Pourquoi les dalles de grès les plus épaisses du Massif sont-elle
- s dans le Golfe de Larchant ?
-LOCATION:Massif de Larchant / Dame Jouanne\, Larchant
-DESCRIPTION:Horaires : À partir de 9h45\n\nTarif : Gratuit\n\nSortie géol
- ogie et paysage pour comprendre la géomorphologie des dalles de grès.\n\
- nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontaineble
- aulive.fr/evenements/pourquoi-les-dalles-de-gres-les-plus-epaisses-du-mass
- if-sont-larchant-2224d547db/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/pourquoi-les-dalles-de-gres-les
- -plus-epaisses-du-massif-sont-larchant-2224d547db/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
 END:VCALENDAR

@@ -78,6 +78,14 @@ footer a{color:var(--muted)}
 .kids-txt small{font-size:13px;color:#dfe8e1}
 .kids-go{flex:none;background:#e3c178;color:#1d3b29;font-weight:700;border-radius:999px;padding:10px 18px;font-size:15px}
 @media (max-width:420px){.kids-go{flex:1 1 100%;text-align:center}}
+.game-promo{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:12px 0 0;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#1d3b29 0%,#2f6b44 70%,#4f8a35 100%);color:#fff;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+.game-promo img{flex:none;width:56px;height:56px;border-radius:13px;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.gm-txt{flex:1 1 180px;display:flex;flex-direction:column;min-width:0}
+.gm-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#afe14f}
+.gm-txt b{font-size:1.08rem;color:#fff;line-height:1.25}
+.gm-txt small{font-size:13px;color:#dfe8e1}
+.gm-go{flex:none;background:#afe14f;color:#1d3b29;font-weight:800;border-radius:999px;padding:10px 18px;font-size:15px}
+@media (max-width:420px){.gm-go{flex:1 1 100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -94,6 +102,7 @@ footer a{color:var(--muted)}
 <p data-en="Steps, maps, games for the children.">Étapes, cartes, jeux pour les enfants.</p>
 <ul class="gp-cards"><li><a href="/balades/fontainebleau-en-voiture/" data-track="guide-promo" data-id="en-voiture"><img src="/public/balades/img/thumb-en-voiture.jpg" width="480" height="300" alt="" loading="lazy"><span class="gp-txt"><span class="gp-mode" data-en="By car">En voiture</span><b data-en="Fontainebleau by car">Fontainebleau en voiture</b><small data-en="2 loops · 30–45 km · half a day to a day">2 boucles · 30 à 45 km · ½ à 1 journée</small></span></a></li></ul>
 <a class="kids" href="/foret/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true"><img src="/public/foret/img/icones/cerf.png" width="40" height="40" alt="" loading="lazy"><img src="/public/foret/img/icones/sanglier.png" width="40" height="40" alt="" loading="lazy"><img src="/public/foret/img/icones/renard.png" width="40" height="40" alt="" loading="lazy"><img src="/public/foret/img/icones/hulotte.png" width="40" height="40" alt="" loading="lazy"></span><span class="kids-txt"><span class="kids-kicker" data-en="For the children · ages 6-11">Pour les enfants · 6-11 ans</span><b data-en="The forest animals game">Le jeu des animaux de la forêt</b><small data-en="10 riddles on your phone, and a booklet to print">10 devinettes sur le téléphone, et un carnet à imprimer</small></span><span class="kids-go" data-en="Play →">Jouer →</span></a>
+<a class="game-promo" href="/jeu/" data-track="game-promo"><img src="/public/assets/img/brand/Icon-FLC-192.png" width="56" height="56" alt="" loading="lazy"><span class="gm-txt"><span class="gm-kicker" data-en="New · the game on your phone">Nouveau · le jeu sur votre téléphone</span><b>Fontainebleau Live Collection</b><small data-en="Explore the château, the town and the forest: collect 40 places and their stories, and earn XP at today’s outings. Free.">Explorez le château, la ville et la forêt : collectionnez 40 lieux et leurs histoires, et gagnez des XP aux sorties du jour. Gratuit.</small></span><span class="gm-go" data-en="Play →">Jouer →</span></a>
 <a class="gp-all" href="/balades/" data-en="All the guides →">Toutes les balades →</a>
 </aside>
 <h2>Autour de Montigny-sur-Loing</h2>
@@ -101,11 +110,11 @@ footer a{color:var(--muted)}
 <h3><a href="/que-faire/bourron-marlotte/">Bourron-Marlotte</a> · à 3 km</h3>
 <ul class="list"><li><a href="/evenements/marche-de-noel-de-bourron-marlotte-a0096844bf/">Marché de Noël de Bourron-Marlotte</a><small>Le dimanche 6 décembre 2026 · Espace Jean Renoir</small></li><li><a href="/evenements/balade-a-la-mare-aux-fees-et-ses-environs-bourron-marlotte-3484645f8a/">Balade à la Mare aux Fées et ses environs</a><small>Le jeudi 10 décembre 2026 · Site naturel de la Mare aux Fées, forêt de Fontainebleau</small></li></ul>
 <p><a href="/que-faire/bourron-marlotte/">Les 5 activités à Bourron-Marlotte →</a></p>
-<h3><a href="/que-faire/nonville/">Nonville</a> · à 6 km</h3>
-<ul class="list"><li><a href="/evenements/marche-de-l-avent-nonville-0584ea0652/">Marché de l&#39;Avent</a><small>Le dimanche 22 novembre 2026 · Salle polyvalente, 3 impasse des Prés à Nonville</small></li></ul>
 <h3><a href="/que-faire/moret-loing-et-orvanne/">Moret-Loing-et-Orvanne</a> · à 6 km</h3>
-<ul class="list"><li><a href="/evenements/vide-atelier-d-artistes-moret-loing-et-orvanne-58ecda5bfa/">Vide-atelier d&#39;artistes</a><small>Du samedi 21 novembre 2026 au dimanche 22 novembre 2026 · Maison Lesage, 28 rue Grande, Moret-sur-Loing</small></li><li><a href="/evenements/exposition-les-recycl-arts-quand-les-materiaux-recuperes-dev-moret-loing-et-orvanne-1b711d8ba8/">Exposition Les Recycl’arts : quand les matériaux récupérés deviennent des œuvres d’art</a><small>Du lundi 23 novembre 2026 au dimanche 29 novembre 2026 · Maison Lesage</small></li></ul>
-<p><a href="/que-faire/moret-loing-et-orvanne/">Les 20 activités à Moret-Loing-et-Orvanne →</a></p>
+<ul class="list"><li><a href="/evenements/exposition-les-recycl-arts-quand-les-materiaux-recuperes-dev-moret-loing-et-orvanne-1b711d8ba8/">Exposition Les Recycl’arts : quand les matériaux récupérés deviennent des œuvres d’art</a><small>Du lundi 23 novembre 2026 au dimanche 29 novembre 2026 · Maison Lesage</small></li><li><a href="/evenements/exposition-recyrculaire-moret-loing-et-orvanne-d3fca71a44/">Exposition Recyrculaire</a><small>Du mardi 24 novembre 2026 au samedi 28 novembre 2026 · Moret-Loing-et-Orvanne</small></li></ul>
+<p><a href="/que-faire/moret-loing-et-orvanne/">Les 19 activités à Moret-Loing-et-Orvanne →</a></p>
+<h3><a href="/que-faire/villemer/">Villemer</a> · à 7 km</h3>
+<ul class="list"><li><a href="/evenements/repair-cafe-msl-villemer-31c178404b/">Repair Café MSL !</a><small>Le samedi 5 décembre 2026 · Espace des Habitants, Rue des Marronniers, Villemer</small></li></ul>
 <h2>Recevoir le programme de Montigny-sur-Loing dans votre agenda</h2>
 <p class="note">Un abonnement : les activités s’ajoutent à votre agenda et se mettent à jour toutes seules. Les expositions de plus d’une semaine n’y figurent pas, elles restent ici.</p>
 <div class="actions"><a class="btn alt" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Ffontainebleaulive.fr%2Fagenda%2Fcommune%2Fmontigny-sur-loing.ics" rel="noopener" target="_blank">Google Agenda</a>
