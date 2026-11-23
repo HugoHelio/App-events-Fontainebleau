@@ -17,8 +17,10 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
   texte est provisoire : la passe complète se fait au développement (116d).
 - **Décidé le 23/11** : les **37 lieux** de la maquette sont ceux du M1 (§7.1) ; la page sera
   **`/jeu/`** ; fichiers renommés (`Live-Collection-GDD.md`, `scripts/live-collection-*.js`).
-- **Prochaine étape : le développement du M1** (§15), dans l'ordre 116d (contenu), 116e (moteur),
-  116f (mesure), 116g (mentions légales).
+- **Première version jouable en ligne le 23/11** : **fontainebleaulive.fr/jeu/**, version de test
+  (`noindex`, liée de nulle part), `scripts/live-collection-page.js`. Sans la boutique ; vrai GPS,
+  FR/EN, code de sauvegarde. Contenu : `scripts/live-collection.js`. Prochaine étape : l'essai sur
+  place (116i), puis le hors ligne et la relecture des textes.
 - **En attente du chef de projet** : le reste des relevés d'Invaders dans les rues (§7.1 bis) ;
   rien à relancer.
 - **Questions encore ouvertes** : §16. Les cinq sites de grimpe sont validés (§7.4).

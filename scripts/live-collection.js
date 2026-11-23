@@ -13,7 +13,8 @@
  * - A question asks for something one SEES on the spot, three choices, `answer` = index of the right one.
  * - `check` tracks publication: `sources` (every fact cross-checked, a link for each source),
  *   `site` (question checked on the spot), `lead` (read and approved by the project lead).
- *   Nothing is published on /jeu/ until all three are true.
+ *   Until the public launch (M3), /jeu/ is a test build (noindex, linked from nowhere) that shows
+ *   every place; the launch waits until all three are true for each place shown.
  * - `zone` sets the GPS radius: 'ville' 100 m, 'foret' 150 m (GDD §9).
  */
 
@@ -309,10 +310,11 @@ const SPOTS = [
       { label: 'AAFF, « L’effondrement de la caverne d’Augas »', url: null },
       { label: 'AAFF, compte rendu de la promenade Augas, Béhourdière, Cassepot (23/09/2023)', url: 'https://www.aaff.fr/wp-content/uploads/2023/12/cr_2023_09_23_promenade-abc.pdf' },
     ],
-    todo: 'Sur place : la cheminée de triangulation en brique (1900) se voit-elle depuis la croix ? Sinon, changer la question.',
+    // 23/11, project lead: the brick survey tower is not really visible from the cross; new question.
+    todo: 'Sur place : confirmer que la croix est en pierre.',
     q: {
-      fr: 'Quelle haute tour de brique se dresse près de la croix ?', en: 'What tall brick tower stands near the cross?',
-      choices: { fr: ['Une tour géodésique', 'Un château d’eau', 'Un clocher'], en: ['A survey tower', 'A water tower', 'A bell tower'] }, answer: 0,
+      fr: 'De quoi est faite la croix ?', en: 'What is the cross made of?',
+      choices: { fr: ['De pierre', 'De bois', 'De métal'], en: ['Stone', 'Wood', 'Metal'] }, answer: 0,
     },
     check: { sources: true, site: false, lead: false },
   },

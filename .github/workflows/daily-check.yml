@@ -98,7 +98,7 @@ jobs:
           # 21/11 : balades, foret, calendrier-de-l-avent et professionnels manquaient. Le calendrier
           # de l'Avent lit l'agenda : au premier scan apres sa creation, sa page modifiee mais non
           # ajoutee a fait refuser le `git pull --rebase` trois fois, et le run a echoue.
-          for d in evenements que-faire sorties ce-week-end aujourdhui agenda publier nos-sources balades foret calendrier-de-l-avent professionnels; do
+          for d in evenements que-faire sorties ce-week-end aujourdhui agenda publier nos-sources balades foret calendrier-de-l-avent professionnels jeu; do
             if [ -e "$d" ] || git ls-files --error-unmatch "$d" >/dev/null 2>&1; then git add -A -- "$d"; fi
           done
           # Filet : un fichier suivi modifie mais oublie dans la liste ci-dessus ne bloque plus la
