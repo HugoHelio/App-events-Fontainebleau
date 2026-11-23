@@ -62,7 +62,7 @@ const SET = {
   heart: { l: 'M12 20s-7.5-4.6-9.2-9.4A4.9 4.9 0 0 1 12 7.3a4.9 4.9 0 0 1 9.2 3.3C19.5 15.4 12 20 12 20z' },
 };
 
-// The place icons on one page (reports/bleau-quest/icones.html), chosen on 22/11 by the project lead.
+// The place icons on one page (reports/live-collection/icones.html), chosen on 22/11 by the project lead.
 const PROPOSALS = [
   { place: 'Monuments et ville', icons: [['castle', 'Château (Cour des Adieux)'], ['keep', 'Donjon'], ['gallery', 'Galerie François Ier'], ['medallion', 'Médaillon'], ['stag', 'Jardin de Diane'], ['mask', 'Théâtre'], ['obelisk', 'Obélisque'], ['church', 'Église Saint-Louis'], ['townhall', 'Hôtel de ville'], ['prison', 'Ancienne prison'], ['fresco', 'Fresque de Napoléon'], ['door', 'Porte du Grand Ferrare'], ['mansion', 'Aigle Noir'], ['park', 'Parc']] },
   { place: 'Forêt', icons: [['tower', 'Belvédère'], ['view', 'Point de vue'], ['tree', 'Site'], ['rock', 'Rocher'], ['cave', 'Grotte'], ['cross', 'Croix'], ['mountain', 'Gorges'], ['pond', 'Mare'], ['hut', 'Abri de carrier'], ['pick', 'Les carriers (fil) : la masse'], ['climb', 'Bloc'], ['palette', 'Peintres']] },

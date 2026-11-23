@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * Fontainebleau Live Collection (ex-Bleau Quest) — clickable mock-up (item 116a, GDD: Bleau-Quest-GDD.md).
+ * Fontainebleau Live Collection (ex-Bleau Quest) — clickable mock-up (item 116a, GDD: Live-Collection-GDD.md).
  *
- *   node scripts/bleau-quest-mock.js            writes reports/bleau-quest/maquette.html, serves it on
+ *   node scripts/live-collection-mock.js            writes reports/live-collection/maquette.html, serves it on
  *                                               http://localhost:8517/ and opens it (Ctrl+C to stop)
- *   node scripts/bleau-quest-mock.js --no-open  same, without opening the browser
- *   node scripts/bleau-quest-mock.js --file     writes the page only (the map stays grey: see below)
+ *   node scripts/live-collection-mock.js --no-open  same, without opening the browser
+ *   node scripts/live-collection-mock.js --file     writes the page only (the map stays grey: see below)
  *
  * Why a local server: OpenStreetMap refuses tile requests without a Referer, and a page opened from
  * file:// sends none (« Access blocked », 21/11). Served from localhost, the browser sends one.
@@ -25,11 +25,11 @@ const http = require('http');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const G = require('./generate-pages');
-const { ICONS, PROPOSALS } = require('./bleau-quest-icons');
-const { AVATAR_ART, FRAME_ART } = require('./bleau-quest-avatars');
+const { ICONS, PROPOSALS } = require('./live-collection-icons');
+const { AVATAR_ART, FRAME_ART } = require('./live-collection-avatars');
 
 const ROOT = path.join(__dirname, '..');
-const OUT = path.join(ROOT, 'reports', 'bleau-quest');
+const OUT = path.join(ROOT, 'reports', 'live-collection');
 const PORT = Number(process.env.PORT) || 8517;
 const CONFIRMED = new Set(['site', 'datatourisme', 'openagenda', 'francebillet']);
 const CENTRE = { lat: 48.4045, lng: 2.7016 };
@@ -547,12 +547,12 @@ const CLIENT = String.raw`
   var DEMO_CODE = 'DEMO-SEMINAIRE';
   // Collector pack (one purchase): avatars and profile frames, nothing else. [id, label, in pack]
   // 22/11 feedback (« plus vivant, de vrais dessins ») : the pack avatars are coloured drawings
-  // (scripts/bleau-quest-avatars.js); the three free ones stay line icons.
+  // (scripts/live-collection-avatars.js); the three free ones stay line icons.
   var AVATARS = [['user', 'Promeneur', 0], ['tree', 'Arbre', 0], ['leaf', 'Feuille', 0], ['renard', 'Renard', 1], ['chouette', 'Chouette', 1],
     ['ecureuil', 'Écureuil', 1], ['cepe', 'Cèpe', 1], ['bicorne', 'Napoléon', 1], ['bloc', 'Bloc', 1]];
   var FRAMES = [['none', 'Sans', 0], ['simple', 'Simple', 0], ['or', 'Or', 1], ['feuillage', 'Feuillage', 1], ['gravure', 'Gravure', 1], ['gres', 'Grès', 1]];
   var PACK_PRICE = '2,99 €'; // indicative
-  var KEY = 'bleau-quest-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
+  var KEY = 'live-collection-mock-v5'; // v5: smaller XP scale (21/11), older saves start over
   var st = load(); st.answered = st.answered || {}; st.invaders = st.invaders || {};
   st.avatar = st.avatar || 'user'; st.frame = st.frame || 'none'; st.gq = st.gq || 'ville';
   // Every field the game reads: after « Tout remettre à zéro » (22/11) a missing one made each
@@ -562,7 +562,7 @@ const CLIENT = String.raw`
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function $(id) { return document.getElementById(id); }
-  // Icons (scripts/bleau-quest-icons.js), drawn for the project. Fixed markup, never from the data.
+  // Icons (scripts/live-collection-icons.js), drawn for the project. Fixed markup, never from the data.
   function ico(name) {
     var d = ICONS[name] || ICONS.star, sp = document.createElement('span'); sp.className = 'ico';
     sp.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d.l + '"/></svg>';
@@ -609,7 +609,7 @@ const CLIENT = String.raw`
     var mb = $('mebtn'); mb.textContent = ''; mb.appendChild(avEl(st.avatar, st.frame, 'top'));
   }
   // An avatar: a round clip with a line icon (free) or a drawing (pack), and its frame drawn around.
-  // Fixed markup only (scripts/bleau-quest-avatars.js), never from the data.
+  // Fixed markup only (scripts/live-collection-avatars.js), never from the data.
   function avEl(id, frame, size) {
     var a = el('span', 'av' + (size ? ' ' + size : '')), inn = el('span', 'av-in'), art = AVATAR_ART[id];
     if (art) { inn.style.background = art.bg; inn.innerHTML = '<svg viewBox="0 0 64 64" aria-hidden="true">' + art.svg + '</svg>'; } else inn.appendChild(ico(id));
@@ -1448,25 +1448,25 @@ function serve(open) {
   const server = http.createServer((req, res) => {
     let rel;
     try { rel = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); } catch { rel = '/'; }
-    if (rel === '/') { res.writeHead(302, { Location: '/reports/bleau-quest/maquette.html' }); return res.end(); }
+    if (rel === '/') { res.writeHead(302, { Location: '/reports/live-collection/maquette.html' }); return res.end(); }
     const file = path.normalize(path.join(ROOT, rel));
     if (!allowed.some((d) => file.startsWith(d)) || !fs.existsSync(file) || !fs.statSync(file).isFile()) { res.writeHead(404); return res.end('404'); }
     res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
     fs.createReadStream(file).pipe(res);
   });
   server.on('error', (e) => {
-    console.error(e.code === 'EADDRINUSE' ? `Port ${PORT} déjà pris : relancez avec PORT=8518 node scripts/bleau-quest-mock.js` : e.message);
+    console.error(e.code === 'EADDRINUSE' ? `Port ${PORT} déjà pris : relancez avec PORT=8518 node scripts/live-collection-mock.js` : e.message);
     process.exit(1);
   });
   server.listen(PORT, '127.0.0.1', () => {
-    const url = `http://localhost:${PORT}/reports/bleau-quest/maquette.html`;
+    const url = `http://localhost:${PORT}/reports/live-collection/maquette.html`;
     console.log(`Servie sur ${url} — Ctrl+C pour arrêter`);
     if (open && process.platform === 'win32') spawnSync('cmd', ['/c', 'start', '', url], { stdio: 'ignore' });
   });
 }
 
 // Icon proposals side by side (22/11), at the sizes the game uses: map pin, card, sheet header.
-// Fixed markup from bleau-quest-icons.js only, nothing from the data.
+// Fixed markup from live-collection-icons.js only, nothing from the data.
 function iconPage() {
   const svg = (k) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + ICONS[k].l + '"/></svg>';
   const cols = ['#4a5bb8', '#0f8f9e', '#9247a0'];
