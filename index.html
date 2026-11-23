@@ -793,9 +793,7 @@
     .gm-txt small { font-size: 0.82rem; color: #dfe8e1; }
     .gm-go { flex: none; background: #afe14f; color: #1d3b29; font-weight: 800; border-radius: 999px; padding: 0.6rem 1.2rem; font-size: 0.95rem; }
     @media (max-width: 420px) { .gm-go { flex: 1 1 100%; text-align: center; } }
-    /* 23/11: gold like the other two chips of our own (guides, children's game); the game's icon, no emoji. */
-    .season-chip.is-game { display: inline-flex; align-items: center; gap: 0.35rem; }
-    .season-chip.is-game img { width: 18px; height: 18px; border-radius: 5px; display: block; }
+    /* 23/11: the game's chip is gold like the other two of our own (guides, children's game), text only. */
     .game-wrap { max-width: 1200px; margin: 0.9rem auto 0; padding: 0 1rem; }
     .game-wrap .game-promo { margin: 0; }
 
@@ -1675,7 +1673,7 @@
         kidsTitle: 'Le jeu des animaux de la forêt',
         kidsText: '10 devinettes sur le téléphone, et un carnet à imprimer',
         kidsGo: 'Jouer →',
-        gameChip: 'Jouer : FL Collection',
+        gameChip: 'Jeu : collectionnez Fontainebleau',
         gameLink: 'Le jeu : Fontainebleau Live Collection',
         gameKicker: 'Nouveau · le jeu sur votre téléphone',
         gameTitle: 'Fontainebleau Live Collection',
@@ -1808,7 +1806,7 @@
         kidsTitle: 'The forest animals game',
         kidsText: '10 riddles on your phone, and a booklet to print',
         kidsGo: 'Play →',
-        gameChip: 'Play: FL Collection',
+        gameChip: 'Game: collect Fontainebleau',
         gameLink: 'The game: Fontainebleau Live Collection',
         gameKicker: 'New · the game on your phone',
         gameTitle: 'Fontainebleau Live Collection',
@@ -2168,7 +2166,7 @@
       const j = document.createElement('a');
       j.className = 'season-chip is-guides is-game';
       j.href = '/jeu/';
-      j.append(Object.assign(document.createElement('img'), { src: '/public/assets/img/brand/Icon-FLC-192.png', alt: '', width: 18, height: 18 }), t('gameChip'));
+      j.textContent = t('gameChip'); // 23/11: says what it is; the icon was unreadable at that size
       j.addEventListener('click', () => track('game-chip'));
       row.insertBefore(j, g);
     }
