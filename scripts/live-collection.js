@@ -35,14 +35,14 @@ const TYPES = {
   'Site des sentiers bleus': 'Blue-trail site', 'Belvédère': 'Lookout tower', 'Point de vue': 'Viewpoint',
   'Carrefour historique': 'Historic crossroads', 'Gorges': 'Gorge', 'Grotte': 'Cave', 'Mare': 'Pond',
   'Futaie': 'Old-growth woodland', 'Village': 'Village', 'Maison de peintres': 'Painters’ house',
-  'Site de bloc': 'Bouldering site', 'Site de bloc et sable': 'Bouldering site and sand', 'Rocher nommé': 'Named rock',
+  'Salle du château': 'Château room', 'Manège': 'Merry-go-round', 'Site de bloc': 'Bouldering site', 'Site de bloc et sable': 'Bouldering site and sand', 'Rocher nommé': 'Named rock',
 };
 
 // Base Mérimée / Muséofile notices on the culture ministry's POP platform (link by reference).
 const pop = (base, ref) => `https://pop.culture.gouv.fr/notice/${base}/${ref}`;
 const WALK_SHEET = { label: 'Fiche « Fontainebleau à pied », Fontainebleau Live', url: 'https://fontainebleaulive.fr/balades/' };
 
-// The 37 places of M1, frozen on 23/11 (GDD §7.1). Positions: OpenStreetMap, the fresco and the
+// The places of M1: 37 frozen on 23/11, then 40 (carousel, English garden, throne room, same day) (GDD §7.1). Positions: OpenStreetMap, the fresco and the
 // prison at the street (BAN); all to be checked on the spot.
 const SPOTS = [
   // ── The château and the town ──────────────────────────────────────────────────────────────
@@ -149,6 +149,39 @@ const SPOTS = [
     // 23/11: no source found for the mural (author, date): a plain point, rue de Ferrare.
     check: { sources: true, site: false, lead: false },
   },
+  // 23/11, asked by the project lead: two more Napoleonic places (two were not enough for a set).
+  {
+    id: 'jardin-anglais', name: 'Jardin anglais', set: 'napoleon', type: 'Jardin', rarity: 'commun', zone: 'ville',
+    lat: 48.39922, lng: 2.69615, icon: 'park',
+    text: {
+      fr: 'Sous Napoléon, l’architecte Hurtault dessine ce jardin à l’anglaise, en 1810-1812 : des arbres rares, des allées sinueuses, une rivière artificielle. Dans un recoin se cache la fontaine Belle-Eau, qui a donné son nom au château.',
+      en: 'Under Napoleon, the architect Hurtault designed this English-style garden in 1810-1812: rare trees, winding paths, an artificial river. Tucked away in a corner is the Belle-Eau fountain, which gave the château its name.',
+    },
+    sources: [
+      { label: 'Château de Fontainebleau, cartes interactives (« Jardin anglais »)', url: 'https://www.chateaudefontainebleau.fr/en/?p=16445' },
+      { label: 'Wikipedia, « Maximilien Joseph Hurtault »', url: 'https://en.wikipedia.org/wiki/Maximilien_Joseph_Hurtault' },
+    ],
+    q: {
+      fr: 'Qu’est-ce qui traverse le jardin ?', en: 'What runs through the garden?',
+      choices: { fr: ['Une rivière', 'Une voie ferrée', 'Une route'], en: ['A river', 'A railway', 'A road'] }, answer: 0,
+    },
+    check: { sources: true, site: false, lead: false },
+  },
+  {
+    // Inside the château (paid visit), placed on the main wing, like the gallery.
+    id: 'salle-du-trone', name: 'Salle du Trône', set: 'napoleon', type: 'Salle du château', rarity: 'rare', zone: 'ville',
+    lat: 48.40250, lng: 2.70010, icon: 'throne',
+    text: {
+      fr: 'Napoléon n’aimait pas le décor de l’ancienne chambre du roi : en 1808, il en fait sa salle du Trône, l’une des rares de l’Empire. Le trône, fabriqué en 1804 pour Saint-Cloud, y est installé la même année.',
+      en: 'Napoleon disliked the décor of the former king’s bedchamber: in 1808 he made it his throne room, one of the few of the Empire. The throne, made in 1804 for Saint-Cloud, was installed here that same year.',
+    },
+    // 23/11: « the only Napoleonic throne room preserved in the world » left out: sources disagree.
+    sources: [
+      { label: 'Château de Fontainebleau, « Napoleon I at Fontainebleau: 10 things you need to know »', url: 'https://www.chateaudefontainebleau.fr/en/?p=88436' },
+      { label: 'Google Arts & Culture, « Napoleon’s throne chair » (château de Fontainebleau)', url: 'https://artsandculture.google.com/asset/napoleon-s-throne-chair/PAH2fxTN5-tLyw' },
+    ],
+    check: { sources: true, site: false, lead: false },
+  },
   {
     id: 'grand-ferrare', name: 'Porte de l’hôtel du Grand Ferrare', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
     lat: 48.40435, lng: 2.69802, icon: 'door',
@@ -164,7 +197,7 @@ const SPOTS = [
   },
   {
     id: 'aigle-noir', name: 'Place Napoléon-Bonaparte et l’Aigle Noir', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
-    lat: 48.40367, lng: 2.69914, icon: 'mansion',
+    lat: 48.404064, lng: 2.698841, icon: 'mansion', // 23/11: at its address (BAN, 27 place Napoléon-Bonaparte); the square's centre is the carousel's
     text: {
       fr: 'La place et son carrousel. En face, l’hôtel de l’Aigle Noir, demeure des seigneurs de Retz de 1555 à 1677, rebaptisée L’Aigle Noir en 1810, sous l’Empire.',
       en: 'The square and its merry-go-round. Opposite, the Hôtel de l’Aigle Noir, home of the lords of Retz from 1555 to 1677, renamed the Black Eagle in 1810, under the Empire.',
@@ -179,6 +212,8 @@ const SPOTS = [
     },
     check: { sources: true, site: false, lead: false },
   },
+  // 23/11, asked by the project lead: the carousel of the walk sheet, a place to find (a plain point).
+  { id: 'carrousel', name: 'Le carrousel', set: 'ville', type: 'Manège', rarity: 'commun', zone: 'ville', lat: 48.40367, lng: 2.69914, icon: 'carousel', check: { sources: true, site: false, lead: false } },
   {
     id: 'saint-louis', name: 'Église Saint-Louis', set: 'ville', type: 'Église', rarity: 'commun', zone: 'ville',
     lat: 48.40565, lng: 2.70145, icon: 'church',
@@ -479,7 +514,7 @@ const FILS = [
       fr: 'Napoléon Ier, qui fait ses adieux à sa Vieille Garde en 1814, et Napoléon III, qui inaugure le Fort l’Empereur en 1853.',
       en: 'Napoleon I, who bade farewell to his Old Guard in 1814, and Napoleon III, who opened the Fort l’Empereur in 1853.',
     },
-    steps: ['cour-des-adieux', 'fresque-napoleon', 'aigle-noir', 'tour-denecourt'],
+    steps: ['cour-des-adieux', 'salle-du-trone', 'jardin-anglais', 'fresque-napoleon', 'aigle-noir', 'tour-denecourt'],
   },
   {
     id: 'denecourt', icon: 'tree', color: '#27503a',

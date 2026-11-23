@@ -126,7 +126,7 @@ site, seule l'étiquette « LIVE » reste rouge ; les lieux en ronds ; crédit O
 ## 7. Les couches du monde
 
 ### 7.1 Les lieux (collection permanente)
-- **37 lieux au M1, figés le 23/11** (ceux de la maquette), environ 150 à terme. Positions
+- **40 lieux au M1** : les 37 de la maquette, figés le 23/11, puis le carrousel, le jardin anglais et la salle du Trône (même jour). Environ 150 à terme. Positions
   OpenStreetMap, à vérifier sur place.
 - Types : monument, jardin, patrimoine urbain, rocher nommé, site de Denecourt, gorges, croix et
   mares de la forêt, village et lieu des peintres, site de bloc.
@@ -139,8 +139,8 @@ site, seule l'étiquette « LIVE » reste rouge ; les lieux en ronds ; crédit O
 | Série | Lieux |
 |---|---|
 | **Le château et ses jardins** (4) | Jardin de Diane, obélisque de Marie-Antoinette, le donjon (cour Ovale, peu commun), galerie François Ier (rare) |
-| **Napoléon à Fontainebleau** (2) | Cour des Adieux, fresque de Napoléon |
-| **La ville** (7) | Théâtre municipal, église Saint-Louis, hôtel de ville, place Napoléon-Bonaparte et l'Aigle Noir, porte de l'hôtel du Grand Ferrare, parc de Bel-Ébat (Avon), ancienne maison d'arrêt (peu commun) |
+| **Napoléon à Fontainebleau** (4) | Cour des Adieux, fresque de Napoléon, jardin anglais (Hurtault, 1810-1812, et la fontaine Belle-Eau), salle du Trône (1808, rare : visite payante) — deux ajoutés le 23/11, deux ne suffisaient pas pour une série |
+| **La ville** (8) | Le carrousel de la place Napoléon-Bonaparte (simple point, 23/11), théâtre municipal, église Saint-Louis, hôtel de ville, place Napoléon-Bonaparte et l'Aigle Noir, porte de l'hôtel du Grand Ferrare, parc de Bel-Ébat (Avon), ancienne maison d'arrêt (peu commun) |
 | **Les sentiers bleus** (4) | Mont Ussy, rocher Cassepot (peu communs), tour Denecourt, grotte du Serment (rares) |
 | **Grands sites de la forêt** (11) | Croix du Calvaire ; croix de Toulouse, croix du Grand Veneur, croix d'Augas, antre des Druides, caverne des Brigands, mare aux Évées (peu communs) ; gorges de Franchard, gorges d'Apremont, gorges du Houx et les abris de carriers, mare aux Fées (rares) |
 | **Les peintres de Barbizon** (4) | Musée de l'École de Barbizon, médaillon de Millet et Rousseau, le Bas-Bréau, Chailly-en-Bière (peu communs) |
@@ -211,7 +211,7 @@ premier coup d'œil et rapportent le plus d'XP.
   Corot avec Chailly n'est pas sourcé : Corot reste au Bas-Bréau.
 - **Quêtes d'événements** : la quête de la semaine (deux sorties d'ici dimanche, annoncée par le
   carrousel du jeudi), « Quatre genres de sorties » (spectacle, atelier ou expo, nature, sport).
-- **Toujours là** : « 5 Must Climb, en famille » (§7.4), la chasse aux Invaders.
+- **Toujours là** : « Trois sorties sportives » (badge « Sportif », 23/11), « 5 Must Climb, en famille » (§7.4), la chasse aux Invaders.
 - **Quêtes de saison** : Noël (marchés de Noël de l'agenda, couche de saison, 5 XP de bonus par
   sortie ; le calendrier de l'Avent du site devient une quête), le brame (septembre-octobre,
   depuis un point d'écoute autorisé), les champignons (une sortie de l'agenda, jamais de
@@ -257,7 +257,7 @@ En direct, Invaders, Quêtes, Grimpe, Saison (Noël en ce moment), Brouillard.
 ## 8. Progression
 - **XP** (à régler en test) : lieu commun 15, peu commun 20, rare 30, légendaire 60 ; question
   résolue 5 ; **événement 20, événement du jour 40**, bonus de saison 5 ; « Quatre genres de
-  sorties » 50 ; mosaïque d'Invader 15 ; série complète 40 (série d'**au moins trois lieux**) ;
+  sorties » 50 ; trois sorties sportives 40 (badge « Sportif », 23/11 : courses, trails, VTT de l'agenda) ; mosaïque d'Invader 15 ; série complète 40 (série d'**au moins trois lieux**) ;
   fil de l'histoire complet 60 ; éco-geste 10 ; premier pas 5 ; sur l'honneur à la moitié
   (arrondie). Des gains simultanés s'affichent ensemble.
 - **Aucun gain ne vaut plus d'un niveau** (« laisse-moi du temps »).

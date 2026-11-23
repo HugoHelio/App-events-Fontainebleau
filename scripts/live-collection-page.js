@@ -305,6 +305,7 @@ const CLIENT = String.raw`
     filsDone: ['{0} / {1} fils complets', '{0} / {1} threads complete'], steps: ['{0} étapes', '{0} stops'],
     stDone: ['collecté, question résolue', 'collected, question answered'], stHalf: ['collecté : reste la question', 'collected: the question is left'], stQ: ['à collecter, avec sa question', 'to collect, with its question'], stTodo: ['à collecter', 'to collect'],
     filXp: ['fil complet : {0}', 'thread complete: {0}'], setXp: ['série complète : {0}', 'set complete: {0}'],
+    qSport: ['Trois sorties sportives', 'Three sport outings'], qSportTxt: ['Une course, un trail, une sortie VTT… Trois événements sportifs de l’agenda, le jour J.', 'A run, a trail race, a mountain-bike ride… Three sport events from the agenda, on the day.'], qSportXp: ['trois sorties sportives', 'three sport outings'], bSport: ['Sportif', 'Sporty'],
     qClimb: ['5 Must Climb, en famille', '5 Must Climb, for families'], qClimbTxt: ['Cinq sites de bloc à découvrir en famille, à son niveau.', 'Five bouldering sites to discover as a family, at your own level.'],
     qInv: ['La chasse aux Invaders', 'The Invader hunt'],
     qXmas: ['Les rendez-vous de Noël', 'Christmas outings'], qXmasTxt: ['Deux marchés ou rendez-vous de Noël ({0} sur la carte, couche Saison).', 'Two Christmas markets or events ({0} on the map, Season layer).'],
@@ -338,7 +339,7 @@ const CLIENT = String.raw`
 
   // ── Rules (GDD §8): no single gain worth more than one level ──
   var XP = { 'commun': 15, 'peu commun': 20, 'rare': 30, 'légendaire': 60 };
-  var EVENT_XP = 20, FEATURED_XP = 40, SEASON_BONUS = 5, SET_XP = 40, ALL_CATS_XP = 50, FIRST_STEP_XP = 5, ECO_XP = 10, QUESTION_XP = 5, FIL_XP = 60, WEEK_XP = 40, INV_XP = 15;
+  var EVENT_XP = 20, FEATURED_XP = 40, SEASON_BONUS = 5, SET_XP = 40, ALL_CATS_XP = 50, FIRST_STEP_XP = 5, ECO_XP = 10, QUESTION_XP = 5, FIL_XP = 60, WEEK_XP = 40, INV_XP = 15, SPORT_XP = 40, SPORT_MIN = 3; // 23/11: a sport badge, three sport outings
   var SET_MIN_PLACES = 3;
   var RADIUS = { ville: 100, foret: 150, event: 200, invader: 100 };
   var GPS_SLACK = 50; // the phone's own accuracy, counted up to 50 m
@@ -438,6 +439,7 @@ const CLIENT = String.raw`
   $('lu-ok').onclick = function () { $('levelup').classList.remove('on'); luShowing = false; if (luQueue.length) luTimer = setTimeout(nextLevelUp, 300); };
 
   function filStep(id) { var p = spotById(id); return p && st.spots[id] && (!p.q || st.answered[id]); }
+  function sportClaims() { return Object.keys(st.events).filter(function (id) { return st.events[id].cat === 'Sport & Outdoor'; }).length; }
   function weekClaims() { return Object.keys(st.events).filter(function (id) { return st.events[id].d >= MONDAY; }).length; }
   function checkSets() {
     Object.keys(SETS).forEach(function (s) {
@@ -450,6 +452,7 @@ const CLIENT = String.raw`
     });
     var cats = {}; Object.keys(st.events).forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
     if (!st.sets.cats && Object.keys(CATS).every(function (c) { return cats[c]; })) { st.sets.cats = true; gain(ALL_CATS_XP, t('qCatsXp')); }
+    if (!st.sets.sport && sportClaims() >= SPORT_MIN) { st.sets.sport = true; gain(SPORT_XP, t('qSportXp')); }
     if (!st.weeks[MONDAY] && weekClaims() >= 2) { st.weeks[MONDAY] = true; gain(WEEK_XP, t('qWeekXp')); }
     save();
   }
@@ -873,6 +876,7 @@ const CLIENT = String.raw`
       });
       quest(root, [fl.icon, fl.color], (k + 1) + '. ' + tr(fl.name), [t('steps', fl.steps.length)], tr(fl.intro), fl.steps.filter(filStep).length, fl.steps.length, list);
     });
+    quest(root, ['run', '#6d8bb5'], t('qSport'), ['+' + SPORT_XP + ' XP', t('bSport')], t('qSportTxt'), sportClaims(), SPORT_MIN);
     var climb = SPOTS.filter(function (p) { return p.set === 'grimpe'; });
     quest(root, ['climb', SETCOL.grimpe], t('qClimb'), [], t('qClimbTxt'), climb.filter(function (p) { return st.spots[p.id]; }).length, climb.length);
     quest(root, ['invader', '#2b2d42'], t('qInv'), [t('honour')], t('invLead', INVADERS.length), INVADERS.filter(invGot).length, INVADERS.length);
@@ -903,7 +907,7 @@ const CLIENT = String.raw`
     evIds.forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
     var noel = evIds.filter(function (id) { return st.events[id].season; }).length;
     [['castle', t('bNap'), inSet('napoleon'), SETCOL.napoleon], ['tree', t('bBlue'), inSet('denecourt'), SETCOL.denecourt], ['palette', t('bPaint'), inSet('peintres'), SETCOL.peintres],
-      ['star', t('bFirst'), [Math.min(evIds.length, 1), 1], '#b8860b'], ['mask', t('bCats'), [Object.keys(cats).length, 4], '#b8707d'], ['leaf', t('bEco'), [st.eco ? 1 : 0, 1], SETCOL.foret],
+      ['star', t('bFirst'), [Math.min(evIds.length, 1), 1], '#b8860b'], ['mask', t('bCats'), [Object.keys(cats).length, 4], '#b8707d'], ['run', t('bSport'), [Math.min(sportClaims(), SPORT_MIN), SPORT_MIN], '#6d8bb5'], ['leaf', t('bEco'), [st.eco ? 1 : 0, 1], SETCOL.foret],
       ['climb', t('bClimb'), inSet('grimpe'), SETCOL.grimpe], ['invader', t('bInv'), [INVADERS.filter(invGot).length, INVADERS.length], '#2b2d42'], ['xmas', t('bXmas'), [Math.min(noel, 2), 2], '#b3261e']]
       .forEach(function (x) {
         var got = x[2][0], need = x[2][1], done = got >= need, c = el('div', 'mtile pmedal' + (done ? '' : ' locked'));

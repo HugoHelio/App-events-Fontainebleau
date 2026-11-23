@@ -2546,6 +2546,12 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       liée de nulle part ; une mention « version de test » dans le profil. Essayée dans Edge (FR et EN,
       tous les onglets, une fiche), aucune erreur. Reste : le hors ligne (`sw.js`), l'essai sur un
       téléphone dehors (116i). Les deux workflows ajoutent `jeu/` à leurs commits.
+      Essayée sur mobile par le chef de projet le 23/11 (« sur mobile c'est chouette »). Ajouts du
+      même jour : série Napoléon portée à quatre (jardin anglais, salle du Trône, sourcés par le
+      château ; la croix de Saint-Hérem écartée, sa page source a disparu), le carrousel de la place
+      Napoléon-Bonaparte en simple point (l'Aigle Noir passe à son adresse), quête et badge
+      « Sportif » (trois sorties sport de l'agenda, +40 XP). 40 lieux. Suite demandée : pousser le
+      joueur à installer le jeu sur l'écran d'accueil (PWA), ou une application.
     - [ ] **116f. Mesure** : événements GoatCounter du GDD §14. Comptés dès la version de test :
       `jeu/quest-start`, `jeu/spot-unlock/<id>`, `jeu/spot-method/<gps|question|honneur>`,
       `jeu/event-checkin`, `jeu/level/<n>`, `jeu/set-complete/<série>` ; reste à les lire.

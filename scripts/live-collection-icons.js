@@ -60,6 +60,9 @@ const SET = {
   // 22/11: the « Mécène » badge (support at a free price, shop)
   chevron: { l: 'M6 9l6 6 6-6' }, // 22/11: folding shop products
   heart: { l: 'M12 20s-7.5-4.6-9.2-9.4A4.9 4.9 0 0 1 12 7.3a4.9 4.9 0 0 1 9.2 3.3C19.5 15.4 12 20 12 20z' },
+  // 23/11: the merry-go-round of place Napoléon-Bonaparte (canopy, poles, a horse's head), the throne room
+  carousel: { l: 'M12 2v1.5M3 8l9-4.5L21 8zM3 8h18M6 8v8M18 8v8M12 8v3M10 15.5l1-3.5h2.5l1 2M3 16h18M5 20h14' },
+  throne: { l: 'M7 13V6a5 3.5 0 0 1 10 0v7M5 13h14v3H5zM7 16v5M17 16v5M10 8.5h4' },
 };
 
 // The place icons on one page (reports/live-collection/icones.html), chosen on 22/11 by the project lead.
