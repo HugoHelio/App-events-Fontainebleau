@@ -61,7 +61,7 @@ const SPOTS = [
       fr: 'Regardez le grand escalier de la façade : quelle forme a-t-il ?', en: 'Look at the great staircase on the façade: what shape is it?',
       choices: { fr: ['En fer à cheval', 'En colimaçon', 'Tout droit'], en: ['Horseshoe', 'Spiral', 'Straight'] }, answer: 0,
     },
-    check: { sources: true, site: false, lead: true },
+    check: { sources: true, site: true, lead: true },
   },
   {
     id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', zone: 'ville',
@@ -93,7 +93,7 @@ const SPOTS = [
       fr: 'De quoi est faite la façade du théâtre ?', en: 'What is the theatre’s façade made of?',
       choices: { fr: ['De brique et de pierre', 'De béton', 'De bois'], en: ['Brick and stone', 'Concrete', 'Wood'] }, answer: 0,
     },
-    check: { sources: true, site: false, lead: true },
+    check: { sources: true, site: true, lead: true },
   },
   {
     id: 'obelisque', name: 'Obélisque de Marie-Antoinette', set: 'chateau', type: 'Monument', rarity: 'commun', zone: 'ville',
@@ -208,7 +208,7 @@ const SPOTS = [
       fr: 'Que reste-t-il aujourd’hui du palais du Grand Ferrare ?', en: 'What is left today of the Grand Ferrare palace?',
       choices: { fr: ['Son portail', 'Une tour', 'Sa chapelle'], en: ['Its gateway', 'A tower', 'Its chapel'] }, answer: 0,
     },
-    check: { sources: true, site: false, lead: false },
+    check: { sources: true, site: true, lead: true },
   },
   {
     id: 'aigle-noir', name: 'Place Napoléon-Bonaparte et l’Aigle Noir', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
@@ -225,7 +225,7 @@ const SPOTS = [
       fr: 'Qu’est-ce qui tourne sur la place ?', en: 'What goes round and round on the square?',
       choices: { fr: ['Un carrousel', 'Une grande roue', 'Une fontaine'], en: ['A merry-go-round', 'A Ferris wheel', 'A fountain'] }, answer: 0,
     },
-    check: { sources: true, site: false, lead: false },
+    check: { sources: true, site: true, lead: true },
   },
   // 23/11, asked by the project lead: the carousel of the walk sheet, a place to find (a plain point).
   { id: 'carrousel', name: 'Le carrousel', set: 'ville', type: 'Manège', rarity: 'commun', zone: 'ville', lat: 48.40367, lng: 2.69914, icon: 'carousel', check: { sources: true, site: false, lead: false } },
@@ -245,7 +245,7 @@ const SPOTS = [
       fr: 'Elle s’appelle Saint-Louis, mais sous quel roi a-t-elle été bâtie ?', en: 'It is called Saint-Louis, but under which king was it built?',
       choices: { fr: ['Louis XIII', 'Saint Louis (Louis IX)', 'Louis XVI'], en: ['Louis XIII', 'Saint Louis (Louis IX)', 'Louis XVI'] }, answer: 0,
     },
-    check: { sources: true, site: false, lead: false },
+    check: { sources: true, site: true, lead: true },
   },
   {
     id: 'hotel-de-ville', name: 'Hôtel de ville', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
@@ -263,7 +263,7 @@ const SPOTS = [
       fr: 'Sous quel empereur la mairie a-t-elle été reconstruite ?', en: 'Under which emperor was the town hall rebuilt?',
       choices: { fr: ['Napoléon III', 'Napoléon Iᵉʳ', 'Charlemagne'], en: ['Napoleon III', 'Napoleon I', 'Charlemagne'] }, answer: 0,
     },
-    check: { sources: true, site: false, lead: false },
+    check: { sources: true, site: true, lead: true },
   },
   {
     id: 'ancienne-prison', name: 'Ancienne maison d’arrêt', set: 'ville', type: 'Monument historique', rarity: 'peu commun', zone: 'ville',

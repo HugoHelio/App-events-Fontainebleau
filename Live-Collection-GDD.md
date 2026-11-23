@@ -15,13 +15,20 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
   `http://localhost:8517/` (`PORT=…` si le port est pris, `--file` pour écrire la page seulement,
   Ctrl+C pour arrêter) ; elle s'écrit dans `reports/live-collection/` (jamais commité). Tout son
   texte est provisoire : la passe complète se fait au développement (116d).
-- **Décidé le 23/11** : les **37 lieux** de la maquette sont ceux du M1 (§7.1) ; la page sera
-  **`/jeu/`** ; fichiers renommés (`Live-Collection-GDD.md`, `scripts/live-collection-*.js`).
+- **Décidé le 23/11** : les lieux de la maquette sont ceux du M1 (§7.1), **40 depuis** (deux lieux
+  napoléoniens et le carrousel ajoutés) ; la page est **`/jeu/`** ; fichiers renommés
+  (`Live-Collection-GDD.md`, `scripts/live-collection-*.js`).
 - **En ligne et lancé le 23/11** : **fontainebleaulive.fr/jeu/**, indexé, carte « Jouer » sur l'accueil et
-  les pages du site ; « bêta » dans le profil (les questions restent à vérifier sur place). Code :
-  `scripts/live-collection-page.js`. Sans la boutique ; vrai GPS,
-  FR/EN, code de sauvegarde. Contenu : `scripts/live-collection.js`. Prochaine étape : l'essai sur
-  place (116i), puis le hors ligne et la relecture des textes.
+  les pages du site ; « bêta » dans le profil. Vrai GPS, FR/EN, code de sauvegarde, installation sur
+  l'écran d'accueil. Code : `scripts/live-collection-page.js` ; contenu : `scripts/live-collection.js`.
+- **Boutique ouverte le 23/11** (§12.2) : « Soutenir le jeu » encaisse pour de vrai (lien Stripe
+  collé) ; **partie de groupe jouable sur le centre-ville**, sans serveur
+  (`scripts/live-collection-group.js`), réservée par e-mail. Son paiement en ligne (29 € / 59 €)
+  attend le **médiateur de la consommation : CM2C, contacté le 23/11** (suivi, adhésion et contrat :
+  chef de projet). Serveur du classement en direct : reporté aux premiers clients (§12.2).
+- **Questions validées** : les **7 étapes du centre-ville**, le 23/11, par le chef de projet qui fait
+  la boucle très souvent (`check` complet : 7 lieux sur 40 prêts). Les autres restent à vérifier
+  sur place (116i), puis le hors ligne et la relecture des textes.
 - **En attente du chef de projet** : le reste des relevés d'Invaders dans les rues (§7.1 bis) ;
   rien à relancer.
 - **Questions encore ouvertes** : §16. Les cinq sites de grimpe sont validés (§7.4).
@@ -350,7 +357,7 @@ service ; Zombies, Run! vend des missions (du contenu, écarté).
 
 | Priorité | Offre | Pour qui | Prix | Ce qu'il faut construire |
 |---|---|---|---|---|
-| **Haute** | **Session de groupe** : un code, des équipes, un **classement en direct**, des **comparatifs entre équipes**, un **récapitulatif pour l'organisateur** (podium, étape la plus rapide, question la plus difficile, en PDF le soir même ; ni nom de joueur ni position). **Trois quêtes prêtes**, dont les étapes ne sont pas montrées (c'est ce qui s'achète) : le **centre-ville** (les étapes de la fiche « Fontainebleau à pied » et ses Invaders), **la forêt, hauteurs de la Solle** (mont Ussy, croix d'Augas, croix du Calvaire, tour Denecourt, rocher Cassepot), **Barbizon** (musée, médaillon, Bas-Bréau, caverne des Brigands, gorges d'Apremont) | séminaires, hôtels, INSEAD, anniversaires | **une sortie sur une quête : 29 € jusqu'à 10 joueurs, 59 € jusqu'à 30** ; au-delà, « nous contacter ». Pas de devis ni de quête sur mesure | le serveur (§11) ; les boucles à marcher et à mesurer ; le Grand Parterre comme lieu ; la quête en forêt présentée à l'ONF |
+| **Haute** | **Session de groupe** : un code, des équipes, un **classement à l'arrivée** (en direct quand le serveur existera), un **récapitulatif pour l'organisateur** (podium, étape la plus vite bouclée, question la plus ratée, le plus d'Invaders ; ni nom de joueur ni position). **Trois quêtes prêtes**, dont les étapes ne sont pas montrées (c'est ce qui s'achète) : le **centre-ville** (les étapes de la fiche « Fontainebleau à pied » et ses Invaders), **la forêt, hauteurs de la Solle** (mont Ussy, croix d'Augas, croix du Calvaire, tour Denecourt, rocher Cassepot), **Barbizon** (musée, médaillon, Bas-Bréau, caverne des Brigands, gorges d'Apremont) | séminaires, hôtels, INSEAD, anniversaires | **une sortie sur une quête : 29 € jusqu'à 10 joueurs, 59 € jusqu'à 30** ; au-delà, « nous contacter ». Pas de devis ni de quête sur mesure | **fait pour le centre-ville** (23/11, sans serveur) ; reste : le médiateur (CM2C), les deux Payment Links, la quête en forêt présentée à l'ONF, Barbizon ; le serveur pour le direct |
 | **Haute** | **Soutien à prix libre**, remercié par le **badge « Mécène »** sur le profil **et le pack collectionneur** : six avatars dessinés en couleur (renard, chouette, écureuil, cèpe, Napoléon, bloc et grimpeur) et quatre cadres ornés (laurier doré, feuillage, gravure, grès). Le pack se débloque **aussi sans payer** (« Débloquer le pack sans payer », comme les balades) ; seul le badge dit qui a payé. Badge montré une fois obtenu, jamais comme une cible verrouillée. Gratuits d'office : trois avatars au trait (promeneur, arbre, feuille) et le cadre simple | habitués, collectionneurs | libre : 4 € conseillés, 2 € minimum | un Payment Link « le client choisit le montant » ; le retour de Stripe pose le badge (sans serveur, contournable : accepté) |
 | **Basse** | **Vos cartes imprimées** : les lieux collectés, avec la date | visiteurs, cadeau | à définir | PDF prêt à imprimer ou imprimeur partenaire (§16) |
 | Plus tard | Saison financée par l'office de tourisme ou l'interco (modèle Tèrra Aventura) ; commerçants partenaires signalés comme tels | institutions, commerces | convention | des chiffres d'usage (M2) |
@@ -360,11 +367,16 @@ otage) ; des indices ou des jokers ; le hasard payant ; un pass d'événement à
 
 **Dans le jeu (23/11)** : la boutique est ouverte sur `/jeu/` (onglet Boutique) : « Soutenir le jeu » à prix libre payé par Stripe (badge Mécène et pack ; le pack aussi sans payer), groupes réservés par e-mail avec leurs prix ; retour de Stripe = badge sur le téléphone et code (`FLC-MEC-…`) pour un autre appareil ; avatar et cadre choisis dans le profil ; `/conditions-de-vente/`. Le pack à 2,99 € a été fondu le même jour dans le soutien (chef de projet : « ce ne sont que de la UI 2D ») : plus de vente à prix fixe, donc ni renonciation au droit de rétractation ni médiateur de la consommation.
 
-**Partie de groupe (23/11, centre-ville)** : sans serveur. Code de partie (`FLC-GRP-…`) pour l'organisateur, qui choisit une durée limite et envoie un lien aux équipes (un téléphone par équipe). Étapes dans l'ordre, chronomètre ; sur place (GPS) +20, bonne réponse +100 ou +50 au 2ᵉ essai, étape sans question +100 par GPS, Invaders +30 ; égalité au temps. Fin : dernière étape, durée limite, ou « Terminer la partie ». Chaque équipe envoie son résultat en lien ; ouvert chez l'organisateur, il remplit le classement et le récapitulatif. Pas de classement en direct (il faudrait le serveur de §11). Paiement en ligne des paliers quand un médiateur de la consommation est désigné ; d'ici là, réservation par e-mail et code envoyé à la main.
+**Partie de groupe (23/11, centre-ville)** : sans serveur. Code de partie (`FLC-GRP-…`) pour l'organisateur, qui choisit une durée limite et envoie un lien aux équipes (un téléphone par équipe). Étapes dans l'ordre, chronomètre ; sur place (GPS) +20, bonne réponse +100 ou +50 au 2ᵉ essai, étape sans question +100 par GPS, Invaders +30 ; égalité au temps. Fin : dernière étape, durée limite, ou « Terminer la partie ». Chaque équipe envoie son résultat en lien ; ouvert chez l'organisateur, il remplit le classement et le récapitulatif. Pas de classement en direct (il faudrait le serveur de §11). En fin de partie, le message (texte et lien) s'ouvre **tout prêt** dans WhatsApp ou l'appli SMS, adressé à l'organisateur s'il a donné son numéro (facultatif, transmis seulement dans le lien d'invitation) : il reste à toucher « Envoyer », aucun site ne pouvant envoyer à la place du joueur. Une arrivée par GPS collecte aussi le lieu dans le jeu solo. Les 7 questions des étapes sont validées (23/11) ; la fresque de Napoléon a sa question (à cheval, le bicorne : observation du chef de projet). Paiement en ligne des paliers quand le médiateur de la consommation (CM2C, contacté le 23/11) est en place : il est obligatoire dès qu'un particulier peut acheter, même auprès d'une entreprise ; d'ici là, réservation par e-mail et code envoyé à la main.
 
-**À l'écran** : onglet Boutique, dans l'ordre **soutien, groupes, cartes imprimées**, chaque
-produit **replié**, sauf le soutien, ouvert d'emblée avec le pack en images et « 4 € conseillés » (et non « Prix libre », qui se lisait comme « gratuit ») (icône, nom, une ligne, prix ou « Prix libre », « Bientôt » ; une flèche pour
-l'ouvrir). Le groupe : « 1. Choisissez votre quête » (nom, durée, distance, deux puces), « 2. Une
+**Serveur (devis du 23/11, reporté aux premiers clients)** : le volume est minuscule (une centaine de messages par sortie), les offres gratuites suffisent ; retenu, Cloudflare Workers et Durable Objects (0 €, puis 5 $/mois au-delà de 100 000 requêtes par jour ; données gardées en Europe possible). Écartés : Firebase (100 connexions simultanées en gratuit), Supabase (pause après une semaine sans activité, sinon 25 $/mois), un VPS (4 à 8 €/mois, mais entretien à notre charge). Le coût réel est la construction : deux à trois séances. Apport : classement qui bouge en direct, résultats reçus sans WhatsApp, progression des équipes par étape, codes de partie vérifiés.
+
+**À l'écran** : onglet Boutique, dans l'ordre **soutien, groupes, cartes imprimées**. Le soutien est
+ouvert d'emblée : les avatars du pack sur une ligne, les cadres sur la suivante, « 4 € conseillés »
+(et non « Prix libre », qui se lisait comme « gratuit »), « Débloquer le pack sans payer » en lien
+discret, « Soutenir encore » pour un Mécène. Les autres produits sont **repliés** (icône, nom, une
+ligne, prix ou « Bientôt » ; une flèche pour l'ouvrir). Sous le bouton de réservation, l'adresse
+`contact@helioso.com` est écrite et copiable (un lien `mailto:` ne fait rien sans appli de courriel). Le groupe : « 1. Choisissez votre quête » (nom, durée, distance, deux puces), « 2. Une
 sortie » et les deux tarifs. Dans le profil, un avatar ou un cadre à cadenas ouvre la boutique sur
 le soutien. Dans la maquette, rien n'est payé ; « Essayer avec le code DEMO-SEMINAIRE » ouvre un
 classement avec trois équipes fictives.
