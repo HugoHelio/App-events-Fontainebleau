@@ -203,7 +203,7 @@ premier coup d'œil et rapportent le plus d'XP.
 - **« J'y vais »** sur une sortie à venir : un rappel le jour J (sans XP, l'XP se gagne sur place).
 - **Seulement les fiches confirmées par une source lue** (jamais Gemini seul, la règle du
   carrousel), à leur adresse, le jour J. Le flux de la Ville en fait partie, lu à chaque scan depuis
-  le 21/11 : c'est l'essentiel des sorties du centre-ville.
+  le 21/11 (84 sorties dans la fenêtre de trois mois au scan du 21/11).
 - Y passer donne une **carte souvenir datée** (« Marché de Noël de Fontainebleau, 2026 ») et de
   l'XP. Le jeu envoie du monde aux organisateurs, et nous savons le compter : c'est la preuve à
   montrer aux organisateurs et aux communes (item 114).
