@@ -2552,6 +2552,15 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       Napoléon-Bonaparte en simple point (l'Aigle Noir passe à son adresse), quête et badge
       « Sportif » (trois sorties sport de l'agenda, +40 XP). 40 lieux. Suite demandée : pousser le
       joueur à installer le jeu sur l'écran d'accueil (PWA), ou une application.
+      **Écran d'accueil, fait le 23/11** (choisi avant l'application Android) : le jeu s'installe comme
+      une application à part, `jeu/manifest.json` (généré, portée `/jeu/`, nom court « FL Collection »),
+      icône dessinée pour le jeu (carte pliée et lieu coché, `public/assets/img/brand/Icon-FLC-*.png`).
+      Un encart le propose après la première chose collectée, jamais à l'arrivée ; « Plus tard »
+      attend 7 jours ; jamais une fois installé. Android : le vrai bouton d'installation
+      (`beforeinstallprompt`) ; iPhone : la page ne peut pas installer, l'encart montre les deux gestes
+      (Partager, « Sur l'écran d'accueil »). Une entrée permanente dans le profil. Hors ligne : la page
+      enregistre le service worker du site (réseau d'abord), qui garde les pages ouvertes. Comptés :
+      `jeu/install/shown`, `/later`, `/accepted`, `/dismissed`, `/done`.
     - [ ] **116f. Mesure** : événements GoatCounter du GDD §14. Comptés dès la version de test :
       `jeu/quest-start`, `jeu/spot-unlock/<id>`, `jeu/spot-method/<gps|question|honneur>`,
       `jeu/event-checkin`, `jeu/level/<n>`, `jeu/set-complete/<série>` ; reste à les lire.

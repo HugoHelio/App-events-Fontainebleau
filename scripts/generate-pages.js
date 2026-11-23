@@ -41,7 +41,7 @@ const { GUIDES, PAY, SUGGESTED, OSM } = require('./balades');
 const { ANIMALS, RULES, CARNET } = require('./foret');
 const { DAYS, DECOR: AVENT_DECOR, LAYOUT: AVENT_LAYOUT } = require('./avent');
 // Fontainebleau Live Collection (item 116e): /jeu/, a test build until the launch (noindex, out of the sitemap).
-const { JEU_DIR, jeuPage } = require('./live-collection-page');
+const { JEU_DIR, jeuPage, jeuManifest } = require('./live-collection-page');
 
 const SITE_URL = 'https://fontainebleaulive.fr';
 const ROOT = process.env.SITE_DIR || path.join(__dirname, '..');
@@ -3436,6 +3436,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${BALADES_DIR}/merci/index.html`, thanksPage());
   files.set(`${FORET_DIR}/index.html`, foretPage(today));
   files.set(`${AVENT_DIR}/index.html`, aventPage(events, today));
+  files.set(`${JEU_DIR}/manifest.json`, jeuManifest());
   files.set(`${JEU_DIR}/index.html`, jeuPage({ events, today, helpers: { addDays, spanDays }, analytics: analyticsTags(), siteUrl: SITE_URL }));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);

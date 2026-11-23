@@ -26,6 +26,23 @@ const SEASON_KM = 15;
 const SEASON_DAYS = 40;
 const SEASON_RE = /no[eë]l|avent|saint[- ]nicolas|illumination/i;
 // Leaflet, byte-identical to the CDN files: the same SRI digests as index.html.
+// Home-screen icon (23/11): a folded map and a collected place, drawn for the game.
+const ICON_DIR = '/public/assets/img/brand';
+const ICON_180 = `${ICON_DIR}/Icon-FLC-180.png`;
+/** /jeu/manifest.json: the game installs as its own app, scoped to /jeu/ (the site keeps its own). */
+function jeuManifest() {
+  return JSON.stringify({
+    id: `/${JEU_DIR}/`, name: 'Fontainebleau Live Collection', short_name: 'FL Collection',
+    description: 'Le jeu de collection de Fontainebleau : lieux, histoires et événements du jour.',
+    lang: 'fr', start_url: `/${JEU_DIR}/`, scope: `/${JEU_DIR}/`, display: 'standalone', orientation: 'portrait',
+    theme_color: '#1d3b29', background_color: '#f4f3ef',
+    icons: [
+      { src: `${ICON_DIR}/Icon-FLC-192.png`, sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: `${ICON_DIR}/Icon-FLC-512.png`, sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: `${ICON_DIR}/Icon-FLC-512.png`, sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+    ],
+  }, null, 2) + '\n';
+}
 const LEAFLET_CSS = '<link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H">';
 const LEAFLET_JS = '<script src="/vendor/leaflet-1.9.4/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"></script>';
 
@@ -72,7 +89,7 @@ const inline = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
 function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fontainebleaulive.fr' }) {
   const { week, season } = jeuEvents(events, today, helpers);
   const data = Object.assign(jeuContent(), {
-    events: week, season, built: today, icons: ICONS,
+    events: week, season, built: today, icons: ICONS, icon192: `${ICON_DIR}/Icon-FLC-192.png`,
     range: { events: EVENT_KM * 1000, season: SEASON_KM * 1000, centre: CENTRE },
   });
   return `<!doctype html>
@@ -86,6 +103,11 @@ function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fo
 <link rel="canonical" href="${siteUrl}/${JEU_DIR}/">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <meta name="theme-color" content="#1d3b29">
+<link rel="manifest" href="/${JEU_DIR}/manifest.json">
+<link rel="apple-touch-icon" href="${ICON_180}">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FL Collection">
 ${LEAFLET_CSS}
 <style>${STYLE}</style>
 </head>
@@ -102,6 +124,7 @@ ${LEAFLET_CSS}
 <section class="screen" id="s-dex"><div class="pad" id="dex"></div></section>
 <section class="screen" id="s-quests"><div class="pad" id="quests"></div></section>
 <section class="screen" id="s-me"><div class="pad" id="me"></div></section>
+<div class="install" id="install" role="dialog" hidden></div>
 <div class="sheet" id="sheet" role="dialog"></div>
 <div class="onb" id="onb"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -230,6 +253,9 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .code{width:100%;font:13px/1.3 ui-monospace,Consolas,monospace;padding:8px;border:1px solid var(--line);border-radius:10px;margin-top:8px;resize:vertical;min-height:64px}
 .foot-links{font-size:12px;color:var(--muted);margin-top:18px}.foot-links a{color:var(--muted)}
 .langsw{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}.langsw button{font:inherit;font-size:13px;font-weight:700;padding:4px 12px;border:0;background:#fff;color:var(--ink);cursor:pointer}.langsw button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.install{position:absolute;z-index:880;left:10px;right:10px;bottom:10px;background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.3);padding:12px;display:grid;grid-template-columns:48px minmax(0,1fr);gap:4px 12px;align-items:center}
+.install[hidden]{display:none}.install img{width:48px;height:48px;border-radius:12px;grid-row:span 2}.install b{color:var(--ink);font-size:15px}.install small{color:var(--muted);font-size:12.5px}
+.install .row2{grid-column:1 / -1;margin-top:6px}.install .ios{grid-column:1 / -1;margin:6px 0 0;font-size:14px;background:#f3f6ee;border-radius:10px;padding:8px 10px}.install .ios .ico{font-size:18px;color:#2f7cf6;vertical-align:-.25em}
 .toast{position:absolute;z-index:1200;left:50%;top:70px;transform:translate(-50%,-20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:14px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;width:max-content;max-width:calc(100% - 32px);text-align:center;line-height:1.35;white-space:pre-line}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .levelup{position:absolute;inset:0;z-index:1100;background:rgba(29,59,41,.92);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
@@ -254,6 +280,11 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 const CLIENT = String.raw`
 (function () {
   var D = JSON.parse(document.getElementById('jeu-data').textContent);
+  var ICON_192 = D.icon192;
+  // Home-screen install state (used by the profile from the first render)
+  var IKEY = 'fl-collection-install', deferred = null, instShown = false;
+  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var SPOTS = D.spots, SETS = D.sets, TYPES = D.types, FILS = D.fils, INVADERS = D.invaders, ICONS = D.icons, RANGE = D.range;
 
   // ── Language: the site's choice (localStorage 'lang', ?lang=en) ──
@@ -314,6 +345,9 @@ const CLIENT = String.raw`
     honour: ['Sur l’honneur', 'On your honour'],
     meStats: [['lieux', 'places'], ['souvenirs', 'keepsakes'], ['XP', 'XP']], badges: ['Badges', 'Badges'], titles: ['Titres', 'Titles'], levelN: ['niveau {0}', 'level {0}'], got: ['✓ obtenu', '✓ earned'],
     bNap: ['Napoléon', 'Napoleon'], bBlue: ['Sentiers bleus', 'Blue trails'], bPaint: ['Peintres', 'Painters'], bFirst: ['1er souvenir', '1st keepsake'], bCats: ['4 genres', '4 kinds'], bEco: ['Éco-geste', 'Eco-gesture'], bClimb: ['5 Must Climb', '5 Must Climb'], bXmas: ['Noël', 'Christmas'], bInv: ['Invaders', 'Invaders'],
+    instH: ['Le jeu sur votre écran d’accueil', 'The game on your home screen'], instSub: ['En plein écran, à un geste, même sans réseau.', 'Full screen, one tap away, even offline.'],
+    instAdd: ['Ajouter', 'Add'], instLater: ['Plus tard', 'Later'], instIos1: ['Touchez ', 'Tap '], instIos2: [' Partager, puis « Sur l’écran d’accueil ».', ' Share, then “Add to Home Screen”.'],
+    instMe: ['Sur l’écran d’accueil', 'On your home screen'], instMeBtn: ['Ajouter le jeu à mon écran d’accueil', 'Add the game to my home screen'],
     lang: ['Langue', 'Language'], saveH: ['Ma sauvegarde', 'My save'],
     saveLead: ['Sans compte : tout reste sur ce téléphone, votre position aussi. Pour changer de téléphone, copiez votre code et collez-le sur le nouveau.', 'No account: everything stays on this phone, your location too. To switch phones, copy your code and paste it on the new one.'],
     copy: ['Copier mon code', 'Copy my code'], copied: ['Code copié', 'Code copied'], paste: ['Coller un code', 'Paste a code'], load: ['Reprendre cette partie', 'Load this game'],
@@ -927,6 +961,11 @@ const CLIENT = String.raw`
     });
     root.appendChild(tl);
 
+    if (canInstall()) {
+      root.appendChild(el('h2', null, t('instMe')));
+      var ib = el('button', 'btn soft', t('instMeBtn')); ib.type = 'button'; ib.style.width = '100%';
+      ib.onclick = function () { installCard(true); }; root.appendChild(ib);
+    }
     root.appendChild(el('h2', null, t('lang')));
     var sw = el('div', 'langsw');
     [['fr', 'FR'], ['en', 'EN']].forEach(function (l) {
@@ -1021,6 +1060,46 @@ const CLIENT = String.raw`
   chrome(); refreshRange(); panel(); liveBar(); draw(); renderAll();
   if (!st.onboarded) { renderOnb(); onb.classList.add('on'); }
   else if (st.geo === 'oui') startGeo();
+  // ── Home screen (23/11): Android/Chrome gives a prompt to keep for later; iPhone needs two taps
+  // in Safari's Share menu, which a page cannot trigger: there, the card shows them. Offered after
+  // the first thing collected, never on arrival; « Plus tard » waits 7 days. Never once installed.
+  function canInstall() { return !standalone && (deferred || ios); }
+  function instLater() { try { var v = localStorage.getItem(IKEY); return v === 'installed' || (v && Date.now() - (+v) < 7 * 864e5); } catch (e) { return false; } }
+  function collected() { return Object.keys(st.spots).length + Object.keys(st.events).length + Object.keys(st.invaders).length; }
+  function installCard(force) {
+    var box = $('install'); box.textContent = '';
+    var img = el('img'); img.src = ICON_192; img.alt = ''; box.appendChild(img);
+    box.appendChild(el('b', null, t('instH'))); box.appendChild(el('small', null, t('instSub')));
+    var row = el('div', 'row2');
+    if (deferred) {
+      var add = el('button', 'btn', t('instAdd')); add.type = 'button';
+      add.onclick = function () {
+        var d = deferred; deferred = null; box.hidden = true; d.prompt();
+        if (d.userChoice) d.userChoice.then(function (r) { track('install/' + r.outcome); }, function () {});
+      };
+      row.appendChild(add);
+    } else {
+      var hint = el('p', 'ios'); hint.appendChild(document.createTextNode(t('instIos1'))); hint.appendChild(ico('share')); hint.appendChild(document.createTextNode(t('instIos2'))); box.appendChild(hint);
+    }
+    var later = el('button', 'btn soft', t('instLater')); later.type = 'button';
+    later.onclick = function () { box.hidden = true; if (!force) { try { localStorage.setItem(IKEY, String(Date.now())); } catch (e) {} track('install/later'); } };
+    row.appendChild(later); box.appendChild(row);
+    box.hidden = false; track('install/shown');
+  }
+  function maybeInstall(delay) {
+    if (instShown || !st.onboarded || !canInstall() || instLater() || !collected()) return;
+    setTimeout(function () {
+      if (instShown || luShowing || luQueue.length || $('onb').classList.contains('on')) return;
+      instShown = true; closeSheet(); installCard(false);
+    }, delay || 3500);
+  }
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; renderMe(); maybeInstall(5000); });
+  window.addEventListener('appinstalled', function () { $('install').hidden = true; deferred = null; try { localStorage.setItem(IKEY, 'installed'); } catch (e) {} track('install/done'); renderMe(); });
+  var gain0 = gain; gain = function (xp, why) { gain0(xp, why); maybeInstall(); };
+  maybeInstall(6000);
+  // Offline: the site's service worker (network first) keeps a copy of the pages one has opened.
+  try { if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {}); } catch (e) {}
+
   // Shareable anchors: #carte, #direct, #collection, #quetes, #profil, #lieu-<id> (a place's sheet).
   function fromHash() {
     var h = location.hash.slice(1), tabs = { carte: 'map', direct: 'live', collection: 'dex', quetes: 'quests', profil: 'me' };
@@ -1032,4 +1111,4 @@ const CLIENT = String.raw`
 })();
 `;
 
-module.exports = { JEU_DIR, jeuPage, jeuEvents, jeuContent };
+module.exports = { JEU_DIR, jeuPage, jeuManifest, jeuEvents, jeuContent };

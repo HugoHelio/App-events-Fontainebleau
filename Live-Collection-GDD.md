@@ -304,6 +304,9 @@ réponse ! »). Chaque question se vérifie sur place avant publication (116d).
 - **Web d'abord**, sur **fontainebleaulive.fr/jeu/** (décidé le 23/11), en PWA installable.
   Contenu dans un fichier écrit à la main (`scripts/live-collection.js`, comme `foret.js`), page
   générée par `generate-pages.js`, construite en `textContent`, sans dépendance.
+- **Sur l'écran d'accueil** (23/11) : le jeu s'installe comme une application à part (manifeste propre,
+  icône du jeu), proposé après la première chose collectée ; sur iPhone, l'encart montre les deux gestes.
+  Hors ligne grâce au service worker du site. L'application Android (TWA) emballera la même page.
 - Progression dans `localStorage` (avec un code d'export pour changer de téléphone). **La position
   ne quitte jamais le téléphone.** Carte Leaflet (`vendor/`), tuiles OpenStreetMap (pas de
   téléchargement en masse pour le hors ligne : les règles d'OSM l'interdisent).
