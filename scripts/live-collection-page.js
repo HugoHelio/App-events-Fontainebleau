@@ -16,6 +16,7 @@
 const C = require('./live-collection');
 const { ICONS } = require('./live-collection-icons');
 const { AVATAR_ART, FRAME_ART } = require('./live-collection-avatars');
+const { GROUP_STYLE, GROUP_CLIENT } = require('./live-collection-group');
 
 const JEU_DIR = 'jeu';
 const CENTRE = { lat: 48.4045, lng: 2.7016 };
@@ -87,8 +88,9 @@ function jeuContent() {
   const S = C.SHOP;
   const shop = {
     mecene: { url: httpUrl(S.mecene.url), suggested: S.mecene.suggested },
-    email: S.email, groupPrices: S.groupPrices,
-    groups: S.groups.map((g) => ({ id: g.id, icon: g.icon, color: g.color, dur: g.dur, name: g.name, pts: g.pts, km: crow(g.steps), n: g.steps.length })),
+    email: S.email, groupPrices: S.groupPrices.map((g) => ({ players: g.players, price: g.price, url: httpUrl(g.url) })),
+    // The steps of a playable quest travel with the page (the places are public anyway); the shop never lists them
+    groups: S.groups.map((g) => ({ id: g.id, play: !!g.play, icon: g.icon, color: g.color, dur: g.dur, name: g.name, pts: g.pts, km: crow(g.steps), n: g.steps.length, steps: g.play ? g.steps : [] })),
   };
   return { spots, sets: C.SETS, types: C.TYPES, fils: C.FILS, invaders: C.INVADERS, shop, art: { avatars: AVATAR_ART, frames: FRAME_ART } };
 }
@@ -128,7 +130,7 @@ function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fo
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FL Collection">
 ${LEAFLET_CSS}
-<style>${STYLE}</style>
+<style>${STYLE}${GROUP_STYLE}</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -136,6 +138,7 @@ ${LEAFLET_CSS}
 <div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title"></b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><button type="button" class="mebtn" id="mebtn"><span data-ico="user"></span></button></div>
 <section class="screen on" id="s-map"><div id="map"></div>
 <button type="button" class="livebar" id="livebar"><span class="dot"></span><span id="livetxt"></span></button>
+<button type="button" class="livebar gbar" id="gbar" hidden></button>
 <button type="button" class="lbtn" id="lbtn" aria-expanded="false"><span data-ico="layers"></span></button>
 <button type="button" class="locbtn" id="locbtn"><span data-ico="pin"></span></button>
 <div class="lpanel" id="lpanel"><h4 id="h-bases"></h4><div class="lgrid" id="bases"></div><h4 id="h-layers"></h4><div class="lgrid" id="overlays"></div></div>
@@ -162,7 +165,7 @@ ${LEAFLET_CSS}
 ${LEAFLET_JS}
 <script type="application/json" id="jeu-data">${inline(data)}</script>
 <script>
-${CLIENT}
+${CLIENT.replace('/*@GROUP@*/', () => GROUP_CLIENT)}
 </script>
 ${analytics}</body>
 </html>
@@ -330,7 +333,7 @@ const CLIENT = String.raw`
     mecAgain: ['Soutenir encore', 'Support again'], grpWrite: ['Ou écrivez-nous : ', 'Or write to us: '], copyMail: ['Copier', 'Copy'], copied: ['Adresse copiée', 'Address copied'],
     packFree: ['Débloquer le pack sans payer', 'Unlock the pack without paying'], packFreeOk: ['Pack débloqué. Bonne collection !', 'Pack unlocked. Happy collecting!'],
     stripe: ['Paiement sécurisé par Stripe', 'Secure payment by Stripe'],
-    grpT: ['Jouer en groupe', 'Play as a group'], grpSub: ['Une quête pour votre groupe, en équipes, avec classement en direct et récapitulatif', 'A quest for your group, in teams, with a live leaderboard and a recap'], grpFrom: ['dès {0} €', 'from €{0}'],
+    grpT: ['Jouer en groupe', 'Play as a group'], grpSub: ['Une quête pour votre groupe, en équipes, avec classement et récapitulatif à l’arrivée', 'A quest for your group, in teams, with a ranking and a recap at the finish'], grpFrom: ['dès {0} €', 'from €{0}'],
     grp1: ['1. Choisissez votre quête', '1. Choose your quest'], grp2: ['2. Une sortie « {0} »', '2. One outing: “{0}”'], grpUpTo: ['jusqu’à {0} joueurs', 'up to {0} players'],
     grpMore: ['Au-delà de 30 joueurs, ou pour une date : écrivez-nous.', 'Over 30 players, or to book a date: write to us.'], grpContact: ['Réserver par e-mail', 'Book by e-mail'],
     grpMailS: ['Session de groupe — Fontainebleau Live Collection', 'Group session — Fontainebleau Live Collection'], grpMailB: ['Quête : {0}\nDate souhaitée :\nNombre de joueurs :\n', 'Quest: {0}\nPreferred date:\nNumber of players:\n'],
@@ -655,7 +658,7 @@ const CLIENT = String.raw`
       var p = spotById(id); if (!p || st.spots[id]) return;
       LAYERS.quests.g.addLayer(L.marker([p.lat, p.lng], { interactive: false, zIndexOffset: 800, icon: L.divIcon({ html: '<div class="qnum">' + (i + 1) + '</div>', className: '', iconSize: [20, 20], iconAnchor: [26, 26] }) }));
     });
-    drawFog();
+    drawFog(); groupDraw();
   }
   function ring(c, r) { return { lat: c.lat, lng: c.lng, r: r }; }
   function drawFog() {
@@ -965,6 +968,7 @@ const CLIENT = String.raw`
   function renderQuests() {
     var root = $('quests'); root.textContent = '';
     var cats = {}; Object.keys(st.events).forEach(function (id) { if (st.events[id].cat) cats[st.events[id].cat] = 1; });
+    var gOn = groupActive(); if (gOn) groupCard(root);
     root.appendChild(el('h2', null, t('week')));
     var fx = null;
     if (featured) { fx = el('button', 'btn gold', t('qStarBtn')); fx.type = 'button'; fx.onclick = function () { tab('map'); map.setView([featured.lat, featured.lng], 15); openEvent(featured); }; }
@@ -998,6 +1002,7 @@ const CLIENT = String.raw`
     var eco = el('button', 'btn soft', st.eco ? t('qEcoDone') : t('qEcoBtn')); eco.type = 'button'; eco.disabled = st.eco;
     eco.onclick = function () { st.eco = true; save(); gain(ECO_XP, t('ecoXp')); renderAll(); };
     quest(root, ['leaf', SETCOL.foret], t('qEco'), [t('honour')], t('qEcoTxt'), st.eco ? 1 : 0, 1, eco);
+    if (!gOn) groupCard(root); // no game on this phone: the card waits at the bottom, with its code field
     var mo = +TODAY.slice(5, 7), dd = +TODAY.slice(8, 10);
     if ((mo === 11 && dd >= 15) || mo === 12 || (mo === 1 && dd <= 6)) {
       root.appendChild(el('h2', null, t('seasonal')));
@@ -1211,12 +1216,18 @@ const CLIENT = String.raw`
         var m = el('span', 'qmedal'); m.style.background = tint(q.color); m.style.color = q.color; m.style.borderColor = q.color; m.appendChild(ico(q.icon)); c.appendChild(m);
         var bx = el('span', 'gqb'); bx.appendChild(el('b', null, q.name[LANG])); bx.appendChild(el('small', null, q.dur + ' · ' + q.km + ' km'));
         (q.pts[LANG] || []).forEach(function (p) { bx.appendChild(el('span', 'gpt', p)); });
+        if (!q.play) bx.appendChild(el('span', 'gpt soon', t('gSoon')));
         c.appendChild(bx); c.onclick = function () { GQ = q.id; renderShop(); };
         b2.appendChild(c);
       });
       b2.appendChild(el('p', 'sh4', t('grp2', cur.name[LANG])));
       var tiers = el('div', 'tiers');
-      SHOP.groupPrices.forEach(function (g) { var x = el('div', 'tier'); x.appendChild(el('b', null, LANG === 'en' ? '€' + g.price : g.price + ' €')); x.appendChild(el('small', null, t('grpUpTo', g.players))); tiers.appendChild(x); });
+      // A tier is a Stripe link once its url is pasted, and only for a quest playable in a group
+      SHOP.groupPrices.forEach(function (g) {
+        var pay = cur.play && g.url, x = pay ? payLink('', g.url, 'groupe-' + g.players) : el('div', 'tier'); if (pay) x.className = 'tier';
+        x.appendChild(el('b', null, LANG === 'en' ? '€' + g.price : g.price + ' €')); x.appendChild(el('small', null, t('grpUpTo', g.players))); if (pay) x.appendChild(el('em', null, t('gPay')));
+        tiers.appendChild(x);
+      });
       b2.appendChild(tiers);
       b2.appendChild(el('p', 'meta', t('grpMore')));
       var mail = link(t('grpContact'), 'mailto:' + SHOP.email + '?subject=' + encodeURIComponent(t('grpMailS')) + '&body=' + encodeURIComponent(t('grpMailB', cur.name[LANG]).replace(/\n/g, String.fromCharCode(10))), 'btn wide');
@@ -1237,7 +1248,9 @@ const CLIENT = String.raw`
       var ci = el('div', 'codein'), inp = el('input'); inp.placeholder = 'FLC-MEC-XXXXXXXX'; inp.autocapitalize = 'characters'; ci.appendChild(inp);
       var ok = el('button', 'btn', t('codeOk')); ok.type = 'button';
       ok.onclick = function () {
-        var m = /^FLC-(PACK|MEC)-[A-Z0-9]{8}$/.exec(inp.value.trim().toUpperCase());
+        var v = inp.value.trim().toUpperCase();
+        if (/^FLC-GRP-[A-Z0-9]{8}$/.test(v) && playable().length) { codeOpen = false; setOrg(v); renderShop(); renderQuests(); tab('map'); openBoard(v); return; } // a group session: this phone becomes the organiser's
+        var m = /^FLC-(PACK|MEC)-[A-Z0-9]{8}$/.exec(v);
         if (!m) { toast(t('codeBad')); return; }
         codeOpen = false; applyPurchase(m[1] === 'PACK' ? 'pack' : 'mecene', m[0]); hud(); renderMe(); renderShop();
       };
@@ -1245,7 +1258,8 @@ const CLIENT = String.raw`
     }
   }
 
-  function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); renderShop(); hud(); }
+/*@GROUP@*/
+  function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); renderShop(); hud(); groupBar(); }
   function tab(name) {
     Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.setAttribute('aria-selected', b.getAttribute('data-tab') === name); });
     Array.prototype.forEach.call(document.querySelectorAll('.screen'), function (s) { s.classList.toggle('on', s.id === 's-' + name); });
@@ -1262,7 +1276,10 @@ const CLIENT = String.raw`
     if (k === 'mecene' && /^cs_(live|test)_[A-Za-z0-9]{10,}$/.test(sid)) { applyPurchase(k, unlockCode(k, sid)); if (!st.onboarded) { st.onboarded = true; save(); } }
     if (k) try { history.replaceState(null, '', location.pathname + '#boutique'); } catch (e) {}
   })();
+  var gAct = groupInit();
+  if (gAct && !st.onboarded) { st.onboarded = true; save(); } // a team arriving by its link plays at once
   chrome(); refreshRange(); panel(); liveBar(); draw(); renderAll();
+  if (gAct) gAct();
   if (!st.onboarded) { renderOnb(); onb.classList.add('on'); }
   else if (st.geo === 'oui') startGeo();
   // ── Home screen (23/11): Android/Chrome gives a prompt to keep for later; iPhone needs two taps

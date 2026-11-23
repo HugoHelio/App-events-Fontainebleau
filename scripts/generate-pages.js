@@ -755,7 +755,7 @@ const PARTNER_STYLE = '.partner-box{margin:32px 0 8px;padding:14px 16px;backgrou
 // stored but the message itself (/mentions-legales/, « Contact des professionnels »).
 
 const PRO_DIR = 'professionnels';
-const PRO_EMAIL = 'heliosoconsulting@gmail.com';
+const PRO_EMAIL = 'contact@helioso.com';
 const PRO_STYLE = '.pro{margin:28px 0;padding:18px 18px 8px;background:var(--paper);border:1px solid var(--line);border-radius:12px}.pro h2{margin:0 0 6px}.pro h3{font-size:1rem;margin:14px 0 4px;color:var(--ink)}.pro ul{margin:0 0 8px;padding-left:20px}.pro .soon{color:var(--accent-ink)}.pro-jump{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.pro-jump a{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font-weight:600;text-decoration:none}';
 
 // A function, not a constant: the directory names it uses are declared further down the file.

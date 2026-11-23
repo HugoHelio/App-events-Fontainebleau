@@ -193,6 +193,11 @@ const SPOTS = [
       { label: 'C. L. Frommel, essai sur Serlio, Digital Serlio, Columbia University', url: 'https://library.columbia.edu/libraries/avery/digitalserlio/essays/frommel.html' },
       { label: 'Base Mérimée, PA00086971 (caserne Boufflers et ancien hôtel de Ferrare)', url: pop('merimee', 'PA00086971') },
     ],
+    // 23/11, for the group quest: from the sourced text, to be validated by the project lead
+    q: {
+      fr: 'Que reste-t-il aujourd’hui du palais du Grand Ferrare ?', en: 'What is left today of the Grand Ferrare palace?',
+      choices: { fr: ['Son portail', 'Une tour', 'Sa chapelle'], en: ['Its gateway', 'A tower', 'Its chapel'] }, answer: 0,
+    },
     check: { sources: true, site: false, lead: false },
   },
   {
@@ -225,6 +230,11 @@ const SPOTS = [
       { label: 'Office de tourisme du Pays de Fontainebleau, « Église Saint-Louis »', url: 'https://www.fontainebleau-tourisme.com/en/fiche/4686996/saint-louis-church' },
       { label: 'Base Mérimée, PA00086976', url: pop('merimee', 'PA00086976') },
     ],
+    // 23/11, for the group quest: from the sourced text, to be validated by the project lead
+    q: {
+      fr: 'Elle s’appelle Saint-Louis, mais sous quel roi a-t-elle été bâtie ?', en: 'It is called Saint-Louis, but under which king was it built?',
+      choices: { fr: ['Louis XIII', 'Saint Louis (Louis IX)', 'Louis XVI'], en: ['Louis XIII', 'Saint Louis (Louis IX)', 'Louis XVI'] }, answer: 0,
+    },
     check: { sources: true, site: false, lead: false },
   },
   {
@@ -238,6 +248,11 @@ const SPOTS = [
       WALK_SHEET,
       { label: 'Office de tourisme du Pays de Fontainebleau, « Architectural Heritage: First and Second Empire »', url: 'https://www.fontainebleau-tourisme.com/en/discover-the-region/art-of-living/fontainebleau-between-chateau-and-forest/fontainebleau-ville-imperiale/architectural-heritage-first-and-second-empire/' },
     ],
+    // 23/11, for the group quest: from the sourced text, to be validated by the project lead
+    q: {
+      fr: 'Sous quel empereur la mairie a-t-elle été reconstruite ?', en: 'Under which emperor was the town hall rebuilt?',
+      choices: { fr: ['Napoléon III', 'Napoléon Iᵉʳ', 'Charlemagne'], en: ['Napoleon III', 'Napoleon I', 'Charlemagne'] }, answer: 0,
+    },
     check: { sources: true, site: false, lead: false },
   },
   {
@@ -571,15 +586,22 @@ const INVADERS = [
 // Without a server an unlock is not a lock (GDD §12.2): accepted.
 const SHOP = {
   mecene: { url: 'https://buy.stripe.com/6oUeVd00lffbc8Kgar5gc05', suggested: 4, min: 2 },
-  email: 'heliosoconsulting@gmail.com',
-  // Group session (shown with its prices, 23/11): booked by e-mail until the server exists.
+  email: 'contact@helioso.com',
+  // Group session (23/11): one outing on one quest, played without a server (live-collection-group.js):
+  // a session code, teams in order through the steps, results sent by link to the organiser, ranking
+  // at the finish. Fixed price: paid by a Payment Link per tier once `url` is pasted (redirect
+  //   https://fontainebleaulive.fr/jeu/?merci=groupe&session_id={CHECKOUT_SESSION_ID}
+  // ); until then, booked by e-mail and the code sent by hand (any FLC-GRP-XXXXXXXX works: no server).
+  // A fixed-price sale to a private person needs a consumer mediator (Code de la consommation L612-1).
   groupPrices: [
-    { players: 10, price: 29 },
-    { players: 30, price: 59 },
+    { players: 10, price: 29, url: '' },
+    { players: 30, price: 59, url: '' },
   ],
-  // Three ready quests; their steps are never shown (they are what a group buys).
+  // Three ready quests; their steps are never listed in the shop (they are what a group buys).
+  // `play`: the quest can be played in a group session (centre-ville first, 23/11; the forest
+  // ones wait for the ONF).
   groups: [
-    { id: 'ville', icon: 'castle', color: '#9247a0', dur: '2 h 30',
+    { id: 'ville', play: true, icon: 'castle', color: '#9247a0', dur: '2 h 30',
       name: { fr: 'Le centre-ville, à pied', en: 'The town centre, on foot' },
       pts: { fr: ['7 étapes de la fiche « Fontainebleau à pied »', '6 mosaïques d’Invader en bonus'], en: ['7 stops of the “Fontainebleau on foot” guide', '6 Invader mosaics as a bonus'] },
       steps: ['cour-des-adieux', 'aigle-noir', 'theatre', 'fresque-napoleon', 'grand-ferrare', 'saint-louis', 'hotel-de-ville'] },
@@ -616,7 +638,7 @@ function problems() {
   }
   for (const f of FILS) for (const id of f.steps) if (!ids.has(id)) out.push(`fil ${f.id} : lieu inconnu « ${id} »`);
   for (const g of SHOP.groups) for (const id of g.steps) if (!ids.has(id)) out.push(`quête de groupe ${g.id} : lieu inconnu « ${id} »`);
-  if (SHOP.mecene.url && !/^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(SHOP.mecene.url)) out.push('boutique : lien Stripe « mecene » mal formé');
+  for (const u of [SHOP.mecene.url].concat(SHOP.groupPrices.map((g) => g.url))) if (u && !/^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(u)) out.push(`boutique : lien Stripe mal formé « ${u} »`);
   return out;
 }
 
