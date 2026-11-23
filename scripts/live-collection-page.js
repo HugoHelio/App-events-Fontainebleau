@@ -833,8 +833,9 @@ const CLIENT = String.raw`
       box.appendChild(g);
     }
     root.appendChild(box);
-    // 23/11: the Sportif badge, here too: the sport keepsakes and the places left, up to three.
-    var spIds = ev.filter(function (id) { return st.events[id].cat === 'Sport & Outdoor'; }), spN = spIds.length;
+    function sportBox() {
+    // 23/11: the Sportif badge, here too, after the painters and before 5 Must Climb.
+    var spIds = Object.keys(st.events).filter(function (id) { return st.events[id].cat === 'Sport & Outdoor'; }), spN = spIds.length;
     var sb = el('div', 'set'), sh = el('h3'); sh.appendChild(el('span', null, t('bSport'))); sh.appendChild(el('span', null, Math.min(spN, SPORT_MIN) + '/' + SPORT_MIN)); sb.appendChild(sh);
     var spr = el('div', 'prog'), spi = el('i'); spi.style.width = Math.round(100 * Math.min(spN, SPORT_MIN) / SPORT_MIN) + '%'; spr.appendChild(spi); sb.appendChild(spr);
     sb.appendChild(el('p', 'meta', spN >= SPORT_MIN ? t('sportGot') : t('sportLead')));
@@ -842,7 +843,9 @@ const CLIENT = String.raw`
     spIds.forEach(function (id) { var e = byId(id), rec = st.events[id]; sg.appendChild(tile({ tag: 'div', bg: '#6d8bb5', fg: '#fff', icon: ico('run'), label: e ? e.title : dayLong(rec.d) })); });
     for (var k = spN; k < SPORT_MIN; k++) sg.appendChild(tile({ tag: 'div', bg: tint('#6d8bb5'), fg: '#6d8bb5', icon: ico('run'), label: t('bSport'), locked: true }));
     sb.appendChild(sg); root.appendChild(sb);
+    }
     Object.keys(SETS).forEach(function (s) {
+      if (s === 'grimpe') sportBox();
       var all = SPOTS.filter(function (p) { return p.set === s; }), got = all.filter(function (p) { return st.spots[p.id]; }).length;
       var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, tr(SETS[s]))); h.appendChild(el('span', null, got + '/' + all.length)); bx.appendChild(h);
       var pr = el('div', 'prog'), pi = el('i'); pi.style.width = Math.round(100 * got / all.length) + '%'; pr.appendChild(pi); bx.appendChild(pr);
