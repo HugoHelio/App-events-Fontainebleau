@@ -570,7 +570,7 @@ const INVADERS = [
 // Stripe settings: customer chooses the amount, 4 € prefilled (= suggested), 2 € min, 60 € max.
 // Without a server an unlock is not a lock (GDD §12.2): accepted.
 const SHOP = {
-  mecene: { url: '', suggested: 4, min: 2 },
+  mecene: { url: 'https://buy.stripe.com/6oUeVd00lffbc8Kgar5gc05', suggested: 4, min: 2 },
   email: 'heliosoconsulting@gmail.com',
   // Group session (shown with its prices, 23/11): booked by e-mail until the server exists.
   groupPrices: [
