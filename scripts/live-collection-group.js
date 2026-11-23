@@ -30,6 +30,7 @@ const GROUP_STYLE = `
 .gpt.soon{font-style:italic;color:var(--muted)}
 a.tier{text-decoration:none;color:inherit;border-color:var(--ink)}a.tier em{display:block;font-style:normal;font-weight:700;color:var(--ink);font-size:12px;margin-top:2px}
 .gjoin{margin-top:8px}
+.btn.wa{background:#1f7a4d}
 `;
 
 const GROUP_CLIENT = String.raw`
@@ -77,7 +78,13 @@ const GROUP_CLIENT = String.raw`
     gCopied: ['Lien copié', 'Link copied'], gSeeRes: ['Voir notre résultat', 'See our result'], gResume: ['Reprendre la partie', 'Back to the game'], gReady: ['Commencer la partie', 'Start the game'],
     gMyGame: ['Ma partie de groupe (organisateur)', 'My group game (organiser)'], gJoin: ['Rejoindre', 'Join'], gOrganise: ['Organiser une sortie de groupe', 'Organise a group outing'],
     gGot: ['Résultat reçu : {0}', 'Result received: {0}'], gBadRes: ['Ce lien de résultat n’est pas lisible.', 'This result link cannot be read.'],
-    gSoon: ['Bientôt en partie de groupe', 'Group play coming soon'], gPay: ['Payer', 'Pay']
+    gSoon: ['Bientôt en partie de groupe', 'Group play coming soon'], gPay: ['Payer', 'Pay'],
+    gWa: ['Envoyer sur WhatsApp', 'Send on WhatsApp'], gSms: ['Envoyer par SMS', 'Send by text message'], gOther: ['Autre application…', 'Another app…'],
+    gToOrg: ['Le message est prêt, adressé à l’organisateur : il ne reste qu’à l’envoyer.', 'The message is ready, addressed to the organiser: just send it.'],
+    gMsg: ['Fontainebleau Live Collection : l’équipe {0} finit avec {1} pts en {2}. Ouvrez ce lien pour l’ajouter au classement : {3}', 'Fontainebleau Live Collection: team {0} finishes with {1} pts in {2}. Open this link to add it to the ranking: {3}'],
+    gTel: ['Votre numéro de téléphone (facultatif)', 'Your phone number (optional)'],
+    gTelTxt: ['Avec lui, chaque équipe vous envoie son résultat sur WhatsApp ou par SMS en un geste. Il voyage seulement dans le lien que vous envoyez aux équipes.', 'With it, each team sends you its result on WhatsApp or by text in one tap. It only travels in the link you send to the teams.'],
+    gTelOk: ['Numéro enregistré', 'Number saved'], gTelBad: ['Ce numéro n’est pas reconnu', 'This number is not recognised'], gTelSave: ['Enregistrer', 'Save']
   });
   var GKEY = 'fl-collection-groupe-v1', GCODE = /^FLC-GRP-[A-Z0-9]{8}$/;
   var GP = { first: 100, second: 50, arrive: 20, noQ: 100, inv: 30 };
@@ -96,7 +103,14 @@ const GROUP_CLIENT = String.raw`
   function gstat(T) { return clock(secs(T)) + (T.lim ? ' / ' + clockMin(T.lim) : '') + ' · ' + points(T) + ' pts'; }
   function b64e(o) { return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
   function b64d(s) { try { s = String(s).replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; return JSON.parse(decodeURIComponent(escape(atob(s)))); } catch (e) { return null; } }
-  function joinUrl(o) { return location.origin + '/jeu/?partie=' + o.code + '&q=' + o.q + (o.lim ? '&lim=' + o.lim : ''); }
+  function joinUrl(o) { return location.origin + '/jeu/?partie=' + o.code + '&q=' + o.q + (o.lim ? '&lim=' + o.lim : '') + (o.tel ? '&tel=' + o.tel : ''); }
+  // A phone number in international digits (33612345678); a French 06… is accepted and converted
+  function telOf(s) {
+    var d = String(s || '').replace(/[\s.\-()]/g, '');
+    if (/^0[1-9][0-9]{8}$/.test(d)) d = '33' + d.slice(1);
+    d = d.replace(/^\+|^00/, '');
+    return /^[1-9][0-9]{7,14}$/.test(d) ? d : '';
+  }
   function copyText(s, okMsg) { try { navigator.clipboard.writeText(s).then(function () { toast(okMsg); }, function () { window.prompt('', s); }); } catch (e) { window.prompt('', s); } }
   function shareLink(url, text, ev) {
     track(ev);
@@ -106,11 +120,12 @@ const GROUP_CLIENT = String.raw`
   function gbtn(cls, text, fn) { var b = el('button', cls, text); b.type = 'button'; b.onclick = fn; return b; }
 
   // ── A team ──
-  function gJoin(code, q, lim) {
+  function gJoin(code, q, lim, tel) {
     var T = team();
-    if (T && T.code === code && !T.endAt) { tab('map'); openTeam(); return; }
+    // The same invitation opened again (even after the finish) goes back to this team, never resets it
+    if (T && T.code === code) { if (tel) { T.tel = telOf(tel); gsave(); } tab('map'); openTeam(); return; }
     if (running() && !window.confirm(t('gReplace'))) return;
-    G.team = { code: code, q: q, lim: lim, name: '', id: Math.random().toString(36).slice(2, 10), start: 0, endAt: 0, why: '', done: [], inv: {}, cur: {} };
+    G.team = { code: code, q: q, lim: lim, tel: telOf(tel), name: '', id: Math.random().toString(36).slice(2, 10), start: 0, endAt: 0, why: '', done: [], inv: {}, cur: {} };
     gsave(); track('groupe/join'); tab('map'); groupBar(); renderQuests(); openTeam();
   }
   function openTeam() {
@@ -220,9 +235,14 @@ const GROUP_CLIENT = String.raw`
     b.appendChild(el('div', 'got-banner', t(T.why === 'done' ? 'gEndDone' : T.why === 'time' ? 'gEndTime' : 'gEndStop')));
     var big = el('div', 'gscore'); big.appendChild(el('b', null, r.p + ' pts'));
     big.appendChild(el('span', null, T.name + ' · ' + clock(r.s) + ' · ' + t('gStepsN', T.done.length, Q.steps.length))); b.appendChild(big);
-    b.appendChild(el('p', null, t('gSendTxt')));
+    // The message is written here, link included: WhatsApp or the SMS app opens with it, addressed to
+    // the organiser when their number came with the invitation. Sending stays the team's own tap.
+    var url = location.origin + '/jeu/?resultat=' + b64e(r), msg = t('gMsg', T.name, r.p, clock(r.s), url), tel = telOf(T.tel);
+    b.appendChild(el('p', null, tel ? t('gToOrg') : t('gSendTxt')));
     var acts = el('div', 'acts'); b.appendChild(acts);
-    acts.appendChild(gbtn('btn', t('gSend'), function () { shareLink(location.origin + '/jeu/?resultat=' + b64e(r), t('gShareRes', T.name, r.p), 'groupe/send'); }));
+    var wa = link(t('gWa'), 'https://wa.me/' + tel + '?text=' + encodeURIComponent(msg), 'btn wa'); wa.addEventListener('click', function () { track('groupe/send/whatsapp'); }); acts.appendChild(wa);
+    var sms = el('a', 'btn alt', t('gSms')); sms.href = 'sms:' + (tel ? '+' + tel : '') + '?&body=' + encodeURIComponent(msg); sms.addEventListener('click', function () { track('groupe/send/sms'); }); acts.appendChild(sms);
+    if (navigator.share) acts.appendChild(gbtn('linkbtn', t('gOther'), function () { track('groupe/send/share'); navigator.share({ text: msg }).catch(function () {}); }));
     acts.appendChild(gbtn('btn soft', t('gMine'), function () { addResult(r); openBoard(r.c); }));
     b.appendChild(gbtn('linkbtn', t('gQuit'), function () {
       if (!window.confirm(t('gQuitQ'))) return;
@@ -276,12 +296,22 @@ const GROUP_CLIENT = String.raw`
       var lims = el('div', 'glims');
       LIMITS.forEach(function (m) { var x = gbtn('gl', m ? clockMin(m) : t('gNoLim'), function () { org.lim = m; gsave(); openBoard(code); }); x.setAttribute('aria-pressed', org.lim === m); lims.appendChild(x); });
       b.appendChild(lims);
+      b.appendChild(el('p', 'sh4', t('gTel')));
+      var ti = el('div', 'codein'), tin = el('input'); tin.type = 'tel'; tin.placeholder = '06 12 34 56 78'; tin.style.textTransform = 'none';
+      if (org.tel) tin.value = '+' + org.tel;
+      ti.appendChild(tin);
+      ti.appendChild(gbtn('btn', t('gTelSave'), function () {
+        var v = tin.value.trim(), d = telOf(v);
+        if (v && !d) { toast(t('gTelBad')); return; }
+        org.tel = d; gsave(); toast(t('gTelOk')); openBoard(code);
+      }));
+      b.appendChild(ti); b.appendChild(el('p', 'small', t('gTelTxt')));
       b.appendChild(el('p', 'sh4', t('gOrg2')));
       b.appendChild(el('p', 'small', t('gOrg2Txt')));
       var a1 = el('div', 'acts'); b.appendChild(a1);
       a1.appendChild(gbtn('btn', t('gInvite'), function () { shareLink(joinUrl(org), t('gShareJoin', tr(Q.name)), 'groupe/invite'); }));
       var cd = el('p', 'small', t('gCodeIs')); cd.appendChild(el('b', null, code)); a1.appendChild(cd);
-      a1.appendChild(gbtn('btn soft', t('gPlayToo'), function () { gJoin(code, org.q, org.lim); }));
+      a1.appendChild(gbtn('btn soft', t('gPlayToo'), function () { gJoin(code, org.q, org.lim, org.tel); }));
       b.appendChild(el('p', 'sh4', t('gOrg3')));
       b.appendChild(el('p', 'small', t('gOrg3Txt')));
     }
@@ -334,7 +364,7 @@ const GROUP_CLIENT = String.raw`
         var c = inp.value.trim().toUpperCase();
         if (!GCODE.test(c)) { toast(t('codeBad')); return; }
         var o = G.org && G.org.code === c ? G.org : { q: playable()[0].id, lim: 0 };
-        gJoin(c, o.q, o.lim);
+        gJoin(c, o.q, o.lim, o.tel);
       }));
       box.appendChild(ci);
     }
@@ -355,7 +385,8 @@ const GROUP_CLIENT = String.raw`
     if (GCODE.test(pc)) {
       var Q = gq(q.get('q')) || playable()[0], lim = +q.get('lim') || 0;
       if (LIMITS.indexOf(lim) < 0) lim = 0;
-      if (Q) act = function () { gJoin(pc, Q.id, lim); };
+      var tel = telOf(q.get('tel'));
+      if (Q) act = function () { gJoin(pc, Q.id, lim, tel); };
     }
     var rs = q.get('resultat');
     if (rs) {

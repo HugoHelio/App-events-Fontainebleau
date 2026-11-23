@@ -146,8 +146,18 @@ const SPOTS = [
   {
     id: 'fresque-napoleon', name: 'Fresque de Napoléon', set: 'napoleon', type: 'Peinture murale', rarity: 'commun', zone: 'ville',
     lat: 48.40340, lng: 2.69724, icon: 'fresco',
-    // 23/11: no source found for the mural (author, date): a plain point, rue de Ferrare.
-    check: { sources: true, site: false, lead: false },
+    // 23/11: no source found for the mural (author, date). What it shows comes from the project
+    // lead, who walks this loop often: nothing more is said about it.
+    text: {
+      fr: 'Une grande fresque peinte sur un mur de la ville : Napoléon à cheval, coiffé de son bicorne.',
+      en: 'A large mural painted on a town wall: Napoleon on horseback, wearing his bicorne hat.',
+    },
+    sources: [{ label: 'Observation sur place, chef de projet de Fontainebleau Live (23/11/2026)', url: null }],
+    q: {
+      fr: 'Sur la fresque, Napoléon est à cheval. Que porte-t-il sur la tête ?', en: 'On the mural, Napoleon is on horseback. What is he wearing on his head?',
+      choices: { fr: ['Son bicorne', 'Une couronne', 'Un casque'], en: ['His bicorne', 'A crown', 'A helmet'] }, answer: 0,
+    },
+    check: { sources: true, site: true, lead: true },
   },
   // 23/11, asked by the project lead: two more Napoleonic places (two were not enough for a set).
   {
