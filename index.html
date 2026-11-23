@@ -782,6 +782,20 @@
     .kids-txt small { font-size: 0.8rem; color: #dfe8e1; }
     .kids-go { flex: none; background: #e3c178; color: #1d3b29; font-weight: 700; border-radius: 999px; padding: 0.6rem 1.1rem; font-size: 0.92rem; }
     @media (max-width: 420px) { .kids-go { flex: 1 1 100%; text-align: center; } }
+    /* The game (23/11, item 116): Fontainebleau Live Collection, /jeu/. Same look as GAME_STYLE in
+       scripts/generate-pages.js. Its own colours (the game's icon), so it does not read as a guide. */
+    .game-promo { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin: 0 0 1.2rem; padding: 0.85rem 0.95rem; border-radius: 14px; background: linear-gradient(135deg, #1d3b29 0%, #2f6b44 70%, #4f8a35 100%); color: #fff; text-decoration: none; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); }
+    .game-promo:hover { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28); }
+    .game-promo img { flex: none; width: 60px; height: 60px; border-radius: 14px; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25); }
+    .gm-txt { flex: 1 1 190px; display: flex; flex-direction: column; min-width: 0; }
+    .gm-kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #afe14f; }
+    .gm-txt b { font-size: 1.12rem; color: #fff; line-height: 1.25; }
+    .gm-txt small { font-size: 0.82rem; color: #dfe8e1; }
+    .gm-go { flex: none; background: #afe14f; color: #1d3b29; font-weight: 800; border-radius: 999px; padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+    @media (max-width: 420px) { .gm-go { flex: 1 1 100%; text-align: center; } }
+    .season-chip.is-game { background: #afe14f; border-color: #afe14f; color: #1d3b29; font-weight: 800; }
+    .game-wrap { max-width: 1200px; margin: 0.9rem auto 0; padding: 0 1rem; }
+    .game-wrap .game-promo { margin: 0; }
 
     .view-panel {
       display: none;
@@ -1342,14 +1356,17 @@
   <nav id="homeSeasons" class="home-seasons" aria-label="En ce moment">
     <!-- home-seasons:start — written by scripts/generate-pages.js, do not edit -->
       <ul class="hs-list">
-      <li data-start="2026-12-27" data-end="2026-12-27" data-key="marches-de-noel"><a href="/sorties/marches-de-noel/" title="Marchés de Noël 2026 à Fontainebleau et alentour"><span class="hs-ico" aria-hidden="true">🎄</span><span class="hs-txt"><b data-fr="Marchés de Noël" data-en="Christmas markets">Marchés de Noël</b><small data-fr="30 dates" data-en="30 dates">30 dates</small></span></a></li>
+      <li data-start="2026-12-27" data-end="2026-12-27" data-key="marches-de-noel"><a href="/sorties/marches-de-noel/" title="Marchés de Noël 2026 à Fontainebleau et alentour"><span class="hs-ico" aria-hidden="true">🎄</span><span class="hs-txt"><b data-fr="Marchés de Noël" data-en="Christmas markets">Marchés de Noël</b><small data-fr="29 dates" data-en="29 dates">29 dates</small></span></a></li>
       <li data-start="2026-12-24" data-end="2026-12-24" data-key="cadeaux"><a href="/sorties/offrir-un-spectacle/" title="Idées de cadeaux de Noël 2026 : des spectacles à offrir"><span class="hs-ico" aria-hidden="true">🎁</span><span class="hs-txt"><b data-fr="Idées de cadeaux" data-en="Gift ideas">Idées de cadeaux</b><small data-fr="28 spectacles à offrir" data-en="28 shows to give">28 spectacles à offrir</small></span></a></li>
       <li data-start="2027-01-06" data-end="2027-01-06" data-key="avent"><a href="/calendrier-de-l-avent/" title="Calendrier de l’Avent 2026 de la forêt"><span class="hs-ico" aria-hidden="true">🌟</span><span class="hs-txt"><b data-fr="Calendrier de l’Avent" data-en="Advent calendar">Calendrier de l’Avent</b><small data-fr="Une case par jour" data-en="One door a day">Une case par jour</small></span></a></li>
-      <li data-start="2027-01-03" data-end="2027-01-03" data-key="noel"><a href="/sorties/noel/" title="Que faire pour Noël 2026 autour de Fontainebleau ?"><span class="hs-ico" aria-hidden="true">⭐</span><span class="hs-txt"><b data-fr="Que faire à Noël ?" data-en="Christmas outings">Que faire à Noël ?</b><small data-fr="62 dates" data-en="62 dates">62 dates</small></span></a></li>
-      <li data-start="2027-01-03" data-end="2027-01-03" data-key="noel-dans-les-chateaux"><a href="/sorties/noel-dans-les-chateaux/" title="Noël 2026 dans les châteaux autour de Fontainebleau"><span class="hs-ico" aria-hidden="true">🏰</span><span class="hs-txt"><b data-fr="Noël dans les châteaux" data-en="Christmas at the châteaux">Noël dans les châteaux</b><small data-fr="6 dates" data-en="6 dates">6 dates</small></span></a></li>
+      <li data-start="2027-01-03" data-end="2027-01-03" data-key="noel"><a href="/sorties/noel/" title="Que faire pour Noël 2026 autour de Fontainebleau ?"><span class="hs-ico" aria-hidden="true">⭐</span><span class="hs-txt"><b data-fr="Que faire à Noël ?" data-en="Christmas outings">Que faire à Noël ?</b><small data-fr="60 dates" data-en="60 dates">60 dates</small></span></a></li>
+      <li data-start="2027-01-03" data-end="2027-01-03" data-key="noel-dans-les-chateaux"><a href="/sorties/noel-dans-les-chateaux/" title="Noël 2026 dans les châteaux autour de Fontainebleau"><span class="hs-ico" aria-hidden="true">🏰</span><span class="hs-txt"><b data-fr="Noël dans les châteaux" data-en="Christmas at the châteaux">Noël dans les châteaux</b><small data-fr="5 dates" data-en="5 dates">5 dates</small></span></a></li>
       </ul>
       <!-- home-seasons:end -->
   </nav>
+
+  <!-- The game (23/11, item 116e): right under the season tiles, before the filters. -->
+  <div class="game-wrap"><a class="game-promo" href="/jeu/"><img src="public/assets/img/brand/Icon-FLC-192.png" width="60" height="60" alt=""><span class="gm-txt"><span class="gm-kicker" data-i18n="gameKicker">Nouveau · le jeu sur votre téléphone</span><b data-i18n="gameTitle">Fontainebleau Live Collection</b><small data-i18n="gameText">Explorez le château, la ville et la forêt : collectionnez 40 lieux et leurs histoires, et gagnez des XP aux sorties du jour. Gratuit.</small></span><span class="gm-go" data-i18n="gameGo">Jouer →</span></a></div>
 
   <!-- Filtres -->
   <div class="filters-container" role="group" aria-label="Filtres / Filters">
@@ -1457,6 +1474,7 @@
           <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a>
           <a href="/balades/" class="is-guides" data-i18n="guidesLink">Balades à pied, à vélo, en voiture</a>
           <a href="/foret/" class="is-guides" data-i18n="kidsLink">Jeu des animaux pour les enfants</a>
+          <a href="/jeu/" class="is-guides" data-i18n="gameLink">Le jeu : Fontainebleau Live Collection</a>
         </p>
       </section>
       <!-- The guides (item 104 bis). Same cards as the generated pages' promotion block; the text
@@ -1477,8 +1495,8 @@
         <h2 id="homePicksTitle" data-i18n="homePicksTitle">Suggestions pour les prochains jours</h2>
         <!-- home-picks:start — written by scripts/generate-pages.js, do not edit -->
         <ul class="home-picks-list">
-          <li data-start="2026-11-22" data-end="2026-11-22"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-11-22">dim. 22 nov.</time> <a href="/evenements/marche-de-noel-chailly-en-biere-ce6a19556a/">Marché de Noël</a> <span class="pk-city">Chailly-en-Bière</span></li>
           <li data-start="2026-11-28" data-end="2026-11-29"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-11-28">28–29 nov.</time> <a href="/evenements/marche-de-noel-thomery-e6c3c4a3c1/">Marché de Noël</a> <span class="pk-city">Thomery</span></li>
+          <li data-start="2026-11-28" data-end="2026-11-28"><span class="pk-dot" data-cat="scene" aria-hidden="true"></span><time datetime="2026-11-28">sam. 28 nov.</time> <a href="/evenements/marche-de-noel-et-portes-ouvertes-a-la-marpa-milly-la-foret-36f7cc1646/">Marché de Noël &amp; portes ouvertes à la MARPA</a> <span class="pk-city">Milly-la-Forêt</span></li>
           <li data-start="2026-11-28" data-end="2026-11-29"><span class="pk-dot" data-cat="scene" aria-hidden="true"></span><time datetime="2026-11-28">28–29 nov.</time> <a href="/evenements/marche-de-noel-d-ury-c65bd4ec2e/">Marché de Noël d&#39;Ury</a> <span class="pk-city">Ury</span></li>
           <li data-start="2026-11-28" data-end="2026-11-29"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-11-28">28–29 nov.</time> <a href="/evenements/marche-de-noel-du-pole-fontainebleau-1ee8513661/">Marché de Noël du Pôle</a> <span class="pk-city">Fontainebleau</span></li>
           <li data-start="2026-12-05" data-end="2026-12-06"><span class="pk-dot" data-cat="culture" aria-hidden="true"></span><time datetime="2026-12-05">5–6 déc.</time> <a href="/evenements/marche-de-noel-hericy-4885be582a/">Marché de Noël</a> <span class="pk-city">Héricy</span></li>
@@ -1655,6 +1673,12 @@
         kidsTitle: 'Le jeu des animaux de la forêt',
         kidsText: '10 devinettes sur le téléphone, et un carnet à imprimer',
         kidsGo: 'Jouer →',
+        gameChip: '🎮 Jouer : FL Collection',
+        gameLink: 'Le jeu : Fontainebleau Live Collection',
+        gameKicker: 'Nouveau · le jeu sur votre téléphone',
+        gameTitle: 'Fontainebleau Live Collection',
+        gameText: 'Explorez le château, la ville et la forêt : collectionnez 40 lieux et leurs histoires, et gagnez des XP aux sorties du jour. Gratuit.',
+        gameGo: 'Jouer →',
         guidesKicker: 'Fiches gratuites · prix libre',
         guidesTitle: 'Les balades d’un Bellifontain',
         guidesText: 'Étapes, cartes, jeux pour les enfants.',
@@ -1782,6 +1806,12 @@
         kidsTitle: 'The forest animals game',
         kidsText: '10 riddles on your phone, and a booklet to print',
         kidsGo: 'Play →',
+        gameChip: '🎮 Play: FL Collection',
+        gameLink: 'The game: Fontainebleau Live Collection',
+        gameKicker: 'New · the game on your phone',
+        gameTitle: 'Fontainebleau Live Collection',
+        gameText: 'Explore the château, the town and the forest: collect 40 places and their stories, and earn XP at today’s outings. Free.',
+        gameGo: 'Play →',
         guidesKicker: 'Free guides · pay what you like',
         guidesTitle: 'A local’s favourite outings',
         guidesText: 'Steps, maps, games for the children.',
@@ -2132,10 +2162,18 @@
       k.textContent = t('kidsChip');
       k.addEventListener('click', () => track('forest-chip'));
       row.appendChild(k);
+      // The game (23/11): first in the row of our own chips.
+      const j = document.createElement('a');
+      j.className = 'season-chip is-game';
+      j.href = '/jeu/';
+      j.textContent = t('gameChip');
+      j.addEventListener('click', () => track('game-chip'));
+      row.insertBefore(j, g);
     }
 
     // The guides' cards under the views (01/11): a click counts like the generated pages' block.
     document.querySelectorAll('.kids').forEach((a) => a.addEventListener('click', () => track('forest-promo')));
+    document.querySelectorAll('.game-promo').forEach((a) => a.addEventListener('click', () => track('game-promo')));
     document.querySelectorAll('.social-links a').forEach((a) => {
       a.addEventListener('click', () => track('social', a.dataset.social));
     });

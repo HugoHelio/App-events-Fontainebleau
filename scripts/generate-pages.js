@@ -2371,7 +2371,7 @@ function sitemap(cities, events, homeLastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${home}
-${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${PRO_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), `/${THEMES_DIR}/${GIFT_SLUG}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
+${[`/${CITIES_DIR}/`, '/widget/integrer/', `/${TODAY_DIR}/`, `/${WEEKEND_DIR}/`, `/${THEMES_DIR}/`, `/${SOURCES_DIR}/`, `/${PRO_DIR}/`, `/${BALADES_DIR}/`, ...GUIDES.map((g) => `/${BALADES_DIR}/${g.slug}/`), `/${FORET_DIR}/`, `/${JEU_DIR}/`, `/${AVENT_DIR}/`, ...HOLIDAYS.map((h) => `/${THEMES_DIR}/${h.slug}/`), `/${THEMES_DIR}/${GIFT_SLUG}/`, ...THEMES.map((t) => `/${THEMES_DIR}/${t.slug}/`), ...cities.map((c) => `/${CITIES_DIR}/${c.slug}/`), ...events.map((e) => e.pagePath)].map(plain).join('\n')}
 </urlset>
 `;
 }
@@ -2442,7 +2442,15 @@ const KIDS_STYLE = `.kids{display:flex;flex-wrap:wrap;align-items:center;gap:10p
 .kids-txt b{font-size:1.08rem;color:#fff;line-height:1.25}
 .kids-txt small{font-size:13px;color:#dfe8e1}
 .kids-go{flex:none;background:#e3c178;color:#1d3b29;font-weight:700;border-radius:999px;padding:10px 18px;font-size:15px}
-@media (max-width:420px){.kids-go{flex:1 1 100%;text-align:center}}`;
+@media (max-width:420px){.kids-go{flex:1 1 100%;text-align:center}}
+.game-promo{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:12px 0 0;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#1d3b29 0%,#2f6b44 70%,#4f8a35 100%);color:#fff;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+.game-promo img{flex:none;width:56px;height:56px;border-radius:13px;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.gm-txt{flex:1 1 180px;display:flex;flex-direction:column;min-width:0}
+.gm-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#afe14f}
+.gm-txt b{font-size:1.08rem;color:#fff;line-height:1.25}
+.gm-txt small{font-size:13px;color:#dfe8e1}
+.gm-go{flex:none;background:#afe14f;color:#1d3b29;font-weight:800;border-radius:999px;padding:10px 18px;font-size:15px}
+@media (max-width:420px){.gm-go{flex:1 1 100%;text-align:center}}`;
 
 const PROMO_STYLE = `.gp{margin:32px 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,#f6f1e4 0%,#efe6cf 100%);border:1px solid #e3d6b4}
 .gp-kicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
@@ -2528,6 +2536,11 @@ function kidsPromo() {
   return `<a class="kids" href="/${FORET_DIR}/" data-track="forest-promo"><span class="kids-icons" aria-hidden="true">${icons.map((a) => `<img src="${esc(a.icon)}" width="40" height="40" alt="" loading="lazy">`).join('')}</span><span class="kids-txt">${bi('span', 'Pour les enfants · 6-11 ans', 'For the children · ages 6-11', ' class="kids-kicker"')}${bi('b', 'Le jeu des animaux de la forêt', 'The forest animals game')}${bi('small', '10 devinettes sur le téléphone, et un carnet à imprimer', '10 riddles on your phone, and a booklet to print')}</span>${bi('span', 'Jouer →', 'Play →', ' class="kids-go"')}</a>`;
 }
 
+/** The game's card (23/11, item 116e): Fontainebleau Live Collection, /jeu/. Same as the home page's. */
+function gamePromo() {
+  return `<a class="game-promo" href="/${JEU_DIR}/" data-track="game-promo"><img src="/public/assets/img/brand/Icon-FLC-192.png" width="56" height="56" alt="" loading="lazy"><span class="gm-txt">${bi('span', 'Nouveau · le jeu sur votre téléphone', 'New · the game on your phone', ' class="gm-kicker"')}${bi('b', 'Fontainebleau Live Collection', 'Fontainebleau Live Collection')}${bi('small', 'Explorez le château, la ville et la forêt : collectionnez 40 lieux et leurs histoires, et gagnez des XP aux sorties du jour. Gratuit.', 'Explore the château, the town and the forest: collect 40 places and their stories, and earn XP at today’s outings. Free.')}</span>${bi('span', 'Jouer →', 'Play →', ' class="gm-go"')}</a>`;
+}
+
 /** The promotion card: every guide, or the ones given (a commune's page). */
 function guidesPromo(list = GUIDES, heading = ['Les balades d’un Bellifontain', 'A local’s favourite outings']) {
   if (!list.length) return '';
@@ -2538,6 +2551,7 @@ ${bi('h2', heading[0], heading[1])}
 ${bi('p', 'Étapes, cartes, jeux pour les enfants.', 'Steps, maps, games for the children.')}
 <ul class="gp-cards">${list.map((g) => `<li><a href="/${BALADES_DIR}/${g.slug}/" data-track="guide-promo" data-id="${esc(g.key)}"><img src="${esc(g.thumb)}" width="480" height="300" alt="" loading="lazy"><span class="gp-txt">${bi('span', g.mode, g.en.mode, ' class="gp-mode"')}${bi('b', g.title, g.en.title)}${bi('small', g.teaser[0], g.teaser[1])}</span></a></li>`).join('')}</ul>
 ${kidsPromo()}
+${gamePromo()}
 ${bi('a', 'Toutes les balades →', 'All the guides →', ` class="gp-all" href="/${BALADES_DIR}/"`)}
 </aside>`;
 }
@@ -3437,7 +3451,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   files.set(`${FORET_DIR}/index.html`, foretPage(today));
   files.set(`${AVENT_DIR}/index.html`, aventPage(events, today));
   files.set(`${JEU_DIR}/manifest.json`, jeuManifest());
-  files.set(`${JEU_DIR}/index.html`, jeuPage({ events, today, helpers: { addDays, spanDays }, analytics: analyticsTags(), siteUrl: SITE_URL }));
+  files.set(`${JEU_DIR}/index.html`, jeuPage({ events, today, helpers: { addDays, spanDays }, analytics: analyticsTags(), siteUrl: SITE_URL, feedback: FEEDBACK_FORM }));
   files.set('sitemap.xml', sitemap(cities, events, generatedAt ? parisToday(new Date(generatedAt)) : null));
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);

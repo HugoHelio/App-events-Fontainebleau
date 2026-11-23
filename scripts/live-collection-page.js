@@ -5,8 +5,8 @@
  *
  * - Content: scripts/live-collection.js (hand-written, sourced). Events: data.json, only those
  *   confirmed by a source we read (the carousel rule), within the agenda's zone.
- * - Until the public launch (M3) the page is a test build: noindex, out of the sitemap, linked
- *   from nowhere. A place becomes "ready" when its three checks are done (live-collection.js).
+ * - Launched on 23/11 by the project lead, before every question was checked on site: the page is
+ *   indexed and linked from the site, and says « bêta » in the profile, with the error form.
  * - Frontend rules: every text from the data goes through textContent; innerHTML only receives
  *   fixed markup written here (icons). Links are http(s) only. localStorage under try/catch.
  * - The position never leaves the phone: it is read by the browser, compared here, never stored.
@@ -86,10 +86,10 @@ function jeuContent() {
 // JSON inside <script>: no "</script>" or "<!--" can close or confuse it.
 const inline = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
 
-function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fontainebleaulive.fr' }) {
+function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fontainebleaulive.fr', feedback = '' }) {
   const { week, season } = jeuEvents(events, today, helpers);
   const data = Object.assign(jeuContent(), {
-    events: week, season, built: today, icons: ICONS, icon192: `${ICON_DIR}/Icon-FLC-192.png`,
+    events: week, season, built: today, icons: ICONS, feedback: httpUrl(feedback), icon192: `${ICON_DIR}/Icon-FLC-192.png`,
     range: { events: EVENT_KM * 1000, season: SEASON_KM * 1000, centre: CENTRE },
   });
   return `<!doctype html>
@@ -97,10 +97,19 @@ function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fo
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fontainebleau Live Collection</title>
-<meta name="description" content="Le jeu de collection de Fontainebleau : explorez le château, la ville et la forêt, collectionnez les lieux et vivez les événements du jour.">
-<meta name="robots" content="noindex">
+<title>Fontainebleau Live Collection, le jeu de Fontainebleau sur téléphone</title>
+<meta name="description" content="Un jeu gratuit sur téléphone : explorez le château, la ville et la forêt de Fontainebleau, collectionnez 40 lieux et leurs histoires, et gagnez des XP aux événements du jour.">
 <link rel="canonical" href="${siteUrl}/${JEU_DIR}/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fontainebleau Live">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Fontainebleau Live Collection">
+<meta property="og:description" content="Le jeu gratuit de Fontainebleau sur téléphone : 40 lieux à collectionner, leurs histoires, et les événements du jour.">
+<meta property="og:url" content="${siteUrl}/${JEU_DIR}/">
+<meta property="og:image" content="${siteUrl}${ICON_DIR}/Icon-FLC-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <meta name="theme-color" content="#1d3b29">
 <link rel="manifest" href="/${JEU_DIR}/manifest.json">
@@ -353,7 +362,7 @@ const CLIENT = String.raw`
     copy: ['Copier mon code', 'Copy my code'], copied: ['Code copié', 'Code copied'], paste: ['Coller un code', 'Paste a code'], load: ['Reprendre cette partie', 'Load this game'],
     badCode: ['Ce code n’est pas reconnu.', 'This code is not recognised.'], loaded: ['Partie reprise', 'Game loaded'], replace: ['Remplacer la partie de ce téléphone par celle du code ?', 'Replace this phone’s game with the one in the code?'],
     reset: ['Tout effacer', 'Erase everything'], resetAsk: ['Effacer toute votre progression sur ce téléphone ?', 'Erase all your progress on this phone?'],
-    testNote: ['Version de test : textes et questions en cours de vérification sur place. Une erreur ? Dites-le-nous.', 'Test version: texts and questions are being checked on site. A mistake? Tell us.'],
+    testNote: ['Version bêta : les questions sont en cours de vérification sur place.', 'Beta version: the questions are being checked on site.'], report: ['Signaler une erreur', 'Report a mistake'],
     home: ['Fontainebleau Live', 'Fontainebleau Live'], legal: ['Mentions légales', 'Legal notice'],
     onbTag: ['Fontainebleau se collectionne', 'Collect Fontainebleau'], onbF1: ['Explorez le château, la ville et la forêt', 'Explore the château, the town and the forest'], onbF2: ['Collectionnez les lieux et leurs histoires', 'Collect places and their stories'], onbF3: ['Vivez les événements du jour : ils rapportent le plus', 'Live the events of the day: they earn the most'],
     free: ['Gratuit.', 'Free.'], start: ['Commencer', 'Start'], skip: ['Passer', 'Skip'], youCome: ['Vous venez…', 'You are here…'],
@@ -999,7 +1008,9 @@ const CLIENT = String.raw`
     acc0.appendChild(rs);
     root.appendChild(acc0);
 
-    root.appendChild(el('p', 'note', t('testNote')));
+    var tn = el('p', 'note', t('testNote') + ' ');
+    if (D.feedback) tn.appendChild(link(t('report'), D.feedback));
+    root.appendChild(tn);
     var fl = el('p', 'foot-links');
     fl.appendChild(link(t('home'), '/')); fl.appendChild(document.createTextNode(' · ')); fl.appendChild(link(t('legal'), '/mentions-legales/'));
     fl.appendChild(document.createTextNode(' · © OpenStreetMap'));

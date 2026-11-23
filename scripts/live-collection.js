@@ -13,8 +13,8 @@
  * - A question asks for something one SEES on the spot, three choices, `answer` = index of the right one.
  * - `check` tracks publication: `sources` (every fact cross-checked, a link for each source),
  *   `site` (question checked on the spot), `lead` (read and approved by the project lead).
- *   Until the public launch (M3), /jeu/ is a test build (noindex, linked from nowhere) that shows
- *   every place; the launch waits until all three are true for each place shown.
+ *   23/11: the project lead launched /jeu/ before every check was done (« le jeu est bien, mets-le
+ *   en ligne »); the profile says « bêta ». The checks still gate a place's text being called final.
  * - `zone` sets the GPS radius: 'ville' 100 m, 'foret' 150 m (GDD §9).
  */
 
