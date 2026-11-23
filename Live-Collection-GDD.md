@@ -21,7 +21,7 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
   116f (mesure), 116g (mentions légales).
 - **En attente du chef de projet** : le reste des relevés d'Invaders dans les rues (§7.1 bis) ;
   rien à relancer.
-- **Questions encore ouvertes** : §16.
+- **Questions encore ouvertes** : §16. Les cinq sites de grimpe sont validés (§7.4).
 - **Lien avec le carrousel du jeudi** (item 115) : la quête de la semaine pourra y être annoncée ;
   la règle de sélection des sorties (`carouselPool()` de `generate-pages.js`) sert aussi à la couche
   événements (§11).
@@ -153,21 +153,21 @@ mort de Denecourt (mars ou mai 1875), jardin de Diane (avec le château).
 - 46 mosaïques d'Invader posées en 2023, à Fontainebleau et dans 23 communes autour ; au
   25/07/2026, 32 encore « flashables », 14 détruites (pixel-hunting.com, dont la carte n'est pas
   réutilisable ; OpenStreetMap n'en recense aucune).
-- **Les positions viennent des relevés du chef de projet** : ce sont nos propres données.
-  **Seules celles encore en place entrent au jeu.** Huit au 23/11, toutes à Fontainebleau :
+- **Les positions viennent des relevés du chef de projet** (liste complète reçue le 23/11) : ce sont nos propres données.
+  **Seules celles encore en place entrent au jeu.** Six au 23/11, toutes à Fontainebleau ; la
+  série compte celles-là (« 0 / 6 »), pas les 46 d'origine :
 
   | Code | Rue | Dans le jeu |
   |---|---|---|
   | FTBL_04 | rue du Château | Château aux tours pointues |
-  | FTBL_07 | rue de la Corne | Créature grise et rouge |
+  | FTBL_07 | angle rue de la Corne et rue des Trois-Maillets | Alien bleu à lunettes |
   | FTBL_08 | rue Dénecourt | Lampe abat-jour |
   | FTBL_13 | rue Saint-Merry | Alien vert aux yeux blancs |
   | FTBL_43 | rue du Conventionnel-Geoffroy | Alien rouge et son livre |
-  | FTBL_44 | rue Grande | Personnage au chapeau |
-  | — | place de la République | Napoléon et son bicorne |
-  | — | rue des Trois-Maillets | Alien bleu à lunettes |
+  | FTBL_44 | angle place du Marché et rue Grande | Napoléon et son bicorne |
 
-  Les deux dernières viennent de la fiche « Fontainebleau à pied » ; leur code reste à relever.
+  Quatre sont sur la fiche « Fontainebleau à pied » (noms repris de la fiche), toutes sont sur le
+  chemin de la quête de groupe du centre-ville (« 6 mosaïques d'Invader en bonus »).
 - **Placées à la rue** (BAN), pas au mur : on cherche encore. Le nom et le code se découvrent en la
   trouvant. Nos noms en quelques mots ; **ni photo ni texte des sites de fans** : les œuvres sont à
   Invader, les descriptions à ceux qui les ont écrites.
@@ -222,8 +222,8 @@ premier coup d'œil et rapportent le plus d'XP.
 **Très accessible** : pas cinq blocs durs, mais **cinq sites de bloc à visiter en famille** : on
 vient, on regarde, on essaie les premiers blocs du circuit le plus facile. Aucune cotation exigée.
 - Les cinq sites : **Bas Cuvier** (le site historique), **Rocher Canon**, **Canche aux Merciers**,
-  **Cul de Chien** (le sable des Trois Pignons), **l'Éléphant** à Larchant. À valider avec des
-  grimpeurs (§16).
+  **Cul de Chien** (le sable des Trois Pignons), **l'Éléphant** à Larchant. **Validés** par le chef
+  de projet, qui y a grimpé en famille avec ses enfants : on les garde tels quels.
 - On valide la **visite** (GPS 150 m ou question), pas une ascension. Couche « Grimpe ».
 - Chaque site renvoie vers **Boolder** pour le topo ; aucune description de passage écrite par nous.
 - Un avertissement de sécurité (crash-pad, parade, jamais sur rocher mouillé), rien qui pousse à
@@ -366,10 +366,12 @@ classement avec trois équipes fictives.
   vrai verrou attendra le serveur.
 
 ## 13. Garde-fous
-- **ONF** : des lieux seulement sur les sentiers existants, aucun en réserve biologique ni en zone
-  de quiétude ; période du brame respectée ; **leur présenter le projet avant de publier des lieux
-  en forêt** (24 des 37 lieux du M1) ; une activité commerciale en forêt domaniale peut demander
-  une convention (la session de groupe).
+- **ONF** (revu le 23/11) : des lieux seulement sur les sentiers existants, aucun en réserve
+  biologique ni en zone de quiétude ; période du brame respectée. Le jeu gratuit montre des lieux
+  publics, comme un guide de randonnée : rien à demander. **Les voir devient nécessaire pour vendre
+  la session de groupe en forêt** (une activité commerciale organisée en forêt domaniale se fait
+  sous autorisation) ; utile avant le lancement pour vérifier les 24 lieux en forêt (zones
+  sensibles, sites fermés). La visibilité serait un bonus, pas la raison.
 - **Parc du château** : vérifier auprès de l'établissement public.
 - **Sécurité** : aucune étape au bord d'une route ni sur un rocher dangereux ; avertissements
   pour le bloc.
@@ -394,9 +396,7 @@ GoatCounter, sans rien qui identifie le joueur : `quest-start`, `spot-unlock/<id
 | **M5 Application Android** | TWA sur le Play Store, si l'usage le justifie | 2027 |
 
 ## 16. Questions ouvertes
-1. **Les « 5 Must Climb, en famille »** : valider les cinq sites avec des grimpeurs (circuit
-   enfants, parking, fréquentation), et avec l'ONF.
-2. **Quand parler à l'ONF** : 24 des 37 lieux du M1 sont en forêt ; au plus tard avant le test sur
-   place (M2).
-3. **Les cartes imprimées** : PDF prêt à imprimer ou imprimeur partenaire.
-4. **Les illustrations des lieux**, après le M1 : gravure ou peinture façon École de Barbizon.
+1. **Quand parler à l'ONF** (§13) : pas nécessaire pour le jeu gratuit ; avant de vendre la
+   session de groupe en forêt.
+2. **Les cartes imprimées** : PDF prêt à imprimer ou imprimeur partenaire.
+3. **Les illustrations des lieux**, après le M1 : gravure ou peinture façon École de Barbizon.

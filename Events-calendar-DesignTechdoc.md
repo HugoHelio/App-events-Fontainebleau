@@ -2495,8 +2495,10 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
     ou détruite). Ses relevés sont nos propres données ; une fois reçus, les ajouter au jeu, à la
     rue (GDD §7.1 bis). Les 4 du parcours à pied du centre-ville y sont déjà. **23/11 : premier relevé
     reçu**, six mosaïques encore en place (FTBL_04 rue du Château, 07 rue de la Corne, 08 rue
-    Dénecourt, 13 rue Saint-Merry, 43 rue du Conventionnel-Geoffroy, 44 rue Grande), dont deux
-    déjà dans la maquette : huit au total, à la rue (BAN). Les détruites n'entrent pas au jeu. Noms
+    Dénecourt, 13 rue Saint-Merry, 43 rue du Conventionnel-Geoffroy, 44 rue Grande), les quatre de
+    la fiche à pied comprises (07 est l'alien des Trois-Maillets, à l'angle ; 44 le Napoléon, angle
+    place du Marché et rue Grande) : **six au total, liste complète**, à la rue (BAN). La série
+    compte ces six, plus les 46 d'origine. Les détruites n'entrent pas au jeu. Noms
     écrits par nous, ni photo ni texte des sites de fans (le relevé reprenait leurs descriptions).
   - **M1 — prototype jouable (4 à 6 semaines)**, dans l'ordre :
     - [x] **116b. Décisions du chef de projet, prises le 23/11** : nom (« Fontainebleau Live
@@ -2512,6 +2514,13 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       question d'observation par lieu, les cinq fils de l'histoire, les Invaders relevés. Sources à
       recouper : liste du GDD §7.1. Relu par le chef de
       projet ; jamais de fait écrit par l'IA sans source.
+      **Commencé le 23/11** : `scripts/live-collection.js` créé, la maquette le lit (plus de copie
+      des données dans le mock). Les 37 lieux, sept séries, cinq fils, six Invaders ; textes et
+      questions traduits en anglais (traduction du français, rien d'ajouté) ; un état `check` par lieu
+      (sources, sur place, relu), rien n'est publié avant les trois. `node scripts/live-collection.js`
+      : 25 textes, 16 questions, 12 simples points, 0 lieu prêt ; 15 points à faire (sources faibles,
+      textes d'itinéraire des étapes en ville, questions manquantes), 20 lieux dont une source n'a pas
+      de lien. Suite : la passe de recherche des sources.
     - [ ] **116e. Moteur** : page générée par `generate-pages.js` (**`/jeu/`**, décidé le 23/11),
       `textContent` partout, `localStorage` sous try/catch, code d'export de la progression,
       Leaflet de `vendor/`, géolocalisation demandée au moment du jeu et jamais envoyée ;
@@ -2520,9 +2529,13 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       réseau d'abord).
     - [ ] **116f. Mesure** : événements GoatCounter du GDD §14.
     - [ ] **116g. Mentions légales** : géolocalisation (sur l'appareil seulement), `localStorage`.
-    - [ ] **116h. ONF** : présenter le projet avant de publier les lieux en forêt (sentiers
-      existants, zones de quiétude, brame ; convention éventuelle). Parc du château : établissement
-      public.
+    - [ ] **116h. ONF — revu le 23/11, plus un préalable au M1** : le jeu gratuit montre des lieux
+      publics sur des sentiers balisés, comme un guide ou une carte de randonnée, sans autorisation à
+      demander. L'ONF devient nécessaire pour **vendre la session de groupe en forêt** (une activité
+      commerciale organisée en forêt domaniale se fait sous autorisation) ; et utile, sans être
+      obligatoire, pour vérifier qu'aucun lieu n'est en zone sensible avant de lancer le jeu. La
+      visibilité éventuelle est un bonus, pas la raison. Parc du château : même logique pour un
+      groupe payant.
   - **M2-M3 — test et lancement**
     - [ ] **116i. Test sur place** : amis, puis un groupe d'étudiants de l'INSEAD ; grille
       d'observation (temps, méthode de validation, abandons, moments forts).
@@ -2530,9 +2543,9 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       `/ce-week-end/`), carrousel dédié, quête de la semaine dans le carrousel du jeudi.
   - **M4-M5 — 2027**
     - [ ] **116k. « 5 Must Climb, en famille »** (revu le 21/11 : très accessible) : cinq **sites**
-      de bloc à visiter en famille, pas cinq blocs durs. Proposition : Bas Cuvier, Rocher Canon,
-      Canche aux Merciers, Cul de Chien, l'Éléphant (Larchant) ; à valider avec des grimpeurs
-      (circuit enfants, parking, fréquentation) et l'ONF. On valide la visite (GPS, question,
+      de bloc à visiter en famille, pas cinq blocs durs : Bas Cuvier, Rocher Canon, Canche aux
+      Merciers, Cul de Chien, l'Éléphant (Larchant), **validés par le chef de projet** (il y grimpe
+      en famille ; 23/11 : « garde tel quel »), et dans les 37 lieux du M1. On valide la visite (GPS, question,
       honneur), renvoi vers Boolder, avertissement de sécurité, aucune cotation écrite par nous.
     - [ ] **116l. Couches suivantes** : brouillard des sentiers, quêtes de saison, éco-geste,
       enquête complète, Barbizon et villages.

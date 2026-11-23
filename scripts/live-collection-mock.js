@@ -27,6 +27,7 @@ const { spawnSync } = require('child_process');
 const G = require('./generate-pages');
 const { ICONS, PROPOSALS } = require('./live-collection-icons');
 const { AVATAR_ART, FRAME_ART } = require('./live-collection-avatars');
+const C = require('./live-collection');
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'reports', 'live-collection');
@@ -41,210 +42,18 @@ const SEASON_DAYS = 40;
 const SEASON_RE = /no[eë]l|avent|saint[- ]nicolas|illumination/i;
 
 // Positions: OpenStreetMap (Nominatim, 20-21/11/2026), theatre from venues.json. Texts: placeholders.
-const SPOTS = [
-  { id: 'cour-des-adieux', name: 'Cour des Adieux', set: 'napoleon', type: 'Monument', rarity: 'commun', lat: 48.40204, lng: 2.69810, icon: 'castle' },
-  { id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', lat: 48.40295, lng: 2.69973, icon: 'stag' },
-  { id: 'theatre', name: 'Théâtre municipal', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40335, lng: 2.69762, icon: 'mask' },
-  { id: 'obelisque', name: 'Obélisque de Marie-Antoinette', set: 'chateau', type: 'Monument', rarity: 'commun', lat: 48.39705, lng: 2.69227, icon: 'obelisk' },
-  { id: 'mont-ussy', name: 'Mont Ussy', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', lat: 48.42699, lng: 2.69645, icon: 'tree' },
-  { id: 'tour-denecourt', name: 'Tour Denecourt', set: 'denecourt', type: 'Belvédère', rarity: 'rare', lat: 48.43382, lng: 2.72621, icon: 'tower' },
-  { id: 'rocher-cassepot', name: 'Rocher Cassepot', set: 'denecourt', type: 'Point de vue', rarity: 'peu commun', lat: 48.43503, lng: 2.73366, icon: 'view' },
-  // 22/11: the Caverne d'Augas is gone (sanded in 1972, collapsed 1986); the cross next to it replaces it.
-  { id: 'croix-d-augas', name: 'Croix d’Augas', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', lat: 48.42490, lng: 2.70897, icon: 'cross' },
-  { id: 'grotte-serment', name: 'Grotte du Serment', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'rare', lat: 48.40225, lng: 2.66493, icon: 'cave' },
-  { id: 'grand-veneur', name: 'Croix du Grand Veneur', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', lat: 48.43041, lng: 2.66126, icon: 'cross' },
-  { id: 'franchard', name: 'Gorges de Franchard', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.40812, lng: 2.62024, icon: 'mountain' },
-  { id: 'apremont', name: 'Gorges d’Apremont', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.43601, lng: 2.62568, icon: 'mountain' },
-  // 22/11, asked by the project lead: more forest points, to collect (no text where we have no source).
-  { id: 'croix-du-calvaire', name: 'Croix du Calvaire', set: 'foret', type: 'Point de vue', rarity: 'commun', lat: 48.41966, lng: 2.71470, icon: 'cross' },
-  { id: 'croix-de-toulouse', name: 'Croix de Toulouse', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', lat: 48.44395, lng: 2.71838, icon: 'cross' },
-  { id: 'antre-des-druides', name: 'Antre des Druides', set: 'foret', type: 'Grotte', rarity: 'peu commun', lat: 48.40660, lng: 2.62242, icon: 'cave' },
-  { id: 'caverne-des-brigands', name: 'Caverne des Brigands', set: 'foret', type: 'Grotte', rarity: 'peu commun', lat: 48.43817, lng: 2.63030, icon: 'cave' },
-  { id: 'mare-aux-evees', name: 'Mare aux Évées', set: 'foret', type: 'Mare', rarity: 'peu commun', lat: 48.47568, lng: 2.65855, icon: 'pond' },
-  { id: 'mare-aux-fees', name: 'Mare aux Fées', set: 'foret', type: 'Mare', rarity: 'rare', lat: 48.35824, lng: 2.71054, icon: 'pond' },
-  // 22/11: the town stops of the walk sheet « Fontainebleau à pied » (scripts/balades.js), the old
-  // prison, and Avon's park. Positions: OSM; the fresco and the prison at the street (BAN).
-  { id: 'fresque-napoleon', name: 'Fresque de Napoléon', set: 'napoleon', type: 'Peinture murale', rarity: 'commun', lat: 48.40340, lng: 2.69724, icon: 'fresco' },
-  { id: 'grand-ferrare', name: 'Porte de l’hôtel du Grand Ferrare', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40435, lng: 2.69802, icon: 'door' },
-  { id: 'aigle-noir', name: 'Place Napoléon-Bonaparte et l’Aigle Noir', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40367, lng: 2.69914, icon: 'mansion' },
-  { id: 'saint-louis', name: 'Église Saint-Louis', set: 'ville', type: 'Église', rarity: 'commun', lat: 48.40565, lng: 2.70145, icon: 'church' },
-  { id: 'hotel-de-ville', name: 'Hôtel de ville', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', lat: 48.40474, lng: 2.70104, icon: 'townhall' },
-  { id: 'ancienne-prison', name: 'Ancienne maison d’arrêt', set: 'ville', type: 'Monument historique', rarity: 'peu commun', lat: 48.40981, lng: 2.70368, icon: 'prison' },
-  { id: 'bel-ebat', name: 'Parc de Bel-Ébat (Avon)', set: 'ville', type: 'Parc', rarity: 'commun', lat: 48.41200, lng: 2.73277, icon: 'park' },
-  // 22/11, the threads of history (project lead): the château's oldest and François Ier's parts,
-  // the painters' places, the quarrymen. Gallery: inside the château (paid visit), placed on the
-  // wing; medallion: OSM « Monument Millet-Rousseau », at the end of the Grande Rue (walk sheet by car).
-  { id: 'donjon', name: 'Le donjon (cour Ovale)', set: 'chateau', type: 'Monument', rarity: 'peu commun', lat: 48.40222, lng: 2.70104, icon: 'keep' },
-  { id: 'galerie-francois-1er', name: 'Galerie François Ier', set: 'chateau', type: 'Monument', rarity: 'rare', lat: 48.40255, lng: 2.69905, icon: 'gallery' },
-  { id: 'medaillon-millet-rousseau', name: 'Médaillon de Millet et Rousseau', set: 'peintres', type: 'Monument', rarity: 'peu commun', lat: 48.44161, lng: 2.61211, icon: 'medallion' },
-  { id: 'bas-breau', name: 'Le Bas-Bréau', set: 'peintres', type: 'Futaie', rarity: 'peu commun', lat: 48.44099, lng: 2.62430, icon: 'tree' },
-  { id: 'chailly', name: 'Chailly-en-Bière, le village des peintres', set: 'peintres', type: 'Village', rarity: 'peu commun', lat: 48.47127, lng: 2.60807, icon: 'church' },
-  { id: 'gorges-du-houx', name: 'Gorges du Houx, les abris de carriers', set: 'foret', type: 'Gorges', rarity: 'rare', lat: 48.40800, lng: 2.64271, icon: 'hut' },
-  { id: 'musee-barbizon', name: 'Musée de l’École de Barbizon', set: 'peintres', type: 'Maison de peintres', rarity: 'peu commun', lat: 48.44619, lng: 2.60261, icon: 'palette' },
-  // « 5 Must Climb » in its family version (21/11): five places to visit and try, not five hard
-  // problems. A proposal, to be checked with climbers (116k).
-  { id: 'bas-cuvier', name: 'Bas Cuvier', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.44617, lng: 2.63734, icon: 'climb' },
-  { id: 'rocher-canon', name: 'Rocher Canon', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.46308, lng: 2.66281, icon: 'climb' },
-  { id: 'canche-aux-merciers', name: 'Canche aux Merciers', set: 'grimpe', type: 'Site de bloc', rarity: 'peu commun', lat: 48.39102, lng: 2.54895, icon: 'climb' },
-  { id: 'cul-de-chien', name: 'Cul de Chien', set: 'grimpe', type: 'Site de bloc et sable', rarity: 'rare', lat: 48.37685, lng: 2.52281, icon: 'climb' },
-  { id: 'elephant', name: 'L’Éléphant (Larchant)', set: 'grimpe', type: 'Rocher nommé', rarity: 'rare', lat: 48.29379, lng: 2.59458, icon: 'rock' },
-];
+// Content lives in scripts/live-collection.js (116d, 23/11). The mock is French only: flatten the
+// FR fields into the shape its client code expects.
+const SPOTS = C.SPOTS.map((p) => Object.assign(
+  { id: p.id, name: p.name, set: p.set, type: p.type, rarity: p.rarity, zone: p.zone, lat: p.lat, lng: p.lng, icon: p.icon },
+  p.text ? { text: p.text.fr, source: p.sources.map((x) => x.label).join(' ; ') } : {},
+  p.q ? { q: p.q.fr, choices: p.q.choices.fr, answer: p.q.answer } : {},
+));
+const SETS = Object.fromEntries(Object.entries(C.SETS).map(([k, v]) => [k, v.fr]));
+const FILS = C.FILS.map((f) => ({ id: f.id, name: f.name.fr, icon: f.icon, color: f.color, intro: f.intro.fr, steps: f.steps }));
+const INVADERS = C.INVADERS;
 
-// Card texts and observation questions: DRAFTS of 21/11 (asked: "il faut qu'on arrive à écrire
-// le texte. Des questions."), monuments first. Each fact comes from the source shown; each
-// question asks for something one sees on the spot. To be reviewed by the project lead and the
-// question checked on site before anything is published (116d). Three choices, as in foret.js.
-const CARDS = {
-  'cour-des-adieux': {
-    text: 'Le 20 avril 1814, avant de partir pour l’île d’Elbe, Napoléon descend l’escalier de cette cour et fait ses adieux à sa Vieille Garde. La cour du Cheval Blanc devient alors la cour des Adieux. L’escalier lui-même est plus ancien : il date de Louis XIII (1632-1634).',
-    source: 'Fondation Napoléon, « Les adieux de Fontainebleau à la Vieille Garde » (napoleon.org) ; château de Fontainebleau',
-    q: 'Regardez le grand escalier de la façade : quelle forme a-t-il ?', choices: ['En fer à cheval', 'En colimaçon', 'Tout droit'], answer: 0,
-  },
-  'jardin-de-diane': {
-    text: 'Au centre de l’ancien jardin de la Reine, Diane chasseresse. Ce bronze est une fonte des frères Keller (1684), copie d’une statue antique aujourd’hui au Louvre ; il vient du château de Marly. Les chiens et les têtes de cerf du socle sont de Pierre Biard, au début du XVIIᵉ siècle.',
-    source: 'Metropolitan Museum of Art (Diane de Barthélemy Prieur, notice) ; musée du Louvre',
-    q: 'Combien de chiens entourent le socle de la fontaine ?', choices: ['Deux', 'Quatre', 'Six'], answer: 1,
-  },
-  'obelisque': {
-    text: 'Haut de 21 mètres, l’obélisque est élevé en 1785-1786 en l’honneur de Marie-Antoinette et de ses enfants, au carrefour où se croisent les grandes routes de la forêt. Des bornes y indiquent les directions ; leurs fleurs de lys sont ôtées en 1793.',
-    source: 'Base Mérimée, ministère de la Culture (PA00086970, quatre bornes indicatrices) ; Musée du Patrimoine',
-    q: 'Autour de l’obélisque, combien de bornes indiquent les routes ?', choices: ['Deux', 'Quatre', 'Huit'], answer: 1,
-  },
-  'theatre': {
-    text: 'Un concours d’architecture en 1905, un chantier de 1910 à 1912, une inauguration le 9 mars 1912 : le théâtre de Fernand Lucas et Paul Marion est l’un des rares théâtres à l’italienne d’Île-de-France hors de Paris. Il est protégé au titre des monuments historiques.',
-    source: 'Inventaire général du patrimoine culturel, Région Île-de-France ; base Mérimée (PA00087345)',
-    q: 'De quoi est faite la façade du théâtre ?', choices: ['De brique et de pierre', 'De béton', 'De bois'], answer: 0,
-  },
-  // Second batch (22/11): the forest, Barbizon. Weaker sources than the monuments (tourism office,
-  // AAFF, Wikipedia); each is flagged in the GDD §9 table, to be cross-checked before 116d.
-  'tour-denecourt': {
-    text: 'Claude-François Denecourt, l’inventeur des sentiers bleus, fait bâtir cette tour sur le rocher Cassepot ; Napoléon III et l’impératrice Eugénie l’inaugurent en 1853 sous le nom de Fort l’Empereur. Montée sans mortier, elle s’écroule le 28 janvier 1878. Reconstruite grâce à une souscription de Charles Colinet, plus haute d’un mètre, elle prend en 1882 le nom de son créateur.',
-    source: 'Office de tourisme du Pays de Fontainebleau (itinéraire de la tour Denecourt) ; Fondation Napoléon, F. Houdecek, « Fontainebleau, une forêt très napoléonienne »',
-    q: 'En haut de la tour, qu’est-ce qui aide à reconnaître le paysage ?', choices: ['Une table d’orientation', 'Une longue-vue', 'Des photos anciennes'], answer: 0,
-  },
-  'grotte-serment': {
-    text: 'Critiqué pour ses travaux dans la forêt, Denecourt promet en 1853 de ne plus creuser qu’une seule grotte : ce sera celle-ci, sa « dernière folie », sous un plafond fait d’un seul énorme rocher. Il grave ses initiales et la date dans la pierre. Il ne tient pas parole : la grotte qu’il creuse ensuite, tout près, s’appelle la grotte du Parjure.',
-    source: 'Smithsonian Magazine ; comptes rendus d’excursion',
-    q: 'Quelle année est gravée sur le rocher ?', choices: ['1853', '1789', '1907'], answer: 0,
-  },
-  'mont-ussy': {
-    text: 'Le premier sentier bleu de Denecourt serpente ici entre les rochers, les grottes et les arbres remarquables. Denecourt y baptise encore des rochers en 1874, comme la Chaise à Marie. L’année suivante, le jour de sa mort, il faisait encore dégager la grotte des Montussiennes.',
-    source: 'Association des Amis de la forêt de Fontainebleau (comptes rendus de promenade au mont Ussy, 2022-2023)',
-    q: 'De quelle couleur sont les marques peintes du sentier Denecourt ?', choices: ['Bleu', 'Rouge', 'Jaune'], answer: 0,
-  },
-  'donjon': {
-    text: 'Au cœur de la cour Ovale se dresse la grosse tour carrée du donjon, la partie la plus ancienne du château : une charte de Louis VII l’atteste dès 1137. En 1528, François Ier fait abattre presque tout le château médiéval et reconstruire sur ses fondations, mais il garde le donjon.',
-    source: 'Château de Fontainebleau, « Le palais médiéval » (chateaudefontainebleau.fr) ; Encyclopædia Universalis',
-    q: 'Quelle forme a la vieille tour du donjon ?', choices: ['Carrée', 'Ronde', 'Octogonale'], answer: 0,
-  },
-  'galerie-francois-1er': {
-    text: 'Commencée vers 1528 pour relier les appartements de François Ier à la chapelle, la galerie mesure environ 61 mètres sur 6. Le peintre florentin Rosso Fiorentino et son atelier la décorent de 1533 à 1539 : fresques et stucs mêlés, une première en France.',
-    source: 'Vassar College, catalogue Rosso Fiorentino (E. Carroll), « The Gallery of Francis I » ; château de Fontainebleau',
-  },
-  'medaillon-millet-rousseau': {
-    text: 'Au bout de la Grande Rue de Barbizon, un médaillon de bronze du sculpteur Henri Chapu est scellé dans un rocher. Il honore Jean-François Millet et Théodore Rousseau ; les peintres de Barbizon l’ont payé par souscription, et il est inauguré en avril 1884.',
-    source: 'Wikimedia Commons, « Rousseau and Millet by Henri Chapu » ; Office de tourisme (sentier des peintres) ; fiche « Fontainebleau en voiture », Fontainebleau Live',
-    q: 'Quels peintres honore le médaillon ?', choices: ['Millet et Rousseau', 'Corot et Daubigny', 'Monet et Renoir'], answer: 0,
-  },
-  'bas-breau': {
-    text: 'Un canton de la forêt célèbre pour ses chênes immenses, peints par Corot vers 1832-1833 et par bien d’autres. En 1853, le Bas-Bréau fait partie des 624 hectares de vieilles futaies et de rochers que l’on soustrait aux coupes, à la demande des peintres.',
-    source: 'Metropolitan Museum of Art (Corot, « Le Bas-Bréau », étude) ; Wikipédia, « Forêt de Fontainebleau »',
-  },
-  'chailly': {
-    text: 'Jean-François Millet et Théodore Rousseau reposent au cimetière de Chailly-en-Bière, avec d’autres peintres de Barbizon. Au village, l’auberge du Cheval Blanc, où venaient les peintres, est protégée depuis 1984 : ses façades et la salle du restaurant avec son décor.',
-    source: 'Office de tourisme du Pays de Fontainebleau (« Chailly-en-Bière, village de caractère ») ; base Mérimée (PA00086849)',
-  },
-  'gorges-du-houx': {
-    text: 'Le long des gorges du Houx, les carriers ont laissé un vrai « village » d’abris : de petites cabanes en pierres sèches, souvent montées contre un rocher, où ils rangeaient leurs habits, leur repas et leurs outils. Il en reste des centaines dans la forêt.',
-    source: 'Association des Amis de la forêt de Fontainebleau, « Les carriers »',
-  },
-  'croix-d-augas': {
-    text: 'Déjà sur le plan de la forêt de 1624, sous le nom de « Croix Dogast », la croix se dresse au point le plus haut de la forêt, à 146 mètres. Brisée à la Révolution, refaite en pierre en 1827, abattue par une tempête en 1899, elle a été remise à neuf en 2016. Tout près s’ouvrait la caverne d’Augas, la plus vaste grotte de la forêt selon Denecourt ; ensablée en 1972, elle s’effondre en 1986.',
-    source: 'Fontainebleau-photo.fr, « La croix d’Augas » (2023), d’après Denecourt et Colinet ; AAFF, « L’effondrement de la caverne d’Augas »',
-    q: 'Quelle haute tour de brique se dresse près de la croix ?', choices: ['Une tour géodésique', 'Un château d’eau', 'Un clocher'], answer: 0,
-  },
-  // Town stops: the project lead's own walk sheet (« Fontainebleau à pied », scripts/balades.js),
-  // their survey; no question where the sheet gives nothing to look for.
-  'fresque-napoleon': {
-    text: 'Rue de Ferrare, en venant du parking du château, une grande fresque représente Napoléon.',
-    source: 'Fiche « Fontainebleau à pied », Fontainebleau Live',
-  },
-  'grand-ferrare': {
-    text: 'Juste après la fresque, rue de Ferrare, la porte de l’hôtel du Grand Ferrare.',
-    source: 'Fiche « Fontainebleau à pied », Fontainebleau Live',
-  },
-  'aigle-noir': {
-    text: 'La place et son carrousel, que les enfants adorent. En face, l’hôtel de l’Aigle Noir : une demeure du XVIᵉ siècle, l’ancien hôtel de Retz, rebaptisée L’Aigle Noir sous l’Empire.',
-    source: 'Fiche « Fontainebleau à pied », Fontainebleau Live',
-    q: 'Qu’est-ce qui tourne sur la place ?', choices: ['Un carrousel', 'Une grande roue', 'Une fontaine'], answer: 0,
-  },
-  'saint-louis': {
-    text: 'Au bout de la rue de la Paroisse, l’église Saint-Louis, joyau du XVIIᵉ siècle bâti sous Louis XIII.',
-    source: 'Fiche « Fontainebleau à pied », Fontainebleau Live',
-  },
-  'hotel-de-ville': {
-    text: 'Au 44 rue Grande, la mairie, reconstruite sous le Second Empire, en 1864.',
-    source: 'Fiche « Fontainebleau à pied », Fontainebleau Live',
-  },
-  'ancienne-prison': {
-    text: 'Bâtie vers le milieu du XIXᵉ siècle, rue du Sergent-Perrier, l’ancienne maison d’arrêt a ensuite abrité le Musée national des prisons. Le bâtiment, ses cours de promenade et son mur d’enceinte sont protégés monument historique depuis 1996.',
-    source: 'Base Mérimée, ministère de la Culture (PA77000003) ; Musée du Patrimoine',
-  },
-  'bel-ebat': {
-    text: 'Selon la tradition, son nom viendrait des chiens de chasse d’Henri IV, qui venaient s’y ébattre près des sources. Ancien domaine privé autour d’un manoir, il a été donné à la ville d’Avon en 1979 par sa dernière propriétaire, Lola Dommange. Des ânes y paissent.',
-    source: 'Sortiraparis.com (« Parc de Bel Ébat ») ; Journées du patrimoine, manoir de Bel Ébat',
-    q: 'Quels animaux paissent dans le parc ?', choices: ['Des ânes', 'Des moutons', 'Des chèvres'], answer: 0,
-  },
-  'grand-veneur': {
-    text: 'La croix porte déjà son nom sur le plus ancien plan de la forêt, celui de Nicolas Picart (1624) : le grand veneur commandait les chasses du roi. Refaite en bois en 1827, puis en grès en 1846, elle est brisée par une charrette de paille en 1919 et renversée par une camionnette en 1926. Depuis 2000, elle se dresse au centre du rond-point.',
-    source: 'Wikipédia, « Croix du Grand-Veneur » (d’après Tendron, 2018)',
-    q: 'Où se dresse la croix aujourd’hui ?', choices: ['Au milieu d’un rond-point', 'Au sommet d’un rocher', 'Devant une chapelle'], answer: 0,
-  },
-  'franchard': {
-    text: 'Des ermites vivent ici dès le XIIᵉ siècle ; la fontaine des Ermites, nourrie par l’eau qui s’infiltre dans le plateau, garde leur souvenir. Louis XIV confie les ruines aux Mathurins de Fontainebleau, puis l’ermitage, devenu un repaire de brigands, est rasé au XVIIIᵉ siècle. Sous Louis-Philippe, on bâtit la maison forestière qui est toujours là.',
-    source: 'Office de tourisme du Pays de Fontainebleau (sentier des gorges de Franchard) ; AAFF, « Autour de Franchard »',
-    q: 'Quel bâtiment se dresse aujourd’hui près de l’ancien ermitage ?', choices: ['Une maison forestière', 'Une église', 'Un moulin'], answer: 0,
-  },
-  'apremont': {
-    text: 'Révoltés par les coupes de vieux chênes, Théodore Rousseau et les peintres de Barbizon obtiennent en 1853 que des parties de la forêt soient laissées à la nature, dont les gorges d’Apremont : la « réserve artistique ». Un décret de 1861 la porte à 1 097 hectares. Rousseau avait peint ici son « Groupe de chênes, Apremont », exposé au Salon de 1852.',
-    source: 'Metropolitan Museum of Art, « The Barbizon School » ; Fondation Napoléon (notice du tableau) ; Hérodote.net',
-    q: 'De quoi sont faits les gros blocs du chaos d’Apremont ?', choices: ['De grès', 'De granit', 'De calcaire'], answer: 0,
-  },
-  'musee-barbizon': {
-    text: 'Vers 1820, la famille Ganne tient une épicerie à Barbizon et loge les artistes venus peindre la forêt : l’auberge devient le rendez-vous des peintres de l’École de Barbizon. Ils y peignent les meubles et les murs de leurs chambres, et ces décors sont toujours là. La maison est aujourd’hui le musée départemental des peintres de Barbizon.',
-    source: 'Office de tourisme du Pays de Fontainebleau (« Barbizon, village de peintres ») ; Paris Region ; Muséofile, ministère de la Culture (M0370)',
-    q: 'Dans l’auberge, qu’ont peint les artistes, en plus de leurs tableaux ?', choices: ['Les meubles et les murs', 'Les vitraux', 'Les volets de la rue'], answer: 0,
-  },
-};
-SPOTS.forEach(function (p) { if (CARDS[p.id]) Object.assign(p, CARDS[p.id]); });
-
-const SETS = {
-  napoleon: 'Napoléon à Fontainebleau',
-  chateau: 'Le château et ses jardins',
-  ville: 'La ville',
-  denecourt: 'Les sentiers bleus',
-  foret: 'Grands sites de la forêt',
-  peintres: 'Les peintres de Barbizon',
-  grimpe: '5 Must Climb, en famille',
-};
-
-// Space Invader mosaics (asked for on 21/11). 46 were put up around Fontainebleau in 2023
-// (pixel-hunting.com, text read 21/11/2026). Placed from the project lead's own survey: the four of
-// the town-centre walk sheet (scripts/balades.js), then their street list of 23/11 (code, street,
-// still up). At the **street** (BAN), not the wall: one still looks for them. Names are ours, a
-// few words; no photo and no fan-site text: the works are Invader's.
-const INVADER_TOTAL = 46;
-const INVADERS = [
-  { id: 'inv-lampe', code: 'FTBL_08', name: 'Lampe abat-jour', street: 'rue Dénecourt', lat: 48.404255, lng: 2.70013 },
-  { id: 'inv-napoleon', name: 'Napoléon et son bicorne', street: 'place de la République', lat: 48.406339, lng: 2.701041 },
-  { id: 'inv-alien-rouge', code: 'FTBL_43', name: 'Alien rouge et son livre', street: 'rue du Conventionnel-Geoffroy', lat: 48.405359, lng: 2.700052 },
-  { id: 'inv-alien-bleu', name: 'Alien bleu à lunettes', street: 'rue des Trois-Maillets', lat: 48.404694, lng: 2.699368 },
-  // Street list of 23/11 (project lead), all still up at their last visit.
-  { id: 'inv-chateau', code: 'FTBL_04', name: 'Château aux tours pointues', street: 'rue du Château', lat: 48.405527, lng: 2.70263 },
-  { id: 'inv-corne', code: 'FTBL_07', name: 'Créature grise et rouge', street: 'rue de la Corne', lat: 48.404714, lng: 2.69988 },
-  { id: 'inv-alien-vert', code: 'FTBL_13', name: 'Alien vert aux yeux blancs', street: 'rue Saint-Merry', lat: 48.405281, lng: 2.694189 },
-  { id: 'inv-chapeau', code: 'FTBL_44', name: 'Personnage au chapeau', street: 'rue Grande', lat: 48.408056, lng: 2.703396 },
-];
+const INVADER_TOTAL = INVADERS.length; // the series counts the mosaics we know are up (23/11)
 
 function km(a, b) {
   const r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos(((a.lat + b.lat) / 2) * r), y = (b.lat - a.lat) * r;
@@ -474,6 +283,7 @@ html,body{margin:0;min-height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-
 <script>
 var SPOTS = ${inline(SPOTS)};
 var SETS = ${inline(SETS)};
+var FILS = ${inline(FILS)};
 var INVADERS = ${inline(INVADERS)};
 var INVADER_TOTAL = ${INVADER_TOTAL};
 var EVENTS_ALL = ${inline(week)};
@@ -512,23 +322,7 @@ const CLIENT = String.raw`
   // +FIL_XP and its badge. First draft: only places and facts already on the cards; a missing step
   // is said, never made up.
   var FIL_XP = 60;
-  var FILS = [
-    { id: 'rois', name: 'Les rois à Fontainebleau', icon: 'castle', color: '#0f8f9e',
-      intro: 'Du donjon du XIIᵉ siècle à l’obélisque de Marie-Antoinette : François Ier et les rois après lui, au château, en ville et dans la forêt de leurs chasses.',
-      steps: ['donjon', 'galerie-francois-1er', 'jardin-de-diane', 'saint-louis', 'cour-des-adieux', 'grand-veneur', 'obelisque'] },
-    { id: 'napoleon', name: 'Les Napoléon', icon: 'fresco', color: '#4a5bb8',
-      intro: 'Napoléon Ier, qui fait ses adieux à sa Vieille Garde en 1814, et Napoléon III, qui inaugure le Fort l’Empereur en 1853.',
-      steps: ['cour-des-adieux', 'fresque-napoleon', 'aigle-noir', 'tour-denecourt'] },
-    { id: 'denecourt', name: 'Denecourt, le Sylvain', icon: 'tree', color: '#27503a',
-      intro: 'L’homme qui a tracé les sentiers bleus, creusé des grottes et fait bâtir une tour, au XIXᵉ siècle.',
-      steps: ['mont-ussy', 'grotte-serment', 'tour-denecourt', 'rocher-cassepot', 'croix-d-augas'] },
-    { id: 'peintres', name: 'Les peintres de Barbizon', icon: 'palette', color: '#b8707d',
-      intro: 'Camille Corot découvre Barbizon en 1827 et ouvre la voie : Théodore Rousseau, Jean-François Millet et les autres viennent peindre la forêt, et obtiennent sa protection en 1853.', // Corot 1827: Office de tourisme, « The Artists Trail »
-      steps: ['musee-barbizon', 'medaillon-millet-rousseau', 'bas-breau', 'apremont', 'chailly'] },
-    { id: 'carriers', name: 'Le grès et les carriers', icon: 'pick', color: '#6b6257',
-      intro: 'Pendant des siècles et jusqu’en 1907, on a taillé le grès de la forêt : des pavés pour les routes et pour Paris, des pierres pour le château. Fronts de taille, routes pavées et abris de carriers sont encore là.',
-      steps: ['mont-ussy', 'croix-d-augas', 'franchard', 'gorges-du-houx', 'apremont'] },
-  ];
+  // The five threads come from scripts/live-collection.js (inlined above).
   var CHAPTER = FILS[0].steps; // numbered gold steps on the map (« Quêtes » layer): the first thread
   function filStep(id) { var p = SPOTS.filter(function (x) { return x.id === id; })[0]; return p && st.spots[id] && (!p.q || st.answered[id]); }
   // 22/11, shop session with the project lead: services for groups and cosmetics, never content.
@@ -539,7 +333,7 @@ const CLIENT = String.raw`
   // the steps are what the group buys. Loops to walk and measure, the forest one to show the ONF.
   var GROUP_QUESTS = [
     { id: 'ville', name: 'Le centre-ville, à pied', icon: 'castle', color: '#9247a0', dur: '2 h 30',
-      pts: ['7 étapes de la fiche « Fontainebleau à pied »', '4 mosaïques d’Invader en bonus'],
+      pts: ['7 étapes de la fiche « Fontainebleau à pied »', '6 mosaïques d’Invader en bonus'],
       steps: ['cour-des-adieux', 'aigle-noir', 'theatre', 'fresque-napoleon', 'grand-ferrare', 'saint-louis', 'hotel-de-ville'] },
     { id: 'foret', name: 'La forêt, hauteurs de la Solle', icon: 'tower', color: '#27503a', dur: '3 h',
       pts: ['5 étapes sur les sentiers bleus de Denecourt', 'Au nord de la ville'],
@@ -783,7 +577,7 @@ const CLIENT = String.raw`
     var r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos((a.lat + b.lat) / 2 * r), y = (b.lat - a.lat) * r;
     return Math.sqrt(x * x + y * y) * 6371000;
   }
-  function radiusOf(p) { return /forêt|sentiers|grimpe|gorges/i.test(SETS[p.set] + p.type + p.set) ? RADIUS.foret : RADIUS.ville; }
+  function radiusOf(p) { return p.zone === 'foret' ? RADIUS.foret : RADIUS.ville; }
   function fmtDist(d) { return d > 1500 ? (d / 1000).toFixed(1) + ' km' : Math.round(d) + ' m'; }
 
   function liveBar() {
@@ -1002,16 +796,14 @@ const CLIENT = String.raw`
     var got = INVADERS.filter(invGot).length;
     var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, 'Les Space Invaders')); h.appendChild(el('span', null, got + '/' + INVADER_TOTAL));
     bx.appendChild(h);
-    bx.appendChild(el('p', 'meta', INVADER_TOTAL + ' mosaïques posées par Invader en 2023 autour de Fontainebleau. La carte montre la rue, pas le mur : à vous de lever les yeux.'));
+    bx.appendChild(el('p', 'meta', INVADER_TOTAL + ' mosaïques d’Invader dans les rues de Fontainebleau. La carte montre la rue, pas le mur : à vous de lever les yeux.'));
     var grid = gridEl();
     INVADERS.forEach(function (m) {
       var on = invGot(m), q = el('span', null, '?');
       var c = tile({ bg: '#2b2d42', fg: '#fff', icon: on ? ico('invader') : q, label: on ? m.name : m.street, locked: !on, dark: on });
       c.onclick = function () { tab('map'); map.setView([m.lat, m.lng], 17); openInvader(m); }; grid.appendChild(c);
     });
-    var more = tile({ tag: 'div', bg: '#eeeae3', fg: '#8a8f8b', icon: el('span', null, '+' + (INVADER_TOTAL - INVADERS.length)), label: 'à relever', locked: true });
-    grid.appendChild(more); bx.appendChild(grid);
-    bx.appendChild(el('div', 'todo', 'Maquette : les 4 mosaïques du parcours à pied du centre-ville. Les autres viendront du relevé du chef de projet (rue et description), et l’état de chacune (détruite ou non) se vérifie sur place.'));
+    bx.appendChild(grid);
     root.appendChild(bx);
   }
   function openInvader(m) {
