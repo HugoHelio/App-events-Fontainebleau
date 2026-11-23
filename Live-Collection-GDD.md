@@ -31,6 +31,9 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
   sur place (116i), puis le hors ligne et la relecture des textes.
 - **En attente du chef de projet** : le reste des relevés d'Invaders dans les rues (§7.1 bis) ;
   rien à relancer.
+- **Agenda de la Ville lu à chaque scan depuis le 21/11** (pare-feu ouvert par la mairie, item 72c du
+  doc de conception) : les sorties de fontainebleau.fr sont des fiches confirmées par une source lue,
+  donc éligibles à la couche événements et à l'événement du jour (§7), sans copie à la main.
 - **Questions encore ouvertes** : §16. Les cinq sites de grimpe sont validés (§7.4).
 - **Lien avec le carrousel du jeudi** (item 115) : la quête de la semaine pourra y être annoncée ;
   la règle de sélection des sorties (`carouselPool()` de `generate-pages.js`) sert aussi à la couche
@@ -199,7 +202,8 @@ premier coup d'œil et rapportent le plus d'XP.
   doublée** (40), en doré (pas en rouge). C'est la raison d'ouvrir le jeu chaque jour.
 - **« J'y vais »** sur une sortie à venir : un rappel le jour J (sans XP, l'XP se gagne sur place).
 - **Seulement les fiches confirmées par une source lue** (jamais Gemini seul, la règle du
-  carrousel), à leur adresse, le jour J.
+  carrousel), à leur adresse, le jour J. Le flux de la Ville en fait partie, lu à chaque scan depuis
+  le 21/11 : c'est l'essentiel des sorties du centre-ville.
 - Y passer donne une **carte souvenir datée** (« Marché de Noël de Fontainebleau, 2026 ») et de
   l'XP. Le jeu envoie du monde aux organisateurs, et nous savons le compter : c'est la preuve à
   montrer aux organisateurs et aux communes (item 114).
