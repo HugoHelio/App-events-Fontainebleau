@@ -361,7 +361,7 @@ otage) ; des indices ou des jokers ; le hasard payant ; un pass d'événement à
 **Dans le jeu (23/11)** : la boutique est ouverte sur `/jeu/` (onglet Boutique) : « Soutenir le jeu » à prix libre payé par Stripe (badge Mécène et pack ; le pack aussi sans payer), groupes réservés par e-mail avec leurs prix ; retour de Stripe = badge sur le téléphone et code (`FLC-MEC-…`) pour un autre appareil ; avatar et cadre choisis dans le profil ; `/conditions-de-vente/`. Le pack à 2,99 € a été fondu le même jour dans le soutien (chef de projet : « ce ne sont que de la UI 2D ») : plus de vente à prix fixe, donc ni renonciation au droit de rétractation ni médiateur de la consommation.
 
 **À l'écran** : onglet Boutique, dans l'ordre **soutien, groupes, cartes imprimées**, chaque
-produit **replié** (icône, nom, une ligne, prix ou « Prix libre », « Bientôt » ; une flèche pour
+produit **replié**, sauf le soutien, ouvert d'emblée avec le pack en images et « 4 € conseillés » (et non « Prix libre », qui se lisait comme « gratuit ») (icône, nom, une ligne, prix ou « Prix libre », « Bientôt » ; une flèche pour
 l'ouvrir). Le groupe : « 1. Choisissez votre quête » (nom, durée, distance, deux puces), « 2. Une
 sortie » et les deux tarifs. Dans le profil, un avatar ou un cadre à cadenas ouvre la boutique sur
 le soutien. Dans la maquette, rien n'est payé ; « Essayer avec le code DEMO-SEMINAIRE » ouvre un

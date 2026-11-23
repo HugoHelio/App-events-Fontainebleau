@@ -333,8 +333,8 @@ const CLIENT = String.raw`
     grp1: ['1. Choisissez votre quête', '1. Choose your quest'], grp2: ['2. Une sortie « {0} »', '2. One outing: “{0}”'], grpUpTo: ['jusqu’à {0} joueurs', 'up to {0} players'],
     grpMore: ['Au-delà de 30 joueurs, ou pour une date : écrivez-nous.', 'Over 30 players, or to book a date: write to us.'], grpContact: ['Réserver par e-mail', 'Book by e-mail'],
     grpMailS: ['Session de groupe — Fontainebleau Live Collection', 'Group session — Fontainebleau Live Collection'], grpMailB: ['Quête : {0}\nDate souhaitée :\nNombre de joueurs :\n', 'Quest: {0}\nPreferred date:\nNumber of players:\n'],
-    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Au prix que vous voulez. En remerciement, le badge Mécène et le pack d’avatars', 'At the price you choose. As a thank-you, the Patron badge and the avatar pack'], mecChip: ['Prix libre', 'Pay what you like'],
-    mecTxt: ['Pour aider à ajouter des lieux et leurs histoires. En remerciement : le badge Mécène sur votre profil et le pack collectionneur, 6 avatars dessinés et 4 cadres.', 'To help add places and their stories. As a thank-you: the Patron badge on your profile and the collector pack, 6 drawn avatars and 4 frames.'], mecBuy: ['Soutenir · {0} € conseillés', 'Support · €{0} suggested'], mecHave: ['✓ Vous êtes Mécène. Merci !', '✓ You are a Patron. Thank you!'],
+    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Pour ajouter des lieux et leurs histoires. En remerciement : le badge Mécène et ce pack de 6 avatars et 4 cadres', 'To add more places and their stories. As a thank-you: the Patron badge and this pack of 6 avatars and 4 frames'], mecChip: ['{0} € conseillés', '€{0} suggested'],
+    mecBuy: ['Soutenir · {0} € conseillés', 'Support · €{0} suggested'], mecHave: ['✓ Vous êtes Mécène. Merci !', '✓ You are a Patron. Thank you!'],
     codeQ: ['J’ai un code d’achat', 'I have a purchase code'], codeOk: ['Valider', 'Apply'], codeBad: ['Ce code n’est pas reconnu.', 'This code is not recognised.'],
     thxPack: ['Le pack collectionneur est débloqué.', 'The collector pack is unlocked.'], thxMec: ['Merci pour votre soutien ! Le badge Mécène et le pack collectionneur sont sur votre profil.', 'Thank you for your support! The Patron badge and the collector pack are on your profile.'],
     thxCode: ['Pour l’autre téléphone ou le jeu installé, gardez ce code :', 'For another phone or the installed game, keep this code:'],
@@ -1152,7 +1152,8 @@ const CLIENT = String.raw`
   }
 
   // ── Shop (GDD §12.2): support (badge + pack, or the pack without paying), then groups. Folded. ──
-  var SHOP = D.shop, SHOP_OPEN = {}, GQ = SHOP.groups[0] ? SHOP.groups[0].id : '', THANKS = null, codeOpen = false;
+  // The support opens unfolded (23/11, project lead): folded, it showed nothing worth a tap
+  var SHOP = D.shop, SHOP_OPEN = { mecene: true }, GQ = SHOP.groups[0] ? SHOP.groups[0].id : '', THANKS = null, codeOpen = false;
   function openPack() { SHOP_OPEN.mecene = true; renderShop(); tab('shop'); $('s-shop').scrollTop = 0; }
   function sblock(root, key, icon, color, title, sub, chip) {
     var b = el('div', 'sblock' + (SHOP_OPEN[key] ? ' open' : '')), h = el('button', 'shead'); h.type = 'button'; h.setAttribute('aria-expanded', !!SHOP_OPEN[key]);
@@ -1179,9 +1180,8 @@ const CLIENT = String.raw`
       th.appendChild(el('p', 'meta', t('thxCode'))); th.appendChild(el('code', null, THANKS.code)); root.appendChild(th);
     }
     // 1. Support, thanked by the Mécène badge and the collector pack; the pack also comes without paying
-    var b1 = sblock(root, 'mecene', 'heart', '#b8707d', t('mecT'), t('mecSub'), st.mecene ? '✓' : t('mecChip'));
+    var b1 = sblock(root, 'mecene', 'heart', '#b8707d', t('mecT'), t('mecSub'), st.mecene ? '✓' : t('mecChip', SHOP.mecene.suggested));
     if (b1) {
-      var row = el('div', 'srow'), md = el('span', 'smedal' + (st.mecene ? '' : ' off')); md.appendChild(ico('heart')); row.appendChild(md); row.appendChild(el('p', null, t('mecTxt'))); b1.appendChild(row);
       var strip = el('div', 'strip');
       AVATARS.filter(function (x) { return x[3]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl(x[0], 'none')); w.appendChild(el('small', null, x[1 + LI])); strip.appendChild(w); });
       FRAMES.filter(function (x) { return x[3]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl('user', x[0])); w.appendChild(el('small', null, x[1 + LI])); strip.appendChild(w); });
