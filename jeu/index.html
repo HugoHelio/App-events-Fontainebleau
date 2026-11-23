@@ -30,7 +30,8 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-apple-system,Roboto,Arial,sans-serif;color:#1f2622}
 .app{position:relative;max-width:520px;margin:0 auto;height:100vh;height:100dvh;background:var(--bg);overflow:hidden;display:flex;flex-direction:column}
-.top{display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top));background:var(--ink);color:#fff}
+.back{display:flex;align-items:center;gap:6px;padding:6px 14px 5px;padding-top:max(6px,env(safe-area-inset-top));background:#132a1c;color:#dfe8e1;font-size:12.5px;text-decoration:none;white-space:nowrap;overflow:hidden}.back b{color:#fff}.back:hover b{text-decoration:underline}
+.top{display:flex;align-items:center;gap:10px;padding:8px 14px 10px;background:var(--ink);color:#fff}
 .lvl{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--ink);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
 .who{flex:1;min-width:0}.who b{display:block;font-size:14px}.bar{height:7px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .6s}
 .xp{font-size:12px;opacity:.85}
@@ -154,6 +155,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 </head>
 <body>
 <div class="app" id="app">
+<a class="back" id="back" href="/"><span aria-hidden="true">←</span> <b>Fontainebleau Live</b> <span data-t="backSub"></span></a>
 <div class="top"><div class="lvl" id="lvl">1</div><div class="who"><b id="title"></b><div class="bar"><i id="xpbar"></i></div><span class="xp" id="xptxt"></span></div><button type="button" class="mebtn" id="mebtn"><span data-ico="user"></span></button></div>
 <section class="screen on" id="s-map"><div id="map"></div>
 <button type="button" class="livebar" id="livebar"><span class="dot"></span><span id="livetxt"></span></button>
@@ -195,6 +197,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
   var LANG = 'fr';
   try { LANG = (new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang')) === 'en' ? 'en' : 'fr'; } catch (e) {}
   var S = {
+    backSub: [': l’agenda des sorties', ': what’s on'], siteWeek: ['Toutes les sorties du week-end sur Fontainebleau Live →', 'Every outing this weekend on Fontainebleau Live →'],
     tabMap: ['Carte', 'Map'], tabLive: ['En direct', 'Live'], tabDex: ['Collection', 'Collection'], tabQuests: ['Quêtes', 'Quests'],
     profile: ['Profil', 'Profile'], layers: ['Couches', 'Layers'], locate: ['Ma position', 'My location'], close: ['Fermer', 'Close'],
     bases: ['Type de carte', 'Map style'], overlays: ['Couches', 'Layers'],
@@ -692,11 +695,15 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
     var shown = Object.keys(days).sort().filter(function (d) { return d <= TOMORROW; });
     if (!shown.length) root.appendChild(el('p', null, t('noLive')));
     shown.forEach(function (d) {
-      root.appendChild(el('div', 'day', dayLong(d) + ' · ' + days[d].length));
-      days[d].forEach(function (e) { if (!(d === TODAY && featured && e.id === featured.id)) evRow(root, e); });
+      // The event of the day is already in its gold box: not listed twice, and no empty heading.
+      var rows = days[d].filter(function (e) { return !(featured && e.id === featured.id); });
+      if (!rows.length) return;
+      root.appendChild(el('div', 'day', dayLong(d) + ' · ' + rows.length));
+      rows.forEach(function (e) { evRow(root, e); });
     });
     var later = EVENTS.filter(function (e) { return firstDay(e) > TOMORROW; }).length;
     if (later || SEASON.length) root.appendChild(el('p', 'meta', t('later', later) + (SEASON.length ? t('laterSeason', SEASON.length) : '')));
+    var sw0 = el('p', 'sheet-link'); sw0.appendChild(link(t('siteWeek'), '/ce-week-end/' + (LANG === 'en' ? '?lang=en' : ''))); root.appendChild(sw0);
   }
 
   // ── Collection (badges) ──
@@ -962,6 +969,8 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
   }
   Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.onclick = function () { tab(b.getAttribute('data-tab')); }; });
   $('mebtn').onclick = function () { tab('me'); };
+  $('back').addEventListener('click', function () { track('back-site'); });
+  if (LANG === 'en') $('back').href = '/?lang=en';
 
   chrome(); refreshRange(); panel(); liveBar(); draw(); renderAll();
   if (!st.onboarded) { renderOnb(); onb.classList.add('on'); }
