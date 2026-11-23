@@ -254,6 +254,8 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
     bNap: ['Napoléon', 'Napoleon'], bBlue: ['Sentiers bleus', 'Blue trails'], bPaint: ['Peintres', 'Painters'], bFirst: ['1er souvenir', '1st keepsake'], bCats: ['4 genres', '4 kinds'], bEco: ['Éco-geste', 'Eco-gesture'], bClimb: ['5 Must Climb', '5 Must Climb'], bXmas: ['Noël', 'Christmas'], bInv: ['Invaders', 'Invaders'],
     instH: ['Le jeu sur votre écran d’accueil', 'The game on your home screen'], instSub: ['En plein écran, à un geste, même sans réseau.', 'Full screen, one tap away, even offline.'],
     instAdd: ['Ajouter', 'Add'], instLater: ['Plus tard', 'Later'], instIos1: ['Touchez ', 'Tap '], instIos2: [' Partager, puis « Sur l’écran d’accueil ».', ' Share, then “Add to Home Screen”.'],
+    instMenu: ['Ouvrez le menu ⋮ du navigateur, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ».', 'Open the browser menu ⋮, then “Install app” or “Add to Home screen”.'],
+    sportLead: ['Trois événements sportifs de l’agenda, le jour J : course, trail, VTT…', 'Three sport events from the agenda, on the day: a run, a trail race, mountain biking…'], sportGot: ['✓ Badge Sportif obtenu', '✓ Sporty badge earned'],
     instMe: ['Sur l’écran d’accueil', 'On your home screen'], instMeBtn: ['Ajouter le jeu à mon écran d’accueil', 'Add the game to my home screen'],
     lang: ['Langue', 'Language'], saveH: ['Ma sauvegarde', 'My save'],
     saveLead: ['Sans compte : tout reste sur ce téléphone, votre position aussi. Pour changer de téléphone, copiez votre code et collez-le sur le nouveau.', 'No account: everything stays on this phone, your location too. To switch phones, copy your code and paste it on the new one.'],
@@ -726,6 +728,15 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
       box.appendChild(g);
     }
     root.appendChild(box);
+    // 23/11: the Sportif badge, here too: the sport keepsakes and the places left, up to three.
+    var spIds = ev.filter(function (id) { return st.events[id].cat === 'Sport & Outdoor'; }), spN = spIds.length;
+    var sb = el('div', 'set'), sh = el('h3'); sh.appendChild(el('span', null, t('bSport'))); sh.appendChild(el('span', null, Math.min(spN, SPORT_MIN) + '/' + SPORT_MIN)); sb.appendChild(sh);
+    var spr = el('div', 'prog'), spi = el('i'); spi.style.width = Math.round(100 * Math.min(spN, SPORT_MIN) / SPORT_MIN) + '%'; spr.appendChild(spi); sb.appendChild(spr);
+    sb.appendChild(el('p', 'meta', spN >= SPORT_MIN ? t('sportGot') : t('sportLead')));
+    var sg = el('div', 'cards');
+    spIds.forEach(function (id) { var e = byId(id), rec = st.events[id]; sg.appendChild(tile({ tag: 'div', bg: '#6d8bb5', fg: '#fff', icon: ico('run'), label: e ? e.title : dayLong(rec.d) })); });
+    for (var k = spN; k < SPORT_MIN; k++) sg.appendChild(tile({ tag: 'div', bg: tint('#6d8bb5'), fg: '#6d8bb5', icon: ico('run'), label: t('bSport'), locked: true }));
+    sb.appendChild(sg); root.appendChild(sb);
     Object.keys(SETS).forEach(function (s) {
       var all = SPOTS.filter(function (p) { return p.set === s; }), got = all.filter(function (p) { return st.spots[p.id]; }).length;
       var bx = el('div', 'set'), h = el('h3'); h.appendChild(el('span', null, tr(SETS[s]))); h.appendChild(el('span', null, got + '/' + all.length)); bx.appendChild(h);
@@ -872,7 +883,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
     });
     root.appendChild(tl);
 
-    if (canInstall()) {
+    if (!standalone) { // always, once uninstalled too: the card says how on every phone
       root.appendChild(el('h2', null, t('instMe')));
       var ib = el('button', 'btn soft', t('instMeBtn')); ib.type = 'button'; ib.style.width = '100%';
       ib.onclick = function () { installCard(true); }; root.appendChild(ib);
@@ -993,8 +1004,10 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
         if (d.userChoice) d.userChoice.then(function (r) { track('install/' + r.outcome); }, function () {});
       };
       row.appendChild(add);
-    } else {
+    } else if (ios) {
       var hint = el('p', 'ios'); hint.appendChild(document.createTextNode(t('instIos1'))); hint.appendChild(ico('share')); hint.appendChild(document.createTextNode(t('instIos2'))); box.appendChild(hint);
+    } else {
+      box.appendChild(el('p', 'ios', t('instMenu'))); // no prompt from the browser (yet): its own menu does it
     }
     var later = el('button', 'btn soft', t('instLater')); later.type = 'button';
     later.onclick = function () { box.hidden = true; if (!force) { try { localStorage.setItem(IKEY, String(Date.now())); } catch (e) {} track('install/later'); } };
@@ -1008,7 +1021,13 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
       instShown = true; closeSheet(); installCard(false);
     }, delay || 3500);
   }
-  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; renderMe(); maybeInstall(5000); });
+  // The browser offers the install again: the game is not installed (any more). 23/11: after an
+  // uninstall the old « installed » note hid the offer for good.
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e;
+    try { if (localStorage.getItem(IKEY) === 'installed') localStorage.removeItem(IKEY); } catch (x) {}
+    renderMe(); maybeInstall(5000);
+  });
   window.addEventListener('appinstalled', function () { $('install').hidden = true; deferred = null; try { localStorage.setItem(IKEY, 'installed'); } catch (e) {} track('install/done'); renderMe(); });
   var gain0 = gain; gain = function (xp, why) { gain0(xp, why); maybeInstall(); };
   maybeInstall(6000);

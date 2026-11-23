@@ -45,6 +45,17 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// A page asks the server again each time (23/11): GitHub Pages lets a browser keep a page 10
+// minutes, and network-first then served that copy: a player saw yesterday's game after an update.
+// "no-cache" revalidates (a 304 when nothing changed, so it costs little). A navigation cannot be
+// re-issued with options, hence the URL; if it was redirected, the original request goes instead
+// (a redirected answer to a navigation is refused by the browser).
+function network(request) {
+  if (request.mode !== 'navigate') return fetch(request);
+  return fetch(request.url, { cache: 'no-cache', credentials: 'same-origin' })
+    .then((r) => (r.redirected ? fetch(request) : r));
+}
+
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') return;
@@ -55,7 +66,7 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    fetch(request)
+    network(request)
       .then((response) => {
         // Only cache a real, complete answer; an opaque or error response is not a fallback.
         if (response && response.ok && response.type === 'basic') {
