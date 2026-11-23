@@ -229,15 +229,21 @@ const SETS = {
 };
 
 // Space Invader mosaics (asked for on 21/11). 46 were put up around Fontainebleau in 2023
-// (pixel-hunting.com, text read 21/11/2026). The project lead knows where most are; the four of
-// the town-centre walk sheet (scripts/balades.js, their own survey) are placed here at the
-// **street** (BAN), not the wall: one still looks for them. No photo: the works are Invader's.
+// (pixel-hunting.com, text read 21/11/2026). Placed from the project lead's own survey: the four of
+// the town-centre walk sheet (scripts/balades.js), then their street list of 23/11 (code, street,
+// still up). At the **street** (BAN), not the wall: one still looks for them. Names are ours, a
+// few words; no photo and no fan-site text: the works are Invader's.
 const INVADER_TOTAL = 46;
 const INVADERS = [
-  { id: 'inv-lampe', name: 'Lampe abat-jour', street: 'rue Dénecourt', lat: 48.404255, lng: 2.70013 },
+  { id: 'inv-lampe', code: 'FTBL_08', name: 'Lampe abat-jour', street: 'rue Dénecourt', lat: 48.404255, lng: 2.70013 },
   { id: 'inv-napoleon', name: 'Napoléon et son bicorne', street: 'place de la République', lat: 48.406339, lng: 2.701041 },
-  { id: 'inv-alien-rouge', name: 'Alien rouge et son livre', street: 'rue du Conventionnel-Geoffroy', lat: 48.405359, lng: 2.700052 },
+  { id: 'inv-alien-rouge', code: 'FTBL_43', name: 'Alien rouge et son livre', street: 'rue du Conventionnel-Geoffroy', lat: 48.405359, lng: 2.700052 },
   { id: 'inv-alien-bleu', name: 'Alien bleu à lunettes', street: 'rue des Trois-Maillets', lat: 48.404694, lng: 2.699368 },
+  // Street list of 23/11 (project lead), all still up at their last visit.
+  { id: 'inv-chateau', code: 'FTBL_04', name: 'Château aux tours pointues', street: 'rue du Château', lat: 48.405527, lng: 2.70263 },
+  { id: 'inv-corne', code: 'FTBL_07', name: 'Créature grise et rouge', street: 'rue de la Corne', lat: 48.404714, lng: 2.69988 },
+  { id: 'inv-alien-vert', code: 'FTBL_13', name: 'Alien vert aux yeux blancs', street: 'rue Saint-Merry', lat: 48.405281, lng: 2.694189 },
+  { id: 'inv-chapeau', code: 'FTBL_44', name: 'Personnage au chapeau', street: 'rue Grande', lat: 48.408056, lng: 2.703396 },
 ];
 
 function km(a, b) {
@@ -1015,9 +1021,10 @@ const CLIENT = String.raw`
     sheet.appendChild(header(on ? '#2b2d42' : '#8a8f8b', 'invader', 'street art', '#2b2d42'));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, on ? m.name : 'Une mosaïque d’Invader'));
+    if (on && m.code) b.appendChild(el('p', 'meta', m.code));
     b.appendChild(el('p', 'meta', m.street + ' · ' + INV_XP + ' XP' + (me ? ' · à ' + fmtDist(dist(me, m)) : '')));
     if (!on) b.appendChild(el('p', null, 'Quelque part ' + (/^place/.test(m.street) ? 'sur la ' : 'dans la ') + m.street + ', en hauteur. Trouvez-la pour découvrir son nom.'));
-    b.appendChild(el('div', 'todo', 'Pas de photo : l’œuvre est à Invader. Position de la rue (BAN), d’après le parcours à pied du centre-ville.'));
+    b.appendChild(el('div', 'todo', 'Pas de photo : l’œuvre est à Invader. Position de la rue (BAN), d’après nos relevés.'));
     if (on) b.appendChild(el('div', 'got-banner', '✓ Dans votre collection — ' + (on === 'gps' ? 'trouvée sur place (GPS)' : 'sur l’honneur')));
     else {
       var acts = el('div', 'acts');
