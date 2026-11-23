@@ -558,6 +558,38 @@ const INVADERS = [
   { id: 'inv-alien-vert', code: 'FTBL_13', name: 'Alien vert aux yeux blancs', street: 'rue Saint-Merry', lat: 48.405281, lng: 2.694189 },
 ];
 
+// The shop (GDD §12.2, opened on 23/11 by the project lead): services and cosmetics, never content;
+// what is bought never gives XP, a place or an event. Stripe Payment Links of the « Fontainebleau
+// Live » account, pasted here by hand; an empty link shows « Bientôt » and sells nothing.
+// Each link's « After payment » redirect must be:
+//   https://fontainebleaulive.fr/jeu/?merci=<key>&session_id={CHECKOUT_SESSION_ID}
+// Without a server an unlock is not a lock (GDD §12.2): accepted for a low, honest price.
+const SHOP = {
+  pack: { url: '', price: { fr: '2,99 €', en: '€2.99' } }, // fixed price: terms of sale and withdrawal waiver (/conditions-de-vente/)
+  mecene: { url: '', suggested: 4, min: 2 },               // pay what you want, like the guides: a support, no terms of sale
+  email: 'heliosoconsulting@gmail.com',
+  // Group session (shown with its prices, 23/11): booked by e-mail until the server exists.
+  groupPrices: [
+    { players: 10, price: 29 },
+    { players: 30, price: 59 },
+  ],
+  // Three ready quests; their steps are never shown (they are what a group buys).
+  groups: [
+    { id: 'ville', icon: 'castle', color: '#9247a0', dur: '2 h 30',
+      name: { fr: 'Le centre-ville, à pied', en: 'The town centre, on foot' },
+      pts: { fr: ['7 étapes de la fiche « Fontainebleau à pied »', '6 mosaïques d’Invader en bonus'], en: ['7 stops of the “Fontainebleau on foot” guide', '6 Invader mosaics as a bonus'] },
+      steps: ['cour-des-adieux', 'aigle-noir', 'theatre', 'fresque-napoleon', 'grand-ferrare', 'saint-louis', 'hotel-de-ville'] },
+    { id: 'foret', icon: 'tower', color: '#27503a', dur: '3 h',
+      name: { fr: 'La forêt, hauteurs de la Solle', en: 'The forest, the Solle heights' },
+      pts: { fr: ['5 étapes sur les sentiers bleus de Denecourt', 'Au nord de la ville'], en: ['5 stops on Denecourt’s blue trails', 'North of the town'] },
+      steps: ['mont-ussy', 'croix-d-augas', 'croix-du-calvaire', 'tour-denecourt', 'rocher-cassepot'] },
+    { id: 'barbizon', icon: 'palette', color: '#b8707d', dur: '2 h 30',
+      name: { fr: 'Barbizon et ses peintres', en: 'Barbizon and its painters' },
+      pts: { fr: ['5 étapes, du musée aux gorges d’Apremont', 'Sur les pas des peintres'], en: ['5 stops, from the museum to the Apremont gorge', 'In the painters’ footsteps'] },
+      steps: ['musee-barbizon', 'medaillon-millet-rousseau', 'bas-breau', 'caverne-des-brigands', 'apremont'] },
+  ],
+};
+
 // Read-only self-check, run by the CLI and usable by generate-pages.js before publishing.
 function problems() {
   const out = [];
@@ -579,10 +611,12 @@ function problems() {
     }
   }
   for (const f of FILS) for (const id of f.steps) if (!ids.has(id)) out.push(`fil ${f.id} : lieu inconnu « ${id} »`);
+  for (const g of SHOP.groups) for (const id of g.steps) if (!ids.has(id)) out.push(`quête de groupe ${g.id} : lieu inconnu « ${id} »`);
+  for (const k of ['pack', 'mecene']) if (SHOP[k].url && !/^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(SHOP[k].url)) out.push(`boutique : lien Stripe « ${k} » mal formé`);
   return out;
 }
 
-module.exports = { SETS, TYPES, SPOTS, FILS, INVADERS, problems };
+module.exports = { SETS, TYPES, SPOTS, FILS, INVADERS, SHOP, problems };
 
 if (require.main === module) {
   const errs = problems();

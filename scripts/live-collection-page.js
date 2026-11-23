@@ -15,6 +15,7 @@
  */
 const C = require('./live-collection');
 const { ICONS } = require('./live-collection-icons');
+const { AVATAR_ART, FRAME_ART } = require('./live-collection-avatars');
 
 const JEU_DIR = 'jeu';
 const CENTRE = { lat: 48.4045, lng: 2.7016 };
@@ -80,7 +81,16 @@ function jeuContent() {
     if (p.q) o.q = { fr: p.q.fr, en: p.q.en, c: p.q.choices, a: p.q.answer };
     return o;
   });
-  return { spots, sets: C.SETS, types: C.TYPES, fils: C.FILS, invaders: C.INVADERS };
+  // The shop: links checked, the group quests' steps reduced to a distance (they are what is bought).
+  const byId = new Map(C.SPOTS.map((p) => [p.id, p]));
+  const crow = (ids) => { const pts = ids.map((id) => byId.get(id)).filter(Boolean); let d = 0; for (let i = 1; i < pts.length; i++) d += km(pts[i - 1], pts[i]); return Math.max(1, Math.round(d)); };
+  const S = C.SHOP;
+  const shop = {
+    pack: { url: httpUrl(S.pack.url), price: S.pack.price }, mecene: { url: httpUrl(S.mecene.url), suggested: S.mecene.suggested },
+    email: S.email, groupPrices: S.groupPrices,
+    groups: S.groups.map((g) => ({ id: g.id, icon: g.icon, color: g.color, dur: g.dur, name: g.name, pts: g.pts, km: crow(g.steps), n: g.steps.length })),
+  };
+  return { spots, sets: C.SETS, types: C.TYPES, fils: C.FILS, invaders: C.INVADERS, shop, art: { avatars: AVATAR_ART, frames: FRAME_ART } };
 }
 
 // JSON inside <script>: no "</script>" or "<!--" can close or confuse it.
@@ -134,6 +144,7 @@ ${LEAFLET_CSS}
 <section class="screen" id="s-dex"><div class="pad" id="dex"></div></section>
 <section class="screen" id="s-quests"><div class="pad" id="quests"></div></section>
 <section class="screen" id="s-me"><div class="pad" id="me"></div></section>
+<section class="screen" id="s-shop"><div class="pad" id="shop"></div></section>
 <div class="install" id="install" role="dialog" hidden></div>
 <div class="sheet" id="sheet" role="dialog"></div>
 <div class="onb" id="onb"></div>
@@ -144,6 +155,7 @@ ${LEAFLET_CSS}
 <button type="button" role="tab" aria-selected="false" data-tab="live"><span data-ico="live"></span><em data-t="tabLive"></em><b class="nb" id="nb"></b></button>
 <button type="button" role="tab" aria-selected="false" data-tab="dex"><span data-ico="cards"></span><em data-t="tabDex"></em></button>
 <button type="button" role="tab" aria-selected="false" data-tab="quests"><span data-ico="flag"></span><em data-t="tabQuests"></em></button>
+<button type="button" role="tab" aria-selected="false" data-tab="shop"><span data-ico="bag"></span><em data-t="tabShop"></em></button>
 </nav>
 </div>
 <noscript><p style="padding:16px">Le jeu a besoin de JavaScript. · The game needs JavaScript.</p></noscript>
@@ -168,7 +180,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .lvl{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--ink);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
 .who{flex:1;min-width:0}.who b{display:block;font-size:14px}.bar{height:7px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .6s}
 .xp{font-size:12px;opacity:.85}
-.mebtn{width:38px;height:38px;border-radius:50%;border:0;background:#eef0ec;padding:0;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:18px}
+.mebtn{width:38px;height:38px;border-radius:50%;border:0;background:none;padding:0;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:18px}
 .ico{display:inline-flex;width:1em;height:1em;vertical-align:-.15em}.ico svg{width:100%;height:100%;display:block}
 .pin,.evt,.art,.ev-row .ic{color:#fff}.pin .ico{font-size:16px}.evt .ico{font-size:13px}.evt.star .ico{font-size:16px}.art .ico{font-size:64px}.ev-row .ic .ico{font-size:20px}
 .lgrid .ico{font-size:20px;display:block;margin:0 auto 2px}.lbtn .ico,.locbtn .ico{font-size:22px;color:var(--ink)}
@@ -267,6 +279,16 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .install{position:absolute;z-index:880;left:10px;right:10px;bottom:10px;background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.3);padding:12px;display:grid;grid-template-columns:48px minmax(0,1fr);gap:4px 12px;align-items:center}
 .install[hidden]{display:none}.install img{width:48px;height:48px;border-radius:12px;grid-row:span 2}.install b{color:var(--ink);font-size:15px}.install small{color:var(--muted);font-size:12.5px}
 .install .row2{grid-column:1 / -1;margin-top:6px}.install .ios{grid-column:1 / -1;margin:6px 0 0;font-size:14px;background:#f3f6ee;border-radius:10px;padding:8px 10px}.install .ios .ico{font-size:18px;color:#2f7cf6;vertical-align:-.25em}
+.mehead{display:flex;align-items:center;gap:16px;margin:4px 0 12px}.mehead h2{margin:0 0 4px}.tag.mec{background:#f6e6ea;color:#8f4a58}
+.av{position:relative;width:42px;height:42px;display:inline-flex;flex:none;font-size:22px;margin:7px}.av.big{width:76px;height:76px;font-size:40px;margin:14px}.av.top{width:36px;height:36px;font-size:19px;margin:0}.av-in{position:absolute;inset:0;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#eef0ec;color:var(--ink)}.av-in svg{width:100%;height:100%;display:block}.av-fr{position:absolute;inset:-22%;pointer-events:none}.av-fr svg{width:100%;height:100%;display:block;overflow:visible}
+.av.fr-simple .av-in{box-shadow:0 0 0 2px #fff,0 0 0 4px #1f2622}
+.pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 4px;margin:6px 0 10px}.pick button{background:none;border:0;padding:8px 0 4px;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;border-radius:12px}.pick button small{font-size:10.5px;color:var(--ink)}.pick button[aria-pressed=true]{background:#fff4d6}.pick button[aria-pressed=true] small{font-weight:800}.pick button.locked .av{opacity:.5}.pick .lk{position:absolute;top:2px;right:6px;width:18px;height:18px;border-radius:50%;background:#fff;color:#7b807b;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.btn.wide{display:block;width:100%;margin-top:8px}.linkbtn{display:block;margin:8px auto 0;background:none;border:0;font:inherit;font-size:13px;color:var(--muted,#5b625d);text-decoration:underline;cursor:pointer}
+.sblock{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}.shead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;padding:12px;font:inherit;color:inherit;text-align:left;cursor:pointer}.stx{flex:1;min-width:0}.stx b{display:block;font-size:15.5px}.stx small{display:block;font-size:12.5px;color:var(--muted,#5b625d)}.chip{flex:none;font-weight:800;font-size:13px;background:#fff4d6;color:#7a5a00;border-radius:999px;padding:3px 10px}.chev{flex:none;font-size:20px;color:#7b807b;transition:transform .2s;display:flex}.sblock.open .chev{transform:rotate(180deg)}.sbody{padding:0 12px 12px;border-top:1px solid var(--line)}.sbody>.sh4:first-child,.sbody>.strip:first-child,.sbody>.lead2:first-child,.sbody>.meta:first-child{margin-top:12px}.qmedal.sm{width:34px;height:34px;font-size:18px;flex:none}.soon{margin-left:auto;font-size:11px;font-weight:700;background:#eceae4;color:#5b625d;border-radius:999px;padding:2px 8px}.lead2{margin:0 0 10px;font-size:13.5px;color:var(--muted,#5b625d)}.sh4{margin:10px 0 6px;font-size:13px}
+.gq{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;width:100%;text-align:left;font:inherit;background:#f7f6f2;border:1.5px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;cursor:pointer;color:inherit}.gq .qmedal{width:40px;height:40px;font-size:20px}.gq[aria-pressed=true]{background:#fff;border-color:#1f2622}.gqb{min-width:0}.gqb b{display:block;font-size:14px}.gqb small{display:block;font-size:12px;color:var(--muted,#5b625d)}.gpt{display:block;font-size:12.5px;color:var(--ink);padding-left:12px;position:relative;margin-top:2px}.gpt::before{content:'•';position:absolute;left:2px}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tier{font:inherit;background:#fff;border:1.5px solid #1f2622;border-radius:12px;padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink)}.tier small{font-size:12px;color:var(--muted,#5b625d)}.tier b{font-size:20px}.smedal{width:48px;height:48px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:24px;color:#b8707d;background:color-mix(in srgb,#b8707d 14%,#fff);border:2.5px solid #b8707d}.smedal.off{color:#a3a7a2;background:#f1efea;border:2.5px dashed #c9c5bc}.srow{display:flex;align-items:center;gap:14px}.srow p{margin:0;font-size:13.5px}.okline{color:#1f7a3f;font-weight:700;margin:10px 0 0}
+.strip{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 10px}.strip .av{width:38px;height:38px;font-size:20px;margin:8px}.fw{display:flex;flex-direction:column;align-items:center;gap:6px}.fw small{font-size:10.5px}
+.thanks{background:#fffaf0;border:2px solid #d4a72c;border-radius:14px;padding:12px;margin-bottom:12px}.thanks b{color:var(--ink)}.thanks code{display:inline-block;font:700 15px ui-monospace,Consolas,monospace;background:#fff;border:1px dashed #b9b3a6;border-radius:8px;padding:4px 8px;margin:4px 0;user-select:all}.small{font-size:12px;color:var(--muted);text-align:center;margin:6px 0 0}.small a{color:var(--muted)}.codein{display:flex;gap:6px;margin-top:6px}.codein input{flex:1;min-width:0;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px;text-transform:uppercase}
 .toast{position:absolute;z-index:1200;left:50%;top:70px;transform:translate(-50%,-20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:14px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;width:max-content;max-width:calc(100% - 32px);text-align:center;line-height:1.35;white-space:pre-line}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .levelup{position:absolute;inset:0;z-index:1100;background:rgba(29,59,41,.92);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
@@ -303,6 +325,20 @@ const CLIENT = String.raw`
   try { LANG = (new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang')) === 'en' ? 'en' : 'fr'; } catch (e) {}
   var S = {
     backSub: [': l’agenda des sorties', ': what’s on'], siteWeek: ['Toutes les sorties du week-end sur Fontainebleau Live →', 'Every outing this weekend on Fontainebleau Live →'],
+    tabShop: ['Boutique', 'Shop'], soon: ['Bientôt', 'Soon'],
+    packT: ['Pack collectionneur', 'Collector pack'], packSub: ['6 avatars dessinés et 4 cadres pour votre profil', '6 drawn avatars and 4 frames for your profile'],
+    packBuy: ['Acheter le pack · {0}', 'Buy the pack · {0}'], packHave: ['✓ Pack débloqué : choisissez dans votre profil', '✓ Pack unlocked: choose in your profile'], toProfile: ['Choisir mon avatar', 'Choose my avatar'],
+    stripe: ['Paiement sécurisé par Stripe · ', 'Secure payment by Stripe · '], terms: ['Conditions de vente', 'Terms of sale'],
+    grpT: ['Jouer en groupe', 'Play as a group'], grpSub: ['Une quête pour votre groupe, en équipes, avec classement en direct et récapitulatif', 'A quest for your group, in teams, with a live leaderboard and a recap'], grpFrom: ['dès {0} €', 'from €{0}'],
+    grp1: ['1. Choisissez votre quête', '1. Choose your quest'], grp2: ['2. Une sortie « {0} »', '2. One outing: “{0}”'], grpUpTo: ['jusqu’à {0} joueurs', 'up to {0} players'],
+    grpMore: ['Au-delà de 30 joueurs, ou pour une date : écrivez-nous.', 'Over 30 players, or to book a date: write to us.'], grpContact: ['Réserver par e-mail', 'Book by e-mail'],
+    grpMailS: ['Session de groupe — Fontainebleau Live Collection', 'Group session — Fontainebleau Live Collection'], grpMailB: ['Quête : {0}\nDate souhaitée :\nNombre de joueurs :\n', 'Quest: {0}\nPreferred date:\nNumber of players:\n'],
+    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Pour aider à ajouter des lieux et leurs histoires, au prix que vous voulez', 'To help add places and their stories, at the price you choose'], mecChip: ['Prix libre', 'Pay what you like'],
+    mecTxt: ['En remerciement, le badge Mécène sur votre profil.', 'As a thank-you, the Patron badge on your profile.'], mecBuy: ['Soutenir · {0} € conseillés', 'Support · €{0} suggested'], mecHave: ['✓ Vous êtes Mécène. Merci !', '✓ You are a Patron. Thank you!'],
+    codeQ: ['J’ai un code d’achat', 'I have a purchase code'], codeOk: ['Valider', 'Apply'], codeBad: ['Ce code n’est pas reconnu.', 'This code is not recognised.'],
+    thxPack: ['Merci ! Le pack collectionneur est débloqué.', 'Thank you! The collector pack is unlocked.'], thxMec: ['Merci pour votre soutien ! Le badge Mécène est sur votre profil.', 'Thank you for your support! The Patron badge is on your profile.'],
+    thxCode: ['Pour l’autre téléphone ou le jeu installé, gardez ce code :', 'For another phone or the installed game, keep this code:'],
+    mecene: ['Mécène', 'Patron'], avatarH: ['Mon avatar', 'My avatar'], frameH: ['Cadre', 'Frame'], morePack: ['Plus d’avatars et de cadres : le pack collectionneur', 'More avatars and frames: the collector pack'],
     tabMap: ['Carte', 'Map'], tabLive: ['En direct', 'Live'], tabDex: ['Collection', 'Collection'], tabQuests: ['Quêtes', 'Quests'],
     profile: ['Profil', 'Profile'], layers: ['Couches', 'Layers'], locate: ['Ma position', 'My location'], close: ['Fermer', 'Close'],
     bases: ['Type de carte', 'Map style'], overlays: ['Couches', 'Layers'],
@@ -415,7 +451,7 @@ const CLIENT = String.raw`
 
   // ── Save (this phone only) ──
   var KEY = 'fl-collection-v1';
-  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, weeks: {}, eco: false, onboarded: false, profile: '', geo: '', firstStep: false }; }
+  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, weeks: {}, eco: false, onboarded: false, profile: '', geo: '', firstStep: false, pack: false, mecene: false, avatar: 'user', frame: 'none' }; }
   function clean(s) {
     var f = fresh(); if (!s || typeof s !== 'object' || typeof s.xp !== 'number' || !s.spots || typeof s.spots !== 'object') return null;
     Object.keys(f).forEach(function (k) { if (s[k] != null && typeof s[k] === typeof f[k]) f[k] = s[k]; });
@@ -463,7 +499,21 @@ const CLIENT = String.raw`
   function floorOf(n) { return 30 * n * (n - 1); }
   function levelOf(xp) { var n = 1; while (n < MAX_LEVEL && floorOf(n + 1) <= xp) n++; return n; }
   function titleOf(n) { var x0 = S.titlesList[0]; S.titlesList.forEach(function (x) { if (n >= x[0]) x0 = x; }); return x0[1 + LI]; }
+  // [id, FR, EN, in the pack]
+  var AVATARS = [['user', 'Promeneur', 'Walker', 0], ['tree', 'Arbre', 'Tree', 0], ['leaf', 'Feuille', 'Leaf', 0], ['renard', 'Renard', 'Fox', 1], ['chouette', 'Chouette', 'Owl', 1],
+    ['ecureuil', 'Écureuil', 'Squirrel', 1], ['cepe', 'Cèpe', 'Cep', 1], ['bicorne', 'Napoléon', 'Napoleon', 1], ['bloc', 'Bloc', 'Boulder', 1]];
+  var FRAMES = [['none', 'Sans', 'None', 0], ['simple', 'Simple', 'Simple', 0], ['or', 'Or', 'Gold', 1], ['feuillage', 'Feuillage', 'Foliage', 1], ['gravure', 'Gravure', 'Engraving', 1], ['gres', 'Grès', 'Sandstone', 1]];
+  function owned(list, id) { var x = list.filter(function (y) { return y[0] === id; })[0]; return x && (!x[3] || st.pack); }
+  function avEl(id, frame, size) {
+    var a = el('span', 'av' + (size ? ' ' + size : '')), inn = el('span', 'av-in'), art = D.art.avatars[id];
+    if (art) { inn.style.background = art.bg; inn.innerHTML = '<svg viewBox="0 0 64 64" aria-hidden="true">' + art.svg + '</svg>'; } else inn.appendChild(ico(id));
+    a.appendChild(inn);
+    if (frame === 'simple') a.classList.add('fr-simple');
+    else if (D.art.frames[frame]) { var fr = el('span', 'av-fr'); fr.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true">' + D.art.frames[frame] + '</svg>'; a.appendChild(fr); }
+    return a;
+  }
   function hud() {
+    var mb = $('mebtn'); mb.textContent = ''; mb.appendChild(avEl(owned(AVATARS, st.avatar) ? st.avatar : 'user', owned(FRAMES, st.frame) ? st.frame : 'none', 'top'));
     var n = levelOf(st.xp), a = floorOf(n), b = floorOf(n + 1);
     $('lvl').textContent = n; $('title').textContent = titleOf(n);
     $('xpbar').style.width = Math.round(100 * (st.xp - a) / (b - a)) + '%';
@@ -960,7 +1010,10 @@ const CLIENT = String.raw`
   function renderMe() {
     var root = $('me'); root.textContent = '';
     var n = levelOf(st.xp);
-    root.appendChild(el('h2', null, titleOf(n) + ' · ' + t('levelN', n)));
+    var head = el('div', 'mehead'); head.appendChild(avEl(owned(AVATARS, st.avatar) ? st.avatar : 'user', owned(FRAMES, st.frame) ? st.frame : 'none', 'big'));
+    var hx = el('div'); hx.appendChild(el('h2', null, titleOf(n) + ' · ' + t('levelN', n)));
+    if (st.mecene) hx.appendChild(el('span', 'tag mec', t('mecene')));
+    head.appendChild(hx); root.appendChild(head);
     var stats = el('div', 'stats');
     [[Object.keys(st.spots).length, S.meStats[0][LI]], [Object.keys(st.events).length, S.meStats[1][LI]], [st.xp, 'XP']].forEach(function (x) { var s = el('div', 'stat'); s.appendChild(el('b', null, String(x[0]))); s.appendChild(document.createTextNode(x[1])); stats.appendChild(s); });
     root.appendChild(stats);
@@ -973,6 +1026,8 @@ const CLIENT = String.raw`
     [['castle', t('bNap'), inSet('napoleon'), SETCOL.napoleon], ['tree', t('bBlue'), inSet('denecourt'), SETCOL.denecourt], ['palette', t('bPaint'), inSet('peintres'), SETCOL.peintres],
       ['star', t('bFirst'), [Math.min(evIds.length, 1), 1], '#b8860b'], ['mask', t('bCats'), [Object.keys(cats).length, 4], '#b8707d'], ['run', t('bSport'), [Math.min(sportClaims(), SPORT_MIN), SPORT_MIN], '#6d8bb5'], ['leaf', t('bEco'), [st.eco ? 1 : 0, 1], SETCOL.foret],
       ['climb', t('bClimb'), inSet('grimpe'), SETCOL.grimpe], ['invader', t('bInv'), [INVADERS.filter(invGot).length, INVADERS.length], '#2b2d42'], ['xmas', t('bXmas'), [Math.min(noel, 2), 2], '#b3261e']]
+      // The Mécène badge shows once held, never as a locked target (GDD §12.2)
+      .concat(st.mecene ? [['heart', t('mecene'), [1, 1], '#b8707d']] : [])
       .forEach(function (x) {
         var got = x[2][0], need = x[2][1], done = got >= need, c = el('div', 'mtile pmedal' + (done ? '' : ' locked'));
         var rg = el('span', 'pring'); rg.style.background = 'conic-gradient(' + x[3] + ' ' + Math.round(360 * got / need) + 'deg, #e4e1da 0)';
@@ -990,6 +1045,23 @@ const CLIENT = String.raw`
       tl.appendChild(row);
     });
     root.appendChild(tl);
+
+    root.appendChild(el('h2', null, t('avatarH')));
+    function picker(list, cur, mk, set) {
+      var g = el('div', 'pick');
+      list.forEach(function (x) {
+        var locked = x[3] && !st.pack, b = el('button', locked ? 'locked' : ''); b.type = 'button'; b.setAttribute('aria-pressed', cur === x[0]);
+        b.appendChild(mk(x[0])); b.appendChild(el('small', null, x[1 + LI]));
+        if (locked) { var lk = el('span', 'lk'); lk.appendChild(ico('lock')); b.appendChild(lk); }
+        b.onclick = function () { if (locked) { openPack(); return; } set(x[0]); save(); hud(); renderMe(); };
+        g.appendChild(b);
+      });
+      return g;
+    }
+    root.appendChild(picker(AVATARS, st.avatar, function (id) { return avEl(id, st.frame); }, function (id) { st.avatar = id; }));
+    root.appendChild(el('h3', 'acc-h', t('frameH')));
+    root.appendChild(picker(FRAMES, st.frame, function (id) { return avEl(st.avatar, id); }, function (id) { st.frame = id; }));
+    if (!st.pack) { var gp = el('button', 'btn soft wide', t('morePack')); gp.type = 'button'; gp.onclick = openPack; root.appendChild(gp); }
 
     if (!standalone) { // always, once uninstalled too: the card says how on every phone
       root.appendChild(el('h2', null, t('instMe')));
@@ -1079,7 +1151,91 @@ const CLIENT = String.raw`
     setTimeout(function () { toast(t('touch')); }, 1200);
   }
 
-  function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); hud(); }
+  // ── Shop (GDD §12.2): pack first, then groups, then support. Folded, one line each. ──
+  var SHOP = D.shop, SHOP_OPEN = {}, GQ = SHOP.groups[0] ? SHOP.groups[0].id : '', THANKS = null, codeOpen = false;
+  function openPack() { SHOP_OPEN.pack = true; renderShop(); tab('shop'); $('s-shop').scrollTop = 0; }
+  function sblock(root, key, icon, color, title, sub, chip) {
+    var b = el('div', 'sblock' + (SHOP_OPEN[key] ? ' open' : '')), h = el('button', 'shead'); h.type = 'button'; h.setAttribute('aria-expanded', !!SHOP_OPEN[key]);
+    var m = el('span', 'qmedal sm'); m.style.background = tint(color); m.style.color = color; m.style.borderColor = color; m.appendChild(ico(icon)); h.appendChild(m);
+    var tx = el('span', 'stx'); tx.appendChild(el('b', null, title)); tx.appendChild(el('small', null, sub)); h.appendChild(tx);
+    if (chip) h.appendChild(el('span', 'chip', chip));
+    var cv = el('span', 'chev'); cv.appendChild(ico('chevron')); h.appendChild(cv);
+    h.onclick = function () { SHOP_OPEN[key] = !SHOP_OPEN[key]; if (SHOP_OPEN[key]) track('shop/open/' + key); renderShop(); };
+    b.appendChild(h); root.appendChild(b);
+    if (!SHOP_OPEN[key]) return null;
+    var body = el('div', 'sbody'); b.appendChild(body); return body;
+  }
+  function payLink(text, url, key) { var a = link(text, url, 'btn wide'); a.addEventListener('click', function () { track('shop/checkout/' + key); }); return a; }
+  function unlockCode(k, sid) { return 'FLC-' + (k === 'pack' ? 'PACK' : 'MEC') + '-' + String(sid).replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase(); }
+  function applyPurchase(k, code) {
+    if (k === 'pack') st.pack = true; else st.mecene = true;
+    save(); THANKS = { k: k, code: code }; SHOP_OPEN[k] = true; track('shop/paid/' + k);
+  }
+  function renderShop() {
+    var root = $('shop'); root.textContent = '';
+    if (THANKS) {
+      var th = el('div', 'thanks'); th.appendChild(el('b', null, THANKS.k === 'pack' ? t('thxPack') : t('thxMec')));
+      th.appendChild(el('p', 'meta', t('thxCode'))); th.appendChild(el('code', null, THANKS.code)); root.appendChild(th);
+    }
+    // 1. The collector pack
+    var b1 = sblock(root, 'pack', 'cards', '#b8707d', t('packT'), t('packSub'), st.pack ? '✓' : SHOP.pack.price[LANG]);
+    if (b1) {
+      var strip = el('div', 'strip');
+      AVATARS.filter(function (x) { return x[3]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl(x[0], 'none')); w.appendChild(el('small', null, x[1 + LI])); strip.appendChild(w); });
+      FRAMES.filter(function (x) { return x[3]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl('user', x[0])); w.appendChild(el('small', null, x[1 + LI])); strip.appendChild(w); });
+      b1.appendChild(strip);
+      if (st.pack) { b1.appendChild(el('p', 'okline', t('packHave'))); var tp = el('button', 'btn soft wide', t('toProfile')); tp.type = 'button'; tp.onclick = function () { tab('me'); }; b1.appendChild(tp); }
+      else if (SHOP.pack.url) {
+        b1.appendChild(payLink(t('packBuy', SHOP.pack.price[LANG]), SHOP.pack.url, 'pack'));
+        var sm = el('p', 'small', t('stripe')); sm.appendChild(link(t('terms'), '/conditions-de-vente/')); b1.appendChild(sm);
+      } else b1.appendChild(el('p', 'meta', t('soon')));
+    }
+    // 2. Groups (booked by e-mail until the server exists)
+    var minP = SHOP.groupPrices.length ? SHOP.groupPrices[0].price : 0;
+    var b2 = sblock(root, 'group', 'team', '#4a5bb8', t('grpT'), t('grpSub'), minP ? t('grpFrom', minP) : '');
+    if (b2) {
+      b2.appendChild(el('p', 'sh4', t('grp1')));
+      var cur = SHOP.groups.filter(function (q) { return q.id === GQ; })[0] || SHOP.groups[0];
+      SHOP.groups.forEach(function (q) {
+        var c = el('button', 'gq'); c.type = 'button'; c.setAttribute('aria-pressed', q.id === cur.id);
+        var m = el('span', 'qmedal'); m.style.background = tint(q.color); m.style.color = q.color; m.style.borderColor = q.color; m.appendChild(ico(q.icon)); c.appendChild(m);
+        var bx = el('span', 'gqb'); bx.appendChild(el('b', null, q.name[LANG])); bx.appendChild(el('small', null, q.dur + ' · ' + q.km + ' km'));
+        (q.pts[LANG] || []).forEach(function (p) { bx.appendChild(el('span', 'gpt', p)); });
+        c.appendChild(bx); c.onclick = function () { GQ = q.id; renderShop(); };
+        b2.appendChild(c);
+      });
+      b2.appendChild(el('p', 'sh4', t('grp2', cur.name[LANG])));
+      var tiers = el('div', 'tiers');
+      SHOP.groupPrices.forEach(function (g) { var x = el('div', 'tier'); x.appendChild(el('b', null, LANG === 'en' ? '€' + g.price : g.price + ' €')); x.appendChild(el('small', null, t('grpUpTo', g.players))); tiers.appendChild(x); });
+      b2.appendChild(tiers);
+      b2.appendChild(el('p', 'meta', t('grpMore')));
+      var mail = link(t('grpContact'), 'mailto:' + SHOP.email + '?subject=' + encodeURIComponent(t('grpMailS')) + '&body=' + encodeURIComponent(t('grpMailB', cur.name[LANG]).replace(/\n/g, String.fromCharCode(10))), 'btn wide');
+      mail.addEventListener('click', function () { track('shop/group-contact/' + cur.id); });
+      b2.appendChild(mail);
+    }
+    // 3. Support, rewarded by the Mécène badge
+    var b3 = sblock(root, 'mecene', 'heart', '#b8707d', t('mecT'), t('mecSub'), st.mecene ? '✓' : t('mecChip'));
+    if (b3) {
+      var row = el('div', 'srow'), md = el('span', 'smedal' + (st.mecene ? '' : ' off')); md.appendChild(ico('heart')); row.appendChild(md); row.appendChild(el('p', null, t('mecTxt'))); b3.appendChild(row);
+      if (st.mecene) b3.appendChild(el('p', 'okline', t('mecHave')));
+      if (SHOP.mecene.url) { b3.appendChild(payLink(t('mecBuy', SHOP.mecene.suggested), SHOP.mecene.url, 'mecene')); b3.appendChild(el('p', 'small', t('stripe').replace(/ · $/, ''))); }
+      else b3.appendChild(el('p', 'meta', t('soon')));
+    }
+    // A purchase code (another phone, or the installed game on an iPhone, which has its own storage)
+    var cq = el('button', 'linkbtn', t('codeQ')); cq.type = 'button'; cq.onclick = function () { codeOpen = !codeOpen; renderShop(); }; root.appendChild(cq);
+    if (codeOpen) {
+      var ci = el('div', 'codein'), inp = el('input'); inp.placeholder = 'FLC-PACK-XXXXXXXX'; inp.autocapitalize = 'characters'; ci.appendChild(inp);
+      var ok = el('button', 'btn', t('codeOk')); ok.type = 'button';
+      ok.onclick = function () {
+        var m = /^FLC-(PACK|MEC)-[A-Z0-9]{8}$/.exec(inp.value.trim().toUpperCase());
+        if (!m) { toast(t('codeBad')); return; }
+        codeOpen = false; applyPurchase(m[1] === 'PACK' ? 'pack' : 'mecene', m[0]); hud(); renderMe(); renderShop();
+      };
+      ci.appendChild(ok); root.appendChild(ci);
+    }
+  }
+
+  function renderAll() { renderLive(); renderDex(); renderQuests(); renderMe(); renderShop(); hud(); }
   function tab(name) {
     Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.setAttribute('aria-selected', b.getAttribute('data-tab') === name); });
     Array.prototype.forEach.call(document.querySelectorAll('.screen'), function (s) { s.classList.toggle('on', s.id === 's-' + name); });
@@ -1091,6 +1247,11 @@ const CLIENT = String.raw`
   $('back').addEventListener('click', function () { track('back-site'); });
   if (LANG === 'en') $('back').href = '/?lang=en';
 
+  (function () {
+    var q = new URLSearchParams(location.search), k = q.get('merci'), sid = q.get('session_id') || '';
+    if ((k === 'pack' || k === 'mecene') && /^cs_(live|test)_[A-Za-z0-9]{10,}$/.test(sid)) { applyPurchase(k, unlockCode(k, sid)); if (!st.onboarded) { st.onboarded = true; save(); } }
+    if (k) try { history.replaceState(null, '', location.pathname + '#boutique'); } catch (e) {}
+  })();
   chrome(); refreshRange(); panel(); liveBar(); draw(); renderAll();
   if (!st.onboarded) { renderOnb(); onb.classList.add('on'); }
   else if (st.geo === 'oui') startGeo();
@@ -1144,7 +1305,7 @@ const CLIENT = String.raw`
 
   // Shareable anchors: #carte, #direct, #collection, #quetes, #profil, #lieu-<id> (a place's sheet).
   function fromHash() {
-    var h = location.hash.slice(1), tabs = { carte: 'map', direct: 'live', collection: 'dex', quetes: 'quests', profil: 'me' };
+    var h = location.hash.slice(1), tabs = { carte: 'map', direct: 'live', collection: 'dex', quetes: 'quests', profil: 'me', boutique: 'shop' };
     if (tabs[h]) tab(tabs[h]);
     var p = /^lieu-([a-z0-9-]+)$/.exec(h) && spotById(h.slice(5));
     if (p && st.onboarded) { tab('map'); map.setView([p.lat, p.lng], 16); openSpot(p); }

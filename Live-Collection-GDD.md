@@ -359,6 +359,8 @@ service ; Zombies, Run! vend des missions (du contenu, écarté).
 **Écartés** : une enquête payante ; vendre la sauvegarde ou la synchronisation (la progression en
 otage) ; des indices ou des jokers ; le hasard payant ; un pass d'événement à récompenses.
 
+**Dans le jeu (23/11)** : la boutique est ouverte sur `/jeu/` (onglet Boutique) : pack (2,99 €) et soutien Mécène (prix libre) payés par Stripe, groupes réservés par e-mail avec leurs prix ; retour de Stripe = déblocage sur le téléphone et code d'achat pour un autre appareil ; avatar et cadre choisis dans le profil ; `/conditions-de-vente/`.
+
 **À l'écran** : onglet Boutique, dans l'ordre **pack, groupes, soutien, cartes imprimées**, chaque
 produit **replié** (icône, nom, une ligne, prix ou « Prix libre », « Bientôt » ; une flèche pour
 l'ouvrir). Le groupe : « 1. Choisissez votre quête » (nom, durée, distance, deux puces), « 2. Une
