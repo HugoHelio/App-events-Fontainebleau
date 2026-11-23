@@ -86,7 +86,7 @@ function jeuContent() {
   const crow = (ids) => { const pts = ids.map((id) => byId.get(id)).filter(Boolean); let d = 0; for (let i = 1; i < pts.length; i++) d += km(pts[i - 1], pts[i]); return Math.max(1, Math.round(d)); };
   const S = C.SHOP;
   const shop = {
-    pack: { url: httpUrl(S.pack.url), price: S.pack.price }, mecene: { url: httpUrl(S.mecene.url), suggested: S.mecene.suggested },
+    mecene: { url: httpUrl(S.mecene.url), suggested: S.mecene.suggested },
     email: S.email, groupPrices: S.groupPrices,
     groups: S.groups.map((g) => ({ id: g.id, icon: g.icon, color: g.color, dur: g.dur, name: g.name, pts: g.pts, km: crow(g.steps), n: g.steps.length })),
   };
@@ -326,17 +326,17 @@ const CLIENT = String.raw`
   var S = {
     backSub: [': l’agenda des sorties', ': what’s on'], siteWeek: ['Toutes les sorties du week-end sur Fontainebleau Live →', 'Every outing this weekend on Fontainebleau Live →'],
     tabShop: ['Boutique', 'Shop'], soon: ['Bientôt', 'Soon'],
-    packT: ['Pack collectionneur', 'Collector pack'], packSub: ['6 avatars dessinés et 4 cadres pour votre profil', '6 drawn avatars and 4 frames for your profile'],
-    packBuy: ['Acheter le pack · {0}', 'Buy the pack · {0}'], packHave: ['✓ Pack débloqué : choisissez dans votre profil', '✓ Pack unlocked: choose in your profile'], toProfile: ['Choisir mon avatar', 'Choose my avatar'],
-    stripe: ['Paiement sécurisé par Stripe · ', 'Secure payment by Stripe · '], terms: ['Conditions de vente', 'Terms of sale'],
+    packHave: ['✓ Pack débloqué : choisissez dans votre profil', '✓ Pack unlocked: choose in your profile'], toProfile: ['Choisir mon avatar', 'Choose my avatar'],
+    packFree: ['Débloquer le pack sans payer', 'Unlock the pack without paying'], packFreeOk: ['Pack débloqué. Bonne collection !', 'Pack unlocked. Happy collecting!'],
+    stripe: ['Paiement sécurisé par Stripe', 'Secure payment by Stripe'],
     grpT: ['Jouer en groupe', 'Play as a group'], grpSub: ['Une quête pour votre groupe, en équipes, avec classement en direct et récapitulatif', 'A quest for your group, in teams, with a live leaderboard and a recap'], grpFrom: ['dès {0} €', 'from €{0}'],
     grp1: ['1. Choisissez votre quête', '1. Choose your quest'], grp2: ['2. Une sortie « {0} »', '2. One outing: “{0}”'], grpUpTo: ['jusqu’à {0} joueurs', 'up to {0} players'],
     grpMore: ['Au-delà de 30 joueurs, ou pour une date : écrivez-nous.', 'Over 30 players, or to book a date: write to us.'], grpContact: ['Réserver par e-mail', 'Book by e-mail'],
     grpMailS: ['Session de groupe — Fontainebleau Live Collection', 'Group session — Fontainebleau Live Collection'], grpMailB: ['Quête : {0}\nDate souhaitée :\nNombre de joueurs :\n', 'Quest: {0}\nPreferred date:\nNumber of players:\n'],
-    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Pour aider à ajouter des lieux et leurs histoires, au prix que vous voulez', 'To help add places and their stories, at the price you choose'], mecChip: ['Prix libre', 'Pay what you like'],
-    mecTxt: ['En remerciement, le badge Mécène sur votre profil.', 'As a thank-you, the Patron badge on your profile.'], mecBuy: ['Soutenir · {0} € conseillés', 'Support · €{0} suggested'], mecHave: ['✓ Vous êtes Mécène. Merci !', '✓ You are a Patron. Thank you!'],
+    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Au prix que vous voulez. En remerciement, le badge Mécène et le pack d’avatars', 'At the price you choose. As a thank-you, the Patron badge and the avatar pack'], mecChip: ['Prix libre', 'Pay what you like'],
+    mecTxt: ['Pour aider à ajouter des lieux et leurs histoires. En remerciement : le badge Mécène sur votre profil et le pack collectionneur, 6 avatars dessinés et 4 cadres.', 'To help add places and their stories. As a thank-you: the Patron badge on your profile and the collector pack, 6 drawn avatars and 4 frames.'], mecBuy: ['Soutenir · {0} € conseillés', 'Support · €{0} suggested'], mecHave: ['✓ Vous êtes Mécène. Merci !', '✓ You are a Patron. Thank you!'],
     codeQ: ['J’ai un code d’achat', 'I have a purchase code'], codeOk: ['Valider', 'Apply'], codeBad: ['Ce code n’est pas reconnu.', 'This code is not recognised.'],
-    thxPack: ['Merci ! Le pack collectionneur est débloqué.', 'Thank you! The collector pack is unlocked.'], thxMec: ['Merci pour votre soutien ! Le badge Mécène est sur votre profil.', 'Thank you for your support! The Patron badge is on your profile.'],
+    thxPack: ['Le pack collectionneur est débloqué.', 'The collector pack is unlocked.'], thxMec: ['Merci pour votre soutien ! Le badge Mécène et le pack collectionneur sont sur votre profil.', 'Thank you for your support! The Patron badge and the collector pack are on your profile.'],
     thxCode: ['Pour l’autre téléphone ou le jeu installé, gardez ce code :', 'For another phone or the installed game, keep this code:'],
     mecene: ['Mécène', 'Patron'], avatarH: ['Mon avatar', 'My avatar'], frameH: ['Cadre', 'Frame'], morePack: ['Plus d’avatars et de cadres : le pack collectionneur', 'More avatars and frames: the collector pack'],
     tabMap: ['Carte', 'Map'], tabLive: ['En direct', 'Live'], tabDex: ['Collection', 'Collection'], tabQuests: ['Quêtes', 'Quests'],
@@ -1151,9 +1151,9 @@ const CLIENT = String.raw`
     setTimeout(function () { toast(t('touch')); }, 1200);
   }
 
-  // ── Shop (GDD §12.2): pack first, then groups, then support. Folded, one line each. ──
+  // ── Shop (GDD §12.2): support (badge + pack, or the pack without paying), then groups. Folded. ──
   var SHOP = D.shop, SHOP_OPEN = {}, GQ = SHOP.groups[0] ? SHOP.groups[0].id : '', THANKS = null, codeOpen = false;
-  function openPack() { SHOP_OPEN.pack = true; renderShop(); tab('shop'); $('s-shop').scrollTop = 0; }
+  function openPack() { SHOP_OPEN.mecene = true; renderShop(); tab('shop'); $('s-shop').scrollTop = 0; }
   function sblock(root, key, icon, color, title, sub, chip) {
     var b = el('div', 'sblock' + (SHOP_OPEN[key] ? ' open' : '')), h = el('button', 'shead'); h.type = 'button'; h.setAttribute('aria-expanded', !!SHOP_OPEN[key]);
     var m = el('span', 'qmedal sm'); m.style.background = tint(color); m.style.color = color; m.style.borderColor = color; m.appendChild(ico(icon)); h.appendChild(m);
@@ -1168,7 +1168,8 @@ const CLIENT = String.raw`
   function payLink(text, url, key) { var a = link(text, url, 'btn wide'); a.addEventListener('click', function () { track('shop/checkout/' + key); }); return a; }
   function unlockCode(k, sid) { return 'FLC-' + (k === 'pack' ? 'PACK' : 'MEC') + '-' + String(sid).replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase(); }
   function applyPurchase(k, code) {
-    if (k === 'pack') st.pack = true; else st.mecene = true;
+    // A support code gives the badge and the pack; an FLC-PACK code (never sold) still gives the pack
+    st.pack = true; if (k === 'mecene') st.mecene = true;
     save(); THANKS = { k: k, code: code }; SHOP_OPEN[k] = true; track('shop/paid/' + k);
   }
   function renderShop() {
@@ -1177,18 +1178,25 @@ const CLIENT = String.raw`
       var th = el('div', 'thanks'); th.appendChild(el('b', null, THANKS.k === 'pack' ? t('thxPack') : t('thxMec')));
       th.appendChild(el('p', 'meta', t('thxCode'))); th.appendChild(el('code', null, THANKS.code)); root.appendChild(th);
     }
-    // 1. The collector pack
-    var b1 = sblock(root, 'pack', 'cards', '#b8707d', t('packT'), t('packSub'), st.pack ? '✓' : SHOP.pack.price[LANG]);
+    // 1. Support, thanked by the Mécène badge and the collector pack; the pack also comes without paying
+    var b1 = sblock(root, 'mecene', 'heart', '#b8707d', t('mecT'), t('mecSub'), st.mecene ? '✓' : t('mecChip'));
     if (b1) {
+      var row = el('div', 'srow'), md = el('span', 'smedal' + (st.mecene ? '' : ' off')); md.appendChild(ico('heart')); row.appendChild(md); row.appendChild(el('p', null, t('mecTxt'))); b1.appendChild(row);
       var strip = el('div', 'strip');
       AVATARS.filter(function (x) { return x[3]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl(x[0], 'none')); w.appendChild(el('small', null, x[1 + LI])); strip.appendChild(w); });
       FRAMES.filter(function (x) { return x[3]; }).forEach(function (x) { var w = el('span', 'fw'); w.appendChild(avEl('user', x[0])); w.appendChild(el('small', null, x[1 + LI])); strip.appendChild(w); });
       b1.appendChild(strip);
-      if (st.pack) { b1.appendChild(el('p', 'okline', t('packHave'))); var tp = el('button', 'btn soft wide', t('toProfile')); tp.type = 'button'; tp.onclick = function () { tab('me'); }; b1.appendChild(tp); }
-      else if (SHOP.pack.url) {
-        b1.appendChild(payLink(t('packBuy', SHOP.pack.price[LANG]), SHOP.pack.url, 'pack'));
-        var sm = el('p', 'small', t('stripe')); sm.appendChild(link(t('terms'), '/conditions-de-vente/')); b1.appendChild(sm);
-      } else b1.appendChild(el('p', 'meta', t('soon')));
+      if (st.mecene) b1.appendChild(el('p', 'okline', t('mecHave')));
+      else if (st.pack) b1.appendChild(el('p', 'okline', t('packHave')));
+      if (st.pack) { var tp = el('button', 'btn soft wide', t('toProfile')); tp.type = 'button'; tp.onclick = function () { tab('me'); }; b1.appendChild(tp); }
+      if (st.mecene) { /* already thanked */ }
+      else if (!SHOP.mecene.url) b1.appendChild(el('p', 'meta', t('soon')));
+      else { b1.appendChild(payLink(t('mecBuy', SHOP.mecene.suggested), SHOP.mecene.url, 'mecene')); b1.appendChild(el('p', 'small', t('stripe'))); }
+      if (!st.pack) {
+        var fr = el('button', 'linkbtn', t('packFree')); fr.type = 'button';
+        fr.onclick = function () { st.pack = true; save(); track('shop/pack-free'); toast(t('packFreeOk')); renderMe(); renderShop(); };
+        b1.appendChild(fr);
+      }
     }
     // 2. Groups (booked by e-mail until the server exists)
     var minP = SHOP.groupPrices.length ? SHOP.groupPrices[0].price : 0;
@@ -1213,18 +1221,10 @@ const CLIENT = String.raw`
       mail.addEventListener('click', function () { track('shop/group-contact/' + cur.id); });
       b2.appendChild(mail);
     }
-    // 3. Support, rewarded by the Mécène badge
-    var b3 = sblock(root, 'mecene', 'heart', '#b8707d', t('mecT'), t('mecSub'), st.mecene ? '✓' : t('mecChip'));
-    if (b3) {
-      var row = el('div', 'srow'), md = el('span', 'smedal' + (st.mecene ? '' : ' off')); md.appendChild(ico('heart')); row.appendChild(md); row.appendChild(el('p', null, t('mecTxt'))); b3.appendChild(row);
-      if (st.mecene) b3.appendChild(el('p', 'okline', t('mecHave')));
-      if (SHOP.mecene.url) { b3.appendChild(payLink(t('mecBuy', SHOP.mecene.suggested), SHOP.mecene.url, 'mecene')); b3.appendChild(el('p', 'small', t('stripe').replace(/ · $/, ''))); }
-      else b3.appendChild(el('p', 'meta', t('soon')));
-    }
     // A purchase code (another phone, or the installed game on an iPhone, which has its own storage)
     var cq = el('button', 'linkbtn', t('codeQ')); cq.type = 'button'; cq.onclick = function () { codeOpen = !codeOpen; renderShop(); }; root.appendChild(cq);
     if (codeOpen) {
-      var ci = el('div', 'codein'), inp = el('input'); inp.placeholder = 'FLC-PACK-XXXXXXXX'; inp.autocapitalize = 'characters'; ci.appendChild(inp);
+      var ci = el('div', 'codein'), inp = el('input'); inp.placeholder = 'FLC-MEC-XXXXXXXX'; inp.autocapitalize = 'characters'; ci.appendChild(inp);
       var ok = el('button', 'btn', t('codeOk')); ok.type = 'button';
       ok.onclick = function () {
         var m = /^FLC-(PACK|MEC)-[A-Z0-9]{8}$/.exec(inp.value.trim().toUpperCase());
@@ -1249,7 +1249,7 @@ const CLIENT = String.raw`
 
   (function () {
     var q = new URLSearchParams(location.search), k = q.get('merci'), sid = q.get('session_id') || '';
-    if ((k === 'pack' || k === 'mecene') && /^cs_(live|test)_[A-Za-z0-9]{10,}$/.test(sid)) { applyPurchase(k, unlockCode(k, sid)); if (!st.onboarded) { st.onboarded = true; save(); } }
+    if (k === 'mecene' && /^cs_(live|test)_[A-Za-z0-9]{10,}$/.test(sid)) { applyPurchase(k, unlockCode(k, sid)); if (!st.onboarded) { st.onboarded = true; save(); } }
     if (k) try { history.replaceState(null, '', location.pathname + '#boutique'); } catch (e) {}
   })();
   chrome(); refreshRange(); panel(); liveBar(); draw(); renderAll();

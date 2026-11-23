@@ -351,21 +351,20 @@ service ; Zombies, Run! vend des missions (du contenu, écarté).
 | Priorité | Offre | Pour qui | Prix | Ce qu'il faut construire |
 |---|---|---|---|---|
 | **Haute** | **Session de groupe** : un code, des équipes, un **classement en direct**, des **comparatifs entre équipes**, un **récapitulatif pour l'organisateur** (podium, étape la plus rapide, question la plus difficile, en PDF le soir même ; ni nom de joueur ni position). **Trois quêtes prêtes**, dont les étapes ne sont pas montrées (c'est ce qui s'achète) : le **centre-ville** (les étapes de la fiche « Fontainebleau à pied » et ses Invaders), **la forêt, hauteurs de la Solle** (mont Ussy, croix d'Augas, croix du Calvaire, tour Denecourt, rocher Cassepot), **Barbizon** (musée, médaillon, Bas-Bréau, caverne des Brigands, gorges d'Apremont) | séminaires, hôtels, INSEAD, anniversaires | **une sortie sur une quête : 29 € jusqu'à 10 joueurs, 59 € jusqu'à 30** ; au-delà, « nous contacter ». Pas de devis ni de quête sur mesure | le serveur (§11) ; les boucles à marcher et à mesurer ; le Grand Parterre comme lieu ; la quête en forêt présentée à l'ONF |
-| **Haute** | **Soutien à prix libre**, remercié par le **badge « Mécène »** sur le profil. Montré une fois obtenu, jamais comme une cible verrouillée | habitués | libre | le lien Stripe des balades ; la page de retour pose le badge (sans serveur, contournable : accepté) |
-| **Moyenne** | **Pack collectionneur**, achat unique : six avatars dessinés en couleur (renard, chouette, écureuil, cèpe, Napoléon, bloc et grimpeur) et quatre cadres ornés (laurier doré, feuillage, gravure, grès). Gratuits : trois avatars au trait (promeneur, arbre, feuille) et le cadre simple | collectionneurs | 2,99 € | un code de déblocage (web), la facturation Google Play dans l'application |
+| **Haute** | **Soutien à prix libre**, remercié par le **badge « Mécène »** sur le profil **et le pack collectionneur** : six avatars dessinés en couleur (renard, chouette, écureuil, cèpe, Napoléon, bloc et grimpeur) et quatre cadres ornés (laurier doré, feuillage, gravure, grès). Le pack se débloque **aussi sans payer** (« Débloquer le pack sans payer », comme les balades) ; seul le badge dit qui a payé. Badge montré une fois obtenu, jamais comme une cible verrouillée. Gratuits d'office : trois avatars au trait (promeneur, arbre, feuille) et le cadre simple | habitués, collectionneurs | libre : 4 € conseillés, 2 € minimum | un Payment Link « le client choisit le montant » ; le retour de Stripe pose le badge (sans serveur, contournable : accepté) |
 | **Basse** | **Vos cartes imprimées** : les lieux collectés, avec la date | visiteurs, cadeau | à définir | PDF prêt à imprimer ou imprimeur partenaire (§16) |
 | Plus tard | Saison financée par l'office de tourisme ou l'interco (modèle Tèrra Aventura) ; commerçants partenaires signalés comme tels | institutions, commerces | convention | des chiffres d'usage (M2) |
 
 **Écartés** : une enquête payante ; vendre la sauvegarde ou la synchronisation (la progression en
 otage) ; des indices ou des jokers ; le hasard payant ; un pass d'événement à récompenses.
 
-**Dans le jeu (23/11)** : la boutique est ouverte sur `/jeu/` (onglet Boutique) : pack (2,99 €) et soutien Mécène (prix libre) payés par Stripe, groupes réservés par e-mail avec leurs prix ; retour de Stripe = déblocage sur le téléphone et code d'achat pour un autre appareil ; avatar et cadre choisis dans le profil ; `/conditions-de-vente/`.
+**Dans le jeu (23/11)** : la boutique est ouverte sur `/jeu/` (onglet Boutique) : « Soutenir le jeu » à prix libre payé par Stripe (badge Mécène et pack ; le pack aussi sans payer), groupes réservés par e-mail avec leurs prix ; retour de Stripe = badge sur le téléphone et code (`FLC-MEC-…`) pour un autre appareil ; avatar et cadre choisis dans le profil ; `/conditions-de-vente/`. Le pack à 2,99 € a été fondu le même jour dans le soutien (chef de projet : « ce ne sont que de la UI 2D ») : plus de vente à prix fixe, donc ni renonciation au droit de rétractation ni médiateur de la consommation.
 
-**À l'écran** : onglet Boutique, dans l'ordre **pack, groupes, soutien, cartes imprimées**, chaque
+**À l'écran** : onglet Boutique, dans l'ordre **soutien, groupes, cartes imprimées**, chaque
 produit **replié** (icône, nom, une ligne, prix ou « Prix libre », « Bientôt » ; une flèche pour
 l'ouvrir). Le groupe : « 1. Choisissez votre quête » (nom, durée, distance, deux puces), « 2. Une
 sortie » et les deux tarifs. Dans le profil, un avatar ou un cadre à cadenas ouvre la boutique sur
-le pack. Dans la maquette, rien n'est payé ; « Essayer avec le code DEMO-SEMINAIRE » ouvre un
+le soutien. Dans la maquette, rien n'est payé ; « Essayer avec le code DEMO-SEMINAIRE » ouvre un
 classement avec trois équipes fictives.
 
 - **Paiement** : sur le web, Stripe (déjà utilisé pour les balades). Sur Android, un contenu

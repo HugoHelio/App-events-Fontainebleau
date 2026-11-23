@@ -561,12 +561,16 @@ const INVADERS = [
 // The shop (GDD §12.2, opened on 23/11 by the project lead): services and cosmetics, never content;
 // what is bought never gives XP, a place or an event. Stripe Payment Links of the « Fontainebleau
 // Live » account, pasted here by hand; an empty link shows « Bientôt » and sells nothing.
-// Each link's « After payment » redirect must be:
-//   https://fontainebleaulive.fr/jeu/?merci=<key>&session_id={CHECKOUT_SESSION_ID}
-// Without a server an unlock is not a lock (GDD §12.2): accepted for a low, honest price.
+// One paid line since 23/11 (project lead): « Soutenir le jeu », pay what you want, thanked by the
+// Mécène badge AND the collector pack. The pack can also be unlocked without paying, like
+// « Télécharger sans payer » on the guides: payment stays a real, optional support (no terms of
+// sale, no withdrawal waiver, no consumer mediator); only the badge says who paid.
+// The link's « After payment » redirect must be:
+//   https://fontainebleaulive.fr/jeu/?merci=mecene&session_id={CHECKOUT_SESSION_ID}
+// Stripe settings: customer chooses the amount, 4 € prefilled (= suggested), 2 € min, 60 € max.
+// Without a server an unlock is not a lock (GDD §12.2): accepted.
 const SHOP = {
-  pack: { url: '', price: { fr: '2,99 €', en: '€2.99' } }, // fixed price: terms of sale and withdrawal waiver (/conditions-de-vente/)
-  mecene: { url: '', suggested: 4, min: 2 },               // pay what you want, like the guides: a support, no terms of sale
+  mecene: { url: '', suggested: 4, min: 2 },
   email: 'heliosoconsulting@gmail.com',
   // Group session (shown with its prices, 23/11): booked by e-mail until the server exists.
   groupPrices: [
@@ -612,7 +616,7 @@ function problems() {
   }
   for (const f of FILS) for (const id of f.steps) if (!ids.has(id)) out.push(`fil ${f.id} : lieu inconnu « ${id} »`);
   for (const g of SHOP.groups) for (const id of g.steps) if (!ids.has(id)) out.push(`quête de groupe ${g.id} : lieu inconnu « ${id} »`);
-  for (const k of ['pack', 'mecene']) if (SHOP[k].url && !/^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(SHOP[k].url)) out.push(`boutique : lien Stripe « ${k} » mal formé`);
+  if (SHOP.mecene.url && !/^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(SHOP.mecene.url)) out.push('boutique : lien Stripe « mecene » mal formé');
   return out;
 }
 
