@@ -66,19 +66,16 @@ const SPOTS = [
     id: 'jardin-de-diane', name: 'Jardin de Diane', set: 'chateau', type: 'Jardin', rarity: 'commun', zone: 'ville',
     lat: 48.40295, lng: 2.69973, icon: 'stag',
     text: {
-      fr: 'Au centre de l’ancien jardin de la Reine, Diane chasseresse. Ce bronze est une fonte des frères Keller (1684), copie d’une statue antique aujourd’hui au Louvre ; il vient du château de Marly. Les chiens et les têtes de cerf du socle sont de Pierre Biard, au début du XVIIᵉ siècle.',
-      en: 'At the centre of the former Queen’s Garden stands Diana the Huntress. This bronze was cast by the Keller brothers (1684), a copy of an ancient statue now in the Louvre; it came from the château of Marly. The dogs and stag heads on the base are by Pierre Biard, from the early 17th century.',
+      fr: 'Au centre de l’ancien jardin de la Reine se dresse Diane chasseresse, en bronze. Autour du socle, quatre chiens et quatre têtes de cerf, œuvre du sculpteur Pierre Biard.',
+      en: 'At the centre of the former Queen’s Garden stands Diana the Huntress, in bronze. Around the base, four hounds and four stag heads, the work of the sculptor Pierre Biard.',
     },
-    sources: [
-      { label: 'Metropolitan Museum of Art (Diane de Barthélemy Prieur, notice)', url: null },
-      { label: 'Musée du Louvre', url: null },
-    ],
-    todo: 'Recouper avec le château de Fontainebleau (fonte Keller, provenance de Marly).',
+    // 23/11: the Keller cast of 1684 and Marly were not confirmed, dropped.
+    sources: [{ label: 'Metropolitan Museum of Art, « Diana with a Hound » (Barthélemy Prieur, notice)', url: 'https://www.metmuseum.org/art/collection/search/191166' }],
     q: {
       fr: 'Combien de chiens entourent le socle de la fontaine ?', en: 'How many dogs surround the base of the fountain?',
       choices: { fr: ['Deux', 'Quatre', 'Six'], en: ['Two', 'Four', 'Six'] }, answer: 1,
     },
-    check: { sources: false, site: false, lead: true },
+    check: { sources: true, site: false, lead: true },
   },
   {
     id: 'theatre', name: 'Théâtre municipal', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
@@ -122,7 +119,7 @@ const SPOTS = [
       en: 'At the heart of the Oval Courtyard rises the keep’s great square tower, the oldest part of the château: a charter of Louis VII records it as early as 1137. In 1528, François I had almost all of the medieval castle pulled down and rebuilt on its foundations, but he kept the keep.',
     },
     sources: [
-      { label: 'Château de Fontainebleau, « Le palais médiéval »', url: null },
+      { label: 'Château de Fontainebleau, « Le palais médiéval »', url: 'https://www.chateaudefontainebleau.fr/en/?p=16251' },
       { label: 'Encyclopædia Universalis', url: null },
     ],
     q: {
@@ -148,93 +145,94 @@ const SPOTS = [
   {
     id: 'fresque-napoleon', name: 'Fresque de Napoléon', set: 'napoleon', type: 'Peinture murale', rarity: 'commun', zone: 'ville',
     lat: 48.40340, lng: 2.69724, icon: 'fresco',
-    text: {
-      fr: 'Rue de Ferrare, en venant du parking du château, une grande fresque représente Napoléon.',
-      en: 'On rue de Ferrare, coming from the château car park, a large mural shows Napoleon.',
-    },
-    sources: [WALK_SHEET],
-    todo: 'Texte d’itinéraire, pas d’histoire : trouver l’auteur et la date de la fresque, ou en faire un simple point.',
-    check: { sources: false, site: false, lead: false },
+    // 23/11: no source found for the mural (author, date): a plain point, rue de Ferrare.
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'grand-ferrare', name: 'Porte de l’hôtel du Grand Ferrare', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
     lat: 48.40435, lng: 2.69802, icon: 'door',
     text: {
-      fr: 'Juste après la fresque, rue de Ferrare, la porte de l’hôtel du Grand Ferrare.',
-      en: 'Just after the mural, on rue de Ferrare, the gateway of the Hôtel du Grand Ferrare.',
+      fr: 'Ce portail est tout ce qui reste du Grand Ferrare, le palais que l’architecte italien Sebastiano Serlio bâtit pour le cardinal Hippolyte d’Este, dit le cardinal de Ferrare. Le palais devait rester modeste, pour ne pas rivaliser avec le château du roi, juste en face.',
+      en: 'This gateway is all that remains of the Grand Ferrare, the palace the Italian architect Sebastiano Serlio built for Cardinal Ippolito d’Este, known as the Cardinal of Ferrara. The palace had to stay modest, so as not to rival the king’s château just opposite.',
     },
-    sources: [WALK_SHEET],
-    todo: 'Texte d’itinéraire : chercher l’histoire de l’hôtel (cardinal de Ferrare, Serlio ?) dans Mérimée ou l’Inventaire.',
-    check: { sources: false, site: false, lead: false },
+    sources: [
+      { label: 'C. L. Frommel, essai sur Serlio, Digital Serlio, Columbia University', url: 'https://library.columbia.edu/libraries/avery/digitalserlio/essays/frommel.html' },
+      { label: 'Base Mérimée, PA00086971 (caserne Boufflers et ancien hôtel de Ferrare)', url: pop('merimee', 'PA00086971') },
+    ],
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'aigle-noir', name: 'Place Napoléon-Bonaparte et l’Aigle Noir', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
     lat: 48.40367, lng: 2.69914, icon: 'mansion',
     text: {
-      fr: 'La place et son carrousel, que les enfants adorent. En face, l’hôtel de l’Aigle Noir : une demeure du XVIᵉ siècle, l’ancien hôtel de Retz, rebaptisée L’Aigle Noir sous l’Empire.',
-      en: 'The square and its merry-go-round, which children love. Opposite, the Hôtel de l’Aigle Noir: a 16th-century mansion, formerly the Hôtel de Retz, renamed the Black Eagle under the Empire.',
+      fr: 'La place et son carrousel. En face, l’hôtel de l’Aigle Noir, demeure des seigneurs de Retz de 1555 à 1677, rebaptisée L’Aigle Noir en 1810, sous l’Empire.',
+      en: 'The square and its merry-go-round. Opposite, the Hôtel de l’Aigle Noir, home of the lords of Retz from 1555 to 1677, renamed the Black Eagle in 1810, under the Empire.',
     },
-    sources: [WALK_SHEET],
-    todo: 'Recouper hôtel de Retz et date du changement de nom.',
+    sources: [
+      WALK_SHEET,
+      { label: 'Paris Zigzag, « Hôtel L’Aigle Noir, Fontainebleau »', url: 'https://www.pariszigzag.fr/sortir-paris/balade-paris/hotel-l-aigle-noir-fontainebleau/' },
+    ],
     q: {
       fr: 'Qu’est-ce qui tourne sur la place ?', en: 'What goes round and round on the square?',
       choices: { fr: ['Un carrousel', 'Une grande roue', 'Une fontaine'], en: ['A merry-go-round', 'A Ferris wheel', 'A fountain'] }, answer: 0,
     },
-    check: { sources: false, site: false, lead: false },
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'saint-louis', name: 'Église Saint-Louis', set: 'ville', type: 'Église', rarity: 'commun', zone: 'ville',
     lat: 48.40565, lng: 2.70145, icon: 'church',
     text: {
-      fr: 'Au bout de la rue de la Paroisse, l’église Saint-Louis, joyau du XVIIᵉ siècle bâti sous Louis XIII.',
-      en: 'At the end of rue de la Paroisse, the church of Saint-Louis, a 17th-century jewel built under Louis XIII.',
+      fr: 'L’église de la ville, bâtie au début du XVIIᵉ siècle sous Louis XIII, à deux pas du château. Avant elle, les habitants allaient à la messe à Avon.',
+      en: 'The town’s church, built in the early 17th century under Louis XIII, a stone’s throw from the château. Before it, the townspeople went to mass in Avon.',
     },
-    sources: [WALK_SHEET],
-    todo: 'Recouper la date de construction (Mérimée ou paroisse) ; ajouter une question (façade, clocher).',
-    check: { sources: false, site: false, lead: false },
+    sources: [
+      { label: 'Office de tourisme du Pays de Fontainebleau, « Église Saint-Louis »', url: 'https://www.fontainebleau-tourisme.com/en/fiche/4686996/saint-louis-church' },
+      { label: 'Base Mérimée, PA00086976', url: pop('merimee', 'PA00086976') },
+    ],
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'hotel-de-ville', name: 'Hôtel de ville', set: 'ville', type: 'Patrimoine urbain', rarity: 'commun', zone: 'ville',
     lat: 48.40474, lng: 2.70104, icon: 'townhall',
     text: {
-      fr: 'Au 44 rue Grande, la mairie, reconstruite sous le Second Empire, en 1864.',
-      en: 'At 44 rue Grande, the town hall, rebuilt under the Second Empire, in 1864.',
+      fr: 'Au 44 rue Grande, la mairie, reconstruite en 1864, sous Napoléon III.',
+      en: 'At 44 rue Grande, the town hall, rebuilt in 1864, under Napoleon III.',
     },
-    sources: [WALK_SHEET],
-    todo: 'Recouper la date (ville de Fontainebleau) ; ajouter une question.',
-    check: { sources: false, site: false, lead: false },
+    sources: [
+      WALK_SHEET,
+      { label: 'Office de tourisme du Pays de Fontainebleau, « Architectural Heritage: First and Second Empire »', url: 'https://www.fontainebleau-tourisme.com/en/discover-the-region/art-of-living/fontainebleau-between-chateau-and-forest/fontainebleau-ville-imperiale/architectural-heritage-first-and-second-empire/' },
+    ],
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'ancienne-prison', name: 'Ancienne maison d’arrêt', set: 'ville', type: 'Monument historique', rarity: 'peu commun', zone: 'ville',
     lat: 48.40981, lng: 2.70368, icon: 'prison',
     text: {
-      fr: 'Bâtie vers le milieu du XIXᵉ siècle, rue du Sergent-Perrier, l’ancienne maison d’arrêt a ensuite abrité le Musée national des prisons. Le bâtiment, ses cours de promenade et son mur d’enceinte sont protégés monument historique depuis 1996.',
-      en: 'Built around the middle of the 19th century on rue du Sergent-Perrier, the former jail later housed the National Prison Museum. The building, its exercise yards and its outer wall have been a listed historic monument since 1996.',
+      fr: 'Bâtie au milieu du XIXᵉ siècle, l’ancienne maison d’arrêt a ensuite abrité le Musée national des prisons. Avec ses cours de promenade et son mur d’enceinte, elle est monument historique depuis 1996.',
+      en: 'Built in the mid-19th century, the former jail later housed the National Prison Museum. With its exercise yards and outer wall, it has been a listed monument since 1996.',
     },
     sources: [
       { label: 'Base Mérimée, PA77000003', url: pop('merimee', 'PA77000003') },
-      { label: 'Musée du Patrimoine', url: null },
+      { label: 'Monumentum, « Ancienne maison d’arrêt à Fontainebleau »', url: 'https://monumentum.fr/monument-historique/pa77000003/fontainebleau-ancienne-maison-darret' },
     ],
-    todo: 'Recouper les dates (construction, musée, protection).',
-    check: { sources: false, site: false, lead: false },
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'bel-ebat', name: 'Parc de Bel-Ébat (Avon)', set: 'ville', type: 'Parc', rarity: 'commun', zone: 'ville',
     lat: 48.41200, lng: 2.73277, icon: 'park',
     text: {
-      fr: 'Selon la tradition, son nom viendrait des chiens de chasse d’Henri IV, qui venaient s’y ébattre près des sources. Ancien domaine privé autour d’un manoir, il a été donné à la ville d’Avon en 1979 par sa dernière propriétaire, Lola Dommange. Des ânes y paissent.',
-      en: 'Tradition has it that the name comes from Henri IV’s hunting dogs, which came to frolic here by the springs. Once a private estate around a manor house, it was given to the town of Avon in 1979 by its last owner, Lola Dommange. Donkeys graze here.',
+      fr: 'Son nom viendrait de la meute de chasse d’Henri IV. Ce domaine privé autour d’un manoir a été donné à la ville d’Avon en 1979 par sa dernière propriétaire, Lola Dommange. Des ânes y paissent.',
+      en: 'Its name is said to come from Henri IV’s hunting pack. This private estate around a manor house was given to the town of Avon in 1979 by its last owner, Lola Dommange. Donkeys graze here.',
     },
     sources: [
-      { label: 'Sortiraparis.com, « Parc de Bel Ébat »', url: null },
-      { label: 'Journées du patrimoine, manoir de Bel Ébat', url: null },
+      { label: 'Sortiraparis.com, « Bel Ebat Park »', url: 'https://www.sortiraparis.com/en/what-to-visit-in-paris/walks/articles/344941-bel-ebat-park-a-beautiful-green-space-with-grazing-donkeys-in-avon-77' },
+      { label: 'Office de tourisme du Pays de Fontainebleau, brochure', url: 'https://www.fontainebleau-tourisme.com/wp-content/uploads/2022/06/Brochure-finale-Francaise.pdf' },
     ],
-    todo: 'Recouper avec la ville d’Avon (don de 1979, Lola Dommange).',
     q: {
       fr: 'Quels animaux paissent dans le parc ?', en: 'Which animals graze in the park?',
       choices: { fr: ['Des ânes', 'Des moutons', 'Des chèvres'], en: ['Donkeys', 'Sheep', 'Goats'] }, answer: 0,
     },
-    check: { sources: false, site: false, lead: false },
+    check: { sources: true, site: false, lead: false },
   },
 
   // ── Denecourt and the blue trails ──────────────────────────────────────────────────────────
@@ -242,27 +240,29 @@ const SPOTS = [
     id: 'mont-ussy', name: 'Mont Ussy', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'peu commun', zone: 'foret',
     lat: 48.42699, lng: 2.69645, icon: 'tree',
     text: {
-      fr: 'Le premier sentier bleu de Denecourt serpente ici entre les rochers, les grottes et les arbres remarquables. Denecourt y baptise encore des rochers en 1874, comme la Chaise à Marie. L’année suivante, le jour de sa mort, il faisait encore dégager la grotte des Montussiennes.',
-      en: 'Denecourt’s first blue trail winds here between rocks, caves and remarkable trees. In 1874 Denecourt was still naming rocks here, such as the Chaise à Marie. The following year, on the day he died, he was still having the Montussiennes cave cleared.',
+      fr: 'Le premier sentier bleu de Denecourt serpente ici entre rochers, grottes et arbres remarquables. Denecourt y baptisait encore des rochers en 1874, quelques mois avant sa mort, le 24 mars 1875.',
+      en: 'Denecourt’s first blue trail winds here between rocks, caves and remarkable trees. Denecourt was still naming rocks here in 1874, a few months before his death on 24 March 1875.',
     },
-    sources: [{ label: 'Association des Amis de la forêt de Fontainebleau, comptes rendus de promenade au mont Ussy (2022-2023)', url: null }],
-    todo: 'Date de la mort de Denecourt (mars ou mai 1875) ; « le jour de sa mort » à confirmer.',
+    sources: [
+      { label: 'Association des Amis de la forêt de Fontainebleau, comptes rendus de promenade au mont Ussy (2022-2023)', url: null },
+      { label: 'AAFF, bulletin du centenaire de la mort de Denecourt (1976)', url: 'https://www.aaff.fr/wp-content/uploads/2023/12/vf1976.pdf' },
+    ],
     q: {
       fr: 'De quelle couleur sont les marques peintes du sentier Denecourt ?', en: 'What colour are the painted marks of the Denecourt trail?',
       choices: { fr: ['Bleu', 'Rouge', 'Jaune'], en: ['Blue', 'Red', 'Yellow'] }, answer: 0,
     },
-    check: { sources: false, site: false, lead: false },
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'tour-denecourt', name: 'Tour Denecourt', set: 'denecourt', type: 'Belvédère', rarity: 'rare', zone: 'foret',
     lat: 48.43382, lng: 2.72621, icon: 'tower',
     text: {
-      fr: 'Claude-François Denecourt, l’inventeur des sentiers bleus, fait bâtir cette tour sur le rocher Cassepot ; Napoléon III et l’impératrice Eugénie l’inaugurent en 1853 sous le nom de Fort l’Empereur. Montée sans mortier, elle s’écroule le 28 janvier 1878. Reconstruite grâce à une souscription de Charles Colinet, plus haute d’un mètre, elle prend en 1882 le nom de son créateur.',
-      en: 'Claude-François Denecourt, the inventor of the blue trails, had this tower built on the Cassepot rock; Napoleon III and Empress Eugénie opened it in 1853 as the Fort l’Empereur. Built without mortar, it collapsed on 28 January 1878. Rebuilt thanks to a subscription raised by Charles Colinet, one metre taller, it took its creator’s name in 1882.',
+      fr: 'Denecourt, l’inventeur des sentiers bleus, fait bâtir cette tour, inaugurée en 1853 par Napoléon III sous le nom de Fort l’Empereur. Montée sans mortier, elle s’écroule en 1878 ; reconstruite, elle prend en 1882 le nom de son créateur.',
+      en: 'Denecourt, the inventor of the blue trails, had this tower built; Napoleon III opened it in 1853 as the Fort l’Empereur. Built without mortar, it collapsed in 1878; rebuilt, it took its creator’s name in 1882.',
     },
     sources: [
-      { label: 'Office de tourisme du Pays de Fontainebleau, itinéraire de la tour Denecourt', url: null },
-      { label: 'Fondation Napoléon, F. Houdecek, « Fontainebleau, une forêt très napoléonienne »', url: null },
+      { label: 'Office de tourisme du Pays de Fontainebleau, sentier de la tour Denecourt à la croix du Calvaire', url: 'https://www.fontainebleau-tourisme.com/en/fiche/6367855/sentier-de-la-tour-denecourt-a-la-croix-du-calvaire/' },
+      { label: 'Fondation Napoléon, F. Houdecek, « Fontainebleau, une forêt très napoléonienne »', url: 'https://www.napoleon.org/histoire-des-2-empires/articles/une-chronique-de-francois-houdecek-fontainebleau-une-foret-tres-napoleonienne/' },
     ],
     q: {
       fr: 'En haut de la tour, qu’est-ce qui aide à reconnaître le paysage ?', en: 'At the top of the tower, what helps you recognise the landscape?',
@@ -279,19 +279,19 @@ const SPOTS = [
     id: 'grotte-serment', name: 'Grotte du Serment', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'rare', zone: 'foret',
     lat: 48.40225, lng: 2.66493, icon: 'cave',
     text: {
-      fr: 'Critiqué pour ses travaux dans la forêt, Denecourt promet en 1853 de ne plus creuser qu’une seule grotte : ce sera celle-ci, sa « dernière folie », sous un plafond fait d’un seul énorme rocher. Il grave ses initiales et la date dans la pierre. Il ne tient pas parole : la grotte qu’il creuse ensuite, tout près, s’appelle la grotte du Parjure.',
-      en: 'Criticised for his works in the forest, Denecourt promised in 1853 to dig only one more cave: this one, his “last folly”, under a ceiling made of a single huge rock. He carved his initials and the date into the stone. He did not keep his word: the cave he dug next, close by, is called the Cave of Perjury.',
+      fr: 'Critiqué pour ses travaux, Denecourt promet en 1853 de ne plus creuser qu’une grotte : celle-ci, sous un plafond fait d’un seul énorme rocher. Il y grave « D.F.D. », Dernière Folie Denecourt. Il ne tient pas parole : plus loin, il creuse la grotte du Parjure.',
+      en: 'Criticised for his works, Denecourt promised in 1853 to dig only one more cave: this one, under a ceiling made of a single huge rock. He carved “D.F.D.” into it: Dernière Folie Denecourt, Denecourt’s Last Folly. He did not keep his word: further on, he dug the Cave of Perjury.',
     },
+    // 23/11: corrected, the letters are not his initials but « Dernière Folie Denecourt ».
     sources: [
-      { label: 'Smithsonian Magazine', url: null },
-      { label: 'Comptes rendus d’excursion', url: null },
+      { label: 'Smithsonian Magazine, « The Evolution of Art Techniques »', url: 'https://www.smithsonianmag.com/arts-culture/the-evolution-of-art-techniques-180974592/' },
+      { label: 'Visorando, « La grotte du Serment »', url: 'https://www.visorando.com/randonnee-grotte-du-serment.html' },
     ],
-    todo: 'Sources faibles : recouper (AAFF, Denecourt lui-même, Colinet) ; la date gravée se vérifie sur place.',
     q: {
       fr: 'Quelle année est gravée sur le rocher ?', en: 'Which year is carved on the rock?',
       choices: { fr: ['1853', '1789', '1907'], en: ['1853', '1789', '1907'] }, answer: 0,
     },
-    check: { sources: false, site: false, lead: false },
+    check: { sources: true, site: false, lead: false },
   },
 
   // ── Great forest sites ─────────────────────────────────────────────────────────────────────
@@ -300,29 +300,32 @@ const SPOTS = [
     id: 'croix-d-augas', name: 'Croix d’Augas', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', zone: 'foret',
     lat: 48.42490, lng: 2.70897, icon: 'cross',
     text: {
-      fr: 'Déjà sur le plan de la forêt de 1624, sous le nom de « Croix Dogast », la croix se dresse au point le plus haut de la forêt, à 146 mètres. Brisée à la Révolution, refaite en pierre en 1827, abattue par une tempête en 1899, elle a été remise à neuf en 2016. Tout près s’ouvrait la caverne d’Augas, la plus vaste grotte de la forêt selon Denecourt ; ensablée en 1972, elle s’effondre en 1986.',
-      en: 'Already on the 1624 map of the forest, as the “Croix Dogast”, the cross stands at the forest’s highest point, 146 metres. Broken during the Revolution, remade in stone in 1827, felled by a storm in 1899, it was restored in 2016. Close by opened the Augas cavern, the largest cave in the forest according to Denecourt; filled with sand in 1972, it collapsed in 1986.',
+      fr: 'Une croix de carrefour, déjà sur le plan de la forêt de 1624. Tout près s’ouvrait la caverne d’Augas, la plus vaste grotte de la forêt selon Denecourt ; ensablée en 1972, elle s’est effondrée en 1986.',
+      en: 'A crossroads cross, already on the 1624 map of the forest. Close by opened the Augas cavern, the largest cave in the forest according to Denecourt; filled with sand in 1972, it collapsed in 1986.',
     },
+    // 23/11: « highest point, 146 m » not confirmed at the cross (it is the survey chimney's), dropped.
     sources: [
       { label: 'Fontainebleau-photo.fr, « La croix d’Augas » (2023), d’après Denecourt et Colinet', url: null },
       { label: 'AAFF, « L’effondrement de la caverne d’Augas »', url: null },
+      { label: 'AAFF, compte rendu de la promenade Augas, Béhourdière, Cassepot (23/09/2023)', url: 'https://www.aaff.fr/wp-content/uploads/2023/12/cr_2023_09_23_promenade-abc.pdf' },
     ],
-    todo: 'Source principale : un blog. Recouper (AAFF, ONF) ; « point le plus haut, 146 m » surtout.',
+    todo: 'Sur place : la cheminée de triangulation en brique (1900) se voit-elle depuis la croix ? Sinon, changer la question.',
     q: {
       fr: 'Quelle haute tour de brique se dresse près de la croix ?', en: 'What tall brick tower stands near the cross?',
       choices: { fr: ['Une tour géodésique', 'Un château d’eau', 'Un clocher'], en: ['A survey tower', 'A water tower', 'A bell tower'] }, answer: 0,
     },
-    check: { sources: false, site: false, lead: false },
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'grand-veneur', name: 'Croix du Grand Veneur', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', zone: 'foret',
     lat: 48.43041, lng: 2.66126, icon: 'cross',
     text: {
-      fr: 'La croix porte déjà son nom sur le plus ancien plan de la forêt, celui de Nicolas Picart (1624) : le grand veneur commandait les chasses du roi. Refaite en bois en 1827, puis en grès en 1846, elle est brisée par une charrette de paille en 1919 et renversée par une camionnette en 1926. Depuis 2000, elle se dresse au centre du rond-point.',
-      en: 'The cross already bears its name on the oldest map of the forest, Nicolas Picart’s (1624): the Grand Huntsman commanded the king’s hunts. Remade in wood in 1827, then in sandstone in 1846, it was broken by a hay cart in 1919 and knocked over by a van in 1926. Since 2000 it has stood in the middle of the roundabout.',
+      fr: 'Le grand veneur commandait les chasses du roi. La croix porte déjà son nom sur le plan de la forêt de 1624 ; elle se dresse aujourd’hui au milieu d’un rond-point.',
+      en: 'The Grand Huntsman commanded the king’s hunts. The cross already bears his name on the 1624 map of the forest; today it stands in the middle of a roundabout.',
     },
+    // 23/11: repair dates (1827, 1846, 1919, 1926, 2000) only on Wikipedia, dropped.
     sources: [{ label: 'Wikipédia, « Croix du Grand-Veneur » (d’après Tendron, 2018)', url: null }],
-    todo: 'Wikipédia seule : remonter à Tendron (2018) ou à l’AAFF.',
+    todo: 'Source unique (Wikipédia) : le lien, ou une seconde source pour le plan de 1624.',
     q: {
       fr: 'Où se dresse la croix aujourd’hui ?', en: 'Where does the cross stand today?',
       choices: { fr: ['Au milieu d’un rond-point', 'Au sommet d’un rocher', 'Devant une chapelle'], en: ['In the middle of a roundabout', 'On top of a rock', 'In front of a chapel'] }, answer: 0,
@@ -333,12 +336,12 @@ const SPOTS = [
     id: 'franchard', name: 'Gorges de Franchard', set: 'foret', type: 'Gorges', rarity: 'rare', zone: 'foret',
     lat: 48.40812, lng: 2.62024, icon: 'mountain',
     text: {
-      fr: 'Des ermites vivent ici dès le XIIᵉ siècle ; la fontaine des Ermites, nourrie par l’eau qui s’infiltre dans le plateau, garde leur souvenir. Louis XIV confie les ruines aux Mathurins de Fontainebleau, puis l’ermitage, devenu un repaire de brigands, est rasé au XVIIIᵉ siècle. Sous Louis-Philippe, on bâtit la maison forestière qui est toujours là.',
-      en: 'Hermits lived here from the 12th century; the Hermits’ Fountain, fed by water seeping through the plateau, keeps their memory. Louis XIV entrusted the ruins to the Mathurin friars of Fontainebleau; later the hermitage, by then a robbers’ den, was razed in the 18th century. Under Louis-Philippe, the forester’s house that still stands was built.',
+      fr: 'Des ermites vivent ici dès le XIIᵉ siècle ; la fontaine des Ermites garde leur souvenir. L’ermitage, devenu un repaire de brigands, est rasé au XVIIIᵉ siècle ; la maison forestière date de Louis-Philippe.',
+      en: 'Hermits lived here from the 12th century; the Hermits’ Fountain keeps their memory. The hermitage, by then a robbers’ den, was razed in the 18th century; the forester’s house dates from Louis-Philippe.',
     },
     sources: [
       { label: 'Office de tourisme du Pays de Fontainebleau, sentier des gorges de Franchard', url: null },
-      { label: 'AAFF, « Autour de Franchard »', url: null },
+      { label: 'AAFF, « Autour de Franchard »', url: 'https://www.aaff.fr/wp-content/uploads/2023/12/autour-de-franchard-1.pdf' },
     ],
     q: {
       fr: 'Quel bâtiment se dresse aujourd’hui près de l’ancien ermitage ?', en: 'What building stands near the old hermitage today?',
@@ -350,8 +353,8 @@ const SPOTS = [
     id: 'apremont', name: 'Gorges d’Apremont', set: 'foret', type: 'Gorges', rarity: 'rare', zone: 'foret',
     lat: 48.43601, lng: 2.62568, icon: 'mountain',
     text: {
-      fr: 'Révoltés par les coupes de vieux chênes, Théodore Rousseau et les peintres de Barbizon obtiennent en 1853 que des parties de la forêt soient laissées à la nature, dont les gorges d’Apremont : la « réserve artistique ». Un décret de 1861 la porte à 1 097 hectares. Rousseau avait peint ici son « Groupe de chênes, Apremont », exposé au Salon de 1852.',
-      en: 'Outraged by the felling of old oaks, Théodore Rousseau and the Barbizon painters won in 1853 that parts of the forest be left to nature, the Apremont gorge among them: the “artistic reserve”. An 1861 decree extended it to 1,097 hectares. Rousseau had painted his “Group of Oaks, Apremont” here, shown at the 1852 Salon.',
+      fr: 'Révoltés par les coupes de vieux chênes, Théodore Rousseau et les peintres de Barbizon obtiennent en 1853 que des parties de la forêt soient laissées à la nature, dont les gorges d’Apremont : la « réserve artistique ».',
+      en: 'Outraged by the felling of old oaks, Théodore Rousseau and the Barbizon painters won in 1853 that parts of the forest be left to nature, the Apremont gorge among them: the “artistic reserve”.',
     },
     sources: [
       { label: 'Metropolitan Museum of Art, « The Barbizon School »', url: null },
@@ -372,7 +375,6 @@ const SPOTS = [
       en: 'Along the Houx gorge, the quarrymen left a real “village” of shelters: small dry-stone huts, often built against a rock, where they kept their clothes, their meals and their tools. Hundreds remain in the forest.',
     },
     sources: [{ label: 'Association des Amis de la forêt de Fontainebleau, « Les carriers »', url: null }],
-    todo: 'Ajouter une question (forme d’un abri, matériau).',
     check: { sources: true, site: false, lead: false },
   },
   // 22/11, asked by the project lead: more forest points to collect, no text where we have no source.
@@ -432,7 +434,6 @@ const SPOTS = [
       { label: 'Metropolitan Museum of Art (Corot, « Le Bas-Bréau », étude)', url: null },
       { label: 'Wikipédia, « Forêt de Fontainebleau »', url: null },
     ],
-    todo: 'Ajouter une question (ce qu’on voit : vieux chênes, panneau).',
     check: { sources: true, site: false, lead: false },
   },
   {
@@ -446,7 +447,6 @@ const SPOTS = [
       { label: 'Office de tourisme du Pays de Fontainebleau, « Chailly-en-Bière, village de caractère »', url: null },
       { label: 'Base Mérimée, PA00086849', url: pop('merimee', 'PA00086849') },
     ],
-    todo: 'Ajouter une question.',
     check: { sources: true, site: false, lead: false },
   },
 

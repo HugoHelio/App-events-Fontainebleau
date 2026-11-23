@@ -2520,7 +2520,14 @@ séance avec Claude tous les 15 jours (prochaine le 11/11), sans tâche planifi�
       (sources, sur place, relu), rien n'est publié avant les trois. `node scripts/live-collection.js`
       : 25 textes, 16 questions, 12 simples points, 0 lieu prêt ; 15 points à faire (sources faibles,
       textes d'itinéraire des étapes en ville, questions manquantes), 20 lieux dont une source n'a pas
-      de lien. Suite : la passe de recherche des sources.
+      de lien. **Passe des sources, même jour** (consigne : « fais simple », une première version
+      jouable, peu de texte) : douze lieux recoupés et liés (Denecourt mort le 24 mars 1875, plaque et
+      AAFF ; « D.F.D. » de la grotte du Serment = Dernière Folie Denecourt, pas ses initiales, corrigé ;
+      Serlio et le cardinal d'Este pour le Grand Ferrare ; Retz puis l'Aigle Noir en 1810 ; mairie de
+      1864 ; Saint-Louis sous Louis XIII ; Bel-Ébat ; maison d'arrêt), les faits non confirmés retirés,
+      la fresque en simple point, les textes longs raccourcis. Reste : le lien Wikipédia du Grand
+      Veneur, la cheminée de triangulation vue de la croix d'Augas (sur place), 15 sources sans lien,
+      16 questions à vérifier sur place, la relecture du chef de projet.
     - [ ] **116e. Moteur** : page générée par `generate-pages.js` (**`/jeu/`**, décidé le 23/11),
       `textContent` partout, `localStorage` sous try/catch, code d'export de la progression,
       Leaflet de `vendor/`, géolocalisation demandée au moment du jeu et jamais envoyée ;

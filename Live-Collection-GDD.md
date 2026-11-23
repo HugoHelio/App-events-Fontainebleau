@@ -145,9 +145,10 @@ site, seule l'étiquette « LIVE » reste rouge ; les lieux en ronds ; crédit O
 | **5 Must Climb, en famille** (5) | Bas Cuvier, Rocher Canon, Canche aux Merciers (peu communs), Cul de Chien, l'Éléphant à Larchant (rares) — §7.4 |
 
 La caverne d'Augas (ensablée en 1972, effondrée en 1986) est remplacée par la croix d'Augas.
-**Sources à recouper au développement** (116d) : Grand Veneur (Wikipédia seulement), grotte du
-Serment, croix d'Augas (blog local, AAFF), dates de la maison d'arrêt, Bel-Ébat (ville d'Avon),
-mort de Denecourt (mars ou mai 1875), jardin de Diane (avec le château).
+**Sources recoupées le 23/11** (116d) : ce qui n'a pas été confirmé a été retiré du texte (fonte
+Keller au jardin de Diane, « point le plus haut » à la croix d'Augas, dates de réparation du Grand
+Veneur) ; la fresque de Napoléon, sans source, devient un simple point. Textes raccourcis : deux
+phrases le plus souvent. État du contenu : `node scripts/live-collection.js`.
 
 ### 7.1 bis Les Space Invaders
 - 46 mosaïques d'Invader posées en 2023, à Fontainebleau et dans 23 communes autour ; au
