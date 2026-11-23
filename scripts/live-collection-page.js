@@ -283,7 +283,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .av{position:relative;width:42px;height:42px;display:inline-flex;flex:none;font-size:22px;margin:7px}.av.big{width:76px;height:76px;font-size:40px;margin:14px}.av.top{width:36px;height:36px;font-size:19px;margin:0}.av-in{position:absolute;inset:0;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#eef0ec;color:var(--ink)}.av-in svg{width:100%;height:100%;display:block}.av-fr{position:absolute;inset:-22%;pointer-events:none}.av-fr svg{width:100%;height:100%;display:block;overflow:visible}
 .av.fr-simple .av-in{box-shadow:0 0 0 2px #fff,0 0 0 4px #1f2622}
 .pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 4px;margin:6px 0 10px}.pick button{background:none;border:0;padding:8px 0 4px;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;border-radius:12px}.pick button small{font-size:10.5px;color:var(--ink)}.pick button[aria-pressed=true]{background:#fff4d6}.pick button[aria-pressed=true] small{font-weight:800}.pick button.locked .av{opacity:.5}.pick .lk{position:absolute;top:2px;right:6px;width:18px;height:18px;border-radius:50%;background:#fff;color:#7b807b;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.btn.wide{display:block;width:100%;margin-top:8px}.linkbtn{display:block;margin:8px auto 0;background:none;border:0;font:inherit;font-size:13px;color:var(--muted,#5b625d);text-decoration:underline;cursor:pointer}
+.btn.wide{display:block;width:100%;margin-top:8px}.mailrow{margin-top:10px}.mailrow b{user-select:all;-webkit-user-select:all;color:var(--ink,#1d3b29)}.mailrow .linkbtn{display:inline;margin:0 0 0 8px}.linkbtn{display:block;margin:8px auto 0;background:none;border:0;font:inherit;font-size:13px;color:var(--muted,#5b625d);text-decoration:underline;cursor:pointer}
 .sblock{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}.shead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;padding:12px;font:inherit;color:inherit;text-align:left;cursor:pointer}.stx{flex:1;min-width:0}.stx b{display:block;font-size:15.5px}.stx small{display:block;font-size:12.5px;color:var(--muted,#5b625d)}.chip{flex:none;font-weight:800;font-size:13px;background:#fff4d6;color:#7a5a00;border-radius:999px;padding:3px 10px}.chev{flex:none;font-size:20px;color:#7b807b;transition:transform .2s;display:flex}.sblock.open .chev{transform:rotate(180deg)}.sbody{padding:0 12px 12px;border-top:1px solid var(--line)}.sbody>.sh4:first-child,.sbody>.strip:first-child,.sbody>.lead2:first-child,.sbody>.meta:first-child{margin-top:12px}.qmedal.sm{width:34px;height:34px;font-size:18px;flex:none}.soon{margin-left:auto;font-size:11px;font-weight:700;background:#eceae4;color:#5b625d;border-radius:999px;padding:2px 8px}.lead2{margin:0 0 10px;font-size:13.5px;color:var(--muted,#5b625d)}.sh4{margin:10px 0 6px;font-size:13px}
 .gq{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;width:100%;text-align:left;font:inherit;background:#f7f6f2;border:1.5px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;cursor:pointer;color:inherit}.gq .qmedal{width:40px;height:40px;font-size:20px}.gq[aria-pressed=true]{background:#fff;border-color:#1f2622}.gqb{min-width:0}.gqb b{display:block;font-size:14px}.gqb small{display:block;font-size:12px;color:var(--muted,#5b625d)}.gpt{display:block;font-size:12.5px;color:var(--ink);padding-left:12px;position:relative;margin-top:2px}.gpt::before{content:'•';position:absolute;left:2px}
 .tiers{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tier{font:inherit;background:#fff;border:1.5px solid #1f2622;border-radius:12px;padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink)}.tier small{font-size:12px;color:var(--muted,#5b625d)}.tier b{font-size:20px}.smedal{width:48px;height:48px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:24px;color:#b8707d;background:color-mix(in srgb,#b8707d 14%,#fff);border:2.5px solid #b8707d}.smedal.off{color:#a3a7a2;background:#f1efea;border:2.5px dashed #c9c5bc}.srow{display:flex;align-items:center;gap:14px}.srow p{margin:0;font-size:13.5px}.okline{color:#1f7a3f;font-weight:700;margin:10px 0 0}
@@ -327,6 +327,7 @@ const CLIENT = String.raw`
     backSub: [': l’agenda des sorties', ': what’s on'], siteWeek: ['Toutes les sorties du week-end sur Fontainebleau Live →', 'Every outing this weekend on Fontainebleau Live →'],
     tabShop: ['Boutique', 'Shop'], soon: ['Bientôt', 'Soon'],
     packHave: ['✓ Pack débloqué : choisissez dans votre profil', '✓ Pack unlocked: choose in your profile'], toProfile: ['Choisir mon avatar', 'Choose my avatar'],
+    mecAgain: ['Soutenir encore', 'Support again'], grpWrite: ['Ou écrivez-nous : ', 'Or write to us: '], copyMail: ['Copier', 'Copy'], copied: ['Adresse copiée', 'Address copied'],
     packFree: ['Débloquer le pack sans payer', 'Unlock the pack without paying'], packFreeOk: ['Pack débloqué. Bonne collection !', 'Pack unlocked. Happy collecting!'],
     stripe: ['Paiement sécurisé par Stripe', 'Secure payment by Stripe'],
     grpT: ['Jouer en groupe', 'Play as a group'], grpSub: ['Une quête pour votre groupe, en équipes, avec classement en direct et récapitulatif', 'A quest for your group, in teams, with a live leaderboard and a recap'], grpFrom: ['dès {0} €', 'from €{0}'],
@@ -1190,7 +1191,7 @@ const CLIENT = String.raw`
       if (st.mecene) b1.appendChild(el('p', 'okline', t('mecHave')));
       else if (st.pack) b1.appendChild(el('p', 'okline', t('packHave')));
       if (st.pack) { var tp = el('button', 'btn soft wide', t('toProfile')); tp.type = 'button'; tp.onclick = function () { tab('me'); }; b1.appendChild(tp); }
-      if (st.mecene) { /* already thanked */ }
+      if (st.mecene) { if (SHOP.mecene.url) { var ag = payLink(t('mecAgain'), SHOP.mecene.url, 'mecene-again'); ag.className = 'btn soft wide'; b1.appendChild(ag); } } // a Patron may give again
       else if (!SHOP.mecene.url) b1.appendChild(el('p', 'meta', t('soon')));
       else { b1.appendChild(payLink(t('mecBuy', SHOP.mecene.suggested), SHOP.mecene.url, 'mecene')); b1.appendChild(el('p', 'small', t('stripe'))); }
       if (!st.pack) {
@@ -1221,6 +1222,14 @@ const CLIENT = String.raw`
       var mail = link(t('grpContact'), 'mailto:' + SHOP.email + '?subject=' + encodeURIComponent(t('grpMailS')) + '&body=' + encodeURIComponent(t('grpMailB', cur.name[LANG]).replace(/\n/g, String.fromCharCode(10))), 'btn wide');
       mail.addEventListener('click', function () { track('shop/group-contact/' + cur.id); });
       b2.appendChild(mail);
+      // mailto: does nothing on a phone or computer without a mail app (23/11): the address, readable and copyable
+      var mrow = el('p', 'small mailrow', t('grpWrite')); mrow.appendChild(el('b', null, SHOP.email));
+      var cp = el('button', 'linkbtn', t('copyMail')); cp.type = 'button';
+      cp.onclick = function () {
+        var done = function () { toast(t('copied')); track('shop/group-copy'); };
+        try { navigator.clipboard.writeText(SHOP.email).then(done, function () { toast(SHOP.email); }); } catch (e) { toast(SHOP.email); }
+      };
+      mrow.appendChild(cp); b2.appendChild(mrow);
     }
     // A purchase code (another phone, or the installed game on an iPhone, which has its own storage)
     var cq = el('button', 'linkbtn', t('codeQ')); cq.type = 'button'; cq.onclick = function () { codeOpen = !codeOpen; renderShop(); }; root.appendChild(cq);
