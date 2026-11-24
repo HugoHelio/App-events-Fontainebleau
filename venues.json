@@ -75,6 +75,22 @@
       "lat": 48.38359,
       "lng": 3.03328,
       "source": "Centre de Marolles-sur-Seine (BAN), à 24,6 km : hors rayon, voulu. La réserve ornithologique de l'ANVL est à Marolles (Département 77, annuaire des ENS), mais Gemini la publie « à Fontainebleau » avec des coordonnées inventées au centre-ville (3 fiches au 29/09). La ville est donc celle, fausse, que porte la fiche : c'est ce qui fait tomber l'entrée, et le filtre de rayon écarte l'événement."
+    },
+    {
+      "label": "Cinéma Ermitage",
+      "city": "Fontainebleau",
+      "match": ["cinema", "ermitage"],
+      "lat": 48.40425,
+      "lng": 2.69949,
+      "source": "Fiche Apidae de l'office de tourisme (7557871) — Cinéma Ermitage, 6 rue de France, 77300 Fontainebleau ; même point que la BAN pour l'adresse (24/11). Pas de « ermitage » seul : le gymnase Lucien Martinel est route de l'Ermitage."
+    },
+    {
+      "label": "Cinéma Ermitage (écrit « L'Ermitage, Fontainebleau »)",
+      "city": "Fontainebleau",
+      "match": ["l ermitage fontainebleau"],
+      "lat": 48.40425,
+      "lng": 2.69949,
+      "source": "Même lieu : c'est ainsi que les fiches de l'office (séances-débats) le nomment, sans le mot « cinéma » (24/11)."
     }
   ]
 }

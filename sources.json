@@ -27,6 +27,18 @@
       "note": "28/10 (item 101): when GitHub gets 418, the reader falls back on city-feed-snapshot.json, a copy taken every 15 days from the project lead's computer by scripts/snapshot-city-feed.js (Windows scheduled task), used while it is 35 days old or less. RSS feed of the city's agenda since 29/09 (dates parsed exactly, no model; the agenda page was read by Gemini before). Answers HTTP 418 to GitHub Actions (cloud addresses blocked) while answering normally elsewhere. Not worked around: an exception for this URL and our User-Agent was requested from the city on 29/09. Until then the source reports ❌ 418 and the run goes on."
     },
     {
+      "id": "flc",
+      "name": "FLC Fontainebleau (ciné-débats de l'Ermitage, expositions)",
+      "type": "page",
+      "urls": [
+        "https://www.flc-fontainebleau.fr/agenda-des-evenements/"
+      ],
+      "city": "Fontainebleau",
+      "follow": "^/agenda-des-(evenements|expositions)/\\d+/",
+      "maxFollow": 12,
+      "note": "Added 24/11. FLC organises the ciné-débats at the Cinéma Ermitage (cycle « Rencontres autour de la culture italienne » with Ciné-Bleau: 24/11, 23/02, 20/04, 19h50, salle 1) and shows exhibitions in its own rooms. The list names the events, each page gives place, dates and price (« Infos pratiques »). The 24/11 screening was only known through the city's feed, which lost the venue. WordPress (Divi), robots.txt forbids nothing."
+    },
+    {
       "id": "chateau-fontainebleau",
       "name": "Château de Fontainebleau",
       "type": "page",
