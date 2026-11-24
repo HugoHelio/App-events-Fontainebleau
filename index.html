@@ -1139,8 +1139,10 @@
 
     .card .card-links {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.4rem 0.75rem;
     }
 
     .card .page-link {
@@ -1472,6 +1474,7 @@
           <a href="/aujourdhui/" data-i18n="todayLink">Que faire aujourd’hui ?</a>
           <a href="/ce-week-end/" data-i18n="weekendLink">Que faire ce week-end ?</a>
           <a href="/que-faire/" data-i18n="byCommune">Que faire, commune par commune</a>
+          <a href="/sorties/concerts/" data-i18n="concertsLink">Concerts à Fontainebleau et alentour</a>
           <a href="/sorties/" data-i18n="seasonalLink">Vacances et sorties de saison</a>
           <a href="/balades/" class="is-guides" data-i18n="guidesLink">Balades à pied, à vélo, en voiture</a>
           <a href="/foret/" class="is-guides" data-i18n="kidsLink">Jeu des animaux pour les enfants</a>
@@ -1665,6 +1668,7 @@
         weekendLink: 'Que faire ce week-end ?',
         byCommune: 'Que faire, commune par commune',
         seasonalLink: 'Vacances et sorties de saison',
+        concertsLink: 'Concerts à Fontainebleau et alentour',
         guidesLink: 'Balades à pied, à vélo, en voiture',
         homeExploreTitle: 'Idées de sortie',
         guidesChip: 'Balades en famille',
@@ -1798,6 +1802,7 @@
         weekendLink: 'This weekend (in French)',
         byCommune: 'What’s on, town by town (in French)',
         seasonalLink: 'Holidays and seasonal outings (in French)',
+        concertsLink: 'Concerts in and around Fontainebleau',
         guidesLink: 'Walks, bike rides and drives',
         homeExploreTitle: 'Outing ideas',
         guidesChip: 'Family outings',
@@ -2125,6 +2130,43 @@
           renderSeasonRow();
         })
         .catch(() => { /* no row: the banner is complete without it */ });
+    }
+
+    // ── Theme pages on the cards (24/11) ──
+    // sorties/themes.json, written by the generator: which upcoming event belongs to which theme
+    // page (concerts, Christmas markets…). The page never matches themes itself. Our file, checked
+    // like data all the same: same-site /sorties/ paths only, text only, one link per event.
+    const themeOf = new Map();
+
+    function loadThemeLinks() {
+      fetch('./sorties/themes.json', { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : []))
+        .then((list) => {
+          for (const x of Array.isArray(list) ? list : []) {
+            if (!x || !/^\/sorties\/[a-z0-9-]+\/$/.test(String(x.href)) || typeof x.label !== 'string' || !Array.isArray(x.ids)) continue;
+            for (const id of x.ids) if (typeof id === 'string' && !themeOf.has(id)) themeOf.set(id, x);
+          }
+          // Cards drawn before the file arrived get their link in place: no re-render, the map
+          // and the selection stay where they are.
+          document.querySelectorAll('.card[data-id]').forEach((card) => {
+            const x = themeOf.get(card.dataset.id);
+            const links = card.querySelector('.card-links');
+            if (!x || !links || links.querySelector('.theme-link')) return;
+            const a = document.createElement('a');
+            a.href = x.href;
+            a.className = 'page-link theme-link';
+            a.textContent = lang === 'en' && typeof x.labelEn === 'string' && x.labelEn ? x.labelEn : x.label;
+            links.prepend(a);
+          });
+        })
+        .catch(() => { /* no links: the cards are complete without them */ });
+    }
+
+    function themeLinkHtml(a) {
+      const x = a.id && themeOf.get(a.id);
+      if (!x) return '';
+      const label = lang === 'en' && typeof x.labelEn === 'string' && x.labelEn ? x.labelEn : x.label;
+      return `<a href="${escapeHtml(x.href)}" class="page-link theme-link">${escapeHtml(label)}</a>`;
     }
 
     function renderSeasonRow() {
@@ -2603,6 +2645,7 @@
       initMap();
       fetchData();
       loadSeasonRow();
+      loadThemeLinks();
 
       // Écouteurs sur les filtres
       for (const [id, name] of [['filterCategory', 'filter-category'],
@@ -3018,6 +3061,7 @@
         <div class="card-actions">
           ${reportHref ? `<a href="${escapeHtml(reportHref)}" class="report-link" target="_blank" rel="noopener noreferrer">${escapeHtml(t('report'))}</a>` : '<span></span>'}
           <span class="card-links">
+            ${themeLinkHtml(a)}
             ${pageHref(a) ? `<a href="${escapeHtml(pageHref(a))}" class="page-link">${escapeHtml(t('eventPage'))}</a>` : ''}
             ${a.booking && a.booking.samePage === true ? '' : linkHtml(a.url, t('details'), 'link-btn')}
           </span>
@@ -3031,6 +3075,7 @@
           if (link.classList.contains('link-btn')) track('event-click', a.id);
           else if (link.classList.contains('booking-btn')) track('booking-click', a.id);
           else if (link.classList.contains('report-link')) track('report', a.id);
+          else if (link.classList.contains('theme-link')) track('theme-click', link.getAttribute('href'));
           else if (link.classList.contains('page-link')) track('page-click', a.id);
           return;
         }

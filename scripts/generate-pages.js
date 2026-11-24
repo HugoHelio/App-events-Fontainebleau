@@ -975,6 +975,7 @@ const THEMES = [
     match: /\b(marches? de noel|village (et |& )?marche de noel|village de noel|noel (au |du )?marche)\b/,
     name: 'Marchés de Noël',
     icon: '🎄',
+    cardLink: 'Tous les marchés de Noël', cardLinkEn: 'All Christmas markets',
     // Item 106 (19/11): "marché de noël fontainebleau 2026" is the Christmas search that clicks
     // (position 2.6 on the event page, 8.6 here). The town's own markets come first, by data.
     title: (y) => `Marchés de Noël ${y} à Fontainebleau et alentour : dates et horaires`,
@@ -1175,6 +1176,7 @@ const THEMES = [
     evergreen: true,
     name: 'Concerts',
     icon: '🎵',
+    cardLink: 'Tous les concerts', cardLinkEn: 'All concerts',
     title: () => 'Concerts à Fontainebleau et alentour : les prochaines dates',
     h1: () => 'Concerts à Fontainebleau et alentour',
     here: 'fontainebleau',
@@ -1648,6 +1650,23 @@ function seasonNow(events, today) {
     .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, nameEn: t.nameEn, k: events.filter((e) => inTheme(t, e) && e.startDate <= soon && endOf(e) >= today).length }))
     .filter((x) => x.k);
   return [...holidays, ...themes];
+}
+
+/**
+ * 24/11 (project lead: « comment tomber sur la page concerts depuis l'accueil ? En cliquant sur un
+ * concert ? »). Which upcoming event belongs to which theme page, for the cards of the home page:
+ * index.html adds a link to the page and never matches themes itself (same rule as
+ * en-ce-moment.json). « Noël » is left out, it would catch every Christmas concert and market;
+ * concerts come first, so a Christmas concert links to the concerts. One link per card.
+ */
+function themeIndex(events, today) {
+  const order = (t) => (t.slug === 'concerts' ? 0 : 1);
+  return THEMES.filter((t) => t.slug !== 'noel').sort((a, b) => order(a) - order(b)).map((t) => ({
+    href: `/${THEMES_DIR}/${t.slug}/`,
+    label: `${t.icon ? `${t.icon} ` : ''}${t.cardLink || `${t.name} : toutes les dates`}`,
+    labelEn: `${t.icon ? `${t.icon} ` : ''}${t.cardLinkEn || `${t.nameEn}: all dates`}`,
+    ids: events.filter((e) => e.id && inTheme(t, e) && endOf(e) >= today).map((e) => e.id),
+  })).filter((x) => x.ids.length);
 }
 
 /**
@@ -3472,6 +3491,7 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   // The home page's "En ce moment" row reads this: the same picks and counts as the weekend page,
   // and index.html never re-implements the theme matching.
   files.set(`${THEMES_DIR}/en-ce-moment.json`, JSON.stringify(seasonNow(events, today).map(({ href, name, nameEn, k }) => ({ href, name, nameEn, count: k })), null, 2) + '\n');
+  files.set(`${THEMES_DIR}/themes.json`, JSON.stringify(themeIndex(events, today), null, 1) + '\n');
   files.set(`${SHARE_DIR}/index.html`, sharePage(cities, events, today));
   files.set(`${SOURCES_DIR}/index.html`, sourcesPage(events, generatedAt, registry, places, today));
   files.set(`${PRO_DIR}/index.html`, proPage(events, cities));
