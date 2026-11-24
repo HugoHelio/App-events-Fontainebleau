@@ -412,6 +412,17 @@ function readSnapshot(src, today) {
   }
 }
 
+/**
+ * The venue of a city agenda item: the first list entry under its « Localisation » heading
+ * (h3 or h4 in the feed), e.g. "Cinéma Ermitage, 6 rue de France 77300 Fontainebleau".
+ * Empty when the item has no such block (about one in ten carries it, 24/11).
+ */
+function cityLocalisation(html) {
+  const m = /<h[2-6][^>]*>\s*Localisation\s*<\/h[2-6]>\s*<ul[^>]*>\s*<li[^>]*>([\s\S]*?)<\/li>/i.exec(String(html));
+  if (!m) return '';
+  return decodeEntities(m[1].replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim().slice(0, 160);
+}
+
 async function readCityRss(src, ctx) {
   // fontainebleau.fr answers 418 to GitHub: the copy taken at home stands in (item 101).
   let feed, snapshot = null;
@@ -439,7 +450,10 @@ async function readCityRss(src, ctx) {
     if (!inWindow(e, ctx)) continue;
     // The first two lines repeat the date and the site's own categories: the text starts after.
     const text = htmlToText(body, src.url).split('\n').filter((l) => !/^(Date|Catégories?)\s*:/.test(l)).join('\n');
-    events.push({ ...e, detail: `${title}\n${text}`.slice(0, 3000) });
+    // The venue the city writes under its own « Localisation » heading wins over the model's
+    // reading of the text, which left the 24/11 ciné-débat at the Ermitage without a place.
+    const place = cityLocalisation(body);
+    events.push({ ...e, ...(place && { locationName: place, ownPlace: true }), detail: `${title}\n${text}`.slice(0, 3000) });
   }
   return { fetched: 1, events, snapshot };
 }
@@ -766,6 +780,17 @@ const ENRICH_SCHEMA = {
  * translations: an unchanged page is never asked twice. Dates are never touched here — they
  * were read by the tested parser, and a model does not get to change them.
  */
+/**
+ * The model's fields onto an event, except the venue a reader parsed from a labelled field
+ * (`ownPlace`, the city's « Localisation »): that one is the source's own words. Any other
+ * reader's venue is kept when the model gives none.
+ */
+function assignEnriched(e, f) {
+  const own = e.locationName;
+  Object.assign(e, f);
+  if (own && (e.ownPlace || !e.locationName)) e.locationName = own;
+}
+
 async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
   const stats = { cached: 0, asked: 0, failed: 0, tokensIn: 0, tokensOut: 0, error: null };
   const cache = cacheFile().entries;
@@ -774,7 +799,7 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
     if (!e.detail) continue;
     const h = crypto.createHash('sha1').update(e.title + '\n' + e.detail).digest('hex').slice(0, 12);
     const hit = cache[e.url];
-    if (hit && hit.h === h) { Object.assign(e, hit.f); hit.at = today; stats.cached++; continue; }
+    if (hit && hit.h === h) { assignEnriched(e, hit.f); hit.at = today; stats.cached++; continue; }
     todo.push({ e, h });
   }
   if (todo.length && process.env.GEMINI_API_KEY) {
@@ -802,7 +827,7 @@ async function enrich(events, { dryRun = false, today, batchSize = 12 } = {}) {
           // identity comes from its title, so the model gets to change its case, nothing else.
           const t = String(it.title || '').trim();
           if (t && isAllCaps(b.e.title) && sameLetters(t, b.e.title)) f.title = t.slice(0, 200);
-          Object.assign(b.e, f);
+          assignEnriched(b.e, f);
           cache[b.e.url] = { h: b.h, f, at: today };
           stats.asked++;
         }
@@ -871,5 +896,5 @@ function toPipelineEvents(events, { today, maxDate }) {
 module.exports = {
   CONFIG, load, loadRegistry, parseRobots, robotsAllows, htmlToText, parseFrenchPeriods, parseIcs, decodeEntities, pickTitle,
   mainContent, enrich, toPipelineEvents, LONG_EVENT_DAYS, parseCityDateLine, readCityRss, isAllCaps, sameLetters,
-  parseCcmslCards, communeName,
+  parseCcmslCards, communeName, cityLocalisation, assignEnriched,
 };
