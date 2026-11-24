@@ -1077,7 +1077,7 @@ async function banSearch(query, { municipality = false } = {}) {
     const f = data?.features?.[0];
     if (!f?.geometry?.coordinates) return null;
     const [lng, lat] = f.geometry.coordinates;
-    return { lat, lng, score: f.properties?.score ?? 0 };
+    return { lat, lng, score: f.properties?.score ?? 0, type: f.properties?.type || '' };
   } catch {
     return null;
   }
@@ -1086,7 +1086,22 @@ async function banSearch(query, { municipality = false } = {}) {
 function loadCache() {
   const raw = loadJson(CONFIG.cachePath, null);
   const entries = raw && typeof raw.entries === 'object' && raw.entries ? raw.entries : {};
-  return { entries, dirty: false };
+  // 24/11: a venue lookup answered by a whole commune was stored as an exact address (« venue:
+  // fontainebleau », 29 such entries, 93 events shown as exact at a town centre). Forgotten here,
+  // so the next lookup goes through the rule in geocodeRecord().
+  let dirty = false;
+  for (const [k, v] of Object.entries(entries)) {
+    if (k.startsWith('venue:') && v && v.source === 'ban' && isCityCentre(entries, v.lat, v.lng)) { delete entries[k]; dirty = true; }
+  }
+  return { entries, dirty };
+}
+
+/** True when (lat, lng) is the cached centre of a commune: a town, not an address. */
+function isCityCentre(entries, lat, lng) {
+  for (const [k, v] of Object.entries(entries)) {
+    if (k.startsWith('city:') && v && Math.abs(v.lat - lat) < 1e-5 && Math.abs(v.lng - lng) < 1e-5) return true;
+  }
+  return false;
 }
 
 function saveCache(cache) {
@@ -1123,7 +1138,10 @@ async function geocodeRecord(rec, cache) {
     let hit = cache.entries[key];
     if (!hit) {
       const r = await banSearch(venueQuery);
-      if (r && r.score >= CONFIG.banMinScore && inBbox(r.lat, r.lng)) {
+      // A commune is not a venue (24/11): with no place name the query is the town alone, and
+      // the BAN answers with its centre, well scored. That is the city fallback below, flagged
+      // approximate — never an exact address.
+      if (r && r.type !== 'municipality' && r.score >= CONFIG.banMinScore && inBbox(r.lat, r.lng)) {
         hit = { lat: round5(r.lat), lng: round5(r.lng), source: 'ban' };
         cache.entries[key] = hit;
         cache.dirty = true;
@@ -2352,8 +2370,11 @@ async function main() {
   // 4. Geocode (anything not yet resolved by BAN) ───────────────────────
   // Anything not already exact is re-resolved: that is how a venue added to venues.json today
   // fixes every stored event at that address on the next run, with no manual pass.
+  // A « ban » position sitting exactly on its commune's centre came from a town-only lookup
+  // (24/11): not exact, resolved again.
   const toGeocode = all.filter((r) => !['ban', 'venue', 'manual', 'feed'].includes(r.event.geoSource)
-    || r.event.lat === null);
+    || r.event.lat === null
+    || (r.event.geoSource === 'ban' && isCityCentre(cache.entries, r.event.lat, r.event.lng)));
   console.log(`📍 Geocoding ${toGeocode.length} event(s)…`);
   for (const rec of toGeocode) await geocodeRecord(rec, cache);
 
