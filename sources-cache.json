@@ -2241,12 +2241,12 @@
       "at": "2026-11-24"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-marchedenoel": {
-      "h": "0d5c8a22327c",
+      "h": "48f77091b550",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Marché de Noël organisé au sein du château Rosa Bonheur.",
-        "schedule": "Samedi de 10h à 19h, dimanche de 10h à 18h",
-        "locationName": "Château Rosa Bonheur, 12 rue Rosa Bonheur, Thomery",
+        "description": "Un marché festif proposant des produits artisanaux et des idées de cadeaux pour les fêtes de fin d'année.",
+        "schedule": "10h à 18h30",
+        "locationName": "Maison des Associations, 25 Ter rue du Port, Veneux-Les Sablons, Moret-Loing-et-Orvanne",
         "organizer": "",
         "ageMin": 0,
         "ageMax": 99
@@ -2280,13 +2280,13 @@
       "at": "2026-11-24"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-noeldesenfants": {
-      "h": "b9ca837ce2f6",
+      "h": "627324ea409c",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Les enfants sont invités à partager un moment festif à l'occasion des fêtes de fin d'année.",
+        "description": "Une célébration festive spécialement dédiée aux enfants pour les fêtes de fin d'année.",
         "schedule": "14h",
-        "locationName": "Salle des Fêtes, 2-4 allée des Noyers, Dormelles",
-        "organizer": "Comité des fêtes de Dormelles",
+        "locationName": "Salle des Fêtes, allée des Noyers, Dormelles",
+        "organizer": "",
         "ageMin": 0,
         "ageMax": 99
       },
@@ -2358,13 +2358,13 @@
       "at": "2026-11-24"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-marchedenoel": {
-      "h": "2804d45453cd",
+      "h": "f36b2515cb0c",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Marché de Noël organisé à la Maison des associations des Collinettes.",
-        "schedule": "10h à 18h",
-        "locationName": "Maison des associations des Collinettes, Vernou-La-Celle sur-Seine",
-        "organizer": "",
+        "description": "Un marché festif avec des artisans, créateurs et producteurs locaux, incluant une offre de restauration.",
+        "schedule": "10h à 17h30",
+        "locationName": "Salle des Fêtes, Ville-Saint-Jacques",
+        "organizer": "Comité des Fêtes de Ville-Saint-Jacques",
         "ageMin": 0,
         "ageMax": 99
       },
@@ -2436,12 +2436,12 @@
       "at": "2026-11-24"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-marchedenoel": {
-      "h": "4ae21768779a",
+      "h": "16daf22fe532",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Marché de Noël organisé à Montigny-sur-Loing pour trouver des idées de cadeaux et profiter de l'ambiance festive.",
-        "schedule": "10h à 19h",
-        "locationName": "Salle Georges Barrois, 24 rue des Hautes Bornes à Montigny-sur-Loing",
+        "description": "Un marché de Noël organisé pour célébrer les fêtes avec des exposants locaux.",
+        "schedule": "10h à 18h",
+        "locationName": "Salle polyvalente, 11 rue de la Mairie, Villemaréchal",
         "organizer": "",
         "ageMin": 0,
         "ageMax": 99
@@ -2488,12 +2488,12 @@
       "at": "2026-11-24"
     },
     "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-13-marchedenoel": {
-      "h": "74d70ae6f588",
+      "h": "ce3c9d7de95d",
       "f": {
         "category": "Culture & Ateliers",
-        "description": "Événement festif de fin d'année réunissant des exposants et artisans locaux à la salle de la Plage.",
-        "schedule": "10h à 19h (samedi), 10h à 18h (dimanche)",
-        "locationName": "Salle de la Plage, 1 chemin des Prés à Thomery",
+        "description": "Un marché de Noël situé en bord de Seine avec diverses animations festives au programme.",
+        "schedule": "10h à 18h45",
+        "locationName": "Quai de Seine, Saint-Mammès",
         "organizer": "",
         "ageMin": 0,
         "ageMax": 99
@@ -7634,13 +7634,109 @@
         }
       ]
     },
+    "flc": {
+      "h": "55da9367add4",
+      "at": "2026-11-24",
+      "items": [
+        {
+          "title": "Exposition de Cathy LAGARRIGUE",
+          "startDate": "2026-10-10",
+          "endDate": "2026-11-27",
+          "url": "https://www.flc-fontainebleau.fr/agenda-des-expositions/416/exposition-de-cathy-lagarrigue/",
+          "category": "Culture & Ateliers",
+          "ageMax": 99,
+          "ageMin": 0,
+          "city": "Fontainebleau",
+          "description": "L'argile est le matériau de prédilection de Cathy Lagarrigue, sculpteur-céramiste à Saint-Martin-en-Bière. Exposition «Rencontre avec la forêt» (sculpture argile et bois).",
+          "locationName": "FLC - La Maison des Associations",
+          "organizer": "FLC",
+          "price": "Gratuit",
+          "schedule": "Du lundi au vendredi de 9h30 à 12h30 et de 13h30 à 17h30"
+        },
+        {
+          "title": "Cycle ciné-débats",
+          "startDate": "2026-11-24",
+          "endDate": "2027-04-20",
+          "url": "https://www.flc-fontainebleau.fr/agenda-des-evenements/420/cycle-cine-debats/",
+          "category": "Scène & Spectacles",
+          "ageMax": 99,
+          "ageMin": 0,
+          "city": "Fontainebleau",
+          "description": "Trilogie italienne en VOSTF avec 3 projections-débats au cinéma Ermitage dans le cadre des Rencontres autour de la culture italienne.",
+          "locationName": "Cinéma Ermitage, salle 1",
+          "organizer": "FLC",
+          "price": "7€",
+          "schedule": "19h50"
+        },
+        {
+          "title": "Ciné-débat - Pour une poignée de dollars",
+          "startDate": "2026-11-24",
+          "endDate": "2026-11-24",
+          "url": "https://www.flc-fontainebleau.fr/agenda-des-evenements/421/cine-debat/",
+          "category": "Scène & Spectacles",
+          "ageMax": 99,
+          "ageMin": 0,
+          "city": "Fontainebleau",
+          "description": "Projection-débat autour du film \"Pour une poignée de dollars\" de Sergio Leone en VOSTF.",
+          "locationName": "Cinéma Ermitage, salle 1",
+          "organizer": "FLC",
+          "price": "7€",
+          "schedule": "19h50"
+        },
+        {
+          "title": "Solidarité en couleurs, atelier customisation street art",
+          "startDate": "2026-11-28",
+          "endDate": "2026-11-28",
+          "url": "https://www.flc-fontainebleau.fr/agenda-des-evenements/435/solidarite-en-couleurs-atelier-customisation-street-art/",
+          "category": "Culture & Ateliers",
+          "ageMax": 99,
+          "ageMin": 7,
+          "city": "Fontainebleau",
+          "description": "Atelier street art pour customiser un support à emporter, au profit du Téléthon. Animé par Sabine de la galerie FontaineBlow.",
+          "locationName": "FLC - La Maison des Associations",
+          "organizer": "FLC",
+          "price": "Dons libres sur place",
+          "schedule": "créneau au choix 16h / 16h30 / 17h / 17h30"
+        },
+        {
+          "title": "RDV de la Forme spécial Téléthon",
+          "startDate": "2026-11-28",
+          "endDate": "2026-11-28",
+          "url": "https://www.flc-fontainebleau.fr/agenda-des-evenements/436/rdv-de-la-forme-special-telethon/",
+          "category": "Sport & Outdoor",
+          "ageMax": 99,
+          "ageMin": 0,
+          "city": "Fontainebleau",
+          "description": "Proposition \"Dancehall\" animée par Valéria Mevoli dans le cadre du Rendez-Vous de la Forme spécial Téléthon.",
+          "locationName": "Gymnase Lucien Martinel",
+          "organizer": "FLC",
+          "price": "Gratuit",
+          "schedule": "Selon les activités : 9h50-11h ou 11h15-12h15"
+        },
+        {
+          "title": "Exposition de Pascal GENEVOIS",
+          "startDate": "2027-01-09",
+          "endDate": "2027-02-19",
+          "url": "https://www.flc-fontainebleau.fr/agenda-des-expositions/417/exposition-de-pascal-genevois/",
+          "category": "Culture & Ateliers",
+          "ageMax": 99,
+          "ageMin": 0,
+          "city": "Fontainebleau",
+          "description": "«Voyages extraordinaires» [peinture]. Artiste-peintre passionné d'astronomie, Pascal Genevois transporte le spectateur dans des mondes imaginaires.",
+          "locationName": "FLC - La Maison des Associations",
+          "organizer": "FLC",
+          "price": "Gratuit",
+          "schedule": "Du lundi au vendredi de 9h30 à 12h30 et de 13h30 à 17h30"
+        }
+      ]
+    },
     "grezarts": {
       "h": "aa050d937327",
       "at": "2026-11-24",
       "items": []
     },
     "jagis-anvl": {
-      "h": "b6e8357bacd7",
+      "h": "4d3a62a52f6d",
       "at": "2026-11-24",
       "items": [
         {
@@ -7650,8 +7746,7 @@
           "url": "https://www.jagispourlanature.org/activite/chantier-dentretien-des-pelouses-la-platiere-de-meun-0",
           "category": "Nature & Environnement",
           "ageMin": 0,
-          "locationName": "Achères-la-Forêt",
-          "organizer": "Association des naturalistes de la vallée du Loing et du massif de Fontainebleau (ANVL)",
+          "price": "Gratuit",
           "schedule": "09h00 à 16h00"
         },
         {
@@ -7661,8 +7756,7 @@
           "url": "https://www.jagispourlanature.org/activite/sortie-bryologique-au-mont-andart",
           "category": "Nature & Environnement",
           "ageMin": 0,
-          "locationName": "Fontainebleau",
-          "organizer": "Association des naturalistes de la vallée du Loing et du massif de Fontainebleau (ANVL)",
+          "price": "Gratuit",
           "schedule": "09h00 à 17h00"
         },
         {
@@ -7672,8 +7766,7 @@
           "url": "https://www.jagispourlanature.org/activite/sortie-decouverte-des-oiseaux-hivernants-de-lens-du-carreau-franc",
           "category": "Nature & Environnement",
           "ageMin": 0,
-          "locationName": "Marolles-sur-Seine",
-          "organizer": "Association des naturalistes de la vallée du Loing et du massif de Fontainebleau (ANVL)",
+          "price": "Gratuit",
           "schedule": "09h00 à 12h00"
         },
         {
@@ -7683,8 +7776,7 @@
           "url": "https://www.jagispourlanature.org/activite/sortie-dinitiation-la-bryologie-en-foret-de-fontainebleau-1",
           "category": "Nature & Environnement",
           "ageMin": 0,
-          "locationName": "Fontainebleau",
-          "organizer": "Association des naturalistes de la vallée du Loing et du massif de Fontainebleau (ANVL)",
+          "price": "Gratuit",
           "schedule": "10h00 à 16h00"
         },
         {
@@ -7694,8 +7786,7 @@
           "url": "https://www.jagispourlanature.org/activite/decouverte-des-oiseaux-en-hiver-la-rnr-des-seiglats",
           "category": "Nature & Environnement",
           "ageMin": 0,
-          "locationName": "Rue du Vieux Cimetière",
-          "organizer": "Association des naturalistes de la vallée du Loing et du massif de Fontainebleau (ANVL)",
+          "price": "Gratuit",
           "schedule": "10h00 à 12h00"
         }
       ]
@@ -8143,7 +8234,7 @@
       ]
     },
     "samois": {
-      "h": "c3449e98298b",
+      "h": "6209ea33e4ad",
       "at": "2026-11-24",
       "items": [
         {
@@ -8155,11 +8246,11 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Exposition en hommage à Arthur Rimbaud, poète du vent… Vernissage le samedi 28 nov. à 18h00.",
+          "description": "Exposition en hommage à Arthur Rimbaud, poète du vent.",
           "locationName": "La Passerelle des Arts",
-          "organizer": "La Passerelle des Arts",
+          "organizer": "",
           "price": "",
-          "schedule": "vendredi et samedi de 16h à 19h, Dimanche : 10h à 18h"
+          "schedule": "vendredi et samedi de 16h à 19h, dimanche de 10h à 18h"
         },
         {
           "title": "Atelier danse pour adultes",
@@ -8170,9 +8261,9 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Atelier de Danse Jazz pour adultes.",
+          "description": "Atelier de Danse Jazz.",
           "locationName": "Foyer Django REINHARDT",
-          "organizer": "Isabelle Ghiti",
+          "organizer": "",
           "price": "30 €",
           "schedule": "10h à 12h"
         },
@@ -8185,7 +8276,7 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Sing Sing Song Production vous propose un concert intimiste en hommage à Claude Nougaro, avec Michel Moindron au chant et Pascal Rouy à la guitare.",
+          "description": "Un duo qui revisite avec sensibilité l’univers du grand Nougaro avec Michel Moindron au chant et Pascal Rouy à la guitare.",
           "locationName": "Foyer Django REINHARDT",
           "organizer": "Sing Sing Song Production",
           "price": "10 euros",
@@ -8200,9 +8291,9 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Soirée danse salsa, bachata, kizomba avec softs à volonté et buffet dessert.",
+          "description": "Soirée Salsa-bachata-kizomba avec softs à volonté et buffet dessert.",
           "locationName": "LA SAMOISIENNE",
-          "organizer": "LB Salsa",
+          "organizer": "",
           "price": "12€",
           "schedule": "21H à 02H"
         },
@@ -8215,11 +8306,11 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Village et marché de Noël sur la place de la République avec ateliers, contes, illumination du sapin et animations.",
+          "description": "Village et marché de Noël avec animations, contes, retraite aux flambeaux et présence du Père Noël.",
           "locationName": "Foyer Django REINHARDT",
-          "organizer": "Comité des fêtes, Foyer Django Reinhardt, municipalité",
+          "organizer": "Le comité des fêtes, l’association du Foyer Django Reinhardt et la municipalité",
           "price": "",
-          "schedule": "10 h à 20 h"
+          "schedule": "10h à 20h"
         },
         {
           "title": "Le Noêl des aînés",
@@ -8230,7 +8321,7 @@
           "ageMax": 99,
           "ageMin": 70,
           "city": "Samois-sur-Seine",
-          "description": "Distribution de bons cadeaux pour les aînés de 70 ans et plus autour d’un goûter convivial.",
+          "description": "Retrait de bons cadeaux pour les aînés de 70 ans et plus autour d’un goûter convivial.",
           "locationName": "salle des mariages en Mairie",
           "organizer": "CCAS de Samois-sur-Seine",
           "price": "",
@@ -8245,11 +8336,11 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Course adultes de 5km Label bronze FFA et courses jeunes.",
-          "locationName": "Samois-sur-Seine",
-          "organizer": "Samois Athlétisme",
+          "description": "Course adultes de 5km (label bronze FFA) et courses jeunes.",
+          "locationName": "Place de la République",
+          "organizer": "Samois-Athlétisme",
           "price": "",
-          "schedule": "18h"
+          "schedule": "18h (courses jeunes à partir de 16h00)"
         },
         {
           "title": "Réveillon de la Saint-Sylvestre avec LB SALSA",
@@ -8260,7 +8351,7 @@
           "ageMax": 99,
           "ageMin": 0,
           "city": "Samois-sur-Seine",
-          "description": "Soirée festive et dansante pour le passage à 2027 avec playlist variée, buffet festif, coupe de champagne offerte et animations.",
+          "description": "Soirée festive et dansante avec playlist variée, buffet festif, coupe de champagne offerte et animations.",
           "locationName": "LA SAMOISIENNE",
           "organizer": "LB SALSA",
           "price": "40 €",
