@@ -32,6 +32,7 @@ const francebillet = require('./francebillet');
 const feedback = require('./feedback');
 const translate = require('./translate');
 const domainAge = require('./domain-age');
+const concerts = require('./concerts');
 const dedupeJudge = require('./dedupe-judge');
 const sites = require('./sources');
 const { matchLevel } = require('./compare-sources');
@@ -267,7 +268,9 @@ const SCANS = [
       'Deux familles à distinguer. D\'un côté « Culture & Ateliers » : expositions, visites ' +
       'guidées, patrimoine, musées, médiathèques, conférences, ateliers, brocantes et ' +
       'vide-greniers. De l\'autre « Scène & Spectacles » : concerts, théâtre, opéra, danse, ' +
-      'cirque, humour, cinéma et festivals. Inclure les événements aux châteaux de ' +
+      'cirque, humour, cinéma et festivals. Pour les concerts : seulement ceux à une date précise, ' +
+      'avec un artiste ou un programme nommé ; pas les soirées habituelles des bars (jam, karaoké, ' +
+      'blind test, scène ouverte, soirée DJ). Inclure les événements aux châteaux de ' +
       'Fontainebleau, Vaux-le-Vicomte, Blandy-les-Tours et Courances dans l\'une ou l\'autre selon leur nature.',
     // The châteaux named (05/10): Courances has no readable agenda of its own (403, Wix site).
     ask: 'expositions, concerts, spectacles, visites guidées et conférences (dont les châteaux de '
@@ -1610,6 +1613,13 @@ function renderSummary(stats, ctx) {
     if (stats.vanishedFromFeed.length > 8) L.push(`  - … et ${stats.vanishedFromFeed.length - 8} autre(s)`);
     L.push(`  Vérifier auprès de l’organisateur, puis masquer via overrides.json si confirmé.`);
   }
+  if (stats.concertsDropped?.length) {
+    const cd = stats.concertsDropped;
+    L.push(`- 🎸 Concerts non publiés (règle du 24/11) : ${cd.length}`);
+    for (const c of cd.slice(0, 10)) L.push(`  - ${c.id} — ${c.title} (${c.startDate}, ${c.place}) · ${concerts.LABELS[c.why] || c.why}`);
+    if (cd.length > 10) L.push(`  - … et ${cd.length - 10} autre(s)`);
+    L.push(`  Un vrai concert écarté : l’ajouter par overrides.json n’y suffit pas, ajuster scripts/concerts.js.`);
+  }
   const da = stats.domainAge;
   if (da?.error) L.push(`- 🆕 Âge des domaines (92b) : ❌ ${da.error} — rien n’a été écarté`);
   else if (da?.enabled) {
@@ -1914,7 +1924,7 @@ async function main() {
     fb: null, fbRejected: {}, fbConfirmed: 0, fbTicketsDropped: 0,
     sites: null, siteRejected: {}, siteCategoryGuessed: 0, siteConfirmed: 0, siteLongSkipped: 0, siteInsideSpan: 0, samePageFolded: [],
     villagesConfirmed: 0, villagesUnconfirmed: 0, villagesUnconfirmedList: [],
-    unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], datesAtRiskStale: [], recategorised: 0,
+    concertsDropped: [], unconfirmed: [], vanishedFromFeed: [], datesAtRisk: [], datesAtRiskStale: [], recategorised: 0,
     umbrellas: [],
     overrides: { applied: 0, hidden: 0, merged: 0, details: [], unmatched: [], badFields: [] },
     feedback: null, translation: null,
@@ -2157,9 +2167,13 @@ async function main() {
     const key = eventKey(v.event);
     if (!records.has(key)) records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: false });
   }
+  // Records the tourist office announced or confirmed in this run (concerts rule: Candlelight).
+  const officeSeen = new Set();
+  const fromOffice = (v) => { try { return concerts.OFFICE_HOST_RE.test(new URL(v.event.url).hostname); } catch { return false; } };
   const addRecord = (v, { fuzzy = false, counter = 'dtDeduped', confirm = false, addNew = true } = {}) => {
     const key = eventKey(v.event);
     const known = records.get(key);
+    if (known && fromOffice(v)) officeSeen.add(known);
     if (known && confirm) {
       enrichFrom(known.event, v.event);
       known.refreshed = true;
@@ -2181,6 +2195,7 @@ async function main() {
     if (fuzzy) {
       for (const rec of records.values()) {
         if (!datatourisme.isSameOccurrence(v.event, rec.event)) continue;
+        if (fromOffice(v)) officeSeen.add(rec);
         stats[counter]++;
         if (confirm) {
           enrichFrom(rec.event, v.event);
@@ -2195,7 +2210,9 @@ async function main() {
     if (!addNew) { stats.siteLongSkipped++; return; }
     v.event.id = eventId(key);
     v.event.lastSeen = today;
-    records.set(key, { event: v.event, modelCoords: v.modelCoords, isNew: true });
+    const rec = { event: v.event, modelCoords: v.modelCoords, isNew: true };
+    if (fromOffice(v)) officeSeen.add(rec);
+    records.set(key, rec);
   };
 
   for (const v of validNew) addRecord(v);
@@ -2355,6 +2372,15 @@ async function main() {
     stats.domainAge = { error: err.message };
   }
 
+  // 5c. Concerts (decision of 24/11, scripts/concerts.js) ─────────────────
+  // After geocoding: the rule reads the venue. Not published, listed in the report; never
+  // judged on the office's silence when the office could not be read.
+  const office = stats.sites?.perSource?.find((r) => r.id === 'ot-pays-fontainebleau');
+  const officeDown = !office || office.status !== 'ok';
+  const concertDrops = concerts.drops(all.filter((r) => !r.drop), { officeSeen, officeDown });
+  stats.concertsDropped = [...concertDrops].map(([r, why]) => ({ id: r.event.id, title: r.event.title, startDate: r.event.startDate, place: r.event.locationName || r.event.city || '', why }));
+  for (const r of concertDrops.keys()) r.drop = 'concert_rule';
+
   // 6. Finalise ─────────────────────────────────────────────────────────
   const kept = [];
   for (const rec of all) {
@@ -2362,6 +2388,7 @@ async function main() {
     if (rec.drop === 'override_hidden') continue;
     if (rec.drop === 'blocked_host') { bump(stats.rejected, 'blocked_host'); continue; }
     if (rec.drop === 'young_domain') continue; // listed in the report by domainAge.check()
+    if (rec.drop === 'concert_rule') continue; // listed in the report (stats.concertsDropped)
     // Applied here, after geocoding: an event is judged on where it actually is, not on the
     // coordinates a source claimed before we resolved them.
     const km = distanceKm(rec.event.lat, rec.event.lng);
