@@ -1164,6 +1164,36 @@ const THEMES = [
       ['Quand ont lieu les animations d’Halloween ?', 'Surtout la dernière semaine d’octobre et le soir du 31. Certaines soirées commencent dès la mi-octobre. Halloween tombe pendant les vacances de la Toussaint : d’autres idées de sorties sont sur la page des vacances.'],
     ],
   },
+  {
+    // 24/11 (project lead): « il y a beaucoup de concerts à Fontainebleau… les principaux, pour
+    // qu'on ne les rate pas ». The rule of what is published lives in scripts/concerts.js (bars'
+    // usual nights never are); this page gathers what passed, Fontainebleau first. Not seasonal
+    // (`evergreen`): never a home tile, a « En ce moment » chip or a boost in the home picks.
+    slug: 'concerts',
+    match: /\b(concerts?|recitals?|jazz|chorales?|orchestres?|quatuors?|operas?|vepres|gospel|requiem|oratorio|symphoni\w*|philharmoni\w*|musique de chambre|big band|fanfares?|chants? de noel)\b/,
+    not: /\b(ateliers?|stages?|conferences?|salons?|cours|chorale participative)\b/,
+    evergreen: true,
+    name: 'Concerts',
+    icon: '🎵',
+    title: () => 'Concerts à Fontainebleau et alentour : les prochaines dates',
+    h1: () => 'Concerts à Fontainebleau et alentour',
+    here: 'fontainebleau',
+    intro: 'Les concerts du Théâtre municipal, du château, des églises, du conservatoire et des salles de Fontainebleau et des communes voisines, mis à jour chaque jour. Ceux des bars y sont quand une source que nous lisons les annonce ; les soirées habituelles (jam, karaoké, soirée DJ) n’y figurent pas.',
+    off: 'Aucun concert annoncé pour l’instant : les prochaines dates apparaîtront ici dès leur publication.',
+    nameEn: 'Concerts',
+    titleEn: () => 'Concerts in and around Fontainebleau: upcoming dates',
+    h1En: () => 'Concerts in and around Fontainebleau',
+    introEn: 'Concerts at the municipal theatre, the château, the churches, the conservatoire and the halls of Fontainebleau and the neighbouring towns, updated every day. Bar gigs are listed when a source we read announces them; regular nights (jams, karaoke, DJ nights) are not.',
+    offEn: 'No concert announced yet: the next dates will appear here as soon as they are published.',
+    faq: [
+      ['Où écouter un concert à Fontainebleau ?', 'Au Théâtre municipal, au château (salle de Bal, chapelle, cour Ovale), à l’église Saint-Louis, au conservatoire et à l’Âne Vert Théâtre ; autour, à la salle de spectacle d’Avon et dans les grandes salles de Melun et de Dammarie-les-Lys. Chaque date est dans la liste ci-dessus.'],
+      ['Pourquoi tous les concerts des bars ne sont-ils pas là ?', 'Nous ne publions que ce qu’une source que nous lisons annonce, avec une date précise : la Ville, l’office de tourisme, les organisateurs, la billetterie. Les soirées qui reviennent chaque semaine dans un bar se suivent mieux sur ses propres pages.'],
+    ],
+    faqEn: [
+      ['Where to hear a concert in Fontainebleau?', 'At the municipal theatre, the château (ballroom, chapel, Oval Court), the church of Saint-Louis, the conservatoire and the Âne Vert Théâtre; nearby, at the Avon concert hall and the large halls of Melun and Dammarie-les-Lys. Every date is in the list above.'],
+      ['Why are not all bar gigs listed?', 'We only publish what a source we read announces, with a precise date: the town, the tourist office, the organisers, the box office. A bar’s weekly nights are best followed on its own pages.'],
+    ],
+  },
 ];
 
 // ─── School holidays (item 81) ───
@@ -1237,7 +1267,7 @@ const themeKey = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f
 // A theme picks its events by title (`match`), or, when it has `sections`, by venue AND title:
 // « Noël dans les châteaux » is a Christmas title at one of the three châteaux.
 const sectionOf = (t, e) => (t.sections || []).find((s) => s.at.test(themeKey(`${e.locationName || ''} ${e.title}`)) && (!s.city || s.city === e.citySlug));
-const inTheme = (t, e) => t.match.test(themeKey(e.title)) && (!t.sections || Boolean(sectionOf(t, e)));
+const inTheme = (t, e) => t.match.test(themeKey(e.title)) && !(t.not && t.not.test(themeKey(e.title))) && (!t.sections || Boolean(sectionOf(t, e)));
 const themesOf = (e) => THEMES.filter((t) => inTheme(t, e));
 
 // Our own questions and answers, no event data in them: durable text, so a hub with two events
@@ -1614,7 +1644,7 @@ function seasonNow(events, today) {
     const k = holidayEvents(p, events, today).short.length;
     return k ? { href: `/${THEMES_DIR}/${h.slug}/`, name: h.name, nameEn: h.nameEn, k } : null;
   }).filter(Boolean);
-  const themes = THEMES.filter((t) => t.slug !== 'noel')
+  const themes = THEMES.filter((t) => t.slug !== 'noel' && !t.evergreen)
     .map((t) => ({ href: `/${THEMES_DIR}/${t.slug}/`, name: t.name, nameEn: t.nameEn, k: events.filter((e) => inTheme(t, e) && e.startDate <= soon && endOf(e) >= today).length }))
     .filter((x) => x.k);
   return [...holidays, ...themes];
@@ -1896,7 +1926,7 @@ const PICKS_MAX = 4;
 const BIG_DATE = /\b(fetes?|festivals?|salons?|foires?|marches?|concours|brocantes?|vide-greniers?)\b/;
 
 function picksOf(list, max = PICKS_MAX) {
-  const score = (e) => [themesOf(e).length ? 0 : 1, BIG_DATE.test(themeKey(e.title)) ? 0 : 1, -spanDays(e)];
+  const score = (e) => [themesOf(e).some((t) => !t.evergreen) ? 0 : 1, BIG_DATE.test(themeKey(e.title)) ? 0 : 1, -spanDays(e)];
   return list
     .filter((e) => e.source && e.urlStatus === 'ok' && spanDays(e) <= 4)
     .map((e) => ({ e, k: score(e) }))
@@ -2111,7 +2141,7 @@ function homeSeasons(events, today) {
   // 22/11, project lead: in the Christmas season the band is a Christmas band; a stray tile
   // (« Sorties champignons, 1 date ») has nothing to do there.
   const xmas = aventSeason(today);
-  return THEMES.filter((t) => !xmas || /noel/.test(t.slug)).map((t) => {
+  return THEMES.filter((t) => !t.evergreen && (!xmas || /noel/.test(t.slug))).map((t) => {
     const open = events.filter((x) => inTheme(t, x) && x.startDate <= soon && endOf(x) >= today);
     if (!open.length) return null;
     // Hidden by index.html once the last of them is over, if the page is not regenerated first.
