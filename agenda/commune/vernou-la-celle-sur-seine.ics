@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_4cba1cd0d4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée annuelle de l'Avent
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -51,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_66718e0901@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Karaoké pour l'AFMTéléthon
@@ -69,8 +69,85 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_44d6b49e54@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Randonnée nocturne / Marchez pour le téléthon
+LOCATION:Gymnase de Vernou-La-Celle sur Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 18h30\n\nMarche nocturne organisée dans le cadre de
+ s événements du Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-
+ et-agendas/agenda.html#2026-12-04-randonneenocturnemarchezpourletelethon\n
+ \nFiche : https://fontainebleaulive.fr/evenements/randonnee-nocturne-march
+ ez-pour-le-telethon-vernou-la-celle-sur-seine-44d6b49e54/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-nocturne-marchez-pour
+ -le-telethon-vernou-la-celle-sur-seine-44d6b49e54/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_882e85fd77@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Après-midi jeux de société au profit du Téléthon
+LOCATION:Salle polyvalente\, rue de la Fontaine Martin\, Vernou la Celle su
+ r Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 15h à 18h\n\nUn après-midi convivial autour des je
+ ux de société\, au profit du Téléthon.\n\nOrganisateur : https://www.c
+ cmsl.fr/actu-et-agendas/agenda.html#2026-12-05-apresmidijeuxdesocieteaupro
+ fitdutelethon\n\nFiche : https://fontainebleaulive.fr/evenements/apres-mid
+ i-jeux-de-societe-au-profit-du-telethon-vernou-la-celle-sur-seine-882e85fd
+ 77/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apres-midi-jeux-de-societe-au-p
+ rofit-du-telethon-vernou-la-celle-sur-seine-882e85fd77/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f0809746a6@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Découverte du Yoga ( initiation solidaire au profit du Téléthon)
+LOCATION:Dojo du Complexe sportif Fontaine Martin\, Vernou-la-Celle-sur-sei
+ ne\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 14h30 à 16h\n\nUne séance d'initiation solidaire a
+ u yoga\, organisée au profit du Téléthon.\n\nOrganisateur : https://www
+ .ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-decouverteduyogainitiatio
+ nsolidaireaupro\n\nFiche : https://fontainebleaulive.fr/evenements/decouve
+ rte-du-yoga-initiation-solidaire-au-profit-du-teletho-vernou-la-celle-sur-
+ seine-f0809746a6/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-du-yoga-initiation-s
+ olidaire-au-profit-du-teletho-vernou-la-celle-sur-seine-f0809746a6/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5bdee13b52@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Laser run au profit du Téléthon
+LOCATION:Complexe sportif de la Fontaine martin\, Vernou-La Celle sur Seine
+ \, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : à partir de 14h\n\nUne épreuve de laser run organi
+ sée pour soutenir les actions du Téléthon.\n\nOrganisateur : https://ww
+ w.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-laserrunauprofitduteleth
+ on\n\nFiche : https://fontainebleaulive.fr/evenements/laser-run-au-profit-
+ du-telethon-vernou-la-celle-sur-seine-5bdee13b52/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/laser-run-au-profit-du-telethon
+ -vernou-la-celle-sur-seine-5bdee13b52/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5bdbb38d9b@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël de Vernou-la-Celle-sur-Seine

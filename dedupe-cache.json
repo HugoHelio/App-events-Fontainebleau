@@ -354,6 +354,11 @@
       "reason": "L'un est une exposition-dossier et l'autre une visite guidée.",
       "at": "2026-10-15"
     },
+    "ACT_014|EVT_88fa306bda": {
+      "same": false,
+      "reason": "Deux événements totalement distincts (exposition au Château de Fontainebleau vs Fête des Lumières à Moret).",
+      "at": "2026-11-24"
+    },
     "ACT_014|EVT_bce387bd1d": {
       "same": false,
       "reason": "Ce sont deux expositions temporaires distinctes organisées au Château (« Le Panache des Lumières » vs « Marie-Antoinette et Louis XVI »).",
@@ -535,6 +540,11 @@
       "at": "2026-10-31",
       "v": 2
     },
+    "EVT_04c64f73cf|EVT_30be07276a": {
+      "same": false,
+      "reason": "Deux marchés de Noël distincts dans deux communes et lieux différents.",
+      "at": "2026-11-24"
+    },
     "EVT_0508dee15f|EVT_dbfd7f4911": {
       "same": false,
       "reason": "L'une est une mini-conférence spécifique et l'autre est un programme global réunissant spectacles et animations.",
@@ -711,6 +721,36 @@
       "reason": "Les lieux de sortie sont différents : l'une est en forêt de Fontainebleau, l'autre à l'ENS du Carreau Franc à Marolles-sur-Seine.",
       "at": "2026-10-24"
     },
+    "EVT_09f908dd5c|EVT_27a0b94cf9": {
+      "same": false,
+      "reason": "Animations du Téléthon dans deux communes et lieux différents.",
+      "at": "2026-11-24"
+    },
+    "EVT_09f908dd5c|EVT_5bdee13b52": {
+      "same": false,
+      "reason": "Événements Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
+    "EVT_09f908dd5c|EVT_882e85fd77": {
+      "same": false,
+      "reason": "Événements Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
+    "EVT_09f908dd5c|EVT_906cbea39d": {
+      "same": false,
+      "reason": "Deux animations Téléthon distinctes (animations caserne en journée vs dîner spectacle en soirée).",
+      "at": "2026-11-24"
+    },
+    "EVT_09f908dd5c|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
+    "EVT_09f908dd5c|EVT_f0809746a6": {
+      "same": false,
+      "reason": "Événements Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
     "EVT_0aae4289bc|EVT_a73f557c91": {
       "same": true,
       "reason": "Les deux fiches décrivent le même événement global Noël au Château de Fontainebleau sur la même période.",
@@ -792,6 +832,11 @@
       "reason": "Deux événements organisés dans des communes et lieux différents.",
       "at": "2026-10-15"
     },
+    "EVT_0d76dd13fc|EVT_a3994dd502": {
+      "same": false,
+      "reason": "Deux marchés de Noël dans des communes et lieux différents.",
+      "at": "2026-11-24"
+    },
     "EVT_0d82060c9e|EVT_18062a504e": {
       "same": true,
       "reason": "Il s'agit du même salon multi-collections se déroulant le même jour à Milly-la-Forêt.",
@@ -801,6 +846,21 @@
       "same": true,
       "reason": "Il s'agit du même salon mycologique annuel organisé par l'ANVL aux mêmes dates.",
       "at": "2026-10-15"
+    },
+    "EVT_0de798e8e7|EVT_3d7dd3ebee": {
+      "same": false,
+      "reason": "Deux événements différents dans deux communes distinctes.",
+      "at": "2026-11-24"
+    },
+    "EVT_0de798e8e7|EVT_765d7fa7b9": {
+      "same": false,
+      "reason": "Deux marchés de Noël se déroulant dans des communes et lieux distincts.",
+      "at": "2026-11-24"
+    },
+    "EVT_0de798e8e7|EVT_caf114b4dd": {
+      "same": false,
+      "reason": "Un marché de Noël et un spectacle de feu dans deux lieux distincts.",
+      "at": "2026-11-24"
     },
     "EVT_0e1a2a3676|EVT_3775b506c1": {
       "same": true,
@@ -1183,6 +1243,12 @@
       "at": "2026-11-03",
       "v": 2
     },
+    "EVT_184d6eb8ca|EVT_2facfc771e": {
+      "same": true,
+      "reason": "Même sortie ornithologique le même jour à la RNR des Seiglats (avec fiche recherche web).",
+      "at": "2026-11-24",
+      "v": 2
+    },
     "EVT_184d6eb8ca|EVT_3b68f12c1b": {
       "same": false,
       "reason": "Lieux et périodes différents.",
@@ -1272,6 +1338,11 @@
       "same": true,
       "reason": "Même sortie guidée nature dans le nord-est des Trois Pignons le même jour par les Amis de la Forêt de Fontainebleau.",
       "at": "2026-10-31"
+    },
+    "EVT_1b711d8ba8|EVT_1f318f4bc2": {
+      "same": true,
+      "reason": "Même exposition aux mêmes dates à la Maison Lesage.",
+      "at": "2026-11-24"
     },
     "EVT_1bd3a571a5|EVT_8ddede138b": {
       "same": false,
@@ -1562,6 +1633,11 @@
       "reason": "Il s'agit du même marché de Noël organisé à Samois-sur-Seine le 5 décembre 2026.",
       "at": "2026-10-12"
     },
+    "EVT_26bbe14e1d|EVT_a88ff9e678": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans deux communes différentes.",
+      "at": "2026-11-24"
+    },
     "EVT_2799da914c|EVT_b4c2e59fdd": {
       "same": true,
       "reason": "Même randonnée VTT organisée le 18 octobre à Veneux-les-Sablons.",
@@ -1591,6 +1667,11 @@
       "same": false,
       "reason": "Il s'agit de deux fêtes d'Halloween distinctes se déroulant dans deux communes différentes (Villecerf et Thomery).",
       "at": "2026-10-12"
+    },
+    "EVT_27a0b94cf9|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
     },
     "EVT_27dcf225f7|EVT_f55e6302f3": {
       "same": true,
@@ -1741,6 +1822,12 @@
       "reason": "Deux animations différentes dans deux communes distinctes.",
       "at": "2026-10-31"
     },
+    "EVT_2facfc771e|EVT_66bddc0508": {
+      "same": false,
+      "reason": "Deux sorties d'observation distinctes à des lieux différents (massif forestier vs RNR des Seiglats).",
+      "at": "2026-11-24",
+      "v": 2
+    },
     "EVT_2ff476ce23|EVT_3e20260508": {
       "same": false,
       "reason": "Deux spectacles jeune public distincts programmés aux mêmes dates mais à des horaires différents.",
@@ -1792,6 +1879,11 @@
       "reason": "L'une est une exposition et l'autre une visite guidée spécifique dans le château.",
       "at": "2026-11-21"
     },
+    "EVT_30423f4689|EVT_9e0c209802": {
+      "same": true,
+      "reason": "Même concert hommage à Pink Floyd, même lieu, même date et tarifs identiques.",
+      "at": "2026-11-24"
+    },
     "EVT_30423f4689|EVT_f04cdbf72d": {
       "same": false,
       "reason": "Ce sont deux spectacles d'hommage distincts dédiés à deux albums différents de Pink Floyd.",
@@ -1811,6 +1903,11 @@
       "same": true,
       "reason": "Même promenade guidée ANVL aux mêmes horaires et lieu.",
       "at": "2026-10-31"
+    },
+    "EVT_30be07276a|EVT_45965d539f": {
+      "same": false,
+      "reason": "Deux marchés de Noël distincts dans deux communes différentes.",
+      "at": "2026-11-24"
     },
     "EVT_30be07276a|EVT_5bdbb38d9b": {
       "same": false,
@@ -2005,6 +2102,11 @@
       "same": false,
       "reason": "Deux événements différents dans deux communes différentes.",
       "at": "2026-11-18"
+    },
+    "EVT_3d7dd3ebee|EVT_caf114b4dd": {
+      "same": false,
+      "reason": "Deux événements différents (Noël des enfants et spectacle de rue) dans des lieux différents de la commune.",
+      "at": "2026-11-24"
     },
     "EVT_3d99c552ab|EVT_8325839c6d": {
       "same": false,
@@ -2209,6 +2311,16 @@
       "reason": "Les deux fiches décrivent la même exposition historique à la Salle Les Prés de la Forge à Villecerf.",
       "at": "2026-10-18"
     },
+    "EVT_44d6b49e54|EVT_8866ef8b54": {
+      "same": false,
+      "reason": "Deux marches nocturnes organisées dans des communes différentes.",
+      "at": "2026-11-24"
+    },
+    "EVT_44d6b49e54|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
     "EVT_4518e73039|EVT_5421db97a1": {
       "same": false,
       "reason": "Événements se déroulant dans deux communes différentes (Melun vs Fontainebleau).",
@@ -2233,6 +2345,11 @@
       "same": false,
       "reason": "Les deux apéros se déroulent dans des villes différentes (Fontainebleau et Melun).",
       "at": "2026-11-09"
+    },
+    "EVT_45965d539f|EVT_77325303c8": {
+      "same": false,
+      "reason": "Une exposition longue durée et un marché de Noël d'un jour au même endroit.",
+      "at": "2026-11-24"
     },
     "EVT_45aa1d573e|EVT_5421db97a1": {
       "same": true,
@@ -2656,6 +2773,16 @@
       "reason": "Même concert sur le thème de Marcel Proust, à Ury le même jour, avec un identifiant de fiche tourisme quasi-identique.",
       "at": "2026-11-18"
     },
+    "EVT_58d082e087|EVT_c9fc3e02bc": {
+      "same": false,
+      "reason": "Deux animations distinctes du Téléthon (balade moto et capoeira).",
+      "at": "2026-11-24"
+    },
+    "EVT_58d082e087|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
     "EVT_590bd76c68|EVT_defdd72273": {
       "same": true,
       "reason": "Il s'agit du même jeu d'enquête théâtral/murder party nocturne organisé au Château de Blandy aux mêmes dates.",
@@ -2720,6 +2847,21 @@
       "same": true,
       "reason": "Il s'agit du même concours équestre militaire au Grand Parquet du 8 au 11 octobre 2026.",
       "at": "2026-09-30"
+    },
+    "EVT_5bdee13b52|EVT_882e85fd77": {
+      "same": false,
+      "reason": "Deux activités Téléthon distinctes (Laser run et jeux de société).",
+      "at": "2026-11-24"
+    },
+    "EVT_5bdee13b52|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
+    "EVT_5bdee13b52|EVT_f0809746a6": {
+      "same": false,
+      "reason": "Deux activités Téléthon distinctes (Laser run et Yoga).",
+      "at": "2026-11-24"
     },
     "EVT_5cb728f120|EVT_6129d65ad6": {
       "same": false,
@@ -3001,6 +3143,11 @@
       "reason": "Même programmation/spectacle de Noël au Château de Fontainebleau aux mêmes dates (fiche recherche web).",
       "at": "2026-10-31",
       "v": 2
+    },
+    "EVT_631edf116e|EVT_f082eacb33": {
+      "same": false,
+      "reason": "Événements organisés dans deux villes différentes (Melun et Fontainebleau).",
+      "at": "2026-11-24"
     },
     "EVT_63ec6f5317|EVT_821330a8b5": {
       "same": false,
@@ -3367,6 +3514,11 @@
       "reason": "Même randonnée guidée à Larchant le 9 octobre 2026.",
       "at": "2026-10-05"
     },
+    "EVT_765d7fa7b9|EVT_caf114b4dd": {
+      "same": false,
+      "reason": "Un marché de Noël et un spectacle pour enfants dans des lieux différents.",
+      "at": "2026-11-24"
+    },
     "EVT_769f22b469|EVT_ac2d1fc43b": {
       "same": true,
       "reason": "Même spectacle « Le Bibliothécaire » le même jour à la même heure au même endroit.",
@@ -3684,6 +3836,16 @@
       "reason": "Deux visites d'entreprises différentes (AREMI et CIRCET PYLONE).",
       "at": "2026-11-12"
     },
+    "EVT_882e85fd77|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
+    "EVT_882e85fd77|EVT_f0809746a6": {
+      "same": false,
+      "reason": "Deux activités Téléthon distinctes (Yoga et jeux de société).",
+      "at": "2026-11-24"
+    },
     "EVT_8869a16df0|EVT_c5e54a3261": {
       "same": true,
       "reason": "Même conférence animée par Sébastien Ronsseray au Musée de Préhistoire de Nemours.",
@@ -3694,6 +3856,11 @@
       "same": false,
       "reason": "L'un est le festival global, l'autre une séance précise au CinéParadis.",
       "at": "2026-10-31"
+    },
+    "EVT_88fa306bda|EVT_b0c8e50750": {
+      "same": false,
+      "reason": "Deux événements totalement différents sans rapport direct.",
+      "at": "2026-11-24"
     },
     "EVT_89d02118e2|EVT_8df5aaa93a": {
       "same": true,
@@ -3828,6 +3995,11 @@
       "reason": "Événements distincts dans deux communes et lieux différents.",
       "at": "2026-10-31"
     },
+    "EVT_906cbea39d|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
     "EVT_91b696b9a1|EVT_b6381a262c": {
       "same": true,
       "reason": "Il s'agit de la même représentation de la pièce de théâtre La Dictée le 21 novembre 2026.",
@@ -3945,6 +4117,11 @@
       "reason": "Même concert de Noël Monteverdi aux mêmes dates et horaires au Château de Fontainebleau (avec recherche web).",
       "at": "2026-11-12",
       "v": 2
+    },
+    "EVT_9e0c209802|EVT_f04cdbf72d": {
+      "same": false,
+      "reason": "Deux concerts hommages distincts (The Wall vs The Dark Side of the Moon) bien que dans la même salle.",
+      "at": "2026-11-24"
     },
     "EVT_9e802ae195|EVT_c282cb05dc": {
       "same": true,
@@ -4379,6 +4556,11 @@
       "reason": "Les événements ont lieu dans deux communes et salles polyvalentes différentes (Villemer et Nonville).",
       "at": "2026-11-09"
     },
+    "EVT_c9fc3e02bc|EVT_cf57824562": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
+    },
     "EVT_cacbb59c55|EVT_d2a655a909": {
       "same": true,
       "reason": "Même événement de randonnée guidée le 25 octobre 2026.",
@@ -4425,6 +4607,11 @@
       "same": true,
       "reason": "Les deux fiches décrivent le même concours équestre aux mêmes dates au Stade Équestre du Grand Parquet.",
       "at": "2026-10-08"
+    },
+    "EVT_cf57824562|EVT_f0809746a6": {
+      "same": false,
+      "reason": "Deux événements du Téléthon distincts dans des communes différentes.",
+      "at": "2026-11-24"
     },
     "EVT_d08275dd1e|EVT_d08275dd1e": {
       "same": true,
@@ -4480,6 +4667,11 @@
       "same": false,
       "reason": "Les dates et le contenu de la fiche diffèrent (3 jours vs 2 jours).",
       "at": "2026-09-24"
+    },
+    "EVT_d3e57063ae|EVT_ee57373bbe": {
+      "same": false,
+      "reason": "Deux marchés de Noël distincts dans des villages délégués différents.",
+      "at": "2026-11-24"
     },
     "EVT_d4a479e6cd|EVT_f15cab21f4": {
       "same": true,

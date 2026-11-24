@@ -88,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_257ae87cb3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261130
 SUMMARY:Weekend de la transition
@@ -107,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -126,7 +126,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdb9194a09@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Les Cafés de la transition : comment améliorer le confort de son 
@@ -146,7 +146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -166,7 +166,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -185,7 +185,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b3ef3d23c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Sortie bryologique au mont Andart
@@ -222,7 +222,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_423a5d632f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Apéro des randonneurs — Fontainebleau
@@ -242,7 +242,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_758d2639a7@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Apéro des randonneurs — Melun
@@ -255,6 +255,46 @@ DESCRIPTION:Apéro entre randonneurs à Melun pour préparer une vraie sort
  lectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-melun-758
  d2639a7/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_631edf116e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Apéro des randonneurs — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro entre randonneurs à Fontainebleau pour préparer une vr
+ aie sortie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). In
+ scription gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com
+ /randodate/events/apero-des-randonneurs-fontainebleau-2070426\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontainebleau
+ -631edf116e/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontaineb
+ leau-631edf116e/
+CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f082eacb33@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Apéro des randonneurs — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro entre randonneurs à Melun pour préparer une vraie sort
+ ie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). Inscriptio
+ n gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randoda
+ te/events/apero-des-randonneurs-melun-8520526\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/apero-des-randonneurs-melun-f082eacb33/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-melun-f08
+ 2eacb33/
 CATEGORIES:Nature & Environnement
 GEO:48.5457;2.65356
 TRANSP:TRANSPARENT
@@ -279,6 +319,29 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2a39a33cbc@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Rando célibataires — Des rochers de Cuvier Chatillon à Bois-le-
+ Roi et retour
+LOCATION:Départ du parcours « Des rochers de Cuvier Chatillon à Bois-le-
+ Roi et retour »\, Fontainebleau
+DESCRIPTION:Randonnée en petit groupe entre célibataires qui aiment march
+ er : 20\,7 km\, 233 m de dénivelé positif\, niveau difficile. Inscriptio
+ n gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randoda
+ te/events/rando-celibataires-des-rochers-de-cuvier-chatillon-a-bois-le-roi
+ -et-retour\n\nFiche : https://fontainebleaulive.fr/evenements/rando-celiba
+ taires-des-rochers-de-cuvier-chatillon-a-bois-le-fontainebleau-2a39a33cbc/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-celibataires-des-rochers-
+ de-cuvier-chatillon-a-bois-le-fontainebleau-2a39a33cbc/
+CATEGORIES:Nature & Environnement
+GEO:48.44642;2.63764
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a8c66616ef@fontainebleaulive.fr
 DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261205
@@ -299,7 +362,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
@@ -336,6 +399,24 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2facfc771e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Découverte des oiseaux en hiver à la RNR des Seiglats
+LOCATION:Rue du Vieux Cimetière\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
+ servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
+ ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver-a-la
+ -rnr-des-seiglats-champagne-sur-seine-2facfc771e/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver
+ -a-la-rnr-des-seiglats-champagne-sur-seine-2facfc771e/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_66bddc0508@fontainebleaulive.fr
 DTSTAMP:20261018T000000Z
 DTSTART;VALUE=DATE:20261212
@@ -350,25 +431,6 @@ DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nSortie d'obser
  ganisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-observation-les-oiseaux-
  en-hiver-fontainebleau-66bddc0508/
-CATEGORIES:Nature & Environnement
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_184d6eb8ca@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
-DTSTART;VALUE=DATE:20261212
-DTEND;VALUE=DATE:20261213
-SUMMARY:Sortie ornithologique « Les oiseaux en hiver »
-LOCATION:Réserve Naturelle Régionale (RNR) des Seiglats\, Champagne-sur-S
- eine
-DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
- servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
- ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oiseaux-en
- -hiver-champagne-sur-seine-184d6eb8ca/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oisea
- ux-en-hiver-champagne-sur-seine-184d6eb8ca/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -490,7 +552,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f94adfc30b@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Ciné-Débat « Le vivant qui se défend » et exposition photos d'

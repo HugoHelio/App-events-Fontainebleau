@@ -12,12 +12,13 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1b711d8ba8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261123
 DTEND;VALUE=DATE:20261130
 SUMMARY:Exposition Les Recycl’arts : quand les matériaux récupérés de
  viennent des œuvres d’art
-LOCATION:Maison Lesage\, Moret-Loing-et-Orvanne
+LOCATION:Maison Lesage\, 28 rue Grande\, Moret-sur-Loing\, Moret-Loing-et-O
+ rvanne
 DESCRIPTION:Horaires : 14h à 18h (14h à 16h30 le 29 novembre)\n\nTarif : 
  Gratuit\n\nExposition collective réunissant six artistes autour du recycl
  age artistique et de la transformation de matériaux.\n\nOrganisateur : ht
@@ -33,7 +34,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3fca71a44@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261129
 SUMMARY:Exposition Recyrculaire
@@ -52,8 +53,27 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1a2a701fc9@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:Atelier duo parents-enfants
+LOCATION:Pôle famille\, 5 Bis rue de la République\, Veneux-Les Sablons\,
+  Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h à 11h30\n\nAtelier de médiation artistique des
+ tiné aux parents et à leurs enfants.\n\nOrganisateur : https://www.ccmsl
+ .fr/actu-et-agendas/agenda.html#2026-11-25-atelierduoparentsenfants\n\nFic
+ he : https://fontainebleaulive.fr/evenements/atelier-duo-parents-enfants-m
+ oret-loing-et-orvanne-1a2a701fc9/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-duo-parents-enfants-mor
+ et-loing-et-orvanne-1a2a701fc9/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5e08c56d66@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:En attendant l'ortho\, je fais quoi ?
@@ -73,7 +93,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_01417d9f53@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Table ronde "L'Envers des fripes"
@@ -110,7 +130,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_46cf3b77c1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Festival des Brasseurs et Vignerons
@@ -148,7 +168,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89d02118e2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Bourse aux jouets
@@ -201,8 +221,65 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_09f908dd5c@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Animations dans le cadre du Téléthon
+LOCATION:Caserne des sapeurs-pompiers\, place du Champs de Mars\, Moret sur
+  Loing\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 11h à 18h\n\nDiverses animations proposées au publ
+ ic en soutien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-e
+ t-agendas/agenda.html#2026-12-05-animationsdanslecadredutelethon\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/animations-dans-le-cadre-du-tele
+ thon-moret-loing-et-orvanne-09f908dd5c/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/animations-dans-le-cadre-du-tel
+ ethon-moret-loing-et-orvanne-09f908dd5c/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_906cbea39d@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Dîner spectacle pour l'AFM Téléthon
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 19h30\n\nUn dîner-spectacle solidaire organisé au 
+ profit de l'AFM Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-12-05-dinerspectaclepourlafmtelethon\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/diner-spectacle-pour-l-afm-teletho
+ n-moret-loing-et-orvanne-906cbea39d/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/diner-spectacle-pour-l-afm-tele
+ thon-moret-loing-et-orvanne-906cbea39d/
+CATEGORIES:Scène & Spectacles
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_88fa306bda@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Fête des Lumières
+LOCATION:Place de l'Hôtel et façade François 1er\, Moret-sur-Loing\, Mor
+ et-Loing-et-Orvanne
+DESCRIPTION:Horaires : 18h à 20h\n\nCélébration festive et lumineuse se 
+ déroulant devant la façade François 1er de la mairie.\n\nOrganisateur :
+  https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-fetedeslumier
+ es\n\nFiche : https://fontainebleaulive.fr/evenements/fete-des-lumieres-mo
+ ret-loing-et-orvanne-88fa306bda/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fete-des-lumieres-moret-loing-e
+ t-orvanne-88fa306bda/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_30be07276a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël du CMPA
@@ -222,7 +299,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0fed51746d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Atelier créatif de cartes de Noël et de bonne année
@@ -243,7 +320,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3d7dd3ebee@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Noël des enfants
@@ -259,6 +336,45 @@ URL:https://fontainebleaulive.fr/evenements/noel-des-enfants-moret-loing-et
  -orvanne-3d7dd3ebee/
 CATEGORIES:Culture & Ateliers
 GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_caf114b4dd@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Spectacle les lutins de Noël " Dragon de feu"
+LOCATION:Place de l'Eglise à Ecuelles\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 17h30 (spectacle à 18h30)\n\nSpectacle familial sur
+  le thème de Noël mettant en scène des lutins et un dragon de feu.\n\nO
+ rganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-
+ spectacleleslutinsdenoeldragondefeu\n\nFiche : https://fontainebleaulive.f
+ r/evenements/spectacle-les-lutins-de-noel-dragon-de-feu-moret-loing-et-orv
+ anne-caf114b4dd/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-les-lutins-de-noel-dr
+ agon-de-feu-moret-loing-et-orvanne-caf114b4dd/
+CATEGORIES:Scène & Spectacles
+GEO:48.35339;2.82067
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_2717715ec6@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261217
+DTEND;VALUE=DATE:20261218
+SUMMARY:Marché de Noël
+LOCATION:24 route de Montarlot à Ecuelles\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 15h à 19h\n\nMarché de Noël proposant des produit
+ s locaux\, de l'artisanat et diverses animations.\n\nOrganisateur : https:
+ //www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-17-marchedenoel\n\nFich
+ e : https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-
+ orvanne-2717715ec6/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-o
+ rvanne-2717715ec6/
+CATEGORIES:Culture & Ateliers
+GEO:48.36319;2.84084
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -280,21 +396,40 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3e57063ae@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261223
 SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
 LOCATION:Place de l'Hôtel de Ville\, Moret-Loing-et-Orvanne
 DESCRIPTION:Horaires : De 10h00 à 19h00\n\nTarif : Gratuit\n\nMarché de N
- oël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://more
- t-loing-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/
- marche-de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e5706
- 3ae/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
+ oël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://www.
+ ccmsl.fr/actu-et-agendas/agenda.html#2026-12-19-marchedenoel\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-moret-su
+ r-loing-moret-loing-et-orvanne-d3e57063ae/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
  et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
 CATEGORIES:Culture & Ateliers
 GEO:48.37226;2.81721
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ee57373bbe@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Marché de Noël "Episy fête Noël"
+LOCATION:Salle polyvalente Raymond Charles à Episy\, Moret-Loing-et-Orvann
+ e
+DESCRIPTION:Horaires : 10h à 18h\n\nÉvénement festif local intitulé Epi
+ sy fête Noël organisé dans la salle polyvalente.\n\nOrganisateur : http
+ s://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-20-marchedenoelepisyf
+ etenoel\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-
+ episy-fete-noel-moret-loing-et-orvanne-ee57373bbe/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-episy-fete-noel-
+ moret-loing-et-orvanne-ee57373bbe/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_41af39930d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Lancement des illuminations de Noël
@@ -48,8 +48,25 @@ GEO:48.44696;2.7794
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_8866ef8b54@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Marche nocturne
+LOCATION:Parking du Clos\, Héricy
+DESCRIPTION:Horaires : 18h00\n\nRandonnée pédestre organisée en soirée 
+ au départ du parking du Clos.\n\nOrganisateur : https://www.hericy.fr/age
+ nda/#2026-12-04-marchenocturne\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/marche-nocturne-hericy-8866ef8b54/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-nocturne-hericy-8866ef8b
+ 54/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4885be582a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
@@ -67,7 +84,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_37ab455673@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Héri’Lud
@@ -83,8 +100,24 @@ GEO:48.44696;2.7794
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ad787c231d@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Concert Jazz
+LOCATION:Salle de l'Orangerie\, Héricy
+DESCRIPTION:Horaires : 16:00\n\nVenez apprécier une représentation de jaz
+ z dans la salle de l'Orangerie à Héricy.\n\nOrganisateur : https://www.h
+ ericy.fr/agenda/#2026-12-13-concertjazz\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/concert-jazz-hericy-ad787c231d/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-jazz-hericy-ad787c231d/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_e4bf80fd4a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270108
 DTEND;VALUE=DATE:20270109
 SUMMARY:Cérémonie des vœux du Maire

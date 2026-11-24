@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Vernou · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_4ac8731bc4@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:FCPE : marché de Noël à Vernou
+LOCATION:Salle des associations de Vernou\, Vernou
+DESCRIPTION:Horaires : 10h à 18h\n\nOrganisateur : https://www.saint-mamme
+ s.com/fcpe-marche-de-noel-a-vernou/\n\nFiche : https://fontainebleaulive.f
+ r/evenements/fcpe-marche-de-noel-a-vernou-4ac8731bc4/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fcpe-marche-de-noel-a-vernou-4a
+ c8731bc4/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

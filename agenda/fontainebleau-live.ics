@@ -12,12 +12,13 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1b711d8ba8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261123
 DTEND;VALUE=DATE:20261130
 SUMMARY:Exposition Les Recycl’arts : quand les matériaux récupérés de
  viennent des œuvres d’art
-LOCATION:Maison Lesage\, Moret-Loing-et-Orvanne
+LOCATION:Maison Lesage\, 28 rue Grande\, Moret-sur-Loing\, Moret-Loing-et-O
+ rvanne
 DESCRIPTION:Horaires : 14h à 18h (14h à 16h30 le 29 novembre)\n\nTarif : 
  Gratuit\n\nExposition collective réunissant six artistes autour du recycl
  age artistique et de la transformation de matériaux.\n\nOrganisateur : ht
@@ -71,7 +72,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a8597f1bd4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261125
 SUMMARY:Chorale participative BLO POP
@@ -91,7 +92,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_729f598408@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261125
 SUMMARY:CINÉ-DÉBAT AUTOUR DU FILM "POUR UNE POIGNÉE DE DOLLARS" PAR FLC 
@@ -113,7 +114,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3fca71a44@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261129
 SUMMARY:Exposition Recyrculaire
@@ -132,8 +133,27 @@ GEO:48.35661;2.82107
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_1a2a701fc9@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:Atelier duo parents-enfants
+LOCATION:Pôle famille\, 5 Bis rue de la République\, Veneux-Les Sablons\,
+  Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h à 11h30\n\nAtelier de médiation artistique des
+ tiné aux parents et à leurs enfants.\n\nOrganisateur : https://www.ccmsl
+ .fr/actu-et-agendas/agenda.html#2026-11-25-atelierduoparentsenfants\n\nFic
+ he : https://fontainebleaulive.fr/evenements/atelier-duo-parents-enfants-m
+ oret-loing-et-orvanne-1a2a701fc9/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-duo-parents-enfants-mor
+ et-loing-et-orvanne-1a2a701fc9/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5e08c56d66@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:En attendant l'ortho\, je fais quoi ?
@@ -153,7 +173,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_923567d599@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:Initiation au théâtre ( 7-10 ans )
@@ -172,7 +192,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d7e8c47479@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:Journée internationale de lutte contre les violences faites aux fe
@@ -193,7 +213,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_110ee3c26e@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -213,7 +233,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_412d65949f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -273,7 +293,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a63157f320@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
 SUMMARY:Portes ouvertes de la restauration scolaire de Veneux-les-Sablons
@@ -293,7 +313,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1e5b20088c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -309,6 +329,26 @@ URL:https://fontainebleaulive.fr/evenements/26-au-28-novembre-festival-djan
  go-reinhardt-jazz-au-theatre-fontainebleau-1e5b20088c/
 CATEGORIES:Scène & Spectacles
 GEO:48.40365;2.69883
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_675d7993e4@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:3e édition du forum ESS mode d'emploi
+LOCATION:Stade Equestre du Grand Parquet\, Route d'Orléans\, Fontainebleau
+DESCRIPTION:Horaires : 9h30 à 12h\n\nForum destiné aux structures de l'É
+ conomie Sociale et Solidaire pour rencontrer des acteurs locaux du dévelo
+ ppement.\n\nOrganisateur : https://www.fontainebleau.fr/index.php?id=133&n
+ o_cache=1&L=0&tx_news_pi1%5Bnews%5D=6020&cHash=da09ce2996e08e1de52d41258b8
+ 246d4\n\nFiche : https://fontainebleaulive.fr/evenements/3e-edition-du-for
+ um-ess-mode-d-emploi-fontainebleau-675d7993e4/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/3e-edition-du-forum-ess-mode-d-
+ emploi-fontainebleau-675d7993e4/
+CATEGORIES:Culture & Ateliers
+GEO:48.39283;2.67347
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -351,7 +391,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_db9d848336@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Documentaire " Qu'est-ce qu'on attend ? "
@@ -389,7 +429,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_01417d9f53@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Table ronde "L'Envers des fripes"
@@ -426,7 +466,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b337505a6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Visite BASUYAU
@@ -444,7 +484,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_257ae87cb3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261130
 SUMMARY:Weekend de la transition
@@ -463,7 +503,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5d4e75908f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:26 au 28 novembre Festival Django Reinhardt- JAZZ au Théâtre de F
@@ -483,7 +523,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5565ce24a0@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Atelier d'écriture libre
@@ -502,7 +542,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fa9c61a161@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Atelier danse pour adultes
@@ -520,7 +560,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f84f401100@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:CÉRÉMONIE DES NOUVEAUX HABITANTS
@@ -541,7 +581,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -560,7 +600,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be3f148623@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert " Domkiris expérience "
@@ -579,7 +619,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_574bc03521@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert Intime Nougaro
@@ -598,7 +638,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6129d65ad6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Cycle de conférences « Marie-Antoinette et Louis XVI : entre myth
@@ -620,7 +660,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bb3d6c0948@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Exposition vente d'aquarelle
@@ -639,7 +679,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_46cf3b77c1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Festival des Brasseurs et Vignerons
@@ -658,7 +698,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_06a1dae273@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:FLC fait son show "Ensemble\, hauts en couleur !" + Téléthon
@@ -701,7 +741,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bcb0afa4a8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Grand loto de l’USMVS Patinage à Veneux-les-Sablons
@@ -720,7 +760,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_aa84102806@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:L'Avare
@@ -738,7 +778,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_476b38a554@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Lancement des illuminations de Noël à Fontainebleau
@@ -757,27 +797,8 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_163bf381df@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261128
-DTEND;VALUE=DATE:20261129
-SUMMARY:lavare
-LOCATION:Fontainebleau
-DESCRIPTION:Tarif : Plein tarif : Voir tarifs sur anevert.fr.\n\nÉvénemen
- t culturel proposé dans la commune de Fontainebleau.\n\nOrganisateur : ht
- tps://www.fontainebleau-tourisme.com/fr/fiche/7947258/lavare/\n\nFiche : h
- ttps://fontainebleaulive.fr/evenements/lavare-fontainebleau-163bf381df/\n\
- nInformations collectées automatiquement : vérifiez-les auprès de l’o
- rganisateur.
-URL:https://fontainebleaulive.fr/evenements/lavare-fontainebleau-163bf381df
- /
-CATEGORIES:Culture & Ateliers
-GEO:48.40781;2.70278
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_187c641b5b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Le petit train du château de Fontainebleau
@@ -798,7 +819,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdb9194a09@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Les Cafés de la transition : comment améliorer le confort de son 
@@ -818,7 +839,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2eb93535c8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:LES LIVRONAUTES À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -839,7 +860,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e6c3c4a3c1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël
@@ -857,7 +878,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_36f7cc1646@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël & portes ouvertes à la MARPA
@@ -895,7 +916,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c65bd4ec2e@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël d'Ury
@@ -914,7 +935,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4bb2ce1dc6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël du 28 novembre
@@ -933,7 +954,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1ee8513661@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël du Pôle
@@ -951,7 +972,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_62f4039179@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël et vente de couronnes de l’Avent
@@ -971,7 +992,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3763ad99a2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Nuit de l'Orientation
@@ -991,7 +1012,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b486c9aad@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Philippe Caverivière - Tu Crois Que C'est une Bonne Idée ?
@@ -1038,7 +1059,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
@@ -1056,7 +1077,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_368d533a60@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:RENDEZ-VOUS DE LA FORME SPÉCIAL TÉLÉTHON !
@@ -1077,7 +1098,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -1097,7 +1118,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4cba1cd0d4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée annuelle de l'Avent
@@ -1116,7 +1137,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -1134,8 +1155,25 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_19ee0e7c7e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Soirée dansante
+LOCATION:Salle polyvalente\, rue des Marronniers\, Villemer\, Villemer
+DESCRIPTION:Horaires : 19h30\n\nSoirée festive avec danse organisée à la
+  salle polyvalente.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas
+ /agenda.html#2026-11-28-soireedansante\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/soiree-dansante-villemer-19ee0e7c7e/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-dansante-villemer-19ee0e
+ 7c7e/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_99be6b818d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Salsa-bachata-kizomba « les sosies »
@@ -1172,7 +1210,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_60034ec1f1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Solidarité en couleurs\, atelier street art pour le Téléthon
@@ -1193,7 +1231,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -1212,8 +1250,27 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_26bbe14e1d@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Spectacle "Chant & Danse' au profit du Téléthon
+LOCATION:Palais des Rencontres\, 28 rue Pierre de Coubertin\, Champagne-sur
+ -Seine\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 20h30\n\nReprésentation de chant et danse organisé
+ e en soutien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-11-28-spectaclechantdanseauprofitdutelethon\n\nF
+ iche : https://fontainebleaulive.fr/evenements/spectacle-chant-et-danse-au
+ -profit-du-telethon-champagne-sur-seine-26bbe14e1d/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-chant-et-danse-au-pro
+ fit-du-telethon-champagne-sur-seine-26bbe14e1d/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a88ff9e678@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:TÉLÉTHON À FONTAINEBLEAU
@@ -1256,7 +1313,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -1275,7 +1332,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4d6759674c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Vide-Dressing Ados / Adultes de Thomery
@@ -1293,7 +1350,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_edd27034e8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Visites guidées du musée
@@ -1313,7 +1370,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b02215f09b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Atelier Qi Gong
@@ -1348,7 +1405,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89d02118e2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Bourse aux jouets
@@ -1368,7 +1425,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_94d212633d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Illuminations des vitrines de Noël
@@ -1406,7 +1463,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1cf34759cb@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:L'Avare
@@ -1424,7 +1481,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3fab7261fc@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël du 29 novembre
@@ -1442,7 +1499,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b3ef3d23c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Sortie bryologique au mont Andart
@@ -1500,7 +1557,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8f3af5ae31@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Spectacle - La princesse au petit pois
@@ -1538,7 +1595,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3aac72b4c4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -1580,8 +1637,25 @@ GEO:48.4019;2.45349
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_7f007e5f00@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Thé dansant
+LOCATION:Salle polyvalente\, rue des Marronniers\, Villemer\, Villemer
+DESCRIPTION:Horaires : 14h à 19h\n\nAprès-midi dansant ouvert à tous.\n\
+ nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-2
+ 9-thedansant\n\nFiche : https://fontainebleaulive.fr/evenements/the-dansan
+ t-villemer-7f007e5f00/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/the-dansant-villemer-7f007e5f00
+ /
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_5a4ad82fe4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Théâtre " Tout tourneboulé "
@@ -1600,7 +1674,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4ad1ee39f0@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Vide ta chambre (Bourse aux enfants)
@@ -1619,7 +1693,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fe92208886@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Visite thématique « Les artistes étrangers à Barbizon »
@@ -1640,7 +1714,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b3728f89dd@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -1660,7 +1734,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_423a5d632f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Apéro des randonneurs — Fontainebleau
@@ -1680,7 +1754,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_758d2639a7@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Apéro des randonneurs — Melun
@@ -1704,13 +1778,14 @@ DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Le bus de Noël Transdev revient !
 LOCATION:Stade de la Faisanderie\, Fontainebleau
-DESCRIPTION:Horaires : 13h-17h\n\nCollecte de jouets en bon état organisé
- e à bord d'un bus spécial au profit des Restos du Cœur.\n\nOrganisateur
-  : https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi
- 1%5Bnews%5D=6016&cHash=ad173c7d7ee55585fe9a4047bac6b411\n\nFiche : https:/
- /fontainebleaulive.fr/evenements/le-bus-de-noel-transdev-revient-fontaineb
- leau-860e4863f8/\n\nInformations collectées automatiquement : vérifiez-l
- es auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h-18h (samedi)\, 13h-17h (mercredi)\, 9h30-12h / 1
+ 3h30-17h (semaine)\n\nCollecte de jouets en bon état organisée à bord d
+ 'un bus spécial au profit des Restos du Cœur.\n\nOrganisateur : https://
+ www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D
+ =6016&cHash=ad173c7d7ee55585fe9a4047bac6b411\n\nFiche : https://fontainebl
+ eaulive.fr/evenements/le-bus-de-noel-transdev-revient-fontainebleau-860e48
+ 63f8/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/le-bus-de-noel-transdev-revient
  -fontainebleau-860e4863f8/
 CATEGORIES:Culture & Ateliers
@@ -1719,7 +1794,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4a4198ac35@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Le Tourbillon de la Fête
@@ -1742,7 +1817,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_208a256050@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -1784,6 +1859,26 @@ GEO:48.53858;2.63359
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_9b71b32a91@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+SUMMARY:Projection ‘La belle & la bête’ de Jean Cocteau – Ciné-Line
+ s
+LOCATION:Milly-la-Forêt
+DESCRIPTION:Horaires : 20h\n\nTarif : 6 €\n\nOrganisateur : https://www.m
+ illy-la-foret.fr/2026/11/24/03-12-26-projection-la-belle-la-bete-cine-line
+ s/\n\nFiche : https://fontainebleaulive.fr/evenements/projection-la-belle-
+ et-la-bete-de-jean-cocteau-cine-lines-milly-la-foret-9b71b32a91/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/projection-la-belle-et-la-bete-
+ de-jean-cocteau-cine-lines-milly-la-foret-9b71b32a91/
+CATEGORIES:Scène & Spectacles
+GEO:48.4017;2.45828
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_537e2ea697@fontainebleaulive.fr
 DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20261203
@@ -1802,7 +1897,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce4141f97d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:"LE LEGS" AU THÉÂTRE MUNICIPAL DE FONTAINEBLEAU
@@ -1822,7 +1917,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f9833d2e90@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:À la recherche des canards perdus - cartographie 1
@@ -1841,8 +1936,48 @@ GEO:48.40493;2.72051
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_631edf116e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Apéro des randonneurs — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro entre randonneurs à Fontainebleau pour préparer une vr
+ aie sortie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). In
+ scription gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com
+ /randodate/events/apero-des-randonneurs-fontainebleau-2070426\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontainebleau
+ -631edf116e/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontaineb
+ leau-631edf116e/
+CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f082eacb33@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Apéro des randonneurs — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro entre randonneurs à Melun pour préparer une vraie sort
+ ie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). Inscriptio
+ n gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randoda
+ te/events/apero-des-randonneurs-melun-8520526\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/apero-des-randonneurs-melun-f082eacb33/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-melun-f08
+ 2eacb33/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_25ba0a53a7@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Fabrice Eboué - SolitudeS
@@ -1881,7 +2016,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_66718e0901@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Karaoké pour l'AFMTéléthon
@@ -1900,7 +2035,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_41af39930d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Lancement des illuminations de Noël
@@ -1918,8 +2053,43 @@ GEO:48.44696;2.7794
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_8866ef8b54@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Marche nocturne
+LOCATION:Parking du Clos\, Héricy
+DESCRIPTION:Horaires : 18h00\n\nRandonnée pédestre organisée en soirée 
+ au départ du parking du Clos.\n\nOrganisateur : https://www.hericy.fr/age
+ nda/#2026-12-04-marchenocturne\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/marche-nocturne-hericy-8866ef8b54/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-nocturne-hericy-8866ef8b
+ 54/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_44d6b49e54@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Randonnée nocturne / Marchez pour le téléthon
+LOCATION:Gymnase de Vernou-La-Celle sur Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 18h30\n\nMarche nocturne organisée dans le cadre de
+ s événements du Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-
+ et-agendas/agenda.html#2026-12-04-randonneenocturnemarchezpourletelethon\n
+ \nFiche : https://fontainebleaulive.fr/evenements/randonnee-nocturne-march
+ ez-pour-le-telethon-vernou-la-celle-sur-seine-44d6b49e54/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-nocturne-marchez-pour
+ -le-telethon-vernou-la-celle-sur-seine-44d6b49e54/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_390214907d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:RDV MÉDIATION NUMÉRIQUE À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -1940,25 +2110,26 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_38c8f481ed@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
-SUMMARY:Séances débats à l'Ermitage
+SUMMARY:Séance-débat autour du film "Voyage dans le grand Ouest américai
+ n" au Ciné Ermitage
 LOCATION:L'Ermitage\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Projections suivies de débats organisées au cinéma L'Ermitag
- e à Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-tourisme.c
- om/fr/fiche/7557871/seances-debats-a-lermitage/\n\nFiche : https://fontain
- ebleaulive.fr/evenements/seances-debats-a-l-ermitage-fontainebleau-38c8f48
- 1ed/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/seances-debats-a-l-ermitage-fon
- tainebleau-38c8f481ed/
+DESCRIPTION:Horaires : 20h\n\nProjections suivies de débats organisées au
+  cinéma L'Ermitage à Fontainebleau.\n\nOrganisateur : https://www.fontai
+ nebleau-tourisme.com/fr/fiche/7557871/seances-debats-a-lermitage/\n\nFiche
+  : https://fontainebleaulive.fr/evenements/seance-debat-autour-du-film-voy
+ age-dans-le-grand-ouest-ameri-fontainebleau-38c8f481ed/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/seance-debat-autour-du-film-voy
+ age-dans-le-grand-ouest-ameri-fontainebleau-38c8f481ed/
 CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf57824562@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon
@@ -2014,8 +2185,47 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_09f908dd5c@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Animations dans le cadre du Téléthon
+LOCATION:Caserne des sapeurs-pompiers\, place du Champs de Mars\, Moret sur
+  Loing\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 11h à 18h\n\nDiverses animations proposées au publ
+ ic en soutien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-e
+ t-agendas/agenda.html#2026-12-05-animationsdanslecadredutelethon\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/animations-dans-le-cadre-du-tele
+ thon-moret-loing-et-orvanne-09f908dd5c/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/animations-dans-le-cadre-du-tel
+ ethon-moret-loing-et-orvanne-09f908dd5c/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_882e85fd77@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Après-midi jeux de société au profit du Téléthon
+LOCATION:Salle polyvalente\, rue de la Fontaine Martin\, Vernou la Celle su
+ r Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 15h à 18h\n\nUn après-midi convivial autour des je
+ ux de société\, au profit du Téléthon.\n\nOrganisateur : https://www.c
+ cmsl.fr/actu-et-agendas/agenda.html#2026-12-05-apresmidijeuxdesocieteaupro
+ fitdutelethon\n\nFiche : https://fontainebleaulive.fr/evenements/apres-mid
+ i-jeux-de-societe-au-profit-du-telethon-vernou-la-celle-sur-seine-882e85fd
+ 77/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apres-midi-jeux-de-societe-au-p
+ rofit-du-telethon-vernou-la-celle-sur-seine-882e85fd77/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c23d4ead47@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Art Urbain & workshops tous les 1er et 3eme samedis du mois
@@ -2036,7 +2246,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_23a8889b67@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Atelier aquarelle botanique "carte de Noël"
@@ -2074,8 +2284,26 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_dd3d56dc09@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261207
+SUMMARY:Brocante
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 19h\n\nVente de brocante organisée par l'ass
+ ociation Telami.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/ag
+ enda.html#2026-12-05-brocante\n\nFiche : https://fontainebleaulive.fr/even
+ ements/brocante-montigny-sur-loing-dd3d56dc09/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/brocante-montigny-sur-loing-dd3
+ d56dc09/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a4164f93fe@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:CAFÉ DES TRANSITIONS [FONTAINEBLEAU (EN) TRANSITION]
@@ -2153,8 +2381,66 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_f0809746a6@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Découverte du Yoga ( initiation solidaire au profit du Téléthon)
+LOCATION:Dojo du Complexe sportif Fontaine Martin\, Vernou-la-Celle-sur-sei
+ ne\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 14h30 à 16h\n\nUne séance d'initiation solidaire a
+ u yoga\, organisée au profit du Téléthon.\n\nOrganisateur : https://www
+ .ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-decouverteduyogainitiatio
+ nsolidaireaupro\n\nFiche : https://fontainebleaulive.fr/evenements/decouve
+ rte-du-yoga-initiation-solidaire-au-profit-du-teletho-vernou-la-celle-sur-
+ seine-f0809746a6/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-du-yoga-initiation-s
+ olidaire-au-profit-du-teletho-vernou-la-celle-sur-seine-f0809746a6/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_906cbea39d@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Dîner spectacle pour l'AFM Téléthon
+LOCATION:Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 19h30\n\nUn dîner-spectacle solidaire organisé au 
+ profit de l'AFM Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-12-05-dinerspectaclepourlafmtelethon\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/diner-spectacle-pour-l-afm-teletho
+ n-moret-loing-et-orvanne-906cbea39d/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/diner-spectacle-pour-l-afm-tele
+ thon-moret-loing-et-orvanne-906cbea39d/
+CATEGORIES:Scène & Spectacles
+GEO:48.35661;2.82107
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_88fa306bda@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Fête des Lumières
+LOCATION:Place de l'Hôtel et façade François 1er\, Moret-sur-Loing\, Mor
+ et-Loing-et-Orvanne
+DESCRIPTION:Horaires : 18h à 20h\n\nCélébration festive et lumineuse se 
+ déroulant devant la façade François 1er de la mairie.\n\nOrganisateur :
+  https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-fetedeslumier
+ es\n\nFiche : https://fontainebleaulive.fr/evenements/fete-des-lumieres-mo
+ ret-loing-et-orvanne-88fa306bda/\n\nInformations collectées automatiqueme
+ nt : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fete-des-lumieres-moret-loing-e
+ t-orvanne-88fa306bda/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_03662cfcf2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Hommage du 5 décembre
@@ -2171,7 +2457,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fdd2caa4ab@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:La poésie de Claire Médard
@@ -2189,19 +2475,38 @@ GEO:48.413;2.72893
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_5bdee13b52@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Laser run au profit du Téléthon
+LOCATION:Complexe sportif de la Fontaine martin\, Vernou-La Celle sur Seine
+ \, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : à partir de 14h\n\nUne épreuve de laser run organi
+ sée pour soutenir les actions du Téléthon.\n\nOrganisateur : https://ww
+ w.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-laserrunauprofitduteleth
+ on\n\nFiche : https://fontainebleaulive.fr/evenements/laser-run-au-profit-
+ du-telethon-vernou-la-celle-sur-seine-5bdee13b52/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/laser-run-au-profit-du-telethon
+ -vernou-la-celle-sur-seine-5bdee13b52/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_63cfe6ce64@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Le latin retrouvé – Médiathèque
 LOCATION:Médiathèque de Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Horaires : De 10h à 12h\n\nAtelier de découverte et lecture d
- e textes latins autour du thème : Virgile\, Énéide 3 – Déesses et di
- eux protecteurs.\n\nOrganisateur : https://www.milly-la-foret.fr/2026/11/2
- 0/05-12-26-le-latin-retrouve-mediatheque/\n\nFiche : https://fontainebleau
- live.fr/evenements/le-latin-retrouve-mediatheque-milly-la-foret-63cfe6ce64
- /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
- ’organisateur.
+DESCRIPTION:Horaires : De 10h à 12h\n\nTarif : non précisé\n\nAtelier de
+  découverte et lecture de textes latins autour du thème : Virgile\, Én
+ éide 3 – Déesses et dieux protecteurs.\n\nOrganisateur : https://www.m
+ illy-la-foret.fr/2026/11/20/05-12-26-le-latin-retrouve-mediatheque/\n\nFic
+ he : https://fontainebleaulive.fr/evenements/le-latin-retrouve-mediatheque
+ -milly-la-foret-63cfe6ce64/\n\nInformations collectées automatiquement : 
+ vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/le-latin-retrouve-mediatheque-m
  illy-la-foret-63cfe6ce64/
 CATEGORIES:Culture & Ateliers
@@ -2209,7 +2514,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6e1e0ff6e3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Le Radeau de la Méduse par Anne Cangelosi
@@ -2232,8 +2537,26 @@ GEO:48.5296;2.66378
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_04c64f73cf@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Marché de Noël
+LOCATION:Château Rosa Bonheur\, 12 rue Rosa Bonheur\, Thomery\, Thomery
+DESCRIPTION:Horaires : Samedi de 10h à 19h\, dimanche de 10h à 18h\n\nMar
+ ché de Noël organisé au sein du château Rosa Bonheur.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-marchedenoel
+ \n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-thomery
+ -04c64f73cf/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-thomery-04c64f73
+ cf/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4885be582a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël
@@ -2251,7 +2574,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_356adfe18d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël de Fleury-en-Bière
@@ -2270,7 +2593,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_402fd94b3d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël du 5 décembre
@@ -2288,7 +2611,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30be07276a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël du CMPA
@@ -2308,7 +2631,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1e3120d159@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël nocturne
@@ -2327,7 +2650,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b30114cd44@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël Solidaire
@@ -2345,7 +2668,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_069d0decbb@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Peer Gynt\, l'homme qui voulait être lui-même
@@ -2383,8 +2706,31 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2a39a33cbc@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Rando célibataires — Des rochers de Cuvier Chatillon à Bois-le-
+ Roi et retour
+LOCATION:Départ du parcours « Des rochers de Cuvier Chatillon à Bois-le-
+ Roi et retour »\, Fontainebleau
+DESCRIPTION:Randonnée en petit groupe entre célibataires qui aiment march
+ er : 20\,7 km\, 233 m de dénivelé positif\, niveau difficile. Inscriptio
+ n gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randoda
+ te/events/rando-celibataires-des-rochers-de-cuvier-chatillon-a-bois-le-roi
+ -et-retour\n\nFiche : https://fontainebleaulive.fr/evenements/rando-celiba
+ taires-des-rochers-de-cuvier-chatillon-a-bois-le-fontainebleau-2a39a33cbc/
+ \n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-celibataires-des-rochers-
+ de-cuvier-chatillon-a-bois-le-fontainebleau-2a39a33cbc/
+CATEGORIES:Nature & Environnement
+GEO:48.44642;2.63764
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_31c178404b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Repair Café MSL !
@@ -2402,7 +2748,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8ac7daf302@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Salon du livre Nature et Aventure
@@ -2439,7 +2785,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3b0c33a401@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Stage photographique : « Magie de la forêt de Fontainebleau »
@@ -2459,7 +2805,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_adf2c9f124@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:TABLE RONDE : "LA LITTERATURE JEUNESSE MIROIR DE NOS SOCIÉTÉS" À
@@ -2478,6 +2824,25 @@ URL:https://fontainebleaulive.fr/evenements/table-ronde-la-litterature-jeun
  esse-miroir-de-nos-societes-a-fontainebleau-adf2c9f124/
 CATEGORIES:Culture & Ateliers
 GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_27a0b94cf9@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Tous en en forme\, tous avec le Téléthon
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 16h\n\nAnimations sportives proposées en sou
+ tien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas
+ /agenda.html#2026-12-05-tousenenformetousavecletelethon\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/tous-en-en-forme-tous-avec-le-telethon-mo
+ ntigny-sur-loing-27a0b94cf9/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/tous-en-en-forme-tous-avec-le-t
+ elethon-montigny-sur-loing-27a0b94cf9/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2500,7 +2865,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_573a44c82a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Visites guidées du musée
@@ -2520,7 +2885,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18062a504e@fontainebleaulive.fr
-DTSTAMP:20261004T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:16ᵉ Salon Multi-collections & Bourse au profit du Téléthon
@@ -2539,7 +2904,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0fed51746d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Atelier créatif de cartes de Noël et de bonne année
@@ -2559,8 +2924,27 @@ GEO:48.37221;2.81435
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_58d082e087@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Balade moto au profit du Téléthon
+LOCATION:Gymnase Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-
+ Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : Accueil à partir de 13h\, départ à 14h\n\nUne bal
+ ade à moto solidaire organisée au profit du Téléthon.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-balademotoau
+ profitdutelethon\n\nFiche : https://fontainebleaulive.fr/evenements/balade
+ -moto-au-profit-du-telethon-montigny-sur-loing-58d082e087/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-moto-au-profit-du-teleth
+ on-montigny-sur-loing-58d082e087/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_73c61df98f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:CONCERT "DES FRAISES EN HIVER"
@@ -2580,7 +2964,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_22ce2d541a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Concert "Misa a Buenos Aires"
@@ -2599,7 +2983,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a4c646a862@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Concert Symphonique en résonance
@@ -2619,7 +3003,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_eae639ede3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Conférence " Lire " le livre dans tous ses états
@@ -2636,8 +3020,24 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_4ac8731bc4@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:FCPE : marché de Noël à Vernou
+LOCATION:Salle des associations de Vernou\, Vernou
+DESCRIPTION:Horaires : 10h à 18h\n\nOrganisateur : https://www.saint-mamme
+ s.com/fcpe-marche-de-noel-a-vernou/\n\nFiche : https://fontainebleaulive.f
+ r/evenements/fcpe-marche-de-noel-a-vernou-4ac8731bc4/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fcpe-marche-de-noel-a-vernou-4a
+ c8731bc4/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_42fa5cdce0@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Inauguration Exposition photographique : Pour une forêt vivante
@@ -2657,7 +3057,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7b2a5f2ea8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Les séjours de Louis XIV à Fontainebleau\, les liens avec la popu
@@ -2678,8 +3078,27 @@ GEO:48.413;2.72893
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_45965d539f@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël au château Rosa Bonheur
+LOCATION:Château Rosa Bonheur\, 12 rue Rosa Bonheur\, Thomery\, Thomery
+DESCRIPTION:Horaires : Samedi 10h à 19h\, Dimanche 10h à 18h\n\nMarché d
+ e Noël se tenant dans le cadre historique du château Rosa Bonheur.\n\nOr
+ ganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-m
+ archedenoelauchateaurosabonheur\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/marche-de-noel-au-chateau-rosa-bonheur-thomery-45965d539f/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-au-chateau-rosa-
+ bonheur-thomery-45965d539f/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a0096844bf@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël de Bourron-Marlotte
@@ -2697,7 +3116,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5bdbb38d9b@fontainebleaulive.fr
-DTSTAMP:20261024T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël de Vernou-la-Celle-sur-Seine
@@ -2716,7 +3135,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_af1a49c6c7@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Opéra « La Flûte enchantée » par la compagnie Opéra 2001
@@ -2736,7 +3155,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b23f1218c8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Peer Gynt\, l'homme qui voulait être lui-même
@@ -2752,6 +3171,25 @@ URL:https://fontainebleaulive.fr/evenements/peer-gynt-l-homme-qui-voulait-e
  tre-lui-meme-fontainebleau-b23f1218c8/
 CATEGORIES:Scène & Spectacles
 GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c9fc3e02bc@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Ronde de capoeira au profit du Téléthon
+LOCATION:Gymnase Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-
+ Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 15h30\n\nUne démonstration de capoeira organisée p
+ our soutenir le Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-12-06-rondedecapoeiraauprofitdutelethon\n\nFiche
+  : https://fontainebleaulive.fr/evenements/ronde-de-capoeira-au-profit-du-
+ telethon-montigny-sur-loing-c9fc3e02bc/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ronde-de-capoeira-au-profit-du-
+ telethon-montigny-sur-loing-c9fc3e02bc/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2776,7 +3214,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
@@ -2794,7 +3232,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_599cf733fe@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -2812,7 +3250,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3e4e0b520@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:STAND DES ÉLUS SUR LE MARCHÉ SAINT-LOUIS
@@ -2832,7 +3270,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c0ecb39c4c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur
@@ -2854,7 +3292,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e42881c006@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Visite contée "Les Contes du chat perché"
@@ -2873,7 +3311,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_773dc2d1ea@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
 SUMMARY:Les rendez-vous de la Solle – Courses d'obstacle
@@ -2892,7 +3330,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9a880dc808@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261209
 DTEND;VALUE=DATE:20261210
 SUMMARY:CONCERT CARITATIF AU THÉÂTRE MUNICIPAL DE FONTAINEBLEAU
@@ -2911,8 +3349,29 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_a398d81752@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261210
+SUMMARY:Conférence "Une histoire de la langue française au Cambodge" par 
+ Marie Aberdam au cinéma Ermitage
+LOCATION:Cinéma Ermitage\, 6 rue de France\, Fontainebleau
+DESCRIPTION:Horaires : 19h\n\nConférence historique sur la langue françai
+ se au Cambodge animée par l'historienne Marie Aberdam.\n\nOrganisateur : 
+ https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5
+ Bnews%5D=6019&cHash=3ff15625842c272d3dee51a495a76b4b\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/conference-une-histoire-de-la-langue-francai
+ se-au-cambodge-p-fontainebleau-a398d81752/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/conference-une-histoire-de-la-l
+ angue-francaise-au-cambodge-p-fontainebleau-a398d81752/
+CATEGORIES:Scène & Spectacles
+GEO:48.40425;2.69949
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3b9010e265@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261209
 DTEND;VALUE=DATE:20261210
 SUMMARY:Don du sang
@@ -2931,8 +3390,25 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ecd2283350@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261210
+SUMMARY:Fête de la Saint Nicolas
+LOCATION:ERPD de Saint-Mammès\, Saint-Mammès
+DESCRIPTION:Horaires : 15h00\n\nOrganisateur : https://www.saint-mammes.com
+ /fete-de-la-saint-nicolas/\n\nFiche : https://fontainebleaulive.fr/eveneme
+ nts/fete-de-la-saint-nicolas-saint-mammes-ecd2283350/\n\nInformations coll
+ ectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/fete-de-la-saint-nicolas-saint-
+ mammes-ecd2283350/
+CATEGORIES:Scène & Spectacles
+GEO:48.38915;2.80788
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_41790a90cc@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261209
 DTEND;VALUE=DATE:20261210
 SUMMARY:LES P’TITES COMPTINES À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -2952,7 +3428,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_803880146c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261209
 DTEND;VALUE=DATE:20261210
 SUMMARY:LES P’TITES OREILLES À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -3011,7 +3487,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a4dc576686@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:LES BEL’BULLES À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -3032,7 +3508,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d706b19e2a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:Lisa
@@ -3072,7 +3548,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377db6838c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Apéro piano au coin du feu
@@ -3091,7 +3567,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8ec71b5ed3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:CERCLE DES PARENTS À LA MAISON DE L'ENFANCE
@@ -3132,7 +3608,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2e29fba647@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261214
 SUMMARY:Concerts de Noël de Thomas Hengelbrock - Les Vêpres de Monteverdi
@@ -3190,11 +3666,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ed22b15733@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261214
 SUMMARY:Exposition du club photo Le 8e Art à l'Hôtel de Ville
-LOCATION:Fontainebleau
+LOCATION:Hôtel de Ville\, 40 rue Grande\, Fontainebleau
 DESCRIPTION:Horaires : 9h à 18h\n\nLe Club Photo Le 8e Art expose ses clic
  hés dans le salon d'honneur de l'Hôtel de Ville.\n\nOrganisateur : https
  ://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews
@@ -3210,11 +3686,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377b8dffb1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël
-LOCATION:Bourron-Marlotte
+LOCATION:Bourron-Marlotte\, Bourron-Marlotte
 DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Bourron-Marlo
  tte.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/805
  0980/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/ma
@@ -3228,7 +3704,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cdf020a3aa@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël à Fontainebleau
@@ -3249,7 +3725,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ad9e28b1f3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Ultimissimo\, la Framboise Frivole - Le Best-Of!
@@ -3272,7 +3748,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac2d1fc43b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:"LE BIBLIOTHÉCAIRE" AU THÉÂTRE MUNICIPAL DE FONTAINEBLEAU
@@ -3293,8 +3769,28 @@ GEO:48.40335;2.69762
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_521eb2f761@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Atelier créatif intergénérationnel
+LOCATION:Bibliothèque municipale\, 2 rue du Loing à Montigny sur Loing\, 
+ Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 12h\n\nPublic : Dès 8 ans\n\nAtelier créati
+ f proposant la réalisation d'ornements de Noël\, lanternes et couronnes 
+ hivernales.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.
+ html#2026-12-12-ateliercreatifintergenerationnel\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/atelier-creatif-intergenerationnel-montigny-sur-
+ loing-521eb2f761/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-creatif-intergeneration
+ nel-montigny-sur-loing-521eb2f761/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_048925da05@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Concert de la chorale du Pôle
@@ -3313,7 +3809,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_97e9ceecfd@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Concert instrumental des jeunes
@@ -3332,8 +3828,26 @@ GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2facfc771e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Découverte des oiseaux en hiver à la RNR des Seiglats
+LOCATION:Rue du Vieux Cimetière\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
+ servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
+ ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver-a-la
+ -rnr-des-seiglats-champagne-sur-seine-2facfc771e/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver
+ -a-la-rnr-des-seiglats-champagne-sur-seine-2facfc771e/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3b6186d716@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Deux sur la balançoire
@@ -3352,7 +3866,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e506310a97@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:FLC fait son show de Noël
@@ -3372,7 +3886,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_37ab455673@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Héri’Lud
@@ -3389,7 +3903,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0d9ba04dd6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Les Amplifiés - Tom Frager & Lambz
@@ -3407,7 +3921,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_27a2f68fb8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Les Coquettes - Nouveau Spectacle
@@ -3430,8 +3944,27 @@ GEO:48.5296;2.66378
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0de798e8e7@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Marché de Noël
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
+ oing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 19h\n\nMarché de Noël organisé à Montigny
+ -sur-Loing pour trouver des idées de cadeaux et profiter de l'ambiance fe
+ stive.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#
+ 2026-12-12-marchedenoel\n\nFiche : https://fontainebleaulive.fr/evenements
+ /marche-de-noel-montigny-sur-loing-0de798e8e7/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-montigny-sur-loi
+ ng-0de798e8e7/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_765d7fa7b9@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Marché de Noël
@@ -3448,27 +3981,8 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_bafd89b344@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261212
-DTEND;VALUE=DATE:20261213
-SUMMARY:Marché de Noël à Fontainebleau
-LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël traditionnel rassemblant 
- étals artisanaux et animations au cœur de Fontainebleau.\n\nOrganisateur
-  : https://www.fontainebleau-tourisme.com/fr/fiche/8038195/marche-de-noel-
- a-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/marche
- -de-noel-a-fontainebleau-bafd89b344/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/marche-de-noel-a-fontainebleau-
- bafd89b344/
-CATEGORIES:Culture & Ateliers
-GEO:48.40781;2.70278
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_6d56ffe688@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noel du 12 au 13 décembre 2026
@@ -3487,7 +4001,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3d7dd3ebee@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Noël des enfants
@@ -3507,7 +4021,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c59964a29a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Soirée Choucroute
@@ -3543,27 +4057,28 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_184d6eb8ca@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
+UID:EVT_caf114b4dd@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
-SUMMARY:Sortie ornithologique « Les oiseaux en hiver »
-LOCATION:Réserve Naturelle Régionale (RNR) des Seiglats\, Champagne-sur-S
- eine
-DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
- servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
- ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oiseaux-en
- -hiver-champagne-sur-seine-184d6eb8ca/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oisea
- ux-en-hiver-champagne-sur-seine-184d6eb8ca/
-CATEGORIES:Nature & Environnement
+SUMMARY:Spectacle les lutins de Noël " Dragon de feu"
+LOCATION:Place de l'Eglise à Ecuelles\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 17h30 (spectacle à 18h30)\n\nSpectacle familial sur
+  le thème de Noël mettant en scène des lutins et un dragon de feu.\n\nO
+ rganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-
+ spectacleleslutinsdenoeldragondefeu\n\nFiche : https://fontainebleaulive.f
+ r/evenements/spectacle-les-lutins-de-noel-dragon-de-feu-moret-loing-et-orv
+ anne-caf114b4dd/\n\nInformations collectées automatiquement : vérifiez-l
+ es auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-les-lutins-de-noel-dr
+ agon-de-feu-moret-loing-et-orvanne-caf114b4dd/
+CATEGORIES:Scène & Spectacles
+GEO:48.35339;2.82067
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a9e057d74b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle théâtral "Un voyage inattendu"
@@ -3604,7 +4119,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cec8357113@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:VISITE DE QUARTIER LILAS/SAINT-HONORÉ
@@ -3645,7 +4160,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_17edeb2692@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Visites guidées du musée
@@ -3683,7 +4198,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_996e031f1d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Atelier "couronne-arbre de Noël"
@@ -3720,7 +4235,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04e8167473@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Chants de Noël
@@ -3740,7 +4255,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_47e12a5c37@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Chorale de Noël par FLC
@@ -3780,8 +4295,24 @@ GEO:48.413;2.72893
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ad787c231d@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Concert Jazz
+LOCATION:Salle de l'Orangerie\, Héricy
+DESCRIPTION:Horaires : 16:00\n\nVenez apprécier une représentation de jaz
+ z dans la salle de l'Orangerie à Héricy.\n\nOrganisateur : https://www.h
+ ericy.fr/agenda/#2026-12-13-concertjazz\n\nFiche : https://fontainebleauli
+ ve.fr/evenements/concert-jazz-hericy-ad787c231d/\n\nInformations collecté
+ es automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-jazz-hericy-ad787c231d/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_e894b7314b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Deux sur la balançoire
@@ -3799,27 +4330,26 @@ GEO:48.4049;2.69855
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_39ec6d856b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+UID:EVT_0d76dd13fc@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
-SUMMARY:Marché de Noël à Fontainebleau
-LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël traditionnel rassemblant 
- étals artisanaux et animations au cœur de Fontainebleau.\n\nOrganisateur
-  : https://www.fontainebleau-tourisme.com/fr/fiche/8038195/marche-de-noel-
- a-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/marche
- -de-noel-a-fontainebleau-39ec6d856b/\n\nInformations collectées automatiq
- uement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/marche-de-noel-a-fontainebleau-
- 39ec6d856b/
+SUMMARY:Marché de Noël
+LOCATION:Salle de la Plage\, 1 chemin des Prés à Thomery\, Thomery
+DESCRIPTION:Horaires : 10h à 19h (samedi)\, 10h à 18h (dimanche)\n\nÉvé
+ nement festif de fin d'année réunissant des exposants et artisans locaux
+  à la salle de la Plage.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-12-13-marchedenoel\n\nFiche : https://fontaineblea
+ ulive.fr/evenements/marche-de-noel-thomery-0d76dd13fc/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-thomery-0d76dd13
+ fc/
 CATEGORIES:Culture & Ateliers
-GEO:48.40781;2.70278
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3994dd502@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël de Saint-Mammès
@@ -3875,7 +4405,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b851449c4@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261214
 DTEND;VALUE=DATE:20261215
 SUMMARY:CONSEIL MUNICIPAL
@@ -3895,7 +4425,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3960d807fa@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261215
 DTEND;VALUE=DATE:20261216
 SUMMARY:FLC fait sa jam de Noël
@@ -3932,30 +4462,8 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_a139f212f7@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261217
-DTEND;VALUE=DATE:20261218
-SUMMARY:Conférence de l'INSEAD : "Dans l'incertitude et les risques d'aujo
- urd'hui : faut-il du courage dans la tempête ?" par Isabelle Autissier
-LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Entrée libre. Les conférences son
- t en accès libre et gratuites. Les portes (ent…\n\nCycle de conférence
- s académiques organisé sur le campus de l'INSEAD.\n\nOrganisateur : http
- s://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnew
- s%5D=5718&cHash=db30e67f51781bd86e481230e362b63b\n\nFiche : https://fontai
- nebleaulive.fr/evenements/conference-de-l-insead-dans-l-incertitude-et-les
- -risques-d-a-fontainebleau-a139f212f7/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/conference-de-l-insead-dans-l-i
- ncertitude-et-les-risques-d-a-fontainebleau-a139f212f7/
-CATEGORIES:Culture & Ateliers
-GEO:48.40168;2.70086
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_a5d59b0896@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261217
 DTEND;VALUE=DATE:20261218
 SUMMARY:Le Noêl des aînés
@@ -3969,6 +4477,44 @@ DESCRIPTION:Horaires : 14h à 17h\n\nTarif : gratuit\n\nRetrait des bons ca
 URL:https://fontainebleaulive.fr/evenements/le-noel-des-aines-samois-sur-se
  ine-a5d59b0896/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_2717715ec6@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261217
+DTEND;VALUE=DATE:20261218
+SUMMARY:Marché de Noël
+LOCATION:24 route de Montarlot à Ecuelles\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 15h à 19h\n\nMarché de Noël proposant des produit
+ s locaux\, de l'artisanat et diverses animations.\n\nOrganisateur : https:
+ //www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-17-marchedenoel\n\nFich
+ e : https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-
+ orvanne-2717715ec6/\n\nInformations collectées automatiquement : vérifie
+ z-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-moret-loing-et-o
+ rvanne-2717715ec6/
+CATEGORIES:Culture & Ateliers
+GEO:48.36319;2.84084
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6510ecad38@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+SUMMARY:Cirque clownesque et musical " O'RAGE"
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
+ oing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 19h30\n\nReprésentation mêlant les arts du cirque\
+ , le clown et la musique.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-12-18-cirqueclownesqueetmusicalorage\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/cirque-clownesque-et-musical-o-rage-
+ montigny-sur-loing-6510ecad38/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cirque-clownesque-et-musical-o-
+ rage-montigny-sur-loing-6510ecad38/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -3992,7 +4538,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f89af79fe2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Le Bal de Noël des Cavaliers
@@ -4028,11 +4574,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7b73c182c1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261224
 SUMMARY:Marché de Noël
-LOCATION:Bourron-Marlotte
+LOCATION:Bourron-Marlotte\, Bourron-Marlotte
 DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Bourron-Marlo
  tte.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/805
  0980/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/ma
@@ -4046,7 +4592,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_412761fefa@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:RDV MÉDIATION NUMÉRIQUE À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -4067,7 +4613,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9be8c9c639@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261221
 SUMMARY:Salon de Noël des Jeux de Dames au Théâtre Municipal de Fontaine
@@ -4089,7 +4635,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_78cfc8340d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Art Urbain & workshops tous les 1er et 3eme samedis du mois
@@ -4110,7 +4656,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_af815ef7af@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Atelier "Lutins de la forêt"
@@ -4149,7 +4695,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
@@ -4168,7 +4714,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c2544a035d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Histoires de nains\, géants et farfadets
@@ -4205,7 +4751,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_73c768adc2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Le petit train du château de Fontainebleau
@@ -4226,17 +4772,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3e57063ae@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261223
 SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
 LOCATION:Place de l'Hôtel de Ville\, Moret-Loing-et-Orvanne
 DESCRIPTION:Horaires : De 10h00 à 19h00\n\nTarif : Gratuit\n\nMarché de N
- oël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://more
- t-loing-et-orvanne.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/
- marche-de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e5706
- 3ae/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
+ oël artisanal au cœur de Moret-sur-Loing.\n\nOrganisateur : https://www.
+ ccmsl.fr/actu-et-agendas/agenda.html#2026-12-19-marchedenoel\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-moret-su
+ r-loing-moret-loing-et-orvanne-d3e57063ae/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-artisanal-de-mor
  et-sur-loing-moret-loing-et-orvanne-d3e57063ae/
 CATEGORIES:Culture & Ateliers
@@ -4245,7 +4791,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b657dcc25@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Participez au défilé de traîneaux de Noël !
@@ -4283,7 +4829,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c6ecc3650f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Spectacle Jeune Public : Dans les Coulisses du Père Noël
@@ -4304,7 +4850,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5926ba7941@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Spectacle Jeune Public : Le Noël de Zoé et Zozotto
@@ -4343,7 +4889,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1829df4a32@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:SPECTACLE JEUNESSE "NASREDDINE" À LA MÉDIATHÈQUE DE LA CHARITÉ 
@@ -4385,7 +4931,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7fb1b701f9@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Visites guidées du musée
@@ -4422,7 +4968,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ba9644e68b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:Destination Noël
@@ -4441,6 +4987,25 @@ URL:https://fontainebleaulive.fr/evenements/destination-noel-dammarie-les-l
  ys-ba9644e68b/
 CATEGORIES:Scène & Spectacles
 GEO:48.5185;2.62419
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_ee57373bbe@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Marché de Noël "Episy fête Noël"
+LOCATION:Salle polyvalente Raymond Charles à Episy\, Moret-Loing-et-Orvann
+ e
+DESCRIPTION:Horaires : 10h à 18h\n\nÉvénement festif local intitulé Epi
+ sy fête Noël organisé dans la salle polyvalente.\n\nOrganisateur : http
+ s://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-20-marchedenoelepisyf
+ etenoel\n\nFiche : https://fontainebleaulive.fr/evenements/marche-de-noel-
+ episy-fete-noel-moret-loing-et-orvanne-ee57373bbe/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-episy-fete-noel-
+ moret-loing-et-orvanne-ee57373bbe/
+CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4464,7 +5029,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_53ec64110f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:Spectacle de la Nativité
@@ -4483,7 +5048,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f71a214d6e@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261221
 DTEND;VALUE=DATE:20261222
 SUMMARY:Ciné jeunesse "La mission de chien Noël"
@@ -4504,7 +5069,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_15c67f23c5@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261223
 DTEND;VALUE=DATE:20261224
 SUMMARY:Atelier "Carte de vœux brodée"
@@ -4524,7 +5089,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ac7e3eec07@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20261225
 SUMMARY:Marché Saint-Louis
@@ -4543,7 +5108,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d2738127ef@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20261225
 SUMMARY:Messes de Noël
@@ -4562,7 +5127,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b9f0b449aa@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20261225
 SUMMARY:Veillée de Noël
@@ -4581,7 +5146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_98f71a3219@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261225
 DTEND;VALUE=DATE:20261226
 SUMMARY:Culte de Noël
@@ -4600,7 +5165,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3a3916590@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261225
 DTEND;VALUE=DATE:20261226
 SUMMARY:Messe de Noël
@@ -4618,7 +5183,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_afe605852e@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261226
 DTEND;VALUE=DATE:20261227
 SUMMARY:RDV ACTUA’LITTÉ À LA MÉDIATHÈQUE DE LA CHARITÉ ROYALE
@@ -4658,7 +5223,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_73de22621f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261230
 DTEND;VALUE=DATE:20261231
 SUMMARY:Atelier aquarelle botanique "Au gui l'an neuf"
@@ -4716,7 +5281,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7444455eaa@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:J'ai mangé ma fourchette
@@ -4738,7 +5303,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_1077e57a94@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Marché Saint-Louis
@@ -4774,7 +5339,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4762e2cdf5@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Réveillon de la Saint-Sylvestre avec LB SALSA
@@ -4792,7 +5357,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_55d5b44a0c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270102
 SUMMARY:Réveillon de la St Sylvestre
@@ -4811,7 +5376,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_25ae1e91a6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Spectacle de la Saint-Sylvestre : "Fantasmagloria" au Théâtre mun
@@ -4833,7 +5398,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f1a9b77e3d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270102
 DTEND;VALUE=DATE:20270103
 SUMMARY:Art Urbain & workshops tous les 1er et 3eme samedis du mois
@@ -4872,7 +5437,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e4bf80fd4a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270108
 DTEND;VALUE=DATE:20270109
 SUMMARY:Cérémonie des vœux du Maire
@@ -4910,7 +5475,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c46e43d182@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:"PABLO MIRA CHERCHE ENCORE LE TITRE DE SON SPECTACLE" AU THÉÂTRE 
@@ -4931,7 +5496,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f970d6e89c@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:VISITE DE QUARTIER PROVENCEAUX
@@ -4951,7 +5516,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_5978341773@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:Visites guidées du musée
@@ -4971,7 +5536,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_613e066d0f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Ilyes Djadel - Déjà
@@ -5016,7 +5581,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ea0b1a2959@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:The Lord of the Rings & The Hobbit – A Symphonic Experience
@@ -5040,7 +5605,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_52e67e12f3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:The Music of Hans Zimmer & Others - A Celebration of Film Music
@@ -5065,7 +5630,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_da809f81eb@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270116
 DTEND;VALUE=DATE:20270117
 SUMMARY:"LE DERNIER CÈDRE DU LIBAN" AU THÉÂTRE MUNICIPAL DE FONTAINEBLEA
@@ -5106,7 +5671,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_75c25ef44a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270116
 DTEND;VALUE=DATE:20270117
 SUMMARY:Victoria Dauberville - Classique ?
@@ -5130,7 +5695,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d309d70b5@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270116
 DTEND;VALUE=DATE:20270117
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -5150,7 +5715,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b254bb73b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270117
 DTEND;VALUE=DATE:20270118
 SUMMARY:Concert : Frédéric François
@@ -5224,10 +5789,10 @@ DESCRIPTION:Tarif : De 49\,99 € à 79\,99 €\n\nTHE DARK SIDE OF THE MOO
  ey”\, »Us and Them« \, »Time" - plongez dans l'univers sonore intempo
  rel qui a remodelé la musique rock. Des mélodies uniques et envoûtantes
  \, des paroles…\n\nOrganisateur : https://www.fnacspectacles.com/artist/
- the-dark-side-ofthe-moon/the-dark-side-of-the-moon-en-concert-3980945/\n\n
- Fiche : https://fontainebleaulive.fr/evenements/the-dark-side-of-the-moon-
- en-concert-melun-30423f4689/\n\nInformations collectées automatiquement :
-  vérifiez-les auprès de l’organisateur.
+ the-dark-side-ofthe-moon/the-dark-side-of-the-moon-performed-by-friends-of
+ -floyd-3990954/\n\nFiche : https://fontainebleaulive.fr/evenements/the-dar
+ k-side-of-the-moon-en-concert-melun-30423f4689/\n\nInformations collectée
+ s automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/the-dark-side-of-the-moon-en-co
  ncert-melun-30423f4689/
 CATEGORIES:Scène & Spectacles
@@ -5236,7 +5801,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f04cdbf72d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270119
 DTEND;VALUE=DATE:20270120
 SUMMARY:The Wall - En concert
@@ -5282,31 +5847,8 @@ GEO:48.5185;2.62419
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:EVT_fb2c39233f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20270121
-DTEND;VALUE=DATE:20270122
-SUMMARY:Conférence de l'INSEAD : "La finance et son impact sur le climat :
-  une véritable transformation durable est-elle possible ?" par Lucie Pins
- on
-LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 20h30\n\nTarif : Entrée libre. Les conférences son
- t en accès libre et gratuites. Les portes (ent…\n\nCycle de conférence
- s académiques organisé sur le campus de l'INSEAD.\n\nOrganisateur : http
- s://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnew
- s%5D=5719&cHash=5e4d98dba3b23f0b2572903917624b0d\n\nFiche : https://fontai
- nebleaulive.fr/evenements/conference-de-l-insead-la-finance-et-son-impact-
- sur-le-clima-fontainebleau-fb2c39233f/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/conference-de-l-insead-la-finan
- ce-et-son-impact-sur-le-clima-fontainebleau-fb2c39233f/
-CATEGORIES:Culture & Ateliers
-GEO:48.40168;2.70086
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_fa55d203f8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270122
 SUMMARY:Rayss Bek
@@ -5344,7 +5886,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ed82fbd359@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270122
 DTEND;VALUE=DATE:20270123
 SUMMARY:With U2 Day
@@ -5428,7 +5970,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8cccbf91a6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270123
 DTEND;VALUE=DATE:20270125
 SUMMARY:Nuit de la lecture
@@ -5466,7 +6008,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ce37e283e8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270123
 DTEND;VALUE=DATE:20270124
 SUMMARY:Secret(s) Médical - Une comédie avec Michel Cymes
@@ -5490,7 +6032,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_8b46a32606@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270123
 DTEND;VALUE=DATE:20270124
 SUMMARY:Spectacle vivant & acrobatique : A Simple Space
@@ -5531,7 +6073,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_49b5889be9@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270124
 DTEND;VALUE=DATE:20270125
 SUMMARY:APÉRO-CONTES SUR LE THÈME "CHEVEUX ET POILS" À L'HÔTEL VICTORIA
@@ -5551,7 +6093,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_e8f82126e2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270124
 DTEND;VALUE=DATE:20270125
 SUMMARY:Et Pendant ce Temps Sigmund Freudonne
@@ -5593,7 +6135,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6c6998c8d3@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270128
 DTEND;VALUE=DATE:20270129
 SUMMARY:La Maison Tellier a 20 ans
@@ -5635,7 +6177,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_61dc186754@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270129
 DTEND;VALUE=DATE:20270130
 SUMMARY:CONCERT DES FAMILLES DU CONSERVATOIRE AU THÉÂTRE MUNICIPAL DE FON
@@ -5656,7 +6198,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f94adfc30b@fontainebleaulive.fr
-DTSTAMP:20261118T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Ciné-Débat « Le vivant qui se défend » et exposition photos d'
@@ -5677,7 +6219,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_26c11ea4a7@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Dirty Dancing - Le Tribute
@@ -5719,7 +6261,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f3630551c6@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Stage photographique magie de la forêt
@@ -5758,7 +6300,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_df0ba9c872@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -5778,7 +6320,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_69fdb9ce0a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
 SUMMARY:"SOUS LA NEIGE" AU THÉÂTRE MUNICIPAL DE FONTAINEBLEAU
@@ -5793,6 +6335,25 @@ URL:https://fontainebleaulive.fr/evenements/sous-la-neige-au-theatre-munici
  pal-de-fontainebleau-69fdb9ce0a/
 CATEGORIES:Scène & Spectacles
 GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_dc75592d45@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Concert : Mirages de l'enfance
+LOCATION:Avon\, Avon
+DESCRIPTION:Tarif : Plein tarif : 15 € (Non adhérent)\, Tarif réduit : 
+ 10 € (Adhérents).\n\nUn concert intitulé Mirages de l'enfance.\n\nOrga
+ nisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8037148/concert
+ -mirages-de-lenfance/\n\nFiche : https://fontainebleaulive.fr/evenements/c
+ oncert-mirages-de-l-enfance-avon-dc75592d45/\n\nInformations collectées a
+ utomatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-mirages-de-l-enfance-av
+ on-dc75592d45/
+CATEGORIES:Scène & Spectacles
+GEO:48.40088;2.72258
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5900,7 +6461,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6af382183f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270205
 DTEND;VALUE=DATE:20270206
 SUMMARY:L'Illusion comique au Théâtre municipal de Fontainebleau
@@ -5921,7 +6482,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_470b1e5a72@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270205
 DTEND;VALUE=DATE:20270206
 SUMMARY:Le Médecin Malgré Lui de Molière
@@ -5945,7 +6506,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_eb4801e996@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270206
 DTEND;VALUE=DATE:20270207
 SUMMARY:Fabien Olicard - Albert
@@ -5990,7 +6551,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a458dce5cc@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270213
 DTEND;VALUE=DATE:20270215
 SUMMARY:Blandy fête les fous
@@ -6010,7 +6571,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_dd672ac538@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270213
 DTEND;VALUE=DATE:20270214
 SUMMARY:Visite guidée de l'Ecole Militaire d'Equitation
@@ -6030,20 +6591,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_fff83c3576@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270214
 DTEND;VALUE=DATE:20270215
 SUMMARY:"NEW" AU THÉÂTRE MUNICIPAL DE FONTAINEBLEAU
 LOCATION:Théâtre municipal de Fontainebleau\, 9 rue Denecourt\, Fontaineb
  leau
-DESCRIPTION:Horaires : 17h30\n\nTarif : Billetterie théâtre\n\nPublic : D
- ès 8 ans\n\nUne troupe d'artistes improvise une comédie musicale unique 
- en direct\, intégrant les idées du public.\n\nOrganisateur : https://www
- .fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=57
- 20&cHash=8a32d7b2aa34381dfeca9a068c673fc4\n\nFiche : https://fontainebleau
- live.fr/evenements/new-au-theatre-municipal-de-fontainebleau-fff83c3576/\n
- \nInformations collectées automatiquement : vérifiez-les auprès de l’
- organisateur.
+DESCRIPTION:Horaires : 17h30\n\nTarif : A partir de 8 ans.\n\nPublic : Dès
+  8 ans\n\nUne troupe d'artistes improvise une comédie musicale unique en 
+ direct\, intégrant les idées du public.\n\nOrganisateur : https://www.fo
+ ntainebleau-tourisme.com/fr/fiche/7968195/new/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/new-au-theatre-municipal-de-fontainebleau-fff83c35
+ 76/\n\nInformations collectées automatiquement : vérifiez-les auprès de
+  l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/new-au-theatre-municipal-de-fon
  tainebleau-fff83c3576/
 CATEGORIES:Scène & Spectacles
@@ -6052,7 +6612,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_739f3fbe60@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270220
 DTEND;VALUE=DATE:20270221
 SUMMARY:Cine-Bal
@@ -6073,8 +6633,48 @@ GEO:48.5296;2.66378
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2eb6336494@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:Initiation à l'escalade de bloc en forêt
+LOCATION:Fontainebleau
+DESCRIPTION:Tarif : Adulte : 42 €\, Enfant (7-9 ans) : 34 €. Sortie sou
+ mise à un nombre minimum de p…\n\nAtelier d'initiation à la pratique d
+ e l'escalade de bloc au cœur de la forêt.\n\nOrganisateur : https://www.
+ fontainebleau-tourisme.com/fr/fiche/6666649/initiation-a-lescalade-de-bloc
+ -en-foret/\n\nFiche : https://fontainebleaulive.fr/evenements/initiation-a
+ -l-escalade-de-bloc-en-foret-fontainebleau-2eb6336494/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/initiation-a-l-escalade-de-bloc
+ -en-foret-fontainebleau-2eb6336494/
+CATEGORIES:Sport & Outdoor
+GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_143a5d8345@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:Nouveau ! Initiation au jeu de paume
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Plein tarif : 25 € (A partir de 7 ans). Durée : 1h15
+  Séance garantie à partir d…\n\nSession d'initiation sportive pour dé
+ couvrir les règles et la pratique du jeu de paume.\n\nOrganisateur : http
+ s://www.fontainebleau-tourisme.com/fr/fiche/7530889/nouveau-initiation-au-
+ jeu-de-paume/\n\nFiche : https://fontainebleaulive.fr/evenements/nouveau-i
+ nitiation-au-jeu-de-paume-fontainebleau-143a5d8345/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/nouveau-initiation-au-jeu-de-pa
+ ume-fontainebleau-143a5d8345/
+CATEGORIES:Sport & Outdoor
+GEO:48.40168;2.70086
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_98cedea51e@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270220
 DTEND;VALUE=DATE:20270222
 SUMMARY:Représentations de Fonact
@@ -6095,7 +6695,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_451c35e4c8@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270221
 DTEND;VALUE=DATE:20270222
 SUMMARY:Apéro-contes sur le thème "Petit et grand" à l'Hôtel Victoria
@@ -6115,7 +6715,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_91086014b2@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20270221
 DTEND;VALUE=DATE:20270222
 SUMMARY:Cine-Bal
@@ -6133,6 +6733,27 @@ DESCRIPTION:Tarif : 20 €\n\nQuand le bal fait son cinéma !Il offre\, à
 URL:https://fontainebleaulive.fr/evenements/cine-bal-melun-91086014b2/
 CATEGORIES:Scène & Spectacles
 GEO:48.5296;2.66378
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_33b8ece2c0@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270224
+SUMMARY:Ciné-Débat autour du film "La Ragazza di Bube" par FLC et Ciné-B
+ leau
+LOCATION:Cinéma Ermitage\, 6 rue de France 77300 Fontainebleau\, Fontaineb
+ leau
+DESCRIPTION:Horaires : 19h50\n\nProjection-débat du film La Ragazza di Bub
+ e dans le cadre d'un cycle sur la culture italienne.\n\nOrganisateur : htt
+ ps://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bne
+ ws%5D=5913&cHash=66075c46108c4cff22cb651bcfae25d0\n\nFiche : https://fonta
+ inebleaulive.fr/evenements/cine-debat-autour-du-film-la-ragazza-di-bube-pa
+ r-flc-et-cine-fontainebleau-33b8ece2c0/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cine-debat-autour-du-film-la-ra
+ gazza-di-bube-par-flc-et-cine-fontainebleau-33b8ece2c0/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

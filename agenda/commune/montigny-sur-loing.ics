@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_5565ce24a0@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Atelier d'écriture libre
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_4ad1ee39f0@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Vide ta chambre (Bourse aux enfants)
@@ -46,6 +46,139 @@ DESCRIPTION:Horaires : 10h00–17h00\n\nTarif : Entrée libre\n\nBourse aux
 URL:https://fontainebleaulive.fr/evenements/vide-ta-chambre-bourse-aux-enfa
  nts-montigny-sur-loing-4ad1ee39f0/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_dd3d56dc09@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261207
+SUMMARY:Brocante
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 19h\n\nVente de brocante organisée par l'ass
+ ociation Telami.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/ag
+ enda.html#2026-12-05-brocante\n\nFiche : https://fontainebleaulive.fr/even
+ ements/brocante-montigny-sur-loing-dd3d56dc09/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/brocante-montigny-sur-loing-dd3
+ d56dc09/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_27a0b94cf9@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Tous en en forme\, tous avec le Téléthon
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 16h\n\nAnimations sportives proposées en sou
+ tien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas
+ /agenda.html#2026-12-05-tousenenformetousavecletelethon\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/tous-en-en-forme-tous-avec-le-telethon-mo
+ ntigny-sur-loing-27a0b94cf9/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/tous-en-en-forme-tous-avec-le-t
+ elethon-montigny-sur-loing-27a0b94cf9/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_58d082e087@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Balade moto au profit du Téléthon
+LOCATION:Gymnase Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-
+ Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : Accueil à partir de 13h\, départ à 14h\n\nUne bal
+ ade à moto solidaire organisée au profit du Téléthon.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-balademotoau
+ profitdutelethon\n\nFiche : https://fontainebleaulive.fr/evenements/balade
+ -moto-au-profit-du-telethon-montigny-sur-loing-58d082e087/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-moto-au-profit-du-teleth
+ on-montigny-sur-loing-58d082e087/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c9fc3e02bc@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Ronde de capoeira au profit du Téléthon
+LOCATION:Gymnase Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-
+ Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 15h30\n\nUne démonstration de capoeira organisée p
+ our soutenir le Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-12-06-rondedecapoeiraauprofitdutelethon\n\nFiche
+  : https://fontainebleaulive.fr/evenements/ronde-de-capoeira-au-profit-du-
+ telethon-montigny-sur-loing-c9fc3e02bc/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ronde-de-capoeira-au-profit-du-
+ telethon-montigny-sur-loing-c9fc3e02bc/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_521eb2f761@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Atelier créatif intergénérationnel
+LOCATION:Bibliothèque municipale\, 2 rue du Loing à Montigny sur Loing\, 
+ Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 12h\n\nPublic : Dès 8 ans\n\nAtelier créati
+ f proposant la réalisation d'ornements de Noël\, lanternes et couronnes 
+ hivernales.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.
+ html#2026-12-12-ateliercreatifintergenerationnel\n\nFiche : https://fontai
+ nebleaulive.fr/evenements/atelier-creatif-intergenerationnel-montigny-sur-
+ loing-521eb2f761/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-creatif-intergeneration
+ nel-montigny-sur-loing-521eb2f761/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_0de798e8e7@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Marché de Noël
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
+ oing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 19h\n\nMarché de Noël organisé à Montigny
+ -sur-Loing pour trouver des idées de cadeaux et profiter de l'ambiance fe
+ stive.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#
+ 2026-12-12-marchedenoel\n\nFiche : https://fontainebleaulive.fr/evenements
+ /marche-de-noel-montigny-sur-loing-0de798e8e7/\n\nInformations collectées
+  automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-montigny-sur-loi
+ ng-0de798e8e7/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_6510ecad38@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+SUMMARY:Cirque clownesque et musical " O'RAGE"
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes à Montigny-sur-L
+ oing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 19h30\n\nReprésentation mêlant les arts du cirque\
+ , le clown et la musique.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-a
+ gendas/agenda.html#2026-12-18-cirqueclownesqueetmusicalorage\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/cirque-clownesque-et-musical-o-rage-
+ montigny-sur-loing-6510ecad38/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/cirque-clownesque-et-musical-o-
+ rage-montigny-sur-loing-6510ecad38/
+CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

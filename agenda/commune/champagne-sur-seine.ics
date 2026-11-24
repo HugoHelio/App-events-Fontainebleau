@@ -11,8 +11,27 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_26bbe14e1d@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Spectacle "Chant & Danse' au profit du Téléthon
+LOCATION:Palais des Rencontres\, 28 rue Pierre de Coubertin\, Champagne-sur
+ -Seine\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 20h30\n\nReprésentation de chant et danse organisé
+ e en soutien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-11-28-spectaclechantdanseauprofitdutelethon\n\nF
+ iche : https://fontainebleaulive.fr/evenements/spectacle-chant-et-danse-au
+ -profit-du-telethon-champagne-sur-seine-26bbe14e1d/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-chant-et-danse-au-pro
+ fit-du-telethon-champagne-sur-seine-26bbe14e1d/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_94d212633d@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Illuminations des vitrines de Noël
@@ -30,8 +49,26 @@ CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_2facfc771e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Découverte des oiseaux en hiver à la RNR des Seiglats
+LOCATION:Rue du Vieux Cimetière\, Champagne-sur-Seine
+DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
+ servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
+ ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
+ tps://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver-a-la
+ -rnr-des-seiglats-champagne-sur-seine-2facfc771e/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver
+ -a-la-rnr-des-seiglats-champagne-sur-seine-2facfc771e/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_c59964a29a@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Soirée Choucroute
@@ -46,25 +83,6 @@ DESCRIPTION:Horaires : 19h15\n\nUne soirée conviviale autour d'une choucro
 URL:https://fontainebleaulive.fr/evenements/soiree-choucroute-champagne-sur
  -seine-c59964a29a/
 CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_184d6eb8ca@fontainebleaulive.fr
-DTSTAMP:20261103T000000Z
-DTSTART;VALUE=DATE:20261212
-DTEND;VALUE=DATE:20261213
-SUMMARY:Sortie ornithologique « Les oiseaux en hiver »
-LOCATION:Réserve Naturelle Régionale (RNR) des Seiglats\, Champagne-sur-S
- eine
-DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
- servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
- ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oiseaux-en
- -hiver-champagne-sur-seine-184d6eb8ca/\n\nInformations collectées automat
- iquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/sortie-ornithologique-les-oisea
- ux-en-hiver-champagne-sur-seine-184d6eb8ca/
-CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

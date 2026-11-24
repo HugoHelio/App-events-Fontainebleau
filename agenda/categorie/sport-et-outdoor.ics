@@ -34,7 +34,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_368d533a60@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:RENDEZ-VOUS DE LA FORME SPÉCIAL TÉLÉTHON !
@@ -74,7 +74,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a88ff9e678@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:TÉLÉTHON À FONTAINEBLEAU
@@ -94,7 +94,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b02215f09b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Atelier Qi Gong
@@ -172,7 +172,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b3728f89dd@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Les Rendez-vous de la Solle - Course hippique (Obstacles)
@@ -187,6 +187,41 @@ DESCRIPTION:Horaires : Début en début d'après-midi\n\nTarif : Plein tari
  : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/les-rendez-vous-de-la-solle-cou
  rse-hippique-obstacles-fontainebleau-b3728f89dd/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_8866ef8b54@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Marche nocturne
+LOCATION:Parking du Clos\, Héricy
+DESCRIPTION:Horaires : 18h00\n\nRandonnée pédestre organisée en soirée 
+ au départ du parking du Clos.\n\nOrganisateur : https://www.hericy.fr/age
+ nda/#2026-12-04-marchenocturne\n\nFiche : https://fontainebleaulive.fr/eve
+ nements/marche-nocturne-hericy-8866ef8b54/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-nocturne-hericy-8866ef8b
+ 54/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_44d6b49e54@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Randonnée nocturne / Marchez pour le téléthon
+LOCATION:Gymnase de Vernou-La-Celle sur Seine\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 18h30\n\nMarche nocturne organisée dans le cadre de
+ s événements du Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-
+ et-agendas/agenda.html#2026-12-04-randonneenocturnemarchezpourletelethon\n
+ \nFiche : https://fontainebleaulive.fr/evenements/randonnee-nocturne-march
+ ez-pour-le-telethon-vernou-la-celle-sur-seine-44d6b49e54/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/randonnee-nocturne-marchez-pour
+ -le-telethon-vernou-la-celle-sur-seine-44d6b49e54/
 CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -230,6 +265,102 @@ CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_f0809746a6@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Découverte du Yoga ( initiation solidaire au profit du Téléthon)
+LOCATION:Dojo du Complexe sportif Fontaine Martin\, Vernou-la-Celle-sur-sei
+ ne\, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : 14h30 à 16h\n\nUne séance d'initiation solidaire a
+ u yoga\, organisée au profit du Téléthon.\n\nOrganisateur : https://www
+ .ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-decouverteduyogainitiatio
+ nsolidaireaupro\n\nFiche : https://fontainebleaulive.fr/evenements/decouve
+ rte-du-yoga-initiation-solidaire-au-profit-du-teletho-vernou-la-celle-sur-
+ seine-f0809746a6/\n\nInformations collectées automatiquement : vérifiez-
+ les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/decouverte-du-yoga-initiation-s
+ olidaire-au-profit-du-teletho-vernou-la-celle-sur-seine-f0809746a6/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_5bdee13b52@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Laser run au profit du Téléthon
+LOCATION:Complexe sportif de la Fontaine martin\, Vernou-La Celle sur Seine
+ \, Vernou-la-Celle-sur-Seine
+DESCRIPTION:Horaires : à partir de 14h\n\nUne épreuve de laser run organi
+ sée pour soutenir les actions du Téléthon.\n\nOrganisateur : https://ww
+ w.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-laserrunauprofitduteleth
+ on\n\nFiche : https://fontainebleaulive.fr/evenements/laser-run-au-profit-
+ du-telethon-vernou-la-celle-sur-seine-5bdee13b52/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/laser-run-au-profit-du-telethon
+ -vernou-la-celle-sur-seine-5bdee13b52/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_27a0b94cf9@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Tous en en forme\, tous avec le Téléthon
+LOCATION:Salle Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-Lo
+ ing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 10h à 16h\n\nAnimations sportives proposées en sou
+ tien au Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas
+ /agenda.html#2026-12-05-tousenenformetousavecletelethon\n\nFiche : https:/
+ /fontainebleaulive.fr/evenements/tous-en-en-forme-tous-avec-le-telethon-mo
+ ntigny-sur-loing-27a0b94cf9/\n\nInformations collectées automatiquement :
+  vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/tous-en-en-forme-tous-avec-le-t
+ elethon-montigny-sur-loing-27a0b94cf9/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_58d082e087@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Balade moto au profit du Téléthon
+LOCATION:Gymnase Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-
+ Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : Accueil à partir de 13h\, départ à 14h\n\nUne bal
+ ade à moto solidaire organisée au profit du Téléthon.\n\nOrganisateur 
+ : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-balademotoau
+ profitdutelethon\n\nFiche : https://fontainebleaulive.fr/evenements/balade
+ -moto-au-profit-du-telethon-montigny-sur-loing-58d082e087/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/balade-moto-au-profit-du-teleth
+ on-montigny-sur-loing-58d082e087/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c9fc3e02bc@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Ronde de capoeira au profit du Téléthon
+LOCATION:Gymnase Georges Barrois\, 24 rue des Hautes Bornes\, Montigny-sur-
+ Loing\, Montigny-sur-Loing
+DESCRIPTION:Horaires : 15h30\n\nUne démonstration de capoeira organisée p
+ our soutenir le Téléthon.\n\nOrganisateur : https://www.ccmsl.fr/actu-et
+ -agendas/agenda.html#2026-12-06-rondedecapoeiraauprofitdutelethon\n\nFiche
+  : https://fontainebleaulive.fr/evenements/ronde-de-capoeira-au-profit-du-
+ telethon-montigny-sur-loing-c9fc3e02bc/\n\nInformations collectées automa
+ tiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/ronde-de-capoeira-au-profit-du-
+ telethon-montigny-sur-loing-c9fc3e02bc/
+CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_1bf4d4afed@fontainebleaulive.fr
 DTSTAMP:20261109T000000Z
 DTSTART;VALUE=DATE:20261206
@@ -251,7 +382,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_599cf733fe@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -269,7 +400,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_773dc2d1ea@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
 SUMMARY:Les rendez-vous de la Solle – Courses d'obstacle
@@ -362,7 +493,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6d9b7e1830@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Course de Noël de Samois-sur-Seine (12ᵉ édition)
@@ -399,7 +530,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c6ecc3650f@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261225
 SUMMARY:Spectacle Jeune Public : Dans les Coulisses du Père Noël
@@ -534,6 +665,46 @@ DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 € | Enfant (6–12 an
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-thematique-en-for
  et-biodiversite-sentiers-des-barbizon-1200785f27/
 CATEGORIES:Sport & Outdoor
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_2eb6336494@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:Initiation à l'escalade de bloc en forêt
+LOCATION:Fontainebleau
+DESCRIPTION:Tarif : Adulte : 42 €\, Enfant (7-9 ans) : 34 €. Sortie sou
+ mise à un nombre minimum de p…\n\nAtelier d'initiation à la pratique d
+ e l'escalade de bloc au cœur de la forêt.\n\nOrganisateur : https://www.
+ fontainebleau-tourisme.com/fr/fiche/6666649/initiation-a-lescalade-de-bloc
+ -en-foret/\n\nFiche : https://fontainebleaulive.fr/evenements/initiation-a
+ -l-escalade-de-bloc-en-foret-fontainebleau-2eb6336494/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/initiation-a-l-escalade-de-bloc
+ -en-foret-fontainebleau-2eb6336494/
+CATEGORIES:Sport & Outdoor
+GEO:48.40781;2.70278
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_143a5d8345@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:Nouveau ! Initiation au jeu de paume
+LOCATION:Fontainebleau\, Fontainebleau
+DESCRIPTION:Tarif : Plein tarif : 25 € (A partir de 7 ans). Durée : 1h15
+  Séance garantie à partir d…\n\nSession d'initiation sportive pour dé
+ couvrir les règles et la pratique du jeu de paume.\n\nOrganisateur : http
+ s://www.fontainebleau-tourisme.com/fr/fiche/7530889/nouveau-initiation-au-
+ jeu-de-paume/\n\nFiche : https://fontainebleaulive.fr/evenements/nouveau-i
+ nitiation-au-jeu-de-paume-fontainebleau-143a5d8345/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/nouveau-initiation-au-jeu-de-pa
+ ume-fontainebleau-143a5d8345/
+CATEGORIES:Sport & Outdoor
+GEO:48.40168;2.70086
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

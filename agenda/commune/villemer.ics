@@ -11,8 +11,42 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_19ee0e7c7e@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Soirée dansante
+LOCATION:Salle polyvalente\, rue des Marronniers\, Villemer\, Villemer
+DESCRIPTION:Horaires : 19h30\n\nSoirée festive avec danse organisée à la
+  salle polyvalente.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas
+ /agenda.html#2026-11-28-soireedansante\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/soiree-dansante-villemer-19ee0e7c7e/\n\nInformations colle
+ ctées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/soiree-dansante-villemer-19ee0e
+ 7c7e/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_7f007e5f00@fontainebleaulive.fr
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Thé dansant
+LOCATION:Salle polyvalente\, rue des Marronniers\, Villemer\, Villemer
+DESCRIPTION:Horaires : 14h à 19h\n\nAprès-midi dansant ouvert à tous.\n\
+ nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-2
+ 9-thedansant\n\nFiche : https://fontainebleaulive.fr/evenements/the-dansan
+ t-villemer-7f007e5f00/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/the-dansant-villemer-7f007e5f00
+ /
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_31c178404b@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Repair Café MSL !

@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_a0096844bf@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël de Bourron-Marlotte
@@ -50,11 +50,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_377b8dffb1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël
-LOCATION:Bourron-Marlotte
+LOCATION:Bourron-Marlotte\, Bourron-Marlotte
 DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Bourron-Marlo
  tte.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/805
  0980/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/ma
@@ -68,11 +68,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_7b73c182c1@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
+DTSTAMP:20261124T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261224
 SUMMARY:Marché de Noël
-LOCATION:Bourron-Marlotte
+LOCATION:Bourron-Marlotte\, Bourron-Marlotte
 DESCRIPTION:Tarif : Gratuit.\n\nMarché de Noël organisé à Bourron-Marlo
  tte.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/805
  0980/marche-de-noel/\n\nFiche : https://fontainebleaulive.fr/evenements/ma
