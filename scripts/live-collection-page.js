@@ -142,6 +142,7 @@ ${LEAFLET_CSS}
 <div class="offbar" id="offbar" hidden></div>
 <button type="button" class="lbtn" id="lbtn" aria-expanded="false"><span data-ico="layers"></span></button>
 <button type="button" class="locbtn" id="locbtn"><span data-ico="pin"></span></button>
+<button type="button" class="offbtn" id="offbtn"><span data-ico="download"></span><span data-ico="check"></span></button>
 <div class="lpanel" id="lpanel"><h4 id="h-bases"></h4><div class="lgrid" id="bases"></div><h4 id="h-layers"></h4><div class="lgrid" id="overlays"></div></div>
 </section>
 <section class="screen" id="s-live"><div class="pad" id="live"></div></section>
@@ -199,7 +200,9 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .livebar b{color:var(--live)}.livebar .dot{width:10px;height:10px;border-radius:50%;background:var(--live);flex:none;animation:blink 1.4s infinite}
 @keyframes blink{50%{opacity:.3}}
 .lbtn,.locbtn{position:absolute;z-index:500;right:10px;width:44px;height:44px;border-radius:12px;border:0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.25);cursor:pointer;display:flex;align-items:center;justify-content:center}
-.lbtn{top:10px}.locbtn{bottom:16px}.locbtn.on .ico{color:#2f7cf6}
+.lbtn{top:10px}.locbtn{bottom:16px}
+.offbtn{position:absolute;z-index:500;right:10px;bottom:68px;width:44px;height:44px;border-radius:12px;border:0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.25);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink)}.offbtn .ico{font-size:21px}.offbtn [data-ico]{display:flex}.offbtn [data-ico]+[data-ico]{display:none}.offbtn.kept{opacity:.55}.offbtn.kept [data-ico]{display:none}.offbtn.kept [data-ico]+[data-ico]{display:flex}.offbtn:disabled{opacity:.4}
+.offbox{margin:8px 0}.btn.offsave{padding:8px 12px;font-size:13.5px;font-weight:600}.offkept{color:var(--muted);font-size:12.5px;margin:6px 0}.locbtn.on .ico{color:#2f7cf6}
 .lpanel{position:absolute;z-index:950;top:60px;right:10px;left:10px;background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.3);padding:12px 14px;display:none}
 .lpanel.on{display:block}.lpanel h4{margin:4px 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
@@ -358,7 +361,8 @@ const CLIENT = String.raw`
     awayDir: ['à {0}, vers {1}', '{0} away, to the {1}'], awayHere: ['à {0}, vous y êtes presque', '{0} away, almost there'],
     dirs: [['le nord', 'north'], ['le nord-est', 'north-east'], ['l’est', 'east'], ['le sud-est', 'south-east'], ['le sud', 'south'], ['le sud-ouest', 'south-west'], ['l’ouest', 'west'], ['le nord-ouest', 'north-west']],
     offSave: ['Garder la carte du coin hors ligne', 'Keep this area’s map offline'], offSaving: ['Carte en cours… {0} %', 'Saving the map… {0}%'],
-    offDone: ['✓ Carte gardée sur le téléphone', '✓ Map kept on the phone'], offPartial: ['Carte gardée en partie : réessayer', 'Map partly kept: try again'],
+    offKept: ['Carte du coin gardée sur le téléphone', 'This area’s map is kept on the phone'], offDoneMap: ['✓ La zone affichée est gardée hors ligne', '✓ The area on screen is kept offline'],
+    offZoom: ['Zoomez sur la zone de votre sortie, puis gardez-la', 'Zoom in on your outing’s area, then keep it'], offTip: ['Garder la zone affichée hors ligne', 'Keep the area on screen offline'], offPartial: ['Carte gardée en partie : réessayer', 'Map partly kept: try again'],
     offNo: ['Ce navigateur ne peut pas garder la carte', 'This browser cannot keep the map'], offNeedNet: ['Il faut du réseau pour garder la carte', 'You need a connection to keep the map'],
     offBar: ['Hors ligne : la carte montre les zones déjà vues. Lieux, distance et GPS marchent toujours.', 'Offline: the map shows the areas already seen. Places, distance and GPS still work.'],
     climbNote: ['En famille : on vient voir, on essaie les premiers blocs du circuit le plus facile, à son niveau. Crash-pad, parade, jamais sur rocher mouillé.', 'For families: come and look, try the first problems of the easiest circuit, at your own level. Crash pad, spotting, never on wet rock.'],
@@ -487,7 +491,7 @@ const CLIENT = String.raw`
     Array.prototype.forEach.call(document.querySelectorAll('[data-ico]'), function (n) { n.textContent = ''; n.appendChild(ico(n.getAttribute('data-ico'))); });
     Array.prototype.forEach.call(document.querySelectorAll('[data-t]'), function (n) { n.textContent = t(n.getAttribute('data-t')); });
     $('mebtn').setAttribute('aria-label', t('profile')); $('lbtn').setAttribute('aria-label', t('layers')); $('locbtn').setAttribute('aria-label', t('locate'));
-    $('offbar').textContent = t('offBar'); offBar(); $('h-bases').textContent = t('bases'); $('h-layers').textContent = t('overlays'); $('lu-h').textContent = t('level'); $('lu-ok').textContent = t('cont');
+    $('offbar').textContent = t('offBar'); offBar(); $('offbtn').title = t('offTip'); $('offbtn').setAttribute('aria-label', t('offTip')); $('h-bases').textContent = t('bases'); $('h-layers').textContent = t('overlays'); $('lu-h').textContent = t('level'); $('lu-ok').textContent = t('cont');
   }
   function cat(e) { return CATS[e.cat] || ['star', '#555']; }
   function catLabel(e) { return S.cats[e.cat] ? S.cats[e.cat][LI] : t('outing'); }
@@ -537,6 +541,8 @@ const CLIENT = String.raw`
     var before = levelOf(st.xp); st.xp += xp; save(); hud(); toast('+' + xp + ' XP · ' + why);
     var after = levelOf(st.xp);
     for (var n = before + 1; n <= after; n++) { luQueue.push(n); track('level/' + n); }
+    // Reaching level 4: the other layers come on, as they will at every visit from now on
+    if (before < ALL_LAYERS_LEVEL && after >= ALL_LAYERS_LEVEL) { MORE_LAYERS.forEach(function (k) { if (!LAYERS[k].on) { LAYERS[k].on = true; LAYERS[k].g.addTo(map); } }); panel(); }
     if (luQueue.length && !luShowing && !luTimer) luTimer = setTimeout(nextLevelUp, 900);
   }
   function nextLevelUp() {
@@ -611,6 +617,9 @@ const CLIENT = String.raw`
   };
   var BASES = [['plan', 'bPlan', '#e9e5dc'], ['doux', 'bDoux', '#ece3cf'], ['nuit', 'bNuit', '#2b3540']];
   var base = 'plan';
+  // 26/11, project lead: from level 4, every layer is on by default (quests, climbing, season too)
+  var ALL_LAYERS_LEVEL = 4, MORE_LAYERS = ['quests', 'climb', 'season'];
+  if (levelOf(st.xp) >= ALL_LAYERS_LEVEL) MORE_LAYERS.forEach(function (k) { LAYERS[k].on = true; });
   Object.keys(LAYERS).forEach(function (k) { if (LAYERS[k].on) LAYERS[k].g.addTo(map); });
   function panel() {
     var bs = $('bases'); bs.textContent = '';
@@ -732,16 +741,22 @@ const CLIENT = String.raw`
   // the forest, a player can also keep a SMALL area: at most TILE_CAP tiles, on a tap, never on
   // its own (OSM's tile policy forbids downloading large areas). Tiles go straight into the
   // same cache, so it works even before the service worker controls the page.
+  // 26/11, project lead: the area is kept IN TOWN, before leaving (no network in the forest). So:
+  // a button on the map keeps the area on screen, from anywhere; the forest places and forest
+  // group quests keep theirs too. Once kept, each says so quietly instead of asking again.
   var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', TILE_CACHE = 'fl-tiles', TILE_CAP = 300;
-  function tilesFor(b) {
+  function tileXY(lat, lng, z) {
+    var n = Math.pow(2, z), r = Math.PI / 180;
+    return [Math.floor((lng + 180) / 360 * n), Math.floor((1 - Math.log(Math.tan(lat * r) + 1 / Math.cos(lat * r)) / Math.PI) / 2 * n)];
+  }
+  function tileUrl(z, x, y) { return TILE_URL.replace('{z}', z).replace('{x}', x).replace('{y}', y); }
+  // Tiles of an area from zoom zmin to 17; the closest zooms are dropped first past TILE_CAP
+  function tilesFor(b, zmin) {
     var out = [];
-    for (var z = 13; z <= 17; z++) {
-      var n = Math.pow(2, z), r = Math.PI / 180;
-      var tx = function (lng) { return Math.floor((lng + 180) / 360 * n); };
-      var ty = function (lat) { return Math.floor((1 - Math.log(Math.tan(lat * r) + 1 / Math.cos(lat * r)) / Math.PI) / 2 * n); };
-      var x0 = tx(b.w), x1 = tx(b.e), y0 = ty(b.n), y1 = ty(b.s), lvl = [];
-      for (var x = x0; x <= x1; x++) for (var y = y0; y <= y1; y++) lvl.push(TILE_URL.replace('{z}', z).replace('{x}', x).replace('{y}', y));
-      if (out.length + lvl.length > TILE_CAP) break; // the closest zooms are dropped first
+    for (var z = zmin || 13; z <= 17; z++) {
+      var a = tileXY(b.n, b.w, z), c = tileXY(b.s, b.e, z), lvl = [];
+      for (var x = a[0]; x <= c[0]; x++) for (var y = a[1]; y <= c[1]; y++) lvl.push(tileUrl(z, x, y));
+      if (out.length + lvl.length > TILE_CAP) break;
       out = out.concat(lvl);
     }
     return out;
@@ -755,11 +770,18 @@ const CLIENT = String.raw`
     });
     return b;
   }
-  function saveArea(pts, m, btn, ev) {
-    if (!window.caches || !window.fetch) { toast(t('offNo')); return; }
-    if (!navigator.onLine) { toast(t('offNeedNet')); return; }
-    var urls = tilesFor(boundsOf(pts, m)), done = 0, failed = 0, i = 0;
-    btn.disabled = true; track(ev);
+  // Already kept: the zoom-z tile under each point is in the cache
+  function isKept(pts, z, fn) {
+    if (!window.caches) return fn(false);
+    caches.open(TILE_CACHE).then(function (c) {
+      return Promise.all(pts.map(function (p) { var k = tileXY(p.lat, p.lng, z); return c.match(tileUrl(z, k[0], k[1])); }));
+    }).then(function (hits) { fn(hits.every(Boolean)); }, function () { fn(false); });
+  }
+  function saveArea(urls, ev, onStep, onEnd) {
+    if (!window.caches || !window.fetch) { toast(t('offNo')); return onEnd(false); }
+    if (navigator.onLine === false) { toast(t('offNeedNet')); return onEnd(false); }
+    var done = 0, failed = 0, i = 0;
+    track(ev);
     caches.open(TILE_CACHE).then(function (c) {
       function next() {
         if (i >= urls.length) return Promise.resolve();
@@ -771,20 +793,44 @@ const CLIENT = String.raw`
             // Dated like sw.js does (x-saved): its tile() serves it for TILE_MAX_DAYS
             return r.blob().then(function (bl) { return c.put(u, new Response(bl, { headers: { 'content-type': 'image/png', 'x-saved': String(Date.now()) } })); });
           });
-        }).catch(function () { failed++; }).then(function () { done++; btn.textContent = t('offSaving', Math.round(done / urls.length * 100)); return next(); });
+        }).catch(function () { failed++; }).then(function () { done++; onStep(Math.round(done / urls.length * 100)); return next(); });
       }
       // Four at a time, like a browser showing the map
       return Promise.all([next(), next(), next(), next()]);
-    }).then(function () {
-      btn.textContent = failed ? t('offPartial') : t('offDone');
-      if (failed) btn.disabled = false;
-    }, function () { btn.disabled = false; btn.textContent = t('offSave'); toast(t('offNo')); });
+    }).then(function () { onEnd(!failed); }, function () { toast(t('offNo')); onEnd(false); });
   }
+  function keptNote() { var n = el('p', 'offkept'); n.appendChild(ico('check')); n.appendChild(document.createTextNode(' ' + t('offKept'))); return n; }
+  // The button of a place sheet or a group quest; once the area is kept, a quiet line instead
   function offlineBtn(pts, m, ev) {
-    var b = el('button', 'linkbtn', t('offSave')); b.type = 'button';
-    b.onclick = function () { saveArea(pts, m, b, ev); };
-    return b;
+    var box = el('div', 'offbox');
+    var b = el('button', 'btn soft offsave'); b.type = 'button';
+    b.appendChild(ico('download')); var lab = el('span', null, ' ' + t('offSave')); b.appendChild(lab);
+    b.onclick = function () {
+      b.disabled = true;
+      saveArea(tilesFor(boundsOf(pts, m)), ev, function (pc) { lab.textContent = ' ' + t('offSaving', pc); }, function (ok) {
+        if (ok) { box.textContent = ''; box.appendChild(keptNote()); keptCheck(); }
+        else { b.disabled = false; lab.textContent = ' ' + t('offPartial'); }
+      });
+    };
+    box.appendChild(b);
+    isKept(pts, 16, function (k) { if (k) { box.textContent = ''; box.appendChild(keptNote()); } });
+    return box;
   }
+  // The map button keeps what is on screen (zoomed in enough), from the current zoom down to 17
+  function keptCheck() {
+    var c = map.getCenter(), z = Math.max(13, Math.min(16, Math.round(map.getZoom())));
+    isKept([{ lat: c.lat, lng: c.lng }], z, function (k) { $('offbtn').classList.toggle('kept', k); });
+  }
+  $('offbtn').onclick = function () {
+    var btn = this;
+    if (map.getZoom() < 13) { toast(t('offZoom')); return; }
+    var bb = map.getBounds(), z0 = Math.max(13, Math.floor(map.getZoom()) - 1);
+    btn.disabled = true; toast(t('offSaving', 0));
+    saveArea(tilesFor({ n: bb.getNorth(), s: bb.getSouth(), e: bb.getEast(), w: bb.getWest() }, z0), 'jeu/offline/map', function () {}, function (ok) {
+      btn.disabled = false; toast(ok ? t('offDoneMap') : t('offPartial')); keptCheck();
+    });
+  };
+  map.on('moveend', keptCheck);
   // Offline, zoom 17 and beyond show the zoom-16 tiles enlarged: a kept quest area may stop at 16
   function offBar() {
     var off = navigator.onLine === false;
@@ -1301,7 +1347,6 @@ const CLIENT = String.raw`
         var m = el('span', 'qmedal'); m.style.background = tint(q.color); m.style.color = q.color; m.style.borderColor = q.color; m.appendChild(ico(q.icon)); c.appendChild(m);
         var bx = el('span', 'gqb'); bx.appendChild(el('b', null, q.name[LANG])); bx.appendChild(el('small', null, q.dur + ' · ' + q.km + ' km'));
         (q.pts[LANG] || []).forEach(function (p) { bx.appendChild(el('span', 'gpt', p)); });
-        if (!q.play) bx.appendChild(el('span', 'gpt soon', t('gSoon')));
         c.appendChild(bx); c.onclick = function () { GQ = q.id; renderShop(); };
         b2.appendChild(c);
       });

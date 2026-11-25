@@ -32,6 +32,7 @@ const SET = {
   fog: { l: 'M3 9h12M6 13h15M3 17h13M18 9h3' },
   lock: { l: 'M6 11h12v10H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3M12 15v2' },
   check: { l: 'M5 12.5l4.5 4.5L19 7.5' },
+  download: { l: 'M12 4v10.5M7.5 10L12 14.5 16.5 10M5 19.5h14' }, // 26/11: keep the map offline
   // 22/11: the quests' icons.
   calendar: { l: 'M4 5h16v16H4zM4 10h16M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01' },
   book: { l: 'M3 5.5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0zM12 5.5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0' },

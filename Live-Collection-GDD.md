@@ -240,6 +240,8 @@ premier coup d'œil et rapportent le plus d'XP.
   cueillette conseillée), le printemps du bloc.
 - **Éco-geste** (repris de Tèrra Aventura) : ramasser un déchet en forêt rapporte un badge, sur
   l'honneur.
+- **Calques** (26/11) : Quêtes, Grimpe et Saison sont éteints au début, puis allumés par défaut à partir du
+  niveau 4 (tous les calques).
 - Ordre à l'écran : cette semaine, puis toujours là, puis de saison. Chaque quête a sa médaille
   (icône au trait dans un cercle teinté).
 
@@ -334,7 +336,9 @@ réponse ! »). Chaque question se vérifie sur place avant publication (116d).
   téléchargement en masse pour le hors ligne : les règles d'OSM l'interdisent). **Carte sans réseau
   (25/11)** : `sw.js` garde les tuiles que le jeu a affichées ; sur la fiche d'un lieu en forêt et
   avant le départ d'une quête de groupe en forêt, « Garder la carte du coin hors ligne » charge une
-  petite zone (300 tuiles au plus, au toucher, jamais seul) ; hors ligne, un bandeau le dit, les
+  petite zone (300 tuiles au plus, au toucher, jamais seul) ; depuis le 26/11, un bouton sur la carte
+  garde la zone affichée, **depuis la ville, avant de partir** (en forêt il n'y a plus de réseau), et
+  passe en coche une fois la zone gardée ; hors ligne, un bandeau le dit, les
   zooms 17 et plus agrandissent les tuiles du zoom 16, et la distance s'accompagne de la direction
   (« à 650 m, vers le nord-est »), calculées sur le téléphone.
 - La couche événements lit `data.json`, avec la règle du carrousel du jeudi : `carouselPool()` de

@@ -27,7 +27,6 @@ const GROUP_STYLE = `
 .gl{font:inherit;font-size:13px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;cursor:pointer;color:var(--ink)}
 .gl[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
 .ghl{background:#f7f4ea;border-radius:10px;padding:8px 12px;font-size:14px;margin:6px 0}
-.gpt.soon{font-style:italic;color:var(--muted)}
 a.tier{text-decoration:none;color:inherit;border-color:var(--ink)}a.tier em{display:block;font-style:normal;font-weight:700;color:var(--ink);font-size:12px;margin-top:2px}
 .gjoin{margin-top:8px}
 .btn.wa{background:#1f7a4d}
@@ -78,7 +77,7 @@ const GROUP_CLIENT = String.raw`
     gCopied: ['Lien copié', 'Link copied'], gSeeRes: ['Voir notre résultat', 'See our result'], gResume: ['Reprendre la partie', 'Back to the game'], gReady: ['Commencer la partie', 'Start the game'],
     gMyGame: ['Ma partie de groupe (organisateur)', 'My group game (organiser)'], gJoin: ['Rejoindre', 'Join'], gOrganise: ['Organiser une sortie de groupe', 'Organise a group outing'],
     gGot: ['Résultat reçu : {0}', 'Result received: {0}'], gBadRes: ['Ce lien de résultat n’est pas lisible.', 'This result link cannot be read.'],
-    gSoon: ['Bientôt en partie de groupe', 'Group play coming soon'], gPay: ['Payer', 'Pay'],
+    gPay: ['Payer', 'Pay'],
     gWa: ['Envoyer sur WhatsApp', 'Send on WhatsApp'], gSms: ['Envoyer par SMS', 'Send by text message'], gOther: ['Autre application…', 'Another app…'],
     gToOrg: ['Le message est prêt, adressé à l’organisateur : il ne reste qu’à l’envoyer.', 'The message is ready, addressed to the organiser: just send it.'],
     gMsg: ['Fontainebleau Live Collection : l’équipe {0} finit avec {1} pts en {2}. Ouvrez ce lien pour l’ajouter au classement : {3}', 'Fontainebleau Live Collection: team {0} finishes with {1} pts in {2}. Open this link to add it to the ranking: {3}'],
