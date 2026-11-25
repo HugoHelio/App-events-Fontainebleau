@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_c65bd4ec2e@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël d'Ury
@@ -45,12 +45,11 @@ DESCRIPTION:Tarif : Tarif unique : Libre participation aux frais.\n\nConcer
 URL:https://fontainebleaulive.fr/evenements/concert-au-temps-de-proust-ury-
  d6d343fe1f/
 CATEGORIES:Scène & Spectacles
-GEO:48.34418;2.6029
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_55d5b44a0c@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270102
 SUMMARY:Réveillon de la St Sylvestre
@@ -64,7 +63,6 @@ DESCRIPTION:Tarif : Adulte : à partir de 120 €.\n\nSoirée de réveillon
 URL:https://fontainebleaulive.fr/evenements/reveillon-de-la-st-sylvestre-ur
  y-55d5b44a0c/
 CATEGORIES:Scène & Spectacles
-GEO:48.34418;2.6029
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

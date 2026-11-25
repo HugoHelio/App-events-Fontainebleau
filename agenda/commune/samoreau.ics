@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_a4c646a862@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Concert Symphonique en résonance
@@ -27,7 +27,6 @@ DESCRIPTION:Tarif : Adulte : à partir de 17 €\, Enfant : gratuit - 12ans
 URL:https://fontainebleaulive.fr/evenements/concert-symphonique-en-resonanc
  e-samoreau-a4c646a862/
 CATEGORIES:Scène & Spectacles
-GEO:48.42179;2.7587
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

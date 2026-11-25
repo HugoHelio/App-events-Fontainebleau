@@ -11,28 +11,8 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:EVT_110ee3c26e@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
-DTSTART;VALUE=DATE:20261125
-DTEND;VALUE=DATE:20261126
-SUMMARY:Rencontre santé – Atelier « cœur de femmes »
-LOCATION:Maison des associations – Rue Colonel Arnaud Beltrame\, Milly-la
- -Forêt
-DESCRIPTION:Horaires : 10h à 12h\n\nTarif : Gratuit\n\nAtelier consacré 
- à l'alimentation et aux besoins essentiels du corps humain dans le cadre 
- du programme Cœur de femmes.\n\nOrganisateur : https://www.milly-la-foret
- .fr/2026/11/06/25-11-26-rencontre-sante-atelier-coeur-de-femmes/\n\nFiche 
- : https://fontainebleaulive.fr/evenements/rencontre-sante-atelier-coeur-de
- -femmes-milly-la-foret-110ee3c26e/\n\nInformations collectées automatique
- ment : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/rencontre-sante-atelier-coeur-d
- e-femmes-milly-la-foret-110ee3c26e/
-CATEGORIES:Culture & Ateliers
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:EVT_36f7cc1646@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Marché de Noël & portes ouvertes à la MARPA
@@ -52,7 +32,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f44838703b@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Rencontre & dédicaces – Médiathèque
@@ -70,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_04bf65b834@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Samedis Switch – Médiathèque
@@ -85,12 +65,11 @@ DESCRIPTION:Horaires : 10h à 12h\n\nTarif : Accès libre\n\nSeul\, entre a
 URL:https://fontainebleaulive.fr/evenements/samedis-switch-mediatheque-mill
  y-la-foret-04bf65b834/
 CATEGORIES:Culture & Ateliers
-GEO:48.4017;2.45828
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a7357d514e@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Soirée Chill 15/18 ans
@@ -109,7 +88,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_3aac72b4c4@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Stage d’expression scénique – Club Mill’ Danses
@@ -126,33 +105,11 @@ DESCRIPTION:Horaires : Prenez votre place sur scène ! Un stage pour gagner
 URL:https://fontainebleaulive.fr/evenements/stage-d-expression-scenique-clu
  b-mill-danses-milly-la-foret-3aac72b4c4/
 CATEGORIES:Scène & Spectacles
-GEO:48.4017;2.45828
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:EVT_b8821574ed@fontainebleaulive.fr
-DTSTAMP:20261121T000000Z
-DTSTART;VALUE=DATE:20261129
-DTEND;VALUE=DATE:20261130
-SUMMARY:Stage de danse Lyrical Contemporary – Club Mill’ Danses
-LOCATION:Milly-la-Forêt\, Milly-la-Forêt
-DESCRIPTION:Horaires : De 10h30 à 12h\n\nTarif : 10 € adhérents / 15 
- € non-adhérents\n\nStage animé par Sara pour explorer le mouvement\, l
- a musicalité et l'interprétation entre danse contemporaine et émotions.
- \n\nOrganisateur : https://www.milly-la-foret.fr/2026/01/28/29-11-26-stage
- -de-danse-lyrical-contemporary-club-mill-danses/\n\nFiche : https://fontai
- nebleaulive.fr/evenements/stage-de-danse-lyrical-contemporary-club-mill-da
- nses-milly-la-foret-b8821574ed/\n\nInformations collectées automatiquemen
- t : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/stage-de-danse-lyrical-contempo
- rary-club-mill-danses-milly-la-foret-b8821574ed/
-CATEGORIES:Sport & Outdoor
-GEO:48.4019;2.45349
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_208a256050@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Rencontre santé – Atelier « cœur de femmes »
@@ -172,7 +129,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_9b71b32a91@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261204
 SUMMARY:Projection ‘La belle & la bête’ de Jean Cocteau – Ciné-Line
@@ -187,12 +144,11 @@ DESCRIPTION:Horaires : 20h\n\nTarif : 6 €\n\nOrganisateur : https://www.m
 URL:https://fontainebleaulive.fr/evenements/projection-la-belle-et-la-bete-
  de-jean-cocteau-cine-lines-milly-la-foret-9b71b32a91/
 CATEGORIES:Scène & Spectacles
-GEO:48.4017;2.45828
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_cf57824562@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon
@@ -208,12 +164,12 @@ DESCRIPTION:Horaires : Téléthon 2026 : les associations milliacoises se m
 URL:https://fontainebleaulive.fr/evenements/telethon-milly-la-foret-cf57824
  562/
 CATEGORIES:Culture & Ateliers
-GEO:48.4017;2.45828
+GEO:48.4019;2.45349
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_63cfe6ce64@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Le latin retrouvé – Médiathèque
@@ -232,7 +188,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_b30114cd44@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël Solidaire
@@ -250,7 +206,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_18062a504e@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:16ᵉ Salon Multi-collections & Bourse au profit du Téléthon
@@ -269,7 +225,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_42fa5cdce0@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Inauguration Exposition photographique : Pour une forêt vivante
@@ -304,12 +260,12 @@ DESCRIPTION:Horaires : 08h00–12h00\n\nTarif : Inscription payante au prof
 URL:https://fontainebleaulive.fr/evenements/run-et-bike-de-milly-la-foret-t
  elethon-1bf4d4afed/
 CATEGORIES:Sport & Outdoor
-GEO:48.4017;2.45828
+GEO:48.4019;2.45349
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_599cf733fe@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Stage de Zumba – Club Mill’ Danses
@@ -327,7 +283,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_c0ecb39c4c@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Téléthon – Inscriptions bourse aux jouets et à la puéricultur
@@ -405,7 +361,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b657dcc25@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:Participez au défilé de traîneaux de Noël !

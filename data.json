@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T22:32:42.146Z",
-  "windowEnd": "2027-02-24",
+  "generatedAt": "2026-11-25T09:49:42.353Z",
+  "windowEnd": "2027-02-25",
   "villagesScanAt": "2026-11-21",
   "geminiScanAt": "2026-11-21",
   "events": [
@@ -132,7 +132,7 @@
       "descriptionEn": "The \"L’œil dans le miroir\" exhibition focuses on photography as a trace of time: what do these old images tell us about our relationship with memory and history? How, since its…?",
       "url": "https://openagenda.com/bicentenaire-photographie-fr/events/loeil-dans-le-miroir-photographique",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/86938ce05ff3416699d7d40a7f051829.base.image.jpg",
       "source": "openagenda",
       "lastSeen": "2026-09-24",
@@ -215,7 +215,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-rosa-bonheur-la-druidesse-de-la-foret-de-fontaine-thomery-77325303c8/"
     },
     {
@@ -240,7 +240,7 @@
       "descriptionEn": "Investigations in the collections of the musée de Melun.",
       "url": "https://openagenda.com/bicentenaire-photographie-fr/events/photographes-a-melun-1850-1900",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/553785c3842e48b097455568a8d75085.base.image.jpg",
       "source": "openagenda",
       "lastSeen": "2026-10-08",
@@ -268,7 +268,7 @@
       "descriptionEn": "Exhibition of optical art and popular iconography playing on the repetition of dots and symbols.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7923927/exposition-wawapod/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-10-21",
       "pageUrl": "/evenements/exposition-d-art-contemporain-wawapod-fontainebleau-92e648a286/"
@@ -335,8 +335,8 @@
       "locationName": "École Militaire d'Équitation",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-10-10",
       "endDate": "2026-12-19",
@@ -349,7 +349,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-guidee-de-l-ecole-militaire-d-equitation-fontainebleau-7b79741d7e/"
     },
     {
@@ -374,7 +374,7 @@
       "descriptionEn": "Exceptional themed tours and an exhibition at the Château de Fontainebleau.",
       "url": "https://www.chateaudefontainebleau.fr/exposition-le-panache-des-lumieres-2/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "booking": {
         "url": "https://www.tiqets.com/fr/activites-attractions-fontainebleau-c66966/billets-pour-chateau-de-fontainebleau-billet-coupe-file-p974548/?partner=helioso-190732&tq_campaign=fontainebleaulive-chateau",
         "label": "Billet d’entrée du château",
@@ -384,7 +384,7 @@
         "offer": "tiqets-chateau-fontainebleau"
       },
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visites-les-boudoirs-de-marie-antoinette-et-exposition-le-pa-fontainebleau-b0c8e50750/"
     },
     {
@@ -409,7 +409,7 @@
       "descriptionEn": "A thematic guided tour of Marie-Antoinette's private apartments, including the boudoir Turc and boudoir d'Argent.",
       "url": "https://www.chateaudefontainebleau.fr/visites-exceptionnelles-les-boudoirs-de-marie-antoinette/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-10-18",
       "pageUrl": "/evenements/visites-guidees-exceptionnelles-les-boudoirs-de-marie-antoin-fontainebleau-70ec30ef01/"
@@ -436,9 +436,9 @@
       "descriptionEn": "A major heritage exhibition celebrating the 240th anniversary of the last royal stay, bringing together over 120 artworks from the Louvre and Versailles.",
       "url": "https://www.chateaudefontainebleau.fr/evenements/exposition-marie-antoinette-et-louis-xvi-a-fontainebleau-splendeur-et-douceur-de-vivre/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-marie-antoinette-et-louis-xvi-a-fontainebleau-spl-act002/"
     },
     {
@@ -463,7 +463,7 @@
       "descriptionEn": "An immersive guided tour through the heart of the Appartements Royaux during the reign of Louis XVI and Marie-Antoinette.",
       "url": "https://www.chateaudefontainebleau.fr/conferences-marie-antoinette-et-louis-xvi-entre-mythe-et-realite/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-11-21",
       "pageUrl": "/evenements/visites-guidees-thematiques-marie-antoinette-et-louis-xvi-fontainebleau-5cb728f120/"
@@ -490,9 +490,9 @@
       "descriptionEn": "An exhibition of signature oil paintings by Christoff Debusschere, Peintre Officiel de la Marine.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7561281/exposition-christoff-debusschere/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-christoff-debusschere-barbizon-90244cb0dc/"
     },
     {
@@ -517,7 +517,7 @@
       "descriptionEn": "Forest birds",
       "url": "https://openagenda.com/econature/events/sortie-ornithologique-en-foret-de-fontainebleau",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/e6ab15425b49400ebe7362f9775d0f1d.base.image.jpg",
       "source": "openagenda",
       "lastSeen": "2026-10-15",
@@ -545,7 +545,7 @@
       "descriptionEn": "Contemporary art exhibition presented at La Caravane des Arts.",
       "url": "https://www.ccmsl.fr/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-10-31",
       "pageUrl": "/evenements/exposition-d-art-contemporain-simon-vaseux-moret-loing-et-orvanne-77ca6f8048/"
     },
@@ -571,7 +571,7 @@
       "descriptionEn": "Fairytale Christmas decorations throughout the château's reception rooms, magical illuminations in the gardens of Le Nôtre, a temporary ice rink, and a monumental sound and light show.",
       "url": "https://vaux-le-vicomte.com/evenements/le-grand-noel/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-09-23",
       "pageUrl": "/evenements/le-grand-noel-de-vaux-le-vicomte-voyage-a-travers-le-monde-maincy-act003/"
     },
@@ -623,9 +623,9 @@
       "descriptionEn": "The town of Arbonne-la-Forêt hosts the Festival de Théâtre du Hérisson.",
       "url": "https://bourronmarlotte.fr/agenda/festival-de-theatre-du-herisson/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/festival-de-theatre-du-herisson-bourron-marlotte-5dcecb8c48/"
     },
     {
@@ -650,9 +650,9 @@
       "descriptionEn": "Learn about waste reduction through exhibitions, fun workshops, and roundtables at the media library.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-21-lasemaineeuropeennedereductiondesdechets",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/la-semaine-europeenne-de-reduction-des-dechets-moret-loing-et-orvanne-ec62b64761/"
     },
     {
@@ -677,9 +677,9 @@
       "descriptionEn": "Autumn exhibition presented at the Salle de l'Orangerie in Héricy.",
       "url": "https://www.hericy.fr/agenda/#2026-11-21-salondautomne",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/salon-d-automne-hericy-c5d760601a/"
     },
     {
@@ -704,9 +704,9 @@
       "descriptionEn": "Discover circular economy tips and test your eco-knowledge with an interactive wheel game.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-21-semainedereductiondesdechetscircularoule",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/semaine-de-reduction-des-dechets-circularoulette-moret-loing-et-orvanne-484d605c87/"
     },
     {
@@ -733,118 +733,8 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-les-recycl-arts-quand-les-materiaux-recuperes-dev-moret-loing-et-orvanne-1b711d8ba8/"
-    },
-    {
-      "id": "EVT_b490cc3394",
-      "title": "Apéro célibataires — Fontainebleau",
-      "category": "Nature & Environnement",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "Centre-ville de Fontainebleau",
-      "lat": 48.40908,
-      "lng": 2.70177,
-      "geoSource": "feed",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-11-24",
-      "endDate": "2026-11-24",
-      "schedule": "",
-      "price": "",
-      "organizer": "",
-      "description": "Apéro convivial entre célibataires randonneurs à Fontainebleau : petit groupe (8 max), ambiance détendue. Inscription gratuite sur RandoDate.",
-      "descriptionEn": "Friendly drinks for single hikers in Fontainebleau: small group (8 max), relaxed atmosphere. Free registration on RandoDate.",
-      "url": "https://openagenda.com/randodate/events/apero-celibataires-fontainebleau-142194",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-21",
-      "image": "https://img.openagenda.com/main/8c962a9cfa4a412ea2aaecfa277d5ea7.base.image.jpg",
-      "source": "openagenda",
-      "lastSeen": "2026-11-15",
-      "pageUrl": "/evenements/apero-celibataires-fontainebleau-b490cc3394/"
-    },
-    {
-      "id": "EVT_b4a4708858",
-      "title": "Apéro célibataires — Melun",
-      "category": "Nature & Environnement",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Melun",
-      "locationName": "Centre-ville de Melun",
-      "lat": 48.5457,
-      "lng": 2.65356,
-      "geoSource": "feed",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-11-24",
-      "endDate": "2026-11-24",
-      "schedule": "",
-      "price": "",
-      "organizer": "",
-      "description": "Apéro convivial entre célibataires randonneurs à Melun : petit groupe (8 max), ambiance détendue. Inscription gratuite sur RandoDate.",
-      "descriptionEn": "Friendly drinks for single hikers in Melun: small group (8 max), relaxed atmosphere. Free registration on RandoDate.",
-      "url": "https://openagenda.com/randodate/events/apero-celibataires-melun-1376269",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-21",
-      "image": "https://img.openagenda.com/main/f26e65656c014886ba7c6f74dda2ff28.base.image.jpg",
-      "source": "openagenda",
-      "lastSeen": "2026-11-15",
-      "pageUrl": "/evenements/apero-celibataires-melun-b4a4708858/"
-    },
-    {
-      "id": "EVT_a8597f1bd4",
-      "title": "Chorale participative BLO POP",
-      "category": "Scène & Spectacles",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "Salon d'Honneur de l'Hôtel de Ville, 40 rue grande",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "city",
-      "geoApprox": true,
-      "dateType": "event",
-      "startDate": "2026-11-24",
-      "endDate": "2026-11-24",
-      "schedule": "19h à 20h30",
-      "price": "",
-      "organizer": "Chorale BLO POP et Ville de Fontainebleau",
-      "description": "Chorale participative organisée par BLO POP et la ville dans le cadre de la lutte contre les violences faites aux femmes.",
-      "descriptionEn": "Participatory choir organised by BLO POP and the city as part of the fight against violence against women.",
-      "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5975&cHash=02c5740ed6a4aa853538c027bacfc7d8",
-      "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-21",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/chorale-participative-blo-pop-fontainebleau-a8597f1bd4/"
-    },
-    {
-      "id": "EVT_729f598408",
-      "title": "CINÉ-DÉBAT AUTOUR DU FILM \"POUR UNE POIGNÉE DE DOLLARS\" PAR FLC ET CINÉ-BLEAU",
-      "category": "Scène & Spectacles",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "Cinéma Ermitage, 6 rue de France 77300 Fontainebleau",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-11-24",
-      "endDate": "2026-11-24",
-      "schedule": "19h50",
-      "price": "7€",
-      "organizer": "FLC",
-      "description": "Projection-débat en VOSTF du film mythique de Sergio Leone dans le cadre d'un cycle thématique dédié à la culture italienne.",
-      "descriptionEn": "Screening and debate (VOSTF) of Sergio Leone's legendary film as part of a series dedicated to Italian culture.",
-      "url": "https://www.flc-fontainebleau.fr/agenda-des-evenements/421/cine-debat/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-24",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/cine-debat-autour-du-film-pour-une-poignee-de-dollars-par-fl-fontainebleau-729f598408/"
     },
     {
       "id": "EVT_d3fca71a44",
@@ -856,8 +746,8 @@
       "locationName": "",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-24",
       "endDate": "2026-11-28",
@@ -868,9 +758,9 @@
       "descriptionEn": "Exhibition of sculptures and installations made from recycled objects by Robin Lacassin, organised for the European Week for Waste Reduction.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-24-expositionrecyrculaire",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-recyrculaire-moret-loing-et-orvanne-d3fca71a44/"
     },
     {
@@ -897,7 +787,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-duo-parents-enfants-moret-loing-et-orvanne-1a2a701fc9/"
     },
     {
@@ -910,8 +800,8 @@
       "locationName": "",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-25",
       "endDate": "2026-11-25",
@@ -922,9 +812,9 @@
       "descriptionEn": "Series of three practical workshops for parents of children with autism spectrum disorder, led by speech therapist Julie Milard.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-25-enattendantlorthojefaisquoi",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/en-attendant-l-ortho-je-fais-quoi-moret-loing-et-orvanne-5e08c56d66/"
     },
     {
@@ -949,9 +839,9 @@
       "descriptionEn": "Introductory drama workshop for children aged 7 to 10.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-25-initiationautheatre710ans",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/initiation-au-theatre-7-10-ans-thomery-923567d599/"
     },
     {
@@ -978,35 +868,8 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/journee-internationale-de-lutte-contre-les-violences-faites-fontainebleau-d7e8c47479/"
-    },
-    {
-      "id": "EVT_110ee3c26e",
-      "title": "Rencontre santé – Atelier « cœur de femmes »",
-      "category": "Culture & Ateliers",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Milly-la-Forêt",
-      "locationName": "Maison des associations – Rue Colonel Arnaud Beltrame",
-      "lat": 48.4017,
-      "lng": 2.45828,
-      "geoSource": "city",
-      "geoApprox": true,
-      "dateType": "event",
-      "startDate": "2026-11-25",
-      "endDate": "2026-11-25",
-      "schedule": "10h à 12h",
-      "price": "Gratuit",
-      "organizer": "Mutualité Française Île-de-France",
-      "description": "Atelier consacré à l'alimentation et aux besoins essentiels du corps humain dans le cadre du programme Cœur de femmes.",
-      "descriptionEn": "Workshop on nutrition and the body's essential needs, organized as part of the Cœur de femmes program.",
-      "url": "https://www.milly-la-foret.fr/2026/11/06/25-11-26-rencontre-sante-atelier-coeur-de-femmes/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/rencontre-sante-atelier-coeur-de-femmes-milly-la-foret-110ee3c26e/"
     },
     {
       "id": "EVT_03cad66ce8",
@@ -1033,7 +896,7 @@
       "urlCheckedAt": "2026-11-21",
       "image": "https://img.openagenda.com/main/31d3a8aceaa5490199e52a106711beb8.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-10-04",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/festival-musical-jazz-au-theatre-fontainebleau-03cad66ce8/"
     },
     {
@@ -1060,7 +923,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/portes-ouvertes-de-la-restauration-scolaire-de-veneux-les-sa-veneux-les-sablons-a63157f320/"
     },
     {
@@ -1087,7 +950,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/3e-edition-du-forum-ess-mode-d-emploi-fontainebleau-675d7993e4/"
     },
     {
@@ -1162,43 +1025,16 @@
       "startDate": "2026-11-27",
       "endDate": "2026-11-27",
       "schedule": "20h30",
-      "price": "",
-      "organizer": "",
+      "price": "Entrée libre",
+      "organizer": "Collectif 1000 Sabords",
       "description": "Projection du film de Marie-Monique Robin sur la transition écologique exemplaire du village d'Ungersheim.",
       "descriptionEn": "Screening of Marie-Monique Robin's film on the exemplary ecological transition of the village of Ungersheim.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-27-documentairequestcequonattend",
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/documentaire-qu-est-ce-qu-on-attend-saint-mammes-db9d848336/"
-    },
-    {
-      "id": "EVT_c3d86e43ae",
-      "title": "L'Avare",
-      "category": "Culture & Ateliers",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "6 rue des Sablons Âne Vert Théâtre",
-      "lat": 48.4049,
-      "lng": 2.69855,
-      "geoSource": "venue",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-11-27",
-      "endDate": "2026-11-27",
-      "schedule": "",
-      "price": "",
-      "organizer": "",
-      "description": "Le chef d’œuvre de Molière nous plonge tout en rire et en profondeur sur la terrible avarice d’Harpagon. Avec la Compagnie Naphralytep.",
-      "descriptionEn": "Molière's masterpiece immerses us with laughter and depth into Harpagon's terrible avarice. With Compagnie Naphralytep.",
-      "url": "https://www.anevert.fr/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-24",
-      "source": "datatourisme",
-      "lastSeen": "2026-10-21",
-      "pageUrl": "/evenements/l-avare-fontainebleau-c3d86e43ae/"
     },
     {
       "id": "EVT_01417d9f53",
@@ -1210,8 +1046,8 @@
       "locationName": "",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-27",
       "endDate": "2026-11-27",
@@ -1222,9 +1058,9 @@
       "descriptionEn": "Roundtable and book signing with Emmanuelle Durand to discuss second-hand clothing channels and textile overconsumption.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-27-tablerondelenversdesfripes",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/table-ronde-l-envers-des-fripes-moret-loing-et-orvanne-01417d9f53/"
     },
     {
@@ -1277,7 +1113,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-basuyau-vaux-le-penil-3b337505a6/"
     },
     {
@@ -1304,7 +1140,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/weekend-de-la-transition-saint-mammes-257ae87cb3/"
     },
     {
@@ -1331,7 +1167,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-d-ecriture-libre-montigny-sur-loing-5565ce24a0/"
     },
     {
@@ -1358,7 +1194,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-danse-pour-adultes-samois-sur-seine-fa9c61a161/"
     },
     {
@@ -1371,8 +1207,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -1383,9 +1219,9 @@
       "descriptionEn": "Welcome ceremony for new Bellifontain residents arriving in 2025 or 2026, featuring coffee and a chance to meet the Mayor and elected officials.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5963&cHash=2b4d94536ec007ea734b259e2baed178",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/ceremonie-des-nouveaux-habitants-fontainebleau-f84f401100/"
     },
     {
@@ -1431,7 +1267,7 @@
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
       "schedule": "20h30",
-      "price": "",
+      "price": "Participation libre",
       "organizer": "Collectif 1000 Sabords",
       "description": "Concert du groupe Domkiris Expérience organisé par le Collectif 1000 Sabords.",
       "descriptionEn": "Concert by the group Domkiris Expérience, organised by the Collectif 1000 Sabords.",
@@ -1439,7 +1275,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-domkiris-experience-saint-mammes-be3f148623/"
     },
     {
@@ -1466,7 +1302,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-intime-nougaro-samois-sur-seine-574bc03521/"
     },
     {
@@ -1493,7 +1329,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cycle-de-conferences-marie-antoinette-et-louis-xvi-entre-myt-fontainebleau-6129d65ad6/"
     },
     {
@@ -1518,9 +1354,9 @@
       "descriptionEn": "Exhibition of paintings by Laurence Martins and Marc Lecomte at the residence La Canopée.",
       "url": "https://www.saint-mammes.com/exposition-de-peintures-a-la-canopee/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-de-peintures-a-la-canopee-saint-mammes-7b8165a396/"
     },
     {
@@ -1547,7 +1383,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-vente-d-aquarelle-avon-bb3d6c0948/"
     },
     {
@@ -1572,9 +1408,9 @@
       "descriptionEn": "Festival showcasing local brewers and winemakers.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-festivaldesbrasseursetvignerons",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/festival-des-brasseurs-et-vignerons-moret-loing-et-orvanne-46cf3b77c1/"
     },
     {
@@ -1601,7 +1437,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/flc-fait-son-show-ensemble-hauts-en-couleur-telethon-fontainebleau-06a1dae273/"
     },
     {
@@ -1655,7 +1491,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/grand-loto-de-l-usmvs-patinage-a-veneux-les-sablons-bcb0afa4a8/"
     },
     {
@@ -1680,9 +1516,9 @@
       "descriptionEn": "Molière's masterpiece immerses us with laughter and depth into Harpagon's terrible avarice. With Compagnie Naphralytep.",
       "url": "https://www.anevert.fr/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "datatourisme",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/l-avare-fontainebleau-aa84102806/"
     },
     {
@@ -1693,8 +1529,8 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Place de la République",
-      "lat": 48.40781,
-      "lng": 2.70278,
+      "lat": 48.40634,
+      "lng": 2.70104,
       "geoSource": "ban",
       "geoApprox": false,
       "dateType": "event",
@@ -1707,9 +1543,9 @@
       "descriptionEn": "A festive gathering in town to watch the launch and switching on of the Christmas lights.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8038358/lancement-des-illuminations-de-noel-a-fontainebleau/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/lancement-des-illuminations-de-noel-a-fontainebleau-476b38a554/"
     },
     {
@@ -1734,9 +1570,9 @@
       "descriptionEn": "Board a guided tourist train tour to explore the grounds of the Château de Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7610902/le-petit-train-du-chateau-de-fontainebleau/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-petit-train-du-chateau-de-fontainebleau-187c641b5b/"
     },
     {
@@ -1763,7 +1599,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-cafes-de-la-transition-comment-ameliorer-le-confort-de-s-montarlot-bdb9194a09/"
     },
     {
@@ -1776,8 +1612,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -1788,9 +1624,9 @@
       "descriptionEn": "Literary meetup for passionate young readers to discuss and share their favourite books.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5930&cHash=14b3a4880b1b710777d2ba7b22cda1ec",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-livronautes-a-la-mediatheque-de-la-charite-royale-fontainebleau-2eb93535c8/"
     },
     {
@@ -1815,9 +1651,9 @@
       "descriptionEn": "Friendly Christmas market in Thomery.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-marchedenoel",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-thomery-e6c3c4a3c1/"
     },
     {
@@ -1842,9 +1678,9 @@
       "descriptionEn": "Christmas market with stallholders, workshops, choir, food options, and an open day at the residence.",
       "url": "https://www.milly-la-foret.fr/2026/11/06/28-11-26-marche-de-noel-portes-ouvertes-a-la-marpa/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-et-portes-ouvertes-a-la-marpa-milly-la-foret-36f7cc1646/"
     },
     {
@@ -1898,7 +1734,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-d-ury-c65bd4ec2e/"
     },
     {
@@ -1925,7 +1761,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-du-28-novembre-avon-4bb2ce1dc6/"
     },
     {
@@ -1951,7 +1787,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-du-pole-fontainebleau-1ee8513661/"
     },
     {
@@ -1978,7 +1814,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-et-vente-de-couronnes-de-l-avent-fontainebleau-62f4039179/"
     },
     {
@@ -2003,10 +1839,10 @@
       "descriptionEn": "La Nuit de l’Orientation in Seine-et-Marne is a free annual event dedicated to providing guidance and career information for young people and their families.",
       "url": "https://openagenda.com/semaine-industrie-2026/events/nuit-de-lorientation-4446651",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/08565d3121da456f895fdce8e565dd46.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/nuit-de-l-orientation-avon-3763ad99a2/"
     },
     {
@@ -2042,7 +1878,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/philippe-caveriviere-tu-crois-que-c-est-une-bonne-idee-dammarie-les-lys-2b486c9aad/"
     },
     {
@@ -2072,33 +1908,6 @@
       "pageUrl": "/evenements/randonnee-nature-la-traversee-des-plus-beaux-sentiers-de-la-arbonne-la-foret-3a721eb904/"
     },
     {
-      "id": "EVT_023370d623",
-      "title": "RDV de la Forme spécial Téléthon",
-      "category": "Sport & Outdoor",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "Gymnase Lucien Martinel",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "city",
-      "geoApprox": true,
-      "dateType": "event",
-      "startDate": "2026-11-28",
-      "endDate": "2026-11-28",
-      "schedule": "Selon les activités : 9h50-11h ou 11h15-12h15",
-      "price": "Gratuit",
-      "organizer": "FLC",
-      "description": "Proposition \"Dancehall\" animée par Valéria Mevoli dans le cadre du Rendez-Vous de la Forme spécial Téléthon.",
-      "descriptionEn": "\"Dancehall\" session led by Valéria Mevoli as part of the Rendez-Vous de la Forme Téléthon special.",
-      "url": "https://www.flc-fontainebleau.fr/agenda-des-evenements/436/rdv-de-la-forme-special-telethon/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-24",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/rdv-de-la-forme-special-telethon-fontainebleau-023370d623/"
-    },
-    {
       "id": "EVT_f44838703b",
       "title": "Rencontre & dédicaces – Médiathèque",
       "category": "Culture & Ateliers",
@@ -2122,7 +1931,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rencontre-et-dedicaces-mediatheque-milly-la-foret-f44838703b/"
     },
     {
@@ -2135,8 +1944,8 @@
       "locationName": "Gymnase Lucien Martinel, Route de l’Ermitage",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -2147,9 +1956,9 @@
       "descriptionEn": "A new free edition of Rendez-vous de la forme, a day dedicated to sports for all as part of the Téléthon.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5838&cHash=6b45acd93924c5226287352833a8e832",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rendez-vous-de-la-forme-special-telethon-fontainebleau-368d533a60/"
     },
     {
@@ -2162,8 +1971,8 @@
       "locationName": "Médiathèque de Milly-la-Forêt",
       "lat": 48.4017,
       "lng": 2.45828,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -2174,9 +1983,9 @@
       "descriptionEn": "Alone, with friends or with family, come and share a friendly moment playing Nintendo Switch!",
       "url": "https://www.milly-la-foret.fr/2026/01/28/28-11-26-samedis-switch-mediatheque/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/samedis-switch-mediatheque-milly-la-foret-04bf65b834/"
     },
     {
@@ -2189,8 +1998,8 @@
       "locationName": "",
       "lat": 48.39184,
       "lng": 2.84915,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -2203,7 +2012,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/soiree-annuelle-de-l-avent-vernou-la-celle-sur-seine-4cba1cd0d4/"
     },
     {
@@ -2230,7 +2039,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/soiree-chill-15-18-ans-milly-la-foret-a7357d514e/"
     },
     {
@@ -2257,7 +2066,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/soiree-dansante-villemer-19ee0e7c7e/"
     },
     {
@@ -2284,7 +2093,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/soiree-salsa-bachata-kizomba-les-sosies-samois-sur-seine-99be6b818d/"
     },
     {
@@ -2297,8 +2106,8 @@
       "locationName": "",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -2309,7 +2118,7 @@
       "descriptionEn": "A relaxing evening featuring access to the saunas, steam room, salt cave, and optional massages at the aquatic center.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-soireezen",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-10-28",
       "pageUrl": "/evenements/soiree-zen-moret-loing-et-orvanne-4f39e6a1fe/"
@@ -2338,7 +2147,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/solidarite-en-couleurs-atelier-street-art-pour-le-telethon-fontainebleau-60034ec1f1/"
     },
     {
@@ -2363,9 +2172,9 @@
       "descriptionEn": "Guided tour showcasing local biodiversity.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-28-sortienaturelabiodiversitedhieretdaujour",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/sortie-nature-la-biodiversite-d-hier-et-d-aujourd-hui-vernou-la-celle-sur-seine-2ca2fbc3e4/"
     },
     {
@@ -2392,7 +2201,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-chant-et-danse-au-profit-du-telethon-champagne-sur-seine-26bbe14e1d/"
     },
     {
@@ -2405,8 +2214,8 @@
       "locationName": "Gymnase Martinel",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -2417,9 +2226,9 @@
       "descriptionEn": "An inclusive, charitable sports day organised for the Téléthon to support research and raise awareness about disability and donation.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5964&cHash=d17f045233a5efd15815baafda5639db",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/telethon-a-fontainebleau-a88ff9e678/"
     },
     {
@@ -2473,7 +2282,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/troc-aux-plantes-saint-mammes-59081e6304/"
     },
     {
@@ -2500,7 +2309,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/vide-dressing-ados-adultes-de-thomery-4d6759674c/"
     },
     {
@@ -2513,8 +2322,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-28",
       "endDate": "2026-11-28",
@@ -2527,7 +2336,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visites-guidees-du-musee-barbizon-edd27034e8/"
     },
     {
@@ -2552,9 +2361,9 @@
       "descriptionEn": "Qi Gong practice workshop at the salle du Lavoir.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-29-atelierqigong",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-qi-gong-thomery-b02215f09b/"
     },
     {
@@ -2593,8 +2402,8 @@
       "locationName": "Salle Jean Mermoz, 11 rue Georges Villette ( Ecuelles ) à Moret-Loing-et-Orvanne",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-29",
       "endDate": "2026-11-29",
@@ -2607,7 +2416,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/bourse-aux-jouets-moret-loing-et-orvanne-89d02118e2/"
     },
     {
@@ -2659,9 +2468,9 @@
       "descriptionEn": "Window illumination ceremony to kick off the Christmas season.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-29-illuminationsdesvitrinesdenoel",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/illuminations-des-vitrines-de-noel-champagne-sur-seine-94d212633d/"
     },
     {
@@ -2712,9 +2521,9 @@
       "descriptionEn": "Molière's masterpiece immerses us with laughter and depth into Harpagon's terrible avarice. With Compagnie Naphralytep.",
       "url": "https://www.anevert.fr/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "datatourisme",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/l-avare-fontainebleau-1cf34759cb/"
     },
     {
@@ -2741,7 +2550,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-du-29-novembre-le-vaudoue-3fab7261fc/"
     },
     {
@@ -2766,7 +2575,7 @@
       "descriptionEn": "Bryology outing in Forêt de Fontainebleau.",
       "url": "https://www.jagispourlanature.org/activite/sortie-bryologique-au-mont-andart",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-11-24",
       "pageUrl": "/evenements/sortie-bryologique-au-mont-andart-fontainebleau-2b3ef3d23c/"
@@ -2845,36 +2654,10 @@
       "descriptionEn": "A funny, sincere, and zany comedy performed by four clown-like actors.",
       "url": "https://billetterie-lechateletenbrie.mapado.com/event/758615-spectacle-jeune-public-la-princesse-au-petit-pois",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-la-princesse-au-petit-pois-le-chatelet-en-brie-8f3af5ae31/"
-    },
-    {
-      "id": "EVT_72c2d4de6f",
-      "title": "Spectacle jeunesse : La Princesse au petit pois",
-      "category": "Scène & Spectacles",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Nemours",
-      "locationName": "Espace culturel du château",
-      "lat": 48.26671,
-      "lng": 2.70305,
-      "geoSource": "city",
-      "geoApprox": true,
-      "dateType": "event",
-      "startDate": "2026-11-29",
-      "endDate": "2026-11-29",
-      "schedule": "16h00",
-      "price": "5 € à 10 €",
-      "organizer": "Espace culturel du château",
-      "description": "Spectacle jeunesse adapté du célèbe conte La Princesse au petit pois.",
-      "descriptionEn": "Children's show adapted from the famous fairytale The Princess and the Pea.",
-      "url": "https://www.oazis.fr/",
-      "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-21",
-      "lastSeen": "2026-11-03",
-      "pageUrl": "/evenements/spectacle-jeunesse-la-princesse-au-petit-pois-nemours-72c2d4de6f/"
     },
     {
       "id": "EVT_3aac72b4c4",
@@ -2886,8 +2669,8 @@
       "locationName": "Salle Odile",
       "lat": 48.4017,
       "lng": 2.45828,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-29",
       "endDate": "2026-11-29",
@@ -2898,37 +2681,10 @@
       "descriptionEn": "A workshop to build confidence, learn to express yourself freely, and convey emotions on stage.",
       "url": "https://www.milly-la-foret.fr/2026/11/17/29-11-26-stage-dexpression-scenique-club-mill-danses/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/stage-d-expression-scenique-club-mill-danses-milly-la-foret-3aac72b4c4/"
-    },
-    {
-      "id": "EVT_b8821574ed",
-      "title": "Stage de danse Lyrical Contemporary – Club Mill’ Danses",
-      "category": "Sport & Outdoor",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Milly-la-Forêt",
-      "locationName": "Milly-la-Forêt",
-      "lat": 48.4019,
-      "lng": 2.45349,
-      "geoSource": "ban",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-11-29",
-      "endDate": "2026-11-29",
-      "schedule": "De 10h30 à 12h",
-      "price": "10 € adhérents / 15 € non-adhérents",
-      "organizer": "Club Mill’ Danses",
-      "description": "Stage animé par Sara pour explorer le mouvement, la musicalité et l'interprétation entre danse contemporaine et émotions.",
-      "descriptionEn": "Workshop led by Sara exploring movement, musicality, and interpretation combining contemporary dance and emotion.",
-      "url": "https://www.milly-la-foret.fr/2026/01/28/29-11-26-stage-de-danse-lyrical-contemporary-club-mill-danses/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
-      "source": "site",
-      "lastSeen": "2026-11-21",
-      "pageUrl": "/evenements/stage-de-danse-lyrical-contemporary-club-mill-danses-milly-la-foret-b8821574ed/"
     },
     {
       "id": "EVT_7f007e5f00",
@@ -2954,7 +2710,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/the-dansant-villemer-7f007e5f00/"
     },
     {
@@ -2979,9 +2735,9 @@
       "descriptionEn": "Children's theatre show suitable for ages 4 and up.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-11-29-theatretouttourneboule",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/theatre-tout-tourneboule-thomery-5a4ad82fe4/"
     },
     {
@@ -3008,7 +2764,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/vide-ta-chambre-bourse-aux-enfants-montigny-sur-loing-4ad1ee39f0/"
     },
     {
@@ -3021,8 +2777,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-11-29",
       "endDate": "2026-11-29",
@@ -3035,7 +2791,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-thematique-les-artistes-etrangers-a-barbizon-fe92208886/"
     },
     {
@@ -3062,7 +2818,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-rendez-vous-de-la-solle-course-hippique-obstacles-fontainebleau-b3728f89dd/"
     },
     {
@@ -3090,7 +2846,7 @@
       "urlCheckedAt": "2026-11-21",
       "image": "https://img.openagenda.com/main/df363b7bbcf143c789cbea651c4822ae.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-des-randonneurs-fontainebleau-423a5d632f/"
     },
     {
@@ -3118,7 +2874,7 @@
       "urlCheckedAt": "2026-11-21",
       "image": "https://img.openagenda.com/main/27530630261446a0a0f8b5af199214b1.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-des-randonneurs-melun-758d2639a7/"
     },
     {
@@ -3259,7 +3015,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-tourbillon-de-la-fete-melun-4a4198ac35/"
     },
     {
@@ -3284,9 +3040,9 @@
       "descriptionEn": "Physical activity workshop as part of the \"Cœur de femmes\" awareness program.",
       "url": "https://www.milly-la-foret.fr/2026/11/06/02-12-26-rencontre-sante-atelier-coeur-de-femmes/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rencontre-sante-atelier-coeur-de-femmes-milly-la-foret-208a256050/"
     },
     {
@@ -3338,10 +3094,10 @@
       "descriptionEn": "The second part of the program presents an overview of the photographic work of German artist and art historian Frizzi Krella. Born in Dresden in 1970, this photographer...",
       "url": "https://openagenda.com/bicentenaire-photographie-fr/events/frizzi-krella-damaskus",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/d7677345105e40778fbe647e08ff226d.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/frizzi-krella-damaskus-thomery-042241043f/"
     },
     {
@@ -3354,8 +3110,8 @@
       "locationName": "",
       "lat": 48.4017,
       "lng": 2.45828,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-03",
       "endDate": "2026-12-03",
@@ -3367,7 +3123,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/projection-la-belle-et-la-bete-de-jean-cocteau-cine-lines-milly-la-foret-9b71b32a91/"
     },
     {
@@ -3397,33 +3153,6 @@
       "pageUrl": "/evenements/sandra-colombo-que-faire-des-cons-moret-loing-et-orvanne-537e2ea697/"
     },
     {
-      "id": "EVT_ce4141f97d",
-      "title": "\"LE LEGS\" AU THÉÂTRE MUNICIPAL DE FONTAINEBLEAU",
-      "category": "Scène & Spectacles",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-12-04",
-      "endDate": "2026-12-04",
-      "schedule": "20h30",
-      "price": "",
-      "organizer": "",
-      "description": "Représentation théâtrale d'une comédie classique de Marivaux abordant avec humour et ironie les choix entre richesse et amour.",
-      "descriptionEn": "Theatrical performance of a classic comedy by Marivaux, tackling the choices between wealth and love with humor and irony.",
-      "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5701&cHash=7d512ae886cc47d9d80e8dc2435e32c5",
-      "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/le-legs-au-theatre-municipal-de-fontainebleau-ce4141f97d/"
-    },
-    {
       "id": "EVT_f9833d2e90",
       "title": "À la recherche des canards perdus - cartographie 1",
       "category": "Culture & Ateliers",
@@ -3445,10 +3174,10 @@
       "descriptionEn": "Compagnie Vertical Détour - Frédéric Ferrer",
       "url": "https://openagenda.com/culture/events/a-la-recherche-des-canards-perdus-cartographie-1-6233787",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/73aa3aed785b4429b5b683585a4aec00.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/a-la-recherche-des-canards-perdus-cartographie-1-avon-f9833d2e90/"
     },
     {
@@ -3476,7 +3205,7 @@
       "urlCheckedAt": "2026-11-24",
       "image": "https://img.openagenda.com/main/b07513322ad04b4083b52ee7688a419f.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-des-randonneurs-fontainebleau-631edf116e/"
     },
     {
@@ -3504,7 +3233,7 @@
       "urlCheckedAt": "2026-11-24",
       "image": "https://img.openagenda.com/main/8143e04fd9104d218656b2fa8abf6de1.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-des-randonneurs-melun-f082eacb33/"
     },
     {
@@ -3540,7 +3269,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/fabrice-eboue-solitudes-dammarie-les-lys-25ba0a53a7/"
     },
     {
@@ -3565,7 +3294,7 @@
       "descriptionEn": "Inauguration event launching the Christmas lights on Place de l'Orangerie.",
       "url": "https://www.hericy.fr/agenda/#2026-12-04-inaugurationilluminationsdenoel",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-10-21",
       "pageUrl": "/evenements/inauguration-illuminations-de-noel-hericy-1ee0cb8764/"
@@ -3580,8 +3309,8 @@
       "locationName": "Place de l'Orangerie",
       "lat": 48.44696,
       "lng": 2.7794,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-04",
       "endDate": "2026-12-04",
@@ -3592,9 +3321,9 @@
       "descriptionEn": "Gather in the town square for the magical launch of the local Christmas lights.",
       "url": "https://www.hericy.fr/agenda/#2026-12-04-lancementdesilluminationsdenoel",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/lancement-des-illuminations-de-noel-hericy-41af39930d/"
     },
     {
@@ -3621,7 +3350,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-nocturne-hericy-8866ef8b54/"
     },
     {
@@ -3648,7 +3377,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/randonnee-nocturne-marchez-pour-le-telethon-vernou-la-celle-sur-seine-44d6b49e54/"
     },
     {
@@ -3661,8 +3390,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-04",
       "endDate": "2026-12-04",
@@ -3673,9 +3402,9 @@
       "descriptionEn": "Individual by-appointment workshop to assist teenagers and adults with digital tasks and device use.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5922&cHash=11e5381a793d2b05244eb4a4681556a9",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rdv-mediation-numerique-a-la-mediatheque-de-la-charite-royal-fontainebleau-390214907d/"
     },
     {
@@ -3702,7 +3431,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/seance-debat-autour-du-film-voyage-dans-le-grand-ouest-ameri-fontainebleau-38c8f481ed/"
     },
     {
@@ -3713,8 +3442,8 @@
       "ageMax": 99,
       "city": "Milly-la-Forêt",
       "locationName": "Milly-la-Forêt",
-      "lat": 48.4017,
-      "lng": 2.45828,
+      "lat": 48.4019,
+      "lng": 2.45349,
       "geoSource": "ban",
       "geoApprox": false,
       "dateType": "event",
@@ -3729,7 +3458,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/telethon-milly-la-foret-cf57824562/"
     },
     {
@@ -3740,9 +3469,9 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Théâtre Municipal de Fontainebleau",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "ban",
+      "lat": 48.40335,
+      "lng": 2.69762,
+      "geoSource": "venue",
       "geoApprox": false,
       "dateType": "event",
       "startDate": "2026-12-04",
@@ -3754,7 +3483,7 @@
       "descriptionEn": "A performance of the play Le Legs in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7958614/le-legs/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-10-27",
       "pageUrl": "/evenements/theatre-classique-le-legs-marivaux-fontainebleau-23f5e44906/"
@@ -3809,7 +3538,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/animations-dans-le-cadre-du-telethon-moret-loing-et-orvanne-09f908dd5c/"
     },
     {
@@ -3836,7 +3565,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apres-midi-jeux-de-societe-au-profit-du-telethon-vernou-la-celle-sur-seine-882e85fd77/"
     },
     {
@@ -3849,8 +3578,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -3861,9 +3590,9 @@
       "descriptionEn": "Hands-on urban arts workshops and discovery sessions held regularly in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037227/art-urbain-workshops-tous-les-1er-et-3eme-samedis-du-mois/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/art-urbain-et-workshops-tous-les-1er-et-3eme-samedis-du-mois-fontainebleau-c23d4ead47/"
     },
     {
@@ -3876,8 +3605,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -3888,9 +3617,9 @@
       "descriptionEn": "A botanical watercolor craft workshop to create and personalize your Christmas card in Barbizon.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037950/atelier-aquarelle-botanique-carte-de-noel/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-aquarelle-botanique-carte-de-noel-barbizon-23a8889b67/"
     },
     {
@@ -3943,7 +3672,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/brocante-montigny-sur-loing-dd3d56dc09/"
     },
     {
@@ -3956,8 +3685,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -3968,9 +3697,9 @@
       "descriptionEn": "Collaborative, educational workshop led by Shifters Sud 77 addressing the opportunities and challenges of energy renovation.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5932&cHash=387670decc6a72c92b8b456003f52dbf",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cafe-des-transitions-fontainebleau-en-transition-a4164f93fe/"
     },
     {
@@ -4009,8 +3738,8 @@
       "locationName": "",
       "lat": 48.34418,
       "lng": 2.6029,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4076,7 +3805,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/decouverte-du-yoga-initiation-solidaire-au-profit-du-teletho-vernou-la-celle-sur-seine-f0809746a6/"
     },
     {
@@ -4089,8 +3818,8 @@
       "locationName": "",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4103,7 +3832,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/diner-spectacle-pour-l-afm-telethon-moret-loing-et-orvanne-906cbea39d/"
     },
     {
@@ -4130,7 +3859,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/fete-des-lumieres-moret-loing-et-orvanne-88fa306bda/"
     },
     {
@@ -4170,8 +3899,8 @@
       "locationName": "",
       "lat": 48.413,
       "lng": 2.72893,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4184,7 +3913,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/la-poesie-de-claire-medard-avon-fdd2caa4ab/"
     },
     {
@@ -4211,7 +3940,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/laser-run-au-profit-du-telethon-vernou-la-celle-sur-seine-5bdee13b52/"
     },
     {
@@ -4238,7 +3967,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-latin-retrouve-mediatheque-milly-la-foret-63cfe6ce64/"
     },
     {
@@ -4274,7 +4003,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-radeau-de-la-meduse-par-anne-cangelosi-melun-6e1e0ff6e3/"
     },
     {
@@ -4299,9 +4028,9 @@
       "descriptionEn": "Discover the Héricy Christmas market and enjoy the festive holiday atmosphere.",
       "url": "https://www.hericy.fr/agenda/#2026-12-05-marchedenoel",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-hericy-4885be582a/"
     },
     {
@@ -4311,7 +4040,7 @@
       "ageMin": 0,
       "ageMax": 99,
       "city": "Thomery",
-      "locationName": "Château Rosa Bonheur, 12 rue Rosa Bonheur, Thomery",
+      "locationName": "Château Rosa Bonheur, 12 rue Rosa Bonheur à Thomery",
       "lat": 48.40233,
       "lng": 2.78149,
       "geoSource": "city",
@@ -4328,7 +4057,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-thomery-04c64f73cf/"
     },
     {
@@ -4355,7 +4084,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-de-fleury-en-biere-356adfe18d/"
     },
     {
@@ -4382,7 +4111,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-du-5-decembre-samois-sur-seine-402fd94b3d/"
     },
     {
@@ -4395,8 +4124,8 @@
       "locationName": "Maison des Associations, 25 Ter rue du Port ( Veneux-Les Sablons) à Moret-Loing-et-Orvanne",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-06",
@@ -4409,7 +4138,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-du-cmpa-moret-loing-et-orvanne-30be07276a/"
     },
     {
@@ -4422,8 +4151,8 @@
       "locationName": "",
       "lat": 48.47294,
       "lng": 2.69243,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4434,9 +4163,9 @@
       "descriptionEn": "An evening craft and vendor market held for the holiday season in Bois-le-Roi.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037020/marche-de-noel-nocturne/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-nocturne-bois-le-roi-1e3120d159/"
     },
     {
@@ -4463,7 +4192,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-solidaire-milly-la-foret-b30114cd44/"
     },
     {
@@ -4476,8 +4205,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4490,7 +4219,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/peer-gynt-l-homme-qui-voulait-etre-lui-meme-fontainebleau-069d0decbb/"
     },
     {
@@ -4515,7 +4244,7 @@
       "descriptionEn": "Guided 6 km walk focused on identifying beech trees and their adaptation to climate change.",
       "url": "https://www.aaff.fr/agenda/hetre-ou-ne-plus-hetre/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-11-12",
       "pageUrl": "/evenements/promenade-guidee-hetre-ou-ne-plus-hetre-fontainebleau-2cd1d56d7c/"
     },
@@ -4544,7 +4273,7 @@
       "urlCheckedAt": "2026-11-24",
       "image": "https://img.openagenda.com/main/7ade83ffaa394f598c8ad3ca6696e50c.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rando-celibataires-des-rochers-de-cuvier-chatillon-a-bois-le-fontainebleau-2a39a33cbc/"
     },
     {
@@ -4569,9 +4298,9 @@
       "descriptionEn": "Hands-on workshop to learn how to fix your broken items alongside volunteers.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-repaircafemsl",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/repair-cafe-msl-villemer-31c178404b/"
     },
     {
@@ -4598,7 +4327,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/salon-du-livre-nature-et-aventure-barbizon-8ac7daf302/"
     },
     {
@@ -4650,7 +4379,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-immersif-theatral-blandy-enchante-un-noel-en-peril-blandy-les-tours-act022/"
     },
     {
@@ -4689,8 +4418,8 @@
       "locationName": "Forêt domaniale de Fontainebleau",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4703,7 +4432,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/stage-photographique-magie-de-la-foret-de-fontainebleau-3b0c33a401/"
     },
     {
@@ -4716,8 +4445,8 @@
       "locationName": "Médiathèque de la Charité Royale, 15 rue Royale",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4728,9 +4457,9 @@
       "descriptionEn": "Meet and discuss with Laura Nsafou and Sophie Julien-Perriet around the representation of society in children's literature.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5931&cHash=d38d07c15e41d10db7bdfe041b3230ac",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/table-ronde-la-litterature-jeunesse-miroir-de-nos-societes-a-fontainebleau-adf2c9f124/"
     },
     {
@@ -4757,7 +4486,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/tous-en-en-forme-tous-avec-le-telethon-montigny-sur-loing-27a0b94cf9/"
     },
     {
@@ -4797,8 +4526,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
@@ -4811,7 +4540,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visites-guidees-du-musee-barbizon-573a44c82a/"
     },
     {
@@ -4838,7 +4567,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/16-salon-multi-collections-et-bourse-au-profit-du-telethon-milly-la-foret-18062a504e/"
     },
     {
@@ -4863,9 +4592,9 @@
       "descriptionEn": "Creative workshop dedicated to making greeting and Christmas cards, hosted by the Croix-Rouge française.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-ateliercreatifdecartesdenoeletdebonneann",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-creatif-de-cartes-de-noel-et-de-bonne-annee-moret-loing-et-orvanne-0fed51746d/"
     },
     {
@@ -4892,7 +4621,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/balade-moto-au-profit-du-telethon-montigny-sur-loing-58d082e087/"
     },
     {
@@ -4905,8 +4634,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -4919,7 +4648,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-des-fraises-en-hiver-fontainebleau-73c61df98f/"
     },
     {
@@ -4932,8 +4661,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -4944,9 +4673,9 @@
       "descriptionEn": "A musical performance of the work Misa a Buenos Aires.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8067026/concert-misa-a-buenos-aires/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-misa-a-buenos-aires-fontainebleau-22ce2d541a/"
     },
     {
@@ -4959,8 +4688,8 @@
       "locationName": "",
       "lat": 48.42179,
       "lng": 2.7587,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -4971,9 +4700,9 @@
       "descriptionEn": "A symphonic music concert presented to the public in the town of Samoreau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8038275/concert-symphonique-en-resonance/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-symphonique-en-resonance-samoreau-a4c646a862/"
     },
     {
@@ -4998,9 +4727,9 @@
       "descriptionEn": "Lecture dedicated to discovering books in all their forms.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-06-conferencelirelelivredanstoussesetats",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/conference-lire-le-livre-dans-tous-ses-etats-thomery-eae639ede3/"
     },
     {
@@ -5021,7 +4750,8 @@
       "schedule": "10h à 18h",
       "price": "",
       "organizer": "FCPE de Vernou",
-      "description": "",
+      "description": "Marché de Noël organisé par l’association de parents d’élèves FCPE de Vernou.",
+      "descriptionEn": "Christmas market organised by the FCPE parents' association of Vernou.",
       "url": "https://www.saint-mammes.com/fcpe-marche-de-noel-a-vernou/",
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
@@ -5053,7 +4783,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/inauguration-exposition-photographique-pour-une-foret-vivant-milly-la-foret-42fa5cdce0/"
     },
     {
@@ -5066,8 +4796,8 @@
       "locationName": "Centre culturel / Patrimoine d'Avon",
       "lat": 48.413,
       "lng": 2.72893,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -5080,7 +4810,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-sejours-de-louis-xiv-a-fontainebleau-les-liens-avec-la-p-avon-7b2a5f2ea8/"
     },
     {
@@ -5107,7 +4837,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-au-chateau-rosa-bonheur-thomery-45965d539f/"
     },
     {
@@ -5132,9 +4862,9 @@
       "descriptionEn": "Festive entertainment and artisan stalls at the Bourron-Marlotte Christmas market.",
       "url": "https://bourronmarlotte.fr/agenda/marche-de-noel/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-de-bourron-marlotte-a0096844bf/"
     },
     {
@@ -5161,7 +4891,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-de-vernou-la-celle-sur-seine-5bdbb38d9b/"
     },
     {
@@ -5188,7 +4918,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/opera-la-flute-enchantee-par-la-compagnie-opera-2001-fontainebleau-af1a49c6c7/"
     },
     {
@@ -5201,8 +4931,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -5215,7 +4945,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/peer-gynt-l-homme-qui-voulait-etre-lui-meme-fontainebleau-b23f1218c8/"
     },
     {
@@ -5242,7 +4972,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/ronde-de-capoeira-au-profit-du-telethon-montigny-sur-loing-c9fc3e02bc/"
     },
     {
@@ -5253,8 +4983,8 @@
       "ageMax": 99,
       "city": "Milly-la-Forêt",
       "locationName": "Milly-la-Forêt",
-      "lat": 48.4017,
-      "lng": 2.45828,
+      "lat": 48.4019,
+      "lng": 2.45349,
       "geoSource": "ban",
       "geoApprox": false,
       "dateType": "event",
@@ -5323,7 +5053,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/stage-de-zumba-club-mill-danses-milly-la-foret-599cf733fe/"
     },
     {
@@ -5336,8 +5066,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -5348,9 +5078,9 @@
       "descriptionEn": "Opportunity for local residents to meet and talk directly with the municipal team at the downtown market.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5940&cHash=3a9de823691c47fb5e72d15ff9267f9f",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/stand-des-elus-sur-le-marche-saint-louis-fontainebleau-a3e4e0b520/"
     },
     {
@@ -5375,9 +5105,9 @@
       "descriptionEn": "Toy and childcare equipment sale organised by the Ville de Milly-la-Forêt for the Téléthon 2026.",
       "url": "https://www.milly-la-foret.fr/2026/10/30/06-12-26-telethon-inscriptions-bourse-aux-jouets-et-a-la-puericulture/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/telethon-inscriptions-bourse-aux-jouets-et-a-la-puericulture-milly-la-foret-c0ecb39c4c/"
     },
     {
@@ -5404,7 +5134,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-contee-les-contes-du-chat-perche-barbizon-e42881c006/"
     },
     {
@@ -5431,7 +5161,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-rendez-vous-de-la-solle-courses-d-obstacle-fontainebleau-773dc2d1ea/"
     },
     {
@@ -5470,8 +5200,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-09",
       "endDate": "2026-12-09",
@@ -5482,9 +5212,9 @@
       "descriptionEn": "Charity concert performed by students of the Conservatoire to raise funds for a good cause.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5736&cHash=eef7e8f723d4efe6beb9d767223f43d5",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-caritatif-au-theatre-municipal-de-fontainebleau-9a880dc808/"
     },
     {
@@ -5511,7 +5241,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/conference-une-histoire-de-la-langue-francaise-au-cambodge-p-fontainebleau-a398d81752/"
     },
     {
@@ -5524,8 +5254,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-09",
       "endDate": "2026-12-09",
@@ -5538,7 +5268,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/don-du-sang-fontainebleau-3b9010e265/"
     },
     {
@@ -5577,8 +5307,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-09",
       "endDate": "2026-12-09",
@@ -5589,9 +5319,9 @@
       "descriptionEn": "Storytelling, nursery rhymes, and finger games session to gently engage toddlers up to 3 years old.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5934&cHash=a6d8d04ed697af73872e9f4e24206853",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-p-tites-comptines-a-la-mediatheque-de-la-charite-royale-fontainebleau-41790a90cc/"
     },
     {
@@ -5604,8 +5334,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-09",
       "endDate": "2026-12-09",
@@ -5616,9 +5346,9 @@
       "descriptionEn": "Fun word and vocabulary activities for young children aged 3 to 6.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5928&cHash=0906605aed9778a4e1eac7db8cfb4ecb",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-p-tites-oreilles-a-la-mediatheque-de-la-charite-royale-fontainebleau-803880146c/"
     },
     {
@@ -5669,7 +5399,7 @@
       "descriptionEn": "A lecture on public policy and the militarization of political life in Africa.",
       "url": "https://iep-fontainebleau.u-pec.fr/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-10-24",
       "pageUrl": "/evenements/conference-universitaire-iep-de-fontainebleau-90a339c92e/"
     },
@@ -5683,8 +5413,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-10",
       "endDate": "2026-12-10",
@@ -5695,9 +5425,9 @@
       "descriptionEn": "Join Bel’Bulles to discuss comics, graphic novels, and manga, whether you're a beginner or a passionate fan.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5927&cHash=2ef948d7c7ecd18c8ff6295d21a50e15",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-bel-bulles-a-la-mediatheque-de-la-charite-royale-fontainebleau-a4dc576686/"
     },
     {
@@ -5733,7 +5463,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/lisa-vaux-le-penil-d706b19e2a/"
     },
     {
@@ -5786,7 +5516,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-piano-au-coin-du-feu-barbizon-377db6838c/"
     },
     {
@@ -5797,8 +5527,8 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Maison de l'Enfance, rue Anne-Marie Javouhey",
-      "lat": 48.40781,
-      "lng": 2.70278,
+      "lat": 48.41205,
+      "lng": 2.7009,
       "geoSource": "ban",
       "geoApprox": false,
       "dateType": "event",
@@ -5813,7 +5543,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cercle-des-parents-a-la-maison-de-l-enfance-fontainebleau-8ec71b5ed3/"
     },
     {
@@ -5840,7 +5570,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concerts-de-noel-de-thomas-hengelbrock-les-vepres-de-monteve-fontainebleau-2e29fba647/"
     },
     {
@@ -5853,8 +5583,8 @@
       "locationName": "FabLab Moebius",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-11",
       "endDate": "2026-12-11",
@@ -5865,37 +5595,10 @@
       "descriptionEn": "Discover the Café des Sciences hosted by FabLab Moebius to discuss scientific topics.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8011881/cafe-des-sciences-par-fablab-moebius/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-10-08",
       "pageUrl": "/evenements/conference-scientifique-cafe-des-sciences-du-fablab-moebius-fontainebleau-58c5d71344/"
-    },
-    {
-      "id": "EVT_4ef3fc8fcc",
-      "title": "Deux sur la balançoire",
-      "category": "Culture & Ateliers",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "6 rue des Sablons Âne Vert Théâtre",
-      "lat": 48.4049,
-      "lng": 2.69855,
-      "geoSource": "venue",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-12-11",
-      "endDate": "2026-12-11",
-      "schedule": "",
-      "price": "",
-      "organizer": "",
-      "description": "Découvrez \"Deux sur la balançoire\", de William Gibson proposé par la Compagnie Ophélia.",
-      "descriptionEn": "Discover \"Deux sur la balançoire\" by William Gibson, presented by the Compagnie Ophélia.",
-      "url": "https://www.anevert.fr/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-24",
-      "source": "datatourisme",
-      "lastSeen": "2026-10-21",
-      "pageUrl": "/evenements/deux-sur-la-balancoire-fontainebleau-4ef3fc8fcc/"
     },
     {
       "id": "EVT_ed22b15733",
@@ -5905,8 +5608,8 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Hôtel de Ville, 40 rue Grande",
-      "lat": 48.40781,
-      "lng": 2.70278,
+      "lat": 48.40483,
+      "lng": 2.70115,
       "geoSource": "ban",
       "geoApprox": false,
       "dateType": "event",
@@ -5921,7 +5624,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/exposition-du-club-photo-le-8e-art-a-l-hotel-de-ville-fontainebleau-ed22b15733/"
     },
     {
@@ -5934,8 +5637,8 @@
       "locationName": "Bourron-Marlotte",
       "lat": 48.34297,
       "lng": 2.70575,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-11",
       "endDate": "2026-12-13",
@@ -5948,7 +5651,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-bourron-marlotte-377b8dffb1/"
     },
     {
@@ -5961,8 +5664,8 @@
       "locationName": "Place de la République et cour de l'Hôtel de Ville",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-11",
       "endDate": "2026-12-13",
@@ -5973,9 +5676,9 @@
       "descriptionEn": "Christmas market in the cité impériale featuring artisan stalls and festive entertainment.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8038195/marche-de-noel-a-fontainebleau/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-a-fontainebleau-cdf020a3aa/"
     },
     {
@@ -6011,7 +5714,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/ultimissimo-la-framboise-frivole-le-best-of-dammarie-les-lys-ad9e28b1f3/"
     },
     {
@@ -6064,7 +5767,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-bibliothecaire-au-theatre-municipal-de-fontainebleau-ac2d1fc43b/"
     },
     {
@@ -6091,7 +5794,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-creatif-intergenerationnel-montigny-sur-loing-521eb2f761/"
     },
     {
@@ -6104,8 +5807,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6118,7 +5821,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-de-la-chorale-du-pole-fontainebleau-048925da05/"
     },
     {
@@ -6131,8 +5834,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6145,7 +5848,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-instrumental-des-jeunes-fontainebleau-97e9ceecfd/"
     },
     {
@@ -6199,7 +5902,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "datatourisme",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/deux-sur-la-balancoire-fontainebleau-3b6186d716/"
     },
     {
@@ -6212,8 +5915,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6226,7 +5929,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/flc-fait-son-show-de-noel-fontainebleau-e506310a97/"
     },
     {
@@ -6239,8 +5942,8 @@
       "locationName": "",
       "lat": 48.44696,
       "lng": 2.7794,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6253,7 +5956,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/heri-lud-hericy-37ab455673/"
     },
     {
@@ -6277,7 +5980,7 @@
       "description": "",
       "url": "https://www.fnacspectacles.com/eventseries/les-amplifies-tom-frager-lambz-4278107/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=46521492988&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=46521492988&a=3117734&m=12494",
@@ -6288,7 +5991,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-amplifies-tom-frager-et-lambz-le-mee-sur-seine-0d9ba04dd6/"
     },
     {
@@ -6324,7 +6027,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-coquettes-nouveau-spectacle-melun-27a2f68fb8/"
     },
     {
@@ -6334,7 +6037,7 @@
       "ageMin": 0,
       "ageMax": 99,
       "city": "Thomery",
-      "locationName": "Salle de la Plage, 1 chemin des Prés, Thomery",
+      "locationName": "Salle de la Plage, 1 chemin des Prés à Thomery",
       "lat": 48.40233,
       "lng": 2.78149,
       "geoSource": "city",
@@ -6349,9 +6052,9 @@
       "descriptionEn": "Friendly Christmas market set up at the salle de la Plage for the holiday season.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-marchedenoel",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-thomery-765d7fa7b9/"
     },
     {
@@ -6378,7 +6081,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-montigny-sur-loing-0de798e8e7/"
     },
     {
@@ -6405,7 +6108,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-du-12-au-13-decembre-2026-barbizon-6d56ffe688/"
     },
     {
@@ -6418,8 +6121,8 @@
       "locationName": "Maison des Associations, 25 Ter rue du Port ( Veneux-Les Sablons) à Moret-Loing-et-Orvanne",
       "lat": 48.35661,
       "lng": 2.82107,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6432,7 +6135,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/noel-des-enfants-moret-loing-et-orvanne-3d7dd3ebee/"
     },
     {
@@ -6457,9 +6160,9 @@
       "descriptionEn": "A friendly sauerkraut dinner evening hosted in Champagne-sur-Seine.",
       "url": "https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-soireechoucroute",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/soiree-choucroute-champagne-sur-seine-c59964a29a/"
     },
     {
@@ -6512,7 +6215,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-les-lutins-de-noel-dragon-de-feu-moret-loing-et-orvanne-caf114b4dd/"
     },
     {
@@ -6525,8 +6228,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6539,7 +6242,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-theatral-un-voyage-inattendu-barbizon-a9e057d74b/"
     },
     {
@@ -6578,8 +6281,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6590,9 +6293,9 @@
       "descriptionEn": "Residents of the Lilas/Saint-Honoré neighbourhood are invited to discuss ongoing projects with Mayor Julien Gondard and his team.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5942&cHash=bea5d850b715ecbac587cac4235713b4",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-de-quartier-lilas-saint-honore-fontainebleau-cec8357113/"
     },
     {
@@ -6632,8 +6335,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-12",
       "endDate": "2026-12-12",
@@ -6646,7 +6349,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visites-guidees-du-musee-barbizon-17edeb2692/"
     },
     {
@@ -6685,8 +6388,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-13",
       "endDate": "2026-12-13",
@@ -6697,9 +6400,9 @@
       "descriptionEn": "Creative workshop featuring Christmas wreaths and trees in Barbizon.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037968/atelier-couronne-arbre-de-noel/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-couronne-arbre-de-noel-barbizon-996e031f1d/"
     },
     {
@@ -6738,8 +6441,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-13",
       "endDate": "2026-12-13",
@@ -6752,7 +6455,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/chants-de-noel-fontainebleau-04e8167473/"
     },
     {
@@ -6765,8 +6468,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-13",
       "endDate": "2026-12-13",
@@ -6779,7 +6482,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/chorale-de-noel-par-flc-fontainebleau-47e12a5c37/"
     },
     {
@@ -6792,8 +6495,8 @@
       "locationName": "Salle de spectacle d'Avon",
       "lat": 48.413,
       "lng": 2.72893,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-13",
       "endDate": "2026-12-13",
@@ -6833,7 +6536,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-jazz-hericy-ad787c231d/"
     },
     {
@@ -6860,7 +6563,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "datatourisme",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/deux-sur-la-balancoire-fontainebleau-e894b7314b/"
     },
     {
@@ -6887,7 +6590,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-thomery-0d76dd13fc/"
     },
     {
@@ -6914,7 +6617,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-de-saint-mammes-a3994dd502/"
     },
     {
@@ -6939,7 +6642,7 @@
       "descriptionEn": "A full-day sporting hike of about 17 km along the rocky trails in the south of the forest.",
       "url": "https://sportican.fr/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-10-24",
       "pageUrl": "/evenements/randonnee-sportive-encadree-fontainebleau-sud-appuis-et-conf-2e5ff108d7/"
     },
@@ -6979,8 +6682,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-14",
       "endDate": "2026-12-14",
@@ -6991,9 +6694,9 @@
       "descriptionEn": "Attend the Fontainebleau town council meeting in person at the Salon d'honneur in the Hôtel de Ville or live on Facebook.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5588&cHash=b3fcf28124f3264fee2ebc0605e96bb4",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/conseil-municipal-fontainebleau-8b851449c4/"
     },
     {
@@ -7006,8 +6709,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-15",
       "endDate": "2026-12-15",
@@ -7020,7 +6723,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/flc-fait-sa-jam-de-noel-fontainebleau-3960d807fa/"
     },
     {
@@ -7051,33 +6754,6 @@
       "pageUrl": "/evenements/atelier-lanternes-mediatheque-milly-la-foret-8772659a96/"
     },
     {
-      "id": "EVT_a139f212f7",
-      "title": "Conférence de l'INSEAD : \"Dans l'incertitude et les risques d'aujourd'hui : faut-il du courage dans la tempête ?\" par Isabelle Autissier",
-      "category": "Culture & Ateliers",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "Fontainebleau",
-      "lat": 48.40168,
-      "lng": 2.70086,
-      "geoSource": "ban",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-12-17",
-      "endDate": "2026-12-17",
-      "schedule": "20h30",
-      "price": "Entrée libre. Les conférences sont en accès libre et gratuites. Les portes (ent…",
-      "organizer": "INSEAD",
-      "description": "Cycle de conférences académiques organisé sur le campus de l'INSEAD.",
-      "descriptionEn": "Series of academic lectures hosted on the INSEAD campus.",
-      "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5718&cHash=db30e67f51781bd86e481230e362b63b",
-      "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/conference-de-l-insead-dans-l-incertitude-et-les-risques-d-a-fontainebleau-a139f212f7/"
-    },
-    {
       "id": "EVT_a5d59b0896",
       "title": "Le Noêl des aînés",
       "category": "Culture & Ateliers",
@@ -7101,7 +6777,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-noel-des-aines-samois-sur-seine-a5d59b0896/"
     },
     {
@@ -7128,7 +6804,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-moret-loing-et-orvanne-2717715ec6/"
     },
     {
@@ -7155,35 +6831,8 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cirque-clownesque-et-musical-o-rage-montigny-sur-loing-6510ecad38/"
-    },
-    {
-      "id": "EVT_bc9c0ed6fe",
-      "title": "Dans les coulisses du Père Noël",
-      "category": "Sport & Outdoor",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "6 rue des Sablons Âne Vert Théâtre",
-      "lat": 48.4049,
-      "lng": 2.69855,
-      "geoSource": "venue",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-12-18",
-      "endDate": "2026-12-18",
-      "schedule": "",
-      "price": "",
-      "organizer": "",
-      "description": "\"Dans les coulisses du Père Noël\" est un spectacle de Noël jeune public Théâtr’event, de Laurent Cattaert et Franck Douaglin",
-      "descriptionEn": "\"Dans les coulisses du Père Noël\" is a children's Christmas show by Théâtr’event, created by Laurent Cattaert and Franck Douaglin.",
-      "url": "https://www.anevert.fr/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-24",
-      "source": "datatourisme",
-      "lastSeen": "2026-10-21",
-      "pageUrl": "/evenements/dans-les-coulisses-du-pere-noel-fontainebleau-bc9c0ed6fe/"
     },
     {
       "id": "EVT_f89af79fe2",
@@ -7209,7 +6858,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-bal-de-noel-des-cavaliers-bois-le-roi-f89af79fe2/"
     },
     {
@@ -7248,8 +6897,8 @@
       "locationName": "Bourron-Marlotte",
       "lat": 48.34297,
       "lng": 2.70575,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-18",
       "endDate": "2026-12-23",
@@ -7262,7 +6911,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-bourron-marlotte-7b73c182c1/"
     },
     {
@@ -7275,8 +6924,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-18",
       "endDate": "2026-12-18",
@@ -7287,9 +6936,9 @@
       "descriptionEn": "An individual digital support workshop to answer your questions and guide you in using your devices or completing online tasks.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5923&cHash=051f17af536ae6a8ee34163d4ba56fb0",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rdv-mediation-numerique-a-la-mediatheque-de-la-charite-royal-fontainebleau-412761fefa/"
     },
     {
@@ -7300,9 +6949,9 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Théâtre municipal de Fontainebleau, 9 rue Denecourt",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "ban",
+      "lat": 48.40335,
+      "lng": 2.69762,
+      "geoSource": "venue",
       "geoApprox": false,
       "dateType": "event",
       "startDate": "2026-12-18",
@@ -7314,9 +6963,9 @@
       "descriptionEn": "Christmas fair organised by the Jeux de Dames association in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/6328610/salon-de-noel-de-jeux-de-dames/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/salon-de-noel-des-jeux-de-dames-au-theatre-municipal-de-font-fontainebleau-9be8c9c639/"
     },
     {
@@ -7329,8 +6978,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-19",
       "endDate": "2026-12-19",
@@ -7341,9 +6990,9 @@
       "descriptionEn": "Hands-on urban arts workshops and discovery sessions held regularly in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037227/art-urbain-workshops-tous-les-1er-et-3eme-samedis-du-mois/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/art-urbain-et-workshops-tous-les-1er-et-3eme-samedis-du-mois-fontainebleau-78cfc8340d/"
     },
     {
@@ -7356,8 +7005,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-19",
       "endDate": "2026-12-19",
@@ -7370,7 +7019,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-lutins-de-la-foret-barbizon-af815ef7af/"
     },
     {
@@ -7423,7 +7072,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/course-de-noel-de-samois-sur-seine-12-edition-6d9b7e1830/"
     },
     {
@@ -7448,10 +7097,10 @@
       "descriptionEn": "Sylvie Vieville",
       "url": "https://openagenda.com/rncap/events/histoires-de-nains-geants-et-farfadets",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "image": "https://img.openagenda.com/main/2f15d567a988428c87138796574b9e33.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/histoires-de-nains-geants-et-farfadets-melun-c2544a035d/"
     },
     {
@@ -7503,9 +7152,9 @@
       "descriptionEn": "Board a guided tourist train tour to explore the grounds of the Château de Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7610902/le-petit-train-du-chateau-de-fontainebleau/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-petit-train-du-chateau-de-fontainebleau-73c768adc2/"
     },
     {
@@ -7518,8 +7167,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-19",
       "endDate": "2026-12-27",
@@ -7532,7 +7181,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-animations-de-noel-le-village-de-noel-a-fontainebleau-ee9e754f5e/"
     },
     {
@@ -7559,7 +7208,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-artisanal-de-moret-sur-loing-moret-loing-et-orvanne-d3e57063ae/"
     },
     {
@@ -7586,7 +7235,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/participez-au-defile-de-traineaux-de-noel-milly-la-foret-2b657dcc25/"
     },
     {
@@ -7639,7 +7288,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "datatourisme",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-jeune-public-dans-les-coulisses-du-pere-noel-fontainebleau-c6ecc3650f/"
     },
     {
@@ -7666,7 +7315,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-jeune-public-le-noel-de-zoe-et-zozotto-fontainebleau-5926ba7941/"
     },
     {
@@ -7691,7 +7340,7 @@
       "descriptionEn": "A magical Christmas show revisiting the wonderful world of the frères Grimm fairy tales with poetry and humor.",
       "url": "https://www.nemours.fr/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-09-30",
       "pageUrl": "/evenements/spectacle-jeune-public-noel-cabaret-grimm-nemours-b0d295aaa3/"
     },
@@ -7705,8 +7354,8 @@
       "locationName": "Médiathèque de la Charité Royale",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-19",
       "endDate": "2026-12-19",
@@ -7717,9 +7366,9 @@
       "descriptionEn": "A family show combining storytelling, puppetry, and object theatre based on the funny and poetic tales of Nasreddine.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5924&cHash=4b5933573afd26427c7d4e1a3d849777",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-jeunesse-nasreddine-a-la-mediatheque-de-la-charite-fontainebleau-1829df4a32/"
     },
     {
@@ -7758,8 +7407,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-19",
       "endDate": "2026-12-19",
@@ -7772,7 +7421,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visites-guidees-du-musee-barbizon-7fb1b701f9/"
     },
     {
@@ -7823,7 +7472,7 @@
       "descriptionEn": "Destination Noël: Immerse yourself in the magical world of Christmas and let yourself be transported into an enchanting interactive experience nestled deep in the forest. Join an unforgettable adventure filled with the magic of the season, brought to life by a talented team in a whirlwind of emotions.",
       "url": "https://www.fnacspectacles.com/artist/destination-noel/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=46849889995&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=46849889995&a=3117734&m=12494",
@@ -7834,7 +7483,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/destination-noel-dammarie-les-lys-ba9644e68b/"
     },
     {
@@ -7861,7 +7510,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-de-noel-episy-fete-noel-moret-loing-et-orvanne-ee57373bbe/"
     },
     {
@@ -7914,7 +7563,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-de-la-nativite-fontainebleau-53ec64110f/"
     },
     {
@@ -7941,7 +7590,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-de-noel-la-reine-de-neige-fontainebleau-ded0ad2c0d/"
     },
     {
@@ -7980,8 +7629,8 @@
       "locationName": "Le Châtelet-en-Brie",
       "lat": 48.50619,
       "lng": 2.80338,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-21",
       "endDate": "2026-12-21",
@@ -7992,9 +7641,9 @@
       "descriptionEn": "A screening of the fantasy adventure film La mission de chien Noël.",
       "url": "https://www.chatelet-en-brie.fr/index.php/Agenda?idpage=9&idmetacontenu=2937&iddossiercontenu=42&positioncontenu=A1",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cine-jeunesse-la-mission-de-chien-noel-le-chatelet-en-brie-f71a214d6e/"
     },
     {
@@ -8007,8 +7656,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-22",
       "endDate": "2027-01-02",
@@ -8019,9 +7668,9 @@
       "descriptionEn": "A sensory play area with touch-and-feel books, games, and musical instruments available for children aged 0 to 3 during the holidays.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5929&cHash=3ffddc338c908432dbcd52d00aacccb0",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/les-p-tites-mains-a-la-mediatheque-de-la-charite-royale-fontainebleau-812094c047/"
     },
     {
@@ -8034,8 +7683,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-23",
       "endDate": "2026-12-23",
@@ -8048,7 +7697,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-carte-de-voeux-brodee-barbizon-15c67f23c5/"
     },
     {
@@ -8075,7 +7724,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-saint-louis-fontainebleau-ac7e3eec07/"
     },
     {
@@ -8102,7 +7751,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/messes-de-noel-fontainebleau-d2738127ef/"
     },
     {
@@ -8129,7 +7778,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/veillee-de-noel-fontainebleau-b9f0b449aa/"
     },
     {
@@ -8154,9 +7803,9 @@
       "descriptionEn": "The Anglican church offers a religious service to celebrate Christmas.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=6014&cHash=94ea41204185c7da699917e5c35d0674",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/culte-de-noel-fontainebleau-98f71a3219/"
     },
     {
@@ -8181,9 +7830,9 @@
       "descriptionEn": "The Paroisse Saint-Louis offers morning masses for Christmas Day.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=6011&cHash=aa2cf3ff13787683b2089aeb8ddf4bb1",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/messe-de-noel-fontainebleau-a3a3916590/"
     },
     {
@@ -8208,9 +7857,9 @@
       "descriptionEn": "Board a guided tourist train tour to explore the grounds of the Château de Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7610902/le-petit-train-du-chateau-de-fontainebleau/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-petit-train-du-chateau-de-fontainebleau-55f29c675e/"
     },
     {
@@ -8223,8 +7872,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-26",
       "endDate": "2026-12-26",
@@ -8235,9 +7884,9 @@
       "descriptionEn": "A friendly book club to discuss literary news and discover sneak previews over a hot drink.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5926&cHash=a45ff3f91b7834ba21bc53db1ef0f6b3",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rdv-actua-litte-a-la-mediatheque-de-la-charite-royale-fontainebleau-afe605852e/"
     },
     {
@@ -8276,8 +7925,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-30",
       "endDate": "2026-12-30",
@@ -8290,35 +7939,8 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/atelier-aquarelle-botanique-au-gui-l-an-neuf-barbizon-73de22621f/"
-    },
-    {
-      "id": "EVT_35fe507f15",
-      "title": "J'ai mangé ma fourchette",
-      "category": "Scène & Spectacles",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "6 rue des Sablons Âne Vert Théâtre",
-      "lat": 48.4049,
-      "lng": 2.69855,
-      "geoSource": "venue",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2026-12-30",
-      "endDate": "2026-12-30",
-      "schedule": "",
-      "price": "",
-      "organizer": "",
-      "description": "Un véritable spectacle saint sylvestre de music-hall conçu autour de chansons humoristiques composées par les plus grands spécialistes du genre : Bourvil, Fernandel, les Frères Jacques, Boby Lapointe ou Jean Yanne… Avec la Compagnie Quand On Est Trois.",
-      "descriptionEn": "A true New Year's Eve music-hall show built around humorous songs written by masters of the genre, including Bourvil, Fernandel, les Frères Jacques, Boby Lapointe, and Jean Yanne. Featuring the Compagnie Quand On Est Trois.",
-      "url": "https://www.anevert.fr/",
-      "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-24",
-      "source": "datatourisme",
-      "lastSeen": "2026-10-21",
-      "pageUrl": "/evenements/j-ai-mange-ma-fourchette-fontainebleau-35fe507f15/"
     },
     {
       "id": "EVT_ca9d64cd79",
@@ -8370,7 +7992,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "datatourisme",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/j-ai-mange-ma-fourchette-fontainebleau-7444455eaa/"
     },
     {
@@ -8397,7 +8019,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/marche-saint-louis-fontainebleau-1077e57a94/"
     },
     {
@@ -8450,7 +8072,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/reveillon-de-la-saint-sylvestre-avec-lb-salsa-samois-sur-seine-4762e2cdf5/"
     },
     {
@@ -8463,8 +8085,8 @@
       "locationName": "",
       "lat": 48.34418,
       "lng": 2.6029,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2026-12-31",
       "endDate": "2027-01-01",
@@ -8477,7 +8099,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/reveillon-de-la-st-sylvestre-ury-55d5b44a0c/"
     },
     {
@@ -8502,9 +8124,9 @@
       "descriptionEn": "A festive musical cabaret show immerses you in the heart of a jazz club to celebrate New Year's Eve.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5704&cHash=406902d57564b848db4d96dcd6ee5772",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-de-la-saint-sylvestre-fantasmagloria-au-theatre-mu-fontainebleau-25ae1e91a6/"
     },
     {
@@ -8517,8 +8139,8 @@
       "locationName": "Galerie Fontaineblow",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-02",
       "endDate": "2027-01-02",
@@ -8529,9 +8151,9 @@
       "descriptionEn": "Hands-on urban arts workshops and discovery sessions held regularly in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037227/art-urbain-workshops-tous-les-1er-et-3eme-samedis-du-mois/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/art-urbain-et-workshops-tous-les-1er-et-3eme-samedis-du-mois-fontainebleau-f1a9b77e3d/"
     },
     {
@@ -8556,7 +8178,7 @@
       "descriptionEn": "Discussions and exchanges focusing on science and biodiversity.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8011881/cafe-des-sciences-par-fablab-moebius/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-10-08",
       "pageUrl": "/evenements/cafe-des-sciences-fablab-moebius-fontainebleau-252dc9d8cb/"
     },
@@ -8570,8 +8192,8 @@
       "locationName": "Salle de l'Orangerie",
       "lat": 48.44696,
       "lng": 2.7794,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-08",
       "endDate": "2027-01-08",
@@ -8582,9 +8204,9 @@
       "descriptionEn": "A warm and welcoming Mayor's New Year address to the residents.",
       "url": "https://www.hericy.fr/agenda/#2027-01-08-ceremoniedesvuxdumaire",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/ceremonie-des-voeux-du-maire-hericy-e4bf80fd4a/"
     },
     {
@@ -8635,9 +8257,9 @@
       "descriptionEn": "Comedy show presented by Pablo Mira.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5711&cHash=cc03f8542e0048b818cf993a87036228",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/pablo-mira-cherche-encore-le-titre-de-son-spectacle-au-theat-fontainebleau-c46e43d182/"
     },
     {
@@ -8676,8 +8298,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-09",
       "endDate": "2027-01-09",
@@ -8688,9 +8310,9 @@
       "descriptionEn": "The mayor and local elected officials meet residents to discuss local life and neighbourhood development.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5943&cHash=5687e6c276380c39c2e2ab299b82676a",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-de-quartier-provenceaux-fontainebleau-f970d6e89c/"
     },
     {
@@ -8703,8 +8325,8 @@
       "locationName": "",
       "lat": 48.44575,
       "lng": 2.60775,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-09",
       "endDate": "2027-01-09",
@@ -8717,7 +8339,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visites-guidees-du-musee-barbizon-5978341773/"
     },
     {
@@ -8742,7 +8364,7 @@
       "descriptionEn": "Following the success of his first show, Ilyes is \"already\" back with his new show. At just 27 years old, he ALREADY has so much to tell—see him starting September 24 in Paris and on tour throughout France.",
       "url": "https://www.fnacspectacles.com/artist/ilyes-djadel/ilyes-djadel-deja-tournee-4132966/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=44668243239&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=44668243239&a=3117734&m=12494",
@@ -8753,7 +8375,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/ilyes-djadel-deja-dammarie-les-lys-613e066d0f/"
     },
     {
@@ -8814,7 +8436,7 @@
       "descriptionEn": "Experience the extraordinary music of Middle-earth live with the European Symphonic Orchestra & Cho... Howard Shore's iconic score for Tolkien's universe comes to life in an unforgettable concert.",
       "url": "https://www.fnacspectacles.com/artist/the-lord-of-the-rings-the-hobbit/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=44068536322&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=44068536322&a=3117734&m=12494",
@@ -8825,7 +8447,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/the-lord-of-the-rings-et-the-hobbit-a-symphonic-experience-melun-ea0b1a2959/"
     },
     {
@@ -8861,7 +8483,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/the-music-of-hans-zimmer-et-others-a-celebration-of-film-mus-melun-52e67e12f3/"
     },
     {
@@ -8886,9 +8508,9 @@
       "descriptionEn": "Play staged at the Théâtre Municipal de Fontainebleau.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5712&cHash=c021132011cf7656ea93661beb29d003",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-dernier-cedre-du-liban-au-theatre-municipal-de-fontainebl-fontainebleau-da809f81eb/"
     },
     {
@@ -8951,7 +8573,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/victoria-dauberville-classique-dammarie-les-lys-75c25ef44a/"
     },
     {
@@ -8964,8 +8586,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-16",
       "endDate": "2027-01-16",
@@ -8976,9 +8598,9 @@
       "descriptionEn": "Guided tour to explore the École Militaire d'Équitation in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/6050934/visite-guidee-de-lecole-militaire-dequitation/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-guidee-de-l-ecole-militaire-d-equitation-fontainebleau-6d309d70b5/"
     },
     {
@@ -9014,7 +8636,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-frederic-francois-dammarie-les-lys-8b254bb73b/"
     },
     {
@@ -9138,7 +8760,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/the-wall-en-concert-melun-f04cdbf72d/"
     },
     {
@@ -9205,33 +8827,6 @@
       "pageUrl": "/evenements/julien-clerc-tournee-une-vie-dammarie-les-lys-e503e31eb7/"
     },
     {
-      "id": "EVT_fb2c39233f",
-      "title": "Conférence de l'INSEAD : \"La finance et son impact sur le climat : une véritable transformation durable est-elle possible ?\" par Lucie Pinson",
-      "category": "Culture & Ateliers",
-      "ageMin": 0,
-      "ageMax": 99,
-      "city": "Fontainebleau",
-      "locationName": "Fontainebleau",
-      "lat": 48.40168,
-      "lng": 2.70086,
-      "geoSource": "ban",
-      "geoApprox": false,
-      "dateType": "event",
-      "startDate": "2027-01-21",
-      "endDate": "2027-01-21",
-      "schedule": "20h30",
-      "price": "Entrée libre. Les conférences sont en accès libre et gratuites. Les portes (ent…",
-      "organizer": "INSEAD",
-      "description": "Cycle de conférences académiques organisé sur le campus de l'INSEAD.",
-      "descriptionEn": "Series of academic lectures hosted on the INSEAD campus.",
-      "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5719&cHash=5e4d98dba3b23f0b2572903917624b0d",
-      "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
-      "source": "site",
-      "lastSeen": "2026-11-24",
-      "pageUrl": "/evenements/conference-de-l-insead-la-finance-et-son-impact-sur-le-clima-fontainebleau-fb2c39233f/"
-    },
-    {
       "id": "EVT_fa55d203f8",
       "title": "Rayss Bek",
       "category": "Scène & Spectacles",
@@ -9256,7 +8851,7 @@
       "urlCheckedAt": "2026-11-24",
       "image": "https://img.openagenda.com/main/f93364a3a93a45f9a62769955b59e410.base.image.jpg",
       "source": "openagenda",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/rayss-bek-thomery-fa55d203f8/"
     },
     {
@@ -9281,7 +8876,7 @@
       "descriptionEn": "Readings, nursery rhymes and finger plays for ages 0-4.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7616012/la-nuit-de-la-lecture/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-11-03",
       "pageUrl": "/evenements/bebe-bouquine-nuit-de-la-lecture-avon-23ecf23f63/"
     },
@@ -9307,7 +8902,7 @@
       "descriptionEn": "WITH U2 DAY passionately recreates the sound, energy, and power of legendary rock band U2 in concert. The four musicians perform the Irish quartet's greatest hits, celebrating the 40th anniversary of the album War.",
       "url": "https://www.fnacspectacles.com/artist/with-u2-day/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=44382537627&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=44382537627&a=3117734&m=12494",
@@ -9318,7 +8913,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/with-u2-day-dammarie-les-lys-ed82fbd359/"
     },
     {
@@ -9395,7 +8990,7 @@
       "descriptionEn": "When revenge turns into comedy! Freshly dumped Perrine hatches a wild plan with her slightly crazy friend Bérengère and ex-con Gabrièle to rob her jeweler ex-husband's shop.",
       "url": "https://www.fnacspectacles.com/artist/le-kangourou-a-bretelles/les-braqueuses-4031857/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "francebillet",
       "lastSeen": "2026-10-28",
       "pageUrl": "/evenements/les-braqueuses-le-mee-sur-seine-866b5883bb/"
@@ -9422,9 +9017,9 @@
       "descriptionEn": "Evening events centered around books and childhood.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5696&cHash=29b670b1da6a077ea4f0547c6db591ec",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/nuit-de-la-lecture-fontainebleau-8cccbf91a6/"
     },
     {
@@ -9486,7 +9081,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/secret-s-medical-une-comedie-avec-michel-cymes-dammarie-les-lys-ce37e283e8/"
     },
     {
@@ -9497,8 +9092,8 @@
       "ageMax": 99,
       "city": "Avon",
       "locationName": "Maison dans les Vallées",
-      "lat": 48.413,
-      "lng": 2.72893,
+      "lat": 48.41089,
+      "lng": 2.7265,
       "geoSource": "ban",
       "geoApprox": false,
       "dateType": "event",
@@ -9511,9 +9106,9 @@
       "descriptionEn": "A stage show entitled A Simple Space.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8037357/a-simple-space/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/spectacle-vivant-et-acrobatique-a-simple-space-avon-8b46a32606/"
     },
     {
@@ -9538,7 +9133,7 @@
       "descriptionEn": "Learn to spot and interpret tracks and signs left by wildlife in the forêt de Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/5643672/visite-sur-la-trace-des-animaux-en-foret-de-fontainebleau/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-11-12",
       "pageUrl": "/evenements/visite-guidee-sur-la-trace-des-animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/"
@@ -9553,8 +9148,8 @@
       "locationName": "Hôtel Victoria, Fontainebleau",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-24",
       "endDate": "2027-01-24",
@@ -9565,9 +9160,9 @@
       "descriptionEn": "Storytelling evening about hair and fur with the association Sur Paroles.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5872&cHash=b29da75afed93117da1847713d2682dc",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-contes-sur-le-theme-cheveux-et-poils-a-l-hotel-victori-fontainebleau-49b5889be9/"
     },
     {
@@ -9592,7 +9187,7 @@
       "descriptionEn": "Directed by Gil Galliot, starring Trinidad, Sébastien Fouillade, Marin Langlois, Patrick Mazet, Clément Vieu, and Nicolas Jazat. Duration: 1h30. Et pendant ce temps Simone veille explores the history of women's rights in France from the 1950s to today through four generations of women.",
       "url": "https://www.fnacspectacles.com/artist/et-pendant-ce-temps-sigmund-freudonne/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=45170117197&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=45170117197&a=3117734&m=12494",
@@ -9603,7 +9198,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/et-pendant-ce-temps-sigmund-freudonne-dammarie-les-lys-e8f82126e2/"
     },
     {
@@ -9665,7 +9260,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/la-maison-tellier-a-20-ans-vaux-le-penil-6c6998c8d3/"
     },
     {
@@ -9702,9 +9297,9 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Théâtre Municipal de Fontainebleau",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "ban",
+      "lat": 48.40335,
+      "lng": 2.69762,
+      "geoSource": "venue",
       "geoApprox": false,
       "dateType": "event",
       "startDate": "2027-01-29",
@@ -9716,9 +9311,9 @@
       "descriptionEn": "Concert presented by families and students from the Conservatoire.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/7967344/concert-des-familles-des-eleves-du-conservatoire/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-des-familles-du-conservatoire-au-theatre-municipal-d-fontainebleau-61dc186754/"
     },
     {
@@ -9745,7 +9340,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/36e-salon-de-peinture-et-de-sculpture-moret-loing-et-orvanne-ebde459881/"
     },
     {
@@ -9770,9 +9365,9 @@
       "descriptionEn": "Wildlife photo exhibition followed by a screening and a debate led by naturalists.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/8051048/cine-debat-le-vivant-qui-se-defend/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cine-debat-le-vivant-qui-se-defend-et-exposition-photos-d-ar-acheres-la-foret-f94adfc30b/"
     },
     {
@@ -9797,7 +9392,7 @@
       "descriptionEn": "Presented by LDC (V-R-2021-008069/71), AS, and SARAH PROD. DIRTY DANCING LE TRIBUTE CONCERT: Set in the summer of 1963, Baby Houseman (Jennifer Grey) and her family spend their holiday at Kellerman's, a resort in the Catskills. Intrigued by the dance instructor Johnny Castle (Patrick Swayze), she discovers a very different lifestyle...",
       "url": "https://www.fnacspectacles.com/artist/dirty-dancing-le-tribute/",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "ticketUrl": "https://www.awin1.com/pclick.php?p=44633725142&a=3117734&m=12494",
       "booking": {
         "url": "https://www.awin1.com/pclick.php?p=44633725142&a=3117734&m=12494",
@@ -9808,7 +9403,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/dirty-dancing-le-tribute-melun-26c11ea4a7/"
     },
     {
@@ -9848,8 +9443,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-30",
       "endDate": "2027-01-30",
@@ -9860,9 +9455,9 @@
       "descriptionEn": "Advanced photography workshop focusing on the magical atmosphere of the forest.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/6851770/stage-photographique-magie-de-la-foret/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/stage-photographique-magie-de-la-foret-fontainebleau-f3630551c6/"
     },
     {
@@ -9887,7 +9482,7 @@
       "descriptionEn": "A 15 km and 20 km nature trail run through the forest, the Gorges de Franchard, and La Faisanderie.",
       "url": "https://grandparquetendurance.com/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "lastSeen": "2026-10-31",
       "pageUrl": "/evenements/trail-des-carriers-fontainebleau-outdoor-festival-d042b64d77/"
     },
@@ -9901,8 +9496,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-01-30",
       "endDate": "2027-01-30",
@@ -9913,9 +9508,9 @@
       "descriptionEn": "Guided tour to explore the École Militaire d'Équitation in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/6050934/visite-guidee-de-lecole-militaire-dequitation/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-guidee-de-l-ecole-militaire-d-equitation-fontainebleau-df0ba9c872/"
     },
     {
@@ -9926,9 +9521,9 @@
       "ageMax": 99,
       "city": "Fontainebleau",
       "locationName": "Théâtre Municipal de Fontainebleau",
-      "lat": 48.40781,
-      "lng": 2.70278,
-      "geoSource": "ban",
+      "lat": 48.40335,
+      "lng": 2.69762,
+      "geoSource": "venue",
       "geoApprox": false,
       "dateType": "event",
       "startDate": "2027-01-31",
@@ -9942,7 +9537,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/sous-la-neige-au-theatre-municipal-de-fontainebleau-69fdb9ce0a/"
     },
     {
@@ -9969,7 +9564,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/concert-mirages-de-l-enfance-avon-dc75592d45/"
     },
     {
@@ -10055,7 +9650,7 @@
       "descriptionEn": "Discover the local flora and fauna on a themed guided tour in the forêt de Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/4971254/visites-guidees-thematiques-en-foret/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
       "lastSeen": "2026-11-12",
       "pageUrl": "/evenements/visite-guidee-thematique-en-foret-de-fontainebleau-e010cd1c81/"
@@ -10160,9 +9755,9 @@
       "descriptionEn": "Performance of Corneille's play directed by Frédéric Cherboeuf.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5714&cHash=f3d3faf3acef804ef5045546705c85b9",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/l-illusion-comique-au-theatre-municipal-de-fontainebleau-6af382183f/"
     },
     {
@@ -10198,7 +9793,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/le-medecin-malgre-lui-de-moliere-le-mee-sur-seine-470b1e5a72/"
     },
     {
@@ -10233,7 +9828,7 @@
         "offer": "fnac-spectacles"
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/fabien-olicard-albert-dammarie-les-lys-eb4801e996/"
     },
     {
@@ -10286,7 +9881,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/blandy-fete-les-fous-blandy-les-tours-a458dce5cc/"
     },
     {
@@ -10299,8 +9894,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-02-13",
       "endDate": "2027-02-13",
@@ -10311,9 +9906,9 @@
       "descriptionEn": "Guided tour to explore the École Militaire d'Équitation in Fontainebleau.",
       "url": "https://www.fontainebleau-tourisme.com/fr/fiche/6050934/visite-guidee-de-lecole-militaire-dequitation/",
       "urlStatus": "ok",
-      "urlCheckedAt": "2026-11-18",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/visite-guidee-de-l-ecole-militaire-d-equitation-fontainebleau-dd672ac538/"
     },
     {
@@ -10340,7 +9935,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/new-au-theatre-municipal-de-fontainebleau-fff83c3576/"
     },
     {
@@ -10376,7 +9971,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cine-bal-melun-739f3fbe60/"
     },
     {
@@ -10389,8 +9984,8 @@
       "locationName": "",
       "lat": 48.40781,
       "lng": 2.70278,
-      "geoSource": "ban",
-      "geoApprox": false,
+      "geoSource": "city",
+      "geoApprox": true,
       "dateType": "event",
       "startDate": "2027-02-20",
       "endDate": "2027-02-20",
@@ -10403,7 +9998,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/initiation-a-l-escalade-de-bloc-en-foret-fontainebleau-2eb6336494/"
     },
     {
@@ -10430,7 +10025,7 @@
       "urlStatus": "ok",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/nouveau-initiation-au-jeu-de-paume-fontainebleau-143a5d8345/"
     },
     {
@@ -10455,9 +10050,9 @@
       "descriptionEn": "Theatrical creations presented by actors from Fonact.",
       "url": "https://www.fontainebleau.fr/index.php?id=133&no_cache=1&L=0&tx_news_pi1%5Bnews%5D=5785&cHash=710756ea7d3e684823c62babad0c5776",
       "urlStatus": "unverified",
-      "urlCheckedAt": "2026-11-24",
+      "urlCheckedAt": "2026-11-25",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/representations-de-fonact-fontainebleau-98cedea51e/"
     },
     {
@@ -10484,7 +10079,7 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-21",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/apero-contes-sur-le-theme-petit-et-grand-a-l-hotel-victoria-fontainebleau-451c35e4c8/"
     },
     {
@@ -10520,7 +10115,7 @@
         "samePage": true
       },
       "source": "francebillet",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cine-bal-melun-91086014b2/"
     },
     {
@@ -10547,8 +10142,44 @@
       "urlStatus": "unverified",
       "urlCheckedAt": "2026-11-24",
       "source": "site",
-      "lastSeen": "2026-11-24",
+      "lastSeen": "2026-11-25",
       "pageUrl": "/evenements/cine-debat-autour-du-film-la-ragazza-di-bube-par-flc-et-cine-fontainebleau-33b8ece2c0/"
+    },
+    {
+      "id": "EVT_4d03399cc2",
+      "title": "Hip-Hop Est-ce Bien Sérieux ?",
+      "category": "Scène & Spectacles",
+      "ageMin": 0,
+      "ageMax": 99,
+      "city": "Vaux-le-Pénil",
+      "locationName": "La Grange de la Ferme des Jeux",
+      "lat": 48.52794,
+      "lng": 2.68965,
+      "geoSource": "feed",
+      "geoApprox": false,
+      "dateType": "event",
+      "startDate": "2027-02-25",
+      "endDate": "2027-02-25",
+      "schedule": "",
+      "price": "18,20 €",
+      "organizer": "",
+      "description": "Chorégraphie par Séverine Bidaud. Ce spectacle à mi-chemin entre la danse et le théâtre trace l’épopée du hip-hop, depuis les rues animées du New York des années 70 jusqu’aux scènes internationales d’aujourd’hui. Ce témoignage jubilatoire d’une pionnière de la culture hip-hop en France, vous offre une vision immersive de l’aventure d’un mouvement à la fois festif et engagé. Une performance vitami…",
+      "descriptionEn": "Choreographed by Séverine Bidaud. Halfway between dance and theatre, this show traces the epic story of hip-hop, from the bustling streets of 1970s New York to today's international stages. This exultant testimony from a pioneer of French hip-hop culture offers an immersive vision of a festive yet committed movement. An energetic performance…",
+      "url": "https://www.fnacspectacles.com/artist/hip-hop-est-ce-bien-serieux/",
+      "urlStatus": "unverified",
+      "urlCheckedAt": "2026-11-25",
+      "ticketUrl": "https://www.awin1.com/pclick.php?p=45255674188&a=3117734&m=12494",
+      "booking": {
+        "url": "https://www.awin1.com/pclick.php?p=45255674188&a=3117734&m=12494",
+        "label": "Billets",
+        "labelEn": "Tickets",
+        "provider": "Fnac Spectacles",
+        "offer": "fnac-spectacles",
+        "samePage": true
+      },
+      "source": "francebillet",
+      "lastSeen": "2026-11-25",
+      "pageUrl": "/evenements/hip-hop-est-ce-bien-serieux-vaux-le-penil-4d03399cc2/"
     }
   ]
 }

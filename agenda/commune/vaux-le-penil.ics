@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_3b337505a6@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Visite BASUYAU
@@ -30,7 +30,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d706b19e2a@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:Lisa
@@ -52,7 +52,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_6c6998c8d3@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261125T000000Z
 DTSTART;VALUE=DATE:20270128
 DTEND;VALUE=DATE:20270129
 SUMMARY:La Maison Tellier a 20 ans
@@ -70,6 +70,30 @@ DESCRIPTION:Tarif : 21\,20 €\n\nLa Maison Tellier revient sur scène pour
  anisateur.
 URL:https://fontainebleaulive.fr/evenements/la-maison-tellier-a-20-ans-vaux
  -le-penil-6c6998c8d3/
+CATEGORIES:Scène & Spectacles
+GEO:48.52794;2.68965
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4d03399cc2@fontainebleaulive.fr
+DTSTAMP:20261125T000000Z
+DTSTART;VALUE=DATE:20270225
+DTEND;VALUE=DATE:20270226
+SUMMARY:Hip-Hop Est-ce Bien Sérieux ?
+LOCATION:La Grange de la Ferme des Jeux\, Vaux-le-Pénil
+DESCRIPTION:Tarif : 18\,20 €\n\nChorégraphie par Séverine Bidaud. Ce sp
+ ectacle à mi-chemin entre la danse et le théâtre trace l’épopée du 
+ hip-hop\, depuis les rues animées du New York des années 70 jusqu’aux 
+ scènes internationales d’aujourd’hui. Ce témoignage jubilatoire d’
+ une pionnière de la culture hip-hop en France\, vous offre une vision imm
+ ersive de l’aventure d’un mouvement à la fois festif et engagé. Une 
+ performance vitami…\n\nOrganisateur : https://www.fnacspectacles.com/art
+ ist/hip-hop-est-ce-bien-serieux/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/hip-hop-est-ce-bien-serieux-vaux-le-penil-4d03399cc2/\n\nInforma
+ tions collectées automatiquement : vérifiez-les auprès de l’organisat
+ eur.
+URL:https://fontainebleaulive.fr/evenements/hip-hop-est-ce-bien-serieux-vau
+ x-le-penil-4d03399cc2/
 CATEGORIES:Scène & Spectacles
 GEO:48.52794;2.68965
 TRANSP:TRANSPARENT
