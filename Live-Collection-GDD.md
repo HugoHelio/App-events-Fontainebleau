@@ -9,7 +9,7 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
 > Ce document décrit le jeu. Le document de conception du site fait toujours autorité pour la
 > technique, les données et les règles de confiance ; en cas de doute, c'est lui qui tranche.
 
-## Où on en est (23/11/2026, à lire en reprenant)
+## Où on en est (25/11/2026, à lire en reprenant)
 - **La maquette (M0) est terminée** : tous les écrans ont été revus avec le chef de projet entre le
   21 et le 22/11, la boutique comprise. `node scripts/live-collection-mock.js`, servie sur
   `http://localhost:8517/` (`PORT=…` si le port est pris, `--file` pour écrire la page seulement,
@@ -34,6 +34,9 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
 - **Agenda de la Ville lu à chaque scan depuis le 21/11** (pare-feu ouvert par la mairie, item 72c du
   doc de conception) : les sorties de fontainebleau.fr sont des fiches confirmées par une source lue,
   donc éligibles à la couche événements et à l'événement du jour (§7), sans copie à la main.
+- **Ville de Fontainebleau, direction de la communication** : jeu et site présentés par courriel le
+  25/11, appel demandé (item 72d du doc de conception). Boutique non mentionnée ; une saison financée
+  par une institution (§12.2, « Plus tard ») attend des chiffres d'usage.
 - **Questions encore ouvertes** : §16. Les cinq sites de grimpe sont validés (§7.4).
 - **Lien avec le carrousel du jeudi** (item 115) : la quête de la semaine pourra y être annoncée ;
   la règle de sélection des sorties (`carouselPool()` de `generate-pages.js`) sert aussi à la couche
