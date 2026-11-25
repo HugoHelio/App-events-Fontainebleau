@@ -71,7 +71,7 @@ code** — journal des décisions (§7) et roadmap (§9). Le doc a déjà dériv
 | `404.html` | **Écrit à la main.** Servi par GitHub Pages pour toute adresse absente, notamment les fiches d'événements terminés |
 | `index.html` | Frontend complet (HTML + CSS + JS dans un seul fichier), Leaflet + FullCalendar. **Écrit à la main, sauf deux blocs** : les suggestions sous la carte, entre `<!-- home-picks:start -->` et `<!-- home-picks:end -->` (item 86), et depuis le 20/11 les tuiles de saison sous le bandeau (marchés de Noël, idées de cadeaux, Avent…), entre `<!-- home-seasons:start -->` et `<!-- home-seasons:end -->` ; tous deux réécrits par `generate-pages.js` — ne pas éditer entre les marqueurs ni les supprimer. Le texte « Fontainebleau et ses environs » (`homeAbout1`/`homeAbout2`) doit rester vrai pour le pipeline |
 | `data.json` | **Généré.** Source de vérité des événements — ne jamais éditer à la main |
-| `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité |
+| `manifest.json` / `sw.js` | PWA (installable, hors ligne). Le service worker est **réseau d’abord** : jamais de cache servi en priorité, sauf les tuiles OpenStreetMap du jeu (cache `fl-tiles`, 14 jours, 2 500 tuiles au plus, 25/11) |
 | `CNAME` | Domaine perso `fontainebleaulive.fr` servi par GitHub Pages |
 | `og-image.png` | Visuel de marque (1200×630) pour les aperçus de lien, composé depuis `BackgroundDeco-FL-v1.png` |
 | `favicon.ico` | Favicon 16/32/48 à la racine — celui que Google Search et les robots demandent directement |

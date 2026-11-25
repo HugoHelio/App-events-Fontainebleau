@@ -139,6 +139,7 @@ ${LEAFLET_CSS}
 <section class="screen on" id="s-map"><div id="map"></div>
 <button type="button" class="livebar" id="livebar"><span class="dot"></span><span id="livetxt"></span></button>
 <button type="button" class="livebar gbar" id="gbar" hidden></button>
+<div class="offbar" id="offbar" hidden></div>
 <button type="button" class="lbtn" id="lbtn" aria-expanded="false"><span data-ico="layers"></span></button>
 <button type="button" class="locbtn" id="locbtn"><span data-ico="pin"></span></button>
 <div class="lpanel" id="lpanel"><h4 id="h-bases"></h4><div class="lgrid" id="bases"></div><h4 id="h-layers"></h4><div class="lgrid" id="overlays"></div></div>
@@ -194,6 +195,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 #map.doux .leaflet-tile-pane{filter:saturate(.4) sepia(.25) brightness(1.05)}
 #map.nuit .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9)}
 .livebar{position:absolute;z-index:500;top:10px;left:10px;right:62px;display:flex;align-items:center;gap:8px;background:#fff;border:0;border-radius:14px;padding:8px 12px;box-shadow:0 1px 6px rgba(0,0,0,.25);font:inherit;font-size:13px;text-align:left;cursor:pointer;color:inherit}
+.offbar{position:absolute;z-index:500;top:58px;left:10px;right:62px;background:#2b2d42;color:#fff;border-radius:12px;padding:7px 11px;font-size:12.5px;line-height:1.35;box-shadow:0 1px 6px rgba(0,0,0,.25);pointer-events:none}.offbar[hidden]{display:none}
 .livebar b{color:var(--live)}.livebar .dot{width:10px;height:10px;border-radius:50%;background:var(--live);flex:none;animation:blink 1.4s infinite}
 @keyframes blink{50%{opacity:.3}}
 .lbtn,.locbtn{position:absolute;z-index:500;right:10px;width:44px;height:44px;border-radius:12px;border:0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.25);cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -353,6 +355,12 @@ const CLIENT = String.raw`
     liveBar: [' aujourd’hui · {0} cette semaine · jusqu’à +{1} XP', ' today · {0} this week · up to +{1} XP'], liveN: ['{0} en direct', '{0} live'],
     rarity: { 'commun': ['commun', 'common'], 'peu commun': ['peu commun', 'uncommon'], 'rare': ['rare', 'rare'], 'légendaire': ['légendaire', 'legendary'] },
     away: [' · à {0}', ' · {0} away'],
+    awayDir: ['à {0}, vers {1}', '{0} away, to the {1}'], awayHere: ['à {0}, vous y êtes presque', '{0} away, almost there'],
+    dirs: [['le nord', 'north'], ['le nord-est', 'north-east'], ['l’est', 'east'], ['le sud-est', 'south-east'], ['le sud', 'south'], ['le sud-ouest', 'south-west'], ['l’ouest', 'west'], ['le nord-ouest', 'north-west']],
+    offSave: ['Garder la carte du coin hors ligne', 'Keep this area’s map offline'], offSaving: ['Carte en cours… {0} %', 'Saving the map… {0}%'],
+    offDone: ['✓ Carte gardée sur le téléphone', '✓ Map kept on the phone'], offPartial: ['Carte gardée en partie : réessayer', 'Map partly kept: try again'],
+    offNo: ['Ce navigateur ne peut pas garder la carte', 'This browser cannot keep the map'], offNeedNet: ['Il faut du réseau pour garder la carte', 'You need a connection to keep the map'],
+    offBar: ['Hors ligne : la carte montre les zones déjà vues. Lieux, distance et GPS marchent toujours.', 'Offline: the map shows the areas already seen. Places, distance and GPS still work.'],
     climbNote: ['En famille : on vient voir, on essaie les premiers blocs du circuit le plus facile, à son niveau. Crash-pad, parade, jamais sur rocher mouillé.', 'For families: come and look, try the first problems of the easiest circuit, at your own level. Crash pad, spotting, never on wet rock.'],
     boolder: ['Le topo sur Boolder', 'The topo on Boolder'],
     gotHow: { gps: ['✓ Dans votre collection — sur place (GPS)', '✓ In your collection — on the spot (GPS)'], question: ['✓ Dans votre collection — par la question', '✓ In your collection — by the question'], honneur: ['✓ Dans votre collection — sur l’honneur', '✓ In your collection — on your honour'] },
@@ -479,7 +487,7 @@ const CLIENT = String.raw`
     Array.prototype.forEach.call(document.querySelectorAll('[data-ico]'), function (n) { n.textContent = ''; n.appendChild(ico(n.getAttribute('data-ico'))); });
     Array.prototype.forEach.call(document.querySelectorAll('[data-t]'), function (n) { n.textContent = t(n.getAttribute('data-t')); });
     $('mebtn').setAttribute('aria-label', t('profile')); $('lbtn').setAttribute('aria-label', t('layers')); $('locbtn').setAttribute('aria-label', t('locate'));
-    $('h-bases').textContent = t('bases'); $('h-layers').textContent = t('overlays'); $('lu-h').textContent = t('level'); $('lu-ok').textContent = t('cont');
+    $('offbar').textContent = t('offBar'); offBar(); $('h-bases').textContent = t('bases'); $('h-layers').textContent = t('overlays'); $('lu-h').textContent = t('level'); $('lu-ok').textContent = t('cont');
   }
   function cat(e) { return CATS[e.cat] || ['star', '#555']; }
   function catLabel(e) { return S.cats[e.cat] ? S.cats[e.cat][LI] : t('outing'); }
@@ -561,7 +569,8 @@ const CLIENT = String.raw`
 
   // ── Map and layers ──
   var map = L.map('map', { zoomControl: false }).setView([48.404, 2.698], 14);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+  // crossOrigin: a CORS answer can be kept by sw.js at its real size (an opaque one cannot be read)
+  var TILES = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, crossOrigin: true, attribution: '© OpenStreetMap' }).addTo(map);
   var FogLayer = L.Layer.extend({
     initialize: function () { this._holes = []; },
     onAdd: function (m) {
@@ -708,6 +717,81 @@ const CLIENT = String.raw`
   $('locbtn').onclick = function () { if (me) map.setView([me.lat, me.lng], 16); else withFix(function () {}); };
   function radiusOf(p) { return p.zone === 'foret' ? RADIUS.foret : RADIUS.ville; }
   function fmtDist(d) { return d > 1500 ? (d / 1000).toFixed(1).replace('.', LANG === 'en' ? '.' : ',') + ' km' : Math.round(d) + ' m'; }
+  // Distance and compass direction from the player, computed on the phone: they work with no
+  // network, when the map has no background left (25/11, forest group quests).
+  function awayText(p) {
+    var d = dist(me, p), r = Math.PI / 180;
+    var x = (p.lng - me.lng) * Math.cos((me.lat + p.lat) / 2 * r), y = p.lat - me.lat;
+    var k = Math.round(((Math.atan2(x, y) / r) + 360) % 360 / 45) % 8;
+    return d < 30 ? t('awayHere', fmtDist(d)) : t('awayDir', fmtDist(d), S.dirs[k][LI]);
+  }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  // ── Offline map (25/11) ──
+  // sw.js keeps the OpenStreetMap tiles the game has shown (cache "fl-tiles"). Before going into
+  // the forest, a player can also keep a SMALL area: at most TILE_CAP tiles, on a tap, never on
+  // its own (OSM's tile policy forbids downloading large areas). Tiles go straight into the
+  // same cache, so it works even before the service worker controls the page.
+  var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', TILE_CACHE = 'fl-tiles', TILE_CAP = 300;
+  function tilesFor(b) {
+    var out = [];
+    for (var z = 13; z <= 17; z++) {
+      var n = Math.pow(2, z), r = Math.PI / 180;
+      var tx = function (lng) { return Math.floor((lng + 180) / 360 * n); };
+      var ty = function (lat) { return Math.floor((1 - Math.log(Math.tan(lat * r) + 1 / Math.cos(lat * r)) / Math.PI) / 2 * n); };
+      var x0 = tx(b.w), x1 = tx(b.e), y0 = ty(b.n), y1 = ty(b.s), lvl = [];
+      for (var x = x0; x <= x1; x++) for (var y = y0; y <= y1; y++) lvl.push(TILE_URL.replace('{z}', z).replace('{x}', x).replace('{y}', y));
+      if (out.length + lvl.length > TILE_CAP) break; // the closest zooms are dropped first
+      out = out.concat(lvl);
+    }
+    return out;
+  }
+  // Bounds around points, with a margin in metres
+  function boundsOf(pts, m) {
+    var dLat = m / 111320, b = { n: -90, s: 90, e: -180, w: 180 };
+    pts.forEach(function (p) {
+      var dLng = m / (111320 * Math.cos(p.lat * Math.PI / 180));
+      b.n = Math.max(b.n, p.lat + dLat); b.s = Math.min(b.s, p.lat - dLat); b.e = Math.max(b.e, p.lng + dLng); b.w = Math.min(b.w, p.lng - dLng);
+    });
+    return b;
+  }
+  function saveArea(pts, m, btn, ev) {
+    if (!window.caches || !window.fetch) { toast(t('offNo')); return; }
+    if (!navigator.onLine) { toast(t('offNeedNet')); return; }
+    var urls = tilesFor(boundsOf(pts, m)), done = 0, failed = 0, i = 0;
+    btn.disabled = true; track(ev);
+    caches.open(TILE_CACHE).then(function (c) {
+      function next() {
+        if (i >= urls.length) return Promise.resolve();
+        var u = urls[i++];
+        return c.match(u).then(function (hit) {
+          if (hit) return;
+          return fetch(u, { mode: 'cors' }).then(function (r) {
+            if (!r.ok) { failed++; return; }
+            // Dated like sw.js does (x-saved): its tile() serves it for TILE_MAX_DAYS
+            return r.blob().then(function (bl) { return c.put(u, new Response(bl, { headers: { 'content-type': 'image/png', 'x-saved': String(Date.now()) } })); });
+          });
+        }).catch(function () { failed++; }).then(function () { done++; btn.textContent = t('offSaving', Math.round(done / urls.length * 100)); return next(); });
+      }
+      // Four at a time, like a browser showing the map
+      return Promise.all([next(), next(), next(), next()]);
+    }).then(function () {
+      btn.textContent = failed ? t('offPartial') : t('offDone');
+      if (failed) btn.disabled = false;
+    }, function () { btn.disabled = false; btn.textContent = t('offSave'); toast(t('offNo')); });
+  }
+  function offlineBtn(pts, m, ev) {
+    var b = el('button', 'linkbtn', t('offSave')); b.type = 'button';
+    b.onclick = function () { saveArea(pts, m, b, ev); };
+    return b;
+  }
+  // Offline, zoom 17 and beyond show the zoom-16 tiles enlarged: a kept quest area may stop at 16
+  function offBar() {
+    var off = navigator.onLine === false;
+    $('offbar').hidden = !off;
+    if (typeof TILES !== 'undefined' && TILES && (TILES.options.maxNativeZoom === 16) !== off) { TILES.options.maxNativeZoom = off ? 16 : undefined; TILES.redraw(); }
+  }
+  window.addEventListener('online', offBar); window.addEventListener('offline', offBar);
 
   function liveBar() {
     var n = liveNow.length, lt = $('livetxt'); lt.textContent = '';
@@ -735,8 +819,9 @@ const CLIENT = String.raw`
     sheet.appendChild(header(got ? SETCOL[p.set] : '#8a8f8b', p.icon, S.rarity[p.rarity][LI], RCOL[p.rarity]));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, p.name));
-    b.appendChild(el('p', 'meta', (LANG === 'en' ? TYPES[p.type] || p.type : p.type) + ' · ' + tr(SETS[p.set]) + ' · ' + XP[p.rarity] + ' XP' + (me ? t('away', fmtDist(dist(me, p))) : '')));
+    b.appendChild(el('p', 'meta', (LANG === 'en' ? TYPES[p.type] || p.type : p.type) + ' · ' + tr(SETS[p.set]) + ' · ' + XP[p.rarity] + ' XP' + (me ? ' · ' + awayText(p) : '')));
     if (p.set === 'grimpe') b.appendChild(el('div', 'note', t('climbNote')));
+    if (p.zone === 'foret') b.appendChild(offlineBtn([p], 1000, 'jeu/offline/spot'));
     if (got) {
       b.appendChild(el('div', 'got-banner', S.gotHow[got] ? S.gotHow[got][LI] : S.gotHow.gps[LI]));
       if (p.q) {
@@ -802,7 +887,7 @@ const CLIENT = String.raw`
     sheet.appendChild(header(c[1], e.season ? 'xmas' : c[0], star ? t('evStar') : live ? t('evLive') : catLabel(e), star ? 'var(--gold)' : live ? 'var(--live)' : 'rgba(29,59,41,.55)'));
     var b = el('div', 'body');
     b.appendChild(el('h2', null, e.title));
-    b.appendChild(el('p', 'meta', when(e) + ' · ' + e.place + (e.schedule ? ' · ' + e.schedule : '') + (me ? t('away', fmtDist(dist(me, e))) : '')));
+    b.appendChild(el('p', 'meta', when(e) + ' · ' + e.place + (e.schedule ? ' · ' + e.schedule : '') + (me ? ' · ' + awayText(e) : '')));
     var line = el('p'); line.appendChild(el('span', 'xpchip' + (star ? ' gold' : ''), '+' + xp + ' XP'));
     line.appendChild(document.createTextNode(star ? t('evStarTxt') : e.season ? t('evSeasonTxt') : t('evCardTxt')));
     b.appendChild(line);
@@ -935,7 +1020,7 @@ const CLIENT = String.raw`
     var b = el('div', 'body');
     b.appendChild(el('h2', null, on ? m.name : t('invOne')));
     if (on && m.code) b.appendChild(el('p', 'meta', m.code));
-    b.appendChild(el('p', 'meta', m.street + ' · ' + INV_XP + ' XP' + (me ? t('away', fmtDist(dist(me, m))) : '')));
+    b.appendChild(el('p', 'meta', m.street + ' · ' + INV_XP + ' XP' + (me ? ' · ' + awayText(m) : '')));
     if (!on) b.appendChild(el('p', null, t('invWhere', m.street)));
     if (on) b.appendChild(el('div', 'got-banner', on === 'gps' ? t('invGotGps') : t('invGotHon')));
     else {

@@ -28,7 +28,7 @@ Ancien nom : Bleau Quest (abandonné le 21/11 : beaucoup de gens ne savent pas c
   chef de projet). Serveur du classement en direct : reporté aux premiers clients (§12.2).
 - **Questions validées** : les **7 étapes du centre-ville**, le 23/11, par le chef de projet qui fait
   la boucle très souvent (`check` complet : 7 lieux sur 40 prêts). Les autres restent à vérifier
-  sur place (116i), puis le hors ligne et la relecture des textes.
+  sur place (116i), puis la relecture des textes. Carte sans réseau faite le 25/11 (§11).
 - **Quêtes de groupe forêt et Barbizon préparées le 25/11** (§12.2), pas encore jouables en groupe
   (`play` absent) : chaque étape a maintenant un texte sourcé et une question (croix du Calvaire,
   rocher Cassepot, caverne des Brigands, question du Bas-Bréau, tirés des pages de l'office de
@@ -331,7 +331,12 @@ réponse ! »). Chaque question se vérifie sur place avant publication (116d).
   Hors ligne grâce au service worker du site. L'application Android (TWA) emballera la même page.
 - Progression dans `localStorage` (avec un code d'export pour changer de téléphone). **La position
   ne quitte jamais le téléphone.** Carte Leaflet (`vendor/`), tuiles OpenStreetMap (pas de
-  téléchargement en masse pour le hors ligne : les règles d'OSM l'interdisent).
+  téléchargement en masse pour le hors ligne : les règles d'OSM l'interdisent). **Carte sans réseau
+  (25/11)** : `sw.js` garde les tuiles que le jeu a affichées ; sur la fiche d'un lieu en forêt et
+  avant le départ d'une quête de groupe en forêt, « Garder la carte du coin hors ligne » charge une
+  petite zone (300 tuiles au plus, au toucher, jamais seul) ; hors ligne, un bandeau le dit, les
+  zooms 17 et plus agrandissent les tuiles du zoom 16, et la distance s'accompagne de la direction
+  (« à 650 m, vers le nord-est »), calculées sur le téléphone.
 - La couche événements lit `data.json`, avec la règle du carrousel du jeudi : `carouselPool()` de
   `generate-pages.js` (sources lues seulement, quatre jours au plus, pas d'offre permanente ni de
   petit train), pour que le jeu, le post et `/ce-week-end/` montrent les mêmes sorties.

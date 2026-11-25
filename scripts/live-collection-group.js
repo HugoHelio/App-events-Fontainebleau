@@ -9,7 +9,7 @@
 // Injected into the page's client (scripts/live-collection-page.js) inside the same closure: it
 // uses el, $, t, tr, S, SHOP, SHOP_OPEN, st, map, L, me, dist, nearEnough, startGeo, sheet, header,
 // closeSheet, tab, toast, track, quest, ico, spotById, INVADERS, RADIUS, XP, gain, checkSets, draw,
-// fmtDist, renderShop, renderQuests, LANG, radiusOf. Same rules: textContent only, links built from fixed parts.
+// fmtDist, renderShop, renderQuests, LANG, radiusOf, awayText, cap, offlineBtn. Same rules: textContent only, links built from fixed parts.
 
 const GROUP_STYLE = `
 .gbar{background:var(--ink);color:#fff;justify-content:space-between}.gbar[hidden]{display:none}.gbar b{color:var(--accent)}.gbar span{font-variant-numeric:tabular-nums}
@@ -140,6 +140,9 @@ const GROUP_CLIENT = String.raw`
       var ul = el('ul', 'grules');
       [t('gR1', GP.arrive), t('gR2', GP.first, GP.second), t('gR3', GP.inv), t('gR4')].forEach(function (x) { ul.appendChild(el('li', null, x)); });
       b.appendChild(ul);
+      // In the forest the network drops: the team keeps the quest's map before the start (25/11)
+      var pts = Q.steps.map(spotById);
+      if (pts.some(function (p) { return p.zone === 'foret'; })) b.appendChild(offlineBtn(pts, 400, 'groupe/offline'));
       var inp = el('input', 'gname'); inp.maxLength = 24; inp.placeholder = t('gNamePh'); inp.value = T.name || ''; b.appendChild(inp);
       b.appendChild(gbtn('btn wide', t('gGo'), function () {
         var n = inp.value.replace(/\s+/g, ' ').trim().slice(0, 24);
@@ -155,7 +158,7 @@ const GROUP_CLIENT = String.raw`
     var hd = el('p', 'gstat', gstat(T)); hd.id = 'gstat'; b.appendChild(hd);
     b.appendChild(el('p', 'sh4', t('gStep', i + 1, Q.steps.length)));
     b.appendChild(el('h3', 'gplace', p.name));
-    if (me) b.appendChild(el('p', 'meta', t('gAway', fmtDist(dist(me, p)))));
+    if (me) b.appendChild(el('p', 'meta', cap(awayText(p))));
     var acts = el('div', 'acts'); b.appendChild(acts);
     if (!cur.g) {
       acts.appendChild(gbtn('btn', t('gHere'), function () {

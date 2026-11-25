@@ -37,10 +37,45 @@ self.addEventListener('install', (event) => {
   );
 });
 
+// Map tiles of the game (25/11, /jeu/ in the forest, where the network drops). Only the CORS
+// requests the game makes (Leaflet `crossOrigin`): the home page's map asks without CORS, gets
+// opaque answers, and stays untouched. CACHE-FIRST here, unlike the rest: a tile is a picture of
+// streets and paths, not our data, and a week-old one is still right; one older than TILE_MAX_DAYS
+// is fetched again when the network answers. The cache survives CACHE_VERSION bumps, is capped at
+// TILE_MAX tiles (oldest first out), and is also filled by the game's « Garder la carte » button.
+const TILE_CACHE = 'fl-tiles';
+const TILE_MAX = 2500;
+const TILE_MAX_DAYS = 14;
+const TILE_HOST = /(^|\.)tile\.openstreetmap\.org$/;
+let tilePuts = 0;
+
+function trimTiles(cache) {
+  return cache.keys().then((keys) => {
+    if (keys.length <= TILE_MAX) return;
+    return Promise.all(keys.slice(0, keys.length - TILE_MAX + 200).map((k) => cache.delete(k)));
+  });
+}
+
+function tile(request) {
+  return caches.open(TILE_CACHE).then((cache) => cache.match(request).then((hit) => {
+    const age = hit ? Date.now() - Number(hit.headers.get('x-saved') || 0) : Infinity;
+    if (hit && age < TILE_MAX_DAYS * 86400000) return hit;
+    return fetch(request).then((response) => {
+      if (response.ok && response.type === 'cors') {
+        // Kept with our own date: a CORS answer does not let the Date header be read
+        response.clone().blob()
+          .then((b) => cache.put(request, new Response(b, { headers: { 'content-type': 'image/png', 'x-saved': String(Date.now()) } })))
+          .then(() => (++tilePuts % 50 ? null : trimTiles(cache))).catch(() => {});
+      }
+      return response;
+    }).catch(() => hit || Response.error());
+  }));
+}
+
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE && k !== TILE_CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -60,9 +95,11 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') return;
 
-  // Leave other origins (map tiles, the analytics endpoint) alone: they manage their own
-  // caching, and proxying them here would only add a way to serve something stale.
+  // Leave other origins (the home page's map tiles, the analytics endpoint) alone: they manage
+  // their own caching, and proxying them here would only add a way to serve something stale.
+  // The game's tiles are the one exception (tile() above).
   const url = new URL(request.url);
+  if (request.mode === 'cors' && TILE_HOST.test(url.hostname)) { event.respondWith(tile(request)); return; }
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
@@ -75,6 +112,9 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       })
-      .catch(() => caches.match(request).then((hit) => hit || caches.match('./index.html')))
+      // Offline, a link with a query (an invitation ?partie=…) gets the same page without it
+      .catch(() => caches.match(request)
+        .then((hit) => hit || caches.match(request, { ignoreSearch: true }))
+        .then((hit) => hit || caches.match('./index.html')))
   );
 });
