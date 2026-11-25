@@ -334,7 +334,20 @@ const SPOTS = [
   {
     id: 'rocher-cassepot', name: 'Rocher Cassepot', set: 'denecourt', type: 'Point de vue', rarity: 'peu commun', zone: 'foret',
     lat: 48.43503, lng: 2.73366, icon: 'view',
-    check: { sources: true, site: false, lead: false }, // a plain point (22/11)
+    // 25/11, for the forest group quest: from the tourist office's two pages, to be validated.
+    text: {
+      fr: 'L’un des grands chaos de rochers de la forêt. De l’esplanade de Cassepot, la vue s’ouvre sur le nord du massif, qui compte plus de 200 points de vue.',
+      en: 'One of the great rock fields of the forest. From the Cassepot esplanade, the view opens onto the north of the forest, which has more than 200 viewpoints.',
+    },
+    sources: [
+      { label: 'Office de tourisme du Pays de Fontainebleau, sentier du rocher Cassepot', url: 'https://www.fontainebleau-tourisme.com/en/file/6367824/rocher-cassepot-trail' },
+      { label: 'Fontainebleau Tourisme, « Promenade des points de vue » (Cirkwi, PDF)', url: 'https://static.apidae-tourisme.com/filestore/objets-touristiques/documents/55/103/9922359.pdf' },
+    ],
+    q: {
+      fr: 'Depuis l’esplanade, que voit-on ?', en: 'From the esplanade, what do you see?',
+      choices: { fr: ['La forêt à perte de vue', 'Le château', 'La Seine'], en: ['Forest as far as the eye can see', 'The château', 'The Seine'] }, answer: 0,
+    },
+    check: { sources: true, site: false, lead: false },
   },
   {
     id: 'grotte-serment', name: 'Grotte du Serment', set: 'denecourt', type: 'Site des sentiers bleus', rarity: 'rare', zone: 'foret',
@@ -440,10 +453,46 @@ const SPOTS = [
     check: { sources: true, site: false, lead: false },
   },
   // 22/11, asked by the project lead: more forest points to collect, no text where we have no source.
-  { id: 'croix-du-calvaire', name: 'Croix du Calvaire', set: 'foret', type: 'Point de vue', rarity: 'commun', zone: 'foret', lat: 48.41966, lng: 2.71470, icon: 'cross', check: { sources: true, site: false, lead: false } },
+  {
+    id: 'croix-du-calvaire', name: 'Croix du Calvaire', set: 'foret', type: 'Point de vue', rarity: 'commun', zone: 'foret',
+    lat: 48.41966, lng: 2.71470, icon: 'cross',
+    // 25/11, for the forest group quest. The first crosses: 1731-1735 on the office's page,
+    // 1731-1755 in its PDF, so no year is given; 1831 and 1838 are in the PDF only.
+    text: {
+      fr: 'Sous Louis XV, trois croix sont dressées sur ce promontoire. Abattues en 1793, relevées en 1805, elles sont abattues de nouveau en 1831 ; la croix d’aujourd’hui date de 1838. D’ici, on voit la ville, son château et le viaduc d’Avon, construit en 1849.',
+      en: 'Under Louis XV, three crosses were raised on this headland. Knocked down in 1793, set up again in 1805, they were knocked down once more in 1831; today’s cross dates from 1838. From here you see the town, its château and the Avon viaduct, built in 1849.',
+    },
+    sources: [
+      { label: 'Office de tourisme du Pays de Fontainebleau, sentier de la tour Denecourt à la croix du Calvaire', url: 'https://www.fontainebleau-tourisme.com/en/fiche/6367855/sentier-de-la-tour-denecourt-a-la-croix-du-calvaire/' },
+      { label: 'Fontainebleau Tourisme, « Promenade des points de vue » (Cirkwi, PDF)', url: 'https://static.apidae-tourisme.com/filestore/objets-touristiques/documents/55/103/9922359.pdf' },
+    ],
+    q: {
+      fr: 'Du promontoire, que voit-on en contrebas ?', en: 'From the headland, what do you see below?',
+      choices: { fr: ['La ville et son château', 'Un grand lac', 'Des vignes'], en: ['The town and its château', 'A large lake', 'Vineyards'] }, answer: 0,
+    },
+    check: { sources: true, site: false, lead: false },
+  },
   { id: 'croix-de-toulouse', name: 'Croix de Toulouse', set: 'foret', type: 'Carrefour historique', rarity: 'peu commun', zone: 'foret', lat: 48.44395, lng: 2.71838, icon: 'cross', check: { sources: true, site: false, lead: false } },
   { id: 'antre-des-druides', name: 'Antre des Druides', set: 'foret', type: 'Grotte', rarity: 'peu commun', zone: 'foret', lat: 48.40660, lng: 2.62242, icon: 'cave', check: { sources: true, site: false, lead: false } },
-  { id: 'caverne-des-brigands', name: 'Caverne des Brigands', set: 'foret', type: 'Grotte', rarity: 'peu commun', zone: 'foret', lat: 48.43817, lng: 2.63030, icon: 'cave', check: { sources: true, site: false, lead: false } },
+  {
+    id: 'caverne-des-brigands', name: 'Caverne des Brigands', set: 'foret', type: 'Grotte', rarity: 'peu commun', zone: 'foret',
+    lat: 48.43817, lng: 2.63030, icon: 'cave',
+    // 25/11, for the Barbizon group quest. The year it was dug (1844) is only on Komoot: dropped.
+    text: {
+      fr: 'Une caverne creusée par Denecourt, l’inventeur des sentiers bleus : deux entrées reliées par un passage sous la roche. Les brigands qui s’y seraient cachés sous Louis XV ? Une légende, inventée elle aussi par Denecourt.',
+      en: 'A cave dug by Denecourt, the inventor of the blue trails: two entrances joined by a passage under the rock. The robbers said to have hidden here under Louis XV? A legend, also invented by Denecourt.',
+    },
+    sources: [
+      { label: 'Fontainebleau Tourisme, sentier de la Cavalière des Brigands (Cirkwi)', url: 'https://www.cirkwi.com/fr/circuit/272433-sentier-de-la-cavaliere-des-brigands' },
+      { label: 'AAFF, fiche « La Cavalière des Brigands » (2023) : parcours seulement', url: 'https://www.aaff.fr/wp-content/uploads/2023/12/3.-la-cavaliere-des-brigands.pdf' },
+    ],
+    todo: 'Source unique pour Denecourt et la légende (office de tourisme) : une seconde source.',
+    q: {
+      fr: 'Combien d’entrées a la caverne ?', en: 'How many entrances does the cave have?',
+      choices: { fr: ['Deux', 'Une', 'Quatre'], en: ['Two', 'One', 'Four'] }, answer: 0,
+    },
+    check: { sources: false, site: false, lead: false },
+  },
   { id: 'mare-aux-evees', name: 'Mare aux Évées', set: 'foret', type: 'Mare', rarity: 'peu commun', zone: 'foret', lat: 48.47568, lng: 2.65855, icon: 'pond', check: { sources: true, site: false, lead: false } },
   { id: 'mare-aux-fees', name: 'Mare aux Fées', set: 'foret', type: 'Mare', rarity: 'rare', zone: 'foret', lat: 48.35824, lng: 2.71054, icon: 'pond', check: { sources: true, site: false, lead: false } },
 
@@ -496,6 +545,11 @@ const SPOTS = [
       { label: 'Metropolitan Museum of Art (Corot, « Le Bas-Bréau », étude)', url: null },
       { label: 'Wikipédia, « Forêt de Fontainebleau »', url: null },
     ],
+    // 25/11, for the Barbizon group quest: from the text.
+    q: {
+      fr: 'Quels arbres ont fait la réputation du Bas-Bréau ?', en: 'Which trees made the Bas-Bréau famous?',
+      choices: { fr: ['Des chênes', 'Des pins', 'Des bouleaux'], en: ['Oaks', 'Pines', 'Birches'] }, answer: 0,
+    },
     check: { sources: true, site: false, lead: false },
   },
   {
@@ -618,7 +672,9 @@ const SHOP = {
     { id: 'foret', icon: 'tower', color: '#27503a', dur: '3 h',
       name: { fr: 'La forêt, hauteurs de la Solle', en: 'The forest, the Solle heights' },
       pts: { fr: ['5 étapes sur les sentiers bleus de Denecourt', 'Au nord de la ville'], en: ['5 stops on Denecourt’s blue trails', 'North of the town'] },
-      steps: ['mont-ussy', 'croix-d-augas', 'croix-du-calvaire', 'tour-denecourt', 'rocher-cassepot'] },
+      // 25/11: reordered so the walk ends at the Calvaire, above the town (5.5 km as the crow
+      // flies, against 4 km plus 2.9 km back in the old order). To be walked by the project lead.
+      steps: ['mont-ussy', 'croix-d-augas', 'rocher-cassepot', 'tour-denecourt', 'croix-du-calvaire'] },
     { id: 'barbizon', icon: 'palette', color: '#b8707d', dur: '2 h 30',
       name: { fr: 'Barbizon et ses peintres', en: 'Barbizon and its painters' },
       pts: { fr: ['5 étapes, du musée aux gorges d’Apremont', 'Sur les pas des peintres'], en: ['5 stops, from the museum to the Apremont gorge', 'In the painters’ footsteps'] },

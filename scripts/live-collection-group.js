@@ -9,7 +9,7 @@
 // Injected into the page's client (scripts/live-collection-page.js) inside the same closure: it
 // uses el, $, t, tr, S, SHOP, SHOP_OPEN, st, map, L, me, dist, nearEnough, startGeo, sheet, header,
 // closeSheet, tab, toast, track, quest, ico, spotById, INVADERS, RADIUS, XP, gain, checkSets, draw,
-// fmtDist, renderShop, renderQuests, LANG. Same rules: textContent only, links built from fixed parts.
+// fmtDist, renderShop, renderQuests, LANG, radiusOf. Same rules: textContent only, links built from fixed parts.
 
 const GROUP_STYLE = `
 .gbar{background:var(--ink);color:#fff;justify-content:space-between}.gbar[hidden]{display:none}.gbar b{color:var(--accent)}.gbar span{font-variant-numeric:tabular-nums}
@@ -159,7 +159,7 @@ const GROUP_CLIENT = String.raw`
     var acts = el('div', 'acts'); b.appendChild(acts);
     if (!cur.g) {
       acts.appendChild(gbtn('btn', t('gHere'), function () {
-        nearEnough(p, RADIUS.ville, function () {
+        nearEnough(p, radiusOf(p), function () {
           cur.g = 1; gsave(); toast('+' + GP.arrive + ' pts');
           // The same arrival collects the place in the solo game: the two games stay one
           if (!st.spots[p.id]) { st.spots[p.id] = 'gps'; save(); track('spot-unlock/' + p.id); gain(XP[p.rarity], p.name); checkSets(); draw(); }
