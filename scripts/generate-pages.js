@@ -2019,7 +2019,9 @@ function carouselPool(open, all) {
 function carouselPicks(open, all, { max = CAROUSEL_MAX, maxKm = Infinity, perCat = CAROUSEL_PER_CATEGORY } = {}) {
   const on = carouselPool(open, all);
   const ranked = [...picksOf(on, on.length), ...on.filter((e) => e.source === 'francebillet' && e.urlStatus !== 'ok')]
-    .filter((e) => kmFromCentre(e) <= maxKm)
+    // A card with no known position sits on the Fontainebleau centre: « 0 km » would be a lie
+    // (Montarlot, 25/11), and the ring order would put it first.
+    .filter((e) => e.geoSource !== 'default' && kmFromCentre(e) <= maxKm)
     .sort((a, b) => ringOf(a) - ringOf(b));
   const out = [], byCat = {}, byTown = {};
   for (const e of ranked) {
@@ -2043,7 +2045,7 @@ const CAROUSEL_CAT = {
 const carouselCat = (e) => CAROUSEL_CAT[e.category] || { label: 'Sortie', labelEn: 'Outing', color: '#1d3b29' };
 
 // A price worth printing on a card: short, and not a way of saying « we don't know ».
-const NO_PRICE = /^(inconnu|non (communiqu|pr[ée]cis|renseign)|n.?s?c.?$|nc$|voir |sur r[ée]servation$|-$)/i;
+const NO_PRICE = /^(inconnu|non (communiqu|pr[ée]cis|renseign|sp[ée]cifi)|n.?s?c.?$|nc$|voir |sur r[ée]servation$|-$)/i;
 function carouselPrice(e) {
   if (isFree(e)) return 'Gratuit';
   const p = String(e.price || '').trim();

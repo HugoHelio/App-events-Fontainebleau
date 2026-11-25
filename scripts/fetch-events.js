@@ -197,6 +197,15 @@ function canonicalCommune(city) {
   return hit ? hit[0] : city;
 }
 
+// Former communes merged into Moret-Loing-et-Orvanne (2015-2016). Their own agendas still name
+// them, but neither the BAN nor geo.api.gouv.fr knows them as communes any more: « Montarlot »
+// matched a hamlet in Savoie, so the event fell back on the Fontainebleau centre (25/11). The
+// village centre (church or main street, BAN, 25/11), flagged approximate like any city centre.
+const DELEGATED_COMMUNES = new Map([
+  ['Moret-sur-Loing', 48.37104, 2.81717], ['Veneux-les-Sablons', 48.37478, 2.79755],
+  ['Écuelles', 48.35339, 2.82067], ['Épisy', 48.33419, 2.78562], ['Montarlot', 48.35009, 2.85000],
+].map(([name, lat, lng]) => [communeLetters(name), [lat, lng]]));
+
 /** False for a commune of the table that the two-ring rule leaves out. Unknown names pass: the radius check on coordinates still applies to them. */
 function inZone(city) {
   const c = COMMUNE_BY_LETTERS.get(communeLetters(city));
@@ -1151,6 +1160,9 @@ async function geocodeRecord(rec, cache) {
   }
 
   if (rec.modelCoords) return setGeo(e, rec.modelCoords.lat, rec.modelCoords.lng, 'model');
+
+  const delegated = DELEGATED_COMMUNES.get(communeLetters(e.city || ''));
+  if (delegated) return setGeo(e, delegated[0], delegated[1], 'city');
 
   if (e.city && e.city.length >= 3) {
     const key = `city:${norm(e.city)}`;
