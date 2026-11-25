@@ -642,6 +642,37 @@ function redirectPage(e) {
   });
 }
 
+/**
+ * 25/11: an event we withdrew because nothing confirms it (Salon Impérial Chocolat: the organiser
+ * still shows last year) kept its Google traffic, and the visitor got a 404. An entry of
+ * overrides.json may carry a `page` (path of the old folder, title, the dates it was announced
+ * for, the status in FR/EN): until those dates are over, the old address says what we know and
+ * shows what does happen on those days. Never a date we do not hold; not in the sitemap.
+ */
+function withdrawnList(overrides) {
+  return Object.entries(overrides || {}).map(([id, o]) => ({ id, ...(o && o.page) }))
+    .filter((w) => /^[a-z0-9-]+$/.test(w.path || '') && w.title && isIsoDate(w.from) && isIsoDate(w.to) && w.text);
+}
+
+function withdrawnPage(w, events, today) {
+  const sat = weekendOf(w.from).sat, sun = weekendOf(w.from).sun;
+  const end = (e) => (isIsoDate(e.endDate) ? e.endDate : e.startDate);
+  const open = events.filter((e) => e.startDate <= w.to && end(e) >= w.from && end(e) >= today);
+  const strip = carouselHtml(carouselPicks(open, events), { id: 'a-la-place', h: 'Ces jours-là, autour de Fontainebleau', hEn: 'On those days, around Fontainebleau', track: `retire/${w.path}`, weekend: { sat, sun } });
+  const body = `<h1>${esc(w.title)}</h1>
+${bi('p', w.text, w.textEn, ' class="withdrawn" style="background:#fbf3e2;border-radius:8px;padding:12px 16px;font-size:1.05rem"')}
+${strip}
+<div class="actions">${bi('a', 'Tout le programme du week-end', 'The whole weekend programme', ` class="btn" href="/${WEEKEND_DIR}/"`)}${bi('a', 'Les marchés de Noël', 'Christmas markets', ` class="btn alt" href="/${THEMES_DIR}/marches-de-noel/"`)}${w.city ? bi('a', `Que faire à ${esc(w.city)}`, `What to do in ${esc(w.city)}`, ` class="btn alt" href="/${CITIES_DIR}/${esc(slugify(w.city, 50))}/"`) : ''}</div>
+${bi('p', 'Vous avez vu une annonce de l’organisateur ? Dites-le-nous depuis le bouton « Signaler une erreur » de n’importe quelle fiche : la page sera remise dès que l’édition est confirmée.', 'Seen an announcement by the organiser? Tell us with the « Report an error » button of any listing: the page comes back as soon as the edition is confirmed.', ' class="note"')}`;
+  return layout({
+    title: `${w.title} : pas annoncé à ces dates | Fontainebleau Live`,
+    titleEn: `${w.title}: not announced for these dates | Fontainebleau Live`,
+    description: String(w.text).slice(0, 155),
+    canonical: `${SITE_URL}/${EVENTS_DIR}/${w.path}/`,
+    body,
+  }).replace('</style>', `${strip ? `${CAROUSEL_STYLE}\n` : ''}</style>`);
+}
+
 // ─── « Autour de … » (item 87) ───
 // A commune page with one or two events is thin for Google, and a noindex under a threshold would
 // flip with every scan. Instead, a small page shows the nearest communes and their next outings:
@@ -3451,7 +3482,7 @@ function subscribeLinks(feedPath) {
 <a class="btn alt" href="${esc(webcal)}">Apple / Outlook</a>`;
 }
 
-function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [], places = [], readPage = readSitePage }) {
+function build(payload, { today, existingEventDirs = [], existingFeeds = [], registry = [], places = [], withdrawn = [], readPage = readSitePage }) {
   const list = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.events) ? payload.events : null);
   if (!list) throw new Error('data.json: no event list');
   const generatedAt = !Array.isArray(payload) && payload.generatedAt;
@@ -3508,6 +3539,13 @@ function build(payload, { today, existingEventDirs = [], existingFeeds = [], reg
   const feeds = buildFeeds(events, existingFeeds);
   for (const [rel, content] of feeds.files) files.set(rel, content);
 
+  // A withdrawn event with a `page` in overrides.json: its old address explains, until its dates are past.
+  for (const w of withdrawn) {
+    if (w.to < today || liveDirs.has(w.path)) continue;
+    liveDirs.add(w.path);
+    files.set(`${EVENTS_DIR}/${w.path}/index.html`, withdrawnPage(w, events, today));
+  }
+
   // An old folder whose id token still belongs to a live event: its title changed. Redirect rather
   // than break a link Google already holds. Anything else is over or withdrawn: removed.
   const remove = [];
@@ -3536,6 +3574,11 @@ function listDirs(rel) {
   return fs.readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
 }
 
+/** overrides.json, for the `page` of withdrawn events. Missing or unreadable: none. */
+function readOverrides() {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'overrides.json'), 'utf8')); } catch { return {}; }
+}
+
 /** sources.json, for the names on /nos-sources/. Missing or unreadable: the page lists none. */
 function readRegistry() {
   try {
@@ -3552,7 +3595,7 @@ function main() {
     const dir = path.join(ROOT, AGENDA_DIR, d);
     return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.ics')).map((f) => `${AGENDA_DIR}/${d}/${f}`) : [];
   });
-  const { files, remove, homePicks: picks, homeSeasons: seasons, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces() });
+  const { files, remove, homePicks: picks, homeSeasons: seasons, stats } = build(payload, { today: parisToday(), existingEventDirs: listDirs(EVENTS_DIR), existingFeeds, registry: readRegistry(), places: loadPlaces(), withdrawn: withdrawnList(readOverrides()) });
 
   // The one hand-written file the generator touches, and only between its markers (item 86).
   const indexFile = path.join(ROOT, 'index.html');
