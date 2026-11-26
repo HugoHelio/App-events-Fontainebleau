@@ -293,7 +293,7 @@ En direct, Invaders, Quêtes, Grimpe, Saison (Noël en ce moment), Brouillard.
   Niveau 10 : à peu près les deux tiers des lieux ; niveau 60 : un an de joueur assidu (sorties de
   l'agenda et quête de la semaine).
 - **Récompenses de niveau** (26/11, chef de projet : « il faut qu'on récompense les joueurs qui
-  progressent ») : un avatar ou un cadre tous les dix niveaux, montré sur l'écran du niveau, à
+  progressent ») : un avatar ou un cadre tous les dix niveaux (dessins validés le 26/11), montré sur l'écran du niveau, à
   choisir dans le profil, affiché verrouillé avec son niveau tant qu'il n'est pas gagné.
   **10 : Renard**, **20 : Django** (guitare manouche : Samois et le festival ; un instrument, jamais
   un portrait), **30 : Châtelain** (le château vu de la cour des Adieux, l'escalier en fer à
