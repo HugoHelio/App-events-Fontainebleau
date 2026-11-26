@@ -76,6 +76,46 @@ const AVATAR_ART = {
     '<path d="M19 33.5L25 30L28.5 30.5M18.5 34.5L23.5 38L26 37.5" stroke="#f1d3b3" stroke-width="2"/></g>' +
     '<circle cx="17.5" cy="29.5" r="2.7" fill="#f1d3b3"/><path d="M15 29Q15.5 26 18 26.4Q20 26.8 20 28.4Q18 27.6 15 29Z" fill="#3a2a22"/></g>' +
     '<rect x="14" y="53" width="30" height="6" rx="2" fill="#2e7d4f"/><path d="M14 56H44" stroke="#56a173" stroke-width="1.2"/>' },
+  // Level rewards (26/11, project lead: « notre XP ne donnait pas de reward »). Never in the pack.
+  // Django: a gypsy-jazz guitar (oval « petite bouche » soundhole, metal tailpiece), for Django
+  // Reinhardt's Samois and the festival; an instrument, never a portrait.
+  django: { bg: '#33294f', svg:
+    '<circle cx="30" cy="36" r="24" fill="#3f3463"/>' +
+    '<path d="M12 22V12.5l9-2.5v9.5" stroke="#f5d76e" stroke-width="1.6" fill="none" stroke-linejoin="round"/><path d="M12 12.5l9-2.5" stroke="#f5d76e" stroke-width="3"/>' +
+    '<ellipse cx="10.2" cy="22.3" rx="2.5" ry="1.9" transform="rotate(-20 10.2 22.3)" fill="#f5d76e"/><ellipse cx="19.2" cy="19.8" rx="2.5" ry="1.9" transform="rotate(-20 19.2 19.8)" fill="#f5d76e"/>' +
+    '<path d="M51 52V43q3.5.8 4.5 4.5" stroke="#f5d76e" stroke-width="1.4" fill="none" stroke-linecap="round"/><ellipse cx="49.3" cy="52.2" rx="2.2" ry="1.7" transform="rotate(-20 49.3 52.2)" fill="#f5d76e"/>' +
+    '<g transform="rotate(35 32 32)">' +
+    '<path d="M28.6 9.5L29.4 2.6H34.6L35.4 9.5Z" fill="#2b1d16"/>' +
+    '<circle cx="27.7" cy="4.2" r=".95" fill="#e2c46a"/><circle cx="27.9" cy="6.4" r=".95" fill="#e2c46a"/><circle cx="28.1" cy="8.6" r=".95" fill="#e2c46a"/>' +
+    '<circle cx="36.3" cy="4.2" r=".95" fill="#e2c46a"/><circle cx="36.1" cy="6.4" r=".95" fill="#e2c46a"/><circle cx="35.9" cy="8.6" r=".95" fill="#e2c46a"/>' +
+    '<rect x="29.7" y="9" width="4.6" height="21" fill="#6b4023"/>' +
+    '<path d="M29.7 13H34.3M29.7 16.4H34.3M29.7 19.6H34.3M29.7 22.5H34.3M29.7 25.1H34.3M29.7 27.4H34.3" stroke="#d8c9a8" stroke-width=".55"/>' +
+    '<path d="M32 27C37 27 41 30 41 35C41 38.5 39 40 39 42C39 44 43.5 45.5 43.5 50.5C43.5 56.5 38.5 60.5 32 60.5C25.5 60.5 20.5 56.5 20.5 50.5C20.5 45.5 25 44 25 42C25 40 23 38.5 23 35C23 30 27 27 32 27Z" fill="#dc9d50" stroke="#7a4320" stroke-width="1.3"/>' +
+    '<path d="M25 33Q27 29 31 28.6" stroke="#f0c27f" stroke-width="1.6" fill="none" stroke-linecap="round"/>' +
+    '<path d="M35.2 40.5q5.3 2.2 4.3 9.5q-3.6-1.4-4.3-9.5Z" fill="#6b3a22"/>' +
+    '<ellipse cx="32" cy="37.5" rx="3.4" ry="4.3" fill="#f3e1b8"/><ellipse cx="32" cy="37.5" rx="2.5" ry="3.4" fill="#2a1a12"/>' +
+    '<rect x="27" y="50.5" width="10" height="2.2" rx=".8" fill="#2b1d16"/>' +
+    '<path d="M29.4 60.6L30.4 55.6H33.6L34.6 60.6Z" fill="#cfc8b6" stroke="#8a8270" stroke-width=".5"/>' +
+    '<path d="M30.7 3.6V55.8M31.6 3.6V55.8M32.4 3.6V55.8M33.3 3.6V55.8" stroke="#f6efdc" stroke-width=".35"/></g>' },
+  // Châtelain: the château of Fontainebleau as seen from the cour des Adieux: slate roofs, the
+  // central pavilion and its horseshoe staircase.
+  chatelain: { bg: '#cfe4f2', svg:
+    '<ellipse cx="12" cy="13" rx="6.5" ry="2.6" fill="#fff"/><ellipse cx="53" cy="9" rx="5" ry="2" fill="#fff"/>' +
+    '<path d="M0 50H64V64H0Z" fill="#8fb36b"/><path d="M18 64L25 51.5H39L46 64Z" fill="#e8dcc0"/>' +
+    '<circle cx="1" cy="47" r="5.5" fill="#5f8f6e"/><circle cx="63" cy="47" r="5.5" fill="#5f8f6e"/>' +
+    '<path d="M3 34H22V52H3ZM42 34H61V52H42Z" fill="#e9d6bc"/>' +
+    '<path d="M2 34L5.5 27H22V34ZM42 27H58.5L62 34H42Z" fill="#55637a"/>' +
+    '<path d="M6 37h2.6v4.5H6ZM11 37h2.6v4.5H11ZM16 37h2.6v4.5H16ZM6 44h2.6v4.5H6ZM11 44h2.6v4.5H11ZM16 44h2.6v4.5H16Z' +
+    'M45.4 37H48v4.5h-2.6ZM50.4 37H53v4.5h-2.6ZM55.4 37H58v4.5h-2.6ZM45.4 44H48v4.5h-2.6ZM50.4 44H53v4.5h-2.6ZM55.4 44H58v4.5h-2.6Z" fill="#5a6f8f"/>' +
+    '<path d="M25 12.5h2.4v5H25ZM36.6 12.5H39v5h-2.4Z" fill="#c98a6b"/>' +
+    '<path d="M21 28H43V52H21Z" fill="#f3e7d0"/>' +
+    '<path d="M19.5 28L23.5 15H40.5L44.5 28Z" fill="#4b586e"/><path d="M23.5 15H40.5" stroke="#7d8aa1" stroke-width="1"/>' +
+    '<path d="M29.4 27v-4.6l2.6-2.6 2.6 2.6V27Z" fill="#f3e7d0"/><path d="M31 23.4h2V27h-2Z" fill="#5a6f8f"/>' +
+    '<path d="M32 15V5.5" stroke="#3a2a22" stroke-width=".8"/><path d="M32.4 5.5h2v3.4h-2Z" fill="#2e4fa3"/><path d="M34.4 5.5h2v3.4h-2Z" fill="#fff"/><path d="M36.4 5.5h2v3.4h-2Z" fill="#c0392b"/>' +
+    '<path d="M24.3 30.5h2.8v5h-2.8ZM30.6 30.5h2.8v5h-2.8ZM36.9 30.5h2.8v5h-2.8ZM24.3 38.5h2.8v4.6h-2.8ZM36.9 38.5h2.8v4.6h-2.8Z" fill="#5a6f8f"/>' +
+    '<path d="M30.3 44.6V40.2a1.7 1.7 0 0 1 3.4 0v4.4Z" fill="#5a4636"/>' +
+    '<path d="M22 52Q22.5 45 28.5 44.5H35.5Q41.5 45 42 52H38.5Q38 47.6 34.5 47.6H29.5Q26 47.6 25.5 52Z" fill="#fbf6ea" stroke="#a8977a" stroke-width=".8"/>' +
+    '<path d="M23.3 49.5h2.4M23.9 47.4h2.4M38.3 49.5h2.4M37.7 47.4h2.4" stroke="#a8977a" stroke-width=".6"/>' },
 };
 
 // Frames: viewBox 0 0 100 100 drawn around the avatar, whose circle has a radius of about 34.7
@@ -121,6 +161,17 @@ function sandstone() {
   s += '<path d="M78 14q3-5 8-3-1 5-8 3Z" fill="#6f9e80"/><path d="M82 13q1-4 5-6" stroke="#5f8f2f" stroke-width=".8" fill="none"/>';
   return s;
 }
-const FRAME_ART = { or: laurel(), feuillage: foliage(), gravure: engraving(), gres: sandstone() };
+// Level reward (26/11): Denecourt's blue trail marks painted on a sandstone ring.
+function blueTrail() {
+  const p = (r, a) => (50 + r * Math.cos(a * Math.PI / 180)).toFixed(2) + ' ' + (50 + r * Math.sin(a * Math.PI / 180)).toFixed(2);
+  let s = '<path d="M50 3a47 47 0 1 0 .01 0ZM50 12.5a37.5 37.5 0 1 1-.01 0Z" fill="#ece5d4" fill-rule="evenodd" stroke="#9c9077" stroke-width=".9"/>';
+  for (let i = 0; i < 10; i++) {
+    const a0 = i * 36 - 80, a1 = a0 + 17;
+    s += '<path d="M' + p(42.25, a0) + 'A42.25 42.25 0 0 1 ' + p(42.25, a1) + '" stroke="#2f6fb5" stroke-width="4.4" stroke-linecap="round" fill="none"/>';
+    s += '<circle cx="' + p(42.25, a1 + 10).split(' ')[0] + '" cy="' + p(42.25, a1 + 10).split(' ')[1] + '" r="1.5" fill="#2f6fb5"/>';
+  }
+  return s;
+}
+const FRAME_ART = { or: laurel(), feuillage: foliage(), gravure: engraving(), gres: sandstone(), bleu: blueTrail() };
 
 module.exports = { AVATAR_ART, FRAME_ART };

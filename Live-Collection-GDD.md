@@ -285,11 +285,26 @@ En direct, Invaders, Quêtes, Grimpe, Saison (Noël en ce moment), Brouillard.
   fil de l'histoire complet 60 ; éco-geste 10 ; premier pas 5 ; sur l'honneur à la moitié
   (arrondie). Des gains simultanés s'affichent ensemble.
 - **Aucun gain ne vaut plus d'un niveau** (« laisse-moi du temps »).
-- **Niveaux** 1 à 30 : le niveau n commence à 30·n·(n−1) XP (60, 180, 360, 600, 900…).
-  Niveau 2 après trois ou quatre actions, six à huit de plus pour le niveau 3, et de plus en plus.
+- **Niveaux** 1 à 60 (26/11) : 60 XP pour le niveau 2, 180 pour le 3, puis **120 XP par niveau**
+  (niveau 10 à 1 020 XP, 20 à 2 220, 30 à 3 420, 40 à 4 620, 50 à 5 820, 60 à 7 020). L'ancienne
+  courbe 30·n·(n−1) mettait le niveau 10 à 2 700 XP, au-delà de tout le contenu fixe réuni (lieux,
+  questions, séries, fils, Invaders : environ 1 800 XP) : ses récompenses n'auraient jamais été vues.
+  Les nouveaux seuils ne sont jamais plus hauts que les anciens : aucun joueur ne perd de niveau.
+  Niveau 10 : à peu près les deux tiers des lieux ; niveau 60 : un an de joueur assidu (sorties de
+  l'agenda et quête de la semaine).
+- **Récompenses de niveau** (26/11, chef de projet : « il faut qu'on récompense les joueurs qui
+  progressent ») : un avatar ou un cadre tous les dix niveaux, montré sur l'écran du niveau, à
+  choisir dans le profil, affiché verrouillé avec son niveau tant qu'il n'est pas gagné.
+  **10 : Renard**, **20 : Django** (guitare manouche : Samois et le festival ; un instrument, jamais
+  un portrait), **30 : Châtelain** (le château vu de la cour des Adieux, l'escalier en fer à
+  cheval), **40 : cadre « Sentiers bleus »** (les marques de Denecourt), **50 : cadre « Couronne
+  d'or »**, **60 : Napoléon**, avec le titre « Empereur ». Renard, Napoléon et la couronne sortent du
+  pack collectionneur ; qui avait débloqué le pack avant le 26/11 les garde (ne jamais changer les
+  règles après coup, §12.2). Les Invaders ne sont **pas** verrouillés par un niveau (§7.1 bis).
   Un écran par niveau franchi ; « Nouveau titre » seulement quand le titre change, sinon le
   prochain titre à viser.
-- **Titres** : Promeneur, Flâneur, Bellifontain, Peintre de Barbizon, Bleausard, … Denecourt.
+- **Titres** : Promeneur (1), Flâneur (3), Bellifontain (5), Bleausard (8), Peintre de Barbizon (12),
+  Denecourt (20), Châtelain (30), Empereur (60).
 - **Badges** : séries (tous les lieux de la série, sans minimum), fils de l'histoire, saisons,
   éco-geste, premier événement, « 5 Must Climb » ; Mécène (§12.2).
 
@@ -381,7 +396,7 @@ service ; Zombies, Run! vend des missions (du contenu, écarté).
 | Priorité | Offre | Pour qui | Prix | Ce qu'il faut construire |
 |---|---|---|---|---|
 | **Haute** | **Session de groupe** : un code, des équipes, un **classement à l'arrivée** (en direct quand le serveur existera), un **récapitulatif pour l'organisateur** (podium, étape la plus vite bouclée, question la plus ratée, le plus d'Invaders ; ni nom de joueur ni position). **Trois quêtes prêtes**, dont les étapes ne sont pas montrées (c'est ce qui s'achète) : le **centre-ville** (les étapes de la fiche « Fontainebleau à pied » et ses Invaders), **la forêt, hauteurs de la Solle** (mont Ussy, croix d'Augas, rocher Cassepot, tour Denecourt, croix du Calvaire ; ordre du 25/11), **Barbizon** (musée, médaillon, Bas-Bréau, caverne des Brigands, gorges d'Apremont) | séminaires, hôtels, INSEAD, anniversaires | **une sortie sur une quête : 29 € jusqu'à 10 joueurs, 59 € jusqu'à 30** ; au-delà, « nous contacter ». Pas de devis ni de quête sur mesure | **fait pour le centre-ville** (23/11, sans serveur) ; **forêt et Barbizon : textes et questions écrits le 25/11**, à parcourir et vérifier sur place ; reste : le médiateur (CM2C), les deux Payment Links, l'ONF pour les deux quêtes en forêt ; le serveur pour le direct |
-| **Haute** | **Soutien à prix libre**, remercié par le **badge « Mécène »** sur le profil **et le pack collectionneur** : six avatars dessinés en couleur (renard, chouette, écureuil, cèpe, Napoléon, bloc et grimpeur) et quatre cadres ornés (laurier doré, feuillage, gravure, grès). Le pack se débloque **aussi sans payer** (« Débloquer le pack sans payer », comme les balades) ; seul le badge dit qui a payé. Badge montré une fois obtenu, jamais comme une cible verrouillée. Gratuits d'office : trois avatars au trait (promeneur, arbre, feuille) et le cadre simple | habitués, collectionneurs | libre : 4 € conseillés, 2 € minimum | un Payment Link « le client choisit le montant » ; le retour de Stripe pose le badge (sans serveur, contournable : accepté) |
+| **Haute** | **Soutien à prix libre**, remercié par le **badge « Mécène »** sur le profil **et le pack collectionneur** : quatre avatars dessinés en couleur (chouette, écureuil, cèpe, bloc et grimpeur) et trois cadres ornés (feuillage, gravure, grès) ; jusqu'au 26/11, six avatars et quatre cadres : le renard, Napoléon et la couronne d'or sont devenus des récompenses de niveau (§8). Le pack se débloque **aussi sans payer** (« Débloquer le pack sans payer », comme les balades) ; seul le badge dit qui a payé. Badge montré une fois obtenu, jamais comme une cible verrouillée. Gratuits d'office : trois avatars au trait (promeneur, arbre, feuille) et le cadre simple | habitués, collectionneurs | libre : 4 € conseillés, 2 € minimum | un Payment Link « le client choisit le montant » ; le retour de Stripe pose le badge (sans serveur, contournable : accepté) |
 | **Basse** | **Vos cartes imprimées** : les lieux collectés, avec la date | visiteurs, cadeau | à définir | PDF prêt à imprimer ou imprimeur partenaire (§16) |
 | Plus tard | Saison financée par l'office de tourisme ou l'interco (modèle Tèrra Aventura) ; commerçants partenaires signalés comme tels | institutions, commerces | convention | des chiffres d'usage (M2) |
 
@@ -428,7 +443,7 @@ classement avec trois équipes fictives.
 
 ## 14. Mesure
 GoatCounter, sans rien qui identifie le joueur : `quest-start`, `spot-unlock/<id>`,
-`spot-method/<gps|question|honneur>`, `event-checkin`, `level/<n>`, `set-complete/<série>`.
+`spot-method/<gps|question|honneur>`, `event-checkin`, `level/<n>`, `reward/<id>` (récompense de niveau montrée), `set-complete/<série>`.
 
 ## 15. Jalons
 | Jalon | Contenu | Quand |

@@ -154,7 +154,7 @@ ${LEAFLET_CSS}
 <div class="sheet" id="sheet" role="dialog"></div>
 <div class="onb" id="onb"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="levelup" id="levelup"><div id="lu-h"></div><div class="n" id="lu-n"></div><div id="lu-t" class="lu-t"></div><p id="lu-p"></p><button type="button" class="btn alt" id="lu-ok"></button></div>
+<div class="levelup" id="levelup"><div id="lu-h"></div><div class="n" id="lu-n"></div><div id="lu-t" class="lu-t"></div><p id="lu-p"></p><div id="lu-r" class="lu-r"></div><button type="button" class="btn alt" id="lu-ok"></button></div>
 <nav class="tabs" role="tablist">
 <button type="button" role="tab" aria-selected="true" data-tab="map"><span data-ico="map"></span><em data-t="tabMap"></em></button>
 <button type="button" role="tab" aria-selected="false" data-tab="live"><span data-ico="live"></span><em data-t="tabLive"></em><b class="nb" id="nb"></b></button>
@@ -290,7 +290,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .mehead{display:flex;align-items:center;gap:16px;margin:4px 0 12px}.mehead h2{margin:0 0 4px}.tag.mec{background:#f6e6ea;color:#8f4a58}
 .av{position:relative;width:42px;height:42px;display:inline-flex;flex:none;font-size:22px;margin:7px}.av.big{width:76px;height:76px;font-size:40px;margin:14px}.av.top{width:36px;height:36px;font-size:19px;margin:0}.av-in{position:absolute;inset:0;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#eef0ec;color:var(--ink)}.av-in svg{width:100%;height:100%;display:block}.av-fr{position:absolute;inset:-22%;pointer-events:none}.av-fr svg{width:100%;height:100%;display:block;overflow:visible}
 .av.fr-simple .av-in{box-shadow:0 0 0 2px #fff,0 0 0 4px #1f2622}
-.pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 4px;margin:6px 0 10px}.pick button{background:none;border:0;padding:8px 0 4px;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;border-radius:12px}.pick button small{font-size:10.5px;color:var(--ink)}.pick button[aria-pressed=true]{background:#fff4d6}.pick button[aria-pressed=true] small{font-weight:800}.pick button.locked .av{opacity:.5}.pick .lk{position:absolute;top:2px;right:6px;width:18px;height:18px;border-radius:50%;background:#fff;color:#7b807b;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 4px;margin:6px 0 10px}.pick button{background:none;border:0;padding:8px 0 4px;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;border-radius:12px}.pick button small{font-size:10.5px;color:var(--ink)}.pick button[aria-pressed=true]{background:#fff4d6}.pick button[aria-pressed=true] small{font-weight:800}.pick button.locked .av{opacity:.5}.pick .lvreq{font-size:10px;color:#7b807b;margin-top:-6px}.pick .lk{position:absolute;top:2px;right:6px;width:18px;height:18px;border-radius:50%;background:#fff;color:#7b807b;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .btn.wide{display:block;width:100%;margin-top:8px}.mailrow{margin-top:10px}.mailrow b{user-select:all;-webkit-user-select:all;color:var(--ink,#1d3b29)}.mailrow .linkbtn{display:inline;margin:0 0 0 8px}.linkbtn{display:block;margin:8px auto 0;background:none;border:0;font:inherit;font-size:13px;color:var(--muted,#5b625d);text-decoration:underline;cursor:pointer}
 .sblock{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}.shead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;padding:12px;font:inherit;color:inherit;text-align:left;cursor:pointer}.stx{flex:1;min-width:0}.stx b{display:block;font-size:15.5px}.stx small{display:block;font-size:12.5px;color:var(--muted,#5b625d)}.chip{flex:none;font-weight:800;font-size:13px;background:#fff4d6;color:#7a5a00;border-radius:999px;padding:3px 10px}.chev{flex:none;font-size:20px;color:#7b807b;transition:transform .2s;display:flex}.sblock.open .chev{transform:rotate(180deg)}.sbody{padding:0 12px 12px;border-top:1px solid var(--line)}.sbody>.sh4:first-child,.sbody>.strip:first-child,.sbody>.lead2:first-child,.sbody>.meta:first-child{margin-top:12px}.qmedal.sm{width:34px;height:34px;font-size:18px;flex:none}.soon{margin-left:auto;font-size:11px;font-weight:700;background:#eceae4;color:#5b625d;border-radius:999px;padding:2px 8px}.lead2{margin:0 0 10px;font-size:13.5px;color:var(--muted,#5b625d)}.sh4{margin:10px 0 6px;font-size:13px}
 .gq{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;width:100%;text-align:left;font:inherit;background:#f7f6f2;border:1.5px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;cursor:pointer;color:inherit}.gq .qmedal{width:40px;height:40px;font-size:20px}.gq[aria-pressed=true]{background:#fff;border-color:#1f2622}.gqb{min-width:0}.gqb b{display:block;font-size:14px}.gqb small{display:block;font-size:12px;color:var(--muted,#5b625d)}.gpt{display:block;font-size:12.5px;color:var(--ink);padding-left:12px;position:relative;margin-top:2px}.gpt::before{content:'•';position:absolute;left:2px}
@@ -300,7 +300,7 @@ html,body{margin:0;height:100%;background:#d9d6cd;font:15px/1.4 "Segoe UI",-appl
 .toast{position:absolute;z-index:1200;left:50%;top:70px;transform:translate(-50%,-20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:14px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;width:max-content;max-width:calc(100% - 32px);text-align:center;line-height:1.35;white-space:pre-line}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .levelup{position:absolute;inset:0;z-index:1100;background:rgba(29,59,41,.92);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
-.levelup.on{display:flex}.levelup .n{font-size:72px;font-weight:900;color:var(--accent)}.lu-t{font-size:20px;font-weight:700}
+.lu-r{display:flex;flex-direction:column;align-items:center;margin:0 0 14px}.lu-r:empty{display:none}.lu-r b{font-size:15px}.lu-r small{font-size:13px;opacity:.85}.levelup.on{display:flex}.levelup .n{font-size:72px;font-weight:900;color:var(--accent)}.lu-t{font-size:20px;font-weight:700}
 .onb{position:absolute;inset:0;z-index:1150;background:var(--bg);display:none;flex-direction:column}
 .onb.on{display:flex}
 .onb .dots{display:flex;gap:6px;justify-content:center;padding:14px 0 0}.onb .dots i{width:7px;height:7px;border-radius:50%;background:#cfd3cc}.onb .dots i.on{background:var(--ink);width:20px;border-radius:9px}
@@ -342,7 +342,7 @@ const CLIENT = String.raw`
     grp1: ['1. Choisissez votre quête', '1. Choose your quest'], grp2: ['2. Une sortie « {0} »', '2. One outing: “{0}”'], grpUpTo: ['jusqu’à {0} joueurs', 'up to {0} players'],
     grpMore: ['Au-delà de 30 joueurs, ou pour une date : écrivez-nous.', 'Over 30 players, or to book a date: write to us.'], grpContact: ['Réserver par e-mail', 'Book by e-mail'],
     grpMailS: ['Session de groupe — Fontainebleau Live Collection', 'Group session — Fontainebleau Live Collection'], grpMailB: ['Quête : {0}\nDate souhaitée :\nNombre de joueurs :\n', 'Quest: {0}\nPreferred date:\nNumber of players:\n'],
-    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Pour ajouter des lieux et leurs histoires. En remerciement : le badge Mécène et ce pack de 6 avatars et 4 cadres', 'To add more places and their stories. As a thank-you: the Patron badge and this pack of 6 avatars and 4 frames'], mecChip: ['{0} € conseillés', '€{0} suggested'],
+    mecT: ['Soutenir le jeu', 'Support the game'], mecSub: ['Pour ajouter des lieux et leurs histoires. En remerciement : le badge Mécène et ce pack de 4 avatars et 3 cadres', 'To add more places and their stories. As a thank-you: the Patron badge and this pack of 4 avatars and 3 frames'], mecChip: ['{0} € conseillés', '€{0} suggested'],
     mecBuy: ['Soutenir · {0} € conseillés', 'Support · €{0} suggested'], mecHave: ['✓ Vous êtes Mécène. Merci !', '✓ You are a Patron. Thank you!'],
     codeQ: ['J’ai un code d’achat', 'I have a purchase code'], codeOk: ['Valider', 'Apply'], codeBad: ['Ce code n’est pas reconnu.', 'This code is not recognised.'],
     thxPack: ['Le pack collectionneur est débloqué.', 'The collector pack is unlocked.'], thxMec: ['Merci pour votre soutien ! Le badge Mécène et le pack collectionneur sont sur votre profil.', 'Thank you for your support! The Patron badge and the collector pack are on your profile.'],
@@ -354,7 +354,7 @@ const CLIENT = String.raw`
     bPlan: ['Plan', 'Map'], bDoux: ['Doux', 'Soft'], bNuit: ['Nuit', 'Night'],
     lSpots: ['Lieux', 'Places'], lEvents: ['En direct', 'Live'], lInv: ['Invaders', 'Invaders'], lQuests: ['Quêtes', 'Quests'], lClimb: ['Grimpe', 'Climbing'], lSeason: ['Saison', 'Season'], lFog: ['Brouillard', 'Fog'],
     level: ['Niveau', 'Level'], maxLevel: ['{0} XP · niveau maximum', '{0} XP · top level'], nextLevel: ['{0} XP · niveau {1} à {2}', '{0} XP · level {1} at {2}'],
-    newTitle: ['Nouveau titre débloqué', 'New title unlocked'], nextTitle: ['Prochain titre au niveau {0} : {1}', 'Next title at level {0}: {1}'], cont: ['Continuer', 'Continue'],
+    newTitle: ['Nouveau titre débloqué', 'New title unlocked'], rewardAv: ['Nouvel avatar : {0}', 'New avatar: {0}'], rewardFr: ['Nouveau cadre : {0}', 'New frame: {0}'], rewardPick: ['À choisir dans votre profil', 'Choose it in your profile'], rewardAt: ['Récompense du niveau {0} : continuez à collecter', 'Level {0} reward: keep collecting'], nextTitle: ['Prochain titre au niveau {0} : {1}', 'Next title at level {0}: {1}'], cont: ['Continuer', 'Continue'],
     liveBar: [' aujourd’hui · {0} cette semaine · jusqu’à +{1} XP', ' today · {0} this week · up to +{1} XP'], liveN: ['{0} en direct', '{0} live'],
     rarity: { 'commun': ['commun', 'common'], 'peu commun': ['peu commun', 'uncommon'], 'rare': ['rare', 'rare'], 'légendaire': ['légendaire', 'legendary'] },
     away: [' · à {0}', ' · {0} away'],
@@ -429,7 +429,7 @@ const CLIENT = String.raw`
     touch: ['Touchez un lieu près de vous pour commencer', 'Tap a place near you to begin'],
     profiles: [['weekend', '🧳', 'Je viens pour un week-end', 'Le meilleur en deux jours', 'Here for a weekend', 'The best in two days'], ['local', '🏡', 'J’habite dans le coin', 'Tout collectionner, à son rythme', 'I live nearby', 'Collect it all, at my pace'],
       ['etudiant', '🎓', 'J’étudie ici', 'INSEAD, écoles, campus', 'I study here', 'INSEAD, schools, campus'], ['tout', '✨', 'Un peu de tout', 'Plusieurs à la fois, ou je préfère ne pas répondre', 'A bit of everything', 'Several at once, or I’d rather not say']],
-    titlesList: [[1, 'Promeneur', 'Walker'], [3, 'Flâneur', 'Stroller'], [5, 'Bellifontain', 'Bellifontain'], [8, 'Bleausard', 'Bleausard'], [12, 'Peintre de Barbizon', 'Barbizon Painter'], [20, 'Denecourt', 'Denecourt']],
+    titlesList: [[1, 'Promeneur', 'Walker'], [3, 'Flâneur', 'Stroller'], [5, 'Bellifontain', 'Bellifontain'], [8, 'Bleausard', 'Bleausard'], [12, 'Peintre de Barbizon', 'Barbizon Painter'], [20, 'Denecourt', 'Denecourt'], [30, 'Châtelain', 'Castellan'], [60, 'Empereur', 'Emperor']],
     cats: { 'Scène & Spectacles': ['Scène', 'Stage'], 'Culture & Ateliers': ['Culture', 'Culture'], 'Nature & Environnement': ['Nature', 'Nature'], 'Sport & Outdoor': ['Sport', 'Sport'] }, outing: ['Sortie', 'Outing'],
   };
   var LI = LANG === 'en' ? 1 : 0;
@@ -467,10 +467,13 @@ const CLIENT = String.raw`
 
   // ── Save (this phone only) ──
   var KEY = 'fl-collection-v1';
-  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, weeks: {}, eco: false, onboarded: false, profile: '', geo: '', firstStep: false, pack: false, mecene: false, avatar: 'user', frame: 'none' }; }
+  function fresh() { return { xp: 0, spots: {}, answered: {}, invaders: {}, events: {}, plans: {}, sets: {}, weeks: {}, eco: false, onboarded: false, profile: '', geo: '', firstStep: false, pack: false, pack1: false, packV: 2, mecene: false, avatar: 'user', frame: 'none' }; }
   function clean(s) {
     var f = fresh(); if (!s || typeof s !== 'object' || typeof s.xp !== 'number' || !s.spots || typeof s.spots !== 'object') return null;
     Object.keys(f).forEach(function (k) { if (s[k] != null && typeof s[k] === typeof f[k]) f[k] = s[k]; });
+    // A pack unlocked before 26/11 (no packV) keeps the fox, Napoleon and the gold crown
+    if (s.pack === true && typeof s.packV !== 'number') f.pack1 = true;
+    f.packV = 2;
     f.xp = Math.max(0, Math.min(1e6, Math.round(f.xp))); return f;
   }
   function load() { try { return clean(JSON.parse(localStorage.getItem(KEY))) || fresh(); } catch (e) { return fresh(); } }
@@ -510,16 +513,33 @@ const CLIENT = String.raw`
   }
   function xpOf(e) { return (featured && e.id === featured.id ? FEATURED_XP : EVENT_XP) + (e.season ? SEASON_BONUS : 0); }
 
-  // ── Levels: level n starts at 30·n·(n−1) XP ──
-  var MAX_LEVEL = 30;
-  function floorOf(n) { return 30 * n * (n - 1); }
+  // ── Levels (26/11): 60, 180, then 120 XP per level up to 60 (7 020 XP), a reward every ten ──
+  // The old 30·n·(n−1) put level 10 at 2 700 XP, beyond all the places, series and story threads
+  // together (about 1 800): the rewards of levels 10 to 60 would never have been seen. The new
+  // floors are never higher than the old ones, so no player loses a level.
+  var MAX_LEVEL = 60;
+  function floorOf(n) { return n <= 3 ? 30 * n * (n - 1) : 120 * n - 180; }
   function levelOf(xp) { var n = 1; while (n < MAX_LEVEL && floorOf(n + 1) <= xp) n++; return n; }
   function titleOf(n) { var x0 = S.titlesList[0]; S.titlesList.forEach(function (x) { if (n >= x[0]) x0 = x; }); return x0[1 + LI]; }
-  // [id, FR, EN, in the pack]
-  var AVATARS = [['user', 'Promeneur', 'Walker', 0], ['tree', 'Arbre', 'Tree', 0], ['leaf', 'Feuille', 'Leaf', 0], ['renard', 'Renard', 'Fox', 1], ['chouette', 'Chouette', 'Owl', 1],
-    ['ecureuil', 'Écureuil', 'Squirrel', 1], ['cepe', 'Cèpe', 'Cep', 1], ['bicorne', 'Napoléon', 'Napoleon', 1], ['bloc', 'Bloc', 'Boulder', 1]];
-  var FRAMES = [['none', 'Sans', 'None', 0], ['simple', 'Simple', 'Simple', 0], ['or', 'Or', 'Gold', 1], ['feuillage', 'Feuillage', 'Foliage', 1], ['gravure', 'Gravure', 'Engraving', 1], ['gres', 'Grès', 'Sandstone', 1]];
-  function owned(list, id) { var x = list.filter(function (y) { return y[0] === id; })[0]; return x && (!x[3] || st.pack); }
+  // [id, FR, EN, in the pack, level reward, in the pack until 26/11]
+  // 26/11 (project lead): levels 10 to 60 each give an avatar or a frame; the fox, Napoleon and the
+  // gold crown leave the pack for them. Who unlocked the pack before keeps them (pack1): never
+  // change the rules after the fact (GDD §12.2).
+  var AVATARS = [['user', 'Promeneur', 'Walker', 0], ['tree', 'Arbre', 'Tree', 0], ['leaf', 'Feuille', 'Leaf', 0], ['chouette', 'Chouette', 'Owl', 1],
+    ['ecureuil', 'Écureuil', 'Squirrel', 1], ['cepe', 'Cèpe', 'Cep', 1], ['bloc', 'Bloc', 'Boulder', 1],
+    ['renard', 'Renard', 'Fox', 0, 10, 1], ['django', 'Django', 'Django', 0, 20], ['chatelain', 'Châtelain', 'Castellan', 0, 30], ['bicorne', 'Napoléon', 'Napoleon', 0, 60, 1]];
+  var FRAMES = [['none', 'Sans', 'None', 0], ['simple', 'Simple', 'Simple', 0], ['feuillage', 'Feuillage', 'Foliage', 1], ['gravure', 'Gravure', 'Engraving', 1], ['gres', 'Grès', 'Sandstone', 1],
+    ['bleu', 'Sentiers bleus', 'Blue trails', 0, 40], ['or', 'Couronne d’or', 'Gold crown', 0, 50, 1]];
+  function owned(list, id) {
+    var x = list.filter(function (y) { return y[0] === id; })[0];
+    return !!x && (x[4] ? levelOf(st.xp) >= x[4] || !!(x[5] && st.pack1) : !x[3] || st.pack);
+  }
+  function rewardAt(n) {
+    var r = null;
+    AVATARS.forEach(function (x) { if (x[4] === n) r = { kind: 'av', x: x }; });
+    FRAMES.forEach(function (x) { if (x[4] === n) r = { kind: 'fr', x: x }; });
+    return r;
+  }
   function avEl(id, frame, size) {
     var a = el('span', 'av' + (size ? ' ' + size : '')), inn = el('span', 'av-in'), art = D.art.avatars[id];
     if (art) { inn.style.background = art.bg; inn.innerHTML = '<svg viewBox="0 0 64 64" aria-hidden="true">' + art.svg + '</svg>'; } else inn.appendChild(ico(id));
@@ -550,6 +570,12 @@ const CLIENT = String.raw`
     var tt = titleOf(n), isNew = titleOf(n - 1) !== tt, nx = S.titlesList.filter(function (x) { return x[0] > n; })[0];
     $('lu-n').textContent = n; $('lu-t').textContent = isNew ? tt : '';
     $('lu-p').textContent = isNew ? t('newTitle') : nx ? t('nextTitle', nx[0], nx[1 + LI]) : '';
+    var lr = $('lu-r'), rw = rewardAt(n); lr.textContent = '';
+    if (rw) {
+      lr.appendChild(rw.kind === 'av' ? avEl(rw.x[0], owned(FRAMES, st.frame) ? st.frame : 'none', 'big') : avEl(owned(AVATARS, st.avatar) ? st.avatar : 'user', rw.x[0], 'big'));
+      lr.appendChild(el('b', null, t(rw.kind === 'av' ? 'rewardAv' : 'rewardFr', rw.x[1 + LI]))); lr.appendChild(el('small', null, t('rewardPick')));
+      track('reward/' + rw.x[0]);
+    }
     luShowing = true; $('levelup').classList.add('on');
   }
   $('lu-ok').onclick = function () { $('levelup').classList.remove('on'); luShowing = false; if (luQueue.length) luTimer = setTimeout(nextLevelUp, 300); };
@@ -1187,17 +1213,20 @@ const CLIENT = String.raw`
     function picker(list, cur, mk, set) {
       var g = el('div', 'pick');
       list.forEach(function (x) {
-        var locked = x[3] && !st.pack, b = el('button', locked ? 'locked' : ''); b.type = 'button'; b.setAttribute('aria-pressed', cur === x[0]);
+        var locked = !owned(list, x[0]), b = el('button', locked ? 'locked' : ''); b.type = 'button'; b.setAttribute('aria-pressed', cur === x[0]);
         b.appendChild(mk(x[0])); b.appendChild(el('small', null, x[1 + LI]));
+        if (locked && x[4]) b.appendChild(el('span', 'lvreq', t('levelN', x[4])));
         if (locked) { var lk = el('span', 'lk'); lk.appendChild(ico('lock')); b.appendChild(lk); }
-        b.onclick = function () { if (locked) { openPack(); return; } set(x[0]); save(); hud(); renderMe(); };
+        b.onclick = function () { if (locked) { if (x[4]) toast(t('rewardAt', x[4])); else openPack(); return; } set(x[0]); save(); hud(); renderMe(); };
         g.appendChild(b);
       });
       return g;
     }
-    root.appendChild(picker(AVATARS, st.avatar, function (id) { return avEl(id, st.frame); }, function (id) { st.avatar = id; }));
+    // What the player wears: a choice no longer owned (a level reward from a newer pack) falls back to the default
+    var curAv = owned(AVATARS, st.avatar) ? st.avatar : 'user', curFr = owned(FRAMES, st.frame) ? st.frame : 'none';
+    root.appendChild(picker(AVATARS, curAv, function (id) { return avEl(id, curFr); }, function (id) { st.avatar = id; }));
     root.appendChild(el('h3', 'acc-h', t('frameH')));
-    root.appendChild(picker(FRAMES, st.frame, function (id) { return avEl(st.avatar, id); }, function (id) { st.frame = id; }));
+    root.appendChild(picker(FRAMES, curFr, function (id) { return avEl(curAv, id); }, function (id) { st.frame = id; }));
     if (!st.pack) { var gp = el('button', 'btn soft wide', t('morePack')); gp.type = 'button'; gp.onclick = openPack; root.appendChild(gp); }
 
     if (!standalone) { // always, once uninstalled too: the card says how on every phone
