@@ -17,6 +17,27 @@ const C = require('./live-collection');
 const { ICONS } = require('./live-collection-icons');
 const { AVATAR_ART, FRAME_ART } = require('./live-collection-avatars');
 const { GROUP_STYLE, GROUP_CLIENT } = require('./live-collection-group');
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+
+// Version shown in the profile (26/11): the date the game's code last changed, so a player can tell
+// whether the installed shortcut shows the latest game. A fingerprint of the game's sources decides:
+// the nightly rebuild (new events only) keeps the date; any edit of these files moves it. The date
+// cannot come from git, as the workflows check out a single commit. Kept in jeu/version.json.
+const GAME_FILES = ['live-collection.js', 'live-collection-page.js', 'live-collection-group.js', 'live-collection-icons.js', 'live-collection-avatars.js'];
+function jeuVersion(prev, now = new Date()) {
+  const h = crypto.createHash('sha256');
+  for (const f of GAME_FILES) h.update(fs.readFileSync(path.join(__dirname, f), 'utf8').replace(/\r/g, ''));
+  const hash = h.digest('hex').slice(0, 12);
+  if (prev && prev.hash === hash && !Number.isNaN(Date.parse(prev.at))) return { hash, at: prev.at };
+  return { hash, at: now.toISOString() };
+}
+function versionLabel(v) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    .formatToParts(new Date(v.at)).map((x) => [x.type, x.value]));
+  return { fr: `${p.day}/${p.month}/${p.year} à ${p.hour}:${p.minute}`, en: `${p.day}/${p.month}/${p.year}, ${p.hour}:${p.minute}` };
+}
 
 const JEU_DIR = 'jeu';
 const CENTRE = { lat: 48.4045, lng: 2.7016 };
@@ -98,10 +119,10 @@ function jeuContent() {
 // JSON inside <script>: no "</script>" or "<!--" can close or confuse it.
 const inline = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
 
-function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fontainebleaulive.fr', feedback = '' }) {
+function jeuPage({ events, today, helpers, analytics = '', siteUrl = 'https://fontainebleaulive.fr', feedback = '', version = null }) {
   const { week, season } = jeuEvents(events, today, helpers);
   const data = Object.assign(jeuContent(), {
-    events: week, season, built: today, icons: ICONS, feedback: httpUrl(feedback), icon192: `${ICON_DIR}/Icon-FLC-192.png`,
+    events: week, season, built: today, version: version ? versionLabel(version) : null, icons: ICONS, feedback: httpUrl(feedback), icon192: `${ICON_DIR}/Icon-FLC-192.png`,
     range: { events: EVENT_KM * 1000, season: SEASON_KM * 1000, centre: CENTRE },
   });
   return `<!doctype html>
@@ -419,7 +440,7 @@ const CLIENT = String.raw`
     copy: ['Copier mon code', 'Copy my code'], copied: ['Code copié', 'Code copied'], paste: ['Coller un code', 'Paste a code'], load: ['Reprendre cette partie', 'Load this game'],
     badCode: ['Ce code n’est pas reconnu.', 'This code is not recognised.'], loaded: ['Partie reprise', 'Game loaded'], replace: ['Remplacer la partie de ce téléphone par celle du code ?', 'Replace this phone’s game with the one in the code?'],
     reset: ['Tout effacer', 'Erase everything'], resetAsk: ['Effacer toute votre progression sur ce téléphone ?', 'Erase all your progress on this phone?'],
-    testNote: ['Version bêta : les questions sont en cours de vérification sur place.', 'Beta version: the questions are being checked on site.'], report: ['Signaler une erreur', 'Report a mistake'],
+    testNote: ['Version bêta : les questions sont en cours de vérification sur place.', 'Beta version: the questions are being checked on site.'], version: ['Version du ', 'Version of '], report: ['Signaler une erreur', 'Report a mistake'],
     home: ['Fontainebleau Live', 'Fontainebleau Live'], legal: ['Mentions légales', 'Legal notice'],
     onbTag: ['Fontainebleau se collectionne', 'Collect Fontainebleau'], onbF1: ['Explorez le château, la ville et la forêt', 'Explore the château, the town and the forest'], onbF2: ['Collectionnez les lieux et leurs histoires', 'Collect places and their stories'], onbF3: ['Vivez les événements du jour : ils rapportent le plus', 'Live the events of the day: they earn the most'],
     free: ['Gratuit.', 'Free.'], start: ['Commencer', 'Start'], skip: ['Passer', 'Skip'], youCome: ['Vous venez…', 'You are here…'],
@@ -1269,6 +1290,7 @@ const CLIENT = String.raw`
 
     var tn = el('p', 'note', t('testNote') + ' ');
     if (D.feedback) tn.appendChild(link(t('report'), D.feedback));
+    if (D.version) { tn.appendChild(document.createElement('br')); tn.appendChild(document.createTextNode(t('version') + (LANG === 'en' ? D.version.en : D.version.fr))); }
     root.appendChild(tn);
     var fl = el('p', 'foot-links');
     fl.appendChild(link(t('home'), '/')); fl.appendChild(document.createTextNode(' · ')); fl.appendChild(link(t('legal'), '/mentions-legales/'));
@@ -1500,4 +1522,4 @@ const CLIENT = String.raw`
 })();
 `;
 
-module.exports = { JEU_DIR, jeuPage, jeuManifest, jeuEvents, jeuContent };
+module.exports = { JEU_DIR, jeuPage, jeuManifest, jeuEvents, jeuContent, jeuVersion };
