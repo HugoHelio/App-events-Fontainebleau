@@ -450,8 +450,8 @@ const CLIENT = String.raw`
     touch: ['Touchez un lieu près de vous pour commencer', 'Tap a place near you to begin'],
     profiles: [['weekend', '🧳', 'Je viens pour un week-end', 'Le meilleur en deux jours', 'Here for a weekend', 'The best in two days'], ['local', '🏡', 'J’habite dans le coin', 'Tout collectionner, à son rythme', 'I live nearby', 'Collect it all, at my pace'],
       ['etudiant', '🎓', 'J’étudie ici', 'INSEAD, écoles, campus', 'I study here', 'INSEAD, schools, campus'], ['tout', '✨', 'Un peu de tout', 'Plusieurs à la fois, ou je préfère ne pas répondre', 'A bit of everything', 'Several at once, or I’d rather not say']],
-    // 26/11: a title at each avatar level (10, 20, 30, 60) and Denecourt at 40 with his blue trails frame
-    titlesList: [[1, 'Promeneur', 'Walker'], [3, 'Flâneur', 'Stroller'], [5, 'Bellifontain', 'Bellifontain'], [8, 'Bleausard', 'Bleausard'], [10, 'Renard', 'Fox'], [12, 'Peintre de Barbizon', 'Barbizon Painter'], [20, 'Django', 'Django'], [30, 'Châtelain', 'Castellan'], [40, 'Denecourt', 'Denecourt'], [60, 'Empereur', 'Emperor']],
+    // 26/11: a title at each reward level: avatars 10, 20, 30, 60; Denecourt at 40 with his blue trails frame, Souverain at 50 with the gold crown
+    titlesList: [[1, 'Promeneur', 'Walker'], [3, 'Flâneur', 'Stroller'], [5, 'Bellifontain', 'Bellifontain'], [8, 'Bleausard', 'Bleausard'], [10, 'Renard', 'Fox'], [12, 'Peintre de Barbizon', 'Barbizon Painter'], [20, 'Django', 'Django'], [30, 'Châtelain', 'Castellan'], [40, 'Denecourt', 'Denecourt'], [50, 'Souverain', 'Sovereign'], [60, 'Empereur', 'Emperor']],
     cats: { 'Scène & Spectacles': ['Scène', 'Stage'], 'Culture & Ateliers': ['Culture', 'Culture'], 'Nature & Environnement': ['Nature', 'Nature'], 'Sport & Outdoor': ['Sport', 'Sport'] }, outing: ['Sortie', 'Outing'],
   };
   var LI = LANG === 'en' ? 1 : 0;
