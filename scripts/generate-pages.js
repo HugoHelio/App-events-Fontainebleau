@@ -3612,8 +3612,14 @@ function main() {
   const liveCityDirs = new Set([...files.keys()].filter((f) => f.startsWith(`${CITIES_DIR}/`)).map((f) => f.split('/')[1]));
   for (const d of listDirs(CITIES_DIR)) if (!liveCityDirs.has(d)) remove.push(`${CITIES_DIR}/${d}`);
 
+  // The repository stores these pages with LF; a Windows checkout (core.autocrlf) has them in
+  // CRLF. Writing LF there left every page "modified" in git with no content change, so on
+  // Windows the generator writes CRLF like the checkout. Never on CI (Linux), where CRLF would be
+  // committed, and never for the .ics feeds, which are CRLF already and stored byte for byte.
+  const crlf = process.platform === 'win32';
   let written = 0;
-  for (const [rel, content] of files) {
+  for (const [rel, raw] of files) {
+    const content = crlf && typeof raw === 'string' && !rel.endsWith('.ics') ? raw.replace(/\r?\n/g, '\r\n') : raw;
     const file = path.join(ROOT, rel);
     if (fs.existsSync(file) && fs.readFileSync(file, 'utf8') === content) continue;
     fs.mkdirSync(path.dirname(file), { recursive: true });
