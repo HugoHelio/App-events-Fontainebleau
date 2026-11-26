@@ -303,8 +303,9 @@ En direct, Invaders, Quêtes, Grimpe, Saison (Noël en ce moment), Brouillard.
   règles après coup, §12.2). Les Invaders ne sont **pas** verrouillés par un niveau (§7.1 bis).
   Un écran par niveau franchi ; « Nouveau titre » seulement quand le titre change, sinon le
   prochain titre à viser.
-- **Titres** : Promeneur (1), Flâneur (3), Bellifontain (5), Bleausard (8), Peintre de Barbizon (12),
-  Denecourt (20), Châtelain (30), Empereur (60).
+- **Titres** : Promeneur (1), Flâneur (3), Bellifontain (5), Bleausard (8), Renard (10), Peintre de
+  Barbizon (12), Django (20), Châtelain (30), Denecourt (40), Empereur (60). Depuis le 26/11, chaque
+  avatar de niveau porte le titre du même nom, et Denecourt va avec son cadre « Sentiers bleus ».
 - **Badges** : séries (tous les lieux de la série, sans minimum), fils de l'histoire, saisons,
   éco-geste, premier événement, « 5 Must Climb » ; Mécène (§12.2).
 
