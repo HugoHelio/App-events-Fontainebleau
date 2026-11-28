@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_356adfe18d@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Marché de Noël de Fleury-en-Bière
@@ -26,6 +26,25 @@ DESCRIPTION:Tarif : Gratuit.\n\nDécouvrez les festivités et artisans lors
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-fleury-en-bie
  re-356adfe18d/
 CATEGORIES:Culture & Ateliers
+GEO:48.44399;2.54959
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_3b45d4ad11@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Concert de gospel
+LOCATION:Fleury-en-Bière
+DESCRIPTION:Tarif : Accès libre.\n\nUn concert de gospel organisé à Fleu
+ ry-en-Bière pour célébrer la musique.\n\nOrganisateur : https://www.fon
+ tainebleau-tourisme.com/fr/fiche/8079856/concert-de-gospel/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/concert-de-gospel-fleury-en-biere-3b4
+ 5d4ad11/\n\nInformations collectées automatiquement : vérifiez-les aupr
+ ès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/concert-de-gospel-fleury-en-bie
+ re-3b45d4ad11/
+CATEGORIES:Scène & Spectacles
 GEO:48.44399;2.54959
 TRANSP:TRANSPARENT
 END:VEVENT

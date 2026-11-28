@@ -11,8 +11,26 @@ X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:EVT_b1a684dd24@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Marché de Noël de Samoreau
+LOCATION:La Grange aux Dîmes\, Samoreau
+DESCRIPTION:Horaires : 10h00 à 19h00\n\nTarif : Entrée libre\n\nMarché d
+ e Noël artisanal et festif dans le cadre de la Grange aux Dîmes.\n\nOrga
+ nisateur : https://www.fontainebleau-tourisme.com/fr/les-marches-de-noel-d
+ u-pays-de-fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenement
+ s/marche-de-noel-de-samoreau-b1a684dd24/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-samoreau-b1a6
+ 84dd24/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_a4c646a862@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Concert Symphonique en résonance

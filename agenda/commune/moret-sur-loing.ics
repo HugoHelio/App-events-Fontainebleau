@@ -3,11 +3,70 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:moret-sur-loing · Fontainebleau Live
+X-WR-CALNAME:Moret-sur-Loing · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_60f435f760@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261130
+SUMMARY:Exposition Georges Frédéric Rötig : un peintre animalier à More
+ t-sur-Loing
+LOCATION:musée municipal de Moret-Loing-et-Orvanne\, Moret-sur-Loing
+DESCRIPTION:Horaires : de 14h à 18h\n\nTarif : gratuit\n\nExposition consa
+ crée à l'œuvre et à l'univers du peintre animalier Georges Frédéric 
+ Rötig et ses liens avec Moret-sur-Loing.\n\nOrganisateur : https://moretl
+ oingetorvanne.fr/events/exposition-georges-frederic-rotig-un-peintre-anima
+ lier-a-moret-sur-loing/\n\nFiche : https://fontainebleaulive.fr/evenements
+ /exposition-georges-frederic-rotig-un-peintre-animalier-a-mor-moret-sur-lo
+ ing-60f435f760/\n\nInformations collectées automatiquement : vérifiez-le
+ s auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/exposition-georges-frederic-rot
+ ig-un-peintre-animalier-a-mor-moret-sur-loing-60f435f760/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_82f4005e67@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Téléthon 2026 : Dîner-spectacle antillais
+LOCATION:salle Roland Dagnaud\, Moret-sur-Loing
+DESCRIPTION:Horaires : 19h30\n\nTarif : 25 €\n\nDîner-spectacle antillai
+ s solidaire dont l'intégralité des bénéfices est reversée au Téléth
+ on.\n\nOrganisateur : https://moretloingetorvanne.fr/events/telethon-2026-
+ moret-loing-et-orvanne-se-mobilise-du-30-novembre-au-5-decembre/\n\nFiche 
+ : https://fontainebleaulive.fr/evenements/telethon-2026-diner-spectacle-an
+ tillais-moret-sur-loing-82f4005e67/\n\nInformations collectées automatiqu
+ ement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/telethon-2026-diner-spectacle-a
+ ntillais-moret-sur-loing-82f4005e67/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_4810b17df1@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261222
+SUMMARY:Marché de Noël de Moret-sur-Loing
+LOCATION:Moret-sur-Loing\, Moret-sur-Loing
+DESCRIPTION:Horaires : Vendredi 18h-20h\, Samedi et Dimanche 10h-19h\, Lund
+ i 10h-18h\n\nTarif : gratuit\n\nMarché de Noël traditionnel au cœur de 
+ Moret-sur-Loing.\n\nOrganisateur : https://moretloingetorvanne.fr/events/n
+ oel-moret-loing-et-orvanne-2026/\n\nFiche : https://fontainebleaulive.fr/e
+ venements/marche-de-noel-de-moret-sur-loing-4810b17df1/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-moret-sur-loi
+ ng-4810b17df1/
+CATEGORIES:Culture & Ateliers
+GEO:48.36846;2.82629
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

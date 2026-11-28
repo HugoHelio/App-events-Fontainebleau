@@ -3,11 +3,29 @@ VERSION:2.0
 PRODID:-//Fontainebleau Live//Agenda//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:la-genevraye · Fontainebleau Live
+X-WR-CALNAME:La Genevraye · Fontainebleau Live
 X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
   automatiquement : vérifiez auprès de l’organisateur avant de vous dé
  placer.
 X-WR-TIMEZONE:Europe/Paris
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_0817cd9c12@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Marché de Noël
+LOCATION:8 rue du Bourg à la Genevraye\, La Genevraye
+DESCRIPTION:Horaires : 10h à 19h\n\nVenez découvrir le marché de Noël 
+ à la Genevraye en entrée libre.\n\nOrganisateur : https://www.ccmsl.fr/a
+ ctu-et-agendas/agenda.html#2026-12-12-marchedenoel\n\nFiche : https://font
+ ainebleaulive.fr/evenements/marche-de-noel-la-genevraye-0817cd9c12/\n\nInf
+ ormations collectées automatiquement : vérifiez-les auprès de l’organ
+ isateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-la-genevraye-081
+ 7cd9c12/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

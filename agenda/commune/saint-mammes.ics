@@ -12,18 +12,18 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_257ae87cb3@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261130
 SUMMARY:Weekend de la transition
 LOCATION:MLC / Place de la Mairie\, Saint-Mammès
 DESCRIPTION:Horaires : Vendredi à partir de 20h\, Samedi à partir de 15h\
- , Dimanche à partir de 14h\n\nUn weekend pour la transition écologique p
- roposant projection\, troc\, ateliers\, expositions\, concert et balade bi
- odiversité.\n\nOrganisateur : https://www.saint-mammes.com/fete-de-la-tra
- nsition/\n\nFiche : https://fontainebleaulive.fr/evenements/weekend-de-la-
- transition-saint-mammes-257ae87cb3/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+ , Dimanche à partir de 14h\n\nTarif : Gratuit\n\nUn weekend pour la trans
+ ition écologique proposant projection\, troc\, ateliers\, expositions\, c
+ oncert et balade biodiversité.\n\nOrganisateur : https://www.saint-mammes
+ .com/fete-de-la-transition/\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/weekend-de-la-transition-saint-mammes-257ae87cb3/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/weekend-de-la-transition-saint-
  mammes-257ae87cb3/
 CATEGORIES:Nature & Environnement
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_be3f148623@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Concert " Domkiris expérience "
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -69,7 +69,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_03662cfcf2@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Hommage du 5 décembre
@@ -86,15 +86,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ecd2283350@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261209
 DTEND;VALUE=DATE:20261210
 SUMMARY:Fête de la Saint Nicolas
 LOCATION:ERPD de Saint-Mammès\, Saint-Mammès
-DESCRIPTION:Horaires : 15h00\n\nOrganisateur : https://www.saint-mammes.com
- /fete-de-la-saint-nicolas/\n\nFiche : https://fontainebleaulive.fr/eveneme
- nts/fete-de-la-saint-nicolas-saint-mammes-ecd2283350/\n\nInformations coll
- ectées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 15h00\n\nSaint-Nicolas accueillera petits et grands 
+ avec chants\, jeux\, danses et goûter.\n\nOrganisateur : https://www.sain
+ t-mammes.com/fete-de-la-saint-nicolas/\n\nFiche : https://fontainebleauliv
+ e.fr/evenements/fete-de-la-saint-nicolas-saint-mammes-ecd2283350/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
 URL:https://fontainebleaulive.fr/evenements/fete-de-la-saint-nicolas-saint-
  mammes-ecd2283350/
 CATEGORIES:Scène & Spectacles
@@ -103,7 +105,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_a3994dd502@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Marché de Noël de Saint-Mammès

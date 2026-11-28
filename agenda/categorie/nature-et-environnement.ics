@@ -12,18 +12,18 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_257ae87cb3@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261130
 SUMMARY:Weekend de la transition
 LOCATION:MLC / Place de la Mairie\, Saint-Mammès
 DESCRIPTION:Horaires : Vendredi à partir de 20h\, Samedi à partir de 15h\
- , Dimanche à partir de 14h\n\nUn weekend pour la transition écologique p
- roposant projection\, troc\, ateliers\, expositions\, concert et balade bi
- odiversité.\n\nOrganisateur : https://www.saint-mammes.com/fete-de-la-tra
- nsition/\n\nFiche : https://fontainebleaulive.fr/evenements/weekend-de-la-
- transition-saint-mammes-257ae87cb3/\n\nInformations collectées automatiqu
- ement : vérifiez-les auprès de l’organisateur.
+ , Dimanche à partir de 14h\n\nTarif : Gratuit\n\nUn weekend pour la trans
+ ition écologique proposant projection\, troc\, ateliers\, expositions\, c
+ oncert et balade biodiversité.\n\nOrganisateur : https://www.saint-mammes
+ .com/fete-de-la-transition/\n\nFiche : https://fontainebleaulive.fr/evenem
+ ents/weekend-de-la-transition-saint-mammes-257ae87cb3/\n\nInformations col
+ lectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/weekend-de-la-transition-saint-
  mammes-257ae87cb3/
 CATEGORIES:Nature & Environnement
@@ -31,7 +31,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_924fcbdae5@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Chantier d'entretien des pelouses à la platière de Meun
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_bdb9194a09@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Les Cafés de la transition : comment améliorer le confort de son 
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2ca2fbc3e4@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Sortie nature " La biodiversité d'hier et d'aujourd'hui "
@@ -90,7 +90,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_59081e6304@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Troc aux plantes
@@ -109,17 +109,17 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2b3ef3d23c@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Sortie bryologique au mont Andart
 LOCATION:Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 9h00 – 17h00\n\nTarif : Gratuit\n\nSortie bryologi
- que en Forêt de Fontainebleau.\n\nOrganisateur : https://www.jagispourlan
- ature.org/activite/sortie-bryologique-au-mont-andart\n\nFiche : https://fo
- ntainebleaulive.fr/evenements/sortie-bryologique-au-mont-andart-fontainebl
- eau-2b3ef3d23c/\n\nInformations collectées automatiquement : vérifiez-le
- s auprès de l’organisateur.
+DESCRIPTION:Horaires : 09h00 – 17h00\n\nTarif : Gratuit / Accès libre\n\
+ nSortie bryologique en Forêt de Fontainebleau.\n\nOrganisateur : https://
+ www.jagispourlanature.org/activite/sortie-bryologique-au-mont-andart\n\nFi
+ che : https://fontainebleaulive.fr/evenements/sortie-bryologique-au-mont-a
+ ndart-fontainebleau-2b3ef3d23c/\n\nInformations collectées automatiquemen
+ t : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-bryologique-au-mont-anda
  rt-fontainebleau-2b3ef3d23c/
 CATEGORIES:Nature & Environnement
@@ -146,7 +146,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_423a5d632f@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Apéro des randonneurs — Fontainebleau
@@ -166,7 +166,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_758d2639a7@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Apéro des randonneurs — Melun
@@ -185,7 +185,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_631edf116e@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Apéro des randonneurs — Fontainebleau
@@ -205,7 +205,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f082eacb33@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Apéro des randonneurs — Melun
@@ -230,13 +230,12 @@ DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Promenade guidée « Hêtre ou ne plus hêtre »
 LOCATION:Parking de l'hippodrome de la Solle\, Fontainebleau
-DESCRIPTION:Horaires : 13h30–17h00\n\nTarif : Gratuit ou adhésion\n\nPro
- menade guidée de 6 km axée sur la reconnaissance du hêtre et son adapta
- tion au changement climatique.\n\nOrganisateur : https://www.aaff.fr/agend
- a/hetre-ou-ne-plus-hetre/\n\nFiche : https://fontainebleaulive.fr/evenemen
- ts/promenade-guidee-hetre-ou-ne-plus-hetre-fontainebleau-2cd1d56d7c/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
+DESCRIPTION:Horaires : 13h30 – 17h00\n\nTarif : Gratuit\n\nPromenade guid
+ ée de 6 km axée sur la reconnaissance du hêtre et son adaptation au cha
+ ngement climatique.\n\nOrganisateur : https://www.aaff.fr/agenda/hetre-ou-
+ ne-plus-hetre/\n\nFiche : https://fontainebleaulive.fr/evenements/promenad
+ e-guidee-hetre-ou-ne-plus-hetre-fontainebleau-2cd1d56d7c/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/promenade-guidee-hetre-ou-ne-pl
  us-hetre-fontainebleau-2cd1d56d7c/
 CATEGORIES:Nature & Environnement
@@ -244,7 +243,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2a39a33cbc@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Rando célibataires — Des rochers de Cuvier Chatillon à Bois-le-
@@ -263,6 +262,26 @@ URL:https://fontainebleaulive.fr/evenements/rando-celibataires-des-rochers-
  de-cuvier-chatillon-a-bois-le-fontainebleau-2a39a33cbc/
 CATEGORIES:Nature & Environnement
 GEO:48.44642;2.63764
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_b1ea0ffbeb@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Sortie découverte des oiseaux hivernants de l'ENS du Carreau Franc
+LOCATION:Marolles-sur-Seine\, Fontainebleau
+DESCRIPTION:Horaires : 09h00 – 12h00\n\nTarif : Gratuit\n\nSortie découv
+ erte des oiseaux hivernants de l'Espace Naturel Sensible du Carreau Franc 
+ à Marolles-sur-Seine !\n\nOrganisateur : https://www.jagispourlanature.or
+ g/activite/sortie-decouverte-des-oiseaux-hivernants-de-lens-du-carreau-fra
+ nc\n\nFiche : https://fontainebleaulive.fr/evenements/sortie-decouverte-de
+ s-oiseaux-hivernants-de-l-ens-du-carreau-fontainebleau-b1ea0ffbeb/\n\nInfo
+ rmations collectées automatiquement : vérifiez-les auprès de l’organi
+ sateur.
+URL:https://fontainebleaulive.fr/evenements/sortie-decouverte-des-oiseaux-h
+ ivernants-de-l-ens-du-carreau-fontainebleau-b1ea0ffbeb/
+CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -285,38 +304,98 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_cb003ffdbb@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Rando-resto — Étampes
+LOCATION:Départ du parcours « Bois de Sainte-Assise côté Seine »\, Sai
+ nt-Fargeau-Ponthierry
+DESCRIPTION:Rando facile en petit groupe\, puis déjeuner ensemble au resta
+ urant. 8 places : 4 femmes et 4 hommes. Inscription gratuite\, chacun paie
+  son repas.\n\nOrganisateur : https://openagenda.com/randodate/events/rand
+ o-resto-etampes-3993478\n\nFiche : https://fontainebleaulive.fr/evenements
+ /rando-resto-etampes-saint-fargeau-ponthierry-cb003ffdbb/\n\nInformations 
+ collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-resto-etampes-saint-farge
+ au-ponthierry-cb003ffdbb/
+CATEGORIES:Nature & Environnement
+GEO:48.53484;2.54461
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_734a43c14d@fontainebleaulive.fr
-DTSTAMP:20261124T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Sortie d'initiation à la bryologie en forêt de Fontainebleau
 LOCATION:Forêt domaniale de Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : sam. 05/12 : 09h00–12h00 \; dim. 06/12 : 10h00–1
- 6h00\n\nTarif : Gratuit\n\nJournée de découverte botanique axée sur l'o
- bservation des mousses.\n\nOrganisateur : https://anvl.fr/calendrier/\n\nF
- iche : https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-br
- yologie-en-foret-de-fontainebleau-734a43c14d/\n\nInformations collectées 
- automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 10h00 – 16h00\n\nTarif : Gratuit (sur inscription)
+ \n\nJournée de découverte botanique axée sur l'observation des mousses.
+ \n\nOrganisateur : https://anvl.fr/calendrier/\n\nFiche : https://fontaine
+ bleaulive.fr/evenements/sortie-d-initiation-a-la-bryologie-en-foret-de-fon
+ tainebleau-734a43c14d/\n\nInformations collectées automatiquement : véri
+ fiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/sortie-d-initiation-a-la-bryolo
  gie-en-foret-de-fontainebleau-734a43c14d/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_0b91bc3857@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:Apéro des randonneurs — Fontainebleau
+LOCATION:Centre-ville de Fontainebleau\, Fontainebleau
+DESCRIPTION:Apéro entre randonneurs à Fontainebleau pour préparer une vr
+ aie sortie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). In
+ scription gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com
+ /randodate/events/apero-des-randonneurs-fontainebleau-9062290\n\nFiche : h
+ ttps://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontainebleau
+ -0b91bc3857/\n\nInformations collectées automatiquement : vérifiez-les a
+ uprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-fontaineb
+ leau-0b91bc3857/
+CATEGORIES:Nature & Environnement
+GEO:48.40908;2.70177
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_23c285d7b9@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:Apéro des randonneurs — Melun
+LOCATION:Centre-ville de Melun\, Melun
+DESCRIPTION:Apéro entre randonneurs à Melun pour préparer une vraie sort
+ ie : itinéraires\, niveau\, covoiturage. Petit groupe (8 max). Inscriptio
+ n gratuite sur RandoDate.\n\nOrganisateur : https://openagenda.com/randoda
+ te/events/apero-des-randonneurs-melun-3049472\n\nFiche : https://fontaineb
+ leaulive.fr/evenements/apero-des-randonneurs-melun-23c285d7b9/\n\nInformat
+ ions collectées automatiquement : vérifiez-les auprès de l’organisate
+ ur.
+URL:https://fontainebleaulive.fr/evenements/apero-des-randonneurs-melun-23c
+ 285d7b9/
+CATEGORIES:Nature & Environnement
+GEO:48.5457;2.65356
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3484645f8a@fontainebleaulive.fr
-DTSTAMP:20261112T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:Balade à la Mare aux Fées et ses environs
 LOCATION:Site naturel de la Mare aux Fées\, forêt de Fontainebleau\, Bour
  ron-Marlotte
-DESCRIPTION:Horaires : 14h30 – 16h00\n\nTarif : Gratuit\n\nBalade découv
- erte botanique et artistique sur les traces des peintres de Barbizon et Ma
- rlotte.\n\nOrganisateur : https://www.aaff.fr/event/balade-a-la-mare-aux-f
- ees-et-ses-environs/\n\nFiche : https://fontainebleaulive.fr/evenements/ba
- lade-a-la-mare-aux-fees-et-ses-environs-bourron-marlotte-3484645f8a/\n\nIn
- formations collectées automatiquement : vérifiez-les auprès de l’orga
- nisateur.
+DESCRIPTION:Horaires : 14h30–16h00\n\nTarif : Gratuit ou adhésion\n\nBal
+ ade découverte botanique et artistique sur les traces des peintres de Bar
+ bizon et Marlotte.\n\nOrganisateur : https://www.aaff.fr/event/balade-a-la
+ -mare-aux-fees-et-ses-environs/\n\nFiche : https://fontainebleaulive.fr/ev
+ enements/balade-a-la-mare-aux-fees-et-ses-environs-bourron-marlotte-348464
+ 5f8a/\n\nInformations collectées automatiquement : vérifiez-les auprès 
+ de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/balade-a-la-mare-aux-fees-et-se
  s-environs-bourron-marlotte-3484645f8a/
 CATEGORIES:Nature & Environnement
@@ -329,14 +408,31 @@ DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Découverte des oiseaux en hiver à la RNR des Seiglats
 LOCATION:Rue du Vieux Cimetière\, Champagne-sur-Seine
-DESCRIPTION:Horaires : 10h00 – 12h00\n\nTarif : Gratuit\n\nAnimation d'ob
- servation de la faune aviaire hivernante en réserve naturelle.\n\nOrganis
- ateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : ht
- tps://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver-a-la
- -rnr-des-seiglats-champagne-sur-seine-2facfc771e/\n\nInformations collect
- ées automatiquement : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : de 10h00 à 12h00\n\nTarif : gratuit\n\nAnimation d'
+ observation de la faune aviaire hivernante en réserve naturelle.\n\nOrgan
+ isateur : https://www.iledefrance-nature.fr/animations-nature/\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver-a-
+ la-rnr-des-seiglats-champagne-sur-seine-2facfc771e/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/decouverte-des-oiseaux-en-hiver
  -a-la-rnr-des-seiglats-champagne-sur-seine-2facfc771e/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_f621558f88@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Promenade AAFF : « De l'eau sur notre chemin »
+LOCATION:Forêt de Fontainebleau\, Fontainebleau
+DESCRIPTION:Horaires : 09h30–11h45\n\nTarif : Gratuit\n\nSortie découver
+ te thématique autour des points d'eau en forêt.\n\nOrganisateur : https:
+ //www.aaff.fr/\n\nFiche : https://fontainebleaulive.fr/evenements/promenad
+ e-aaff-de-l-eau-sur-notre-chemin-fontainebleau-f621558f88/\n\nInformations
+  collectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/promenade-aaff-de-l-eau-sur-not
+ re-chemin-fontainebleau-f621558f88/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -434,6 +530,46 @@ CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_66c606f1b4@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Rando-resto — Fontainebleau
+LOCATION:Départ du parcours « Art rupestre en Forêt de Fontainebleau »\
+ , Le Vaudoué
+DESCRIPTION:Rando facile en petit groupe\, puis déjeuner ensemble au resta
+ urant. 8 places : 4 femmes et 4 hommes. Inscription gratuite\, chacun paie
+  son repas.\n\nOrganisateur : https://openagenda.com/randodate/events/rand
+ o-resto-fontainebleau-6215009\n\nFiche : https://fontainebleaulive.fr/even
+ ements/rando-resto-fontainebleau-le-vaudoue-66c606f1b4/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-resto-fontainebleau-le-va
+ udoue-66c606f1b4/
+CATEGORIES:Nature & Environnement
+GEO:48.35939;2.53457
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_dcce56b10d@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Rando-resto — Melun
+LOCATION:Départ du parcours « Le Château de By et les murs à raisin de 
+ Thomery »\, Fontainebleau
+DESCRIPTION:Rando facile en petit groupe\, puis déjeuner ensemble au resta
+ urant. 8 places : 4 femmes et 4 hommes. Inscription gratuite\, chacun paie
+  son repas.\n\nOrganisateur : https://openagenda.com/randodate/events/rand
+ o-resto-melun-1968090\n\nFiche : https://fontainebleaulive.fr/evenements/r
+ ando-resto-melun-fontainebleau-dcce56b10d/\n\nInformations collectées aut
+ omatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-resto-melun-fontainebleau
+ -dcce56b10d/
+CATEGORIES:Nature & Environnement
+GEO:48.39439;2.7638
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_4601909a1f@fontainebleaulive.fr
 DTSTAMP:20261103T000000Z
 DTSTART;VALUE=DATE:20270118
@@ -460,15 +596,14 @@ DTEND;VALUE=DATE:20270124
 SUMMARY:Visite guidée « Sur la trace des animaux en forêt de Fontaineble
  au »
 LOCATION:Forêt de Fontainebleau\, Fontainebleau\, Fontainebleau
-DESCRIPTION:Horaires : 14h00\n\nTarif : Adulte : 16 €\, Enfant (8-12 ans)
-  : 9 €. Visite soumise à un nombre minimum de p…\n\nApprenez à repé
- rer et interpréter les empreintes et indices laissés par la faune sauvag
- e en forêt de Fontainebleau.\n\nOrganisateur : https://www.fontainebleau-
- tourisme.com/fr/fiche/5643672/visite-sur-la-trace-des-animaux-en-foret-de-
- fontainebleau/\n\nFiche : https://fontainebleaulive.fr/evenements/visite-g
- uidee-sur-la-trace-des-animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d
- 7d9/\n\nInformations collectées automatiquement : vérifiez-les auprès d
- e l’organisateur.
+DESCRIPTION:Horaires : À partir de 14h00\n\nTarif : Adulte : 16 € | Enfa
+ nt (8 à 12 ans) : 9 €\n\nApprenez à repérer et interpréter les empre
+ intes et indices laissés par la faune sauvage en forêt de Fontainebleau.
+ \n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/5643672
+ /visite-sur-la-trace-des-animaux-en-foret-de-fontainebleau/\n\nFiche : htt
+ ps://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-animau
+ x-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/\n\nInformations collect
+ ées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/visite-guidee-sur-la-trace-des-
  animaux-en-foret-de-fontaineb-fontainebleau-1e3bc5d7d9/
 CATEGORIES:Nature & Environnement
@@ -476,7 +611,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_f94adfc30b@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20270130
 DTEND;VALUE=DATE:20270131
 SUMMARY:Ciné-Débat « Le vivant qui se défend » et exposition photos d'
@@ -550,6 +685,67 @@ DESCRIPTION:Horaires : 17h00 – 19h00\n\nTarif : Gratuit\n\nLancement de l
  ent : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/lancement-de-l-abc-du-vaudoue-a
  nimation-et-sensibilisation-a-le-vaudoue-5e7de7b59c/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_37607bbdca@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Stage photographique « Magie de la forêt »
+LOCATION:Stade Équestre du Grand Parquet\, Fontainebleau
+DESCRIPTION:Horaires : 14h00 – 18h00\n\nTarif : 49 € par personne\n\nSt
+ age photo terrain combinant observation paysagère\, écologie et apprenti
+ ssage de la prise de vue.\n\nOrganisateur : https://www.fontainebleau-tour
+ isme.com/fr/fiche/6851770/stage-photographique-magie-de-la-foret/\n\nFiche
+  : https://fontainebleaulive.fr/evenements/stage-photographique-magie-de-l
+ a-foret-fontainebleau-37607bbdca/\n\nInformations collectées automatiquem
+ ent : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/stage-photographique-magie-de-l
+ a-foret-fontainebleau-37607bbdca/
+CATEGORIES:Nature & Environnement
+GEO:48.39283;2.67347
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_c46037153a@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Visite sur la trace des animaux en forêt de Fontainebleau
+LOCATION:Forêt de Fontainebleau (Rendez-vous à la Faisanderie)\, Fontaine
+ bleau
+DESCRIPTION:Horaires : À partir de 14h00\n\nTarif : Adulte : 16 € | Enfa
+ nt (8 à 12 ans) : 9 €\n\nPublic : Dès 8 ans\n\nBalade guidée par un p
+ hotographe animalier pour reconnaître les empreintes et habitats de la fa
+ une.\n\nOrganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/564
+ 3672/visite-sur-la-trace-des-animaux-en-foret-de-fontainebleau/\n\nFiche :
+  https://fontainebleaulive.fr/evenements/visite-sur-la-trace-des-animaux-e
+ n-foret-de-fontainebleau-c46037153a/\n\nInformations collectées automatiq
+ uement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visite-sur-la-trace-des-animaux
+ -en-foret-de-fontainebleau-c46037153a/
+CATEGORIES:Nature & Environnement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_70523848a9@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Visites guidées thématiques en forêt (Chemin des fontaines\, Tou
+ r Denecourt\, Bouquet de la Reine Amélie)
+LOCATION:Secteur Tour Denecourt / Chemin des fontaines\, Fontainebleau
+DESCRIPTION:Horaires : 14h00\n\nTarif : 16 € (adulte)\, 9 € (6–12 ans
+ )\, gratuit (-6 ans)\n\nBalade thématique guidée axée sur la flore loca
+ le\, les points de vue géologiques et la biodiversité.\n\nOrganisateur :
+  https://www.fontainebleau-tourisme.com/\n\nFiche : https://fontainebleaul
+ ive.fr/evenements/visites-guidees-thematiques-en-foret-chemin-des-fontaine
+ s-to-fontainebleau-70523848a9/\n\nInformations collectées automatiquement
+  : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/visites-guidees-thematiques-en-
+ foret-chemin-des-fontaines-to-fontainebleau-70523848a9/
 CATEGORIES:Nature & Environnement
 TRANSP:TRANSPARENT
 END:VEVENT

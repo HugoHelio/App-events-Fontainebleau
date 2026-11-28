@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_3fab7261fc@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Marché de Noël du 29 novembre
@@ -26,6 +26,26 @@ DESCRIPTION:Tarif : Accès libre.\n\nMarché festif local pour célébrer l
 URL:https://fontainebleaulive.fr/evenements/marche-de-noel-du-29-novembre-l
  e-vaudoue-3fab7261fc/
 CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_66c606f1b4@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Rando-resto — Fontainebleau
+LOCATION:Départ du parcours « Art rupestre en Forêt de Fontainebleau »\
+ , Le Vaudoué
+DESCRIPTION:Rando facile en petit groupe\, puis déjeuner ensemble au resta
+ urant. 8 places : 4 femmes et 4 hommes. Inscription gratuite\, chacun paie
+  son repas.\n\nOrganisateur : https://openagenda.com/randodate/events/rand
+ o-resto-fontainebleau-6215009\n\nFiche : https://fontainebleaulive.fr/even
+ ements/rando-resto-fontainebleau-le-vaudoue-66c606f1b4/\n\nInformations co
+ llectées automatiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/rando-resto-fontainebleau-le-va
+ udoue-66c606f1b4/
+CATEGORIES:Nature & Environnement
+GEO:48.35939;2.53457
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

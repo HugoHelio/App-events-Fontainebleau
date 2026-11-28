@@ -34,7 +34,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3fca71a44@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261129
 SUMMARY:Exposition Recyrculaire
@@ -70,7 +70,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_46cf3b77c1@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Festival des Brasseurs et Vignerons
@@ -107,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_89d02118e2@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Bourse aux jouets
@@ -160,7 +160,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_09f908dd5c@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Animations dans le cadre du Téléthon
@@ -178,8 +178,48 @@ CATEGORIES:Scène & Spectacles
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_abb222a724@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Atelier créatif " Mon coeur cheval "
+LOCATION:Médiathèque Marina Tsvetaeva\, 6 allée de la Céramique\, Ecuel
+ les\, Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 14h à 18h\n\nUn atelier de création manuelle autou
+ r du thème du cheval\, animé par Nathalie Mansuy et Junko Nakamura.\n\nO
+ rganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-
+ ateliercreatifmoncoeurcheval\n\nFiche : https://fontainebleaulive.fr/evene
+ ments/atelier-creatif-mon-coeur-cheval-moret-loing-et-orvanne-abb222a724/\
+ n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-creatif-mon-coeur-cheva
+ l-moret-loing-et-orvanne-abb222a724/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_0322627f24@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Atelier Furoshiki pour un noël zéro déchet
+LOCATION:Médiathèque Sarah bernhardt\, 5 rue Claude Bernard\, Veneux-Les 
+ Sablons\, Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 11h\n\nApprenez la technique du Furoshiki pour réal
+ iser des emballages cadeaux écologiques et zéro déchet.\n\nOrganisateur
+  : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-atelierfuro
+ shikipourunnoelzerodechet\n\nFiche : https://fontainebleaulive.fr/evenemen
+ ts/atelier-furoshiki-pour-un-noel-zero-dechet-moret-loing-et-orvanne-03226
+ 27f24/\n\nInformations collectées automatiquement : vérifiez-les auprès
+  de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-furoshiki-pour-un-noel-
+ zero-dechet-moret-loing-et-orvanne-0322627f24/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_906cbea39d@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Dîner spectacle pour l'AFM Téléthon
@@ -197,18 +237,18 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_88fa306bda@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Fête des Lumières
 LOCATION:Place de l'Hôtel et façade François 1er\, Moret-sur-Loing\, Mor
  et-Loing-et-Orvanne
-DESCRIPTION:Horaires : 18h à 20h\n\nCélébration festive et lumineuse se 
- déroulant devant la façade François 1er de la mairie.\n\nOrganisateur :
-  https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-05-fetedeslumier
- es\n\nFiche : https://fontainebleaulive.fr/evenements/fete-des-lumieres-mo
- ret-loing-et-orvanne-88fa306bda/\n\nInformations collectées automatiqueme
- nt : vérifiez-les auprès de l’organisateur.
+DESCRIPTION:Horaires : 18h à 20h\n\nTarif : gratuit\n\nCélébration festi
+ ve et lumineuse se déroulant devant la façade François 1er de la mairie
+ .\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-
+ 12-05-fetedeslumieres\n\nFiche : https://fontainebleaulive.fr/evenements/f
+ ete-des-lumieres-moret-loing-et-orvanne-88fa306bda/\n\nInformations collec
+ tées automatiquement : vérifiez-les auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/fete-des-lumieres-moret-loing-e
  t-orvanne-88fa306bda/
 CATEGORIES:Culture & Ateliers
@@ -216,12 +256,12 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_30be07276a@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261207
 SUMMARY:Marché de Noël du CMPA
-LOCATION:Maison des Associations\, 25 Ter rue du Port ( Veneux-Les Sablons)
-  à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+LOCATION:Maison des Associations\, 25 Ter rue du Port\, Veneux-Les Sablons\
+ , Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
 DESCRIPTION:Horaires : 10h00–18h30 (animations de 14h à 17h30)\n\nTarif 
  : Entrée libre\n\nMarché festif pour préparer les fêtes de fin d'anné
  e.\n\nOrganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026
@@ -235,7 +275,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_0fed51746d@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Atelier créatif de cartes de Noël et de bonne année
@@ -255,8 +295,47 @@ GEO:48.37221;2.81435
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_ab7dc7f38f@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:Atelier Albertine " lecture performance "
+LOCATION:Médiathèque Marina Tsvetaeva\, 6 allée de la Céramique\, Ecuel
+ les\, Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 19h\n\nUne lecture performée organisée dans le cad
+ re des activités culturelles de la médiathèque.\n\nOrganisateur : https
+ ://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-11-atelieralbertinelec
+ tureperformance\n\nFiche : https://fontainebleaulive.fr/evenements/atelier
+ -albertine-lecture-performance-moret-loing-et-orvanne-ab7dc7f38f/\n\nInfor
+ mations collectées automatiquement : vérifiez-les auprès de l’organis
+ ateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-albertine-lecture-perfo
+ rmance-moret-loing-et-orvanne-ab7dc7f38f/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_da0c707be7@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Atelier tricot
+LOCATION:Médiathèque Marina Tsvetaeva\, 6 allée de la Céramique (Ecuell
+ es) à Moret-Loing-et-Orvanne\, Moret-Loing-et-Orvanne
+DESCRIPTION:Horaires : 10h à 12h\n\nAtelier convivial pour apprendre ou se
+  perfectionner au tricot\, animé par l'association Tricote & papote.\n\nO
+ rganisateur : https://www.ccmsl.fr/actu-et-agendas/agenda.html#2026-12-12-
+ ateliertricot\n\nFiche : https://fontainebleaulive.fr/evenements/atelier-t
+ ricot-moret-loing-et-orvanne-da0c707be7/\n\nInformations collectées autom
+ atiquement : vérifiez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/atelier-tricot-moret-loing-et-o
+ rvanne-da0c707be7/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_3d7dd3ebee@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Noël des enfants
@@ -275,7 +354,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_caf114b4dd@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:Spectacle les lutins de Noël " Dragon de feu"
@@ -295,7 +374,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_2717715ec6@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261217
 DTEND;VALUE=DATE:20261218
 SUMMARY:Marché de Noël
@@ -331,7 +410,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_d3e57063ae@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261223
 SUMMARY:Marché de Noël artisanal de Moret-sur-Loing
@@ -350,7 +429,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:EVT_ee57373bbe@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:Marché de Noël "Episy fête Noël"

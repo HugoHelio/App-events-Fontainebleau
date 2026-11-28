@@ -12,25 +12,44 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_1e3120d159@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
-SUMMARY:Marché de Noël nocturne
-LOCATION:Bois-le-Roi
-DESCRIPTION:Tarif : Gratuit.\n\nMarché d'artisans et d'exposants organisé
-  en soirée à l'occasion des fêtes de fin d'année à Bois-le-Roi.\n\nOr
- ganisateur : https://www.fontainebleau-tourisme.com/fr/fiche/8037020/march
- e-de-noel-nocturne/\n\nFiche : https://fontainebleaulive.fr/evenements/mar
- che-de-noel-nocturne-bois-le-roi-1e3120d159/\n\nInformations collectées a
- utomatiquement : vérifiez-les auprès de l’organisateur.
-URL:https://fontainebleaulive.fr/evenements/marche-de-noel-nocturne-bois-le
- -roi-1e3120d159/
+SUMMARY:Marché de Noël nocturne de Bois-le-Roi
+LOCATION:Centre-ville / Place de la mairie\, Bois-le-Roi
+DESCRIPTION:Horaires : 16h00 à 21h00\n\nTarif : Entrée libre\n\nMarché d
+ 'artisans et d'exposants organisé en soirée à l'occasion des fêtes de 
+ fin d'année à Bois-le-Roi.\n\nOrganisateur : https://www.fontainebleau-t
+ ourisme.com/fr/fiche/8037020/marche-de-noel-nocturne/\n\nFiche : https://f
+ ontainebleaulive.fr/evenements/marche-de-noel-nocturne-de-bois-le-roi-1e31
+ 20d159/\n\nInformations collectées automatiquement : vérifiez-les auprè
+ s de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-nocturne-de-bois
+ -le-roi-1e3120d159/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:EVT_5ad64b5e08@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Spectacle de Noël
+LOCATION:Bois-le-Roi
+DESCRIPTION:Tarif : Accès libre. Sans réservation.\n\nVenez profiter d'un
+  spectacle festif sur le thème de Noël à Bois-le-Roi.\n\nOrganisateur :
+  https://www.fontainebleau-tourisme.com/fr/fiche/8077144/spectacle-de-noel
+ /\n\nFiche : https://fontainebleaulive.fr/evenements/spectacle-de-noel-boi
+ s-le-roi-5ad64b5e08/\n\nInformations collectées automatiquement : vérifi
+ ez-les auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/spectacle-de-noel-bois-le-roi-5
+ ad64b5e08/
+CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:EVT_f89af79fe2@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Le Bal de Noël des Cavaliers
@@ -45,6 +64,24 @@ DESCRIPTION:Tarif : Tarif réduit : 15 € (prix en prévente\, en réserva
 URL:https://fontainebleaulive.fr/evenements/le-bal-de-noel-des-cavaliers-bo
  is-le-roi-f89af79fe2/
 CATEGORIES:Scène & Spectacles
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_fabc0110e8@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:Initiation à la cuisine sauvage d'hiver
+LOCATION:Forêt de Fontainebleau au départ de Bois-le-Roi\, Bois-le-Roi
+DESCRIPTION:Horaires : Matinée / journée\n\nTarif : Payant\n\nRandonnée 
+ botanique guidée avec initiation à la cuisine sauvage d'hiver.\n\nOrgani
+ sateur : https://www.econature.fr/\n\nFiche : https://fontainebleaulive.fr
+ /evenements/initiation-a-la-cuisine-sauvage-d-hiver-bois-le-roi-fabc0110e8
+ /\n\nInformations collectées automatiquement : vérifiez-les auprès de l
+ ’organisateur.
+URL:https://fontainebleaulive.fr/evenements/initiation-a-la-cuisine-sauvage
+ -d-hiver-bois-le-roi-fabc0110e8/
+CATEGORIES:Sport & Outdoor
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

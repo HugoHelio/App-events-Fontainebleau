@@ -12,7 +12,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:EVT_bcb0afa4a8@fontainebleaulive.fr
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261128T000000Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Grand loto de l’USMVS Patinage à Veneux-les-Sablons
@@ -26,6 +26,24 @@ DESCRIPTION:Horaires : Ouverture des portes à 19h\, début à 20h\n\nTarif
  auprès de l’organisateur.
 URL:https://fontainebleaulive.fr/evenements/grand-loto-de-l-usmvs-patinage-
  a-veneux-les-sablons-bcb0afa4a8/
+CATEGORIES:Culture & Ateliers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:EVT_116280168f@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261207
+SUMMARY:Marché de Noël de Veneux-les-Sablons
+LOCATION:Veneux-les-Sablons\, Veneux-les-Sablons
+DESCRIPTION:Horaires : de 10h à 18h30\n\nTarif : gratuit\n\nMarché de No
+ ël artisanal et festif à Veneux-les-Sablons.\n\nOrganisateur : https://m
+ oretloingetorvanne.fr/events/noel-moret-loing-et-orvanne-2026/\n\nFiche : 
+ https://fontainebleaulive.fr/evenements/marche-de-noel-de-veneux-les-sablo
+ ns-116280168f/\n\nInformations collectées automatiquement : vérifiez-les
+  auprès de l’organisateur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-de-veneux-les-sa
+ blons-116280168f/
 CATEGORIES:Culture & Ateliers
 TRANSP:TRANSPARENT
 END:VEVENT

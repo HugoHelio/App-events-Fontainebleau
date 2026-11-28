@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fontainebleau Live//Agenda//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Épisy · Fontainebleau Live
+X-WR-CALDESC:Sport\, culture et nature autour de Fontainebleau. Mis à jour
+  automatiquement : vérifiez auprès de l’organisateur avant de vous dé
+ placer.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:EVT_499cce4a82@fontainebleaulive.fr
+DTSTAMP:20261128T000000Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Marché de Noël d’Épisy
+LOCATION:Épisy\, Épisy
+DESCRIPTION:Horaires : de 10h à 18h\n\nTarif : gratuit\n\nMarché de Noël
+  convivial dans le village d'Épisy.\n\nOrganisateur : https://moretloinge
+ torvanne.fr/events/noel-moret-loing-et-orvanne-2026/\n\nFiche : https://fo
+ ntainebleaulive.fr/evenements/marche-de-noel-d-episy-499cce4a82/\n\nInform
+ ations collectées automatiquement : vérifiez-les auprès de l’organisa
+ teur.
+URL:https://fontainebleaulive.fr/evenements/marche-de-noel-d-episy-499cce4a
+ 82/
+CATEGORIES:Culture & Ateliers
+GEO:48.33419;2.78562
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
